@@ -1,0 +1,597 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+	<title>UnCodeX - Source: core.Object</title>
+	<meta name="Generator" content="UnCodeX 241" />
+	<link rel="stylesheet" href="../DocStyle2.css" type="text/css" title="Original Purple" />
+	<link rel="alternative stylesheet" href="../DocStyle2-blue.css" type="text/css" title="Blue" />
+	<link rel="alternative stylesheet" href="../DocStyle2-red.css" type="text/css" title="Red" />
+	<!--[if IE]>
+	<link rel="stylesheet" href="../DocStyle2-msie.css" type="text/css" />
+	<![endif]-->
+	<script src="../styleswitcher.js" type="text/javascript"></script>
+</head>
+<body>
+
+<div class="header">
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../core/core-overview.html">Package</a></td>
+	<td class="header"><a href="../core/object.html">Class</a></td>
+	<td class="header_hilight">Source</td>
+	<td class="header"><a class="header" href="../classtree.html#Object">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../Source_core/locale.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../Source_core/simplecommandlet.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html#Source_core/object.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+</div>
+<div class="spacer"></div>
+
+<h1><a href="../core/core-overview.html">core</a>.<a href="../core/object.html">Object</a></h1>
+<br />
+<div class="source"><table class="source"><tr><td class="source_lineno"><span class="source_lineno">00001<br />00002<br />00003<br />00004<br />00005<br />00006<br />00007<br />00008<br />00009<br />00010<br />00011<br />00012<br />00013<br />00014<br />00015<br />00016<br />00017<br />00018<br />00019<br />00020<br />
+00021<br />00022<br />00023<br />00024<br />00025<br />00026<br />00027<br />00028<br />00029<br />00030<br />00031<br />00032<br />00033<br />00034<br />00035<br />00036<br />00037<br />00038<br />00039<br />00040<br />
+00041<br />00042<br />00043<br />00044<br />00045<br />00046<br />00047<br />00048<br />00049<br />00050<br />00051<br />00052<br />00053<br />00054<br />00055<br />00056<br />00057<br />00058<br />00059<br />00060<br />
+00061<br />00062<br />00063<br />00064<br />00065<br />00066<br />00067<br />00068<br />00069<br />00070<br />00071<br />00072<br />00073<br />00074<br />00075<br />00076<br />00077<br />00078<br />00079<br />00080<br />
+00081<br />00082<br />00083<br />00084<br />00085<br />00086<br />00087<br />00088<br />00089<br />00090<br />00091<br />00092<br />00093<br />00094<br />00095<br />00096<br />00097<br />00098<br />00099<br />00100<br />
+00101<br />00102<br />00103<br />00104<br />00105<br />00106<br />00107<br />00108<br />00109<br />00110<br />00111<br />00112<br />00113<br />00114<br />00115<br />00116<br />00117<br />00118<br />00119<br />00120<br />
+00121<br />00122<br />00123<br />00124<br />00125<br />00126<br />00127<br />00128<br />00129<br />00130<br />00131<br />00132<br />00133<br />00134<br />00135<br />00136<br />00137<br />00138<br />00139<br />00140<br />
+00141<br />00142<br />00143<br />00144<br />00145<br />00146<br />00147<br />00148<br />00149<br />00150<br />00151<br />00152<br />00153<br />00154<br />00155<br />00156<br />00157<br />00158<br />00159<br />00160<br />
+00161<br />00162<br />00163<br />00164<br />00165<br />00166<br />00167<br />00168<br />00169<br />00170<br />00171<br />00172<br />00173<br />00174<br />00175<br />00176<br />00177<br />00178<br />00179<br />00180<br />
+00181<br />00182<br />00183<br />00184<br />00185<br />00186<br />00187<br />00188<br />00189<br />00190<br />00191<br />00192<br />00193<br />00194<br />00195<br />00196<br />00197<br />00198<br />00199<br />00200<br />
+00201<br />00202<br />00203<br />00204<br />00205<br />00206<br />00207<br />00208<br />00209<br />00210<br />00211<br />00212<br />00213<br />00214<br />00215<br />00216<br />00217<br />00218<br />00219<br />00220<br />
+00221<br />00222<br />00223<br />00224<br />00225<br />00226<br />00227<br />00228<br />00229<br />00230<br />00231<br />00232<br />00233<br />00234<br />00235<br />00236<br />00237<br />00238<br />00239<br />00240<br />
+00241<br />00242<br />00243<br />00244<br />00245<br />00246<br />00247<br />00248<br />00249<br />00250<br />00251<br />00252<br />00253<br />00254<br />00255<br />00256<br />00257<br />00258<br />00259<br />00260<br />
+00261<br />00262<br />00263<br />00264<br />00265<br />00266<br />00267<br />00268<br />00269<br />00270<br />00271<br />00272<br />00273<br />00274<br />00275<br />00276<br />00277<br />00278<br />00279<br />00280<br />
+00281<br />00282<br />00283<br />00284<br />00285<br />00286<br />00287<br />00288<br />00289<br />00290<br />00291<br />00292<br />00293<br />00294<br />00295<br />00296<br />00297<br />00298<br />00299<br />00300<br />
+00301<br />00302<br />00303<br />00304<br />00305<br />00306<br />00307<br />00308<br />00309<br />00310<br />00311<br />00312<br />00313<br />00314<br />00315<br />00316<br />00317<br />00318<br />00319<br />00320<br />
+00321<br />00322<br />00323<br />00324<br />00325<br />00326<br />00327<br />00328<br />00329<br />00330<br />00331<br />00332<br />00333<br />00334<br />00335<br />00336<br />00337<br />00338<br />00339<br />00340<br />
+00341<br />00342<br />00343<br />00344<br />00345<br />00346<br />00347<br />00348<br />00349<br />00350<br />00351<br />00352<br />00353<br />00354<br />00355<br />00356<br />00357<br />00358<br />00359<br />00360<br />
+00361<br />00362<br />00363<br />00364<br />00365<br />00366<br />00367<br />00368<br />00369<br />00370<br />00371<br />00372<br />00373<br />00374<br />00375<br />00376<br />00377<br />00378<br />00379<br />00380<br />
+00381<br />00382<br />00383<br />00384<br />00385<br />00386<br />00387<br />00388<br />00389<br />00390<br />00391<br />00392<br />00393<br />00394<br />00395<br />00396<br />00397<br />00398<br />00399<br />00400<br />
+00401<br />00402<br />00403<br />00404<br />00405<br />00406<br />00407<br />00408<br />00409<br />00410<br />00411<br />00412<br />00413<br />00414<br />00415<br />00416<br />00417<br />00418<br />00419<br />00420<br />
+00421<br />00422<br />00423<br />00424<br />00425<br />00426<br />00427<br />00428<br />00429<br />00430<br />00431<br />00432<br />00433<br />00434<br />00435<br />00436<br />00437<br />00438<br />00439<br />00440<br />
+00441<br />00442<br />00443<br />00444<br />00445<br />00446<br />00447<br />00448<br />00449<br />00450<br />00451<br />00452<br />00453<br />00454<br />00455<br />00456<br />00457<br />00458<br />00459<br />00460<br />
+00461<br />00462<br />00463<br />00464<br />00465<br />00466<br />00467<br />00468<br />00469<br />00470<br />00471<br />00472<br />00473<br />00474<br />00475<br />00476<br />00477<br />00478<br />00479<br />00480<br />
+00481<br />00482<br />00483<br />00484<br />00485<br />00486<br />00487<br />00488<br />00489<br />00490<br />00491<br />00492<br />00493<br />00494<br />00495<br />00496<br />00497<br />00498<br />00499<br />00500<br />
+00501<br />00502<br />00503<br />00504<br />00505<br />00506<br />00507<br />00508<br />00509<br />00510<br />00511<br />00512<br />00513<br />00514</span></td>
+<td class="source"><pre class="source"><a name="1"></a><span class="source_comment">//=============================================================================
+</span><a name="2"></a><span class="source_comment">// Object: The base class all objects.
+</span><a name="3"></a><span class="source_comment">// This is a built-in Unreal class and it shouldn't be modified.
+</span><a name="4"></a><span class="source_comment">//=============================================================================
+</span><a name="5"></a><span class="source_type">class</span> <span class="source_type"><a href="../core/object.html" class="source">Object</a></span>
+<a name="6"></a>	native
+<a name="7"></a>	noexport;
+<a name="8"></a>
+<a name="9"></a><span class="source_comment">//=============================================================================
+</span><a name="10"></a><span class="source_comment">// UObject variables.
+</span><a name="11"></a>
+<a name="12"></a><span class="source_comment">// Internal variables.
+</span><a name="13"></a>var native private const <span class="source_type">int</span> ObjectInternal[<span class="source_int">6</span>];
+<a name="14"></a>var native const <span class="source_type"><a href="../core/object.html" class="source">object</a></span> Outer;
+<a name="15"></a>var native const <span class="source_type">int</span> ObjectFlags;
+<a name="16"></a>var(<span class="source_type"><a href="../core/object.html" class="source">Object</a></span>) native const editconst <span class="source_type">name</span> <span class="source_type">Name</span>;
+<a name="17"></a>var native const editconst <span class="source_type">class</span> <span class="source_type">Class</span>;
+<a name="18"></a>
+<a name="19"></a><span class="source_comment">// ***********************************************************************************************
+</span><a name="20"></a><span class="source_comment">// * BEGIN UBI MODIF joel tremblay (16 juil 2003)
+</span><a name="21"></a><span class="source_comment">// ***********************************************************************************************
+</span><a name="22"></a>var native private const <span class="source_type">int</span> DName;
+<a name="23"></a><span class="source_comment">// ***********************************************************************************************
+</span><a name="24"></a><span class="source_comment">// * END UBI MODIF 
+</span><a name="25"></a><span class="source_comment">// ***********************************************************************************************
+</span><a name="26"></a>
+<a name="27"></a><span class="source_comment">//=============================================================================
+</span><a name="28"></a><span class="source_comment">// Unreal base structures.
+</span><a name="29"></a>
+<a name="30"></a><span class="source_comment">// Object flags.
+</span><a name="31"></a>const RF_Transactional	= <span class="source_int">0x00000001</span>; <span class="source_comment">// Supports editor undo/redo.
+</span><a name="32"></a>const RF_Public         = <span class="source_int">0x00000004</span>; <span class="source_comment">// Can be referenced by external package files.
+</span><a name="33"></a>const RF_Transient      = <span class="source_int">0x00004000</span>; <span class="source_comment">// Can't be saved or loaded.
+</span><a name="34"></a>const RF_NotForClient	= <span class="source_int">0x00100000</span>; <span class="source_comment">// Don't load for game client.
+</span><a name="35"></a>const RF_NotForServer	= <span class="source_int">0x00200000</span>; <span class="source_comment">// Don't load for game server.
+</span><a name="36"></a>const RF_NotForEdit		= <span class="source_int">0x00400000</span>; <span class="source_comment">// Don't load for editor.
+</span><a name="37"></a>
+<a name="38"></a><span class="source_comment">// #ifdef R6CODE
+</span><a name="39"></a>enum <span class="source_type"><a href="../core/object.html#EGoCode" class="source">EGoCode</a></span>
+<a name="40"></a>{
+<a name="41"></a>    GOCODE_Alpha,
+<a name="42"></a>    GOCODE_Bravo,
+<a name="43"></a>    GOCODE_Charlie,
+<a name="44"></a>    GOCODE_Zulu,
+<a name="45"></a>    GOCODE_None
+<a name="46"></a>};
+<a name="47"></a>enum <span class="source_type"><a href="../core/object.html#EMovementMode" class="source">EMovementMode</a></span>
+<a name="48"></a>{
+<a name="49"></a>    MOVE_Assault,
+<a name="50"></a>    MOVE_Infiltrate,
+<a name="51"></a>    MOVE_Recon
+<a name="52"></a>};
+<a name="53"></a>enum <span class="source_type"><a href="../core/object.html#EMovementSpeed" class="source">EMovementSpeed</a></span>
+<a name="54"></a>{
+<a name="55"></a>    SPEED_Blitz,
+<a name="56"></a>    SPEED_Normal,
+<a name="57"></a>    SPEED_Cautious
+<a name="58"></a>};
+<a name="59"></a>enum <span class="source_type"><a href="../core/object.html#EPlanAction" class="source">EPlanAction</a></span>
+<a name="60"></a>{
+<a name="61"></a>    PACT_None,
+<a name="62"></a>    PACT_Frag,
+<a name="63"></a>    PACT_Flash,
+<a name="64"></a>    PACT_Gas,
+<a name="65"></a>    PACT_Smoke,
+<a name="66"></a>    PACT_SnipeGoCode,
+<a name="67"></a>    PACT_Breach,
+<a name="68"></a>    PACT_OpenDoor
+<a name="69"></a>};
+<a name="70"></a>enum <span class="source_type"><a href="../core/object.html#EPlanActionType" class="source">EPlanActionType</a></span>
+<a name="71"></a>{
+<a name="72"></a>    PACTTYP_Normal,
+<a name="73"></a>    PACTTYP_Milestone,
+<a name="74"></a>    PACTTYP_GoCodeA,
+<a name="75"></a>    PACTTYP_GoCodeB,
+<a name="76"></a>    PACTTYP_GoCodeC,
+<a name="77"></a>    PACTTYP_Delete
+<a name="78"></a>};
+<a name="79"></a>enum <span class="source_type"><a href="../core/object.html#ENodeNotify" class="source">ENodeNotify</a></span>
+<a name="80"></a>{
+<a name="81"></a>    NODEMSG_NewAction,
+<a name="82"></a>    NODEMSG_NewMode,
+<a name="83"></a>    NODEMSG_NewSpeed,
+<a name="84"></a>    NODEMSG_NewNode,
+<a name="85"></a>    NODEMSG_GoCodeLaunched,
+<a name="86"></a>    NODEMSG_ActionNodeCompleted,
+<a name="87"></a>    NODEMSG_WaitingGoCode,
+<a name="88"></a>    NODEMSG_NodeReached,
+<a name="89"></a>    NODEMSG_PlayerLeft,
+<a name="90"></a>    NODEMSG_SnipeUntilGoCode,
+<a name="91"></a>    NODEMSG_BreachDoorAtGoCode
+<a name="92"></a>};
+<a name="93"></a>
+<a name="94"></a>enum <span class="source_type"><a href="../core/object.html#ePlayerTeamSelection" class="source">ePlayerTeamSelection</a></span>
+<a name="95"></a>{
+<a name="96"></a>    PTS_UnSelected,
+<a name="97"></a>    PTS_AutoSelect,
+<a name="98"></a>    PTS_Alpha,
+<a name="99"></a>    PTS_Bravo,
+<a name="100"></a>    PTS_Spectator
+<a name="101"></a>}; 
+<a name="102"></a>
+<a name="103"></a><span class="source_comment">// #endif R6CODE
+</span><a name="104"></a>
+<a name="105"></a><span class="source_comment">// A globally unique identifier.
+</span><a name="106"></a>struct <span class="source_type"><a href="../core/object.html#Guid" class="source">Guid</a></span>
+<a name="107"></a>{
+<a name="108"></a>	var <span class="source_type">int</span> <span class="source_type">A</span>, <span class="source_type">B</span>, <span class="source_type">C</span>, D;
+<a name="109"></a>};
+<a name="110"></a>
+<a name="111"></a><span class="source_comment">// A point or direction vector in 3d space.
+</span><a name="112"></a>struct <span class="source_type"><a href="../core/object.html#Vector" class="source">Vector</a></span>
+<a name="113"></a>{
+<a name="114"></a>	var() config <span class="source_type">float</span> X, <span class="source_type">Y</span>, <span class="source_type">Z</span>;
+<a name="115"></a>};
+<a name="116"></a>
+<a name="117"></a><span class="source_comment">// A plane definition in 3d space.
+</span><a name="118"></a>struct <span class="source_type"><a href="../core/object.html#Plane" class="source">Plane</a></span> extends <span class="source_type"><a href="../core/object.html#Vector" class="source">Vector</a></span>
+<a name="119"></a>{
+<a name="120"></a>	var() config <span class="source_type">float</span> W;
+<a name="121"></a>};
+<a name="122"></a>
+<a name="123"></a><span class="source_comment">// An orthogonal rotation in 3d space.
+</span><a name="124"></a>struct <span class="source_type"><a href="../core/object.html#Rotator" class="source">Rotator</a></span>
+<a name="125"></a>{
+<a name="126"></a>	var() config <span class="source_type">int</span> Pitch, Yaw, Roll;
+<a name="127"></a>};
+<a name="128"></a>
+<a name="129"></a><span class="source_comment">// An arbitrary coordinate system in 3d space.
+</span><a name="130"></a>struct <span class="source_type"><a href="../core/object.html#Coords" class="source">Coords</a></span>
+<a name="131"></a>{
+<a name="132"></a>	var() config <span class="source_type"><a href="../core/object.html#Vector" class="source">vector</a></span> Origin, XAxis, YAxis, ZAxis;
+<a name="133"></a>};
+<a name="134"></a>
+<a name="135"></a><span class="source_comment">// Used to generate random values between Min and Max
+</span><a name="136"></a>struct <span class="source_type"><a href="../core/object.html#Range" class="source">Range</a></span>
+<a name="137"></a>{
+<a name="138"></a>	var() config <span class="source_type">float</span> Min;
+<a name="139"></a>	var() config <span class="source_type">float</span> <span class="source_type">Max</span>;
+<a name="140"></a>};
+<a name="141"></a>
+<a name="142"></a><span class="source_comment">// Vector of Ranges
+</span><a name="143"></a>struct <span class="source_type"><a href="../core/object.html#RangeVector" class="source">RangeVector</a></span>
+<a name="144"></a>{
+<a name="145"></a>	var() config <span class="source_type"><a href="../core/object.html#Range" class="source">range</a></span> X;
+<a name="146"></a>	var() config <span class="source_type"><a href="../core/object.html#Range" class="source">range</a></span> <span class="source_type">Y</span>;
+<a name="147"></a>	var() config <span class="source_type"><a href="../core/object.html#Range" class="source">range</a></span> <span class="source_type">Z</span>;
+<a name="148"></a>};
+<a name="149"></a>
+<a name="150"></a><span class="source_comment">// A scale and sheering.
+</span><a name="151"></a>struct <span class="source_type"><a href="../core/object.html#Scale" class="source">Scale</a></span>
+<a name="152"></a>{
+<a name="153"></a>	var() config <span class="source_type"><a href="../core/object.html#Vector" class="source">vector</a></span> <span class="source_type"><a href="../core/object.html#Scale" class="source">Scale</a></span>;
+<a name="154"></a>	var() config <span class="source_type">float</span> SheerRate;
+<a name="155"></a>	var() config enum <span class="source_type"><a href="../core/object.html#ESheerAxis" class="source">ESheerAxis</a></span>
+<a name="156"></a>	{
+<a name="157"></a>		SHEER_None,
+<a name="158"></a>		SHEER_XY,
+<a name="159"></a>		SHEER_XZ,
+<a name="160"></a>		SHEER_YX,
+<a name="161"></a>		SHEER_YZ,
+<a name="162"></a>		SHEER_ZX,
+<a name="163"></a>		SHEER_ZY,
+<a name="164"></a>	} SheerAxis;
+<a name="165"></a>};
+<a name="166"></a>
+<a name="167"></a><span class="source_comment">// Camera orientations for Matinee
+</span><a name="168"></a>enum <span class="source_type"><a href="../core/object.html#ECamOrientation" class="source">ECamOrientation</a></span>
+<a name="169"></a>{
+<a name="170"></a>	CAMORIENT_None,
+<a name="171"></a>	CAMORIENT_LookAtActor,
+<a name="172"></a>	CAMORIENT_FacePath,
+<a name="173"></a>	CAMORIENT_Interpolate,
+<a name="174"></a>	CAMORIENT_Dolly,
+<a name="175"></a>};
+<a name="176"></a>
+<a name="177"></a><span class="source_comment">// A color.
+</span><a name="178"></a>struct <span class="source_type"><a href="../core/object.html#Color" class="source">Color</a></span>
+<a name="179"></a>{
+<a name="180"></a>	var() config <span class="source_type">byte</span> <span class="source_type">B</span>, G, <span class="source_type">R</span>, <span class="source_type">A</span>;
+<a name="181"></a>};
+<a name="182"></a>
+<a name="183"></a><span class="source_comment">// A bounding box.
+</span><a name="184"></a>struct <span class="source_type"><a href="../core/object.html#Box" class="source">Box</a></span>
+<a name="185"></a>{
+<a name="186"></a>	var <span class="source_type"><a href="../core/object.html#Vector" class="source">vector</a></span> Min, <span class="source_type">Max</span>;
+<a name="187"></a>	var <span class="source_type">byte</span> IsValid;
+<a name="188"></a>};
+<a name="189"></a>
+<a name="190"></a><span class="source_comment">// A bounding box sphere together.
+</span><a name="191"></a>struct <span class="source_type"><a href="../core/object.html#BoundingVolume" class="source">BoundingVolume</a></span> extends <span class="source_type"><a href="../core/object.html#Box" class="source">Box</a></span>
+<a name="192"></a>{
+<a name="193"></a>	var <span class="source_type"><a href="../core/object.html#Plane" class="source">plane</a></span> Sphere;
+<a name="194"></a>};
+<a name="195"></a>
+<a name="196"></a><span class="source_comment">// a 4x4 matrix
+</span><a name="197"></a>struct <span class="source_type"><a href="../core/object.html#Matrix" class="source">Matrix</a></span>
+<a name="198"></a>{
+<a name="199"></a>	var() <span class="source_type"><a href="../core/object.html#Plane" class="source">Plane</a></span> XPlane;
+<a name="200"></a>	var() <span class="source_type"><a href="../core/object.html#Plane" class="source">Plane</a></span> YPlane;
+<a name="201"></a>	var() <span class="source_type"><a href="../core/object.html#Plane" class="source">Plane</a></span> ZPlane;
+<a name="202"></a>	var() <span class="source_type"><a href="../core/object.html#Plane" class="source">Plane</a></span> WPlane;
+<a name="203"></a>};
+<a name="204"></a>
+<a name="205"></a><span class="source_comment">// A interpolated function
+</span><a name="206"></a>struct <span class="source_type"><a href="../core/object.html#InterpCurvePoint" class="source">InterpCurvePoint</a></span>
+<a name="207"></a>{
+<a name="208"></a>	var() <span class="source_type">float</span> InVal;
+<a name="209"></a>	var() <span class="source_type">float</span> OutVal;
+<a name="210"></a>};
+<a name="211"></a>
+<a name="212"></a>struct <span class="source_type"><a href="../core/object.html#InterpCurve" class="source">InterpCurve</a></span>
+<a name="213"></a>{
+<a name="214"></a>	var() array&lt;<span class="source_type"><a href="../core/object.html#InterpCurvePoint" class="source">InterpCurvePoint</a></span>&gt;	Points;
+<a name="215"></a>};
+<a name="216"></a>
+<a name="217"></a><span class="source_comment">// +R6CODE 
+</span><a name="218"></a><span class="source_comment">// defined originaly in UWindowBase but needed for R6MissionDescription
+</span><a name="219"></a>struct <span class="source_type"><a href="../core/object.html#Region" class="source">Region</a></span>
+<a name="220"></a>{
+<a name="221"></a>	var() <span class="source_type">int</span> X;
+<a name="222"></a>	var() <span class="source_type">int</span> <span class="source_type">Y</span>;
+<a name="223"></a>	var() <span class="source_type">int</span> W;
+<a name="224"></a>	var() <span class="source_type">int</span> <span class="source_type">H</span>;
+<a name="225"></a>};
+<a name="226"></a><span class="source_comment">// -R6CODE
+</span><a name="227"></a>
+<a name="228"></a><span class="source_comment">//UT2K3
+</span><a name="229"></a>struct <span class="source_type"><a href="../core/object.html#CompressedPosition" class="source">CompressedPosition</a></span>
+<a name="230"></a>{
+<a name="231"></a>	var <span class="source_type"><a href="../core/object.html#Vector" class="source">vector</a></span> Location;
+<a name="232"></a>	var <span class="source_type"><a href="../core/object.html#Rotator" class="source">rotator</a></span> Rotation;
+<a name="233"></a>	var <span class="source_type"><a href="../core/object.html#Vector" class="source">vector</a></span> Velocity;
+<a name="234"></a>};
+<a name="235"></a>
+<a name="236"></a><span class="source_comment">// --- gam
+</span><a name="237"></a><span class="source_comment">//=============================================================================
+</span><a name="238"></a><span class="source_comment">// Constants.
+</span><a name="239"></a>
+<a name="240"></a>const MaxInt = <span class="source_int">0x7fffffff</span>;
+<a name="241"></a>const Pi     = <span class="source_int">3.1415926535897932</span>;
+<a name="242"></a>
+<a name="243"></a><span class="source_comment">//=============================================================================
+</span><a name="244"></a><span class="source_comment">// Basic native operators and functions.
+</span><a name="245"></a>
+<a name="246"></a><span class="source_comment">// Bool operators.
+</span><a name="247"></a>native(<span class="source_int">129</span>) static final preoperator  <span class="source_type">bool</span>  !  ( <span class="source_type">bool</span> <span class="source_type">A</span> );
+<a name="248"></a>native(<span class="source_int">242</span>) static final operator(<span class="source_int">24</span>) <span class="source_type">bool</span>  == ( <span class="source_type">bool</span> <span class="source_type">A</span>, <span class="source_type">bool</span> <span class="source_type">B</span> );
+<a name="249"></a>native(<span class="source_int">243</span>) static final operator(<span class="source_int">26</span>) <span class="source_type">bool</span>  != ( <span class="source_type">bool</span> <span class="source_type">A</span>, <span class="source_type">bool</span> <span class="source_type">B</span> );
+<a name="250"></a>native(<span class="source_int">130</span>) static final operator(<span class="source_int">30</span>) <span class="source_type">bool</span>  && ( <span class="source_type">bool</span> <span class="source_type">A</span>, skip <span class="source_type">bool</span> <span class="source_type">B</span> );
+<a name="251"></a>native(<span class="source_int">131</span>) static final operator(<span class="source_int">30</span>) <span class="source_type">bool</span>  ^^ ( <span class="source_type">bool</span> <span class="source_type">A</span>, <span class="source_type">bool</span> <span class="source_type">B</span> );
+<a name="252"></a>native(<span class="source_int">132</span>) static final operator(<span class="source_int">32</span>) <span class="source_type">bool</span>  || ( <span class="source_type">bool</span> <span class="source_type">A</span>, skip <span class="source_type">bool</span> <span class="source_type">B</span> );
+<a name="253"></a>
+<a name="254"></a><span class="source_comment">// Byte operators.
+</span><a name="255"></a>native(<span class="source_int">133</span>) static final operator(<span class="source_int">34</span>) <span class="source_type">byte</span> *= ( out <span class="source_type">byte</span> <span class="source_type">A</span>, <span class="source_type">byte</span> <span class="source_type">B</span> );
+<a name="256"></a>native(<span class="source_int">134</span>) static final operator(<span class="source_int">34</span>) <span class="source_type">byte</span> /= ( out <span class="source_type">byte</span> <span class="source_type">A</span>, <span class="source_type">byte</span> <span class="source_type">B</span> );
+<a name="257"></a>native(<span class="source_int">135</span>) static final operator(<span class="source_int">34</span>) <span class="source_type">byte</span> += ( out <span class="source_type">byte</span> <span class="source_type">A</span>, <span class="source_type">byte</span> <span class="source_type">B</span> );
+<a name="258"></a>native(<span class="source_int">136</span>) static final operator(<span class="source_int">34</span>) <span class="source_type">byte</span> -= ( out <span class="source_type">byte</span> <span class="source_type">A</span>, <span class="source_type">byte</span> <span class="source_type">B</span> );
+<a name="259"></a>native(<span class="source_int">137</span>) static final preoperator  <span class="source_type">byte</span> ++ ( out <span class="source_type">byte</span> <span class="source_type">A</span> );
+<a name="260"></a>native(<span class="source_int">138</span>) static final preoperator  <span class="source_type">byte</span> -- ( out <span class="source_type">byte</span> <span class="source_type">A</span> );
+<a name="261"></a>native(<span class="source_int">139</span>) static final postoperator <span class="source_type">byte</span> ++ ( out <span class="source_type">byte</span> <span class="source_type">A</span> );
+<a name="262"></a>native(<span class="source_int">140</span>) static final postoperator <span class="source_type">byte</span> -- ( out <span class="source_type">byte</span> <span class="source_type">A</span> );
+<a name="263"></a>
+<a name="264"></a><span class="source_comment">// Integer operators.
+</span><a name="265"></a>native(<span class="source_int">141</span>) static final preoperator  <span class="source_type">int</span>  ~  ( <span class="source_type">int</span> <span class="source_type">A</span> );
+<a name="266"></a>native(<span class="source_int">143</span>) static final preoperator  <span class="source_type">int</span>  -  ( <span class="source_type">int</span> <span class="source_type">A</span> );
+<a name="267"></a>native(<span class="source_int">144</span>) static final operator(<span class="source_int">16</span>) <span class="source_type">int</span>  *  ( <span class="source_type">int</span> <span class="source_type">A</span>, <span class="source_type">int</span> <span class="source_type">B</span> );
+<a name="268"></a>native(<span class="source_int">145</span>) static final operator(<span class="source_int">16</span>) <span class="source_type">int</span>  /  ( <span class="source_type">int</span> <span class="source_type">A</span>, <span class="source_type">int</span> <span class="source_type">B</span> );
+<a name="269"></a>native(<span class="source_int">146</span>) static final operator(<span class="source_int">20</span>) <span class="source_type">int</span>  +  ( <span class="source_type">int</span> <span class="source_type">A</span>, <span class="source_type">int</span> <span class="source_type">B</span> );
+<a name="270"></a>native(<span class="source_int">147</span>) static final operator(<span class="source_int">20</span>) <span class="source_type">int</span>  -  ( <span class="source_type">int</span> <span class="source_type">A</span>, <span class="source_type">int</span> <span class="source_type">B</span> );
+<a name="271"></a>native(<span class="source_int">148</span>) static final operator(<span class="source_int">22</span>) <span class="source_type">int</span>  &lt;&lt; ( <span class="source_type">int</span> <span class="source_type">A</span>, <span class="source_type">int</span> <span class="source_type">B</span> );
+<a name="272"></a>native(<span class="source_int">149</span>) static final operator(<span class="source_int">22</span>) <span class="source_type">int</span>  &gt;&gt; ( <span class="source_type">int</span> <span class="source_type">A</span>, <span class="source_type">int</span> <span class="source_type">B</span> );
+<a name="273"></a>native(<span class="source_int">196</span>) static final operator(<span class="source_int">22</span>) <span class="source_type">int</span>  &gt;&gt;&gt;( <span class="source_type">int</span> <span class="source_type">A</span>, <span class="source_type">int</span> <span class="source_type">B</span> );
+<a name="274"></a>native(<span class="source_int">150</span>) static final operator(<span class="source_int">24</span>) <span class="source_type">bool</span> &lt;  ( <span class="source_type">int</span> <span class="source_type">A</span>, <span class="source_type">int</span> <span class="source_type">B</span> );
+<a name="275"></a>native(<span class="source_int">151</span>) static final operator(<span class="source_int">24</span>) <span class="source_type">bool</span> &gt;  ( <span class="source_type">int</span> <span class="source_type">A</span>, <span class="source_type">int</span> <span class="source_type">B</span> );
+<a name="276"></a>native(<span class="source_int">152</span>) static final operator(<span class="source_int">24</span>) <span class="source_type">bool</span> &lt;= ( <span class="source_type">int</span> <span class="source_type">A</span>, <span class="source_type">int</span> <span class="source_type">B</span> );
+<a name="277"></a>native(<span class="source_int">153</span>) static final operator(<span class="source_int">24</span>) <span class="source_type">bool</span> &gt;= ( <span class="source_type">int</span> <span class="source_type">A</span>, <span class="source_type">int</span> <span class="source_type">B</span> );
+<a name="278"></a>native(<span class="source_int">154</span>) static final operator(<span class="source_int">24</span>) <span class="source_type">bool</span> == ( <span class="source_type">int</span> <span class="source_type">A</span>, <span class="source_type">int</span> <span class="source_type">B</span> );
+<a name="279"></a>native(<span class="source_int">155</span>) static final operator(<span class="source_int">26</span>) <span class="source_type">bool</span> != ( <span class="source_type">int</span> <span class="source_type">A</span>, <span class="source_type">int</span> <span class="source_type">B</span> );
+<a name="280"></a>native(<span class="source_int">156</span>) static final operator(<span class="source_int">28</span>) <span class="source_type">int</span>  &  ( <span class="source_type">int</span> <span class="source_type">A</span>, <span class="source_type">int</span> <span class="source_type">B</span> );
+<a name="281"></a>native(<span class="source_int">157</span>) static final operator(<span class="source_int">28</span>) <span class="source_type">int</span>  ^  ( <span class="source_type">int</span> <span class="source_type">A</span>, <span class="source_type">int</span> <span class="source_type">B</span> );
+<a name="282"></a>native(<span class="source_int">158</span>) static final operator(<span class="source_int">28</span>) <span class="source_type">int</span>  |  ( <span class="source_type">int</span> <span class="source_type">A</span>, <span class="source_type">int</span> <span class="source_type">B</span> );
+<a name="283"></a>native(<span class="source_int">159</span>) static final operator(<span class="source_int">34</span>) <span class="source_type">int</span>  *= ( out <span class="source_type">int</span> <span class="source_type">A</span>, <span class="source_type">float</span> <span class="source_type">B</span> );
+<a name="284"></a>native(<span class="source_int">160</span>) static final operator(<span class="source_int">34</span>) <span class="source_type">int</span>  /= ( out <span class="source_type">int</span> <span class="source_type">A</span>, <span class="source_type">float</span> <span class="source_type">B</span> );
+<a name="285"></a>native(<span class="source_int">161</span>) static final operator(<span class="source_int">34</span>) <span class="source_type">int</span>  += ( out <span class="source_type">int</span> <span class="source_type">A</span>, <span class="source_type">int</span> <span class="source_type">B</span> );
+<a name="286"></a>native(<span class="source_int">162</span>) static final operator(<span class="source_int">34</span>) <span class="source_type">int</span>  -= ( out <span class="source_type">int</span> <span class="source_type">A</span>, <span class="source_type">int</span> <span class="source_type">B</span> );
+<a name="287"></a>native(<span class="source_int">163</span>) static final preoperator  <span class="source_type">int</span>  ++ ( out <span class="source_type">int</span> <span class="source_type">A</span> );
+<a name="288"></a>native(<span class="source_int">164</span>) static final preoperator  <span class="source_type">int</span>  -- ( out <span class="source_type">int</span> <span class="source_type">A</span> );
+<a name="289"></a>native(<span class="source_int">165</span>) static final postoperator <span class="source_type">int</span>  ++ ( out <span class="source_type">int</span> <span class="source_type">A</span> );
+<a name="290"></a>native(<span class="source_int">166</span>) static final postoperator <span class="source_type">int</span>  -- ( out <span class="source_type">int</span> <span class="source_type">A</span> );
+<a name="291"></a>
+<a name="292"></a><span class="source_comment">// Integer functions.
+</span><a name="293"></a>native(<span class="source_int">167</span>) static final Function     <span class="source_type">int</span>  Rand  ( <span class="source_type">int</span> <span class="source_type">Max</span> );
+<a name="294"></a>native(<span class="source_int">249</span>) static final function     <span class="source_type">int</span>  Min   ( <span class="source_type">int</span> <span class="source_type">A</span>, <span class="source_type">int</span> <span class="source_type">B</span> );
+<a name="295"></a>native(<span class="source_int">250</span>) static final function     <span class="source_type">int</span>  <span class="source_type">Max</span>   ( <span class="source_type">int</span> <span class="source_type">A</span>, <span class="source_type">int</span> <span class="source_type">B</span> );
+<a name="296"></a>native(<span class="source_int">251</span>) static final function     <span class="source_type">int</span>  Clamp ( <span class="source_type">int</span> V, <span class="source_type">int</span> <span class="source_type">A</span>, <span class="source_type">int</span> <span class="source_type">B</span> );
+<a name="297"></a>
+<a name="298"></a><span class="source_comment">// Float operators.
+</span><a name="299"></a>native(<span class="source_int">169</span>) static final preoperator  <span class="source_type">float</span> -  ( <span class="source_type">float</span> <span class="source_type">A</span> );
+<a name="300"></a>native(<span class="source_int">170</span>) static final operator(<span class="source_int">12</span>) <span class="source_type">float</span> ** ( <span class="source_type">float</span> <span class="source_type">A</span>, <span class="source_type">float</span> <span class="source_type">B</span> );
+<a name="301"></a>native(<span class="source_int">171</span>) static final operator(<span class="source_int">16</span>) <span class="source_type">float</span> *  ( <span class="source_type">float</span> <span class="source_type">A</span>, <span class="source_type">float</span> <span class="source_type">B</span> );
+<a name="302"></a>native(<span class="source_int">172</span>) static final operator(<span class="source_int">16</span>) <span class="source_type">float</span> /  ( <span class="source_type">float</span> <span class="source_type">A</span>, <span class="source_type">float</span> <span class="source_type">B</span> );
+<a name="303"></a>native(<span class="source_int">173</span>) static final operator(<span class="source_int">18</span>) <span class="source_type">float</span> %  ( <span class="source_type">float</span> <span class="source_type">A</span>, <span class="source_type">float</span> <span class="source_type">B</span> );
+<a name="304"></a>native(<span class="source_int">174</span>) static final operator(<span class="source_int">20</span>) <span class="source_type">float</span> +  ( <span class="source_type">float</span> <span class="source_type">A</span>, <span class="source_type">float</span> <span class="source_type">B</span> );
+<a name="305"></a>native(<span class="source_int">175</span>) static final operator(<span class="source_int">20</span>) <span class="source_type">float</span> -  ( <span class="source_type">float</span> <span class="source_type">A</span>, <span class="source_type">float</span> <span class="source_type">B</span> );
+<a name="306"></a>native(<span class="source_int">176</span>) static final operator(<span class="source_int">24</span>) <span class="source_type">bool</span>  &lt;  ( <span class="source_type">float</span> <span class="source_type">A</span>, <span class="source_type">float</span> <span class="source_type">B</span> );
+<a name="307"></a>native(<span class="source_int">177</span>) static final operator(<span class="source_int">24</span>) <span class="source_type">bool</span>  &gt;  ( <span class="source_type">float</span> <span class="source_type">A</span>, <span class="source_type">float</span> <span class="source_type">B</span> );
+<a name="308"></a>native(<span class="source_int">178</span>) static final operator(<span class="source_int">24</span>) <span class="source_type">bool</span>  &lt;= ( <span class="source_type">float</span> <span class="source_type">A</span>, <span class="source_type">float</span> <span class="source_type">B</span> );
+<a name="309"></a>native(<span class="source_int">179</span>) static final operator(<span class="source_int">24</span>) <span class="source_type">bool</span>  &gt;= ( <span class="source_type">float</span> <span class="source_type">A</span>, <span class="source_type">float</span> <span class="source_type">B</span> );
+<a name="310"></a>native(<span class="source_int">180</span>) static final operator(<span class="source_int">24</span>) <span class="source_type">bool</span>  == ( <span class="source_type">float</span> <span class="source_type">A</span>, <span class="source_type">float</span> <span class="source_type">B</span> );
+<a name="311"></a>native(<span class="source_int">210</span>) static final operator(<span class="source_int">24</span>) <span class="source_type">bool</span>  ~= ( <span class="source_type">float</span> <span class="source_type">A</span>, <span class="source_type">float</span> <span class="source_type">B</span> );
+<a name="312"></a>native(<span class="source_int">181</span>) static final operator(<span class="source_int">26</span>) <span class="source_type">bool</span>  != ( <span class="source_type">float</span> <span class="source_type">A</span>, <span class="source_type">float</span> <span class="source_type">B</span> );
+<a name="313"></a>native(<span class="source_int">182</span>) static final operator(<span class="source_int">34</span>) <span class="source_type">float</span> *= ( out <span class="source_type">float</span> <span class="source_type">A</span>, <span class="source_type">float</span> <span class="source_type">B</span> );
+<a name="314"></a>native(<span class="source_int">183</span>) static final operator(<span class="source_int">34</span>) <span class="source_type">float</span> /= ( out <span class="source_type">float</span> <span class="source_type">A</span>, <span class="source_type">float</span> <span class="source_type">B</span> );
+<a name="315"></a>native(<span class="source_int">184</span>) static final operator(<span class="source_int">34</span>) <span class="source_type">float</span> += ( out <span class="source_type">float</span> <span class="source_type">A</span>, <span class="source_type">float</span> <span class="source_type">B</span> );
+<a name="316"></a>native(<span class="source_int">185</span>) static final operator(<span class="source_int">34</span>) <span class="source_type">float</span> -= ( out <span class="source_type">float</span> <span class="source_type">A</span>, <span class="source_type">float</span> <span class="source_type">B</span> );
+<a name="317"></a>
+<a name="318"></a><span class="source_comment">// Float functions.
+</span><a name="319"></a>native(<span class="source_int">186</span>) static final function     <span class="source_type">float</span> Abs   ( <span class="source_type">float</span> <span class="source_type">A</span> );
+<a name="320"></a>native(<span class="source_int">187</span>) static final function     <span class="source_type">float</span> Sin   ( <span class="source_type">float</span> <span class="source_type">A</span> );
+<a name="321"></a>native      static final function	  <span class="source_type">float</span> Asin  ( <span class="source_type">float</span> <span class="source_type">A</span> );
+<a name="322"></a>native(<span class="source_int">188</span>) static final function     <span class="source_type">float</span> Cos   ( <span class="source_type">float</span> <span class="source_type">A</span> );
+<a name="323"></a>native      static final function     <span class="source_type">float</span> Acos  ( <span class="source_type">float</span> <span class="source_type">A</span> );
+<a name="324"></a>native(<span class="source_int">189</span>) static final function     <span class="source_type">float</span> Tan   ( <span class="source_type">float</span> <span class="source_type">A</span> );
+<a name="325"></a>native(<span class="source_int">190</span>) static final function     <span class="source_type">float</span> Atan  ( <span class="source_type">float</span> <span class="source_type">A</span> );
+<a name="326"></a>native(<span class="source_int">191</span>) static final function     <span class="source_type">float</span> Exp   ( <span class="source_type">float</span> <span class="source_type">A</span> );
+<a name="327"></a>native(<span class="source_int">192</span>) static final function     <span class="source_type">float</span> Loge  ( <span class="source_type">float</span> <span class="source_type">A</span> );
+<a name="328"></a>native(<span class="source_int">193</span>) static final function     <span class="source_type">float</span> Sqrt  ( <span class="source_type">float</span> <span class="source_type">A</span> );
+<a name="329"></a>native(<span class="source_int">194</span>) static final function     <span class="source_type">float</span> Square( <span class="source_type">float</span> <span class="source_type">A</span> );
+<a name="330"></a>native(<span class="source_int">195</span>) static final function     <span class="source_type">float</span> FRand ();
+<a name="331"></a>native(<span class="source_int">244</span>) static final function     <span class="source_type">float</span> FMin  ( <span class="source_type">float</span> <span class="source_type">A</span>, <span class="source_type">float</span> <span class="source_type">B</span> );
+<a name="332"></a>native(<span class="source_int">245</span>) static final function     <span class="source_type">float</span> FMax  ( <span class="source_type">float</span> <span class="source_type">A</span>, <span class="source_type">float</span> <span class="source_type">B</span> );
+<a name="333"></a>native(<span class="source_int">246</span>) static final function     <span class="source_type">float</span> FClamp( <span class="source_type">float</span> V, <span class="source_type">float</span> <span class="source_type">A</span>, <span class="source_type">float</span> <span class="source_type">B</span> );
+<a name="334"></a>native(<span class="source_int">247</span>) static final function     <span class="source_type">float</span> Lerp  ( <span class="source_type">float</span> Alpha, <span class="source_type">float</span> <span class="source_type">A</span>, <span class="source_type">float</span> <span class="source_type">B</span> );
+<a name="335"></a>native(<span class="source_int">248</span>) static final function     <span class="source_type">float</span> Smerp ( <span class="source_type">float</span> Alpha, <span class="source_type">float</span> <span class="source_type">A</span>, <span class="source_type">float</span> <span class="source_type">B</span> );
+<a name="336"></a>
+<a name="337"></a><span class="source_comment">// Vector operators.
+</span><a name="338"></a>native(<span class="source_int">211</span>) static final preoperator  <span class="source_type"><a href="../core/object.html#Vector" class="source">vector</a></span> -     ( <span class="source_type"><a href="../core/object.html#Vector" class="source">vector</a></span> <span class="source_type">A</span> );
+<a name="339"></a>native(<span class="source_int">212</span>) static final operator(<span class="source_int">16</span>) <span class="source_type"><a href="../core/object.html#Vector" class="source">vector</a></span> *     ( <span class="source_type"><a href="../core/object.html#Vector" class="source">vector</a></span> <span class="source_type">A</span>, <span class="source_type">float</span> <span class="source_type">B</span> );
+<a name="340"></a>native(<span class="source_int">213</span>) static final operator(<span class="source_int">16</span>) <span class="source_type"><a href="../core/object.html#Vector" class="source">vector</a></span> *     ( <span class="source_type">float</span> <span class="source_type">A</span>, <span class="source_type"><a href="../core/object.html#Vector" class="source">vector</a></span> <span class="source_type">B</span> );
+<a name="341"></a>native(<span class="source_int">296</span>) static final operator(<span class="source_int">16</span>) <span class="source_type"><a href="../core/object.html#Vector" class="source">vector</a></span> *     ( <span class="source_type"><a href="../core/object.html#Vector" class="source">vector</a></span> <span class="source_type">A</span>, <span class="source_type"><a href="../core/object.html#Vector" class="source">vector</a></span> <span class="source_type">B</span> );
+<a name="342"></a>native(<span class="source_int">214</span>) static final operator(<span class="source_int">16</span>) <span class="source_type"><a href="../core/object.html#Vector" class="source">vector</a></span> /     ( <span class="source_type"><a href="../core/object.html#Vector" class="source">vector</a></span> <span class="source_type">A</span>, <span class="source_type">float</span> <span class="source_type">B</span> );
+<a name="343"></a>native(<span class="source_int">215</span>) static final operator(<span class="source_int">20</span>) <span class="source_type"><a href="../core/object.html#Vector" class="source">vector</a></span> +     ( <span class="source_type"><a href="../core/object.html#Vector" class="source">vector</a></span> <span class="source_type">A</span>, <span class="source_type"><a href="../core/object.html#Vector" class="source">vector</a></span> <span class="source_type">B</span> );
+<a name="344"></a>native(<span class="source_int">216</span>) static final operator(<span class="source_int">20</span>) <span class="source_type"><a href="../core/object.html#Vector" class="source">vector</a></span> -     ( <span class="source_type"><a href="../core/object.html#Vector" class="source">vector</a></span> <span class="source_type">A</span>, <span class="source_type"><a href="../core/object.html#Vector" class="source">vector</a></span> <span class="source_type">B</span> );
+<a name="345"></a>native(<span class="source_int">275</span>) static final operator(<span class="source_int">22</span>) <span class="source_type"><a href="../core/object.html#Vector" class="source">vector</a></span> &lt;&lt;    ( <span class="source_type"><a href="../core/object.html#Vector" class="source">vector</a></span> <span class="source_type">A</span>, <span class="source_type"><a href="../core/object.html#Rotator" class="source">rotator</a></span> <span class="source_type">B</span> );
+<a name="346"></a>native(<span class="source_int">276</span>) static final operator(<span class="source_int">22</span>) <span class="source_type"><a href="../core/object.html#Vector" class="source">vector</a></span> &gt;&gt;    ( <span class="source_type"><a href="../core/object.html#Vector" class="source">vector</a></span> <span class="source_type">A</span>, <span class="source_type"><a href="../core/object.html#Rotator" class="source">rotator</a></span> <span class="source_type">B</span> );
+<a name="347"></a>native(<span class="source_int">217</span>) static final operator(<span class="source_int">24</span>) <span class="source_type">bool</span>   ==    ( <span class="source_type"><a href="../core/object.html#Vector" class="source">vector</a></span> <span class="source_type">A</span>, <span class="source_type"><a href="../core/object.html#Vector" class="source">vector</a></span> <span class="source_type">B</span> );
+<a name="348"></a>native(<span class="source_int">218</span>) static final operator(<span class="source_int">26</span>) <span class="source_type">bool</span>   !=    ( <span class="source_type"><a href="../core/object.html#Vector" class="source">vector</a></span> <span class="source_type">A</span>, <span class="source_type"><a href="../core/object.html#Vector" class="source">vector</a></span> <span class="source_type">B</span> );
+<a name="349"></a>native(<span class="source_int">219</span>) static final operator(<span class="source_int">16</span>) <span class="source_type">float</span>  Dot   ( <span class="source_type"><a href="../core/object.html#Vector" class="source">vector</a></span> <span class="source_type">A</span>, <span class="source_type"><a href="../core/object.html#Vector" class="source">vector</a></span> <span class="source_type">B</span> );
+<a name="350"></a>native(<span class="source_int">220</span>) static final operator(<span class="source_int">16</span>) <span class="source_type"><a href="../core/object.html#Vector" class="source">vector</a></span> Cross ( <span class="source_type"><a href="../core/object.html#Vector" class="source">vector</a></span> <span class="source_type">A</span>, <span class="source_type"><a href="../core/object.html#Vector" class="source">vector</a></span> <span class="source_type">B</span> );
+<a name="351"></a>native(<span class="source_int">221</span>) static final operator(<span class="source_int">34</span>) <span class="source_type"><a href="../core/object.html#Vector" class="source">vector</a></span> *=    ( out <span class="source_type"><a href="../core/object.html#Vector" class="source">vector</a></span> <span class="source_type">A</span>, <span class="source_type">float</span> <span class="source_type">B</span> );
+<a name="352"></a>native(<span class="source_int">297</span>) static final operator(<span class="source_int">34</span>) <span class="source_type"><a href="../core/object.html#Vector" class="source">vector</a></span> *=    ( out <span class="source_type"><a href="../core/object.html#Vector" class="source">vector</a></span> <span class="source_type">A</span>, <span class="source_type"><a href="../core/object.html#Vector" class="source">vector</a></span> <span class="source_type">B</span> );
+<a name="353"></a>native(<span class="source_int">222</span>) static final operator(<span class="source_int">34</span>) <span class="source_type"><a href="../core/object.html#Vector" class="source">vector</a></span> /=    ( out <span class="source_type"><a href="../core/object.html#Vector" class="source">vector</a></span> <span class="source_type">A</span>, <span class="source_type">float</span> <span class="source_type">B</span> );
+<a name="354"></a>native(<span class="source_int">223</span>) static final operator(<span class="source_int">34</span>) <span class="source_type"><a href="../core/object.html#Vector" class="source">vector</a></span> +=    ( out <span class="source_type"><a href="../core/object.html#Vector" class="source">vector</a></span> <span class="source_type">A</span>, <span class="source_type"><a href="../core/object.html#Vector" class="source">vector</a></span> <span class="source_type">B</span> );
+<a name="355"></a>native(<span class="source_int">224</span>) static final operator(<span class="source_int">34</span>) <span class="source_type"><a href="../core/object.html#Vector" class="source">vector</a></span> -=    ( out <span class="source_type"><a href="../core/object.html#Vector" class="source">vector</a></span> <span class="source_type">A</span>, <span class="source_type"><a href="../core/object.html#Vector" class="source">vector</a></span> <span class="source_type">B</span> );
+<a name="356"></a>
+<a name="357"></a><span class="source_comment">// Vector functions.
+</span><a name="358"></a>native(<span class="source_int">225</span>) static final function <span class="source_type">float</span>  VSize  ( <span class="source_type"><a href="../core/object.html#Vector" class="source">vector</a></span> <span class="source_type">A</span> );
+<a name="359"></a>native(<span class="source_int">226</span>) static final function <span class="source_type"><a href="../core/object.html#Vector" class="source">vector</a></span> Normal ( <span class="source_type"><a href="../core/object.html#Vector" class="source">vector</a></span> <span class="source_type">A</span> );
+<a name="360"></a>native(<span class="source_int">227</span>) static final function        Invert ( out <span class="source_type"><a href="../core/object.html#Vector" class="source">vector</a></span> X, out <span class="source_type"><a href="../core/object.html#Vector" class="source">vector</a></span> <span class="source_type">Y</span>, out <span class="source_type"><a href="../core/object.html#Vector" class="source">vector</a></span> <span class="source_type">Z</span> );
+<a name="361"></a>native(<span class="source_int">252</span>) static final function <span class="source_type"><a href="../core/object.html#Vector" class="source">vector</a></span> VRand  ( );
+<a name="362"></a>native(<span class="source_int">300</span>) static final function <span class="source_type"><a href="../core/object.html#Vector" class="source">vector</a></span> MirrorVectorByNormal( <span class="source_type"><a href="../core/object.html#Vector" class="source">vector</a></span> Vect, <span class="source_type"><a href="../core/object.html#Vector" class="source">vector</a></span> Normal );
+<a name="363"></a>
+<a name="364"></a><span class="source_comment">// Rotator operators and functions.
+</span><a name="365"></a>native(<span class="source_int">142</span>) static final operator(<span class="source_int">24</span>) <span class="source_type">bool</span> ==     ( <span class="source_type"><a href="../core/object.html#Rotator" class="source">rotator</a></span> <span class="source_type">A</span>, <span class="source_type"><a href="../core/object.html#Rotator" class="source">rotator</a></span> <span class="source_type">B</span> );
+<a name="366"></a>native(<span class="source_int">203</span>) static final operator(<span class="source_int">26</span>) <span class="source_type">bool</span> !=     ( <span class="source_type"><a href="../core/object.html#Rotator" class="source">rotator</a></span> <span class="source_type">A</span>, <span class="source_type"><a href="../core/object.html#Rotator" class="source">rotator</a></span> <span class="source_type">B</span> );
+<a name="367"></a>native(<span class="source_int">287</span>) static final operator(<span class="source_int">16</span>) <span class="source_type"><a href="../core/object.html#Rotator" class="source">rotator</a></span> *   ( <span class="source_type"><a href="../core/object.html#Rotator" class="source">rotator</a></span> <span class="source_type">A</span>, <span class="source_type">float</span>    <span class="source_type">B</span> );
+<a name="368"></a>native(<span class="source_int">288</span>) static final operator(<span class="source_int">16</span>) <span class="source_type"><a href="../core/object.html#Rotator" class="source">rotator</a></span> *   ( <span class="source_type">float</span>    <span class="source_type">A</span>, <span class="source_type"><a href="../core/object.html#Rotator" class="source">rotator</a></span> <span class="source_type">B</span> );
+<a name="369"></a>native(<span class="source_int">289</span>) static final operator(<span class="source_int">16</span>) <span class="source_type"><a href="../core/object.html#Rotator" class="source">rotator</a></span> /   ( <span class="source_type"><a href="../core/object.html#Rotator" class="source">rotator</a></span> <span class="source_type">A</span>, <span class="source_type">float</span>    <span class="source_type">B</span> );
+<a name="370"></a>native(<span class="source_int">290</span>) static final operator(<span class="source_int">34</span>) <span class="source_type"><a href="../core/object.html#Rotator" class="source">rotator</a></span> *=  ( out <span class="source_type"><a href="../core/object.html#Rotator" class="source">rotator</a></span> <span class="source_type">A</span>, <span class="source_type">float</span> <span class="source_type">B</span>  );
+<a name="371"></a>native(<span class="source_int">291</span>) static final operator(<span class="source_int">34</span>) <span class="source_type"><a href="../core/object.html#Rotator" class="source">rotator</a></span> /=  ( out <span class="source_type"><a href="../core/object.html#Rotator" class="source">rotator</a></span> <span class="source_type">A</span>, <span class="source_type">float</span> <span class="source_type">B</span>  );
+<a name="372"></a>native(<span class="source_int">316</span>) static final operator(<span class="source_int">20</span>) <span class="source_type"><a href="../core/object.html#Rotator" class="source">rotator</a></span> +   ( <span class="source_type"><a href="../core/object.html#Rotator" class="source">rotator</a></span> <span class="source_type">A</span>, <span class="source_type"><a href="../core/object.html#Rotator" class="source">rotator</a></span> <span class="source_type">B</span> );
+<a name="373"></a>native(<span class="source_int">317</span>) static final operator(<span class="source_int">20</span>) <span class="source_type"><a href="../core/object.html#Rotator" class="source">rotator</a></span> -   ( <span class="source_type"><a href="../core/object.html#Rotator" class="source">rotator</a></span> <span class="source_type">A</span>, <span class="source_type"><a href="../core/object.html#Rotator" class="source">rotator</a></span> <span class="source_type">B</span> );
+<a name="374"></a>native(<span class="source_int">318</span>) static final operator(<span class="source_int">34</span>) <span class="source_type"><a href="../core/object.html#Rotator" class="source">rotator</a></span> +=  ( out <span class="source_type"><a href="../core/object.html#Rotator" class="source">rotator</a></span> <span class="source_type">A</span>, <span class="source_type"><a href="../core/object.html#Rotator" class="source">rotator</a></span> <span class="source_type">B</span> );
+<a name="375"></a>native(<span class="source_int">319</span>) static final operator(<span class="source_int">34</span>) <span class="source_type"><a href="../core/object.html#Rotator" class="source">rotator</a></span> -=  ( out <span class="source_type"><a href="../core/object.html#Rotator" class="source">rotator</a></span> <span class="source_type">A</span>, <span class="source_type"><a href="../core/object.html#Rotator" class="source">rotator</a></span> <span class="source_type">B</span> );
+<a name="376"></a>native(<span class="source_int">229</span>) static final function GetAxes         ( <span class="source_type"><a href="../core/object.html#Rotator" class="source">rotator</a></span> <span class="source_type">A</span>, out <span class="source_type"><a href="../core/object.html#Vector" class="source">vector</a></span> X, out <span class="source_type"><a href="../core/object.html#Vector" class="source">vector</a></span> <span class="source_type">Y</span>, out <span class="source_type"><a href="../core/object.html#Vector" class="source">vector</a></span> <span class="source_type">Z</span> );
+<a name="377"></a>native(<span class="source_int">230</span>) static final function GetUnAxes       ( <span class="source_type"><a href="../core/object.html#Rotator" class="source">rotator</a></span> <span class="source_type">A</span>, out <span class="source_type"><a href="../core/object.html#Vector" class="source">vector</a></span> X, out <span class="source_type"><a href="../core/object.html#Vector" class="source">vector</a></span> <span class="source_type">Y</span>, out <span class="source_type"><a href="../core/object.html#Vector" class="source">vector</a></span> <span class="source_type">Z</span> );
+<a name="378"></a>native(<span class="source_int">320</span>) static final function <span class="source_type"><a href="../core/object.html#Rotator" class="source">rotator</a></span> RotRand ( optional <span class="source_type">bool</span> bRoll );
+<a name="379"></a>native      static final function <span class="source_type"><a href="../core/object.html#Rotator" class="source">rotator</a></span> OrthoRotation( <span class="source_type"><a href="../core/object.html#Vector" class="source">vector</a></span> X, <span class="source_type"><a href="../core/object.html#Vector" class="source">vector</a></span> <span class="source_type">Y</span>, <span class="source_type"><a href="../core/object.html#Vector" class="source">vector</a></span> <span class="source_type">Z</span> );
+<a name="380"></a>native      static final function <span class="source_type"><a href="../core/object.html#Rotator" class="source">rotator</a></span> Normalize( <span class="source_type"><a href="../core/object.html#Rotator" class="source">rotator</a></span> Rot );
+<a name="381"></a>native		static final operator(<span class="source_int">24</span>) <span class="source_type">bool</span> ClockwiseFrom( <span class="source_type">int</span> <span class="source_type">A</span>, <span class="source_type">int</span> <span class="source_type">B</span> );
+<a name="382"></a><span class="source_comment">//#ifdef R6CODE
+</span><a name="383"></a><span class="source_comment">// Return the shortest angle (between 0 and 32767) between two parts of a rotator (ie, two yaw)
+</span><a name="384"></a>native(<span class="source_int">1851</span>) static final function <span class="source_type">INT</span> ShortestAngle2D( <span class="source_type">INT</span> iAngle1, <span class="source_type">INT</span> iAngle2 );
+<a name="385"></a>native(<span class="source_int">1854</span>) static final function <span class="source_type">BOOL</span> GetRegistryKey( <span class="source_type">String</span> Dir, <span class="source_type">String</span> <span class="source_type">Key</span>, out <span class="source_type">String</span> <span class="source_type">Value</span> );
+<a name="386"></a>native(<span class="source_int">1855</span>) static final function <span class="source_type">BOOL</span> SetRegistryKey( <span class="source_type">String</span> Dir, <span class="source_type">String</span> <span class="source_type">Key</span>, <span class="source_type">String</span> <span class="source_type">Value</span> );
+<a name="387"></a><span class="source_comment">//#endif // #ifdef R6CODE
+</span><a name="388"></a>
+<a name="389"></a><span class="source_comment">// String operators.
+</span><a name="390"></a>native(<span class="source_int">112</span>) static final operator(<span class="source_int">40</span>) <span class="source_type">string</span> $  ( coerce <span class="source_type">string</span> <span class="source_type">A</span>, coerce <span class="source_type">string</span> <span class="source_type">B</span> );
+<a name="391"></a>native(<span class="source_int">168</span>) static final operator(<span class="source_int">40</span>) <span class="source_type">string</span> @  ( coerce <span class="source_type">string</span> <span class="source_type">A</span>, coerce <span class="source_type">string</span> <span class="source_type">B</span> );
+<a name="392"></a>native(<span class="source_int">115</span>) static final operator(<span class="source_int">24</span>) <span class="source_type">bool</span>   &lt;  ( <span class="source_type">string</span> <span class="source_type">A</span>, <span class="source_type">string</span> <span class="source_type">B</span> );
+<a name="393"></a>native(<span class="source_int">116</span>) static final operator(<span class="source_int">24</span>) <span class="source_type">bool</span>   &gt;  ( <span class="source_type">string</span> <span class="source_type">A</span>, <span class="source_type">string</span> <span class="source_type">B</span> );
+<a name="394"></a>native(<span class="source_int">120</span>) static final operator(<span class="source_int">24</span>) <span class="source_type">bool</span>   &lt;= ( <span class="source_type">string</span> <span class="source_type">A</span>, <span class="source_type">string</span> <span class="source_type">B</span> );
+<a name="395"></a>native(<span class="source_int">121</span>) static final operator(<span class="source_int">24</span>) <span class="source_type">bool</span>   &gt;= ( <span class="source_type">string</span> <span class="source_type">A</span>, <span class="source_type">string</span> <span class="source_type">B</span> );
+<a name="396"></a>native(<span class="source_int">122</span>) static final operator(<span class="source_int">24</span>) <span class="source_type">bool</span>   == ( <span class="source_type">string</span> <span class="source_type">A</span>, <span class="source_type">string</span> <span class="source_type">B</span> );
+<a name="397"></a>native(<span class="source_int">123</span>) static final operator(<span class="source_int">26</span>) <span class="source_type">bool</span>   != ( <span class="source_type">string</span> <span class="source_type">A</span>, <span class="source_type">string</span> <span class="source_type">B</span> );
+<a name="398"></a>native(<span class="source_int">124</span>) static final operator(<span class="source_int">24</span>) <span class="source_type">bool</span>   ~= ( <span class="source_type">string</span> <span class="source_type">A</span>, <span class="source_type">string</span> <span class="source_type">B</span> );
+<a name="399"></a>
+<a name="400"></a><span class="source_comment">// String functions.
+</span><a name="401"></a>native(<span class="source_int">125</span>) static final function <span class="source_type">int</span>    <span class="source_type">Len</span>    ( coerce <span class="source_type">string</span> <span class="source_type">S</span> );
+<a name="402"></a>native(<span class="source_int">126</span>) static final function <span class="source_type">int</span>    InStr  ( coerce <span class="source_type">string</span> <span class="source_type">S</span>, coerce <span class="source_type">string</span> <span class="source_type">t</span> );
+<a name="403"></a>native(<span class="source_int">127</span>) static final function <span class="source_type">string</span> Mid    ( coerce <span class="source_type">string</span> <span class="source_type">S</span>, <span class="source_type">int</span> <span class="source_type">i</span>, optional <span class="source_type">int</span> j );
+<a name="404"></a>native(<span class="source_int">128</span>) static final function <span class="source_type">string</span> Left   ( coerce <span class="source_type">string</span> <span class="source_type">S</span>, <span class="source_type">int</span> <span class="source_type">i</span> );
+<a name="405"></a>native(<span class="source_int">234</span>) static final function <span class="source_type">string</span> Right  ( coerce <span class="source_type">string</span> <span class="source_type">S</span>, <span class="source_type">int</span> <span class="source_type">i</span> );
+<a name="406"></a>native(<span class="source_int">235</span>) static final function <span class="source_type">string</span> Caps   ( coerce <span class="source_type">string</span> <span class="source_type">S</span> );
+<a name="407"></a>native(<span class="source_int">236</span>) static final function <span class="source_type">string</span> Chr    ( <span class="source_type">int</span> <span class="source_type">i</span> );
+<a name="408"></a>native(<span class="source_int">237</span>) static final function <span class="source_type">int</span>    Asc    ( <span class="source_type">string</span> <span class="source_type">S</span> );
+<a name="409"></a><span class="source_comment">// #ifdef R6CODE
+</span><a name="410"></a>native(<span class="source_int">238</span>)  static final function <span class="source_type">string</span> RemoveInvalidChars ( <span class="source_type">string</span> <span class="source_type">S</span> );
+<a name="411"></a>native(<span class="source_int">1227</span>) static final function <span class="source_type">string</span> Itoa  (<span class="source_type">int</span> <span class="source_type">i</span>);
+<a name="412"></a>native(<span class="source_int">1228</span>) static final function <span class="source_type">int</span> Atoi     (coerce <span class="source_type">string</span> <span class="source_type">S</span>);
+<a name="413"></a>native(<span class="source_int">1306</span>) static final function <span class="source_type">int</span> Strnicmp (coerce <span class="source_type">string</span> <span class="source_type">A</span>, coerce <span class="source_type">string</span> <span class="source_type">B</span>, <span class="source_type">int</span> iCount);
+<a name="414"></a>
+<a name="415"></a><span class="source_comment">// #endif
+</span><a name="416"></a>
+<a name="417"></a><span class="source_comment">// Object operators.
+</span><a name="418"></a>native(<span class="source_int">114</span>) static final operator(<span class="source_int">24</span>) <span class="source_type">bool</span> == ( <span class="source_type"><a href="../core/object.html" class="source">Object</a></span> <span class="source_type">A</span>, <span class="source_type"><a href="../core/object.html" class="source">Object</a></span> <span class="source_type">B</span> );
+<a name="419"></a>native(<span class="source_int">119</span>) static final operator(<span class="source_int">26</span>) <span class="source_type">bool</span> != ( <span class="source_type"><a href="../core/object.html" class="source">Object</a></span> <span class="source_type">A</span>, <span class="source_type"><a href="../core/object.html" class="source">Object</a></span> <span class="source_type">B</span> );
+<a name="420"></a>
+<a name="421"></a><span class="source_comment">// Name operators.
+</span><a name="422"></a>native(<span class="source_int">254</span>) static final operator(<span class="source_int">24</span>) <span class="source_type">bool</span> == ( <span class="source_type">name</span> <span class="source_type">A</span>, <span class="source_type">name</span> <span class="source_type">B</span> );
+<a name="423"></a>native(<span class="source_int">255</span>) static final operator(<span class="source_int">26</span>) <span class="source_type">bool</span> != ( <span class="source_type">name</span> <span class="source_type">A</span>, <span class="source_type">name</span> <span class="source_type">B</span> );
+<a name="424"></a>
+<a name="425"></a><span class="source_comment">// InterpCurve operator
+</span><a name="426"></a>native		static final function <span class="source_type">float</span> InterpCurveEval( <span class="source_type"><a href="../core/object.html#InterpCurve" class="source">InterpCurve</a></span> curve, <span class="source_type">float</span> input );
+<a name="427"></a>
+<a name="428"></a><span class="source_comment">//=============================================================================
+</span><a name="429"></a><span class="source_comment">// General functions.
+</span><a name="430"></a>
+<a name="431"></a><span class="source_comment">// Logging.
+</span><a name="432"></a>native(<span class="source_int">2718</span>) final static function LogSnd( coerce <span class="source_type">string</span> <span class="source_type">S</span>, optional <span class="source_type">name</span> Tag );
+<a name="433"></a>native(<span class="source_int">231</span>) final static function Log( coerce <span class="source_type">string</span> <span class="source_type">S</span>, optional <span class="source_type">name</span> Tag );
+<a name="434"></a>native(<span class="source_int">232</span>) final static function Warn( coerce <span class="source_type">string</span> <span class="source_type">S</span> );
+<a name="435"></a><span class="source_comment">// #ifdef R6CODE
+</span><a name="436"></a>native static function <span class="source_type">string</span> Localize( <span class="source_type">string</span> SectionName, <span class="source_type">string</span> KeyName, <span class="source_type">string</span> PackageName, optional <span class="source_type">bool</span> bNoDebug, optional <span class="source_type">bool</span> bMultipleToken, optional <span class="source_type">bool</span> bForceEnglish);
+<a name="437"></a><span class="source_comment">// #else
+</span><a name="438"></a><span class="source_comment">// native static function string Localize( string SectionName, string KeyName, string PackageName );
+</span><a name="439"></a><span class="source_comment">// #endif
+</span><a name="440"></a>
+<a name="441"></a><span class="source_comment">// Goto state and label.
+</span><a name="442"></a>native(<span class="source_int">113</span>) final function GotoState( optional <span class="source_type">name</span> NewState, optional <span class="source_type">name</span> Label );
+<a name="443"></a>native(<span class="source_int">281</span>) final function <span class="source_type">bool</span> IsInState( <span class="source_type">name</span> TestState );
+<a name="444"></a>native(<span class="source_int">284</span>) final function <span class="source_type">name</span> GetStateName();
+<a name="445"></a>
+<a name="446"></a><span class="source_comment">// Objects.
+</span><a name="447"></a>native(<span class="source_int">258</span>) static final function <span class="source_type">bool</span> ClassIsChildOf( <span class="source_type">class</span> TestClass, <span class="source_type">class</span> ParentClass );
+<a name="448"></a>native(<span class="source_int">303</span>) final function <span class="source_type">bool</span> IsA( <span class="source_type">name</span> ClassName );
+<a name="449"></a>
+<a name="450"></a><span class="source_comment">// Probe messages.
+</span><a name="451"></a>native(<span class="source_int">117</span>) final function Enable( <span class="source_type">name</span> ProbeFunc );
+<a name="452"></a>native(<span class="source_int">118</span>) final function Disable( <span class="source_type">name</span> ProbeFunc );
+<a name="453"></a>
+<a name="454"></a><span class="source_comment">// Properties.
+</span><a name="455"></a>native final function <span class="source_type">string</span> GetPropertyText( <span class="source_type">string</span> PropName );
+<a name="456"></a>native final function SetPropertyText( <span class="source_type">string</span> PropName, <span class="source_type">string</span> PropValue );
+<a name="457"></a>native static final function <span class="source_type">name</span> GetEnum( <span class="source_type"><a href="../core/object.html" class="source">object</a></span> E, <span class="source_type">int</span> <span class="source_type">i</span> );
+<a name="458"></a>native static final function <span class="source_type"><a href="../core/object.html" class="source">object</a></span> DynamicLoadObject( <span class="source_type">string</span> ObjectName, <span class="source_type">class</span> ObjectClass, optional <span class="source_type">bool</span> MayFail );
+<a name="459"></a>native static final function <span class="source_type"><a href="../core/object.html" class="source">object</a></span> FindObject( <span class="source_type">string</span> ObjectName, <span class="source_type">class</span> ObjectClass );
+<a name="460"></a>
+<a name="461"></a><span class="source_comment">// Configuration.
+</span><a name="462"></a><span class="source_comment">// #ifdef R6CODE
+</span><a name="463"></a>native(<span class="source_int">536</span>) final function SaveConfig(optional <span class="source_type">string</span> FileName);
+<a name="464"></a><span class="source_comment">// #else
+</span><a name="465"></a><span class="source_comment">// native(536) final function SaveConfig();
+</span><a name="466"></a><span class="source_comment">//#endif
+</span><a name="467"></a>
+<a name="468"></a>native static final function StaticSaveConfig();
+<a name="469"></a><span class="source_comment">// #ifdef R6CODE
+</span><a name="470"></a>native(<span class="source_int">1010</span>) final function LoadConfig(optional <span class="source_type">string</span> FileName);
+<a name="471"></a>native static final function ResetConfig( optional <span class="source_type">string</span> VarNameToReset);
+<a name="472"></a><span class="source_comment">// #else
+</span><a name="473"></a><span class="source_comment">//native static final function ResetConfig();
+</span><a name="474"></a><span class="source_comment">// #endif
+</span><a name="475"></a>
+<a name="476"></a><span class="source_comment">// Return a random number within the given range.
+</span><a name="477"></a>final function <span class="source_type">float</span> RandRange( <span class="source_type">float</span> Min, <span class="source_type">float</span> <span class="source_type">Max</span> )
+<a name="478"></a>{
+<a name="479"></a>    return Min + (<span class="source_type">Max</span> - Min) * FRand();
+<a name="480"></a>}
+<a name="481"></a>
+<a name="482"></a><span class="source_comment">//R6DESCRIPTIONS
+</span><a name="483"></a><span class="source_comment">//Make sure you call FreePackageObjects after your last GetNextObject() call
+</span><a name="484"></a>native(<span class="source_int">1005</span>) static final function <span class="source_type">class</span> GetFirstPackageClass(<span class="source_type">string</span> <span class="source_type">Package</span>, <span class="source_type">class</span> ObjectClass);
+<a name="485"></a>native(<span class="source_int">1006</span>) static final function <span class="source_type">class</span> GetNextClass();
+<a name="486"></a>native(<span class="source_int">1301</span>) static final function <span class="source_type">class</span> RewindToFirstClass();
+<a name="487"></a>native(<span class="source_int">1007</span>) static final function FreePackageObjects();
+<a name="488"></a>
+<a name="489"></a><span class="source_comment">// R6CODE
+</span><a name="490"></a>native(<span class="source_int">1850</span>) static final function ClearOuter();
+<a name="491"></a>native(<span class="source_int">1852</span>) static final function Clock(<span class="source_type">INT</span> iCounter);
+<a name="492"></a>native(<span class="source_int">1853</span>) static final function Unclock(<span class="source_type">INT</span> iCounter);
+<a name="493"></a>
+<a name="494"></a><span class="source_comment">//=============================================================================
+</span><a name="495"></a><span class="source_comment">// Engine notification functions.
+</span><a name="496"></a>
+<a name="497"></a><span class="source_comment">//
+</span><a name="498"></a><span class="source_comment">// Called immediately when entering a state, while within
+</span><a name="499"></a><span class="source_comment">// the GotoState call that caused the state change.
+</span><a name="500"></a><span class="source_comment">//
+</span><a name="501"></a>event BeginState();
+<a name="502"></a>
+<a name="503"></a><span class="source_comment">//
+</span><a name="504"></a><span class="source_comment">// Called immediately before going out of the current state,
+</span><a name="505"></a><span class="source_comment">// while within the GotoState call that caused the state change.
+</span><a name="506"></a><span class="source_comment">// 
+</span><a name="507"></a>event EndState();
+<a name="508"></a>
+<a name="509"></a>function InitMod();
+<a name="510"></a>
+<a name="511"></a>defaultproperties
+<a name="512"></a>{
+<a name="513"></a>}
+<a name="514"></a></pre></td></tr></table></div>
+<hr />
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../core/core-overview.html">Package</a></td>
+	<td class="header"><a href="../core/object.html">Class</a></td>
+	<td class="header_hilight">Source</td>
+	<td class="header"><a class="header" href="../classtree.html#Object">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../Source_core/locale.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../Source_core/simplecommandlet.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+
+<div class="stats">Class file time: sam. 18/9/2004 14:39:24.000 - Creation time: mar. 26/5/2026 18:33:18.745 - Created with <a href="http://wiki.beyondunreal.com/wiki/UnCodeX" target="_blank">UnCodeX</a></div>
+
+</body>
+</html>

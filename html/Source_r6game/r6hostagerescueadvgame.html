@@ -1,0 +1,361 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+	<title>UnCodeX - Source: R6Game.R6HostageRescueAdvGame</title>
+	<meta name="Generator" content="UnCodeX 241" />
+	<link rel="stylesheet" href="../DocStyle2.css" type="text/css" title="Original Purple" />
+	<link rel="alternative stylesheet" href="../DocStyle2-blue.css" type="text/css" title="Blue" />
+	<link rel="alternative stylesheet" href="../DocStyle2-red.css" type="text/css" title="Red" />
+	<!--[if IE]>
+	<link rel="stylesheet" href="../DocStyle2-msie.css" type="text/css" />
+	<![endif]-->
+	<script src="../styleswitcher.js" type="text/javascript"></script>
+</head>
+<body>
+
+<div class="header">
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../r6game/r6game-overview.html">Package</a></td>
+	<td class="header"><a href="../r6game/r6hostagerescueadvgame.html">Class</a></td>
+	<td class="header_hilight">Source</td>
+	<td class="header"><a class="header" href="../classtree.html#R6HostageRescueAdvGame">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../Source_r6game/r6gamemanager.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../Source_r6game/r6hostagerescuecoopgame.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html#Source_r6game/r6hostagerescueadvgame.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+</div>
+<div class="spacer"></div>
+
+<h1><a href="../r6game/r6game-overview.html">R6Game</a>.<a href="../r6game/r6hostagerescueadvgame.html">R6HostageRescueAdvGame</a></h1>
+<br />
+<div class="source"><table class="source"><tr><td class="source_lineno"><span class="source_lineno">00001<br />00002<br />00003<br />00004<br />00005<br />00006<br />00007<br />00008<br />00009<br />00010<br />00011<br />00012<br />00013<br />00014<br />00015<br />00016<br />00017<br />00018<br />00019<br />00020<br />
+00021<br />00022<br />00023<br />00024<br />00025<br />00026<br />00027<br />00028<br />00029<br />00030<br />00031<br />00032<br />00033<br />00034<br />00035<br />00036<br />00037<br />00038<br />00039<br />00040<br />
+00041<br />00042<br />00043<br />00044<br />00045<br />00046<br />00047<br />00048<br />00049<br />00050<br />00051<br />00052<br />00053<br />00054<br />00055<br />00056<br />00057<br />00058<br />00059<br />00060<br />
+00061<br />00062<br />00063<br />00064<br />00065<br />00066<br />00067<br />00068<br />00069<br />00070<br />00071<br />00072<br />00073<br />00074<br />00075<br />00076<br />00077<br />00078<br />00079<br />00080<br />
+00081<br />00082<br />00083<br />00084<br />00085<br />00086<br />00087<br />00088<br />00089<br />00090<br />00091<br />00092<br />00093<br />00094<br />00095<br />00096<br />00097<br />00098<br />00099<br />00100<br />
+00101<br />00102<br />00103<br />00104<br />00105<br />00106<br />00107<br />00108<br />00109<br />00110<br />00111<br />00112<br />00113<br />00114<br />00115<br />00116<br />00117<br />00118<br />00119<br />00120<br />
+00121<br />00122<br />00123<br />00124<br />00125<br />00126<br />00127<br />00128<br />00129<br />00130<br />00131<br />00132<br />00133<br />00134<br />00135<br />00136<br />00137<br />00138<br />00139<br />00140<br />
+00141<br />00142<br />00143<br />00144<br />00145<br />00146<br />00147<br />00148<br />00149<br />00150<br />00151<br />00152<br />00153<br />00154<br />00155<br />00156<br />00157<br />00158<br />00159<br />00160<br />
+00161<br />00162<br />00163<br />00164<br />00165<br />00166<br />00167<br />00168<br />00169<br />00170<br />00171<br />00172<br />00173<br />00174<br />00175<br />00176<br />00177<br />00178<br />00179<br />00180<br />
+00181<br />00182<br />00183<br />00184<br />00185<br />00186<br />00187<br />00188<br />00189<br />00190<br />00191<br />00192<br />00193<br />00194<br />00195<br />00196<br />00197<br />00198<br />00199<br />00200<br />
+00201<br />00202<br />00203<br />00204<br />00205<br />00206<br />00207<br />00208<br />00209<br />00210<br />00211<br />00212<br />00213<br />00214<br />00215<br />00216<br />00217<br />00218<br />00219<br />00220<br />
+00221<br />00222<br />00223<br />00224<br />00225<br />00226<br />00227<br />00228<br />00229<br />00230<br />00231<br />00232<br />00233<br />00234<br />00235<br />00236<br />00237<br />00238<br />00239<br />00240<br />
+00241<br />00242<br />00243<br />00244<br />00245<br />00246<br />00247<br />00248<br />00249<br />00250<br />00251<br />00252<br />00253<br />00254<br />00255<br />00256<br />00257<br />00258<br />00259<br />00260<br />
+00261<br />00262<br />00263<br />00264<br />00265<br />00266<br />00267<br />00268<br />00269<br />00270<br />00271<br />00272<br />00273<br />00274<br />00275<br />00276<br />00277<br />00278<br />00279<br />00280<br />
+00281<br />00282<br />00283<br />00284<br />00285<br />00286<br />00287<br />00288<br />00289</span></td>
+<td class="source"><pre class="source"><a name="1"></a><span class="source_comment">//=============================================================================
+</span><a name="2"></a><span class="source_comment">//  R6HostageRescueAdvGame.uc : (add small description)
+</span><a name="3"></a><span class="source_comment">//  Copyright 2001 Ubi Soft, Inc. All Rights Reserved.
+</span><a name="4"></a><span class="source_comment">//
+</span><a name="5"></a><span class="source_comment">//  Revision history:
+</span><a name="6"></a><span class="source_comment">//    2001/11/22 * Created by Aristomenis Kolokathis
+</span><a name="7"></a><span class="source_comment">//=============================================================================
+</span><a name="8"></a>
+<a name="9"></a><span class="source_type">class</span> <span class="source_type"><a href="../r6game/r6hostagerescueadvgame.html" class="source">R6HostageRescueAdvGame</a></span> extends <span class="source_type"><a href="../r6game/r6adversarialteamgame.html" class="source">R6AdversarialTeamGame</a></span>;
+<a name="10"></a>
+<a name="11"></a>
+<a name="12"></a>var <span class="source_type"><a href="../r6game/r6mobjrescuehostage.html" class="source">R6MObjRescueHostage</a></span>                         m_objRescueHostage;
+<a name="13"></a>var <span class="source_type"><a href="../r6game/r6mobjacceptablehostagelossesbyrainbow.html" class="source">R6MObjAcceptableHostageLossesByRainbow</a></span>      m_objHostageLossesByAlpha;
+<a name="14"></a>var <span class="source_type"><a href="../r6game/r6mobjacceptablehostagelossesbyrainbow.html" class="source">R6MObjAcceptableHostageLossesByRainbow</a></span>      m_objHostageLossesByBravo;
+<a name="15"></a>var <span class="source_type">int</span>                                         m_iIfDeadHostageMinNbToRescue; 
+<a name="16"></a>
+<a name="17"></a>
+<a name="18"></a><span class="source_comment">//------------------------------------------------------------------
+</span><a name="19"></a><span class="source_comment">// InitObjectives
+</span><a name="20"></a><span class="source_comment">//	
+</span><a name="21"></a><span class="source_comment">//------------------------------------------------------------------
+</span><a name="22"></a>function InitObjectives()
+<a name="23"></a>{
+<a name="24"></a>    local <span class="source_type"><a href="../r6engine/r6hostage.html" class="source">R6Hostage</a></span>     <span class="source_type">hostage</span>;
+<a name="25"></a>    local <span class="source_type">int</span>           iLength, iTotalHostage;
+<a name="26"></a>
+<a name="27"></a>    
+<a name="28"></a>    foreach DynamicActors( <span class="source_type">class</span><span class="source_name">'R6Hostage'</span>, <span class="source_type">hostage</span> )
+<a name="29"></a>    {
+<a name="30"></a>        <span class="source_comment">// forces the hostage to stay where he is
+</span><a name="31"></a>        <span class="source_type">hostage</span>.m_controller.m_bForceToStayHere = true;
+<a name="32"></a>        <span class="source_type">hostage</span>.m_ePersonality                  = HPERSO_Coward;
+<a name="33"></a>        iTotalHostage++;
+<a name="34"></a>    }
+<a name="35"></a>
+<a name="36"></a>    if ( iTotalHostage == <span class="source_int">0</span> && m_missionMgr.m_bEnableCheckForErrors)
+<a name="37"></a>    {
+<a name="38"></a>        log( <span class="source_string">"WARNING: there is no hostage in the game type: "</span> $self );
+<a name="39"></a>    }
+<a name="40"></a>
+<a name="41"></a>    <span class="source_comment">// make sure we have at least 2 hostage to rescue if some are dead
+</span><a name="42"></a>    m_iIfDeadHostageMinNbToRescue = Clamp( iTotalHostage, <span class="source_int">0</span>, <span class="source_int">2</span> );
+<a name="43"></a>    
+<a name="44"></a>    m_objRescueHostage = new(none) <span class="source_type">class</span><span class="source_name">'R6Game.R6MObjRescueHostage'</span>;
+<a name="45"></a>    m_objRescueHostage.m_szDescriptionInMenu = m_objRescueHostage.GetDescriptionBasedOnNbOfHostages( <span class="source_type">level</span> );
+<a name="46"></a>    iLength = m_missionMgr.m_aMissionObjectives.Length;
+<a name="47"></a>    m_missionMgr.m_aMissionObjectives[iLength] = m_objRescueHostage;
+<a name="48"></a>    iLength++;
+<a name="49"></a>
+<a name="50"></a>    m_objHostageLossesByAlpha = new(none) <span class="source_type">class</span><span class="source_name">'R6Game.R6MObjAcceptableHostageLossesByRainbow'</span>;
+<a name="51"></a>    m_missionMgr.m_aMissionObjectives[iLength] = m_objHostageLossesByAlpha;
+<a name="52"></a>    iLength++;
+<a name="53"></a>
+<a name="54"></a>    m_objHostageLossesByBravo = new(none) <span class="source_type">class</span><span class="source_name">'R6Game.R6MObjAcceptableHostageLossesByRainbow'</span>;
+<a name="55"></a>    m_missionMgr.m_aMissionObjectives[iLength] = m_objHostageLossesByBravo;
+<a name="56"></a>    iLength++;
+<a name="57"></a>
+<a name="58"></a>    <span class="source_comment">// rescue all hostages
+</span><a name="59"></a>    m_objRescueHostage.m_iRescuePercentage                = <span class="source_int">0</span>;
+<a name="60"></a>    m_objRescueHostage.m_bRescueAllRemainingHostage       = true;
+<a name="61"></a>    m_objRescueHostage.m_bIfFailedMissionIsAborted        = true;
+<a name="62"></a>    m_objRescueHostage.m_bIfCompletedMissionIsSuccessfull = true;
+<a name="63"></a>    m_objRescueHostage.m_bCheckPawnKilled                 = true;
+<a name="64"></a>
+<a name="65"></a>    <span class="source_comment">// if a team kill all hostage... mission objective failed
+</span><a name="66"></a>    InitObjHostageLossesByTeamID( m_objHostageLossesByAlpha, c_iTeamNumAlpha, <span class="source_int">100</span> );
+<a name="67"></a>    InitObjHostageLossesByTeamID( m_objHostageLossesByBravo, c_iTeamNumBravo, <span class="source_int">100</span> );
+<a name="68"></a>
+<a name="69"></a>    m_missionMgr.m_bOnSuccessAllObjectivesAreCompleted = false;
+<a name="70"></a>    <span class="source_type">Level</span>.m_bUseDefaultMoralityRules = false;
+<a name="71"></a>    Super.InitObjectives();
+<a name="72"></a>}
+<a name="73"></a>
+<a name="74"></a><span class="source_comment">//------------------------------------------------------------------
+</span><a name="75"></a><span class="source_comment">// InitObjHostageLossesByTeamID
+</span><a name="76"></a><span class="source_comment">//	
+</span><a name="77"></a><span class="source_comment">//------------------------------------------------------------------
+</span><a name="78"></a>function InitObjHostageLossesByTeamID( <span class="source_type"><a href="../r6game/r6mobjacceptablehostagelossesbyrainbow.html" class="source">R6MObjAcceptableHostageLossesByRainbow</a></span> <span class="source_type">obj</span>, <span class="source_type">int</span> <span class="source_type">iTeamID</span>, <span class="source_type">int</span> <span class="source_type">iAcceptableLost</span> )
+<a name="79"></a>{
+<a name="80"></a>    local <span class="source_type">string</span> szTeamName;
+<a name="81"></a>
+<a name="82"></a>    <span class="source_type">obj</span>.m_iKillerTeamID             = <span class="source_type">iTeamID</span>;
+<a name="83"></a>    <span class="source_type">obj</span>.m_bMoralityObjective        = false;
+<a name="84"></a>    <span class="source_type">obj</span>.m_bIfFailedMissionIsAborted = true;
+<a name="85"></a>    <span class="source_type">obj</span>.m_iAcceptableLost           = <span class="source_type">iAcceptableLost</span>;
+<a name="86"></a>    <span class="source_type">obj</span>.m_bVisibleInMenu            = false;
+<a name="87"></a>    
+<a name="88"></a>    if (      <span class="source_type">iTeamID</span> == c_iTeamNumAlpha )
+<a name="89"></a>        szTeamName = <span class="source_string">"Alpha"</span>;
+<a name="90"></a>    else if ( <span class="source_type">iTeamID</span> == c_iTeamNumBravo )
+<a name="91"></a>        szTeamName = <span class="source_string">"Bravo"</span>;
+<a name="92"></a>    else
+<a name="93"></a>        szTeamName = <span class="source_string">"Unknow"</span>;
+<a name="94"></a>
+<a name="95"></a>    <span class="source_comment">// for debugging
+</span><a name="96"></a>    <span class="source_type">obj</span>.m_szDescription       = <span class="source_string">"HostageLossesByTeamID by "</span> $szTeamName;
+<a name="97"></a>    <span class="source_type">obj</span>.m_szDescriptionInMenu = <span class="source_string">"AvoidHostageCasualities"</span>;
+<a name="98"></a>}       
+<a name="99"></a>
+<a name="100"></a><span class="source_comment">//------------------------------------------------------------------
+</span><a name="101"></a><span class="source_comment">// PawnKilled
+</span><a name="102"></a><span class="source_comment">//	
+</span><a name="103"></a><span class="source_comment">//------------------------------------------------------------------
+</span><a name="104"></a>function PawnKilled( <span class="source_type"><a href="../engine/pawn.html" class="source">Pawn</a></span> <span class="source_type">killedPawn</span> )
+<a name="105"></a>{
+<a name="106"></a>    if ( m_bGameOver )
+<a name="107"></a>        return;
+<a name="108"></a>    
+<a name="109"></a>    Super.PawnKilled( <span class="source_type">killedPawn</span> );
+<a name="110"></a>
+<a name="111"></a>    EnteredExtractionZone( <span class="source_type">killedPawn</span> );
+<a name="112"></a>}
+<a name="113"></a>
+<a name="114"></a><span class="source_comment">//------------------------------------------------------------------
+</span><a name="115"></a><span class="source_comment">// EnteredExtractionZone
+</span><a name="116"></a><span class="source_comment">//	
+</span><a name="117"></a><span class="source_comment">//------------------------------------------------------------------
+</span><a name="118"></a>function EnteredExtractionZone( <span class="source_type"><a href="../engine/actor.html" class="source">Actor</a></span> <span class="source_type">anActor</span>)
+<a name="119"></a>{
+<a name="120"></a>    local <span class="source_type">int</span>       <span class="source_type">i</span>;
+<a name="121"></a>    local <span class="source_type">int</span>       iTotalRescued;
+<a name="122"></a>    local <span class="source_type">int</span>       iTotalAlive;
+<a name="123"></a>    local <span class="source_type">int</span>       iTotalHostage;
+<a name="124"></a>    local <span class="source_type">bool</span>      bSendMsg;
+<a name="125"></a>    local <span class="source_type"><a href="../r6engine/r6pawn.html" class="source">R6Pawn</a></span>    <span class="source_type">aPawn</span>;
+<a name="126"></a>    local <span class="source_type"><a href="../r6engine/r6hostage.html" class="source">R6Hostage</a></span> <span class="source_type">hostage</span>;
+<a name="127"></a>
+<a name="128"></a>    if ( m_bGameOver )
+<a name="129"></a>        return;
+<a name="130"></a>       
+<a name="131"></a>    <span class="source_type">aPawn</span> = <span class="source_type"><a href="../r6engine/r6pawn.html" class="source">R6Pawn</a></span>( <span class="source_type">anActor</span> );
+<a name="132"></a>
+<a name="133"></a>    if ( <span class="source_type">aPawn</span> == none && <span class="source_type">aPawn</span>.m_ePawnType != PAWN_Hostage )
+<a name="134"></a>        return;
+<a name="135"></a>
+<a name="136"></a>    <span class="source_comment">// look if we have already send the gamemsg for this hosatge
+</span><a name="137"></a>    foreach DynamicActors( <span class="source_type">class</span><span class="source_name">'R6Hostage'</span>, <span class="source_type">hostage</span> )
+<a name="138"></a>    {
+<a name="139"></a>        <span class="source_comment">// extracted, alive and the feedback was not sent
+</span><a name="140"></a>        if ( <span class="source_type">hostage</span>.m_bExtracted && <span class="source_type">hostage</span>.isAlive() && 
+<a name="141"></a>             !<span class="source_type">hostage</span>.m_bFeedbackExtracted  )
+<a name="142"></a>        {
+<a name="143"></a>            <span class="source_type">hostage</span>.m_bFeedbackExtracted = true;
+<a name="144"></a>            bSendMsg = true;
+<a name="145"></a>        }
+<a name="146"></a>
+<a name="147"></a>        if ( <span class="source_type">hostage</span>.IsAlive() )
+<a name="148"></a>        {
+<a name="149"></a>            ++iTotalAlive;
+<a name="150"></a>            if ( <span class="source_type">hostage</span>.m_bExtracted )
+<a name="151"></a>                ++iTotalRescued;
+<a name="152"></a>        }
+<a name="153"></a>
+<a name="154"></a>        iTotalHostage++;
+<a name="155"></a>    }    
+<a name="156"></a>    
+<a name="157"></a>    <span class="source_comment">// we are sending the game msg
+</span><a name="158"></a>    if ( bSendMsg )
+<a name="159"></a>    {
+<a name="160"></a>        <span class="source_comment">// is it the last msg
+</span><a name="161"></a>        if ( iTotalHostage == iTotalRescued ||  <span class="source_comment">// all rescued
+</span><a name="162"></a>             (   iTotalAlive != iTotalHostage   <span class="source_comment">// some are dead, so check if it's over
+</span><a name="163"></a>              && iTotalRescued &gt;= m_iIfDeadHostageMinNbToRescue )   
+<a name="164"></a>           )
+<a name="165"></a>        {
+<a name="166"></a>            if ( bShowLog ) Log( <span class="source_string">" ** Game: All hostage has been rescued"</span> );
+<a name="167"></a>            BroadcastMissionObjMsg( <span class="source_string">""</span>, <span class="source_string">""</span>, <span class="source_string">"AllHostagesHaveBeenRescued"</span> );
+<a name="168"></a>        }
+<a name="169"></a>        else
+<a name="170"></a>        {
+<a name="171"></a>            if ( bShowLog ) Log( <span class="source_string">" ** Game: A hostage has been rescued"</span> );
+<a name="172"></a>            BroadcastMissionObjMsg( <span class="source_string">""</span>, <span class="source_string">""</span>, <span class="source_string">"HostageHasBeenRescued"</span> );
+<a name="173"></a>        }
+<a name="174"></a>    }
+<a name="175"></a>        
+<a name="176"></a>    Super.EnteredExtractionZone( <span class="source_type">aPawn</span> );
+<a name="177"></a>}
+<a name="178"></a>
+<a name="179"></a><span class="source_comment">//------------------------------------------------------------------
+</span><a name="180"></a><span class="source_comment">// EndGame
+</span><a name="181"></a><span class="source_comment">//	
+</span><a name="182"></a><span class="source_comment">//------------------------------------------------------------------
+</span><a name="183"></a>function EndGame(<span class="source_type"><a href="../engine/playerreplicationinfo.html" class="source">PlayerReplicationInfo</a></span> Winner, <span class="source_type">string</span> <span class="source_type">Reason</span>)
+<a name="184"></a>{
+<a name="185"></a>    if (m_bGameOver)    <span class="source_comment">// this function has already been called
+</span><a name="186"></a>        return;
+<a name="187"></a>    
+<a name="188"></a>    if ( m_objDeathmatch.m_bFailed )                <span class="source_comment">// all player are dead: draw
+</span><a name="189"></a>    {
+<a name="190"></a>        if ( bShowLog ) log( <span class="source_string">"** Game : it's a draw"</span> );
+<a name="191"></a>        BroadcastGameMsg( <span class="source_string">""</span>, <span class="source_string">""</span>, <span class="source_string">"RoundIsADraw"</span>, m_sndRoundIsADraw, GetGameMsgLifeTime() );
+<a name="192"></a>    }
+<a name="193"></a>    else if ( m_objHostageLossesByAlpha.m_bFailed ) <span class="source_comment">// Alpha killed too much Hostage: bravo win
+</span><a name="194"></a>    {
+<a name="195"></a>        if ( bShowLog ) log( <span class="source_string">"** Game : bravo win, because alpha eleminated too much hostage"</span> );
+<a name="196"></a>        BroadcastGameMsg(       <span class="source_string">""</span>, <span class="source_string">""</span>, <span class="source_string">"RedTeamWonRound"</span>, m_sndRedTeamWonRound, GetGameMsgLifeTime() );
+<a name="197"></a>        BroadcastMissionObjMsg( <span class="source_string">""</span>, <span class="source_string">""</span>, <span class="source_string">"GreenEleminatedTooManyHostages"</span>, none, GetGameMsgLifeTime() );
+<a name="198"></a>        AddTeamWonRound( c_iBravoTeam );
+<a name="199"></a>    }
+<a name="200"></a>    else if ( m_objHostageLossesByBravo.m_bFailed ) <span class="source_comment">// Bravo killed too much Hostage: alpha win
+</span><a name="201"></a>    {
+<a name="202"></a>        if ( bShowLog ) log( <span class="source_string">"** Game : alpha win, because bravo eleminated too much hostage"</span> );
+<a name="203"></a>        BroadcastGameMsg(       <span class="source_string">""</span>, <span class="source_string">""</span>, <span class="source_string">"GreenTeamWonRound"</span>, m_sndGreenTeamWonRound, GetGameMsgLifeTime() );
+<a name="204"></a>        BroadcastMissionObjMsg( <span class="source_string">""</span>, <span class="source_string">""</span>, <span class="source_string">"RedEleminatedTooManyHostages"</span>, none, GetGameMsgLifeTime() );
+<a name="205"></a>        AddTeamWonRound( c_iAlphaTeam );
+<a name="206"></a>    }
+<a name="207"></a>    else if ( m_objRescueHostage.m_bFailed ) <span class="source_comment">// if all hostage are dead, but not eliminated completely by the same team
+</span><a name="208"></a>    {
+<a name="209"></a>        if ( bShowLog ) log( <span class="source_string">"** Game : it's a draw"</span> );
+<a name="210"></a>        BroadcastGameMsg( <span class="source_string">""</span>, <span class="source_string">""</span>, <span class="source_string">"RoundIsADraw"</span>, m_sndRoundIsADraw, GetGameMsgLifeTime() );
+<a name="211"></a>    }
+<a name="212"></a>    else if ( m_objDeathmatch.m_bCompleted )        <span class="source_comment">// a team was neutralized
+</span><a name="213"></a>    {
+<a name="214"></a>        if ( m_objDeathmatch.m_iWinningTeam == c_iTeamNumAlpha )
+<a name="215"></a>        {
+<a name="216"></a>            if ( bShowLog ) log( <span class="source_string">"** Game : alpha eleminated bravo"</span> );
+<a name="217"></a>            BroadcastGameMsg(       <span class="source_string">""</span>, <span class="source_string">""</span>, <span class="source_string">"GreenTeamWonRound"</span>, m_sndGreenTeamWonRound, GetGameMsgLifeTime() );
+<a name="218"></a>            BroadcastMissionObjMsg( <span class="source_string">""</span>, <span class="source_string">""</span>, <span class="source_string">"GreenNeutralizedRed"</span>, none, GetGameMsgLifeTime() );
+<a name="219"></a>            AddTeamWonRound( c_iAlphaTeam );
+<a name="220"></a>        }
+<a name="221"></a>        else if ( m_objDeathmatch.m_iWinningTeam == c_iTeamNumBravo )
+<a name="222"></a>        {
+<a name="223"></a>            if ( bShowLog ) log( <span class="source_string">"** Game : bravo eleminated alpha"</span> );
+<a name="224"></a>            BroadcastGameMsg(       <span class="source_string">""</span>, <span class="source_string">""</span>, <span class="source_string">"RedTeamWonRound"</span>, m_sndRedTeamWonRound, GetGameMsgLifeTime() );
+<a name="225"></a>            BroadcastMissionObjMsg( <span class="source_string">""</span>, <span class="source_string">""</span>, <span class="source_string">"RedNeutralizedGreen"</span>, none, GetGameMsgLifeTime() );
+<a name="226"></a>            AddTeamWonRound( c_iBravoTeam );
+<a name="227"></a>        }
+<a name="228"></a>    }
+<a name="229"></a>    else if ( m_objRescueHostage.m_bCompleted  )    <span class="source_comment">//  enough hostage were rescued 
+</span><a name="230"></a>    {
+<a name="231"></a>        if ( bShowLog ) log( <span class="source_string">"** Game : alpha rescued enough hostage"</span> );
+<a name="232"></a>        BroadcastGameMsg(       <span class="source_string">""</span>, <span class="source_string">""</span>, <span class="source_string">"GreenTeamWonRound"</span>, m_sndGreenTeamWonRound, GetGameMsgLifeTime() );
+<a name="233"></a>        BroadcastMissionObjMsg( <span class="source_string">""</span>, <span class="source_string">""</span>, <span class="source_string">"HostagesHaveBeenRescued"</span>, none, GetGameMsgLifeTime() );
+<a name="234"></a>        AddTeamWonRound( c_iAlphaTeam );
+<a name="235"></a>    }
+<a name="236"></a>    else
+<a name="237"></a>    {
+<a name="238"></a>        if ( bShowLog ) log( <span class="source_string">"** Game : bravo kept the hostage from Alpha"</span> );
+<a name="239"></a>        BroadcastGameMsg(       <span class="source_string">""</span>, <span class="source_string">""</span>, <span class="source_string">"RedTeamWonRound"</span>, m_sndRedTeamWonRound, GetGameMsgLifeTime() );
+<a name="240"></a>        BroadcastMissionObjMsg( <span class="source_string">""</span>, <span class="source_string">""</span>, <span class="source_string">"HostagesWhereNotRescued"</span>, none, GetGameMsgLifeTime() );
+<a name="241"></a>        AddTeamWonRound( c_iBravoTeam );
+<a name="242"></a>    }
+<a name="243"></a>
+<a name="244"></a>    Super.EndGame(Winner, <span class="source_type">Reason</span>);
+<a name="245"></a>}
+<a name="246"></a>
+<a name="247"></a>
+<a name="248"></a>function SetPawnTeamFriendlies(<span class="source_type"><a href="../engine/pawn.html" class="source">Pawn</a></span> <span class="source_type">aPawn</span>)
+<a name="249"></a>{
+<a name="250"></a>    switch( <span class="source_type">aPawn</span>.m_iTeam )
+<a name="251"></a>    {
+<a name="252"></a>    case c_iTeamNumHostage:           <span class="source_comment">// hostage are not friend nor enemy with alpha 
+</span><a name="253"></a>        <span class="source_type">aPawn</span>.m_iFriendlyTeams  = <span class="source_int">0</span>;  <span class="source_comment">// so they won't run away/toward them
+</span><a name="254"></a>        <span class="source_type">aPawn</span>.m_iEnemyTeams     = GetTeamNumBit( c_iTeamNumTerrorist );
+<a name="255"></a>        <span class="source_type">aPawn</span>.m_iEnemyTeams    += GetTeamNumBit( c_iTeamNumBravo );         <span class="source_comment">// enemy with bravo
+</span><a name="256"></a>        break;
+<a name="257"></a>
+<a name="258"></a>    case c_iTeamNumTerrorist: <span class="source_comment">// terros DO NOT exist in these modes
+</span><a name="259"></a>        <span class="source_type">aPawn</span>.m_iFriendlyTeams  = GetTeamNumBit( c_iTeamNumTerrorist );
+<a name="260"></a>        <span class="source_type">aPawn</span>.m_iEnemyTeams     = GetTeamNumBit( c_iTeamNumAlpha );
+<a name="261"></a>        <span class="source_type">aPawn</span>.m_iEnemyTeams    += GetTeamNumBit( c_iTeamNumBravo );
+<a name="262"></a>        break;
+<a name="263"></a>
+<a name="264"></a>    case c_iTeamNumAlpha: <span class="source_comment">// alpha team
+</span><a name="265"></a>        <span class="source_type">aPawn</span>.m_iFriendlyTeams  = GetTeamNumBit( c_iTeamNumAlpha );
+<a name="266"></a>        <span class="source_type">aPawn</span>.m_iEnemyTeams     = GetTeamNumBit( c_iTeamNumBravo );
+<a name="267"></a>        <span class="source_type">aPawn</span>.m_iEnemyTeams    += GetTeamNumBit( c_iTeamNumTerrorist );
+<a name="268"></a>        break;
+<a name="269"></a>
+<a name="270"></a>    case c_iTeamNumBravo: <span class="source_comment">// bravo team
+</span><a name="271"></a>        <span class="source_type">aPawn</span>.m_iFriendlyTeams  = GetTeamNumBit( c_iTeamNumBravo );
+<a name="272"></a>        <span class="source_type">aPawn</span>.m_iEnemyTeams     = GetTeamNumBit( c_iTeamNumAlpha );
+<a name="273"></a>        <span class="source_type">aPawn</span>.m_iEnemyTeams    += GetTeamNumBit( c_iTeamNumTerrorist );
+<a name="274"></a>        <span class="source_type">aPawn</span>.m_iEnemyTeams    += GetTeamNumBit( c_iTeamNumHostage );       <span class="source_comment">//*** big difference! Bravo are enemies of Hostage
+</span><a name="275"></a>        break;
+<a name="276"></a>
+<a name="277"></a>    default:
+<a name="278"></a>        log( <span class="source_string">"warning: SetPawnTeamFriendlies team not supported for "</span> $<span class="source_type">aPawn</span>.<span class="source_type">name</span>$ <span class="source_string">" team="</span> $<span class="source_type">aPawn</span>.m_iTeam );
+<a name="279"></a>        break;
+<a name="280"></a>    }
+<a name="281"></a>}
+<a name="282"></a>
+<a name="283"></a>defaultproperties
+<a name="284"></a>{
+<a name="285"></a>     m_iUbiComGameMode=<span class="source_int">4</span>
+<a name="286"></a>     m_bFeedbackHostageExtracted=False
+<a name="287"></a>     m_szGameTypeFlag=<span class="source_string">"RGM_HostageRescueAdvMode"</span>
+<a name="288"></a>}
+<a name="289"></a></pre></td></tr></table></div>
+<hr />
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../r6game/r6game-overview.html">Package</a></td>
+	<td class="header"><a href="../r6game/r6hostagerescueadvgame.html">Class</a></td>
+	<td class="header_hilight">Source</td>
+	<td class="header"><a class="header" href="../classtree.html#R6HostageRescueAdvGame">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../Source_r6game/r6gamemanager.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../Source_r6game/r6hostagerescuecoopgame.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+
+<div class="stats">Class file time: sam. 18/9/2004 14:39:50.000 - Creation time: mar. 26/5/2026 18:33:20.059 - Created with <a href="http://wiki.beyondunreal.com/wiki/UnCodeX" target="_blank">UnCodeX</a></div>
+
+</body>
+</html>

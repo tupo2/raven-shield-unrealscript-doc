@@ -1,0 +1,606 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+	<title>UnCodeX - Source: R6Menu.R6MenuMPJoinTeamWidget</title>
+	<meta name="Generator" content="UnCodeX 241" />
+	<link rel="stylesheet" href="../DocStyle2.css" type="text/css" title="Original Purple" />
+	<link rel="alternative stylesheet" href="../DocStyle2-blue.css" type="text/css" title="Blue" />
+	<link rel="alternative stylesheet" href="../DocStyle2-red.css" type="text/css" title="Red" />
+	<!--[if IE]>
+	<link rel="stylesheet" href="../DocStyle2-msie.css" type="text/css" />
+	<![endif]-->
+	<script src="../styleswitcher.js" type="text/javascript"></script>
+</head>
+<body>
+
+<div class="header">
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../r6menu/r6menu-overview.html">Package</a></td>
+	<td class="header"><a href="../r6menu/r6menumpjointeamwidget.html">Class</a></td>
+	<td class="header_hilight">Source</td>
+	<td class="header"><a class="header" href="../classtree.html#R6MenuMPJoinTeamWidget">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../Source_r6menu/r6menumpinterwidget.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../Source_r6menu/r6menumpmanagetab.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html#Source_r6menu/r6menumpjointeamwidget.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+</div>
+<div class="spacer"></div>
+
+<h1><a href="../r6menu/r6menu-overview.html">R6Menu</a>.<a href="../r6menu/r6menumpjointeamwidget.html">R6MenuMPJoinTeamWidget</a></h1>
+<br />
+<div class="source"><table class="source"><tr><td class="source_lineno"><span class="source_lineno">00001<br />00002<br />00003<br />00004<br />00005<br />00006<br />00007<br />00008<br />00009<br />00010<br />00011<br />00012<br />00013<br />00014<br />00015<br />00016<br />00017<br />00018<br />00019<br />00020<br />
+00021<br />00022<br />00023<br />00024<br />00025<br />00026<br />00027<br />00028<br />00029<br />00030<br />00031<br />00032<br />00033<br />00034<br />00035<br />00036<br />00037<br />00038<br />00039<br />00040<br />
+00041<br />00042<br />00043<br />00044<br />00045<br />00046<br />00047<br />00048<br />00049<br />00050<br />00051<br />00052<br />00053<br />00054<br />00055<br />00056<br />00057<br />00058<br />00059<br />00060<br />
+00061<br />00062<br />00063<br />00064<br />00065<br />00066<br />00067<br />00068<br />00069<br />00070<br />00071<br />00072<br />00073<br />00074<br />00075<br />00076<br />00077<br />00078<br />00079<br />00080<br />
+00081<br />00082<br />00083<br />00084<br />00085<br />00086<br />00087<br />00088<br />00089<br />00090<br />00091<br />00092<br />00093<br />00094<br />00095<br />00096<br />00097<br />00098<br />00099<br />00100<br />
+00101<br />00102<br />00103<br />00104<br />00105<br />00106<br />00107<br />00108<br />00109<br />00110<br />00111<br />00112<br />00113<br />00114<br />00115<br />00116<br />00117<br />00118<br />00119<br />00120<br />
+00121<br />00122<br />00123<br />00124<br />00125<br />00126<br />00127<br />00128<br />00129<br />00130<br />00131<br />00132<br />00133<br />00134<br />00135<br />00136<br />00137<br />00138<br />00139<br />00140<br />
+00141<br />00142<br />00143<br />00144<br />00145<br />00146<br />00147<br />00148<br />00149<br />00150<br />00151<br />00152<br />00153<br />00154<br />00155<br />00156<br />00157<br />00158<br />00159<br />00160<br />
+00161<br />00162<br />00163<br />00164<br />00165<br />00166<br />00167<br />00168<br />00169<br />00170<br />00171<br />00172<br />00173<br />00174<br />00175<br />00176<br />00177<br />00178<br />00179<br />00180<br />
+00181<br />00182<br />00183<br />00184<br />00185<br />00186<br />00187<br />00188<br />00189<br />00190<br />00191<br />00192<br />00193<br />00194<br />00195<br />00196<br />00197<br />00198<br />00199<br />00200<br />
+00201<br />00202<br />00203<br />00204<br />00205<br />00206<br />00207<br />00208<br />00209<br />00210<br />00211<br />00212<br />00213<br />00214<br />00215<br />00216<br />00217<br />00218<br />00219<br />00220<br />
+00221<br />00222<br />00223<br />00224<br />00225<br />00226<br />00227<br />00228<br />00229<br />00230<br />00231<br />00232<br />00233<br />00234<br />00235<br />00236<br />00237<br />00238<br />00239<br />00240<br />
+00241<br />00242<br />00243<br />00244<br />00245<br />00246<br />00247<br />00248<br />00249<br />00250<br />00251<br />00252<br />00253<br />00254<br />00255<br />00256<br />00257<br />00258<br />00259<br />00260<br />
+00261<br />00262<br />00263<br />00264<br />00265<br />00266<br />00267<br />00268<br />00269<br />00270<br />00271<br />00272<br />00273<br />00274<br />00275<br />00276<br />00277<br />00278<br />00279<br />00280<br />
+00281<br />00282<br />00283<br />00284<br />00285<br />00286<br />00287<br />00288<br />00289<br />00290<br />00291<br />00292<br />00293<br />00294<br />00295<br />00296<br />00297<br />00298<br />00299<br />00300<br />
+00301<br />00302<br />00303<br />00304<br />00305<br />00306<br />00307<br />00308<br />00309<br />00310<br />00311<br />00312<br />00313<br />00314<br />00315<br />00316<br />00317<br />00318<br />00319<br />00320<br />
+00321<br />00322<br />00323<br />00324<br />00325<br />00326<br />00327<br />00328<br />00329<br />00330<br />00331<br />00332<br />00333<br />00334<br />00335<br />00336<br />00337<br />00338<br />00339<br />00340<br />
+00341<br />00342<br />00343<br />00344<br />00345<br />00346<br />00347<br />00348<br />00349<br />00350<br />00351<br />00352<br />00353<br />00354<br />00355<br />00356<br />00357<br />00358<br />00359<br />00360<br />
+00361<br />00362<br />00363<br />00364<br />00365<br />00366<br />00367<br />00368<br />00369<br />00370<br />00371<br />00372<br />00373<br />00374<br />00375<br />00376<br />00377<br />00378<br />00379<br />00380<br />
+00381<br />00382<br />00383<br />00384<br />00385<br />00386<br />00387<br />00388<br />00389<br />00390<br />00391<br />00392<br />00393<br />00394<br />00395<br />00396<br />00397<br />00398<br />00399<br />00400<br />
+00401<br />00402<br />00403<br />00404<br />00405<br />00406<br />00407<br />00408<br />00409<br />00410<br />00411<br />00412<br />00413<br />00414<br />00415<br />00416<br />00417<br />00418<br />00419<br />00420<br />
+00421<br />00422<br />00423<br />00424<br />00425<br />00426<br />00427<br />00428<br />00429<br />00430<br />00431<br />00432<br />00433<br />00434<br />00435<br />00436<br />00437<br />00438<br />00439<br />00440<br />
+00441<br />00442<br />00443<br />00444<br />00445<br />00446<br />00447<br />00448<br />00449<br />00450<br />00451<br />00452<br />00453<br />00454<br />00455<br />00456<br />00457<br />00458<br />00459<br />00460<br />
+00461<br />00462<br />00463<br />00464<br />00465<br />00466<br />00467<br />00468<br />00469<br />00470<br />00471<br />00472<br />00473<br />00474<br />00475<br />00476<br />00477<br />00478<br />00479<br />00480<br />
+00481<br />00482<br />00483<br />00484<br />00485<br />00486<br />00487<br />00488<br />00489<br />00490<br />00491<br />00492<br />00493<br />00494<br />00495<br />00496<br />00497<br />00498<br />00499<br />00500<br />
+00501<br />00502<br />00503<br />00504<br />00505<br />00506<br />00507<br />00508<br />00509<br />00510<br />00511<br />00512<br />00513<br />00514<br />00515<br />00516<br />00517<br />00518<br />00519<br />00520<br />
+00521<br />00522</span></td>
+<td class="source"><pre class="source"><a name="1"></a><span class="source_comment">//=============================================================================
+</span><a name="2"></a><span class="source_comment">//  R6MenuMPJoinTeamWidget.uc : The first in game multi player menu window
+</span><a name="3"></a><span class="source_comment">//  the size of the window is 800 * 600
+</span><a name="4"></a><span class="source_comment">//  Copyright 2001 Ubi Soft, Inc. All Rights Reserved.
+</span><a name="5"></a><span class="source_comment">//
+</span><a name="6"></a><span class="source_comment">//  Revision history:
+</span><a name="7"></a><span class="source_comment">//    2001/11/22 * Created by Alexandre Dionne
+</span><a name="8"></a><span class="source_comment">//    2002/03/7  * Modify by Yannick Joly
+</span><a name="9"></a><span class="source_comment">//=============================================================================
+</span><a name="10"></a><span class="source_type">class</span> <span class="source_type"><a href="../r6menu/r6menumpjointeamwidget.html" class="source">R6MenuMPJoinTeamWidget</a></span> extends <span class="source_type"><a href="../r6menu/r6menuwidget.html" class="source">R6MenuWidget</a></span>;
+<a name="11"></a>
+<a name="12"></a>const C_iMIN_TIME_FOR_WELCOME_SCREEN			= <span class="source_int">10</span>;
+<a name="13"></a>
+<a name="14"></a>var <span class="source_type"><a href="../r6menu/r6windowbuttonmpingame.html" class="source">R6WindowButtonMPInGame</a></span>          m_pButAlphaTeam;
+<a name="15"></a>var <span class="source_type"><a href="../r6menu/r6windowbuttonmpingame.html" class="source">R6WindowButtonMPInGame</a></span>          m_pButBravoTeam;
+<a name="16"></a>var <span class="source_type"><a href="../r6menu/r6windowbuttonmpingame.html" class="source">R6WindowButtonMPInGame</a></span>          m_pButAutoTeam;
+<a name="17"></a>var <span class="source_type"><a href="../r6menu/r6windowbuttonmpingame.html" class="source">R6WindowButtonMPInGame</a></span>          m_pButSpectator;
+<a name="18"></a>
+<a name="19"></a>var <span class="source_type"><a href="../r6menu/r6windowbuttonmpingame.html" class="source">R6WindowButtonMPInGame</a></span>          m_pButCurrentSelected;
+<a name="20"></a>
+<a name="21"></a>var <span class="source_type"><a href="../r6window/r6windowtextlabelext.html" class="source">R6WindowTextLabelExt</a></span>            m_pInfoText;
+<a name="22"></a>
+<a name="23"></a>var <span class="source_type"><a href="../r6menu/r6menuhelpwindow.html" class="source">R6MenuHelpWindow</a></span>                m_pHelpTextWindow;
+<a name="24"></a>var <span class="source_type"><a href="../core/object.html#Region" class="source">Region</a></span>                          m_pHelpReg;
+<a name="25"></a>
+<a name="26"></a>var <span class="source_type">INT</span>                             m_iYBetweenButtonPadding; <span class="source_comment">//Vertical padding between buttons
+</span><a name="27"></a>var <span class="source_type">INT</span>                             m_iButtonHeight, m_iButtonWidth;
+<a name="28"></a>
+<a name="29"></a><span class="source_comment">//Character Texture
+</span><a name="30"></a>var <span class="source_type"><a href="../r6window/r6windowbitmap.html" class="source">R6WindowBitmap</a></span>                  m_SingleChar;
+<a name="31"></a>var <span class="source_type"><a href="../r6window/r6windowbitmap.html" class="source">R6WindowBitmap</a></span>                  m_LeftChar;
+<a name="32"></a>var <span class="source_type"><a href="../r6window/r6windowbitmap.html" class="source">R6WindowBitmap</a></span>                  m_RightChar;
+<a name="33"></a>var <span class="source_type"><a href="../r6window/r6windowbitmap.html" class="source">R6WindowBitmap</a></span>                  m_BetweenCharIcon;
+<a name="34"></a>
+<a name="35"></a>var <span class="source_type">INT</span>                             m_iSingleCharXPos, m_iSingleCharYPos,   <span class="source_comment">//Coordinates where these elements are displayed
+</span><a name="36"></a>                                    m_iLeftCharXPos, m_iLeftCharYPos,
+<a name="37"></a>                                    m_iRightCharXPos, m_iRightCharYPos,
+<a name="38"></a>                                    m_iBetweenCharXPos, m_iBetweenCharYPos;
+<a name="39"></a>
+<a name="40"></a>var <span class="source_type"><a href="../engine/texture.html" class="source">Texture</a></span>                         m_TBetweenChar;
+<a name="41"></a>var <span class="source_type"><a href="../core/object.html#Region" class="source">Region</a></span>                          m_RBetweenChar;
+<a name="42"></a>var <span class="source_type"><a href="../engine/texture.html" class="source">Texture</a></span>                         m_TSpectatorChar;
+<a name="43"></a>var <span class="source_type"><a href="../core/object.html#Region" class="source">Region</a></span>                          m_RSpectatorChar;
+<a name="44"></a>
+<a name="45"></a>var <span class="source_type"><a href="../engine/texture.html" class="source">Texture</a></span>                         m_TAlphaChar;
+<a name="46"></a>var <span class="source_type"><a href="../core/object.html#Region" class="source">Region</a></span>                          m_RAlphaChar;
+<a name="47"></a>var <span class="source_type"><a href="../engine/texture.html" class="source">Texture</a></span>                         m_TBetaChar;
+<a name="48"></a>var <span class="source_type"><a href="../core/object.html#Region" class="source">Region</a></span>                          m_RBetaChar;
+<a name="49"></a>
+<a name="50"></a>var Array&lt;<span class="source_type">Class</span>&gt;                    m_AArmorDescriptions;
+<a name="51"></a>
+<a name="52"></a>var <span class="source_type">FLOAT</span>							m_fTimeForRefresh;					<span class="source_comment">// time before a refresh
+</span><a name="53"></a>var <span class="source_type">FLOAT</span>							m_fTimeAutoTeam;					<span class="source_comment">// time before forcing auto team
+</span><a name="54"></a>
+<a name="55"></a>var <span class="source_type">bool</span>                            m_bIsTeamGame;
+<a name="56"></a>
+<a name="57"></a>var <span class="source_type">string</span>  m_szMenuGreenTeamPawnClass; <span class="source_comment">// backup Class and check if they have changed (server can change them)
+</span><a name="58"></a>var <span class="source_type">string</span>  m_szMenuRedTeamPawnClass;
+<a name="59"></a>
+<a name="60"></a>function Created()
+<a name="61"></a>{
+<a name="62"></a>    FillDescriptionArray();
+<a name="63"></a>    CreateTextLabels();
+<a name="64"></a>    CreateButtons();
+<a name="65"></a>    CreateBitmaps();
+<a name="66"></a>
+<a name="67"></a>    m_pHelpTextWindow = <span class="source_type"><a href="../r6menu/r6menuhelpwindow.html" class="source">R6MenuHelpWindow</a></span>(CreateWindow(<span class="source_type">class</span><span class="source_name">'R6MenuHelpWindow'</span>, m_pHelpReg.X, m_pHelpReg.<span class="source_type">Y</span>, m_pHelpReg.W, m_pHelpReg.<span class="source_type">H</span>, self)); <span class="source_comment">//std param is set in help window
+</span><a name="68"></a>    
+<a name="69"></a>}
+<a name="70"></a>
+<a name="71"></a><span class="source_comment">//===============================================================================
+</span><a name="72"></a><span class="source_comment">// Fills the array with all R6ArmorDescription to retreive Level armor texture 
+</span><a name="73"></a><span class="source_comment">// and texture coordinates
+</span><a name="74"></a><span class="source_comment">//===============================================================================
+</span><a name="75"></a>function FillDescriptionArray()
+<a name="76"></a>{
+<a name="77"></a>    local <span class="source_type">class</span>&lt;<span class="source_type"><a href="../r6description/r6armordescription.html" class="source">R6ArmorDescription</a></span>&gt;    DescriptionClass;  
+<a name="78"></a>
+<a name="79"></a>	<span class="source_comment">// MPF - Eric
+</span><a name="80"></a>	local <span class="source_type">INT</span>	<span class="source_type">i</span>;
+<a name="81"></a>	local <span class="source_type"><a href="../engine/r6mod.html" class="source">R6Mod</a></span>	pCurrentMod;
+<a name="82"></a>	pCurrentMod = <span class="source_type">class</span><span class="source_name">'Actor'</span>.static.GetModMgr().m_pCurrentMod;
+<a name="83"></a>	
+<a name="84"></a>	for (<span class="source_type">i</span> = <span class="source_int">0</span>; <span class="source_type">i</span> &lt; pCurrentMod.m_aDescriptionPackage.Length; <span class="source_type">i</span>++)
+<a name="85"></a>	{
+<a name="86"></a>		DescriptionClass = <span class="source_type">class</span>&lt;<span class="source_type"><a href="../r6description/r6armordescription.html" class="source">R6ArmorDescription</a></span>&gt;(GetFirstPackageClass(pCurrentMod.m_aDescriptionPackage[<span class="source_type">i</span>]$<span class="source_string">".u"</span>, <span class="source_type">class</span><span class="source_name">'R6ArmorDescription'</span>));
+<a name="87"></a>		
+<a name="88"></a>		while( DescriptionClass != None )
+<a name="89"></a>		{
+<a name="90"></a>			
+<a name="91"></a>			m_AArmorDescriptions[m_AArmorDescriptions.Length] = DescriptionClass;
+<a name="92"></a>			DescriptionClass = <span class="source_type">class</span>&lt;<span class="source_type"><a href="../r6description/r6armordescription.html" class="source">R6ArmorDescription</a></span>&gt;(GetNextClass());
+<a name="93"></a>		}  
+<a name="94"></a>		
+<a name="95"></a>		FreePackageObjects();
+<a name="96"></a>	}
+<a name="97"></a>}
+<a name="98"></a>       
+<a name="99"></a>function Tick(<span class="source_type">float</span> <span class="source_type">deltaTime</span>)
+<a name="100"></a>{
+<a name="101"></a>	local <span class="source_type">string</span> szAutoSelection;
+<a name="102"></a>
+<a name="103"></a>    if ( m_szMenuGreenTeamPawnClass != GetLevel().GreenTeamPawnClass ||
+<a name="104"></a>         (m_szMenuRedTeamPawnClass   != GetLevel().RedTeamPawnClass && m_bIsTeamGame) )
+<a name="105"></a>    {        
+<a name="106"></a>        RefreshBitmaps();
+<a name="107"></a>    }
+<a name="108"></a>
+<a name="109"></a>	if (m_bIsTeamGame)
+<a name="110"></a>	{
+<a name="111"></a>		if (m_fTimeForRefresh &gt;= <span class="source_int">4.0</span>)
+<a name="112"></a>		{
+<a name="113"></a>			RefreshButtonsStatus();
+<a name="114"></a>			m_fTimeForRefresh = <span class="source_int">0</span>;
+<a name="115"></a>		}
+<a name="116"></a>		else
+<a name="117"></a>		{
+<a name="118"></a>			<span class="source_comment">// Incremant timer for refresh
+</span><a name="119"></a>			m_fTimeForRefresh += <span class="source_type">deltaTime</span>;
+<a name="120"></a>		}
+<a name="121"></a>	}
+<a name="122"></a>
+<a name="123"></a>	<span class="source_comment">//===========================================================================
+</span><a name="124"></a>	<span class="source_comment">// FOR AUTOTEAM CHEAT, according an automatic selection
+</span><a name="125"></a>	if (m_fTimeAutoTeam &gt; C_iMIN_TIME_FOR_WELCOME_SCREEN)
+<a name="126"></a>	{
+<a name="127"></a>		szAutoSelection = <span class="source_type">class</span><span class="source_name">'Actor'</span>.static.GetGameOptions().MPAutoSelection;
+<a name="128"></a>
+<a name="129"></a>		if ( szAutoSelection ~= <span class="source_string">"GREEN"</span>)
+<a name="130"></a>		{
+<a name="131"></a>			m_pButAlphaTeam.Click(<span class="source_int">0</span>,<span class="source_int">0</span>); <span class="source_comment">// force a click
+</span><a name="132"></a>			<span class="source_type">class</span><span class="source_name">'Actor'</span>.static.GetGameOptions().SaveConfig();
+<a name="133"></a>		} 
+<a name="134"></a>		else if ( szAutoSelection ~= <span class="source_string">"SPECTATOR"</span>)
+<a name="135"></a>		{
+<a name="136"></a>			m_pButSpectator.Click(<span class="source_int">0</span>,<span class="source_int">0</span>);
+<a name="137"></a>			<span class="source_type">class</span><span class="source_name">'Actor'</span>.static.GetGameOptions().SaveConfig();
+<a name="138"></a>		}
+<a name="139"></a>		else if (m_bIsTeamGame)
+<a name="140"></a>		{
+<a name="141"></a>			if (szAutoSelection ~= <span class="source_string">"RED"</span>)
+<a name="142"></a>			{
+<a name="143"></a>				m_pButBravoTeam.Click(<span class="source_int">0</span>,<span class="source_int">0</span>); 
+<a name="144"></a>				<span class="source_type">class</span><span class="source_name">'Actor'</span>.static.GetGameOptions().SaveConfig();
+<a name="145"></a>			}
+<a name="146"></a>			else if (szAutoSelection ~= <span class="source_string">"AUTOTEAM"</span>)
+<a name="147"></a>			{
+<a name="148"></a>				m_pButAutoTeam.Click(<span class="source_int">0</span>,<span class="source_int">0</span>);
+<a name="149"></a>				<span class="source_type">class</span><span class="source_name">'Actor'</span>.static.GetGameOptions().SaveConfig();
+<a name="150"></a>			}
+<a name="151"></a>		}
+<a name="152"></a>
+<a name="153"></a>		m_fTimeAutoTeam = <span class="source_int">0</span>;
+<a name="154"></a>	}
+<a name="155"></a>	else
+<a name="156"></a>	{
+<a name="157"></a>		m_fTimeAutoTeam += <span class="source_type">deltaTime</span>;
+<a name="158"></a>	}
+<a name="159"></a>	<span class="source_comment">//===========================================================================
+</span><a name="160"></a>}
+<a name="161"></a>
+<a name="162"></a><span class="source_comment">//===============================================================================
+</span><a name="163"></a><span class="source_comment">//       Called by the root just after the showwindow()
+</span><a name="164"></a><span class="source_comment">//===============================================================================
+</span><a name="165"></a>function SetMenuToDisplay( <span class="source_type">string</span> _szCurrentGameType)
+<a name="166"></a>{
+<a name="167"></a>    m_bIsTeamGame       = GetLevel().IsGameTypeTeamAdversarial( _szCurrentGameType);
+<a name="168"></a>
+<a name="169"></a>    RefreshServerInfo();
+<a name="170"></a>    RefreshButtons(_szCurrentGameType);
+<a name="171"></a>    RefreshBitmaps();
+<a name="172"></a>
+<a name="173"></a>	if (m_bIsTeamGame)
+<a name="174"></a>	    RefreshButtonsStatus();
+<a name="175"></a>
+<a name="176"></a>	m_fTimeAutoTeam = <span class="source_int">0</span>;
+<a name="177"></a>}
+<a name="178"></a>
+<a name="179"></a><span class="source_comment">//===============================================================================
+</span><a name="180"></a><span class="source_comment">// Refresh server info after we display the menu page
+</span><a name="181"></a><span class="source_comment">//===============================================================================
+</span><a name="182"></a>function RefreshServerInfo()
+<a name="183"></a>{
+<a name="184"></a>	local <span class="source_type"><a href="../r6menu/r6menuingamemultiplayerrootwindow.html" class="source">R6MenuInGameMultiPlayerRootWindow</a></span> R6Root;
+<a name="185"></a>	R6Root = <span class="source_type"><a href="../r6menu/r6menuingamemultiplayerrootwindow.html" class="source">R6MenuInGameMultiPlayerRootWindow</a></span>(Root);
+<a name="186"></a>        
+<a name="187"></a>    if (R6Root.m_R6GameMenuCom.m_GameRepInfo != None)
+<a name="188"></a>    {
+<a name="189"></a>        m_pInfoText.ChangeTextLabel( Localize(<span class="source_string">"MPInGame"</span>,<span class="source_string">"ServerName"</span>,<span class="source_string">"R6Menu"</span>) $ <span class="source_string">" "</span> $ R6Root.m_R6GameMenuCom.m_GameRepInfo.ServerName, <span class="source_int">0</span>); <span class="source_comment">// server name
+</span><a name="190"></a>        m_pInfoText.ChangeTextLabel( Localize(<span class="source_string">"MPInGame"</span>,<span class="source_string">"GameVersion"</span>,<span class="source_string">"R6Menu"</span>) $ <span class="source_string">" "</span> $ <span class="source_type">class</span><span class="source_name">'Actor'</span>.static.GetGameVersion( true), <span class="source_int">1</span>); <span class="source_comment">// game version
+</span><a name="191"></a>        m_pInfoText.ChangeTextLabel( R6Root.m_R6GameMenuCom.m_GameRepInfo.MOTDLine1, <span class="source_int">3</span>); <span class="source_comment">// msg of the day      
+</span><a name="192"></a>    }
+<a name="193"></a>}
+<a name="194"></a>
+<a name="195"></a>
+<a name="196"></a><span class="source_comment">//===============================================================================
+</span><a name="197"></a><span class="source_comment">//       INIT SECTION Called after we display the page
+</span><a name="198"></a><span class="source_comment">//===============================================================================
+</span><a name="199"></a><span class="source_comment">//===============================================================================
+</span><a name="200"></a><span class="source_comment">//       Initial Creation of the buttons
+</span><a name="201"></a><span class="source_comment">//===============================================================================
+</span><a name="202"></a>function CreateButtons()
+<a name="203"></a>{
+<a name="204"></a>	local <span class="source_type">Font</span>  buttonFont;
+<a name="205"></a>    local <span class="source_type">FLOAT</span> fXOffset, fYOffset;
+<a name="206"></a>
+<a name="207"></a>    fXOffset = <span class="source_type"><a href="../r6menu/r6menuingamemultiplayerrootwindow.html" class="source">R6MenuInGameMultiPlayerRootWindow</a></span>(OwnerWindow).m_RJoinWidget.X + <span class="source_int">100</span>;
+<a name="208"></a>    fYOffset = <span class="source_type"><a href="../r6menu/r6menuingamemultiplayerrootwindow.html" class="source">R6MenuInGameMultiPlayerRootWindow</a></span>(OwnerWindow).m_RJoinWidget.<span class="source_type">Y</span> + <span class="source_int">100</span>;       
+<a name="209"></a>
+<a name="210"></a>	buttonFont		= Root.Fonts[F_PrincipalButton];
+<a name="211"></a>	
+<a name="212"></a>    <span class="source_comment">// define Alpha Team Button
+</span><a name="213"></a>	m_pButAlphaTeam = <span class="source_type"><a href="../r6menu/r6windowbuttonmpingame.html" class="source">R6WindowButtonMPInGame</a></span>(CreateControl( <span class="source_type">class</span><span class="source_name">'R6WindowButtonMPInGame'</span>, fXOffset, fYOffset, m_iButtonWidth, m_iButtonHeight, self));    
+<a name="214"></a>    m_pButAlphaTeam.<span class="source_type">Text</span>                = Localize(<span class="source_string">"MPInGame"</span>,<span class="source_string">"AlphaTeam"</span>,<span class="source_string">"R6Menu"</span>);
+<a name="215"></a>	m_pButAlphaTeam.m_eButInGame_Action = Button_AlphaTeam;
+<a name="216"></a>	m_pButAlphaTeam.Align               = TA_Left;
+<a name="217"></a>	m_pButAlphaTeam.m_fFontSpacing      = <span class="source_int">2</span>;
+<a name="218"></a>	m_pButAlphaTeam.m_buttonFont        = buttonFont;
+<a name="219"></a>	m_pButAlphaTeam.ResizeToText();
+<a name="220"></a>
+<a name="221"></a>    fYOffset += m_iButtonHeight + m_iYBetweenButtonPadding;
+<a name="222"></a>
+<a name="223"></a>    <span class="source_comment">// define Bravo Team Button
+</span><a name="224"></a>	m_pButBravoTeam = <span class="source_type"><a href="../r6menu/r6windowbuttonmpingame.html" class="source">R6WindowButtonMPInGame</a></span>(CreateControl( <span class="source_type">class</span><span class="source_name">'R6WindowButtonMPInGame'</span>, fXOffset, fYOffset, m_iButtonWidth, m_iButtonHeight, self));    
+<a name="225"></a>    m_pButBravoTeam.<span class="source_type">Text</span>                = Localize(<span class="source_string">"MPInGame"</span>,<span class="source_string">"BravoTeam"</span>,<span class="source_string">"R6Menu"</span>);
+<a name="226"></a>	m_pButBravoTeam.m_eButInGame_Action = Button_BravoTeam;
+<a name="227"></a>	m_pButBravoTeam.Align               = TA_Left;
+<a name="228"></a>	m_pButBravoTeam.m_fFontSpacing      = <span class="source_int">2</span>;
+<a name="229"></a>	m_pButBravoTeam.m_buttonFont        = buttonFont;
+<a name="230"></a>	m_pButBravoTeam.ResizeToText();
+<a name="231"></a>
+<a name="232"></a>    fYOffset += m_iButtonHeight + m_iYBetweenButtonPadding;
+<a name="233"></a>
+<a name="234"></a>    <span class="source_comment">// define Auto Team button
+</span><a name="235"></a>	m_pButAutoTeam = <span class="source_type"><a href="../r6menu/r6windowbuttonmpingame.html" class="source">R6WindowButtonMPInGame</a></span>(CreateControl( <span class="source_type">class</span><span class="source_name">'R6WindowButtonMPInGame'</span>, fXOffset, fYOffset, m_iButtonWidth, m_iButtonHeight, self));
+<a name="236"></a>    m_pButAutoTeam.ToolTipString       = Localize(<span class="source_string">"Tip"</span>,<span class="source_string">"AutoTeam"</span>,<span class="source_string">"R6Menu"</span>);
+<a name="237"></a>    m_pButAutoTeam.<span class="source_type">Text</span>                = Localize(<span class="source_string">"MPInGame"</span>,<span class="source_string">"AutoTeam"</span>,<span class="source_string">"R6Menu"</span>);
+<a name="238"></a>	m_pButAutoTeam.m_eButInGame_Action = Button_AutoTeam;
+<a name="239"></a>	m_pButAutoTeam.Align               = TA_Left;
+<a name="240"></a>	m_pButAutoTeam.m_fFontSpacing      = <span class="source_int">2</span>;
+<a name="241"></a>	m_pButAutoTeam.m_buttonFont        = buttonFont;
+<a name="242"></a>	m_pButAutoTeam.ResizeToText();
+<a name="243"></a>
+<a name="244"></a>    fYOffset += m_iButtonHeight +m_iYBetweenButtonPadding;
+<a name="245"></a>
+<a name="246"></a>    <span class="source_comment">// define Spectator button
+</span><a name="247"></a>	m_pButSpectator = <span class="source_type"><a href="../r6menu/r6windowbuttonmpingame.html" class="source">R6WindowButtonMPInGame</a></span>(CreateControl( <span class="source_type">class</span><span class="source_name">'R6WindowButtonMPInGame'</span>, fXOffset, fYOffset, m_iButtonWidth, m_iButtonHeight, self));
+<a name="248"></a>    m_pButSpectator.ToolTipString       = Localize(<span class="source_string">"Tip"</span>,<span class="source_string">"Spectator"</span>,<span class="source_string">"R6Menu"</span>);;
+<a name="249"></a>    m_pButSpectator.<span class="source_type">Text</span>                = Localize(<span class="source_string">"MPInGame"</span>,<span class="source_string">"Spectator"</span>,<span class="source_string">"R6Menu"</span>);
+<a name="250"></a>	m_pButSpectator.m_eButInGame_Action = Button_Spectator;
+<a name="251"></a>	m_pButSpectator.Align               = TA_Left;
+<a name="252"></a>	m_pButSpectator.m_fFontSpacing      = <span class="source_int">2</span>;
+<a name="253"></a>	m_pButSpectator.m_buttonFont        = buttonFont;
+<a name="254"></a>	m_pButSpectator.ResizeToText();
+<a name="255"></a>}
+<a name="256"></a>
+<a name="257"></a>function RefreshButtons(<span class="source_type">string</span> _szCurrentGameType)
+<a name="258"></a>{
+<a name="259"></a>
+<a name="260"></a>    local <span class="source_type">FLOAT</span> fSpectatorYPos;
+<a name="261"></a>
+<a name="262"></a>
+<a name="263"></a>    if (!m_bIsTeamGame)
+<a name="264"></a>    {
+<a name="265"></a>        <span class="source_comment">//Play Button	    
+</span><a name="266"></a>        m_pButAlphaTeam.ToolTipString       = GetLevel().GetGreenTeamObjective(_szCurrentGameType);        
+<a name="267"></a>        m_pButAlphaTeam.<span class="source_type">Text</span>                = Localize(<span class="source_string">"MPInGame"</span>,<span class="source_string">"Play"</span>,<span class="source_string">"R6Menu"</span>);
+<a name="268"></a>	    m_pButAlphaTeam.m_eButInGame_Action = Button_Play;	    
+<a name="269"></a>        m_pButAlphaTeam.ResizeToText();
+<a name="270"></a>
+<a name="271"></a>        <span class="source_comment">//Hide the two unused buttons        
+</span><a name="272"></a>        m_pButBravoTeam.HideWindow();    
+<a name="273"></a>        m_pButAutoTeam.HideWindow();     
+<a name="274"></a>        
+<a name="275"></a>        fSpectatorYPos = m_pButAlphaTeam.WinTop + m_pButAlphaTeam.WinHeight +  m_iYBetweenButtonPadding;
+<a name="276"></a>    }
+<a name="277"></a>    else
+<a name="278"></a>    {
+<a name="279"></a>        
+<a name="280"></a>        <span class="source_comment">//Alpha Team Button
+</span><a name="281"></a>        m_pButAlphaTeam.ToolTipString       = GetLevel().GetGreenTeamObjective(_szCurrentGameType);        
+<a name="282"></a>        m_pButAlphaTeam.<span class="source_type">Text</span>                = Localize(<span class="source_string">"MPInGame"</span>,<span class="source_string">"AlphaTeam"</span>,<span class="source_string">"R6Menu"</span>);
+<a name="283"></a>	    m_pButAlphaTeam.m_eButInGame_Action = Button_AlphaTeam;        
+<a name="284"></a>        m_pButAlphaTeam.ResizeToText();
+<a name="285"></a>        
+<a name="286"></a>        <span class="source_comment">//Show Bravo Team Button	    
+</span><a name="287"></a>        m_pButBravoTeam.ShowWindow();        
+<a name="288"></a>        m_pButBravoTeam.ToolTipString       = GetLevel().GetRedTeamObjective(_szCurrentGameType);        
+<a name="289"></a>
+<a name="290"></a>        <span class="source_comment">//Show Auto Team button	    
+</span><a name="291"></a>        m_pButAutoTeam.ShowWindow();
+<a name="292"></a>        
+<a name="293"></a>        fSpectatorYPos = m_pButAutoTeam.WinTop + m_pButAutoTeam.WinHeight +  m_iYBetweenButtonPadding;
+<a name="294"></a>    }
+<a name="295"></a>
+<a name="296"></a>    <span class="source_comment">// Spectator button
+</span><a name="297"></a>    m_pButSpectator.WinTop = fSpectatorYPos;
+<a name="298"></a>    
+<a name="299"></a>}
+<a name="300"></a>
+<a name="301"></a>function RefreshButtonsStatus()
+<a name="302"></a>{
+<a name="303"></a>	local <span class="source_type"><a href="../r6menu/r6menuingamemultiplayerrootwindow.html" class="source">R6MenuInGameMultiPlayerRootWindow</a></span> R6Root;
+<a name="304"></a>	R6Root = <span class="source_type"><a href="../r6menu/r6menuingamemultiplayerrootwindow.html" class="source">R6MenuInGameMultiPlayerRootWindow</a></span>(Root);
+<a name="305"></a>
+<a name="306"></a>	m_pButAlphaTeam.bDisabled = false;
+<a name="307"></a>	m_pButBravoTeam.bDisabled = false;
+<a name="308"></a>
+<a name="309"></a>	if ( R6Root.m_R6GameMenuCom.GetNbOfTeamPlayer( true) &gt;= <span class="source_int">8</span>) <span class="source_comment">// 8 is the max of player in a list
+</span><a name="310"></a>	{
+<a name="311"></a>		m_pButAlphaTeam.bDisabled = true;
+<a name="312"></a>	}
+<a name="313"></a>	
+<a name="314"></a>    if ( R6Root.m_R6GameMenuCom.GetNbOfTeamPlayer( false) &gt;= <span class="source_int">8</span>)
+<a name="315"></a>	{
+<a name="316"></a>		m_pButBravoTeam.bDisabled = true;
+<a name="317"></a>	}
+<a name="318"></a>}
+<a name="319"></a>
+<a name="320"></a><span class="source_comment">//===============================================================================
+</span><a name="321"></a><span class="source_comment">//       Initial Creation of the text labels
+</span><a name="322"></a><span class="source_comment">//===============================================================================
+</span><a name="323"></a>function CreateTextLabels()
+<a name="324"></a>{
+<a name="325"></a>    local <span class="source_type">FLOAT</span> fXOffset, fYOffset, fYStep, <span class="source_type">fWidth</span>, <span class="source_type">fHeight</span>, fTemp, fSizeOfCounter;
+<a name="326"></a>
+<a name="327"></a>    fXOffset = <span class="source_type"><a href="../r6menu/r6menuingamemultiplayerrootwindow.html" class="source">R6MenuInGameMultiPlayerRootWindow</a></span>(OwnerWindow).m_RJoinWidget.X;
+<a name="328"></a>    fYOffset = <span class="source_type"><a href="../r6menu/r6menuingamemultiplayerrootwindow.html" class="source">R6MenuInGameMultiPlayerRootWindow</a></span>(OwnerWindow).m_RJoinWidget.<span class="source_type">Y</span>;
+<a name="329"></a>    <span class="source_type">fWidth</span>   = <span class="source_type"><a href="../r6menu/r6menuingamemultiplayerrootwindow.html" class="source">R6MenuInGameMultiPlayerRootWindow</a></span>(OwnerWindow).m_RJoinWidget.W;
+<a name="330"></a>    <span class="source_type">fHeight</span>  = <span class="source_type"><a href="../r6menu/r6menuingamemultiplayerrootwindow.html" class="source">R6MenuInGameMultiPlayerRootWindow</a></span>(OwnerWindow).m_RJoinWidget.<span class="source_type">H</span>;
+<a name="331"></a>
+<a name="332"></a>    <span class="source_comment">// Use text array with R6WindowTextLabelExt
+</span><a name="333"></a>    m_pInfoText = <span class="source_type"><a href="../r6window/r6windowtextlabelext.html" class="source">R6WindowTextLabelExt</a></span>( CreateWindow(<span class="source_type">class</span><span class="source_name">'R6WindowTextLabelExt'</span>, fXOffset, fYOffset, <span class="source_type">fWidth</span>, <span class="source_type">fHeight</span>, self));
+<a name="334"></a>    m_pInfoText.bAlwaysBehind = true;
+<a name="335"></a>    m_pInfoText.SetNoBorder();
+<a name="336"></a>
+<a name="337"></a>    <span class="source_comment">// text part
+</span><a name="338"></a>    m_pInfoText.m_Font = Root.Fonts[F_VerySmallTitle];
+<a name="339"></a>    m_pInfoText.m_vTextColor = Root.Colors.White;
+<a name="340"></a>
+<a name="341"></a>    fXOffset = <span class="source_int">4</span>;
+<a name="342"></a>    fYOffset = <span class="source_type"><a href="../r6menu/r6menurslookandfeel.html" class="source">R6MenuRSLookAndFeel</a></span>(LookAndFeel).GetTextHeaderSize() + <span class="source_int">3</span>;
+<a name="343"></a>    <span class="source_type">fWidth</span> = <span class="source_type">fWidth</span> * <span class="source_int">0.5</span>;
+<a name="344"></a>    m_pInfoText.AddTextLabel( Localize(<span class="source_string">"MPInGame"</span>,<span class="source_string">"ServerName"</span>,<span class="source_string">"R6Menu"</span>), fXOffset, fYOffset, <span class="source_type">fWidth</span>, TA_Left, false); 
+<a name="345"></a>
+<a name="346"></a>    fXOffset = <span class="source_type">fWidth</span> + <span class="source_int">4</span>;
+<a name="347"></a>    fYOffset = <span class="source_type"><a href="../r6menu/r6menurslookandfeel.html" class="source">R6MenuRSLookAndFeel</a></span>(LookAndFeel).GetTextHeaderSize() + <span class="source_int">3</span>;
+<a name="348"></a>    m_pInfoText.AddTextLabel( Localize(<span class="source_string">"MPInGame"</span>,<span class="source_string">"GameVersion"</span>,<span class="source_string">"R6Menu"</span>), fXOffset, fYOffset, <span class="source_type">fWidth</span>, TA_Left, false);
+<a name="349"></a>
+<a name="350"></a>    fXOffset = <span class="source_int">4</span>;
+<a name="351"></a>    fYOffset = <span class="source_type">fHeight</span> - <span class="source_int">40</span>;
+<a name="352"></a>    <span class="source_type">fWidth</span> = <span class="source_type">fWidth</span>;
+<a name="353"></a>    m_pInfoText.m_Font = Root.Fonts[F_SmallTitle]; <span class="source_comment">// special font
+</span><a name="354"></a>    m_pInfoText.AddTextLabel( Localize(<span class="source_string">"MPInGame"</span>,<span class="source_string">"PleaseNote"</span>,<span class="source_string">"R6Menu"</span>), fXOffset, fYOffset, <span class="source_type">fWidth</span>, TA_Left, false);
+<a name="355"></a>    m_pInfoText.m_Font = Root.Fonts[F_VerySmallTitle];
+<a name="356"></a>
+<a name="357"></a>    fXOffset = <span class="source_int">4</span>;
+<a name="358"></a>    fYOffset = <span class="source_type">fHeight</span> - <span class="source_int">20</span>;
+<a name="359"></a>    <span class="source_type">fWidth</span> = <span class="source_type">fWidth</span>;
+<a name="360"></a>    m_pInfoText.AddTextLabel( <span class="source_string">""</span>, fXOffset, fYOffset, <span class="source_type">fWidth</span>, TA_Left, false);
+<a name="361"></a>}
+<a name="362"></a>
+<a name="363"></a>
+<a name="364"></a><span class="source_comment">//===============================================================================
+</span><a name="365"></a><span class="source_comment">//       Initial Creation of the Bitmaps
+</span><a name="366"></a><span class="source_comment">//===============================================================================
+</span><a name="367"></a>function CreateBitmaps()
+<a name="368"></a>{
+<a name="369"></a>
+<a name="370"></a>    m_SingleChar = <span class="source_type"><a href="../r6window/r6windowbitmap.html" class="source">R6WindowBitmap</a></span>(CreateWindow(<span class="source_type">class</span><span class="source_name">'R6WindowBitmap'</span>,m_iSingleCharXPos,m_iSingleCharYPos,m_RSpectatorChar.W,m_RSpectatorChar.<span class="source_type">H</span>,self));
+<a name="371"></a>    m_SingleChar.m_iDrawStyle = <span class="source_int">5</span>;
+<a name="372"></a>    m_SingleChar.HideWindow();
+<a name="373"></a>    <span class="source_comment">//m_SingleChar.m_bDrawBorder = true;
+</span><a name="374"></a>    
+<a name="375"></a>    m_LeftChar = <span class="source_type"><a href="../r6window/r6windowbitmap.html" class="source">R6WindowBitmap</a></span>(CreateWindow(<span class="source_type">class</span><span class="source_name">'R6WindowBitmap'</span>,m_iLeftCharXPos,m_iLeftCharYPos,m_RSpectatorChar.W,m_RSpectatorChar.<span class="source_type">H</span>,self));
+<a name="376"></a>    m_LeftChar.m_iDrawStyle = <span class="source_int">5</span>;
+<a name="377"></a>    m_LeftChar.HideWindow();
+<a name="378"></a>    m_LeftChar.m_bHorizontalFlip = true;
+<a name="379"></a>    <span class="source_comment">//m_LeftChar.m_bDrawBorder = true;
+</span><a name="380"></a>    
+<a name="381"></a>    m_RightChar = <span class="source_type"><a href="../r6window/r6windowbitmap.html" class="source">R6WindowBitmap</a></span>(CreateWindow(<span class="source_type">class</span><span class="source_name">'R6WindowBitmap'</span>,m_iRightCharXPos,m_iRightCharYPos,m_RSpectatorChar.W,m_RSpectatorChar.<span class="source_type">H</span>,self));
+<a name="382"></a>    m_RightChar.m_iDrawStyle = <span class="source_int">5</span>;
+<a name="383"></a>    m_RightChar.HideWindow();
+<a name="384"></a>    <span class="source_comment">//m_RightChar.m_bHorizontalFlip = true;
+</span><a name="385"></a>    <span class="source_comment">//m_RightChar.m_bDrawBorder = true;
+</span><a name="386"></a>
+<a name="387"></a>    m_BetweenCharIcon = <span class="source_type"><a href="../r6window/r6windowbitmap.html" class="source">R6WindowBitmap</a></span>(CreateWindow(<span class="source_type">class</span><span class="source_name">'R6WindowBitmap'</span>,m_iBetweenCharXPos,m_iBetweenCharYPos,m_RBetweenChar.W,m_RBetweenChar.<span class="source_type">H</span>,self));
+<a name="388"></a>    m_BetweenCharIcon.m_iDrawStyle = <span class="source_int">5</span>;
+<a name="389"></a>    m_BetweenCharIcon.HideWindow();    
+<a name="390"></a>    m_BetweenCharIcon.<span class="source_type">T</span> = m_TBetweenChar; 
+<a name="391"></a>    m_BetweenCharIcon.<span class="source_type">R</span> = m_RBetweenChar;
+<a name="392"></a>    <span class="source_comment">//m_BetweenCharIcon.m_bDrawBorder = true;
+</span><a name="393"></a>
+<a name="394"></a>}
+<a name="395"></a>
+<a name="396"></a><span class="source_comment">//===============================================================================
+</span><a name="397"></a><span class="source_comment">//       Called after the menu is displayed
+</span><a name="398"></a><span class="source_comment">//===============================================================================
+</span><a name="399"></a>function RefreshBitmaps()
+<a name="400"></a>{
+<a name="401"></a>	m_TAlphaChar    = <span class="source_type"><a href="../engine/texture.html" class="source">Texture</a></span>(GetLevel().GreenMenuSkin);
+<a name="402"></a>	m_RAlphaChar    = GetLevel().GreenMenuRegion;    
+<a name="403"></a>	m_TBetaChar     = <span class="source_type"><a href="../engine/texture.html" class="source">Texture</a></span>(GetLevel().RedMenuSkin);
+<a name="404"></a>	m_RBetaChar     = GetLevel().RedMenuRegion;
+<a name="405"></a>
+<a name="406"></a>    m_LeftChar.<span class="source_type">T</span>    = m_TAlphaChar;
+<a name="407"></a>    m_LeftChar.<span class="source_type">R</span>    = m_RAlphaChar;
+<a name="408"></a>
+<a name="409"></a>    m_RightChar.<span class="source_type">T</span>   = m_TBetaChar;
+<a name="410"></a>    m_RightChar.<span class="source_type">R</span>   = m_RBetaChar;    
+<a name="411"></a>
+<a name="412"></a>
+<a name="413"></a>    m_SingleChar.HideWindow();
+<a name="414"></a>    m_LeftChar.HideWindow();
+<a name="415"></a>    m_RightChar.HideWindow();
+<a name="416"></a>    m_BetweenCharIcon.HideWindow();    
+<a name="417"></a>
+<a name="418"></a>    if(m_pButCurrentSelected != None)
+<a name="419"></a>    {
+<a name="420"></a>        Notify(m_pButCurrentSelected, DE_MouseEnter);
+<a name="421"></a>    }
+<a name="422"></a>    
+<a name="423"></a>}
+<a name="424"></a>
+<a name="425"></a><span class="source_comment">/////////////////////////////////////////////////////////////////
+</span><a name="426"></a><span class="source_comment">// display the help text in the m_pHelpTextWindow (derivate for uwindowwindow
+</span><a name="427"></a><span class="source_comment">/////////////////////////////////////////////////////////////////
+</span><a name="428"></a>function ToolTip(<span class="source_type">string</span> strTip) 
+<a name="429"></a>{
+<a name="430"></a>    m_pHelpTextWindow.ToolTip(strTip);
+<a name="431"></a>}
+<a name="432"></a>
+<a name="433"></a>
+<a name="434"></a><span class="source_comment">//===============================================================================
+</span><a name="435"></a><span class="source_comment">//       This allow us to switch the right bitmap accordingly
+</span><a name="436"></a><span class="source_comment">//===============================================================================
+</span><a name="437"></a>function Notify(<span class="source_type"><a href="../uwindow/uwindowdialogcontrol.html" class="source">UWindowDialogControl</a></span> <span class="source_type">C</span>, <span class="source_type">byte</span> E)
+<a name="438"></a>{
+<a name="439"></a>	if(E == DE_MouseEnter)
+<a name="440"></a>    {
+<a name="441"></a>		if (<span class="source_type"><a href="../r6menu/r6windowbuttonmpingame.html" class="source">R6WindowButtonMPInGame</a></span>(<span class="source_type">C</span>).bDisabled)
+<a name="442"></a>			return;
+<a name="443"></a>
+<a name="444"></a>        switch(<span class="source_type">C</span>)
+<a name="445"></a>        {
+<a name="446"></a>        case m_pButAlphaTeam:
+<a name="447"></a>            m_SingleChar.ShowWindow();
+<a name="448"></a>            m_SingleChar.<span class="source_type">T</span> = m_TAlphaChar;
+<a name="449"></a>            m_SingleChar.<span class="source_type">R</span> = m_RAlphaChar;            
+<a name="450"></a>            m_pButCurrentSelected = m_pButAlphaTeam;
+<a name="451"></a>            break;
+<a name="452"></a>        case m_pButBravoTeam:
+<a name="453"></a>            m_SingleChar.ShowWindow();
+<a name="454"></a>            m_SingleChar.<span class="source_type">T</span> = m_TBetaChar;
+<a name="455"></a>            m_SingleChar.<span class="source_type">R</span> = m_RBetaChar;           
+<a name="456"></a>            m_pButCurrentSelected = m_pButBravoTeam;
+<a name="457"></a>            break;
+<a name="458"></a>        case m_pButAutoTeam:            
+<a name="459"></a>            m_LeftChar.ShowWindow();
+<a name="460"></a>            m_RightChar.ShowWindow();
+<a name="461"></a>            m_BetweenCharIcon.ShowWindow();
+<a name="462"></a>            m_pButCurrentSelected = m_pButAutoTeam;
+<a name="463"></a>            break;
+<a name="464"></a>        case m_pButSpectator:
+<a name="465"></a>            m_SingleChar.ShowWindow();
+<a name="466"></a>            m_SingleChar.<span class="source_type">T</span> = m_TSpectatorChar;
+<a name="467"></a>            m_SingleChar.<span class="source_type">R</span> = m_RSpectatorChar;            
+<a name="468"></a>            m_pButCurrentSelected = m_pButSpectator;
+<a name="469"></a>            break;            
+<a name="470"></a>        }
+<a name="471"></a>    }
+<a name="472"></a>    else if(E == DE_MouseLeave )
+<a name="473"></a>    {
+<a name="474"></a>		if (<span class="source_type"><a href="../r6menu/r6windowbuttonmpingame.html" class="source">R6WindowButtonMPInGame</a></span>(<span class="source_type">C</span>).bDisabled)
+<a name="475"></a>			return;
+<a name="476"></a>
+<a name="477"></a>        switch(<span class="source_type">C</span>)
+<a name="478"></a>        {
+<a name="479"></a>        case m_pButAlphaTeam:
+<a name="480"></a>        case m_pButBravoTeam:         
+<a name="481"></a>        case m_pButSpectator:
+<a name="482"></a>            m_SingleChar.HideWindow();        
+<a name="483"></a>            m_pButCurrentSelected = None;
+<a name="484"></a>            break;            
+<a name="485"></a>        case m_pButAutoTeam:             
+<a name="486"></a>            m_LeftChar.HideWindow();
+<a name="487"></a>            m_RightChar.HideWindow();
+<a name="488"></a>            m_BetweenCharIcon.HideWindow();
+<a name="489"></a>            m_pButCurrentSelected = None;
+<a name="490"></a>            break;  
+<a name="491"></a>        }
+<a name="492"></a>    }
+<a name="493"></a>
+<a name="494"></a>    
+<a name="495"></a>}
+<a name="496"></a>
+<a name="497"></a>function HideWindow()
+<a name="498"></a>{
+<a name="499"></a>    Super.HideWindow();
+<a name="500"></a>    m_pButCurrentSelected = None;
+<a name="501"></a>}
+<a name="502"></a>
+<a name="503"></a>defaultproperties
+<a name="504"></a>{
+<a name="505"></a>     m_iYBetweenButtonPadding=<span class="source_int">20</span>
+<a name="506"></a>     m_iButtonHeight=<span class="source_int">25</span>
+<a name="507"></a>     m_iButtonWidth=<span class="source_int">220</span>
+<a name="508"></a>     m_iSingleCharXPos=<span class="source_int">420</span>
+<a name="509"></a>     m_iSingleCharYPos=<span class="source_int">120</span>
+<a name="510"></a>     m_iLeftCharXPos=<span class="source_int">340</span>
+<a name="511"></a>     m_iLeftCharYPos=<span class="source_int">120</span>
+<a name="512"></a>     m_iRightCharXPos=<span class="source_int">491</span>
+<a name="513"></a>     m_iRightCharYPos=<span class="source_int">120</span>
+<a name="514"></a>     m_iBetweenCharXPos=<span class="source_int">453</span>
+<a name="515"></a>     m_iBetweenCharYPos=<span class="source_int">170</span>
+<a name="516"></a>     m_TBetweenChar=<span class="source_type"><a href="../engine/texture.html" class="source">Texture</a></span><span class="source_name">'R6MenuTextures.Gui_BoxScroll'</span>
+<a name="517"></a>     m_TSpectatorChar=<span class="source_type"><a href="../engine/texture.html" class="source">Texture</a></span><span class="source_name">'R6MenuTextures.Gui_BoxScroll'</span>
+<a name="518"></a>     m_pHelpReg=(X=<span class="source_int">45</span>,<span class="source_type">Y</span>=<span class="source_int">326</span>,W=<span class="source_int">299</span>,<span class="source_type">H</span>=<span class="source_int">40</span>)
+<a name="519"></a>     m_RBetweenChar=(X=<span class="source_int">188</span>,<span class="source_type">Y</span>=<span class="source_int">396</span>,W=<span class="source_int">58</span>,<span class="source_type">H</span>=<span class="source_int">77</span>)
+<a name="520"></a>     m_RSpectatorChar=(X=<span class="source_int">112</span>,<span class="source_type">Y</span>=<span class="source_int">145</span>,W=<span class="source_int">133</span>,<span class="source_type">H</span>=<span class="source_int">251</span>)
+<a name="521"></a>}
+<a name="522"></a></pre></td></tr></table></div>
+<hr />
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../r6menu/r6menu-overview.html">Package</a></td>
+	<td class="header"><a href="../r6menu/r6menumpjointeamwidget.html">Class</a></td>
+	<td class="header_hilight">Source</td>
+	<td class="header"><a class="header" href="../classtree.html#R6MenuMPJoinTeamWidget">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../Source_r6menu/r6menumpinterwidget.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../Source_r6menu/r6menumpmanagetab.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+
+<div class="stats">Class file time: sam. 18/9/2004 14:39:54.000 - Creation time: mar. 26/5/2026 18:33:20.529 - Created with <a href="http://wiki.beyondunreal.com/wiki/UnCodeX" target="_blank">UnCodeX</a></div>
+
+</body>
+</html>

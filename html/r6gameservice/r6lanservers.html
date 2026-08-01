@@ -1,0 +1,308 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+	<title>UnCodeX - R6GameService.R6LanServers</title>
+	<meta name="Generator" content="UnCodeX 241" />
+	<link rel="stylesheet" href="../DocStyle2.css" type="text/css" title="Original Purple" />
+	<link rel="alternative stylesheet" href="../DocStyle2-blue.css" type="text/css" title="Blue" />
+	<link rel="alternative stylesheet" href="../DocStyle2-red.css" type="text/css" title="Red" />
+	<!--[if IE]>
+	<link rel="stylesheet" href="../DocStyle2-msie.css" type="text/css" />
+	<![endif]-->
+	<script src="../styleswitcher.js" type="text/javascript"></script>
+</head>
+<body>
+
+<div class="header">
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../r6gameservice/r6gameservice-overview.html">Package</a></td>
+	<td class="header_hilight">Class</td>
+	<td class="header"><a href="../Source_r6gameservice/r6lanservers.html">Source</a></td>
+	<td class="header"><a class="header" href="../classtree.html#R6LanServers">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../r6gameservice/r6gsservers.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../r6gameservice/r6modinfo.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html#r6gameservice/r6lanservers.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+</div>
+<div class="spacer"></div>
+
+<h1><a href="../r6gameservice/r6gameservice-overview.html">R6GameService</a>.R6LanServers</h1>
+
+<dl>
+<dt>Extends</dt><dd><a href="../r6gameservice/r6serverlist.html">R6ServerList</a></dd>
+<dt>Modifiers</dt><dd>native </dd>
+</dl>
+
+<p></p>
+
+<pre class="tree"><a href="../core/core-overview.html">core</a>.<a href="../core/object.html">Object</a>
+|   
++-- <a href="../r6abstract/r6abstract-overview.html">R6Abstract</a>.<a href="../r6abstract/r6abstractgameservice.html">R6AbstractGameService</a>
+   |   
+   +-- <a href="../r6gameservice/r6gameservice-overview.html">R6GameService</a>.<a href="../r6gameservice/r6serverlist.html">R6ServerList</a>
+      |   
+      +-- <a href="../r6gameservice/r6gameservice-overview.html">R6GameService</a>.<a href="../r6gameservice/r6lanservers.html">R6LanServers</a>
+</pre>
+
+
+
+<hr />
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Constants Summary</th>
+</tr>
+<tr><td width="40%"><a href="#_K_INDREFR_MAXATT" name="K_INDREFR_MAXATT" title="go to the details">K_INDREFR_MAXATT</a></td><td width="10%">=</td><td width="50%">4</td></tr>
+<tr><td width="40%"><a href="#_K_REFRESH_TIMEOUT" name="K_REFRESH_TIMEOUT" title="go to the details">K_REFRESH_TIMEOUT</a></td><td width="10%">=</td><td width="50%">1000</td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Contants from <a href="../r6gameservice/r6gameservice-overview.html">R6GameService</a>.<a href="../r6gameservice/r6serverlist.html">R6ServerList</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../r6gameservice/r6serverlist.html#K_GlobalID_size">K_GlobalID_size</a></td>
+</tr>
+</table>
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th colspan="2" class="title">Variables Summary</th>
+</tr>
+<tr><td nowrap="nowrap" width="33%">INT</td><td width="66%"><a href="#_m_iIndRefrAttempts" name="m_iIndRefrAttempts" title="go to the details">m_iIndRefrAttempts</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">INT</td><td width="66%"><a href="#_m_iIndRefrEndTime" name="m_iIndRefrEndTime" title="go to the details">m_iIndRefrEndTime</a></td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Variables from <a href="../r6gameservice/r6gameservice-overview.html">R6GameService</a>.<a href="../r6gameservice/r6serverlist.html">R6ServerList</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../r6gameservice/r6serverlist.html#m_bAutoLISave">m_bAutoLISave</a>, <a href="../r6gameservice/r6serverlist.html#m_bDedicatedServer">m_bDedicatedServer</a>, <a href="../r6gameservice/r6serverlist.html#m_bIndRefrInProgress">m_bIndRefrInProgress</a>, <a href="../r6gameservice/r6serverlist.html#m_bSavePWSave">m_bSavePWSave</a>, <a href="../r6gameservice/r6serverlist.html#m_bServerInfoChanged">m_bServerInfoChanged</a>, <a href="../r6gameservice/r6serverlist.html#m_bServerListChanged">m_bServerListChanged</a>, <a href="../r6gameservice/r6serverlist.html#m_ClientBeacon">m_ClientBeacon</a>, <a href="../r6gameservice/r6serverlist.html#m_CrGameSrvInfo">m_CrGameSrvInfo</a>, <a href="../r6gameservice/r6serverlist.html#m_favoriteServersList">m_favoriteServersList</a>, <a href="../r6gameservice/r6serverlist.html#m_Filters">m_Filters</a>, <a href="../r6gameservice/r6serverlist.html#m_GameServerList">m_GameServerList</a>, <a href="../r6gameservice/r6serverlist.html#m_GSLSortIdx">m_GSLSortIdx</a>, <a href="../r6gameservice/r6serverlist.html#m_iIndRefrIndex">m_iIndRefrIndex</a>, <a href="../r6gameservice/r6serverlist.html#m_iSelSrvIndex">m_iSelSrvIndex</a>, <a href="../r6gameservice/r6serverlist.html#m_ModValidResponseList">m_ModValidResponseList</a>, <a href="../r6gameservice/r6serverlist.html#m_szGameVersion">m_szGameVersion</a>, <a href="../r6gameservice/r6serverlist.html#m_ValidResponseList">m_ValidResponseList</a></td>
+</tr>
+</table>
+<table>
+<tr>
+	<th class="inherittitle">Inherited Variables from <a href="../r6abstract/r6abstract-overview.html">R6Abstract</a>.<a href="../r6abstract/r6abstractgameservice.html">R6AbstractGameService</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../r6abstract/r6abstractgameservice.html#m_bClientWaitMatchStartReply">m_bClientWaitMatchStartReply</a>, <a href="../r6abstract/r6abstractgameservice.html#m_bClientWillSubmitResult">m_bClientWillSubmitResult</a>, <a href="../r6abstract/r6abstractgameservice.html#m_bMSClientLobbyDisconnect">m_bMSClientLobbyDisconnect</a>, <a href="../r6abstract/r6abstractgameservice.html#m_bMSClientRouterDisconnect">m_bMSClientRouterDisconnect</a>, <a href="../r6abstract/r6abstractgameservice.html#m_bServerWaitMatchStartReply">m_bServerWaitMatchStartReply</a>, <a href="../r6abstract/r6abstractgameservice.html#m_bWaitSubmitMatchReply">m_bWaitSubmitMatchReply</a>, <a href="../r6abstract/r6abstractgameservice.html#m_LocalPlayerController">m_LocalPlayerController</a>, <a href="../r6abstract/r6abstractgameservice.html#m_szUserID">m_szUserID</a></td>
+</tr>
+</table>
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Enumerations Summary</th>
+</tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Enumerations from <a href="../r6gameservice/r6gameservice-overview.html">R6GameService</a>.<a href="../r6gameservice/r6serverlist.html">R6ServerList</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../r6gameservice/r6serverlist.html#eSortCategory">eSortCategory</a></td>
+</tr>
+</table>
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Structures Summary</th>
+</tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Structures from <a href="../r6gameservice/r6gameservice-overview.html">R6GameService</a>.<a href="../r6gameservice/r6serverlist.html">R6ServerList</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../r6gameservice/r6serverlist.html#IpAddr">IpAddr</a>, <a href="../r6gameservice/r6serverlist.html#stFilterSettings">stFilterSettings</a>, <a href="../r6gameservice/r6serverlist.html#stGameData">stGameData</a>, <a href="../r6gameservice/r6serverlist.html#stGameServer">stGameServer</a>, <a href="../r6gameservice/r6serverlist.html#stGameTypeAndMap">stGameTypeAndMap</a>, <a href="../r6gameservice/r6serverlist.html#stRemotePlayers">stRemotePlayers</a>, <a href="../r6gameservice/r6serverlist.html#stValidationResponse">stValidationResponse</a></td>
+</tr>
+</table>
+
+
+<br />
+
+
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Functions Summary</th>
+</tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_Created-" name="Created" title="go to the details">Created</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_LANSeversManager-" name="LANSeversManager" title="go to the details">LANSeversManager</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_RefreshOneServer-" name="RefreshOneServer" title="go to the details">RefreshOneServer</a> (INT sortedListIdx ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_RefreshServers-" name="RefreshServers" title="go to the details">RefreshServers</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_SendBeaconToOneServer-" name="SendBeaconToOneServer" title="go to the details">SendBeaconToOneServer</a> (INT iIndex ))<br /><span class="function_state"></span></td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Functions from <a href="../r6gameservice/r6gameservice-overview.html">R6GameService</a>.<a href="../r6gameservice/r6serverlist.html">R6ServerList</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../r6gameservice/r6serverlist.html#AddToFavorites">AddToFavorites</a>, <a href="../r6gameservice/r6serverlist.html#Created">Created</a>, <a href="../r6gameservice/r6serverlist.html#DelFromFavorites">DelFromFavorites</a>, <a href="../r6gameservice/r6serverlist.html#GetDisplayListSize">GetDisplayListSize</a>, <a href="../r6gameservice/r6serverlist.html#getServerListItem">getServerListItem</a>, <a href="../r6gameservice/r6serverlist.html#getSvrData">getSvrData</a>, <a href="../r6gameservice/r6serverlist.html#GetTotalPlayers">GetTotalPlayers</a>, <a href="../r6gameservice/r6serverlist.html#IsAFavorite">IsAFavorite</a>, <a href="../r6gameservice/r6serverlist.html#NativeFillSvrContainer">NativeFillSvrContainer</a>, <a href="../r6gameservice/r6serverlist.html#NativeGetGroupID">NativeGetGroupID</a>, <a href="../r6gameservice/r6serverlist.html#NativeGetLobbyID">NativeGetLobbyID</a>, <a href="../r6gameservice/r6serverlist.html#NativeGetMaxPlayers">NativeGetMaxPlayers</a>, <a href="../r6gameservice/r6serverlist.html#NativeGetMilliSeconds">NativeGetMilliSeconds</a>, <a href="../r6gameservice/r6serverlist.html#NativeGetOwnSvrPort">NativeGetOwnSvrPort</a>, <a href="../r6gameservice/r6serverlist.html#NativeGetPingTime">NativeGetPingTime</a>, <a href="../r6gameservice/r6serverlist.html#NativeGetPingTimeOut">NativeGetPingTimeOut</a>, <a href="../r6gameservice/r6serverlist.html#NativeInitFavorites">NativeInitFavorites</a>, <a href="../r6gameservice/r6serverlist.html#NativeResetSvrContainer">NativeResetSvrContainer</a>, <a href="../r6gameservice/r6serverlist.html#NativeSetOwnSvrPort">NativeSetOwnSvrPort</a>, <a href="../r6gameservice/r6serverlist.html#NativeUpdateFavorites">NativeUpdateFavorites</a>, <a href="../r6gameservice/r6serverlist.html#SetSelectedServer">SetSelectedServer</a>, <a href="../r6gameservice/r6serverlist.html#SortPlayersByKills">SortPlayersByKills</a>, <a href="../r6gameservice/r6serverlist.html#SortServers">SortServers</a>, <a href="../r6gameservice/r6serverlist.html#UpdateFilters">UpdateFilters</a></td>
+</tr>
+</table>
+<table>
+<tr>
+	<th class="inherittitle">Inherited Functions from <a href="../r6abstract/r6abstract-overview.html">R6Abstract</a>.<a href="../r6abstract/r6abstractgameservice.html">R6AbstractGameService</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../r6abstract/r6abstractgameservice.html#CallNativeProcessIcmpPing">CallNativeProcessIcmpPing</a>, <a href="../r6abstract/r6abstractgameservice.html#CallNativeSetMatchResult">CallNativeSetMatchResult</a>, <a href="../r6abstract/r6abstractgameservice.html#MyID">MyID</a>, <a href="../r6abstract/r6abstractgameservice.html#NativeSubmitMatchResult">NativeSubmitMatchResult</a></td>
+</tr>
+</table>
+
+
+<br />
+
+
+
+<hr />
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Constants Detail</th>
+</tr>
+</table>
+
+<h4><a name="_K_INDREFR_MAXATT" class="hidden"></a>K_INDREFR_MAXATT <a href="../Source_r6gameservice/r6lanservers.html#16" class="small">Source code</a></h4>
+<div class="declaration">const K_INDREFR_MAXATT = <span class="source_int">4</span>;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_K_REFRESH_TIMEOUT" class="hidden"></a>K_REFRESH_TIMEOUT <a href="../Source_r6gameservice/r6lanservers.html#15" class="small">Source code</a></h4>
+<div class="declaration">const K_REFRESH_TIMEOUT = <span class="source_int">1000</span>;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th class="title">Variables Detail</th>
+</tr>
+</table>
+
+<h4><a name="_m_iIndRefrAttempts" class="hidden"></a>m_iIndRefrAttempts <a href="../Source_r6gameservice/r6lanservers.html#12" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">INT</span> m_iIndRefrAttempts;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_iIndRefrEndTime" class="hidden"></a>m_iIndRefrEndTime <a href="../Source_r6gameservice/r6lanservers.html#13" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">INT</span> m_iIndRefrEndTime;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+
+
+<br />
+
+
+
+
+
+
+
+<table class="title">
+<tr>
+	<th class="title">Functions Detail</th>
+</tr>
+</table>
+
+<h4><a name="_Created-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> Created <span class="function_state"></span> <a href="../Source_r6gameservice/r6lanservers.html#81" class="small">Source code</a></h4>
+<div class="declaration"> function  Created ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_LANSeversManager-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> LANSeversManager <span class="function_state"></span> <a href="../Source_r6gameservice/r6lanservers.html#93" class="small">Source code</a></h4>
+<div class="declaration"> function  LANSeversManager ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_RefreshOneServer-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> RefreshOneServer <span class="function_state"></span> <a href="../Source_r6gameservice/r6lanservers.html#35" class="small">Source code</a></h4>
+<div class="declaration"> function  RefreshOneServer ( <span class="source_type">INT</span> <span class="source_type">sortedListIdx</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_RefreshServers-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> RefreshServers <span class="function_state"></span> <a href="../Source_r6gameservice/r6lanservers.html#23" class="small">Source code</a></h4>
+<div class="declaration"> function  RefreshServers ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_SendBeaconToOneServer-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> SendBeaconToOneServer <span class="function_state"></span> <a href="../Source_r6gameservice/r6lanservers.html#52" class="small">Source code</a></h4>
+<div class="declaration"> function  SendBeaconToOneServer ( <span class="source_type">INT</span> <span class="source_type">iIndex</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+
+
+<br />
+
+
+<table class="title">
+<tr>
+	<th class="title">Defaultproperties</th>
+</tr>
+</table>
+<br />
+<div class="source"><table class="source"><tr><td class="source"><pre class="source">defaultproperties
+{
+     m_Filters=(bDeathMatch=True,bTeamDeathMatch=True,bDisarmBomb=True,bHostageRescueAdv=True,bEscortPilot=True,bMission=True,bTerroristHunt=True,bTerroristHuntAdv=True,bScatteredHuntAdv=True,bCaptureTheEnemyAdv=True,bKamikaze=True,bHostageRescueCoop=True,bDefend=True,bRecon=True,bSquadDeathMatch=True,bSquadTeamDeathMatch=True,bDebugGameMode=True)
+}
+</pre></td></tr></table></div>
+
+
+
+<hr />
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../r6gameservice/r6gameservice-overview.html">Package</a></td>
+	<td class="header_hilight">Class</td>
+	<td class="header"><a href="../Source_r6gameservice/r6lanservers.html">Source</a></td>
+	<td class="header"><a class="header" href="../classtree.html#R6LanServers">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../r6gameservice/r6gsservers.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../r6gameservice/r6modinfo.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+
+<div class="stats">Creation time: mar. 26/5/2026 18:33:11.688 - Created with <a href="http://wiki.beyondunreal.com/wiki/UnCodeX" target="_blank">UnCodeX</a></div>
+
+</body>
+</html>

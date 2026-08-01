@@ -1,0 +1,516 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+	<title>UnCodeX - R6Engine.R6LadderVolume</title>
+	<meta name="Generator" content="UnCodeX 241" />
+	<link rel="stylesheet" href="../DocStyle2.css" type="text/css" title="Original Purple" />
+	<link rel="alternative stylesheet" href="../DocStyle2-blue.css" type="text/css" title="Blue" />
+	<link rel="alternative stylesheet" href="../DocStyle2-red.css" type="text/css" title="Red" />
+	<!--[if IE]>
+	<link rel="stylesheet" href="../DocStyle2-msie.css" type="text/css" />
+	<![endif]-->
+	<script src="../styleswitcher.js" type="text/javascript"></script>
+</head>
+<body>
+
+<div class="header">
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../r6engine/r6engine-overview.html">Package</a></td>
+	<td class="header_hilight">Class</td>
+	<td class="header"><a href="../Source_r6engine/r6laddervolume.html">Source</a></td>
+	<td class="header"><a class="header" href="../classtree.html#R6LadderVolume">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../r6engine/r6laddercollision.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../r6engine/r6matineeactor.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html#r6engine/r6laddervolume.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+</div>
+<div class="spacer"></div>
+
+<h1><a href="../r6engine/r6engine-overview.html">R6Engine</a>.R6LadderVolume</h1>
+
+<dl>
+<dt>Extends</dt><dd><a href="../engine/laddervolume.html">LadderVolume</a></dd>
+<dt>Modifiers</dt><dd>native </dd>
+</dl>
+
+<p></p>
+
+<pre class="tree"><a href="../core/core-overview.html">core</a>.<a href="../core/object.html">Object</a>
+|   
++-- <a href="../engine/engine-overview.html">engine</a>.<a href="../engine/actor.html">Actor</a>
+   |   
+   +-- <a href="../engine/engine-overview.html">engine</a>.<a href="../engine/brush.html">Brush</a>
+      |   
+      +-- <a href="../engine/engine-overview.html">engine</a>.<a href="../engine/volume.html">Volume</a>
+         |   
+         +-- <a href="../engine/engine-overview.html">engine</a>.<a href="../engine/physicsvolume.html">PhysicsVolume</a>
+            |   
+            +-- <a href="../engine/engine-overview.html">engine</a>.<a href="../engine/laddervolume.html">LadderVolume</a>
+               |   
+               +-- <a href="../r6engine/r6engine-overview.html">R6Engine</a>.<a href="../r6engine/r6laddervolume.html">R6LadderVolume</a>
+</pre>
+
+
+
+<hr />
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Constants Summary</th>
+</tr>
+<tr><td width="40%"><a href="#_C_iMaxClimbers" name="C_iMaxClimbers" title="go to the details">C_iMaxClimbers</a></td><td width="10%">=</td><td width="50%">6</td></tr>
+
+</table>
+
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th colspan="2" class="title">Variables Summary</th>
+</tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../r6engine/r6laddercollision.html">R6LadderCollision</a></td><td width="66%"><a href="#_m_BottomCollision" name="m_BottomCollision" title="go to the details">m_BottomCollision</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../r6engine/r6ladder.html">R6Ladder</a></td><td width="66%"><a href="#_m_BottomLadder" name="m_BottomLadder" title="go to the details">m_BottomLadder</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../r6engine/r6pawn.html">R6Pawn</a></td><td width="66%"><a href="#_m_Climber[C_iMaxClimbers]" name="m_Climber[C_iMaxClimbers]" title="go to the details">m_Climber[C_iMaxClimbers]</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">FLOAT</td><td width="66%"><a href="#_m_fBottomLadderActionRange" name="m_fBottomLadderActionRange" title="go to the details">m_fBottomLadderActionRange</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../r6engine/r6laddercollision.html">R6LadderCollision</a></td><td width="66%"><a href="#_m_TopCollision" name="m_TopCollision" title="go to the details">m_TopCollision</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../r6engine/r6ladder.html">R6Ladder</a></td><td width="66%"><a href="#_m_TopLadder" name="m_TopLadder" title="go to the details">m_TopLadder</a></td></tr>
+<tr><th colspan="2" class="small">Debug</th></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bShowLog" name="bShowLog" title="go to the details">bShowLog</a></td></tr>
+<tr><th colspan="2" class="small">R6LadderVolume</th></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../r6engine/r6laddervolume.html#eLadderEndDirection">eLadderEndDirection</a></td><td width="66%"><a href="#_m_eLadderEndDirection" name="m_eLadderEndDirection" title="go to the details">m_eLadderEndDirection</a></td></tr>
+<tr><th colspan="2" class="small">R6Sound</th></tr>
+<tr><td nowrap="nowrap" width="33%">Sound</td><td width="66%"><a href="#_m_FootSound" name="m_FootSound" title="go to the details">m_FootSound</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">Sound</td><td width="66%"><a href="#_m_HandSound" name="m_HandSound" title="go to the details">m_HandSound</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">Sound</td><td width="66%"><a href="#_m_SlideSound" name="m_SlideSound" title="go to the details">m_SlideSound</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">Sound</td><td width="66%"><a href="#_m_SlideSoundStop" name="m_SlideSoundStop" title="go to the details">m_SlideSoundStop</a></td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Variables from <a href="../engine/engine-overview.html">engine</a>.<a href="../engine/laddervolume.html">LadderVolume</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../engine/laddervolume.html#bAutoPath">bAutoPath</a>, <a href="../engine/laddervolume.html#bNoPhysicalLadder">bNoPhysicalLadder</a>, <a href="../engine/laddervolume.html#ClimbDir">ClimbDir</a>, <a href="../engine/laddervolume.html#ClimbingAnimation">ClimbingAnimation</a>, <a href="../engine/laddervolume.html#LadderList">LadderList</a>, <a href="../engine/laddervolume.html#LookDir">LookDir</a>, <a href="../engine/laddervolume.html#PendingClimber">PendingClimber</a>, <a href="../engine/laddervolume.html#TopAnimation">TopAnimation</a>, <a href="../engine/laddervolume.html#WallDir">WallDir</a></td>
+</tr>
+</table>
+<table>
+<tr>
+	<th class="inherittitle">Inherited Variables from <a href="../engine/engine-overview.html">engine</a>.<a href="../engine/physicsvolume.html">PhysicsVolume</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../engine/physicsvolume.html#bBounceVelocity">bBounceVelocity</a>, <a href="../engine/physicsvolume.html#bDestructive">bDestructive</a>, <a href="../engine/physicsvolume.html#bDistanceFog">bDistanceFog</a>, <a href="../engine/physicsvolume.html#bMoveProjectiles">bMoveProjectiles</a>, <a href="../engine/physicsvolume.html#bNeutralZone">bNeutralZone</a>, <a href="../engine/physicsvolume.html#bNoInventory">bNoInventory</a>, <a href="../engine/physicsvolume.html#bPainCausing">bPainCausing</a>, <a href="../engine/physicsvolume.html#bWaterVolume">bWaterVolume</a>, <a href="../engine/physicsvolume.html#DamagePerSec">DamagePerSec</a>, <a href="../engine/physicsvolume.html#DamageType">DamageType</a>, <a href="../engine/physicsvolume.html#DistanceFogColor">DistanceFogColor</a>, <a href="../engine/physicsvolume.html#DistanceFogEnd">DistanceFogEnd</a>, <a href="../engine/physicsvolume.html#DistanceFogStart">DistanceFogStart</a>, <a href="../engine/physicsvolume.html#EntryActor">EntryActor</a>, <a href="../engine/physicsvolume.html#EntrySound">EntrySound</a>, <a href="../engine/physicsvolume.html#ExitActor">ExitActor</a>, <a href="../engine/physicsvolume.html#ExitSound">ExitSound</a>, <a href="../engine/physicsvolume.html#FluidFriction">FluidFriction</a>, <a href="../engine/physicsvolume.html#Gravity">Gravity</a>, <a href="../engine/physicsvolume.html#GroundFriction">GroundFriction</a>, <a href="../engine/physicsvolume.html#NextPhysicsVolume">NextPhysicsVolume</a>, <a href="../engine/physicsvolume.html#PainTimer">PainTimer</a>, <a href="../engine/physicsvolume.html#Priority">Priority</a>, <a href="../engine/physicsvolume.html#TerminalVelocity">TerminalVelocity</a>, <a href="../engine/physicsvolume.html#ViewFlash">ViewFlash</a>, <a href="../engine/physicsvolume.html#ViewFog">ViewFog</a>, <a href="../engine/physicsvolume.html#ZoneVelocity">ZoneVelocity</a></td>
+</tr>
+</table>
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Enumerations Summary</th>
+</tr>
+<tr><td><a href="#_eLadderCircumstantialAction" name="eLadderCircumstantialAction" title="go to the details">eLadderCircumstantialAction</a><br /><span class="small">CAL_None,
+CAL_Climb,
+</span></td></tr>
+<tr><td><a href="#_eLadderEndDirection" name="eLadderEndDirection" title="go to the details">eLadderEndDirection</a><br /><span class="small">LDR_Forward,
+LDR_Right,
+LDR_Left</span></td></tr>
+
+</table>
+
+
+
+<br />
+
+
+
+
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Functions Summary</th>
+</tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_AddClimber-" name="AddClimber" title="go to the details">AddClimber</a> (<a href="../r6engine/r6pawn.html">R6Pawn</a> p))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>bool&nbsp;</td><td><a href="#_BottomOfLadderIsAccessible-" name="BottomOfLadderIsAccessible" title="go to the details">BottomOfLadderIsAccessible</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_Destroyed-" name="Destroyed" title="go to the details">Destroyed</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_DisableCollisions-" name="DisableCollisions" title="go to the details">DisableCollisions</a> (<a href="../r6engine/r6ladder.html">R6Ladder</a> ladder))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_EnableCollisions-" name="EnableCollisions" title="go to the details">EnableCollisions</a> (<a href="../r6engine/r6ladder.html">R6Ladder</a> ladder))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>bool&nbsp;</td><td><a href="#_IsAShortLadder-" name="IsAShortLadder" title="go to the details">IsAShortLadder</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>bool&nbsp;</td><td><a href="#_IsAvailable-" name="IsAvailable" title="go to the details">IsAvailable</a> (Pawn p ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_event.gif" alt="event" title="event" /></td><td>&nbsp;</td><td><a href="#_PawnEnteredVolume-" name="PawnEnteredVolume" title="go to the details">PawnEnteredVolume</a> (<a href="../engine/pawn.html">Pawn</a> p))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_event.gif" alt="event" title="event" /></td><td>&nbsp;</td><td><a href="#_PawnLeavingVolume-" name="PawnLeavingVolume" title="go to the details">PawnLeavingVolume</a> (<a href="../engine/pawn.html">Pawn</a> p))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_event.gif" alt="event" title="event" /></td><td>&nbsp;</td><td><a href="#_PhysicsChangedFor-" name="PhysicsChangedFor" title="go to the details">PhysicsChangedFor</a> (<a href="../engine/actor.html">Actor</a> Other))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_PostBeginPlay-" name="PostBeginPlay" title="go to the details">PostBeginPlay</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_PostNetBeginPlay-" name="PostNetBeginPlay" title="go to the details">PostNetBeginPlay</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>string&nbsp;</td><td><a href="#_R6GetCircumstantialActionString-" name="R6GetCircumstantialActionString" title="go to the details">R6GetCircumstantialActionString</a> (INT iAction ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_event.gif" alt="event" title="event" /></td><td>&nbsp;</td><td><a href="#_R6QueryCircumstantialAction-" name="R6QueryCircumstantialAction" title="go to the details">R6QueryCircumstantialAction</a> (FLOAT fDistance, Out <a href="../engine/r6abstractcircumstantialactionquery.html">R6AbstractCircumstantialActionQuery</a> Query, PlayerController <a href="../engine/playercontroller.html">playerController</a> ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_RemoveClimber-" name="RemoveClimber" title="go to the details">RemoveClimber</a> (<a href="../r6engine/r6pawn.html">R6Pawn</a> p))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_ResetOriginalData-" name="ResetOriginalData" title="go to the details">ResetOriginalData</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_event.gif" alt="event" title="event" /></td><td>&nbsp;</td><td><a href="#_SetPotentialClimber-" name="SetPotentialClimber" title="go to the details">SetPotentialClimber</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>bool&nbsp;</td><td><a href="#_SpaceIsAvailableAtBottomOfLadder-" name="SpaceIsAvailableAtBottomOfLadder" title="go to the details">SpaceIsAvailableAtBottomOfLadder</a> (optional bool bAvoidPlayerOnly))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_Tick-PotentialClimb" name="Tick" title="go to the details">Tick</a> (float fDeltaTime))<br /><span class="function_state">PotentialClimb</span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>bool&nbsp;</td><td><a href="#_TopOfLadderIsAccessible-" name="TopOfLadderIsAccessible" title="go to the details">TopOfLadderIsAccessible</a> ()))<br /><span class="function_state"></span></td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Functions from <a href="../engine/engine-overview.html">engine</a>.<a href="../engine/laddervolume.html">LadderVolume</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../engine/laddervolume.html#InUse">InUse</a>, <a href="../engine/laddervolume.html#PawnEnteredVolume">PawnEnteredVolume</a>, <a href="../engine/laddervolume.html#PawnLeavingVolume">PawnLeavingVolume</a>, <a href="../engine/laddervolume.html#PhysicsChangedFor">PhysicsChangedFor</a>, <a href="../engine/laddervolume.html#PostBeginPlay">PostBeginPlay</a></td>
+</tr>
+</table>
+<table>
+<tr>
+	<th class="inherittitle">Inherited Functions from <a href="../engine/engine-overview.html">engine</a>.<a href="../engine/physicsvolume.html">PhysicsVolume</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../engine/physicsvolume.html#ActorEnteredVolume">ActorEnteredVolume</a>, <a href="../engine/physicsvolume.html#ActorLeavingVolume">ActorLeavingVolume</a>, <a href="../engine/physicsvolume.html#CausePainTo">CausePainTo</a>, <a href="../engine/physicsvolume.html#Destroyed">Destroyed</a>, <a href="../engine/physicsvolume.html#PawnEnteredVolume">PawnEnteredVolume</a>, <a href="../engine/physicsvolume.html#PawnLeavingVolume">PawnLeavingVolume</a>, <a href="../engine/physicsvolume.html#PhysicsChangedFor">PhysicsChangedFor</a>, <a href="../engine/physicsvolume.html#PlayEntrySplash">PlayEntrySplash</a>, <a href="../engine/physicsvolume.html#PlayExitSplash">PlayExitSplash</a>, <a href="../engine/physicsvolume.html#PostBeginPlay">PostBeginPlay</a>, <a href="../engine/physicsvolume.html#TimerPop">TimerPop</a>, <a href="../engine/physicsvolume.html#touch">touch</a>, <a href="../engine/physicsvolume.html#Trigger">Trigger</a>, <a href="../engine/physicsvolume.html#untouch">untouch</a></td>
+</tr>
+</table>
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th class="title">States Summary</th>
+</tr>
+</table>
+
+<table>
+<tr>
+	<th>PotentialClimb <a href="../Source_r6engine/r6laddervolume.html#218" class="small">Source code</a></th>
+</tr>
+<tr>
+	<td>
+	<span class="declaration"><span class="us_keyw"> state</span> PotentialClimb <span class="us_keyw"></span> </span><br />
+	<blockquote class="comment">
+	
+	</blockquote>
+	</td>
+</tr>
+<tr>
+	<td><a href="#_Tick+PotentialClimb">Tick</a></td>
+</tr>
+</table>
+
+
+<br />
+
+<hr />
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Constants Detail</th>
+</tr>
+</table>
+
+<h4><a name="_C_iMaxClimbers" class="hidden"></a>C_iMaxClimbers <a href="../Source_r6engine/r6laddervolume.html#20" class="small">Source code</a></h4>
+<div class="declaration">const C_iMaxClimbers = <span class="source_int">6</span>;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th class="title">Variables Detail</th>
+</tr>
+</table>
+
+<h4><a name="_m_BottomCollision" class="hidden"></a>m_BottomCollision <a href="../Source_r6engine/r6laddervolume.html#18" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../r6engine/r6laddercollision.html" class="source">R6LadderCollision</a></span> m_BottomCollision;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_BottomLadder" class="hidden"></a>m_BottomLadder <a href="../Source_r6engine/r6laddervolume.html#15" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../r6engine/r6ladder.html" class="source">R6Ladder</a></span> m_BottomLadder;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_Climber[C_iMaxClimbers]" class="hidden"></a>m_Climber[C_iMaxClimbers] <a href="../Source_r6engine/r6laddervolume.html#21" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../r6engine/r6pawn.html" class="source">R6Pawn</a></span> m_Climber[C_iMaxClimbers];</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_fBottomLadderActionRange" class="hidden"></a>m_fBottomLadderActionRange <a href="../Source_r6engine/r6laddervolume.html#28" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">FLOAT</span> m_fBottomLadderActionRange;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_TopCollision" class="hidden"></a>m_TopCollision <a href="../Source_r6engine/r6laddervolume.html#17" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../r6engine/r6laddercollision.html" class="source">R6LadderCollision</a></span> m_TopCollision;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_TopLadder" class="hidden"></a>m_TopLadder <a href="../Source_r6engine/r6laddervolume.html#14" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../r6engine/r6ladder.html" class="source">R6Ladder</a></span> m_TopLadder;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h3 class="vartag">Debug</h3>
+<h4><a name="_bShowLog" class="hidden"></a>bShowLog <a href="../Source_r6engine/r6laddervolume.html#30" class="small">Source code</a></h4>
+<div class="declaration">var(Debug) <span class="source_type">bool</span> bShowLog;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h3 class="vartag">R6LadderVolume</h3>
+<h4><a name="_m_eLadderEndDirection" class="hidden"></a>m_eLadderEndDirection <a href="../Source_r6engine/r6laddervolume.html#32" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../r6engine/r6laddervolume.html" class="source">R6LadderVolume</a></span>) <span class="source_type"><a href="../r6engine/r6laddervolume.html#eLadderEndDirection" class="source">eLadderEndDirection</a></span> m_eLadderEndDirection;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h3 class="vartag">R6Sound</h3>
+<h4><a name="_m_FootSound" class="hidden"></a>m_FootSound <a href="../Source_r6engine/r6laddervolume.html#26" class="small">Source code</a></h4>
+<div class="declaration">var(R6Sound) <span class="source_type">Sound</span> m_FootSound;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_HandSound" class="hidden"></a>m_HandSound <a href="../Source_r6engine/r6laddervolume.html#25" class="small">Source code</a></h4>
+<div class="declaration">var(R6Sound) <span class="source_type">Sound</span> m_HandSound;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_SlideSound" class="hidden"></a>m_SlideSound <a href="../Source_r6engine/r6laddervolume.html#23" class="small">Source code</a></h4>
+<div class="declaration">var(R6Sound) <span class="source_type">Sound</span> m_SlideSound;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_SlideSoundStop" class="hidden"></a>m_SlideSoundStop <a href="../Source_r6engine/r6laddervolume.html#24" class="small">Source code</a></h4>
+<div class="declaration">var(R6Sound) <span class="source_type">Sound</span> m_SlideSoundStop;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th class="title">Enumerations Detail</th>
+</tr>
+</table>
+
+<h4><a name="_eLadderCircumstantialAction" class="hidden"></a>eLadderCircumstantialAction <a href="../Source_r6engine/r6laddervolume.html#39" class="small">Source code</a></h4>
+<div class="declaration">enum <span class="source_type"><a href="../r6engine/r6laddervolume.html#eLadderCircumstantialAction" class="source">eLadderCircumstantialAction</a></span><br />
+{<blockquote>CAL_None,
+CAL_Climb,
+</blockquote>};
+</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_eLadderEndDirection" class="hidden"></a>eLadderEndDirection <a href="../Source_r6engine/r6laddervolume.html#32" class="small">Source code</a></h4>
+<div class="declaration">enum <span class="source_type"><a href="../r6engine/r6laddervolume.html#eLadderEndDirection" class="source">eLadderEndDirection</a></span><br />
+{<blockquote>LDR_Forward,
+LDR_Right,
+LDR_Left</blockquote>};
+</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+
+
+<br />
+
+
+
+
+
+<table class="title">
+<tr>
+	<th class="title">Functions Detail</th>
+</tr>
+</table>
+
+<h4><a name="_AddClimber-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> AddClimber <span class="function_state"></span> <a href="../Source_r6engine/r6laddervolume.html#250" class="small">Source code</a></h4>
+<div class="declaration">simulated function  AddClimber ( <span class="source_type"><a href="../r6engine/r6pawn.html" class="source">R6Pawn</a></span> <span class="source_type">p</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_BottomOfLadderIsAccessible-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> BottomOfLadderIsAccessible <span class="function_state"></span> <a href="../Source_r6engine/r6laddervolume.html#327" class="small">Source code</a></h4>
+<div class="declaration"> function <span class="source_type">bool</span> BottomOfLadderIsAccessible ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_Destroyed-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> Destroyed <span class="function_state"></span> <a href="../Source_r6engine/r6laddervolume.html#126" class="small">Source code</a></h4>
+<div class="declaration"> function  Destroyed ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_DisableCollisions-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> DisableCollisions <span class="function_state"></span> <a href="../Source_r6engine/r6laddervolume.html#162" class="small">Source code</a></h4>
+<div class="declaration"> function  DisableCollisions ( <span class="source_type"><a href="../r6engine/r6ladder.html" class="source">R6Ladder</a></span> <span class="source_type"><a href="../engine/ladder.html" class="source">ladder</a></span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_EnableCollisions-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> EnableCollisions <span class="function_state"></span> <a href="../Source_r6engine/r6laddervolume.html#154" class="small">Source code</a></h4>
+<div class="declaration"> function  EnableCollisions ( <span class="source_type"><a href="../r6engine/r6ladder.html" class="source">R6Ladder</a></span> <span class="source_type"><a href="../engine/ladder.html" class="source">ladder</a></span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_IsAShortLadder-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> IsAShortLadder <span class="function_state"></span> <a href="../Source_r6engine/r6laddervolume.html#374" class="small">Source code</a></h4>
+<div class="declaration"> function <span class="source_type">bool</span> IsAShortLadder ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_IsAvailable-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> IsAvailable <span class="function_state"></span> <a href="../Source_r6engine/r6laddervolume.html#283" class="small">Source code</a></h4>
+<div class="declaration"> function <span class="source_type">bool</span> IsAvailable ( <span class="source_type"><a href="../engine/pawn.html" class="source">Pawn</a></span> <span class="source_type">p</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_PawnEnteredVolume-" class="hidden"></a><img src="../img_event.gif" alt="" title="event" /> PawnEnteredVolume <span class="function_state"></span> <a href="../Source_r6engine/r6laddervolume.html#170" class="small">Source code</a></h4>
+<div class="declaration">simulated event  PawnEnteredVolume ( <span class="source_type"><a href="../engine/pawn.html" class="source">Pawn</a></span> <span class="source_type">p</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_PawnLeavingVolume-" class="hidden"></a><img src="../img_event.gif" alt="" title="event" /> PawnLeavingVolume <span class="function_state"></span> <a href="../Source_r6engine/r6laddervolume.html#198" class="small">Source code</a></h4>
+<div class="declaration">simulated event  PawnLeavingVolume ( <span class="source_type"><a href="../engine/pawn.html" class="source">Pawn</a></span> <span class="source_type">p</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_PhysicsChangedFor-" class="hidden"></a><img src="../img_event.gif" alt="" title="event" /> PhysicsChangedFor <span class="function_state"></span> <a href="../Source_r6engine/r6laddervolume.html#382" class="small">Source code</a></h4>
+<div class="declaration">simulated event  PhysicsChangedFor ( <span class="source_type"><a href="../engine/actor.html" class="source">Actor</a></span> <span class="source_type">Other</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_PostBeginPlay-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> PostBeginPlay <span class="function_state"></span> <a href="../Source_r6engine/r6laddervolume.html#47" class="small">Source code</a></h4>
+<div class="declaration">simulated function  PostBeginPlay ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_PostNetBeginPlay-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> PostNetBeginPlay <span class="function_state"></span> <a href="../Source_r6engine/r6laddervolume.html#53" class="small">Source code</a></h4>
+<div class="declaration">simulated function  PostNetBeginPlay ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_R6GetCircumstantialActionString-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> R6GetCircumstantialActionString <span class="function_state"></span> <a href="../Source_r6engine/r6laddervolume.html#481" class="small">Source code</a></h4>
+<div class="declaration">simulated function <span class="source_type">string</span> R6GetCircumstantialActionString ( <span class="source_type">INT</span> <span class="source_type">iAction</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_R6QueryCircumstantialAction-" class="hidden"></a><img src="../img_event.gif" alt="" title="event" /> R6QueryCircumstantialAction <span class="function_state"></span> <a href="../Source_r6engine/r6laddervolume.html#386" class="small">Source code</a></h4>
+<div class="declaration">simulated event  R6QueryCircumstantialAction ( <span class="source_type">FLOAT</span> <span class="source_type">fDistance</span>, Out <span class="source_type"><a href="../engine/r6abstractcircumstantialactionquery.html" class="source">R6AbstractCircumstantialActionQuery</a></span> <span class="source_type">Query</span>, <span class="source_type"><a href="../engine/playercontroller.html" class="source">PlayerController</a></span> <span class="source_type"><a href="../engine/playercontroller.html" class="source">playerController</a></span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_RemoveClimber-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> RemoveClimber <span class="function_state"></span> <a href="../Source_r6engine/r6laddervolume.html#268" class="small">Source code</a></h4>
+<div class="declaration">simulated function  RemoveClimber ( <span class="source_type"><a href="../r6engine/r6pawn.html" class="source">R6Pawn</a></span> <span class="source_type">p</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ResetOriginalData-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> ResetOriginalData <span class="function_state"></span> <a href="../Source_r6engine/r6laddervolume.html#141" class="small">Source code</a></h4>
+<div class="declaration">simulated function  ResetOriginalData ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_SetPotentialClimber-" class="hidden"></a><img src="../img_event.gif" alt="" title="event" /> SetPotentialClimber <span class="function_state"></span> <a href="../Source_r6engine/r6laddervolume.html#213" class="small">Source code</a></h4>
+<div class="declaration">simulated event  SetPotentialClimber ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_SpaceIsAvailableAtBottomOfLadder-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> SpaceIsAvailableAtBottomOfLadder <span class="function_state"></span> <a href="../Source_r6engine/r6laddervolume.html#350" class="small">Source code</a></h4>
+<div class="declaration"> function <span class="source_type">bool</span> SpaceIsAvailableAtBottomOfLadder ( optional <span class="source_type">bool</span> bAvoidPlayerOnly) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_Tick-PotentialClimb" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> Tick <span class="function_state">PotentialClimb</span> <a href="../Source_r6engine/r6laddervolume.html#220" class="small">Source code</a></h4>
+<div class="declaration">simulated function  Tick ( <span class="source_type">float</span> fDeltaTime) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_TopOfLadderIsAccessible-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> TopOfLadderIsAccessible <span class="function_state"></span> <a href="../Source_r6engine/r6laddervolume.html#304" class="small">Source code</a></h4>
+<div class="declaration"> function <span class="source_type">bool</span> TopOfLadderIsAccessible ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+
+
+<br />
+
+
+<table class="title">
+<tr>
+	<th class="title">Defaultproperties</th>
+</tr>
+</table>
+<br />
+<div class="source"><table class="source"><tr><td class="source"><pre class="source">defaultproperties
+{
+     m_fBottomLadderActionRange=<span class="source_int">30.000000</span>
+     bStatic=False
+     m_fCircumstantialActionRange=<span class="source_int">110.000000</span>
+     NetPriority=<span class="source_int">2.700000</span>
+}
+</pre></td></tr></table></div>
+
+
+
+<hr />
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../r6engine/r6engine-overview.html">Package</a></td>
+	<td class="header_hilight">Class</td>
+	<td class="header"><a href="../Source_r6engine/r6laddervolume.html">Source</a></td>
+	<td class="header"><a class="header" href="../classtree.html#R6LadderVolume">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../r6engine/r6laddercollision.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../r6engine/r6matineeactor.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+
+<div class="stats">Creation time: mar. 26/5/2026 18:33:11.680 - Created with <a href="http://wiki.beyondunreal.com/wiki/UnCodeX" target="_blank">UnCodeX</a></div>
+
+</body>
+</html>

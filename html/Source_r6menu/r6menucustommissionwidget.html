@@ -1,0 +1,747 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+	<title>UnCodeX - Source: R6Menu.R6MenuCustomMissionWidget</title>
+	<meta name="Generator" content="UnCodeX 241" />
+	<link rel="stylesheet" href="../DocStyle2.css" type="text/css" title="Original Purple" />
+	<link rel="alternative stylesheet" href="../DocStyle2-blue.css" type="text/css" title="Blue" />
+	<link rel="alternative stylesheet" href="../DocStyle2-red.css" type="text/css" title="Red" />
+	<!--[if IE]>
+	<link rel="stylesheet" href="../DocStyle2-msie.css" type="text/css" />
+	<![endif]-->
+	<script src="../styleswitcher.js" type="text/javascript"></script>
+</head>
+<body>
+
+<div class="header">
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../r6menu/r6menu-overview.html">Package</a></td>
+	<td class="header"><a href="../r6menu/r6menucustommissionwidget.html">Class</a></td>
+	<td class="header_hilight">Source</td>
+	<td class="header"><a class="header" href="../classtree.html#R6MenuCustomMissionWidget">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../Source_r6menu/r6menucustommissionnbterroselect.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../Source_r6menu/r6menudebriefingwidget.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html#Source_r6menu/r6menucustommissionwidget.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+</div>
+<div class="spacer"></div>
+
+<h1><a href="../r6menu/r6menu-overview.html">R6Menu</a>.<a href="../r6menu/r6menucustommissionwidget.html">R6MenuCustomMissionWidget</a></h1>
+<br />
+<div class="source"><table class="source"><tr><td class="source_lineno"><span class="source_lineno">00001<br />00002<br />00003<br />00004<br />00005<br />00006<br />00007<br />00008<br />00009<br />00010<br />00011<br />00012<br />00013<br />00014<br />00015<br />00016<br />00017<br />00018<br />00019<br />00020<br />
+00021<br />00022<br />00023<br />00024<br />00025<br />00026<br />00027<br />00028<br />00029<br />00030<br />00031<br />00032<br />00033<br />00034<br />00035<br />00036<br />00037<br />00038<br />00039<br />00040<br />
+00041<br />00042<br />00043<br />00044<br />00045<br />00046<br />00047<br />00048<br />00049<br />00050<br />00051<br />00052<br />00053<br />00054<br />00055<br />00056<br />00057<br />00058<br />00059<br />00060<br />
+00061<br />00062<br />00063<br />00064<br />00065<br />00066<br />00067<br />00068<br />00069<br />00070<br />00071<br />00072<br />00073<br />00074<br />00075<br />00076<br />00077<br />00078<br />00079<br />00080<br />
+00081<br />00082<br />00083<br />00084<br />00085<br />00086<br />00087<br />00088<br />00089<br />00090<br />00091<br />00092<br />00093<br />00094<br />00095<br />00096<br />00097<br />00098<br />00099<br />00100<br />
+00101<br />00102<br />00103<br />00104<br />00105<br />00106<br />00107<br />00108<br />00109<br />00110<br />00111<br />00112<br />00113<br />00114<br />00115<br />00116<br />00117<br />00118<br />00119<br />00120<br />
+00121<br />00122<br />00123<br />00124<br />00125<br />00126<br />00127<br />00128<br />00129<br />00130<br />00131<br />00132<br />00133<br />00134<br />00135<br />00136<br />00137<br />00138<br />00139<br />00140<br />
+00141<br />00142<br />00143<br />00144<br />00145<br />00146<br />00147<br />00148<br />00149<br />00150<br />00151<br />00152<br />00153<br />00154<br />00155<br />00156<br />00157<br />00158<br />00159<br />00160<br />
+00161<br />00162<br />00163<br />00164<br />00165<br />00166<br />00167<br />00168<br />00169<br />00170<br />00171<br />00172<br />00173<br />00174<br />00175<br />00176<br />00177<br />00178<br />00179<br />00180<br />
+00181<br />00182<br />00183<br />00184<br />00185<br />00186<br />00187<br />00188<br />00189<br />00190<br />00191<br />00192<br />00193<br />00194<br />00195<br />00196<br />00197<br />00198<br />00199<br />00200<br />
+00201<br />00202<br />00203<br />00204<br />00205<br />00206<br />00207<br />00208<br />00209<br />00210<br />00211<br />00212<br />00213<br />00214<br />00215<br />00216<br />00217<br />00218<br />00219<br />00220<br />
+00221<br />00222<br />00223<br />00224<br />00225<br />00226<br />00227<br />00228<br />00229<br />00230<br />00231<br />00232<br />00233<br />00234<br />00235<br />00236<br />00237<br />00238<br />00239<br />00240<br />
+00241<br />00242<br />00243<br />00244<br />00245<br />00246<br />00247<br />00248<br />00249<br />00250<br />00251<br />00252<br />00253<br />00254<br />00255<br />00256<br />00257<br />00258<br />00259<br />00260<br />
+00261<br />00262<br />00263<br />00264<br />00265<br />00266<br />00267<br />00268<br />00269<br />00270<br />00271<br />00272<br />00273<br />00274<br />00275<br />00276<br />00277<br />00278<br />00279<br />00280<br />
+00281<br />00282<br />00283<br />00284<br />00285<br />00286<br />00287<br />00288<br />00289<br />00290<br />00291<br />00292<br />00293<br />00294<br />00295<br />00296<br />00297<br />00298<br />00299<br />00300<br />
+00301<br />00302<br />00303<br />00304<br />00305<br />00306<br />00307<br />00308<br />00309<br />00310<br />00311<br />00312<br />00313<br />00314<br />00315<br />00316<br />00317<br />00318<br />00319<br />00320<br />
+00321<br />00322<br />00323<br />00324<br />00325<br />00326<br />00327<br />00328<br />00329<br />00330<br />00331<br />00332<br />00333<br />00334<br />00335<br />00336<br />00337<br />00338<br />00339<br />00340<br />
+00341<br />00342<br />00343<br />00344<br />00345<br />00346<br />00347<br />00348<br />00349<br />00350<br />00351<br />00352<br />00353<br />00354<br />00355<br />00356<br />00357<br />00358<br />00359<br />00360<br />
+00361<br />00362<br />00363<br />00364<br />00365<br />00366<br />00367<br />00368<br />00369<br />00370<br />00371<br />00372<br />00373<br />00374<br />00375<br />00376<br />00377<br />00378<br />00379<br />00380<br />
+00381<br />00382<br />00383<br />00384<br />00385<br />00386<br />00387<br />00388<br />00389<br />00390<br />00391<br />00392<br />00393<br />00394<br />00395<br />00396<br />00397<br />00398<br />00399<br />00400<br />
+00401<br />00402<br />00403<br />00404<br />00405<br />00406<br />00407<br />00408<br />00409<br />00410<br />00411<br />00412<br />00413<br />00414<br />00415<br />00416<br />00417<br />00418<br />00419<br />00420<br />
+00421<br />00422<br />00423<br />00424<br />00425<br />00426<br />00427<br />00428<br />00429<br />00430<br />00431<br />00432<br />00433<br />00434<br />00435<br />00436<br />00437<br />00438<br />00439<br />00440<br />
+00441<br />00442<br />00443<br />00444<br />00445<br />00446<br />00447<br />00448<br />00449<br />00450<br />00451<br />00452<br />00453<br />00454<br />00455<br />00456<br />00457<br />00458<br />00459<br />00460<br />
+00461<br />00462<br />00463<br />00464<br />00465<br />00466<br />00467<br />00468<br />00469<br />00470<br />00471<br />00472<br />00473<br />00474<br />00475<br />00476<br />00477<br />00478<br />00479<br />00480<br />
+00481<br />00482<br />00483<br />00484<br />00485<br />00486<br />00487<br />00488<br />00489<br />00490<br />00491<br />00492<br />00493<br />00494<br />00495<br />00496<br />00497<br />00498<br />00499<br />00500<br />
+00501<br />00502<br />00503<br />00504<br />00505<br />00506<br />00507<br />00508<br />00509<br />00510<br />00511<br />00512<br />00513<br />00514<br />00515<br />00516<br />00517<br />00518<br />00519<br />00520<br />
+00521<br />00522<br />00523<br />00524<br />00525<br />00526<br />00527<br />00528<br />00529<br />00530<br />00531<br />00532<br />00533<br />00534<br />00535<br />00536<br />00537<br />00538<br />00539<br />00540<br />
+00541<br />00542<br />00543<br />00544<br />00545<br />00546<br />00547<br />00548<br />00549<br />00550<br />00551<br />00552<br />00553<br />00554<br />00555<br />00556<br />00557<br />00558<br />00559<br />00560<br />
+00561<br />00562<br />00563<br />00564<br />00565<br />00566<br />00567<br />00568<br />00569<br />00570<br />00571<br />00572<br />00573<br />00574<br />00575<br />00576<br />00577<br />00578<br />00579<br />00580<br />
+00581<br />00582<br />00583<br />00584<br />00585<br />00586<br />00587<br />00588<br />00589<br />00590<br />00591<br />00592<br />00593<br />00594<br />00595<br />00596<br />00597<br />00598<br />00599<br />00600<br />
+00601<br />00602<br />00603<br />00604<br />00605<br />00606<br />00607<br />00608<br />00609<br />00610<br />00611<br />00612<br />00613<br />00614<br />00615<br />00616<br />00617<br />00618<br />00619<br />00620<br />
+00621<br />00622<br />00623<br />00624<br />00625<br />00626<br />00627<br />00628<br />00629<br />00630<br />00631<br />00632<br />00633<br />00634<br />00635<br />00636<br />00637<br />00638<br />00639<br />00640<br />
+00641<br />00642<br />00643<br />00644<br />00645<br />00646<br />00647<br />00648<br />00649<br />00650<br />00651<br />00652<br />00653<br />00654<br />00655<br />00656<br />00657</span></td>
+<td class="source"><pre class="source"><a name="1"></a><span class="source_comment">//=============================================================================
+</span><a name="2"></a><span class="source_comment">//  R6MenuCustomMissionWidget.uc : (add small description)
+</span><a name="3"></a><span class="source_comment">//  Copyright 2001 Ubi Soft, Inc. All Rights Reserved.
+</span><a name="4"></a><span class="source_comment">//
+</span><a name="5"></a><span class="source_comment">//  Revision history:
+</span><a name="6"></a><span class="source_comment">//    2001/11/22 * Created by Alexandre Dionne
+</span><a name="7"></a><span class="source_comment">//=============================================================================
+</span><a name="8"></a><span class="source_type">class</span> <span class="source_type"><a href="../r6menu/r6menucustommissionwidget.html" class="source">R6MenuCustomMissionWidget</a></span> extends <span class="source_type"><a href="../r6menu/r6menuwidget.html" class="source">R6MenuWidget</a></span>
+<a name="9"></a>                config(<span class="source_type">USER</span>);
+<a name="10"></a>
+<a name="11"></a>
+<a name="12"></a>var <span class="source_type"><a href="../core/object.html#Color" class="source">color</a></span>  m_TitleTextColor;
+<a name="13"></a>
+<a name="14"></a>var <span class="source_type">bool</span>	bshowlog;
+<a name="15"></a>
+<a name="16"></a>var <span class="source_type"><a href="../r6window/r6windowbutton.html" class="source">R6WindowButton</a></span>	                    m_ButtonStart;
+<a name="17"></a>var <span class="source_type"><a href="../r6window/r6windowbutton.html" class="source">R6WindowButton</a></span>	                    m_ButtonMainMenu;
+<a name="18"></a>var <span class="source_type"><a href="../r6window/r6windowbutton.html" class="source">R6WindowButton</a></span>	                    m_ButtonOptions;
+<a name="19"></a>
+<a name="20"></a>var <span class="source_type"><a href="../r6window/r6windowsimpleframedwindow.html" class="source">R6WindowSimpleFramedWindow</a></span>          m_Map;
+<a name="21"></a>
+<a name="22"></a>var <span class="source_type"><a href="../r6window/r6windowtextlabel.html" class="source">R6WindowTextLabel</a></span>		        	m_LMenuTitle; 
+<a name="23"></a>
+<a name="24"></a>var <span class="source_type"><a href="../r6window/r6windowtextlabelcurved.html" class="source">R6WindowTextLabelCurved</a></span>             m_LGameLevelTitle;
+<a name="25"></a>var <span class="source_type"><a href="../r6window/r6windowtextlistbox.html" class="source">R6WindowTextListBox</a></span>			        m_GameLevelBox;
+<a name="26"></a>var <span class="source_type"><a href="../r6window/r6windowsimplecurvedframedwindow.html" class="source">R6WindowSimpleCurvedFramedWindow</a></span>    m_DifficultyArea;
+<a name="27"></a>
+<a name="28"></a>var <span class="source_type"><a href="../r6game/r6filemanagercampaign.html" class="source">R6FileManagerCampaign</a></span>               m_pFileManager;
+<a name="29"></a>    
+<a name="30"></a>var  <span class="source_type"><a href="../r6menu/r6menuhelpwindow.html" class="source">R6MenuHelpWindow</a></span>                   m_pHelpWindow;            <span class="source_comment">// the help window (tooltip)
+</span><a name="31"></a>
+<a name="32"></a>var <span class="source_type"><a href="../r6window/r6windowbutton.html" class="source">R6WindowButton</a></span>						m_pButPraticeMission;
+<a name="33"></a>var <span class="source_type"><a href="../r6window/r6windowbutton.html" class="source">R6WindowButton</a></span>						m_pButLoneWolf;
+<a name="34"></a>var <span class="source_type"><a href="../r6window/r6windowbutton.html" class="source">R6WindowButton</a></span>						m_pButTerroHunt;
+<a name="35"></a>var <span class="source_type"><a href="../r6window/r6windowbutton.html" class="source">R6WindowButton</a></span>						m_pButHostageRescue;
+<a name="36"></a>var <span class="source_type"><a href="../r6window/r6windowbutton.html" class="source">R6WindowButton</a></span>						m_pButCurrent;
+<a name="37"></a>
+<a name="38"></a>var <span class="source_type"><a href="../r6window/r6windowsimpleframedwindow.html" class="source">R6WindowSimpleFramedWindow</a></span>          m_TerroArea;
+<a name="39"></a>
+<a name="40"></a>
+<a name="41"></a><span class="source_comment">//To update when we come back from a custom menu game
+</span><a name="42"></a>var <span class="source_type">string</span>                              m_LastMapPlayed;    
+<a name="43"></a>var config  <span class="source_type">string</span>                      CustomMissionMap;    
+<a name="44"></a>var config  <span class="source_type">INT</span>                         CustomMissionGameType;
+<a name="45"></a>
+<a name="46"></a>var   <span class="source_type">Font</span>    m_LeftButtonFont;
+<a name="47"></a>var   <span class="source_type">Font</span>    m_LeftDownSizeFont;
+<a name="48"></a>
+<a name="49"></a>function Created()
+<a name="50"></a>{
+<a name="51"></a>	local   <span class="source_type">Font</span>                                buttonFont;
+<a name="52"></a>	local   <span class="source_type"><a href="../core/object.html#Color" class="source">color</a></span>                               Co;
+<a name="53"></a>	local   <span class="source_type"><a href="../core/object.html#Color" class="source">color</a></span>                               TitleTextColor;
+<a name="54"></a>	local   <span class="source_type">INT</span>                                 iFiles, <span class="source_type">i</span>;
+<a name="55"></a>	local   <span class="source_type">String</span>                              szFilename;	
+<a name="56"></a>	
+<a name="57"></a>    local   <span class="source_type">bool</span>                                bFileChange, bInTab;
+<a name="58"></a>    local   <span class="source_type"><a href="../r6window/r6windowlistboxitem.html" class="source">R6WindowListBoxItem</a></span>   NewItem;
+<a name="59"></a>    local   <span class="source_type"><a href="../r6menu/r6menurootwindow.html" class="source">R6MenuRootWindow</a></span>      R6Root;
+<a name="60"></a>
+<a name="61"></a>    local <span class="source_type">INT</span>   XPos;
+<a name="62"></a>
+<a name="63"></a>    R6Root = <span class="source_type"><a href="../r6menu/r6menurootwindow.html" class="source">R6MenuRootWindow</a></span>(Root);
+<a name="64"></a>
+<a name="65"></a>
+<a name="66"></a>	buttonFont		= Root.Fonts[F_PrincipalButton];
+<a name="67"></a>    
+<a name="68"></a>     <span class="source_comment">//=================================================================================
+</span><a name="69"></a>    <span class="source_comment">// Help Zone
+</span><a name="70"></a>    <span class="source_comment">//=================================================================================
+</span><a name="71"></a>        <span class="source_comment">// create the help window
+</span><a name="72"></a>    m_pHelpWindow = <span class="source_type"><a href="../r6menu/r6menuhelpwindow.html" class="source">R6MenuHelpWindow</a></span>(CreateWindow(<span class="source_type">class</span><span class="source_name">'R6MenuHelpWindow'</span>, <span class="source_int">150</span>, <span class="source_int">429</span>, <span class="source_int">340</span>, <span class="source_int">42</span>, self)); <span class="source_comment">//std param is set in help window    
+</span><a name="73"></a>    
+<a name="74"></a>
+<a name="75"></a>	m_ButtonMainMenu                    = <span class="source_type"><a href="../r6window/r6windowbutton.html" class="source">R6WindowButton</a></span>(CreateControl( <span class="source_type">class</span><span class="source_name">'R6WindowButton'</span>, <span class="source_int">10</span>, <span class="source_int">421</span>, <span class="source_int">250</span>, <span class="source_int">25</span>, self));
+<a name="76"></a>    m_ButtonMainMenu.ToolTipString      = Localize(<span class="source_string">"Tip"</span>,<span class="source_string">"ButtonMainMenu"</span>,<span class="source_string">"R6Menu"</span>);
+<a name="77"></a>	m_ButtonMainMenu.<span class="source_type">Text</span>               = Localize(<span class="source_string">"SinglePlayer"</span>,<span class="source_string">"ButtonMainMenu"</span>,<span class="source_string">"R6Menu"</span>);	
+<a name="78"></a>	m_ButtonMainMenu.Align              = TA_LEFT;	
+<a name="79"></a>	m_ButtonMainMenu.m_buttonFont       = buttonFont;
+<a name="80"></a>	m_ButtonMainMenu.ResizeToText();	
+<a name="81"></a>
+<a name="82"></a>	m_ButtonOptions = <span class="source_type"><a href="../r6window/r6windowbutton.html" class="source">R6WindowButton</a></span>(CreateControl( <span class="source_type">class</span><span class="source_name">'R6WindowButton'</span>, <span class="source_int">10</span>, <span class="source_int">452</span>, <span class="source_int">250</span>, <span class="source_int">25</span>, self));
+<a name="83"></a>    m_ButtonOptions.ToolTipString       = Localize(<span class="source_string">"Tip"</span>,<span class="source_string">"ButtonOptions"</span>,<span class="source_string">"R6Menu"</span>);	
+<a name="84"></a>    m_ButtonOptions.<span class="source_type">Text</span>                = Localize(<span class="source_string">"SinglePlayer"</span>,<span class="source_string">"ButtonOptions"</span>,<span class="source_string">"R6Menu"</span>);	
+<a name="85"></a>	m_ButtonOptions.Align               = TA_LEFT;		
+<a name="86"></a>	m_ButtonOptions.m_buttonFont        = buttonFont;
+<a name="87"></a>	m_ButtonOptions.ResizeToText();    
+<a name="88"></a>
+<a name="89"></a>    XPos = m_pHelpWindow.WinLeft + m_pHelpWindow.WinWidth;
+<a name="90"></a>	
+<a name="91"></a>	m_ButtonStart = <span class="source_type"><a href="../r6window/r6windowbutton.html" class="source">R6WindowButton</a></span>(CreateControl( <span class="source_type">class</span><span class="source_name">'R6WindowButton'</span>, XPos, <span class="source_int">452</span>, WinWidth - XPos - <span class="source_int">20</span>, <span class="source_int">25</span>, self));
+<a name="92"></a>    m_ButtonStart.ToolTipString     = Localize(<span class="source_string">"Tip"</span>,<span class="source_string">"ButtonStart"</span>,<span class="source_string">"R6Menu"</span>);
+<a name="93"></a>	m_ButtonStart.<span class="source_type">Text</span>              = Localize(<span class="source_string">"CustomMission"</span>,<span class="source_string">"ButtonStart1"</span>,<span class="source_string">"R6Menu"</span>);	
+<a name="94"></a>	m_ButtonStart.Align             = TA_RIGHT;		
+<a name="95"></a>	m_ButtonStart.m_buttonFont      = buttonFont;    
+<a name="96"></a>	m_ButtonStart.ResizeToText();		
+<a name="97"></a>    m_ButtonStart.m_bWaitSoundFinish= true;
+<a name="98"></a>
+<a name="99"></a>    m_Map = <span class="source_type"><a href="../r6window/r6windowsimpleframedwindow.html" class="source">R6WindowSimpleFramedWindow</a></span>(CreateWindow(<span class="source_type">class</span><span class="source_name">'R6WindowSimpleFramedWindow'</span>, <span class="source_int">390</span>, <span class="source_int">268</span>, <span class="source_int">230</span>, <span class="source_int">130</span>, self));
+<a name="100"></a>    m_Map.CreateClientWindow(<span class="source_type">class</span><span class="source_name">'R6WindowBitMap'</span>);
+<a name="101"></a>    m_Map.m_eCornerType = All_Corners;   
+<a name="102"></a>    
+<a name="103"></a>
+<a name="104"></a>	m_TitleTextColor = Root.Colors.White;
+<a name="105"></a>		
+<a name="106"></a>	
+<a name="107"></a>	m_LMenuTitle        = <span class="source_type"><a href="../r6window/r6windowtextlabel.html" class="source">R6WindowTextLabel</a></span>(CreateWindow(<span class="source_type">class</span><span class="source_name">'R6WindowTextLabel'</span>, <span class="source_int">0</span>, <span class="source_int">18</span>, WinWidth - <span class="source_int">8</span>, <span class="source_int">25</span>, self));
+<a name="108"></a>	m_LMenuTitle.<span class="source_type">Text</span>           = Localize(<span class="source_string">"CustomMission"</span>,<span class="source_string">"Title"</span>,<span class="source_string">"R6Menu"</span>);
+<a name="109"></a>	m_LMenuTitle.Align          = TA_Right;
+<a name="110"></a>	m_LMenuTitle.m_Font         = Root.Fonts[F_MenuMainTitle];
+<a name="111"></a>	m_LMenuTitle.TextColor      = m_TitleTextColor;
+<a name="112"></a>	m_LMenuTitle.m_BGTexture    = None;
+<a name="113"></a>    m_LMenuTitle.m_bDrawBorders = False;
+<a name="114"></a>    
+<a name="115"></a>
+<a name="116"></a>	m_GameLevelBox = <span class="source_type"><a href="../r6window/r6windowtextlistbox.html" class="source">R6WindowTextListBox</a></span>(CreateControl( <span class="source_type">class</span><span class="source_name">'R6WindowTextListBox'</span>, <span class="source_int">198</span>, <span class="source_int">102</span>, <span class="source_int">156</span>, <span class="source_int">296</span>, self));
+<a name="117"></a>    m_GameLevelBox.ListClass=<span class="source_type">class</span><span class="source_name">'R6WindowListBoxItem'</span>;
+<a name="118"></a>    m_GameLevelBox.SetCornerType(Bottom_Corners);    	
+<a name="119"></a>    m_GameLevelBox.ToolTipString = Localize(<span class="source_string">"Tip"</span>,<span class="source_string">"CustomMListBox"</span>,<span class="source_string">"R6Menu"</span>);
+<a name="120"></a>
+<a name="121"></a>	m_LGameLevelTitle = <span class="source_type"><a href="../r6window/r6windowtextlabelcurved.html" class="source">R6WindowTextLabelCurved</a></span>(CreateWindow(<span class="source_type">class</span><span class="source_name">'R6WindowTextLabelCurved'</span>, <span class="source_int">198</span>, <span class="source_int">72</span>, <span class="source_int">156</span>, <span class="source_int">31</span>, self));
+<a name="122"></a>	m_LGameLevelTitle.<span class="source_type">Text</span>          = Localize(<span class="source_string">"CustomMission"</span>,<span class="source_string">"TitleGameLevel"</span>,<span class="source_string">"R6Menu"</span>);
+<a name="123"></a>	m_LGameLevelTitle.Align         = TA_Center;
+<a name="124"></a>	m_LGameLevelTitle.m_Font        = Root.Fonts[F_PopUpTitle];
+<a name="125"></a>	m_LGameLevelTitle.TextColor     = m_TitleTextColor;	
+<a name="126"></a>
+<a name="127"></a>
+<a name="128"></a>	m_DifficultyArea = <span class="source_type"><a href="../r6window/r6windowsimplecurvedframedwindow.html" class="source">R6WindowSimpleCurvedFramedWindow</a></span>(CreateWindow(<span class="source_type">class</span><span class="source_name">'R6WindowSimpleCurvedFramedWindow'</span>, <span class="source_int">390</span>, <span class="source_int">72</span>, m_Map.WinWidth, <span class="source_int">122</span>, self));
+<a name="129"></a>	m_DifficultyArea.CreateClientWindow(<span class="source_type">class</span><span class="source_name">'R6MenuDiffCustomMissionSelect'</span>);
+<a name="130"></a>	m_DifficultyArea.m_title        = Localize(<span class="source_string">"SinglePlayer"</span>,<span class="source_string">"Difficulty"</span>,<span class="source_string">"R6Menu"</span>); 
+<a name="131"></a>	m_DifficultyArea.m_TitleAlign   = TA_Center;
+<a name="132"></a>	m_DifficultyArea.m_Font         = Root.Fonts[F_PopUpTitle];
+<a name="133"></a>	m_DifficultyArea.m_TextColor    = m_TitleTextColor;	
+<a name="134"></a>    m_DifficultyArea.m_BorderColor  = Root.Colors.White;
+<a name="135"></a>    m_DifficultyArea.SetCornerType(All_Corners);
+<a name="136"></a>
+<a name="137"></a>    m_TerroArea = <span class="source_type"><a href="../r6window/r6windowsimpleframedwindow.html" class="source">R6WindowSimpleFramedWindow</a></span>(CreateWindow(<span class="source_type">class</span><span class="source_name">'R6WindowSimpleFramedWindow'</span>, <span class="source_int">390</span>, m_DifficultyArea.WinTop + m_DifficultyArea.WinHeight -<span class="source_int">1</span>, m_DifficultyArea.WinWidth, <span class="source_int">63</span>, self));
+<a name="138"></a>    m_TerroArea.CreateClientWindow(<span class="source_type">class</span><span class="source_name">'R6MenuCustomMissionNbTerroSelect'</span>);    
+<a name="139"></a>    m_TerroArea.SetCornerType(Bottom_Corners);    
+<a name="140"></a>    m_TerroArea.HideWindow();
+<a name="141"></a>	
+<a name="142"></a>
+<a name="143"></a>	if(R6Root.m_pFileManager == NONE)
+<a name="144"></a>	{
+<a name="145"></a>		log(<span class="source_string">"R6MenuRootWindow(Root).m_pFileManager == NONE"</span>);
+<a name="146"></a>	}
+<a name="147"></a>
+<a name="148"></a>    m_pFileManager      = new <span class="source_type">class</span><span class="source_name">'R6FileManagerCampaign'</span>; 
+<a name="149"></a>
+<a name="150"></a>	InitCustomMission();
+<a name="151"></a>}
+<a name="152"></a>
+<a name="153"></a>function <span class="source_type">bool</span> ValidateBeforePlanning()
+<a name="154"></a>{
+<a name="155"></a>    local <span class="source_type"><a href="../r6menu/r6menurootwindow.html" class="source">R6MenuRootWindow</a></span> R6Root;
+<a name="156"></a>
+<a name="157"></a>	<span class="source_comment">//Make sure we can start the planning Phase
+</span><a name="158"></a>
+<a name="159"></a>        
+<a name="160"></a>    <span class="source_comment">//This Might Have to change
+</span><a name="161"></a>    <span class="source_comment">//This Part populate the game Operative for the planning phase
+</span><a name="162"></a>    
+<a name="163"></a>    R6Root = <span class="source_type"><a href="../r6menu/r6menurootwindow.html" class="source">R6MenuRootWindow</a></span>(Root);
+<a name="164"></a>
+<a name="165"></a>
+<a name="166"></a>    if(R6Root == None)
+<a name="167"></a>    {
+<a name="168"></a>        if(bShowlog)log(<span class="source_string">"ValidateBeforePlanning: R6Root == None"</span>);
+<a name="169"></a>        return false;
+<a name="170"></a>    }
+<a name="171"></a>        
+<a name="172"></a>    
+<a name="173"></a>    if((m_GameLevelBox.m_SelectedItem == NONE))
+<a name="174"></a>    {
+<a name="175"></a>        if(bShowlog)log(<span class="source_string">"ValidateBeforePlanning: m_GameLevelBox.m_SelectedItem == NONE"</span>);
+<a name="176"></a>		return false;
+<a name="177"></a>    }
+<a name="178"></a>        
+<a name="179"></a>        
+<a name="180"></a>        
+<a name="181"></a>    if( m_GameLevelBox.m_SelectedItem.HelpText == <span class="source_string">""</span>)
+<a name="182"></a>    {
+<a name="183"></a>        if(bShowlog)log(<span class="source_string">"ValidateBeforePlanning: m_GameLevelBox.m_SelectedItem.HelpText == \"\""</span>);
+<a name="184"></a>        return false;
+<a name="185"></a>    }
+<a name="186"></a>         
+<a name="187"></a>	
+<a name="188"></a>    R6Root.ResetCustomMissionOperatives();
+<a name="189"></a>    
+<a name="190"></a>    if(R6Root.m_GameOperatives.Length &lt;= <span class="source_int">0</span>)
+<a name="191"></a>    {
+<a name="192"></a>        if(bShowlog)log(<span class="source_string">"R6Root.m_GameOperatives.Length &lt;= 0"</span>);
+<a name="193"></a>        return false;
+<a name="194"></a>    }        
+<a name="195"></a>    else 
+<a name="196"></a>    {
+<a name="197"></a>        if(bShowlog)log(<span class="source_string">"ValidateBeforePlanning: return true"</span>);
+<a name="198"></a>        return true;
+<a name="199"></a>    }	
+<a name="200"></a>
+<a name="201"></a>}
+<a name="202"></a>
+<a name="203"></a>
+<a name="204"></a>function GotoPlanning()
+<a name="205"></a>{
+<a name="206"></a>
+<a name="207"></a>    local   <span class="source_type"><a href="../r6menu/r6menurootwindow.html" class="source">R6MenuRootWindow</a></span>                R6Root;
+<a name="208"></a>    local   <span class="source_type"><a href="../engine/r6missiondescription.html" class="source">R6MissionDescription</a></span>            CurrentMission;
+<a name="209"></a>    local   <span class="source_type"><a href="../r6window/r6windowlistboxitem.html" class="source">R6WindowListBoxItem</a></span>             SelectedItem;
+<a name="210"></a>    local   <span class="source_type"><a href="../r6game/r6console.html" class="source">R6Console</a></span>                       <span class="source_type"><a href="../r6game/r6console.html" class="source">R6Console</a></span>;
+<a name="211"></a>    
+<a name="212"></a>    R6Root = <span class="source_type"><a href="../r6menu/r6menurootwindow.html" class="source">R6MenuRootWindow</a></span>(Root);
+<a name="213"></a>
+<a name="214"></a>	<span class="source_comment">//Make sure that ValidateBeforePlanning() has returned true
+</span><a name="215"></a>	<span class="source_comment">//Before calling this
+</span><a name="216"></a>
+<a name="217"></a>    SelectedItem = <span class="source_type"><a href="../r6window/r6windowlistboxitem.html" class="source">R6WindowListBoxItem</a></span>(m_GameLevelBox.m_SelectedItem);
+<a name="218"></a>    CurrentMission  = <span class="source_type"><a href="../engine/r6missiondescription.html" class="source">R6MissionDescription</a></span>(SelectedItem.m_Object); <span class="source_comment">//IF THIS IS NONE WE ARE SCREWED
+</span><a name="219"></a>
+<a name="220"></a>    <span class="source_type"><a href="../r6game/r6console.html" class="source">R6Console</a></span> = <span class="source_type"><a href="../r6game/r6console.html" class="source">R6Console</a></span>(Root.<span class="source_type"><a href="../engine/console.html" class="source">console</a></span>);
+<a name="221"></a>    
+<a name="222"></a>    <span class="source_type"><a href="../r6game/r6console.html" class="source">R6Console</a></span>.master.m_StartGameInfo.m_CurrentMission = CurrentMission;
+<a name="223"></a>	<span class="source_type"><a href="../r6game/r6console.html" class="source">R6Console</a></span>.master.m_StartGameInfo.m_MapName = CurrentMission.m_MapName;
+<a name="224"></a>	<span class="source_type"><a href="../r6game/r6console.html" class="source">R6Console</a></span>.master.m_StartGameInfo.m_DifficultyLevel = <span class="source_type"><a href="../r6menu/r6menudiffcustommissionselect.html" class="source">R6MenuDiffCustomMissionSelect</a></span>(m_DifficultyArea.m_ClientArea).GetDifficulty();
+<a name="225"></a>	<span class="source_type"><a href="../r6game/r6console.html" class="source">R6Console</a></span>.master.m_StartGameInfo.m_iNbTerro = <span class="source_type"><a href="../r6menu/r6menucustommissionnbterroselect.html" class="source">R6MenuCustomMissionNbTerroSelect</a></span>(m_TerroArea.m_ClientArea).GetNbTerro();
+<a name="226"></a>	<span class="source_type"><a href="../r6game/r6console.html" class="source">R6Console</a></span>.master.m_StartGameInfo.m_GameMode = GetLevel().GetGameTypeClassName(GetLevel().ConvertGameTypeIntToString(m_pButCurrent.m_iButtonID));
+<a name="227"></a>
+<a name="228"></a>    CustomMissionMap = CurrentMission.m_MapName;
+<a name="229"></a>    CustomMissionGameType = m_pButCurrent.m_iButtonID;
+<a name="230"></a>
+<a name="231"></a>    SaveConfig();
+<a name="232"></a>	
+<a name="233"></a>    Root.ResetMenus();
+<a name="234"></a>    R6Root.m_bLoadingPlanning = true;
+<a name="235"></a>    <span class="source_type"><a href="../r6game/r6console.html" class="source">R6Console</a></span>.PreloadMapForPlanning();       
+<a name="236"></a>    
+<a name="237"></a>    
+<a name="238"></a>}
+<a name="239"></a>
+<a name="240"></a>function ShowWindow()
+<a name="241"></a>{
+<a name="242"></a>    RefreshList();
+<a name="243"></a>
+<a name="244"></a>    Super.ShowWindow();
+<a name="245"></a>}
+<a name="246"></a>
+<a name="247"></a>function <span class="source_type">BOOL</span> CampainMapExistInMapList(<span class="source_type"><a href="../engine/r6missiondescription.html" class="source">R6MissionDescription</a></span> pMission)
+<a name="248"></a>{
+<a name="249"></a>	local <span class="source_type">INT</span> iMission;
+<a name="250"></a>
+<a name="251"></a>	for( iMission=<span class="source_int">0</span>; iMission &lt; <span class="source_type"><a href="../r6game/r6console.html" class="source">R6Console</a></span>( Root.<span class="source_type"><a href="../engine/console.html" class="source">Console</a></span> ).m_aMissionDescriptions.length; iMission++ )
+<a name="252"></a>	{
+<a name="253"></a>		if(pMission == <span class="source_type"><a href="../r6game/r6console.html" class="source">R6Console</a></span>( Root.<span class="source_type"><a href="../engine/console.html" class="source">Console</a></span> ).m_aMissionDescriptions[iMission])
+<a name="254"></a>			return true;
+<a name="255"></a>	}
+<a name="256"></a>
+<a name="257"></a>	return false;
+<a name="258"></a>}
+<a name="259"></a>
+<a name="260"></a>function RefreshList()
+<a name="261"></a>{
+<a name="262"></a>    local   <span class="source_type">int</span>          <span class="source_type">i</span>, iCampaign, iMission;
+<a name="263"></a>    local   <span class="source_type"><a href="../r6game/r6console.html" class="source">R6console</a></span>    <span class="source_type"><a href="../r6game/r6console.html" class="source">r6Console</a></span>;
+<a name="264"></a>    local   <span class="source_type">string</span>       szMapName;	
+<a name="265"></a>    local   <span class="source_type"><a href="../r6window/r6windowlistboxitem.html" class="source">R6WindowListBoxItem</a></span>  NewItem, ItemToSelect;
+<a name="266"></a>    local   <span class="source_type">string</span>       <span class="source_type">szGameType</span>;
+<a name="267"></a>    local   <span class="source_type"><a href="../engine/r6missiondescription.html" class="source">R6MissionDescription</a></span> mission;
+<a name="268"></a>
+<a name="269"></a>    <span class="source_type"><a href="../r6game/r6console.html" class="source">r6console</a></span> = <span class="source_type"><a href="../r6game/r6console.html" class="source">R6Console</a></span>( Root.<span class="source_type"><a href="../engine/console.html" class="source">Console</a></span> );
+<a name="270"></a>    <span class="source_type">szGameType</span> = GetLevel().ConvertGameTypeIntToString(m_pButCurrent.m_iButtonID);
+<a name="271"></a>
+<a name="272"></a>    m_GameLevelBox.Clear();    
+<a name="273"></a>    
+<a name="274"></a>    <span class="source_comment">// loop on campaign and list all thier mission in the right order
+</span><a name="275"></a>    iCampaign = <span class="source_int">0</span>;
+<a name="276"></a>    while ( iCampaign &lt; <span class="source_type"><a href="../r6game/r6console.html" class="source">r6console</a></span>.m_aCampaigns.length )
+<a name="277"></a>    {
+<a name="278"></a>        iMission = <span class="source_int">0</span>;
+<a name="279"></a>        while ( iMission &lt; <span class="source_type"><a href="../r6game/r6console.html" class="source">r6console</a></span>.m_aCampaigns[iCampaign].m_missions.length )
+<a name="280"></a>        {
+<a name="281"></a>            mission = <span class="source_type"><a href="../r6game/r6console.html" class="source">r6console</a></span>.m_aCampaigns[iCampaign].m_missions[iMission];
+<a name="282"></a><span class="source_macro">#ifdefSPDEMO
+</span><a name="283"></a>            if ( mission.m_missionIniFile == <span class="source_string">"OIL_REFINERY.INI"</span> )
+<a name="284"></a>            {           
+<a name="285"></a><span class="source_macro">#endif
+</span><a name="286"></a>
+<a name="287"></a>            <span class="source_comment">// a campaign and is available and is for the current mod
+</span><a name="288"></a>            if ( mission.IsAvailableInGameType( <span class="source_type">szGameType</span> ) && mission.m_MapName != <span class="source_string">""</span> && CampainMapExistInMapList(mission))
+<a name="289"></a>            {
+<a name="290"></a>                szMapName = Localize( mission.m_MapName, <span class="source_string">"ID_MENUNAME"</span>, mission.LocalizationFile, true );
+<a name="291"></a>
+<a name="292"></a>                if ( szMapName == <span class="source_string">""</span> ) <span class="source_comment">// failed to find the name, copy the map map (usefull for debugging)
+</span><a name="293"></a>                {
+<a name="294"></a>                    szMapName = mission.m_MapName;
+<a name="295"></a>                }
+<a name="296"></a>
+<a name="297"></a>                NewItem = <span class="source_type"><a href="../r6window/r6windowlistboxitem.html" class="source">R6WindowListBoxItem</a></span>(m_GameLevelBox.Items.Append(m_GameLevelBox.ListClass));
+<a name="298"></a>                NewItem.HelpText = szMapName;
+<a name="299"></a>                NewItem.m_Object = mission;                
+<a name="300"></a>
+<a name="301"></a>                if ( mission.m_bIsLocked )
+<a name="302"></a>                {
+<a name="303"></a>					NewItem.m_bDisabled = true;
+<a name="304"></a>                }                
+<a name="305"></a>                else if((mission.m_MapName == m_LastMapPlayed) && (ItemToSelect == None))
+<a name="306"></a>                {                    
+<a name="307"></a>                    ItemToSelect = NewItem;
+<a name="308"></a>                }
+<a name="309"></a>
+<a name="310"></a>            }
+<a name="311"></a><span class="source_macro">#ifdefSPDEMO
+</span><a name="312"></a>            }
+<a name="313"></a><span class="source_macro">#endif
+</span><a name="314"></a>            ++iMission;
+<a name="315"></a>        }
+<a name="316"></a>        ++iCampaign;
+<a name="317"></a>    }   
+<a name="318"></a>    
+<a name="319"></a>    <span class="source_comment">// loop on the mission description and add all none campaign mission
+</span><a name="320"></a>    iMission = <span class="source_int">0</span>;
+<a name="321"></a>    while ( iMission &lt; <span class="source_type"><a href="../r6game/r6console.html" class="source">r6console</a></span>.m_aMissionDescriptions.length )
+<a name="322"></a>    {
+<a name="323"></a>		mission = <span class="source_type"><a href="../r6game/r6console.html" class="source">r6console</a></span>.m_aMissionDescriptions[iMission];
+<a name="324"></a><span class="source_macro">#ifdefSPDEMO
+</span><a name="325"></a>        if ( mission.m_missionIniFile == <span class="source_string">"OIL_REFINERY.INI"</span> )
+<a name="326"></a>        {           
+<a name="327"></a><span class="source_macro">#endif
+</span><a name="328"></a>        <span class="source_comment">// not a campaign and is available and is for the current mod
+</span><a name="329"></a>        if ( !mission.m_bCampaignMission && mission.IsAvailableInGameType( <span class="source_type">szGameType</span> ) && mission.m_MapName != <span class="source_string">""</span> )
+<a name="330"></a>        {            
+<a name="331"></a>            szMapName = Localize( mission.m_MapName, <span class="source_string">"ID_MENUNAME"</span>, mission.LocalizationFile, true );
+<a name="332"></a>            if ( szMapName == <span class="source_string">""</span>  ) <span class="source_comment">// failed to find the name, copy the map map (usefull for debugging)
+</span><a name="333"></a>            {
+<a name="334"></a>                szMapName = mission.m_MapName;
+<a name="335"></a>            }
+<a name="336"></a>            
+<a name="337"></a>            NewItem = <span class="source_type"><a href="../r6window/r6windowlistboxitem.html" class="source">R6WindowListBoxItem</a></span>(m_GameLevelBox.Items.Append(m_GameLevelBox.ListClass));
+<a name="338"></a>            NewItem.HelpText = szMapName;
+<a name="339"></a>            NewItem.m_Object = mission;            
+<a name="340"></a>
+<a name="341"></a>            if ( mission.m_bIsLocked )
+<a name="342"></a>            {
+<a name="343"></a>                NewItem.m_bDisabled = true;
+<a name="344"></a>            }
+<a name="345"></a>            else if((mission.m_MapName == m_LastMapPlayed) && (ItemToSelect == None))
+<a name="346"></a>            {                
+<a name="347"></a>                ItemToSelect = NewItem;
+<a name="348"></a>            }
+<a name="349"></a>        }
+<a name="350"></a><span class="source_macro">#ifdefSPDEMO
+</span><a name="351"></a>        }
+<a name="352"></a><span class="source_macro">#endif
+</span><a name="353"></a>
+<a name="354"></a>        ++iMission;
+<a name="355"></a>    }
+<a name="356"></a>
+<a name="357"></a>    if(m_GameLevelBox.Items.Count() &gt; <span class="source_int">0</span>)
+<a name="358"></a>    {
+<a name="359"></a>        if(ItemToSelect != None)
+<a name="360"></a>          m_GameLevelBox.SetSelectedItem(ItemToSelect);
+<a name="361"></a>        else
+<a name="362"></a>            m_GameLevelBox.SetSelectedItem(<span class="source_type"><a href="../r6window/r6windowlistboxitem.html" class="source">R6WindowListBoxItem</a></span>(m_GameLevelBox.Items.Next));
+<a name="363"></a>
+<a name="364"></a>        m_GameLevelBox.MakeSelectedVisible(); 
+<a name="365"></a>    }
+<a name="366"></a>
+<a name="367"></a>    <span class="source_comment">//TO DO : FILTER MAPS 
+</span><a name="368"></a>	UpdateBackground();
+<a name="369"></a>
+<a name="370"></a>    m_LastMapPlayed = <span class="source_string">""</span>;    
+<a name="371"></a>}
+<a name="372"></a>
+<a name="373"></a>function InitCustomMission()
+<a name="374"></a>{
+<a name="375"></a>    local <span class="source_type">bool</span>              bFileChange;
+<a name="376"></a>	local <span class="source_type">bool</span>				bCheckedRvSDir, bCheckCampaignMission;
+<a name="377"></a>	local <span class="source_type">String</span>            szDir;	
+<a name="378"></a>    local <span class="source_type">int</span>               <span class="source_type">i</span>, iFiles;
+<a name="379"></a>    local <span class="source_type"><a href="../r6menu/r6menurootwindow.html" class="source">R6MenuRootWindow</a></span>  R6Root;
+<a name="380"></a>    local <span class="source_type"><a href="../r6game/r6playercampaign.html" class="source">R6PlayerCampaign</a></span>  MyCampaign;    
+<a name="381"></a>    local   <span class="source_type"><a href="../r6game/r6console.html" class="source">R6console</a></span>             <span class="source_type"><a href="../r6game/r6console.html" class="source">r6Console</a></span>;
+<a name="382"></a>
+<a name="383"></a>    R6Root = <span class="source_type"><a href="../r6menu/r6menurootwindow.html" class="source">R6MenuRootWindow</a></span>(Root);
+<a name="384"></a>    <span class="source_type"><a href="../r6game/r6console.html" class="source">r6console</a></span> = <span class="source_type"><a href="../r6game/r6console.html" class="source">R6Console</a></span>( Root.<span class="source_type"><a href="../engine/console.html" class="source">Console</a></span> );
+<a name="385"></a>
+<a name="386"></a>    m_pFileManager.LoadCustomMissionAvailable( <span class="source_type"><a href="../r6game/r6console.html" class="source">r6console</a></span>.m_PlayerCustomMission );
+<a name="387"></a>
+<a name="388"></a>    MyCampaign          = new <span class="source_type">class</span><span class="source_name">'R6PlayerCampaign'</span>; 
+<a name="389"></a>
+<a name="390"></a><span class="source_comment">/////////////////////////////////////////////////////////////////
+</span><a name="391"></a><span class="source_comment">// Parse all available player campains to unlock maps succeeded
+</span><a name="392"></a><span class="source_comment">/////////////////////////////////////////////////////////////////
+</span><a name="393"></a>    bFileChange = false;
+<a name="394"></a>	bCheckedRvSDir = false;
+<a name="395"></a>	szDir = <span class="source_string">"..\\save\\campaigns\\"</span> $<span class="source_type">class</span><span class="source_name">'Actor'</span>.static.GetModMgr().m_pCurrentMod.m_szCampaignDir$ <span class="source_string">"\\"</span>;
+<a name="396"></a>	while(szDir != <span class="source_string">""</span>)
+<a name="397"></a>	{
+<a name="398"></a>	    iFiles = R6Root.m_pFileManager.GetNbFile( szDir, <span class="source_string">"cmp"</span>);	
+<a name="399"></a>	    for (<span class="source_type">i</span>=<span class="source_int">0</span>; <span class="source_type">i</span>&lt;iFiles; <span class="source_type">i</span>++)
+<a name="400"></a>    	{
+<a name="401"></a>			R6Root.m_pFileManager.GetFileName( <span class="source_type">i</span>, MyCampaign.m_FileName);
+<a name="402"></a>    	    MyCampaign.m_FileName = Left(MyCampaign.m_FileName, InStr(MyCampaign.m_FileName,<span class="source_string">"."</span>));
+<a name="403"></a>    	    MyCampaign.m_OperativesMissionDetails = None;
+<a name="404"></a>        	MyCampaign.m_OperativesMissionDetails = new(None) <span class="source_type">class</span><span class="source_name">'R6MissionRoster'</span>;
+<a name="405"></a>        
+<a name="406"></a>        	m_pFileManager.LoadCampaign(MyCampaign);
+<a name="407"></a>            
+<a name="408"></a>			bCheckCampaignMission = false;
+<a name="409"></a>			if(<span class="source_type">i</span> == <span class="source_int">0</span>)
+<a name="410"></a>				bCheckCampaignMission = true;
+<a name="411"></a>			if(<span class="source_type"><a href="../r6game/r6console.html" class="source">r6Console</a></span>.UpdateCurrentMapAvailable(MyCampaign, bCheckCampaignMission))
+<a name="412"></a>	           	bFileChange = true;
+<a name="413"></a>		}
+<a name="414"></a>		if((bCheckedRvSDir == false) && (!<span class="source_type">class</span><span class="source_name">'Actor'</span>.static.GetModMgr().IsRavenShield()))
+<a name="415"></a>		{
+<a name="416"></a>			bCheckedRvSDir = true;
+<a name="417"></a>			szDir = <span class="source_string">"..\\save\\campaigns\\"</span>;
+<a name="418"></a>		}
+<a name="419"></a>		else
+<a name="420"></a>		{
+<a name="421"></a>			szDir = <span class="source_string">""</span>;
+<a name="422"></a>		}
+<a name="423"></a>    }
+<a name="424"></a>
+<a name="425"></a>    if(bFileChange)
+<a name="426"></a>        m_pFileManager.SaveCustomMissionAvailable( <span class="source_type"><a href="../r6game/r6console.html" class="source">r6Console</a></span>.m_PlayerCustomMission );
+<a name="427"></a>
+<a name="428"></a>    <span class="source_comment">// End list of map unlock in each campaign
+</span><a name="429"></a>    m_LastMapPlayed = CustomMissionMap; 
+<a name="430"></a>
+<a name="431"></a>    <span class="source_type"><a href="../r6game/r6console.html" class="source">r6Console</a></span>.UnlockMissions();
+<a name="432"></a>}
+<a name="433"></a>
+<a name="434"></a><span class="source_comment">//=================================================================================
+</span><a name="435"></a><span class="source_comment">// Setup Help Text
+</span><a name="436"></a><span class="source_comment">//=================================================================================
+</span><a name="437"></a>function ToolTip(<span class="source_type">string</span> strTip) 
+<a name="438"></a>{
+<a name="439"></a>    m_pHelpWindow.ToolTip(strTip);
+<a name="440"></a>}
+<a name="441"></a>
+<a name="442"></a><span class="source_comment">//=================================================================================
+</span><a name="443"></a><span class="source_comment">// UpdateBackground: update background
+</span><a name="444"></a><span class="source_comment">//=================================================================================
+</span><a name="445"></a>function UpdateBackground()
+<a name="446"></a>{
+<a name="447"></a>	if ( GetLevel().GameTypeUseNbOfTerroristToSpawn( GetLevel().ConvertGameTypeIntToString(m_pButCurrent.m_iButtonID)) )
+<a name="448"></a>	{
+<a name="449"></a>		m_DifficultyArea.SetCornerType(Top_Corners);
+<a name="450"></a>		m_TerroArea.ShowWindow();
+<a name="451"></a>
+<a name="452"></a>		<span class="source_comment">// randomly update the background texture
+</span><a name="453"></a>		Root.SetLoadRandomBackgroundImage(<span class="source_string">"OtherMission"</span>);
+<a name="454"></a>	}
+<a name="455"></a>	else
+<a name="456"></a>	{
+<a name="457"></a>		m_DifficultyArea.SetCornerType(All_Corners);
+<a name="458"></a>		m_TerroArea.HideWindow();
+<a name="459"></a>
+<a name="460"></a>		<span class="source_comment">// randomly update the background texture
+</span><a name="461"></a>		Root.SetLoadRandomBackgroundImage(<span class="source_string">"PracticeMission"</span>);
+<a name="462"></a>	}
+<a name="463"></a>}
+<a name="464"></a>
+<a name="465"></a>function Paint(<span class="source_type"><a href="../engine/canvas.html" class="source">Canvas</a></span> <span class="source_type">C</span>, <span class="source_type">FLOAT</span> X, <span class="source_type">FLOAT</span> <span class="source_type">Y</span>)
+<a name="466"></a>{
+<a name="467"></a>	Root.PaintBackground( <span class="source_type">C</span>, self);
+<a name="468"></a>}
+<a name="469"></a>
+<a name="470"></a>function Notify(<span class="source_type"><a href="../uwindow/uwindowdialogcontrol.html" class="source">UWindowDialogControl</a></span> <span class="source_type">C</span>, <span class="source_type">byte</span> E)
+<a name="471"></a>{
+<a name="472"></a>    local   <span class="source_type"><a href="../r6window/r6windowlistboxitem.html" class="source">R6WindowListBoxItem</a></span>     SelectedItem;
+<a name="473"></a>    local   <span class="source_type"><a href="../engine/r6missiondescription.html" class="source">R6MissionDescription</a></span>    CurrentMission;
+<a name="474"></a>    local   <span class="source_type"><a href="../r6window/r6windowbitmap.html" class="source">R6WindowBitMap</a></span>          mapBitmap;
+<a name="475"></a>    
+<a name="476"></a>    
+<a name="477"></a>    if(E == DE_Click)
+<a name="478"></a>    {   
+<a name="479"></a>        switch(<span class="source_type">C</span>)
+<a name="480"></a>        {
+<a name="481"></a>
+<a name="482"></a>        case m_ButtonMainMenu:
+<a name="483"></a>			Root.ChangeCurrentWidget(MainMenuWidgetID);
+<a name="484"></a>			break;
+<a name="485"></a>		case m_ButtonOptions:
+<a name="486"></a>			Root.ChangeCurrentWidget(OptionsWidgetID);
+<a name="487"></a>			break;	
+<a name="488"></a>        case m_ButtonStart:
+<a name="489"></a>            if( ValidateBeforePlanning() )
+<a name="490"></a>                GotoPlanning();	
+<a name="491"></a>            break;            
+<a name="492"></a>        case m_pButPraticeMission:
+<a name="493"></a>        case m_pButLoneWolf:
+<a name="494"></a>        case m_pButTerroHunt:
+<a name="495"></a>        case m_pButHostageRescue:
+<a name="496"></a>        case m_pButCurrent:
+<a name="497"></a>            m_pButCurrent.m_bSelected = false;
+<a name="498"></a>            <span class="source_type"><a href="../r6window/r6windowbutton.html" class="source">R6WindowButton</a></span>(<span class="source_type">C</span>).m_bSelected = true;
+<a name="499"></a>            m_pButCurrent = <span class="source_type"><a href="../r6window/r6windowbutton.html" class="source">R6WindowButton</a></span>(<span class="source_type">C</span>);
+<a name="500"></a>            RefreshList();            
+<a name="501"></a>            break;
+<a name="502"></a>        case m_GameLevelBox:
+<a name="503"></a>            mapBitmap = <span class="source_type"><a href="../r6window/r6windowbitmap.html" class="source">R6WindowBitMap</a></span>(m_Map.m_ClientArea);
+<a name="504"></a>            SelectedItem = <span class="source_type"><a href="../r6window/r6windowlistboxitem.html" class="source">R6WindowListBoxItem</a></span>(m_GameLevelBox.m_SelectedItem);
+<a name="505"></a>            
+<a name="506"></a>            if(SelectedItem == None)
+<a name="507"></a>            {
+<a name="508"></a>                mapBitmap.<span class="source_type">T</span> = None;
+<a name="509"></a>                break;
+<a name="510"></a>            }
+<a name="511"></a>
+<a name="512"></a>
+<a name="513"></a>            if(SelectedItem.m_Object == None)
+<a name="514"></a>                break;
+<a name="515"></a>            
+<a name="516"></a>            CurrentMission  = <span class="source_type"><a href="../engine/r6missiondescription.html" class="source">R6MissionDescription</a></span>(SelectedItem.m_Object);
+<a name="517"></a>            
+<a name="518"></a>            if(CurrentMission == None)
+<a name="519"></a>                break;
+<a name="520"></a>            
+<a name="521"></a>            <span class="source_comment">//This is for the current mission overview texture
+</span><a name="522"></a>            <span class="source_comment">//Bottom right og the page
+</span><a name="523"></a>            mapBitmap.<span class="source_type">R</span> = CurrentMission.m_RMissionOverview;
+<a name="524"></a>            mapBitmap.<span class="source_type">T</span> = CurrentMission.m_TMissionOverview;
+<a name="525"></a>            break;
+<a name="526"></a>        default:
+<a name="527"></a>            break;
+<a name="528"></a>        }
+<a name="529"></a>        
+<a name="530"></a>    }
+<a name="531"></a>    else if (E == DE_DoubleClick)
+<a name="532"></a>    {
+<a name="533"></a>        if (<span class="source_type">C</span> == m_GameLevelBox) <span class="source_comment">// start a game on a double-click on the list
+</span><a name="534"></a>        {
+<a name="535"></a>            if( ValidateBeforePlanning() )
+<a name="536"></a>                GotoPlanning();	
+<a name="537"></a>        }
+<a name="538"></a>    }
+<a name="539"></a>
+<a name="540"></a>}
+<a name="541"></a>
+<a name="542"></a>function CreateButtons()
+<a name="543"></a>{
+<a name="544"></a>    local   <span class="source_type">FLOAT</span>   fXOffset, fYOffset, <span class="source_type">fWidth</span>, <span class="source_type">fHeight</span>, <span class="source_type">fYPos</span>;    
+<a name="545"></a>    
+<a name="546"></a>    fXOffset = <span class="source_int">10</span>;
+<a name="547"></a>    <span class="source_comment">//fYOffset = 36;
+</span><a name="548"></a>    fYOffset = <span class="source_int">26</span>;
+<a name="549"></a>    
+<a name="550"></a>    <span class="source_type">fWidth</span>   = <span class="source_int">200</span>;
+<a name="551"></a>    <span class="source_type">fHeight</span>  = <span class="source_int">25</span>;
+<a name="552"></a>    <span class="source_type">fYPos</span>    = <span class="source_int">64</span>;
+<a name="553"></a>    
+<a name="554"></a>    <span class="source_comment">// define Pratice mission button
+</span><a name="555"></a>    m_pButPraticeMission = <span class="source_type"><a href="../r6window/r6windowbutton.html" class="source">R6WindowButton</a></span>(CreateControl( <span class="source_type">class</span><span class="source_name">'R6WindowButton'</span>, fXOffset, <span class="source_type">fYPos</span>, <span class="source_type">fWidth</span>, <span class="source_type">fHeight</span>, self));
+<a name="556"></a>    m_pButPraticeMission.ToolTipString		= Localize(<span class="source_string">"Tip"</span>,<span class="source_string">"GameType_Practice"</span>,<span class="source_string">"R6Menu"</span>);
+<a name="557"></a>    m_pButPraticeMission.<span class="source_type">Text</span>				= Localize(<span class="source_string">"CustomMission"</span>,<span class="source_string">"ButtonPractice"</span>,<span class="source_string">"R6Menu"</span>);
+<a name="558"></a>    m_pButPraticeMission.m_iButtonID		= GetLevel().ConvertGameTypeToInt(<span class="source_string">"RGM_PracticeMode"</span>);
+<a name="559"></a>    m_pButPraticeMission.Align				= TA_Left;		
+<a name="560"></a>    m_pButPraticeMission.m_buttonFont		= m_LeftButtonFont;
+<a name="561"></a>    m_pButPraticeMission.CheckToDownSizeFont(m_LeftDownSizeFont,<span class="source_int">0</span>);
+<a name="562"></a>    m_pButPraticeMission.ResizeToText();    
+<a name="563"></a>    
+<a name="564"></a>    <span class="source_type">fYPos</span> += fYOffset;
+<a name="565"></a>    
+<a name="566"></a>    <span class="source_comment">// define LoneWolf mission button
+</span><a name="567"></a>    m_pButLoneWolf = <span class="source_type"><a href="../r6window/r6windowbutton.html" class="source">R6WindowButton</a></span>(CreateControl( <span class="source_type">class</span><span class="source_name">'R6WindowButton'</span>, fXOffset, <span class="source_type">fYPos</span>, <span class="source_type">fWidth</span>, <span class="source_type">fHeight</span>, self));
+<a name="568"></a>    m_pButLoneWolf.ToolTipString	= Localize(<span class="source_string">"Tip"</span>,<span class="source_string">"GameType_LoneWolf"</span>,<span class="source_string">"R6Menu"</span>);
+<a name="569"></a>    m_pButLoneWolf.<span class="source_type">Text</span>				= Localize(<span class="source_string">"CustomMission"</span>,<span class="source_string">"ButtonLoneWolf"</span>,<span class="source_string">"R6Menu"</span>);
+<a name="570"></a>    m_pButLoneWolf.m_iButtonID		= GetLevel().ConvertGameTypeToInt(<span class="source_string">"RGM_LoneWolfMode"</span>);
+<a name="571"></a>    m_pButLoneWolf.Align			= TA_Left;		
+<a name="572"></a>    m_pButLoneWolf.m_buttonFont		= m_LeftButtonFont;
+<a name="573"></a>    m_pButLoneWolf.CheckToDownSizeFont(m_LeftDownSizeFont,<span class="source_int">0</span>);
+<a name="574"></a>    m_pButLoneWolf.ResizeToText();
+<a name="575"></a>    
+<a name="576"></a>    <span class="source_type">fYPos</span> += fYOffset;
+<a name="577"></a>    
+<a name="578"></a>    <span class="source_comment">// define TerroHunt mission button
+</span><a name="579"></a>    m_pButTerroHunt = <span class="source_type"><a href="../r6window/r6windowbutton.html" class="source">R6WindowButton</a></span>(CreateControl( <span class="source_type">class</span><span class="source_name">'R6WindowButton'</span>, fXOffset, <span class="source_type">fYPos</span>, <span class="source_type">fWidth</span>, <span class="source_type">fHeight</span>, self));
+<a name="580"></a>    m_pButTerroHunt.ToolTipString		= Localize(<span class="source_string">"Tip"</span>,<span class="source_string">"GameType_TerroristHunt"</span>,<span class="source_string">"R6Menu"</span>);
+<a name="581"></a>    m_pButTerroHunt.<span class="source_type">Text</span>				= Localize(<span class="source_string">"CustomMission"</span>,<span class="source_string">"ButtonTerroHunt"</span>,<span class="source_string">"R6Menu"</span>);
+<a name="582"></a>    m_pButTerroHunt.m_iButtonID			= GetLevel().ConvertGameTypeToInt(<span class="source_string">"RGM_TerroristHuntMode"</span>);
+<a name="583"></a>    m_pButTerroHunt.Align				= TA_Left;		
+<a name="584"></a>    m_pButTerroHunt.m_buttonFont		= m_LeftButtonFont;
+<a name="585"></a>    m_pButTerroHunt.CheckToDownSizeFont(m_LeftDownSizeFont,<span class="source_int">0</span>);
+<a name="586"></a>    m_pButTerroHunt.ResizeToText();
+<a name="587"></a>    
+<a name="588"></a>    <span class="source_type">fYPos</span> += fYOffset;
+<a name="589"></a>    
+<a name="590"></a>    <span class="source_comment">// define HostageRescue mission button
+</span><a name="591"></a>    m_pButHostageRescue = <span class="source_type"><a href="../r6window/r6windowbutton.html" class="source">R6WindowButton</a></span>(CreateControl( <span class="source_type">class</span><span class="source_name">'R6WindowButton'</span>, fXOffset, <span class="source_type">fYPos</span>, <span class="source_type">fWidth</span>, <span class="source_type">fHeight</span>, self));
+<a name="592"></a>    m_pButHostageRescue.ToolTipString		= Localize(<span class="source_string">"Tip"</span>,<span class="source_string">"GameType_HostageRescue"</span>,<span class="source_string">"R6Menu"</span>);
+<a name="593"></a>    m_pButHostageRescue.<span class="source_type">Text</span>				= Localize(<span class="source_string">"CustomMission"</span>,<span class="source_string">"ButtonHostageRescue"</span>,<span class="source_string">"R6Menu"</span>);
+<a name="594"></a>    m_pButHostageRescue.m_iButtonID			= GetLevel().ConvertGameTypeToInt(<span class="source_string">"RGM_HostageRescueMode"</span>);
+<a name="595"></a>    m_pButHostageRescue.Align				= TA_Left;
+<a name="596"></a>    m_pButHostageRescue.m_buttonFont		= m_LeftButtonFont;
+<a name="597"></a>    m_pButHostageRescue.CheckToDownSizeFont(m_LeftDownSizeFont,<span class="source_int">0</span>);
+<a name="598"></a>    m_pButHostageRescue.ResizeToText();
+<a name="599"></a>
+<a name="600"></a>    switch(CustomMissionGameType)
+<a name="601"></a>    {
+<a name="602"></a>    case m_pButPraticeMission.m_iButtonID:
+<a name="603"></a>        m_pButCurrent = m_pButPraticeMission;
+<a name="604"></a>        break;
+<a name="605"></a>    case m_pButLoneWolf.m_iButtonID:
+<a name="606"></a>        m_pButCurrent = m_pButLoneWolf;
+<a name="607"></a>        break;
+<a name="608"></a>    case m_pButTerroHunt.m_iButtonID:
+<a name="609"></a>        m_pButCurrent = m_pButTerroHunt;
+<a name="610"></a>        break;
+<a name="611"></a>    case m_pButHostageRescue.m_iButtonID:
+<a name="612"></a>        m_pButCurrent = m_pButHostageRescue;
+<a name="613"></a>        break;
+<a name="614"></a>    default:
+<a name="615"></a>        m_pButCurrent = m_pButPraticeMission;
+<a name="616"></a>    }
+<a name="617"></a>    
+<a name="618"></a>    m_pButCurrent.m_bSelected = true;   
+<a name="619"></a>}
+<a name="620"></a>
+<a name="621"></a>function <span class="source_type">BOOL</span> ButtonsUsingDownSizeFont()
+<a name="622"></a>{
+<a name="623"></a>    local <span class="source_type">BOOL</span> <span class="source_type">result</span>;   
+<a name="624"></a>    
+<a name="625"></a>    if( m_pButPraticeMission.IsFontDownSizingNeeded()   ||
+<a name="626"></a>        m_pButLoneWolf.IsFontDownSizingNeeded()         ||
+<a name="627"></a>        m_pButTerroHunt.IsFontDownSizingNeeded()        ||
+<a name="628"></a>        m_pButHostageRescue.IsFontDownSizingNeeded()
+<a name="629"></a>       )
+<a name="630"></a>        <span class="source_type">result</span> = true;    
+<a name="631"></a>    
+<a name="632"></a>    return <span class="source_type">result</span>;
+<a name="633"></a>    
+<a name="634"></a>}
+<a name="635"></a>
+<a name="636"></a>
+<a name="637"></a>
+<a name="638"></a>function ForceFontDownSizing()
+<a name="639"></a>{
+<a name="640"></a>    
+<a name="641"></a>    m_pButPraticeMission.m_buttonFont = m_LeftDownSizeFont;
+<a name="642"></a>    m_pButLoneWolf.m_buttonFont       = m_LeftDownSizeFont;
+<a name="643"></a>    m_pButTerroHunt.m_buttonFont      = m_LeftDownSizeFont;
+<a name="644"></a>    m_pButHostageRescue.m_buttonFont  = m_LeftDownSizeFont;
+<a name="645"></a>
+<a name="646"></a>    m_pButPraticeMission.ResizeToText();
+<a name="647"></a>    m_pButLoneWolf.ResizeToText();
+<a name="648"></a>    m_pButTerroHunt.ResizeToText();
+<a name="649"></a>    m_pButHostageRescue.ResizeToText();
+<a name="650"></a>}
+<a name="651"></a>
+<a name="652"></a>defaultproperties
+<a name="653"></a>{
+<a name="654"></a>     CustomMissionGameType=<span class="source_int">3</span>
+<a name="655"></a>     CustomMissionMap=<span class="source_string">"CS_de_dust"</span>
+<a name="656"></a>}
+<a name="657"></a></pre></td></tr></table></div>
+<hr />
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../r6menu/r6menu-overview.html">Package</a></td>
+	<td class="header"><a href="../r6menu/r6menucustommissionwidget.html">Class</a></td>
+	<td class="header_hilight">Source</td>
+	<td class="header"><a class="header" href="../classtree.html#R6MenuCustomMissionWidget">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../Source_r6menu/r6menucustommissionnbterroselect.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../Source_r6menu/r6menudebriefingwidget.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+
+<div class="stats">Class file time: sam. 18/9/2004 14:39:54.000 - Creation time: mar. 26/5/2026 18:33:20.281 - Created with <a href="http://wiki.beyondunreal.com/wiki/UnCodeX" target="_blank">UnCodeX</a></div>
+
+</body>
+</html>

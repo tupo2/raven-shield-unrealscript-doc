@@ -1,0 +1,882 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+	<title>UnCodeX - engine.Engine</title>
+	<meta name="Generator" content="UnCodeX 241" />
+	<link rel="stylesheet" href="../DocStyle2.css" type="text/css" title="Original Purple" />
+	<link rel="alternative stylesheet" href="../DocStyle2-blue.css" type="text/css" title="Blue" />
+	<link rel="alternative stylesheet" href="../DocStyle2-red.css" type="text/css" title="Red" />
+	<!--[if IE]>
+	<link rel="stylesheet" href="../DocStyle2-msie.css" type="text/css" />
+	<![endif]-->
+	<script src="../styleswitcher.js" type="text/javascript"></script>
+</head>
+<body>
+
+<div class="header">
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../engine/engine-overview.html">Package</a></td>
+	<td class="header_hilight">Class</td>
+	<td class="header"><a href="../Source_engine/engine.html">Source</a></td>
+	<td class="header"><a class="header" href="../classtree.html#Engine">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../engine/emitter.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../engine/fadecolor.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html#engine/engine.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+</div>
+<div class="spacer"></div>
+
+<h1><a href="../engine/engine-overview.html">engine</a>.Engine</h1>
+
+<dl>
+<dt>Extends</dt><dd><a href="../core/subsystem.html">Subsystem</a></dd>
+<dt>Modifiers</dt><dd>native noexport transient </dd>
+</dl>
+
+<p></p>
+
+<pre class="tree"><a href="../core/core-overview.html">core</a>.<a href="../core/object.html">Object</a>
+|   
++-- <a href="../core/core-overview.html">core</a>.<a href="../core/subsystem.html">Subsystem</a>
+   |   
+   +-- <a href="../engine/engine-overview.html">engine</a>.<a href="../engine/engine.html">Engine</a>
+</pre>
+
+<h4>Direct Known Subclasses:</h4>
+<blockquote>
+	<a href="../editor/editorengine.html">EditorEngine</a>, <a href="../engine/gameengine.html">GameEngine</a>
+</blockquote>
+
+<hr />
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Constants Summary</th>
+</tr>
+<tr><td width="40%"><a href="#_C_ConsoleMaxStrings" name="C_ConsoleMaxStrings" title="go to the details">C_ConsoleMaxStrings</a></td><td width="10%">=</td><td width="50%">32</td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Contants from <a href="../core/core-overview.html">core</a>.<a href="../core/object.html">Object</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../core/object.html#MaxInt">MaxInt</a>, <a href="../core/object.html#Pi">Pi</a>, <a href="../core/object.html#RF_NotForClient">RF_NotForClient</a>, <a href="../core/object.html#RF_NotForEdit">RF_NotForEdit</a>, <a href="../core/object.html#RF_NotForServer">RF_NotForServer</a>, <a href="../core/object.html#RF_Public">RF_Public</a>, <a href="../core/object.html#RF_Transactional">RF_Transactional</a>, <a href="../core/object.html#RF_Transient">RF_Transient</a></td>
+</tr>
+</table>
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th colspan="2" class="title">Variables Summary</th>
+</tr>
+<tr><td nowrap="nowrap" width="33%">audiosubsystem</td><td width="66%"><a href="#_Audio" name="Audio" title="go to the details">Audio</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_bShowAnimStats" name="bShowAnimStats" title="go to the details">bShowAnimStats</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_bShowAudioStats" name="bShowAudioStats" title="go to the details">bShowAudioStats</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_bShowFrameRate" name="bShowFrameRate" title="go to the details">bShowFrameRate</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_bShowGameStats" name="bShowGameStats" title="go to the details">bShowGameStats</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_bShowHardwareStats" name="bShowHardwareStats" title="go to the details">bShowHardwareStats</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_bShowHistograph" name="bShowHistograph" title="go to the details">bShowHistograph</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_bShowMatineeStats" name="bShowMatineeStats" title="go to the details">bShowMatineeStats</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_bShowNetStats" name="bShowNetStats" title="go to the details">bShowNetStats</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_bShowRenderStats" name="bShowRenderStats" title="go to the details">bShowRenderStats</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_bShowXboxMemStats" name="bShowXboxMemStats" title="go to the details">bShowXboxMemStats</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">client</td><td width="66%"><a href="#_Client" name="Client" title="go to the details">Client</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_ClientCycles" name="ClientCycles" title="go to the details">ClientCycles</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">primitive</td><td width="66%"><a href="#_Cylinder" name="Cylinder" title="go to the details">Cylinder</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_GameCycles" name="GameCycles" title="go to the details">GameCycles</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">renderdevice</td><td width="66%"><a href="#_GRenDev" name="GRenDev" title="go to the details">GRenDev</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">BOOL</td><td width="66%"><a href="#_m_bDisplayVersionInfo" name="m_bDisplayVersionInfo" title="go to the details">m_bDisplayVersionInfo</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">BOOL</td><td width="66%"><a href="#_m_bEnableLoadingScreen" name="m_bEnableLoadingScreen" title="go to the details">m_bEnableLoadingScreen</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">BOOL</td><td width="66%"><a href="#_m_bFreezeActorStats" name="m_bFreezeActorStats" title="go to the details">m_bFreezeActorStats</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">BOOL</td><td width="66%"><a href="#_m_bIsRecording" name="m_bIsRecording" title="go to the details">m_bIsRecording</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">BOOL</td><td width="66%"><a href="#_m_bKarmaMemoryStats" name="m_bKarmaMemoryStats" title="go to the details">m_bKarmaMemoryStats</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">BOOL</td><td width="66%"><a href="#_m_bMultiScreenShot" name="m_bMultiScreenShot" title="go to the details">m_bMultiScreenShot</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">BOOL</td><td width="66%"><a href="#_m_bProfStatsFps" name="m_bProfStatsFps" title="go to the details">m_bProfStatsFps</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">BOOL</td><td width="66%"><a href="#_m_bProfStatsTimers" name="m_bProfStatsTimers" title="go to the details">m_bProfStatsTimers</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">BOOL</td><td width="66%"><a href="#_m_bRunningFromEditor" name="m_bRunningFromEditor" title="go to the details">m_bRunningFromEditor</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">BOOL</td><td width="66%"><a href="#_m_bShowActorRenderStats" name="m_bShowActorRenderStats" title="go to the details">m_bShowActorRenderStats</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">BOOL</td><td width="66%"><a href="#_m_bShowActorTickStats" name="m_bShowActorTickStats" title="go to the details">m_bShowActorTickStats</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">BOOL</td><td width="66%"><a href="#_m_bShowActorTracedStats" name="m_bShowActorTracedStats" title="go to the details">m_bShowActorTracedStats</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">BOOL</td><td width="66%"><a href="#_m_bShowActorTraceStats" name="m_bShowActorTraceStats" title="go to the details">m_bShowActorTraceStats</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">BOOL</td><td width="66%"><a href="#_m_bShowLightValue" name="m_bShowLightValue" title="go to the details">m_bShowLightValue</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">BOOL</td><td width="66%"><a href="#_m_bShowNetChannelStats" name="m_bShowNetChannelStats" title="go to the details">m_bShowNetChannelStats</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">BOOL</td><td width="66%"><a href="#_m_bShowStaticMeshSectionsDebugInfo" name="m_bShowStaticMeshSectionsDebugInfo" title="go to the details">m_bShowStaticMeshSectionsDebugInfo</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">BOOL</td><td width="66%"><a href="#_m_bUseStaticMeshBatcher" name="m_bUseStaticMeshBatcher" title="go to the details">m_bUseStaticMeshBatcher</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../core/object.html#Color">Color</a></td><td width="66%"><a href="#_m_ConsoleStringsColors[C_ConsoleMaxStrings]" name="m_ConsoleStringsColors[C_ConsoleMaxStrings]" title="go to the details">m_ConsoleStringsColors[C_ConsoleMaxStrings]</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">String</td><td width="66%"><a href="#_m_ConsoleStrings[C_ConsoleMaxStrings]" name="m_ConsoleStrings[C_ConsoleMaxStrings]" title="go to the details">m_ConsoleStrings[C_ConsoleMaxStrings]</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">FLOAT</td><td width="66%"><a href="#_m_fDeltaTime" name="m_fDeltaTime" title="go to the details">m_fDeltaTime</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_m_fFakeDeltaTime" name="m_fFakeDeltaTime" title="go to the details">m_fFakeDeltaTime</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">FLOAT</td><td width="66%"><a href="#_m_fTotalTime" name="m_fTotalTime" title="go to the details">m_fTotalTime</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_m_iConsoleNbStrings" name="m_iConsoleNbStrings" title="go to the details">m_iConsoleNbStrings</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">INT</td><td width="66%"><a href="#_m_iCurrentDelta" name="m_iCurrentDelta" title="go to the details">m_iCurrentDelta</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">INT</td><td width="66%"><a href="#_m_iCurrentMapNum" name="m_iCurrentMapNum" title="go to the details">m_iCurrentMapNum</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">INT</td><td width="66%"><a href="#_m_lMovieFrame" name="m_lMovieFrame" title="go to the details">m_lMovieFrame</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_m_szCampaignNameFromParam" name="m_szCampaignNameFromParam" title="go to the details">m_szCampaignNameFromParam</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">BYTE</td><td width="66%"><a href="#_m_szMovieFileName[256]" name="m_szMovieFileName[256]" title="go to the details">m_szMovieFileName[256]</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">Class</td><td width="66%"><a href="#_m_TickedClassStats" name="m_TickedClassStats" title="go to the details">m_TickedClassStats</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_TickCycles" name="TickCycles" title="go to the details">TickCycles</a></td></tr>
+<tr><th colspan="2" class="small">Colors</th></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../core/object.html#Color">color</a></td><td width="66%"><a href="#_C_ActorArrow" name="C_ActorArrow" title="go to the details">C_ActorArrow</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../core/object.html#Color">color</a></td><td width="66%"><a href="#_C_ActorHiWire" name="C_ActorHiWire" title="go to the details">C_ActorHiWire</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../core/object.html#Color">color</a></td><td width="66%"><a href="#_C_ActorWire" name="C_ActorWire" title="go to the details">C_ActorWire</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../core/object.html#Color">color</a></td><td width="66%"><a href="#_C_AddWire" name="C_AddWire" title="go to the details">C_AddWire</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../core/object.html#Color">color</a></td><td width="66%"><a href="#_C_AnimMesh" name="C_AnimMesh" title="go to the details">C_AnimMesh</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../core/object.html#Color">color</a></td><td width="66%"><a href="#_C_Black" name="C_Black" title="go to the details">C_Black</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../core/object.html#Color">color</a></td><td width="66%"><a href="#_C_BrushSnap" name="C_BrushSnap" title="go to the details">C_BrushSnap</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../core/object.html#Color">color</a></td><td width="66%"><a href="#_C_BrushVertex" name="C_BrushVertex" title="go to the details">C_BrushVertex</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../core/object.html#Color">color</a></td><td width="66%"><a href="#_C_BrushWire" name="C_BrushWire" title="go to the details">C_BrushWire</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../core/object.html#Color">color</a></td><td width="66%"><a href="#_C_ConstraintLine" name="C_ConstraintLine" title="go to the details">C_ConstraintLine</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../core/object.html#Color">color</a></td><td width="66%"><a href="#_C_Current" name="C_Current" title="go to the details">C_Current</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../core/object.html#Color">color</a></td><td width="66%"><a href="#_C_GreyWire" name="C_GreyWire" title="go to the details">C_GreyWire</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../core/object.html#Color">color</a></td><td width="66%"><a href="#_C_GroundHighlight" name="C_GroundHighlight" title="go to the details">C_GroundHighlight</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../core/object.html#Color">color</a></td><td width="66%"><a href="#_C_GroundPlane" name="C_GroundPlane" title="go to the details">C_GroundPlane</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../core/object.html#Color">color</a></td><td width="66%"><a href="#_C_Invalid" name="C_Invalid" title="go to the details">C_Invalid</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../core/object.html#Color">color</a></td><td width="66%"><a href="#_C_Mask" name="C_Mask" title="go to the details">C_Mask</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../core/object.html#Color">color</a></td><td width="66%"><a href="#_C_Mover" name="C_Mover" title="go to the details">C_Mover</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../core/object.html#Color">color</a></td><td width="66%"><a href="#_C_NonSolidWire" name="C_NonSolidWire" title="go to the details">C_NonSolidWire</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../core/object.html#Color">color</a></td><td width="66%"><a href="#_C_OrthoBackground" name="C_OrthoBackground" title="go to the details">C_OrthoBackground</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../core/object.html#Color">color</a></td><td width="66%"><a href="#_C_Pivot" name="C_Pivot" title="go to the details">C_Pivot</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../core/object.html#Color">color</a></td><td width="66%"><a href="#_C_ScaleBox" name="C_ScaleBox" title="go to the details">C_ScaleBox</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../core/object.html#Color">color</a></td><td width="66%"><a href="#_C_ScaleBoxHi" name="C_ScaleBoxHi" title="go to the details">C_ScaleBoxHi</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../core/object.html#Color">color</a></td><td width="66%"><a href="#_C_Select" name="C_Select" title="go to the details">C_Select</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../core/object.html#Color">color</a></td><td width="66%"><a href="#_C_SemiSolidWire" name="C_SemiSolidWire" title="go to the details">C_SemiSolidWire</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../core/object.html#Color">color</a></td><td width="66%"><a href="#_C_StaticMesh" name="C_StaticMesh" title="go to the details">C_StaticMesh</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../core/object.html#Color">color</a></td><td width="66%"><a href="#_C_SubtractWire" name="C_SubtractWire" title="go to the details">C_SubtractWire</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../core/object.html#Color">color</a></td><td width="66%"><a href="#_C_TerrainWire" name="C_TerrainWire" title="go to the details">C_TerrainWire</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../core/object.html#Color">color</a></td><td width="66%"><a href="#_C_VolumeBrush" name="C_VolumeBrush" title="go to the details">C_VolumeBrush</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../core/object.html#Color">color</a></td><td width="66%"><a href="#_C_White" name="C_White" title="go to the details">C_White</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../core/object.html#Color">color</a></td><td width="66%"><a href="#_C_WireBackground" name="C_WireBackground" title="go to the details">C_WireBackground</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../core/object.html#Color">color</a></td><td width="66%"><a href="#_C_WireGridAxis" name="C_WireGridAxis" title="go to the details">C_WireGridAxis</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../core/object.html#Color">color</a></td><td width="66%"><a href="#_C_WorldBox" name="C_WorldBox" title="go to the details">C_WorldBox</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../core/object.html#Color">color</a></td><td width="66%"><a href="#_C_ZoneWire" name="C_ZoneWire" title="go to the details">C_ZoneWire</a></td></tr>
+<tr><th colspan="2" class="small">Drivers</th></tr>
+<tr><td nowrap="nowrap" width="33%">class&lt;AudioSubsystem&gt;</td><td width="66%"><a href="#_AudioDevice" name="AudioDevice" title="go to the details">AudioDevice</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">class&lt;<a href="../engine/interaction.html">Interaction</a>&gt;</td><td width="66%"><a href="#_Console" name="Console" title="go to the details">Console</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">class&lt;Language&gt;</td><td width="66%"><a href="#_Language" name="Language" title="go to the details">Language</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">class&lt;NetDriver&gt;</td><td width="66%"><a href="#_NetworkDevice" name="NetworkDevice" title="go to the details">NetworkDevice</a></td></tr>
+<tr><th colspan="2" class="small">Settings</th></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_CacheSizeMegs" name="CacheSizeMegs" title="go to the details">CacheSizeMegs</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_CurrentTickRate" name="CurrentTickRate" title="go to the details">CurrentTickRate</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_UseSound" name="UseSound" title="go to the details">UseSound</a></td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Variables from <a href="../core/core-overview.html">core</a>.<a href="../core/subsystem.html">Subsystem</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../core/subsystem.html#ExecVtbl">ExecVtbl</a></td>
+</tr>
+</table>
+<table>
+<tr>
+	<th class="inherittitle">Inherited Variables from <a href="../core/core-overview.html">core</a>.<a href="../core/object.html">Object</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../core/object.html#Class">Class</a>, <a href="../core/object.html#DName">DName</a>, <a href="../core/object.html#Name">Name</a>, <a href="../core/object.html#ObjectFlags">ObjectFlags</a>, <a href="../core/object.html#ObjectInternal[6]">ObjectInternal[6]</a>, <a href="../core/object.html#Outer">Outer</a></td>
+</tr>
+</table>
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Enumerations Summary</th>
+</tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Enumerations from <a href="../core/core-overview.html">core</a>.<a href="../core/object.html">Object</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../core/object.html#ECamOrientation">ECamOrientation</a>, <a href="../core/object.html#EGoCode">EGoCode</a>, <a href="../core/object.html#EMovementMode">EMovementMode</a>, <a href="../core/object.html#EMovementSpeed">EMovementSpeed</a>, <a href="../core/object.html#ENodeNotify">ENodeNotify</a>, <a href="../core/object.html#EPlanAction">EPlanAction</a>, <a href="../core/object.html#EPlanActionType">EPlanActionType</a>, <a href="../core/object.html#ePlayerTeamSelection">ePlayerTeamSelection</a>, <a href="../core/object.html#ESheerAxis">ESheerAxis</a></td>
+</tr>
+</table>
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Structures Summary</th>
+</tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Structures from <a href="../core/core-overview.html">core</a>.<a href="../core/object.html">Object</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../core/object.html#BoundingVolume">BoundingVolume</a>, <a href="../core/object.html#Box">Box</a>, <a href="../core/object.html#Color">Color</a>, <a href="../core/object.html#CompressedPosition">CompressedPosition</a>, <a href="../core/object.html#Coords">Coords</a>, <a href="../core/object.html#Guid">Guid</a>, <a href="../core/object.html#InterpCurve">InterpCurve</a>, <a href="../core/object.html#InterpCurvePoint">InterpCurvePoint</a>, <a href="../core/object.html#Matrix">Matrix</a>, <a href="../core/object.html#Plane">Plane</a>, <a href="../core/object.html#Range">Range</a>, <a href="../core/object.html#RangeVector">RangeVector</a>, <a href="../core/object.html#Region">Region</a>, <a href="../core/object.html#Rotator">Rotator</a>, <a href="../core/object.html#Scale">Scale</a>, <a href="../core/object.html#Vector">Vector</a></td>
+</tr>
+</table>
+
+
+<br />
+
+
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Functions Summary</th>
+</tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Functions from <a href="../core/core-overview.html">core</a>.<a href="../core/object.html">Object</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../core/object.html#!">!</a>, <a href="../core/object.html#!=">!=</a>, <a href="../core/object.html#$">$</a>, <a href="../core/object.html#%">%</a>, <a href="../core/object.html#&">&</a>, <a href="../core/object.html#&&">&&</a>, <a href="../core/object.html#*">*</a>, <a href="../core/object.html#**">**</a>, <a href="../core/object.html#*=">*=</a>, <a href="../core/object.html#+">+</a>, <a href="../core/object.html#++">++</a>, <a href="../core/object.html#+=">+=</a>, <a href="../core/object.html#-">-</a>, <a href="../core/object.html#--">--</a>, <a href="../core/object.html#-=">-=</a>, <a href="../core/object.html#/ ">/ </a>, <a href="../core/object.html#/=">/=</a>, <a href="../core/object.html#&lt;">&lt;</a>, <a href="../core/object.html#&lt;&lt;">&lt;&lt;</a>, <a href="../core/object.html#&lt;=">&lt;=</a>, <a href="../core/object.html#==">==</a>, <a href="../core/object.html#&gt;">&gt;</a>, <a href="../core/object.html#&gt;=">&gt;=</a>, <a href="../core/object.html#&gt;&gt;">&gt;&gt;</a>, <a href="../core/object.html#&gt;&gt;&gt;">&gt;&gt;&gt;</a>, <a href="../core/object.html#@">@</a>, <a href="../core/object.html#Abs">Abs</a>, <a href="../core/object.html#Acos">Acos</a>, <a href="../core/object.html#Asc">Asc</a>, <a href="../core/object.html#Asin">Asin</a>, <a href="../core/object.html#Atan">Atan</a>, <a href="../core/object.html#Atoi">Atoi</a>, <a href="../core/object.html#BeginState">BeginState</a>, <a href="../core/object.html#Caps">Caps</a>, <a href="../core/object.html#Chr">Chr</a>, <a href="../core/object.html#Clamp">Clamp</a>, <a href="../core/object.html#ClassIsChildOf">ClassIsChildOf</a>, <a href="../core/object.html#ClearOuter">ClearOuter</a>, <a href="../core/object.html#Clock">Clock</a>, <a href="../core/object.html#ClockwiseFrom">ClockwiseFrom</a>, <a href="../core/object.html#Cos">Cos</a>, <a href="../core/object.html#Cross">Cross</a>, <a href="../core/object.html#Disable">Disable</a>, <a href="../core/object.html#Dot">Dot</a>, <a href="../core/object.html#DynamicLoadObject">DynamicLoadObject</a>, <a href="../core/object.html#Enable">Enable</a>, <a href="../core/object.html#EndState">EndState</a>, <a href="../core/object.html#Exp">Exp</a>, <a href="../core/object.html#FClamp">FClamp</a>, <a href="../core/object.html#FindObject">FindObject</a>, <a href="../core/object.html#FMax">FMax</a>, <a href="../core/object.html#FMin">FMin</a>, <a href="../core/object.html#FRand">FRand</a>, <a href="../core/object.html#FreePackageObjects">FreePackageObjects</a>, <a href="../core/object.html#GetAxes">GetAxes</a>, <a href="../core/object.html#GetEnum">GetEnum</a>, <a href="../core/object.html#GetFirstPackageClass">GetFirstPackageClass</a>, <a href="../core/object.html#GetNextClass">GetNextClass</a>, <a href="../core/object.html#GetPropertyText">GetPropertyText</a>, <a href="../core/object.html#GetRegistryKey">GetRegistryKey</a>, <a href="../core/object.html#GetStateName">GetStateName</a>, <a href="../core/object.html#GetUnAxes">GetUnAxes</a>, <a href="../core/object.html#GotoState">GotoState</a>, <a href="../core/object.html#InitMod">InitMod</a>, <a href="../core/object.html#InStr">InStr</a>, <a href="../core/object.html#InterpCurveEval">InterpCurveEval</a>, <a href="../core/object.html#Invert">Invert</a>, <a href="../core/object.html#IsA">IsA</a>, <a href="../core/object.html#IsInState">IsInState</a>, <a href="../core/object.html#Itoa">Itoa</a>, <a href="../core/object.html#Left">Left</a>, <a href="../core/object.html#Len">Len</a>, <a href="../core/object.html#Lerp">Lerp</a>, <a href="../core/object.html#LoadConfig">LoadConfig</a>, <a href="../core/object.html#Localize">Localize</a>, <a href="../core/object.html#Log">Log</a>, <a href="../core/object.html#Loge">Loge</a>, <a href="../core/object.html#LogSnd">LogSnd</a>, <a href="../core/object.html#Max">Max</a>, <a href="../core/object.html#Mid">Mid</a>, <a href="../core/object.html#Min">Min</a>, <a href="../core/object.html#MirrorVectorByNormal">MirrorVectorByNormal</a>, <a href="../core/object.html#Normal">Normal</a>, <a href="../core/object.html#Normalize">Normalize</a>, <a href="../core/object.html#OrthoRotation">OrthoRotation</a>, <a href="../core/object.html#Rand">Rand</a>, <a href="../core/object.html#RandRange">RandRange</a>, <a href="../core/object.html#RemoveInvalidChars">RemoveInvalidChars</a>, <a href="../core/object.html#ResetConfig">ResetConfig</a>, <a href="../core/object.html#RewindToFirstClass">RewindToFirstClass</a>, <a href="../core/object.html#Right">Right</a>, <a href="../core/object.html#RotRand">RotRand</a>, <a href="../core/object.html#SaveConfig">SaveConfig</a>, <a href="../core/object.html#SetPropertyText">SetPropertyText</a>, <a href="../core/object.html#SetRegistryKey">SetRegistryKey</a>, <a href="../core/object.html#ShortestAngle2D">ShortestAngle2D</a>, <a href="../core/object.html#Sin">Sin</a>, <a href="../core/object.html#Smerp">Smerp</a>, <a href="../core/object.html#Sqrt">Sqrt</a>, <a href="../core/object.html#Square">Square</a>, <a href="../core/object.html#StaticSaveConfig">StaticSaveConfig</a>, <a href="../core/object.html#Strnicmp">Strnicmp</a>, <a href="../core/object.html#Tan">Tan</a>, <a href="../core/object.html#Unclock">Unclock</a>, <a href="../core/object.html#VRand">VRand</a>, <a href="../core/object.html#VSize">VSize</a>, <a href="../core/object.html#Warn">Warn</a>, <a href="../core/object.html#^">^</a>, <a href="../core/object.html#^^">^^</a>, <a href="../core/object.html#|">|</a>, <a href="../core/object.html#||">||</a>, <a href="../core/object.html#~">~</a>, <a href="../core/object.html#~=">~=</a></td>
+</tr>
+</table>
+
+
+<br />
+
+
+
+<hr />
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Constants Detail</th>
+</tr>
+</table>
+
+<h4><a name="_C_ConsoleMaxStrings" class="hidden"></a>C_ConsoleMaxStrings <a href="../Source_engine/engine.html#122" class="small">Source code</a></h4>
+<div class="declaration">const C_ConsoleMaxStrings = <span class="source_int">32</span>;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th class="title">Variables Detail</th>
+</tr>
+</table>
+
+<h4><a name="_Audio" class="hidden"></a>Audio <a href="../Source_engine/engine.html#23" class="small">Source code</a></h4>
+<div class="declaration">var const <span class="source_type">audiosubsystem</span> Audio;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_bShowAnimStats" class="hidden"></a>bShowAnimStats <a href="../Source_engine/engine.html#31" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">int</span> bShowAnimStats;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_bShowAudioStats" class="hidden"></a>bShowAudioStats <a href="../Source_engine/engine.html#36" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">int</span> bShowAudioStats;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_bShowFrameRate" class="hidden"></a>bShowFrameRate <a href="../Source_engine/engine.html#27" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">int</span> bShowFrameRate;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_bShowGameStats" class="hidden"></a>bShowGameStats <a href="../Source_engine/engine.html#30" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">int</span> bShowGameStats;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_bShowHardwareStats" class="hidden"></a>bShowHardwareStats <a href="../Source_engine/engine.html#29" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">int</span> bShowHardwareStats;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_bShowHistograph" class="hidden"></a>bShowHistograph <a href="../Source_engine/engine.html#33" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">int</span> bShowHistograph;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_bShowMatineeStats" class="hidden"></a>bShowMatineeStats <a href="../Source_engine/engine.html#35" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">int</span> bShowMatineeStats;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_bShowNetStats" class="hidden"></a>bShowNetStats <a href="../Source_engine/engine.html#32" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">int</span> bShowNetStats;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_bShowRenderStats" class="hidden"></a>bShowRenderStats <a href="../Source_engine/engine.html#28" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">int</span> bShowRenderStats;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_bShowXboxMemStats" class="hidden"></a>bShowXboxMemStats <a href="../Source_engine/engine.html#34" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">int</span> bShowXboxMemStats;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_Client" class="hidden"></a>Client <a href="../Source_engine/engine.html#22" class="small">Source code</a></h4>
+<div class="declaration">var const <span class="source_type">client</span> <span class="source_type">Client</span>;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ClientCycles" class="hidden"></a>ClientCycles <a href="../Source_engine/engine.html#38" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">int</span> ClientCycles;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_Cylinder" class="hidden"></a>Cylinder <a href="../Source_engine/engine.html#21" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">primitive</span> Cylinder;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GameCycles" class="hidden"></a>GameCycles <a href="../Source_engine/engine.html#38" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">int</span> GameCycles;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GRenDev" class="hidden"></a>GRenDev <a href="../Source_engine/engine.html#24" class="small">Source code</a></h4>
+<div class="declaration">var const <span class="source_type">renderdevice</span> GRenDev;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_bDisplayVersionInfo" class="hidden"></a>m_bDisplayVersionInfo <a href="../Source_engine/engine.html#110" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">BOOL</span> m_bDisplayVersionInfo;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_bEnableLoadingScreen" class="hidden"></a>m_bEnableLoadingScreen <a href="../Source_engine/engine.html#112" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">BOOL</span> m_bEnableLoadingScreen;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_bFreezeActorStats" class="hidden"></a>m_bFreezeActorStats <a href="../Source_engine/engine.html#99" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">BOOL</span> m_bFreezeActorStats;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_bIsRecording" class="hidden"></a>m_bIsRecording <a href="../Source_engine/engine.html#113" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">BOOL</span> m_bIsRecording;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_bKarmaMemoryStats" class="hidden"></a>m_bKarmaMemoryStats <a href="../Source_engine/engine.html#92" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">BOOL</span> m_bKarmaMemoryStats;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_bMultiScreenShot" class="hidden"></a>m_bMultiScreenShot <a href="../Source_engine/engine.html#111" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">BOOL</span> m_bMultiScreenShot;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_bProfStatsFps" class="hidden"></a>m_bProfStatsFps <a href="../Source_engine/engine.html#87" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">BOOL</span> m_bProfStatsFps;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_bProfStatsTimers" class="hidden"></a>m_bProfStatsTimers <a href="../Source_engine/engine.html#88" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">BOOL</span> m_bProfStatsTimers;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_bRunningFromEditor" class="hidden"></a>m_bRunningFromEditor <a href="../Source_engine/engine.html#109" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">BOOL</span> m_bRunningFromEditor;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_bShowActorRenderStats" class="hidden"></a>m_bShowActorRenderStats <a href="../Source_engine/engine.html#95" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">BOOL</span> m_bShowActorRenderStats;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_bShowActorTickStats" class="hidden"></a>m_bShowActorTickStats <a href="../Source_engine/engine.html#96" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">BOOL</span> m_bShowActorTickStats;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_bShowActorTracedStats" class="hidden"></a>m_bShowActorTracedStats <a href="../Source_engine/engine.html#98" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">BOOL</span> m_bShowActorTracedStats;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_bShowActorTraceStats" class="hidden"></a>m_bShowActorTraceStats <a href="../Source_engine/engine.html#97" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">BOOL</span> m_bShowActorTraceStats;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_bShowLightValue" class="hidden"></a>m_bShowLightValue <a href="../Source_engine/engine.html#105" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">BOOL</span> m_bShowLightValue;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_bShowNetChannelStats" class="hidden"></a>m_bShowNetChannelStats <a href="../Source_engine/engine.html#102" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">BOOL</span> m_bShowNetChannelStats;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_bShowStaticMeshSectionsDebugInfo" class="hidden"></a>m_bShowStaticMeshSectionsDebugInfo <a href="../Source_engine/engine.html#100" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">BOOL</span> m_bShowStaticMeshSectionsDebugInfo;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_bUseStaticMeshBatcher" class="hidden"></a>m_bUseStaticMeshBatcher <a href="../Source_engine/engine.html#101" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">BOOL</span> m_bUseStaticMeshBatcher;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_ConsoleStringsColors[C_ConsoleMaxStrings]" class="hidden"></a>m_ConsoleStringsColors[C_ConsoleMaxStrings] <a href="../Source_engine/engine.html#124" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../core/object.html#Color" class="source">Color</a></span> m_ConsoleStringsColors[C_ConsoleMaxStrings];</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_ConsoleStrings[C_ConsoleMaxStrings]" class="hidden"></a>m_ConsoleStrings[C_ConsoleMaxStrings] <a href="../Source_engine/engine.html#123" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">String</span> m_ConsoleStrings[C_ConsoleMaxStrings];</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_fDeltaTime" class="hidden"></a>m_fDeltaTime <a href="../Source_engine/engine.html#45" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">FLOAT</span> m_fDeltaTime;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_fFakeDeltaTime" class="hidden"></a>m_fFakeDeltaTime <a href="../Source_engine/engine.html#115" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">float</span> m_fFakeDeltaTime;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_fTotalTime" class="hidden"></a>m_fTotalTime <a href="../Source_engine/engine.html#46" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">FLOAT</span> m_fTotalTime;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_iConsoleNbStrings" class="hidden"></a>m_iConsoleNbStrings <a href="../Source_engine/engine.html#125" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">int</span> m_iConsoleNbStrings;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_iCurrentDelta" class="hidden"></a>m_iCurrentDelta <a href="../Source_engine/engine.html#44" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">INT</span> m_iCurrentDelta;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_iCurrentMapNum" class="hidden"></a>m_iCurrentMapNum <a href="../Source_engine/engine.html#117" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">INT</span> m_iCurrentMapNum;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_lMovieFrame" class="hidden"></a>m_lMovieFrame <a href="../Source_engine/engine.html#116" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">INT</span> m_lMovieFrame;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_szCampaignNameFromParam" class="hidden"></a>m_szCampaignNameFromParam <a href="../Source_engine/engine.html#47" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">string</span> m_szCampaignNameFromParam;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_szMovieFileName[256]" class="hidden"></a>m_szMovieFileName[256] <a href="../Source_engine/engine.html#114" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">BYTE</span> m_szMovieFileName[<span class="source_int">256</span>];</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_TickedClassStats" class="hidden"></a>m_TickedClassStats <a href="../Source_engine/engine.html#118" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">Class</span> m_TickedClassStats;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_TickCycles" class="hidden"></a>TickCycles <a href="../Source_engine/engine.html#38" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">int</span> TickCycles;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h3 class="vartag">Colors</h3>
+<h4><a name="_C_ActorArrow" class="hidden"></a>C_ActorArrow <a href="../Source_engine/engine.html#51" class="small">Source code</a></h4>
+<div class="declaration">var(Colors) config <span class="source_type"><a href="../core/object.html#Color" class="source">color</a></span> C_ActorArrow;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_C_ActorHiWire" class="hidden"></a>C_ActorHiWire <a href="../Source_engine/engine.html#51" class="small">Source code</a></h4>
+<div class="declaration">var(Colors) config <span class="source_type"><a href="../core/object.html#Color" class="source">color</a></span> C_ActorHiWire;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_C_ActorWire" class="hidden"></a>C_ActorWire <a href="../Source_engine/engine.html#51" class="small">Source code</a></h4>
+<div class="declaration">var(Colors) config <span class="source_type"><a href="../core/object.html#Color" class="source">color</a></span> C_ActorWire;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_C_AddWire" class="hidden"></a>C_AddWire <a href="../Source_engine/engine.html#51" class="small">Source code</a></h4>
+<div class="declaration">var(Colors) config <span class="source_type"><a href="../core/object.html#Color" class="source">color</a></span> C_AddWire;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_C_AnimMesh" class="hidden"></a>C_AnimMesh <a href="../Source_engine/engine.html#51" class="small">Source code</a></h4>
+<div class="declaration">var(Colors) config <span class="source_type"><a href="../core/object.html#Color" class="source">color</a></span> C_AnimMesh;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_C_Black" class="hidden"></a>C_Black <a href="../Source_engine/engine.html#51" class="small">Source code</a></h4>
+<div class="declaration">var(Colors) config <span class="source_type"><a href="../core/object.html#Color" class="source">color</a></span> C_Black;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_C_BrushSnap" class="hidden"></a>C_BrushSnap <a href="../Source_engine/engine.html#51" class="small">Source code</a></h4>
+<div class="declaration">var(Colors) config <span class="source_type"><a href="../core/object.html#Color" class="source">color</a></span> C_BrushSnap;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_C_BrushVertex" class="hidden"></a>C_BrushVertex <a href="../Source_engine/engine.html#51" class="small">Source code</a></h4>
+<div class="declaration">var(Colors) config <span class="source_type"><a href="../core/object.html#Color" class="source">color</a></span> C_BrushVertex;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_C_BrushWire" class="hidden"></a>C_BrushWire <a href="../Source_engine/engine.html#51" class="small">Source code</a></h4>
+<div class="declaration">var(Colors) config <span class="source_type"><a href="../core/object.html#Color" class="source">color</a></span> C_BrushWire;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_C_ConstraintLine" class="hidden"></a>C_ConstraintLine <a href="../Source_engine/engine.html#51" class="small">Source code</a></h4>
+<div class="declaration">var(Colors) config <span class="source_type"><a href="../core/object.html#Color" class="source">color</a></span> C_ConstraintLine;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_C_Current" class="hidden"></a>C_Current <a href="../Source_engine/engine.html#51" class="small">Source code</a></h4>
+<div class="declaration">var(Colors) config <span class="source_type"><a href="../core/object.html#Color" class="source">color</a></span> C_Current;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_C_GreyWire" class="hidden"></a>C_GreyWire <a href="../Source_engine/engine.html#51" class="small">Source code</a></h4>
+<div class="declaration">var(Colors) config <span class="source_type"><a href="../core/object.html#Color" class="source">color</a></span> C_GreyWire;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_C_GroundHighlight" class="hidden"></a>C_GroundHighlight <a href="../Source_engine/engine.html#51" class="small">Source code</a></h4>
+<div class="declaration">var(Colors) config <span class="source_type"><a href="../core/object.html#Color" class="source">color</a></span> C_GroundHighlight;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_C_GroundPlane" class="hidden"></a>C_GroundPlane <a href="../Source_engine/engine.html#51" class="small">Source code</a></h4>
+<div class="declaration">var(Colors) config <span class="source_type"><a href="../core/object.html#Color" class="source">color</a></span> C_GroundPlane;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_C_Invalid" class="hidden"></a>C_Invalid <a href="../Source_engine/engine.html#51" class="small">Source code</a></h4>
+<div class="declaration">var(Colors) config <span class="source_type"><a href="../core/object.html#Color" class="source">color</a></span> C_Invalid;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_C_Mask" class="hidden"></a>C_Mask <a href="../Source_engine/engine.html#51" class="small">Source code</a></h4>
+<div class="declaration">var(Colors) config <span class="source_type"><a href="../core/object.html#Color" class="source">color</a></span> C_Mask;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_C_Mover" class="hidden"></a>C_Mover <a href="../Source_engine/engine.html#51" class="small">Source code</a></h4>
+<div class="declaration">var(Colors) config <span class="source_type"><a href="../core/object.html#Color" class="source">color</a></span> C_Mover;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_C_NonSolidWire" class="hidden"></a>C_NonSolidWire <a href="../Source_engine/engine.html#51" class="small">Source code</a></h4>
+<div class="declaration">var(Colors) config <span class="source_type"><a href="../core/object.html#Color" class="source">color</a></span> C_NonSolidWire;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_C_OrthoBackground" class="hidden"></a>C_OrthoBackground <a href="../Source_engine/engine.html#51" class="small">Source code</a></h4>
+<div class="declaration">var(Colors) config <span class="source_type"><a href="../core/object.html#Color" class="source">color</a></span> C_OrthoBackground;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_C_Pivot" class="hidden"></a>C_Pivot <a href="../Source_engine/engine.html#51" class="small">Source code</a></h4>
+<div class="declaration">var(Colors) config <span class="source_type"><a href="../core/object.html#Color" class="source">color</a></span> C_Pivot;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_C_ScaleBox" class="hidden"></a>C_ScaleBox <a href="../Source_engine/engine.html#51" class="small">Source code</a></h4>
+<div class="declaration">var(Colors) config <span class="source_type"><a href="../core/object.html#Color" class="source">color</a></span> C_ScaleBox;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_C_ScaleBoxHi" class="hidden"></a>C_ScaleBoxHi <a href="../Source_engine/engine.html#51" class="small">Source code</a></h4>
+<div class="declaration">var(Colors) config <span class="source_type"><a href="../core/object.html#Color" class="source">color</a></span> C_ScaleBoxHi;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_C_Select" class="hidden"></a>C_Select <a href="../Source_engine/engine.html#51" class="small">Source code</a></h4>
+<div class="declaration">var(Colors) config <span class="source_type"><a href="../core/object.html#Color" class="source">color</a></span> C_Select;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_C_SemiSolidWire" class="hidden"></a>C_SemiSolidWire <a href="../Source_engine/engine.html#51" class="small">Source code</a></h4>
+<div class="declaration">var(Colors) config <span class="source_type"><a href="../core/object.html#Color" class="source">color</a></span> C_SemiSolidWire;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_C_StaticMesh" class="hidden"></a>C_StaticMesh <a href="../Source_engine/engine.html#51" class="small">Source code</a></h4>
+<div class="declaration">var(Colors) config <span class="source_type"><a href="../core/object.html#Color" class="source">color</a></span> C_StaticMesh;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_C_SubtractWire" class="hidden"></a>C_SubtractWire <a href="../Source_engine/engine.html#51" class="small">Source code</a></h4>
+<div class="declaration">var(Colors) config <span class="source_type"><a href="../core/object.html#Color" class="source">color</a></span> C_SubtractWire;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_C_TerrainWire" class="hidden"></a>C_TerrainWire <a href="../Source_engine/engine.html#51" class="small">Source code</a></h4>
+<div class="declaration">var(Colors) config <span class="source_type"><a href="../core/object.html#Color" class="source">color</a></span> C_TerrainWire;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_C_VolumeBrush" class="hidden"></a>C_VolumeBrush <a href="../Source_engine/engine.html#51" class="small">Source code</a></h4>
+<div class="declaration">var(Colors) config <span class="source_type"><a href="../core/object.html#Color" class="source">color</a></span> C_VolumeBrush;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_C_White" class="hidden"></a>C_White <a href="../Source_engine/engine.html#51" class="small">Source code</a></h4>
+<div class="declaration">var(Colors) config <span class="source_type"><a href="../core/object.html#Color" class="source">color</a></span> C_White;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_C_WireBackground" class="hidden"></a>C_WireBackground <a href="../Source_engine/engine.html#51" class="small">Source code</a></h4>
+<div class="declaration">var(Colors) config <span class="source_type"><a href="../core/object.html#Color" class="source">color</a></span> C_WireBackground;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_C_WireGridAxis" class="hidden"></a>C_WireGridAxis <a href="../Source_engine/engine.html#51" class="small">Source code</a></h4>
+<div class="declaration">var(Colors) config <span class="source_type"><a href="../core/object.html#Color" class="source">color</a></span> C_WireGridAxis;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_C_WorldBox" class="hidden"></a>C_WorldBox <a href="../Source_engine/engine.html#51" class="small">Source code</a></h4>
+<div class="declaration">var(Colors) config <span class="source_type"><a href="../core/object.html#Color" class="source">color</a></span> C_WorldBox;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_C_ZoneWire" class="hidden"></a>C_ZoneWire <a href="../Source_engine/engine.html#51" class="small">Source code</a></h4>
+<div class="declaration">var(Colors) config <span class="source_type"><a href="../core/object.html#Color" class="source">color</a></span> C_ZoneWire;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h3 class="vartag">Drivers</h3>
+<h4><a name="_AudioDevice" class="hidden"></a>AudioDevice <a href="../Source_engine/engine.html#11" class="small">Source code</a></h4>
+<div class="declaration">var(Drivers) config <span class="source_type">class</span>&lt;<span class="source_type">AudioSubsystem</span>&gt; AudioDevice;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_Console" class="hidden"></a>Console <a href="../Source_engine/engine.html#12" class="small">Source code</a></h4>
+<div class="declaration">var(Drivers) config <span class="source_type">class</span>&lt;<span class="source_type"><a href="../engine/interaction.html" class="source">Interaction</a></span>&gt; <span class="source_type"><a href="../engine/console.html" class="source">Console</a></span>;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_Language" class="hidden"></a>Language <a href="../Source_engine/engine.html#18" class="small">Source code</a></h4>
+<div class="declaration">var(Drivers) config <span class="source_type">class</span>&lt;<span class="source_type">Language</span>&gt; <span class="source_type">Language</span>;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_NetworkDevice" class="hidden"></a>NetworkDevice <a href="../Source_engine/engine.html#17" class="small">Source code</a></h4>
+<div class="declaration">var(Drivers) config <span class="source_type">class</span>&lt;<span class="source_type">NetDriver</span>&gt; NetworkDevice;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h3 class="vartag">Settings</h3>
+<h4><a name="_CacheSizeMegs" class="hidden"></a>CacheSizeMegs <a href="../Source_engine/engine.html#39" class="small">Source code</a></h4>
+<div class="declaration">var(Settings) config <span class="source_type">int</span> CacheSizeMegs;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_CurrentTickRate" class="hidden"></a>CurrentTickRate <a href="../Source_engine/engine.html#41" class="small">Source code</a></h4>
+<div class="declaration">var(Settings) <span class="source_type">float</span> CurrentTickRate;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_UseSound" class="hidden"></a>UseSound <a href="../Source_engine/engine.html#40" class="small">Source code</a></h4>
+<div class="declaration">var(Settings) config <span class="source_type">bool</span> UseSound;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+
+
+<br />
+
+
+
+
+
+
+
+
+
+
+<table class="title">
+<tr>
+	<th class="title">Defaultproperties</th>
+</tr>
+</table>
+<br />
+<div class="source"><table class="source"><tr><td class="source"><pre class="source">defaultproperties
+{
+     <span class="source_type"><a href="../engine/console.html" class="source">Console</a></span>=<span class="source_type">Class</span><span class="source_name">'Engine.Console'</span>
+     CacheSizeMegs=<span class="source_int">2</span>
+     UseSound=True
+     C_WorldBox=(B=<span class="source_int">107</span>,A=<span class="source_int">255</span>)
+     C_GroundPlane=(B=<span class="source_int">63</span>,A=<span class="source_int">255</span>)
+     C_GroundHighlight=(B=<span class="source_int">127</span>,A=<span class="source_int">255</span>)
+     C_BrushWire=(B=<span class="source_int">63</span>,G=<span class="source_int">63</span>,<span class="source_type">R</span>=<span class="source_int">255</span>,A=<span class="source_int">255</span>)
+     C_Pivot=(G=<span class="source_int">255</span>,A=<span class="source_int">255</span>)
+     C_Select=(B=<span class="source_int">127</span>,A=<span class="source_int">255</span>)
+     C_Current=(A=<span class="source_int">255</span>)
+     C_AddWire=(B=<span class="source_int">255</span>,G=<span class="source_int">127</span>,<span class="source_type">R</span>=<span class="source_int">127</span>,A=<span class="source_int">255</span>)
+     C_SubtractWire=(B=<span class="source_int">63</span>,G=<span class="source_int">192</span>,<span class="source_type">R</span>=<span class="source_int">255</span>,A=<span class="source_int">255</span>)
+     C_GreyWire=(B=<span class="source_int">163</span>,G=<span class="source_int">163</span>,<span class="source_type">R</span>=<span class="source_int">163</span>,A=<span class="source_int">255</span>)
+     C_BrushVertex=(A=<span class="source_int">255</span>)
+     C_BrushSnap=(A=<span class="source_int">255</span>)
+     C_Invalid=(B=<span class="source_int">163</span>,G=<span class="source_int">163</span>,<span class="source_type">R</span>=<span class="source_int">163</span>,A=<span class="source_int">255</span>)
+     C_ActorWire=(G=<span class="source_int">63</span>,<span class="source_type">R</span>=<span class="source_int">127</span>,A=<span class="source_int">255</span>)
+     C_ActorHiWire=(G=<span class="source_int">127</span>,<span class="source_type">R</span>=<span class="source_int">255</span>,A=<span class="source_int">255</span>)
+     C_Black=(A=<span class="source_int">255</span>)
+     C_White=(B=<span class="source_int">255</span>,G=<span class="source_int">255</span>,<span class="source_type">R</span>=<span class="source_int">255</span>,A=<span class="source_int">255</span>)
+     C_Mask=(A=<span class="source_int">255</span>)
+     C_SemiSolidWire=(G=<span class="source_int">255</span>,<span class="source_type">R</span>=<span class="source_int">127</span>,A=<span class="source_int">255</span>)
+     C_NonSolidWire=(B=<span class="source_int">32</span>,G=<span class="source_int">192</span>,<span class="source_type">R</span>=<span class="source_int">63</span>,A=<span class="source_int">255</span>)
+     C_WireBackground=(A=<span class="source_int">255</span>)
+     C_WireGridAxis=(B=<span class="source_int">119</span>,G=<span class="source_int">119</span>,<span class="source_type">R</span>=<span class="source_int">119</span>,A=<span class="source_int">255</span>)
+     C_ActorArrow=(<span class="source_type">R</span>=<span class="source_int">163</span>,A=<span class="source_int">255</span>)
+     C_ScaleBox=(B=<span class="source_int">11</span>,G=<span class="source_int">67</span>,<span class="source_type">R</span>=<span class="source_int">151</span>,A=<span class="source_int">255</span>)
+     C_ScaleBoxHi=(B=<span class="source_int">157</span>,G=<span class="source_int">149</span>,<span class="source_type">R</span>=<span class="source_int">223</span>,A=<span class="source_int">255</span>)
+     C_ZoneWire=(A=<span class="source_int">255</span>)
+     C_Mover=(B=<span class="source_int">255</span>,<span class="source_type">R</span>=<span class="source_int">255</span>,A=<span class="source_int">255</span>)
+     C_OrthoBackground=(B=<span class="source_int">163</span>,G=<span class="source_int">163</span>,<span class="source_type">R</span>=<span class="source_int">163</span>,A=<span class="source_int">255</span>)
+     C_StaticMesh=(B=<span class="source_int">255</span>,G=<span class="source_int">255</span>,A=<span class="source_int">255</span>)
+     C_VolumeBrush=(B=<span class="source_int">225</span>,G=<span class="source_int">196</span>,<span class="source_type">R</span>=<span class="source_int">255</span>,A=<span class="source_int">255</span>)
+     C_ConstraintLine=(G=<span class="source_int">255</span>,A=<span class="source_int">255</span>)
+     C_AnimMesh=(B=<span class="source_int">28</span>,G=<span class="source_int">221</span>,<span class="source_type">R</span>=<span class="source_int">221</span>,A=<span class="source_int">255</span>)
+     C_TerrainWire=(B=<span class="source_int">255</span>,G=<span class="source_int">255</span>,<span class="source_type">R</span>=<span class="source_int">255</span>,A=<span class="source_int">255</span>)
+     m_bUseStaticMeshBatcher=True
+     m_bEnableLoadingScreen=True
+}
+</pre></td></tr></table></div>
+
+
+
+<hr />
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../engine/engine-overview.html">Package</a></td>
+	<td class="header_hilight">Class</td>
+	<td class="header"><a href="../Source_engine/engine.html">Source</a></td>
+	<td class="header"><a class="header" href="../classtree.html#Engine">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../engine/emitter.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../engine/fadecolor.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+
+<div class="stats">Creation time: mar. 26/5/2026 18:33:07.341 - Created with <a href="http://wiki.beyondunreal.com/wiki/UnCodeX" target="_blank">UnCodeX</a></div>
+
+</body>
+</html>

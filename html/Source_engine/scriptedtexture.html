@@ -1,0 +1,88 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+	<title>UnCodeX - Source: engine.ScriptedTexture</title>
+	<meta name="Generator" content="UnCodeX 241" />
+	<link rel="stylesheet" href="../DocStyle2.css" type="text/css" title="Original Purple" />
+	<link rel="alternative stylesheet" href="../DocStyle2-blue.css" type="text/css" title="Blue" />
+	<link rel="alternative stylesheet" href="../DocStyle2-red.css" type="text/css" title="Red" />
+	<!--[if IE]>
+	<link rel="stylesheet" href="../DocStyle2-msie.css" type="text/css" />
+	<![endif]-->
+	<script src="../styleswitcher.js" type="text/javascript"></script>
+</head>
+<body>
+
+<div class="header">
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../engine/engine-overview.html">Package</a></td>
+	<td class="header"><a href="../engine/scriptedtexture.html">Class</a></td>
+	<td class="header_hilight">Source</td>
+	<td class="header"><a class="header" href="../classtree.html#ScriptedTexture">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../Source_engine/scout.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../Source_engine/shader.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html#Source_engine/scriptedtexture.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+</div>
+<div class="spacer"></div>
+
+<h1><a href="../engine/engine-overview.html">engine</a>.<a href="../engine/scriptedtexture.html">ScriptedTexture</a></h1>
+<br />
+<div class="source"><table class="source"><tr><td class="source_lineno"><span class="source_lineno">00001<br />00002<br />00003<br />00004<br />00005<br />00006<br />00007<br />00008<br />00009<br />00010<br />00011<br />00012<br />00013<br />00014<br />00015<br />00016<br />00017<br />00018<br />00019<br />00020<br />
+00021<br />00022<br />00023<br />00024<br />00025<br />00026<br />00027<br />00028<br />00029</span></td>
+<td class="source"><pre class="source"><a name="1"></a><span class="source_comment">//=============================================================================
+</span><a name="2"></a><span class="source_comment">// ScriptedTexture: A scriptable Unreal texture
+</span><a name="3"></a><span class="source_comment">// This is a built-in Unreal class and it shouldn't be modified.
+</span><a name="4"></a><span class="source_comment">//=============================================================================
+</span><a name="5"></a><span class="source_type">class</span> <span class="source_type"><a href="../engine/scriptedtexture.html" class="source">ScriptedTexture</a></span> extends <span class="source_type"><a href="../engine/texture.html" class="source">Texture</a></span> 
+<a name="6"></a>	<span class="source_comment">//native noexport;
+</span><a name="7"></a>	safereplace;
+<a name="8"></a>
+<a name="9"></a><span class="source_comment">// A SciptedTexture calls its Script's Render() method to draw to the texture at
+</span><a name="10"></a><span class="source_comment">// runtime
+</span><a name="11"></a>var <span class="source_type"><a href="../engine/actor.html" class="source">Actor</a></span> NotifyActor;
+<a name="12"></a>var() <span class="source_type"><a href="../engine/texture.html" class="source">Texture</a></span> SourceTexture;
+<a name="13"></a>
+<a name="14"></a>var transient const <span class="source_type">int</span> Junk1;	<span class="source_comment">// C++ stuff
+</span><a name="15"></a>var transient const <span class="source_type">int</span> Junk2;	<span class="source_comment">// C++ stuff
+</span><a name="16"></a>var transient const <span class="source_type">int</span> Junk3;	<span class="source_comment">// C++ stuff
+</span><a name="17"></a>var transient const <span class="source_type">float</span> LocalTime;	<span class="source_comment">// C++ stuff
+</span><a name="18"></a>
+<a name="19"></a>
+<a name="20"></a>native(<span class="source_int">473</span>) final function DrawTile( <span class="source_type">float</span> X, <span class="source_type">float</span> <span class="source_type">Y</span>, <span class="source_type">float</span> XL, <span class="source_type">float</span> YL, <span class="source_type">float</span> U, <span class="source_type">float</span> V, <span class="source_type">float</span> UL, <span class="source_type">float</span> VL, <span class="source_type"><a href="../engine/texture.html" class="source">Texture</a></span> <span class="source_type">Tex</span>, <span class="source_type">bool</span> bMasked );
+<a name="21"></a>native(<span class="source_int">472</span>) final function DrawText( <span class="source_type">float</span> X, <span class="source_type">float</span> <span class="source_type">Y</span>, <span class="source_type">string</span> <span class="source_type">Text</span>, <span class="source_type">Font</span> <span class="source_type">Font</span> );
+<a name="22"></a>native(<span class="source_int">474</span>) final function DrawColoredText( <span class="source_type">float</span> X, <span class="source_type">float</span> <span class="source_type">Y</span>, <span class="source_type">string</span> <span class="source_type">Text</span>, <span class="source_type">Font</span> <span class="source_type">Font</span>, <span class="source_type"><a href="../core/object.html#Color" class="source">color</a></span> FontColor );
+<a name="23"></a>native(<span class="source_int">475</span>) final function ReplaceTexture( <span class="source_type"><a href="../engine/texture.html" class="source">Texture</a></span> <span class="source_type">Tex</span> );
+<a name="24"></a>native(<span class="source_int">476</span>) final function TextSize( <span class="source_type">string</span> <span class="source_type">Text</span>, out <span class="source_type">float</span> XL, out <span class="source_type">float</span> YL, <span class="source_type">Font</span> <span class="source_type">Font</span> );
+<a name="25"></a>
+<a name="26"></a>defaultproperties
+<a name="27"></a>{
+<a name="28"></a>}
+<a name="29"></a></pre></td></tr></table></div>
+<hr />
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../engine/engine-overview.html">Package</a></td>
+	<td class="header"><a href="../engine/scriptedtexture.html">Class</a></td>
+	<td class="header_hilight">Source</td>
+	<td class="header"><a class="header" href="../classtree.html#ScriptedTexture">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../Source_engine/scout.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../Source_engine/shader.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+
+<div class="stats">Class file time: sam. 18/9/2004 14:39:30.000 - Creation time: mar. 26/5/2026 18:33:21.862 - Created with <a href="http://wiki.beyondunreal.com/wiki/UnCodeX" target="_blank">UnCodeX</a></div>
+
+</body>
+</html>

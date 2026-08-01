@@ -1,0 +1,658 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+	<title>UnCodeX - IpDrv.UdpBeacon</title>
+	<meta name="Generator" content="UnCodeX 241" />
+	<link rel="stylesheet" href="../DocStyle2.css" type="text/css" title="Original Purple" />
+	<link rel="alternative stylesheet" href="../DocStyle2-blue.css" type="text/css" title="Blue" />
+	<link rel="alternative stylesheet" href="../DocStyle2-red.css" type="text/css" title="Red" />
+	<!--[if IE]>
+	<link rel="stylesheet" href="../DocStyle2-msie.css" type="text/css" />
+	<![endif]-->
+	<script src="../styleswitcher.js" type="text/javascript"></script>
+</head>
+<body>
+
+<div class="header">
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../ipdrv/ipdrv-overview.html">Package</a></td>
+	<td class="header_hilight">Class</td>
+	<td class="header"><a href="../Source_ipdrv/udpbeacon.html">Source</a></td>
+	<td class="header"><a class="header" href="../classtree.html#UdpBeacon">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../ipdrv/tcplink.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../ipdrv/udplink.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html#ipdrv/udpbeacon.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+</div>
+<div class="spacer"></div>
+
+<h1><a href="../ipdrv/ipdrv-overview.html">IpDrv</a>.UdpBeacon</h1>
+
+<dl>
+<dt>Extends</dt><dd><a href="../ipdrv/udplink.html">UdpLink</a></dd>
+<dt>Modifiers</dt><dd>config transient </dd>
+</dl>
+
+<p></p>
+
+<pre class="tree"><a href="../core/core-overview.html">core</a>.<a href="../core/object.html">Object</a>
+|   
++-- <a href="../engine/engine-overview.html">engine</a>.<a href="../engine/actor.html">Actor</a>
+   |   
+   +-- <a href="../engine/engine-overview.html">engine</a>.<a href="../engine/info.html">Info</a>
+      |   
+      +-- <a href="../engine/engine-overview.html">engine</a>.<a href="../engine/internetinfo.html">InternetInfo</a>
+         |   
+         +-- <a href="../ipdrv/ipdrv-overview.html">IpDrv</a>.<a href="../ipdrv/internetlink.html">InternetLink</a>
+            |   
+            +-- <a href="../ipdrv/ipdrv-overview.html">IpDrv</a>.<a href="../ipdrv/udplink.html">UdpLink</a>
+               |   
+               +-- <a href="../ipdrv/ipdrv-overview.html">IpDrv</a>.<a href="../ipdrv/udpbeacon.html">UdpBeacon</a>
+</pre>
+
+<h4>Direct Known Subclasses:</h4>
+<blockquote>
+	<a href="../ipdrv/clientbeaconreceiver.html">ClientBeaconReceiver</a>
+</blockquote>
+
+<hr />
+
+
+
+<table class="title">
+<tr>
+	<th colspan="2" class="title">Variables Summary</th>
+</tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_AIBkpMarker" name="AIBkpMarker" title="go to the details">AIBkpMarker</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_AllowRadarMarker" name="AllowRadarMarker" title="go to the details">AllowRadarMarker</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_AutoBalTeamMarker" name="AutoBalTeamMarker" title="go to the details">AutoBalTeamMarker</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_BeaconPortMarker" name="BeaconPortMarker" title="go to the details">BeaconPortMarker</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_BetTimeMarker" name="BetTimeMarker" title="go to the details">BetTimeMarker</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_BombTimeMarker" name="BombTimeMarker" title="go to the details">BombTimeMarker</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_boundport" name="boundport" title="go to the details">boundport</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_DecicatedMarker" name="DecicatedMarker" title="go to the details">DecicatedMarker</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_ForceFPWpnMarker" name="ForceFPWpnMarker" title="go to the details">ForceFPWpnMarker</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_FriendlyFireMarker" name="FriendlyFireMarker" title="go to the details">FriendlyFireMarker</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_GamePortMarker" name="GamePortMarker" title="go to the details">GamePortMarker</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_GameTypeMarker" name="GameTypeMarker" title="go to the details">GameTypeMarker</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_GameVersionMarker" name="GameVersionMarker" title="go to the details">GameVersionMarker</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_GroupIDMarker" name="GroupIDMarker" title="go to the details">GroupIDMarker</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_InternetServerMarker" name="InternetServerMarker" title="go to the details">InternetServerMarker</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_KeyWordMarker" name="KeyWordMarker" title="go to the details">KeyWordMarker</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_LobbyServerIDMarker" name="LobbyServerIDMarker" title="go to the details">LobbyServerIDMarker</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_LocalIpAddress" name="LocalIpAddress" title="go to the details">LocalIpAddress</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_LockedMarker" name="LockedMarker" title="go to the details">LockedMarker</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_MapListMarker" name="MapListMarker" title="go to the details">MapListMarker</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_MapNameMarker" name="MapNameMarker" title="go to the details">MapNameMarker</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_MaxPlayersMarker" name="MaxPlayersMarker" title="go to the details">MaxPlayersMarker</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_MenuGmNameMarker" name="MenuGmNameMarker" title="go to the details">MenuGmNameMarker</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_ModNameMarker" name="ModNameMarker" title="go to the details">ModNameMarker</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_NumPlayersMarker" name="NumPlayersMarker" title="go to the details">NumPlayersMarker</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_NumTerroMarker" name="NumTerroMarker" title="go to the details">NumTerroMarker</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_OptionsListMarker" name="OptionsListMarker" title="go to the details">OptionsListMarker</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_PlayerKillMarker" name="PlayerKillMarker" title="go to the details">PlayerKillMarker</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_PlayerListMarker" name="PlayerListMarker" title="go to the details">PlayerListMarker</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_PlayerPingMarker" name="PlayerPingMarker" title="go to the details">PlayerPingMarker</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_PlayerTimeMarker" name="PlayerTimeMarker" title="go to the details">PlayerTimeMarker</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_PreJoinQueryMarker" name="PreJoinQueryMarker" title="go to the details">PreJoinQueryMarker</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_PunkBusterMarker" name="PunkBusterMarker" title="go to the details">PunkBusterMarker</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_RotateMapMarker" name="RotateMapMarker" title="go to the details">RotateMapMarker</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_RoundsPerMatchMarker" name="RoundsPerMatchMarker" title="go to the details">RoundsPerMatchMarker</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_RoundTimeMarker" name="RoundTimeMarker" title="go to the details">RoundTimeMarker</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_ShowNamesMarker" name="ShowNamesMarker" title="go to the details">ShowNamesMarker</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_SvrNameMarker" name="SvrNameMarker" title="go to the details">SvrNameMarker</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_TKPenaltyMarker" name="TKPenaltyMarker" title="go to the details">TKPenaltyMarker</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_UdpServerQueryPort" name="UdpServerQueryPort" title="go to the details">UdpServerQueryPort</a></td></tr>
+<tr><th colspan="2" class="small">UdpBeacon</th></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_BeaconPort" name="BeaconPort" title="go to the details">BeaconPort</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_BeaconProduct" name="BeaconProduct" title="go to the details">BeaconProduct</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_BeaconTimeout" name="BeaconTimeout" title="go to the details">BeaconTimeout</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_DoBeacon" name="DoBeacon" title="go to the details">DoBeacon</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_ServerBeaconPort" name="ServerBeaconPort" title="go to the details">ServerBeaconPort</a></td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Variables from <a href="../ipdrv/ipdrv-overview.html">IpDrv</a>.<a href="../ipdrv/udplink.html">UdpLink</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../ipdrv/udplink.html#BroadcastAddr">BroadcastAddr</a></td>
+</tr>
+</table>
+<table>
+<tr>
+	<th class="inherittitle">Inherited Variables from <a href="../ipdrv/ipdrv-overview.html">IpDrv</a>.<a href="../ipdrv/internetlink.html">InternetLink</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../ipdrv/internetlink.html#DataPending">DataPending</a>, <a href="../ipdrv/internetlink.html#LinkMode">LinkMode</a>, <a href="../ipdrv/internetlink.html#Port">Port</a>, <a href="../ipdrv/internetlink.html#PrivateResolveInfo">PrivateResolveInfo</a>, <a href="../ipdrv/internetlink.html#ReceiveMode">ReceiveMode</a>, <a href="../ipdrv/internetlink.html#RemoteSocket">RemoteSocket</a>, <a href="../ipdrv/internetlink.html#Socket">Socket</a></td>
+</tr>
+</table>
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Enumerations Summary</th>
+</tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Enumerations from <a href="../ipdrv/ipdrv-overview.html">IpDrv</a>.<a href="../ipdrv/internetlink.html">InternetLink</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../ipdrv/internetlink.html#ELinkMode">ELinkMode</a>, <a href="../ipdrv/internetlink.html#EReceiveMode">EReceiveMode</a></td>
+</tr>
+</table>
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Structures Summary</th>
+</tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Structures from <a href="../ipdrv/ipdrv-overview.html">IpDrv</a>.<a href="../ipdrv/internetlink.html">InternetLink</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../ipdrv/internetlink.html#IpAddr">IpAddr</a></td>
+</tr>
+</table>
+
+
+<br />
+
+
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Functions Summary</th>
+</tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_BeginPlay-" name="BeginPlay" title="go to the details">BeginPlay</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_BroadcastBeacon-" name="BroadcastBeacon" title="go to the details">BroadcastBeacon</a> (<a href="../r6gameservice/r6serverlist.html#IpAddr">IpAddr</a> Addr))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_BroadcastBeaconQuery-" name="BroadcastBeaconQuery" title="go to the details">BroadcastBeaconQuery</a> (<a href="../r6gameservice/r6serverlist.html#IpAddr">IpAddr</a> Addr))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>string&nbsp;</td><td><a href="#_BuildBeaconText-" name="BuildBeaconText" title="go to the details">BuildBeaconText</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_Destroyed-" name="Destroyed" title="go to the details">Destroyed</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>string&nbsp;</td><td><a href="#_DisplayTime-" name="DisplayTime" title="go to the details">DisplayTime</a> (INT _iTimeToConvert))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_InitBeaconProduct-" name="InitBeaconProduct" title="go to the details">InitBeaconProduct</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_event.gif" alt="event" title="event" /></td><td>&nbsp;</td><td><a href="#_ReceivedText-" name="ReceivedText" title="go to the details">ReceivedText</a> (<a href="../r6gameservice/r6serverlist.html#IpAddr">IpAddr</a> Addr, string Text ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_RespondPreJoinQuery-" name="RespondPreJoinQuery" title="go to the details">RespondPreJoinQuery</a> (IpAddr Addr ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_Timer-" name="Timer" title="go to the details">Timer</a> ()))<br /><span class="function_state"></span></td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Functions from <a href="../ipdrv/ipdrv-overview.html">IpDrv</a>.<a href="../ipdrv/udplink.html">UdpLink</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../ipdrv/udplink.html#BindPort">BindPort</a>, <a href="../ipdrv/udplink.html#CheckForPlayerTimeouts">CheckForPlayerTimeouts</a>, <a href="../ipdrv/udplink.html#GetMaxAvailPorts">GetMaxAvailPorts</a>, <a href="../ipdrv/udplink.html#GetPlayingTime">GetPlayingTime</a>, <a href="../ipdrv/udplink.html#ReadBinary">ReadBinary</a>, <a href="../ipdrv/udplink.html#ReadText">ReadText</a>, <a href="../ipdrv/udplink.html#ReceivedBinary">ReceivedBinary</a>, <a href="../ipdrv/udplink.html#ReceivedLine">ReceivedLine</a>, <a href="../ipdrv/udplink.html#ReceivedText">ReceivedText</a>, <a href="../ipdrv/udplink.html#SendBinary">SendBinary</a>, <a href="../ipdrv/udplink.html#SendText">SendText</a>, <a href="../ipdrv/udplink.html#SetPlayingTime">SetPlayingTime</a></td>
+</tr>
+</table>
+<table>
+<tr>
+	<th class="inherittitle">Inherited Functions from <a href="../ipdrv/ipdrv-overview.html">IpDrv</a>.<a href="../ipdrv/internetlink.html">InternetLink</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../ipdrv/internetlink.html#GetLastError">GetLastError</a>, <a href="../ipdrv/internetlink.html#GetLocalIP">GetLocalIP</a>, <a href="../ipdrv/internetlink.html#IpAddrToString">IpAddrToString</a>, <a href="../ipdrv/internetlink.html#IsDataPending">IsDataPending</a>, <a href="../ipdrv/internetlink.html#ParseURL">ParseURL</a>, <a href="../ipdrv/internetlink.html#Resolve">Resolve</a>, <a href="../ipdrv/internetlink.html#Resolved">Resolved</a>, <a href="../ipdrv/internetlink.html#ResolveFailed">ResolveFailed</a>, <a href="../ipdrv/internetlink.html#StringToIpAddr">StringToIpAddr</a>, <a href="../ipdrv/internetlink.html#Validate">Validate</a></td>
+</tr>
+</table>
+
+
+<br />
+
+
+
+<hr />
+
+
+
+<table class="title">
+<tr>
+	<th class="title">Variables Detail</th>
+</tr>
+</table>
+
+<h4><a name="_AIBkpMarker" class="hidden"></a>AIBkpMarker <a href="../Source_ipdrv/udpbeacon.html#48" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">string</span> AIBkpMarker;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_AllowRadarMarker" class="hidden"></a>AllowRadarMarker <a href="../Source_ipdrv/udpbeacon.html#42" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">string</span> AllowRadarMarker;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_AutoBalTeamMarker" class="hidden"></a>AutoBalTeamMarker <a href="../Source_ipdrv/udpbeacon.html#40" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">string</span> AutoBalTeamMarker;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_BeaconPortMarker" class="hidden"></a>BeaconPortMarker <a href="../Source_ipdrv/udpbeacon.html#46" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">string</span> BeaconPortMarker;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_BetTimeMarker" class="hidden"></a>BetTimeMarker <a href="../Source_ipdrv/udpbeacon.html#35" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">string</span> BetTimeMarker;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_BombTimeMarker" class="hidden"></a>BombTimeMarker <a href="../Source_ipdrv/udpbeacon.html#36" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">string</span> BombTimeMarker;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_boundport" class="hidden"></a>boundport <a href="../Source_ipdrv/udpbeacon.html#58" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">int</span> boundport;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_DecicatedMarker" class="hidden"></a>DecicatedMarker <a href="../Source_ipdrv/udpbeacon.html#22" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">string</span> DecicatedMarker;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ForceFPWpnMarker" class="hidden"></a>ForceFPWpnMarker <a href="../Source_ipdrv/udpbeacon.html#50" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">string</span> ForceFPWpnMarker;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_FriendlyFireMarker" class="hidden"></a>FriendlyFireMarker <a href="../Source_ipdrv/udpbeacon.html#39" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">string</span> FriendlyFireMarker;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GamePortMarker" class="hidden"></a>GamePortMarker <a href="../Source_ipdrv/udpbeacon.html#31" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">string</span> GamePortMarker;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GameTypeMarker" class="hidden"></a>GameTypeMarker <a href="../Source_ipdrv/udpbeacon.html#20" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">string</span> GameTypeMarker;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GameVersionMarker" class="hidden"></a>GameVersionMarker <a href="../Source_ipdrv/udpbeacon.html#43" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">string</span> GameVersionMarker;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GroupIDMarker" class="hidden"></a>GroupIDMarker <a href="../Source_ipdrv/udpbeacon.html#45" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">string</span> GroupIDMarker;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_InternetServerMarker" class="hidden"></a>InternetServerMarker <a href="../Source_ipdrv/udpbeacon.html#38" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">string</span> InternetServerMarker;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_KeyWordMarker" class="hidden"></a>KeyWordMarker <a href="../Source_ipdrv/udpbeacon.html#15" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">string</span> KeyWordMarker;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_LobbyServerIDMarker" class="hidden"></a>LobbyServerIDMarker <a href="../Source_ipdrv/udpbeacon.html#44" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">string</span> LobbyServerIDMarker;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_LocalIpAddress" class="hidden"></a>LocalIpAddress <a href="../Source_ipdrv/udpbeacon.html#59" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">string</span> LocalIpAddress;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_LockedMarker" class="hidden"></a>LockedMarker <a href="../Source_ipdrv/udpbeacon.html#21" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">string</span> LockedMarker;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_MapListMarker" class="hidden"></a>MapListMarker <a href="../Source_ipdrv/udpbeacon.html#25" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">string</span> MapListMarker;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_MapNameMarker" class="hidden"></a>MapNameMarker <a href="../Source_ipdrv/udpbeacon.html#19" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">string</span> MapNameMarker;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_MaxPlayersMarker" class="hidden"></a>MaxPlayersMarker <a href="../Source_ipdrv/udpbeacon.html#17" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">string</span> MaxPlayersMarker;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_MenuGmNameMarker" class="hidden"></a>MenuGmNameMarker <a href="../Source_ipdrv/udpbeacon.html#24" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">string</span> MenuGmNameMarker;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ModNameMarker" class="hidden"></a>ModNameMarker <a href="../Source_ipdrv/udpbeacon.html#51" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">string</span> ModNameMarker;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_NumPlayersMarker" class="hidden"></a>NumPlayersMarker <a href="../Source_ipdrv/udpbeacon.html#18" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">string</span> NumPlayersMarker;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_NumTerroMarker" class="hidden"></a>NumTerroMarker <a href="../Source_ipdrv/udpbeacon.html#47" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">string</span> NumTerroMarker;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_OptionsListMarker" class="hidden"></a>OptionsListMarker <a href="../Source_ipdrv/udpbeacon.html#27" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">string</span> OptionsListMarker;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_PlayerKillMarker" class="hidden"></a>PlayerKillMarker <a href="../Source_ipdrv/udpbeacon.html#30" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">string</span> PlayerKillMarker;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_PlayerListMarker" class="hidden"></a>PlayerListMarker <a href="../Source_ipdrv/udpbeacon.html#26" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">string</span> PlayerListMarker;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_PlayerPingMarker" class="hidden"></a>PlayerPingMarker <a href="../Source_ipdrv/udpbeacon.html#29" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">string</span> PlayerPingMarker;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_PlayerTimeMarker" class="hidden"></a>PlayerTimeMarker <a href="../Source_ipdrv/udpbeacon.html#28" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">string</span> PlayerTimeMarker;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_PreJoinQueryMarker" class="hidden"></a>PreJoinQueryMarker <a href="../Source_ipdrv/udpbeacon.html#16" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">string</span> PreJoinQueryMarker;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_PunkBusterMarker" class="hidden"></a>PunkBusterMarker <a href="../Source_ipdrv/udpbeacon.html#53" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">string</span> PunkBusterMarker;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_RotateMapMarker" class="hidden"></a>RotateMapMarker <a href="../Source_ipdrv/udpbeacon.html#49" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">string</span> RotateMapMarker;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_RoundsPerMatchMarker" class="hidden"></a>RoundsPerMatchMarker <a href="../Source_ipdrv/udpbeacon.html#33" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">string</span> RoundsPerMatchMarker;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_RoundTimeMarker" class="hidden"></a>RoundTimeMarker <a href="../Source_ipdrv/udpbeacon.html#34" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">string</span> RoundTimeMarker;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ShowNamesMarker" class="hidden"></a>ShowNamesMarker <a href="../Source_ipdrv/udpbeacon.html#37" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">string</span> ShowNamesMarker;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_SvrNameMarker" class="hidden"></a>SvrNameMarker <a href="../Source_ipdrv/udpbeacon.html#23" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">string</span> SvrNameMarker;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_TKPenaltyMarker" class="hidden"></a>TKPenaltyMarker <a href="../Source_ipdrv/udpbeacon.html#41" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">string</span> TKPenaltyMarker;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_UdpServerQueryPort" class="hidden"></a>UdpServerQueryPort <a href="../Source_ipdrv/udpbeacon.html#57" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">int</span> UdpServerQueryPort;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h3 class="vartag">UdpBeacon</h3>
+<h4><a name="_BeaconPort" class="hidden"></a>BeaconPort <a href="../Source_ipdrv/udpbeacon.html#10" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../ipdrv/udpbeacon.html" class="source">UdpBeacon</a></span>) globalconfig <span class="source_type">int</span> BeaconPort;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_BeaconProduct" class="hidden"></a>BeaconProduct <a href="../Source_ipdrv/udpbeacon.html#12" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../ipdrv/udpbeacon.html" class="source">UdpBeacon</a></span>) globalconfig <span class="source_type">string</span> BeaconProduct;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_BeaconTimeout" class="hidden"></a>BeaconTimeout <a href="../Source_ipdrv/udpbeacon.html#11" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../ipdrv/udpbeacon.html" class="source">UdpBeacon</a></span>) globalconfig <span class="source_type">float</span> BeaconTimeout;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_DoBeacon" class="hidden"></a>DoBeacon <a href="../Source_ipdrv/udpbeacon.html#8" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../ipdrv/udpbeacon.html" class="source">UdpBeacon</a></span>) globalconfig <span class="source_type">bool</span> DoBeacon;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ServerBeaconPort" class="hidden"></a>ServerBeaconPort <a href="../Source_ipdrv/udpbeacon.html#9" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../ipdrv/udpbeacon.html" class="source">UdpBeacon</a></span>) globalconfig <span class="source_type">int</span> ServerBeaconPort;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+
+
+<br />
+
+
+
+
+
+
+
+<table class="title">
+<tr>
+	<th class="title">Functions Detail</th>
+</tr>
+</table>
+
+<h4><a name="_BeginPlay-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> BeginPlay <span class="function_state"></span> <a href="../Source_ipdrv/udpbeacon.html#63" class="small">Source code</a></h4>
+<div class="declaration"> function  BeginPlay ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_BroadcastBeacon-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> BroadcastBeacon <span class="function_state"></span> <a href="../Source_ipdrv/udpbeacon.html#93" class="small">Source code</a></h4>
+<div class="declaration"> function  BroadcastBeacon ( <span class="source_type"><a href="../r6gameservice/r6serverlist.html#IpAddr" class="source">IpAddr</a></span> <span class="source_type">Addr</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_BroadcastBeaconQuery-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> BroadcastBeaconQuery <span class="function_state"></span> <a href="../Source_ipdrv/udpbeacon.html#115" class="small">Source code</a></h4>
+<div class="declaration"> function  BroadcastBeaconQuery ( <span class="source_type"><a href="../r6gameservice/r6serverlist.html#IpAddr" class="source">IpAddr</a></span> <span class="source_type">Addr</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_BuildBeaconText-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> BuildBeaconText <span class="function_state"></span> <a href="../Source_ipdrv/udpbeacon.html#271" class="small">Source code</a></h4>
+<div class="declaration"> function <span class="source_type">string</span> BuildBeaconText ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_Destroyed-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> Destroyed <span class="function_state"></span> <a href="../Source_ipdrv/udpbeacon.html#258" class="small">Source code</a></h4>
+<div class="declaration"> function  Destroyed ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_DisplayTime-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> DisplayTime <span class="function_state"></span> <a href="../Source_ipdrv/udpbeacon.html#576" class="small">Source code</a></h4>
+<div class="declaration"> function <span class="source_type">string</span> DisplayTime ( <span class="source_type">INT</span> _iTimeToConvert) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_InitBeaconProduct-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> InitBeaconProduct <span class="function_state"></span> <a href="../Source_ipdrv/udpbeacon.html#183" class="small">Source code</a></h4>
+<div class="declaration"> function  InitBeaconProduct ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ReceivedText-" class="hidden"></a><img src="../img_event.gif" alt="" title="event" /> ReceivedText <span class="function_state"></span> <a href="../Source_ipdrv/udpbeacon.html#122" class="small">Source code</a></h4>
+<div class="declaration"> event  ReceivedText ( <span class="source_type"><a href="../r6gameservice/r6serverlist.html#IpAddr" class="source">IpAddr</a></span> <span class="source_type">Addr</span>, <span class="source_type">string</span> <span class="source_type">Text</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_RespondPreJoinQuery-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> RespondPreJoinQuery <span class="function_state"></span> <a href="../Source_ipdrv/udpbeacon.html#199" class="small">Source code</a></h4>
+<div class="declaration"> function  RespondPreJoinQuery ( <span class="source_type"><a href="../r6gameservice/r6serverlist.html#IpAddr" class="source">IpAddr</a></span> <span class="source_type">Addr</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_Timer-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> Timer <span class="function_state"></span> <a href="../Source_ipdrv/udpbeacon.html#554" class="small">Source code</a></h4>
+<div class="declaration"> function  Timer ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+
+
+<br />
+
+
+<table class="title">
+<tr>
+	<th class="title">Defaultproperties</th>
+</tr>
+</table>
+<br />
+<div class="source"><table class="source"><tr><td class="source"><pre class="source">defaultproperties
+{
+     ServerBeaconPort=<span class="source_int">8777</span>
+     BeaconPort=<span class="source_int">9777</span>
+     DoBeacon=True
+     BeaconTimeout=<span class="source_int">10.000000</span>
+     BeaconProduct=<span class="source_string">"unreal"</span>
+     KeyWordMarker=<span class="source_string">"KEYWORD"</span>
+     PreJoinQueryMarker=<span class="source_string">"PREJOINQUERY"</span>
+     MaxPlayersMarker=<span class="source_string">"¶A1"</span>
+     NumPlayersMarker=<span class="source_string">"¶B1"</span>
+     MapNameMarker=<span class="source_string">"¶E1"</span>
+     GameTypeMarker=<span class="source_string">"¶F1"</span>
+     LockedMarker=<span class="source_string">"¶G1"</span>
+     DecicatedMarker=<span class="source_string">"¶H1"</span>
+     SvrNameMarker=<span class="source_string">"¶I1"</span>
+     MenuGmNameMarker=<span class="source_string">"¶J1"</span>
+     MapListMarker=<span class="source_string">"¶K1"</span>
+     PlayerListMarker=<span class="source_string">"¶L1"</span>
+     OptionsListMarker=<span class="source_string">"¶C2"</span>
+     PlayerTimeMarker=<span class="source_string">"¶M1"</span>
+     PlayerPingMarker=<span class="source_string">"¶N1"</span>
+     PlayerKillMarker=<span class="source_string">"¶O1"</span>
+     GamePortMarker=<span class="source_string">"¶P1"</span>
+     RoundsPerMatchMarker=<span class="source_string">"¶Q1"</span>
+     RoundTimeMarker=<span class="source_string">"¶R1"</span>
+     BetTimeMarker=<span class="source_string">"¶S1"</span>
+     BombTimeMarker=<span class="source_string">"¶T1"</span>
+     ShowNamesMarker=<span class="source_string">"¶W1"</span>
+     InternetServerMarker=<span class="source_string">"¶X1"</span>
+     FriendlyFireMarker=<span class="source_string">"¶Y1"</span>
+     AutoBalTeamMarker=<span class="source_string">"¶Z1"</span>
+     TKPenaltyMarker=<span class="source_string">"¶A2"</span>
+     AllowRadarMarker=<span class="source_string">"¶B2"</span>
+     GameVersionMarker=<span class="source_string">"¶D2"</span>
+     LobbyServerIDMarker=<span class="source_string">"¶E2"</span>
+     GroupIDMarker=<span class="source_string">"¶F2"</span>
+     BeaconPortMarker=<span class="source_string">"¶G2"</span>
+     NumTerroMarker=<span class="source_string">"¶H2"</span>
+     AIBkpMarker=<span class="source_string">"¶I2"</span>
+     RotateMapMarker=<span class="source_string">"¶J2"</span>
+     ForceFPWpnMarker=<span class="source_string">"¶K2"</span>
+     ModNameMarker=<span class="source_string">"¶L2"</span>
+     PunkBusterMarker=<span class="source_string">"¶L3"</span>
+     RemoteRole=ROLE_None
+}
+</pre></td></tr></table></div>
+
+
+
+<hr />
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../ipdrv/ipdrv-overview.html">Package</a></td>
+	<td class="header_hilight">Class</td>
+	<td class="header"><a href="../Source_ipdrv/udpbeacon.html">Source</a></td>
+	<td class="header"><a class="header" href="../classtree.html#UdpBeacon">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../ipdrv/tcplink.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../ipdrv/udplink.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+
+<div class="stats">Creation time: mar. 26/5/2026 18:33:16.264 - Created with <a href="http://wiki.beyondunreal.com/wiki/UnCodeX" target="_blank">UnCodeX</a></div>
+
+</body>
+</html>

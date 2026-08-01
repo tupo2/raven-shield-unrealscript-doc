@@ -1,0 +1,474 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+	<title>UnCodeX - Source: Gameplay.ScriptedController</title>
+	<meta name="Generator" content="UnCodeX 241" />
+	<link rel="stylesheet" href="../DocStyle2.css" type="text/css" title="Original Purple" />
+	<link rel="alternative stylesheet" href="../DocStyle2-blue.css" type="text/css" title="Blue" />
+	<link rel="alternative stylesheet" href="../DocStyle2-red.css" type="text/css" title="Red" />
+	<!--[if IE]>
+	<link rel="stylesheet" href="../DocStyle2-msie.css" type="text/css" />
+	<![endif]-->
+	<script src="../styleswitcher.js" type="text/javascript"></script>
+</head>
+<body>
+
+<div class="header">
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../gameplay/gameplay-overview.html">Package</a></td>
+	<td class="header"><a href="../gameplay/scriptedcontroller.html">Class</a></td>
+	<td class="header_hilight">Source</td>
+	<td class="header"><a class="header" href="../classtree.html#ScriptedController">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../Source_gameplay/scriptedaction.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../Source_gameplay/scriptedsequence.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html#Source_gameplay/scriptedcontroller.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+</div>
+<div class="spacer"></div>
+
+<h1><a href="../gameplay/gameplay-overview.html">Gameplay</a>.<a href="../gameplay/scriptedcontroller.html">ScriptedController</a></h1>
+<br />
+<div class="source"><table class="source"><tr><td class="source_lineno"><span class="source_lineno">00001<br />00002<br />00003<br />00004<br />00005<br />00006<br />00007<br />00008<br />00009<br />00010<br />00011<br />00012<br />00013<br />00014<br />00015<br />00016<br />00017<br />00018<br />00019<br />00020<br />
+00021<br />00022<br />00023<br />00024<br />00025<br />00026<br />00027<br />00028<br />00029<br />00030<br />00031<br />00032<br />00033<br />00034<br />00035<br />00036<br />00037<br />00038<br />00039<br />00040<br />
+00041<br />00042<br />00043<br />00044<br />00045<br />00046<br />00047<br />00048<br />00049<br />00050<br />00051<br />00052<br />00053<br />00054<br />00055<br />00056<br />00057<br />00058<br />00059<br />00060<br />
+00061<br />00062<br />00063<br />00064<br />00065<br />00066<br />00067<br />00068<br />00069<br />00070<br />00071<br />00072<br />00073<br />00074<br />00075<br />00076<br />00077<br />00078<br />00079<br />00080<br />
+00081<br />00082<br />00083<br />00084<br />00085<br />00086<br />00087<br />00088<br />00089<br />00090<br />00091<br />00092<br />00093<br />00094<br />00095<br />00096<br />00097<br />00098<br />00099<br />00100<br />
+00101<br />00102<br />00103<br />00104<br />00105<br />00106<br />00107<br />00108<br />00109<br />00110<br />00111<br />00112<br />00113<br />00114<br />00115<br />00116<br />00117<br />00118<br />00119<br />00120<br />
+00121<br />00122<br />00123<br />00124<br />00125<br />00126<br />00127<br />00128<br />00129<br />00130<br />00131<br />00132<br />00133<br />00134<br />00135<br />00136<br />00137<br />00138<br />00139<br />00140<br />
+00141<br />00142<br />00143<br />00144<br />00145<br />00146<br />00147<br />00148<br />00149<br />00150<br />00151<br />00152<br />00153<br />00154<br />00155<br />00156<br />00157<br />00158<br />00159<br />00160<br />
+00161<br />00162<br />00163<br />00164<br />00165<br />00166<br />00167<br />00168<br />00169<br />00170<br />00171<br />00172<br />00173<br />00174<br />00175<br />00176<br />00177<br />00178<br />00179<br />00180<br />
+00181<br />00182<br />00183<br />00184<br />00185<br />00186<br />00187<br />00188<br />00189<br />00190<br />00191<br />00192<br />00193<br />00194<br />00195<br />00196<br />00197<br />00198<br />00199<br />00200<br />
+00201<br />00202<br />00203<br />00204<br />00205<br />00206<br />00207<br />00208<br />00209<br />00210<br />00211<br />00212<br />00213<br />00214<br />00215<br />00216<br />00217<br />00218<br />00219<br />00220<br />
+00221<br />00222<br />00223<br />00224<br />00225<br />00226<br />00227<br />00228<br />00229<br />00230<br />00231<br />00232<br />00233<br />00234<br />00235<br />00236<br />00237<br />00238<br />00239<br />00240<br />
+00241<br />00242<br />00243<br />00244<br />00245<br />00246<br />00247<br />00248<br />00249<br />00250<br />00251<br />00252<br />00253<br />00254<br />00255<br />00256<br />00257<br />00258<br />00259<br />00260<br />
+00261<br />00262<br />00263<br />00264<br />00265<br />00266<br />00267<br />00268<br />00269<br />00270<br />00271<br />00272<br />00273<br />00274<br />00275<br />00276<br />00277<br />00278<br />00279<br />00280<br />
+00281<br />00282<br />00283<br />00284<br />00285<br />00286<br />00287<br />00288<br />00289<br />00290<br />00291<br />00292<br />00293<br />00294<br />00295<br />00296<br />00297<br />00298<br />00299<br />00300<br />
+00301<br />00302<br />00303<br />00304<br />00305<br />00306<br />00307<br />00308<br />00309<br />00310<br />00311<br />00312<br />00313<br />00314<br />00315<br />00316<br />00317<br />00318<br />00319<br />00320<br />
+00321<br />00322<br />00323<br />00324<br />00325<br />00326<br />00327<br />00328<br />00329<br />00330<br />00331<br />00332<br />00333<br />00334<br />00335<br />00336<br />00337<br />00338<br />00339<br />00340<br />
+00341<br />00342<br />00343<br />00344<br />00345<br />00346<br />00347<br />00348<br />00349<br />00350<br />00351<br />00352<br />00353<br />00354<br />00355<br />00356<br />00357<br />00358<br />00359<br />00360<br />
+00361<br />00362<br />00363<br />00364<br />00365<br />00366<br />00367<br />00368<br />00369<br />00370<br />00371<br />00372<br />00373<br />00374<br />00375<br />00376<br />00377<br />00378<br />00379<br />00380<br />
+00381<br />00382<br />00383<br />00384<br />00385<br />00386<br />00387<br />00388<br />00389<br />00390<br />00391<br />00392<br />00393<br />00394<br />00395<br />00396<br />00397</span></td>
+<td class="source"><pre class="source"><a name="1"></a><span class="source_comment">// ScriptedController
+</span><a name="2"></a><span class="source_comment">// AI controller which is controlling the pawn through a scripted sequence specified by 
+</span><a name="3"></a><span class="source_comment">// an AIScript
+</span><a name="4"></a>
+<a name="5"></a><span class="source_type">class</span> <span class="source_type"><a href="../gameplay/scriptedcontroller.html" class="source">ScriptedController</a></span> extends <span class="source_type"><a href="../engine/aicontroller.html" class="source">AIController</a></span>;
+<a name="6"></a>
+<a name="7"></a>var <span class="source_type"><a href="../engine/controller.html" class="source">controller</a></span> PendingController;	<span class="source_comment">// controller which will get this pawn after scripted sequence is complete
+</span><a name="8"></a>var <span class="source_type">int</span> ActionNum;
+<a name="9"></a>var <span class="source_type">int</span> AnimsRemaining;
+<a name="10"></a>var <span class="source_type"><a href="../gameplay/scriptedsequence.html" class="source">ScriptedSequence</a></span> SequenceScript;
+<a name="11"></a>var <span class="source_type"><a href="../gameplay/latentscriptedaction.html" class="source">LatentScriptedAction</a></span> CurrentAction;
+<a name="12"></a>var <span class="source_type"><a href="../gameplay/action_playanim.html" class="source">Action_PLAYANIM</a></span> CurrentAnimation;
+<a name="13"></a>var <span class="source_type">bool</span> bBroken;
+<a name="14"></a>var <span class="source_type">bool</span> bShootTarget;
+<a name="15"></a>var <span class="source_type">bool</span> bShootSpray;
+<a name="16"></a>var <span class="source_type">bool</span> bPendingShoot;
+<a name="17"></a>var <span class="source_type">bool</span> bFakeShot;			<span class="source_comment">// FIXME - this is currently a hack
+</span><a name="18"></a>var <span class="source_type">bool</span> bUseScriptFacing;
+<a name="19"></a>var <span class="source_type"><a href="../engine/actor.html" class="source">Actor</a></span> ScriptedFocus;
+<a name="20"></a>var <span class="source_type"><a href="../engine/playercontroller.html" class="source">PlayerController</a></span> MyPlayerController;
+<a name="21"></a>var <span class="source_type">int</span> NumShots;
+<a name="22"></a>var <span class="source_type">name</span> FiringMode;
+<a name="23"></a>var <span class="source_type">int</span> IterationCounter;
+<a name="24"></a>var <span class="source_type">int</span> IterationSectionStart;
+<a name="25"></a>
+<a name="26"></a>function TakeControlOf(<span class="source_type"><a href="../engine/pawn.html" class="source">Pawn</a></span> <span class="source_type">aPawn</span>)
+<a name="27"></a>{
+<a name="28"></a>	if ( <span class="source_type"><a href="../engine/pawn.html" class="source">Pawn</a></span> != <span class="source_type">aPawn</span> )
+<a name="29"></a>	{
+<a name="30"></a>		<span class="source_type">aPawn</span>.PossessedBy(self);
+<a name="31"></a>		<span class="source_type"><a href="../engine/pawn.html" class="source">Pawn</a></span> = <span class="source_type">aPawn</span>;
+<a name="32"></a>	}
+<a name="33"></a>	GotoState(<span class="source_name">'Scripting'</span>);
+<a name="34"></a>}
+<a name="35"></a>
+<a name="36"></a>function SetEnemyReaction(<span class="source_type">int</span> AlertnessLevel);
+<a name="37"></a>
+<a name="38"></a>function DestroyPawn()
+<a name="39"></a>{
+<a name="40"></a>	if ( <span class="source_type"><a href="../engine/pawn.html" class="source">Pawn</a></span> != None )
+<a name="41"></a>		<span class="source_type"><a href="../engine/pawn.html" class="source">Pawn</a></span>.Destroy();
+<a name="42"></a>	Destroy();
+<a name="43"></a>}
+<a name="44"></a>
+<a name="45"></a>function <span class="source_type"><a href="../engine/pawn.html" class="source">Pawn</a></span> GetMyPlayer()
+<a name="46"></a>{
+<a name="47"></a>	if ( (MyPlayerController == None) || (MyPlayerController.<span class="source_type"><a href="../engine/pawn.html" class="source">Pawn</a></span> == None) )
+<a name="48"></a>		ForEach DynamicActors(<span class="source_type">class</span><span class="source_name">'PlayerController'</span>,MyPlayerController)
+<a name="49"></a>			if ( MyPlayerController.<span class="source_type"><a href="../engine/pawn.html" class="source">Pawn</a></span> != None )
+<a name="50"></a>				break;
+<a name="51"></a>	if ( MyPlayerController == None )
+<a name="52"></a>		return None;
+<a name="53"></a>	return MyPlayerController.<span class="source_type"><a href="../engine/pawn.html" class="source">Pawn</a></span>;
+<a name="54"></a>}
+<a name="55"></a>
+<a name="56"></a>function <span class="source_type"><a href="../engine/pawn.html" class="source">Pawn</a></span> GetInstigator()
+<a name="57"></a>{
+<a name="58"></a>	if ( <span class="source_type"><a href="../engine/pawn.html" class="source">Pawn</a></span> != None )
+<a name="59"></a>		return <span class="source_type"><a href="../engine/pawn.html" class="source">Pawn</a></span>;
+<a name="60"></a>	return Instigator;
+<a name="61"></a>}
+<a name="62"></a>
+<a name="63"></a>function <span class="source_type"><a href="../engine/actor.html" class="source">Actor</a></span> GetSoundSource()
+<a name="64"></a>{
+<a name="65"></a>	if ( <span class="source_type"><a href="../engine/pawn.html" class="source">Pawn</a></span> != None )
+<a name="66"></a>		return <span class="source_type"><a href="../engine/pawn.html" class="source">Pawn</a></span>;
+<a name="67"></a>	return SequenceScript;
+<a name="68"></a>}
+<a name="69"></a>
+<a name="70"></a>function <span class="source_type">bool</span> CheckIfNearPlayer(<span class="source_type">float</span> Distance)
+<a name="71"></a>{
+<a name="72"></a>	local <span class="source_type"><a href="../engine/pawn.html" class="source">Pawn</a></span> MyPlayer;
+<a name="73"></a>
+<a name="74"></a>	MyPlayer = GetMyPlayer();
+<a name="75"></a>	return ( (MyPlayer != None) && (VSize(<span class="source_type"><a href="../engine/pawn.html" class="source">Pawn</a></span>.Location - MyPlayer.Location) &lt; Distance+CollisionRadius+MyPlayer.CollisionRadius ) && <span class="source_type"><a href="../engine/pawn.html" class="source">Pawn</a></span>.PlayerCanSeeMe() );
+<a name="76"></a>}
+<a name="77"></a>
+<a name="78"></a>function SetNewScript(<span class="source_type"><a href="../gameplay/scriptedsequence.html" class="source">ScriptedSequence</a></span> NewScript)
+<a name="79"></a>{
+<a name="80"></a>	MyScript = NewScript;
+<a name="81"></a>	SequenceScript = NewScript;
+<a name="82"></a>	ActionNum = <span class="source_int">0</span>;
+<a name="83"></a>	Focus = None;
+<a name="84"></a>	CurrentAction = None;
+<a name="85"></a>	CurrentAnimation = None;
+<a name="86"></a>	ScriptedFocus = None;
+<a name="87"></a>	<span class="source_type"><a href="../engine/pawn.html" class="source">Pawn</a></span>.SetWalking(false);
+<a name="88"></a>	<span class="source_type"><a href="../engine/pawn.html" class="source">Pawn</a></span>.ShouldCrouch(false);
+<a name="89"></a>	SetEnemyReaction(<span class="source_int">3</span>);
+<a name="90"></a>	SequenceScript.SetActions(self);
+<a name="91"></a>}
+<a name="92"></a>
+<a name="93"></a>function ClearAnimation()
+<a name="94"></a>{
+<a name="95"></a>	AnimsRemaining = <span class="source_int">0</span>;
+<a name="96"></a>	bControlAnimations = false;
+<a name="97"></a>	CurrentAnimation = None;
+<a name="98"></a>	<span class="source_type"><a href="../engine/pawn.html" class="source">Pawn</a></span>.PlayWaiting();
+<a name="99"></a>}
+<a name="100"></a>
+<a name="101"></a>function <span class="source_type">int</span> SetFireYaw(<span class="source_type">int</span> FireYaw)
+<a name="102"></a>{
+<a name="103"></a>	FireYaw = FireYaw & <span class="source_int">65535</span>;
+<a name="104"></a>
+<a name="105"></a>	if ( (Abs(FireYaw - (Rotation.Yaw & <span class="source_int">65535</span>)) &gt; <span class="source_int">8192</span>)
+<a name="106"></a>		&& (Abs(FireYaw - (Rotation.Yaw & <span class="source_int">65535</span>)) &lt; <span class="source_int">57343</span>) )
+<a name="107"></a>	{
+<a name="108"></a>		if ( FireYaw ClockwiseFrom Rotation.Yaw )
+<a name="109"></a>			FireYaw = Rotation.Yaw + <span class="source_int">8192</span>;
+<a name="110"></a>		else
+<a name="111"></a>			FireYaw = Rotation.Yaw - <span class="source_int">8192</span>;
+<a name="112"></a>	}
+<a name="113"></a>	return FireYaw;
+<a name="114"></a>}
+<a name="115"></a>
+<a name="116"></a><span class="source_comment">/*@@@CODEDROP927 
+<a name="117"></a>function rotator AdjustAim(Ammunition FiredAmmunition, vector projStart, int AimError)
+<a name="118"></a>{
+<a name="119"></a>	local rotator LookDir;
+<a name="120"></a>
+<a name="121"></a>	// make sure bot has a valid target
+<a name="122"></a>	if ( Target == None )
+<a name="123"></a>		Target = ScriptedFocus;
+<a name="124"></a>	if ( Target == None )
+<a name="125"></a>	{
+<a name="126"></a>		Target = Enemy;
+<a name="127"></a>		if ( Target == None )
+<a name="128"></a>		{
+<a name="129"></a>			bFire = 0;
+<a name="130"></a>			bAltFire = 0;
+<a name="131"></a>			return Pawn.Rotation;
+<a name="132"></a>		}
+<a name="133"></a>	}
+<a name="134"></a>	LookDir = rotator(Target.Location - projStart);
+<a name="135"></a>	LookDir.Yaw = SetFireYaw(LookDir.Yaw);
+<a name="136"></a>	return LookDir;
+<a name="137"></a>}
+<a name="138"></a>*/</span>
+<a name="139"></a>function LeaveScripting();
+<a name="140"></a>
+<a name="141"></a>state Scripting
+<a name="142"></a>{
+<a name="143"></a>	function DisplayDebug(<span class="source_type"><a href="../engine/canvas.html" class="source">Canvas</a></span> <span class="source_type"><a href="../engine/canvas.html" class="source">Canvas</a></span>, out <span class="source_type">float</span> YL, out <span class="source_type">float</span> YPos)
+<a name="144"></a>	{
+<a name="145"></a>		Super.DisplayDebug(<span class="source_type"><a href="../engine/canvas.html" class="source">Canvas</a></span>,YL,YPos);
+<a name="146"></a>		<span class="source_type"><a href="../engine/canvas.html" class="source">Canvas</a></span>.DrawText(<span class="source_string">"AIScript "</span>$SequenceScript$<span class="source_string">" ActionNum "</span>$ActionNum, false);
+<a name="147"></a>		YPos += YL;
+<a name="148"></a>		<span class="source_type"><a href="../engine/canvas.html" class="source">Canvas</a></span>.SetPos(<span class="source_int">4</span>,YPos);
+<a name="149"></a>		CurrentAction.DisplayDebug(<span class="source_type"><a href="../engine/canvas.html" class="source">Canvas</a></span>,YL,YPos);
+<a name="150"></a>	}
+<a name="151"></a>
+<a name="152"></a>	<span class="source_comment">/* UnPossess()
+<a name="153"></a>	scripted sequence is over - return control to PendingController
+<a name="154"></a>	*/</span>
+<a name="155"></a>	function UnPossess()
+<a name="156"></a>	{
+<a name="157"></a>		<span class="source_type"><a href="../engine/pawn.html" class="source">Pawn</a></span>.UnPossessed();
+<a name="158"></a>		if ( (<span class="source_type"><a href="../engine/pawn.html" class="source">Pawn</a></span> != None) && (PendingController != None) )
+<a name="159"></a>		{
+<a name="160"></a>			PendingController.bStasis = false;
+<a name="161"></a>			PendingController.Possess(<span class="source_type"><a href="../engine/pawn.html" class="source">Pawn</a></span>);
+<a name="162"></a>		}
+<a name="163"></a>		<span class="source_type"><a href="../engine/pawn.html" class="source">Pawn</a></span> = None;
+<a name="164"></a>		Destroy();
+<a name="165"></a>	}
+<a name="166"></a>
+<a name="167"></a>	function LeaveScripting()
+<a name="168"></a>	{
+<a name="169"></a>		UnPossess();
+<a name="170"></a>	}
+<a name="171"></a>
+<a name="172"></a>	function InitForNextAction()
+<a name="173"></a>	{
+<a name="174"></a>		SequenceScript.SetActions(self);
+<a name="175"></a>		if ( CurrentAction == None )
+<a name="176"></a>		{
+<a name="177"></a>			LeaveScripting();
+<a name="178"></a>			return;
+<a name="179"></a>		}
+<a name="180"></a>		MyScript = SequenceScript;
+<a name="181"></a>		if ( CurrentAnimation == None )
+<a name="182"></a>			ClearAnimation();
+<a name="183"></a>	}
+<a name="184"></a>
+<a name="185"></a>	function <span class="source_type"><a href="../engine/trigger.html" class="source">Trigger</a></span>( <span class="source_type"><a href="../engine/actor.html" class="source">actor</a></span> <span class="source_type">Other</span>, <span class="source_type"><a href="../engine/pawn.html" class="source">pawn</a></span> <span class="source_type">EventInstigator</span> )
+<a name="186"></a>	{
+<a name="187"></a>		if ( CurrentAction.CompleteWhenTriggered() )
+<a name="188"></a>			CompleteAction();
+<a name="189"></a>	}
+<a name="190"></a>
+<a name="191"></a>	function Timer()
+<a name="192"></a>	{
+<a name="193"></a>		if ( CurrentAction.WaitForPlayer() && CheckIfNearPlayer(CurrentAction.GetDistance()) )
+<a name="194"></a>			CompleteAction();
+<a name="195"></a>		else if ( CurrentAction.CompleteWhenTimer() )
+<a name="196"></a>			CompleteAction();
+<a name="197"></a>	}
+<a name="198"></a>
+<a name="199"></a>	function AnimEnd(<span class="source_type">int</span> Channel)
+<a name="200"></a>	{
+<a name="201"></a>		if ( CurrentAction.CompleteOnAnim(Channel) )
+<a name="202"></a>		{
+<a name="203"></a>			CompleteAction();
+<a name="204"></a>			return;
+<a name="205"></a>		}
+<a name="206"></a>		if ( Channel == <span class="source_int">0</span> )
+<a name="207"></a>		{
+<a name="208"></a>			if ( (CurrentAnimation == None) || !CurrentAnimation.PawnPlayBaseAnim(self,false) )
+<a name="209"></a>				ClearAnimation();
+<a name="210"></a>		}
+<a name="211"></a>		else 
+<a name="212"></a>		{
+<a name="213"></a>			<span class="source_comment">// FIXME - support for CurrentAnimation play on other channels
+</span><a name="214"></a>			<span class="source_type"><a href="../engine/pawn.html" class="source">Pawn</a></span>.AnimEnd(Channel);
+<a name="215"></a>		}
+<a name="216"></a>	}
+<a name="217"></a>
+<a name="218"></a>	function CompleteAction()
+<a name="219"></a>	{
+<a name="220"></a>		ActionNum++;
+<a name="221"></a>		GotoState(<span class="source_name">'Scripting'</span>,<span class="source_name">'Begin'</span>);
+<a name="222"></a>	}
+<a name="223"></a>
+<a name="224"></a>	function SetMoveTarget()
+<a name="225"></a>	{
+<a name="226"></a>		local <span class="source_type"><a href="../engine/actor.html" class="source">Actor</a></span> NextMoveTarget;
+<a name="227"></a>
+<a name="228"></a>		Focus = ScriptedFocus;
+<a name="229"></a>		NextMoveTarget = CurrentAction.GetMoveTargetFor(self);
+<a name="230"></a>		if ( NextMoveTarget == None )
+<a name="231"></a>		{
+<a name="232"></a>			GotoState(<span class="source_name">'Broken'</span>);
+<a name="233"></a>			return;
+<a name="234"></a>		}
+<a name="235"></a>		if ( Focus == None )
+<a name="236"></a>			Focus = NextMoveTarget;
+<a name="237"></a>		MoveTarget = NextMoveTarget;
+<a name="238"></a>		if ( !ActorReachable(MoveTarget) )
+<a name="239"></a>		{
+<a name="240"></a>			MoveTarget = FindPathToward(MoveTarget);
+<a name="241"></a>			if ( Movetarget == None )
+<a name="242"></a>			{
+<a name="243"></a>				AbortScript();
+<a name="244"></a>				return;
+<a name="245"></a>			}
+<a name="246"></a>			if ( Focus == NextMoveTarget )
+<a name="247"></a>				Focus = MoveTarget;				
+<a name="248"></a>		}
+<a name="249"></a>	}
+<a name="250"></a>
+<a name="251"></a>	function AbortScript()
+<a name="252"></a>	{
+<a name="253"></a>		LeaveScripting();
+<a name="254"></a>	}
+<a name="255"></a><span class="source_comment">/* R6CHANGEWEAPONSYSTEM
+<a name="256"></a>	// WeaponFireAgain()
+<a name="257"></a>	//Notification from weapon when it is ready to fire (either just finished firing,
+<a name="258"></a>	//or just finished coming up/reloading).
+<a name="259"></a>	//Returns true if weapon should fire.
+<a name="260"></a>	//If it returns false, can optionally set up a weapon change
+<a name="261"></a>	function bool WeaponFireAgain(float RefireRate, bool bFinishedFire)
+<a name="262"></a>	{
+<a name="263"></a>		if ( Pawn.bIgnorePlayFiring )
+<a name="264"></a>		{
+<a name="265"></a>			Pawn.bIgnorePlayFiring = false;
+<a name="266"></a>			return false;
+<a name="267"></a>		}
+<a name="268"></a>		if ( NumShots &lt; 0 )
+<a name="269"></a>		{
+<a name="270"></a>			bShootTarget = false;
+<a name="271"></a>			bShootSpray = false;
+<a name="272"></a>			StopFiring();
+<a name="273"></a>			return false;
+<a name="274"></a>		}
+<a name="275"></a>		if ( bShootTarget && (ScriptedFocus != None) && !ScriptedFocus.bDeleteMe )
+<a name="276"></a>		{
+<a name="277"></a>			Target = ScriptedFocus;
+<a name="278"></a>			if ( (!bShootSpray && ((Pawn.Weapon.RefireRate() &lt; 0.99) && !Pawn.Weapon.CanAttack(Target)))
+<a name="279"></a>				|| !Pawn.Weapon.BotFire(bFinishedFire,FiringMode) )
+<a name="280"></a>			{
+<a name="281"></a>				Enable('Tick'); //FIXME - use multiple timer for this instead
+<a name="282"></a>				bPendingShoot = true;
+<a name="283"></a>				return false;
+<a name="284"></a>			}
+<a name="285"></a>			if ( NumShots &gt; 0 )
+<a name="286"></a>			{
+<a name="287"></a>				NumShots--;
+<a name="288"></a>				if ( NumShots == 0 )
+<a name="289"></a>					NumShots = -1;
+<a name="290"></a>			}
+<a name="291"></a>			return true;
+<a name="292"></a>		}
+<a name="293"></a>		StopFiring();
+<a name="294"></a>		return false;
+<a name="295"></a>	}
+<a name="296"></a>*/</span>
+<a name="297"></a>
+<a name="298"></a>	function Tick(<span class="source_type">float</span> <span class="source_type">DeltaTime</span>)
+<a name="299"></a>	{
+<a name="300"></a>		if ( bPendingShoot )
+<a name="301"></a>		{
+<a name="302"></a>			bPendingShoot = false;
+<a name="303"></a>			MayShootTarget();
+<a name="304"></a>		}
+<a name="305"></a>		if ( !bPendingShoot
+<a name="306"></a>			&& ((CurrentAction == None) || !CurrentAction.StillTicking(self,<span class="source_type">DeltaTime</span>)) )
+<a name="307"></a>			disable(<span class="source_name">'Tick'</span>);
+<a name="308"></a>	}
+<a name="309"></a>
+<a name="310"></a>	function MayShootAtEnemy();
+<a name="311"></a>
+<a name="312"></a>	function MayShootTarget()
+<a name="313"></a>	{
+<a name="314"></a><span class="source_comment">/* R6CHANGEWEAPONSYSTEM
+<a name="315"></a>		WeaponFireAgain(0,false);
+<a name="316"></a>*/</span>
+<a name="317"></a>	}
+<a name="318"></a>
+<a name="319"></a>	function EndState()
+<a name="320"></a>	{
+<a name="321"></a>		bUseScriptFacing = true;
+<a name="322"></a>		bFakeShot = false;
+<a name="323"></a>	}
+<a name="324"></a>
+<a name="325"></a>Begin:
+<a name="326"></a>	InitforNextAction();
+<a name="327"></a>	if ( bBroken )
+<a name="328"></a>		GotoState(<span class="source_name">'Broken'</span>);
+<a name="329"></a>	if ( CurrentAction.TickedAction() )
+<a name="330"></a>		enable(<span class="source_name">'Tick'</span>);
+<a name="331"></a>	if ( !bShootTarget )
+<a name="332"></a>	{
+<a name="333"></a>		bFire = <span class="source_int">0</span>;
+<a name="334"></a>		bAltFire = <span class="source_int">0</span>;
+<a name="335"></a>	}
+<a name="336"></a>	else
+<a name="337"></a>	{
+<a name="338"></a><span class="source_comment">//@@@CODEDROP927    Pawn.Weapon.RateSelf();
+</span><a name="339"></a>		if ( bShootSpray )
+<a name="340"></a>			MayShootTarget();
+<a name="341"></a>	}
+<a name="342"></a>	if ( CurrentAction.MoveToGoal() )
+<a name="343"></a>	{
+<a name="344"></a>		<span class="source_type"><a href="../engine/pawn.html" class="source">Pawn</a></span>.SetMovementPhysics();
+<a name="345"></a>		WaitForLanding();
+<a name="346"></a>KeepMoving:
+<a name="347"></a>		SetMoveTarget();
+<a name="348"></a>		MayShootTarget();
+<a name="349"></a>		MoveToward(MoveTarget, Focus,,,,<span class="source_type"><a href="../engine/pawn.html" class="source">Pawn</a></span>.bIsWalking);
+<a name="350"></a>		if ( (MoveTarget != CurrentAction.GetMoveTargetFor(self))
+<a name="351"></a>			|| !<span class="source_type"><a href="../engine/pawn.html" class="source">Pawn</a></span>.ReachedDestination(CurrentAction.GetMoveTargetFor(self)) )
+<a name="352"></a>			Goto(<span class="source_name">'KeepMoving'</span>);
+<a name="353"></a>		CompleteAction();
+<a name="354"></a>	}
+<a name="355"></a>	else if ( CurrentAction.TurnToGoal() )
+<a name="356"></a>	{
+<a name="357"></a>		<span class="source_type"><a href="../engine/pawn.html" class="source">Pawn</a></span>.SetMovementPhysics();
+<a name="358"></a>		Focus = CurrentAction.GetMoveTargetFor(self);
+<a name="359"></a>		if ( Focus == None )
+<a name="360"></a>			FocalPoint = <span class="source_type"><a href="../engine/pawn.html" class="source">Pawn</a></span>.Location + <span class="source_int">1000</span> * <span class="source_type"><a href="../core/object.html#Vector" class="source">vector</a></span>(SequenceScript.Rotation);
+<a name="361"></a>		FinishRotation();
+<a name="362"></a>		CompleteAction();
+<a name="363"></a>	}
+<a name="364"></a>	else
+<a name="365"></a>	{
+<a name="366"></a>		<span class="source_comment">//Pawn.SetPhysics(PHYS_RootMotion);
+</span><a name="367"></a>		<span class="source_type"><a href="../engine/pawn.html" class="source">Pawn</a></span>.Acceleration = vect(<span class="source_int">0</span>,<span class="source_int">0</span>,<span class="source_int">0</span>);
+<a name="368"></a>		Focus = ScriptedFocus;
+<a name="369"></a>		if ( !bUseScriptFacing )
+<a name="370"></a>			FocalPoint = <span class="source_type"><a href="../engine/pawn.html" class="source">Pawn</a></span>.Location + <span class="source_int">1000</span> * <span class="source_type"><a href="../core/object.html#Vector" class="source">vector</a></span>(<span class="source_type"><a href="../engine/pawn.html" class="source">Pawn</a></span>.Rotation);
+<a name="371"></a>		else if ( Focus == None )
+<a name="372"></a>		{
+<a name="373"></a>			MayShootAtEnemy();
+<a name="374"></a>			FocalPoint = <span class="source_type"><a href="../engine/pawn.html" class="source">Pawn</a></span>.Location + <span class="source_int">1000</span> * <span class="source_type"><a href="../core/object.html#Vector" class="source">vector</a></span>(SequenceScript.Rotation);
+<a name="375"></a>		}
+<a name="376"></a>		FinishRotation();
+<a name="377"></a>		MayShootTarget();
+<a name="378"></a>	}
+<a name="379"></a>}
+<a name="380"></a>
+<a name="381"></a><span class="source_comment">// Broken scripted sequence - for debugging
+</span><a name="382"></a>State Broken
+<a name="383"></a>{
+<a name="384"></a>Begin:
+<a name="385"></a>	warn(<span class="source_type"><a href="../engine/pawn.html" class="source">Pawn</a></span>$<span class="source_string">" Scripted Sequence BROKEN "</span>$SequenceScript$<span class="source_string">" ACTION "</span>$CurrentAction);
+<a name="386"></a>	<span class="source_type"><a href="../engine/pawn.html" class="source">Pawn</a></span>.bPhysicsAnimUpdate = false;
+<a name="387"></a>	<span class="source_type"><a href="../engine/pawn.html" class="source">Pawn</a></span>.StopAnimating();
+<a name="388"></a>	if ( GetMyPlayer() != None )
+<a name="389"></a>		<span class="source_type"><a href="../engine/playercontroller.html" class="source">PlayerController</a></span>(GetMyPlayer().<span class="source_type"><a href="../engine/controller.html" class="source">Controller</a></span>).SetViewTarget(<span class="source_type"><a href="../engine/pawn.html" class="source">Pawn</a></span>);
+<a name="390"></a>}
+<a name="391"></a>
+<a name="392"></a>defaultproperties
+<a name="393"></a>{
+<a name="394"></a>     IterationSectionStart=-<span class="source_int">1</span>
+<a name="395"></a>     bUseScriptFacing=True
+<a name="396"></a>}
+<a name="397"></a></pre></td></tr></table></div>
+<hr />
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../gameplay/gameplay-overview.html">Package</a></td>
+	<td class="header"><a href="../gameplay/scriptedcontroller.html">Class</a></td>
+	<td class="header_hilight">Source</td>
+	<td class="header"><a class="header" href="../classtree.html#ScriptedController">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../Source_gameplay/scriptedaction.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../Source_gameplay/scriptedsequence.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+
+<div class="stats">Class file time: sam. 18/9/2004 14:39:30.000 - Creation time: mar. 26/5/2026 18:33:21.858 - Created with <a href="http://wiki.beyondunreal.com/wiki/UnCodeX" target="_blank">UnCodeX</a></div>
+
+</body>
+</html>

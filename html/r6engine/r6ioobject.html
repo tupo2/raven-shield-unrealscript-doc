@@ -1,0 +1,452 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+	<title>UnCodeX - R6Engine.R6IOObject</title>
+	<meta name="Generator" content="UnCodeX 241" />
+	<link rel="stylesheet" href="../DocStyle2.css" type="text/css" title="Original Purple" />
+	<link rel="alternative stylesheet" href="../DocStyle2-blue.css" type="text/css" title="Blue" />
+	<link rel="alternative stylesheet" href="../DocStyle2-red.css" type="text/css" title="Red" />
+	<!--[if IE]>
+	<link rel="stylesheet" href="../DocStyle2-msie.css" type="text/css" />
+	<![endif]-->
+	<script src="../styleswitcher.js" type="text/javascript"></script>
+</head>
+<body>
+
+<div class="header">
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../r6engine/r6engine-overview.html">Package</a></td>
+	<td class="header_hilight">Class</td>
+	<td class="header"><a href="../Source_r6engine/r6ioobject.html">Source</a></td>
+	<td class="header"><a class="header" href="../classtree.html#R6IOObject">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../r6engine/r6iodevice.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../r6engine/r6iorotatingdoor.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html#r6engine/r6ioobject.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+</div>
+<div class="spacer"></div>
+
+<h1><a href="../r6engine/r6engine-overview.html">R6Engine</a>.R6IOObject</h1>
+
+<dl>
+<dt>Extends</dt><dd><a href="../r6engine/r6iactionobject.html">R6IActionObject</a></dd>
+<dt>Modifiers</dt><dd>native </dd>
+</dl>
+
+<p></p>
+
+<pre class="tree"><a href="../core/core-overview.html">core</a>.<a href="../core/object.html">Object</a>
+|   
++-- <a href="../engine/engine-overview.html">engine</a>.<a href="../engine/actor.html">Actor</a>
+   |   
+   +-- <a href="../r6engine/r6engine-overview.html">R6Engine</a>.<a href="../r6engine/r6interactiveobject.html">R6InteractiveObject</a>
+      |   
+      +-- <a href="../r6engine/r6engine-overview.html">R6Engine</a>.<a href="../r6engine/r6iactionobject.html">R6IActionObject</a>
+         |   
+         +-- <a href="../r6engine/r6engine-overview.html">R6Engine</a>.<a href="../r6engine/r6ioobject.html">R6IOObject</a>
+</pre>
+
+<h4>Direct Known Subclasses:</h4>
+<blockquote>
+	<a href="../r6engine/r6iobomb.html">R6IOBomb</a>, <a href="../r6engine/r6iodevice.html">R6IODevice</a>
+</blockquote>
+
+<hr />
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Constants Summary</th>
+</tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Contants from <a href="../r6engine/r6engine-overview.html">R6Engine</a>.<a href="../r6engine/r6interactiveobject.html">R6InteractiveObject</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../r6engine/r6interactiveobject.html#c_iIObjectSkinMax">c_iIObjectSkinMax</a></td>
+</tr>
+</table>
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th colspan="2" class="title">Variables Summary</th>
+</tr>
+<tr><td nowrap="nowrap" width="33%">Sound</td><td width="66%"><a href="#_m_CompletedSnd" name="m_CompletedSnd" title="go to the details">m_CompletedSnd</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">FLOAT</td><td width="66%"><a href="#_m_fLockObjectTime" name="m_fLockObjectTime" title="go to the details">m_fLockObjectTime</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">Sound</td><td width="66%"><a href="#_m_InterruptedSnd" name="m_InterruptedSnd" title="go to the details">m_InterruptedSnd</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../r6engine/r6ioobject.html#eStateIOObejct">eStateIOObejct</a></td><td width="66%"><a href="#_m_ObjectState" name="m_ObjectState" title="go to the details">m_ObjectState</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">Sound</td><td width="66%"><a href="#_m_StartSnd" name="m_StartSnd" title="go to the details">m_StartSnd</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">BOOL</td><td width="66%"><a href="#_sm_bIsActivated" name="sm_bIsActivated" title="go to the details">sm_bIsActivated</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">BOOL</td><td width="66%"><a href="#_sm_bToggleType" name="sm_bToggleType" title="go to the details">sm_bToggleType</a></td></tr>
+<tr><th colspan="2" class="small">R6ActionObject</th></tr>
+<tr><td nowrap="nowrap" width="33%">BOOL</td><td width="66%"><a href="#_m_bIsActivated" name="m_bIsActivated" title="go to the details">m_bIsActivated</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">BOOL</td><td width="66%"><a href="#_m_bToggleType" name="m_bToggleType" title="go to the details">m_bToggleType</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../r6engine/r6pawn.html#eDeviceAnimToPlay">R6Pawn.eDeviceAnimToPlay</a></td><td width="66%"><a href="#_m_eAnimToPlay" name="m_eAnimToPlay" title="go to the details">m_eAnimToPlay</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">FLOAT</td><td width="66%"><a href="#_m_fGainTimeWithElectronicsKit" name="m_fGainTimeWithElectronicsKit" title="go to the details">m_fGainTimeWithElectronicsKit</a></td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Variables from <a href="../r6engine/r6engine-overview.html">R6Engine</a>.<a href="../r6engine/r6iactionobject.html">R6IActionObject</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../r6engine/r6iactionobject.html#m_ActionInstigator">m_ActionInstigator</a>, <a href="../r6engine/r6iactionobject.html#m_fMaxMouseMove">m_fMaxMouseMove</a>, <a href="../r6engine/r6iactionobject.html#m_fMinMouseMove">m_fMinMouseMove</a></td>
+</tr>
+</table>
+<table>
+<tr>
+	<th class="inherittitle">Inherited Variables from <a href="../r6engine/r6engine-overview.html">R6Engine</a>.<a href="../r6engine/r6interactiveobject.html">R6InteractiveObject</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../r6engine/r6interactiveobject.html#bShowLog">bShowLog</a>, <a href="../r6engine/r6interactiveobject.html#m_ActionList">m_ActionList</a>, <a href="../r6engine/r6interactiveobject.html#m_Anchor">m_Anchor</a>, <a href="../r6engine/r6interactiveobject.html#m_aOldSkins[c_iIObjectSkinMax]">m_aOldSkins[c_iIObjectSkinMax]</a>, <a href="../r6engine/r6interactiveobject.html#m_aRepSkins[c_iIObjectSkinMax]">m_aRepSkins[c_iIObjectSkinMax]</a>, <a href="../r6engine/r6interactiveobject.html#m_AttachedActors">m_AttachedActors</a>, <a href="../r6engine/r6interactiveobject.html#m_bBlockCoronas">m_bBlockCoronas</a>, <a href="../r6engine/r6interactiveobject.html#m_bBreakableByFlashBang">m_bBreakableByFlashBang</a>, <a href="../r6engine/r6interactiveobject.html#m_bBroken">m_bBroken</a>, <a href="../r6engine/r6interactiveobject.html#m_bCollisionRemovedFromActor">m_bCollisionRemovedFromActor</a>, <a href="../r6engine/r6interactiveobject.html#m_bEndAction">m_bEndAction</a>, <a href="../r6engine/r6interactiveobject.html#m_bOriginalBlockActors">m_bOriginalBlockActors</a>, <a href="../r6engine/r6interactiveobject.html#m_bOriginalBlockPlayers">m_bOriginalBlockPlayers</a>, <a href="../r6engine/r6interactiveobject.html#m_bOriginalCollideActors">m_bOriginalCollideActors</a>, <a href="../r6engine/r6interactiveobject.html#m_bPawnDied">m_bPawnDied</a>, <a href="../r6engine/r6interactiveobject.html#m_bRainbowCanInteract">m_bRainbowCanInteract</a>, <a href="../r6engine/r6interactiveobject.html#m_CurrentInteractiveObject">m_CurrentInteractiveObject</a>, <a href="../r6engine/r6interactiveobject.html#m_fActionInterval">m_fActionInterval</a>, <a href="../r6engine/r6interactiveobject.html#m_fAIBreakNoiseRadius">m_fAIBreakNoiseRadius</a>, <a href="../r6engine/r6interactiveobject.html#m_fNetDamagePercentage">m_fNetDamagePercentage</a>, <a href="../r6engine/r6interactiveobject.html#m_fPlayerCAStartTime">m_fPlayerCAStartTime</a>, <a href="../r6engine/r6interactiveobject.html#m_fProbability">m_fProbability</a>, <a href="../r6engine/r6interactiveobject.html#m_fRadius">m_fRadius</a>, <a href="../r6engine/r6interactiveobject.html#m_fTimeForNextSound">m_fTimeForNextSound</a>, <a href="../r6engine/r6interactiveobject.html#m_fTimerInterval">m_fTimerInterval</a>, <a href="../r6engine/r6interactiveobject.html#m_fTimeSinceAction">m_fTimeSinceAction</a>, <a href="../r6engine/r6interactiveobject.html#m_HearNoiseLoudness">m_HearNoiseLoudness</a>, <a href="../r6engine/r6interactiveobject.html#m_HearNoiseNoiseMaker">m_HearNoiseNoiseMaker</a>, <a href="../r6engine/r6interactiveobject.html#m_HearNoiseType">m_HearNoiseType</a>, <a href="../r6engine/r6interactiveobject.html#m_iActionIndex">m_iActionIndex</a>, <a href="../r6engine/r6interactiveobject.html#m_iActionNumber">m_iActionNumber</a>, <a href="../r6engine/r6interactiveobject.html#m_iCurrentHitPoints">m_iCurrentHitPoints</a>, <a href="../r6engine/r6interactiveobject.html#m_iCurrentState">m_iCurrentState</a>, <a href="../r6engine/r6interactiveobject.html#m_iHitPoints">m_iHitPoints</a>, <a href="../r6engine/r6interactiveobject.html#m_InteractionOwner">m_InteractionOwner</a>, <a href="../r6engine/r6interactiveobject.html#m_RemoveCollisionFromActor">m_RemoveCollisionFromActor</a>, <a href="../r6engine/r6interactiveobject.html#m_SeePlayerPawn">m_SeePlayerPawn</a>, <a href="../r6engine/r6interactiveobject.html#m_StateList">m_StateList</a>, <a href="../r6engine/r6interactiveobject.html#m_User">m_User</a>, <a href="../r6engine/r6interactiveobject.html#m_vEndActionAnimName">m_vEndActionAnimName</a>, <a href="../r6engine/r6interactiveobject.html#m_vEndActionGoto">m_vEndActionGoto</a>, <a href="../r6engine/r6interactiveobject.html#sm_AmbientSound">sm_AmbientSound</a>, <a href="../r6engine/r6interactiveobject.html#sm_AmbientSoundStop">sm_AmbientSoundStop</a>, <a href="../r6engine/r6interactiveobject.html#sm_aSkins">sm_aSkins</a>, <a href="../r6engine/r6interactiveobject.html#sm_staticMesh">sm_staticMesh</a></td>
+</tr>
+</table>
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Enumerations Summary</th>
+</tr>
+<tr><td><a href="#_eDeviceCircumstantialAction" name="eDeviceCircumstantialAction" title="go to the details">eDeviceCircumstantialAction</a><br /><span class="small">DCA_None,
+DCA_DisarmBomb,
+DCA_ArmBomb,
+DCA_Device</span></td></tr>
+<tr><td><a href="#_eStateIOObejct" name="eStateIOObejct" title="go to the details">eStateIOObejct</a><br /><span class="small">SIO_Start,
+SIO_Interrupt,
+SIO_Complete</span></td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Enumerations from <a href="../r6engine/r6engine-overview.html">R6Engine</a>.<a href="../r6engine/r6interactiveobject.html">R6InteractiveObject</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../r6engine/r6interactiveobject.html#EInteractiveAction">EInteractiveAction</a></td>
+</tr>
+</table>
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Structures Summary</th>
+</tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Structures from <a href="../r6engine/r6engine-overview.html">R6Engine</a>.<a href="../r6engine/r6interactiveobject.html">R6InteractiveObject</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../r6engine/r6interactiveobject.html#stDamageState">stDamageState</a>, <a href="../r6engine/r6interactiveobject.html#stRandomMesh">stRandomMesh</a>, <a href="../r6engine/r6interactiveobject.html#stRandomSkin">stRandomSkin</a>, <a href="../r6engine/r6interactiveobject.html#stSpawnedActor">stSpawnedActor</a></td>
+</tr>
+</table>
+
+
+<br />
+
+
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Functions Summary</th>
+</tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>BOOL&nbsp;</td><td><a href="#_CanToggle-" name="CanToggle" title="go to the details">CanToggle</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>FLOAT&nbsp;</td><td><a href="#_GetMaxTimeRequired-" name="GetMaxTimeRequired" title="go to the details">GetMaxTimeRequired</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>FLOAT&nbsp;</td><td><a href="#_GetTimeRequired-" name="GetTimeRequired" title="go to the details">GetTimeRequired</a> (<a href="../r6engine/r6pawn.html">R6Pawn</a> aPawn))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>BOOL&nbsp;</td><td><a href="#_HasKit-" name="HasKit" title="go to the details">HasKit</a> (<a href="../r6engine/r6pawn.html">R6Pawn</a> aPawn))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_LockObjectUse-" name="LockObjectUse" title="go to the details">LockObjectUse</a> (bool bIsInUse ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_PerformSoundAction-" name="PerformSoundAction" title="go to the details">PerformSoundAction</a> (<a href="../r6engine/r6ioobject.html#eStateIOObejct">eStateIOObejct</a> eState))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_R6CircumstantialActionCancel-" name="R6CircumstantialActionCancel" title="go to the details">R6CircumstantialActionCancel</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_R6CircumstantialActionProgressStart-" name="R6CircumstantialActionProgressStart" title="go to the details">R6CircumstantialActionProgressStart</a> (R6AbstractCircumstantialActionQuery Query ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>INT&nbsp;</td><td><a href="#_R6GetCircumstantialActionProgress-" name="R6GetCircumstantialActionProgress" title="go to the details">R6GetCircumstantialActionProgress</a> (<a href="../engine/r6abstractcircumstantialactionquery.html">R6AbstractCircumstantialActionQuery</a> Query, Pawn actingPawn ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_ResetOriginalData-" name="ResetOriginalData" title="go to the details">ResetOriginalData</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_SaveOriginalData-" name="SaveOriginalData" title="go to the details">SaveOriginalData</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_ToggleDevice-" name="ToggleDevice" title="go to the details">ToggleDevice</a> (<a href="../r6engine/r6pawn.html">R6Pawn</a> aPawn))<br /><span class="function_state"></span></td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Functions from <a href="../r6engine/r6engine-overview.html">R6Engine</a>.<a href="../r6engine/r6iactionobject.html">R6IActionObject</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../r6engine/r6iactionobject.html#endAction">endAction</a>, <a href="../r6engine/r6iactionobject.html#startAction">startAction</a>, <a href="../r6engine/r6iactionobject.html#updateAction">updateAction</a></td>
+</tr>
+</table>
+<table>
+<tr>
+	<th class="inherittitle">Inherited Functions from <a href="../r6engine/r6engine-overview.html">R6Engine</a>.<a href="../r6engine/r6interactiveobject.html">R6InteractiveObject</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../r6engine/r6interactiveobject.html#ActionDetonateAllBombs">ActionDetonateAllBombs</a>, <a href="../r6engine/r6interactiveobject.html#ActionToggleDevice">ActionToggleDevice</a>, <a href="../r6engine/r6interactiveobject.html#ChangeStaticMesh">ChangeStaticMesh</a>, <a href="../r6engine/r6interactiveobject.html#FinishAction">FinishAction</a>, <a href="../r6engine/r6interactiveobject.html#FirstPassReset">FirstPassReset</a>, <a href="../r6engine/r6interactiveobject.html#PerformAction">PerformAction</a>, <a href="../r6engine/r6interactiveobject.html#PlayInteractiveObjectSound">PlayInteractiveObjectSound</a>, <a href="../r6engine/r6interactiveobject.html#PostBeginPlay">PostBeginPlay</a>, <a href="../r6engine/r6interactiveobject.html#R6TakeDamage">R6TakeDamage</a>, <a href="../r6engine/r6interactiveobject.html#ResetOriginalData">ResetOriginalData</a>, <a href="../r6engine/r6interactiveobject.html#SaveOriginalData">SaveOriginalData</a>, <a href="../r6engine/r6interactiveobject.html#SetBroken">SetBroken</a>, <a href="../r6engine/r6interactiveobject.html#SetNewDamageState">SetNewDamageState</a>, <a href="../r6engine/r6interactiveobject.html#SetSkin">SetSkin</a>, <a href="../r6engine/r6interactiveobject.html#StopInteraction">StopInteraction</a>, <a href="../r6engine/r6interactiveobject.html#StopInteractionWithEndingActions">StopInteractionWithEndingActions</a>, <a href="../r6engine/r6interactiveobject.html#SwitchToNextAction">SwitchToNextAction</a>, <a href="../r6engine/r6interactiveobject.html#Timer">Timer</a></td>
+</tr>
+</table>
+
+
+<br />
+
+
+
+<hr />
+
+
+
+<table class="title">
+<tr>
+	<th class="title">Variables Detail</th>
+</tr>
+</table>
+
+<h4><a name="_m_CompletedSnd" class="hidden"></a>m_CompletedSnd <a href="../Source_r6engine/r6ioobject.html#24" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">Sound</span> m_CompletedSnd;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_fLockObjectTime" class="hidden"></a>m_fLockObjectTime <a href="../Source_r6engine/r6ioobject.html#20" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">FLOAT</span> m_fLockObjectTime;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_InterruptedSnd" class="hidden"></a>m_InterruptedSnd <a href="../Source_r6engine/r6ioobject.html#23" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">Sound</span> m_InterruptedSnd;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_ObjectState" class="hidden"></a>m_ObjectState <a href="../Source_r6engine/r6ioobject.html#43" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../r6engine/r6ioobject.html#eStateIOObejct" class="source">eStateIOObejct</a></span> m_ObjectState;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_StartSnd" class="hidden"></a>m_StartSnd <a href="../Source_r6engine/r6ioobject.html#22" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">Sound</span> m_StartSnd;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_sm_bIsActivated" class="hidden"></a>sm_bIsActivated <a href="../Source_r6engine/r6ioobject.html#18" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">BOOL</span> sm_bIsActivated;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_sm_bToggleType" class="hidden"></a>sm_bToggleType <a href="../Source_r6engine/r6ioobject.html#16" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">BOOL</span> sm_bToggleType;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h3 class="vartag">R6ActionObject</h3>
+<h4><a name="_m_bIsActivated" class="hidden"></a>m_bIsActivated <a href="../Source_r6engine/r6ioobject.html#17" class="small">Source code</a></h4>
+<div class="declaration">var(R6ActionObject) <span class="source_type">BOOL</span> m_bIsActivated;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_bToggleType" class="hidden"></a>m_bToggleType <a href="../Source_r6engine/r6ioobject.html#15" class="small">Source code</a></h4>
+<div class="declaration">var(R6ActionObject) <span class="source_type">BOOL</span> m_bToggleType;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_eAnimToPlay" class="hidden"></a>m_eAnimToPlay <a href="../Source_r6engine/r6ioobject.html#19" class="small">Source code</a></h4>
+<div class="declaration">var(R6ActionObject) <span class="source_type"><a href="../r6engine/r6pawn.html" class="source">R6Pawn</a></span>.eDeviceAnimToPlay m_eAnimToPlay;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_fGainTimeWithElectronicsKit" class="hidden"></a>m_fGainTimeWithElectronicsKit <a href="../Source_r6engine/r6ioobject.html#14" class="small">Source code</a></h4>
+<div class="declaration">var(R6ActionObject) <span class="source_type">FLOAT</span> m_fGainTimeWithElectronicsKit;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th class="title">Enumerations Detail</th>
+</tr>
+</table>
+
+<h4><a name="_eDeviceCircumstantialAction" class="hidden"></a>eDeviceCircumstantialAction <a href="../Source_r6engine/r6ioobject.html#28" class="small">Source code</a></h4>
+<div class="declaration">enum <span class="source_type"><a href="../r6engine/r6ioobject.html#eDeviceCircumstantialAction" class="source">eDeviceCircumstantialAction</a></span><br />
+{<blockquote>DCA_None,
+DCA_DisarmBomb,
+DCA_ArmBomb,
+DCA_Device</blockquote>};
+</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_eStateIOObejct" class="hidden"></a>eStateIOObejct <a href="../Source_r6engine/r6ioobject.html#36" class="small">Source code</a></h4>
+<div class="declaration">enum <span class="source_type"><a href="../r6engine/r6ioobject.html#eStateIOObejct" class="source">eStateIOObejct</a></span><br />
+{<blockquote>SIO_Start,
+SIO_Interrupt,
+SIO_Complete</blockquote>};
+</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+
+
+<br />
+
+
+
+
+
+<table class="title">
+<tr>
+	<th class="title">Functions Detail</th>
+</tr>
+</table>
+
+<h4><a name="_CanToggle-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> CanToggle <span class="function_state"></span> <a href="../Source_r6engine/r6ioobject.html#167" class="small">Source code</a></h4>
+<div class="declaration">simulated function <span class="source_type">BOOL</span> CanToggle ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GetMaxTimeRequired-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> GetMaxTimeRequired <span class="function_state"></span> <a href="../Source_r6engine/r6ioobject.html#139" class="small">Source code</a></h4>
+<div class="declaration">simulated function <span class="source_type">FLOAT</span> GetMaxTimeRequired ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GetTimeRequired-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> GetTimeRequired <span class="function_state"></span> <a href="../Source_r6engine/r6ioobject.html#144" class="small">Source code</a></h4>
+<div class="declaration">simulated function <span class="source_type">FLOAT</span> GetTimeRequired ( <span class="source_type"><a href="../r6engine/r6pawn.html" class="source">R6Pawn</a></span> <span class="source_type">aPawn</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_HasKit-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> HasKit <span class="function_state"></span> <a href="../Source_r6engine/r6ioobject.html#130" class="small">Source code</a></h4>
+<div class="declaration">simulated function <span class="source_type">BOOL</span> HasKit ( <span class="source_type"><a href="../r6engine/r6pawn.html" class="source">R6Pawn</a></span> <span class="source_type">aPawn</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_LockObjectUse-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> LockObjectUse <span class="function_state"></span> <a href="../Source_r6engine/r6ioobject.html#83" class="small">Source code</a></h4>
+<div class="declaration">simulated function  LockObjectUse ( <span class="source_type">bool</span> <span class="source_type">bIsInUse</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_PerformSoundAction-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> PerformSoundAction <span class="function_state"></span> <a href="../Source_r6engine/r6ioobject.html#186" class="small">Source code</a></h4>
+<div class="declaration"> function  PerformSoundAction ( <span class="source_type"><a href="../r6engine/r6ioobject.html#eStateIOObejct" class="source">eStateIOObejct</a></span> eState) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_R6CircumstantialActionCancel-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> R6CircumstantialActionCancel <span class="function_state"></span> <a href="../Source_r6engine/r6ioobject.html#123" class="small">Source code</a></h4>
+<div class="declaration">simulated function  R6CircumstantialActionCancel ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_R6CircumstantialActionProgressStart-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> R6CircumstantialActionProgressStart <span class="function_state"></span> <a href="../Source_r6engine/r6ioobject.html#94" class="small">Source code</a></h4>
+<div class="declaration">simulated function  R6CircumstantialActionProgressStart ( <span class="source_type"><a href="../engine/r6abstractcircumstantialactionquery.html" class="source">R6AbstractCircumstantialActionQuery</a></span> <span class="source_type">Query</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_R6GetCircumstantialActionProgress-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> R6GetCircumstantialActionProgress <span class="function_state"></span> <a href="../Source_r6engine/r6ioobject.html#106" class="small">Source code</a></h4>
+<div class="declaration">simulated function <span class="source_type">INT</span> R6GetCircumstantialActionProgress ( <span class="source_type"><a href="../engine/r6abstractcircumstantialactionquery.html" class="source">R6AbstractCircumstantialActionQuery</a></span> <span class="source_type">Query</span>, <span class="source_type"><a href="../engine/pawn.html" class="source">Pawn</a></span> <span class="source_type">actingPawn</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ResetOriginalData-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> ResetOriginalData <span class="function_state"></span> <a href="../Source_r6engine/r6ioobject.html#69" class="small">Source code</a></h4>
+<div class="declaration">simulated function  ResetOriginalData ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_SaveOriginalData-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> SaveOriginalData <span class="function_state"></span> <a href="../Source_r6engine/r6ioobject.html#56" class="small">Source code</a></h4>
+<div class="declaration">simulated function  SaveOriginalData ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ToggleDevice-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> ToggleDevice <span class="function_state"></span> <a href="../Source_r6engine/r6ioobject.html#149" class="small">Source code</a></h4>
+<div class="declaration">simulated function  ToggleDevice ( <span class="source_type"><a href="../r6engine/r6pawn.html" class="source">R6Pawn</a></span> <span class="source_type">aPawn</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+
+
+<br />
+
+
+<table class="title">
+<tr>
+	<th class="title">Defaultproperties</th>
+</tr>
+</table>
+<br />
+<div class="source"><table class="source"><tr><td class="source"><pre class="source">defaultproperties
+{
+     m_eAnimToPlay=BA_Keypad
+     m_bToggleType=True
+     m_fGainTimeWithElectronicsKit=<span class="source_int">2.000000</span>
+     RemoteRole=ROLE_SimulatedProxy
+     DrawType=DT_StaticMesh
+     bUseCylinderCollision=True
+     bDirectional=True
+     CollisionRadius=<span class="source_int">32.000000</span>
+     CollisionHeight=<span class="source_int">55.000000</span>
+     m_fCircumstantialActionRange=<span class="source_int">105.000000</span>
+     NetPriority=<span class="source_int">2.700000</span>
+     <span class="source_type">StaticMesh</span>=<span class="source_type">StaticMesh</span><span class="source_name">'R6ActionObjects.MpBomb.MpBomb'</span>
+}
+</pre></td></tr></table></div>
+
+
+
+<hr />
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../r6engine/r6engine-overview.html">Package</a></td>
+	<td class="header_hilight">Class</td>
+	<td class="header"><a href="../Source_r6engine/r6ioobject.html">Source</a></td>
+	<td class="header"><a class="header" href="../classtree.html#R6IOObject">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../r6engine/r6iodevice.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../r6engine/r6iorotatingdoor.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+
+<div class="stats">Creation time: mar. 26/5/2026 18:33:11.617 - Created with <a href="http://wiki.beyondunreal.com/wiki/UnCodeX" target="_blank">UnCodeX</a></div>
+
+</body>
+</html>

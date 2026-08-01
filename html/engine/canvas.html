@@ -1,0 +1,785 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+	<title>UnCodeX - engine.Canvas</title>
+	<meta name="Generator" content="UnCodeX 241" />
+	<link rel="stylesheet" href="../DocStyle2.css" type="text/css" title="Original Purple" />
+	<link rel="alternative stylesheet" href="../DocStyle2-blue.css" type="text/css" title="Blue" />
+	<link rel="alternative stylesheet" href="../DocStyle2-red.css" type="text/css" title="Red" />
+	<!--[if IE]>
+	<link rel="stylesheet" href="../DocStyle2-msie.css" type="text/css" />
+	<![endif]-->
+	<script src="../styleswitcher.js" type="text/javascript"></script>
+</head>
+<body>
+
+<div class="header">
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../engine/engine-overview.html">Package</a></td>
+	<td class="header_hilight">Class</td>
+	<td class="header"><a href="../Source_engine/canvas.html">Source</a></td>
+	<td class="header"><a class="header" href="../classtree.html#Canvas">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../engine/cameraoverlay.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../engine/cheatmanager.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html#engine/canvas.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+</div>
+<div class="spacer"></div>
+
+<h1><a href="../engine/engine-overview.html">engine</a>.Canvas</h1>
+
+<dl>
+<dt>Extends</dt><dd><a href="../core/object.html">Object</a></dd>
+<dt>Modifiers</dt><dd>native noexport </dd>
+</dl>
+
+<p></p>
+
+<pre class="tree"><a href="../core/core-overview.html">core</a>.<a href="../core/object.html">Object</a>
+|   
++-- <a href="../engine/engine-overview.html">engine</a>.<a href="../engine/canvas.html">Canvas</a>
+</pre>
+
+
+
+<hr />
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Constants Summary</th>
+</tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Contants from <a href="../core/core-overview.html">core</a>.<a href="../core/object.html">Object</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../core/object.html#MaxInt">MaxInt</a>, <a href="../core/object.html#Pi">Pi</a>, <a href="../core/object.html#RF_NotForClient">RF_NotForClient</a>, <a href="../core/object.html#RF_NotForEdit">RF_NotForEdit</a>, <a href="../core/object.html#RF_NotForServer">RF_NotForServer</a>, <a href="../core/object.html#RF_Public">RF_Public</a>, <a href="../core/object.html#RF_Transactional">RF_Transactional</a>, <a href="../core/object.html#RF_Transient">RF_Transient</a></td>
+</tr>
+</table>
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th colspan="2" class="title">Variables Summary</th>
+</tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bCenter" name="bCenter" title="go to the details">bCenter</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bNoSmooth" name="bNoSmooth" title="go to the details">bNoSmooth</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_ClipX" name="ClipX" title="go to the details">ClipX</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_ClipY" name="ClipY" title="go to the details">ClipY</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_CurX" name="CurX" title="go to the details">CurX</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_CurY" name="CurY" title="go to the details">CurY</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_CurYL" name="CurYL" title="go to the details">CurYL</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../core/object.html#Color">color</a></td><td width="66%"><a href="#_DrawColor" name="DrawColor" title="go to the details">DrawColor</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">font</td><td width="66%"><a href="#_Font" name="Font" title="go to the details">Font</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_HalfClipX" name="HalfClipX" title="go to the details">HalfClipX</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_HalfClipY" name="HalfClipY" title="go to the details">HalfClipY</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">font</td><td width="66%"><a href="#_MedFont" name="MedFont" title="go to the details">MedFont</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">BOOL</td><td width="66%"><a href="#_m_bChangeResRequested" name="m_bChangeResRequested" title="go to the details">m_bChangeResRequested</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">BOOL</td><td width="66%"><a href="#_m_bDisplayGameOutroVideo" name="m_bDisplayGameOutroVideo" title="go to the details">m_bDisplayGameOutroVideo</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">BOOL</td><td width="66%"><a href="#_m_bFadeAutoStop" name="m_bFadeAutoStop" title="go to the details">m_bFadeAutoStop</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">BOOL</td><td width="66%"><a href="#_m_bFading" name="m_bFading" title="go to the details">m_bFading</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">BOOL</td><td width="66%"><a href="#_m_bForceMul2x" name="m_bForceMul2x" title="go to the details">m_bForceMul2x</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_m_bPlaying" name="m_bPlaying" title="go to the details">m_bPlaying</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../core/object.html#Color">COLOR</a></td><td width="66%"><a href="#_m_FadeEndColor" name="m_FadeEndColor" title="go to the details">m_FadeEndColor</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../core/object.html#Color">COLOR</a></td><td width="66%"><a href="#_m_FadeStartColor" name="m_FadeStartColor" title="go to the details">m_FadeStartColor</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">FLOAT</td><td width="66%"><a href="#_m_fFadeCurrentTime" name="m_fFadeCurrentTime" title="go to the details">m_fFadeCurrentTime</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">FLOAT</td><td width="66%"><a href="#_m_fFadeTotalTime" name="m_fFadeTotalTime" title="go to the details">m_fFadeTotalTime</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">FLOAT</td><td width="66%"><a href="#_m_fNormalClipX" name="m_fNormalClipX" title="go to the details">m_fNormalClipX</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">FLOAT</td><td width="66%"><a href="#_m_fNormalClipY" name="m_fNormalClipY" title="go to the details">m_fNormalClipY</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">FLOAT</td><td width="66%"><a href="#_m_fStretchX" name="m_fStretchX" title="go to the details">m_fStretchX</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">FLOAT</td><td width="66%"><a href="#_m_fStretchY" name="m_fStretchY" title="go to the details">m_fStretchY</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">FLOAT</td><td width="66%"><a href="#_m_fVirtualResX" name="m_fVirtualResX" title="go to the details">m_fVirtualResX</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">FLOAT</td><td width="66%"><a href="#_m_fVirtualResY" name="m_fVirtualResY" title="go to the details">m_fVirtualResY</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_m_hBink" name="m_hBink" title="go to the details">m_hBink</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">INT</td><td width="66%"><a href="#_m_iNewResolutionX" name="m_iNewResolutionX" title="go to the details">m_iNewResolutionX</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">INT</td><td width="66%"><a href="#_m_iNewResolutionY" name="m_iNewResolutionY" title="go to the details">m_iNewResolutionY</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_m_iPosX" name="m_iPosX" title="go to the details">m_iPosX</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_m_iPosY" name="m_iPosY" title="go to the details">m_iPosY</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../engine/material.html">Material</a></td><td width="66%"><a href="#_m_pWritableMapIconsTexture" name="m_pWritableMapIconsTexture" title="go to the details">m_pWritableMapIconsTexture</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_OrgX" name="OrgX" title="go to the details">OrgX</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_OrgY" name="OrgY" title="go to the details">OrgY</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_SizeX" name="SizeX" title="go to the details">SizeX</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_SizeY" name="SizeY" title="go to the details">SizeY</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">font</td><td width="66%"><a href="#_SmallFont" name="SmallFont" title="go to the details">SmallFont</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_SpaceX" name="SpaceX" title="go to the details">SpaceX</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_SpaceY" name="SpaceY" title="go to the details">SpaceY</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">byte</td><td width="66%"><a href="#_Style" name="Style" title="go to the details">Style</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">viewport</td><td width="66%"><a href="#_Viewport" name="Viewport" title="go to the details">Viewport</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_Z" name="Z" title="go to the details">Z</a></td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Variables from <a href="../core/core-overview.html">core</a>.<a href="../core/object.html">Object</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../core/object.html#Class">Class</a>, <a href="../core/object.html#DName">DName</a>, <a href="../core/object.html#Name">Name</a>, <a href="../core/object.html#ObjectFlags">ObjectFlags</a>, <a href="../core/object.html#ObjectInternal[6]">ObjectInternal[6]</a>, <a href="../core/object.html#Outer">Outer</a></td>
+</tr>
+</table>
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Enumerations Summary</th>
+</tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Enumerations from <a href="../core/core-overview.html">core</a>.<a href="../core/object.html">Object</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../core/object.html#ECamOrientation">ECamOrientation</a>, <a href="../core/object.html#EGoCode">EGoCode</a>, <a href="../core/object.html#EMovementMode">EMovementMode</a>, <a href="../core/object.html#EMovementSpeed">EMovementSpeed</a>, <a href="../core/object.html#ENodeNotify">ENodeNotify</a>, <a href="../core/object.html#EPlanAction">EPlanAction</a>, <a href="../core/object.html#EPlanActionType">EPlanActionType</a>, <a href="../core/object.html#ePlayerTeamSelection">ePlayerTeamSelection</a>, <a href="../core/object.html#ESheerAxis">ESheerAxis</a></td>
+</tr>
+</table>
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Structures Summary</th>
+</tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Structures from <a href="../core/core-overview.html">core</a>.<a href="../core/object.html">Object</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../core/object.html#BoundingVolume">BoundingVolume</a>, <a href="../core/object.html#Box">Box</a>, <a href="../core/object.html#Color">Color</a>, <a href="../core/object.html#CompressedPosition">CompressedPosition</a>, <a href="../core/object.html#Coords">Coords</a>, <a href="../core/object.html#Guid">Guid</a>, <a href="../core/object.html#InterpCurve">InterpCurve</a>, <a href="../core/object.html#InterpCurvePoint">InterpCurvePoint</a>, <a href="../core/object.html#Matrix">Matrix</a>, <a href="../core/object.html#Plane">Plane</a>, <a href="../core/object.html#Range">Range</a>, <a href="../core/object.html#RangeVector">RangeVector</a>, <a href="../core/object.html#Region">Region</a>, <a href="../core/object.html#Rotator">Rotator</a>, <a href="../core/object.html#Scale">Scale</a>, <a href="../core/object.html#Vector">Vector</a></td>
+</tr>
+</table>
+
+
+<br />
+
+
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Functions Summary</th>
+</tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_ClipTextNative-" name="ClipTextNative" title="go to the details">ClipTextNative</a> (float X, float Y, coerce string S, float GUIScale, <a href="../core/object.html#Region">Region</a> ClipRegion, optional bool bCheckHotkey)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_Draw3DLine-" name="Draw3DLine" title="go to the details">Draw3DLine</a> (<a href="../core/object.html#Vector">vector</a> vStart, <a href="../core/object.html#Vector">vector</a> vEnd, <a href="../core/object.html#Color">color</a> cLineColor)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_DrawActor-" name="DrawActor" title="go to the details">DrawActor</a> (<a href="../engine/actor.html">Actor</a> A, bool WireFrame, optional bool ClearZ, optional float DisplayFOV)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_DrawBox-" name="DrawBox" title="go to the details">DrawBox</a> (<a href="../engine/canvas.html">canvas</a> canvas, float width, float height))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_DrawBracket-" name="DrawBracket" title="go to the details">DrawBracket</a> (float width, float height, float bracket_size))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_DrawHorizontal-" name="DrawHorizontal" title="go to the details">DrawHorizontal</a> (float Y, float width))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_DrawIcon-" name="DrawIcon" title="go to the details">DrawIcon</a> (<a href="../engine/texture.html">texture</a> Tex, float <a href="../core/object.html#Scale">Scale</a> ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_DrawLine-" name="DrawLine" title="go to the details">DrawLine</a> (int direction, float size))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_DrawPattern-" name="DrawPattern" title="go to the details">DrawPattern</a> (<a href="../engine/texture.html">texture</a> Tex, float XL, float YL, float <a href="../core/object.html#Scale">Scale</a> ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_DrawPortal-" name="DrawPortal" title="go to the details">DrawPortal</a> (int X, int Y, int Width, int Height, <a href="../engine/actor.html">actor</a> CamActor, <a href="../core/object.html#Vector">vector</a> CamLocation, <a href="../core/object.html#Rotator">rotator</a> CamRotation, optional int FOV, optional bool ClearZ)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_DrawRect-" name="DrawRect" title="go to the details">DrawRect</a> (<a href="../engine/texture.html">texture</a> Tex, float RectX, float RectY ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_DrawStretchedTextureSegmentNative-" name="DrawStretchedTextureSegmentNative" title="go to the details">DrawStretchedTextureSegmentNative</a> (float X, float Y, float W, float H, float tX, float tY, float tW, float tH, float GUIScale, <a href="../core/object.html#Region">Region</a> ClipRegion, <a href="../engine/texture.html">texture</a> Tex)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_DrawText-" name="DrawText" title="go to the details">DrawText</a> (coerce string Text, optional bool CR)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_DrawTextClipped-" name="DrawTextClipped" title="go to the details">DrawTextClipped</a> (coerce string Text, optional bool bCheckHotKey)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_DrawTile-" name="DrawTile" title="go to the details">DrawTile</a> (<a href="../engine/material.html">material</a> Mat, float XL, float YL, float U, float V, float UL, float VL, optional float fRotationAngle)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_DrawTileClipped-" name="DrawTileClipped" title="go to the details">DrawTileClipped</a> (<a href="../engine/material.html">Material</a> Mat, float XL, float YL, float U, float V, float UL, float VL)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_DrawVertical-" name="DrawVertical" title="go to the details">DrawVertical</a> (float X, float height))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_DrawWritableMap-" name="DrawWritableMap" title="go to the details">DrawWritableMap</a> (<a href="../engine/levelinfo.html">LevelInfo</a> info)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>BOOL&nbsp;</td><td><a href="#_GetScreenCoordinate-" name="GetScreenCoordinate" title="go to the details">GetScreenCoordinate</a> (out FLOAT fScreenX, out FLOAT fScreenY, <a href="../core/object.html#Vector">vector</a> v3DCoordinate, <a href="../core/object.html#Vector">vector</a> vCamLocation, <a href="../core/object.html#Rotator">rotator</a> rCamRotation, optional FLOAT fFOV)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>FLOAT&nbsp;</td><td><a href="#_GetVirtualSizeX-" name="GetVirtualSizeX" title="go to the details">GetVirtualSizeX</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>FLOAT&nbsp;</td><td><a href="#_GetVirtualSizeY-" name="GetVirtualSizeY" title="go to the details">GetVirtualSizeY</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td><a href="../core/object.html#Color">Color</a>&nbsp;</td><td><a href="#_MakeColor-" name="MakeColor" title="go to the details">MakeColor</a> (byte R, byte G, byte B, optional byte A))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_event.gif" alt="event" title="event" /></td><td>&nbsp;</td><td><a href="#_Reset-" name="Reset" title="go to the details">Reset</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_SetClip-" name="SetClip" title="go to the details">SetClip</a> (float X, float Y)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_SetDrawColor-" name="SetDrawColor" title="go to the details">SetDrawColor</a> (byte R, byte G, byte B, optional byte A)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_SetMotionBlurIntensity-" name="SetMotionBlurIntensity" title="go to the details">SetMotionBlurIntensity</a> (INT iIntensityValue)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_SetOrigin-" name="SetOrigin" title="go to the details">SetOrigin</a> (float X, float Y)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_SetPos-" name="SetPos" title="go to the details">SetPos</a> (float X, float Y)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_SetVirtualSize-" name="SetVirtualSize" title="go to the details">SetVirtualSize</a> (FLOAT X, FLOAT Y)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_StrLen-" name="StrLen" title="go to the details">StrLen</a> (coerce string String, out float XL, out float YL)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>string&nbsp;</td><td><a href="#_TextSize-" name="TextSize" title="go to the details">TextSize</a> (coerce string String, out float XL, out float YL, optional INT TotalWidth, optional INT SpaceWidth)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_UseVirtualSize-" name="UseVirtualSize" title="go to the details">UseVirtualSize</a> (BOOL bUse, Optional FLOAT X, Optional FLOAT Y)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_VideoClose-" name="VideoClose" title="go to the details">VideoClose</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_VideoOpen-" name="VideoOpen" title="go to the details">VideoOpen</a> (string Name, INT bDisplayDoubleSize)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_VideoPlay-" name="VideoPlay" title="go to the details">VideoPlay</a> (INT iPosX, INT iPosY, INT bCentered)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_VideoStop-" name="VideoStop" title="go to the details">VideoStop</a> ()<br /><span class="function_state"></span></td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Functions from <a href="../core/core-overview.html">core</a>.<a href="../core/object.html">Object</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../core/object.html#!">!</a>, <a href="../core/object.html#!=">!=</a>, <a href="../core/object.html#$">$</a>, <a href="../core/object.html#%">%</a>, <a href="../core/object.html#&">&</a>, <a href="../core/object.html#&&">&&</a>, <a href="../core/object.html#*">*</a>, <a href="../core/object.html#**">**</a>, <a href="../core/object.html#*=">*=</a>, <a href="../core/object.html#+">+</a>, <a href="../core/object.html#++">++</a>, <a href="../core/object.html#+=">+=</a>, <a href="../core/object.html#-">-</a>, <a href="../core/object.html#--">--</a>, <a href="../core/object.html#-=">-=</a>, <a href="../core/object.html#/ ">/ </a>, <a href="../core/object.html#/=">/=</a>, <a href="../core/object.html#&lt;">&lt;</a>, <a href="../core/object.html#&lt;&lt;">&lt;&lt;</a>, <a href="../core/object.html#&lt;=">&lt;=</a>, <a href="../core/object.html#==">==</a>, <a href="../core/object.html#&gt;">&gt;</a>, <a href="../core/object.html#&gt;=">&gt;=</a>, <a href="../core/object.html#&gt;&gt;">&gt;&gt;</a>, <a href="../core/object.html#&gt;&gt;&gt;">&gt;&gt;&gt;</a>, <a href="../core/object.html#@">@</a>, <a href="../core/object.html#Abs">Abs</a>, <a href="../core/object.html#Acos">Acos</a>, <a href="../core/object.html#Asc">Asc</a>, <a href="../core/object.html#Asin">Asin</a>, <a href="../core/object.html#Atan">Atan</a>, <a href="../core/object.html#Atoi">Atoi</a>, <a href="../core/object.html#BeginState">BeginState</a>, <a href="../core/object.html#Caps">Caps</a>, <a href="../core/object.html#Chr">Chr</a>, <a href="../core/object.html#Clamp">Clamp</a>, <a href="../core/object.html#ClassIsChildOf">ClassIsChildOf</a>, <a href="../core/object.html#ClearOuter">ClearOuter</a>, <a href="../core/object.html#Clock">Clock</a>, <a href="../core/object.html#ClockwiseFrom">ClockwiseFrom</a>, <a href="../core/object.html#Cos">Cos</a>, <a href="../core/object.html#Cross">Cross</a>, <a href="../core/object.html#Disable">Disable</a>, <a href="../core/object.html#Dot">Dot</a>, <a href="../core/object.html#DynamicLoadObject">DynamicLoadObject</a>, <a href="../core/object.html#Enable">Enable</a>, <a href="../core/object.html#EndState">EndState</a>, <a href="../core/object.html#Exp">Exp</a>, <a href="../core/object.html#FClamp">FClamp</a>, <a href="../core/object.html#FindObject">FindObject</a>, <a href="../core/object.html#FMax">FMax</a>, <a href="../core/object.html#FMin">FMin</a>, <a href="../core/object.html#FRand">FRand</a>, <a href="../core/object.html#FreePackageObjects">FreePackageObjects</a>, <a href="../core/object.html#GetAxes">GetAxes</a>, <a href="../core/object.html#GetEnum">GetEnum</a>, <a href="../core/object.html#GetFirstPackageClass">GetFirstPackageClass</a>, <a href="../core/object.html#GetNextClass">GetNextClass</a>, <a href="../core/object.html#GetPropertyText">GetPropertyText</a>, <a href="../core/object.html#GetRegistryKey">GetRegistryKey</a>, <a href="../core/object.html#GetStateName">GetStateName</a>, <a href="../core/object.html#GetUnAxes">GetUnAxes</a>, <a href="../core/object.html#GotoState">GotoState</a>, <a href="../core/object.html#InitMod">InitMod</a>, <a href="../core/object.html#InStr">InStr</a>, <a href="../core/object.html#InterpCurveEval">InterpCurveEval</a>, <a href="../core/object.html#Invert">Invert</a>, <a href="../core/object.html#IsA">IsA</a>, <a href="../core/object.html#IsInState">IsInState</a>, <a href="../core/object.html#Itoa">Itoa</a>, <a href="../core/object.html#Left">Left</a>, <a href="../core/object.html#Len">Len</a>, <a href="../core/object.html#Lerp">Lerp</a>, <a href="../core/object.html#LoadConfig">LoadConfig</a>, <a href="../core/object.html#Localize">Localize</a>, <a href="../core/object.html#Log">Log</a>, <a href="../core/object.html#Loge">Loge</a>, <a href="../core/object.html#LogSnd">LogSnd</a>, <a href="../core/object.html#Max">Max</a>, <a href="../core/object.html#Mid">Mid</a>, <a href="../core/object.html#Min">Min</a>, <a href="../core/object.html#MirrorVectorByNormal">MirrorVectorByNormal</a>, <a href="../core/object.html#Normal">Normal</a>, <a href="../core/object.html#Normalize">Normalize</a>, <a href="../core/object.html#OrthoRotation">OrthoRotation</a>, <a href="../core/object.html#Rand">Rand</a>, <a href="../core/object.html#RandRange">RandRange</a>, <a href="../core/object.html#RemoveInvalidChars">RemoveInvalidChars</a>, <a href="../core/object.html#ResetConfig">ResetConfig</a>, <a href="../core/object.html#RewindToFirstClass">RewindToFirstClass</a>, <a href="../core/object.html#Right">Right</a>, <a href="../core/object.html#RotRand">RotRand</a>, <a href="../core/object.html#SaveConfig">SaveConfig</a>, <a href="../core/object.html#SetPropertyText">SetPropertyText</a>, <a href="../core/object.html#SetRegistryKey">SetRegistryKey</a>, <a href="../core/object.html#ShortestAngle2D">ShortestAngle2D</a>, <a href="../core/object.html#Sin">Sin</a>, <a href="../core/object.html#Smerp">Smerp</a>, <a href="../core/object.html#Sqrt">Sqrt</a>, <a href="../core/object.html#Square">Square</a>, <a href="../core/object.html#StaticSaveConfig">StaticSaveConfig</a>, <a href="../core/object.html#Strnicmp">Strnicmp</a>, <a href="../core/object.html#Tan">Tan</a>, <a href="../core/object.html#Unclock">Unclock</a>, <a href="../core/object.html#VRand">VRand</a>, <a href="../core/object.html#VSize">VSize</a>, <a href="../core/object.html#Warn">Warn</a>, <a href="../core/object.html#^">^</a>, <a href="../core/object.html#^^">^^</a>, <a href="../core/object.html#|">|</a>, <a href="../core/object.html#||">||</a>, <a href="../core/object.html#~">~</a>, <a href="../core/object.html#~=">~=</a></td>
+</tr>
+</table>
+
+
+<br />
+
+
+
+<hr />
+
+
+
+<table class="title">
+<tr>
+	<th class="title">Variables Detail</th>
+</tr>
+</table>
+
+<h4><a name="_bCenter" class="hidden"></a>bCenter <a href="../Source_engine/canvas.html#26" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">bool</span> bCenter;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_bNoSmooth" class="hidden"></a>bNoSmooth <a href="../Source_engine/canvas.html#27" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">bool</span> bNoSmooth;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ClipX" class="hidden"></a>ClipX <a href="../Source_engine/canvas.html#17" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">float</span> ClipX;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ClipY" class="hidden"></a>ClipY <a href="../Source_engine/canvas.html#17" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">float</span> ClipY;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_CurX" class="hidden"></a>CurX <a href="../Source_engine/canvas.html#21" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">float</span> CurX;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_CurY" class="hidden"></a>CurY <a href="../Source_engine/canvas.html#21" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">float</span> CurY;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_CurYL" class="hidden"></a>CurYL <a href="../Source_engine/canvas.html#24" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">float</span> CurYL;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_DrawColor" class="hidden"></a>DrawColor <a href="../Source_engine/canvas.html#25" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../core/object.html#Color" class="source">color</a></span> DrawColor;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_Font" class="hidden"></a>Font <a href="../Source_engine/canvas.html#14" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">font</span> <span class="source_type">Font</span>;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_HalfClipX" class="hidden"></a>HalfClipX <a href="../Source_engine/canvas.html#19" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">float</span> HalfClipX;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_HalfClipY" class="hidden"></a>HalfClipY <a href="../Source_engine/canvas.html#19" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">float</span> HalfClipY;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_MedFont" class="hidden"></a>MedFont <a href="../Source_engine/canvas.html#32" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">font</span> MedFont;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_bChangeResRequested" class="hidden"></a>m_bChangeResRequested <a href="../Source_engine/canvas.html#57" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">BOOL</span> m_bChangeResRequested;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_bDisplayGameOutroVideo" class="hidden"></a>m_bDisplayGameOutroVideo <a href="../Source_engine/canvas.html#56" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">BOOL</span> m_bDisplayGameOutroVideo;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_bFadeAutoStop" class="hidden"></a>m_bFadeAutoStop <a href="../Source_engine/canvas.html#63" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">BOOL</span> m_bFadeAutoStop;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_bFading" class="hidden"></a>m_bFading <a href="../Source_engine/canvas.html#62" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">BOOL</span> m_bFading;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_bForceMul2x" class="hidden"></a>m_bForceMul2x <a href="../Source_engine/canvas.html#45" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">BOOL</span> m_bForceMul2x;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_bPlaying" class="hidden"></a>m_bPlaying <a href="../Source_engine/canvas.html#39" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">bool</span> m_bPlaying;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_FadeEndColor" class="hidden"></a>m_FadeEndColor <a href="../Source_engine/canvas.html#65" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../core/object.html#Color" class="source">COLOR</a></span> m_FadeEndColor;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_FadeStartColor" class="hidden"></a>m_FadeStartColor <a href="../Source_engine/canvas.html#64" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../core/object.html#Color" class="source">COLOR</a></span> m_FadeStartColor;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_fFadeCurrentTime" class="hidden"></a>m_fFadeCurrentTime <a href="../Source_engine/canvas.html#67" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">FLOAT</span> m_fFadeCurrentTime;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_fFadeTotalTime" class="hidden"></a>m_fFadeTotalTime <a href="../Source_engine/canvas.html#66" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">FLOAT</span> m_fFadeTotalTime;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_fNormalClipX" class="hidden"></a>m_fNormalClipX <a href="../Source_engine/canvas.html#52" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">FLOAT</span> m_fNormalClipX;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_fNormalClipY" class="hidden"></a>m_fNormalClipY <a href="../Source_engine/canvas.html#53" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">FLOAT</span> m_fNormalClipY;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_fStretchX" class="hidden"></a>m_fStretchX <a href="../Source_engine/canvas.html#48" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">FLOAT</span> m_fStretchX;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_fStretchY" class="hidden"></a>m_fStretchY <a href="../Source_engine/canvas.html#49" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">FLOAT</span> m_fStretchY;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_fVirtualResX" class="hidden"></a>m_fVirtualResX <a href="../Source_engine/canvas.html#50" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">FLOAT</span> m_fVirtualResX;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_fVirtualResY" class="hidden"></a>m_fVirtualResY <a href="../Source_engine/canvas.html#51" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">FLOAT</span> m_fVirtualResY;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_hBink" class="hidden"></a>m_hBink <a href="../Source_engine/canvas.html#38" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">int</span> m_hBink;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_iNewResolutionX" class="hidden"></a>m_iNewResolutionX <a href="../Source_engine/canvas.html#58" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">INT</span> m_iNewResolutionX;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_iNewResolutionY" class="hidden"></a>m_iNewResolutionY <a href="../Source_engine/canvas.html#59" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">INT</span> m_iNewResolutionY;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_iPosX" class="hidden"></a>m_iPosX <a href="../Source_engine/canvas.html#40" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">int</span> m_iPosX;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_iPosY" class="hidden"></a>m_iPosY <a href="../Source_engine/canvas.html#41" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">int</span> m_iPosY;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_pWritableMapIconsTexture" class="hidden"></a>m_pWritableMapIconsTexture <a href="../Source_engine/canvas.html#69" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../engine/material.html" class="source">Material</a></span> m_pWritableMapIconsTexture;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_OrgX" class="hidden"></a>OrgX <a href="../Source_engine/canvas.html#16" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">float</span> OrgX;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_OrgY" class="hidden"></a>OrgY <a href="../Source_engine/canvas.html#16" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">float</span> OrgY;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_SizeX" class="hidden"></a>SizeX <a href="../Source_engine/canvas.html#28" class="small">Source code</a></h4>
+<div class="declaration">var const <span class="source_type">int</span> SizeX;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_SizeY" class="hidden"></a>SizeY <a href="../Source_engine/canvas.html#28" class="small">Source code</a></h4>
+<div class="declaration">var const <span class="source_type">int</span> SizeY;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_SmallFont" class="hidden"></a>SmallFont <a href="../Source_engine/canvas.html#31" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">font</span> SmallFont;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_SpaceX" class="hidden"></a>SpaceX <a href="../Source_engine/canvas.html#15" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">float</span> SpaceX;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_SpaceY" class="hidden"></a>SpaceY <a href="../Source_engine/canvas.html#15" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">float</span> SpaceY;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_Style" class="hidden"></a>Style <a href="../Source_engine/canvas.html#23" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">byte</span> Style;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_Viewport" class="hidden"></a>Viewport <a href="../Source_engine/canvas.html#35" class="small">Source code</a></h4>
+<div class="declaration">var const <span class="source_type">viewport</span> <span class="source_type">Viewport</span>;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_Z" class="hidden"></a>Z <a href="../Source_engine/canvas.html#22" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">float</span> Z;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+
+
+<br />
+
+
+
+
+
+
+
+<table class="title">
+<tr>
+	<th class="title">Functions Detail</th>
+</tr>
+</table>
+
+<h4><a name="_ClipTextNative-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> ClipTextNative <span class="function_state"></span> <a href="../Source_engine/canvas.html#124" class="small">Source code</a></h4>
+<div class="declaration">native(<span class="source_int">2628</span>) final function  ClipTextNative ( <span class="source_type">float</span> X, <span class="source_type">float</span> Y, coerce <span class="source_type">string</span> <span class="source_type">S</span>, <span class="source_type">float</span> GUIScale, <span class="source_type"><a href="../core/object.html#Region" class="source">Region</a></span> ClipRegion, optional <span class="source_type">bool</span> bCheckHotkey )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_Draw3DLine-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> Draw3DLine <span class="function_state"></span> <a href="../Source_engine/canvas.html#99" class="small">Source code</a></h4>
+<div class="declaration">native(<span class="source_int">2403</span>) final function  Draw3DLine ( <span class="source_type"><a href="../core/object.html#Vector" class="source">vector</a></span> vStart, <span class="source_type"><a href="../core/object.html#Vector" class="source">vector</a></span> vEnd, <span class="source_type"><a href="../core/object.html#Color" class="source">color</a></span> cLineColor )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_DrawActor-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> DrawActor <span class="function_state"></span> <a href="../Source_engine/canvas.html#80" class="small">Source code</a></h4>
+<div class="declaration">native(<span class="source_int">467</span>) final function  DrawActor ( <span class="source_type"><a href="../engine/actor.html" class="source">Actor</a></span> A, <span class="source_type">bool</span> WireFrame, optional <span class="source_type">bool</span> ClearZ, optional <span class="source_type">float</span> DisplayFOV )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_DrawBox-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> DrawBox <span class="function_state"></span> <a href="../Source_engine/canvas.html#285" class="small">Source code</a></h4>
+<div class="declaration">final simulated function  DrawBox ( <span class="source_type"><a href="../engine/canvas.html" class="source">canvas</a></span> <span class="source_type"><a href="../engine/canvas.html" class="source">canvas</a></span>, <span class="source_type">float</span> width, <span class="source_type">float</span> height) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_DrawBracket-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> DrawBracket <span class="function_state"></span> <a href="../Source_engine/canvas.html#261" class="small">Source code</a></h4>
+<div class="declaration">final simulated function  DrawBracket ( <span class="source_type">float</span> width, <span class="source_type">float</span> height, <span class="source_type">float</span> bracket_size) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_DrawHorizontal-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> DrawHorizontal <span class="function_state"></span> <a href="../Source_engine/canvas.html#221" class="small">Source code</a></h4>
+<div class="declaration">final function  DrawHorizontal ( <span class="source_type">float</span> Y, <span class="source_type">float</span> width) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_DrawIcon-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> DrawIcon <span class="function_state"></span> <a href="../Source_engine/canvas.html#176" class="small">Source code</a></h4>
+<div class="declaration">final function  DrawIcon ( <span class="source_type"><a href="../engine/texture.html" class="source">texture</a></span> Tex, <span class="source_type">float</span> <span class="source_type"><a href="../core/object.html#Scale" class="source">Scale</a></span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_DrawLine-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> DrawLine <span class="function_state"></span> <a href="../Source_engine/canvas.html#229" class="small">Source code</a></h4>
+<div class="declaration">final function  DrawLine ( <span class="source_type">int</span> direction, <span class="source_type">float</span> size) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_DrawPattern-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> DrawPattern <span class="function_state"></span> <a href="../Source_engine/canvas.html#172" class="small">Source code</a></h4>
+<div class="declaration">final function  DrawPattern ( <span class="source_type"><a href="../engine/texture.html" class="source">texture</a></span> Tex, <span class="source_type">float</span> XL, <span class="source_type">float</span> YL, <span class="source_type">float</span> <span class="source_type"><a href="../core/object.html#Scale" class="source">Scale</a></span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_DrawPortal-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> DrawPortal <span class="function_state"></span> <a href="../Source_engine/canvas.html#88" class="small">Source code</a></h4>
+<div class="declaration">native(<span class="source_int">480</span>) final function  DrawPortal ( <span class="source_type">int</span> X, <span class="source_type">int</span> Y, <span class="source_type">int</span> Width, <span class="source_type">int</span> Height, <span class="source_type"><a href="../engine/actor.html" class="source">actor</a></span> CamActor, <span class="source_type"><a href="../core/object.html#Vector" class="source">vector</a></span> CamLocation, <span class="source_type"><a href="../core/object.html#Rotator" class="source">rotator</a></span> CamRotation, optional <span class="source_type">int</span> FOV, optional <span class="source_type">bool</span> ClearZ )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_DrawRect-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> DrawRect <span class="function_state"></span> <a href="../Source_engine/canvas.html#181" class="small">Source code</a></h4>
+<div class="declaration">final function  DrawRect ( <span class="source_type"><a href="../engine/texture.html" class="source">texture</a></span> Tex, <span class="source_type">float</span> RectX, <span class="source_type">float</span> <span class="source_type">RectY</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_DrawStretchedTextureSegmentNative-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> DrawStretchedTextureSegmentNative <span class="function_state"></span> <a href="../Source_engine/canvas.html#123" class="small">Source code</a></h4>
+<div class="declaration">native(<span class="source_int">2627</span>) final function  DrawStretchedTextureSegmentNative ( <span class="source_type">float</span> X, <span class="source_type">float</span> Y, <span class="source_type">float</span> W, <span class="source_type">float</span> H, <span class="source_type">float</span> tX, <span class="source_type">float</span> tY, <span class="source_type">float</span> tW, <span class="source_type">float</span> tH, <span class="source_type">float</span> GUIScale, <span class="source_type"><a href="../core/object.html#Region" class="source">Region</a></span> ClipRegion, <span class="source_type"><a href="../engine/texture.html" class="source">texture</a></span> Tex )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_DrawText-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> DrawText <span class="function_state"></span> <a href="../Source_engine/canvas.html#73" class="small">Source code</a></h4>
+<div class="declaration">native(<span class="source_int">465</span>) final function  DrawText ( coerce <span class="source_type">string</span> Text, optional <span class="source_type">bool</span> CR )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_DrawTextClipped-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> DrawTextClipped <span class="function_state"></span> <a href="../Source_engine/canvas.html#82" class="small">Source code</a></h4>
+<div class="declaration">native(<span class="source_int">469</span>) final function  DrawTextClipped ( coerce <span class="source_type">string</span> Text, optional <span class="source_type">bool</span> bCheckHotKey )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_DrawTile-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> DrawTile <span class="function_state"></span> <a href="../Source_engine/canvas.html#76" class="small">Source code</a></h4>
+<div class="declaration">native(<span class="source_int">466</span>) final function  DrawTile ( <span class="source_type"><a href="../engine/material.html" class="source">material</a></span> Mat, <span class="source_type">float</span> XL, <span class="source_type">float</span> YL, <span class="source_type">float</span> U, <span class="source_type">float</span> V, <span class="source_type">float</span> UL, <span class="source_type">float</span> VL, optional <span class="source_type">float</span> fRotationAngle )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_DrawTileClipped-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> DrawTileClipped <span class="function_state"></span> <a href="../Source_engine/canvas.html#81" class="small">Source code</a></h4>
+<div class="declaration">native(<span class="source_int">468</span>) final function  DrawTileClipped ( <span class="source_type"><a href="../engine/material.html" class="source">Material</a></span> Mat, <span class="source_type">float</span> XL, <span class="source_type">float</span> YL, <span class="source_type">float</span> U, <span class="source_type">float</span> V, <span class="source_type">float</span> UL, <span class="source_type">float</span> VL )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_DrawVertical-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> DrawVertical <span class="function_state"></span> <a href="../Source_engine/canvas.html#214" class="small">Source code</a></h4>
+<div class="declaration">final function  DrawVertical ( <span class="source_type">float</span> X, <span class="source_type">float</span> height) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_DrawWritableMap-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> DrawWritableMap <span class="function_state"></span> <a href="../Source_engine/canvas.html#110" class="small">Source code</a></h4>
+<div class="declaration">native(<span class="source_int">2800</span>) final function  DrawWritableMap ( <span class="source_type"><a href="../engine/levelinfo.html" class="source">LevelInfo</a></span> <span class="source_type"><a href="../engine/info.html" class="source">info</a></span> )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GetScreenCoordinate-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> GetScreenCoordinate <span class="function_state"></span> <a href="../Source_engine/canvas.html#95" class="small">Source code</a></h4>
+<div class="declaration">native(<span class="source_int">2400</span>) final function <span class="source_type">BOOL</span> GetScreenCoordinate ( out <span class="source_type">FLOAT</span> fScreenX, out <span class="source_type">FLOAT</span> fScreenY, <span class="source_type"><a href="../core/object.html#Vector" class="source">vector</a></span> v3DCoordinate, <span class="source_type"><a href="../core/object.html#Vector" class="source">vector</a></span> vCamLocation, <span class="source_type"><a href="../core/object.html#Rotator" class="source">rotator</a></span> rCamRotation, optional <span class="source_type">FLOAT</span> fFOV )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GetVirtualSizeX-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> GetVirtualSizeX <span class="function_state"></span> <a href="../Source_engine/canvas.html#322" class="small">Source code</a></h4>
+<div class="declaration">final function <span class="source_type">FLOAT</span> GetVirtualSizeX ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GetVirtualSizeY-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> GetVirtualSizeY <span class="function_state"></span> <a href="../Source_engine/canvas.html#328" class="small">Source code</a></h4>
+<div class="declaration">final function <span class="source_type">FLOAT</span> GetVirtualSizeY ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_MakeColor-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> MakeColor <span class="function_state"></span> <a href="../Source_engine/canvas.html#200" class="small">Source code</a></h4>
+<div class="declaration">static final function <span class="source_type"><a href="../core/object.html#Color" class="source">Color</a></span> MakeColor ( <span class="source_type">byte</span> <span class="source_type">R</span>, <span class="source_type">byte</span> G, <span class="source_type">byte</span> B, optional <span class="source_type">byte</span> A) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_Reset-" class="hidden"></a><img src="../img_event.gif" alt="" title="event" /> Reset <span class="function_state"></span> <a href="../Source_engine/canvas.html#127" class="small">Source code</a></h4>
+<div class="declaration"> event  Reset ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_SetClip-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> SetClip <span class="function_state"></span> <a href="../Source_engine/canvas.html#121" class="small">Source code</a></h4>
+<div class="declaration">native(<span class="source_int">2625</span>) final function  SetClip ( <span class="source_type">float</span> X, <span class="source_type">float</span> Y )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_SetDrawColor-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> SetDrawColor <span class="function_state"></span> <a href="../Source_engine/canvas.html#122" class="small">Source code</a></h4>
+<div class="declaration">native(<span class="source_int">2626</span>) final function  SetDrawColor ( <span class="source_type">byte</span> <span class="source_type">R</span>, <span class="source_type">byte</span> G, <span class="source_type">byte</span> B, optional <span class="source_type">byte</span> A )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_SetMotionBlurIntensity-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> SetMotionBlurIntensity <span class="function_state"></span> <a href="../Source_engine/canvas.html#91" class="small">Source code</a></h4>
+<div class="declaration">native(<span class="source_int">2005</span>) final function  SetMotionBlurIntensity ( <span class="source_type">INT</span> iIntensityValue )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_SetOrigin-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> SetOrigin <span class="function_state"></span> <a href="../Source_engine/canvas.html#120" class="small">Source code</a></h4>
+<div class="declaration">native(<span class="source_int">2624</span>) final function  SetOrigin ( <span class="source_type">float</span> X, <span class="source_type">float</span> Y )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_SetPos-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> SetPos <span class="function_state"></span> <a href="../Source_engine/canvas.html#119" class="small">Source code</a></h4>
+<div class="declaration">native(<span class="source_int">2623</span>) final function  SetPos ( <span class="source_type">float</span> X, <span class="source_type">float</span> Y )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_SetVirtualSize-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> SetVirtualSize <span class="function_state"></span> <a href="../Source_engine/canvas.html#115" class="small">Source code</a></h4>
+<div class="declaration">native(<span class="source_int">1607</span>) final function  SetVirtualSize ( <span class="source_type">FLOAT</span> X, <span class="source_type">FLOAT</span> Y )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_StrLen-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> StrLen <span class="function_state"></span> <a href="../Source_engine/canvas.html#72" class="small">Source code</a></h4>
+<div class="declaration">native(<span class="source_int">464</span>) final function  StrLen ( coerce <span class="source_type">string</span> <span class="source_type">String</span>, out <span class="source_type">float</span> XL, out <span class="source_type">float</span> YL )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_TextSize-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> TextSize <span class="function_state"></span> <a href="../Source_engine/canvas.html#84" class="small">Source code</a></h4>
+<div class="declaration">native(<span class="source_int">470</span>) final function <span class="source_type">string</span> TextSize ( coerce <span class="source_type">string</span> <span class="source_type">String</span>, out <span class="source_type">float</span> XL, out <span class="source_type">float</span> YL , optional <span class="source_type">INT</span> TotalWidth, optional <span class="source_type">INT</span> SpaceWidth )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_UseVirtualSize-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> UseVirtualSize <span class="function_state"></span> <a href="../Source_engine/canvas.html#114" class="small">Source code</a></h4>
+<div class="declaration">native(<span class="source_int">1606</span>) final function  UseVirtualSize ( <span class="source_type">BOOL</span> bUse, Optional <span class="source_type">FLOAT</span> X, Optional <span class="source_type">FLOAT</span> Y )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_VideoClose-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> VideoClose <span class="function_state"></span> <a href="../Source_engine/canvas.html#104" class="small">Source code</a></h4>
+<div class="declaration">native(<span class="source_int">2602</span>) final function  VideoClose (  )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_VideoOpen-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> VideoOpen <span class="function_state"></span> <a href="../Source_engine/canvas.html#103" class="small">Source code</a></h4>
+<div class="declaration">native(<span class="source_int">2601</span>) final function  VideoOpen ( <span class="source_type">string</span> <span class="source_type">Name</span>, <span class="source_type">INT</span> bDisplayDoubleSize )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_VideoPlay-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> VideoPlay <span class="function_state"></span> <a href="../Source_engine/canvas.html#105" class="small">Source code</a></h4>
+<div class="declaration">native(<span class="source_int">2603</span>) final function  VideoPlay ( <span class="source_type">INT</span> iPosX, <span class="source_type">INT</span> iPosY, <span class="source_type">INT</span> bCentered )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_VideoStop-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> VideoStop <span class="function_state"></span> <a href="../Source_engine/canvas.html#106" class="small">Source code</a></h4>
+<div class="declaration">native(<span class="source_int">2604</span>) final function  VideoStop (  )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+
+
+<br />
+
+
+<table class="title">
+<tr>
+	<th class="title">Defaultproperties</th>
+</tr>
+</table>
+<br />
+<div class="source"><table class="source"><tr><td class="source"><pre class="source">defaultproperties
+{
+     Z=<span class="source_int">1.000000</span>
+     Style=<span class="source_int">1</span>
+     DrawColor=(B=<span class="source_int">127</span>,G=<span class="source_int">127</span>,<span class="source_type">R</span>=<span class="source_int">127</span>,A=<span class="source_int">255</span>)
+     m_fStretchX=<span class="source_int">1.000000</span>
+     m_fStretchY=<span class="source_int">1.000000</span>
+     m_fVirtualResX=<span class="source_int">800.000000</span>
+     m_fVirtualResY=<span class="source_int">600.000000</span>
+     m_fNormalClipX=-<span class="source_int">1.000000</span>
+     m_fNormalClipY=-<span class="source_int">1.000000</span>
+}
+</pre></td></tr></table></div>
+
+
+
+<hr />
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../engine/engine-overview.html">Package</a></td>
+	<td class="header_hilight">Class</td>
+	<td class="header"><a href="../Source_engine/canvas.html">Source</a></td>
+	<td class="header"><a class="header" href="../classtree.html#Canvas">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../engine/cameraoverlay.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../engine/cheatmanager.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+
+<div class="stats">Creation time: mar. 26/5/2026 18:33:06.768 - Created with <a href="http://wiki.beyondunreal.com/wiki/UnCodeX" target="_blank">UnCodeX</a></div>
+
+</body>
+</html>

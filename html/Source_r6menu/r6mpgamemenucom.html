@@ -1,0 +1,800 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+	<title>UnCodeX - Source: R6Menu.R6MPGameMenuCom</title>
+	<meta name="Generator" content="UnCodeX 241" />
+	<link rel="stylesheet" href="../DocStyle2.css" type="text/css" title="Original Purple" />
+	<link rel="alternative stylesheet" href="../DocStyle2-blue.css" type="text/css" title="Blue" />
+	<link rel="alternative stylesheet" href="../DocStyle2-red.css" type="text/css" title="Red" />
+	<!--[if IE]>
+	<link rel="stylesheet" href="../DocStyle2-msie.css" type="text/css" />
+	<![endif]-->
+	<script src="../styleswitcher.js" type="text/javascript"></script>
+</head>
+<body>
+
+<div class="header">
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../r6menu/r6menu-overview.html">Package</a></td>
+	<td class="header"><a href="../r6menu/r6mpgamemenucom.html">Class</a></td>
+	<td class="header_hilight">Source</td>
+	<td class="header"><a class="header" href="../classtree.html#R6MPGameMenuCom">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../Source_r6menu/r6menuwpdeletebutton.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../Source_r6menu/r6operativeselectoritem.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html#Source_r6menu/r6mpgamemenucom.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+</div>
+<div class="spacer"></div>
+
+<h1><a href="../r6menu/r6menu-overview.html">R6Menu</a>.<a href="../r6menu/r6mpgamemenucom.html">R6MPGameMenuCom</a></h1>
+<br />
+<div class="source"><table class="source"><tr><td class="source_lineno"><span class="source_lineno">00001<br />00002<br />00003<br />00004<br />00005<br />00006<br />00007<br />00008<br />00009<br />00010<br />00011<br />00012<br />00013<br />00014<br />00015<br />00016<br />00017<br />00018<br />00019<br />00020<br />
+00021<br />00022<br />00023<br />00024<br />00025<br />00026<br />00027<br />00028<br />00029<br />00030<br />00031<br />00032<br />00033<br />00034<br />00035<br />00036<br />00037<br />00038<br />00039<br />00040<br />
+00041<br />00042<br />00043<br />00044<br />00045<br />00046<br />00047<br />00048<br />00049<br />00050<br />00051<br />00052<br />00053<br />00054<br />00055<br />00056<br />00057<br />00058<br />00059<br />00060<br />
+00061<br />00062<br />00063<br />00064<br />00065<br />00066<br />00067<br />00068<br />00069<br />00070<br />00071<br />00072<br />00073<br />00074<br />00075<br />00076<br />00077<br />00078<br />00079<br />00080<br />
+00081<br />00082<br />00083<br />00084<br />00085<br />00086<br />00087<br />00088<br />00089<br />00090<br />00091<br />00092<br />00093<br />00094<br />00095<br />00096<br />00097<br />00098<br />00099<br />00100<br />
+00101<br />00102<br />00103<br />00104<br />00105<br />00106<br />00107<br />00108<br />00109<br />00110<br />00111<br />00112<br />00113<br />00114<br />00115<br />00116<br />00117<br />00118<br />00119<br />00120<br />
+00121<br />00122<br />00123<br />00124<br />00125<br />00126<br />00127<br />00128<br />00129<br />00130<br />00131<br />00132<br />00133<br />00134<br />00135<br />00136<br />00137<br />00138<br />00139<br />00140<br />
+00141<br />00142<br />00143<br />00144<br />00145<br />00146<br />00147<br />00148<br />00149<br />00150<br />00151<br />00152<br />00153<br />00154<br />00155<br />00156<br />00157<br />00158<br />00159<br />00160<br />
+00161<br />00162<br />00163<br />00164<br />00165<br />00166<br />00167<br />00168<br />00169<br />00170<br />00171<br />00172<br />00173<br />00174<br />00175<br />00176<br />00177<br />00178<br />00179<br />00180<br />
+00181<br />00182<br />00183<br />00184<br />00185<br />00186<br />00187<br />00188<br />00189<br />00190<br />00191<br />00192<br />00193<br />00194<br />00195<br />00196<br />00197<br />00198<br />00199<br />00200<br />
+00201<br />00202<br />00203<br />00204<br />00205<br />00206<br />00207<br />00208<br />00209<br />00210<br />00211<br />00212<br />00213<br />00214<br />00215<br />00216<br />00217<br />00218<br />00219<br />00220<br />
+00221<br />00222<br />00223<br />00224<br />00225<br />00226<br />00227<br />00228<br />00229<br />00230<br />00231<br />00232<br />00233<br />00234<br />00235<br />00236<br />00237<br />00238<br />00239<br />00240<br />
+00241<br />00242<br />00243<br />00244<br />00245<br />00246<br />00247<br />00248<br />00249<br />00250<br />00251<br />00252<br />00253<br />00254<br />00255<br />00256<br />00257<br />00258<br />00259<br />00260<br />
+00261<br />00262<br />00263<br />00264<br />00265<br />00266<br />00267<br />00268<br />00269<br />00270<br />00271<br />00272<br />00273<br />00274<br />00275<br />00276<br />00277<br />00278<br />00279<br />00280<br />
+00281<br />00282<br />00283<br />00284<br />00285<br />00286<br />00287<br />00288<br />00289<br />00290<br />00291<br />00292<br />00293<br />00294<br />00295<br />00296<br />00297<br />00298<br />00299<br />00300<br />
+00301<br />00302<br />00303<br />00304<br />00305<br />00306<br />00307<br />00308<br />00309<br />00310<br />00311<br />00312<br />00313<br />00314<br />00315<br />00316<br />00317<br />00318<br />00319<br />00320<br />
+00321<br />00322<br />00323<br />00324<br />00325<br />00326<br />00327<br />00328<br />00329<br />00330<br />00331<br />00332<br />00333<br />00334<br />00335<br />00336<br />00337<br />00338<br />00339<br />00340<br />
+00341<br />00342<br />00343<br />00344<br />00345<br />00346<br />00347<br />00348<br />00349<br />00350<br />00351<br />00352<br />00353<br />00354<br />00355<br />00356<br />00357<br />00358<br />00359<br />00360<br />
+00361<br />00362<br />00363<br />00364<br />00365<br />00366<br />00367<br />00368<br />00369<br />00370<br />00371<br />00372<br />00373<br />00374<br />00375<br />00376<br />00377<br />00378<br />00379<br />00380<br />
+00381<br />00382<br />00383<br />00384<br />00385<br />00386<br />00387<br />00388<br />00389<br />00390<br />00391<br />00392<br />00393<br />00394<br />00395<br />00396<br />00397<br />00398<br />00399<br />00400<br />
+00401<br />00402<br />00403<br />00404<br />00405<br />00406<br />00407<br />00408<br />00409<br />00410<br />00411<br />00412<br />00413<br />00414<br />00415<br />00416<br />00417<br />00418<br />00419<br />00420<br />
+00421<br />00422<br />00423<br />00424<br />00425<br />00426<br />00427<br />00428<br />00429<br />00430<br />00431<br />00432<br />00433<br />00434<br />00435<br />00436<br />00437<br />00438<br />00439<br />00440<br />
+00441<br />00442<br />00443<br />00444<br />00445<br />00446<br />00447<br />00448<br />00449<br />00450<br />00451<br />00452<br />00453<br />00454<br />00455<br />00456<br />00457<br />00458<br />00459<br />00460<br />
+00461<br />00462<br />00463<br />00464<br />00465<br />00466<br />00467<br />00468<br />00469<br />00470<br />00471<br />00472<br />00473<br />00474<br />00475<br />00476<br />00477<br />00478<br />00479<br />00480<br />
+00481<br />00482<br />00483<br />00484<br />00485<br />00486<br />00487<br />00488<br />00489<br />00490<br />00491<br />00492<br />00493<br />00494<br />00495<br />00496<br />00497<br />00498<br />00499<br />00500<br />
+00501<br />00502<br />00503<br />00504<br />00505<br />00506<br />00507<br />00508<br />00509<br />00510<br />00511<br />00512<br />00513<br />00514<br />00515<br />00516<br />00517<br />00518<br />00519<br />00520<br />
+00521<br />00522<br />00523<br />00524<br />00525<br />00526<br />00527<br />00528<br />00529<br />00530<br />00531<br />00532<br />00533<br />00534<br />00535<br />00536<br />00537<br />00538<br />00539<br />00540<br />
+00541<br />00542<br />00543<br />00544<br />00545<br />00546<br />00547<br />00548<br />00549<br />00550<br />00551<br />00552<br />00553<br />00554<br />00555<br />00556<br />00557<br />00558<br />00559<br />00560<br />
+00561<br />00562<br />00563<br />00564<br />00565<br />00566<br />00567<br />00568<br />00569<br />00570<br />00571<br />00572<br />00573<br />00574<br />00575<br />00576<br />00577<br />00578<br />00579<br />00580<br />
+00581<br />00582<br />00583<br />00584<br />00585<br />00586<br />00587<br />00588<br />00589<br />00590<br />00591<br />00592<br />00593<br />00594<br />00595<br />00596<br />00597<br />00598<br />00599<br />00600<br />
+00601<br />00602<br />00603<br />00604<br />00605<br />00606<br />00607<br />00608<br />00609<br />00610<br />00611<br />00612<br />00613<br />00614<br />00615<br />00616<br />00617<br />00618<br />00619<br />00620<br />
+00621<br />00622<br />00623<br />00624<br />00625<br />00626<br />00627<br />00628<br />00629<br />00630<br />00631<br />00632<br />00633<br />00634<br />00635<br />00636<br />00637<br />00638<br />00639<br />00640<br />
+00641<br />00642<br />00643<br />00644<br />00645<br />00646<br />00647<br />00648<br />00649<br />00650<br />00651<br />00652<br />00653<br />00654<br />00655<br />00656<br />00657<br />00658<br />00659<br />00660<br />
+00661<br />00662<br />00663<br />00664<br />00665<br />00666<br />00667<br />00668<br />00669<br />00670<br />00671<br />00672<br />00673<br />00674<br />00675<br />00676<br />00677<br />00678<br />00679<br />00680<br />
+00681<br />00682<br />00683<br />00684<br />00685<br />00686<br />00687<br />00688<br />00689<br />00690<br />00691<br />00692<br />00693<br />00694<br />00695<br />00696<br />00697<br />00698<br />00699<br />00700<br />
+00701<br />00702<br />00703<br />00704<br />00705<br />00706<br />00707</span></td>
+<td class="source"><pre class="source"><a name="1"></a><span class="source_comment">//=============================================================================
+</span><a name="2"></a><span class="source_comment">//  R6MPGameMenuCom.uc : the interface between server and menu 
+</span><a name="3"></a><span class="source_comment">//  Copyright 2001 Ubi Soft, Inc. All Rights Reserved.
+</span><a name="4"></a><span class="source_comment">//
+</span><a name="5"></a><span class="source_comment">//  Revision history:
+</span><a name="6"></a><span class="source_comment">//    2002/04/29 * Created by Yannick Joly
+</span><a name="7"></a><span class="source_comment">//=============================================================================
+</span><a name="8"></a><span class="source_type">class</span> <span class="source_type"><a href="../r6menu/r6mpgamemenucom.html" class="source">R6MPGameMenuCom</a></span> extends <span class="source_type"><a href="../engine/r6gamemenucom.html" class="source">R6GameMenuCom</a></span>;
+<a name="9"></a>
+<a name="10"></a>var <span class="source_type"><a href="../r6menu/r6menuingamemultiplayerrootwindow.html" class="source">R6MenuInGameMultiPlayerRootWindow</a></span> m_pCurrentRoot;
+<a name="11"></a>
+<a name="12"></a><span class="source_macro">#ifdefDEBUG
+</span><a name="13"></a>var <span class="source_type">byte</span> m_eLogOldCurrectServerState; 
+<a name="14"></a><span class="source_macro">#endif
+</span><a name="15"></a>
+<a name="16"></a>simulated function SelectTeam()
+<a name="17"></a>{
+<a name="18"></a>    if (bShowLog) log(<span class="source_string">"SelectTeam: currently m_TeamSelection="</span> $ m_PlayerController.m_TeamSelection$<span class="source_string">" m_PlayerController = "</span>$m_PlayerController);
+<a name="19"></a>
+<a name="20"></a>    if ((m_PlayerController.m_TeamSelection == PTS_UnSelected) || (GetGameType() != m_szPreviousGameType) ||
+<a name="21"></a>        (m_iOldMapIndex!=m_GameRepInfo.m_iMapIndex)) 
+<a name="22"></a>    {
+<a name="23"></a>        m_iOldMapIndex=m_GameRepInfo.m_iMapIndex;
+<a name="24"></a>        m_PlayerController.m_TeamSelection = PTS_UnSelected;   <span class="source_comment">// we need to wait for a team selection
+</span><a name="25"></a>        <span class="source_comment">//m_eStatMenuState=CMS_Initial;
+</span><a name="26"></a>        <span class="source_comment">//m_pCurrentRoot.m_pJoinTeamWidget.m_bMenuCreate=false;
+</span><a name="27"></a>        <span class="source_comment">// player have to choose is team        
+</span><a name="28"></a>        SetStatMenuState(CMS_Initial);
+<a name="29"></a>    }
+<a name="30"></a>}
+<a name="31"></a>
+<a name="32"></a>
+<a name="33"></a>function PlayerSelection(<span class="source_type"><a href="../core/object.html#ePlayerTeamSelection" class="source">ePlayerTeamSelection</a></span> newTeam)
+<a name="34"></a>{
+<a name="35"></a><span class="source_macro">#ifdefDEBUG
+</span><a name="36"></a>	if (bShowLog)
+<a name="37"></a>		log(<span class="source_string">"R6MPGameMenuCom PlayerSelection newTeam"</span>@newTeam);
+<a name="38"></a><span class="source_macro">#endif
+</span><a name="39"></a>
+<a name="40"></a>	<span class="source_comment">// advice root that player choose something
+</span><a name="41"></a>	m_pCurrentRoot.m_bPlayerDidASelection = true; 
+<a name="42"></a>
+<a name="43"></a>	Super.PlayerSelection( newTeam);
+<a name="44"></a>}
+<a name="45"></a>
+<a name="46"></a>function <span class="source_type"><a href="../core/object.html#ePlayerTeamSelection" class="source">ePlayerTeamSelection</a></span> GetPlayerSelection()
+<a name="47"></a>{
+<a name="48"></a>	if (m_PlayerController != None)
+<a name="49"></a>	{
+<a name="50"></a><span class="source_macro">#ifdefDEBUG
+</span><a name="51"></a>	if (bShowLog)
+<a name="52"></a>		log(<span class="source_string">"R6MPGameMenuCom GetPlayerSelection():"</span>@m_PlayerController.m_TeamSelection);
+<a name="53"></a><span class="source_macro">#endif
+</span><a name="54"></a>		return m_PlayerController.m_TeamSelection;
+<a name="55"></a>	}
+<a name="56"></a>
+<a name="57"></a>	return PTS_UnSelected;
+<a name="58"></a>}
+<a name="59"></a>
+<a name="60"></a>function <span class="source_type">BOOL</span> IsAPlayerSelection()
+<a name="61"></a>{
+<a name="62"></a>	return ((GetPlayerSelection() == PTS_Alpha) || (GetPlayerSelection() == PTS_Bravo));
+<a name="63"></a>}
+<a name="64"></a>
+<a name="65"></a><span class="source_comment">//=====================================================================
+</span><a name="66"></a><span class="source_comment">// SetStatMenuState : Overloaded from Parent. Set the new client menu state
+</span><a name="67"></a><span class="source_comment">//=====================================================================
+</span><a name="68"></a>function SetStatMenuState( <span class="source_type"><a href="../engine/r6gamemenucom.html#eClientMenuState" class="source">eClientMenuState</a></span> _eNewClientMenuState)
+<a name="69"></a>{
+<a name="70"></a>	local <span class="source_type">BOOL</span> bCloseSimplePopUpBox;
+<a name="71"></a>
+<a name="72"></a>	bCloseSimplePopUpBox		= true;
+<a name="73"></a>    m_pCurrentRoot.m_bActiveBar = false; 
+<a name="74"></a>
+<a name="75"></a><span class="source_macro">#ifdefDEBUG
+</span><a name="76"></a>	if (bShowLog)
+<a name="77"></a>	{
+<a name="78"></a>		LogServerState(); 
+<a name="79"></a>
+<a name="80"></a>		switch(_eNewClientMenuState)
+<a name="81"></a>		{
+<a name="82"></a>			case CMS_Initial:					log(<span class="source_string">"SetStatMenuState CMS_Initial "</span>); break;
+<a name="83"></a>			case CMS_PlayerDead:				log(<span class="source_string">"SetStatMenuState CMS_PlayerDead "</span>); break;
+<a name="84"></a>			case CMS_SpecMenu:					log(<span class="source_string">"SetStatMenuState CMS_SpecMenu "</span>); break;
+<a name="85"></a>			case CMS_BetRoundmenu:				log(<span class="source_string">"SetStatMenuState CMS_BetRoundmenu "</span>); break;
+<a name="86"></a>			case CMS_DisplayStat:				log(<span class="source_string">"SetStatMenuState CMS_DisplayStat "</span>); break;
+<a name="87"></a>			case CMS_DisplayForceStat:			log(<span class="source_string">"SetStatMenuState CMS_DisplayForceStat "</span>); break;
+<a name="88"></a>			case CMS_DisplayForceStatLocked:	log(<span class="source_string">"SetStatMenuState CMS_DisplayForceStatLocked "</span>); break;
+<a name="89"></a>			case CMS_InPreGameState:			log(<span class="source_string">"SetStatMenuState CMS_InPreGameState "</span>); break;
+<a name="90"></a>			default: log(<span class="source_string">"menu state not exist"</span>); break;
+<a name="91"></a>		}
+<a name="92"></a>	}
+<a name="93"></a><span class="source_macro">#endif
+</span><a name="94"></a>
+<a name="95"></a>	<span class="source_comment">// if player not did a selection, the menus were lock to welcome screen and stat page without nav bar
+</span><a name="96"></a>
+<a name="97"></a>	if (!m_pCurrentRoot.m_bPlayerDidASelection)
+<a name="98"></a>	{
+<a name="99"></a>		if (_eNewClientMenuState == CMS_Initial)
+<a name="100"></a>		{
+<a name="101"></a>			if (m_pCurrentRoot.m_eCurWidgetInUse == m_pCurrentRoot.<span class="source_type"><a href="../uwindow/uwindowrootwindow.html#eGameWidgetID" class="source">eGameWidgetID</a></span>.InGameMPWID_TeamJoin)
+<a name="102"></a>			{
+<a name="103"></a>				return;
+<a name="104"></a>			}
+<a name="105"></a>		}
+<a name="106"></a>		else
+<a name="107"></a>			return;
+<a name="108"></a>	}
+<a name="109"></a>
+<a name="110"></a>	switch(_eNewClientMenuState)
+<a name="111"></a>	{
+<a name="112"></a>		case CMS_Initial:
+<a name="113"></a>			m_pCurrentRoot.m_bPreventMenuSwitch = false; <span class="source_comment">//This to reable switching widget after a map change
+</span><a name="114"></a><span class="source_comment">//			m_pCurrentRoot.m_bActiveBar = true; // Only if we want a navbar for player that don't make a selection -- old design
+</span><a name="115"></a>            m_pCurrentRoot.ChangeCurrentWidget(InGameMPWID_TeamJoin);
+<a name="116"></a>            break;
+<a name="117"></a>        case CMS_PlayerDead:
+<a name="118"></a>			if (m_pCurrentRoot.m_pSimplePopUp != None)
+<a name="119"></a>			{
+<a name="120"></a>				if (m_pCurrentRoot.m_pSimplePopUp.bWindowVisible)
+<a name="121"></a>				{
+<a name="122"></a>					if (m_pCurrentRoot.m_pSimplePopUp.m_ePopUpID == EPopUpID_TKPenalty)
+<a name="123"></a>					{
+<a name="124"></a>						m_pCurrentRoot.m_iWidgetKA = m_pCurrentRoot.C_iWKA_NONE;
+<a name="125"></a>						return;
+<a name="126"></a>					}
+<a name="127"></a>				}
+<a name="128"></a>			}
+<a name="129"></a>			
+<a name="130"></a>			<span class="source_comment">// reactive nav bar (except player ready button)
+</span><a name="131"></a>			m_pCurrentRoot.m_pIntermissionMenuWidget.m_pInGameNavBar.SetNavBarState( false, true);
+<a name="132"></a>
+<a name="133"></a>            if (m_eStatMenuState==CMS_DisplayForceStat)
+<a name="134"></a>                return; <span class="source_comment">// we can't go there from here
+</span><a name="135"></a>        case CMS_SpecMenu:    
+<a name="136"></a>            m_pCurrentRoot.m_bActiveBar = true;
+<a name="137"></a>			
+<a name="138"></a>			<span class="source_comment">// reactive nav bar (except player ready button)
+</span><a name="139"></a>			m_pCurrentRoot.m_pIntermissionMenuWidget.m_pInGameNavBar.SetNavBarState( false, true);
+<a name="140"></a>
+<a name="141"></a>            m_pCurrentRoot.ChangeWidget(WidgetID_None, false, true);
+<a name="142"></a>            break;
+<a name="143"></a>        case CMS_BetRoundmenu:
+<a name="144"></a>            m_pCurrentRoot.m_bActiveBar = true;
+<a name="145"></a>			m_pCurrentRoot.GetLevel().SetBankSound(BANK_UnloadGun);
+<a name="146"></a>
+<a name="147"></a>			<span class="source_comment">// if we are in-game and we receive 
+</span><a name="148"></a>			if (m_GameRepInfo.IsInAGameState())
+<a name="149"></a>			{
+<a name="150"></a>				m_pCurrentRoot.ChangeCurrentWidget(InGameMPWID_Intermission);
+<a name="151"></a>				_eNewClientMenuState = CMS_SpecMenu;
+<a name="152"></a><span class="source_macro">#ifdefDEBUG
+</span><a name="153"></a>				if (bShowLog)
+<a name="154"></a>					log(<span class="source_string">"CMS_BetRoundmenu devient CMS_SpecMenu"</span>@_eNewClientMenuState);
+<a name="155"></a><span class="source_macro">#endif
+</span><a name="156"></a>			}
+<a name="157"></a>			else
+<a name="158"></a>			{
+<a name="159"></a>				m_pCurrentRoot.ChangeCurrentWidget(InGameMPWID_InterEndRound);
+<a name="160"></a>				bCloseSimplePopUpBox = false;
+<a name="161"></a>			}
+<a name="162"></a>            break;
+<a name="163"></a>        case CMS_DisplayStat:  <span class="source_comment">//Going to game so closing all windows          
+</span><a name="164"></a><span class="source_comment">//			This is done by CountDownPopUpBoxDone() now
+</span><a name="165"></a><span class="source_comment">//            m_pCurrentRoot.m_pIntermissionMenuWidget.ForceClosePopUp();
+</span><a name="166"></a><span class="source_comment">//            m_pCurrentRoot.ChangeWidget(WidgetID_None, false, true);
+</span><a name="167"></a>            break;
+<a name="168"></a>        case CMS_DisplayForceStat:
+<a name="169"></a>            if( m_PlayerController.m_TeamSelection==PTS_Alpha || m_PlayerController.m_TeamSelection==PTS_Bravo )
+<a name="170"></a>            {	
+<a name="171"></a>            	SetReadyButton(false);	
+<a name="172"></a>            }
+<a name="173"></a>            m_pCurrentRoot.ChangeCurrentWidget(InGameMPWID_InterEndRound);            
+<a name="174"></a>            m_pCurrentRoot.GetLevel().SetBankSound(BANK_UnloadGun);
+<a name="175"></a>            break;
+<a name="176"></a>        case CMS_DisplayForceStatLocked:
+<a name="177"></a>            m_pCurrentRoot.ChangeCurrentWidget(InGameMPWID_InterEndRound);
+<a name="178"></a>            m_pCurrentRoot.m_bPreventMenuSwitch = true; <span class="source_comment">//This is to see the stats when loading next map
+</span><a name="179"></a>            <span class="source_type">class</span><span class="source_name">'Actor'</span>.static.EnableLoadingScreen(false);
+<a name="180"></a>            m_pCurrentRoot.GetLevel().SetBankSound(BANK_UnloadGun);
+<a name="181"></a>			<span class="source_comment">// re-active nav bar (except player ready button)
+</span><a name="182"></a>			m_pCurrentRoot.m_pIntermissionMenuWidget.m_pInGameNavBar.SetNavBarState( true);
+<a name="183"></a>            break;
+<a name="184"></a>		case CMS_InPreGameState:
+<a name="185"></a>            m_pCurrentRoot.m_pIntermissionMenuWidget.ForceClosePopUp();
+<a name="186"></a>			break;
+<a name="187"></a>        default:
+<a name="188"></a>			bCloseSimplePopUpBox = false;
+<a name="189"></a>            break;
+<a name="190"></a>    }
+<a name="191"></a>    
+<a name="192"></a>	if (bCloseSimplePopUpBox)
+<a name="193"></a>		m_pCurrentRoot.CloseSimplePopUpBox();
+<a name="194"></a>
+<a name="195"></a>    m_eStatMenuState = _eNewClientMenuState;
+<a name="196"></a>}
+<a name="197"></a>
+<a name="198"></a>function SetupPlayerPrefs()
+<a name="199"></a>{    
+<a name="200"></a>    
+<a name="201"></a>    local   <span class="source_type">string</span>                    Tag;
+<a name="202"></a>    local   <span class="source_type">class</span>&lt;<span class="source_type"><a href="../r6description/r6primaryweapondescription.html" class="source">R6PrimaryWeaponDescription</a></span>&gt;   PrimaryWeaponClass;
+<a name="203"></a>    local   <span class="source_type">class</span>&lt;<span class="source_type"><a href="../r6description/r6secondaryweapondescription.html" class="source">R6SecondaryWeaponDescription</a></span>&gt; SecondaryWeaponClass;
+<a name="204"></a>    local   <span class="source_type">class</span>&lt;<span class="source_type"><a href="../r6description/r6bulletdescription.html" class="source">R6BulletDescription</a></span>&gt;          PrimaryWeaponBulletClass,   SecondaryWeaponBulletClass;
+<a name="205"></a>    local   <span class="source_type">class</span>&lt;<span class="source_type"><a href="../r6description/r6gadgetdescription.html" class="source">R6GadgetDescription</a></span>&gt;          PrimaryGadgetClass,         SecondaryGadgetClass;
+<a name="206"></a>    local   <span class="source_type">class</span>&lt;<span class="source_type"><a href="../r6description/r6weapongadgetdescription.html" class="source">R6WeaponGadgetDescription</a></span>&gt;    PrimaryWeaponGadgetClass,   SecondaryWeaponGadgetClass;
+<a name="207"></a>    local   <span class="source_type">class</span>&lt;<span class="source_type"><a href="../r6description/r6armordescription.html" class="source">R6ArmorDescription</a></span>&gt;           ArmorDescriptionClass;
+<a name="208"></a>    local   <span class="source_type">BOOL</span>                                Found;
+<a name="209"></a>    local   <span class="source_type">int</span>                                 k;
+<a name="210"></a>    local	<span class="source_type">class</span>&lt;<span class="source_type"><a href="../r6description/r6gadgetdescription.html" class="source">R6GadgetDescription</a></span>&gt; replaceGadgetClass; <span class="source_comment">//MissionPack1 // MPF1
+</span><a name="211"></a>
+<a name="212"></a>    <span class="source_comment">//Fill R6RainbowStartInfo structure
+</span><a name="213"></a>    PrimaryWeaponClass          = <span class="source_type">class</span>&lt;<span class="source_type"><a href="../r6description/r6primaryweapondescription.html" class="source">R6PrimaryWeaponDescription</a></span>&gt;( DynamicLoadObject( m_szPrimaryWeapon, <span class="source_type">class</span><span class="source_name">'Class'</span> ) );
+<a name="214"></a>    PrimaryWeaponBulletClass    = <span class="source_type">class</span><span class="source_name">'R6DescriptionManager'</span>.static.GetPrimaryBulletDesc(PrimaryWeaponClass, m_szPrimaryWeaponBullet);
+<a name="215"></a>    PrimaryWeaponGadgetClass    = <span class="source_type">class</span><span class="source_name">'R6DescriptionManager'</span>.static.GetPrimaryWeaponGadgetDesc(PrimaryWeaponClass, m_szPrimaryWeaponGadget);
+<a name="216"></a>
+<a name="217"></a>    SecondaryWeaponClass        = <span class="source_type">class</span>&lt;<span class="source_type"><a href="../r6description/r6secondaryweapondescription.html" class="source">R6SecondaryWeaponDescription</a></span>&gt;( DynamicLoadObject( m_szSecondaryWeapon, <span class="source_type">class</span><span class="source_name">'Class'</span> ) );            
+<a name="218"></a>    SecondaryWeaponBulletClass  = <span class="source_type">class</span><span class="source_name">'R6DescriptionManager'</span>.static.GetSecondaryBulletDesc(SecondaryWeaponClass, m_szSecondaryWeaponBullet);
+<a name="219"></a>    SecondaryWeaponGadgetClass  = <span class="source_type">class</span><span class="source_name">'R6DescriptionManager'</span>.static.GetSecondaryWeaponGadgetDesc(SecondaryWeaponClass, m_szSecondaryWeaponGadget);
+<a name="220"></a>
+<a name="221"></a>    PrimaryGadgetClass          = <span class="source_type">class</span>&lt;<span class="source_type"><a href="../r6description/r6gadgetdescription.html" class="source">R6GadgetDescription</a></span>&gt;( DynamicLoadObject( m_szPrimaryGadget, <span class="source_type">class</span><span class="source_name">'Class'</span> ) );
+<a name="222"></a>    SecondaryGadgetClass        = <span class="source_type">class</span>&lt;<span class="source_type"><a href="../r6description/r6gadgetdescription.html" class="source">R6GadgetDescription</a></span>&gt;( DynamicLoadObject( m_szSecondaryGadget, <span class="source_type">class</span><span class="source_name">'Class'</span> ) );
+<a name="223"></a>	<span class="source_comment">//MissionPack1 // MPF1
+</span><a name="224"></a>	if(<span class="source_type">class</span><span class="source_name">'R6MenuMPAdvGearWidget'</span>.static.CheckGadget(<span class="source_type">string</span>(PrimaryGadgetClass),m_pCurrentRoot,false,replaceGadgetClass))
+<a name="225"></a>		PrimaryGadgetClass = replaceGadgetClass;
+<a name="226"></a>	if(<span class="source_type">class</span><span class="source_name">'R6MenuMPAdvGearWidget'</span>.static.CheckGadget(<span class="source_type">string</span>(SecondaryGadgetClass),m_pCurrentRoot,false,replaceGadgetClass,<span class="source_type">string</span>(PrimaryGadgetClass)))
+<a name="227"></a>		SecondaryGadgetClass = replaceGadgetClass;
+<a name="228"></a>	<span class="source_comment">// End MissionPack1	
+</span><a name="229"></a>
+<a name="230"></a>    ArmorDescriptionClass       = <span class="source_type">class</span>&lt;<span class="source_type"><a href="../r6description/r6armordescription.html" class="source">R6ArmorDescription</a></span>&gt;( DynamicLoadObject( m_szArmor, <span class="source_type">class</span><span class="source_name">'Class'</span> ) );
+<a name="231"></a>
+<a name="232"></a>    
+<a name="233"></a>    m_PlayerPrefInfo.m_ArmorName            =  ArmorDescriptionClass.Default.m_ClassName;               
+<a name="234"></a>    m_PlayerPrefInfo.m_WeaponGadgetName[<span class="source_int">0</span>]  =  PrimaryWeaponGadgetClass.Default.m_ClassName;
+<a name="235"></a>    m_PlayerPrefInfo.m_WeaponGadgetName[<span class="source_int">1</span>]  =  SecondaryWeaponGadgetClass.Default.m_ClassName;
+<a name="236"></a>    m_PlayerPrefInfo.m_GadgetName[<span class="source_int">0</span>]        =  PrimaryGadgetClass.Default.m_ClassName;
+<a name="237"></a>    m_PlayerPrefInfo.m_GadgetName[<span class="source_int">1</span>]        =  SecondaryGadgetClass.Default.m_ClassName;
+<a name="238"></a>    
+<a name="239"></a>    <span class="source_comment">//Search for the right PrimaryWeaponClass to spawn depending on the type of gadget and bullet
+</span><a name="240"></a>    Found = false;
+<a name="241"></a>    for(k=<span class="source_int">0</span>; (k &lt; PrimaryWeaponClass.Default.m_WeaponTags.Length) && (Found == False); k++)
+<a name="242"></a>    {
+<a name="243"></a>        if(PrimaryWeaponClass.Default.m_WeaponTags[k] == PrimaryWeaponGadgetClass.Default.m_NameTag)
+<a name="244"></a>        {
+<a name="245"></a>            Found = true;
+<a name="246"></a>            m_PlayerPrefInfo.m_WeaponName[<span class="source_int">0</span>]    =  PrimaryWeaponClass.Default.m_WeaponClasses[k];
+<a name="247"></a>            Tag = PrimaryWeaponClass.Default.m_WeaponTags[k];
+<a name="248"></a>        }                                           
+<a name="249"></a>        else if(PrimaryWeaponClass.Default.m_WeaponTags[k] == PrimaryWeaponBulletClass.Default.m_NameTag )
+<a name="250"></a>        {
+<a name="251"></a>            <span class="source_comment">//This is a special case for shotguns where bullets determine the weapon to spawn
+</span><a name="252"></a>            Found = true;
+<a name="253"></a>            m_PlayerPrefInfo.m_WeaponName[<span class="source_int">0</span>]    =  PrimaryWeaponClass.Default.m_WeaponClasses[k];
+<a name="254"></a>            Tag = PrimaryWeaponClass.Default.m_WeaponTags[k];
+<a name="255"></a>        }                    
+<a name="256"></a>            
+<a name="257"></a>    }
+<a name="258"></a>    if(Found == false)
+<a name="259"></a>    {
+<a name="260"></a>		if (PrimaryWeaponClass == <span class="source_type">class</span><span class="source_name">'R6DescPrimaryWeaponNone'</span>) 
+<a name="261"></a>		{
+<a name="262"></a>			m_PlayerPrefInfo.m_WeaponName[<span class="source_int">0</span>] =  <span class="source_string">"R6Description.R6DescPrimaryWeaponNone"</span>; 
+<a name="263"></a>			Tag = <span class="source_string">"NONE"</span>;
+<a name="264"></a>		}
+<a name="265"></a>		else
+<a name="266"></a>		{
+<a name="267"></a>			m_PlayerPrefInfo.m_WeaponName[<span class="source_int">0</span>] =  PrimaryWeaponClass.Default.m_WeaponClasses[<span class="source_int">0</span>];
+<a name="268"></a>			Tag = PrimaryWeaponClass.Default.m_WeaponTags[<span class="source_int">0</span>];
+<a name="269"></a>		}
+<a name="270"></a>    }
+<a name="271"></a>    
+<a name="272"></a>    <span class="source_comment">//If necessary spawn subsonic bullets
+</span><a name="273"></a>    if(Tag == <span class="source_string">"SILENCED"</span>)
+<a name="274"></a>        m_PlayerPrefInfo.m_BulletType[<span class="source_int">0</span>]        =  PrimaryWeaponBulletClass.Default.m_SubsonicClassName;                
+<a name="275"></a>    else
+<a name="276"></a>        m_PlayerPrefInfo.m_BulletType[<span class="source_int">0</span>]        =  PrimaryWeaponBulletClass.Default.m_ClassName;                
+<a name="277"></a>    
+<a name="278"></a>    <span class="source_comment">//Search for the right SecondaryWeaponClass to spawn depending on the type of gadget and bullet
+</span><a name="279"></a>    Found = false;
+<a name="280"></a>    for(k=<span class="source_int">0</span>; (k &lt; SecondaryWeaponClass.Default.m_WeaponTags.Length) && (Found == False); k++)
+<a name="281"></a>    {
+<a name="282"></a>        if(SecondaryWeaponClass.Default.m_WeaponTags[k] == SecondaryWeaponGadgetClass.Default.m_NameTag)
+<a name="283"></a>        {
+<a name="284"></a>            Found = true;
+<a name="285"></a>            m_PlayerPrefInfo.m_WeaponName[<span class="source_int">1</span>]    =  SecondaryWeaponClass.Default.m_WeaponClasses[k];
+<a name="286"></a>            Tag = SecondaryWeaponClass.Default.m_WeaponTags[k];
+<a name="287"></a>        }                                           
+<a name="288"></a>        else if(SecondaryWeaponClass.Default.m_WeaponTags[k] == SecondaryWeaponBulletClass.Default.m_NameTag )
+<a name="289"></a>        {
+<a name="290"></a>            <span class="source_comment">//Don't think this could occur for a secondary weapon
+</span><a name="291"></a>
+<a name="292"></a>            Found = true;
+<a name="293"></a>            m_PlayerPrefInfo.m_WeaponName[<span class="source_int">1</span>]    =  SecondaryWeaponClass.Default.m_WeaponClasses[k];
+<a name="294"></a>            Tag = SecondaryWeaponClass.Default.m_WeaponTags[k];
+<a name="295"></a>        }   
+<a name="296"></a>
+<a name="297"></a>    } 
+<a name="298"></a>    if(Found == false)
+<a name="299"></a>    {
+<a name="300"></a>        m_PlayerPrefInfo.m_WeaponName[<span class="source_int">1</span>]    =  SecondaryWeaponClass.Default.m_WeaponClasses[<span class="source_int">0</span>];
+<a name="301"></a>        Tag = SecondaryWeaponClass.Default.m_WeaponTags[<span class="source_int">0</span>];
+<a name="302"></a>    }                    
+<a name="303"></a>
+<a name="304"></a>    <span class="source_comment">//If necessary spawn subsonic bullets
+</span><a name="305"></a>    if(Tag == <span class="source_string">"SILENCED"</span>)
+<a name="306"></a>        m_PlayerPrefInfo.m_BulletType[<span class="source_int">1</span>]        =  SecondaryWeaponBulletClass.Default.m_SubsonicClassName;                
+<a name="307"></a>    else
+<a name="308"></a>        m_PlayerPrefInfo.m_BulletType[<span class="source_int">1</span>]        =  SecondaryWeaponBulletClass.Default.m_ClassName;                                                
+<a name="309"></a>        
+<a name="310"></a>
+<a name="311"></a>}
+<a name="312"></a>
+<a name="313"></a>
+<a name="314"></a>
+<a name="315"></a><span class="source_comment">//====================================================================================
+</span><a name="316"></a><span class="source_comment">// DisconnectClient: Disconnect the client from the server
+</span><a name="317"></a><span class="source_comment">//====================================================================================
+</span><a name="318"></a>function DisconnectClient( <span class="source_type"><a href="../engine/levelinfo.html" class="source">LevelInfo</a></span> <span class="source_type">_Level</span> )
+<a name="319"></a>{
+<a name="320"></a>    local <span class="source_type"><a href="../ipdrv/udpbeacon.html" class="source">UdpBeacon</a></span> aBeacon;
+<a name="321"></a>    <span class="source_comment">// For non dedicated server, log the server out from ubi.com
+</span><a name="322"></a>    <span class="source_comment">// when the client exits the game
+</span><a name="323"></a>	m_bImCurrentlyDisconnect = true;
+<a name="324"></a>
+<a name="325"></a>    if (<span class="source_type">_Level</span>.NetMode == NM_ListenServer)
+<a name="326"></a>    {
+<a name="327"></a>        <span class="source_type"><a href="../r6game/r6multiplayergameinfo.html" class="source">R6MultiPlayerGameInfo</a></span>(<span class="source_type">_Level</span>.Game).m_GameService.LogOutServer(<span class="source_type"><a href="../r6engine/r6gamereplicationinfo.html" class="source">R6GameReplicationInfo</a></span>(m_GameRepInfo));
+<a name="328"></a>        <span class="source_type"><a href="../r6game/r6gameinfo.html" class="source">R6GameInfo</a></span>(<span class="source_type">_Level</span>.Game).DestroyBeacon();
+<a name="329"></a>    }
+<a name="330"></a>
+<a name="331"></a><span class="source_comment">//    m_pCurrentRoot.CloseSimplePopUpBox();
+</span><a name="332"></a>    <span class="source_comment">//m_pCurrentRoot.GetLevel().ConsoleCommand("DISCONNECT");
+</span><a name="333"></a>}
+<a name="334"></a>
+<a name="335"></a><span class="source_comment">//====================================================================================
+</span><a name="336"></a><span class="source_comment">// SetPlayerReadyStatus: Set the ready button status of the player
+</span><a name="337"></a><span class="source_comment">//====================================================================================
+</span><a name="338"></a>function SetPlayerReadyStatus( <span class="source_type">BOOL</span> _bPlayerReady)
+<a name="339"></a>{
+<a name="340"></a><span class="source_macro">#ifdefDEBUG
+</span><a name="341"></a>	LogServerState(); 
+<a name="342"></a><span class="source_macro">#endif
+</span><a name="343"></a>
+<a name="344"></a>	Super.SetPlayerReadyStatus(_bPlayerReady);
+<a name="345"></a>
+<a name="346"></a>	if (m_pCurrentRoot != None)
+<a name="347"></a>	{
+<a name="348"></a>		m_pCurrentRoot.m_pIntermissionMenuWidget.m_pInGameNavBar.m_pPlayerReady.m_bSelected = _bPlayerReady;
+<a name="349"></a>	}
+<a name="350"></a>}
+<a name="351"></a>
+<a name="352"></a>function RefreshReadyButtonStatus()
+<a name="353"></a>{
+<a name="354"></a><span class="source_macro">#ifdefDEBUG
+</span><a name="355"></a>	LogServerState(); 
+<a name="356"></a><span class="source_macro">#endif
+</span><a name="357"></a>
+<a name="358"></a>    if ( (m_GameRepInfo.m_eCurrectServerState==m_GameRepInfo.RSS_CountDownStage) ||
+<a name="359"></a>        (m_GameRepInfo.m_eCurrectServerState==m_GameRepInfo.RSS_PlayersConnectingStage))
+<a name="360"></a>    {
+<a name="361"></a>        if (m_PlayerController.IsPlayerPassiveSpectator() || ((m_PlayerController.bOnlySpectator) && (m_GameRepInfo.m_eCurrectServerState!=m_GameRepInfo.RSS_CountDownStage)))
+<a name="362"></a>            SetReadyButton(true);
+<a name="363"></a>        else
+<a name="364"></a>            SetReadyButton(false);
+<a name="365"></a>    }
+<a name="366"></a>    else if ( (m_GameRepInfo.m_eCurrectServerState==m_GameRepInfo.RSS_InPreGameState) ||
+<a name="367"></a>        (m_GameRepInfo.m_eCurrectServerState==m_GameRepInfo.RSS_InGameState) ||
+<a name="368"></a>        (m_GameRepInfo.m_eCurrectServerState==m_GameRepInfo.RSS_EndOfMatch) )
+<a name="369"></a>    {
+<a name="370"></a>        SetReadyButton(true);
+<a name="371"></a>    }
+<a name="372"></a>}
+<a name="373"></a><span class="source_comment">//====================================================================================
+</span><a name="374"></a><span class="source_comment">// SetReadyButton: Set the ready button state in the menu (disable when the player play, or enable -- spectator)
+</span><a name="375"></a><span class="source_comment">//====================================================================================
+</span><a name="376"></a>function SetReadyButton( <span class="source_type">BOOL</span> _bDisable)
+<a name="377"></a>{
+<a name="378"></a><span class="source_macro">#ifdefDEBUG
+</span><a name="379"></a>	LogServerState(); 
+<a name="380"></a><span class="source_macro">#endif
+</span><a name="381"></a>
+<a name="382"></a>	if (m_pCurrentRoot != None)
+<a name="383"></a>	{
+<a name="384"></a>		if (_bDisable)
+<a name="385"></a>		{
+<a name="386"></a>			m_pCurrentRoot.m_pIntermissionMenuWidget.m_pInGameNavBar.m_pPlayerReady.bDisabled = true;
+<a name="387"></a>		}
+<a name="388"></a>		else
+<a name="389"></a>		{
+<a name="390"></a>			m_pCurrentRoot.m_pIntermissionMenuWidget.m_pInGameNavBar.m_pPlayerReady.bDisabled   = false;			
+<a name="391"></a><span class="source_comment">//			m_pCurrentRoot.m_pIntermissionMenuWidget.m_pInGameNavBar.m_pPlayerReady.m_bSelected = false;
+</span><a name="392"></a>		}
+<a name="393"></a>	}
+<a name="394"></a>}
+<a name="395"></a>
+<a name="396"></a>function <span class="source_type">BOOL</span> IsInBetweenRoundMenu( optional <span class="source_type">BOOL</span> _bIncludeCMSInit)
+<a name="397"></a>{
+<a name="398"></a><span class="source_macro">#ifdefDEBUG
+</span><a name="399"></a>	LogServerState(); 
+<a name="400"></a><span class="source_macro">#endif
+</span><a name="401"></a>
+<a name="402"></a>	if (_bIncludeCMSInit)
+<a name="403"></a>		if (m_eStatMenuState == CMS_Initial)
+<a name="404"></a>			return true;
+<a name="405"></a>        
+<a name="406"></a>    if (m_GameRepInfo == none)
+<a name="407"></a>        return false;
+<a name="408"></a>
+<a name="409"></a>	if (m_GameRepInfo.m_eCurrectServerState == m_GameRepInfo.RSS_CountDownStage)
+<a name="410"></a>		return true;
+<a name="411"></a>
+<a name="412"></a><span class="source_comment">//	if ((m_eStatMenuState == CMS_BetRoundmenu) || (m_eStatMenuState == CMS_DisplayForceStat) ||
+</span><a name="413"></a><span class="source_comment">//		(m_eStatMenuState == CMS_DisplayForceStatLocked))
+</span><a name="414"></a><span class="source_comment">//	{
+</span><a name="415"></a><span class="source_comment">//		return true;
+</span><a name="416"></a><span class="source_comment">//	}
+</span><a name="417"></a>
+<a name="418"></a>	return false;
+<a name="419"></a>}
+<a name="420"></a>
+<a name="421"></a><span class="source_comment">// this returns an INT so that we can know where to display the player on
+</span><a name="422"></a><span class="source_comment">// the tab menu page
+</span><a name="423"></a>function <span class="source_type">INT</span> GeTTeamSelection( <span class="source_type">INT</span> _iIndex)
+<a name="424"></a>{
+<a name="425"></a>    local <span class="source_type"><a href="../engine/actor.html" class="source">Actor</a></span>.<span class="source_type"><a href="../engine/actor.html#PlayerMenuInfo" class="source">PlayerMenuInfo</a></span> _PlayerMenuInfo;
+<a name="426"></a>    
+<a name="427"></a>    if (GetGameType() == <span class="source_string">"RGM_DeathmatchMode"</span>)
+<a name="428"></a>        return PTSToInt(PTS_Alpha);
+<a name="429"></a>    else 
+<a name="430"></a>    {
+<a name="431"></a>        m_pCurrentRoot.GetLevel().GetFPlayerMenuInfo(_iIndex, _PlayerMenuInfo);
+<a name="432"></a>        if (IntToPTS(_PlayerMenuInfo.iTeamSelection) == PTS_Alpha || IntToPTS(_PlayerMenuInfo.iTeamSelection) ==  PTS_Bravo )
+<a name="433"></a>            return _PlayerMenuInfo.iTeamSelection;
+<a name="434"></a>        else
+<a name="435"></a>            return PTSToInt(PTS_Spectator);
+<a name="436"></a>    }
+<a name="437"></a>}
+<a name="438"></a>
+<a name="439"></a>simulated function SavePlayerSetupInfo()
+<a name="440"></a>{    
+<a name="441"></a>	if (m_PlayerController == None)
+<a name="442"></a>		return;
+<a name="443"></a>
+<a name="444"></a>    m_pCurrentRoot.GetLevel().SetPlayerSetupInfo(
+<a name="445"></a>        m_PlayerPrefInfo.m_CharacterName,
+<a name="446"></a>        m_szArmor,
+<a name="447"></a>        m_szPrimaryWeapon,
+<a name="448"></a>        m_szPrimaryWeaponGadget,
+<a name="449"></a>        m_szPrimaryWeaponBullet,
+<a name="450"></a>        m_szSecondaryWeapon,
+<a name="451"></a>        m_szSecondaryWeaponGadget,
+<a name="452"></a>        m_szSecondaryWeaponBullet,
+<a name="453"></a>        m_szPrimaryGadget, 
+<a name="454"></a>        m_szSecondaryGadget);
+<a name="455"></a>
+<a name="456"></a>    SetupPlayerPrefs();
+<a name="457"></a>  
+<a name="458"></a>    m_PlayerController.m_PlayerPrefs.m_CharacterName = m_PlayerPrefInfo.m_CharacterName;
+<a name="459"></a>    m_PlayerController.m_PlayerPrefs.m_ArmorName = m_PlayerPrefInfo.m_ArmorName;
+<a name="460"></a>    m_PlayerController.m_PlayerPrefs.m_WeaponName1 = m_PlayerPrefInfo.m_WeaponName[<span class="source_int">0</span>];
+<a name="461"></a>    m_PlayerController.m_PlayerPrefs.m_WeaponGadgetName1 = m_PlayerPrefInfo.m_WeaponGadgetName[<span class="source_int">0</span>];
+<a name="462"></a>    m_PlayerController.m_PlayerPrefs.m_BulletType1 = m_PlayerPrefInfo.m_BulletType[<span class="source_int">0</span>];
+<a name="463"></a>    m_PlayerController.m_PlayerPrefs.m_WeaponName2 = m_PlayerPrefInfo.m_WeaponName[<span class="source_int">1</span>];
+<a name="464"></a>    m_PlayerController.m_PlayerPrefs.m_WeaponGadgetName2 = m_PlayerPrefInfo.m_WeaponGadgetName[<span class="source_int">1</span>];
+<a name="465"></a>    m_PlayerController.m_PlayerPrefs.m_BulletType2 = m_PlayerPrefInfo.m_BulletType[<span class="source_int">1</span>];
+<a name="466"></a>    m_PlayerController.m_PlayerPrefs.m_GadgetName1 = m_PlayerPrefInfo.m_GadgetName[<span class="source_int">0</span>];
+<a name="467"></a>    m_PlayerController.m_PlayerPrefs.m_GadgetName2 = m_PlayerPrefInfo.m_GadgetName[<span class="source_int">1</span>];
+<a name="468"></a>    m_PlayerController.ServerPlayerPref(m_PlayerController.m_PlayerPrefs);
+<a name="469"></a>
+<a name="470"></a><span class="source_macro">#ifdefDEBUG
+</span><a name="471"></a>	if (bShowLog)
+<a name="472"></a>	{
+<a name="473"></a>		log(<span class="source_string">"R6MPGameMenuCom SavePlayerSetupInfo"</span>);
+<a name="474"></a>		log(<span class="source_string">"m_PlayerController.m_PlayerPrefs.m_WeaponName1			"</span>@m_PlayerController.m_PlayerPrefs.m_WeaponName1);
+<a name="475"></a>		log(<span class="source_string">"m_PlayerController.m_PlayerPrefs.m_WeaponGadgetName1	"</span>@m_PlayerController.m_PlayerPrefs.m_WeaponGadgetName1);
+<a name="476"></a>		log(<span class="source_string">"m_PlayerController.m_PlayerPrefs.m_BulletType1			"</span>@m_PlayerController.m_PlayerPrefs.m_BulletType1);
+<a name="477"></a>		log(<span class="source_string">"m_PlayerController.m_PlayerPrefs.m_GadgetName1			"</span>@m_PlayerController.m_PlayerPrefs.m_GadgetName1);
+<a name="478"></a>		log(<span class="source_string">"m_PlayerController.m_PlayerPrefs.m_WeaponName2			"</span>@m_PlayerController.m_PlayerPrefs.m_WeaponName2);
+<a name="479"></a>		log(<span class="source_string">"m_PlayerController.m_PlayerPrefs.m_WeaponGadgetName2	"</span>@m_PlayerController.m_PlayerPrefs.m_WeaponGadgetName2);
+<a name="480"></a>		log(<span class="source_string">"m_PlayerController.m_PlayerPrefs.m_BulletType2			"</span>@m_PlayerController.m_PlayerPrefs.m_BulletType2);
+<a name="481"></a>		log(<span class="source_string">"m_PlayerController.m_PlayerPrefs.m_GadgetName2			"</span>@m_PlayerController.m_PlayerPrefs.m_GadgetName2);
+<a name="482"></a>		log(<span class="source_string">"m_PlayerController.m_PlayerPrefs.m_ArmorName			"</span>@m_PlayerController.m_PlayerPrefs.m_ArmorName);
+<a name="483"></a>	}
+<a name="484"></a><span class="source_macro">#endif
+</span><a name="485"></a>}
+<a name="486"></a>
+<a name="487"></a>simulated function InitialisePlayerSetupInfo()
+<a name="488"></a>{
+<a name="489"></a>    if (bShowLog)
+<a name="490"></a>    {
+<a name="491"></a>        log(<span class="source_string">"In "</span>$self$<span class="source_string">"::InitialisePlayerSetupInfo()"</span>);
+<a name="492"></a>    }
+<a name="493"></a>    m_pCurrentRoot.GetLevel().GetPlayerSetupInfo(m_PlayerPrefInfo.m_CharacterName,
+<a name="494"></a>        m_szArmor,
+<a name="495"></a>        m_szPrimaryWeapon,
+<a name="496"></a>        m_szPrimaryWeaponGadget,
+<a name="497"></a>        m_szPrimaryWeaponBullet,
+<a name="498"></a>        m_szSecondaryWeapon,
+<a name="499"></a>        m_szSecondaryWeaponGadget,
+<a name="500"></a>        m_szSecondaryWeaponBullet,
+<a name="501"></a>        m_szPrimaryGadget,
+<a name="502"></a>        m_szSecondaryGadget);
+<a name="503"></a>    SetupPlayerPrefs();       
+<a name="504"></a>}
+<a name="505"></a>
+<a name="506"></a>simulated function <span class="source_type">string</span> GetGameType()
+<a name="507"></a>{
+<a name="508"></a>    if (m_GameRepInfo == none)
+<a name="509"></a>        return <span class="source_string">"RGM_NoRulesMode"</span>;
+<a name="510"></a>    else
+<a name="511"></a>        return m_GameRepInfo.m_szGameTypeFlagRep;
+<a name="512"></a>}
+<a name="513"></a>
+<a name="514"></a><span class="source_comment">//this function is called when team killer options are on and I have been killed by my team mate
+</span><a name="515"></a>function TKPopUpBox(<span class="source_type">string</span> _KillerName)
+<a name="516"></a>{
+<a name="517"></a>    if (<span class="source_type"><a href="../r6engine/r6playercontroller.html" class="source">R6PlayerController</a></span>(m_PlayerController).m_bAlreadyPoppedTKPopUpBox == false)
+<a name="518"></a>    {
+<a name="519"></a>        if (!m_pCurrentRoot.<span class="source_type"><a href="../engine/console.html" class="source">Console</a></span>.IsInState(<span class="source_name">'Game'</span>))
+<a name="520"></a>            m_pCurrentRoot.<span class="source_type"><a href="../engine/console.html" class="source">Console</a></span>.GotoState(<span class="source_name">'Game'</span>);
+<a name="521"></a>
+<a name="522"></a>        <span class="source_comment">//do I want to penalize my mate, display dialog box with question
+</span><a name="523"></a>        m_pCurrentRoot.SimplePopUp(Localize(<span class="source_string">"MPMiscMessages"</span>, <span class="source_string">"TKPopUpBoxTitle"</span>, <span class="source_string">"R6GameInfo"</span>), 
+<a name="524"></a>							       _KillerName@Localize(<span class="source_string">"MPMiscMessages"</span>, <span class="source_string">"DoYouWantToPenalize"</span>, <span class="source_string">"R6GameInfo"</span>),
+<a name="525"></a>							       EPopUpID_TKPenalty);
+<a name="526"></a>        <span class="source_type"><a href="../r6engine/r6playercontroller.html" class="source">R6PlayerController</a></span>(m_PlayerController).m_bAlreadyPoppedTKPopUpBox = true;
+<a name="527"></a>    }
+<a name="528"></a>}
+<a name="529"></a>
+<a name="530"></a>function TKPopUpDone(<span class="source_type">BOOL</span> _bApplyTeamKillerPenalty)
+<a name="531"></a>{
+<a name="532"></a>    m_PlayerController.ServerTKPopUpDone(_bApplyTeamKillerPenalty);
+<a name="533"></a>    <span class="source_type"><a href="../r6engine/r6playercontroller.html" class="source">R6PlayerController</a></span>(m_PlayerController).m_bProcessingRequestTKPopUp=false;
+<a name="534"></a>}
+<a name="535"></a>
+<a name="536"></a>event CountDownPopUpBox()
+<a name="537"></a>{
+<a name="538"></a>
+<a name="539"></a>    m_pCurrentRoot.<span class="source_type"><a href="../engine/console.html" class="source">Console</a></span>.ViewportOwner.u8WaitLaunchStatingSound = <span class="source_int">0</span>;
+<a name="540"></a>
+<a name="541"></a>    if( m_PlayerController.m_TeamSelection==PTS_Alpha || m_PlayerController.m_TeamSelection==PTS_Bravo )
+<a name="542"></a>    {
+<a name="543"></a><span class="source_macro">#ifdefDEBUG
+</span><a name="544"></a>	    if (bShowLog)
+<a name="545"></a>			log(<span class="source_string">"Count down START CountDownPopUpBox"</span>);
+<a name="546"></a><span class="source_macro">#endif
+</span><a name="547"></a>	    m_pCurrentRoot.ChangeCurrentWidget( InGameMPWID_CountDown);
+<a name="548"></a>    }
+<a name="549"></a>}
+<a name="550"></a>
+<a name="551"></a>function CountDownPopUpBoxDone()
+<a name="552"></a>{
+<a name="553"></a>	if (m_pCurrentRoot.m_eCurWidgetInUse != m_pCurrentRoot.<span class="source_type"><a href="../uwindow/uwindowrootwindow.html#eGameWidgetID" class="source">eGameWidgetID</a></span>.InGameMPWID_CountDown)
+<a name="554"></a>	{
+<a name="555"></a><span class="source_macro">#ifdefDEBUG
+</span><a name="556"></a>		if (bShowLog) 
+<a name="557"></a>			log(<span class="source_string">"CountDownPopUpBoxDone is call but you never call CountDownPopUpBox() before"</span>);
+<a name="558"></a><span class="source_macro">#endif
+</span><a name="559"></a>        if ((m_pCurrentRoot.GetPlayerOwner().<span class="source_type"><a href="../engine/pawn.html" class="source">Pawn</a></span> != None) && (m_pCurrentRoot.GetPlayerOwner().<span class="source_type"><a href="../engine/pawn.html" class="source">Pawn</a></span>.IsAlive()))
+<a name="560"></a>        {
+<a name="561"></a><span class="source_macro">#ifdefDEBUG
+</span><a name="562"></a>            <span class="source_comment">//log("Bingo!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+</span><a name="563"></a><span class="source_macro">#endif
+</span><a name="564"></a>        }
+<a name="565"></a>        else
+<a name="566"></a>    		return;
+<a name="567"></a>	}
+<a name="568"></a>
+<a name="569"></a><span class="source_macro">#ifdefDEBUG
+</span><a name="570"></a>	if (bShowLog) 
+<a name="571"></a>		log(<span class="source_string">"Count down END CountDownPopUpBoxDone"</span>);
+<a name="572"></a><span class="source_macro">#endif
+</span><a name="573"></a>    m_pCurrentRoot.ChangeWidget(WidgetID_None, false, true);
+<a name="574"></a>}
+<a name="575"></a>
+<a name="576"></a><span class="source_comment">//============================================================================================
+</span><a name="577"></a><span class="source_comment">// ActiveVoteMenu: Active the vote menu -- kick or not the player
+</span><a name="578"></a><span class="source_comment">//============================================================================================
+</span><a name="579"></a>function ActiveVoteMenu( <span class="source_type">BOOL</span> _bActiveMenu, optional <span class="source_type">string</span> _szPlayerNameToKick)
+<a name="580"></a>{
+<a name="581"></a>	m_pCurrentRoot.VoteMenu( _szPlayerNameToKick, _bActiveMenu);
+<a name="582"></a>}
+<a name="583"></a>
+<a name="584"></a><span class="source_comment">//============================================================================================
+</span><a name="585"></a><span class="source_comment">// SetVoteResult: Set the vote result
+</span><a name="586"></a><span class="source_comment">//============================================================================================
+</span><a name="587"></a>function SetVoteResult( <span class="source_type">BOOL</span> _bKickPlayer)
+<a name="588"></a>{
+<a name="589"></a>	if (_bKickPlayer)
+<a name="590"></a>	{
+<a name="591"></a>        <span class="source_type"><a href="../r6engine/r6playercontroller.html" class="source">R6PlayerController</a></span>(m_PlayerController).Vote(<span class="source_int">1</span>);
+<a name="592"></a>		<span class="source_comment">// TODO
+</span><a name="593"></a>		log(<span class="source_string">"KICK PLAYER YES"</span>);
+<a name="594"></a>	}
+<a name="595"></a>	else
+<a name="596"></a>	{
+<a name="597"></a>        <span class="source_type"><a href="../r6engine/r6playercontroller.html" class="source">R6PlayerController</a></span>(m_PlayerController).Vote(<span class="source_int">2</span>);
+<a name="598"></a>		<span class="source_comment">// TODO
+</span><a name="599"></a>		log(<span class="source_string">"KICK PLAYER NO"</span>);
+<a name="600"></a>	}
+<a name="601"></a>}
+<a name="602"></a>
+<a name="603"></a>function NewServerState()
+<a name="604"></a>{
+<a name="605"></a>    local <span class="source_type"><a href="../r6engine/r6playercontroller.html" class="source">R6PlayerController</a></span> _localPlayer;
+<a name="606"></a>    if (m_GameRepInfo == none)
+<a name="607"></a>        return;
+<a name="608"></a>    Super.NewServerState();
+<a name="609"></a>
+<a name="610"></a>    if (m_GameRepInfo.m_eCurrectServerState==m_GameRepInfo.RSS_EndOfMatch)
+<a name="611"></a>        m_pCurrentRoot.m_pIntermissionMenuWidget.m_pMPInterHeader.RefreshRoundInfo();
+<a name="612"></a>
+<a name="613"></a><span class="source_macro">#ifdefDEBUG
+</span><a name="614"></a>	LogServerState(); 
+<a name="615"></a><span class="source_macro">#endif
+</span><a name="616"></a>}
+<a name="617"></a>
+<a name="618"></a><span class="source_macro">#ifdefDEBUG
+</span><a name="619"></a>function LogServerState()
+<a name="620"></a>{
+<a name="621"></a>	if (bShowLog)
+<a name="622"></a>	{    
+<a name="623"></a>		if(m_GameRepInfo == None)
+<a name="624"></a>		{
+<a name="625"></a>			log(<span class="source_string">"Could not log Server state m_GameRepInfo == None"</span>);
+<a name="626"></a>			return;
+<a name="627"></a>		}
+<a name="628"></a>
+<a name="629"></a>		if (m_eLogOldCurrectServerState != m_GameRepInfo.m_eCurrectServerState)
+<a name="630"></a>		{
+<a name="631"></a>			if( m_GameRepInfo.m_eCurrectServerState==m_GameRepInfo.RSS_PlayersConnectingStage)
+<a name="632"></a>				log(<span class="source_string">"Server state RSS_PlayersConnectingStage"</span>);
+<a name="633"></a>			else if (m_GameRepInfo.m_eCurrectServerState==m_GameRepInfo.RSS_CountDownStage)
+<a name="634"></a>				log(<span class="source_string">"Server state RSS_CountDownStage"</span>);
+<a name="635"></a>			else if (m_GameRepInfo.m_eCurrectServerState==m_GameRepInfo.RSS_InPreGameState)
+<a name="636"></a>				log(<span class="source_string">"Server state RSS_InPreGameState"</span>);
+<a name="637"></a>			else if (m_GameRepInfo.m_eCurrectServerState==m_GameRepInfo.RSS_InGameState)
+<a name="638"></a>				log(<span class="source_string">"Server state RSS_InGameState"</span>);
+<a name="639"></a>			else if (m_GameRepInfo.m_eCurrectServerState==m_GameRepInfo.RSS_EndOfMatch)
+<a name="640"></a>				log(<span class="source_string">"Server state RSS_EndOfMatch"</span>);
+<a name="641"></a>			else
+<a name="642"></a>				log(<span class="source_string">" Server state not defined"</span>);
+<a name="643"></a>
+<a name="644"></a>			m_eLogOldCurrectServerState = m_GameRepInfo.m_eCurrectServerState;
+<a name="645"></a>		}
+<a name="646"></a>	}
+<a name="647"></a>}
+<a name="648"></a><span class="source_macro">#endif
+</span><a name="649"></a>
+<a name="650"></a>	
+<a name="651"></a>function SetClientServerSettings(<span class="source_type">bool</span> _bCanChangeOptions)
+<a name="652"></a>{
+<a name="653"></a>    m_pCurrentRoot.m_pIntermissionMenuWidget.SetClientServerSettings(_bCanChangeOptions);
+<a name="654"></a>}
+<a name="655"></a>
+<a name="656"></a><span class="source_comment">//===========================================================================================
+</span><a name="657"></a><span class="source_comment">// GetNbOfTeamPlayer: get the number of player of a specific team, spectator include
+</span><a name="658"></a><span class="source_comment">//===========================================================================================
+</span><a name="659"></a>function <span class="source_type">INT</span> GetNbOfTeamPlayer( <span class="source_type">BOOL</span> _bGreenTeam)
+<a name="660"></a>{
+<a name="661"></a>	local <span class="source_type">INT</span> <span class="source_type">i</span>, iGreenTeam, iRedTeam, iNbOfPlayer, <span class="source_type">iIndex</span>;
+<a name="662"></a>
+<a name="663"></a>	RefreshMPlayerInfo(); <span class="source_comment">// refresh info
+</span><a name="664"></a>
+<a name="665"></a>	iGreenTeam  = <span class="source_type"><a href="../core/object.html#ePlayerTeamSelection" class="source">ePlayerTeamSelection</a></span>.PTS_Alpha;
+<a name="666"></a>	iRedTeam    = <span class="source_type"><a href="../core/object.html#ePlayerTeamSelection" class="source">ePlayerTeamSelection</a></span>.PTS_Bravo;
+<a name="667"></a>
+<a name="668"></a>	iNbOfPlayer = <span class="source_int">0</span>;
+<a name="669"></a>
+<a name="670"></a>    for ( <span class="source_type">i</span> = <span class="source_int">0</span>; <span class="source_type">i</span> &lt; m_iLastValidIndex ; <span class="source_type">i</span>++ )
+<a name="671"></a>    {
+<a name="672"></a>		<span class="source_type">iIndex</span>   = GeTTeamSelection(<span class="source_type">i</span>);
+<a name="673"></a>
+<a name="674"></a>		if (_bGreenTeam)
+<a name="675"></a>		{
+<a name="676"></a>			if (<span class="source_type">iIndex</span> == iGreenTeam)
+<a name="677"></a>				iNbOfPlayer += <span class="source_int">1</span>;
+<a name="678"></a>		}
+<a name="679"></a>		else
+<a name="680"></a>		{
+<a name="681"></a>			if (<span class="source_type">iIndex</span> == iRedTeam)
+<a name="682"></a>				iNbOfPlayer += <span class="source_int">1</span>;
+<a name="683"></a>		}
+<a name="684"></a>
+<a name="685"></a>		<span class="source_comment">// if it's a spectator, nothing to do, is already manage in R6MenuMPTeamBar depending of active player
+</span><a name="686"></a>	}
+<a name="687"></a>
+<a name="688"></a>	return Min(iNbOfPlayer, <span class="source_int">8</span>); <span class="source_comment">// 8 is the max of player in a list
+</span><a name="689"></a>}
+<a name="690"></a>
+<a name="691"></a>simulated function <span class="source_type">bool</span> IsInGame()
+<a name="692"></a>{
+<a name="693"></a>    return m_pCurrentRoot.m_eCurWidgetInUse == WidgetID_None;
+<a name="694"></a>}
+<a name="695"></a>
+<a name="696"></a><span class="source_comment">//====================================================================================
+</span><a name="697"></a><span class="source_comment">// GetPlayerDidASelection: 
+</span><a name="698"></a><span class="source_comment">//====================================================================================
+</span><a name="699"></a>function <span class="source_type">BOOL</span> GetPlayerDidASelection()
+<a name="700"></a>{
+<a name="701"></a>    return m_pCurrentRoot.m_bPlayerDidASelection;
+<a name="702"></a>}
+<a name="703"></a>
+<a name="704"></a>defaultproperties
+<a name="705"></a>{
+<a name="706"></a>}
+<a name="707"></a></pre></td></tr></table></div>
+<hr />
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../r6menu/r6menu-overview.html">Package</a></td>
+	<td class="header"><a href="../r6menu/r6mpgamemenucom.html">Class</a></td>
+	<td class="header_hilight">Source</td>
+	<td class="header"><a class="header" href="../classtree.html#R6MPGameMenuCom">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../Source_r6menu/r6menuwpdeletebutton.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../Source_r6menu/r6operativeselectoritem.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+
+<div class="stats">Class file time: sam. 18/9/2004 14:39:52.000 - Creation time: mar. 26/5/2026 18:33:20.799 - Created with <a href="http://wiki.beyondunreal.com/wiki/UnCodeX" target="_blank">UnCodeX</a></div>
+
+</body>
+</html>

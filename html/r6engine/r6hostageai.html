@@ -1,0 +1,2094 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+	<title>UnCodeX - R6Engine.R6HostageAI</title>
+	<meta name="Generator" content="UnCodeX 241" />
+	<link rel="stylesheet" href="../DocStyle2.css" type="text/css" title="Original Purple" />
+	<link rel="alternative stylesheet" href="../DocStyle2-blue.css" type="text/css" title="Blue" />
+	<link rel="alternative stylesheet" href="../DocStyle2-red.css" type="text/css" title="Red" />
+	<!--[if IE]>
+	<link rel="stylesheet" href="../DocStyle2-msie.css" type="text/css" />
+	<![endif]-->
+	<script src="../styleswitcher.js" type="text/javascript"></script>
+</head>
+<body>
+
+<div class="header">
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../r6engine/r6engine-overview.html">Package</a></td>
+	<td class="header_hilight">Class</td>
+	<td class="header"><a href="../Source_r6engine/r6hostageai.html">Source</a></td>
+	<td class="header"><a class="header" href="../classtree.html#R6HostageAI">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../r6engine/r6hostage.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../r6engine/r6hostageicon.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html#r6engine/r6hostageai.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+</div>
+<div class="spacer"></div>
+
+<h1><a href="../r6engine/r6engine-overview.html">R6Engine</a>.R6HostageAI</h1>
+
+<dl>
+<dt>Extends</dt><dd><a href="../r6engine/r6aicontroller.html">R6AIController</a></dd>
+<dt>Modifiers</dt><dd>native </dd>
+</dl>
+
+<p></p>
+
+<pre class="tree"><a href="../core/core-overview.html">core</a>.<a href="../core/object.html">Object</a>
+|   
++-- <a href="../engine/engine-overview.html">engine</a>.<a href="../engine/actor.html">Actor</a>
+   |   
+   +-- <a href="../engine/engine-overview.html">engine</a>.<a href="../engine/controller.html">Controller</a>
+      |   
+      +-- <a href="../engine/engine-overview.html">engine</a>.<a href="../engine/aicontroller.html">AIController</a>
+         |   
+         +-- <a href="../r6engine/r6engine-overview.html">R6Engine</a>.<a href="../r6engine/r6aicontroller.html">R6AIController</a>
+            |   
+            +-- <a href="../r6engine/r6engine-overview.html">R6Engine</a>.<a href="../r6engine/r6hostageai.html">R6HostageAI</a>
+</pre>
+
+
+
+<hr />
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Constants Summary</th>
+</tr>
+<tr><td width="40%"><a href="#_C_iKeepDistanceFromPawn" name="C_iKeepDistanceFromPawn" title="go to the details">C_iKeepDistanceFromPawn</a></td><td width="10%">=</td><td width="50%">105</td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Contants from <a href="../r6engine/r6engine-overview.html">R6Engine</a>.<a href="../r6engine/r6aicontroller.html">R6AIController</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../r6engine/r6aicontroller.html#C_fMaxBumpTime">C_fMaxBumpTime</a></td>
+</tr>
+</table>
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th colspan="2" class="title">Variables Summary</th>
+</tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bThreatShowLog" name="bThreatShowLog" title="go to the details">bThreatShowLog</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">INT</td><td width="66%"><a href="#_c_iBraveModifier" name="c_iBraveModifier" title="go to the details">c_iBraveModifier</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">INT</td><td width="66%"><a href="#_c_iCautiousLastHearNoiseTime" name="c_iCautiousLastHearNoiseTime" title="go to the details">c_iCautiousLastHearNoiseTime</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">INT</td><td width="66%"><a href="#_c_iCowardModifier" name="c_iCowardModifier" title="go to the details">c_iCowardModifier</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">INT</td><td width="66%"><a href="#_c_iDistanceCatchUp" name="c_iDistanceCatchUp" title="go to the details">c_iDistanceCatchUp</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">INT</td><td width="66%"><a href="#_c_iDistanceMax" name="c_iDistanceMax" title="go to the details">c_iDistanceMax</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">INT</td><td width="66%"><a href="#_c_iDistanceToStartToRun" name="c_iDistanceToStartToRun" title="go to the details">c_iDistanceToStartToRun</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">INT</td><td width="66%"><a href="#_c_iEnemyNotVisibleTime" name="c_iEnemyNotVisibleTime" title="go to the details">c_iEnemyNotVisibleTime</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">INT</td><td width="66%"><a href="#_c_iGasModifier" name="c_iGasModifier" title="go to the details">c_iGasModifier</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">INT</td><td width="66%"><a href="#_c_iNormalModifier" name="c_iNormalModifier" title="go to the details">c_iNormalModifier</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">INT</td><td width="66%"><a href="#_c_iRunForCoverOfGrenadeMinDist" name="c_iRunForCoverOfGrenadeMinDist" title="go to the details">c_iRunForCoverOfGrenadeMinDist</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">INT</td><td width="66%"><a href="#_c_iWoundedModifier" name="c_iWoundedModifier" title="go to the details">c_iWoundedModifier</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../engine/r6engineweapon.html">R6EngineWeapon</a></td><td width="66%"><a href="#_DefaultWeapon" name="DefaultWeapon" title="go to the details">DefaultWeapon</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">class&lt;<a href="../engine/r6engineweapon.html">R6EngineWeapon</a>&gt;</td><td width="66%"><a href="#_DefaultWeaponClass" name="DefaultWeaponClass" title="go to the details">DefaultWeaponClass</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../engine/actor.html#RandomTweenNum">RandomTweenNum</a></td><td width="66%"><a href="#_m_AITickTime" name="m_AITickTime" title="go to the details">m_AITickTime</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../r6engine/r6hostageai.html#OrderInfo">OrderInfo</a></td><td width="66%"><a href="#_m_aOrderInfo[2]" name="m_aOrderInfo[2]" title="go to the details">m_aOrderInfo[2]</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../r6engine/r6hostageai.html#PlaySndInfo">PlaySndInfo</a></td><td width="66%"><a href="#_m_aPlaySndInfo[12]" name="m_aPlaySndInfo[12]" title="go to the details">m_aPlaySndInfo[12]</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_m_bDbgIgnoreRainbow" name="m_bDbgIgnoreRainbow" title="go to the details">m_bDbgIgnoreRainbow</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_m_bDbgIgnoreThreat" name="m_bDbgIgnoreThreat" title="go to the details">m_bDbgIgnoreThreat</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_m_bDbgRoll" name="m_bDbgRoll" title="go to the details">m_bDbgRoll</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">BOOL</td><td width="66%"><a href="#_m_bFirstTimeClarkComment" name="m_bFirstTimeClarkComment" title="go to the details">m_bFirstTimeClarkComment</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_m_bFollowIncreaseDistance" name="m_bFollowIncreaseDistance" title="go to the details">m_bFollowIncreaseDistance</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_m_bForceToStayHere" name="m_bForceToStayHere" title="go to the details">m_bForceToStayHere</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_m_bLatentFnStopped" name="m_bLatentFnStopped" title="go to the details">m_bLatentFnStopped</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_m_bNeedToRunToCatchUp" name="m_bNeedToRunToCatchUp" title="go to the details">m_bNeedToRunToCatchUp</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_m_bool" name="m_bool" title="go to the details">m_bool</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_m_bRunningToward" name="m_bRunningToward" title="go to the details">m_bRunningToward</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_m_bRunToRainbowSuccess" name="m_bRunToRainbowSuccess" title="go to the details">m_bRunToRainbowSuccess</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_m_bSlowedPace" name="m_bSlowedPace" title="go to the details">m_bSlowedPace</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_m_bStopDoTransition" name="m_bStopDoTransition" title="go to the details">m_bStopDoTransition</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../r6engine/r6pawn.html">R6Pawn</a></td><td width="66%"><a href="#_m_escort" name="m_escort" title="go to the details">m_escort</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../r6engine/r6hostage.html#EStartingPosition">R6Hostage.EStartingPosition</a></td><td width="66%"><a href="#_m_eTransitionPosition" name="m_eTransitionPosition" title="go to the details">m_eTransitionPosition</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_m_float" name="m_float" title="go to the details">m_float</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">INT</td><td width="66%"><a href="#_m_iDbgRoll" name="m_iDbgRoll" title="go to the details">m_iDbgRoll</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">INT</td><td width="66%"><a href="#_m_iFacingTime" name="m_iFacingTime" title="go to the details">m_iFacingTime</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">INT</td><td width="66%"><a href="#_m_iLastHearNoiseTime" name="m_iLastHearNoiseTime" title="go to the details">m_iLastHearNoiseTime</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">INT</td><td width="66%"><a href="#_m_iNbOrder" name="m_iNbOrder" title="go to the details">m_iNbOrder</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">INT</td><td width="66%"><a href="#_m_iNotGuardedSince" name="m_iNotGuardedSince" title="go to the details">m_iNotGuardedSince</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">INT</td><td width="66%"><a href="#_m_iPlayReaction1" name="m_iPlayReaction1" title="go to the details">m_iPlayReaction1</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">INT</td><td width="66%"><a href="#_m_iPlayReaction2" name="m_iPlayReaction2" title="go to the details">m_iPlayReaction2</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">INT</td><td width="66%"><a href="#_m_iWaitingTime" name="m_iWaitingTime" title="go to the details">m_iWaitingTime</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../r6engine/r6pawn.html">R6Pawn</a></td><td width="66%"><a href="#_m_lastSeenPawn" name="m_lastSeenPawn" title="go to the details">m_lastSeenPawn</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">INT</td><td width="66%"><a href="#_m_lastUpdatePaceTime" name="m_lastUpdatePaceTime" title="go to the details">m_lastUpdatePaceTime</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../r6engine/r6hostagemgr.html">R6HostageMgr</a></td><td width="66%"><a href="#_m_mgr" name="m_mgr" title="go to the details">m_mgr</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">name</td><td width="66%"><a href="#_m_name" name="m_name" title="go to the details">m_name</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../r6engine/r6hostage.html">R6Hostage</a></td><td width="66%"><a href="#_m_pawn" name="m_pawn" title="go to the details">m_pawn</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../r6engine/r6pawn.html">R6Pawn</a></td><td width="66%"><a href="#_m_pawnToFollow" name="m_pawnToFollow" title="go to the details">m_pawnToFollow</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../engine/actor.html">Actor</a></td><td width="66%"><a href="#_m_pGotoToExtractionZone" name="m_pGotoToExtractionZone" title="go to the details">m_pGotoToExtractionZone</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">name</td><td width="66%"><a href="#_m_reactToGrenadeStateToReturn" name="m_reactToGrenadeStateToReturn" title="go to the details">m_reactToGrenadeStateToReturn</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../core/object.html#Rotator">rotator</a></td><td width="66%"><a href="#_m_rotator" name="m_rotator" title="go to the details">m_rotator</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../engine/actor.html">actor</a></td><td width="66%"><a href="#_m_runAwayOfGrenade" name="m_runAwayOfGrenade" title="go to the details">m_runAwayOfGrenade</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../engine/actor.html#RandomTweenNum">RandomTweenNum</a></td><td width="66%"><a href="#_m_RunForCoverMinTween" name="m_RunForCoverMinTween" title="go to the details">m_RunForCoverMinTween</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">name</td><td width="66%"><a href="#_m_runForCoverStateToGoOnFailure" name="m_runForCoverStateToGoOnFailure" title="go to the details">m_runForCoverStateToGoOnFailure</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">name</td><td width="66%"><a href="#_m_runForCoverStateToGoOnSuccess" name="m_runForCoverStateToGoOnSuccess" title="go to the details">m_runForCoverStateToGoOnSuccess</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../engine/actor.html#RandomTweenNum">RandomTweenNum</a></td><td width="66%"><a href="#_m_scareToDeathTween" name="m_scareToDeathTween" title="go to the details">m_scareToDeathTween</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../engine/actor.html#RandomTweenNum">RandomTweenNum</a></td><td width="66%"><a href="#_m_stayBlindedTweenTime" name="m_stayBlindedTweenTime" title="go to the details">m_stayBlindedTweenTime</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../r6engine/r6terrorist.html">R6Terrorist</a></td><td width="66%"><a href="#_m_terrorist" name="m_terrorist" title="go to the details">m_terrorist</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">name</td><td width="66%"><a href="#_m_threatGroupName" name="m_threatGroupName" title="go to the details">m_threatGroupName</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../r6engine/r6hostagemgr.html#ThreatInfo">R6HostageMgr.ThreatInfo</a></td><td width="66%"><a href="#_m_threatInfo" name="m_threatInfo" title="go to the details">m_threatInfo</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../core/object.html#Vector">vector</a></td><td width="66%"><a href="#_m_vectorTemp" name="m_vectorTemp" title="go to the details">m_vectorTemp</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../core/object.html#Vector">vector</a></td><td width="66%"><a href="#_m_vMoveToDest" name="m_vMoveToDest" title="go to the details">m_vMoveToDest</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../r6engine/r6hostagevoices.html">R6HostageVoices</a></td><td width="66%"><a href="#_m_VoicesManager" name="m_VoicesManager" title="go to the details">m_VoicesManager</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../core/object.html#Vector">vector</a></td><td width="66%"><a href="#_m_vReactionDirection" name="m_vReactionDirection" title="go to the details">m_vReactionDirection</a></td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Variables from <a href="../r6engine/r6engine-overview.html">R6Engine</a>.<a href="../r6engine/r6aicontroller.html">R6AIController</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../r6engine/r6aicontroller.html#bShowInteractionLog">bShowInteractionLog</a>, <a href="../r6engine/r6aicontroller.html#bShowLog">bShowLog</a>, <a href="../r6engine/r6aicontroller.html#c_iDistanceBumpBackUp">c_iDistanceBumpBackUp</a>, <a href="../r6engine/r6aicontroller.html#m_ActorTarget">m_ActorTarget</a>, <a href="../r6engine/r6aicontroller.html#m_AnimName">m_AnimName</a>, <a href="../r6engine/r6aicontroller.html#m_bCantInterruptIO">m_bCantInterruptIO</a>, <a href="../r6engine/r6aicontroller.html#m_bChangingState">m_bChangingState</a>, <a href="../r6engine/r6aicontroller.html#m_bGetOffLadder">m_bGetOffLadder</a>, <a href="../r6engine/r6aicontroller.html#m_bIgnoreBackupBump">m_bIgnoreBackupBump</a>, <a href="../r6engine/r6aicontroller.html#m_bMoveTargetAlreadySet">m_bMoveTargetAlreadySet</a>, <a href="../r6engine/r6aicontroller.html#m_bStateBackupAvoidFacingWalls">m_bStateBackupAvoidFacingWalls</a>, <a href="../r6engine/r6aicontroller.html#m_bumpBackUpNextState">m_bumpBackUpNextState</a>, <a href="../r6engine/r6aicontroller.html#m_BumpedBy">m_BumpedBy</a>, <a href="../r6engine/r6aicontroller.html#m_climbingObject">m_climbingObject</a>, <a href="../r6engine/r6aicontroller.html#m_climbingObjectNextState">m_climbingObjectNextState</a>, <a href="../r6engine/r6aicontroller.html#m_closeDoor">m_closeDoor</a>, <a href="../r6engine/r6aicontroller.html#m_fLastBump">m_fLastBump</a>, <a href="../r6engine/r6aicontroller.html#m_fLoopAnimTime">m_fLoopAnimTime</a>, <a href="../r6engine/r6aicontroller.html#m_iCurrentRouteCache">m_iCurrentRouteCache</a>, <a href="../r6engine/r6aicontroller.html#m_InteractionObject">m_InteractionObject</a>, <a href="../r6engine/r6aicontroller.html#m_openDoorNextState">m_openDoorNextState</a>, <a href="../r6engine/r6aicontroller.html#m_r6pawn">m_r6pawn</a>, <a href="../r6engine/r6aicontroller.html#m_StateAfterInteraction">m_StateAfterInteraction</a>, <a href="../r6engine/r6aicontroller.html#m_TargetLadder">m_TargetLadder</a>, <a href="../r6engine/r6aicontroller.html#m_vBumpedByLocation">m_vBumpedByLocation</a>, <a href="../r6engine/r6aicontroller.html#m_vBumpedByVelocity">m_vBumpedByVelocity</a>, <a href="../r6engine/r6aicontroller.html#m_vPreviousPosition">m_vPreviousPosition</a>, <a href="../r6engine/r6aicontroller.html#m_vTargetPosition">m_vTargetPosition</a></td>
+</tr>
+</table>
+<table>
+<tr>
+	<th class="inherittitle">Inherited Variables from <a href="../engine/engine-overview.html">engine</a>.<a href="../engine/aicontroller.html">AIController</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../engine/aicontroller.html#bAdjustFromWalls">bAdjustFromWalls</a>, <a href="../engine/aicontroller.html#bHunting">bHunting</a>, <a href="../engine/aicontroller.html#MyScript">MyScript</a>, <a href="../engine/aicontroller.html#Skill">Skill</a></td>
+</tr>
+</table>
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Enumerations Summary</th>
+</tr>
+<tr><td><a href="#_eHostageOrder" name="eHostageOrder" title="go to the details">eHostageOrder</a><br /><span class="small">HOrder_None,
+HOrder_ComeWithMe,
+HOrder_StayHere,
+HOrder_Surrender,
+HOrder_GotoExtraction</span></td></tr>
+
+</table>
+
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Structures Summary</th>
+</tr>
+<tr><td><a href="#_OrderInfo" name="OrderInfo" title="go to the details">OrderInfo</a><br /><span class="small">m_bOrderedByRainbow, m_pawn1, m_eOrder, m_fTime, m_actor</span></td></tr>
+<tr><td><a href="#_PlaySndInfo" name="PlaySndInfo" title="go to the details">PlaySndInfo</a><br /><span class="small">m_iLastTime, m_iInBetweenTime</span></td></tr>
+
+</table>
+
+
+
+<br />
+
+
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Functions Summary</th>
+</tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_AIAffectedByGrenade-" name="AIAffectedByGrenade" title="go to the details">AIAffectedByGrenade</a> (<a href="../engine/actor.html">Actor</a> aGrenade, <a href="../engine/pawn.html#EGrenadeType">R6Pawn.EGrenadeType</a> eType))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_AIAffectedByGrenade-Extracted" name="AIAffectedByGrenade" title="go to the details">AIAffectedByGrenade</a> (<a href="../engine/actor.html">Actor</a> aGrenade, <a href="../engine/pawn.html#EGrenadeType">R6Pawn.EGrenadeType</a> eType))<br /><span class="function_state">Extracted</span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_BeginState-CivGuardPoint" name="BeginState" title="go to the details">BeginState</a> ()))<br /><span class="function_state">CivGuardPoint</span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_BeginState-Civilian" name="BeginState" title="go to the details">BeginState</a> ()))<br /><span class="function_state">Civilian</span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_BeginState-CivPatrolArea" name="BeginState" title="go to the details">BeginState</a> ()))<br /><span class="function_state">CivPatrolArea</span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_BeginState-CivPatrolPath" name="BeginState" title="go to the details">BeginState</a> ()))<br /><span class="function_state">CivPatrolPath</span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_BeginState-CivRunForCover" name="BeginState" title="go to the details">BeginState</a> ()))<br /><span class="function_state">CivRunForCover</span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_BeginState-CivRunTowardRainbow" name="BeginState" title="go to the details">BeginState</a> ()))<br /><span class="function_state">CivRunTowardRainbow</span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_BeginState-CivScareToDeath" name="BeginState" title="go to the details">BeginState</a> ()))<br /><span class="function_state">CivScareToDeath</span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_BeginState-CivStayHere" name="BeginState" title="go to the details">BeginState</a> ()))<br /><span class="function_state">CivStayHere</span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_BeginState-CivSurrender" name="BeginState" title="go to the details">BeginState</a> ()))<br /><span class="function_state">CivSurrender</span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_BeginState-Configuration" name="BeginState" title="go to the details">BeginState</a> ()))<br /><span class="function_state">Configuration</span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_BeginState-DbgHostage" name="BeginState" title="go to the details">BeginState</a> ()))<br /><span class="function_state">DbgHostage</span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_beginState-EscortedByEnemy" name="beginState" title="go to the details">beginState</a> ()))<br /><span class="function_state">EscortedByEnemy</span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_BeginState-Extracted" name="BeginState" title="go to the details">BeginState</a> ()))<br /><span class="function_state">Extracted</span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_BeginState-FollowingPaceTransition" name="BeginState" title="go to the details">BeginState</a> ()))<br /><span class="function_state">FollowingPaceTransition</span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_BeginState-FollowingPawn" name="BeginState" title="go to the details">BeginState</a> ()))<br /><span class="function_state">FollowingPawn</span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_BeginState-Freed" name="BeginState" title="go to the details">BeginState</a> ()))<br /><span class="function_state">Freed</span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_BeginState-GoCivScareToDeath" name="BeginState" title="go to the details">BeginState</a> ()))<br /><span class="function_state">GoCivScareToDeath</span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_BeginState-GoGuarded_Foetus" name="BeginState" title="go to the details">BeginState</a> ()))<br /><span class="function_state">GoGuarded_Foetus</span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_BeginState-GoGuarded_frozen" name="BeginState" title="go to the details">BeginState</a> ()))<br /><span class="function_state">GoGuarded_frozen</span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_BeginState-GoHstFreedButSeeEnemy" name="BeginState" title="go to the details">BeginState</a> ()))<br /><span class="function_state">GoHstFreedButSeeEnemy</span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_BeginState-GoHstRunForCover" name="BeginState" title="go to the details">BeginState</a> ()))<br /><span class="function_state">GoHstRunForCover</span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_BeginState-GoHstRunTowardRainbow" name="BeginState" title="go to the details">BeginState</a> ()))<br /><span class="function_state">GoHstRunTowardRainbow</span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_BeginState-GotoExtraction" name="BeginState" title="go to the details">BeginState</a> ()))<br /><span class="function_state">GotoExtraction</span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_BeginState-Guarded" name="BeginState" title="go to the details">BeginState</a> ()))<br /><span class="function_state">Guarded</span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_BeginState-Guarded_foetus" name="BeginState" title="go to the details">BeginState</a> ()))<br /><span class="function_state">Guarded_foetus</span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_BeginState-Guarded_frozen" name="BeginState" title="go to the details">BeginState</a> ()))<br /><span class="function_state">Guarded_frozen</span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_BeginState-ReactToGrenade" name="BeginState" title="go to the details">BeginState</a> ()))<br /><span class="function_state">ReactToGrenade</span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_BeginState-RunForCover" name="BeginState" title="go to the details">BeginState</a> ()))<br /><span class="function_state">RunForCover</span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_BumpBackUpStateFinished-" name="BumpBackUpStateFinished" title="go to the details">BumpBackUpStateFinished</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>bool&nbsp;</td><td><a href="#_CanClimbLadders-" name="CanClimbLadders" title="go to the details">CanClimbLadders</a> (R6Ladder <a href="../engine/ladder.html">ladder</a> ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>bool&nbsp;</td><td><a href="#_CanConsiderThreat-" name="CanConsiderThreat" title="go to the details">CanConsiderThreat</a> (<a href="../r6engine/r6pawn.html">R6Pawn</a> aPawn, <a href="../engine/actor.html">Actor</a> aThreat, name considerThreat ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_event.gif" alt="event" title="event" /></td><td>bool&nbsp;</td><td><a href="#_CanOpenDoor-" name="CanOpenDoor" title="go to the details">CanOpenDoor</a> (R6IORotatingDoor <a href="../engine/door.html">door</a> ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>bool&nbsp;</td><td><a href="#_CanReturnToNormalState-" name="CanReturnToNormalState" title="go to the details">CanReturnToNormalState</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>bool&nbsp;</td><td><a href="#_CanStopMoving-" name="CanStopMoving" title="go to the details">CanStopMoving</a> (bool bCheckIfShouldMove ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_CheckNeedToClimbLadder-" name="CheckNeedToClimbLadder" title="go to the details">CheckNeedToClimbLadder</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_CivInit-" name="CivInit" title="go to the details">CivInit</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_DispatchOrder-" name="DispatchOrder" title="go to the details">DispatchOrder</a> (INT iOrder, OPTIONAL R6Pawn orderFrom ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_EndState-Civilian" name="EndState" title="go to the details">EndState</a> ()))<br /><span class="function_state">Civilian</span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_EndState-Configuration" name="EndState" title="go to the details">EndState</a> ()))<br /><span class="function_state">Configuration</span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_endState-EscortedByEnemy" name="endState" title="go to the details">endState</a> ()))<br /><span class="function_state">EscortedByEnemy</span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_EndState-FollowingPawn" name="EndState" title="go to the details">EndState</a> ()))<br /><span class="function_state">FollowingPawn</span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_EndState-Freed" name="EndState" title="go to the details">EndState</a> ()))<br /><span class="function_state">Freed</span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_EndState-Guarded" name="EndState" title="go to the details">EndState</a> ()))<br /><span class="function_state">Guarded</span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_EndState-RunForCover" name="EndState" title="go to the details">EndState</a> ()))<br /><span class="function_state">RunForCover</span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_EnemyNotVisible-RunForCover" name="EnemyNotVisible" title="go to the details">EnemyNotVisible</a> ()))<br /><span class="function_state">RunForCover</span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_EscortIsOver-EscortedByEnemy" name="EscortIsOver" title="go to the details">EscortIsOver</a> (bool bSuccess ))<br /><span class="function_state">EscortedByEnemy</span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_FollowPawnFailed-" name="FollowPawnFailed" title="go to the details">FollowPawnFailed</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>INT&nbsp;</td><td><a href="#_GetFacingTime-CivPatrolPath" name="GetFacingTime" title="go to the details">GetFacingTime</a> ()))<br /><span class="function_state">CivPatrolPath</span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td><a href="../r6engine/r6rainbow.html">R6Rainbow</a>&nbsp;</td><td><a href="#_GetRainbowWhoEscortThisPawn-" name="GetRainbowWhoEscortThisPawn" title="go to the details">GetRainbowWhoEscortThisPawn</a> (R6Pawn follow ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td><a href="../core/object.html#Rotator">Rotator</a>&nbsp;</td><td><a href="#_GetRandomTurn90-" name="GetRandomTurn90" title="go to the details">GetRandomTurn90</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>name&nbsp;</td><td><a href="#_GetThreatGroupName-" name="GetThreatGroupName" title="go to the details">GetThreatGroupName</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>INT&nbsp;</td><td><a href="#_GetWaitingTime-CivPatrolPath" name="GetWaitingTime" title="go to the details">GetWaitingTime</a> ()))<br /><span class="function_state">CivPatrolPath</span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_event.gif" alt="event" title="event" /></td><td>&nbsp;</td><td><a href="#_HearNoise-" name="HearNoise" title="go to the details">HearNoise</a> (float fLoudness, <a href="../engine/actor.html">Actor</a> noiseMaker, ENoiseType eType ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_event.gif" alt="event" title="event" /></td><td>&nbsp;</td><td><a href="#_HearNoise-OpenDoor" name="HearNoise" title="go to the details">HearNoise</a> (float fLoudness, <a href="../engine/actor.html">Actor</a> noiseMaker, <a href="../engine/actor.html#ENoiseType">ENoiseType</a> eType)<br /><span class="function_state">OpenDoor</span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>bool&nbsp;</td><td><a href="#_IsAwayOfGrenade-" name="IsAwayOfGrenade" title="go to the details">IsAwayOfGrenade</a> (Actor grenade ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>bool&nbsp;</td><td><a href="#_IsBumpBackUpStateFinish-" name="IsBumpBackUpStateFinish" title="go to the details">IsBumpBackUpStateFinish</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>BOOL&nbsp;</td><td><a href="#_IsGoingBack-CivPatrolPath" name="IsGoingBack" title="go to the details">IsGoingBack</a> ()))<br /><span class="function_state">CivPatrolPath</span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>bool&nbsp;</td><td><a href="#_IsGuarded-" name="IsGuarded" title="go to the details">IsGuarded</a> (OPTIONAL bool bNoTimer, OPTIONAL bool bMustSeeMe ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>bool&nbsp;</td><td><a href="#_IsInCrouchedPosture-" name="IsInCrouchedPosture" title="go to the details">IsInCrouchedPosture</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>bool&nbsp;</td><td><a href="#_IsInTemporaryState-" name="IsInTemporaryState" title="go to the details">IsInTemporaryState</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>bool&nbsp;</td><td><a href="#_IsRunForCoverPossible-" name="IsRunForCoverPossible" title="go to the details">IsRunForCoverPossible</a> (Pawn runAwayOf ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>bool&nbsp;</td><td><a href="#_IsRunForCoverSuccessfull-RunForCover" name="IsRunForCoverSuccessfull" title="go to the details">IsRunForCoverSuccessfull</a> ()))<br /><span class="function_state">RunForCover</span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_event.gif" alt="event" title="event" /></td><td>bool&nbsp;</td><td><a href="#_NotifyBump-FollowingPawn" name="NotifyBump" title="go to the details">NotifyBump</a> (<a href="../engine/actor.html">Actor</a> other))<br /><span class="function_state">FollowingPawn</span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_event.gif" alt="event" title="event" /></td><td>&nbsp;</td><td><a href="#_OpenDoorFailed-" name="OpenDoorFailed" title="go to the details">OpenDoorFailed</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_event.gif" alt="event" title="event" /></td><td>&nbsp;</td><td><a href="#_OpenDoorFailed-CivPatrolPath" name="OpenDoorFailed" title="go to the details">OpenDoorFailed</a> ()))<br /><span class="function_state">CivPatrolPath</span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_event.gif" alt="event" title="event" /></td><td>&nbsp;</td><td><a href="#_OpenDoorFailed-RunForCover" name="OpenDoorFailed" title="go to the details">OpenDoorFailed</a> ()))<br /><span class="function_state">RunForCover</span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_Order_Add-" name="Order_Add" title="go to the details">Order_Add</a> (<a href="../r6engine/r6hostageai.html#eHostageOrder">eHostageOrder</a> eOrder, <a href="../r6engine/r6pawn.html">R6Pawn</a> aPawn, OPTIONAL bool bOrderedByRainbow, OPTIONAL actor anActor ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>bool&nbsp;</td><td><a href="#_Order_canFollowMe-" name="Order_canFollowMe" title="go to the details">Order_canFollowMe</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_Order_FollowMe-" name="Order_FollowMe" title="go to the details">Order_FollowMe</a> (<a href="../r6engine/r6pawn.html">R6Pawn</a> aPawn, bool bOrderedByRainbow ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>string&nbsp;</td><td><a href="#_Order_GetLog-" name="Order_GetLog" title="go to the details">Order_GetLog</a> (OrderInfo <a href="../engine/info.html">info</a> ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_Order_GotoExtraction-" name="Order_GotoExtraction" title="go to the details">Order_GotoExtraction</a> (Actor aZone ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td><a href="../r6engine/r6hostageai.html#OrderInfo">OrderInfo</a>&nbsp;</td><td><a href="#_Order_Pop-" name="Order_Pop" title="go to the details">Order_Pop</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_Order_Process-" name="Order_Process" title="go to the details">Order_Process</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_Order_ProcessFollowMe-" name="Order_ProcessFollowMe" title="go to the details">Order_ProcessFollowMe</a> (<a href="../r6engine/r6pawn.html">R6Pawn</a> follow, bool bOrderedByRainbow ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_Order_ProcessGotoExtraction-" name="Order_ProcessGotoExtraction" title="go to the details">Order_ProcessGotoExtraction</a> (Actor aZone ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_Order_ProcessStayHere-" name="Order_ProcessStayHere" title="go to the details">Order_ProcessStayHere</a> (bool bOrderedByRainbow ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_Order_ProcessSurrender-" name="Order_ProcessSurrender" title="go to the details">Order_ProcessSurrender</a> (Pawn terro ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_Order_StayHere-" name="Order_StayHere" title="go to the details">Order_StayHere</a> (bool bOrderedByRainbow ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_Order_Surrender-" name="Order_Surrender" title="go to the details">Order_Surrender</a> (R6Pawn aPawn ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_PawnDied-" name="PawnDied" title="go to the details">PawnDied</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_PickDestination-CivPatrolPath" name="PickDestination" title="go to the details">PickDestination</a> ()))<br /><span class="function_state">CivPatrolPath</span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_PlaySoundAffectedByGrenade-" name="PlaySoundAffectedByGrenade" title="go to the details">PlaySoundAffectedByGrenade</a> (<a href="../engine/pawn.html#EGrenadeType">R6Pawn.EGrenadeType</a> eType))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_PlaySoundDamage-" name="PlaySoundDamage" title="go to the details">PlaySoundDamage</a> (<a href="../engine/pawn.html">Pawn</a> instigatedBy))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_Possess-" name="Possess" title="go to the details">Possess</a> (<a href="../engine/pawn.html">Pawn</a> aPawn))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_event.gif" alt="event" title="event" /></td><td>&nbsp;</td><td><a href="#_PostBeginPlay-" name="PostBeginPlay" title="go to the details">PostBeginPlay</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>BOOL&nbsp;</td><td><a href="#_ProcessPlaySndInfo-" name="ProcessPlaySndInfo" title="go to the details">ProcessPlaySndInfo</a> (int iSndEvent ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_ProcessThreat-" name="ProcessThreat" title="go to the details">ProcessThreat</a> (<a href="../engine/actor.html">Actor</a> p, ENoiseType eType ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_ResetThreatInfo-" name="ResetThreatInfo" title="go to the details">ResetThreatInfo</a> (string sz ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_ReturnToNormalState-" name="ReturnToNormalState" title="go to the details">ReturnToNormalState</a> (OPTIONAL bool bNoTimer ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>INT&nbsp;</td><td><a href="#_Roll-" name="Roll" title="go to the details">Roll</a> (INT iMax))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>bool&nbsp;</td><td><a href="#_RouteCacheWithOtherLadder-" name="RouteCacheWithOtherLadder" title="go to the details">RouteCacheWithOtherLadder</a> (r6ladder <a href="../engine/ladder.html">ladder</a> ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_SeePlayer-" name="SeePlayer" title="go to the details">SeePlayer</a> (Pawn p ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_SeePlayer-CivGuardPoint" name="SeePlayer" title="go to the details">SeePlayer</a> (Pawn p ))<br /><span class="function_state">CivGuardPoint</span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_SeePlayer-OpenDoor" name="SeePlayer" title="go to the details">SeePlayer</a> (<a href="../engine/pawn.html">Pawn</a> p)<br /><span class="function_state">OpenDoor</span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_SeePlayerMgr-" name="SeePlayerMgr" title="go to the details">SeePlayerMgr</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_SeePlayerMgr-OpenDoor" name="SeePlayerMgr" title="go to the details">SeePlayerMgr</a> ()<br /><span class="function_state">OpenDoor</span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_SetFreed-" name="SetFreed" title="go to the details">SetFreed</a> (bool bFreed ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>bool&nbsp;</td><td><a href="#_SetMovementPace-" name="SetMovementPace" title="go to the details">SetMovementPace</a> (bool bStartingToMove ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_SetPace-" name="SetPace" title="go to the details">SetPace</a> (R6Pawn.eMovementPace ePace ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_SetPawnPosition-" name="SetPawnPosition" title="go to the details">SetPawnPosition</a> (R6Hostage.EStartingPosition ePos ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_SetStateEscorted-" name="SetStateEscorted" title="go to the details">SetStateEscorted</a> (<a href="../r6engine/r6pawn.html">R6Pawn</a> escort, <a href="../core/object.html#Vector">vector</a> destination, bool bSurrender  ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_SetStateExtracted-" name="SetStateExtracted" title="go to the details">SetStateExtracted</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_SetStateFollowingPawn-" name="SetStateFollowingPawn" title="go to the details">SetStateFollowingPawn</a> (<a href="../r6engine/r6pawn.html">R6Pawn</a> runTo, bool bFreed, int iHstSndEvent ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_SetStateGuarded-" name="SetStateGuarded" title="go to the details">SetStateGuarded</a> (<a href="../r6engine/r6hostage.html#EStartingPosition">R6Hostage.EStartingPosition</a> ePos, int iHstSndEvent ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_SetStatePaceTransition-" name="SetStatePaceTransition" title="go to the details">SetStatePaceTransition</a> (R6Hostage.EStartingPosition ePos ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_SetStateReactToGrenade-" name="SetStateReactToGrenade" title="go to the details">SetStateReactToGrenade</a> (name stateToReturn ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_SetStateRunForCover-" name="SetStateRunForCover" title="go to the details">SetStateRunForCover</a> (<a href="../engine/pawn.html">Pawn</a> runAwayOfPawn, name successState, name failureState, Actor grenade ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_SetThreatState-" name="SetThreatState" title="go to the details">SetThreatState</a> (name threatState ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_SetToNextNode-CivPatrolPath" name="SetToNextNode" title="go to the details">SetToNextNode</a> ()))<br /><span class="function_state">CivPatrolPath</span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_StopFollowingPawn-" name="StopFollowingPawn" title="go to the details">StopFollowingPawn</a> (bool bOrderedByRainbow ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_StopRunForCover-RunForCover" name="StopRunForCover" title="go to the details">StopRunForCover</a> ()))<br /><span class="function_state">RunForCover</span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_Tick-" name="Tick" title="go to the details">Tick</a> (FLOAT fDeltaTime))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_Timer-Extracted" name="Timer" title="go to the details">Timer</a> ()))<br /><span class="function_state">Extracted</span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_Timer-FollowingPawn" name="Timer" title="go to the details">Timer</a> ()))<br /><span class="function_state">FollowingPawn</span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_Timer-Freed" name="Timer" title="go to the details">Timer</a> ()))<br /><span class="function_state">Freed</span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_Timer-Guarded" name="Timer" title="go to the details">Timer</a> ()))<br /><span class="function_state">Guarded</span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_Timer-Guarded_foetus" name="Timer" title="go to the details">Timer</a> ()))<br /><span class="function_state">Guarded_foetus</span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_Timer-Guarded_frozen" name="Timer" title="go to the details">Timer</a> ()))<br /><span class="function_state">Guarded_frozen</span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_Timer-RunForCover" name="Timer" title="go to the details">Timer</a> ()))<br /><span class="function_state">RunForCover</span></td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Functions from <a href="../r6engine/r6engine-overview.html">R6Engine</a>.<a href="../r6engine/r6aicontroller.html">R6AIController</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../r6engine/r6aicontroller.html#ActorReachableFromLocation">ActorReachableFromLocation</a>, <a href="../r6engine/r6aicontroller.html#AIAffectedByGrenade">AIAffectedByGrenade</a>, <a href="../r6engine/r6aicontroller.html#AnimEnd">AnimEnd</a>, <a href="../r6engine/r6aicontroller.html#AreClimbingInSameDirection">AreClimbingInSameDirection</a>, <a href="../r6engine/r6aicontroller.html#BeginState">BeginState</a>, <a href="../r6engine/r6aicontroller.html#BumpBackUpStateFinished">BumpBackUpStateFinished</a>, <a href="../r6engine/r6aicontroller.html#CanClimbLadders">CanClimbLadders</a>, <a href="../r6engine/r6aicontroller.html#CanClimbObject">CanClimbObject</a>, <a href="../r6engine/r6aicontroller.html#CanInteractWithObjects">CanInteractWithObjects</a>, <a href="../r6engine/r6aicontroller.html#CanOpenDoor">CanOpenDoor</a>, <a href="../r6engine/r6aicontroller.html#CanWalkTo">CanWalkTo</a>, <a href="../r6engine/r6aicontroller.html#ChangeOrientationTo">ChangeOrientationTo</a>, <a href="../r6engine/r6aicontroller.html#CheckNeedToClimbLadder">CheckNeedToClimbLadder</a>, <a href="../r6engine/r6aicontroller.html#CheckPaceForInjury">CheckPaceForInjury</a>, <a href="../r6engine/r6aicontroller.html#ChooseRandomDirection">ChooseRandomDirection</a>, <a href="../r6engine/r6aicontroller.html#ClimbLadderIsOver">ClimbLadderIsOver</a>, <a href="../r6engine/r6aicontroller.html#ConfirmLadderActionPointWasReached">ConfirmLadderActionPointWasReached</a>, <a href="../r6engine/r6aicontroller.html#DistanceTo">DistanceTo</a>, <a href="../r6engine/r6aicontroller.html#EndState">EndState</a>, <a href="../r6engine/r6aicontroller.html#EnemyNotVisible">EnemyNotVisible</a>, <a href="../r6engine/r6aicontroller.html#FindBestPathToward">FindBestPathToward</a>, <a href="../r6engine/r6aicontroller.html#FindGrenadeDirectionToHitActor">FindGrenadeDirectionToHitActor</a>, <a href="../r6engine/r6aicontroller.html#FindInvestigationPoint">FindInvestigationPoint</a>, <a href="../r6engine/r6aicontroller.html#FindNearbyWaitSpot">FindNearbyWaitSpot</a>, <a href="../r6engine/r6aicontroller.html#FindPlaceToFire">FindPlaceToFire</a>, <a href="../r6engine/r6aicontroller.html#FindPlaceToTakeCover">FindPlaceToTakeCover</a>, <a href="../r6engine/r6aicontroller.html#FollowPath">FollowPath</a>, <a href="../r6engine/r6aicontroller.html#FollowPathTo">FollowPathTo</a>, <a href="../r6engine/r6aicontroller.html#GetCurrentChanceToHit">GetCurrentChanceToHit</a>, <a href="../r6engine/r6aicontroller.html#GetFacingDirection">GetFacingDirection</a>, <a href="../r6engine/r6aicontroller.html#GetFurthestOffsetFromDoor">GetFurthestOffsetFromDoor</a>, <a href="../r6engine/r6aicontroller.html#GetGrenadeDirection">GetGrenadeDirection</a>, <a href="../r6engine/r6aicontroller.html#GetReacheablePoint">GetReacheablePoint</a>, <a href="../r6engine/r6aicontroller.html#GetWaitPosition">GetWaitPosition</a>, <a href="../r6engine/r6aicontroller.html#GotoBumpBackUpState">GotoBumpBackUpState</a>, <a href="../r6engine/r6aicontroller.html#GotoOpenDoorState">GotoOpenDoorState</a>, <a href="../r6engine/r6aicontroller.html#HearNoise">HearNoise</a>, <a href="../r6engine/r6aicontroller.html#IsActorInView">IsActorInView</a>, <a href="../r6engine/r6aicontroller.html#IsActorRightOfView">IsActorRightOfView</a>, <a href="../r6engine/r6aicontroller.html#IsBumpBackUpStateFinish">IsBumpBackUpStateFinish</a>, <a href="../r6engine/r6aicontroller.html#IsFacing">IsFacing</a>, <a href="../r6engine/r6aicontroller.html#IsFocusLeft">IsFocusLeft</a>, <a href="../r6engine/r6aicontroller.html#IsInCrouchedPosture">IsInCrouchedPosture</a>, <a href="../r6engine/r6aicontroller.html#IsReadyToFire">IsReadyToFire</a>, <a href="../r6engine/r6aicontroller.html#LadderIsAvailable">LadderIsAvailable</a>, <a href="../r6engine/r6aicontroller.html#MakePathToRun">MakePathToRun</a>, <a href="../r6engine/r6aicontroller.html#MoveRight">MoveRight</a>, <a href="../r6engine/r6aicontroller.html#MoveToPosition">MoveToPosition</a>, <a href="../r6engine/r6aicontroller.html#NeedToMove">NeedToMove</a>, <a href="../r6engine/r6aicontroller.html#NeedToOpenDoor">NeedToOpenDoor</a>, <a href="../r6engine/r6aicontroller.html#NotifyBump">NotifyBump</a>, <a href="../r6engine/r6aicontroller.html#NotifyHitWall">NotifyHitWall</a>, <a href="../r6engine/r6aicontroller.html#OpenDoorFailed">OpenDoorFailed</a>, <a href="../r6engine/r6aicontroller.html#PawnDied">PawnDied</a>, <a href="../r6engine/r6aicontroller.html#PerformAction_Goto">PerformAction_Goto</a>, <a href="../r6engine/r6aicontroller.html#PerformAction_LookAt">PerformAction_LookAt</a>, <a href="../r6engine/r6aicontroller.html#PerformAction_LoopAnim">PerformAction_LoopAnim</a>, <a href="../r6engine/r6aicontroller.html#PerformAction_PlayAnim">PerformAction_PlayAnim</a>, <a href="../r6engine/r6aicontroller.html#PerformAction_StartInteraction">PerformAction_StartInteraction</a>, <a href="../r6engine/r6aicontroller.html#PerformAction_StopInteraction">PerformAction_StopInteraction</a>, <a href="../r6engine/r6aicontroller.html#PickActorAdjust">PickActorAdjust</a>, <a href="../r6engine/r6aicontroller.html#Possess">Possess</a>, <a href="../r6engine/r6aicontroller.html#R6PreMoveTo">R6PreMoveTo</a>, <a href="../r6engine/r6aicontroller.html#R6PreMoveToward">R6PreMoveToward</a>, <a href="../r6engine/r6aicontroller.html#R6SetMovement">R6SetMovement</a>, <a href="../r6engine/r6aicontroller.html#ReadyToClimbLadder">ReadyToClimbLadder</a>, <a href="../r6engine/r6aicontroller.html#SeePlayer">SeePlayer</a>, <a href="../r6engine/r6aicontroller.html#SetStateTestMakePath">SetStateTestMakePath</a>, <a href="../r6engine/r6aicontroller.html#StopMoving">StopMoving</a>, <a href="../r6engine/r6aicontroller.html#Tick">Tick</a></td>
+</tr>
+</table>
+<table>
+<tr>
+	<th class="inherittitle">Inherited Functions from <a href="../engine/engine-overview.html">engine</a>.<a href="../engine/aicontroller.html">AIController</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../engine/aicontroller.html#AdjustView">AdjustView</a>, <a href="../engine/aicontroller.html#DisplayDebug">DisplayDebug</a>, <a href="../engine/aicontroller.html#GetFacingDirection">GetFacingDirection</a>, <a href="../engine/aicontroller.html#GetOrderObject">GetOrderObject</a>, <a href="../engine/aicontroller.html#GetOrders">GetOrders</a>, <a href="../engine/aicontroller.html#HearPickup">HearPickup</a>, <a href="../engine/aicontroller.html#MoverFinished">MoverFinished</a>, <a href="../engine/aicontroller.html#PreBeginPlay">PreBeginPlay</a>, <a href="../engine/aicontroller.html#PrepareForMove">PrepareForMove</a>, <a href="../engine/aicontroller.html#Reset">Reset</a>, <a href="../engine/aicontroller.html#SetOrders">SetOrders</a>, <a href="../engine/aicontroller.html#Trigger">Trigger</a>, <a href="../engine/aicontroller.html#TriggerScript">TriggerScript</a>, <a href="../engine/aicontroller.html#UnderLift">UnderLift</a>, <a href="../engine/aicontroller.html#WaitForMover">WaitForMover</a>, <a href="../engine/aicontroller.html#WaitToSeeEnemy">WaitToSeeEnemy</a></td>
+</tr>
+</table>
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th class="title">States Summary</th>
+</tr>
+</table>
+
+<table>
+<tr>
+	<th>CivGuardPoint <a href="../Source_r6engine/r6hostageai.html#2497" class="small">Source code</a></th>
+</tr>
+<tr>
+	<td>
+	<span class="declaration"><span class="us_keyw"> state</span> CivGuardPoint <span class="us_keyw">extends</span> Civilian</span><br />
+	<blockquote class="comment">
+	
+	</blockquote>
+	</td>
+</tr>
+<tr>
+	<td><a href="#_BeginState+CivGuardPoint">BeginState</a>, <a href="#_SeePlayer+CivGuardPoint">SeePlayer</a></td>
+</tr>
+</table>
+<table>
+<tr>
+	<th>Civilian <a href="../Source_r6engine/r6hostageai.html#2437" class="small">Source code</a></th>
+</tr>
+<tr>
+	<td>
+	<span class="declaration"><span class="us_keyw"> state</span> Civilian <span class="us_keyw"></span> </span><br />
+	<blockquote class="comment">
+	
+	</blockquote>
+	</td>
+</tr>
+<tr>
+	<td><a href="#_BeginState+Civilian">BeginState</a>, <a href="#_EndState+Civilian">EndState</a></td>
+</tr>
+</table>
+<table>
+<tr>
+	<th>CivPatrolArea <a href="../Source_r6engine/r6hostageai.html#2468" class="small">Source code</a></th>
+</tr>
+<tr>
+	<td>
+	<span class="declaration"><span class="us_keyw"> state</span> CivPatrolArea <span class="us_keyw">extends</span> Civilian</span><br />
+	<blockquote class="comment">
+	
+	</blockquote>
+	</td>
+</tr>
+<tr>
+	<td><a href="#_BeginState+CivPatrolArea">BeginState</a></td>
+</tr>
+</table>
+<table>
+<tr>
+	<th>CivPatrolPath <a href="../Source_r6engine/r6hostageai.html#2559" class="small">Source code</a></th>
+</tr>
+<tr>
+	<td>
+	<span class="declaration"><span class="us_keyw"> state</span> CivPatrolPath <span class="us_keyw">extends</span> Civilian</span><br />
+	<blockquote class="comment">
+	
+	</blockquote>
+	</td>
+</tr>
+<tr>
+	<td><a href="#_BeginState+CivPatrolPath">BeginState</a>, <a href="#_GetFacingTime+CivPatrolPath">GetFacingTime</a>, <a href="#_GetWaitingTime+CivPatrolPath">GetWaitingTime</a>, <a href="#_IsGoingBack+CivPatrolPath">IsGoingBack</a>, <a href="#_OpenDoorFailed+CivPatrolPath">OpenDoorFailed</a>, <a href="#_PickDestination+CivPatrolPath">PickDestination</a>, <a href="#_SetToNextNode+CivPatrolPath">SetToNextNode</a></td>
+</tr>
+</table>
+<table>
+<tr>
+	<th>CivRunForCover <a href="../Source_r6engine/r6hostageai.html#2944" class="small">Source code</a></th>
+</tr>
+<tr>
+	<td>
+	<span class="declaration"><span class="us_keyw"> state</span> CivRunForCover <span class="us_keyw"></span> </span><br />
+	<blockquote class="comment">
+	
+	</blockquote>
+	</td>
+</tr>
+<tr>
+	<td><a href="#_BeginState+CivRunForCover">BeginState</a></td>
+</tr>
+</table>
+<table>
+<tr>
+	<th>CivRunTowardRainbow <a href="../Source_r6engine/r6hostageai.html#2962" class="small">Source code</a></th>
+</tr>
+<tr>
+	<td>
+	<span class="declaration"><span class="us_keyw"> state</span> CivRunTowardRainbow <span class="us_keyw"></span> </span><br />
+	<blockquote class="comment">
+	
+	</blockquote>
+	</td>
+</tr>
+<tr>
+	<td><a href="#_BeginState+CivRunTowardRainbow">BeginState</a></td>
+</tr>
+</table>
+<table>
+<tr>
+	<th>CivScareToDeath <a href="../Source_r6engine/r6hostageai.html#2924" class="small">Source code</a></th>
+</tr>
+<tr>
+	<td>
+	<span class="declaration"><span class="us_keyw"> state</span> CivScareToDeath <span class="us_keyw">extends</span> Civilian</span><br />
+	<blockquote class="comment">
+	
+	</blockquote>
+	</td>
+</tr>
+<tr>
+	<td><a href="#_BeginState+CivScareToDeath">BeginState</a></td>
+</tr>
+</table>
+<table>
+<tr>
+	<th>CivStayHere <a href="../Source_r6engine/r6hostageai.html#2889" class="small">Source code</a></th>
+</tr>
+<tr>
+	<td>
+	<span class="declaration"><span class="us_keyw"> state</span> CivStayHere <span class="us_keyw">extends</span> Civilian</span><br />
+	<blockquote class="comment">
+	
+	</blockquote>
+	</td>
+</tr>
+<tr>
+	<td><a href="#_BeginState+CivStayHere">BeginState</a></td>
+</tr>
+</table>
+<table>
+<tr>
+	<th>CivSurrender <a href="../Source_r6engine/r6hostageai.html#2982" class="small">Source code</a></th>
+</tr>
+<tr>
+	<td>
+	<span class="declaration"><span class="us_keyw"> state</span> CivSurrender <span class="us_keyw"></span> </span><br />
+	<blockquote class="comment">
+	
+	</blockquote>
+	</td>
+</tr>
+<tr>
+	<td><a href="#_BeginState+CivSurrender">BeginState</a></td>
+</tr>
+</table>
+<table>
+<tr>
+	<th>Configuration <a href="../Source_r6engine/r6hostageai.html#189" class="small">Source code</a></th>
+</tr>
+<tr>
+	<td>
+	<span class="declaration"><span class="us_keyw">auto state</span> Configuration <span class="us_keyw"></span> </span><br />
+	<blockquote class="comment">
+	
+	</blockquote>
+	</td>
+</tr>
+<tr>
+	<td><a href="#_BeginState+Configuration">BeginState</a>, <a href="#_EndState+Configuration">EndState</a></td>
+</tr>
+</table>
+<table>
+<tr>
+	<th>DbgHostage <a href="../Source_r6engine/r6hostageai.html#3490" class="small">Source code</a></th>
+</tr>
+<tr>
+	<td>
+	<span class="declaration"><span class="us_keyw"> state</span> DbgHostage <span class="us_keyw"></span> </span><br />
+	<blockquote class="comment">
+	
+	</blockquote>
+	</td>
+</tr>
+<tr>
+	<td><a href="#_BeginState+DbgHostage">BeginState</a></td>
+</tr>
+</table>
+<table>
+<tr>
+	<th>EscortedByEnemy <a href="../Source_r6engine/r6hostageai.html#2795" class="small">Source code</a></th>
+</tr>
+<tr>
+	<td>
+	<span class="declaration"><span class="us_keyw"> state</span> EscortedByEnemy <span class="us_keyw"></span> </span><br />
+	<blockquote class="comment">
+	
+	</blockquote>
+	</td>
+</tr>
+<tr>
+	<td><a href="#_beginState+EscortedByEnemy">beginState</a>, <a href="#_endState+EscortedByEnemy">endState</a>, <a href="#_EscortIsOver+EscortedByEnemy">EscortIsOver</a></td>
+</tr>
+</table>
+<table>
+<tr>
+	<th>Extracted <a href="../Source_r6engine/r6hostageai.html#3647" class="small">Source code</a></th>
+</tr>
+<tr>
+	<td>
+	<span class="declaration"><span class="us_keyw"> state</span> Extracted <span class="us_keyw"></span> </span><br />
+	<blockquote class="comment">
+	
+	</blockquote>
+	</td>
+</tr>
+<tr>
+	<td><a href="#_AIAffectedByGrenade+Extracted">AIAffectedByGrenade</a>, <a href="#_BeginState+Extracted">BeginState</a>, <a href="#_Timer+Extracted">Timer</a></td>
+</tr>
+</table>
+<table>
+<tr>
+	<th>FollowingPaceTransition <a href="../Source_r6engine/r6hostageai.html#1252" class="small">Source code</a></th>
+</tr>
+<tr>
+	<td>
+	<span class="declaration"><span class="us_keyw"> state</span> FollowingPaceTransition <span class="us_keyw"></span> </span><br />
+	<blockquote class="comment">
+	
+	</blockquote>
+	</td>
+</tr>
+<tr>
+	<td><a href="#_BeginState+FollowingPaceTransition">BeginState</a></td>
+</tr>
+</table>
+<table>
+<tr>
+	<th>FollowingPawn <a href="../Source_r6engine/r6hostageai.html#1503" class="small">Source code</a></th>
+</tr>
+<tr>
+	<td>
+	<span class="declaration"><span class="us_keyw"> state</span> FollowingPawn <span class="us_keyw"></span> </span><br />
+	<blockquote class="comment">
+	
+	</blockquote>
+	</td>
+</tr>
+<tr>
+	<td><a href="#_BeginState+FollowingPawn">BeginState</a>, <a href="#_EndState+FollowingPawn">EndState</a>, <a href="#_NotifyBump+FollowingPawn">NotifyBump</a>, <a href="#_Timer+FollowingPawn">Timer</a></td>
+</tr>
+</table>
+<table>
+<tr>
+	<th>Freed <a href="../Source_r6engine/r6hostageai.html#1186" class="small">Source code</a></th>
+</tr>
+<tr>
+	<td>
+	<span class="declaration"><span class="us_keyw"> state</span> Freed <span class="us_keyw"></span> </span><br />
+	<blockquote class="comment">
+	
+	</blockquote>
+	</td>
+</tr>
+<tr>
+	<td><a href="#_BeginState+Freed">BeginState</a>, <a href="#_EndState+Freed">EndState</a>, <a href="#_Timer+Freed">Timer</a></td>
+</tr>
+</table>
+<table>
+<tr>
+	<th>GoCivScareToDeath <a href="../Source_r6engine/r6hostageai.html#2902" class="small">Source code</a></th>
+</tr>
+<tr>
+	<td>
+	<span class="declaration"><span class="us_keyw"> state</span> GoCivScareToDeath <span class="us_keyw"></span> </span><br />
+	<blockquote class="comment">
+	
+	</blockquote>
+	</td>
+</tr>
+<tr>
+	<td><a href="#_BeginState+GoCivScareToDeath">BeginState</a></td>
+</tr>
+</table>
+<table>
+<tr>
+	<th>GoGuarded_Foetus <a href="../Source_r6engine/r6hostageai.html#1069" class="small">Source code</a></th>
+</tr>
+<tr>
+	<td>
+	<span class="declaration"><span class="us_keyw"> state</span> GoGuarded_Foetus <span class="us_keyw"></span> </span><br />
+	<blockquote class="comment">
+	
+	</blockquote>
+	</td>
+</tr>
+<tr>
+	<td><a href="#_BeginState+GoGuarded_Foetus">BeginState</a></td>
+</tr>
+</table>
+<table>
+<tr>
+	<th>GoGuarded_frozen <a href="../Source_r6engine/r6hostageai.html#1126" class="small">Source code</a></th>
+</tr>
+<tr>
+	<td>
+	<span class="declaration"><span class="us_keyw"> state</span> GoGuarded_frozen <span class="us_keyw"></span> </span><br />
+	<blockquote class="comment">
+	
+	</blockquote>
+	</td>
+</tr>
+<tr>
+	<td><a href="#_BeginState+GoGuarded_frozen">BeginState</a></td>
+</tr>
+</table>
+<table>
+<tr>
+	<th>GoHstFreedButSeeEnemy <a href="../Source_r6engine/r6hostageai.html#3441" class="small">Source code</a></th>
+</tr>
+<tr>
+	<td>
+	<span class="declaration"><span class="us_keyw"> state</span> GoHstFreedButSeeEnemy <span class="us_keyw"></span> </span><br />
+	<blockquote class="comment">
+	
+	</blockquote>
+	</td>
+</tr>
+<tr>
+	<td><a href="#_BeginState+GoHstFreedButSeeEnemy">BeginState</a></td>
+</tr>
+</table>
+<table>
+<tr>
+	<th>GoHstRunForCover <a href="../Source_r6engine/r6hostageai.html#3469" class="small">Source code</a></th>
+</tr>
+<tr>
+	<td>
+	<span class="declaration"><span class="us_keyw"> state</span> GoHstRunForCover <span class="us_keyw"></span> </span><br />
+	<blockquote class="comment">
+	
+	</blockquote>
+	</td>
+</tr>
+<tr>
+	<td><a href="#_BeginState+GoHstRunForCover">BeginState</a></td>
+</tr>
+</table>
+<table>
+<tr>
+	<th>GoHstRunTowardRainbow <a href="../Source_r6engine/r6hostageai.html#3458" class="small">Source code</a></th>
+</tr>
+<tr>
+	<td>
+	<span class="declaration"><span class="us_keyw"> state</span> GoHstRunTowardRainbow <span class="us_keyw"></span> </span><br />
+	<blockquote class="comment">
+	
+	</blockquote>
+	</td>
+</tr>
+<tr>
+	<td><a href="#_BeginState+GoHstRunTowardRainbow">BeginState</a></td>
+</tr>
+</table>
+<table>
+<tr>
+	<th>GotoExtraction <a href="../Source_r6engine/r6hostageai.html#3567" class="small">Source code</a></th>
+</tr>
+<tr>
+	<td>
+	<span class="declaration"><span class="us_keyw"> state</span> GotoExtraction <span class="us_keyw"></span> </span><br />
+	<blockquote class="comment">
+	
+	</blockquote>
+	</td>
+</tr>
+<tr>
+	<td><a href="#_BeginState+GotoExtraction">BeginState</a></td>
+</tr>
+</table>
+<table>
+<tr>
+	<th>Guarded <a href="../Source_r6engine/r6hostageai.html#983" class="small">Source code</a></th>
+</tr>
+<tr>
+	<td>
+	<span class="declaration"><span class="us_keyw"> state</span> Guarded <span class="us_keyw"></span> </span><br />
+	<blockquote class="comment">
+	
+	</blockquote>
+	</td>
+</tr>
+<tr>
+	<td><a href="#_BeginState+Guarded">BeginState</a>, <a href="#_EndState+Guarded">EndState</a>, <a href="#_Timer+Guarded">Timer</a></td>
+</tr>
+</table>
+<table>
+<tr>
+	<th>Guarded_foetus <a href="../Source_r6engine/r6hostageai.html#1081" class="small">Source code</a></th>
+</tr>
+<tr>
+	<td>
+	<span class="declaration"><span class="us_keyw"> state</span> Guarded_foetus <span class="us_keyw">extends</span> Guarded</span><br />
+	<blockquote class="comment">
+	
+	</blockquote>
+	</td>
+</tr>
+<tr>
+	<td><a href="#_BeginState+Guarded_foetus">BeginState</a>, <a href="#_Timer+Guarded_foetus">Timer</a></td>
+</tr>
+</table>
+<table>
+<tr>
+	<th>Guarded_frozen <a href="../Source_r6engine/r6hostageai.html#1138" class="small">Source code</a></th>
+</tr>
+<tr>
+	<td>
+	<span class="declaration"><span class="us_keyw"> state</span> Guarded_frozen <span class="us_keyw">extends</span> Guarded</span><br />
+	<blockquote class="comment">
+	
+	</blockquote>
+	</td>
+</tr>
+<tr>
+	<td><a href="#_BeginState+Guarded_frozen">BeginState</a>, <a href="#_Timer+Guarded_frozen">Timer</a></td>
+</tr>
+</table>
+<table>
+<tr>
+	<th>OpenDoor <a href="../Source_r6engine/r6hostageai.html#3208" class="small">Source code</a></th>
+</tr>
+<tr>
+	<td>
+	<span class="declaration"><span class="us_keyw"> state</span> OpenDoor <span class="us_keyw"></span> </span><br />
+	<blockquote class="comment">
+	
+	</blockquote>
+	</td>
+</tr>
+<tr>
+	<td><a href="#_HearNoise+OpenDoor">HearNoise</a>, <a href="#_SeePlayer+OpenDoor">SeePlayer</a>, <a href="#_SeePlayerMgr+OpenDoor">SeePlayerMgr</a></td>
+</tr>
+</table>
+<table>
+<tr>
+	<th>ReactToGrenade <a href="../Source_r6engine/r6hostageai.html#3413" class="small">Source code</a></th>
+</tr>
+<tr>
+	<td>
+	<span class="declaration"><span class="us_keyw"> state</span> ReactToGrenade <span class="us_keyw"></span> </span><br />
+	<blockquote class="comment">
+	
+	</blockquote>
+	</td>
+</tr>
+<tr>
+	<td><a href="#_BeginState+ReactToGrenade">BeginState</a></td>
+</tr>
+</table>
+<table>
+<tr>
+	<th>RunForCover <a href="../Source_r6engine/r6hostageai.html#2086" class="small">Source code</a></th>
+</tr>
+<tr>
+	<td>
+	<span class="declaration"><span class="us_keyw"> state</span> RunForCover <span class="us_keyw"></span> </span><br />
+	<blockquote class="comment">
+	
+	</blockquote>
+	</td>
+</tr>
+<tr>
+	<td><a href="#_BeginState+RunForCover">BeginState</a>, <a href="#_EndState+RunForCover">EndState</a>, <a href="#_EnemyNotVisible+RunForCover">EnemyNotVisible</a>, <a href="#_IsRunForCoverSuccessfull+RunForCover">IsRunForCoverSuccessfull</a>, <a href="#_OpenDoorFailed+RunForCover">OpenDoorFailed</a>, <a href="#_StopRunForCover+RunForCover">StopRunForCover</a>, <a href="#_Timer+RunForCover">Timer</a></td>
+</tr>
+</table>
+<table>
+<tr>
+	<th>WaitForSomeTime <a href="../Source_r6engine/r6hostageai.html#2547" class="small">Source code</a></th>
+</tr>
+<tr>
+	<td>
+	<span class="declaration"><span class="us_keyw"> state</span> WaitForSomeTime <span class="us_keyw"></span> </span><br />
+	<blockquote class="comment">
+	
+	</blockquote>
+	</td>
+</tr>
+<tr>
+	<td></td>
+</tr>
+</table>
+
+
+<br />
+
+<hr />
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Constants Detail</th>
+</tr>
+</table>
+
+<h4><a name="_C_iKeepDistanceFromPawn" class="hidden"></a>C_iKeepDistanceFromPawn <a href="../Source_r6engine/r6hostageai.html#132" class="small">Source code</a></h4>
+<div class="declaration">const C_iKeepDistanceFromPawn = <span class="source_int">105</span>;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th class="title">Variables Detail</th>
+</tr>
+</table>
+
+<h4><a name="_bThreatShowLog" class="hidden"></a>bThreatShowLog <a href="../Source_r6engine/r6hostageai.html#117" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">bool</span> bThreatShowLog;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_c_iBraveModifier" class="hidden"></a>c_iBraveModifier <a href="../Source_r6engine/r6hostageai.html#79" class="small">Source code</a></h4>
+<div class="declaration">var const <span class="source_type">INT</span> c_iBraveModifier;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_c_iCautiousLastHearNoiseTime" class="hidden"></a>c_iCautiousLastHearNoiseTime <a href="../Source_r6engine/r6hostageai.html#84" class="small">Source code</a></h4>
+<div class="declaration">var const <span class="source_type">INT</span> c_iCautiousLastHearNoiseTime;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_c_iCowardModifier" class="hidden"></a>c_iCowardModifier <a href="../Source_r6engine/r6hostageai.html#77" class="small">Source code</a></h4>
+<div class="declaration">var const <span class="source_type">INT</span> c_iCowardModifier;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_c_iDistanceCatchUp" class="hidden"></a>c_iDistanceCatchUp <a href="../Source_r6engine/r6hostageai.html#50" class="small">Source code</a></h4>
+<div class="declaration">var const <span class="source_type">INT</span> c_iDistanceCatchUp;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_c_iDistanceMax" class="hidden"></a>c_iDistanceMax <a href="../Source_r6engine/r6hostageai.html#49" class="small">Source code</a></h4>
+<div class="declaration">var const <span class="source_type">INT</span> c_iDistanceMax;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_c_iDistanceToStartToRun" class="hidden"></a>c_iDistanceToStartToRun <a href="../Source_r6engine/r6hostageai.html#51" class="small">Source code</a></h4>
+<div class="declaration">var const <span class="source_type">INT</span> c_iDistanceToStartToRun;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_c_iEnemyNotVisibleTime" class="hidden"></a>c_iEnemyNotVisibleTime <a href="../Source_r6engine/r6hostageai.html#83" class="small">Source code</a></h4>
+<div class="declaration">var const <span class="source_type">INT</span> c_iEnemyNotVisibleTime;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_c_iGasModifier" class="hidden"></a>c_iGasModifier <a href="../Source_r6engine/r6hostageai.html#81" class="small">Source code</a></h4>
+<div class="declaration">var const <span class="source_type">INT</span> c_iGasModifier;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_c_iNormalModifier" class="hidden"></a>c_iNormalModifier <a href="../Source_r6engine/r6hostageai.html#78" class="small">Source code</a></h4>
+<div class="declaration">var const <span class="source_type">INT</span> c_iNormalModifier;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_c_iRunForCoverOfGrenadeMinDist" class="hidden"></a>c_iRunForCoverOfGrenadeMinDist <a href="../Source_r6engine/r6hostageai.html#94" class="small">Source code</a></h4>
+<div class="declaration">var const <span class="source_type">INT</span> c_iRunForCoverOfGrenadeMinDist;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_c_iWoundedModifier" class="hidden"></a>c_iWoundedModifier <a href="../Source_r6engine/r6hostageai.html#80" class="small">Source code</a></h4>
+<div class="declaration">var const <span class="source_type">INT</span> c_iWoundedModifier;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_DefaultWeapon" class="hidden"></a>DefaultWeapon <a href="../Source_r6engine/r6hostageai.html#121" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../engine/r6engineweapon.html" class="source">R6EngineWeapon</a></span> DefaultWeapon;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_DefaultWeaponClass" class="hidden"></a>DefaultWeaponClass <a href="../Source_r6engine/r6hostageai.html#120" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">class</span>&lt;<span class="source_type"><a href="../engine/r6engineweapon.html" class="source">R6EngineWeapon</a></span>&gt; DefaultWeaponClass;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_AITickTime" class="hidden"></a>m_AITickTime <a href="../Source_r6engine/r6hostageai.html#57" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../engine/actor.html#RandomTweenNum" class="source">RandomTweenNum</a></span> m_AITickTime;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_aOrderInfo[2]" class="hidden"></a>m_aOrderInfo[2] <a href="../Source_r6engine/r6hostageai.html#74" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../r6engine/r6hostageai.html#OrderInfo" class="source">OrderInfo</a></span> m_aOrderInfo[<span class="source_int">2</span>];</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_aPlaySndInfo[12]" class="hidden"></a>m_aPlaySndInfo[12] <a href="../Source_r6engine/r6hostageai.html#129" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../r6engine/r6hostageai.html#PlaySndInfo" class="source">PlaySndInfo</a></span> m_aPlaySndInfo[<span class="source_int">12</span>];</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_bDbgIgnoreRainbow" class="hidden"></a>m_bDbgIgnoreRainbow <a href="../Source_r6engine/r6hostageai.html#89" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">bool</span> m_bDbgIgnoreRainbow;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_bDbgIgnoreThreat" class="hidden"></a>m_bDbgIgnoreThreat <a href="../Source_r6engine/r6hostageai.html#88" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">bool</span> m_bDbgIgnoreThreat;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_bDbgRoll" class="hidden"></a>m_bDbgRoll <a href="../Source_r6engine/r6hostageai.html#106" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">bool</span> m_bDbgRoll;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_bFirstTimeClarkComment" class="hidden"></a>m_bFirstTimeClarkComment <a href="../Source_r6engine/r6hostageai.html#130" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">BOOL</span> m_bFirstTimeClarkComment;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_bFollowIncreaseDistance" class="hidden"></a>m_bFollowIncreaseDistance <a href="../Source_r6engine/r6hostageai.html#54" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">bool</span> m_bFollowIncreaseDistance;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_bForceToStayHere" class="hidden"></a>m_bForceToStayHere <a href="../Source_r6engine/r6hostageai.html#40" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">bool</span> m_bForceToStayHere;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_bLatentFnStopped" class="hidden"></a>m_bLatentFnStopped <a href="../Source_r6engine/r6hostageai.html#55" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">bool</span> m_bLatentFnStopped;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_bNeedToRunToCatchUp" class="hidden"></a>m_bNeedToRunToCatchUp <a href="../Source_r6engine/r6hostageai.html#52" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">bool</span> m_bNeedToRunToCatchUp;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_bool" class="hidden"></a>m_bool <a href="../Source_r6engine/r6hostageai.html#111" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">bool</span> m_bool;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_bRunningToward" class="hidden"></a>m_bRunningToward <a href="../Source_r6engine/r6hostageai.html#41" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">bool</span> m_bRunningToward;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_bRunToRainbowSuccess" class="hidden"></a>m_bRunToRainbowSuccess <a href="../Source_r6engine/r6hostageai.html#42" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">bool</span> m_bRunToRainbowSuccess;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_bSlowedPace" class="hidden"></a>m_bSlowedPace <a href="../Source_r6engine/r6hostageai.html#53" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">bool</span> m_bSlowedPace;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_bStopDoTransition" class="hidden"></a>m_bStopDoTransition <a href="../Source_r6engine/r6hostageai.html#47" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">bool</span> m_bStopDoTransition;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_escort" class="hidden"></a>m_escort <a href="../Source_r6engine/r6hostageai.html#100" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../r6engine/r6pawn.html" class="source">R6Pawn</a></span> m_escort;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_eTransitionPosition" class="hidden"></a>m_eTransitionPosition <a href="../Source_r6engine/r6hostageai.html#71" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../r6engine/r6hostage.html" class="source">R6Hostage</a></span>.<span class="source_type"><a href="../r6engine/r6hostage.html#EStartingPosition" class="source">EStartingPosition</a></span> m_eTransitionPosition;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_float" class="hidden"></a>m_float <a href="../Source_r6engine/r6hostageai.html#113" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">float</span> m_float;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_iDbgRoll" class="hidden"></a>m_iDbgRoll <a href="../Source_r6engine/r6hostageai.html#107" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">INT</span> m_iDbgRoll;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_iFacingTime" class="hidden"></a>m_iFacingTime <a href="../Source_r6engine/r6hostageai.html#66" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">INT</span> m_iFacingTime;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_iLastHearNoiseTime" class="hidden"></a>m_iLastHearNoiseTime <a href="../Source_r6engine/r6hostageai.html#44" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">INT</span> m_iLastHearNoiseTime;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_iNbOrder" class="hidden"></a>m_iNbOrder <a href="../Source_r6engine/r6hostageai.html#75" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">INT</span> m_iNbOrder;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_iNotGuardedSince" class="hidden"></a>m_iNotGuardedSince <a href="../Source_r6engine/r6hostageai.html#43" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">INT</span> m_iNotGuardedSince;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_iPlayReaction1" class="hidden"></a>m_iPlayReaction1 <a href="../Source_r6engine/r6hostageai.html#62" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">INT</span> m_iPlayReaction1;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_iPlayReaction2" class="hidden"></a>m_iPlayReaction2 <a href="../Source_r6engine/r6hostageai.html#63" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">INT</span> m_iPlayReaction2;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_iWaitingTime" class="hidden"></a>m_iWaitingTime <a href="../Source_r6engine/r6hostageai.html#65" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">INT</span> m_iWaitingTime;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_lastSeenPawn" class="hidden"></a>m_lastSeenPawn <a href="../Source_r6engine/r6hostageai.html#60" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../r6engine/r6pawn.html" class="source">R6Pawn</a></span> m_lastSeenPawn;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_lastUpdatePaceTime" class="hidden"></a>m_lastUpdatePaceTime <a href="../Source_r6engine/r6hostageai.html#67" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">INT</span> m_lastUpdatePaceTime;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_mgr" class="hidden"></a>m_mgr <a href="../Source_r6engine/r6hostageai.html#37" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../r6engine/r6hostagemgr.html" class="source">R6HostageMgr</a></span> m_mgr;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_name" class="hidden"></a>m_name <a href="../Source_r6engine/r6hostageai.html#114" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">name</span> m_name;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_pawn" class="hidden"></a>m_pawn <a href="../Source_r6engine/r6hostageai.html#36" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../r6engine/r6hostage.html" class="source">R6Hostage</a></span> m_pawn;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_pawnToFollow" class="hidden"></a>m_pawnToFollow <a href="../Source_r6engine/r6hostageai.html#46" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../r6engine/r6pawn.html" class="source">R6Pawn</a></span> m_pawnToFollow;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_pGotoToExtractionZone" class="hidden"></a>m_pGotoToExtractionZone <a href="../Source_r6engine/r6hostageai.html#104" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../engine/actor.html" class="source">Actor</a></span> m_pGotoToExtractionZone;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_reactToGrenadeStateToReturn" class="hidden"></a>m_reactToGrenadeStateToReturn <a href="../Source_r6engine/r6hostageai.html#97" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">name</span> m_reactToGrenadeStateToReturn;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_rotator" class="hidden"></a>m_rotator <a href="../Source_r6engine/r6hostageai.html#110" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../core/object.html#Rotator" class="source">rotator</a></span> m_rotator;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_runAwayOfGrenade" class="hidden"></a>m_runAwayOfGrenade <a href="../Source_r6engine/r6hostageai.html#93" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../engine/actor.html" class="source">actor</a></span> m_runAwayOfGrenade;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_RunForCoverMinTween" class="hidden"></a>m_RunForCoverMinTween <a href="../Source_r6engine/r6hostageai.html#85" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../engine/actor.html#RandomTweenNum" class="source">RandomTweenNum</a></span> m_RunForCoverMinTween;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_runForCoverStateToGoOnFailure" class="hidden"></a>m_runForCoverStateToGoOnFailure <a href="../Source_r6engine/r6hostageai.html#91" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">name</span> m_runForCoverStateToGoOnFailure;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_runForCoverStateToGoOnSuccess" class="hidden"></a>m_runForCoverStateToGoOnSuccess <a href="../Source_r6engine/r6hostageai.html#92" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">name</span> m_runForCoverStateToGoOnSuccess;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_scareToDeathTween" class="hidden"></a>m_scareToDeathTween <a href="../Source_r6engine/r6hostageai.html#86" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../engine/actor.html#RandomTweenNum" class="source">RandomTweenNum</a></span> m_scareToDeathTween;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_stayBlindedTweenTime" class="hidden"></a>m_stayBlindedTweenTime <a href="../Source_r6engine/r6hostageai.html#96" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../engine/actor.html#RandomTweenNum" class="source">RandomTweenNum</a></span> m_stayBlindedTweenTime;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_terrorist" class="hidden"></a>m_terrorist <a href="../Source_r6engine/r6hostageai.html#99" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../r6engine/r6terrorist.html" class="source">R6Terrorist</a></span> m_terrorist;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_threatGroupName" class="hidden"></a>m_threatGroupName <a href="../Source_r6engine/r6hostageai.html#69" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">name</span> m_threatGroupName;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_threatInfo" class="hidden"></a>m_threatInfo <a href="../Source_r6engine/r6hostageai.html#70" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../r6engine/r6hostagemgr.html" class="source">R6HostageMgr</a></span>.ThreatInfo m_threatInfo;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_vectorTemp" class="hidden"></a>m_vectorTemp <a href="../Source_r6engine/r6hostageai.html#112" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../core/object.html#Vector" class="source">vector</a></span> m_vectorTemp;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_vMoveToDest" class="hidden"></a>m_vMoveToDest <a href="../Source_r6engine/r6hostageai.html#102" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../core/object.html#Vector" class="source">vector</a></span> m_vMoveToDest;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_VoicesManager" class="hidden"></a>m_VoicesManager <a href="../Source_r6engine/r6hostageai.html#38" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../r6engine/r6hostagevoices.html" class="source">R6HostageVoices</a></span> m_VoicesManager;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_vReactionDirection" class="hidden"></a>m_vReactionDirection <a href="../Source_r6engine/r6hostageai.html#72" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../core/object.html#Vector" class="source">vector</a></span> m_vReactionDirection;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th class="title">Enumerations Detail</th>
+</tr>
+</table>
+
+<h4><a name="_eHostageOrder" class="hidden"></a>eHostageOrder <a href="../Source_r6engine/r6hostageai.html#14" class="small">Source code</a></h4>
+<div class="declaration">enum <span class="source_type"><a href="../r6engine/r6hostageai.html#eHostageOrder" class="source">eHostageOrder</a></span><br />
+{<blockquote>HOrder_None,
+HOrder_ComeWithMe,
+HOrder_StayHere,
+HOrder_Surrender,
+HOrder_GotoExtraction</blockquote>};
+</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th class="title">Structures Detail</th>
+</tr>
+</table>
+
+<h4><a name="_OrderInfo" class="hidden"></a>OrderInfo <a href="../Source_r6engine/r6hostageai.html#24" class="small">Source code</a></h4>
+<div class="declaration">struct <span class="source_type"><a href="../r6engine/r6hostageai.html#OrderInfo" class="source">OrderInfo</a></span><br />
+{<blockquote>var <span class="source_type"><a href="../engine/actor.html" class="source">Actor</a></span> m_actor;<br />
+var <span class="source_type">bool</span> m_bOrderedByRainbow;<br />
+var <span class="source_type"><a href="../r6engine/r6hostageai.html#eHostageOrder" class="source">eHostageOrder</a></span> m_eOrder;<br />
+var <span class="source_type">float</span> m_fTime;<br />
+var <span class="source_type"><a href="../r6engine/r6pawn.html" class="source">R6Pawn</a></span> m_pawn1;<br />
+</blockquote>};
+</div>
+<blockquote class="comment">
+
+<br />
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_PlaySndInfo" class="hidden"></a>PlaySndInfo <a href="../Source_r6engine/r6hostageai.html#123" class="small">Source code</a></h4>
+<div class="declaration">struct <span class="source_type"><a href="../r6engine/r6hostageai.html#PlaySndInfo" class="source">PlaySndInfo</a></span><br />
+{<blockquote>var <span class="source_type">INT</span> m_iInBetweenTime;<br />
+var <span class="source_type">INT</span> m_iLastTime;<br />
+</blockquote>};
+</div>
+<blockquote class="comment">
+
+<br />
+
+</blockquote>
+<hr class="small" />
+
+
+<br />
+
+
+
+<table class="title">
+<tr>
+	<th class="title">Functions Detail</th>
+</tr>
+</table>
+
+<h4><a name="_AIAffectedByGrenade-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> AIAffectedByGrenade <span class="function_state"></span> <a href="../Source_r6engine/r6hostageai.html#3358" class="small">Source code</a></h4>
+<div class="declaration"> function  AIAffectedByGrenade ( <span class="source_type"><a href="../engine/actor.html" class="source">Actor</a></span> aGrenade, <span class="source_type"><a href="../r6engine/r6pawn.html" class="source">R6Pawn</a></span>.<span class="source_type"><a href="../engine/pawn.html#EGrenadeType" class="source">EGrenadeType</a></span> <span class="source_type">eType</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_AIAffectedByGrenade-Extracted" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> AIAffectedByGrenade <span class="function_state">Extracted</span> <a href="../Source_r6engine/r6hostageai.html#3658" class="small">Source code</a></h4>
+<div class="declaration"> function  AIAffectedByGrenade ( <span class="source_type"><a href="../engine/actor.html" class="source">Actor</a></span> aGrenade, <span class="source_type"><a href="../r6engine/r6pawn.html" class="source">R6Pawn</a></span>.<span class="source_type"><a href="../engine/pawn.html#EGrenadeType" class="source">EGrenadeType</a></span> <span class="source_type">eType</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_BeginState-CivGuardPoint" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> BeginState <span class="function_state">CivGuardPoint</span> <a href="../Source_r6engine/r6hostageai.html#2499" class="small">Source code</a></h4>
+<div class="declaration"> function  BeginState ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_BeginState-Civilian" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> BeginState <span class="function_state">Civilian</span> <a href="../Source_r6engine/r6hostageai.html#2441" class="small">Source code</a></h4>
+<div class="declaration"> function  BeginState ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_BeginState-CivPatrolArea" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> BeginState <span class="function_state">CivPatrolArea</span> <a href="../Source_r6engine/r6hostageai.html#2470" class="small">Source code</a></h4>
+<div class="declaration"> function  BeginState ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_BeginState-CivPatrolPath" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> BeginState <span class="function_state">CivPatrolPath</span> <a href="../Source_r6engine/r6hostageai.html#2561" class="small">Source code</a></h4>
+<div class="declaration"> function  BeginState ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_BeginState-CivRunForCover" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> BeginState <span class="function_state">CivRunForCover</span> <a href="../Source_r6engine/r6hostageai.html#2946" class="small">Source code</a></h4>
+<div class="declaration"> function  BeginState ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_BeginState-CivRunTowardRainbow" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> BeginState <span class="function_state">CivRunTowardRainbow</span> <a href="../Source_r6engine/r6hostageai.html#2964" class="small">Source code</a></h4>
+<div class="declaration"> function  BeginState ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_BeginState-CivScareToDeath" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> BeginState <span class="function_state">CivScareToDeath</span> <a href="../Source_r6engine/r6hostageai.html#2928" class="small">Source code</a></h4>
+<div class="declaration"> function  BeginState ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_BeginState-CivStayHere" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> BeginState <span class="function_state">CivStayHere</span> <a href="../Source_r6engine/r6hostageai.html#2891" class="small">Source code</a></h4>
+<div class="declaration"> function  BeginState ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_BeginState-CivSurrender" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> BeginState <span class="function_state">CivSurrender</span> <a href="../Source_r6engine/r6hostageai.html#2984" class="small">Source code</a></h4>
+<div class="declaration"> function  BeginState ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_BeginState-Configuration" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> BeginState <span class="function_state">Configuration</span> <a href="../Source_r6engine/r6hostageai.html#193" class="small">Source code</a></h4>
+<div class="declaration"> function  BeginState ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_BeginState-DbgHostage" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> BeginState <span class="function_state">DbgHostage</span> <a href="../Source_r6engine/r6hostageai.html#3494" class="small">Source code</a></h4>
+<div class="declaration"> function  BeginState ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_beginState-EscortedByEnemy" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> beginState <span class="function_state">EscortedByEnemy</span> <a href="../Source_r6engine/r6hostageai.html#2799" class="small">Source code</a></h4>
+<div class="declaration"> function  beginState ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_BeginState-Extracted" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> BeginState <span class="function_state">Extracted</span> <a href="../Source_r6engine/r6hostageai.html#3651" class="small">Source code</a></h4>
+<div class="declaration"> function  BeginState ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_BeginState-FollowingPaceTransition" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> BeginState <span class="function_state">FollowingPaceTransition</span> <a href="../Source_r6engine/r6hostageai.html#1256" class="small">Source code</a></h4>
+<div class="declaration"> function  BeginState ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_BeginState-FollowingPawn" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> BeginState <span class="function_state">FollowingPawn</span> <a href="../Source_r6engine/r6hostageai.html#1506" class="small">Source code</a></h4>
+<div class="declaration"> function  BeginState ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_BeginState-Freed" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> BeginState <span class="function_state">Freed</span> <a href="../Source_r6engine/r6hostageai.html#1189" class="small">Source code</a></h4>
+<div class="declaration"> function  BeginState ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_BeginState-GoCivScareToDeath" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> BeginState <span class="function_state">GoCivScareToDeath</span> <a href="../Source_r6engine/r6hostageai.html#2906" class="small">Source code</a></h4>
+<div class="declaration"> function  BeginState ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_BeginState-GoGuarded_Foetus" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> BeginState <span class="function_state">GoGuarded_Foetus</span> <a href="../Source_r6engine/r6hostageai.html#1073" class="small">Source code</a></h4>
+<div class="declaration"> function  BeginState ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_BeginState-GoGuarded_frozen" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> BeginState <span class="function_state">GoGuarded_frozen</span> <a href="../Source_r6engine/r6hostageai.html#1130" class="small">Source code</a></h4>
+<div class="declaration"> function  BeginState ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_BeginState-GoHstFreedButSeeEnemy" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> BeginState <span class="function_state">GoHstFreedButSeeEnemy</span> <a href="../Source_r6engine/r6hostageai.html#3443" class="small">Source code</a></h4>
+<div class="declaration"> function  BeginState ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_BeginState-GoHstRunForCover" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> BeginState <span class="function_state">GoHstRunForCover</span> <a href="../Source_r6engine/r6hostageai.html#3471" class="small">Source code</a></h4>
+<div class="declaration"> function  BeginState ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_BeginState-GoHstRunTowardRainbow" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> BeginState <span class="function_state">GoHstRunTowardRainbow</span> <a href="../Source_r6engine/r6hostageai.html#3460" class="small">Source code</a></h4>
+<div class="declaration"> function  BeginState ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_BeginState-GotoExtraction" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> BeginState <span class="function_state">GotoExtraction</span> <a href="../Source_r6engine/r6hostageai.html#3571" class="small">Source code</a></h4>
+<div class="declaration"> function  BeginState ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_BeginState-Guarded" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> BeginState <span class="function_state">Guarded</span> <a href="../Source_r6engine/r6hostageai.html#985" class="small">Source code</a></h4>
+<div class="declaration"> function  BeginState ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_BeginState-Guarded_foetus" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> BeginState <span class="function_state">Guarded_foetus</span> <a href="../Source_r6engine/r6hostageai.html#1086" class="small">Source code</a></h4>
+<div class="declaration"> function  BeginState ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_BeginState-Guarded_frozen" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> BeginState <span class="function_state">Guarded_frozen</span> <a href="../Source_r6engine/r6hostageai.html#1143" class="small">Source code</a></h4>
+<div class="declaration"> function  BeginState ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_BeginState-ReactToGrenade" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> BeginState <span class="function_state">ReactToGrenade</span> <a href="../Source_r6engine/r6hostageai.html#3417" class="small">Source code</a></h4>
+<div class="declaration"> function  BeginState ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_BeginState-RunForCover" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> BeginState <span class="function_state">RunForCover</span> <a href="../Source_r6engine/r6hostageai.html#2088" class="small">Source code</a></h4>
+<div class="declaration"> function  BeginState ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_BumpBackUpStateFinished-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> BumpBackUpStateFinished <span class="function_state"></span> <a href="../Source_r6engine/r6hostageai.html#2256" class="small">Source code</a></h4>
+<div class="declaration"> function  BumpBackUpStateFinished ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_CanClimbLadders-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> CanClimbLadders <span class="function_state"></span> <a href="../Source_r6engine/r6hostageai.html#3314" class="small">Source code</a></h4>
+<div class="declaration"> function <span class="source_type">bool</span> CanClimbLadders ( <span class="source_type"><a href="../r6engine/r6ladder.html" class="source">R6Ladder</a></span> <span class="source_type"><a href="../engine/ladder.html" class="source">ladder</a></span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_CanConsiderThreat-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> CanConsiderThreat <span class="function_state"></span> <a href="../Source_r6engine/r6hostageai.html#669" class="small">Source code</a></h4>
+<div class="declaration"> function <span class="source_type">bool</span> CanConsiderThreat ( <span class="source_type"><a href="../r6engine/r6pawn.html" class="source">R6Pawn</a></span> <span class="source_type">aPawn</span>, <span class="source_type"><a href="../engine/actor.html" class="source">Actor</a></span> aThreat, <span class="source_type">name</span> <span class="source_type">considerThreat</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_CanOpenDoor-" class="hidden"></a><img src="../img_event.gif" alt="" title="event" /> CanOpenDoor <span class="function_state"></span> <a href="../Source_r6engine/r6hostageai.html#1989" class="small">Source code</a></h4>
+<div class="declaration"> event <span class="source_type">bool</span> CanOpenDoor ( <span class="source_type"><a href="../r6engine/r6iorotatingdoor.html" class="source">R6IORotatingDoor</a></span> <span class="source_type"><a href="../engine/door.html" class="source">door</a></span> ) )</div>
+<blockquote class="comment">
+// climbing ladder /////////////////////////////////////////////
+</blockquote>
+<hr class="small" />
+<h4><a name="_CanReturnToNormalState-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> CanReturnToNormalState <span class="function_state"></span> <a href="../Source_r6engine/r6hostageai.html#494" class="small">Source code</a></h4>
+<div class="declaration"> function <span class="source_type">bool</span> CanReturnToNormalState ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_CanStopMoving-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> CanStopMoving <span class="function_state"></span> <a href="../Source_r6engine/r6hostageai.html#820" class="small">Source code</a></h4>
+<div class="declaration"> function <span class="source_type">bool</span> CanStopMoving ( <span class="source_type">bool</span> <span class="source_type">bCheckIfShouldMove</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_CheckNeedToClimbLadder-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> CheckNeedToClimbLadder <span class="function_state"></span> <a href="../Source_r6engine/r6hostageai.html#3293" class="small">Source code</a></h4>
+<div class="declaration"> function  CheckNeedToClimbLadder ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_CivInit-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> CivInit <span class="function_state"></span> <a href="../Source_r6engine/r6hostageai.html#2274" class="small">Source code</a></h4>
+<div class="declaration"> function  CivInit ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_DispatchOrder-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> DispatchOrder <span class="function_state"></span> <a href="../Source_r6engine/r6hostageai.html#797" class="small">Source code</a></h4>
+<div class="declaration"> function  DispatchOrder ( <span class="source_type">INT</span> iOrder, OPTIONAL <span class="source_type"><a href="../r6engine/r6pawn.html" class="source">R6Pawn</a></span> <span class="source_type">orderFrom</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_EndState-Civilian" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> EndState <span class="function_state">Civilian</span> <a href="../Source_r6engine/r6hostageai.html#2445" class="small">Source code</a></h4>
+<div class="declaration"> function  EndState ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_EndState-Configuration" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> EndState <span class="function_state">Configuration</span> <a href="../Source_r6engine/r6hostageai.html#197" class="small">Source code</a></h4>
+<div class="declaration"> function  EndState ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_endState-EscortedByEnemy" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> endState <span class="function_state">EscortedByEnemy</span> <a href="../Source_r6engine/r6hostageai.html#2803" class="small">Source code</a></h4>
+<div class="declaration"> function  endState ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_EndState-FollowingPawn" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> EndState <span class="function_state">FollowingPawn</span> <a href="../Source_r6engine/r6hostageai.html#1528" class="small">Source code</a></h4>
+<div class="declaration"> function  EndState ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_EndState-Freed" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> EndState <span class="function_state">Freed</span> <a href="../Source_r6engine/r6hostageai.html#1205" class="small">Source code</a></h4>
+<div class="declaration"> function  EndState ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_EndState-Guarded" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> EndState <span class="function_state">Guarded</span> <a href="../Source_r6engine/r6hostageai.html#1023" class="small">Source code</a></h4>
+<div class="declaration"> function  EndState ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_EndState-RunForCover" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> EndState <span class="function_state">RunForCover</span> <a href="../Source_r6engine/r6hostageai.html#2099" class="small">Source code</a></h4>
+<div class="declaration"> function  EndState ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_EnemyNotVisible-RunForCover" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> EnemyNotVisible <span class="function_state">RunForCover</span> <a href="../Source_r6engine/r6hostageai.html#2119" class="small">Source code</a></h4>
+<div class="declaration"> function  EnemyNotVisible ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_EscortIsOver-EscortedByEnemy" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> EscortIsOver <span class="function_state">EscortedByEnemy</span> <a href="../Source_r6engine/r6hostageai.html#2810" class="small">Source code</a></h4>
+<div class="declaration"> function  EscortIsOver ( <span class="source_type">bool</span> <span class="source_type">bSuccess</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_FollowPawnFailed-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> FollowPawnFailed <span class="function_state"></span> <a href="../Source_r6engine/r6hostageai.html#1490" class="small">Source code</a></h4>
+<div class="declaration"> function  FollowPawnFailed ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GetFacingTime-CivPatrolPath" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> GetFacingTime <span class="function_state">CivPatrolPath</span> <a href="../Source_r6engine/r6hostageai.html#2579" class="small">Source code</a></h4>
+<div class="declaration"> function <span class="source_type">INT</span> GetFacingTime ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GetRainbowWhoEscortThisPawn-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> GetRainbowWhoEscortThisPawn <span class="function_state"></span> <a href="../Source_r6engine/r6hostageai.html#687" class="small">Source code</a></h4>
+<div class="declaration"> function <span class="source_type"><a href="../r6engine/r6rainbow.html" class="source">R6Rainbow</a></span> GetRainbowWhoEscortThisPawn ( <span class="source_type"><a href="../r6engine/r6pawn.html" class="source">R6Pawn</a></span> <span class="source_type">follow</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GetRandomTurn90-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> GetRandomTurn90 <span class="function_state"></span> <a href="../Source_r6engine/r6hostageai.html#472" class="small">Source code</a></h4>
+<div class="declaration"> function <span class="source_type"><a href="../core/object.html#Rotator" class="source">Rotator</a></span> GetRandomTurn90 ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GetThreatGroupName-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> GetThreatGroupName <span class="function_state"></span> <a href="../Source_r6engine/r6hostageai.html#2330" class="small">Source code</a></h4>
+<div class="declaration"> function <span class="source_type">name</span> GetThreatGroupName ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GetWaitingTime-CivPatrolPath" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> GetWaitingTime <span class="function_state">CivPatrolPath</span> <a href="../Source_r6engine/r6hostageai.html#2570" class="small">Source code</a></h4>
+<div class="declaration"> function <span class="source_type">INT</span> GetWaitingTime ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_HearNoise-" class="hidden"></a><img src="../img_event.gif" alt="" title="event" /> HearNoise <span class="function_state"></span> <a href="../Source_r6engine/r6hostageai.html#640" class="small">Source code</a></h4>
+<div class="declaration"> event  HearNoise ( <span class="source_type">float</span> fLoudness, <span class="source_type"><a href="../engine/actor.html" class="source">Actor</a></span> noiseMaker, <span class="source_type"><a href="../engine/actor.html#ENoiseType" class="source">ENoiseType</a></span> <span class="source_type">eType</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_HearNoise-OpenDoor" class="hidden"></a><img src="../img_event.gif" alt="" title="event" /> HearNoise <span class="function_state">OpenDoor</span> <a href="../Source_r6engine/r6hostageai.html#3212" class="small">Source code</a></h4>
+<div class="declaration"> event  HearNoise ( <span class="source_type">float</span> fLoudness, <span class="source_type"><a href="../engine/actor.html" class="source">Actor</a></span> noiseMaker, <span class="source_type"><a href="../engine/actor.html#ENoiseType" class="source">ENoiseType</a></span> <span class="source_type">eType</span> )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_IsAwayOfGrenade-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> IsAwayOfGrenade <span class="function_state"></span> <a href="../Source_r6engine/r6hostageai.html#2045" class="small">Source code</a></h4>
+<div class="declaration"> function <span class="source_type">bool</span> IsAwayOfGrenade ( <span class="source_type"><a href="../engine/actor.html" class="source">Actor</a></span> <span class="source_type">grenade</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_IsBumpBackUpStateFinish-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> IsBumpBackUpStateFinish <span class="function_state"></span> <a href="../Source_r6engine/r6hostageai.html#2226" class="small">Source code</a></h4>
+<div class="declaration"> function <span class="source_type">bool</span> IsBumpBackUpStateFinish ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_IsGoingBack-CivPatrolPath" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> IsGoingBack <span class="function_state">CivPatrolPath</span> <a href="../Source_r6engine/r6hostageai.html#2588" class="small">Source code</a></h4>
+<div class="declaration"> function <span class="source_type">BOOL</span> IsGoingBack ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_IsGuarded-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> IsGuarded <span class="function_state"></span> <a href="../Source_r6engine/r6hostageai.html#918" class="small">Source code</a></h4>
+<div class="declaration"> function <span class="source_type">bool</span> IsGuarded ( OPTIONAL <span class="source_type">bool</span> <span class="source_type">bNoTimer</span>, OPTIONAL <span class="source_type">bool</span> <span class="source_type">bMustSeeMe</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_IsInCrouchedPosture-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> IsInCrouchedPosture <span class="function_state"></span> <a href="../Source_r6engine/r6hostageai.html#905" class="small">Source code</a></h4>
+<div class="declaration"> function <span class="source_type">bool</span> IsInCrouchedPosture ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_IsInTemporaryState-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> IsInTemporaryState <span class="function_state"></span> <a href="../Source_r6engine/r6hostageai.html#3111" class="small">Source code</a></h4>
+<div class="declaration"> function <span class="source_type">bool</span> IsInTemporaryState ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_IsRunForCoverPossible-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> IsRunForCoverPossible <span class="function_state"></span> <a href="../Source_r6engine/r6hostageai.html#2068" class="small">Source code</a></h4>
+<div class="declaration"> function <span class="source_type">bool</span> IsRunForCoverPossible ( <span class="source_type"><a href="../engine/pawn.html" class="source">Pawn</a></span> <span class="source_type">runAwayOf</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_IsRunForCoverSuccessfull-RunForCover" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> IsRunForCoverSuccessfull <span class="function_state">RunForCover</span> <a href="../Source_r6engine/r6hostageai.html#2151" class="small">Source code</a></h4>
+<div class="declaration"> function <span class="source_type">bool</span> IsRunForCoverSuccessfull ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_NotifyBump-FollowingPawn" class="hidden"></a><img src="../img_event.gif" alt="" title="event" /> NotifyBump <span class="function_state">FollowingPawn</span> <a href="../Source_r6engine/r6hostageai.html#1535" class="small">Source code</a></h4>
+<div class="declaration"> event <span class="source_type">bool</span> NotifyBump ( <span class="source_type"><a href="../engine/actor.html" class="source">Actor</a></span> <span class="source_type">other</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_OpenDoorFailed-" class="hidden"></a><img src="../img_event.gif" alt="" title="event" /> OpenDoorFailed <span class="function_state"></span> <a href="../Source_r6engine/r6hostageai.html#1995" class="small">Source code</a></h4>
+<div class="declaration"> event  OpenDoorFailed ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_OpenDoorFailed-CivPatrolPath" class="hidden"></a><img src="../img_event.gif" alt="" title="event" /> OpenDoorFailed <span class="function_state">CivPatrolPath</span> <a href="../Source_r6engine/r6hostageai.html#2604" class="small">Source code</a></h4>
+<div class="declaration"> event  OpenDoorFailed ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_OpenDoorFailed-RunForCover" class="hidden"></a><img src="../img_event.gif" alt="" title="event" /> OpenDoorFailed <span class="function_state">RunForCover</span> <a href="../Source_r6engine/r6hostageai.html#2173" class="small">Source code</a></h4>
+<div class="declaration"> event  OpenDoorFailed ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_Order_Add-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> Order_Add <span class="function_state"></span> <a href="../Source_r6engine/r6hostageai.html#3084" class="small">Source code</a></h4>
+<div class="declaration"> function  Order_Add ( <span class="source_type"><a href="../r6engine/r6hostageai.html#eHostageOrder" class="source">eHostageOrder</a></span> eOrder, <span class="source_type"><a href="../r6engine/r6pawn.html" class="source">R6Pawn</a></span> <span class="source_type">aPawn</span>, OPTIONAL <span class="source_type">bool</span> <span class="source_type">bOrderedByRainbow</span>, OPTIONAL <span class="source_type"><a href="../engine/actor.html" class="source">actor</a></span> <span class="source_type">anActor</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_Order_canFollowMe-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> Order_canFollowMe <span class="function_state"></span> <a href="../Source_r6engine/r6hostageai.html#3184" class="small">Source code</a></h4>
+<div class="declaration"> function <span class="source_type">bool</span> Order_canFollowMe ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_Order_FollowMe-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> Order_FollowMe <span class="function_state"></span> <a href="../Source_r6engine/r6hostageai.html#3193" class="small">Source code</a></h4>
+<div class="declaration"> function  Order_FollowMe ( <span class="source_type"><a href="../r6engine/r6pawn.html" class="source">R6Pawn</a></span> <span class="source_type">aPawn</span>, <span class="source_type">bool</span> <span class="source_type">bOrderedByRainbow</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_Order_GetLog-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> Order_GetLog <span class="function_state"></span> <a href="../Source_r6engine/r6hostageai.html#3015" class="small">Source code</a></h4>
+<div class="declaration"> function <span class="source_type">string</span> Order_GetLog ( <span class="source_type"><a href="../r6engine/r6hostageai.html#OrderInfo" class="source">OrderInfo</a></span> <span class="source_type"><a href="../engine/info.html" class="source">info</a></span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_Order_GotoExtraction-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> Order_GotoExtraction <span class="function_state"></span> <a href="../Source_r6engine/r6hostageai.html#3166" class="small">Source code</a></h4>
+<div class="declaration"> function  Order_GotoExtraction ( <span class="source_type"><a href="../engine/actor.html" class="source">Actor</a></span> <span class="source_type">aZone</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_Order_Pop-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> Order_Pop <span class="function_state"></span> <a href="../Source_r6engine/r6hostageai.html#3048" class="small">Source code</a></h4>
+<div class="declaration"> function <span class="source_type"><a href="../r6engine/r6hostageai.html#OrderInfo" class="source">OrderInfo</a></span> Order_Pop ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_Order_Process-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> Order_Process <span class="function_state"></span> <a href="../Source_r6engine/r6hostageai.html#3127" class="small">Source code</a></h4>
+<div class="declaration"> function  Order_Process ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_Order_ProcessFollowMe-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> Order_ProcessFollowMe <span class="function_state"></span> <a href="../Source_r6engine/r6hostageai.html#726" class="small">Source code</a></h4>
+<div class="declaration"> function  Order_ProcessFollowMe ( <span class="source_type"><a href="../r6engine/r6pawn.html" class="source">R6Pawn</a></span> <span class="source_type">follow</span>, <span class="source_type">bool</span> <span class="source_type">bOrderedByRainbow</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_Order_ProcessGotoExtraction-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> Order_ProcessGotoExtraction <span class="function_state"></span> <a href="../Source_r6engine/r6hostageai.html#706" class="small">Source code</a></h4>
+<div class="declaration"> function  Order_ProcessGotoExtraction ( <span class="source_type"><a href="../engine/actor.html" class="source">Actor</a></span> <span class="source_type">aZone</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_Order_ProcessStayHere-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> Order_ProcessStayHere <span class="function_state"></span> <a href="../Source_r6engine/r6hostageai.html#782" class="small">Source code</a></h4>
+<div class="declaration"> function  Order_ProcessStayHere ( <span class="source_type">bool</span> <span class="source_type">bOrderedByRainbow</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_Order_ProcessSurrender-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> Order_ProcessSurrender <span class="function_state"></span> <a href="../Source_r6engine/r6hostageai.html#2739" class="small">Source code</a></h4>
+<div class="declaration"> function  Order_ProcessSurrender ( <span class="source_type"><a href="../engine/pawn.html" class="source">Pawn</a></span> <span class="source_type">terro</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_Order_StayHere-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> Order_StayHere <span class="function_state"></span> <a href="../Source_r6engine/r6hostageai.html#3175" class="small">Source code</a></h4>
+<div class="declaration"> function  Order_StayHere ( <span class="source_type">bool</span> <span class="source_type">bOrderedByRainbow</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_Order_Surrender-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> Order_Surrender <span class="function_state"></span> <a href="../Source_r6engine/r6hostageai.html#3202" class="small">Source code</a></h4>
+<div class="declaration"> function  Order_Surrender ( <span class="source_type"><a href="../r6engine/r6pawn.html" class="source">R6Pawn</a></span> <span class="source_type">aPawn</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_PawnDied-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> PawnDied <span class="function_state"></span> <a href="../Source_r6engine/r6hostageai.html#276" class="small">Source code</a></h4>
+<div class="declaration"> function  PawnDied ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_PickDestination-CivPatrolPath" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> PickDestination <span class="function_state">CivPatrolPath</span> <a href="../Source_r6engine/r6hostageai.html#2594" class="small">Source code</a></h4>
+<div class="declaration"> function  PickDestination ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_PlaySoundAffectedByGrenade-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> PlaySoundAffectedByGrenade <span class="function_state"></span> <a href="../Source_r6engine/r6hostageai.html#3342" class="small">Source code</a></h4>
+<div class="declaration"> function  PlaySoundAffectedByGrenade ( <span class="source_type"><a href="../r6engine/r6pawn.html" class="source">R6Pawn</a></span>.<span class="source_type"><a href="../engine/pawn.html#EGrenadeType" class="source">EGrenadeType</a></span> <span class="source_type">eType</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_PlaySoundDamage-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> PlaySoundDamage <span class="function_state"></span> <a href="../Source_r6engine/r6hostageai.html#3377" class="small">Source code</a></h4>
+<div class="declaration"> function  PlaySoundDamage ( <span class="source_type"><a href="../engine/pawn.html" class="source">Pawn</a></span> instigatedBy) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_Possess-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> Possess <span class="function_state"></span> <a href="../Source_r6engine/r6hostageai.html#156" class="small">Source code</a></h4>
+<div class="declaration"> function  Possess ( <span class="source_type"><a href="../engine/pawn.html" class="source">Pawn</a></span> <span class="source_type">aPawn</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_PostBeginPlay-" class="hidden"></a><img src="../img_event.gif" alt="" title="event" /> PostBeginPlay <span class="function_state"></span> <a href="../Source_r6engine/r6hostageai.html#134" class="small">Source code</a></h4>
+<div class="declaration"> event  PostBeginPlay ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ProcessPlaySndInfo-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> ProcessPlaySndInfo <span class="function_state"></span> <a href="../Source_r6engine/r6hostageai.html#3526" class="small">Source code</a></h4>
+<div class="declaration"> function <span class="source_type">BOOL</span> ProcessPlaySndInfo ( <span class="source_type">int</span> <span class="source_type">iSndEvent</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ProcessThreat-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> ProcessThreat <span class="function_state"></span> <a href="../Source_r6engine/r6hostageai.html#2370" class="small">Source code</a></h4>
+<div class="declaration"> function  ProcessThreat ( <span class="source_type"><a href="../engine/actor.html" class="source">Actor</a></span> <span class="source_type">p</span>, <span class="source_type"><a href="../engine/actor.html#ENoiseType" class="source">ENoiseType</a></span> <span class="source_type">eType</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ResetThreatInfo-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> ResetThreatInfo <span class="function_state"></span> <a href="../Source_r6engine/r6hostageai.html#2312" class="small">Source code</a></h4>
+<div class="declaration"> function  ResetThreatInfo ( <span class="source_type">string</span> <span class="source_type">sz</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ReturnToNormalState-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> ReturnToNormalState <span class="function_state"></span> <a href="../Source_r6engine/r6hostageai.html#544" class="small">Source code</a></h4>
+<div class="declaration"> function  ReturnToNormalState ( OPTIONAL <span class="source_type">bool</span> <span class="source_type">bNoTimer</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_Roll-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> Roll <span class="function_state"></span> <a href="../Source_r6engine/r6hostageai.html#426" class="small">Source code</a></h4>
+<div class="declaration"> function <span class="source_type">INT</span> Roll ( <span class="source_type">INT</span> <span class="source_type">iMax</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_RouteCacheWithOtherLadder-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> RouteCacheWithOtherLadder <span class="function_state"></span> <a href="../Source_r6engine/r6hostageai.html#3270" class="small">Source code</a></h4>
+<div class="declaration"> function <span class="source_type">bool</span> RouteCacheWithOtherLadder ( <span class="source_type"><a href="../r6engine/r6ladder.html" class="source">r6ladder</a></span> <span class="source_type"><a href="../engine/ladder.html" class="source">ladder</a></span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_SeePlayer-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> SeePlayer <span class="function_state"></span> <a href="../Source_r6engine/r6hostageai.html#563" class="small">Source code</a></h4>
+<div class="declaration"> function  SeePlayer ( <span class="source_type"><a href="../engine/pawn.html" class="source">Pawn</a></span> <span class="source_type">p</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_SeePlayer-CivGuardPoint" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> SeePlayer <span class="function_state">CivGuardPoint</span> <a href="../Source_r6engine/r6hostageai.html#2520" class="small">Source code</a></h4>
+<div class="declaration"> function  SeePlayer ( <span class="source_type"><a href="../engine/pawn.html" class="source">Pawn</a></span> <span class="source_type">p</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_SeePlayer-OpenDoor" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> SeePlayer <span class="function_state">OpenDoor</span> <a href="../Source_r6engine/r6hostageai.html#3211" class="small">Source code</a></h4>
+<div class="declaration"> function  SeePlayer ( <span class="source_type"><a href="../engine/pawn.html" class="source">Pawn</a></span> <span class="source_type">p</span> )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_SeePlayerMgr-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> SeePlayerMgr <span class="function_state"></span> <a href="../Source_r6engine/r6hostageai.html#625" class="small">Source code</a></h4>
+<div class="declaration"> function  SeePlayerMgr ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_SeePlayerMgr-OpenDoor" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> SeePlayerMgr <span class="function_state">OpenDoor</span> <a href="../Source_r6engine/r6hostageai.html#3210" class="small">Source code</a></h4>
+<div class="declaration"> function  SeePlayerMgr (  )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_SetFreed-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> SetFreed <span class="function_state"></span> <a href="../Source_r6engine/r6hostageai.html#288" class="small">Source code</a></h4>
+<div class="declaration"> function  SetFreed ( <span class="source_type">bool</span> <span class="source_type">bFreed</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_SetMovementPace-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> SetMovementPace <span class="function_state"></span> <a href="../Source_r6engine/r6hostageai.html#1301" class="small">Source code</a></h4>
+<div class="declaration"> function <span class="source_type">bool</span> SetMovementPace ( <span class="source_type">bool</span> <span class="source_type">bStartingToMove</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_SetPace-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> SetPace <span class="function_state"></span> <a href="../Source_r6engine/r6hostageai.html#358" class="small">Source code</a></h4>
+<div class="declaration"> function  SetPace ( <span class="source_type"><a href="../r6engine/r6pawn.html" class="source">R6Pawn</a></span>.eMovementPace <span class="source_type">ePace</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_SetPawnPosition-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> SetPawnPosition <span class="function_state"></span> <a href="../Source_r6engine/r6hostageai.html#316" class="small">Source code</a></h4>
+<div class="declaration"> function  SetPawnPosition ( <span class="source_type"><a href="../r6engine/r6hostage.html" class="source">R6Hostage</a></span>.<span class="source_type"><a href="../r6engine/r6hostage.html#EStartingPosition" class="source">EStartingPosition</a></span> <span class="source_type">ePos</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_SetStateEscorted-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> SetStateEscorted <span class="function_state"></span> <a href="../Source_r6engine/r6hostageai.html#2771" class="small">Source code</a></h4>
+<div class="declaration"> function  SetStateEscorted ( <span class="source_type"><a href="../r6engine/r6pawn.html" class="source">R6Pawn</a></span> escort, <span class="source_type"><a href="../core/object.html#Vector" class="source">vector</a></span> destination, <span class="source_type">bool</span> bSurrender  ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_SetStateExtracted-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> SetStateExtracted <span class="function_state"></span> <a href="../Source_r6engine/r6hostageai.html#3505" class="small">Source code</a></h4>
+<div class="declaration"> function  SetStateExtracted ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_SetStateFollowingPawn-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> SetStateFollowingPawn <span class="function_state"></span> <a href="../Source_r6engine/r6hostageai.html#408" class="small">Source code</a></h4>
+<div class="declaration"> function  SetStateFollowingPawn ( <span class="source_type"><a href="../r6engine/r6pawn.html" class="source">R6Pawn</a></span> runTo, <span class="source_type">bool</span> <span class="source_type">bFreed</span>, <span class="source_type">int</span> <span class="source_type">iHstSndEvent</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_SetStateGuarded-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> SetStateGuarded <span class="function_state"></span> <a href="../Source_r6engine/r6hostageai.html#390" class="small">Source code</a></h4>
+<div class="declaration"> function  SetStateGuarded ( <span class="source_type"><a href="../r6engine/r6hostage.html" class="source">R6Hostage</a></span>.<span class="source_type"><a href="../r6engine/r6hostage.html#EStartingPosition" class="source">EStartingPosition</a></span> <span class="source_type">ePos</span>, <span class="source_type">int</span> <span class="source_type">iHstSndEvent</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_SetStatePaceTransition-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> SetStatePaceTransition <span class="function_state"></span> <a href="../Source_r6engine/r6hostageai.html#1242" class="small">Source code</a></h4>
+<div class="declaration"> function  SetStatePaceTransition ( <span class="source_type"><a href="../r6engine/r6hostage.html" class="source">R6Hostage</a></span>.<span class="source_type"><a href="../r6engine/r6hostage.html#EStartingPosition" class="source">EStartingPosition</a></span> <span class="source_type">ePos</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_SetStateReactToGrenade-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> SetStateReactToGrenade <span class="function_state"></span> <a href="../Source_r6engine/r6hostageai.html#3402" class="small">Source code</a></h4>
+<div class="declaration"> function  SetStateReactToGrenade ( <span class="source_type">name</span> <span class="source_type">stateToReturn</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_SetStateRunForCover-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> SetStateRunForCover <span class="function_state"></span> <a href="../Source_r6engine/r6hostageai.html#2018" class="small">Source code</a></h4>
+<div class="declaration"> function  SetStateRunForCover ( <span class="source_type"><a href="../engine/pawn.html" class="source">Pawn</a></span> runAwayOfPawn, <span class="source_type">name</span> successState, <span class="source_type">name</span> failureState, <span class="source_type"><a href="../engine/actor.html" class="source">Actor</a></span> <span class="source_type">grenade</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_SetThreatState-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> SetThreatState <span class="function_state"></span> <a href="../Source_r6engine/r6hostageai.html#2321" class="small">Source code</a></h4>
+<div class="declaration"> function  SetThreatState ( <span class="source_type">name</span> <span class="source_type">threatState</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_SetToNextNode-CivPatrolPath" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> SetToNextNode <span class="function_state">CivPatrolPath</span> <a href="../Source_r6engine/r6hostageai.html#2611" class="small">Source code</a></h4>
+<div class="declaration"> function  SetToNextNode ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_StopFollowingPawn-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> StopFollowingPawn <span class="function_state"></span> <a href="../Source_r6engine/r6hostageai.html#765" class="small">Source code</a></h4>
+<div class="declaration"> function  StopFollowingPawn ( <span class="source_type">bool</span> <span class="source_type">bOrderedByRainbow</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_StopRunForCover-RunForCover" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> StopRunForCover <span class="function_state">RunForCover</span> <a href="../Source_r6engine/r6hostageai.html#2111" class="small">Source code</a></h4>
+<div class="declaration"> function  StopRunForCover ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_Tick-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> Tick <span class="function_state"></span> <a href="../Source_r6engine/r6hostageai.html#175" class="small">Source code</a></h4>
+<div class="declaration"> function  Tick ( <span class="source_type">FLOAT</span> fDeltaTime) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_Timer-Extracted" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> Timer <span class="function_state">Extracted</span> <a href="../Source_r6engine/r6hostageai.html#3664" class="small">Source code</a></h4>
+<div class="declaration"> function  Timer ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_Timer-FollowingPawn" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> Timer <span class="function_state">FollowingPawn</span> <a href="../Source_r6engine/r6hostageai.html#1545" class="small">Source code</a></h4>
+<div class="declaration"> function  Timer ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_Timer-Freed" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> Timer <span class="function_state">Freed</span> <a href="../Source_r6engine/r6hostageai.html#1214" class="small">Source code</a></h4>
+<div class="declaration"> function  Timer ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_Timer-Guarded" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> Timer <span class="function_state">Guarded</span> <a href="../Source_r6engine/r6hostageai.html#1030" class="small">Source code</a></h4>
+<div class="declaration"> function  Timer ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_Timer-Guarded_foetus" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> Timer <span class="function_state">Guarded_foetus</span> <a href="../Source_r6engine/r6hostageai.html#1098" class="small">Source code</a></h4>
+<div class="declaration"> function  Timer ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_Timer-Guarded_frozen" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> Timer <span class="function_state">Guarded_frozen</span> <a href="../Source_r6engine/r6hostageai.html#1157" class="small">Source code</a></h4>
+<div class="declaration"> function  Timer ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_Timer-RunForCover" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> Timer <span class="function_state">RunForCover</span> <a href="../Source_r6engine/r6hostageai.html#2105" class="small">Source code</a></h4>
+<div class="declaration"> function  Timer ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+
+
+<br />
+
+
+<table class="title">
+<tr>
+	<th class="title">Defaultproperties</th>
+</tr>
+</table>
+<br />
+<div class="source"><table class="source"><tr><td class="source"><pre class="source">defaultproperties
+{
+     c_iDistanceMax=<span class="source_int">190</span>
+     c_iDistanceCatchUp=<span class="source_int">160</span>
+     c_iDistanceToStartToRun=<span class="source_int">350</span>
+     c_iCowardModifier=-<span class="source_int">40</span>
+     c_iBraveModifier=<span class="source_int">40</span>
+     c_iWoundedModifier=<span class="source_int">20</span>
+     c_iGasModifier=<span class="source_int">20</span>
+     c_iEnemyNotVisibleTime=<span class="source_int">5</span>
+     c_iCautiousLastHearNoiseTime=<span class="source_int">5</span>
+     c_iRunForCoverOfGrenadeMinDist=<span class="source_int">500</span>
+     m_bFirstTimeClarkComment=True
+     m_AITickTime=(m_fMin=<span class="source_int">0.100000</span>,m_fMax=<span class="source_int">0.500000</span>)
+     m_RunForCoverMinTween=(m_fMin=<span class="source_int">4.000000</span>,m_fMax=<span class="source_int">6.000000</span>)
+     m_scareToDeathTween=(m_fMin=<span class="source_int">10.000000</span>,m_fMax=<span class="source_int">14.000000</span>)
+     m_stayBlindedTweenTime=(m_fMin=<span class="source_int">2.800000</span>,m_fMax=<span class="source_int">3.300000</span>)
+     c_iDistanceBumpBackUp=<span class="source_int">90</span>
+     bIsPlayer=True
+}
+</pre></td></tr></table></div>
+
+
+
+<hr />
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../r6engine/r6engine-overview.html">Package</a></td>
+	<td class="header_hilight">Class</td>
+	<td class="header"><a href="../Source_r6engine/r6hostageai.html">Source</a></td>
+	<td class="header"><a class="header" href="../classtree.html#R6HostageAI">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../r6engine/r6hostage.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../r6engine/r6hostageicon.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+
+<div class="stats">Creation time: mar. 26/5/2026 18:33:11.328 - Created with <a href="http://wiki.beyondunreal.com/wiki/UnCodeX" target="_blank">UnCodeX</a></div>
+
+</body>
+</html>

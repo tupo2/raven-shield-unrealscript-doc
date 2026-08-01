@@ -1,0 +1,196 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+	<title>UnCodeX - Source: R6Game.R6MObjCompleteAllAndGoToExtraction</title>
+	<meta name="Generator" content="UnCodeX 241" />
+	<link rel="stylesheet" href="../DocStyle2.css" type="text/css" title="Original Purple" />
+	<link rel="alternative stylesheet" href="../DocStyle2-blue.css" type="text/css" title="Blue" />
+	<link rel="alternative stylesheet" href="../DocStyle2-red.css" type="text/css" title="Red" />
+	<!--[if IE]>
+	<link rel="stylesheet" href="../DocStyle2-msie.css" type="text/css" />
+	<![endif]-->
+	<script src="../styleswitcher.js" type="text/javascript"></script>
+</head>
+<body>
+
+<div class="header">
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../r6game/r6game-overview.html">Package</a></td>
+	<td class="header"><a href="../r6game/r6mobjcompleteallandgotoextraction.html">Class</a></td>
+	<td class="header_hilight">Source</td>
+	<td class="header"><a class="header" href="../classtree.html#R6MObjCompleteAllAndGoToExtraction">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../Source_r6game/r6mobjacceptablerainbowlosses.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../Source_r6game/r6mobjdeathmatch.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html#Source_r6game/r6mobjcompleteallandgotoextraction.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+</div>
+<div class="spacer"></div>
+
+<h1><a href="../r6game/r6game-overview.html">R6Game</a>.<a href="../r6game/r6mobjcompleteallandgotoextraction.html">R6MObjCompleteAllAndGoToExtraction</a></h1>
+<br />
+<div class="source"><table class="source"><tr><td class="source_lineno"><span class="source_lineno">00001<br />00002<br />00003<br />00004<br />00005<br />00006<br />00007<br />00008<br />00009<br />00010<br />00011<br />00012<br />00013<br />00014<br />00015<br />00016<br />00017<br />00018<br />00019<br />00020<br />
+00021<br />00022<br />00023<br />00024<br />00025<br />00026<br />00027<br />00028<br />00029<br />00030<br />00031<br />00032<br />00033<br />00034<br />00035<br />00036<br />00037<br />00038<br />00039<br />00040<br />
+00041<br />00042<br />00043<br />00044<br />00045<br />00046<br />00047<br />00048<br />00049<br />00050<br />00051<br />00052<br />00053<br />00054<br />00055<br />00056<br />00057<br />00058<br />00059<br />00060<br />
+00061<br />00062<br />00063<br />00064<br />00065<br />00066<br />00067<br />00068<br />00069<br />00070<br />00071<br />00072<br />00073<br />00074<br />00075<br />00076<br />00077<br />00078<br />00079<br />00080<br />
+00081<br />00082<br />00083<br />00084<br />00085<br />00086<br />00087<br />00088<br />00089<br />00090<br />00091<br />00092<br />00093<br />00094<br />00095<br />00096<br />00097<br />00098<br />00099<br />00100<br />
+00101<br />00102<br />00103<br />00104<br />00105<br />00106<br />00107<br />00108<br />00109<br />00110<br />00111<br />00112<br />00113<br />00114<br />00115<br />00116<br />00117<br />00118<br />00119<br />00120<br />
+00121<br />00122<br />00123<br />00124<br />00125<br />00126<br />00127<br />00128<br />00129<br />00130<br />00131<br />00132</span></td>
+<td class="source"><pre class="source"><a name="1"></a><span class="source_comment">//=============================================================================
+</span><a name="2"></a><span class="source_comment">//  R6MObjCompleteAllAndGoToExtraction.uc : 
+</span><a name="3"></a><span class="source_comment">//  Copyright 2002 Ubi Soft, Inc. All Rights Reserved.
+</span><a name="4"></a><span class="source_comment">//
+</span><a name="5"></a><span class="source_comment">//
+</span><a name="6"></a><span class="source_comment">//  Complete all mission objectives (except Morality AND mission objectives 
+</span><a name="7"></a><span class="source_comment">//  that are flagged with m_bIfCompletedMissionIsSuccessfull).
+</span><a name="8"></a><span class="source_comment">//  
+</span><a name="9"></a><span class="source_comment">//  Only valid for a human player
+</span><a name="10"></a><span class="source_comment">//
+</span><a name="11"></a><span class="source_comment">//  Special: in the manager, added at the end of the list of mission objectives 
+</span><a name="12"></a><span class="source_comment">//
+</span><a name="13"></a><span class="source_comment">//  fail: if one of the objectives fails (excluding exceptions_
+</span><a name="14"></a><span class="source_comment">//  success: if all MO are compledted 
+</span><a name="15"></a><span class="source_comment">//=============================================================================
+</span><a name="16"></a>
+<a name="17"></a><span class="source_type">class</span> <span class="source_type"><a href="../r6game/r6mobjcompleteallandgotoextraction.html" class="source">R6MObjCompleteAllAndGoToExtraction</a></span> extends <span class="source_type"><a href="../engine/r6missionobjectivebase.html" class="source">R6MissionObjectiveBase</a></span>;
+<a name="18"></a>
+<a name="19"></a>function Init()
+<a name="20"></a>{
+<a name="21"></a>    if ( <span class="source_type"><a href="../r6abstract/r6missionobjectivemgr.html" class="source">R6MissionObjectiveMgr</a></span>(m_mgr).m_bEnableCheckForErrors )
+<a name="22"></a>        <span class="source_type"><a href="../r6game/r6gameinfo.html" class="source">R6GameInfo</a></span>(m_mgr.<span class="source_type">Level</span>.Game).CheckForExtractionZone( self );
+<a name="23"></a>}
+<a name="24"></a>
+<a name="25"></a>function EnteredExtractionZone( <span class="source_type"><a href="../engine/pawn.html" class="source">Pawn</a></span> <span class="source_type">aPawn</span> )
+<a name="26"></a>{
+<a name="27"></a>    local <span class="source_type"><a href="../r6abstract/r6missionobjectivemgr.html" class="source">R6MissionObjectiveMgr</a></span> mgr;
+<a name="28"></a>    local <span class="source_type">int</span> <span class="source_type">i</span>;
+<a name="29"></a>    local <span class="source_type">int</span> iTotal;
+<a name="30"></a>    local <span class="source_type">int</span> iTotalCompleted;
+<a name="31"></a>
+<a name="32"></a>    if ( m_bCompleted || isFailed() || <span class="source_type">aPawn</span> == none || <span class="source_type">aPawn</span>.<span class="source_type"><a href="../engine/controller.html" class="source">controller</a></span> == none )
+<a name="33"></a>        return;
+<a name="34"></a>
+<a name="35"></a>    if ( !<span class="source_type">aPawn</span>.IsAlive() )
+<a name="36"></a>        return;
+<a name="37"></a>
+<a name="38"></a>    mgr = <span class="source_type"><a href="../r6abstract/r6missionobjectivemgr.html" class="source">R6MissionObjectiveMgr</a></span>( m_mgr );
+<a name="39"></a>
+<a name="40"></a>    for ( <span class="source_type">i</span> = <span class="source_int">0</span>; <span class="source_type">i</span> &lt; mgr.m_aMissionObjectives.Length; ++<span class="source_type">i</span> )
+<a name="41"></a>    {
+<a name="42"></a>        if ( mgr.m_aMissionObjectives[<span class="source_type">i</span>] == self )
+<a name="43"></a>            continue;
+<a name="44"></a>
+<a name="45"></a>        if ( mgr.m_aMissionObjectives[<span class="source_type">i</span>].m_bMoralityObjective )
+<a name="46"></a>            continue;
+<a name="47"></a>
+<a name="48"></a>        if ( mgr.m_aMissionObjectives[<span class="source_type">i</span>].isMissionCompletedOnSuccess() )
+<a name="49"></a>            continue;
+<a name="50"></a>
+<a name="51"></a>        ++iTotal;
+<a name="52"></a>
+<a name="53"></a>        <span class="source_comment">// if a failure, it will be impossible to complete this
+</span><a name="54"></a>        if ( mgr.m_aMissionObjectives[<span class="source_type">i</span>].isFailed() )
+<a name="55"></a>        {
+<a name="56"></a>            <span class="source_type"><a href="../r6abstract/r6missionobjectivemgr.html" class="source">R6MissionObjectiveMgr</a></span>(m_mgr).SetMissionObjCompleted( self, false, true );
+<a name="57"></a>            return;
+<a name="58"></a>        }
+<a name="59"></a>
+<a name="60"></a>        if ( mgr.m_aMissionObjectives[<span class="source_type">i</span>].isCompleted() )
+<a name="61"></a>        {
+<a name="62"></a>            ++iTotalCompleted;
+<a name="63"></a>        }
+<a name="64"></a>    }
+<a name="65"></a>
+<a name="66"></a>    <span class="source_comment">// if all completed...
+</span><a name="67"></a>    if ( iTotal == iTotalCompleted && iTotal &gt; <span class="source_int">0</span> )
+<a name="68"></a>    {
+<a name="69"></a>        mgr.SetMissionObjCompleted( self, true, true );
+<a name="70"></a>    }
+<a name="71"></a>
+<a name="72"></a>    if ( m_bShowLog ) log( <span class="source_string">"EnteredExtractionZone: completed="</span> $m_bCompleted$ <span class="source_string">" iTotal="</span> $iTotal$ <span class="source_string">" iTotalCompleted="</span> $iTotalCompleted );
+<a name="73"></a>}
+<a name="74"></a>
+<a name="75"></a><span class="source_comment">//------------------------------------------------------------------
+</span><a name="76"></a><span class="source_comment">// isCompleted
+</span><a name="77"></a><span class="source_comment">//
+</span><a name="78"></a><span class="source_comment">//------------------------------------------------------------------
+</span><a name="79"></a>function <span class="source_type">bool</span> isCompleted()
+<a name="80"></a>{
+<a name="81"></a>    local <span class="source_type"><a href="../r6game/r6extractionzone.html" class="source">R6ExtractionZone</a></span>  anExtractionZone;
+<a name="82"></a>    local <span class="source_type"><a href="../r6engine/r6rainbow.html" class="source">R6Rainbow</a></span>         aRainbow;
+<a name="83"></a>    local <span class="source_type"><a href="../engine/controller.html" class="source">Controller</a></span>            <span class="source_type">aController</span>;
+<a name="84"></a>    local <span class="source_type"><a href="../r6engine/r6playercontroller.html" class="source">R6PlayerController</a></span>    pR6PlayerController;
+<a name="85"></a>    local <span class="source_type"><a href="../r6engine/r6aicontroller.html" class="source">R6AIController</a></span>        pAIController;
+<a name="86"></a>
+<a name="87"></a>    if ( isFailed() )
+<a name="88"></a>        return false;
+<a name="89"></a>
+<a name="90"></a>    <span class="source_comment">// log( "R6MObjCompleteAllAndGoToExtraction::isCompleted at " $m_mgr.Level.TimeSeconds );
+</span><a name="91"></a>    
+<a name="92"></a>    <span class="source_comment">// check if there's a rainbow in a extraction zone after updating something    
+</span><a name="93"></a>    for (<span class="source_type">aController</span> = m_mgr.<span class="source_type">Level</span>.ControllerList; <span class="source_type">aController</span> != None; <span class="source_type">aController</span> = <span class="source_type">aController</span>.NextController )
+<a name="94"></a>    {
+<a name="95"></a>        pR6PlayerController = <span class="source_type"><a href="../r6engine/r6playercontroller.html" class="source">R6PlayerController</a></span>(<span class="source_type">aController</span>);
+<a name="96"></a>        if ( pR6PlayerController != none )
+<a name="97"></a>        {
+<a name="98"></a>            aRainbow = pR6PlayerController.m_pawn;
+<a name="99"></a>        }
+<a name="100"></a>        else
+<a name="101"></a>        {
+<a name="102"></a>            pAIController = <span class="source_type"><a href="../r6engine/r6aicontroller.html" class="source">R6AIController</a></span>(<span class="source_type">aController</span>);
+<a name="103"></a>            if ( pAIController != none )
+<a name="104"></a>                aRainbow = <span class="source_type"><a href="../r6engine/r6rainbow.html" class="source">R6Rainbow</a></span>(pAIController.m_r6pawn);
+<a name="105"></a>        }
+<a name="106"></a>
+<a name="107"></a>        if ( aRainbow != none )
+<a name="108"></a>        {
+<a name="109"></a>		    <span class="source_comment">// if touching the extraction zone
+</span><a name="110"></a>            foreach aRainbow.TouchingActors( <span class="source_type">class</span><span class="source_name">'R6ExtractionZone'</span>, anExtractionZone )
+<a name="111"></a>		    {
+<a name="112"></a>                EnteredExtractionZone( aRainbow );
+<a name="113"></a>                break;
+<a name="114"></a>		    }
+<a name="115"></a>
+<a name="116"></a>            if ( m_bCompleted || m_bFailed )
+<a name="117"></a>                break;
+<a name="118"></a>        }
+<a name="119"></a>    }
+<a name="120"></a>
+<a name="121"></a>    <span class="source_comment">// log( " R6MObjCompleteAllAndGoToExtraction: m_bCompleted=" $m_bCompleted );
+</span><a name="122"></a>    return m_bCompleted;
+<a name="123"></a>}
+<a name="124"></a>
+<a name="125"></a>defaultproperties
+<a name="126"></a>{
+<a name="127"></a>     m_bIfCompletedMissionIsSuccessfull=True
+<a name="128"></a>     m_bIfFailedMissionIsAborted=True
+<a name="129"></a>     m_bEndOfListOfObjectives=True
+<a name="130"></a>     m_szDescription=<span class="source_string">"Completed all mission objetives"</span>
+<a name="131"></a>}
+<a name="132"></a></pre></td></tr></table></div>
+<hr />
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../r6game/r6game-overview.html">Package</a></td>
+	<td class="header"><a href="../r6game/r6mobjcompleteallandgotoextraction.html">Class</a></td>
+	<td class="header_hilight">Source</td>
+	<td class="header"><a class="header" href="../classtree.html#R6MObjCompleteAllAndGoToExtraction">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../Source_r6game/r6mobjacceptablerainbowlosses.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../Source_r6game/r6mobjdeathmatch.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+
+<div class="stats">Class file time: sam. 18/9/2004 14:39:50.000 - Creation time: mar. 26/5/2026 18:33:20.762 - Created with <a href="http://wiki.beyondunreal.com/wiki/UnCodeX" target="_blank">UnCodeX</a></div>
+
+</body>
+</html>

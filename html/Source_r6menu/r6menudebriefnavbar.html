@@ -1,0 +1,344 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+	<title>UnCodeX - Source: R6Menu.R6MenuDebriefNavBar</title>
+	<meta name="Generator" content="UnCodeX 241" />
+	<link rel="stylesheet" href="../DocStyle2.css" type="text/css" title="Original Purple" />
+	<link rel="alternative stylesheet" href="../DocStyle2-blue.css" type="text/css" title="Blue" />
+	<link rel="alternative stylesheet" href="../DocStyle2-red.css" type="text/css" title="Red" />
+	<!--[if IE]>
+	<link rel="stylesheet" href="../DocStyle2-msie.css" type="text/css" />
+	<![endif]-->
+	<script src="../styleswitcher.js" type="text/javascript"></script>
+</head>
+<body>
+
+<div class="header">
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../r6menu/r6menu-overview.html">Package</a></td>
+	<td class="header"><a href="../r6menu/r6menudebriefnavbar.html">Class</a></td>
+	<td class="header_hilight">Source</td>
+	<td class="header"><a class="header" href="../classtree.html#R6MenuDebriefNavBar">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../Source_r6menu/r6menudebriefingwidget.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../Source_r6menu/r6menudelnodebar.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html#Source_r6menu/r6menudebriefnavbar.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+</div>
+<div class="spacer"></div>
+
+<h1><a href="../r6menu/r6menu-overview.html">R6Menu</a>.<a href="../r6menu/r6menudebriefnavbar.html">R6MenuDebriefNavBar</a></h1>
+<br />
+<div class="source"><table class="source"><tr><td class="source_lineno"><span class="source_lineno">00001<br />00002<br />00003<br />00004<br />00005<br />00006<br />00007<br />00008<br />00009<br />00010<br />00011<br />00012<br />00013<br />00014<br />00015<br />00016<br />00017<br />00018<br />00019<br />00020<br />
+00021<br />00022<br />00023<br />00024<br />00025<br />00026<br />00027<br />00028<br />00029<br />00030<br />00031<br />00032<br />00033<br />00034<br />00035<br />00036<br />00037<br />00038<br />00039<br />00040<br />
+00041<br />00042<br />00043<br />00044<br />00045<br />00046<br />00047<br />00048<br />00049<br />00050<br />00051<br />00052<br />00053<br />00054<br />00055<br />00056<br />00057<br />00058<br />00059<br />00060<br />
+00061<br />00062<br />00063<br />00064<br />00065<br />00066<br />00067<br />00068<br />00069<br />00070<br />00071<br />00072<br />00073<br />00074<br />00075<br />00076<br />00077<br />00078<br />00079<br />00080<br />
+00081<br />00082<br />00083<br />00084<br />00085<br />00086<br />00087<br />00088<br />00089<br />00090<br />00091<br />00092<br />00093<br />00094<br />00095<br />00096<br />00097<br />00098<br />00099<br />00100<br />
+00101<br />00102<br />00103<br />00104<br />00105<br />00106<br />00107<br />00108<br />00109<br />00110<br />00111<br />00112<br />00113<br />00114<br />00115<br />00116<br />00117<br />00118<br />00119<br />00120<br />
+00121<br />00122<br />00123<br />00124<br />00125<br />00126<br />00127<br />00128<br />00129<br />00130<br />00131<br />00132<br />00133<br />00134<br />00135<br />00136<br />00137<br />00138<br />00139<br />00140<br />
+00141<br />00142<br />00143<br />00144<br />00145<br />00146<br />00147<br />00148<br />00149<br />00150<br />00151<br />00152<br />00153<br />00154<br />00155<br />00156<br />00157<br />00158<br />00159<br />00160<br />
+00161<br />00162<br />00163<br />00164<br />00165<br />00166<br />00167<br />00168<br />00169<br />00170<br />00171<br />00172<br />00173<br />00174<br />00175<br />00176<br />00177<br />00178<br />00179<br />00180<br />
+00181<br />00182<br />00183<br />00184<br />00185<br />00186<br />00187<br />00188<br />00189<br />00190<br />00191<br />00192<br />00193<br />00194<br />00195<br />00196<br />00197<br />00198<br />00199<br />00200<br />
+00201<br />00202<br />00203<br />00204<br />00205<br />00206<br />00207<br />00208<br />00209<br />00210<br />00211<br />00212<br />00213<br />00214<br />00215<br />00216<br />00217<br />00218<br />00219<br />00220<br />
+00221<br />00222<br />00223<br />00224<br />00225<br />00226<br />00227<br />00228<br />00229<br />00230<br />00231<br />00232<br />00233<br />00234<br />00235<br />00236<br />00237<br />00238<br />00239<br />00240<br />
+00241<br />00242<br />00243<br />00244<br />00245<br />00246<br />00247<br />00248<br />00249<br />00250<br />00251<br />00252<br />00253<br />00254<br />00255<br />00256<br />00257<br />00258<br />00259<br />00260<br />
+00261<br />00262<br />00263<br />00264<br />00265<br />00266<br />00267<br />00268<br />00269<br />00270<br />00271<br />00272<br />00273</span></td>
+<td class="source"><pre class="source"><a name="1"></a><span class="source_comment">//=============================================================================
+</span><a name="2"></a><span class="source_comment">//  R6MenuDebriefNavBar.uc : Bottom nav bar in debreifing room
+</span><a name="3"></a><span class="source_comment">//  Copyright 2002 Ubi Soft, Inc. All Rights Reserved.
+</span><a name="4"></a><span class="source_comment">//
+</span><a name="5"></a><span class="source_comment">//  Revision history:
+</span><a name="6"></a><span class="source_comment">//    2002/06/17 * Created by Alexandre Dionne
+</span><a name="7"></a><span class="source_comment">//=============================================================================
+</span><a name="8"></a>
+<a name="9"></a>
+<a name="10"></a><span class="source_type">class</span> <span class="source_type"><a href="../r6menu/r6menudebriefnavbar.html" class="source">R6MenuDebriefNavBar</a></span> extends <span class="source_type"><a href="../uwindow/uwindowdialogclientwindow.html" class="source">UWindowDialogClientWindow</a></span>;
+<a name="11"></a>
+<a name="12"></a>var <span class="source_type"><a href="../r6window/r6windowbutton.html" class="source">R6WindowButton</a></span>             m_MainMenuButton, m_OptionsButton, m_ActionButton, m_PlanningButton;
+<a name="13"></a>var <span class="source_type"><a href="../r6window/r6windowbutton.html" class="source">R6WindowButton</a></span>             m_ContinueButton;
+<a name="14"></a>
+<a name="15"></a>var <span class="source_type"><a href="../engine/texture.html" class="source">Texture</a></span>                    m_TMainMenuButton, m_TOptionsButton, m_TActionButton, m_TPlanningButton, m_TContinueButton;
+<a name="16"></a>
+<a name="17"></a>
+<a name="18"></a>var <span class="source_type"><a href="../core/object.html#Region" class="source">Region</a></span>                     m_RMainMenuButtonUp, m_RMainMenuButtonDown, m_RMainMenuButtonDisabled, m_RMainMenuButtonOver;
+<a name="19"></a>var <span class="source_type"><a href="../core/object.html#Region" class="source">Region</a></span>                     m_ROptionsButtonUp,  m_ROptionsButtonDown,  m_ROptionsButtonDisabled,  m_ROptionsButtonOver;
+<a name="20"></a>var <span class="source_type"><a href="../core/object.html#Region" class="source">Region</a></span>                     m_RActionButtonUp,     m_RActionButtonDown,     m_RActionButtonDisabled,     m_RActionButtonOver;
+<a name="21"></a>var <span class="source_type"><a href="../core/object.html#Region" class="source">Region</a></span>                     m_RPlanningButtonUp, m_RPlanningButtonDown, m_RPlanningButtonDisabled, m_RPlanningButtonOver;
+<a name="22"></a>var <span class="source_type"><a href="../core/object.html#Region" class="source">Region</a></span>                     m_RContinueButtonUp, m_RContinueButtonDown, m_RContinueButtonDisabled, m_RContinueButtonOver;
+<a name="23"></a>
+<a name="24"></a>var <span class="source_type">FLOAT</span>                      m_fButtonsYPos;
+<a name="25"></a>var <span class="source_type">FLOAT</span>                      m_fMainMenuXPos, m_fOptionsXPos, m_fActionXPos, m_fPlanningXPos, m_fContinueXPos;
+<a name="26"></a>
+<a name="27"></a>function Created()
+<a name="28"></a>{
+<a name="29"></a>
+<a name="30"></a>    m_MainMenuButton    = <span class="source_type"><a href="../r6window/r6windowbutton.html" class="source">R6WindowButton</a></span>(CreateControl( <span class="source_type">class</span><span class="source_name">'R6WindowButton'</span>, m_fMainMenuXPos, m_fButtonsYPos, m_RMainMenuButtonUp.W, m_RMainMenuButtonUp.<span class="source_type">H</span>, self));
+<a name="31"></a>    
+<a name="32"></a>    m_MainMenuButton.UpTexture          =   m_TMainMenuButton;
+<a name="33"></a>    m_MainMenuButton.OverTexture        =   m_TMainMenuButton;
+<a name="34"></a>    m_MainMenuButton.DownTexture        =   m_TMainMenuButton;
+<a name="35"></a>    m_MainMenuButton.DisabledTexture    =   m_TMainMenuButton;
+<a name="36"></a>    m_MainMenuButton.UpRegion           =   m_RMainMenuButtonUp;
+<a name="37"></a>    m_MainMenuButton.OverRegion         =   m_RMainMenuButtonOver;    
+<a name="38"></a>    m_MainMenuButton.DownRegion         =   m_RMainMenuButtonDown;   
+<a name="39"></a>    m_MainMenuButton.DisabledRegion     =   m_RMainMenuButtonDisabled;    
+<a name="40"></a>    m_MainMenuButton.bUseRegion         =   true;
+<a name="41"></a>    m_MainMenuButton.ToolTipString      =   Localize(<span class="source_string">"ESCMENUS"</span>,<span class="source_string">"MAIN"</span>,<span class="source_string">"R6Menu"</span>);
+<a name="42"></a>    m_MainMenuButton.m_iDrawStyle       =   <span class="source_int">5</span>; <span class="source_comment">//Alpha
+</span><a name="43"></a>    m_MainMenuButton.m_bWaitSoundFinish =   true;
+<a name="44"></a>    m_OptionsButton     = <span class="source_type"><a href="../r6window/r6windowbutton.html" class="source">R6WindowButton</a></span>(CreateControl( <span class="source_type">class</span><span class="source_name">'R6WindowButton'</span>, m_fOptionsXPos, m_fButtonsYPos, m_ROptionsButtonUp.W, m_ROptionsButtonUp.<span class="source_type">H</span>, self));   
+<a name="45"></a>    m_OptionsButton.UpTexture          =   m_TOptionsButton;
+<a name="46"></a>    m_OptionsButton.OverTexture        =   m_TOptionsButton;
+<a name="47"></a>    m_OptionsButton.DownTexture        =   m_TOptionsButton;
+<a name="48"></a>    m_OptionsButton.DisabledTexture    =   m_TOptionsButton;
+<a name="49"></a>    m_OptionsButton.UpRegion           =   m_ROptionsButtonUp;
+<a name="50"></a>    m_OptionsButton.DownRegion         =   m_ROptionsButtonDown;   
+<a name="51"></a>    m_OptionsButton.DisabledRegion     =   m_ROptionsButtonDisabled;
+<a name="52"></a>    m_OptionsButton.OverRegion         =   m_ROptionsButtonOver;    
+<a name="53"></a>    m_OptionsButton.bUseRegion         =   true;
+<a name="54"></a>    m_OptionsButton.ToolTipString      =   Localize(<span class="source_string">"ESCMENUS"</span>,<span class="source_string">"ESCOPTIONS"</span>,<span class="source_string">"R6Menu"</span>);
+<a name="55"></a>    m_OptionsButton.m_iDrawStyle       =   <span class="source_int">5</span>; <span class="source_comment">//Alpha    
+</span><a name="56"></a>    m_OptionsButton.m_bWaitSoundFinish =   true;
+<a name="57"></a>
+<a name="58"></a>    m_ActionButton        = <span class="source_type"><a href="../r6window/r6windowbutton.html" class="source">R6WindowButton</a></span>(CreateControl( <span class="source_type">class</span><span class="source_name">'R6WindowButton'</span>, m_fActionXPos, m_fButtonsYPos, m_RActionButtonUp.W, m_RActionButtonUp.<span class="source_type">H</span>, self));
+<a name="59"></a>    m_ActionButton.UpTexture          =   m_TActionButton;
+<a name="60"></a>    m_ActionButton.OverTexture        =   m_TActionButton;
+<a name="61"></a>    m_ActionButton.DownTexture        =   m_TActionButton;
+<a name="62"></a>    m_ActionButton.DisabledTexture    =   m_TActionButton;   
+<a name="63"></a>    m_ActionButton.UpRegion           =   m_RActionButtonUp;
+<a name="64"></a>    m_ActionButton.OverRegion         =   m_RActionButtonOver;    
+<a name="65"></a>    m_ActionButton.DownRegion         =   m_RActionButtonDown;   
+<a name="66"></a>    m_ActionButton.DisabledRegion     =   m_RActionButtonDisabled;    
+<a name="67"></a>    m_ActionButton.bUseRegion         =   true;
+<a name="68"></a>    m_ActionButton.ToolTipString      =   Localize(<span class="source_string">"DebriefingMenu"</span>,<span class="source_string">"ACTION"</span>,<span class="source_string">"R6Menu"</span>);
+<a name="69"></a>    m_ActionButton.m_iDrawStyle       =   <span class="source_int">5</span>; <span class="source_comment">//Alpha
+</span><a name="70"></a>    m_ActionButton.m_bWaitSoundFinish =   true;
+<a name="71"></a>    
+<a name="72"></a>    m_PlanningButton    = <span class="source_type"><a href="../r6window/r6windowbutton.html" class="source">R6WindowButton</a></span>(CreateControl( <span class="source_type">class</span><span class="source_name">'R6WindowButton'</span>, m_fPlanningXPos, m_fButtonsYPos, m_RPlanningButtonUp.W, m_RPlanningButtonUp.<span class="source_type">H</span>, self));
+<a name="73"></a>    m_PlanningButton.UpTexture          =   m_TPlanningButton;
+<a name="74"></a>    m_PlanningButton.OverTexture        =   m_TPlanningButton;
+<a name="75"></a>    m_PlanningButton.DownTexture        =   m_TPlanningButton;
+<a name="76"></a>    m_PlanningButton.DisabledTexture    =   m_TPlanningButton;      
+<a name="77"></a>    m_PlanningButton.UpRegion           =   m_RPlanningButtonUp;
+<a name="78"></a>    m_PlanningButton.OverRegion         =   m_RPlanningButtonOver;    
+<a name="79"></a>    m_PlanningButton.DownRegion         =   m_RPlanningButtonDown;   
+<a name="80"></a>    m_PlanningButton.DisabledRegion     =   m_RPlanningButtonDisabled;    
+<a name="81"></a>    m_PlanningButton.bUseRegion         =   true;
+<a name="82"></a>    m_PlanningButton.ToolTipString      =   Localize(<span class="source_string">"DebriefingMenu"</span>,<span class="source_string">"PLAN"</span>,<span class="source_string">"R6Menu"</span>);
+<a name="83"></a>    m_PlanningButton.m_iDrawStyle       =   <span class="source_int">5</span>; <span class="source_comment">//Alpha        
+</span><a name="84"></a>    m_PlanningButton.m_bWaitSoundFinish =   true;
+<a name="85"></a>
+<a name="86"></a>    m_ContinueButton    = <span class="source_type"><a href="../r6window/r6windowbutton.html" class="source">R6WindowButton</a></span>(CreateControl( <span class="source_type">class</span><span class="source_name">'R6WindowButton'</span>, m_fContinueXPos, m_fButtonsYPos, m_RContinueButtonUp.W, m_RContinueButtonUp.<span class="source_type">H</span>, self));
+<a name="87"></a>    m_ContinueButton.UpTexture          =   m_TContinueButton;
+<a name="88"></a>    m_ContinueButton.OverTexture        =   m_TContinueButton;
+<a name="89"></a>    m_ContinueButton.DownTexture        =   m_TContinueButton;
+<a name="90"></a>    m_ContinueButton.DisabledTexture    =   m_TContinueButton;       
+<a name="91"></a>    m_ContinueButton.UpRegion           =   m_RContinueButtonUp;
+<a name="92"></a>    m_ContinueButton.OverRegion         =   m_RContinueButtonOver;    
+<a name="93"></a>    m_ContinueButton.DownRegion         =   m_RContinueButtonDown;   
+<a name="94"></a>    m_ContinueButton.DisabledRegion     =   m_RContinueButtonDisabled;    
+<a name="95"></a>    m_ContinueButton.bUseRegion         =   true;
+<a name="96"></a>    m_ContinueButton.ToolTipString      =   Localize(<span class="source_string">"DebriefingMenu"</span>,<span class="source_string">"CONTINUE"</span>,<span class="source_string">"R6Menu"</span>);
+<a name="97"></a>    m_ContinueButton.m_iDrawStyle       =   <span class="source_int">5</span>; <span class="source_comment">//Alpha    
+</span><a name="98"></a>    m_ContinueButton.m_bWaitSoundFinish =   true;
+<a name="99"></a>
+<a name="100"></a>    m_BorderColor = Root.Colors.BlueLight;
+<a name="101"></a>}
+<a name="102"></a>
+<a name="103"></a>
+<a name="104"></a>function Notify(<span class="source_type"><a href="../uwindow/uwindowdialogcontrol.html" class="source">UWindowDialogControl</a></span> <span class="source_type">C</span>, <span class="source_type">byte</span> E)
+<a name="105"></a>{
+<a name="106"></a>    local <span class="source_type"><a href="../r6game/r6gameinfo.html" class="source">R6GameInfo</a></span>    <span class="source_type"><a href="../engine/gameinfo.html" class="source">GameInfo</a></span>;
+<a name="107"></a>    local <span class="source_type"><a href="../r6game/r6playercampaign.html" class="source">R6PlayerCampaign</a></span>          MyCampaign;    
+<a name="108"></a>    local <span class="source_type"><a href="../r6game/r6filemanagercampaign.html" class="source">R6FileManagerCampaign</a></span>     pFileManager;	
+<a name="109"></a>
+<a name="110"></a>    <span class="source_type"><a href="../engine/gameinfo.html" class="source">GameInfo</a></span> = <span class="source_type"><a href="../r6game/r6gameinfo.html" class="source">R6GameInfo</a></span>(Root.<span class="source_type"><a href="../engine/console.html" class="source">Console</a></span>.ViewportOwner.<span class="source_type"><a href="../engine/actor.html" class="source">Actor</a></span>.<span class="source_type">Level</span>.Game);    
+<a name="111"></a>        
+<a name="112"></a>    if( E == DE_Click )
+<a name="113"></a>    {
+<a name="114"></a>        switch(<span class="source_type">C</span>)
+<a name="115"></a>        {
+<a name="116"></a>        case m_MainMenuButton:
+<a name="117"></a>            <span class="source_type"><a href="../r6menu/r6menuingamerootwindow.html" class="source">R6MenuInGameRootWindow</a></span>(Root).SimplePopUp(Localize(<span class="source_string">"POPUP"</span>,<span class="source_string">"PopUpTitle_QuitToMain"</span>,<span class="source_string">"R6Menu"</span>),Localize(<span class="source_string">"ESCMENUS"</span>,<span class="source_string">"MAINCONFIRM"</span>,<span class="source_string">"R6Menu"</span>),EPopUpID_LeaveInGameToMain);            
+<a name="118"></a>            break;
+<a name="119"></a>        case m_OptionsButton:
+<a name="120"></a>            Root.ChangeCurrentWidget(OptionsWidgetID);            
+<a name="121"></a>            break;
+<a name="122"></a>        case m_ActionButton:    <span class="source_comment">//Restart Action
+</span><a name="123"></a>            if(<span class="source_type"><a href="../engine/gameinfo.html" class="source">GameInfo</a></span>.m_bUsingPlayerCampaign)
+<a name="124"></a>            {                
+<a name="125"></a>                DenyMissionOutcome();            
+<a name="126"></a>            }
+<a name="127"></a>            Root.<span class="source_type"><a href="../engine/console.html" class="source">Console</a></span>.Master.m_StartGameInfo.m_SkipPlanningPhase = true;
+<a name="128"></a>            Root.<span class="source_type"><a href="../engine/console.html" class="source">Console</a></span>.Master.m_StartGameInfo.m_ReloadPlanning = true;
+<a name="129"></a>            Root.<span class="source_type"><a href="../engine/console.html" class="source">Console</a></span>.Master.m_StartGameInfo.m_ReloadActionPointOnly = true;
+<a name="130"></a>            
+<a name="131"></a>            <span class="source_type"><a href="../r6game/r6console.html" class="source">R6Console</a></span>(Root.<span class="source_type"><a href="../engine/console.html" class="source">Console</a></span>).ResetR6Game();
+<a name="132"></a>            break;
+<a name="133"></a>        case m_PlanningButton: <span class="source_comment">//Restart Planning         
+</span><a name="134"></a>            Root.<span class="source_type"><a href="../engine/console.html" class="source">Console</a></span>.Master.m_StartGameInfo.m_SkipPlanningPhase = false;
+<a name="135"></a>            Root.<span class="source_type"><a href="../engine/console.html" class="source">Console</a></span>.Master.m_StartGameInfo.m_ReloadPlanning = true;
+<a name="136"></a>            Root.<span class="source_type"><a href="../engine/console.html" class="source">Console</a></span>.Master.m_StartGameInfo.m_ReloadActionPointOnly = false;
+<a name="137"></a>            if(<span class="source_type"><a href="../engine/gameinfo.html" class="source">GameInfo</a></span>.m_bUsingPlayerCampaign)
+<a name="138"></a>            {                
+<a name="139"></a>                DenyMissionOutcome();
+<a name="140"></a>                <span class="source_type"><a href="../r6game/r6console.html" class="source">R6Console</a></span>(Root.<span class="source_type"><a href="../engine/console.html" class="source">console</a></span>).LeaveR6Game(<span class="source_type"><a href="../r6game/r6console.html" class="source">R6Console</a></span>(Root.<span class="source_type"><a href="../engine/console.html" class="source">console</a></span>).<span class="source_type"><a href="../r6game/r6console.html#eLeaveGame" class="source">eLeaveGame</a></span>.LG_RetryPlanningCampaign);    
+<a name="141"></a>            }
+<a name="142"></a>            else
+<a name="143"></a>                <span class="source_type"><a href="../r6game/r6console.html" class="source">R6Console</a></span>(Root.<span class="source_type"><a href="../engine/console.html" class="source">console</a></span>).LeaveR6Game(<span class="source_type"><a href="../r6game/r6console.html" class="source">R6Console</a></span>(Root.<span class="source_type"><a href="../engine/console.html" class="source">console</a></span>).<span class="source_type"><a href="../r6game/r6console.html#eLeaveGame" class="source">eLeaveGame</a></span>.LG_RetryPlanningCustomMission);
+<a name="144"></a>            break;
+<a name="145"></a>        case m_ContinueButton:
+<a name="146"></a>            
+<a name="147"></a>            <span class="source_comment">//Accept mission outcome and continue 
+</span><a name="148"></a>            Root.<span class="source_type"><a href="../engine/console.html" class="source">Console</a></span>.master.m_StartGameInfo.m_SkipPlanningPhase = false;
+<a name="149"></a>            Root.<span class="source_type"><a href="../engine/console.html" class="source">Console</a></span>.Master.m_StartGameInfo.m_ReloadPlanning = false;
+<a name="150"></a>            Root.<span class="source_type"><a href="../engine/console.html" class="source">Console</a></span>.Master.m_StartGameInfo.m_ReloadActionPointOnly = false;
+<a name="151"></a>            
+<a name="152"></a>            if(<span class="source_type"><a href="../engine/gameinfo.html" class="source">GameInfo</a></span>.m_bUsingPlayerCampaign)
+<a name="153"></a>            {
+<a name="154"></a>                if(AcceptMissionOutcome() == true)
+<a name="155"></a>                {
+<a name="156"></a>                    <span class="source_type"><a href="../r6game/r6console.html" class="source">R6Console</a></span>(Root.<span class="source_type"><a href="../engine/console.html" class="source">console</a></span>).LeaveR6Game(<span class="source_type"><a href="../r6game/r6console.html" class="source">R6Console</a></span>(Root.<span class="source_type"><a href="../engine/console.html" class="source">console</a></span>).<span class="source_type"><a href="../r6game/r6console.html#eLeaveGame" class="source">eLeaveGame</a></span>.LG_NextLevel);    
+<a name="157"></a>                }                    
+<a name="158"></a>            }
+<a name="159"></a>            else
+<a name="160"></a>            {
+<a name="161"></a>                <span class="source_type"><a href="../r6game/r6console.html" class="source">R6Console</a></span>(Root.<span class="source_type"><a href="../engine/console.html" class="source">console</a></span>).LeaveR6Game(<span class="source_type"><a href="../r6game/r6console.html" class="source">R6Console</a></span>(Root.<span class="source_type"><a href="../engine/console.html" class="source">console</a></span>).<span class="source_type"><a href="../r6game/r6console.html#eLeaveGame" class="source">eLeaveGame</a></span>.LG_CustomMissionMenu); <span class="source_comment">//Leave for custom mission Menu                
+</span><a name="162"></a>            }            
+<a name="163"></a>            break;                       
+<a name="164"></a>        }
+<a name="165"></a>    }
+<a name="166"></a>
+<a name="167"></a>}
+<a name="168"></a>
+<a name="169"></a>function DenyMissionOutcome()
+<a name="170"></a>{
+<a name="171"></a>    local <span class="source_type"><a href="../r6game/r6filemanagercampaign.html" class="source">R6FileManagerCampaign</a></span>     FileManager;	
+<a name="172"></a>    local <span class="source_type"><a href="../r6game/r6playercampaign.html" class="source">R6PlayerCampaign</a></span>          MyCampaign;    
+<a name="173"></a>
+<a name="174"></a>     FileManager = new(none) <span class="source_type">class</span><span class="source_name">'R6FileManagerCampaign'</span>;
+<a name="175"></a>     MyCampaign   = <span class="source_type"><a href="../r6game/r6console.html" class="source">R6Console</a></span>(Root.<span class="source_type"><a href="../engine/console.html" class="source">Console</a></span>).m_PlayerCampaign;     
+<a name="176"></a>     MyCampaign.m_OperativesMissionDetails = None;
+<a name="177"></a>     MyCampaign.m_OperativesMissionDetails = new(none) <span class="source_type">class</span><span class="source_name">'R6MissionRoster'</span>;
+<a name="178"></a>        
+<a name="179"></a>	 FileManager.LoadCampaign(MyCampaign);  
+<a name="180"></a>}
+<a name="181"></a>function Paint(<span class="source_type"><a href="../engine/canvas.html" class="source">Canvas</a></span> <span class="source_type">C</span>, <span class="source_type">FLOAT</span> X, <span class="source_type">FLOAT</span> <span class="source_type">Y</span>)
+<a name="182"></a>{
+<a name="183"></a>    DrawSimpleBorder(<span class="source_type">C</span>);
+<a name="184"></a>
+<a name="185"></a>    <span class="source_type">C</span>.Style = <span class="source_type"><a href="../uwindow/uwindowbase.html#ERenderStyle" class="source">ERenderStyle</a></span>.STY_Alpha;
+<a name="186"></a>
+<a name="187"></a>    <span class="source_comment">// draw a line between option and briefing
+</span><a name="188"></a>    <span class="source_type">C</span>.SetDrawColor( m_BorderColor.<span class="source_type">R</span>, m_BorderColor.G, m_BorderColor.<span class="source_type">B</span>);
+<a name="189"></a>    DrawStretchedTextureSegment(<span class="source_type">C</span>, <span class="source_int">120</span>, <span class="source_int">0</span>, <span class="source_int">1</span>, <span class="source_int">33</span>, 
+<a name="190"></a>                                     m_BorderTextureRegion.X, m_BorderTextureRegion.<span class="source_type">Y</span>, m_BorderTextureRegion.W, m_BorderTextureRegion.<span class="source_type">H</span>, m_BorderTexture);
+<a name="191"></a>}
+<a name="192"></a>
+<a name="193"></a>function <span class="source_type">BOOL</span> AcceptMissionOutcome()
+<a name="194"></a>{
+<a name="195"></a>    
+<a name="196"></a>    local <span class="source_type"><a href="../r6game/r6playercampaign.html" class="source">R6PlayerCampaign</a></span>          MyCampaign;    
+<a name="197"></a>    local <span class="source_type"><a href="../r6game/r6filemanagercampaign.html" class="source">R6FileManagerCampaign</a></span>     pFileManager;	
+<a name="198"></a>    local <span class="source_type"><a href="../r6game/r6console.html" class="source">R6Console</a></span>                 <span class="source_type"><a href="../r6game/r6console.html" class="source">r6Console</a></span>;    
+<a name="199"></a>    
+<a name="200"></a>    <span class="source_comment">//When a mission is not sucessfully accomplished this button is disable
+</span><a name="201"></a>    
+<a name="202"></a>    <span class="source_comment">// ***************************************************************************************************************************
+</span><a name="203"></a>    <span class="source_comment">// Load the campaign mission in the menu debrief
+</span><a name="204"></a>    <span class="source_comment">// pFileManager = r6Root.pFileManager;
+</span><a name="205"></a>    <span class="source_type"><a href="../r6game/r6console.html" class="source">r6Console</a></span>    = <span class="source_type"><a href="../r6game/r6console.html" class="source">R6Console</a></span>(Root.<span class="source_type"><a href="../engine/console.html" class="source">Console</a></span>);
+<a name="206"></a>    MyCampaign   = <span class="source_type"><a href="../r6game/r6console.html" class="source">r6Console</a></span>.m_PlayerCampaign;
+<a name="207"></a>    pFileManager = new <span class="source_type">class</span><span class="source_name">'R6FileManagerCampaign'</span>;      
+<a name="208"></a>    
+<a name="209"></a>    <span class="source_comment">// *-*-*-*-*-* Change this will be change by the name of the campaign previously load *-*-*-*-*-*-*-*-*    
+</span><a name="210"></a>    <span class="source_comment">//***********************
+</span><a name="211"></a>        
+<a name="212"></a>   
+<a name="213"></a>    if(pFileManager.SaveCampaign(MyCampaign) == false)
+<a name="214"></a>    {
+<a name="215"></a>        <span class="source_type"><a href="../r6menu/r6menuingamerootwindow.html" class="source">R6MenuInGameRootWindow</a></span>(Root).SimplePopUp(Localize(<span class="source_string">"POPUP"</span>,<span class="source_string">"FILEERROR"</span>,<span class="source_string">"R6Menu"</span>),MyCampaign.m_FileName @ <span class="source_string">":"</span> @ Localize(<span class="source_string">"POPUP"</span>,<span class="source_string">"FILEERRORPROBLEM"</span>,<span class="source_string">"R6Menu"</span>),EPopUpID_FileWriteError, <span class="source_type"><a href="../uwindow/uwindowbase.html#MessageBoxButtons" class="source">MessageBoxButtons</a></span>.MB_OK);
+<a name="216"></a>        return false;
+<a name="217"></a>    }
+<a name="218"></a>    
+<a name="219"></a>    
+<a name="220"></a>    
+<a name="221"></a>    <span class="source_comment">// Save the custom mission save game here
+</span><a name="222"></a>    pFileManager.LoadCustomMissionAvailable(<span class="source_type"><a href="../r6game/r6console.html" class="source">r6Console</a></span>.m_PlayerCustomMission);
+<a name="223"></a>    if (<span class="source_type"><a href="../r6game/r6console.html" class="source">r6Console</a></span>.UpdateCurrentMapAvailable(MyCampaign))
+<a name="224"></a>    {
+<a name="225"></a>        if(pFileManager.SaveCustomMissionAvailable(<span class="source_type"><a href="../r6game/r6console.html" class="source">r6Console</a></span>.m_PlayerCustomMission) == false)
+<a name="226"></a>        {
+<a name="227"></a>            <span class="source_comment">//Should find a better way to make sure we don't harcode the file filename here!!!
+</span><a name="228"></a>
+<a name="229"></a>            <span class="source_type"><a href="../r6menu/r6menuingamerootwindow.html" class="source">R6MenuInGameRootWindow</a></span>(Root).SimplePopUp(Localize(<span class="source_string">"POPUP"</span>,<span class="source_string">"FILEERROR"</span>,<span class="source_string">"R6Menu"</span>),
+<a name="230"></a>                <span class="source_type">class</span><span class="source_name">'Actor'</span>.static.GetModMgr().GetPlayerCustomMission() @ 
+<a name="231"></a>                 <span class="source_string">":"</span> @ Localize(<span class="source_string">"POPUP"</span>,<span class="source_string">"FILEERRORPROBLEM"</span>,<span class="source_string">"R6Menu"</span>),EPopUpID_FileWriteError, <span class="source_type"><a href="../uwindow/uwindowbase.html#MessageBoxButtons" class="source">MessageBoxButtons</a></span>.MB_OK);
+<a name="232"></a>            return false;
+<a name="233"></a>        }
+<a name="234"></a>    }    
+<a name="235"></a>    
+<a name="236"></a>    return true;
+<a name="237"></a>}
+<a name="238"></a>
+<a name="239"></a>defaultproperties
+<a name="240"></a>{
+<a name="241"></a>     m_fButtonsYPos=<span class="source_int">1.000000</span>
+<a name="242"></a>     m_fMainMenuXPos=<span class="source_int">22.000000</span>
+<a name="243"></a>     m_fOptionsXPos=<span class="source_int">74.000000</span>
+<a name="244"></a>     m_fActionXPos=<span class="source_int">217.000000</span>
+<a name="245"></a>     m_fPlanningXPos=<span class="source_int">344.000000</span>
+<a name="246"></a>     m_fContinueXPos=<span class="source_int">467.000000</span>
+<a name="247"></a>     m_TMainMenuButton=<span class="source_type"><a href="../engine/texture.html" class="source">Texture</a></span><span class="source_name">'R6MenuTextures.Gui_01'</span>
+<a name="248"></a>     m_TOptionsButton=<span class="source_type"><a href="../engine/texture.html" class="source">Texture</a></span><span class="source_name">'R6MenuTextures.Gui_01'</span>
+<a name="249"></a>     m_TActionButton=<span class="source_type"><a href="../engine/texture.html" class="source">Texture</a></span><span class="source_name">'R6MenuTextures.Gui_01'</span>
+<a name="250"></a>     m_TPlanningButton=<span class="source_type"><a href="../engine/texture.html" class="source">Texture</a></span><span class="source_name">'R6MenuTextures.Gui_01'</span>
+<a name="251"></a>     m_TContinueButton=<span class="source_type"><a href="../engine/texture.html" class="source">Texture</a></span><span class="source_name">'R6MenuTextures.Gui_01'</span>
+<a name="252"></a>     m_RMainMenuButtonUp=(X=<span class="source_int">113</span>,<span class="source_type">Y</span>=<span class="source_int">120</span>,W=<span class="source_int">29</span>,<span class="source_type">H</span>=<span class="source_int">30</span>)
+<a name="253"></a>     m_RMainMenuButtonDown=(X=<span class="source_int">113</span>,<span class="source_type">Y</span>=<span class="source_int">180</span>,W=<span class="source_int">29</span>,<span class="source_type">H</span>=<span class="source_int">30</span>)
+<a name="254"></a>     m_RMainMenuButtonDisabled=(X=<span class="source_int">113</span>,<span class="source_type">Y</span>=<span class="source_int">210</span>,W=<span class="source_int">29</span>,<span class="source_type">H</span>=<span class="source_int">30</span>)
+<a name="255"></a>     m_RMainMenuButtonOver=(X=<span class="source_int">113</span>,<span class="source_type">Y</span>=<span class="source_int">150</span>,W=<span class="source_int">29</span>,<span class="source_type">H</span>=<span class="source_int">30</span>)
+<a name="256"></a>     m_ROptionsButtonUp=(X=<span class="source_int">87</span>,<span class="source_type">Y</span>=<span class="source_int">120</span>,W=<span class="source_int">25</span>,<span class="source_type">H</span>=<span class="source_int">30</span>)
+<a name="257"></a>     m_ROptionsButtonDown=(X=<span class="source_int">87</span>,<span class="source_type">Y</span>=<span class="source_int">180</span>,W=<span class="source_int">25</span>,<span class="source_type">H</span>=<span class="source_int">30</span>)
+<a name="258"></a>     m_ROptionsButtonDisabled=(X=<span class="source_int">87</span>,<span class="source_type">Y</span>=<span class="source_int">210</span>,W=<span class="source_int">25</span>,<span class="source_type">H</span>=<span class="source_int">30</span>)
+<a name="259"></a>     m_ROptionsButtonOver=(X=<span class="source_int">87</span>,<span class="source_type">Y</span>=<span class="source_int">150</span>,W=<span class="source_int">25</span>,<span class="source_type">H</span>=<span class="source_int">30</span>)
+<a name="260"></a>     m_RActionButtonUp=(X=<span class="source_int">93</span>,W=<span class="source_int">32</span>,<span class="source_type">H</span>=<span class="source_int">30</span>)
+<a name="261"></a>     m_RActionButtonDown=(X=<span class="source_int">93</span>,<span class="source_type">Y</span>=<span class="source_int">60</span>,W=<span class="source_int">32</span>,<span class="source_type">H</span>=<span class="source_int">30</span>)
+<a name="262"></a>     m_RActionButtonDisabled=(X=<span class="source_int">93</span>,<span class="source_type">Y</span>=<span class="source_int">90</span>,W=<span class="source_int">32</span>,<span class="source_type">H</span>=<span class="source_int">30</span>)
+<a name="263"></a>     m_RActionButtonOver=(X=<span class="source_int">93</span>,<span class="source_type">Y</span>=<span class="source_int">30</span>,W=<span class="source_int">32</span>,<span class="source_type">H</span>=<span class="source_int">30</span>)
+<a name="264"></a>     m_RPlanningButtonUp=(X=<span class="source_int">125</span>,W=<span class="source_int">30</span>,<span class="source_type">H</span>=<span class="source_int">30</span>)
+<a name="265"></a>     m_RPlanningButtonDown=(X=<span class="source_int">125</span>,<span class="source_type">Y</span>=<span class="source_int">60</span>,W=<span class="source_int">30</span>,<span class="source_type">H</span>=<span class="source_int">30</span>)
+<a name="266"></a>     m_RPlanningButtonDisabled=(X=<span class="source_int">125</span>,<span class="source_type">Y</span>=<span class="source_int">90</span>,W=<span class="source_int">30</span>,<span class="source_type">H</span>=<span class="source_int">30</span>)
+<a name="267"></a>     m_RPlanningButtonOver=(X=<span class="source_int">125</span>,<span class="source_type">Y</span>=<span class="source_int">30</span>,W=<span class="source_int">30</span>,<span class="source_type">H</span>=<span class="source_int">30</span>)
+<a name="268"></a>     m_RContinueButtonUp=(<span class="source_type">Y</span>=<span class="source_int">120</span>,W=<span class="source_int">25</span>,<span class="source_type">H</span>=<span class="source_int">30</span>)
+<a name="269"></a>     m_RContinueButtonDown=(<span class="source_type">Y</span>=<span class="source_int">180</span>,W=<span class="source_int">25</span>,<span class="source_type">H</span>=<span class="source_int">30</span>)
+<a name="270"></a>     m_RContinueButtonDisabled=(<span class="source_type">Y</span>=<span class="source_int">210</span>,W=<span class="source_int">25</span>,<span class="source_type">H</span>=<span class="source_int">30</span>)
+<a name="271"></a>     m_RContinueButtonOver=(<span class="source_type">Y</span>=<span class="source_int">150</span>,W=<span class="source_int">25</span>,<span class="source_type">H</span>=<span class="source_int">30</span>)
+<a name="272"></a>}
+<a name="273"></a></pre></td></tr></table></div>
+<hr />
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../r6menu/r6menu-overview.html">Package</a></td>
+	<td class="header"><a href="../r6menu/r6menudebriefnavbar.html">Class</a></td>
+	<td class="header_hilight">Source</td>
+	<td class="header"><a class="header" href="../classtree.html#R6MenuDebriefNavBar">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../Source_r6menu/r6menudebriefingwidget.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../Source_r6menu/r6menudelnodebar.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+
+<div class="stats">Class file time: sam. 18/9/2004 14:39:54.000 - Creation time: mar. 26/5/2026 18:33:20.290 - Created with <a href="http://wiki.beyondunreal.com/wiki/UnCodeX" target="_blank">UnCodeX</a></div>
+
+</body>
+</html>

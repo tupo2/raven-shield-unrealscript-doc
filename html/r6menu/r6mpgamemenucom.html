@@ -1,0 +1,453 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+	<title>UnCodeX - R6Menu.R6MPGameMenuCom</title>
+	<meta name="Generator" content="UnCodeX 241" />
+	<link rel="stylesheet" href="../DocStyle2.css" type="text/css" title="Original Purple" />
+	<link rel="alternative stylesheet" href="../DocStyle2-blue.css" type="text/css" title="Blue" />
+	<link rel="alternative stylesheet" href="../DocStyle2-red.css" type="text/css" title="Red" />
+	<!--[if IE]>
+	<link rel="stylesheet" href="../DocStyle2-msie.css" type="text/css" />
+	<![endif]-->
+	<script src="../styleswitcher.js" type="text/javascript"></script>
+</head>
+<body>
+
+<div class="header">
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../r6menu/r6menu-overview.html">Package</a></td>
+	<td class="header_hilight">Class</td>
+	<td class="header"><a href="../Source_r6menu/r6mpgamemenucom.html">Source</a></td>
+	<td class="header"><a class="header" href="../classtree.html#R6MPGameMenuCom">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../r6menu/r6menuwpdeletebutton.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../r6menu/r6operativeselectoritem.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html#r6menu/r6mpgamemenucom.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+</div>
+<div class="spacer"></div>
+
+<h1><a href="../r6menu/r6menu-overview.html">R6Menu</a>.R6MPGameMenuCom</h1>
+
+<dl>
+<dt>Extends</dt><dd><a href="../engine/r6gamemenucom.html">R6GameMenuCom</a></dd>
+
+</dl>
+
+<p></p>
+
+<pre class="tree"><a href="../core/core-overview.html">core</a>.<a href="../core/object.html">Object</a>
+|   
++-- <a href="../engine/engine-overview.html">engine</a>.<a href="../engine/r6gamemenucom.html">R6GameMenuCom</a>
+   |   
+   +-- <a href="../r6menu/r6menu-overview.html">R6Menu</a>.<a href="../r6menu/r6mpgamemenucom.html">R6MPGameMenuCom</a>
+</pre>
+
+
+
+<hr />
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Constants Summary</th>
+</tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Contants from <a href="../core/core-overview.html">core</a>.<a href="../core/object.html">Object</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../core/object.html#MaxInt">MaxInt</a>, <a href="../core/object.html#Pi">Pi</a>, <a href="../core/object.html#RF_NotForClient">RF_NotForClient</a>, <a href="../core/object.html#RF_NotForEdit">RF_NotForEdit</a>, <a href="../core/object.html#RF_NotForServer">RF_NotForServer</a>, <a href="../core/object.html#RF_Public">RF_Public</a>, <a href="../core/object.html#RF_Transactional">RF_Transactional</a>, <a href="../core/object.html#RF_Transient">RF_Transient</a></td>
+</tr>
+</table>
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th colspan="2" class="title">Variables Summary</th>
+</tr>
+<tr><td nowrap="nowrap" width="33%">byte</td><td width="66%"><a href="#_m_eLogOldCurrectServerState" name="m_eLogOldCurrectServerState" title="go to the details">m_eLogOldCurrectServerState</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../r6menu/r6menuingamemultiplayerrootwindow.html">R6MenuInGameMultiPlayerRootWindow</a></td><td width="66%"><a href="#_m_pCurrentRoot" name="m_pCurrentRoot" title="go to the details">m_pCurrentRoot</a></td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Variables from <a href="../engine/engine-overview.html">engine</a>.<a href="../engine/r6gamemenucom.html">R6GameMenuCom</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../engine/r6gamemenucom.html#bShowLog">bShowLog</a>, <a href="../engine/r6gamemenucom.html#m_bImCurrentlyDisconnect">m_bImCurrentlyDisconnect</a>, <a href="../engine/r6gamemenucom.html#m_eStatMenuState">m_eStatMenuState</a>, <a href="../engine/r6gamemenucom.html#m_GameRepInfo">m_GameRepInfo</a>, <a href="../engine/r6gamemenucom.html#m_iLastValidIndex">m_iLastValidIndex</a>, <a href="../engine/r6gamemenucom.html#m_iOldMapIndex">m_iOldMapIndex</a>, <a href="../engine/r6gamemenucom.html#m_PlayerController">m_PlayerController</a>, <a href="../engine/r6gamemenucom.html#m_PlayerPrefInfo">m_PlayerPrefInfo</a>, <a href="../engine/r6gamemenucom.html#m_szArmor">m_szArmor</a>, <a href="../engine/r6gamemenucom.html#m_szPreviousGameType">m_szPreviousGameType</a>, <a href="../engine/r6gamemenucom.html#m_szPrimaryGadget">m_szPrimaryGadget</a>, <a href="../engine/r6gamemenucom.html#m_szPrimaryWeapon">m_szPrimaryWeapon</a>, <a href="../engine/r6gamemenucom.html#m_szPrimaryWeaponBullet">m_szPrimaryWeaponBullet</a>, <a href="../engine/r6gamemenucom.html#m_szPrimaryWeaponGadget">m_szPrimaryWeaponGadget</a>, <a href="../engine/r6gamemenucom.html#m_szSecondaryGadget">m_szSecondaryGadget</a>, <a href="../engine/r6gamemenucom.html#m_szSecondaryWeapon">m_szSecondaryWeapon</a>, <a href="../engine/r6gamemenucom.html#m_szSecondaryWeaponBullet">m_szSecondaryWeaponBullet</a>, <a href="../engine/r6gamemenucom.html#m_szSecondaryWeaponGadget">m_szSecondaryWeaponGadget</a>, <a href="../engine/r6gamemenucom.html#m_szServerName">m_szServerName</a></td>
+</tr>
+</table>
+<table>
+<tr>
+	<th class="inherittitle">Inherited Variables from <a href="../core/core-overview.html">core</a>.<a href="../core/object.html">Object</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../core/object.html#Class">Class</a>, <a href="../core/object.html#DName">DName</a>, <a href="../core/object.html#Name">Name</a>, <a href="../core/object.html#ObjectFlags">ObjectFlags</a>, <a href="../core/object.html#ObjectInternal[6]">ObjectInternal[6]</a>, <a href="../core/object.html#Outer">Outer</a></td>
+</tr>
+</table>
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Enumerations Summary</th>
+</tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Enumerations from <a href="../engine/engine-overview.html">engine</a>.<a href="../engine/r6gamemenucom.html">R6GameMenuCom</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../engine/r6gamemenucom.html#eClientMenuState">eClientMenuState</a></td>
+</tr>
+</table>
+<table>
+<tr>
+	<th class="inherittitle">Inherited Enumerations from <a href="../core/core-overview.html">core</a>.<a href="../core/object.html">Object</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../core/object.html#ECamOrientation">ECamOrientation</a>, <a href="../core/object.html#EGoCode">EGoCode</a>, <a href="../core/object.html#EMovementMode">EMovementMode</a>, <a href="../core/object.html#EMovementSpeed">EMovementSpeed</a>, <a href="../core/object.html#ENodeNotify">ENodeNotify</a>, <a href="../core/object.html#EPlanAction">EPlanAction</a>, <a href="../core/object.html#EPlanActionType">EPlanActionType</a>, <a href="../core/object.html#ePlayerTeamSelection">ePlayerTeamSelection</a>, <a href="../core/object.html#ESheerAxis">ESheerAxis</a></td>
+</tr>
+</table>
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Structures Summary</th>
+</tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Structures from <a href="../engine/engine-overview.html">engine</a>.<a href="../engine/r6gamemenucom.html">R6GameMenuCom</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../engine/r6gamemenucom.html#PlayerPrefInfo">PlayerPrefInfo</a></td>
+</tr>
+</table>
+<table>
+<tr>
+	<th class="inherittitle">Inherited Structures from <a href="../core/core-overview.html">core</a>.<a href="../core/object.html">Object</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../core/object.html#BoundingVolume">BoundingVolume</a>, <a href="../core/object.html#Box">Box</a>, <a href="../core/object.html#Color">Color</a>, <a href="../core/object.html#CompressedPosition">CompressedPosition</a>, <a href="../core/object.html#Coords">Coords</a>, <a href="../core/object.html#Guid">Guid</a>, <a href="../core/object.html#InterpCurve">InterpCurve</a>, <a href="../core/object.html#InterpCurvePoint">InterpCurvePoint</a>, <a href="../core/object.html#Matrix">Matrix</a>, <a href="../core/object.html#Plane">Plane</a>, <a href="../core/object.html#Range">Range</a>, <a href="../core/object.html#RangeVector">RangeVector</a>, <a href="../core/object.html#Region">Region</a>, <a href="../core/object.html#Rotator">Rotator</a>, <a href="../core/object.html#Scale">Scale</a>, <a href="../core/object.html#Vector">Vector</a></td>
+</tr>
+</table>
+
+
+<br />
+
+
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Functions Summary</th>
+</tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_ActiveVoteMenu-" name="ActiveVoteMenu" title="go to the details">ActiveVoteMenu</a> (BOOL _bActiveMenu, optional string _szPlayerNameToKick))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_event.gif" alt="event" title="event" /></td><td>&nbsp;</td><td><a href="#_CountDownPopUpBox-" name="CountDownPopUpBox" title="go to the details">CountDownPopUpBox</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_CountDownPopUpBoxDone-" name="CountDownPopUpBoxDone" title="go to the details">CountDownPopUpBoxDone</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_DisconnectClient-" name="DisconnectClient" title="go to the details">DisconnectClient</a> (LevelInfo _Level ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>string&nbsp;</td><td><a href="#_GetGameType-" name="GetGameType" title="go to the details">GetGameType</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>INT&nbsp;</td><td><a href="#_GetNbOfTeamPlayer-" name="GetNbOfTeamPlayer" title="go to the details">GetNbOfTeamPlayer</a> (BOOL _bGreenTeam))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>BOOL&nbsp;</td><td><a href="#_GetPlayerDidASelection-" name="GetPlayerDidASelection" title="go to the details">GetPlayerDidASelection</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td><a href="../core/object.html#ePlayerTeamSelection">ePlayerTeamSelection</a>&nbsp;</td><td><a href="#_GetPlayerSelection-" name="GetPlayerSelection" title="go to the details">GetPlayerSelection</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>INT&nbsp;</td><td><a href="#_GeTTeamSelection-" name="GeTTeamSelection" title="go to the details">GeTTeamSelection</a> (INT _iIndex))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_InitialisePlayerSetupInfo-" name="InitialisePlayerSetupInfo" title="go to the details">InitialisePlayerSetupInfo</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>BOOL&nbsp;</td><td><a href="#_IsAPlayerSelection-" name="IsAPlayerSelection" title="go to the details">IsAPlayerSelection</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>BOOL&nbsp;</td><td><a href="#_IsInBetweenRoundMenu-" name="IsInBetweenRoundMenu" title="go to the details">IsInBetweenRoundMenu</a> (optional BOOL _bIncludeCMSInit))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>bool&nbsp;</td><td><a href="#_IsInGame-" name="IsInGame" title="go to the details">IsInGame</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_LogServerState-" name="LogServerState" title="go to the details">LogServerState</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_NewServerState-" name="NewServerState" title="go to the details">NewServerState</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_PlayerSelection-" name="PlayerSelection" title="go to the details">PlayerSelection</a> (<a href="../core/object.html#ePlayerTeamSelection">ePlayerTeamSelection</a> newTeam))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_RefreshReadyButtonStatus-" name="RefreshReadyButtonStatus" title="go to the details">RefreshReadyButtonStatus</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_SavePlayerSetupInfo-" name="SavePlayerSetupInfo" title="go to the details">SavePlayerSetupInfo</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_SelectTeam-" name="SelectTeam" title="go to the details">SelectTeam</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_SetClientServerSettings-" name="SetClientServerSettings" title="go to the details">SetClientServerSettings</a> (bool _bCanChangeOptions))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_SetPlayerReadyStatus-" name="SetPlayerReadyStatus" title="go to the details">SetPlayerReadyStatus</a> (BOOL _bPlayerReady))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_SetReadyButton-" name="SetReadyButton" title="go to the details">SetReadyButton</a> (BOOL _bDisable))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_SetStatMenuState-" name="SetStatMenuState" title="go to the details">SetStatMenuState</a> (<a href="../engine/r6gamemenucom.html#eClientMenuState">eClientMenuState</a> _eNewClientMenuState))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_SetupPlayerPrefs-" name="SetupPlayerPrefs" title="go to the details">SetupPlayerPrefs</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_SetVoteResult-" name="SetVoteResult" title="go to the details">SetVoteResult</a> (BOOL _bKickPlayer))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_TKPopUpBox-" name="TKPopUpBox" title="go to the details">TKPopUpBox</a> (string _KillerName))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_TKPopUpDone-" name="TKPopUpDone" title="go to the details">TKPopUpDone</a> (BOOL _bApplyTeamKillerPenalty))<br /><span class="function_state"></span></td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Functions from <a href="../engine/engine-overview.html">engine</a>.<a href="../engine/r6gamemenucom.html">R6GameMenuCom</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../engine/r6gamemenucom.html#ActiveVoteMenu">ActiveVoteMenu</a>, <a href="../engine/r6gamemenucom.html#ClearLevelReferences">ClearLevelReferences</a>, <a href="../engine/r6gamemenucom.html#CountDownPopUpBox">CountDownPopUpBox</a>, <a href="../engine/r6gamemenucom.html#CountDownPopUpBoxDone">CountDownPopUpBoxDone</a>, <a href="../engine/r6gamemenucom.html#DisconnectClient">DisconnectClient</a>, <a href="../engine/r6gamemenucom.html#GetGameType">GetGameType</a>, <a href="../engine/r6gamemenucom.html#GetPlayerDidASelection">GetPlayerDidASelection</a>, <a href="../engine/r6gamemenucom.html#GetPlayerReadyStatus">GetPlayerReadyStatus</a>, <a href="../engine/r6gamemenucom.html#GeTTeamSelection">GeTTeamSelection</a>, <a href="../engine/r6gamemenucom.html#InitialisePlayerSetupInfo">InitialisePlayerSetupInfo</a>, <a href="../engine/r6gamemenucom.html#IntToPTS">IntToPTS</a>, <a href="../engine/r6gamemenucom.html#IsInGame">IsInGame</a>, <a href="../engine/r6gamemenucom.html#IsInitialisationCompleted">IsInitialisationCompleted</a>, <a href="../engine/r6gamemenucom.html#LoadSoundBankInSpectator">LoadSoundBankInSpectator</a>, <a href="../engine/r6gamemenucom.html#NewServerState">NewServerState</a>, <a href="../engine/r6gamemenucom.html#PlayerSelection">PlayerSelection</a>, <a href="../engine/r6gamemenucom.html#PostBeginPlay">PostBeginPlay</a>, <a href="../engine/r6gamemenucom.html#PTSToInt">PTSToInt</a>, <a href="../engine/r6gamemenucom.html#RefreshMPlayerInfo">RefreshMPlayerInfo</a>, <a href="../engine/r6gamemenucom.html#RefreshReadyButtonStatus">RefreshReadyButtonStatus</a>, <a href="../engine/r6gamemenucom.html#SavePlayerSetupInfo">SavePlayerSetupInfo</a>, <a href="../engine/r6gamemenucom.html#SelectTeam">SelectTeam</a>, <a href="../engine/r6gamemenucom.html#SetClientServerSettings">SetClientServerSettings</a>, <a href="../engine/r6gamemenucom.html#SetPlayerReadyStatus">SetPlayerReadyStatus</a>, <a href="../engine/r6gamemenucom.html#SetReadyButton">SetReadyButton</a>, <a href="../engine/r6gamemenucom.html#SetStatMenuState">SetStatMenuState</a>, <a href="../engine/r6gamemenucom.html#SetupPlayerPrefs">SetupPlayerPrefs</a>, <a href="../engine/r6gamemenucom.html#TKPopUpBox">TKPopUpBox</a>, <a href="../engine/r6gamemenucom.html#TKPopUpDone">TKPopUpDone</a></td>
+</tr>
+</table>
+<table>
+<tr>
+	<th class="inherittitle">Inherited Functions from <a href="../core/core-overview.html">core</a>.<a href="../core/object.html">Object</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../core/object.html#!">!</a>, <a href="../core/object.html#!=">!=</a>, <a href="../core/object.html#$">$</a>, <a href="../core/object.html#%">%</a>, <a href="../core/object.html#&">&</a>, <a href="../core/object.html#&&">&&</a>, <a href="../core/object.html#*">*</a>, <a href="../core/object.html#**">**</a>, <a href="../core/object.html#*=">*=</a>, <a href="../core/object.html#+">+</a>, <a href="../core/object.html#++">++</a>, <a href="../core/object.html#+=">+=</a>, <a href="../core/object.html#-">-</a>, <a href="../core/object.html#--">--</a>, <a href="../core/object.html#-=">-=</a>, <a href="../core/object.html#/ ">/ </a>, <a href="../core/object.html#/=">/=</a>, <a href="../core/object.html#&lt;">&lt;</a>, <a href="../core/object.html#&lt;&lt;">&lt;&lt;</a>, <a href="../core/object.html#&lt;=">&lt;=</a>, <a href="../core/object.html#==">==</a>, <a href="../core/object.html#&gt;">&gt;</a>, <a href="../core/object.html#&gt;=">&gt;=</a>, <a href="../core/object.html#&gt;&gt;">&gt;&gt;</a>, <a href="../core/object.html#&gt;&gt;&gt;">&gt;&gt;&gt;</a>, <a href="../core/object.html#@">@</a>, <a href="../core/object.html#Abs">Abs</a>, <a href="../core/object.html#Acos">Acos</a>, <a href="../core/object.html#Asc">Asc</a>, <a href="../core/object.html#Asin">Asin</a>, <a href="../core/object.html#Atan">Atan</a>, <a href="../core/object.html#Atoi">Atoi</a>, <a href="../core/object.html#BeginState">BeginState</a>, <a href="../core/object.html#Caps">Caps</a>, <a href="../core/object.html#Chr">Chr</a>, <a href="../core/object.html#Clamp">Clamp</a>, <a href="../core/object.html#ClassIsChildOf">ClassIsChildOf</a>, <a href="../core/object.html#ClearOuter">ClearOuter</a>, <a href="../core/object.html#Clock">Clock</a>, <a href="../core/object.html#ClockwiseFrom">ClockwiseFrom</a>, <a href="../core/object.html#Cos">Cos</a>, <a href="../core/object.html#Cross">Cross</a>, <a href="../core/object.html#Disable">Disable</a>, <a href="../core/object.html#Dot">Dot</a>, <a href="../core/object.html#DynamicLoadObject">DynamicLoadObject</a>, <a href="../core/object.html#Enable">Enable</a>, <a href="../core/object.html#EndState">EndState</a>, <a href="../core/object.html#Exp">Exp</a>, <a href="../core/object.html#FClamp">FClamp</a>, <a href="../core/object.html#FindObject">FindObject</a>, <a href="../core/object.html#FMax">FMax</a>, <a href="../core/object.html#FMin">FMin</a>, <a href="../core/object.html#FRand">FRand</a>, <a href="../core/object.html#FreePackageObjects">FreePackageObjects</a>, <a href="../core/object.html#GetAxes">GetAxes</a>, <a href="../core/object.html#GetEnum">GetEnum</a>, <a href="../core/object.html#GetFirstPackageClass">GetFirstPackageClass</a>, <a href="../core/object.html#GetNextClass">GetNextClass</a>, <a href="../core/object.html#GetPropertyText">GetPropertyText</a>, <a href="../core/object.html#GetRegistryKey">GetRegistryKey</a>, <a href="../core/object.html#GetStateName">GetStateName</a>, <a href="../core/object.html#GetUnAxes">GetUnAxes</a>, <a href="../core/object.html#GotoState">GotoState</a>, <a href="../core/object.html#InitMod">InitMod</a>, <a href="../core/object.html#InStr">InStr</a>, <a href="../core/object.html#InterpCurveEval">InterpCurveEval</a>, <a href="../core/object.html#Invert">Invert</a>, <a href="../core/object.html#IsA">IsA</a>, <a href="../core/object.html#IsInState">IsInState</a>, <a href="../core/object.html#Itoa">Itoa</a>, <a href="../core/object.html#Left">Left</a>, <a href="../core/object.html#Len">Len</a>, <a href="../core/object.html#Lerp">Lerp</a>, <a href="../core/object.html#LoadConfig">LoadConfig</a>, <a href="../core/object.html#Localize">Localize</a>, <a href="../core/object.html#Log">Log</a>, <a href="../core/object.html#Loge">Loge</a>, <a href="../core/object.html#LogSnd">LogSnd</a>, <a href="../core/object.html#Max">Max</a>, <a href="../core/object.html#Mid">Mid</a>, <a href="../core/object.html#Min">Min</a>, <a href="../core/object.html#MirrorVectorByNormal">MirrorVectorByNormal</a>, <a href="../core/object.html#Normal">Normal</a>, <a href="../core/object.html#Normalize">Normalize</a>, <a href="../core/object.html#OrthoRotation">OrthoRotation</a>, <a href="../core/object.html#Rand">Rand</a>, <a href="../core/object.html#RandRange">RandRange</a>, <a href="../core/object.html#RemoveInvalidChars">RemoveInvalidChars</a>, <a href="../core/object.html#ResetConfig">ResetConfig</a>, <a href="../core/object.html#RewindToFirstClass">RewindToFirstClass</a>, <a href="../core/object.html#Right">Right</a>, <a href="../core/object.html#RotRand">RotRand</a>, <a href="../core/object.html#SaveConfig">SaveConfig</a>, <a href="../core/object.html#SetPropertyText">SetPropertyText</a>, <a href="../core/object.html#SetRegistryKey">SetRegistryKey</a>, <a href="../core/object.html#ShortestAngle2D">ShortestAngle2D</a>, <a href="../core/object.html#Sin">Sin</a>, <a href="../core/object.html#Smerp">Smerp</a>, <a href="../core/object.html#Sqrt">Sqrt</a>, <a href="../core/object.html#Square">Square</a>, <a href="../core/object.html#StaticSaveConfig">StaticSaveConfig</a>, <a href="../core/object.html#Strnicmp">Strnicmp</a>, <a href="../core/object.html#Tan">Tan</a>, <a href="../core/object.html#Unclock">Unclock</a>, <a href="../core/object.html#VRand">VRand</a>, <a href="../core/object.html#VSize">VSize</a>, <a href="../core/object.html#Warn">Warn</a>, <a href="../core/object.html#^">^</a>, <a href="../core/object.html#^^">^^</a>, <a href="../core/object.html#|">|</a>, <a href="../core/object.html#||">||</a>, <a href="../core/object.html#~">~</a>, <a href="../core/object.html#~=">~=</a></td>
+</tr>
+</table>
+
+
+<br />
+
+
+
+<hr />
+
+
+
+<table class="title">
+<tr>
+	<th class="title">Variables Detail</th>
+</tr>
+</table>
+
+<h4><a name="_m_eLogOldCurrectServerState" class="hidden"></a>m_eLogOldCurrectServerState <a href="../Source_r6menu/r6mpgamemenucom.html#12" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">byte</span> m_eLogOldCurrectServerState;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_pCurrentRoot" class="hidden"></a>m_pCurrentRoot <a href="../Source_r6menu/r6mpgamemenucom.html#10" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../r6menu/r6menuingamemultiplayerrootwindow.html" class="source">R6MenuInGameMultiPlayerRootWindow</a></span> m_pCurrentRoot;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+
+
+<br />
+
+
+
+
+
+
+
+<table class="title">
+<tr>
+	<th class="title">Functions Detail</th>
+</tr>
+</table>
+
+<h4><a name="_ActiveVoteMenu-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> ActiveVoteMenu <span class="function_state"></span> <a href="../Source_r6menu/r6mpgamemenucom.html#551" class="small">Source code</a></h4>
+<div class="declaration"> function  ActiveVoteMenu ( <span class="source_type">BOOL</span> _bActiveMenu, optional <span class="source_type">string</span> _szPlayerNameToKick) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_CountDownPopUpBox-" class="hidden"></a><img src="../img_event.gif" alt="" title="event" /> CountDownPopUpBox <span class="function_state"></span> <a href="../Source_r6menu/r6mpgamemenucom.html#516" class="small">Source code</a></h4>
+<div class="declaration"> event  CountDownPopUpBox ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_CountDownPopUpBoxDone-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> CountDownPopUpBoxDone <span class="function_state"></span> <a href="../Source_r6menu/r6mpgamemenucom.html#529" class="small">Source code</a></h4>
+<div class="declaration"> function  CountDownPopUpBoxDone ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_DisconnectClient-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> DisconnectClient <span class="function_state"></span> <a href="../Source_r6menu/r6mpgamemenucom.html#308" class="small">Source code</a></h4>
+<div class="declaration"> function  DisconnectClient ( <span class="source_type"><a href="../engine/levelinfo.html" class="source">LevelInfo</a></span> <span class="source_type">_Level</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GetGameType-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> GetGameType <span class="function_state"></span> <a href="../Source_r6menu/r6mpgamemenucom.html#486" class="small">Source code</a></h4>
+<div class="declaration">simulated function <span class="source_type">string</span> GetGameType ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GetNbOfTeamPlayer-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> GetNbOfTeamPlayer <span class="function_state"></span> <a href="../Source_r6menu/r6mpgamemenucom.html#627" class="small">Source code</a></h4>
+<div class="declaration"> function <span class="source_type">INT</span> GetNbOfTeamPlayer ( <span class="source_type">BOOL</span> _bGreenTeam) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GetPlayerDidASelection-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> GetPlayerDidASelection <span class="function_state"></span> <a href="../Source_r6menu/r6mpgamemenucom.html#667" class="small">Source code</a></h4>
+<div class="declaration"> function <span class="source_type">BOOL</span> GetPlayerDidASelection ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GetPlayerSelection-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> GetPlayerSelection <span class="function_state"></span> <a href="../Source_r6menu/r6mpgamemenucom.html#42" class="small">Source code</a></h4>
+<div class="declaration"> function <span class="source_type"><a href="../core/object.html#ePlayerTeamSelection" class="source">ePlayerTeamSelection</a></span> GetPlayerSelection ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GeTTeamSelection-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> GeTTeamSelection <span class="function_state"></span> <a href="../Source_r6menu/r6mpgamemenucom.html#405" class="small">Source code</a></h4>
+<div class="declaration"> function <span class="source_type">INT</span> GeTTeamSelection ( <span class="source_type">INT</span> _iIndex) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_InitialisePlayerSetupInfo-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> InitialisePlayerSetupInfo <span class="function_state"></span> <a href="../Source_r6menu/r6mpgamemenucom.html#467" class="small">Source code</a></h4>
+<div class="declaration">simulated function  InitialisePlayerSetupInfo ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_IsAPlayerSelection-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> IsAPlayerSelection <span class="function_state"></span> <a href="../Source_r6menu/r6mpgamemenucom.html#54" class="small">Source code</a></h4>
+<div class="declaration"> function <span class="source_type">BOOL</span> IsAPlayerSelection ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_IsInBetweenRoundMenu-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> IsInBetweenRoundMenu <span class="function_state"></span> <a href="../Source_r6menu/r6mpgamemenucom.html#380" class="small">Source code</a></h4>
+<div class="declaration"> function <span class="source_type">BOOL</span> IsInBetweenRoundMenu ( optional <span class="source_type">BOOL</span> _bIncludeCMSInit) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_IsInGame-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> IsInGame <span class="function_state"></span> <a href="../Source_r6menu/r6mpgamemenucom.html#659" class="small">Source code</a></h4>
+<div class="declaration">simulated function <span class="source_type">bool</span> IsInGame ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_LogServerState-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> LogServerState <span class="function_state"></span> <a href="../Source_r6menu/r6mpgamemenucom.html#588" class="small">Source code</a></h4>
+<div class="declaration"> function  LogServerState ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_NewServerState-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> NewServerState <span class="function_state"></span> <a href="../Source_r6menu/r6mpgamemenucom.html#575" class="small">Source code</a></h4>
+<div class="declaration"> function  NewServerState ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_PlayerSelection-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> PlayerSelection <span class="function_state"></span> <a href="../Source_r6menu/r6mpgamemenucom.html#31" class="small">Source code</a></h4>
+<div class="declaration"> function  PlayerSelection ( <span class="source_type"><a href="../core/object.html#ePlayerTeamSelection" class="source">ePlayerTeamSelection</a></span> newTeam) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_RefreshReadyButtonStatus-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> RefreshReadyButtonStatus <span class="function_state"></span> <a href="../Source_r6menu/r6mpgamemenucom.html#340" class="small">Source code</a></h4>
+<div class="declaration"> function  RefreshReadyButtonStatus ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_SavePlayerSetupInfo-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> SavePlayerSetupInfo <span class="function_state"></span> <a href="../Source_r6menu/r6mpgamemenucom.html#421" class="small">Source code</a></h4>
+<div class="declaration">simulated function  SavePlayerSetupInfo ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_SelectTeam-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> SelectTeam <span class="function_state"></span> <a href="../Source_r6menu/r6mpgamemenucom.html#14" class="small">Source code</a></h4>
+<div class="declaration">simulated function  SelectTeam ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_SetClientServerSettings-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> SetClientServerSettings <span class="function_state"></span> <a href="../Source_r6menu/r6mpgamemenucom.html#619" class="small">Source code</a></h4>
+<div class="declaration"> function  SetClientServerSettings ( <span class="source_type">bool</span> _bCanChangeOptions) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_SetPlayerReadyStatus-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> SetPlayerReadyStatus <span class="function_state"></span> <a href="../Source_r6menu/r6mpgamemenucom.html#328" class="small">Source code</a></h4>
+<div class="declaration"> function  SetPlayerReadyStatus ( <span class="source_type">BOOL</span> _bPlayerReady) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_SetReadyButton-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> SetReadyButton <span class="function_state"></span> <a href="../Source_r6menu/r6mpgamemenucom.html#362" class="small">Source code</a></h4>
+<div class="declaration"> function  SetReadyButton ( <span class="source_type">BOOL</span> _bDisable) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_SetStatMenuState-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> SetStatMenuState <span class="function_state"></span> <a href="../Source_r6menu/r6mpgamemenucom.html#62" class="small">Source code</a></h4>
+<div class="declaration"> function  SetStatMenuState ( <span class="source_type"><a href="../engine/r6gamemenucom.html#eClientMenuState" class="source">eClientMenuState</a></span> _eNewClientMenuState) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_SetupPlayerPrefs-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> SetupPlayerPrefs <span class="function_state"></span> <a href="../Source_r6menu/r6mpgamemenucom.html#188" class="small">Source code</a></h4>
+<div class="declaration"> function  SetupPlayerPrefs ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_SetVoteResult-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> SetVoteResult <span class="function_state"></span> <a href="../Source_r6menu/r6mpgamemenucom.html#559" class="small">Source code</a></h4>
+<div class="declaration"> function  SetVoteResult ( <span class="source_type">BOOL</span> _bKickPlayer) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_TKPopUpBox-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> TKPopUpBox <span class="function_state"></span> <a href="../Source_r6menu/r6mpgamemenucom.html#495" class="small">Source code</a></h4>
+<div class="declaration"> function  TKPopUpBox ( <span class="source_type">string</span> _KillerName) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_TKPopUpDone-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> TKPopUpDone <span class="function_state"></span> <a href="../Source_r6menu/r6mpgamemenucom.html#510" class="small">Source code</a></h4>
+<div class="declaration"> function  TKPopUpDone ( <span class="source_type">BOOL</span> _bApplyTeamKillerPenalty) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+
+
+<br />
+
+
+<table class="title">
+<tr>
+	<th class="title">Defaultproperties</th>
+</tr>
+</table>
+<br />
+<div class="source"><table class="source"><tr><td class="source"><pre class="source">defaultproperties
+{
+}
+</pre></td></tr></table></div>
+
+
+
+<hr />
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../r6menu/r6menu-overview.html">Package</a></td>
+	<td class="header_hilight">Class</td>
+	<td class="header"><a href="../Source_r6menu/r6mpgamemenucom.html">Source</a></td>
+	<td class="header"><a class="header" href="../classtree.html#R6MPGameMenuCom">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../r6menu/r6menuwpdeletebutton.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../r6menu/r6operativeselectoritem.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+
+<div class="stats">Creation time: mar. 26/5/2026 18:33:13.052 - Created with <a href="http://wiki.beyondunreal.com/wiki/UnCodeX" target="_blank">UnCodeX</a></div>
+
+</body>
+</html>

@@ -1,0 +1,313 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+	<title>UnCodeX - R6Window.R6WindowEditBox</title>
+	<meta name="Generator" content="UnCodeX 241" />
+	<link rel="stylesheet" href="../DocStyle2.css" type="text/css" title="Original Purple" />
+	<link rel="alternative stylesheet" href="../DocStyle2-blue.css" type="text/css" title="Blue" />
+	<link rel="alternative stylesheet" href="../DocStyle2-red.css" type="text/css" title="Red" />
+	<!--[if IE]>
+	<link rel="stylesheet" href="../DocStyle2-msie.css" type="text/css" />
+	<![endif]-->
+	<script src="../styleswitcher.js" type="text/javascript"></script>
+</head>
+<body>
+
+<div class="header">
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../r6window/r6window-overview.html">Package</a></td>
+	<td class="header_hilight">Class</td>
+	<td class="header"><a href="../Source_r6window/r6windoweditbox.html">Source</a></td>
+	<td class="header"><a class="header" href="../classtree.html#R6WindowEditBox">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../r6window/r6windowcounter.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../r6window/r6windoweditcontrol.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html#r6window/r6windoweditbox.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+</div>
+<div class="spacer"></div>
+
+<h1><a href="../r6window/r6window-overview.html">R6Window</a>.R6WindowEditBox</h1>
+
+<dl>
+<dt>Extends</dt><dd><a href="../uwindow/uwindoweditbox.html">UWindowEditBox</a></dd>
+
+</dl>
+
+<p></p>
+
+<pre class="tree"><a href="../core/core-overview.html">core</a>.<a href="../core/object.html">Object</a>
+|   
++-- <a href="../uwindow/uwindow-overview.html">UWindow</a>.<a href="../uwindow/uwindowbase.html">UWindowBase</a>
+   |   
+   +-- <a href="../uwindow/uwindow-overview.html">UWindow</a>.<a href="../uwindow/uwindowwindow.html">UWindowWindow</a>
+      |   
+      +-- <a href="../uwindow/uwindow-overview.html">UWindow</a>.<a href="../uwindow/uwindowdialogcontrol.html">UWindowDialogControl</a>
+         |   
+         +-- <a href="../uwindow/uwindow-overview.html">UWindow</a>.<a href="../uwindow/uwindoweditbox.html">UWindowEditBox</a>
+            |   
+            +-- <a href="../r6window/r6window-overview.html">R6Window</a>.<a href="../r6window/r6windoweditbox.html">R6WindowEditBox</a>
+</pre>
+
+
+
+<hr />
+
+
+
+<table class="title">
+<tr>
+	<th colspan="2" class="title">Variables Summary</th>
+</tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bCaps" name="bCaps" title="go to the details">bCaps</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">BOOL</td><td width="66%"><a href="#_m_bDisplayEditBoxProperties" name="m_bDisplayEditBoxProperties" title="go to the details">m_bDisplayEditBoxProperties</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_m_bOldAllSelected" name="m_bOldAllSelected" title="go to the details">m_bOldAllSelected</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_m_bOldCanEdit" name="m_bOldCanEdit" title="go to the details">m_bOldCanEdit</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">BOOL</td><td width="66%"><a href="#_m_bOldCurrentlyEditing" name="m_bOldCurrentlyEditing" title="go to the details">m_bOldCurrentlyEditing</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_m_bOldHasKeyboardFocus" name="m_bOldHasKeyboardFocus" title="go to the details">m_bOldHasKeyboardFocus</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_m_bOldShowCaret" name="m_bOldShowCaret" title="go to the details">m_bOldShowCaret</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">FLOAT</td><td width="66%"><a href="#_m_fTextHeight" name="m_fTextHeight" title="go to the details">m_fTextHeight</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">FLOAT</td><td width="66%"><a href="#_m_fYBGPos" name="m_fYBGPos" title="go to the details">m_fYBGPos</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">FLOAT</td><td width="66%"><a href="#_m_fYTextPos" name="m_fYTextPos" title="go to the details">m_fYTextPos</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../core/object.html#Region">Region</a></td><td width="66%"><a href="#_m_RBGEditTexture" name="m_RBGEditTexture" title="go to the details">m_RBGEditTexture</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_m_szCurValue" name="m_szCurValue" title="go to the details">m_szCurValue</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_m_szValueToDisplay" name="m_szValueToDisplay" title="go to the details">m_szValueToDisplay</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../engine/texture.html">Texture</a></td><td width="66%"><a href="#_m_TBGEditTexture" name="m_TBGEditTexture" title="go to the details">m_TBGEditTexture</a></td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Variables from <a href="../uwindow/uwindow-overview.html">UWindow</a>.<a href="../uwindow/uwindoweditbox.html">UWindowEditBox</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../uwindow/uwindoweditbox.html#bAllSelected">bAllSelected</a>, <a href="../uwindow/uwindoweditbox.html#bCanEdit">bCanEdit</a>, <a href="../uwindow/uwindoweditbox.html#bChangePending">bChangePending</a>, <a href="../uwindow/uwindoweditbox.html#bControlDown">bControlDown</a>, <a href="../uwindow/uwindoweditbox.html#bDelayedNotify">bDelayedNotify</a>, <a href="../uwindow/uwindoweditbox.html#bHistory">bHistory</a>, <a href="../uwindow/uwindoweditbox.html#bKeyDown">bKeyDown</a>, <a href="../uwindow/uwindoweditbox.html#bNumericFloat">bNumericFloat</a>, <a href="../uwindow/uwindoweditbox.html#bNumericOnly">bNumericOnly</a>, <a href="../uwindow/uwindoweditbox.html#bPassword">bPassword</a>, <a href="../uwindow/uwindoweditbox.html#bSelectOnFocus">bSelectOnFocus</a>, <a href="../uwindow/uwindoweditbox.html#bShiftDown">bShiftDown</a>, <a href="../uwindow/uwindoweditbox.html#bShowCaret">bShowCaret</a>, <a href="../uwindow/uwindoweditbox.html#bShowLog">bShowLog</a>, <a href="../uwindow/uwindoweditbox.html#CaretOffset">CaretOffset</a>, <a href="../uwindow/uwindoweditbox.html#CurrentHistory">CurrentHistory</a>, <a href="../uwindow/uwindoweditbox.html#HistoryList">HistoryList</a>, <a href="../uwindow/uwindoweditbox.html#LastDrawTime">LastDrawTime</a>, <a href="../uwindow/uwindoweditbox.html#MaxLength">MaxLength</a>, <a href="../uwindow/uwindoweditbox.html#m_bDrawEditBorders">m_bDrawEditBorders</a>, <a href="../uwindow/uwindoweditbox.html#m_bDrawEditBoxBG">m_bDrawEditBoxBG</a>, <a href="../uwindow/uwindoweditbox.html#m_bMouseOn">m_bMouseOn</a>, <a href="../uwindow/uwindoweditbox.html#m_bUseNewPaint">m_bUseNewPaint</a>, <a href="../uwindow/uwindoweditbox.html#m_CurrentlyEditing">m_CurrentlyEditing</a>, <a href="../uwindow/uwindoweditbox.html#NotifyOwner">NotifyOwner</a>, <a href="../uwindow/uwindoweditbox.html#Offset">Offset</a>, <a href="../uwindow/uwindoweditbox.html#OldValue">OldValue</a>, <a href="../uwindow/uwindoweditbox.html#Value">Value</a>, <a href="../uwindow/uwindoweditbox.html#Value2">Value2</a></td>
+</tr>
+</table>
+<table>
+<tr>
+	<th class="inherittitle">Inherited Variables from <a href="../uwindow/uwindow-overview.html">UWindow</a>.<a href="../uwindow/uwindowdialogcontrol.html">UWindowDialogControl</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../uwindow/uwindowdialogcontrol.html#Align">Align</a>, <a href="../uwindow/uwindowdialogcontrol.html#bAcceptExternalDragDrop">bAcceptExternalDragDrop</a>, <a href="../uwindow/uwindowdialogcontrol.html#bHasKeyboardFocus">bHasKeyboardFocus</a>, <a href="../uwindow/uwindowdialogcontrol.html#bNoKeyboard">bNoKeyboard</a>, <a href="../uwindow/uwindowdialogcontrol.html#Font">Font</a>, <a href="../uwindow/uwindowdialogcontrol.html#HelpText">HelpText</a>, <a href="../uwindow/uwindowdialogcontrol.html#MinHeight">MinHeight</a>, <a href="../uwindow/uwindowdialogcontrol.html#MinWidth">MinWidth</a>, <a href="../uwindow/uwindowdialogcontrol.html#NotifyWindow">NotifyWindow</a>, <a href="../uwindow/uwindowdialogcontrol.html#TabNext">TabNext</a>, <a href="../uwindow/uwindowdialogcontrol.html#TabPrev">TabPrev</a>, <a href="../uwindow/uwindowdialogcontrol.html#Text">Text</a>, <a href="../uwindow/uwindowdialogcontrol.html#TextColor">TextColor</a>, <a href="../uwindow/uwindowdialogcontrol.html#TextX">TextX</a>, <a href="../uwindow/uwindowdialogcontrol.html#TextY">TextY</a></td>
+</tr>
+</table>
+
+
+<br />
+
+
+
+
+
+
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Functions Summary</th>
+</tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_BeforePaint-" name="BeforePaint" title="go to the details">BeforePaint</a> (<a href="../engine/canvas.html">Canvas</a> C, FLOAT X, FLOAT Y))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_Paint-" name="Paint" title="go to the details">Paint</a> (<a href="../engine/canvas.html">Canvas</a> C, FLOAT X, FLOAT Y))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_PaintEditBoxBG-" name="PaintEditBoxBG" title="go to the details">PaintEditBoxBG</a> (<a href="../engine/canvas.html">Canvas</a> C))<br /><span class="function_state"></span></td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Functions from <a href="../uwindow/uwindow-overview.html">UWindow</a>.<a href="../uwindow/uwindoweditbox.html">UWindowEditBox</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../uwindow/uwindoweditbox.html#Backspace">Backspace</a>, <a href="../uwindow/uwindoweditbox.html#Clear">Clear</a>, <a href="../uwindow/uwindoweditbox.html#Click">Click</a>, <a href="../uwindow/uwindoweditbox.html#Close">Close</a>, <a href="../uwindow/uwindoweditbox.html#Created">Created</a>, <a href="../uwindow/uwindoweditbox.html#Delete">Delete</a>, <a href="../uwindow/uwindoweditbox.html#DoubleClick">DoubleClick</a>, <a href="../uwindow/uwindoweditbox.html#DropSelection">DropSelection</a>, <a href="../uwindow/uwindoweditbox.html#EditCopy">EditCopy</a>, <a href="../uwindow/uwindoweditbox.html#EditCut">EditCut</a>, <a href="../uwindow/uwindoweditbox.html#EditPaste">EditPaste</a>, <a href="../uwindow/uwindoweditbox.html#FocusOtherWindow">FocusOtherWindow</a>, <a href="../uwindow/uwindoweditbox.html#FocusWindow">FocusWindow</a>, <a href="../uwindow/uwindoweditbox.html#GetValue">GetValue</a>, <a href="../uwindow/uwindoweditbox.html#GetValue2">GetValue2</a>, <a href="../uwindow/uwindoweditbox.html#Insert">Insert</a>, <a href="../uwindow/uwindoweditbox.html#InsertText">InsertText</a>, <a href="../uwindow/uwindoweditbox.html#KeyDown">KeyDown</a>, <a href="../uwindow/uwindoweditbox.html#KeyFocusEnter">KeyFocusEnter</a>, <a href="../uwindow/uwindoweditbox.html#KeyFocusExit">KeyFocusExit</a>, <a href="../uwindow/uwindoweditbox.html#KeyType">KeyType</a>, <a href="../uwindow/uwindoweditbox.html#KeyUp">KeyUp</a>, <a href="../uwindow/uwindoweditbox.html#LMouseDown">LMouseDown</a>, <a href="../uwindow/uwindoweditbox.html#MouseEnter">MouseEnter</a>, <a href="../uwindow/uwindoweditbox.html#MouseLeave">MouseLeave</a>, <a href="../uwindow/uwindoweditbox.html#MoveEnd">MoveEnd</a>, <a href="../uwindow/uwindoweditbox.html#MoveHome">MoveHome</a>, <a href="../uwindow/uwindoweditbox.html#MoveLeft">MoveLeft</a>, <a href="../uwindow/uwindoweditbox.html#MoveRight">MoveRight</a>, <a href="../uwindow/uwindoweditbox.html#Notify">Notify</a>, <a href="../uwindow/uwindoweditbox.html#Paint">Paint</a>, <a href="../uwindow/uwindoweditbox.html#SelectAll">SelectAll</a>, <a href="../uwindow/uwindoweditbox.html#SetEditable">SetEditable</a>, <a href="../uwindow/uwindoweditbox.html#SetHistory">SetHistory</a>, <a href="../uwindow/uwindoweditbox.html#SetValue">SetValue</a>, <a href="../uwindow/uwindoweditbox.html#WordLeft">WordLeft</a>, <a href="../uwindow/uwindoweditbox.html#WordRight">WordRight</a></td>
+</tr>
+</table>
+<table>
+<tr>
+	<th class="inherittitle">Inherited Functions from <a href="../uwindow/uwindow-overview.html">UWindow</a>.<a href="../uwindow/uwindowdialogcontrol.html">UWindowDialogControl</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../uwindow/uwindowdialogcontrol.html#BeforePaint">BeforePaint</a>, <a href="../uwindow/uwindowdialogcontrol.html#CheckExternalDrag">CheckExternalDrag</a>, <a href="../uwindow/uwindowdialogcontrol.html#Created">Created</a>, <a href="../uwindow/uwindowdialogcontrol.html#ExternalDragOver">ExternalDragOver</a>, <a href="../uwindow/uwindowdialogcontrol.html#KeyDown">KeyDown</a>, <a href="../uwindow/uwindowdialogcontrol.html#KeyFocusEnter">KeyFocusEnter</a>, <a href="../uwindow/uwindowdialogcontrol.html#KeyFocusExit">KeyFocusExit</a>, <a href="../uwindow/uwindowdialogcontrol.html#MouseEnter">MouseEnter</a>, <a href="../uwindow/uwindowdialogcontrol.html#MouseLeave">MouseLeave</a>, <a href="../uwindow/uwindowdialogcontrol.html#MouseMove">MouseMove</a>, <a href="../uwindow/uwindowdialogcontrol.html#Notify">Notify</a>, <a href="../uwindow/uwindowdialogcontrol.html#Register">Register</a>, <a href="../uwindow/uwindowdialogcontrol.html#SetFont">SetFont</a>, <a href="../uwindow/uwindowdialogcontrol.html#SetHelpText">SetHelpText</a>, <a href="../uwindow/uwindowdialogcontrol.html#SetText">SetText</a>, <a href="../uwindow/uwindowdialogcontrol.html#SetTextColor">SetTextColor</a></td>
+</tr>
+</table>
+
+
+<br />
+
+
+
+<hr />
+
+
+
+<table class="title">
+<tr>
+	<th class="title">Variables Detail</th>
+</tr>
+</table>
+
+<h4><a name="_bCaps" class="hidden"></a>bCaps <a href="../Source_r6window/r6windoweditbox.html#17" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">bool</span> bCaps;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_bDisplayEditBoxProperties" class="hidden"></a>m_bDisplayEditBoxProperties <a href="../Source_r6window/r6windoweditbox.html#19" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">BOOL</span> m_bDisplayEditBoxProperties;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_bOldAllSelected" class="hidden"></a>m_bOldAllSelected <a href="../Source_r6window/r6windoweditbox.html#22" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">bool</span> m_bOldAllSelected;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_bOldCanEdit" class="hidden"></a>m_bOldCanEdit <a href="../Source_r6window/r6windoweditbox.html#21" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">bool</span> m_bOldCanEdit;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_bOldCurrentlyEditing" class="hidden"></a>m_bOldCurrentlyEditing <a href="../Source_r6window/r6windoweditbox.html#23" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">BOOL</span> m_bOldCurrentlyEditing;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_bOldHasKeyboardFocus" class="hidden"></a>m_bOldHasKeyboardFocus <a href="../Source_r6window/r6windoweditbox.html#24" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">bool</span> m_bOldHasKeyboardFocus;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_bOldShowCaret" class="hidden"></a>m_bOldShowCaret <a href="../Source_r6window/r6windoweditbox.html#20" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">bool</span> m_bOldShowCaret;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_fTextHeight" class="hidden"></a>m_fTextHeight <a href="../Source_r6window/r6windoweditbox.html#15" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">FLOAT</span> m_fTextHeight;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_fYBGPos" class="hidden"></a>m_fYBGPos <a href="../Source_r6window/r6windoweditbox.html#28" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">FLOAT</span> m_fYBGPos;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_fYTextPos" class="hidden"></a>m_fYTextPos <a href="../Source_r6window/r6windoweditbox.html#14" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">FLOAT</span> m_fYTextPos;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_RBGEditTexture" class="hidden"></a>m_RBGEditTexture <a href="../Source_r6window/r6windoweditbox.html#26" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../core/object.html#Region" class="source">Region</a></span> m_RBGEditTexture;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_szCurValue" class="hidden"></a>m_szCurValue <a href="../Source_r6window/r6windoweditbox.html#11" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">string</span> m_szCurValue;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_szValueToDisplay" class="hidden"></a>m_szValueToDisplay <a href="../Source_r6window/r6windoweditbox.html#12" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">string</span> m_szValueToDisplay;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_TBGEditTexture" class="hidden"></a>m_TBGEditTexture <a href="../Source_r6window/r6windoweditbox.html#27" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../engine/texture.html" class="source">Texture</a></span> m_TBGEditTexture;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+
+
+<br />
+
+
+
+
+
+
+
+<table class="title">
+<tr>
+	<th class="title">Functions Detail</th>
+</tr>
+</table>
+
+<h4><a name="_BeforePaint-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> BeforePaint <span class="function_state"></span> <a href="../Source_r6window/r6windoweditbox.html#33" class="small">Source code</a></h4>
+<div class="declaration"> function  BeforePaint ( <span class="source_type"><a href="../engine/canvas.html" class="source">Canvas</a></span> <span class="source_type">C</span>, <span class="source_type">FLOAT</span> X, <span class="source_type">FLOAT</span> Y) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_Paint-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> Paint <span class="function_state"></span> <a href="../Source_r6window/r6windoweditbox.html#68" class="small">Source code</a></h4>
+<div class="declaration"> function  Paint ( <span class="source_type"><a href="../engine/canvas.html" class="source">Canvas</a></span> <span class="source_type">C</span>, <span class="source_type">FLOAT</span> X, <span class="source_type">FLOAT</span> Y) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_PaintEditBoxBG-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> PaintEditBoxBG <span class="function_state"></span> <a href="../Source_r6window/r6windoweditbox.html#162" class="small">Source code</a></h4>
+<div class="declaration"> function  PaintEditBoxBG ( <span class="source_type"><a href="../engine/canvas.html" class="source">Canvas</a></span> <span class="source_type">C</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+
+
+<br />
+
+
+<table class="title">
+<tr>
+	<th class="title">Defaultproperties</th>
+</tr>
+</table>
+<br />
+<div class="source"><table class="source"><tr><td class="source"><pre class="source">defaultproperties
+{
+     m_TBGEditTexture=<span class="source_type"><a href="../engine/texture.html" class="source">Texture</a></span><span class="source_name">'R6MenuTextures.Gui_BoxScroll'</span>
+     m_RBGEditTexture=(X=<span class="source_int">114</span>,Y=<span class="source_int">47</span>,W=<span class="source_int">2</span>,<span class="source_type">H</span>=<span class="source_int">13</span>)
+     m_szCurValue=<span class="source_string">"//N"</span>
+     bSelectOnFocus=True
+     m_bDrawEditBoxBG=True
+}
+</pre></td></tr></table></div>
+
+
+
+<hr />
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../r6window/r6window-overview.html">Package</a></td>
+	<td class="header_hilight">Class</td>
+	<td class="header"><a href="../Source_r6window/r6windoweditbox.html">Source</a></td>
+	<td class="header"><a class="header" href="../classtree.html#R6WindowEditBox">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../r6window/r6windowcounter.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../r6window/r6windoweditcontrol.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+
+<div class="stats">Creation time: mar. 26/5/2026 18:33:15.010 - Created with <a href="http://wiki.beyondunreal.com/wiki/UnCodeX" target="_blank">UnCodeX</a></div>
+
+</body>
+</html>

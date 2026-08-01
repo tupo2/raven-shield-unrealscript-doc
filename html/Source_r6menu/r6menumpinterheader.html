@@ -1,0 +1,423 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+	<title>UnCodeX - Source: R6Menu.R6MenuMPInterHeader</title>
+	<meta name="Generator" content="UnCodeX 241" />
+	<link rel="stylesheet" href="../DocStyle2.css" type="text/css" title="Original Purple" />
+	<link rel="alternative stylesheet" href="../DocStyle2-blue.css" type="text/css" title="Blue" />
+	<link rel="alternative stylesheet" href="../DocStyle2-red.css" type="text/css" title="Red" />
+	<!--[if IE]>
+	<link rel="stylesheet" href="../DocStyle2-msie.css" type="text/css" />
+	<![endif]-->
+	<script src="../styleswitcher.js" type="text/javascript"></script>
+</head>
+<body>
+
+<div class="header">
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../r6menu/r6menu-overview.html">Package</a></td>
+	<td class="header"><a href="../r6menu/r6menumpinterheader.html">Class</a></td>
+	<td class="header_hilight">Source</td>
+	<td class="header"><a class="header" href="../classtree.html#R6MenuMPInterHeader">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../Source_r6menu/r6menumpingamevote.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../Source_r6menu/r6menumpinterwidget.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html#Source_r6menu/r6menumpinterheader.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+</div>
+<div class="spacer"></div>
+
+<h1><a href="../r6menu/r6menu-overview.html">R6Menu</a>.<a href="../r6menu/r6menumpinterheader.html">R6MenuMPInterHeader</a></h1>
+<br />
+<div class="source"><table class="source"><tr><td class="source_lineno"><span class="source_lineno">00001<br />00002<br />00003<br />00004<br />00005<br />00006<br />00007<br />00008<br />00009<br />00010<br />00011<br />00012<br />00013<br />00014<br />00015<br />00016<br />00017<br />00018<br />00019<br />00020<br />
+00021<br />00022<br />00023<br />00024<br />00025<br />00026<br />00027<br />00028<br />00029<br />00030<br />00031<br />00032<br />00033<br />00034<br />00035<br />00036<br />00037<br />00038<br />00039<br />00040<br />
+00041<br />00042<br />00043<br />00044<br />00045<br />00046<br />00047<br />00048<br />00049<br />00050<br />00051<br />00052<br />00053<br />00054<br />00055<br />00056<br />00057<br />00058<br />00059<br />00060<br />
+00061<br />00062<br />00063<br />00064<br />00065<br />00066<br />00067<br />00068<br />00069<br />00070<br />00071<br />00072<br />00073<br />00074<br />00075<br />00076<br />00077<br />00078<br />00079<br />00080<br />
+00081<br />00082<br />00083<br />00084<br />00085<br />00086<br />00087<br />00088<br />00089<br />00090<br />00091<br />00092<br />00093<br />00094<br />00095<br />00096<br />00097<br />00098<br />00099<br />00100<br />
+00101<br />00102<br />00103<br />00104<br />00105<br />00106<br />00107<br />00108<br />00109<br />00110<br />00111<br />00112<br />00113<br />00114<br />00115<br />00116<br />00117<br />00118<br />00119<br />00120<br />
+00121<br />00122<br />00123<br />00124<br />00125<br />00126<br />00127<br />00128<br />00129<br />00130<br />00131<br />00132<br />00133<br />00134<br />00135<br />00136<br />00137<br />00138<br />00139<br />00140<br />
+00141<br />00142<br />00143<br />00144<br />00145<br />00146<br />00147<br />00148<br />00149<br />00150<br />00151<br />00152<br />00153<br />00154<br />00155<br />00156<br />00157<br />00158<br />00159<br />00160<br />
+00161<br />00162<br />00163<br />00164<br />00165<br />00166<br />00167<br />00168<br />00169<br />00170<br />00171<br />00172<br />00173<br />00174<br />00175<br />00176<br />00177<br />00178<br />00179<br />00180<br />
+00181<br />00182<br />00183<br />00184<br />00185<br />00186<br />00187<br />00188<br />00189<br />00190<br />00191<br />00192<br />00193<br />00194<br />00195<br />00196<br />00197<br />00198<br />00199<br />00200<br />
+00201<br />00202<br />00203<br />00204<br />00205<br />00206<br />00207<br />00208<br />00209<br />00210<br />00211<br />00212<br />00213<br />00214<br />00215<br />00216<br />00217<br />00218<br />00219<br />00220<br />
+00221<br />00222<br />00223<br />00224<br />00225<br />00226<br />00227<br />00228<br />00229<br />00230<br />00231<br />00232<br />00233<br />00234<br />00235<br />00236<br />00237<br />00238<br />00239<br />00240<br />
+00241<br />00242<br />00243<br />00244<br />00245<br />00246<br />00247<br />00248<br />00249<br />00250<br />00251<br />00252<br />00253<br />00254<br />00255<br />00256<br />00257<br />00258<br />00259<br />00260<br />
+00261<br />00262<br />00263<br />00264<br />00265<br />00266<br />00267<br />00268<br />00269<br />00270<br />00271<br />00272<br />00273<br />00274<br />00275<br />00276<br />00277<br />00278<br />00279<br />00280<br />
+00281<br />00282<br />00283<br />00284<br />00285<br />00286<br />00287<br />00288<br />00289<br />00290<br />00291<br />00292<br />00293<br />00294<br />00295<br />00296<br />00297<br />00298<br />00299<br />00300<br />
+00301<br />00302<br />00303<br />00304<br />00305<br />00306<br />00307<br />00308<br />00309<br />00310<br />00311<br />00312<br />00313<br />00314<br />00315<br />00316<br />00317<br />00318<br />00319<br />00320<br />
+00321<br />00322<br />00323<br />00324<br />00325<br />00326<br />00327<br />00328<br />00329<br />00330<br />00331<br />00332<br />00333<br />00334<br />00335<br />00336<br />00337<br />00338<br />00339<br />00340<br />
+00341<br />00342<br />00343<br />00344<br />00345<br />00346<br />00347<br />00348</span></td>
+<td class="source"><pre class="source"><a name="1"></a><span class="source_comment">//=============================================================================
+</span><a name="2"></a><span class="source_comment">//  R6MenuMPInterHeader.uc : Intermission widget (when you press start during MP game or 
+</span><a name="3"></a><span class="source_comment">//  the size of the window is 640 * 480. The part in the top of multi menu in-game
+</span><a name="4"></a><span class="source_comment">//  Copyright 2001 Ubi Soft, Inc. All Rights Reserved.
+</span><a name="5"></a><span class="source_comment">//
+</span><a name="6"></a><span class="source_comment">//  Revision history:
+</span><a name="7"></a><span class="source_comment">//    2002/04/25 * Created  Yannick Joly
+</span><a name="8"></a><span class="source_comment">//=============================================================================
+</span><a name="9"></a><span class="source_type">class</span> <span class="source_type"><a href="../r6menu/r6menumpinterheader.html" class="source">R6MenuMPInterHeader</a></span> extends <span class="source_type"><a href="../uwindow/uwindowwindow.html" class="source">UWindowWindow</a></span>;
+<a name="10"></a>
+<a name="11"></a>const C_iSERVER_NAME			= <span class="source_int">0</span>;
+<a name="12"></a>const C_iSERVER_IP				= <span class="source_int">1</span>;
+<a name="13"></a>const C_iMAP_NAME				= <span class="source_int">2</span>;
+<a name="14"></a>const C_iGAME_TYPE				= <span class="source_int">3</span>;
+<a name="15"></a>const C_iROUND					= <span class="source_int">4</span>;
+<a name="16"></a>const C_iTIME_PER_ROUND			= <span class="source_int">5</span>;
+<a name="17"></a>const C_iTOT_GREEN_TEAM_VICTORY = <span class="source_int">6</span>;
+<a name="18"></a>const C_iTOT_RED_TEAM_VICTORY	= <span class="source_int">7</span>;
+<a name="19"></a>const C_iMISSION_STATUS			= <span class="source_int">8</span>;
+<a name="20"></a>
+<a name="21"></a>const C_fXBORDER_OFFSET			= <span class="source_int">2</span>;  <span class="source_comment">// 2 in x because the real window is 2 pixel left (1 pixel empty and 1 for the border)
+</span><a name="22"></a>const C_fXTEXT_HEADER_OFFSET	= <span class="source_int">4</span>;
+<a name="23"></a>const C_fYPOS_OF_TEAMSCORE		= <span class="source_int">48</span>;
+<a name="24"></a>
+<a name="25"></a>var <span class="source_type"><a href="../r6window/r6windowtextlabelext.html" class="source">R6WindowTextLabelExt</a></span>            m_pTextHeader;			 <span class="source_comment">// all the names for the header
+</span><a name="26"></a>
+<a name="27"></a>var <span class="source_type">string</span>							m_szGameResult[<span class="source_int">5</span>];
+<a name="28"></a>
+<a name="29"></a>var <span class="source_type">INT</span>                             m_iIndex[<span class="source_int">9</span>];			 <span class="source_comment">// array of text label (6 is for nb of server info + 2 for team case + 1 mission status)
+</span><a name="30"></a>
+<a name="31"></a>var <span class="source_type">BOOL</span>							m_bDisplayTotVictory;	 <span class="source_comment">// display the win games for each team
+</span><a name="32"></a>var <span class="source_type">BOOL</span>							m_bDisplayCoopStatus;	 <span class="source_comment">// display the coop mission status 
+</span><a name="33"></a>var <span class="source_type">BOOL</span>							m_bDisplayCoopBox;
+<a name="34"></a>
+<a name="35"></a>function Created()
+<a name="36"></a>{
+<a name="37"></a>	m_szGameResult[<span class="source_int">0</span>] = Localize(<span class="source_string">"MPInGame"</span>,<span class="source_string">"AlphaTeamScore"</span>,<span class="source_string">"R6Menu"</span>);
+<a name="38"></a>	m_szGameResult[<span class="source_int">1</span>] = Localize(<span class="source_string">"MPInGame"</span>,<span class="source_string">"BravoTeamScore"</span>,<span class="source_string">"R6Menu"</span>);
+<a name="39"></a>	m_szGameResult[<span class="source_int">2</span>] = Localize(<span class="source_string">"DebriefingMenu"</span>,<span class="source_string">"SUCCESS"</span>,<span class="source_string">"R6Menu"</span>);
+<a name="40"></a>	m_szGameResult[<span class="source_int">3</span>] = Localize(<span class="source_string">"DebriefingMenu"</span>,<span class="source_string">"FAILED"</span>,<span class="source_string">"R6Menu"</span>);
+<a name="41"></a>	m_szGameResult[<span class="source_int">4</span>] = Localize(<span class="source_string">"MPInGame"</span>,<span class="source_string">"MissionInProgress"</span>,<span class="source_string">"R6Menu"</span>);;
+<a name="42"></a>
+<a name="43"></a>	m_bDisplayCoopBox = false;
+<a name="44"></a>
+<a name="45"></a>    InitTextHeader();
+<a name="46"></a>}
+<a name="47"></a>
+<a name="48"></a>
+<a name="49"></a>function Paint(<span class="source_type"><a href="../engine/canvas.html" class="source">Canvas</a></span> <span class="source_type">C</span>, <span class="source_type">FLOAT</span> X, <span class="source_type">FLOAT</span> <span class="source_type">Y</span>)
+<a name="50"></a>{
+<a name="51"></a>	local <span class="source_type">FLOAT</span> fX;
+<a name="52"></a>
+<a name="53"></a>	fX = C_fXBORDER_OFFSET + C_fXTEXT_HEADER_OFFSET;
+<a name="54"></a>	<span class="source_comment">// if we are in team deathmatch display number of victory for each team
+</span><a name="55"></a>	if (m_bDisplayTotVictory)
+<a name="56"></a>	{
+<a name="57"></a>		<span class="source_comment">// GreenTeam
+</span><a name="58"></a>		DrawTeamScore( <span class="source_type">C</span>, Root.Colors.TeamColor[<span class="source_int">1</span>], Root.Colors.TeamColorDark[<span class="source_int">1</span>], 
+<a name="59"></a>						  fX, C_fYPOS_OF_TEAMSCORE, (WinWidth * <span class="source_int">0.5</span>) - (<span class="source_int">2</span> * fX), <span class="source_int">14</span>);
+<a name="60"></a>		<span class="source_comment">// Red Team
+</span><a name="61"></a>		DrawTeamScore( <span class="source_type">C</span>, Root.Colors.TeamColor[<span class="source_int">0</span>], Root.Colors.TeamColorDark[<span class="source_int">0</span>], 
+<a name="62"></a>						  (WinWidth * <span class="source_int">0.5</span>) + fX, C_fYPOS_OF_TEAMSCORE, (WinWidth * <span class="source_int">0.5</span>) - (<span class="source_int">2</span> * fX), <span class="source_int">14</span>);
+<a name="63"></a>	}
+<a name="64"></a>	else if (m_bDisplayCoopBox)
+<a name="65"></a>	{
+<a name="66"></a>		DrawTeamScore( <span class="source_type">C</span>, m_pTextHeader.GetTextColor(m_iIndex[C_iMISSION_STATUS]), m_pTextHeader.GetTextColor(m_iIndex[C_iMISSION_STATUS]), 
+<a name="67"></a>						  fX, C_fYPOS_OF_TEAMSCORE, WinWidth - (<span class="source_int">2</span> * fX), <span class="source_int">14</span>);
+<a name="68"></a>	}
+<a name="69"></a>}
+<a name="70"></a>
+<a name="71"></a><span class="source_comment">//===============================================================================
+</span><a name="72"></a><span class="source_comment">// DrawTeamScore: Display a box with a background (use for team score and mission progress)
+</span><a name="73"></a><span class="source_comment">//===============================================================================
+</span><a name="74"></a>function DrawTeamScore( <span class="source_type"><a href="../engine/canvas.html" class="source">Canvas</a></span> <span class="source_type">C</span>, <span class="source_type"><a href="../core/object.html#Color" class="source">Color</a></span> _cTeamColor, <span class="source_type"><a href="../core/object.html#Color" class="source">Color</a></span> _cBGColor, <span class="source_type">FLOAT</span> _fX, <span class="source_type">FLOAT</span> _fY, <span class="source_type">FLOAT</span> _fW, <span class="source_type">FLOAT</span> _fH)
+<a name="75"></a>{
+<a name="76"></a>	DrawSimpleBackGround( <span class="source_type">C</span>, _fX, _fY, _fW, _fH, _cBGColor);
+<a name="77"></a>
+<a name="78"></a>    <span class="source_type">C</span>.SetDrawColor(_cTeamColor.<span class="source_type">R</span>, _cTeamColor.G, _cTeamColor.<span class="source_type">B</span>);
+<a name="79"></a>
+<a name="80"></a>    <span class="source_comment">//Top
+</span><a name="81"></a>    DrawStretchedTextureSegment(<span class="source_type">C</span>, _fX, _fY, _fW, m_BorderTextureRegion.<span class="source_type">H</span>, m_BorderTextureRegion.X, m_BorderTextureRegion.<span class="source_type">Y</span>, m_BorderTextureRegion.W, m_BorderTextureRegion.<span class="source_type">H</span>, m_BorderTexture);
+<a name="82"></a>    <span class="source_comment">//Bottom
+</span><a name="83"></a>    DrawStretchedTextureSegment(<span class="source_type">C</span>, _fX, _fY + _fH - m_BorderTextureRegion.<span class="source_type">H</span>, _fW, m_BorderTextureRegion.<span class="source_type">H</span> , m_BorderTextureRegion.X, m_BorderTextureRegion.<span class="source_type">Y</span>, m_BorderTextureRegion.W, m_BorderTextureRegion.<span class="source_type">H</span>, m_BorderTexture);
+<a name="84"></a>    <span class="source_comment">//Left
+</span><a name="85"></a>    DrawStretchedTextureSegment(<span class="source_type">C</span>, _fX, _fY + m_BorderTextureRegion.<span class="source_type">H</span>, m_BorderTextureRegion.W, _fH - (<span class="source_int">2</span>* m_BorderTextureRegion.<span class="source_type">H</span>), m_BorderTextureRegion.X, m_BorderTextureRegion.<span class="source_type">Y</span>, m_BorderTextureRegion.W, m_BorderTextureRegion.<span class="source_type">H</span>, m_BorderTexture);
+<a name="86"></a>    <span class="source_comment">//Right
+</span><a name="87"></a>    DrawStretchedTextureSegment(<span class="source_type">C</span>, _fX + _fW - m_BorderTextureRegion.W, _fY + m_BorderTextureRegion.<span class="source_type">H</span>, m_BorderTextureRegion.W, _fH - (<span class="source_int">2</span>* m_BorderTextureRegion.<span class="source_type">H</span>), m_BorderTextureRegion.X, m_BorderTextureRegion.<span class="source_type">Y</span>, m_BorderTextureRegion.W, m_BorderTextureRegion.<span class="source_type">H</span>, m_BorderTexture);
+<a name="88"></a>}
+<a name="89"></a>
+<a name="90"></a>
+<a name="91"></a>
+<a name="92"></a>
+<a name="93"></a>
+<a name="94"></a>
+<a name="95"></a>
+<a name="96"></a>
+<a name="97"></a>
+<a name="98"></a>
+<a name="99"></a>
+<a name="100"></a>
+<a name="101"></a><span class="source_comment">//===============================================================================
+</span><a name="102"></a><span class="source_comment">// Init text header
+</span><a name="103"></a><span class="source_comment">//===============================================================================
+</span><a name="104"></a>function InitTextHeader()
+<a name="105"></a>{
+<a name="106"></a>    local <span class="source_type">FLOAT</span> fXOffset, fYOffset, fYStep, <span class="source_type">fWidth</span>, <span class="source_type">fHeight</span>, fTemp, fSizeOfCounter;
+<a name="107"></a>    local <span class="source_type">Font</span> ButtonFont;
+<a name="108"></a>
+<a name="109"></a>    <span class="source_comment">// Use text array with R6WindowTextLabelExt
+</span><a name="110"></a>    m_pTextHeader = <span class="source_type"><a href="../r6window/r6windowtextlabelext.html" class="source">R6WindowTextLabelExt</a></span>( CreateWindow(<span class="source_type">class</span><span class="source_name">'R6WindowTextLabelExt'</span>, <span class="source_int">0</span>, <span class="source_int">0</span>, WinWidth, WinHeight, self));
+<a name="111"></a>    m_pTextHeader.bAlwaysBehind = true;
+<a name="112"></a>    m_pTextHeader.SetNoBorder();
+<a name="113"></a>
+<a name="114"></a>    <span class="source_comment">// text part
+</span><a name="115"></a>    m_pTextHeader.m_Font = Root.Fonts[F_VerySmallTitle];
+<a name="116"></a>    m_pTextHeader.m_vTextColor = Root.Colors.White;
+<a name="117"></a>
+<a name="118"></a>    fXOffset = C_fXTEXT_HEADER_OFFSET; <span class="source_comment">// not + C_fXBORDER_OFFSET, because the marge in m_pTextHeader class is already 2 by default
+</span><a name="119"></a>    fYOffset = <span class="source_int">4</span>;
+<a name="120"></a>    <span class="source_type">fWidth</span> = WinWidth * <span class="source_int">0.5</span>;
+<a name="121"></a>    fYStep = <span class="source_int">14</span>;
+<a name="122"></a>    m_pTextHeader.AddTextLabel( Localize(<span class="source_string">"MPInGame"</span>,<span class="source_string">"ServerName"</span>,<span class="source_string">"R6Menu"</span>), fXOffset, fYOffset, <span class="source_type">fWidth</span>, TA_Left, false);
+<a name="123"></a>    fYOffset += fYStep;
+<a name="124"></a>    m_pTextHeader.AddTextLabel( Localize(<span class="source_string">"MPInGame"</span>,<span class="source_string">"ServerIP"</span>,<span class="source_string">"R6Menu"</span>), fXOffset, fYOffset, <span class="source_type">fWidth</span>, TA_Left, false);
+<a name="125"></a>    fYOffset += fYStep;
+<a name="126"></a>    m_pTextHeader.AddTextLabel( Localize(<span class="source_string">"MPInGame"</span>,<span class="source_string">"MapName"</span>,<span class="source_string">"R6Menu"</span>), fXOffset, fYOffset, <span class="source_type">fWidth</span>, TA_Left, false);
+<a name="127"></a>
+<a name="128"></a>    fXOffset = <span class="source_type">fWidth</span> + C_fXTEXT_HEADER_OFFSET; <span class="source_comment">// not + C_fXBORDER_OFFSET, because the marge in m_pTextHeader class is already 2 by default
+</span><a name="129"></a>    fYOffset = <span class="source_int">4</span>;
+<a name="130"></a>    m_pTextHeader.AddTextLabel( Localize(<span class="source_string">"MPInGame"</span>,<span class="source_string">"GameType"</span>,<span class="source_string">"R6Menu"</span>), fXOffset, fYOffset, <span class="source_type">fWidth</span>, TA_Left, false);
+<a name="131"></a>    fYOffset += fYStep;
+<a name="132"></a>    m_pTextHeader.AddTextLabel( Localize(<span class="source_string">"MPInGame"</span>,<span class="source_string">"Round"</span>,<span class="source_string">"R6Menu"</span>), fXOffset, fYOffset, <span class="source_type">fWidth</span>, TA_Left, false);
+<a name="133"></a>    fYOffset += fYStep;
+<a name="134"></a>    m_pTextHeader.AddTextLabel( Localize(<span class="source_string">"MPInGame"</span>,<span class="source_string">"TimePerRound"</span>,<span class="source_string">"R6Menu"</span>), fXOffset, fYOffset, <span class="source_type">fWidth</span>, TA_Left, false);
+<a name="135"></a>
+<a name="136"></a>    <span class="source_type">fWidth</span> = WinWidth * <span class="source_int">0.25</span>;
+<a name="137"></a>    fXOffset = (WinWidth * <span class="source_int">0.2</span>);
+<a name="138"></a>    fYOffset = <span class="source_int">4</span>;
+<a name="139"></a><span class="source_comment">//    fYStep = 15;
+</span><a name="140"></a>    m_pTextHeader.m_vTextColor = Root.Colors.BlueLight;
+<a name="141"></a>    m_pTextHeader.m_bUpDownBG = true;
+<a name="142"></a>    m_iIndex[C_iSERVER_NAME] = m_pTextHeader.AddTextLabel( <span class="source_string">""</span>, fXOffset, fYOffset, <span class="source_type">fWidth</span>, TA_Center, false, <span class="source_int">12</span>);
+<a name="143"></a>    fYOffset += fYStep;
+<a name="144"></a>    m_iIndex[C_iSERVER_IP] = m_pTextHeader.AddTextLabel( <span class="source_string">""</span>, fXOffset, fYOffset, <span class="source_type">fWidth</span>, TA_Center, false, <span class="source_int">12</span>);
+<a name="145"></a>    fYOffset += fYStep;
+<a name="146"></a>    m_iIndex[C_iMAP_NAME] = m_pTextHeader.AddTextLabel( <span class="source_string">""</span>, fXOffset, fYOffset, <span class="source_type">fWidth</span>, TA_Center, false, <span class="source_int">12</span>);
+<a name="147"></a>
+<a name="148"></a>    fXOffset = (WinWidth * <span class="source_int">0.5</span>) + fXOffset;
+<a name="149"></a>    fYOffset = <span class="source_int">4</span>;
+<a name="150"></a>    m_iIndex[C_iGAME_TYPE] = m_pTextHeader.AddTextLabel( <span class="source_string">""</span>, fXOffset, fYOffset, <span class="source_type">fWidth</span>, TA_Center, false, <span class="source_int">12</span>);
+<a name="151"></a>    fYOffset += fYStep;
+<a name="152"></a>    m_iIndex[C_iROUND] = m_pTextHeader.AddTextLabel( <span class="source_string">""</span>, fXOffset, fYOffset, <span class="source_type">fWidth</span>, TA_Center, false, <span class="source_int">12</span>);
+<a name="153"></a>    fYOffset += fYStep;
+<a name="154"></a>    m_iIndex[C_iTIME_PER_ROUND] = m_pTextHeader.AddTextLabel( <span class="source_string">""</span>, fXOffset, fYOffset, <span class="source_type">fWidth</span>, TA_Center, false, <span class="source_int">12</span>);
+<a name="155"></a>
+<a name="156"></a>	fXOffset = C_fXTEXT_HEADER_OFFSET; <span class="source_comment">// not + C_fXBORDER_OFFSET, because the marge in m_pTextHeader class is already 2 by default
+</span><a name="157"></a>	fYOffset = C_fYPOS_OF_TEAMSCORE + <span class="source_int">1</span>; <span class="source_comment">//1 is the offset from the top border
+</span><a name="158"></a>	<span class="source_type">fWidth</span> = (WinWidth * <span class="source_int">0.5</span>) - (<span class="source_int">2</span> * fXOffset);
+<a name="159"></a>	m_pTextHeader.m_bUpDownBG = false;
+<a name="160"></a>    m_pTextHeader.m_vTextColor = Root.Colors.TeamColorLight[<span class="source_int">1</span>]; <span class="source_comment">// GREEN TEAM
+</span><a name="161"></a>	m_iIndex[C_iTOT_GREEN_TEAM_VICTORY] = m_pTextHeader.AddTextLabel( <span class="source_string">""</span>, fXOffset, fYOffset, <span class="source_type">fWidth</span>, TA_Center, false, <span class="source_int">14</span>);
+<a name="162"></a>
+<a name="163"></a>	fXOffset = <span class="source_type">fWidth</span> + <span class="source_int">4</span>;
+<a name="164"></a>	m_pTextHeader.m_vTextColor = Root.Colors.TeamColorLight[<span class="source_int">0</span>]; <span class="source_comment">// RED TEAM
+</span><a name="165"></a>	m_iIndex[C_iTOT_RED_TEAM_VICTORY] = m_pTextHeader.AddTextLabel( <span class="source_string">""</span>, fXOffset, fYOffset, <span class="source_type">fWidth</span>, TA_Center, false, <span class="source_int">14</span>);
+<a name="166"></a>
+<a name="167"></a>	fXOffset = C_fXBORDER_OFFSET + C_fXTEXT_HEADER_OFFSET;
+<a name="168"></a>	<span class="source_type">fWidth</span>	 = WinWidth - (<span class="source_int">2</span>*fXOffset);
+<a name="169"></a>	m_pTextHeader.m_vTextColor = Root.Colors.White; <span class="source_comment">// mission status
+</span><a name="170"></a>	m_iIndex[C_iMISSION_STATUS] = m_pTextHeader.AddTextLabel( <span class="source_string">""</span>, fXOffset, fYOffset, <span class="source_type">fWidth</span>, TA_Center, false, <span class="source_int">14</span>);
+<a name="171"></a>}
+<a name="172"></a>
+<a name="173"></a><span class="source_comment">//===============================================================================
+</span><a name="174"></a><span class="source_comment">// Refresh server header info
+</span><a name="175"></a><span class="source_comment">//===============================================================================
+</span><a name="176"></a>function RefreshInterHeaderInfo()
+<a name="177"></a>{
+<a name="178"></a>    local <span class="source_type"><a href="../r6menu/r6menuingamemultiplayerrootwindow.html" class="source">R6MenuInGameMultiPlayerRootWindow</a></span> R6Root;
+<a name="179"></a>    local <span class="source_type">string</span> szIP;
+<a name="180"></a>    local <span class="source_type">string</span> <span class="source_type">szGameType</span>;
+<a name="181"></a>    local <span class="source_type">string</span> szTemp;
+<a name="182"></a>    local <span class="source_type">FLOAT</span> fCurrentTime;
+<a name="183"></a>    local <span class="source_type"><a href="../r6engine/r6gamereplicationinfo.html" class="source">R6GameReplicationInfo</a></span> r6GameRep;
+<a name="184"></a>    local <span class="source_type"><a href="../r6menu/r6menumpinterwidget.html" class="source">R6MenuMPInterWidget</a></span> MpInter;
+<a name="185"></a>
+<a name="186"></a>    R6Root = <span class="source_type"><a href="../r6menu/r6menuingamemultiplayerrootwindow.html" class="source">R6MenuInGameMultiPlayerRootWindow</a></span>(Root);   
+<a name="187"></a> 
+<a name="188"></a>    
+<a name="189"></a>    if (R6Root.m_R6GameMenuCom != None)
+<a name="190"></a>    {
+<a name="191"></a>		r6GameRep = <span class="source_type"><a href="../r6engine/r6gamereplicationinfo.html" class="source">R6GameReplicationInfo</a></span>(R6Root.m_R6GameMenuCom.m_GameRepInfo);
+<a name="192"></a>		if (r6GameRep == none)
+<a name="193"></a>            return;
+<a name="194"></a>		
+<a name="195"></a>        <span class="source_comment">// The IP will be of the form, 10.10.10.10:1234, just display everything to the left
+</span><a name="196"></a>        <span class="source_comment">// of the ":" (remove the port number).
+</span><a name="197"></a>        szIP = <span class="source_type"><a href="../r6game/r6console.html" class="source">R6Console</a></span>(Root.<span class="source_type"><a href="../engine/console.html" class="source">console</a></span>).szStoreIP;  <span class="source_comment">//Left(R6Console(Root.console).szStoreIP,InStr(R6Console(Root.console).szStoreIP,":"));
+</span><a name="198"></a>        m_pTextHeader.ChangeTextLabel( r6GameRep.ServerName, m_iIndex[C_iSERVER_NAME]);
+<a name="199"></a>        m_pTextHeader.ChangeTextLabel( szIP, m_iIndex[C_iSERVER_IP]);
+<a name="200"></a>		if (!Root.GetMapNameLocalisation( GetLevel().GetURLMap(), szTemp))
+<a name="201"></a>			szTemp = GetLevel().GetURLMap();
+<a name="202"></a>        m_pTextHeader.ChangeTextLabel( szTemp, m_iIndex[C_iMAP_NAME]);
+<a name="203"></a>
+<a name="204"></a>        <span class="source_type">szGameType</span> = GetLevel().GetGameNameLocalization( R6Root.m_R6GameMenuCom.GetGameType());
+<a name="205"></a>        
+<a name="206"></a>        m_pTextHeader.ChangeTextLabel( <span class="source_type">szGameType</span>, m_iIndex[C_iGAME_TYPE]);
+<a name="207"></a>
+<a name="208"></a>        RefreshRoundInfo();
+<a name="209"></a>
+<a name="210"></a>        MpInter = <span class="source_type"><a href="../r6menu/r6menumpinterwidget.html" class="source">R6MenuMPInterWidget</a></span>(OwnerWindow);
+<a name="211"></a>
+<a name="212"></a>
+<a name="213"></a>		if (R6Root.m_R6GameMenuCom.IsInBetweenRoundMenu())
+<a name="214"></a>			fCurrentTime = r6GameRep.TimeLimit;
+<a name="215"></a>		else 
+<a name="216"></a>			fCurrentTime = r6GameRep.GetRoundTime();
+<a name="217"></a>
+<a name="218"></a>        m_pTextHeader.ChangeTextLabel( <span class="source_type">class</span><span class="source_name">'Actor'</span>.static.ConvertIntTimeToString(fCurrentTime) @ <span class="source_string">"/"</span> @
+<a name="219"></a> 									   <span class="source_type">class</span><span class="source_name">'Actor'</span>.static.ConvertIntTimeToString(r6GameRep.TimeLimit), m_iIndex[C_iTIME_PER_ROUND]);
+<a name="220"></a>
+<a name="221"></a>		if (m_bDisplayTotVictory)
+<a name="222"></a>		{
+<a name="223"></a>			m_pTextHeader.ChangeTextLabel( m_szGameResult[<span class="source_int">0</span>] $ <span class="source_string">" "</span> $ <span class="source_type">string</span>(r6GameRep.m_aTeamScore[<span class="source_int">0</span>]), m_iIndex[C_iTOT_GREEN_TEAM_VICTORY]);
+<a name="224"></a>
+<a name="225"></a>			m_pTextHeader.ChangeTextLabel( m_szGameResult[<span class="source_int">1</span>] $ <span class="source_string">" "</span> $ <span class="source_type">string</span>(r6GameRep.m_aTeamScore[<span class="source_int">1</span>]), m_iIndex[C_iTOT_RED_TEAM_VICTORY]);
+<a name="226"></a>		}
+<a name="227"></a>		else if (m_bDisplayCoopStatus)
+<a name="228"></a>		{
+<a name="229"></a>			if ( MpInter.IsMissionInProgress())
+<a name="230"></a>			{
+<a name="231"></a>				
+<a name="232"></a>                if (!R6Root.m_R6GameMenuCom.IsInBetweenRoundMenu( true)) <span class="source_comment">// avoid the display in mission progress
+</span><a name="233"></a>				{
+<a name="234"></a>					m_pTextHeader.ChangeColorLabel( Root.Colors.White, m_iIndex[C_iMISSION_STATUS]);
+<a name="235"></a>					m_pTextHeader.ChangeTextLabel( m_szGameResult[<span class="source_int">4</span>], m_iIndex[C_iMISSION_STATUS]);
+<a name="236"></a>				}
+<a name="237"></a>                else
+<a name="238"></a>                {
+<a name="239"></a>                    if ( MpInter.GetLastMissionSuccess() == <span class="source_int">0</span>)
+<a name="240"></a>                        m_pTextHeader.ChangeTextLabel( <span class="source_string">""</span>, m_iIndex[C_iMISSION_STATUS]);                
+<a name="241"></a>				    else if ( <span class="source_type"><a href="../r6menu/r6menumpinterwidget.html" class="source">R6MenuMPInterWidget</a></span>(OwnerWindow).GetLastMissionSuccess() == <span class="source_int">1</span>)
+<a name="242"></a>				    {
+<a name="243"></a>					    m_pTextHeader.ChangeColorLabel( Root.Colors.TeamColorLight[<span class="source_int">1</span>], m_iIndex[C_iMISSION_STATUS]);
+<a name="244"></a>					    m_pTextHeader.ChangeTextLabel( m_szGameResult[<span class="source_int">2</span>], m_iIndex[C_iMISSION_STATUS]);
+<a name="245"></a>				    }
+<a name="246"></a>				    else
+<a name="247"></a>				    {
+<a name="248"></a>					    m_pTextHeader.ChangeColorLabel( Root.Colors.TeamColorLight[<span class="source_int">0</span>], m_iIndex[C_iMISSION_STATUS]);
+<a name="249"></a>					    m_pTextHeader.ChangeTextLabel( m_szGameResult[<span class="source_int">3</span>], m_iIndex[C_iMISSION_STATUS]);
+<a name="250"></a>				    }
+<a name="251"></a>                    
+<a name="252"></a>                }
+<a name="253"></a>			}
+<a name="254"></a>			else
+<a name="255"></a>			{
+<a name="256"></a>				if ( MpInter.IsMissionSuccess())
+<a name="257"></a>				{
+<a name="258"></a>					m_pTextHeader.ChangeColorLabel( Root.Colors.TeamColorLight[<span class="source_int">1</span>], m_iIndex[C_iMISSION_STATUS]);
+<a name="259"></a>					m_pTextHeader.ChangeTextLabel( m_szGameResult[<span class="source_int">2</span>], m_iIndex[C_iMISSION_STATUS]);
+<a name="260"></a>				}
+<a name="261"></a>				else
+<a name="262"></a>				{
+<a name="263"></a>					m_pTextHeader.ChangeColorLabel( Root.Colors.TeamColorLight[<span class="source_int">0</span>], m_iIndex[C_iMISSION_STATUS]);
+<a name="264"></a>					m_pTextHeader.ChangeTextLabel( m_szGameResult[<span class="source_int">3</span>], m_iIndex[C_iMISSION_STATUS]);
+<a name="265"></a>				}
+<a name="266"></a>			}
+<a name="267"></a>
+<a name="268"></a>			m_bDisplayCoopBox = (m_pTextHeader.GetTextLabel(m_iIndex[C_iMISSION_STATUS]) != <span class="source_string">""</span>);
+<a name="269"></a>		}
+<a name="270"></a>		else
+<a name="271"></a>		{
+<a name="272"></a>			<span class="source_comment">// in this case display nothing 
+</span><a name="273"></a>			ResetDisplayInfo();
+<a name="274"></a>		}
+<a name="275"></a>
+<a name="276"></a>		if (R6Root.m_R6GameMenuCom.IsInBetweenRoundMenu())
+<a name="277"></a>		{
+<a name="278"></a>            if (r6GameRep.m_bRepMenuCountDownTimePaused)
+<a name="279"></a>                R6Root.UpdateTimeInBetRound(<span class="source_int">0</span>, Localize(<span class="source_string">"MPInGame"</span>,<span class="source_string">"PausedMessage"</span>,<span class="source_string">"R6Menu"</span>));
+<a name="280"></a>            else if (r6GameRep.m_bRepMenuCountDownTimeUnlimited)
+<a name="281"></a>                R6Root.UpdateTimeInBetRound(<span class="source_int">0</span>, Localize(<span class="source_string">"MPInGame"</span>,<span class="source_string">"WaitMessage"</span>,<span class="source_string">"R6Menu"</span>));
+<a name="282"></a>            else
+<a name="283"></a>                R6Root.UpdateTimeInBetRound(r6GameRep.GetRoundTime());
+<a name="284"></a>		}
+<a name="285"></a>		else
+<a name="286"></a>		{
+<a name="287"></a>			R6Root.UpdateTimeInBetRound(-<span class="source_int">1</span>);
+<a name="288"></a>		}
+<a name="289"></a>    }
+<a name="290"></a>}
+<a name="291"></a>
+<a name="292"></a>function RefreshRoundInfo()
+<a name="293"></a>{
+<a name="294"></a>    local <span class="source_type"><a href="../r6engine/r6gamereplicationinfo.html" class="source">R6GameReplicationInfo</a></span> r6GameRep;
+<a name="295"></a>	local <span class="source_type"><a href="../r6menu/r6menuingamemultiplayerrootwindow.html" class="source">R6MenuInGameMultiPlayerRootWindow</a></span> R6Root;
+<a name="296"></a>
+<a name="297"></a>	R6Root = <span class="source_type"><a href="../r6menu/r6menuingamemultiplayerrootwindow.html" class="source">R6MenuInGameMultiPlayerRootWindow</a></span>(Root);
+<a name="298"></a>
+<a name="299"></a>	r6GameRep = <span class="source_type"><a href="../r6engine/r6gamereplicationinfo.html" class="source">R6GameReplicationInfo</a></span>(R6Root.m_R6GameMenuCom.m_GameRepInfo);
+<a name="300"></a>	if (r6GameRep == none)
+<a name="301"></a>        return;
+<a name="302"></a>
+<a name="303"></a>
+<a name="304"></a>	<span class="source_comment">// if you`re in a coop game and the option rotate map is on, display this specific string
+</span><a name="305"></a>	if ( GetLevel().IsGameTypeCooperative( R6Root.m_szCurrentGameType) )
+<a name="306"></a>	{
+<a name="307"></a>		if (r6GameRep.m_bRotateMap)
+<a name="308"></a>		{
+<a name="309"></a>			m_pTextHeader.ChangeTextLabel( r6GameRep.m_iCurrentRound+<span class="source_int">1</span> @ <span class="source_string">"/ --"</span>, m_iIndex[C_iROUND]);
+<a name="310"></a>			return;
+<a name="311"></a>		}
+<a name="312"></a>	}
+<a name="313"></a>
+<a name="314"></a>
+<a name="315"></a>	if (R6Root.m_R6GameMenuCom.m_GameRepInfo.m_eCurrectServerState == R6Root.m_R6GameMenuCom.m_GameRepInfo.RSS_EndOfMatch)
+<a name="316"></a>    {
+<a name="317"></a>        m_pTextHeader.ChangeTextLabel( Localize(<span class="source_string">"MPInGame"</span>,<span class="source_string">"MatchCompleted"</span>,<span class="source_string">"R6Menu"</span>), m_iIndex[C_iROUND]);
+<a name="318"></a>    }
+<a name="319"></a>	else
+<a name="320"></a>	    m_pTextHeader.ChangeTextLabel( r6GameRep.m_iCurrentRound+<span class="source_int">1</span> @ <span class="source_string">"/"</span> @ r6GameRep.m_iRoundsPerMatch, m_iIndex[C_iROUND]);
+<a name="321"></a>}
+<a name="322"></a>
+<a name="323"></a><span class="source_comment">//===============================================================================
+</span><a name="324"></a><span class="source_comment">// ResetDisplayInfo: 
+</span><a name="325"></a><span class="source_comment">//===============================================================================
+</span><a name="326"></a>function ResetDisplayInfo()
+<a name="327"></a>{
+<a name="328"></a>	m_pTextHeader.ChangeTextLabel( <span class="source_string">""</span>, m_iIndex[C_iTOT_GREEN_TEAM_VICTORY]);
+<a name="329"></a>	m_pTextHeader.ChangeTextLabel( <span class="source_string">""</span>, m_iIndex[C_iTOT_RED_TEAM_VICTORY]);
+<a name="330"></a>	m_pTextHeader.ChangeTextLabel( <span class="source_string">""</span>, m_iIndex[C_iMISSION_STATUS]);
+<a name="331"></a>}
+<a name="332"></a>
+<a name="333"></a><span class="source_comment">//===============================================================================
+</span><a name="334"></a><span class="source_comment">// Reset: reset all the gametype variables
+</span><a name="335"></a><span class="source_comment">//===============================================================================
+</span><a name="336"></a>function Reset()
+<a name="337"></a>{
+<a name="338"></a>	m_bDisplayTotVictory = false;
+<a name="339"></a>	m_bDisplayCoopStatus = false;
+<a name="340"></a>	m_bDisplayCoopBox	 = false;
+<a name="341"></a>
+<a name="342"></a>	ResetDisplayInfo();
+<a name="343"></a>}
+<a name="344"></a>
+<a name="345"></a>defaultproperties
+<a name="346"></a>{
+<a name="347"></a>}
+<a name="348"></a></pre></td></tr></table></div>
+<hr />
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../r6menu/r6menu-overview.html">Package</a></td>
+	<td class="header"><a href="../r6menu/r6menumpinterheader.html">Class</a></td>
+	<td class="header_hilight">Source</td>
+	<td class="header"><a class="header" href="../classtree.html#R6MenuMPInterHeader">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../Source_r6menu/r6menumpingamevote.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../Source_r6menu/r6menumpinterwidget.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+
+<div class="stats">Class file time: sam. 18/9/2004 14:39:54.000 - Creation time: mar. 26/5/2026 18:33:20.520 - Created with <a href="http://wiki.beyondunreal.com/wiki/UnCodeX" target="_blank">UnCodeX</a></div>
+
+</body>
+</html>

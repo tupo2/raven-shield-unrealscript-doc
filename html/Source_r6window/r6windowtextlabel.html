@@ -1,0 +1,298 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+	<title>UnCodeX - Source: R6Window.R6WindowTextLabel</title>
+	<meta name="Generator" content="UnCodeX 241" />
+	<link rel="stylesheet" href="../DocStyle2.css" type="text/css" title="Original Purple" />
+	<link rel="alternative stylesheet" href="../DocStyle2-blue.css" type="text/css" title="Blue" />
+	<link rel="alternative stylesheet" href="../DocStyle2-red.css" type="text/css" title="Red" />
+	<!--[if IE]>
+	<link rel="stylesheet" href="../DocStyle2-msie.css" type="text/css" />
+	<![endif]-->
+	<script src="../styleswitcher.js" type="text/javascript"></script>
+</head>
+<body>
+
+<div class="header">
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../r6window/r6window-overview.html">Package</a></td>
+	<td class="header"><a href="../r6window/r6windowtextlabel.html">Class</a></td>
+	<td class="header_hilight">Source</td>
+	<td class="header"><a class="header" href="../classtree.html#R6WindowTextLabel">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../Source_r6window/r6windowtexticonssublistbox.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../Source_r6window/r6windowtextlabelcurved.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html#Source_r6window/r6windowtextlabel.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+</div>
+<div class="spacer"></div>
+
+<h1><a href="../r6window/r6window-overview.html">R6Window</a>.<a href="../r6window/r6windowtextlabel.html">R6WindowTextLabel</a></h1>
+<br />
+<div class="source"><table class="source"><tr><td class="source_lineno"><span class="source_lineno">00001<br />00002<br />00003<br />00004<br />00005<br />00006<br />00007<br />00008<br />00009<br />00010<br />00011<br />00012<br />00013<br />00014<br />00015<br />00016<br />00017<br />00018<br />00019<br />00020<br />
+00021<br />00022<br />00023<br />00024<br />00025<br />00026<br />00027<br />00028<br />00029<br />00030<br />00031<br />00032<br />00033<br />00034<br />00035<br />00036<br />00037<br />00038<br />00039<br />00040<br />
+00041<br />00042<br />00043<br />00044<br />00045<br />00046<br />00047<br />00048<br />00049<br />00050<br />00051<br />00052<br />00053<br />00054<br />00055<br />00056<br />00057<br />00058<br />00059<br />00060<br />
+00061<br />00062<br />00063<br />00064<br />00065<br />00066<br />00067<br />00068<br />00069<br />00070<br />00071<br />00072<br />00073<br />00074<br />00075<br />00076<br />00077<br />00078<br />00079<br />00080<br />
+00081<br />00082<br />00083<br />00084<br />00085<br />00086<br />00087<br />00088<br />00089<br />00090<br />00091<br />00092<br />00093<br />00094<br />00095<br />00096<br />00097<br />00098<br />00099<br />00100<br />
+00101<br />00102<br />00103<br />00104<br />00105<br />00106<br />00107<br />00108<br />00109<br />00110<br />00111<br />00112<br />00113<br />00114<br />00115<br />00116<br />00117<br />00118<br />00119<br />00120<br />
+00121<br />00122<br />00123<br />00124<br />00125<br />00126<br />00127<br />00128<br />00129<br />00130<br />00131<br />00132<br />00133<br />00134<br />00135<br />00136<br />00137<br />00138<br />00139<br />00140<br />
+00141<br />00142<br />00143<br />00144<br />00145<br />00146<br />00147<br />00148<br />00149<br />00150<br />00151<br />00152<br />00153<br />00154<br />00155<br />00156<br />00157<br />00158<br />00159<br />00160<br />
+00161<br />00162<br />00163<br />00164<br />00165<br />00166<br />00167<br />00168<br />00169<br />00170<br />00171<br />00172<br />00173<br />00174<br />00175<br />00176<br />00177<br />00178<br />00179<br />00180<br />
+00181<br />00182<br />00183<br />00184<br />00185<br />00186<br />00187<br />00188<br />00189<br />00190<br />00191<br />00192<br />00193<br />00194<br />00195<br />00196<br />00197<br />00198<br />00199<br />00200<br />
+00201<br />00202<br />00203<br />00204<br />00205<br />00206<br />00207<br />00208<br />00209<br />00210<br />00211<br />00212<br />00213<br />00214<br />00215<br />00216<br />00217<br />00218<br />00219<br />00220<br />
+00221<br />00222<br />00223<br />00224<br />00225<br />00226<br />00227<br />00228<br />00229</span></td>
+<td class="source"><pre class="source"><a name="1"></a><span class="source_comment">//=============================================================================
+</span><a name="2"></a><span class="source_comment">//  R6WindowTextLabel.uc : (add small description)
+</span><a name="3"></a><span class="source_comment">//  Copyright 2001 Ubi Soft, Inc. All Rights Reserved.
+</span><a name="4"></a><span class="source_comment">//
+</span><a name="5"></a><span class="source_comment">//  Revision history:
+</span><a name="6"></a><span class="source_comment">//    2001/11/30 * Created by Alexandre Dionne
+</span><a name="7"></a><span class="source_comment">//=============================================================================
+</span><a name="8"></a>
+<a name="9"></a><span class="source_type">class</span> <span class="source_type"><a href="../r6window/r6windowtextlabel.html" class="source">R6WindowTextLabel</a></span> extends <span class="source_type"><a href="../uwindow/uwindowwindow.html" class="source">UWindowWindow</a></span>;
+<a name="10"></a>
+<a name="11"></a>var <span class="source_type">string</span>      <span class="source_type">Text</span>;
+<a name="12"></a>var <span class="source_type">font</span>        m_Font;
+<a name="13"></a>var <span class="source_type"><a href="../uwindow/uwindowbase.html#TextAlign" class="source">TextAlign</a></span>   Align;
+<a name="14"></a>
+<a name="15"></a>var <span class="source_type">float</span>       TextX, 
+<a name="16"></a>                TextY;		            <span class="source_comment">// changed by BeforePaint functions
+</span><a name="17"></a>var <span class="source_type">float</span>       m_fFontSpacing;		    <span class="source_comment">// Space between characters
+</span><a name="18"></a>var <span class="source_type">float</span>       m_fLMarge;			    <span class="source_comment">// Left Text Margin
+</span><a name="19"></a>var <span class="source_type">float</span>       m_fHBorderHeight, 
+<a name="20"></a>                m_fVBorderWidth;        <span class="source_comment">// Border size
+</span><a name="21"></a>var <span class="source_type">float</span>       m_fHBorderPadding, 
+<a name="22"></a>                m_fVBorderPadding;      <span class="source_comment">// Allow the borders not to start in corners
+</span><a name="23"></a>
+<a name="24"></a>var <span class="source_type"><a href="../engine/texture.html" class="source">Texture</a></span>     m_BGTexture;		    <span class="source_comment">//Put = None when no background is needed
+</span><a name="25"></a>var <span class="source_type"><a href="../engine/texture.html" class="source">Texture</a></span>     m_HBorderTexture, 
+<a name="26"></a>                m_VBorderTexture;
+<a name="27"></a>var <span class="source_type"><a href="../core/object.html#Region" class="source">Region</a></span>      m_BGTextureRegion;
+<a name="28"></a>var <span class="source_type"><a href="../core/object.html#Region" class="source">Region</a></span>      m_HBorderTextureRegion, 
+<a name="29"></a>                m_VBorderTextureRegion;
+<a name="30"></a>var <span class="source_type"><a href="../core/object.html#Region" class="source">Region</a></span>		m_BGExtRegion;			<span class="source_comment">// use extremeties region (left and rigth arre the same)
+</span><a name="31"></a>
+<a name="32"></a>var <span class="source_type"><a href="../core/object.html#Color" class="source">color</a></span>       TextColor;
+<a name="33"></a>var <span class="source_type"><a href="../core/object.html#Color" class="source">color</a></span>       m_BGColor;
+<a name="34"></a>
+<a name="35"></a>var <span class="source_type">int</span>         m_TextDrawstyle;
+<a name="36"></a>var <span class="source_type">int</span>         m_Drawstyle;
+<a name="37"></a>
+<a name="38"></a>var <span class="source_type">bool</span>        m_bDrawBorders;         <span class="source_comment">// Draw the borders?
+</span><a name="39"></a>var <span class="source_type">bool</span>        m_bRefresh;
+<a name="40"></a>var <span class="source_type">bool</span>        m_bUseBGColor;          <span class="source_comment">// Color BG texture
+</span><a name="41"></a>var <span class="source_type">bool</span>        m_bDrawBG;              <span class="source_comment">// Draw the backGround??
+</span><a name="42"></a>var <span class="source_type">bool</span>		m_bUseExtRegion;		<span class="source_comment">// use extremeties region for the background with m_BGTextureRegion
+</span><a name="43"></a>var <span class="source_type">bool</span>		m_bResizeToText;		<span class="source_comment">// Resize the window to the text
+</span><a name="44"></a>var <span class="source_type">bool</span>        m_bFixedYPos;           <span class="source_comment">//To force the y pos of the text
+</span><a name="45"></a>
+<a name="46"></a>function BeforePaint(<span class="source_type"><a href="../engine/canvas.html" class="source">Canvas</a></span> <span class="source_type">C</span>, <span class="source_type">FLOAT</span> X, <span class="source_type">FLOAT</span> <span class="source_type">Y</span>)
+<a name="47"></a>{
+<a name="48"></a>	local <span class="source_type">FLOAT</span> W, <span class="source_type">H</span>;
+<a name="49"></a>	
+<a name="50"></a><span class="source_comment">//	Super.BeforePaint(C, X, Y);
+</span><a name="51"></a>
+<a name="52"></a>    if (m_bRefresh)
+<a name="53"></a>    {
+<a name="54"></a>        m_bRefresh = false;
+<a name="55"></a>
+<a name="56"></a>		if(<span class="source_type">Text</span> != <span class="source_string">""</span>)
+<a name="57"></a>		{
+<a name="58"></a>			<span class="source_type">C</span>.<span class="source_type">Font</span> = m_Font;
+<a name="59"></a>
+<a name="60"></a>			TextSize(<span class="source_type">C</span>, <span class="source_type">Text</span>, W, <span class="source_type">H</span>);
+<a name="61"></a>			
+<a name="62"></a>			switch(Align)
+<a name="63"></a>			{
+<a name="64"></a>			case TA_Left:
+<a name="65"></a>				TextX = m_fLMarge;
+<a name="66"></a>				break;
+<a name="67"></a>			case TA_Right:
+<a name="68"></a>				TextX = WinWidth - W - (<span class="source_type">Len</span>(<span class="source_type">Text</span>) * m_fFontSpacing) - m_fVBorderWidth;
+<a name="69"></a>				break;
+<a name="70"></a>			case TA_Center:
+<a name="71"></a>				TextX = (WinWidth - W) / <span class="source_int">2</span>;
+<a name="72"></a>				break;
+<a name="73"></a>			}
+<a name="74"></a>            
+<a name="75"></a>            if(!m_bFixedYPos)
+<a name="76"></a>            {
+<a name="77"></a>                TextY = (WinHeight - <span class="source_type">H</span>) / <span class="source_int">2</span>;
+<a name="78"></a>			    TextY = <span class="source_type">FLOAT</span>(<span class="source_type">INT</span>(TextY+<span class="source_int">0.5</span>));
+<a name="79"></a>            }
+<a name="80"></a>			
+<a name="81"></a>
+<a name="82"></a>	        if( m_bResizeToText)
+<a name="83"></a>	        {
+<a name="84"></a>		        WinWidth = W + (<span class="source_type">Len</span>(<span class="source_type">Text</span>) * m_fFontSpacing) + m_fLMarge;
+<a name="85"></a>		        
+<a name="86"></a>		        if (Align != TA_LEFT)
+<a name="87"></a>			        WinLeft += TextX - m_fLMarge;
+<a name="88"></a>		        
+<a name="89"></a>		        TextX = m_fLMarge;
+<a name="90"></a>		        Align = TA_LEFT; 
+<a name="91"></a>		        m_bResizeToText = false;
+<a name="92"></a>	        }
+<a name="93"></a>		}	
+<a name="94"></a>    }
+<a name="95"></a>}
+<a name="96"></a>
+<a name="97"></a>function Paint(<span class="source_type"><a href="../engine/canvas.html" class="source">Canvas</a></span> <span class="source_type">C</span>, <span class="source_type">float</span> X, <span class="source_type">float</span> <span class="source_type">Y</span>)
+<a name="98"></a>{
+<a name="99"></a>	local <span class="source_type"><a href="../core/object.html#Region" class="source">Region</a></span> RTemp;
+<a name="100"></a>	local <span class="source_type">float</span> tempSpace;
+<a name="101"></a>
+<a name="102"></a>    <span class="source_type">C</span>.Style = m_Drawstyle;
+<a name="103"></a>
+<a name="104"></a>    if( (m_BGTexture != NONE) && m_bDrawBG)
+<a name="105"></a>	{
+<a name="106"></a>        if(m_bUseBGColor)
+<a name="107"></a>            <span class="source_type">C</span>.SetDrawColor(m_BGColor.<span class="source_type">R</span>,m_BGColor.G,m_BGColor.<span class="source_type">B</span>, m_BGColor.<span class="source_type">A</span>);
+<a name="108"></a>		    
+<a name="109"></a>		if( m_bUseExtRegion) <span class="source_comment">// use extremeties region
+</span><a name="110"></a>		{
+<a name="111"></a>			RTemp.X = m_fVBorderWidth;
+<a name="112"></a>			RTemp.<span class="source_type">Y</span> = m_fHBorderHeight;
+<a name="113"></a>			RTemp.W = m_BGExtRegion.W;
+<a name="114"></a>			RTemp.<span class="source_type">H</span> = WinHeight - (<span class="source_int">2</span> * m_fHBorderHeight);
+<a name="115"></a>			<span class="source_comment">// left
+</span><a name="116"></a>			DrawStretchedTextureSegment( <span class="source_type">C</span>, RTemp.X, RTemp.<span class="source_type">Y</span>, RTemp.W, RTemp.<span class="source_type">H</span>,
+<a name="117"></a>											m_BGExtRegion.X, m_BGExtRegion.<span class="source_type">Y</span>, m_BGExtRegion.W, m_BGExtRegion.<span class="source_type">H</span>, m_BGTexture );
+<a name="118"></a>
+<a name="119"></a>			RTemp.X += RTemp.W;
+<a name="120"></a>			RTemp.W = WinWidth - (<span class="source_int">2</span> * RTemp.X);
+<a name="121"></a>			<span class="source_comment">// center
+</span><a name="122"></a>			DrawStretchedTextureSegment( <span class="source_type">C</span>, RTemp.X, RTemp.<span class="source_type">Y</span>, RTemp.W, RTemp.<span class="source_type">H</span>,
+<a name="123"></a>											m_BGTextureRegion.X, m_BGTextureRegion.<span class="source_type">Y</span>, m_BGTextureRegion.W, m_BGTextureRegion.<span class="source_type">H</span>, m_BGTexture );
+<a name="124"></a>
+<a name="125"></a>			RTemp.X += RTemp.W;
+<a name="126"></a>			RTemp.W = m_BGExtRegion.W;
+<a name="127"></a>
+<a name="128"></a>			<span class="source_comment">// right
+</span><a name="129"></a>			DrawStretchedTextureSegment( <span class="source_type">C</span>, RTemp.X, RTemp.<span class="source_type">Y</span>, RTemp.W, RTemp.<span class="source_type">H</span>,
+<a name="130"></a>											m_BGExtRegion.X + m_BGExtRegion.W, m_BGExtRegion.<span class="source_type">Y</span>, -m_BGExtRegion.W, m_BGExtRegion.<span class="source_type">H</span>, m_BGTexture );
+<a name="131"></a>
+<a name="132"></a>		}
+<a name="133"></a>		else
+<a name="134"></a>		{
+<a name="135"></a>			DrawStretchedTextureSegment( <span class="source_type">C</span>, m_fVBorderWidth, m_fHBorderHeight, WinWidth - <span class="source_int">2</span> * m_fVBorderWidth, 
+<a name="136"></a>											WinHeight - <span class="source_int">2</span> * m_fHBorderHeight, m_BGTextureRegion.X, 
+<a name="137"></a>											m_BGTextureRegion.<span class="source_type">Y</span>, m_BGTextureRegion.W, 
+<a name="138"></a>											m_BGTextureRegion.<span class="source_type">H</span>, m_BGTexture );					
+<a name="139"></a>		}
+<a name="140"></a>	}
+<a name="141"></a>
+<a name="142"></a>    
+<a name="143"></a>    if (m_bDrawBorders)
+<a name="144"></a>    {	    
+<a name="145"></a>	    
+<a name="146"></a>	    <span class="source_type">C</span>.SetDrawColor(m_BorderColor.<span class="source_type">R</span>,m_BorderColor.G,m_BorderColor.<span class="source_type">B</span>);
+<a name="147"></a>	    
+<a name="148"></a>	    if(m_HBorderTexture != NONE)
+<a name="149"></a>	    {
+<a name="150"></a>		    <span class="source_comment">//top
+</span><a name="151"></a>		    DrawStretchedTextureSegment( <span class="source_type">C</span>, m_fHBorderPadding, <span class="source_int">0</span>, WinWidth  - (<span class="source_int">2</span>* m_fHBorderPadding),
+<a name="152"></a>											    m_fHBorderHeight, m_HBorderTextureRegion.X, m_HBorderTextureRegion.<span class="source_type">Y</span>, 
+<a name="153"></a>											    m_HBorderTextureRegion.W, m_HBorderTextureRegion.<span class="source_type">H</span>, m_HBorderTexture );
+<a name="154"></a>		    <span class="source_comment">//Bottom
+</span><a name="155"></a>		    DrawStretchedTextureSegment( <span class="source_type">C</span>, m_fHBorderPadding, WinHeight - m_fHBorderHeight, 
+<a name="156"></a>											    WinWidth - (<span class="source_int">2</span>* m_fHBorderPadding), 
+<a name="157"></a>											    m_fHBorderHeight, m_HBorderTextureRegion.X, m_HBorderTextureRegion.<span class="source_type">Y</span>, 
+<a name="158"></a>											    m_HBorderTextureRegion.W, m_HBorderTextureRegion.<span class="source_type">H</span>, m_HBorderTexture );
+<a name="159"></a>	    }
+<a name="160"></a>
+<a name="161"></a>	    if(m_VBorderTexture != NONE)
+<a name="162"></a>	    {
+<a name="163"></a>		    <span class="source_comment">//Left
+</span><a name="164"></a>		    DrawStretchedTextureSegment( <span class="source_type">C</span>, <span class="source_int">0</span>, m_fHBorderHeight + m_fVBorderPadding, m_fVBorderWidth, 
+<a name="165"></a>											    WinHeight - (<span class="source_int">2</span> * m_fHBorderHeight) - (<span class="source_int">2</span> * m_fVBorderPadding) , 
+<a name="166"></a>											    m_VBorderTextureRegion.X, m_VBorderTextureRegion.<span class="source_type">Y</span>, 
+<a name="167"></a>											    m_VBorderTextureRegion.W, m_VBorderTextureRegion.<span class="source_type">H</span>, m_VBorderTexture );
+<a name="168"></a>		    <span class="source_comment">//Right
+</span><a name="169"></a>		    DrawStretchedTextureSegment( <span class="source_type">C</span>, WinWidth - m_fVBorderWidth, m_fHBorderHeight + m_fVBorderPadding, m_fVBorderWidth, 
+<a name="170"></a>											    WinHeight - (<span class="source_int">2</span> * m_fHBorderHeight) - (<span class="source_int">2</span> * m_fVBorderPadding), 
+<a name="171"></a>											    m_VBorderTextureRegion.X, m_VBorderTextureRegion.<span class="source_type">Y</span>, 
+<a name="172"></a>											    m_VBorderTextureRegion.W, m_VBorderTextureRegion.<span class="source_type">H</span>, m_VBorderTexture );		
+<a name="173"></a>	    }
+<a name="174"></a>    }
+<a name="175"></a>	
+<a name="176"></a>	if(<span class="source_type">Text</span> != <span class="source_string">""</span>)
+<a name="177"></a>	{
+<a name="178"></a>        tempSpace = <span class="source_type">C</span>.SpaceX;		
+<a name="179"></a>		<span class="source_type">C</span>.<span class="source_type">Font</span> = m_Font;
+<a name="180"></a>		<span class="source_type">C</span>.SpaceX = m_fFontSpacing;		
+<a name="181"></a>		<span class="source_type">C</span>.SetDrawColor(TextColor.<span class="source_type">R</span>,TextColor.G,TextColor.<span class="source_type">B</span>);		
+<a name="182"></a>        
+<a name="183"></a>        <span class="source_type">C</span>.Style =m_TextDrawstyle;
+<a name="184"></a>		ClipText(<span class="source_type">C</span>, TextX, TextY, <span class="source_type">Text</span>, True);
+<a name="185"></a><span class="source_comment">//		C.SetDrawColor(255,255,255);				
+</span><a name="186"></a><span class="source_comment">//		C.SpaceX = tempSpace;
+</span><a name="187"></a><span class="source_comment">//        C.Style =1;
+</span><a name="188"></a>	}
+<a name="189"></a>}
+<a name="190"></a>
+<a name="191"></a>function SetProperties( <span class="source_type">string</span> _text, <span class="source_type"><a href="../uwindow/uwindowbase.html#TextAlign" class="source">TextAlign</a></span> _Align, <span class="source_type">font</span> _TypeOfFont, <span class="source_type"><a href="../core/object.html#Color" class="source">Color</a></span> _TextColor, <span class="source_type">bool</span> _bDrawBorders)
+<a name="192"></a>{
+<a name="193"></a>    <span class="source_type">Text</span> = _text;
+<a name="194"></a>	Align = _Align;
+<a name="195"></a>	m_Font = _TypeOfFont;
+<a name="196"></a>	TextColor = _TextColor;    
+<a name="197"></a>    m_bDrawBorders = _bDrawBorders;
+<a name="198"></a>	m_bRefresh = true;
+<a name="199"></a>}
+<a name="200"></a>
+<a name="201"></a>
+<a name="202"></a><span class="source_comment">/////////////////////////////////////////////////////////////////
+</span><a name="203"></a><span class="source_comment">// set a new text and update the position or not depending of _bRefresh
+</span><a name="204"></a><span class="source_comment">/////////////////////////////////////////////////////////////////
+</span><a name="205"></a>function SetNewText( <span class="source_type">string</span> _szNewText, <span class="source_type">bool</span> _bRefresh)
+<a name="206"></a>{
+<a name="207"></a>    <span class="source_type">Text</span> = _szNewText;
+<a name="208"></a>    m_bRefresh = _bRefresh;
+<a name="209"></a>}
+<a name="210"></a>
+<a name="211"></a>defaultproperties
+<a name="212"></a>{
+<a name="213"></a>     m_TextDrawstyle=<span class="source_int">3</span>
+<a name="214"></a>     m_DrawStyle=<span class="source_int">5</span>
+<a name="215"></a>     m_bDrawBorders=True
+<a name="216"></a>     m_bRefresh=True
+<a name="217"></a>     m_fLMarge=<span class="source_int">2.000000</span>
+<a name="218"></a>     m_fHBorderHeight=<span class="source_int">1.000000</span>
+<a name="219"></a>     m_fVBorderWidth=<span class="source_int">1.000000</span>
+<a name="220"></a>     m_BGTexture=<span class="source_type"><a href="../engine/texture.html" class="source">Texture</a></span><span class="source_name">'R6MenuTextures.Gui_BoxScroll'</span>
+<a name="221"></a>     m_HBorderTexture=<span class="source_type"><a href="../engine/texture.html" class="source">Texture</a></span><span class="source_name">'R6MenuTextures.Gui_BoxScroll'</span>
+<a name="222"></a>     m_VBorderTexture=<span class="source_type"><a href="../engine/texture.html" class="source">Texture</a></span><span class="source_name">'R6MenuTextures.Gui_BoxScroll'</span>
+<a name="223"></a>     m_BGTextureRegion=(X=<span class="source_int">97</span>,W=<span class="source_int">33</span>,<span class="source_type">H</span>=<span class="source_int">23</span>)
+<a name="224"></a>     m_HBorderTextureRegion=(X=<span class="source_int">64</span>,<span class="source_type">Y</span>=<span class="source_int">56</span>,W=<span class="source_int">1</span>,<span class="source_type">H</span>=<span class="source_int">1</span>)
+<a name="225"></a>     m_VBorderTextureRegion=(X=<span class="source_int">64</span>,<span class="source_type">Y</span>=<span class="source_int">56</span>,W=<span class="source_int">1</span>,<span class="source_type">H</span>=<span class="source_int">1</span>)
+<a name="226"></a>     TextColor=(<span class="source_type">B</span>=<span class="source_int">255</span>,G=<span class="source_int">255</span>,<span class="source_type">R</span>=<span class="source_int">255</span>)
+<a name="227"></a>     m_BGColor=(<span class="source_type">B</span>=<span class="source_int">255</span>,G=<span class="source_int">255</span>,<span class="source_type">R</span>=<span class="source_int">255</span>)
+<a name="228"></a>}
+<a name="229"></a></pre></td></tr></table></div>
+<hr />
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../r6window/r6window-overview.html">Package</a></td>
+	<td class="header"><a href="../r6window/r6windowtextlabel.html">Class</a></td>
+	<td class="header_hilight">Source</td>
+	<td class="header"><a class="header" href="../classtree.html#R6WindowTextLabel">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../Source_r6window/r6windowtexticonssublistbox.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../Source_r6window/r6windowtextlabelcurved.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+
+<div class="stats">Class file time: sam. 18/9/2004 14:39:52.000 - Creation time: mar. 26/5/2026 18:33:21.787 - Created with <a href="http://wiki.beyondunreal.com/wiki/UnCodeX" target="_blank">UnCodeX</a></div>
+
+</body>
+</html>

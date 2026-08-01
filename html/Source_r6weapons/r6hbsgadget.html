@@ -1,0 +1,292 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+	<title>UnCodeX - Source: R6Weapons.R6HBSGadget</title>
+	<meta name="Generator" content="UnCodeX 241" />
+	<link rel="stylesheet" href="../DocStyle2.css" type="text/css" title="Original Purple" />
+	<link rel="alternative stylesheet" href="../DocStyle2-blue.css" type="text/css" title="Blue" />
+	<link rel="alternative stylesheet" href="../DocStyle2-red.css" type="text/css" title="Red" />
+	<!--[if IE]>
+	<link rel="stylesheet" href="../DocStyle2-msie.css" type="text/css" />
+	<![endif]-->
+	<script src="../styleswitcher.js" type="text/javascript"></script>
+</head>
+<body>
+
+<div class="header">
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../r6weapons/r6weapons-overview.html">Package</a></td>
+	<td class="header"><a href="../r6weapons/r6hbsgadget.html">Class</a></td>
+	<td class="header_hilight">Source</td>
+	<td class="header"><a class="header" href="../classtree.html#R6HBSGadget">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../Source_r6weapons/r6grenadeweapon.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../Source_r6weapons/r6hbsjammergadget.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html#Source_r6weapons/r6hbsgadget.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+</div>
+<div class="spacer"></div>
+
+<h1><a href="../r6weapons/r6weapons-overview.html">R6Weapons</a>.<a href="../r6weapons/r6hbsgadget.html">R6HBSGadget</a></h1>
+<br />
+<div class="source"><table class="source"><tr><td class="source_lineno"><span class="source_lineno">00001<br />00002<br />00003<br />00004<br />00005<br />00006<br />00007<br />00008<br />00009<br />00010<br />00011<br />00012<br />00013<br />00014<br />00015<br />00016<br />00017<br />00018<br />00019<br />00020<br />
+00021<br />00022<br />00023<br />00024<br />00025<br />00026<br />00027<br />00028<br />00029<br />00030<br />00031<br />00032<br />00033<br />00034<br />00035<br />00036<br />00037<br />00038<br />00039<br />00040<br />
+00041<br />00042<br />00043<br />00044<br />00045<br />00046<br />00047<br />00048<br />00049<br />00050<br />00051<br />00052<br />00053<br />00054<br />00055<br />00056<br />00057<br />00058<br />00059<br />00060<br />
+00061<br />00062<br />00063<br />00064<br />00065<br />00066<br />00067<br />00068<br />00069<br />00070<br />00071<br />00072<br />00073<br />00074<br />00075<br />00076<br />00077<br />00078<br />00079<br />00080<br />
+00081<br />00082<br />00083<br />00084<br />00085<br />00086<br />00087<br />00088<br />00089<br />00090<br />00091<br />00092<br />00093<br />00094<br />00095<br />00096<br />00097<br />00098<br />00099<br />00100<br />
+00101<br />00102<br />00103<br />00104<br />00105<br />00106<br />00107<br />00108<br />00109<br />00110<br />00111<br />00112<br />00113<br />00114<br />00115<br />00116<br />00117<br />00118<br />00119<br />00120<br />
+00121<br />00122<br />00123<br />00124<br />00125<br />00126<br />00127<br />00128<br />00129<br />00130<br />00131<br />00132<br />00133<br />00134<br />00135<br />00136<br />00137<br />00138<br />00139<br />00140<br />
+00141<br />00142<br />00143<br />00144<br />00145<br />00146<br />00147<br />00148<br />00149<br />00150<br />00151<br />00152<br />00153<br />00154<br />00155<br />00156<br />00157<br />00158<br />00159<br />00160<br />
+00161<br />00162<br />00163<br />00164<br />00165<br />00166<br />00167<br />00168<br />00169<br />00170<br />00171<br />00172<br />00173<br />00174<br />00175<br />00176<br />00177<br />00178<br />00179<br />00180<br />
+00181<br />00182<br />00183<br />00184<br />00185<br />00186<br />00187<br />00188<br />00189<br />00190<br />00191<br />00192<br />00193<br />00194<br />00195<br />00196<br />00197<br />00198<br />00199<br />00200<br />
+00201<br />00202<br />00203<br />00204<br />00205<br />00206<br />00207<br />00208<br />00209<br />00210<br />00211<br />00212<br />00213<br />00214<br />00215<br />00216<br />00217<br />00218<br />00219<br />00220<br />
+00221<br />00222<br />00223</span></td>
+<td class="source"><pre class="source"><a name="0"></a><span class="source_type">class</span> <span class="source_type"><a href="../r6weapons/r6hbsgadget.html" class="source">R6HBSGadget</a></span> extends <span class="source_type"><a href="../r6weapons/r6gadget.html" class="source">R6Gadget</a></span>
+<a name="2"></a>    native;
+<a name="3"></a>
+<a name="4"></a><span class="source_macro">#exec OBJ LOAD FILE="..\StaticMeshes\R63rdWeapons_SM.usx"  Package="R63rdWeapons_SM"
+</span><a name="5"></a>
+<a name="6"></a>var <span class="source_type">BOOL</span> m_bHeartBeatOn;    <span class="source_comment">// Heart Beat sensor activation.
+</span><a name="7"></a>var <span class="source_type">Sound</span> m_sndActivation;
+<a name="8"></a>var <span class="source_type">Sound</span> m_sndDesactivation;
+<a name="9"></a>
+<a name="10"></a>native(<span class="source_int">2700</span>) final function ToggleHeartBeatProperties(<span class="source_type">BOOL</span> bTurnItOn);
+<a name="11"></a>
+<a name="12"></a>
+<a name="13"></a>replication
+<a name="14"></a>{
+<a name="15"></a>
+<a name="16"></a>    <span class="source_comment">// function client asks server to do
+</span><a name="17"></a>	unreliable if (Role &lt; ROLE_Authority)
+<a name="18"></a>		ServerToggleHeartBeatProperties;
+<a name="19"></a>
+<a name="20"></a>}
+<a name="21"></a>
+<a name="22"></a>simulated event <span class="source_type">BOOL</span> IsGoggles()
+<a name="23"></a>{
+<a name="24"></a>	return true;
+<a name="25"></a>}
+<a name="26"></a>
+<a name="27"></a>function ServerToggleHeartBeatProperties(<span class="source_type">BOOL</span> bActiveHeartBeat)
+<a name="28"></a>{
+<a name="29"></a>	
+<a name="30"></a>	if(bShowLog) log(<span class="source_string">"HBS - ServerToggleHeartBeatProperties ="</span> @ bActiveHeartBeat);
+<a name="31"></a>
+<a name="32"></a>	m_bHeartBeatOn=bActiveHeartBeat;
+<a name="33"></a>}
+<a name="34"></a>
+<a name="35"></a><span class="source_comment">// ----------------------------------------
+</span><a name="36"></a><span class="source_comment">// All This function do nothing in the HBS
+</span><a name="37"></a>function Fire( <span class="source_type">FLOAT</span> <span class="source_type">fValue</span> ) {}
+<a name="38"></a>function StopFire(optional <span class="source_type">BOOL</span> <span class="source_type">bSoundOnly</span>) {}
+<a name="39"></a>function AltFire( <span class="source_type">FLOAT</span> <span class="source_type">fValue</span> ) {}
+<a name="40"></a>function StopAltFire() {}
+<a name="41"></a><span class="source_comment">// ----------------------------------------
+</span><a name="42"></a>
+<a name="43"></a><span class="source_comment">// Display the HeartBeat in the map.
+</span><a name="44"></a>function DisplayHeartBeat(<span class="source_type">BOOL</span> bActivateHeartBeat)
+<a name="45"></a>{
+<a name="46"></a>    local <span class="source_type"><a href="../r6engine/r6pawn.html" class="source">R6Pawn</a></span> <span class="source_type">PawnOwner</span>;
+<a name="47"></a>    <span class="source_type">PawnOwner</span> = <span class="source_type"><a href="../r6engine/r6pawn.html" class="source">R6Pawn</a></span>(<span class="source_type">Owner</span>);
+<a name="48"></a>
+<a name="49"></a>    if (!<span class="source_type">PawnOwner</span>.IsLocallyControlled())
+<a name="50"></a>		return;
+<a name="51"></a>
+<a name="52"></a>    if (bShowLog) log(<span class="source_string">"HBS - DisplayHeartBeat ="</span> @ bActivateHeartBeat @ m_sndActivation @ m_sndDesactivation);
+<a name="53"></a>    m_bHeartBeatOn = bActivateHeartBeat;
+<a name="54"></a>	
+<a name="55"></a>	if (bActivateHeartBeat)
+<a name="56"></a>		<span class="source_type">PawnOwner</span>.PlaySound( m_sndActivation, SLOT_SFX);
+<a name="57"></a>	else
+<a name="58"></a>		<span class="source_type">PawnOwner</span>.PlaySound( m_sndDesactivation, SLOT_SFX);
+<a name="59"></a>
+<a name="60"></a>    ServerToggleHeartBeatProperties(bActivateHeartBeat);	
+<a name="61"></a>    ToggleHeartBeatProperties(bActivateHeartBeat);
+<a name="62"></a>}
+<a name="63"></a>
+<a name="64"></a><span class="source_comment">// When the player change the weapon we have to desactivate the HBS
+</span><a name="65"></a>simulated function RemoveFirstPersonWeapon()
+<a name="66"></a>{
+<a name="67"></a>    super.RemoveFirstPersonWeapon();
+<a name="68"></a>    DisplayHeartBeat(false);
+<a name="69"></a>    if (bShowLog) log(<span class="source_string">"HBS - RemoveFirstPersonWeapon ="</span> @ m_bHeartBeatOn);
+<a name="70"></a>}
+<a name="71"></a>
+<a name="72"></a><span class="source_comment">// When we change player in the team we have to desactivate or reactivate the HBS
+</span><a name="73"></a>simulated function <span class="source_type">BOOL</span> LoadFirstPersonWeapon(optional <span class="source_type"><a href="../engine/pawn.html" class="source">Pawn</a></span> NetOwner, optional <span class="source_type"><a href="../engine/controller.html" class="source">Controller</a></span> LocalPlayerController)
+<a name="74"></a>{
+<a name="75"></a>    super.LoadFirstPersonWeapon(NetOwner, LocalPlayerController);
+<a name="76"></a>
+<a name="77"></a>    if (bShowLog) log(<span class="source_string">"HBS - LoadFirstPersonWeapon ="</span> @ m_bHeartBeatOn);
+<a name="78"></a>
+<a name="79"></a>    DisplayHeartBeat(m_bHeartBeatOn);
+<a name="80"></a>    return true;
+<a name="81"></a>}
+<a name="82"></a>
+<a name="83"></a><span class="source_comment">// Turn off the heart beat sensor
+</span><a name="84"></a>simulated function DisableWeaponOrGadget()
+<a name="85"></a>{
+<a name="86"></a>    DisplayHeartBeat(false);
+<a name="87"></a>    if (bShowLog) log(<span class="source_string">"HBS - DisableWeaponOrGadget ="</span> @ m_bHeartBeatOn);
+<a name="88"></a>}
+<a name="89"></a>
+<a name="90"></a><span class="source_comment">// On the raise weapon we turn on the HeartBeat. At the end of the animation we can see the heartBeat.
+</span><a name="91"></a>
+<a name="92"></a>
+<a name="93"></a>state PutWeaponDown
+<a name="94"></a>{
+<a name="95"></a>    simulated function BeginState()
+<a name="96"></a>    {
+<a name="97"></a>        if(m_FPHands != none)
+<a name="98"></a>        {
+<a name="99"></a>            m_FPHands.GotoState(<span class="source_name">'PutWeaponDown'</span>);
+<a name="100"></a>            <span class="source_type"><a href="../engine/pawn.html" class="source">Pawn</a></span>(<span class="source_type">Owner</span>).<span class="source_type"><a href="../engine/controller.html" class="source">controller</a></span>.m_bLockWeaponActions = true;
+<a name="101"></a>        }
+<a name="102"></a>        DisplayHeartBeat(false);
+<a name="103"></a>        if(bShowLog) log(<span class="source_string">"HBS - BeginState of PutWeaponDown for"</span> @ self @ <span class="source_string">"="</span> @ m_bHeartBeatOn);
+<a name="104"></a>    }
+<a name="105"></a>}
+<a name="106"></a>
+<a name="107"></a>state BringWeaponUp
+<a name="108"></a>{
+<a name="109"></a>    simulated function BeginState()
+<a name="110"></a>    {
+<a name="111"></a>        Super.BeginState();
+<a name="112"></a>        if(<span class="source_type"><a href="../r6engine/r6pawn.html" class="source">R6Pawn</a></span>(<span class="source_type">Owner</span>).m_bActivateNightVision == true)
+<a name="113"></a>            <span class="source_type"><a href="../r6engine/r6pawn.html" class="source">R6Pawn</a></span>(<span class="source_type">Owner</span>).ToggleNightVision();
+<a name="114"></a>    }
+<a name="115"></a>    simulated function EndState()
+<a name="116"></a>    {
+<a name="117"></a>        <span class="source_type"><a href="../engine/pawn.html" class="source">Pawn</a></span>(<span class="source_type">Owner</span>).<span class="source_type"><a href="../engine/controller.html" class="source">controller</a></span>.m_bLockWeaponActions = false;
+<a name="118"></a>    }
+<a name="119"></a>
+<a name="120"></a>    function FirstPersonAnimOver()
+<a name="121"></a>    {
+<a name="122"></a>        GotoState(<span class="source_name">''</span>);
+<a name="123"></a>
+<a name="124"></a>        DisplayHeartBeat(true);
+<a name="125"></a>        if(bShowLog) log(<span class="source_string">"HBS - FirstPersonAnimOver of BringWeaponUp for"</span> @ self @ <span class="source_string">"="</span> @ m_bHeartBeatOn);
+<a name="126"></a>    }
+<a name="127"></a>}
+<a name="128"></a>
+<a name="129"></a>state RaiseWeapon
+<a name="130"></a>{
+<a name="131"></a>    function FirstPersonAnimOver()
+<a name="132"></a>    {
+<a name="133"></a>        if (bShowLog) log(<span class="source_string">"HBS - FirstPersonAnimOver in RaiseWeapon for "</span>$self);
+<a name="134"></a>        <span class="source_type"><a href="../r6engine/r6playercontroller.html" class="source">R6PlayerController</a></span>(<span class="source_type"><a href="../engine/pawn.html" class="source">Pawn</a></span>(<span class="source_type">Owner</span>).<span class="source_type"><a href="../engine/controller.html" class="source">controller</a></span>).ServerWeaponUpAnimDone();
+<a name="135"></a>        GotoState(<span class="source_name">''</span>);
+<a name="136"></a>    }
+<a name="137"></a>    
+<a name="138"></a>    simulated function BeginState()
+<a name="139"></a>    {
+<a name="140"></a>        if(bShowLog) log(<span class="source_string">"HBS - BeginState of RaiseWeapon for"</span> @ self @ <span class="source_string">"="</span> @ m_bHeartBeatOn);
+<a name="141"></a>        Super.BeginState();
+<a name="142"></a>        if(<span class="source_type"><a href="../r6engine/r6pawn.html" class="source">R6Pawn</a></span>(<span class="source_type">Owner</span>).m_bActivateNightVision == true)
+<a name="143"></a>            <span class="source_type"><a href="../r6engine/r6pawn.html" class="source">R6Pawn</a></span>(<span class="source_type">Owner</span>).ToggleNightVision();
+<a name="144"></a>    }
+<a name="145"></a>
+<a name="146"></a>    simulated function EndState()
+<a name="147"></a>    {
+<a name="148"></a>        if(bShowLog) log(<span class="source_string">"HBS - EndState of RaiseWeapon for"</span> @ self @ <span class="source_string">"="</span> @ m_bHeartBeatOn);
+<a name="149"></a>        <span class="source_type"><a href="../engine/pawn.html" class="source">Pawn</a></span>(<span class="source_type">Owner</span>).<span class="source_type"><a href="../engine/controller.html" class="source">controller</a></span>.m_bHideReticule = false;
+<a name="150"></a>        <span class="source_type"><a href="../engine/pawn.html" class="source">Pawn</a></span>(<span class="source_type">Owner</span>).<span class="source_type"><a href="../engine/controller.html" class="source">controller</a></span>.m_bLockWeaponActions = false;
+<a name="151"></a>        DisplayHeartBeat(true);
+<a name="152"></a>    }
+<a name="153"></a>}
+<a name="154"></a>
+<a name="155"></a>state DiscardWeapon
+<a name="156"></a>{
+<a name="157"></a>    simulated function BeginState()
+<a name="158"></a>    {
+<a name="159"></a>		local <span class="source_type"><a href="../engine/pawn.html" class="source">Pawn</a></span> <span class="source_type">aPawn</span>;
+<a name="160"></a>
+<a name="161"></a>        DisplayHeartBeat(false);
+<a name="162"></a>        if (bShowLog) log(<span class="source_string">"HBS - BeginState of DiscardWeapon for"</span> @ self @ <span class="source_string">"="</span> @ m_bHeartBeatOn);
+<a name="163"></a>
+<a name="164"></a>        if(m_FPHands != none)
+<a name="165"></a>        {
+<a name="166"></a>			<span class="source_type">aPawn</span> = <span class="source_type"><a href="../engine/pawn.html" class="source">Pawn</a></span>(<span class="source_type">Owner</span>);
+<a name="167"></a>			if(<span class="source_type">aPawn</span>.<span class="source_type"><a href="../engine/controller.html" class="source">controller</a></span> != none)
+<a name="168"></a>            {
+<a name="169"></a>				<span class="source_type">aPawn</span>.<span class="source_type"><a href="../engine/controller.html" class="source">controller</a></span>.m_bHideReticule = true;
+<a name="170"></a>				<span class="source_type">aPawn</span>.<span class="source_type"><a href="../engine/controller.html" class="source">controller</a></span>.m_bLockWeaponActions = true;
+<a name="171"></a>			}
+<a name="172"></a>			m_FPHands.GotoState(<span class="source_name">'DiscardWeapon'</span>);
+<a name="173"></a>        }
+<a name="174"></a>    }
+<a name="175"></a>    simulated function EndState()
+<a name="176"></a>    {
+<a name="177"></a>        if (bShowLog) log(<span class="source_string">"IN:"</span>@self@<span class="source_string">"::DiscardWeapon::EndState()"</span>);
+<a name="178"></a>    }
+<a name="179"></a>}
+<a name="180"></a>
+<a name="181"></a>function StartLoopingAnims()
+<a name="182"></a>{
+<a name="183"></a>    if(m_FPHands != none)
+<a name="184"></a>    {
+<a name="185"></a>        m_FPHands.SetDrawType(DT_None);
+<a name="186"></a>        m_FPHands.GotoState(<span class="source_name">'Waiting'</span>);
+<a name="187"></a>    }
+<a name="188"></a>
+<a name="189"></a>    GotoState(<span class="source_name">''</span>);
+<a name="190"></a>}
+<a name="191"></a>
+<a name="192"></a>state NormalFire
+<a name="193"></a>{
+<a name="194"></a>    simulated function BeginState()
+<a name="195"></a>    {
+<a name="196"></a>        GotoState(<span class="source_name">''</span>);
+<a name="197"></a>    }
+<a name="198"></a>}
+<a name="199"></a>
+<a name="200"></a>defaultproperties
+<a name="201"></a>{
+<a name="202"></a>     m_sndActivation=<span class="source_type">Sound</span><span class="source_name">'Foley_HBSensor.Play_HBSensorAction1'</span>
+<a name="203"></a>     m_sndDesactivation=<span class="source_type">Sound</span><span class="source_name">'Foley_HBSensor.Stop_HBSensorAction1'</span>
+<a name="204"></a>     m_fMuzzleVelocity=<span class="source_int">1000.000000</span>
+<a name="205"></a>     m_bHiddenWhenNotInUse=True
+<a name="206"></a>     m_pFPHandsClass=<span class="source_type">Class</span><span class="source_name">'R61stWeapons.R61stHandsGripHBS'</span>
+<a name="207"></a>     m_pFPWeaponClass=<span class="source_type">Class</span><span class="source_name">'R61stWeapons.R61stHBS'</span>
+<a name="208"></a>     m_EquipSnd=<span class="source_type">Sound</span><span class="source_name">'Foley_HBSensor.Play_HBS_Equip'</span>
+<a name="209"></a>     m_UnEquipSnd=<span class="source_type">Sound</span><span class="source_name">'Foley_HBSensor.Play_HBS_Unequip'</span>
+<a name="210"></a>     m_HUDTexture=<span class="source_type"><a href="../engine/texture.html" class="source">Texture</a></span><span class="source_name">'R6HUD.HUDElements'</span>
+<a name="211"></a>     m_PawnWaitAnimLow=<span class="source_string">"StandHBS_nt"</span>
+<a name="212"></a>     m_PawnWaitAnimHigh=<span class="source_string">"StandHBS_nt"</span>
+<a name="213"></a>     m_PawnWaitAnimProne=<span class="source_string">"ProneHBS_nt"</span>
+<a name="214"></a>     m_PawnFiringAnim=<span class="source_string">"StandHBS"</span>
+<a name="215"></a>     m_PawnFiringAnimProne=<span class="source_string">"ProneHBS"</span>
+<a name="216"></a>     m_AttachPoint=<span class="source_string">"TagHBHand"</span>
+<a name="217"></a>     m_HUDTexturePos=(W=<span class="source_int">32.000000</span>,X=<span class="source_int">300.000000</span>,<span class="source_type">Y</span>=<span class="source_int">352.000000</span>,<span class="source_type">Z</span>=<span class="source_int">100.000000</span>)
+<a name="218"></a>     m_NameID=<span class="source_string">"HBSGadget"</span>
+<a name="219"></a>     bCollideWorld=True
+<a name="220"></a>     DrawScale=<span class="source_int">1.100000</span>
+<a name="221"></a>     <span class="source_type">StaticMesh</span>=<span class="source_type">StaticMesh</span><span class="source_name">'R63rdWeapons_SM.Items.R63rdHBSensor'</span>
+<a name="222"></a>}
+<a name="223"></a></pre></td></tr></table></div>
+<hr />
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../r6weapons/r6weapons-overview.html">Package</a></td>
+	<td class="header"><a href="../r6weapons/r6hbsgadget.html">Class</a></td>
+	<td class="header_hilight">Source</td>
+	<td class="header"><a class="header" href="../classtree.html#R6HBSGadget">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../Source_r6weapons/r6grenadeweapon.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../Source_r6weapons/r6hbsjammergadget.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+
+<div class="stats">Class file time: sam. 18/9/2004 14:39:28.000 - Creation time: mar. 26/5/2026 18:33:19.992 - Created with <a href="http://wiki.beyondunreal.com/wiki/UnCodeX" target="_blank">UnCodeX</a></div>
+
+</body>
+</html>

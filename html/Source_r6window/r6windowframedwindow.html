@@ -1,0 +1,440 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+	<title>UnCodeX - Source: R6Window.R6WindowFramedWindow</title>
+	<meta name="Generator" content="UnCodeX 241" />
+	<link rel="stylesheet" href="../DocStyle2.css" type="text/css" title="Original Purple" />
+	<link rel="alternative stylesheet" href="../DocStyle2-blue.css" type="text/css" title="Blue" />
+	<link rel="alternative stylesheet" href="../DocStyle2-red.css" type="text/css" title="Red" />
+	<!--[if IE]>
+	<link rel="stylesheet" href="../DocStyle2-msie.css" type="text/css" />
+	<![endif]-->
+	<script src="../styleswitcher.js" type="text/javascript"></script>
+</head>
+<body>
+
+<div class="header">
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../r6window/r6window-overview.html">Package</a></td>
+	<td class="header"><a href="../r6window/r6windowframedwindow.html">Class</a></td>
+	<td class="header_hilight">Source</td>
+	<td class="header"><a class="header" href="../classtree.html#R6WindowFramedWindow">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../Source_r6window/r6windoweditcontrol.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../Source_r6window/r6windowhscrollbar.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html#Source_r6window/r6windowframedwindow.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+</div>
+<div class="spacer"></div>
+
+<h1><a href="../r6window/r6window-overview.html">R6Window</a>.<a href="../r6window/r6windowframedwindow.html">R6WindowFramedWindow</a></h1>
+<br />
+<div class="source"><table class="source"><tr><td class="source_lineno"><span class="source_lineno">00001<br />00002<br />00003<br />00004<br />00005<br />00006<br />00007<br />00008<br />00009<br />00010<br />00011<br />00012<br />00013<br />00014<br />00015<br />00016<br />00017<br />00018<br />00019<br />00020<br />
+00021<br />00022<br />00023<br />00024<br />00025<br />00026<br />00027<br />00028<br />00029<br />00030<br />00031<br />00032<br />00033<br />00034<br />00035<br />00036<br />00037<br />00038<br />00039<br />00040<br />
+00041<br />00042<br />00043<br />00044<br />00045<br />00046<br />00047<br />00048<br />00049<br />00050<br />00051<br />00052<br />00053<br />00054<br />00055<br />00056<br />00057<br />00058<br />00059<br />00060<br />
+00061<br />00062<br />00063<br />00064<br />00065<br />00066<br />00067<br />00068<br />00069<br />00070<br />00071<br />00072<br />00073<br />00074<br />00075<br />00076<br />00077<br />00078<br />00079<br />00080<br />
+00081<br />00082<br />00083<br />00084<br />00085<br />00086<br />00087<br />00088<br />00089<br />00090<br />00091<br />00092<br />00093<br />00094<br />00095<br />00096<br />00097<br />00098<br />00099<br />00100<br />
+00101<br />00102<br />00103<br />00104<br />00105<br />00106<br />00107<br />00108<br />00109<br />00110<br />00111<br />00112<br />00113<br />00114<br />00115<br />00116<br />00117<br />00118<br />00119<br />00120<br />
+00121<br />00122<br />00123<br />00124<br />00125<br />00126<br />00127<br />00128<br />00129<br />00130<br />00131<br />00132<br />00133<br />00134<br />00135<br />00136<br />00137<br />00138<br />00139<br />00140<br />
+00141<br />00142<br />00143<br />00144<br />00145<br />00146<br />00147<br />00148<br />00149<br />00150<br />00151<br />00152<br />00153<br />00154<br />00155<br />00156<br />00157<br />00158<br />00159<br />00160<br />
+00161<br />00162<br />00163<br />00164<br />00165<br />00166<br />00167<br />00168<br />00169<br />00170<br />00171<br />00172<br />00173<br />00174<br />00175<br />00176<br />00177<br />00178<br />00179<br />00180<br />
+00181<br />00182<br />00183<br />00184<br />00185<br />00186<br />00187<br />00188<br />00189<br />00190<br />00191<br />00192<br />00193<br />00194<br />00195<br />00196<br />00197<br />00198<br />00199<br />00200<br />
+00201<br />00202<br />00203<br />00204<br />00205<br />00206<br />00207<br />00208<br />00209<br />00210<br />00211<br />00212<br />00213<br />00214<br />00215<br />00216<br />00217<br />00218<br />00219<br />00220<br />
+00221<br />00222<br />00223<br />00224<br />00225<br />00226<br />00227<br />00228<br />00229<br />00230<br />00231<br />00232<br />00233<br />00234<br />00235<br />00236<br />00237<br />00238<br />00239<br />00240<br />
+00241<br />00242<br />00243<br />00244<br />00245<br />00246<br />00247<br />00248<br />00249<br />00250<br />00251<br />00252<br />00253<br />00254<br />00255<br />00256<br />00257<br />00258<br />00259<br />00260<br />
+00261<br />00262<br />00263<br />00264<br />00265<br />00266<br />00267<br />00268<br />00269<br />00270<br />00271<br />00272<br />00273<br />00274<br />00275<br />00276<br />00277<br />00278<br />00279<br />00280<br />
+00281<br />00282<br />00283<br />00284<br />00285<br />00286<br />00287<br />00288<br />00289<br />00290<br />00291<br />00292<br />00293<br />00294<br />00295<br />00296<br />00297<br />00298<br />00299<br />00300<br />
+00301<br />00302<br />00303<br />00304<br />00305<br />00306<br />00307<br />00308<br />00309<br />00310<br />00311<br />00312<br />00313<br />00314<br />00315<br />00316<br />00317<br />00318<br />00319<br />00320<br />
+00321<br />00322<br />00323<br />00324<br />00325<br />00326<br />00327<br />00328<br />00329<br />00330<br />00331<br />00332<br />00333<br />00334<br />00335<br />00336<br />00337<br />00338<br />00339<br />00340<br />
+00341<br />00342<br />00343<br />00344<br />00345<br />00346<br />00347<br />00348<br />00349<br />00350<br />00351<br />00352<br />00353<br />00354<br />00355<br />00356<br />00357<br />00358<br />00359<br />00360<br />
+00361<br />00362<br />00363<br />00364</span></td>
+<td class="source"><pre class="source"><a name="1"></a><span class="source_comment">//=============================================================================
+</span><a name="2"></a><span class="source_comment">//  R6WindowFramedWindow.uc : (add small description)
+</span><a name="3"></a><span class="source_comment">//  Copyright 2001 Ubi Soft, Inc. All Rights Reserved.
+</span><a name="4"></a><span class="source_comment">//
+</span><a name="5"></a><span class="source_comment">//  Revision history:
+</span><a name="6"></a><span class="source_comment">//    2001/08/09 * Created by Chaouky Garram
+</span><a name="7"></a><span class="source_comment">//=============================================================================
+</span><a name="8"></a>
+<a name="9"></a><span class="source_type">class</span> <span class="source_type"><a href="../r6window/r6windowframedwindow.html" class="source">R6WindowFramedWindow</a></span> extends <span class="source_type"><a href="../uwindow/uwindowwindow.html" class="source">UWindowWindow</a></span>;
+<a name="10"></a>
+<a name="11"></a>
+<a name="12"></a>var <span class="source_type">class</span>&lt;<span class="source_type"><a href="../uwindow/uwindowwindow.html" class="source">UWindowWindow</a></span>&gt;    m_ClientClass;
+<a name="13"></a>var <span class="source_type"><a href="../uwindow/uwindowwindow.html" class="source">UWindowWindow</a></span>           m_ClientArea;
+<a name="14"></a>var <span class="source_type"><a href="../uwindow/uwindowbutton.html" class="source">UWindowButton</a></span>           m_CloseBoxButton;
+<a name="15"></a>
+<a name="16"></a>var localized <span class="source_type">string</span>        m_szWindowTitle;
+<a name="17"></a>var <span class="source_type">string</span>                  m_szStatusBarText;
+<a name="18"></a>var <span class="source_type">FLOAT</span>                   m_fMoveX, m_fMoveY;	<span class="source_comment">// co-ordinates where the move was requested
+</span><a name="19"></a>var <span class="source_type">FLOAT</span>                   m_fMinWinWidth, m_fMinWinHeight;
+<a name="20"></a>var <span class="source_type">FLOAT</span>                   m_fTitleOffSet;
+<a name="21"></a>var <span class="source_type"><a href="../uwindow/uwindowbase.html#TextAlign" class="source">TextAlign</a></span>               m_TitleAlign;
+<a name="22"></a>
+<a name="23"></a>var <span class="source_type">bool</span>                    m_bTLSizing;
+<a name="24"></a>var <span class="source_type">bool</span>                    m_bTSizing;
+<a name="25"></a>var <span class="source_type">bool</span>                    m_bTRSizing;
+<a name="26"></a>var <span class="source_type">bool</span>                    m_bLSizing;
+<a name="27"></a>var <span class="source_type">bool</span>                    m_bRSizing;
+<a name="28"></a>var <span class="source_type">bool</span>                    m_bBLSizing;
+<a name="29"></a>var <span class="source_type">bool</span>                    m_bBSizing;
+<a name="30"></a>var <span class="source_type">bool</span>                    m_bBRSizing;
+<a name="31"></a>
+<a name="32"></a>var <span class="source_type">bool</span>                    m_bMoving;
+<a name="33"></a>var <span class="source_type">bool</span>                    m_bSizable;
+<a name="34"></a>var <span class="source_type">bool</span>                    m_bMovable;
+<a name="35"></a>
+<a name="36"></a>var <span class="source_type">bool</span>                    m_bDisplayClose;
+<a name="37"></a>
+<a name="38"></a>function Created()
+<a name="39"></a>{
+<a name="40"></a>	m_ClientArea = CreateWindow(m_ClientClass, LookAndFeel.FrameL.W, LookAndFeel.FrameT.<span class="source_type">H</span>, WinWidth - (LookAndFeel.FrameL.W + LookAndFeel.FrameR.W), WinHeight - (LookAndFeel.FrameB.<span class="source_type">H</span> + LookAndFeel.FrameT.<span class="source_type">H</span>), OwnerWindow);
+<a name="41"></a>    if(m_bDisplayClose)
+<a name="42"></a>    {
+<a name="43"></a>	    m_CloseBoxButton = <span class="source_type"><a href="../uwindow/uwindowframeclosebox.html" class="source">UWindowFrameCloseBox</a></span>(CreateWindow(<span class="source_type">class</span><span class="source_name">'UWindowFrameCloseBox'</span>, WinWidth-LookAndFeel.FrameTL.W-<span class="source_type"><a href="../r6window/r6windowlookandfeel.html" class="source">R6WindowLookAndFeel</a></span>(LookAndFeel).m_CloseBoxUp.W-<span class="source_int">1</span>, <span class="source_int">1</span>, <span class="source_type"><a href="../r6window/r6windowlookandfeel.html" class="source">R6WindowLookAndFeel</a></span>(LookAndFeel).m_CloseBoxUp.W, <span class="source_type"><a href="../r6window/r6windowlookandfeel.html" class="source">R6WindowLookAndFeel</a></span>(LookAndFeel).m_CloseBoxUp.<span class="source_type">H</span>, self));
+<a name="44"></a>    }
+<a name="45"></a>}
+<a name="46"></a>
+<a name="47"></a>function <span class="source_type"><a href="../engine/texture.html" class="source">Texture</a></span> GetLookAndFeelTexture()
+<a name="48"></a>{
+<a name="49"></a>	return <span class="source_type"><a href="../r6window/r6windowlookandfeel.html" class="source">R6WindowLookAndFeel</a></span>(LookAndFeel).R6GetTexture(self);
+<a name="50"></a>}
+<a name="51"></a>
+<a name="52"></a>function <span class="source_type">bool</span> IsActive()
+<a name="53"></a>{
+<a name="54"></a>	return ParentWindow.ActiveWindow == self;
+<a name="55"></a>}
+<a name="56"></a>
+<a name="57"></a>function BeforePaint(<span class="source_type"><a href="../engine/canvas.html" class="source">Canvas</a></span> <span class="source_type">C</span>, <span class="source_type">FLOAT</span> X, <span class="source_type">FLOAT</span> <span class="source_type">Y</span>)
+<a name="58"></a>{	
+<a name="59"></a>    local <span class="source_type">FLOAT</span> W, <span class="source_type">H</span>;
+<a name="60"></a>
+<a name="61"></a>    Super.BeforePaint(<span class="source_type">C</span>, X, <span class="source_type">Y</span>);
+<a name="62"></a>
+<a name="63"></a>    if(m_bSizable)
+<a name="64"></a>    {
+<a name="65"></a>	    Resized();
+<a name="66"></a>    }
+<a name="67"></a>    if(m_CloseBoxButton != NONE)
+<a name="68"></a>    {
+<a name="69"></a>	    <span class="source_type"><a href="../r6window/r6windowlookandfeel.html" class="source">R6WindowLookAndFeel</a></span>(LookAndFeel).R6FW_SetupFrameButtons(self, <span class="source_type">C</span>);
+<a name="70"></a>    }
+<a name="71"></a>	
+<a name="72"></a>    if(m_szWindowTitle != <span class="source_string">""</span>)
+<a name="73"></a>    {
+<a name="74"></a>        <span class="source_type">C</span>.<span class="source_type">Font</span> = Root.Fonts[F_PopUpTitle];
+<a name="75"></a>    	TextSize(<span class="source_type">C</span>, m_szWindowTitle, W, <span class="source_type">H</span>);
+<a name="76"></a>        
+<a name="77"></a>	    switch(m_TitleAlign)
+<a name="78"></a>	    {
+<a name="79"></a>	    case TA_Left:
+<a name="80"></a>		    m_fTitleOffSet = LookAndFeel.FrameTL.W;
+<a name="81"></a>		    break;
+<a name="82"></a>	    case TA_Right:
+<a name="83"></a>		    m_fTitleOffSet = WinWidth - W - LookAndFeel.FrameTL.W;
+<a name="84"></a>		    break;
+<a name="85"></a>	    case TA_Center:
+<a name="86"></a>		    m_fTitleOffSet = (WinWidth - W) / <span class="source_int">2</span>;
+<a name="87"></a>		    break;
+<a name="88"></a>	    }
+<a name="89"></a>    }
+<a name="90"></a>}
+<a name="91"></a>
+<a name="92"></a>function Paint(<span class="source_type"><a href="../engine/canvas.html" class="source">Canvas</a></span> <span class="source_type">C</span>, <span class="source_type">FLOAT</span> X, <span class="source_type">FLOAT</span> <span class="source_type">Y</span>)
+<a name="93"></a>{
+<a name="94"></a>	<span class="source_type"><a href="../r6window/r6windowlookandfeel.html" class="source">R6WindowLookAndFeel</a></span>(LookAndFeel).R6FW_DrawWindowFrame(self, <span class="source_type">C</span>);
+<a name="95"></a>}
+<a name="96"></a>
+<a name="97"></a>function LMouseDown(<span class="source_type">FLOAT</span> X, <span class="source_type">FLOAT</span> <span class="source_type">Y</span>)
+<a name="98"></a>{
+<a name="99"></a>    local <span class="source_type"><a href="../uwindow/uwindowbase.html#FrameHitTest" class="source">FrameHitTest</a></span> <span class="source_type">H</span>;
+<a name="100"></a>    Super.LMouseDown(X, <span class="source_type">Y</span>);
+<a name="101"></a>
+<a name="102"></a>    <span class="source_type">H</span> = <span class="source_type"><a href="../r6window/r6windowlookandfeel.html" class="source">R6WindowLookAndFeel</a></span>(LookAndFeel).R6FW_HitTest(self, X, <span class="source_type">Y</span>);
+<a name="103"></a>
+<a name="104"></a>    if(m_bMovable)
+<a name="105"></a>    {
+<a name="106"></a>	    if(<span class="source_type">H</span> == HT_TitleBar)
+<a name="107"></a>	    {
+<a name="108"></a>		    m_fMoveX = X;
+<a name="109"></a>		    m_fMoveY = <span class="source_type">Y</span>;
+<a name="110"></a>		    m_bMoving = true;
+<a name="111"></a>		    Root.CaptureMouse();
+<a name="112"></a>
+<a name="113"></a>		    return;
+<a name="114"></a>	    }
+<a name="115"></a>    }
+<a name="116"></a>
+<a name="117"></a>	if(m_bSizable) 
+<a name="118"></a>	{
+<a name="119"></a>		switch(<span class="source_type">H</span>)
+<a name="120"></a>		{
+<a name="121"></a>		case HT_NW:
+<a name="122"></a>			m_bTLSizing = true;
+<a name="123"></a>			Root.CaptureMouse();
+<a name="124"></a>			return;
+<a name="125"></a>		case HT_NE:
+<a name="126"></a>			m_bTRSizing = true;
+<a name="127"></a>			Root.CaptureMouse();
+<a name="128"></a>			return;
+<a name="129"></a>		case HT_SW:
+<a name="130"></a>			m_bBLSizing = true;
+<a name="131"></a>			Root.CaptureMouse();
+<a name="132"></a>			return;		
+<a name="133"></a>		case HT_SE:
+<a name="134"></a>			m_bBRSizing = true;
+<a name="135"></a>			Root.CaptureMouse();
+<a name="136"></a>			return;
+<a name="137"></a>		case HT_N:
+<a name="138"></a>			m_bTSizing = true;
+<a name="139"></a>			Root.CaptureMouse();
+<a name="140"></a>			return;
+<a name="141"></a>		case HT_S:
+<a name="142"></a>			m_bBSizing = true;
+<a name="143"></a>			Root.CaptureMouse();
+<a name="144"></a>			return;
+<a name="145"></a>		case HT_W:
+<a name="146"></a>			m_bLSizing = true;
+<a name="147"></a>			Root.CaptureMouse();
+<a name="148"></a>			return;
+<a name="149"></a>		case HT_E:
+<a name="150"></a>			m_bRSizing = true;
+<a name="151"></a>			Root.CaptureMouse();
+<a name="152"></a>			return;
+<a name="153"></a>		}
+<a name="154"></a>	}
+<a name="155"></a>}
+<a name="156"></a>
+<a name="157"></a>function Resized()
+<a name="158"></a>{
+<a name="159"></a>	local <span class="source_type"><a href="../core/object.html#Region" class="source">Region</a></span> <span class="source_type">R</span>;
+<a name="160"></a>
+<a name="161"></a>	if(m_ClientArea == None)
+<a name="162"></a>	{
+<a name="163"></a>		<span class="source_comment">//Log("Client Area is None for "$self);
+</span><a name="164"></a>		return;
+<a name="165"></a>	}
+<a name="166"></a>
+<a name="167"></a>	<span class="source_type">R</span> = <span class="source_type"><a href="../r6window/r6windowlookandfeel.html" class="source">R6WindowLookAndFeel</a></span>(LookAndFeel).R6FW_GetClientArea(self);
+<a name="168"></a>
+<a name="169"></a>	m_ClientArea.WinLeft = <span class="source_type">R</span>.X;
+<a name="170"></a>	m_ClientArea.WinTop = <span class="source_type">R</span>.<span class="source_type">Y</span>;
+<a name="171"></a>
+<a name="172"></a>	if((<span class="source_type">R</span>.W != m_ClientArea.WinWidth) || (<span class="source_type">R</span>.<span class="source_type">H</span> != m_ClientArea.WinHeight)) 
+<a name="173"></a>	{
+<a name="174"></a>		m_ClientArea.SetSize(<span class="source_type">R</span>.W, <span class="source_type">R</span>.<span class="source_type">H</span>);
+<a name="175"></a>	}
+<a name="176"></a>
+<a name="177"></a>}
+<a name="178"></a>
+<a name="179"></a>function MouseMove(<span class="source_type">FLOAT</span> X, <span class="source_type">FLOAT</span> <span class="source_type">Y</span>)
+<a name="180"></a>{
+<a name="181"></a>    local <span class="source_type">FLOAT</span> fOldW, fOldH;
+<a name="182"></a>    local <span class="source_type"><a href="../uwindow/uwindowbase.html#FrameHitTest" class="source">FrameHitTest</a></span> <span class="source_type">H</span>;
+<a name="183"></a>
+<a name="184"></a>    <span class="source_type">H</span> = <span class="source_type"><a href="../r6window/r6windowlookandfeel.html" class="source">R6WindowLookAndFeel</a></span>(LookAndFeel).R6FW_HitTest(self, X, <span class="source_type">Y</span>);
+<a name="185"></a>
+<a name="186"></a>    if(m_bMovable)
+<a name="187"></a>    {
+<a name="188"></a>	    if(m_bMoving && bMouseDown)
+<a name="189"></a>	    {
+<a name="190"></a>		    WinLeft = <span class="source_type">Int</span>(WinLeft + X - m_fMoveX);
+<a name="191"></a>		    WinTop = <span class="source_type">Int</span>(WinTop + <span class="source_type">Y</span> - m_fMoveY);
+<a name="192"></a>	    }
+<a name="193"></a>	    else
+<a name="194"></a>        {
+<a name="195"></a>		    m_bMoving = false;
+<a name="196"></a>        }
+<a name="197"></a>    }
+<a name="198"></a>
+<a name="199"></a>	Cursor = Root.NormalCursor;
+<a name="200"></a>
+<a name="201"></a>	if(m_bSizable && !m_bMoving)
+<a name="202"></a>	{
+<a name="203"></a>		switch(<span class="source_type">H</span>)
+<a name="204"></a>		{
+<a name="205"></a>		case HT_NW:
+<a name="206"></a>		case HT_SE:
+<a name="207"></a>			Cursor = Root.DiagCursor1;
+<a name="208"></a>			break;
+<a name="209"></a>		case HT_NE:
+<a name="210"></a>		case HT_SW:
+<a name="211"></a>			Cursor = Root.DiagCursor2;
+<a name="212"></a>			break;
+<a name="213"></a>		case HT_W:
+<a name="214"></a>		case HT_E:
+<a name="215"></a>			Cursor = Root.WECursor;
+<a name="216"></a>			break;
+<a name="217"></a>		case HT_N:
+<a name="218"></a>		case HT_S:
+<a name="219"></a>			Cursor = Root.NSCursor;
+<a name="220"></a>			break;
+<a name="221"></a>		}
+<a name="222"></a>	}	
+<a name="223"></a>
+<a name="224"></a>    if(bMouseDown)
+<a name="225"></a>    {
+<a name="226"></a>	    <span class="source_comment">// Top Left
+</span><a name="227"></a>	    if(m_bTLSizing)
+<a name="228"></a>	    {
+<a name="229"></a>		    Cursor = Root.DiagCursor1;	
+<a name="230"></a>		    fOldW = WinWidth;
+<a name="231"></a>		    fOldH = WinHeight;
+<a name="232"></a>		    SetSize(<span class="source_type">Max</span>(m_fMinWinWidth, WinWidth - X), <span class="source_type">Max</span>(m_fMinWinHeight, WinHeight - <span class="source_type">Y</span>));
+<a name="233"></a>		    WinLeft = <span class="source_type">Int</span>(WinLeft + fOldW - WinWidth);
+<a name="234"></a>		    WinTop = <span class="source_type">Int</span>(WinTop + fOldH - WinHeight);
+<a name="235"></a>	    }
+<a name="236"></a>
+<a name="237"></a>	    <span class="source_comment">// Top
+</span><a name="238"></a>	    if(m_bTSizing)
+<a name="239"></a>	    {
+<a name="240"></a>		    Cursor = Root.NSCursor;
+<a name="241"></a>		    fOldH = WinHeight;
+<a name="242"></a>		    SetSize(WinWidth, <span class="source_type">Max</span>(m_fMinWinHeight, WinHeight - <span class="source_type">Y</span>));
+<a name="243"></a>		    WinTop = <span class="source_type">Int</span>(WinTop + fOldH - WinHeight);
+<a name="244"></a>	    }
+<a name="245"></a>
+<a name="246"></a>	    <span class="source_comment">// Top Right
+</span><a name="247"></a>	    if(m_bTRSizing)
+<a name="248"></a>	    {
+<a name="249"></a>		    Cursor = Root.DiagCursor2;
+<a name="250"></a>		    fOldH = WinHeight;
+<a name="251"></a>		    SetSize(<span class="source_type">Max</span>(m_fMinWinWidth, X), <span class="source_type">Max</span>(m_fMinWinHeight, WinHeight - <span class="source_type">Y</span>));
+<a name="252"></a>		    WinTop = <span class="source_type">Int</span>(WinTop + fOldH - WinHeight);
+<a name="253"></a>	    }
+<a name="254"></a>
+<a name="255"></a>	    <span class="source_comment">// Left
+</span><a name="256"></a>	    if(m_bLSizing)
+<a name="257"></a>	    {
+<a name="258"></a>		    Cursor = Root.WECursor;
+<a name="259"></a>		    fOldW = WinWidth;
+<a name="260"></a>		    SetSize(<span class="source_type">Max</span>(m_fMinWinWidth, WinWidth - X), WinHeight);
+<a name="261"></a>		    WinLeft = <span class="source_type">Int</span>(WinLeft + fOldW - WinWidth);
+<a name="262"></a>	    }
+<a name="263"></a>
+<a name="264"></a>	    <span class="source_comment">// Right
+</span><a name="265"></a>	    if(m_bRSizing)
+<a name="266"></a>	    {
+<a name="267"></a>		    Cursor = Root.WECursor;
+<a name="268"></a>		    SetSize(<span class="source_type">Max</span>(m_fMinWinWidth, X), WinHeight);
+<a name="269"></a>	    }
+<a name="270"></a>
+<a name="271"></a>	    <span class="source_comment">// Bottom Left
+</span><a name="272"></a>	    if(m_bBLSizing)
+<a name="273"></a>	    {
+<a name="274"></a>		    Cursor = Root.DiagCursor2;
+<a name="275"></a>		    fOldW = WinWidth;
+<a name="276"></a>		    SetSize(<span class="source_type">Max</span>(m_fMinWinWidth, WinWidth - X), <span class="source_type">Max</span>(m_fMinWinHeight, <span class="source_type">Y</span>));
+<a name="277"></a>		    WinLeft = <span class="source_type">Int</span>(WinLeft + fOldW - WinWidth);
+<a name="278"></a>	    }
+<a name="279"></a>
+<a name="280"></a>	    <span class="source_comment">// Bottom
+</span><a name="281"></a>	    if(m_bBSizing)
+<a name="282"></a>	    {
+<a name="283"></a>		    Cursor = Root.NSCursor;
+<a name="284"></a>		    SetSize(WinWidth, <span class="source_type">Max</span>(m_fMinWinHeight, <span class="source_type">Y</span>));
+<a name="285"></a>	    }
+<a name="286"></a>
+<a name="287"></a>	    <span class="source_comment">// Bottom Right
+</span><a name="288"></a>	    if(m_bBRSizing)
+<a name="289"></a>	    {
+<a name="290"></a>		    Cursor = Root.DiagCursor1;
+<a name="291"></a>		    SetSize(<span class="source_type">Max</span>(m_fMinWinWidth, X), <span class="source_type">Max</span>(m_fMinWinHeight, <span class="source_type">Y</span>));
+<a name="292"></a>	    }
+<a name="293"></a>    }
+<a name="294"></a>	else 
+<a name="295"></a>    {
+<a name="296"></a>        m_bTLSizing = false;
+<a name="297"></a>        m_bTSizing  = false;
+<a name="298"></a>        m_bTRSizing = false;
+<a name="299"></a>        m_bLSizing  = false;
+<a name="300"></a>        m_bRSizing  = false;
+<a name="301"></a>        m_bBLSizing = false;
+<a name="302"></a>        m_bBSizing  = false;
+<a name="303"></a>        m_bBRSizing = false;
+<a name="304"></a>    }
+<a name="305"></a>}
+<a name="306"></a>
+<a name="307"></a>function ToolTip(<span class="source_type">string</span> strTip)
+<a name="308"></a>{
+<a name="309"></a>	m_szStatusBarText = strTip;
+<a name="310"></a>}
+<a name="311"></a>
+<a name="312"></a>function WindowEvent(<span class="source_type"><a href="../uwindow/uwindowwindow.html#WinMessage" class="source">WinMessage</a></span> <span class="source_type">Msg</span>, <span class="source_type"><a href="../engine/canvas.html" class="source">Canvas</a></span> <span class="source_type">C</span>, <span class="source_type">FLOAT</span> X, <span class="source_type">FLOAT</span> <span class="source_type">Y</span>, <span class="source_type">INT</span> iKey) 
+<a name="313"></a>{
+<a name="314"></a>    <span class="source_comment">/*
+<a name="315"></a>	if(Msg == WM_Paint || !WaitModal())
+<a name="316"></a>    {
+<a name="317"></a>		Super.WindowEvent(Msg, C, X, Y, iKey);
+<a name="318"></a>    }
+<a name="319"></a>    */</span>
+<a name="320"></a>    if(<span class="source_type">Msg</span> == WM_Paint || !WaitModal())
+<a name="321"></a>    {
+<a name="322"></a>        Super.WindowEvent(<span class="source_type">Msg</span>, <span class="source_type">C</span>, X, <span class="source_type">Y</span>, iKey);
+<a name="323"></a>    }	    
+<a name="324"></a>    else if(WaitModal())
+<a name="325"></a>    {
+<a name="326"></a>         ModalWindow.WindowEvent(<span class="source_type">Msg</span>, <span class="source_type">C</span>, X - ModalWindow.WinLeft, <span class="source_type">Y</span> - ModalWindow.WinTop, iKey);        
+<a name="327"></a>    }  
+<a name="328"></a>}
+<a name="329"></a>
+<a name="330"></a>function WindowHidden()
+<a name="331"></a>{
+<a name="332"></a>	Super.WindowHidden();
+<a name="333"></a>	LookAndFeel.PlayMenuSound(self, MS_WindowClose);
+<a name="334"></a>}
+<a name="335"></a>
+<a name="336"></a>function SetDisplayClose(<span class="source_type">bool</span> bNewDisplay)
+<a name="337"></a>{
+<a name="338"></a>	m_bDisplayClose = bNewDisplay;
+<a name="339"></a>
+<a name="340"></a>	if(m_bDisplayClose)
+<a name="341"></a>	{	
+<a name="342"></a>        if(m_CloseBoxButton == NONE)
+<a name="343"></a>        {
+<a name="344"></a>    	    m_CloseBoxButton = <span class="source_type"><a href="../uwindow/uwindowframeclosebox.html" class="source">UWindowFrameCloseBox</a></span>(CreateWindow(<span class="source_type">class</span><span class="source_name">'UWindowFrameCloseBox'</span>, WinWidth-LookAndFeel.FrameTL.W-<span class="source_type"><a href="../r6window/r6windowlookandfeel.html" class="source">R6WindowLookAndFeel</a></span>(LookAndFeel).m_CloseBoxUp.W-<span class="source_int">1</span>, <span class="source_int">1</span>, <span class="source_type"><a href="../r6window/r6windowlookandfeel.html" class="source">R6WindowLookAndFeel</a></span>(LookAndFeel).m_CloseBoxUp.W, <span class="source_type"><a href="../r6window/r6windowlookandfeel.html" class="source">R6WindowLookAndFeel</a></span>(LookAndFeel).m_CloseBoxUp.<span class="source_type">H</span>, self));
+<a name="345"></a>            m_CloseBoxButton.ShowWindow();
+<a name="346"></a>        }
+<a name="347"></a>	}
+<a name="348"></a>	else
+<a name="349"></a>	{
+<a name="350"></a>        if(m_CloseBoxButton != NONE)
+<a name="351"></a>        {
+<a name="352"></a>    	    m_CloseBoxButton.Close();
+<a name="353"></a>        }
+<a name="354"></a>	}
+<a name="355"></a>}
+<a name="356"></a>
+<a name="357"></a>defaultproperties
+<a name="358"></a>{
+<a name="359"></a>     m_bDisplayClose=True
+<a name="360"></a>     m_fMinWinWidth=<span class="source_int">20.000000</span>
+<a name="361"></a>     m_fMinWinHeight=<span class="source_int">20.000000</span>
+<a name="362"></a>     m_ClientClass=<span class="source_type">Class</span><span class="source_name">'UWindow.UWindowClientWindow'</span>
+<a name="363"></a>}
+<a name="364"></a></pre></td></tr></table></div>
+<hr />
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../r6window/r6window-overview.html">Package</a></td>
+	<td class="header"><a href="../r6window/r6windowframedwindow.html">Class</a></td>
+	<td class="header_hilight">Source</td>
+	<td class="header"><a class="header" href="../classtree.html#R6WindowFramedWindow">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../Source_r6window/r6windoweditcontrol.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../Source_r6window/r6windowhscrollbar.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+
+<div class="stats">Class file time: sam. 18/9/2004 14:39:52.000 - Creation time: mar. 26/5/2026 18:33:21.656 - Created with <a href="http://wiki.beyondunreal.com/wiki/UnCodeX" target="_blank">UnCodeX</a></div>
+
+</body>
+</html>

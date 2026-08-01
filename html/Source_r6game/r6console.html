@@ -1,0 +1,2205 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+	<title>UnCodeX - Source: R6Game.R6Console</title>
+	<meta name="Generator" content="UnCodeX 241" />
+	<link rel="stylesheet" href="../DocStyle2.css" type="text/css" title="Original Purple" />
+	<link rel="alternative stylesheet" href="../DocStyle2-blue.css" type="text/css" title="Blue" />
+	<link rel="alternative stylesheet" href="../DocStyle2-red.css" type="text/css" title="Red" />
+	<!--[if IE]>
+	<link rel="stylesheet" href="../DocStyle2-msie.css" type="text/css" />
+	<![endif]-->
+	<script src="../styleswitcher.js" type="text/javascript"></script>
+</head>
+<body>
+
+<div class="header">
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../r6game/r6game-overview.html">Package</a></td>
+	<td class="header"><a href="../r6game/r6console.html">Class</a></td>
+	<td class="header_hilight">Source</td>
+	<td class="header"><a class="header" href="../classtree.html#R6Console">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../Source_r6game/r6campaign.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../Source_r6game/r6coopmode.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html#Source_r6game/r6console.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+</div>
+<div class="spacer"></div>
+
+<h1><a href="../r6game/r6game-overview.html">R6Game</a>.<a href="../r6game/r6console.html">R6Console</a></h1>
+<br />
+<div class="source"><table class="source"><tr><td class="source_lineno"><span class="source_lineno">00001<br />00002<br />00003<br />00004<br />00005<br />00006<br />00007<br />00008<br />00009<br />00010<br />00011<br />00012<br />00013<br />00014<br />00015<br />00016<br />00017<br />00018<br />00019<br />00020<br />
+00021<br />00022<br />00023<br />00024<br />00025<br />00026<br />00027<br />00028<br />00029<br />00030<br />00031<br />00032<br />00033<br />00034<br />00035<br />00036<br />00037<br />00038<br />00039<br />00040<br />
+00041<br />00042<br />00043<br />00044<br />00045<br />00046<br />00047<br />00048<br />00049<br />00050<br />00051<br />00052<br />00053<br />00054<br />00055<br />00056<br />00057<br />00058<br />00059<br />00060<br />
+00061<br />00062<br />00063<br />00064<br />00065<br />00066<br />00067<br />00068<br />00069<br />00070<br />00071<br />00072<br />00073<br />00074<br />00075<br />00076<br />00077<br />00078<br />00079<br />00080<br />
+00081<br />00082<br />00083<br />00084<br />00085<br />00086<br />00087<br />00088<br />00089<br />00090<br />00091<br />00092<br />00093<br />00094<br />00095<br />00096<br />00097<br />00098<br />00099<br />00100<br />
+00101<br />00102<br />00103<br />00104<br />00105<br />00106<br />00107<br />00108<br />00109<br />00110<br />00111<br />00112<br />00113<br />00114<br />00115<br />00116<br />00117<br />00118<br />00119<br />00120<br />
+00121<br />00122<br />00123<br />00124<br />00125<br />00126<br />00127<br />00128<br />00129<br />00130<br />00131<br />00132<br />00133<br />00134<br />00135<br />00136<br />00137<br />00138<br />00139<br />00140<br />
+00141<br />00142<br />00143<br />00144<br />00145<br />00146<br />00147<br />00148<br />00149<br />00150<br />00151<br />00152<br />00153<br />00154<br />00155<br />00156<br />00157<br />00158<br />00159<br />00160<br />
+00161<br />00162<br />00163<br />00164<br />00165<br />00166<br />00167<br />00168<br />00169<br />00170<br />00171<br />00172<br />00173<br />00174<br />00175<br />00176<br />00177<br />00178<br />00179<br />00180<br />
+00181<br />00182<br />00183<br />00184<br />00185<br />00186<br />00187<br />00188<br />00189<br />00190<br />00191<br />00192<br />00193<br />00194<br />00195<br />00196<br />00197<br />00198<br />00199<br />00200<br />
+00201<br />00202<br />00203<br />00204<br />00205<br />00206<br />00207<br />00208<br />00209<br />00210<br />00211<br />00212<br />00213<br />00214<br />00215<br />00216<br />00217<br />00218<br />00219<br />00220<br />
+00221<br />00222<br />00223<br />00224<br />00225<br />00226<br />00227<br />00228<br />00229<br />00230<br />00231<br />00232<br />00233<br />00234<br />00235<br />00236<br />00237<br />00238<br />00239<br />00240<br />
+00241<br />00242<br />00243<br />00244<br />00245<br />00246<br />00247<br />00248<br />00249<br />00250<br />00251<br />00252<br />00253<br />00254<br />00255<br />00256<br />00257<br />00258<br />00259<br />00260<br />
+00261<br />00262<br />00263<br />00264<br />00265<br />00266<br />00267<br />00268<br />00269<br />00270<br />00271<br />00272<br />00273<br />00274<br />00275<br />00276<br />00277<br />00278<br />00279<br />00280<br />
+00281<br />00282<br />00283<br />00284<br />00285<br />00286<br />00287<br />00288<br />00289<br />00290<br />00291<br />00292<br />00293<br />00294<br />00295<br />00296<br />00297<br />00298<br />00299<br />00300<br />
+00301<br />00302<br />00303<br />00304<br />00305<br />00306<br />00307<br />00308<br />00309<br />00310<br />00311<br />00312<br />00313<br />00314<br />00315<br />00316<br />00317<br />00318<br />00319<br />00320<br />
+00321<br />00322<br />00323<br />00324<br />00325<br />00326<br />00327<br />00328<br />00329<br />00330<br />00331<br />00332<br />00333<br />00334<br />00335<br />00336<br />00337<br />00338<br />00339<br />00340<br />
+00341<br />00342<br />00343<br />00344<br />00345<br />00346<br />00347<br />00348<br />00349<br />00350<br />00351<br />00352<br />00353<br />00354<br />00355<br />00356<br />00357<br />00358<br />00359<br />00360<br />
+00361<br />00362<br />00363<br />00364<br />00365<br />00366<br />00367<br />00368<br />00369<br />00370<br />00371<br />00372<br />00373<br />00374<br />00375<br />00376<br />00377<br />00378<br />00379<br />00380<br />
+00381<br />00382<br />00383<br />00384<br />00385<br />00386<br />00387<br />00388<br />00389<br />00390<br />00391<br />00392<br />00393<br />00394<br />00395<br />00396<br />00397<br />00398<br />00399<br />00400<br />
+00401<br />00402<br />00403<br />00404<br />00405<br />00406<br />00407<br />00408<br />00409<br />00410<br />00411<br />00412<br />00413<br />00414<br />00415<br />00416<br />00417<br />00418<br />00419<br />00420<br />
+00421<br />00422<br />00423<br />00424<br />00425<br />00426<br />00427<br />00428<br />00429<br />00430<br />00431<br />00432<br />00433<br />00434<br />00435<br />00436<br />00437<br />00438<br />00439<br />00440<br />
+00441<br />00442<br />00443<br />00444<br />00445<br />00446<br />00447<br />00448<br />00449<br />00450<br />00451<br />00452<br />00453<br />00454<br />00455<br />00456<br />00457<br />00458<br />00459<br />00460<br />
+00461<br />00462<br />00463<br />00464<br />00465<br />00466<br />00467<br />00468<br />00469<br />00470<br />00471<br />00472<br />00473<br />00474<br />00475<br />00476<br />00477<br />00478<br />00479<br />00480<br />
+00481<br />00482<br />00483<br />00484<br />00485<br />00486<br />00487<br />00488<br />00489<br />00490<br />00491<br />00492<br />00493<br />00494<br />00495<br />00496<br />00497<br />00498<br />00499<br />00500<br />
+00501<br />00502<br />00503<br />00504<br />00505<br />00506<br />00507<br />00508<br />00509<br />00510<br />00511<br />00512<br />00513<br />00514<br />00515<br />00516<br />00517<br />00518<br />00519<br />00520<br />
+00521<br />00522<br />00523<br />00524<br />00525<br />00526<br />00527<br />00528<br />00529<br />00530<br />00531<br />00532<br />00533<br />00534<br />00535<br />00536<br />00537<br />00538<br />00539<br />00540<br />
+00541<br />00542<br />00543<br />00544<br />00545<br />00546<br />00547<br />00548<br />00549<br />00550<br />00551<br />00552<br />00553<br />00554<br />00555<br />00556<br />00557<br />00558<br />00559<br />00560<br />
+00561<br />00562<br />00563<br />00564<br />00565<br />00566<br />00567<br />00568<br />00569<br />00570<br />00571<br />00572<br />00573<br />00574<br />00575<br />00576<br />00577<br />00578<br />00579<br />00580<br />
+00581<br />00582<br />00583<br />00584<br />00585<br />00586<br />00587<br />00588<br />00589<br />00590<br />00591<br />00592<br />00593<br />00594<br />00595<br />00596<br />00597<br />00598<br />00599<br />00600<br />
+00601<br />00602<br />00603<br />00604<br />00605<br />00606<br />00607<br />00608<br />00609<br />00610<br />00611<br />00612<br />00613<br />00614<br />00615<br />00616<br />00617<br />00618<br />00619<br />00620<br />
+00621<br />00622<br />00623<br />00624<br />00625<br />00626<br />00627<br />00628<br />00629<br />00630<br />00631<br />00632<br />00633<br />00634<br />00635<br />00636<br />00637<br />00638<br />00639<br />00640<br />
+00641<br />00642<br />00643<br />00644<br />00645<br />00646<br />00647<br />00648<br />00649<br />00650<br />00651<br />00652<br />00653<br />00654<br />00655<br />00656<br />00657<br />00658<br />00659<br />00660<br />
+00661<br />00662<br />00663<br />00664<br />00665<br />00666<br />00667<br />00668<br />00669<br />00670<br />00671<br />00672<br />00673<br />00674<br />00675<br />00676<br />00677<br />00678<br />00679<br />00680<br />
+00681<br />00682<br />00683<br />00684<br />00685<br />00686<br />00687<br />00688<br />00689<br />00690<br />00691<br />00692<br />00693<br />00694<br />00695<br />00696<br />00697<br />00698<br />00699<br />00700<br />
+00701<br />00702<br />00703<br />00704<br />00705<br />00706<br />00707<br />00708<br />00709<br />00710<br />00711<br />00712<br />00713<br />00714<br />00715<br />00716<br />00717<br />00718<br />00719<br />00720<br />
+00721<br />00722<br />00723<br />00724<br />00725<br />00726<br />00727<br />00728<br />00729<br />00730<br />00731<br />00732<br />00733<br />00734<br />00735<br />00736<br />00737<br />00738<br />00739<br />00740<br />
+00741<br />00742<br />00743<br />00744<br />00745<br />00746<br />00747<br />00748<br />00749<br />00750<br />00751<br />00752<br />00753<br />00754<br />00755<br />00756<br />00757<br />00758<br />00759<br />00760<br />
+00761<br />00762<br />00763<br />00764<br />00765<br />00766<br />00767<br />00768<br />00769<br />00770<br />00771<br />00772<br />00773<br />00774<br />00775<br />00776<br />00777<br />00778<br />00779<br />00780<br />
+00781<br />00782<br />00783<br />00784<br />00785<br />00786<br />00787<br />00788<br />00789<br />00790<br />00791<br />00792<br />00793<br />00794<br />00795<br />00796<br />00797<br />00798<br />00799<br />00800<br />
+00801<br />00802<br />00803<br />00804<br />00805<br />00806<br />00807<br />00808<br />00809<br />00810<br />00811<br />00812<br />00813<br />00814<br />00815<br />00816<br />00817<br />00818<br />00819<br />00820<br />
+00821<br />00822<br />00823<br />00824<br />00825<br />00826<br />00827<br />00828<br />00829<br />00830<br />00831<br />00832<br />00833<br />00834<br />00835<br />00836<br />00837<br />00838<br />00839<br />00840<br />
+00841<br />00842<br />00843<br />00844<br />00845<br />00846<br />00847<br />00848<br />00849<br />00850<br />00851<br />00852<br />00853<br />00854<br />00855<br />00856<br />00857<br />00858<br />00859<br />00860<br />
+00861<br />00862<br />00863<br />00864<br />00865<br />00866<br />00867<br />00868<br />00869<br />00870<br />00871<br />00872<br />00873<br />00874<br />00875<br />00876<br />00877<br />00878<br />00879<br />00880<br />
+00881<br />00882<br />00883<br />00884<br />00885<br />00886<br />00887<br />00888<br />00889<br />00890<br />00891<br />00892<br />00893<br />00894<br />00895<br />00896<br />00897<br />00898<br />00899<br />00900<br />
+00901<br />00902<br />00903<br />00904<br />00905<br />00906<br />00907<br />00908<br />00909<br />00910<br />00911<br />00912<br />00913<br />00914<br />00915<br />00916<br />00917<br />00918<br />00919<br />00920<br />
+00921<br />00922<br />00923<br />00924<br />00925<br />00926<br />00927<br />00928<br />00929<br />00930<br />00931<br />00932<br />00933<br />00934<br />00935<br />00936<br />00937<br />00938<br />00939<br />00940<br />
+00941<br />00942<br />00943<br />00944<br />00945<br />00946<br />00947<br />00948<br />00949<br />00950<br />00951<br />00952<br />00953<br />00954<br />00955<br />00956<br />00957<br />00958<br />00959<br />00960<br />
+00961<br />00962<br />00963<br />00964<br />00965<br />00966<br />00967<br />00968<br />00969<br />00970<br />00971<br />00972<br />00973<br />00974<br />00975<br />00976<br />00977<br />00978<br />00979<br />00980<br />
+00981<br />00982<br />00983<br />00984<br />00985<br />00986<br />00987<br />00988<br />00989<br />00990<br />00991<br />00992<br />00993<br />00994<br />00995<br />00996<br />00997<br />00998<br />00999<br />01000<br />
+01001<br />01002<br />01003<br />01004<br />01005<br />01006<br />01007<br />01008<br />01009<br />01010<br />01011<br />01012<br />01013<br />01014<br />01015<br />01016<br />01017<br />01018<br />01019<br />01020<br />
+01021<br />01022<br />01023<br />01024<br />01025<br />01026<br />01027<br />01028<br />01029<br />01030<br />01031<br />01032<br />01033<br />01034<br />01035<br />01036<br />01037<br />01038<br />01039<br />01040<br />
+01041<br />01042<br />01043<br />01044<br />01045<br />01046<br />01047<br />01048<br />01049<br />01050<br />01051<br />01052<br />01053<br />01054<br />01055<br />01056<br />01057<br />01058<br />01059<br />01060<br />
+01061<br />01062<br />01063<br />01064<br />01065<br />01066<br />01067<br />01068<br />01069<br />01070<br />01071<br />01072<br />01073<br />01074<br />01075<br />01076<br />01077<br />01078<br />01079<br />01080<br />
+01081<br />01082<br />01083<br />01084<br />01085<br />01086<br />01087<br />01088<br />01089<br />01090<br />01091<br />01092<br />01093<br />01094<br />01095<br />01096<br />01097<br />01098<br />01099<br />01100<br />
+01101<br />01102<br />01103<br />01104<br />01105<br />01106<br />01107<br />01108<br />01109<br />01110<br />01111<br />01112<br />01113<br />01114<br />01115<br />01116<br />01117<br />01118<br />01119<br />01120<br />
+01121<br />01122<br />01123<br />01124<br />01125<br />01126<br />01127<br />01128<br />01129<br />01130<br />01131<br />01132<br />01133<br />01134<br />01135<br />01136<br />01137<br />01138<br />01139<br />01140<br />
+01141<br />01142<br />01143<br />01144<br />01145<br />01146<br />01147<br />01148<br />01149<br />01150<br />01151<br />01152<br />01153<br />01154<br />01155<br />01156<br />01157<br />01158<br />01159<br />01160<br />
+01161<br />01162<br />01163<br />01164<br />01165<br />01166<br />01167<br />01168<br />01169<br />01170<br />01171<br />01172<br />01173<br />01174<br />01175<br />01176<br />01177<br />01178<br />01179<br />01180<br />
+01181<br />01182<br />01183<br />01184<br />01185<br />01186<br />01187<br />01188<br />01189<br />01190<br />01191<br />01192<br />01193<br />01194<br />01195<br />01196<br />01197<br />01198<br />01199<br />01200<br />
+01201<br />01202<br />01203<br />01204<br />01205<br />01206<br />01207<br />01208<br />01209<br />01210<br />01211<br />01212<br />01213<br />01214<br />01215<br />01216<br />01217<br />01218<br />01219<br />01220<br />
+01221<br />01222<br />01223<br />01224<br />01225<br />01226<br />01227<br />01228<br />01229<br />01230<br />01231<br />01232<br />01233<br />01234<br />01235<br />01236<br />01237<br />01238<br />01239<br />01240<br />
+01241<br />01242<br />01243<br />01244<br />01245<br />01246<br />01247<br />01248<br />01249<br />01250<br />01251<br />01252<br />01253<br />01254<br />01255<br />01256<br />01257<br />01258<br />01259<br />01260<br />
+01261<br />01262<br />01263<br />01264<br />01265<br />01266<br />01267<br />01268<br />01269<br />01270<br />01271<br />01272<br />01273<br />01274<br />01275<br />01276<br />01277<br />01278<br />01279<br />01280<br />
+01281<br />01282<br />01283<br />01284<br />01285<br />01286<br />01287<br />01288<br />01289<br />01290<br />01291<br />01292<br />01293<br />01294<br />01295<br />01296<br />01297<br />01298<br />01299<br />01300<br />
+01301<br />01302<br />01303<br />01304<br />01305<br />01306<br />01307<br />01308<br />01309<br />01310<br />01311<br />01312<br />01313<br />01314<br />01315<br />01316<br />01317<br />01318<br />01319<br />01320<br />
+01321<br />01322<br />01323<br />01324<br />01325<br />01326<br />01327<br />01328<br />01329<br />01330<br />01331<br />01332<br />01333<br />01334<br />01335<br />01336<br />01337<br />01338<br />01339<br />01340<br />
+01341<br />01342<br />01343<br />01344<br />01345<br />01346<br />01347<br />01348<br />01349<br />01350<br />01351<br />01352<br />01353<br />01354<br />01355<br />01356<br />01357<br />01358<br />01359<br />01360<br />
+01361<br />01362<br />01363<br />01364<br />01365<br />01366<br />01367<br />01368<br />01369<br />01370<br />01371<br />01372<br />01373<br />01374<br />01375<br />01376<br />01377<br />01378<br />01379<br />01380<br />
+01381<br />01382<br />01383<br />01384<br />01385<br />01386<br />01387<br />01388<br />01389<br />01390<br />01391<br />01392<br />01393<br />01394<br />01395<br />01396<br />01397<br />01398<br />01399<br />01400<br />
+01401<br />01402<br />01403<br />01404<br />01405<br />01406<br />01407<br />01408<br />01409<br />01410<br />01411<br />01412<br />01413<br />01414<br />01415<br />01416<br />01417<br />01418<br />01419<br />01420<br />
+01421<br />01422<br />01423<br />01424<br />01425<br />01426<br />01427<br />01428<br />01429<br />01430<br />01431<br />01432<br />01433<br />01434<br />01435<br />01436<br />01437<br />01438<br />01439<br />01440<br />
+01441<br />01442<br />01443<br />01444<br />01445<br />01446<br />01447<br />01448<br />01449<br />01450<br />01451<br />01452<br />01453<br />01454<br />01455<br />01456<br />01457<br />01458<br />01459<br />01460<br />
+01461<br />01462<br />01463<br />01464<br />01465<br />01466<br />01467<br />01468<br />01469<br />01470<br />01471<br />01472<br />01473<br />01474<br />01475<br />01476<br />01477<br />01478<br />01479<br />01480<br />
+01481<br />01482<br />01483<br />01484<br />01485<br />01486<br />01487<br />01488<br />01489<br />01490<br />01491<br />01492<br />01493<br />01494<br />01495<br />01496<br />01497<br />01498<br />01499<br />01500<br />
+01501<br />01502<br />01503<br />01504<br />01505<br />01506<br />01507<br />01508<br />01509<br />01510<br />01511<br />01512<br />01513<br />01514<br />01515<br />01516<br />01517<br />01518<br />01519<br />01520<br />
+01521<br />01522<br />01523<br />01524<br />01525<br />01526<br />01527<br />01528<br />01529<br />01530<br />01531<br />01532<br />01533<br />01534<br />01535<br />01536<br />01537<br />01538<br />01539<br />01540<br />
+01541<br />01542<br />01543<br />01544<br />01545<br />01546<br />01547<br />01548<br />01549<br />01550<br />01551<br />01552<br />01553<br />01554<br />01555<br />01556<br />01557<br />01558<br />01559<br />01560<br />
+01561<br />01562<br />01563<br />01564<br />01565<br />01566<br />01567<br />01568<br />01569<br />01570<br />01571<br />01572<br />01573<br />01574<br />01575<br />01576<br />01577<br />01578<br />01579<br />01580<br />
+01581<br />01582<br />01583<br />01584<br />01585<br />01586<br />01587<br />01588<br />01589<br />01590<br />01591<br />01592<br />01593<br />01594<br />01595<br />01596<br />01597<br />01598<br />01599<br />01600<br />
+01601<br />01602<br />01603<br />01604<br />01605<br />01606<br />01607<br />01608<br />01609<br />01610<br />01611<br />01612<br />01613<br />01614<br />01615<br />01616<br />01617<br />01618<br />01619<br />01620<br />
+01621<br />01622<br />01623<br />01624<br />01625<br />01626<br />01627<br />01628<br />01629<br />01630<br />01631<br />01632<br />01633<br />01634<br />01635<br />01636<br />01637<br />01638<br />01639<br />01640<br />
+01641<br />01642<br />01643<br />01644<br />01645<br />01646<br />01647<br />01648<br />01649<br />01650<br />01651<br />01652<br />01653<br />01654<br />01655<br />01656<br />01657<br />01658<br />01659<br />01660<br />
+01661<br />01662<br />01663<br />01664<br />01665<br />01666<br />01667<br />01668<br />01669<br />01670<br />01671<br />01672<br />01673<br />01674<br />01675<br />01676<br />01677<br />01678<br />01679<br />01680<br />
+01681<br />01682<br />01683<br />01684<br />01685<br />01686<br />01687<br />01688<br />01689<br />01690<br />01691<br />01692<br />01693<br />01694<br />01695<br />01696<br />01697<br />01698<br />01699<br />01700<br />
+01701<br />01702<br />01703<br />01704<br />01705<br />01706<br />01707<br />01708<br />01709<br />01710<br />01711<br />01712<br />01713<br />01714<br />01715<br />01716<br />01717<br />01718<br />01719<br />01720<br />
+01721<br />01722<br />01723<br />01724<br />01725<br />01726<br />01727<br />01728<br />01729<br />01730<br />01731<br />01732<br />01733<br />01734<br />01735<br />01736<br />01737<br />01738<br />01739<br />01740<br />
+01741<br />01742<br />01743<br />01744<br />01745<br />01746<br />01747<br />01748<br />01749<br />01750<br />01751<br />01752<br />01753<br />01754<br />01755<br />01756<br />01757<br />01758<br />01759<br />01760<br />
+01761<br />01762<br />01763<br />01764<br />01765<br />01766<br />01767<br />01768<br />01769<br />01770<br />01771<br />01772<br />01773<br />01774<br />01775<br />01776<br />01777<br />01778<br />01779<br />01780<br />
+01781<br />01782<br />01783<br />01784<br />01785<br />01786<br />01787<br />01788<br />01789<br />01790<br />01791<br />01792<br />01793<br />01794<br />01795<br />01796<br />01797<br />01798<br />01799<br />01800<br />
+01801<br />01802<br />01803<br />01804<br />01805<br />01806<br />01807<br />01808<br />01809<br />01810<br />01811<br />01812<br />01813<br />01814<br />01815<br />01816<br />01817<br />01818<br />01819<br />01820<br />
+01821<br />01822<br />01823<br />01824<br />01825<br />01826<br />01827<br />01828<br />01829<br />01830<br />01831<br />01832<br />01833<br />01834<br />01835<br />01836<br />01837<br />01838<br />01839<br />01840<br />
+01841<br />01842<br />01843<br />01844<br />01845<br />01846<br />01847<br />01848<br />01849<br />01850<br />01851<br />01852<br />01853<br />01854<br />01855<br />01856<br />01857<br />01858<br />01859<br />01860<br />
+01861<br />01862<br />01863<br />01864<br />01865<br />01866<br />01867<br />01868<br />01869<br />01870<br />01871<br />01872<br />01873<br />01874<br />01875<br />01876<br />01877<br />01878<br />01879<br />01880<br />
+01881<br />01882<br />01883<br />01884<br />01885<br />01886<br />01887<br />01888<br />01889<br />01890<br />01891<br />01892<br />01893<br />01894<br />01895<br />01896<br />01897<br />01898<br />01899<br />01900<br />
+01901<br />01902<br />01903<br />01904<br />01905<br />01906<br />01907<br />01908<br />01909<br />01910<br />01911<br />01912<br />01913<br />01914<br />01915<br />01916<br />01917<br />01918<br />01919<br />01920<br />
+01921<br />01922<br />01923<br />01924<br />01925<br />01926<br />01927<br />01928<br />01929<br />01930<br />01931<br />01932<br />01933<br />01934<br />01935<br />01936<br />01937<br />01938<br />01939<br />01940<br />
+01941<br />01942<br />01943<br />01944<br />01945<br />01946<br />01947<br />01948<br />01949<br />01950<br />01951<br />01952<br />01953<br />01954<br />01955<br />01956<br />01957<br />01958<br />01959<br />01960<br />
+01961<br />01962<br />01963<br />01964<br />01965<br />01966<br />01967<br />01968<br />01969<br />01970<br />01971<br />01972<br />01973<br />01974<br />01975<br />01976<br />01977<br />01978<br />01979<br />01980<br />
+01981<br />01982<br />01983<br />01984<br />01985<br />01986<br />01987<br />01988<br />01989<br />01990<br />01991<br />01992<br />01993<br />01994<br />01995<br />01996<br />01997<br />01998<br />01999<br />02000<br />
+02001<br />02002<br />02003<br />02004<br />02005<br />02006<br />02007<br />02008<br />02009<br />02010<br />02011<br />02012<br />02013<br />02014<br />02015<br />02016<br />02017<br />02018<br />02019<br />02020<br />
+02021<br />02022<br />02023<br />02024<br />02025<br />02026<br />02027<br />02028<br />02029<br />02030<br />02031<br />02032<br />02033<br />02034<br />02035<br />02036<br />02037<br />02038<br />02039<br />02040<br />
+02041<br />02042<br />02043<br />02044<br />02045</span></td>
+<td class="source"><pre class="source"><a name="1"></a><span class="source_comment">//============================================================================//
+</span><a name="2"></a><span class="source_comment">// Class            R6Console
+</span><a name="3"></a><span class="source_comment">// Date             20 April 2001
+</span><a name="4"></a><span class="source_comment">// Description
+</span><a name="5"></a><span class="source_comment">//
+</span><a name="6"></a><span class="source_comment">//  Revision history:
+</span><a name="7"></a><span class="source_comment">//    
+</span><a name="8"></a><span class="source_comment">//============================================================================//
+</span><a name="9"></a><span class="source_type">class</span> <span class="source_type"><a href="../r6game/r6console.html" class="source">R6Console</a></span> extends <span class="source_type"><a href="../uwindow/windowconsole.html" class="source">WindowConsole</a></span>;
+<a name="10"></a>
+<a name="11"></a><span class="source_macro">#exec OBJ LOAD FILE=..\Sounds\Music.uax PACKAGE=Music
+</span><a name="12"></a>
+<a name="13"></a><span class="source_comment">// MPF not needed anymore var config string        Campaign
+</span><a name="14"></a>
+<a name="15"></a>var <span class="source_type">BOOL</span>   bResetLevel;
+<a name="16"></a>var <span class="source_type">BOOL</span>   bLaunchWasCalled;
+<a name="17"></a>var <span class="source_type">BOOL</span>   bLaunchMultiPlayer;
+<a name="18"></a>var <span class="source_type">BOOL</span>   bReturnToMenu;
+<a name="19"></a>var <span class="source_type">BOOL</span>   bMultiPlayerGameActive;
+<a name="20"></a>var <span class="source_type">BOOL</span>   bCancelFire;
+<a name="21"></a>
+<a name="22"></a><span class="source_comment">//R6CODE
+</span><a name="23"></a>var <span class="source_type">BOOL</span>   m_bInGamePlanningKeyDown;
+<a name="24"></a>
+<a name="25"></a>var <span class="source_type">string</span> m_szLastError;       <span class="source_comment">// String used to store error to be later displayed
+</span><a name="26"></a><span class="source_comment">//var string szStoreIP;           // String used to store IP of host server
+</span><a name="27"></a>var <span class="source_type">string</span> szStoreGamePassWd;   <span class="source_comment">// String used to store game password
+</span><a name="28"></a>var <span class="source_type">INT</span>    m_iRetryTime;        <span class="source_comment">// Time at which to retry registereing with ubi.com
+</span><a name="29"></a>var <span class="source_type">BOOL</span>   m_bAutoLoginFirstPass;
+<a name="30"></a>
+<a name="31"></a>const    K_TimeRetryConnect  = <span class="source_int">5</span>;   <span class="source_comment">// Time interval for retrying connecting to ubi.com      
+</span><a name="32"></a>const    K_CHECKTIME_INTERVAL = <span class="source_int">3000</span>;<span class="source_comment">// Time interval for checking that ubi.com client is still alive (ms)
+</span><a name="33"></a>const    K_CHECKTIME_TIMEOUT  = <span class="source_int">9000</span>;<span class="source_comment">// Time interval for checking that ubi.com client is still alive (ms)
+</span><a name="34"></a>
+<a name="35"></a>var <span class="source_type">BOOL</span> m_bJoinUbiServer;      <span class="source_comment">// Join a server passed to the game by ubi.com client
+</span><a name="36"></a>var <span class="source_type">BOOL</span> m_bCreateUbiServer;    <span class="source_comment">// The ubi.com client has told the game to create a server
+</span><a name="37"></a>var <span class="source_type">INT</span>  m_iLastCheckTime;      <span class="source_comment">// Time at which the last check was made to see if ubi.com client is still responding
+</span><a name="38"></a>var <span class="source_type">INT</span>  m_iLastSuccCheckTime;  <span class="source_comment">// Time at which the last check was made to see if ubi.com client is still responding
+</span><a name="39"></a>
+<a name="40"></a>var <span class="source_type">bool</span> m_bSkipAFrameAndStart;   <span class="source_comment">// To render one last frame before leaving
+</span><a name="41"></a>var <span class="source_type">bool</span> m_bRenderMenuOneTime;	<span class="source_comment">// render the menu one time before processing key in the case of and connection interruption
+</span><a name="42"></a>
+<a name="43"></a>var enum <span class="source_type"><a href="../r6game/r6console.html#eLeaveGame" class="source">eLeaveGame</a></span>
+<a name="44"></a>{
+<a name="45"></a>    LG_MainMenu,
+<a name="46"></a>    LG_NextLevel,
+<a name="47"></a>    LG_Trainning,
+<a name="48"></a>    LG_MultiPlayerMenu,
+<a name="49"></a>    LG_RetryPlanningCustomMission,
+<a name="50"></a>    LG_CustomMissionMenu,
+<a name="51"></a>    LG_RetryPlanningCampaign,    
+<a name="52"></a>    LG_QuitGame,
+<a name="53"></a>    LG_MultiPlayerError,
+<a name="54"></a>	LG_InitMod
+<a name="55"></a>} m_eNextStep;
+<a name="56"></a>
+<a name="57"></a><span class="source_comment">//////////////////////////////////////////////////////////////////////////////////
+</span><a name="58"></a><span class="source_comment">//This Stuff Is single Player Game Specific and Might Need to be moved elsewhere
+</span><a name="59"></a><span class="source_comment">//This is needed to launch the game with the good operatives and 
+</span><a name="60"></a><span class="source_comment">/////////////////////////////////////////////////////////////////////////////////
+</span><a name="61"></a>var Array&lt;<span class="source_type"><a href="../r6game/r6campaign.html" class="source">R6Campaign</a></span>&gt;           m_aCampaigns;
+<a name="62"></a>var <span class="source_type"><a href="../r6game/r6campaign.html" class="source">R6Campaign</a></span>                  m_CurrentCampaign;
+<a name="63"></a>var <span class="source_type"><a href="../r6game/r6playercampaign.html" class="source">R6PlayerCampaign</a></span>            m_PlayerCampaign;
+<a name="64"></a><span class="source_comment">/////////////////////////////////////////////////////////////////////////////////
+</span><a name="65"></a>
+<a name="66"></a><span class="source_macro">#ifndefSPDEMO
+</span><a name="67"></a>var <span class="source_type"><a href="../r6gameservice/r6gsservers.html" class="source">R6GSServers</a></span>                 m_GameService;             <span class="source_comment">// Manages servers from game service
+</span><a name="68"></a>var <span class="source_type"><a href="../r6gameservice/r6lanservers.html" class="source">R6LanServers</a></span>                m_LanServers;              <span class="source_comment">// Manages servers on the LAN
+</span><a name="69"></a><span class="source_macro">#endif
+</span><a name="70"></a>
+<a name="71"></a>var <span class="source_type"><a href="../r6game/r6playercustommission.html" class="source">R6PlayerCustomMission</a></span>        m_playerCustomMission; <span class="source_comment">// containt all the map unlock for each campaign
+</span><a name="72"></a>var Array&lt;<span class="source_type"><a href="../engine/r6missiondescription.html" class="source">R6MissionDescription</a></span>&gt;  m_aMissionDescriptions;
+<a name="73"></a>
+<a name="74"></a>var <span class="source_type">BOOL</span>						m_bStartR6GameInProgress;  <span class="source_comment">// currently create new menu and load sound bank fct StartR6Game
+</span><a name="75"></a>
+<a name="76"></a>var <span class="source_type">Sound</span>                       m_StopMainMenuMusic;
+<a name="77"></a>
+<a name="78"></a>var <span class="source_type"><a href="../uwindow/uwindowrootwindow.html" class="source">UWindowRootWindow</a></span>.<span class="source_type"><a href="../uwindow/uwindowrootwindow.html#eGameWidgetID" class="source">eGameWidgetID</a></span> m_eLastPreviousWID;
+<a name="79"></a>
+<a name="80"></a><span class="source_comment">//------------------------------------------------------------------
+</span><a name="81"></a><span class="source_comment">// Inhereited
+</span><a name="82"></a><span class="source_comment">//------------------------------------------------------------------
+</span><a name="83"></a>event Message( coerce <span class="source_type">string</span> <span class="source_type">Msg</span>, <span class="source_type">float</span> <span class="source_type">MsgLife</span>)
+<a name="84"></a>{
+<a name="85"></a>    local <span class="source_type"><a href="../engine/playercontroller.html" class="source">PlayerController</a></span> <span class="source_type">pController</span>;
+<a name="86"></a>
+<a name="87"></a>    if ( ViewportOwner == none )
+<a name="88"></a>    {
+<a name="89"></a>        return;
+<a name="90"></a>    }
+<a name="91"></a>
+<a name="92"></a>    <span class="source_type">pController</span> = ViewportOwner.<span class="source_type"><a href="../engine/actor.html" class="source">Actor</a></span>;
+<a name="93"></a>    <span class="source_type">pController</span>.myHUD.Message( <span class="source_type">pController</span>.<span class="source_type"><a href="../engine/playerreplicationinfo.html" class="source">PlayerReplicationInfo</a></span>, <span class="source_type">Msg</span>, <span class="source_name">'Console'</span> ); <span class="source_comment">// r6code
+</span><a name="94"></a>}
+<a name="95"></a>
+<a name="96"></a>function CreateRootWindow(<span class="source_type"><a href="../engine/canvas.html" class="source">Canvas</a></span> <span class="source_type"><a href="../engine/canvas.html" class="source">Canvas</a></span>)
+<a name="97"></a>{
+<a name="98"></a>    InitCampaignAndMissionDescription();
+<a name="99"></a>
+<a name="100"></a>    Super.CreateRootWindow(<span class="source_type"><a href="../engine/canvas.html" class="source">Canvas</a></span>);
+<a name="101"></a> }
+<a name="102"></a>
+<a name="103"></a>
+<a name="104"></a>function InitCampaignAndMissionDescription()
+<a name="105"></a>{
+<a name="106"></a>    local <span class="source_type"><a href="../engine/r6filemanager.html" class="source">R6FileManager</a></span> pFileManager;
+<a name="107"></a>    local <span class="source_type">string</span>        szCampaignName;
+<a name="108"></a>    local <span class="source_type">string</span>        szCampaignPathName;
+<a name="109"></a>	local <span class="source_type">INT</span>			iAdditionalModIndex;
+<a name="110"></a>
+<a name="111"></a>    if ( m_CurrentCampaign != none )
+<a name="112"></a>        return;
+<a name="113"></a>
+<a name="114"></a>    <span class="source_type">class</span><span class="source_name">'Actor'</span>.static.GetModMgr().RegisterObject( self );
+<a name="115"></a>
+<a name="116"></a>    <span class="source_comment">// is campaign file is defined in params
+</span><a name="117"></a>    ViewportOwner.<span class="source_type"><a href="../engine/actor.html" class="source">Actor</a></span>.<span class="source_type">Level</span>.GetCampaignNameFromParam( szCampaignName );
+<a name="118"></a>
+<a name="119"></a>    <span class="source_comment">// check if we have a default campaign
+</span><a name="120"></a>    pFileManager = new(none) <span class="source_type">class</span><span class="source_name">'R6FileManager'</span>;
+<a name="121"></a>    szCampaignPathName = <span class="source_string">"..\\maps\\"</span> $szCampaignName;
+<a name="122"></a>    if ( !pFileManager.FindFile( szCampaignPathName ) )
+<a name="123"></a>    {
+<a name="124"></a>        szCampaignName = <span class="source_string">""</span>; <span class="source_comment">// fail, so take the one from .ini file
+</span><a name="125"></a>    }
+<a name="126"></a>
+<a name="127"></a>	<span class="source_comment">//empty the list.
+</span><a name="128"></a>	m_aMissionDescriptions.remove(<span class="source_int">0</span>, m_aMissionDescriptions.length);
+<a name="129"></a>
+<a name="130"></a>	if(!<span class="source_type">class</span><span class="source_name">'Actor'</span>.static.GetModMgr().IsRavenShield() && (szCampaignName != <span class="source_string">"RavenShieldCampaign"</span>))
+<a name="131"></a>	{
+<a name="132"></a>		LoadCampaignIni( <span class="source_string">"RavenShieldCampaign"</span>);
+<a name="133"></a>	}
+<a name="134"></a>
+<a name="135"></a>	<span class="source_comment">//mpf loadcampaign for additional campaings associated with the mod.
+</span><a name="136"></a>	iAdditionalModIndex = <span class="source_int">0</span>;
+<a name="137"></a>	while(<span class="source_type">class</span><span class="source_name">'Actor'</span>.static.GetModMgr().m_pCurrentMod.GetExtraMods(iAdditionalModIndex) != none)
+<a name="138"></a>	{
+<a name="139"></a>		szCampaignName = <span class="source_type">class</span><span class="source_name">'Actor'</span>.static.GetModMgr().m_pCurrentMod.GetExtraMods(iAdditionalModIndex).m_szCampaignIniFile;
+<a name="140"></a>		LoadCampaignIni( szCampaignName );
+<a name="141"></a>		iAdditionalModIndex++;
+<a name="142"></a>	}
+<a name="143"></a>
+<a name="144"></a>	<span class="source_comment">// MPF: LoadCampaign of the current mod
+</span><a name="145"></a>	if ( szCampaignName == <span class="source_string">""</span> )
+<a name="146"></a>	{
+<a name="147"></a>		szCampaignName = <span class="source_type">class</span><span class="source_name">'Actor'</span>.static.GetModMgr().m_pCurrentMod.m_szCampaignIniFile;
+<a name="148"></a>	}
+<a name="149"></a>	LoadCampaignIni( szCampaignName );
+<a name="150"></a>}
+<a name="151"></a>
+<a name="152"></a><span class="source_comment">// MPF: LoadCampaignIni 
+</span><a name="153"></a>function LoadCampaignIni( <span class="source_type">string</span> <span class="source_type">szCampaign</span> )
+<a name="154"></a>{
+<a name="155"></a>	local <span class="source_type">int</span> <span class="source_type">i</span>;
+<a name="156"></a>	local <span class="source_type">bool</span> bFound;
+<a name="157"></a>
+<a name="158"></a>	<span class="source_comment">// load campaign dynamically
+</span><a name="159"></a>	for(<span class="source_type">i</span> = <span class="source_int">0</span>; <span class="source_type">i</span>&lt;m_aCampaigns.length; <span class="source_type">i</span>++)
+<a name="160"></a>	{
+<a name="161"></a>		if(m_aCampaigns[<span class="source_type">i</span>].m_szCampaignFile == <span class="source_type">szCampaign</span>)
+<a name="162"></a>		{
+<a name="163"></a>			m_CurrentCampaign = m_aCampaigns[<span class="source_type">i</span>];
+<a name="164"></a>			bFound = true;
+<a name="165"></a>		}
+<a name="166"></a>	}
+<a name="167"></a>
+<a name="168"></a>	if(bFound == false)
+<a name="169"></a>	{
+<a name="170"></a>		m_CurrentCampaign = new(none) <span class="source_type">class</span><span class="source_name">'R6Campaign'</span>; 
+<a name="171"></a>		m_aCampaigns[<span class="source_type">i</span>] = m_CurrentCampaign;
+<a name="172"></a>	}
+<a name="173"></a>
+<a name="174"></a>    m_CurrentCampaign.InitCampaign( ViewportOwner.<span class="source_type"><a href="../engine/actor.html" class="source">Actor</a></span>.<span class="source_type">Level</span>, <span class="source_type">szCampaign</span>, self );
+<a name="175"></a>
+<a name="176"></a>    UnlockMissions();    
+<a name="177"></a>}
+<a name="178"></a>
+<a name="179"></a>function InitMod()
+<a name="180"></a>{
+<a name="181"></a>    local <span class="source_type">string</span> <span class="source_type">szCampaign</span>;
+<a name="182"></a>	local <span class="source_type">INT</span>	 iAdditionalModIndex;
+<a name="183"></a>
+<a name="184"></a>	<span class="source_comment">//empty the mission description list.
+</span><a name="185"></a>	m_aMissionDescriptions.remove(<span class="source_int">0</span>, m_aMissionDescriptions.length);
+<a name="186"></a>
+<a name="187"></a>	if(!<span class="source_type">class</span><span class="source_name">'Actor'</span>.static.GetModMgr().IsRavenShield())
+<a name="188"></a>	{
+<a name="189"></a>		LoadCampaignIni( <span class="source_string">"RavenShieldCampaign"</span>);
+<a name="190"></a>	}
+<a name="191"></a>
+<a name="192"></a>	iAdditionalModIndex = <span class="source_int">0</span>;
+<a name="193"></a>	iAdditionalModIndex = <span class="source_int">0</span>;
+<a name="194"></a>	while(<span class="source_type">class</span><span class="source_name">'Actor'</span>.static.GetModMgr().m_pCurrentMod.GetExtraMods(iAdditionalModIndex) != none)
+<a name="195"></a>	{
+<a name="196"></a>		<span class="source_type">szCampaign</span> = <span class="source_type">class</span><span class="source_name">'Actor'</span>.static.GetModMgr().m_pCurrentMod.GetExtraMods(iAdditionalModIndex).m_szCampaignIniFile;
+<a name="197"></a>		LoadCampaignIni( <span class="source_type">szCampaign</span> );
+<a name="198"></a>		iAdditionalModIndex++;
+<a name="199"></a>	}
+<a name="200"></a>
+<a name="201"></a>	<span class="source_type">szCampaign</span> = <span class="source_type">class</span><span class="source_name">'Actor'</span>.static.GetModMgr().m_pCurrentMod.m_szCampaignIniFile;
+<a name="202"></a>	LoadCampaignIni( <span class="source_type">szCampaign</span> );
+<a name="203"></a>	
+<a name="204"></a>	if ( m_PlayerCampaign != none ) 
+<a name="205"></a>        m_PlayerCampaign.m_bCampaignCompleted = <span class="source_int">0</span>;
+<a name="206"></a>    
+<a name="207"></a>    ConsoleCommand(<span class="source_string">"LOADSERVER "</span> $<span class="source_type">class</span><span class="source_name">'Actor'</span>.static.GetModMgr().getServerIni()$ <span class="source_string">".ini"</span> );
+<a name="208"></a>}
+<a name="209"></a>
+<a name="210"></a>event Initialized()
+<a name="211"></a>{   
+<a name="212"></a>    if(bShowLog)log(<span class="source_string">"R6Console Initialized"</span>);
+<a name="213"></a><span class="source_macro">#ifndefSPDEMO
+</span><a name="214"></a>    m_PlayerCampaign                            = new(none) <span class="source_type">class</span><span class="source_name">'R6PlayerCampaign'</span>; 
+<a name="215"></a>    m_PlayerCampaign.m_OperativesMissionDetails = new(none) <span class="source_type">class</span><span class="source_name">'R6MissionRoster'</span>;
+<a name="216"></a><span class="source_macro">#endif
+</span><a name="217"></a>    m_PlayerCustomMission                       = new(none) <span class="source_type">class</span><span class="source_name">'R6PlayerCustomMission'</span>; 
+<a name="218"></a>}
+<a name="219"></a>
+<a name="220"></a>function InitializedGameService()
+<a name="221"></a>{
+<a name="222"></a><span class="source_macro">#ifndefSPDEMO
+</span><a name="223"></a>    <span class="source_comment">// create GameService the first time only, 
+</span><a name="224"></a>    <span class="source_comment">// r6menurootwindow is re-create every time you go from in-game to menu
+</span><a name="225"></a>    if (m_GameService == none) 
+<a name="226"></a>    {
+<a name="227"></a>	    <span class="source_comment">// Create objects for server lists
+</span><a name="228"></a>        m_GameService = new(none) <span class="source_type">class</span><span class="source_name">'R6GSServers'</span>;
+<a name="229"></a>	    m_GameService.Created();
+<a name="230"></a>	    m_bAutoLoginFirstPass = TRUE;
+<a name="231"></a>
+<a name="232"></a>	    m_bNonUbiMatchMaking = <span class="source_type">class</span><span class="source_name">'Actor'</span>.static.NativeNonUbiMatchMaking();
+<a name="233"></a>	    m_bStartedByGSClient = <span class="source_type">class</span><span class="source_name">'Actor'</span>.static.NativeStartedByGSClient();
+<a name="234"></a>	    m_bNonUbiMatchMakingHost = <span class="source_type">class</span><span class="source_name">'Actor'</span>.static.NativeNonUbiMatchMakingHost();
+<a name="235"></a>
+<a name="236"></a>	    if(m_bNonUbiMatchMaking || m_bStartedByGSClient || m_bNonUbiMatchMakingHost)
+<a name="237"></a>		    m_GameService.initGSCDKey();
+<a name="238"></a>    }
+<a name="239"></a><span class="source_macro">#endif
+</span><a name="240"></a>}
+<a name="241"></a>
+<a name="242"></a>function <span class="source_type"><a href="../core/object.html" class="source">object</a></span> SetGameServiceLinks(<span class="source_type"><a href="../engine/playercontroller.html" class="source">PlayerController</a></span> _localPlayer)
+<a name="243"></a>{
+<a name="244"></a><span class="source_macro">#ifndefSPDEMO
+</span><a name="245"></a>    if (m_GameService!=none)
+<a name="246"></a>    {
+<a name="247"></a>        m_GameService.m_LocalPlayerController = _localPlayer;
+<a name="248"></a>    }
+<a name="249"></a>
+<a name="250"></a>    if (m_LanServers!=none)
+<a name="251"></a>    {
+<a name="252"></a>        m_LanServers.m_LocalPlayerController = _localPlayer;
+<a name="253"></a>    }
+<a name="254"></a>
+<a name="255"></a>    return m_GameService;
+<a name="256"></a><span class="source_macro">#endif
+</span><a name="257"></a><span class="source_macro">#ifdefSPDEMO
+</span><a name="258"></a>    return none;
+<a name="259"></a><span class="source_macro">#endif
+</span><a name="260"></a>}
+<a name="261"></a>
+<a name="262"></a>event UserDisconnected()
+<a name="263"></a>{
+<a name="264"></a><span class="source_macro">#ifndefSPDEMO
+</span><a name="265"></a>    if(bShowLog) log(<span class="source_string">"R6Console::UserDisconnected() Returning to menus due to Server disconnection!"</span>);    
+<a name="266"></a>
+<a name="267"></a>    if (m_GameService!=none)
+<a name="268"></a>    {
+<a name="269"></a>        m_GameService.DisconnectAllCDKeyPlayers();
+<a name="270"></a>    }
+<a name="271"></a><span class="source_comment">//    m_bNonUbiMatchMaking = false;
+</span><a name="272"></a><span class="source_comment">//    m_bNonUbiMatchMakingHost = false;
+</span><a name="273"></a>
+<a name="274"></a>    m_GameService.ResetAuthId();
+<a name="275"></a>    SetGameServiceLinks(none);
+<a name="276"></a>
+<a name="277"></a>    if (m_bNonUbiMatchMaking || m_bNonUbiMatchMakingHost)
+<a name="278"></a>        LeaveR6Game(LG_QuitGame); <span class="source_comment">//quit the game 
+</span><a name="279"></a>    else
+<a name="280"></a>        LeaveR6Game(LG_MultiPlayerMenu); <span class="source_comment">//Returning to multiplayer menu if this is called from ingame 
+</span><a name="281"></a>                    <span class="source_comment">//Or else LeaveR6Game will ignore it
+</span><a name="282"></a><span class="source_macro">#endif
+</span><a name="283"></a>}
+<a name="284"></a>
+<a name="285"></a>event ServerDisconnected()
+<a name="286"></a>{
+<a name="287"></a><span class="source_macro">#ifndefSPDEMO
+</span><a name="288"></a>    if(bShowLog) log(<span class="source_string">"R6Console::ServerDisconnected() Returning to menus due to Server disconnection!"</span>);    
+<a name="289"></a>
+<a name="290"></a><span class="source_comment">//    m_bNonUbiMatchMaking = false;
+</span><a name="291"></a><span class="source_comment">//    m_bNonUbiMatchMakingHost = false;
+</span><a name="292"></a>    LeaveR6Game(LG_MultiPlayerError);
+<a name="293"></a>    m_GameService.ResetAuthId();
+<a name="294"></a>    SetGameServiceLinks(none);
+<a name="295"></a><span class="source_macro">#endif
+</span><a name="296"></a>}
+<a name="297"></a>
+<a name="298"></a>event R6ConnectionFailed( <span class="source_type">string</span> <span class="source_type">szError</span> )
+<a name="299"></a>{
+<a name="300"></a><span class="source_macro">#ifndefSPDEMO
+</span><a name="301"></a>    if(bShowLog) log(<span class="source_string">"R6Console::R6ConnectionFailed() "</span> $ <span class="source_type">szError</span> );
+<a name="302"></a>
+<a name="303"></a><span class="source_comment">//    m_bNonUbiMatchMaking = false;
+</span><a name="304"></a><span class="source_comment">//    m_bNonUbiMatchMakingHost = false;
+</span><a name="305"></a>    m_szLastError = <span class="source_type">szError</span>;
+<a name="306"></a>
+<a name="307"></a>	<span class="source_comment">// the menu are recreate, reset
+</span><a name="308"></a>	Root.ResetMenus( true);
+<a name="309"></a>
+<a name="310"></a>    LeaveR6Game(LG_MultiPlayerError);
+<a name="311"></a>    m_GameService.ResetAuthId();
+<a name="312"></a>    SetGameServiceLinks(none);
+<a name="313"></a><span class="source_macro">#endif
+</span><a name="314"></a>}
+<a name="315"></a>
+<a name="316"></a>event R6ConnectionSuccess()
+<a name="317"></a>{
+<a name="318"></a>    if(bShowLog) log(<span class="source_string">"R6Console::R6ConnectionSuccess()"</span>);    
+<a name="319"></a>
+<a name="320"></a><span class="source_comment">//    m_bNonUbiMatchMaking = false;
+</span><a name="321"></a><span class="source_comment">//    m_bNonUbiMatchMakingHost = false;
+</span><a name="322"></a>    
+<a name="323"></a>    if(Root.m_eRootId != Root.<span class="source_type"><a href="../uwindow/uwindowrootwindow.html#eRootID" class="source">eRootID</a></span>.RootID_R6MenuInGameMulti)
+<a name="324"></a>        LaunchR6MultiPlayerGame();   
+<a name="325"></a>    
+<a name="326"></a>}
+<a name="327"></a>
+<a name="328"></a>event R6ConnectionInterrupted()
+<a name="329"></a>{
+<a name="330"></a>    if(bShowLog) log(<span class="source_string">"R6Console::R6ConnectionInterrupted()"</span>);
+<a name="331"></a>
+<a name="332"></a>	<span class="source_type">class</span><span class="source_name">'Actor'</span>.static.EnableLoadingScreen(true); <span class="source_comment">// if the interruption was in-game, re-enable loading screen for next join
+</span><a name="333"></a><span class="source_comment">//	m_bInterruptConnectionProcess = false;
+</span><a name="334"></a>
+<a name="335"></a><span class="source_comment">//    m_bNonUbiMatchMaking = false;
+</span><a name="336"></a><span class="source_comment">//    m_bNonUbiMatchMakingHost = false;
+</span><a name="337"></a>
+<a name="338"></a>	<span class="source_comment">// the menu are recreate, reset
+</span><a name="339"></a>	Root.ResetMenus( true);
+<a name="340"></a>
+<a name="341"></a>    LeaveR6Game(LG_MultiPlayerMenu);<span class="source_comment">//LG_MultiPlayerError);//Returning to multiplayer menu if this is called from ingame 
+</span><a name="342"></a>                    <span class="source_comment">//Or else LeaveR6Game will ignore it
+</span><a name="343"></a>    m_GameService.ResetAuthId();
+<a name="344"></a>    SetGameServiceLinks(none);
+<a name="345"></a>}
+<a name="346"></a>
+<a name="347"></a>event R6ConnectionInProgress()
+<a name="348"></a>{
+<a name="349"></a>	if (Root.GetSimplePopUpID() == EPopUpID_None)
+<a name="350"></a>	{
+<a name="351"></a>		Root.SimplePopUp( Localize( <span class="source_string">"MultiPlayer"</span>, <span class="source_string">"PopUp_Downloading"</span>, <span class="source_string">"R6Menu"</span>),
+<a name="352"></a>						  Localize( <span class="source_string">"PopUP"</span>, <span class="source_string">"PopUpEscCancel"</span>, <span class="source_string">"R6Menu"</span>),
+<a name="353"></a>						  EPopUpID_DownLoadingInProgress, 
+<a name="354"></a>						  <span class="source_int">4</span>);<span class="source_comment">//UWindowBase.MessageBoxButtons.MB_Cancel);
+</span><a name="355"></a>	}
+<a name="356"></a>}
+<a name="357"></a>
+<a name="358"></a>event R6ProgressMsg( <span class="source_type">string</span> _Str1, <span class="source_type">string</span> _Str2, <span class="source_type">FLOAT</span> <span class="source_type">Seconds</span>)
+<a name="359"></a>{
+<a name="360"></a>	local array&lt;<span class="source_type">string</span>&gt; ATextMsg;
+<a name="361"></a>
+<a name="362"></a>	<span class="source_comment">// update menus
+</span><a name="363"></a>	ATextMsg[<span class="source_int">0</span>] = _Str1;
+<a name="364"></a>	ATextMsg[<span class="source_int">1</span>] = _Str2;
+<a name="365"></a>
+<a name="366"></a>	Root.ModifyPopUpInsideText( ATextMsg);
+<a name="367"></a>}
+<a name="368"></a>
+<a name="369"></a>function <span class="source_type">bool</span> KeyEvent( <span class="source_type"><a href="../engine/interactions.html#EInputKey" class="source">EInputKey</a></span> <span class="source_type">Key</span>, <span class="source_type"><a href="../engine/interactions.html#EInputAction" class="source">EInputAction</a></span> Action, <span class="source_type">FLOAT</span> <span class="source_type">Delta</span> )
+<a name="370"></a>{
+<a name="371"></a>	if(bShowLog)log(<span class="source_string">"ERROR!!!!!!!!!!!!!!!!!!! IN R6Console &gt;&gt; KeyEvent"</span>);
+<a name="372"></a>    return false;
+<a name="373"></a>}
+<a name="374"></a>
+<a name="375"></a>function <span class="source_type">bool</span> KeyType( <span class="source_type"><a href="../engine/interactions.html#EInputKey" class="source">EInputKey</a></span> <span class="source_type">Key</span> )
+<a name="376"></a>{
+<a name="377"></a>	if(bShowLog)log(<span class="source_string">"ERROR!!!!!!!!!!!!!!!!!!! IN R6Console &gt;&gt; KeyType"</span>);
+<a name="378"></a>    return false;
+<a name="379"></a>}
+<a name="380"></a>
+<a name="381"></a>function PostRender( <span class="source_type"><a href="../engine/canvas.html" class="source">canvas</a></span> <span class="source_type"><a href="../engine/canvas.html" class="source">Canvas</a></span> )
+<a name="382"></a>{
+<a name="383"></a>	if(bShowLog) log(<span class="source_string">"ERROR!!!!!!!!!!!!!!!!!!! IN R6Console &gt;&gt; PostRender"</span>);
+<a name="384"></a>}
+<a name="385"></a>
+<a name="386"></a>
+<a name="387"></a><span class="source_comment">// A window is displayed, trapping all the input
+</span><a name="388"></a>state UWindow
+<a name="389"></a>{
+<a name="390"></a>    function BeginState()
+<a name="391"></a>    {
+<a name="392"></a>        ConsoleState = GetStateName();
+<a name="393"></a>    }
+<a name="394"></a>
+<a name="395"></a>    function PostRender( <span class="source_type"><a href="../engine/canvas.html" class="source">canvas</a></span> <span class="source_type"><a href="../engine/canvas.html" class="source">Canvas</a></span> )
+<a name="396"></a>	{     
+<a name="397"></a>		if (m_bRenderMenuOneTime)
+<a name="398"></a>		{
+<a name="399"></a>			if (m_bInterruptConnectionProcess)
+<a name="400"></a>				m_bInterruptConnectionProcess = false;
+<a name="401"></a>			else
+<a name="402"></a>				m_bRenderMenuOneTime = false;
+<a name="403"></a>		}
+<a name="404"></a>
+<a name="405"></a>        if(bReturnToMenu == true && Root != None)
+<a name="406"></a>        {   
+<a name="407"></a>            
+<a name="408"></a>            bReturnToMenu = false; 
+<a name="409"></a>
+<a name="410"></a>			if (m_bInterruptConnectionProcess)
+<a name="411"></a>				m_bRenderMenuOneTime = true;
+<a name="412"></a>
+<a name="413"></a>            <span class="source_comment">//Force Menu Res       
+</span><a name="414"></a>
+<a name="415"></a>            switch(m_eNextStep)
+<a name="416"></a>            {
+<a name="417"></a>			case LG_InitMod:
+<a name="418"></a>				Root.ChangeCurrentWidget(m_eLastPreviousWID);
+<a name="419"></a>				Root.ChangeCurrentWidget(OptionsWidgetID);
+<a name="420"></a>				<span class="source_type">class</span><span class="source_name">'Actor'</span>.static.GetModMgr().InitAllModObjects();
+<a name="421"></a>				break;
+<a name="422"></a>            case LG_MainMenu:
+<a name="423"></a>                <span class="source_comment">//Go to Next Level
+</span><a name="424"></a>                Root.ChangeCurrentWidget(MainMenuWidgetID);
+<a name="425"></a>                break;
+<a name="426"></a>            case LG_Trainning:
+<a name="427"></a>                Root.ChangeCurrentWidget(TrainingWidgetID);
+<a name="428"></a>                break;
+<a name="429"></a>            case LG_NextLevel:
+<a name="430"></a>                <span class="source_comment">//Go to Next Level
+</span><a name="431"></a>                if(m_PlayerCampaign.m_bCampaignCompleted == <span class="source_int">1</span>)
+<a name="432"></a>                {
+<a name="433"></a>                    Root.ChangeCurrentWidget(CreditsWidgetID);
+<a name="434"></a>                    <span class="source_type"><a href="../engine/canvas.html" class="source">Canvas</a></span>.m_bDisplayGameOutroVideo = true;
+<a name="435"></a>                }
+<a name="436"></a>                else
+<a name="437"></a>                    Root.ChangeCurrentWidget(CampaignPlanningID);
+<a name="438"></a>                break;
+<a name="439"></a>            case LG_MultiPlayerMenu:
+<a name="440"></a>                <span class="source_comment">// Go to the ubi.com window
+</span><a name="441"></a>                if ( m_bStartedByGSClient )
+<a name="442"></a>                {
+<a name="443"></a>                    Root.ChangeCurrentWidget(UbiComWidgetID);
+<a name="444"></a>                    <span class="source_type">class</span><span class="source_name">'Actor'</span>.static.GetGameManager().m_bReturnToGSClient = TRUE;
+<a name="445"></a>                }
+<a name="446"></a>                <span class="source_comment">//Go to Multiplayer Menu
+</span><a name="447"></a>                else
+<a name="448"></a>                    Root.ChangeCurrentWidget(MultiPlayerWidgetID);
+<a name="449"></a>                break;
+<a name="450"></a>            case LG_RetryPlanningCustomMission:
+<a name="451"></a>                <span class="source_comment">//Go to PlanningCustom Mission
+</span><a name="452"></a>                Root.ChangeCurrentWidget(RetryCustomMissionPlanningID);
+<a name="453"></a>                break;
+<a name="454"></a>            case LG_CustomMissionMenu:
+<a name="455"></a>                <span class="source_comment">//Go to PlanningCustom Mission
+</span><a name="456"></a>                Root.ChangeCurrentWidget(CustomMissionWidgetID);
+<a name="457"></a>                break;
+<a name="458"></a>            case LG_RetryPlanningCampaign:
+<a name="459"></a>                Root.ChangeCurrentWidget(RetryCampaignPlanningID);           
+<a name="460"></a>                break;         
+<a name="461"></a>            case LG_QuitGame:
+<a name="462"></a>                Root.ChangeCurrentWidget(MenuQuitID);
+<a name="463"></a>                break;   
+<a name="464"></a>            case LG_MultiPlayerError:
+<a name="465"></a>                <span class="source_type">class</span><span class="source_name">'Actor'</span>.static.GarbageCollect();
+<a name="466"></a><span class="source_comment">//                if ( m_bStartedByGSClient )
+</span><a name="467"></a><span class="source_comment">//                    Root.ChangeCurrentWidget(MultiPlayerErrorUbiCom);
+</span><a name="468"></a><span class="source_comment">//                else
+</span><a name="469"></a>                    Root.ChangeCurrentWidget(MultiPlayerError);
+<a name="470"></a>                break;   
+<a name="471"></a>            }            
+<a name="472"></a>        
+<a name="473"></a>        }
+<a name="474"></a>        
+<a name="475"></a>        if( (bLaunchWasCalled==true) && (m_bSkipAFrameAndStart == false))
+<a name="476"></a>        {            
+<a name="477"></a>            <span class="source_comment">//This will advise the renderer  to switch to ingame res
+</span><a name="478"></a>            if ( bResetLevel )
+<a name="479"></a>            {
+<a name="480"></a>               ViewportOwner.<span class="source_type"><a href="../engine/actor.html" class="source">Actor</a></span>.<span class="source_type">Level</span>.SetBankSound(BANK_UnloadGun);
+<a name="481"></a>               <span class="source_type"><a href="../r6game/r6gameinfo.html" class="source">R6GameInfo</a></span>(ViewportOwner.<span class="source_type"><a href="../engine/actor.html" class="source">Actor</a></span>.<span class="source_type">Level</span>.Game).RestartGameMgr();
+<a name="482"></a>               StartR6Game( bResetLevel );
+<a name="483"></a>               Root.ChangeCurrentWidget(WidgetID_None);
+<a name="484"></a>               bResetLevel = false;
+<a name="485"></a>            }
+<a name="486"></a>            else
+<a name="487"></a>            {
+<a name="488"></a>                StartR6Game( bResetLevel );
+<a name="489"></a>            }
+<a name="490"></a>            
+<a name="491"></a>            bLaunchWasCalled=false;
+<a name="492"></a>
+<a name="493"></a>        }
+<a name="494"></a>        else
+<a name="495"></a>        {
+<a name="496"></a>            m_bSkipAFrameAndStart = false;
+<a name="497"></a>            if(Root != None)
+<a name="498"></a>			    Root.bUWindowActive = True;
+<a name="499"></a>		    RenderUWindow( <span class="source_type"><a href="../engine/canvas.html" class="source">Canvas</a></span> );            
+<a name="500"></a>                   
+<a name="501"></a>        }
+<a name="502"></a>	}
+<a name="503"></a>
+<a name="504"></a>    function <span class="source_type">bool</span> KeyEvent( <span class="source_type"><a href="../engine/interactions.html#EInputKey" class="source">EInputKey</a></span> eKey, <span class="source_type"><a href="../engine/interactions.html#EInputAction" class="source">EInputAction</a></span> <span class="source_type">eAction</span>, <span class="source_type">FLOAT</span> <span class="source_type">fDelta</span> )
+<a name="505"></a>    {
+<a name="506"></a>        local <span class="source_type">byte</span> k;
+<a name="507"></a>        k = eKey;        
+<a name="508"></a>        
+<a name="509"></a>        if(bShowLog)log(<span class="source_string">"R6Console state Uwindow KeyEvent eAction"</span>@<span class="source_type">eAction</span>@<span class="source_string">"Key"</span>@eKey);
+<a name="510"></a>        switch(<span class="source_type">eAction</span>)
+<a name="511"></a>        {
+<a name="512"></a>		case IST_Release:
+<a name="513"></a>			switch (eKey)
+<a name="514"></a>			{
+<a name="515"></a>			case <span class="source_type"><a href="../engine/interactions.html#EInputKey" class="source">EInputKey</a></span>.IK_LeftMouse:                
+<a name="516"></a>				if(Root != None) 
+<a name="517"></a>					Root.WindowEvent(WM_LMouseUp, None, MouseX, <span class="source_type">MouseY</span>, k);
+<a name="518"></a>				return true;
+<a name="519"></a>			case <span class="source_type"><a href="../engine/interactions.html#EInputKey" class="source">EInputKey</a></span>.IK_RightMouse:                
+<a name="520"></a>				if(Root != None)
+<a name="521"></a>					Root.WindowEvent(WM_RMouseUp, None, MouseX, <span class="source_type">MouseY</span>, k);
+<a name="522"></a>				return true;
+<a name="523"></a>			case <span class="source_type"><a href="../engine/interactions.html#EInputKey" class="source">EInputKey</a></span>.IK_MiddleMouse:                
+<a name="524"></a>				if(Root != None)
+<a name="525"></a>					Root.WindowEvent(WM_MMouseUp, None, MouseX, <span class="source_type">MouseY</span>, k);
+<a name="526"></a>				return true;
+<a name="527"></a>			default:                
+<a name="528"></a>				if(Root != None)
+<a name="529"></a>					Root.WindowEvent(WM_KeyUp, None, MouseX, <span class="source_type">MouseY</span>, k);
+<a name="530"></a>
+<a name="531"></a>                if (ViewportOwner.<span class="source_type"><a href="../engine/actor.html" class="source">Actor</a></span>.InPlanningMode())
+<a name="532"></a>				{
+<a name="533"></a>    				return false;
+<a name="534"></a>				}
+<a name="535"></a>                else
+<a name="536"></a>				{
+<a name="537"></a>					if (Root !=None)
+<a name="538"></a>	                    return Root.TrapKey( false);
+<a name="539"></a>					else
+<a name="540"></a>						return true;
+<a name="541"></a>				}
+<a name="542"></a>				break;
+<a name="543"></a>			}
+<a name="544"></a>			break;
+<a name="545"></a>        case IST_Press:            
+<a name="546"></a>            if (k == ViewportOwner.<span class="source_type"><a href="../engine/actor.html" class="source">Actor</a></span>.GetKey(<span class="source_string">"Console"</span>))
+<a name="547"></a>            {
+<a name="548"></a>                if (bLocked)
+<a name="549"></a>                    return true;
+<a name="550"></a>
+<a name="551"></a>                <span class="source_type">Type</span>();
+<a name="552"></a>                return true;
+<a name="553"></a>            }
+<a name="554"></a>            
+<a name="555"></a>            switch(k)
+<a name="556"></a>            {
+<a name="557"></a><span class="source_comment">//				case EInputKey.IK_Escape:
+</span><a name="558"></a><span class="source_comment">//                    //Don't quit the menu, allow un-pause and quitting the console
+</span><a name="559"></a><span class="source_comment">//                   if( bPauseKeyActive )
+</span><a name="560"></a><span class="source_comment">//                   {
+</span><a name="561"></a><span class="source_comment">//                        CloseUWindow();
+</span><a name="562"></a><span class="source_comment">//                    }
+</span><a name="563"></a><span class="source_comment">//                    return true;				
+</span><a name="564"></a>			case <span class="source_type"><a href="../engine/interactions.html#EInputKey" class="source">EInputKey</a></span>.IK_LeftMouse:                
+<a name="565"></a>				if(Root != None)                    
+<a name="566"></a>					Root.WindowEvent(WM_LMouseDown, None, MouseX, <span class="source_type">MouseY</span>, k);                                            
+<a name="567"></a>				return true;
+<a name="568"></a>			case <span class="source_type"><a href="../engine/interactions.html#EInputKey" class="source">EInputKey</a></span>.IK_RightMouse:                
+<a name="569"></a>				if(Root != None)
+<a name="570"></a>					Root.WindowEvent(WM_RMouseDown, None, MouseX, <span class="source_type">MouseY</span>, k);
+<a name="571"></a>				return true;
+<a name="572"></a>			case <span class="source_type"><a href="../engine/interactions.html#EInputKey" class="source">EInputKey</a></span>.IK_MiddleMouse:                
+<a name="573"></a>				if(Root != None)
+<a name="574"></a>					Root.WindowEvent(WM_MMouseDown, None, MouseX, <span class="source_type">MouseY</span>, k);
+<a name="575"></a>				return true;
+<a name="576"></a>			case <span class="source_type"><a href="../engine/interactions.html#EInputKey" class="source">EInputKey</a></span>.IK_MouseWheelDown:                
+<a name="577"></a>				if(Root != None)
+<a name="578"></a>					Root.WindowEvent(WM_MouseWheelDown, None, MouseX, <span class="source_type">MouseY</span>, k);
+<a name="579"></a>				return true;
+<a name="580"></a>			case <span class="source_type"><a href="../engine/interactions.html#EInputKey" class="source">EInputKey</a></span>.IK_MouseWheelUp:                
+<a name="581"></a>				if(Root != None)
+<a name="582"></a>					Root.WindowEvent(WM_MouseWheelUp, None, MouseX, <span class="source_type">MouseY</span>, k);
+<a name="583"></a>				return true;
+<a name="584"></a>			default:                
+<a name="585"></a>				if(Root != None)
+<a name="586"></a>					Root.WindowEvent(WM_KeyDown, None, MouseX, <span class="source_type">MouseY</span>, k);
+<a name="587"></a>
+<a name="588"></a>                if (ViewportOwner.<span class="source_type"><a href="../engine/actor.html" class="source">Actor</a></span>.InPlanningMode())
+<a name="589"></a>				{
+<a name="590"></a>    				return false;
+<a name="591"></a>				}
+<a name="592"></a>                else
+<a name="593"></a>				{
+<a name="594"></a>					if (Root !=None)
+<a name="595"></a>	                    return Root.TrapKey( false);
+<a name="596"></a>					else
+<a name="597"></a>						return true;
+<a name="598"></a>				}
+<a name="599"></a>				break;
+<a name="600"></a>			}
+<a name="601"></a>			break;
+<a name="602"></a>		case IST_Axis:            
+<a name="603"></a>            switch (k)
+<a name="604"></a>		    {                
+<a name="605"></a>		    case <span class="source_type"><a href="../engine/interactions.html#EInputKey" class="source">EInputKey</a></span>.IK_MouseX:
+<a name="606"></a>			    MouseX = MouseX + (MouseScale * <span class="source_type">fDelta</span>);
+<a name="607"></a>			    break;
+<a name="608"></a>		    case <span class="source_type"><a href="../engine/interactions.html#EInputKey" class="source">EInputKey</a></span>.IK_MouseY:
+<a name="609"></a>			    <span class="source_type">MouseY</span> = <span class="source_type">MouseY</span> - (MouseScale * <span class="source_type">fDelta</span>);
+<a name="610"></a>			    break;					
+<a name="611"></a>		    }
+<a name="612"></a>            break;
+<a name="613"></a>		default:            
+<a name="614"></a>			break;
+<a name="615"></a>        }
+<a name="616"></a>
+<a name="617"></a>        if (ViewportOwner.<span class="source_type"><a href="../engine/actor.html" class="source">Actor</a></span>.InPlanningMode())
+<a name="618"></a>		{
+<a name="619"></a>    		return false;
+<a name="620"></a>		}
+<a name="621"></a>        else
+<a name="622"></a>		{
+<a name="623"></a>			if (Root !=None)
+<a name="624"></a>	            return Root.TrapKey( true);
+<a name="625"></a>			else
+<a name="626"></a>				return true; <span class="source_comment">// Trap all keys
+</span><a name="627"></a>		}
+<a name="628"></a>
+<a name="629"></a>    }
+<a name="630"></a>    
+<a name="631"></a>}
+<a name="632"></a>
+<a name="633"></a>
+<a name="634"></a>state Typing
+<a name="635"></a>{
+<a name="636"></a>    function PostRender( <span class="source_type"><a href="../engine/canvas.html" class="source">canvas</a></span> <span class="source_type"><a href="../engine/canvas.html" class="source">Canvas</a></span> )
+<a name="637"></a>	{     
+<a name="638"></a>        if(Root != None)
+<a name="639"></a>			Root.bUWindowActive = True;        
+<a name="640"></a>		RenderUWindow( <span class="source_type"><a href="../engine/canvas.html" class="source">Canvas</a></span> );            
+<a name="641"></a>        Super.PostRender(<span class="source_type"><a href="../engine/canvas.html" class="source">Canvas</a></span>);
+<a name="642"></a>	}
+<a name="643"></a>
+<a name="644"></a>    function <span class="source_type">bool</span> KeyEvent( <span class="source_type"><a href="../engine/interactions.html#EInputKey" class="source">EInputKey</a></span> <span class="source_type">Key</span>, <span class="source_type"><a href="../engine/interactions.html#EInputAction" class="source">EInputAction</a></span> Action, <span class="source_type">FLOAT</span> <span class="source_type">Delta</span> )
+<a name="645"></a>	{        
+<a name="646"></a>		local <span class="source_type">string</span> Temp;
+<a name="647"></a>        local <span class="source_type">string</span> FileName;
+<a name="648"></a>		local <span class="source_type">int</span> <span class="source_type">i</span>;
+<a name="649"></a>
+<a name="650"></a>	    if(bShowLog)log(<span class="source_string">"R6Console state Typing KeyEvent Action"</span>@Action@<span class="source_string">"Key"</span>@<span class="source_type">Key</span>);
+<a name="651"></a>
+<a name="652"></a>		if (Action== IST_Press)
+<a name="653"></a>		{
+<a name="654"></a>			bIgnoreKeys=false;
+<a name="655"></a>		}
+<a name="656"></a>
+<a name="657"></a>        if((Action == IST_Press) && (<span class="source_type">Key</span> == ViewportOwner.<span class="source_type"><a href="../engine/actor.html" class="source">Actor</a></span>.GetKey(<span class="source_string">"Console"</span>)))
+<a name="658"></a>        {
+<a name="659"></a>            GotoState(ConsoleState);
+<a name="660"></a>            return true;
+<a name="661"></a>        }
+<a name="662"></a>
+<a name="663"></a>		if( <span class="source_type">Key</span>==IK_Escape )
+<a name="664"></a>		{
+<a name="665"></a>			if( TypedStr!=<span class="source_string">""</span> )
+<a name="666"></a>			{
+<a name="667"></a>				TypedStr=<span class="source_string">""</span>;
+<a name="668"></a>				HistoryCur = HistoryTop;				
+<a name="669"></a>			}
+<a name="670"></a>			else
+<a name="671"></a>			{
+<a name="672"></a>				GotoState(ConsoleState);
+<a name="673"></a>			}            
+<a name="674"></a>		}		
+<a name="675"></a>		else if( <span class="source_type">Key</span>==IK_Enter && Action== IST_Release)
+<a name="676"></a>		{
+<a name="677"></a>			if( TypedStr!=<span class="source_string">""</span> )
+<a name="678"></a>			{
+<a name="679"></a>                if (Caps(Left(TypedStr, <span class="source_type">Len</span>(<span class="source_string">"WRITESERVER"</span>))) == <span class="source_string">"WRITESERVER"</span>)
+<a name="680"></a>                {
+<a name="681"></a>                    FileName = right(TypedStr, <span class="source_type">Len</span>(TypedStr)-<span class="source_type">Len</span>(<span class="source_string">"WRITESERVER "</span>));
+<a name="682"></a>                    if (Root.m_eCurWidgetInUse == Root.<span class="source_type"><a href="../uwindow/uwindowrootwindow.html#eGameWidgetID" class="source">eGameWidgetID</a></span>.MPCreateGameWidgetID)
+<a name="683"></a>                    {
+<a name="684"></a>                        Root.SetServerOptions();
+<a name="685"></a>                        <span class="source_type">class</span><span class="source_name">'Actor'</span>.static.SaveServerOptions(FileName);
+<a name="686"></a>                        
+<a name="687"></a>                        Message(Localize(<span class="source_string">"Errors"</span>,<span class="source_string">"LoadSuccessful"</span>,<span class="source_string">"R6Engine"</span>), <span class="source_int">6.0</span>);
+<a name="688"></a>                        GotoState(ConsoleState);
+<a name="689"></a>                        return true;
+<a name="690"></a>                    }
+<a name="691"></a>                }
+<a name="692"></a>
+<a name="693"></a>                <span class="source_comment">// Hack
+</span><a name="694"></a>                if(Caps(Left(TypedStr, <span class="source_type">Len</span>(<span class="source_string">"SHOT"</span>))) != <span class="source_string">"SHOT"</span>)
+<a name="695"></a>    				Message( TypedStr, <span class="source_int">6.0</span> );<span class="source_comment">// Print to console.
+</span><a name="696"></a>
+<a name="697"></a>				History[HistoryTop] = TypedStr;
+<a name="698"></a>				HistoryTop = (HistoryTop+<span class="source_int">1</span>) % MaxHistory;
+<a name="699"></a>				
+<a name="700"></a>				if ( ( HistoryBot == -<span class="source_int">1</span>) || ( HistoryBot == HistoryTop ) )
+<a name="701"></a>					HistoryBot = (HistoryBot+<span class="source_int">1</span>) % MaxHistory;
+<a name="702"></a>
+<a name="703"></a>				HistoryCur = HistoryTop;
+<a name="704"></a>
+<a name="705"></a>				<span class="source_comment">// Make a local copy of the string.
+</span><a name="706"></a>				Temp=TypedStr;
+<a name="707"></a>				TypedStr=<span class="source_string">""</span>;
+<a name="708"></a>				
+<a name="709"></a>				if( !ConsoleCommand( Temp ) )
+<a name="710"></a>					Message( Localize(<span class="source_string">"Errors"</span>,<span class="source_string">"Exec"</span>,<span class="source_string">"R6Engine"</span>), <span class="source_int">6.0</span> );
+<a name="711"></a>					
+<a name="712"></a>				Message( <span class="source_string">""</span>, <span class="source_int">6.0</span> );
+<a name="713"></a>
+<a name="714"></a>                <span class="source_comment">// Hack
+</span><a name="715"></a>                if(Caps(Left(Temp, <span class="source_type">Len</span>(<span class="source_string">"SHOT"</span>))) == <span class="source_string">"SHOT"</span>)
+<a name="716"></a>                    GotoState(ConsoleState);
+<a name="717"></a>                else if(!bShowConsoleLog)
+<a name="718"></a>                    GotoState(ConsoleState);
+<a name="719"></a>			}
+<a name="720"></a>			else
+<a name="721"></a>				GotoState(ConsoleState);
+<a name="722"></a>			
+<a name="723"></a>		}
+<a name="724"></a>        else if (Action== IST_Release)
+<a name="725"></a>		{
+<a name="726"></a>			return true;
+<a name="727"></a>		}
+<a name="728"></a>		else if( <span class="source_type">Key</span>==IK_Up )
+<a name="729"></a>		{
+<a name="730"></a>			if ( HistoryBot &gt;= <span class="source_int">0</span> )
+<a name="731"></a>			{
+<a name="732"></a>				if (HistoryCur == HistoryBot)
+<a name="733"></a>					HistoryCur = HistoryTop;
+<a name="734"></a>				else
+<a name="735"></a>				{
+<a name="736"></a>					HistoryCur--;
+<a name="737"></a>					if (HistoryCur&lt;<span class="source_int">0</span>)
+<a name="738"></a>						HistoryCur = MaxHistory-<span class="source_int">1</span>;
+<a name="739"></a>				}
+<a name="740"></a>				
+<a name="741"></a>				TypedStr = History[HistoryCur];
+<a name="742"></a>			}			
+<a name="743"></a>		}
+<a name="744"></a>		else if( <span class="source_type">Key</span>==IK_Down )
+<a name="745"></a>		{
+<a name="746"></a>			if ( HistoryBot &gt;= <span class="source_int">0</span> )
+<a name="747"></a>			{
+<a name="748"></a>				if (HistoryCur == HistoryTop)
+<a name="749"></a>					HistoryCur = HistoryBot;
+<a name="750"></a>				else
+<a name="751"></a>					HistoryCur = (HistoryCur+<span class="source_int">1</span>) % MaxHistory;
+<a name="752"></a>					
+<a name="753"></a>				TypedStr = History[HistoryCur];
+<a name="754"></a>			}			            
+<a name="755"></a>		}
+<a name="756"></a>		else if( <span class="source_type">Key</span>==IK_Backspace || <span class="source_type">Key</span>==IK_Left )
+<a name="757"></a>		{
+<a name="758"></a>            m_bStringIsTooLong = false;
+<a name="759"></a>
+<a name="760"></a>			if( <span class="source_type">Len</span>(TypedStr)&gt;<span class="source_int">0</span> )
+<a name="761"></a>				TypedStr = Left(TypedStr,<span class="source_type">Len</span>(TypedStr)-<span class="source_int">1</span>);			
+<a name="762"></a>		}
+<a name="763"></a>	
+<a name="764"></a>        return true;
+<a name="765"></a>	}    
+<a name="766"></a>    
+<a name="767"></a>}
+<a name="768"></a>
+<a name="769"></a>state Game
+<a name="770"></a>{
+<a name="771"></a>    function BeginState()
+<a name="772"></a>    {
+<a name="773"></a>        if(bShowLog)log(<span class="source_string">"R6Console  Game::BeginState"</span>);
+<a name="774"></a>        bCancelFire = true;
+<a name="775"></a>        ConsoleState = GetStateName();
+<a name="776"></a>    }
+<a name="777"></a>
+<a name="778"></a><span class="source_comment">/*
+<a name="779"></a>    event Tick( float Delta )
+<a name="780"></a>	{        
+<a name="781"></a>		Global.Tick(Delta);
+<a name="782"></a>		if(Root != None)
+<a name="783"></a>			Root.DoTick(Delta);     
+<a name="784"></a>	}
+<a name="785"></a>*/</span>
+<a name="786"></a>
+<a name="787"></a>    function PostRender( <span class="source_type"><a href="../engine/canvas.html" class="source">canvas</a></span> <span class="source_type"><a href="../engine/canvas.html" class="source">Canvas</a></span> )
+<a name="788"></a>    {        
+<a name="789"></a>        if(Root != None)
+<a name="790"></a>        {
+<a name="791"></a>            Root.bUWindowActive = True;	     
+<a name="792"></a>            RenderUWindow( <span class="source_type"><a href="../engine/canvas.html" class="source">Canvas</a></span> );            
+<a name="793"></a>        }
+<a name="794"></a>     
+<a name="795"></a>    }
+<a name="796"></a>
+<a name="797"></a>    function EndState()
+<a name="798"></a>    {
+<a name="799"></a>        if(bShowLog)log(<span class="source_string">"R6Console  Game::EndState"</span>);
+<a name="800"></a>        
+<a name="801"></a>        if(ViewportOwner.<span class="source_type"><a href="../engine/actor.html" class="source">Actor</a></span> != none)
+<a name="802"></a>        {
+<a name="803"></a>            if(<span class="source_type"><a href="../r6engine/r6playercontroller.html" class="source">R6PlayerController</a></span>(ViewportOwner.<span class="source_type"><a href="../engine/actor.html" class="source">Actor</a></span>) != none)  
+<a name="804"></a>            {
+<a name="805"></a>                if(bCancelFire == true)
+<a name="806"></a>                    <span class="source_type"><a href="../r6engine/r6playercontroller.html" class="source">R6PlayerController</a></span>(ViewportOwner.<span class="source_type"><a href="../engine/actor.html" class="source">Actor</a></span>).bFire = <span class="source_int">0</span>;
+<a name="807"></a>            }
+<a name="808"></a>
+<a name="809"></a>            if(ViewportOwner.<span class="source_type"><a href="../engine/actor.html" class="source">Actor</a></span>.<span class="source_type">Level</span> != none)
+<a name="810"></a>            {
+<a name="811"></a>                ViewportOwner.<span class="source_type"><a href="../engine/actor.html" class="source">Actor</a></span>.<span class="source_type">Level</span>.m_bInGamePlanningZoomingIn = false;
+<a name="812"></a>                ViewportOwner.<span class="source_type"><a href="../engine/actor.html" class="source">Actor</a></span>.<span class="source_type">Level</span>.m_bInGamePlanningZoomingOut = false;
+<a name="813"></a>            }            
+<a name="814"></a>             
+<a name="815"></a>        }       
+<a name="816"></a>    }
+<a name="817"></a>    
+<a name="818"></a>    function <span class="source_type">bool</span> KeyEvent(<span class="source_type"><a href="../engine/interactions.html#EInputKey" class="source">EInputKey</a></span> eKey, <span class="source_type"><a href="../engine/interactions.html#EInputAction" class="source">EInputAction</a></span> <span class="source_type">eAction</span>, <span class="source_type">FLOAT</span> <span class="source_type">fDelta</span>)
+<a name="819"></a>    {
+<a name="820"></a>        local <span class="source_type">byte</span> k;
+<a name="821"></a>        local <span class="source_type">INT</span>  <span class="source_type">i</span>;
+<a name="822"></a>
+<a name="823"></a>        k = eKey;   
+<a name="824"></a>        <span class="source_comment">// Make sure that user is not typing in the console
+</span><a name="825"></a>        if(bShowLog)log(<span class="source_string">"R6Console state Game KeyEvent eAction"</span>@<span class="source_type">eAction</span>@<span class="source_string">"Key"</span>@eKey);
+<a name="826"></a>
+<a name="827"></a>        if(!<span class="source_type">bTyping</span>)
+<a name="828"></a>        {
+<a name="829"></a>            <span class="source_comment">//=================================================================================================================================
+</span><a name="830"></a>            <span class="source_comment">// In-game planning input handler, not in observer mode
+</span><a name="831"></a>            <span class="source_comment">//=================================================================================================================================
+</span><a name="832"></a>            if(ViewportOwner.<span class="source_type"><a href="../engine/actor.html" class="source">Actor</a></span> != none && !ViewportOwner.<span class="source_type"><a href="../engine/actor.html" class="source">Actor</a></span>.IsInState(<span class="source_name">'Dead'</span>))
+<a name="833"></a>            {
+<a name="834"></a>                switch(<span class="source_type">eAction</span>)
+<a name="835"></a>                {
+<a name="836"></a>		        case IST_Release:                    
+<a name="837"></a>                    if (k == ViewportOwner.<span class="source_type"><a href="../engine/actor.html" class="source">Actor</a></span>.GetKey(<span class="source_string">"ToggleMap"</span>))
+<a name="838"></a>                    {                        
+<a name="839"></a>                        m_bInGamePlanningKeyDown = false;
+<a name="840"></a>                        return true;
+<a name="841"></a>                    }
+<a name="842"></a>                    else if (k == ViewportOwner.<span class="source_type"><a href="../engine/actor.html" class="source">Actor</a></span>.GetKey(<span class="source_string">"MapZoomIn"</span>))
+<a name="843"></a>                    {                     
+<a name="844"></a>                        if(ViewportOwner.<span class="source_type"><a href="../engine/actor.html" class="source">Actor</a></span>.<span class="source_type">Level</span>.m_bInGamePlanningActive)
+<a name="845"></a>                        {
+<a name="846"></a>                            ViewportOwner.<span class="source_type"><a href="../engine/actor.html" class="source">Actor</a></span>.<span class="source_type">Level</span>.m_bInGamePlanningZoomingIn = false;
+<a name="847"></a>                            return true;
+<a name="848"></a>                        }
+<a name="849"></a>                    }
+<a name="850"></a>                    else if (k == ViewportOwner.<span class="source_type"><a href="../engine/actor.html" class="source">Actor</a></span>.GetKey(<span class="source_string">"MapZoomOut"</span>))
+<a name="851"></a>                    {                     
+<a name="852"></a>                        if(ViewportOwner.<span class="source_type"><a href="../engine/actor.html" class="source">Actor</a></span>.<span class="source_type">Level</span>.m_bInGamePlanningActive)
+<a name="853"></a>                        {
+<a name="854"></a>                            ViewportOwner.<span class="source_type"><a href="../engine/actor.html" class="source">Actor</a></span>.<span class="source_type">Level</span>.m_bInGamePlanningZoomingOut = false;
+<a name="855"></a>                            return true;
+<a name="856"></a>                        }
+<a name="857"></a>                    }
+<a name="858"></a>			        break;
+<a name="859"></a>                case IST_Press:                                
+<a name="860"></a>                    if (k == ViewportOwner.<span class="source_type"><a href="../engine/actor.html" class="source">Actor</a></span>.GetKey(<span class="source_string">"ToggleMap"</span>))
+<a name="861"></a>                    {                        
+<a name="862"></a>                        if(ViewportOwner.<span class="source_type"><a href="../engine/actor.html" class="source">Actor</a></span>.<span class="source_type">Level</span>.m_bInGamePlanningActive == false)
+<a name="863"></a>                        {
+<a name="864"></a>                            ViewportOwner.<span class="source_type"><a href="../engine/actor.html" class="source">Actor</a></span>.<span class="source_type">Level</span>.m_bInGamePlanningActive = true;
+<a name="865"></a>                            ViewportOwner.<span class="source_type"><a href="../engine/actor.html" class="source">Actor</a></span>.<span class="source_type">Level</span>.m_bInGamePlanningZoomingIn = false;
+<a name="866"></a>                            ViewportOwner.<span class="source_type"><a href="../engine/actor.html" class="source">Actor</a></span>.<span class="source_type">Level</span>.m_bInGamePlanningZoomingOut = false;
+<a name="867"></a>                            m_bInGamePlanningKeyDown = true;
+<a name="868"></a>                            return true;
+<a name="869"></a>                        }
+<a name="870"></a>                        else if(m_bInGamePlanningKeyDown == false)
+<a name="871"></a>                        {
+<a name="872"></a>                            ViewportOwner.<span class="source_type"><a href="../engine/actor.html" class="source">Actor</a></span>.<span class="source_type">Level</span>.m_bInGamePlanningActive = false;
+<a name="873"></a>                            ViewportOwner.<span class="source_type"><a href="../engine/actor.html" class="source">Actor</a></span>.<span class="source_type">Level</span>.m_bInGamePlanningZoomingIn = false;
+<a name="874"></a>                            ViewportOwner.<span class="source_type"><a href="../engine/actor.html" class="source">Actor</a></span>.<span class="source_type">Level</span>.m_bInGamePlanningZoomingOut = false;
+<a name="875"></a>                            return true;
+<a name="876"></a>                        }
+<a name="877"></a>                    }
+<a name="878"></a>                    else if (k == ViewportOwner.<span class="source_type"><a href="../engine/actor.html" class="source">Actor</a></span>.GetKey(<span class="source_string">"MapZoomIn"</span>))
+<a name="879"></a>                    {                        
+<a name="880"></a>                        if(ViewportOwner.<span class="source_type"><a href="../engine/actor.html" class="source">Actor</a></span>.<span class="source_type">Level</span>.m_bInGamePlanningActive)
+<a name="881"></a>                        {
+<a name="882"></a>                            ViewportOwner.<span class="source_type"><a href="../engine/actor.html" class="source">Actor</a></span>.<span class="source_type">Level</span>.m_bInGamePlanningZoomingIn = true;
+<a name="883"></a>                            return true;
+<a name="884"></a>                        }
+<a name="885"></a>                    }
+<a name="886"></a>                    else if (k == ViewportOwner.<span class="source_type"><a href="../engine/actor.html" class="source">Actor</a></span>.GetKey(<span class="source_string">"MapZoomOut"</span>))
+<a name="887"></a>                    {                     
+<a name="888"></a>                        if(ViewportOwner.<span class="source_type"><a href="../engine/actor.html" class="source">Actor</a></span>.<span class="source_type">Level</span>.m_bInGamePlanningActive)
+<a name="889"></a>                        {
+<a name="890"></a>                            ViewportOwner.<span class="source_type"><a href="../engine/actor.html" class="source">Actor</a></span>.<span class="source_type">Level</span>.m_bInGamePlanningZoomingOut = true;
+<a name="891"></a>                            return true;
+<a name="892"></a>                        }
+<a name="893"></a>                    }
+<a name="894"></a>			        break;
+<a name="895"></a>		        }
+<a name="896"></a>            }
+<a name="897"></a>
+<a name="898"></a>            <span class="source_comment">//=================================================================================================================================
+</span><a name="899"></a>            <span class="source_comment">// Normal input handler
+</span><a name="900"></a>            <span class="source_comment">//=================================================================================================================================
+</span><a name="901"></a>            switch(<span class="source_type">eAction</span>)
+<a name="902"></a>            {
+<a name="903"></a>		    case IST_Release:                
+<a name="904"></a>                if (k == ViewportOwner.<span class="source_type"><a href="../engine/actor.html" class="source">Actor</a></span>.GetKey(<span class="source_string">"ShowCompleteHUD"</span>))
+<a name="905"></a>                {
+<a name="906"></a>                    <span class="source_type"><a href="../r6engine/r6playercontroller.html" class="source">R6PlayerController</a></span>(ViewportOwner.<span class="source_type"><a href="../engine/actor.html" class="source">Actor</a></span>).m_bShowCompleteHUD = false;
+<a name="907"></a>                    return true;
+<a name="908"></a>                }
+<a name="909"></a>
+<a name="910"></a>			    switch (k)
+<a name="911"></a>			    {
+<a name="912"></a>			    case <span class="source_type"><a href="../engine/interactions.html#EInputKey" class="source">EInputKey</a></span>.IK_LeftMouse:                    
+<a name="913"></a>				    if(Root != None) 
+<a name="914"></a>					    Root.WindowEvent(WM_LMouseUp, None, MouseX, <span class="source_type">MouseY</span>, k);
+<a name="915"></a>				    break;
+<a name="916"></a>			    case <span class="source_type"><a href="../engine/interactions.html#EInputKey" class="source">EInputKey</a></span>.IK_RightMouse:                    
+<a name="917"></a>				    if(Root != None)
+<a name="918"></a>					    Root.WindowEvent(WM_RMouseUp, None, MouseX, <span class="source_type">MouseY</span>, k);
+<a name="919"></a>				    break;
+<a name="920"></a>			    case <span class="source_type"><a href="../engine/interactions.html#EInputKey" class="source">EInputKey</a></span>.IK_MiddleMouse:                    
+<a name="921"></a>				    if(Root != None)
+<a name="922"></a>					    Root.WindowEvent(WM_MMouseUp, None, MouseX, <span class="source_type">MouseY</span>, k);
+<a name="923"></a>				    break;
+<a name="924"></a>			    default:                                    
+<a name="925"></a>				    if(Root != None)
+<a name="926"></a>					    Root.WindowEvent(WM_KeyUp, None, MouseX, <span class="source_type">MouseY</span>, k);
+<a name="927"></a>				    break;
+<a name="928"></a>			    }
+<a name="929"></a>			    break;                
+<a name="930"></a>            case IST_Press:                            
+<a name="931"></a>                if (k == ViewportOwner.<span class="source_type"><a href="../engine/actor.html" class="source">Actor</a></span>.GetKey(<span class="source_string">"Console"</span>))
+<a name="932"></a>                {
+<a name="933"></a>                    <span class="source_type">Type</span>();
+<a name="934"></a>				    return true;
+<a name="935"></a>                }
+<a name="936"></a>                else if (k == ViewportOwner.<span class="source_type"><a href="../engine/actor.html" class="source">Actor</a></span>.GetKey(<span class="source_string">"ShowCompleteHUD"</span>))
+<a name="937"></a>                {                 
+<a name="938"></a>                    <span class="source_type"><a href="../r6engine/r6playercontroller.html" class="source">R6PlayerController</a></span>(ViewportOwner.<span class="source_type"><a href="../engine/actor.html" class="source">Actor</a></span>).m_bShowCompleteHUD = true;
+<a name="939"></a>                    return true;
+<a name="940"></a>                }
+<a name="941"></a>
+<a name="942"></a>                switch(k)
+<a name="943"></a>                {
+<a name="944"></a>			    case <span class="source_type"><a href="../engine/interactions.html#EInputKey" class="source">EInputKey</a></span>.IK_LeftMouse:                                    
+<a name="945"></a>				    if(Root != None)
+<a name="946"></a>					    Root.WindowEvent(WM_LMouseDown, None, MouseX, <span class="source_type">MouseY</span>, k);
+<a name="947"></a>				    break;
+<a name="948"></a>			    case <span class="source_type"><a href="../engine/interactions.html#EInputKey" class="source">EInputKey</a></span>.IK_RightMouse:                                    
+<a name="949"></a>				    if(Root != None)
+<a name="950"></a>					    Root.WindowEvent(WM_RMouseDown, None, MouseX, <span class="source_type">MouseY</span>, k);
+<a name="951"></a>				    break;
+<a name="952"></a>			    case <span class="source_type"><a href="../engine/interactions.html#EInputKey" class="source">EInputKey</a></span>.IK_MiddleMouse:                                 
+<a name="953"></a>				    if(Root != None)
+<a name="954"></a>					    Root.WindowEvent(WM_MMouseDown, None, MouseX, <span class="source_type">MouseY</span>, k);
+<a name="955"></a>				    break;
+<a name="956"></a>			    default:                                      
+<a name="957"></a>				    if(Root != None)                    
+<a name="958"></a>					    Root.WindowEvent(WM_KeyDown, None, MouseX, <span class="source_type">MouseY</span>, k);
+<a name="959"></a>				    break;
+<a name="960"></a>			    }            
+<a name="961"></a>			    break;
+<a name="962"></a>		    case IST_Axis:
+<a name="963"></a>                switch (k)
+<a name="964"></a>			    {
+<a name="965"></a>			    case <span class="source_type"><a href="../engine/interactions.html#EInputKey" class="source">EInputKey</a></span>.IK_MouseX:
+<a name="966"></a>				    MouseX = MouseX + (MouseScale * <span class="source_type">fDelta</span>);
+<a name="967"></a>				    break;
+<a name="968"></a>			    case <span class="source_type"><a href="../engine/interactions.html#EInputKey" class="source">EInputKey</a></span>.IK_MouseY:
+<a name="969"></a>				    <span class="source_type">MouseY</span> = <span class="source_type">MouseY</span> - (MouseScale * <span class="source_type">fDelta</span>);
+<a name="970"></a>				    break;					
+<a name="971"></a>			    }
+<a name="972"></a>                break;
+<a name="973"></a>            
+<a name="974"></a>		    default:                
+<a name="975"></a>			    break;
+<a name="976"></a>		    }
+<a name="977"></a>        }
+<a name="978"></a>        
+<a name="979"></a>        return false;
+<a name="980"></a>        <span class="source_comment">//return Super.KeyEvent(eKey, eAction, fDelta);
+</span><a name="981"></a>    }
+<a name="982"></a>}
+<a name="983"></a>
+<a name="984"></a>state TrainingInstruction extends UWindowCanPlay
+<a name="985"></a>{
+<a name="986"></a>	function <span class="source_type">bool</span> KeyEvent( <span class="source_type"><a href="../engine/interactions.html#EInputKey" class="source">EInputKey</a></span> <span class="source_type">Key</span>, <span class="source_type"><a href="../engine/interactions.html#EInputAction" class="source">EInputAction</a></span> Action, <span class="source_type">FLOAT</span> <span class="source_type">Delta</span> )
+<a name="987"></a>	{
+<a name="988"></a>		local <span class="source_type">byte</span> k;
+<a name="989"></a>		k = <span class="source_type">Key</span>;
+<a name="990"></a>
+<a name="991"></a>        if(bShowLog)log(<span class="source_string">"R6Console state TrainingInstruction KeyEvent eAction"</span>@Action@<span class="source_string">"Key"</span>@<span class="source_type">Key</span>);
+<a name="992"></a>
+<a name="993"></a>        switch(Action)
+<a name="994"></a>        {
+<a name="995"></a>			case IST_Release:
+<a name="996"></a>			    if ( (k == <span class="source_type"><a href="../engine/interactions.html#EInputKey" class="source">EInputKey</a></span>.IK_Escape) || ( k == ViewportOwner.<span class="source_type"><a href="../engine/actor.html" class="source">Actor</a></span>.GetKey(<span class="source_string">"Action"</span>)))
+<a name="997"></a>				{
+<a name="998"></a>					if(Root != None)
+<a name="999"></a>						Root.WindowEvent(WM_KeyUp, None, MouseX, <span class="source_type">MouseY</span>, k);
+<a name="1000"></a>
+<a name="1001"></a>					return true;
+<a name="1002"></a>				}
+<a name="1003"></a>				break;
+<a name="1004"></a>			case IST_Press:
+<a name="1005"></a>				if (k == ViewportOwner.<span class="source_type"><a href="../engine/actor.html" class="source">Actor</a></span>.GetKey(<span class="source_string">"Console"</span>))
+<a name="1006"></a>				{
+<a name="1007"></a>					if (bLocked)
+<a name="1008"></a>						return true;
+<a name="1009"></a>
+<a name="1010"></a>					<span class="source_type">Type</span>();
+<a name="1011"></a>					return true;
+<a name="1012"></a>				}
+<a name="1013"></a>
+<a name="1014"></a>				if( k == ViewportOwner.<span class="source_type"><a href="../engine/actor.html" class="source">Actor</a></span>.GetKey(<span class="source_string">"Action"</span>))
+<a name="1015"></a>					return true;
+<a name="1016"></a>		
+<a name="1017"></a>				if(Root != None)
+<a name="1018"></a>					Root.WindowEvent(WM_KeyDown, None, MouseX, <span class="source_type">MouseY</span>, k);
+<a name="1019"></a>				break;
+<a name="1020"></a>			default:
+<a name="1021"></a>				break;
+<a name="1022"></a>        }
+<a name="1023"></a>
+<a name="1024"></a>		<span class="source_comment">//Root.WindowEvent(WM_KeyDown, None, MouseX, MouseY, k);
+</span><a name="1025"></a>		return false;
+<a name="1026"></a>	}
+<a name="1027"></a>}
+<a name="1028"></a>
+<a name="1029"></a>function LaunchInstructionMenu(<span class="source_type"><a href="../r6game/r6instructionsoundvolume.html" class="source">R6InstructionSoundVolume</a></span> pISV, <span class="source_type">BOOL</span> <span class="source_type">bShow</span>, <span class="source_type">INT</span> iBox, <span class="source_type">INT</span> iParagraph)
+<a name="1030"></a>{
+<a name="1031"></a>    Root.ChangeInstructionWidget(pISV, <span class="source_type">bShow</span>, iBox, iParagraph);
+<a name="1032"></a>}
+<a name="1033"></a>
+<a name="1034"></a>event LaunchR6MainMenu()
+<a name="1035"></a>{
+<a name="1036"></a>	local <span class="source_type"><a href="../uwindow/uwindowmenuclassdefines.html" class="source">UWindowMenuClassDefines</a></span> pMenuDefGSServers;
+<a name="1037"></a>    local <span class="source_type">INT</span> <span class="source_type">i</span>;
+<a name="1038"></a>    
+<a name="1039"></a>    if(bShowLog)log(<span class="source_string">"R6Console LaunchR6MainMenu"</span>);
+<a name="1040"></a>    
+<a name="1041"></a>	bVisible = true;
+<a name="1042"></a>    bUWindowActive = true;
+<a name="1043"></a>
+<a name="1044"></a>	pMenuDefGSServers = new(none) <span class="source_type">class</span><span class="source_name">'UWindowMenuClassDefines'</span>;
+<a name="1045"></a>	pMenuDefGSServers.Created();
+<a name="1046"></a>	RootWindow      = pMenuDefGSServers.RegularRoot;
+<a name="1047"></a>	
+<a name="1048"></a>    CreateRootWindow(None); 
+<a name="1049"></a>    LaunchUWindow();      
+<a name="1050"></a>}
+<a name="1051"></a>
+<a name="1052"></a>function NotifyLevelChange()
+<a name="1053"></a>{
+<a name="1054"></a>    if(bShowLog)log(<span class="source_string">"R6Console NotifyLevelChange"</span>);
+<a name="1055"></a>
+<a name="1056"></a>    Super.NotifyLevelChange();
+<a name="1057"></a>    if( <span class="source_type"><a href="../r6engine/r6playercontroller.html" class="source">R6PlayerController</a></span>(ViewportOwner.<span class="source_type"><a href="../engine/actor.html" class="source">Actor</a></span>) != None)
+<a name="1058"></a>    {
+<a name="1059"></a>        <span class="source_type"><a href="../r6engine/r6playercontroller.html" class="source">R6PlayerController</a></span>(ViewportOwner.<span class="source_type"><a href="../engine/actor.html" class="source">Actor</a></span>).ClearReferences();
+<a name="1060"></a>    }
+<a name="1061"></a>}
+<a name="1062"></a>
+<a name="1063"></a>
+<a name="1064"></a>function CleanAndChangeMod()
+<a name="1065"></a>{
+<a name="1066"></a>	m_eLastPreviousWID = Root.m_ePrevWidgetInUse;
+<a name="1067"></a>    m_GameService.InitModInfo();
+<a name="1068"></a>    m_GameService.m_ModGSInfo.InitMod();
+<a name="1069"></a>	LeaveR6Game(LG_InitMod);
+<a name="1070"></a>}
+<a name="1071"></a>
+<a name="1072"></a>function LeaveR6Game(<span class="source_type"><a href="../r6game/r6console.html#eLeaveGame" class="source">eLeaveGame</a></span> _bwhatToDo)
+<a name="1073"></a>{
+<a name="1074"></a>    local <span class="source_type"><a href="../engine/canvas.html" class="source">Canvas</a></span>    <span class="source_type">C</span>;
+<a name="1075"></a>    local <span class="source_type">BOOL</span>      bCleanUp;
+<a name="1076"></a>    local <span class="source_type"><a href="../engine/r6serverinfo.html" class="source">R6ServerInfo</a></span> ServerInfo;
+<a name="1077"></a>
+<a name="1078"></a>    
+<a name="1079"></a>    if(bShowLog)log(<span class="source_string">"R6Console LeaveR6Game"</span>);
+<a name="1080"></a>
+<a name="1081"></a>
+<a name="1082"></a>    <span class="source_comment">//Go Back to menu
+</span><a name="1083"></a>    if(bReturnToMenu)
+<a name="1084"></a>        return;
+<a name="1085"></a>
+<a name="1086"></a>    bReturnToMenu   = true;    
+<a name="1087"></a>
+<a name="1088"></a>    CleanSound(_bwhatToDo);
+<a name="1089"></a>
+<a name="1090"></a>    master.m_MenuCommunication = None;
+<a name="1091"></a>    CloseR6MainMenu(true);
+<a name="1092"></a>    LaunchR6MainMenu();
+<a name="1093"></a>
+<a name="1094"></a>    <span class="source_type">C</span> = <span class="source_type">class</span><span class="source_name">'Actor'</span>.static.GetCanvas();
+<a name="1095"></a>    <span class="source_type">C</span>.m_iNewResolutionX = <span class="source_int">640</span>;
+<a name="1096"></a>    <span class="source_type">C</span>.m_iNewResolutionY = <span class="source_int">480</span>;
+<a name="1097"></a>    <span class="source_type">C</span>.m_bChangeResRequested = true;
+<a name="1098"></a>    <span class="source_type">c</span>.m_bFading = false;
+<a name="1099"></a>    
+<a name="1100"></a>    <span class="source_comment">// clear server info references
+</span><a name="1101"></a>    ServerInfo = <span class="source_type">class</span><span class="source_name">'Actor'</span>.static.GetServerOptions();
+<a name="1102"></a>    ServerInfo.m_ServerMapList = none;
+<a name="1103"></a>    ServerInfo.m_GameInfo = none;
+<a name="1104"></a>
+<a name="1105"></a>    switch(_bwhatToDo)
+<a name="1106"></a>    {  
+<a name="1107"></a>    case LG_NextLevel: <span class="source_comment">//Go to Next Level        
+</span><a name="1108"></a>        m_eNextStep = LG_NextLevel;
+<a name="1109"></a>        CleanPlanning();
+<a name="1110"></a>        if(m_PlayerCampaign.m_bCampaignCompleted == <span class="source_int">1</span>)
+<a name="1111"></a>        {
+<a name="1112"></a>            bCleanUp = true;            
+<a name="1113"></a>        }            
+<a name="1114"></a>        break;
+<a name="1115"></a>    case LG_MultiPlayerMenu: <span class="source_comment">//Go to Multiplayer Menu        
+</span><a name="1116"></a>        m_eNextStep = LG_MultiPlayerMenu;
+<a name="1117"></a>        bCleanUp = true;
+<a name="1118"></a>        break;
+<a name="1119"></a>    case LG_RetryPlanningCustomMission: <span class="source_comment">//Go back to planning phase Custom        
+</span><a name="1120"></a>        CleanPlanning(); <span class="source_comment">//Done in gameInfo
+</span><a name="1121"></a>        master.m_StartGameInfo.m_ReloadPlanning = true;
+<a name="1122"></a>        ViewportOwner.<span class="source_type"><a href="../engine/actor.html" class="source">Actor</a></span>.SetPlanningMode(TRUE);
+<a name="1123"></a>        m_eNextStep = LG_RetryPlanningCustomMission;
+<a name="1124"></a>
+<a name="1125"></a>		if( <span class="source_type"><a href="../r6engine/r6playercontroller.html" class="source">R6PlayerController</a></span>(ViewportOwner.<span class="source_type"><a href="../engine/actor.html" class="source">Actor</a></span>) != None)
+<a name="1126"></a>		{
+<a name="1127"></a>			<span class="source_type"><a href="../r6engine/r6playercontroller.html" class="source">R6PlayerController</a></span>(ViewportOwner.<span class="source_type"><a href="../engine/actor.html" class="source">Actor</a></span>).ClearReferences();
+<a name="1128"></a>		}
+<a name="1129"></a>        break;
+<a name="1130"></a>    case LG_CustomMissionMenu:        
+<a name="1131"></a>        CleanPlanning();        
+<a name="1132"></a>        m_eNextStep = LG_CustomMissionMenu;
+<a name="1133"></a>        bCleanUp = true;
+<a name="1134"></a>        break;
+<a name="1135"></a>    case LG_RetryPlanningCampaign:     <span class="source_comment">//RETRY PLANNING IN CAMPAIGNMODE        
+</span><a name="1136"></a>        CleanPlanning();
+<a name="1137"></a>        master.m_StartGameInfo.m_ReloadPlanning = true;
+<a name="1138"></a>        ViewportOwner.<span class="source_type"><a href="../engine/actor.html" class="source">Actor</a></span>.SetPlanningMode(TRUE);
+<a name="1139"></a>        m_eNextStep = LG_RetryPlanningCampaign;        
+<a name="1140"></a>
+<a name="1141"></a>		if( <span class="source_type"><a href="../r6engine/r6playercontroller.html" class="source">R6PlayerController</a></span>(ViewportOwner.<span class="source_type"><a href="../engine/actor.html" class="source">Actor</a></span>) != None)
+<a name="1142"></a>		{
+<a name="1143"></a>			<span class="source_type"><a href="../r6engine/r6playercontroller.html" class="source">R6PlayerController</a></span>(ViewportOwner.<span class="source_type"><a href="../engine/actor.html" class="source">Actor</a></span>).ClearReferences();
+<a name="1144"></a>		}
+<a name="1145"></a>        break;
+<a name="1146"></a>    case LG_QuitGame: <span class="source_comment">//Quit game        
+</span><a name="1147"></a>         CleanPlanning();
+<a name="1148"></a>         m_eNextStep = LG_QuitGame;     
+<a name="1149"></a>         bCleanUp = true;
+<a name="1150"></a>         break;
+<a name="1151"></a>    case LG_MultiPlayerError: <span class="source_comment">//Connection Lost return to multiplayer and pop message        
+</span><a name="1152"></a>        m_eNextStep = LG_MultiPlayerError;
+<a name="1153"></a>        bCleanUp = true;
+<a name="1154"></a>        break;
+<a name="1155"></a>    case LG_Trainning:
+<a name="1156"></a>        CleanPlanning();
+<a name="1157"></a>        m_eNextStep = LG_Trainning;
+<a name="1158"></a>        bCleanUp = true;
+<a name="1159"></a>        break;
+<a name="1160"></a>	case LG_InitMod:
+<a name="1161"></a>		CleanPlanning();
+<a name="1162"></a>		m_eNextStep = LG_InitMod;
+<a name="1163"></a>		bCleanUp = true;
+<a name="1164"></a>		break;
+<a name="1165"></a>    case LG_MainMenu:        
+<a name="1166"></a>    default: <span class="source_comment">//Go back to main menu
+</span><a name="1167"></a>        CleanPlanning();
+<a name="1168"></a>        m_eNextStep = LG_MainMenu;
+<a name="1169"></a>        bCleanUp = true;
+<a name="1170"></a>        break;
+<a name="1171"></a>    }    
+<a name="1172"></a>
+<a name="1173"></a>
+<a name="1174"></a>    if(bCleanUp)
+<a name="1175"></a>    {
+<a name="1176"></a>        if( (ViewportOwner.<span class="source_type"><a href="../engine/actor.html" class="source">Actor</a></span> != none) && (ViewportOwner.<span class="source_type"><a href="../engine/actor.html" class="source">Actor</a></span>.<span class="source_type">Level</span>.NetMode == NM_Standalone))
+<a name="1177"></a>        {
+<a name="1178"></a>            if(ViewportOwner.<span class="source_type"><a href="../engine/actor.html" class="source">Actor</a></span>.<span class="source_type">Level</span> != ViewportOwner.<span class="source_type"><a href="../engine/actor.html" class="source">Actor</a></span>.GetEntryLevel())
+<a name="1179"></a>            {         
+<a name="1180"></a>                master.m_StartGameInfo.m_MapName=<span class="source_string">"Entry"</span>;
+<a name="1181"></a>                PreloadMapForPlanning();                  
+<a name="1182"></a>            }            
+<a name="1183"></a>        }
+<a name="1184"></a>        else
+<a name="1185"></a>        {            
+<a name="1186"></a>            ConsoleCommand(<span class="source_string">"DISCONNECT"</span>); 
+<a name="1187"></a>        }            
+<a name="1188"></a>    }       
+<a name="1189"></a>
+<a name="1190"></a>
+<a name="1191"></a>    <span class="source_comment">// We have left the game, if necessary, notify
+</span><a name="1192"></a>    <span class="source_comment">// ubi.com that we have left the server.
+</span><a name="1193"></a><span class="source_macro">#ifndefSPDEMO
+</span><a name="1194"></a>    bMultiPlayerGameActive = FALSE;
+<a name="1195"></a>
+<a name="1196"></a>    if ( m_GameService.m_bServerJoined )
+<a name="1197"></a>        m_GameService.NativeMSCLientLeaveServer();
+<a name="1198"></a><span class="source_macro">#endif
+</span><a name="1199"></a>    <span class="source_comment">//Fix resolution and Hud problems caused by the spawned r6hud
+</span><a name="1200"></a>    ViewportOwner.<span class="source_type"><a href="../engine/actor.html" class="source">Actor</a></span>.SpawnDefaultHUD();
+<a name="1201"></a>
+<a name="1202"></a>}
+<a name="1203"></a>
+<a name="1204"></a>function CleanSound(<span class="source_type"><a href="../r6game/r6console.html#eLeaveGame" class="source">eLeaveGame</a></span> _bwhatToDo)
+<a name="1205"></a>{
+<a name="1206"></a>    ViewportOwner.<span class="source_type"><a href="../engine/actor.html" class="source">Actor</a></span>.StopAllSounds();
+<a name="1207"></a>    ViewportOwner.<span class="source_type"><a href="../engine/actor.html" class="source">Actor</a></span>.ResetVolume_AllTypeSound();
+<a name="1208"></a>
+<a name="1209"></a><span class="source_macro">#ifdefMPDEMO
+</span><a name="1210"></a>    ViewportOwner.<span class="source_type"><a href="../engine/actor.html" class="source">Actor</a></span>.StopAllMusic();
+<a name="1211"></a><span class="source_macro">#endif
+</span><a name="1212"></a>
+<a name="1213"></a>    switch(_bwhatToDo)
+<a name="1214"></a>    {
+<a name="1215"></a>        case LG_RetryPlanningCustomMission: <span class="source_comment">//Go back to planning phase Custom        
+</span><a name="1216"></a>            ViewportOwner.<span class="source_type"><a href="../engine/actor.html" class="source">Actor</a></span>.FadeSound(<span class="source_int">0</span>, <span class="source_int">25</span>, SLOT_Music);
+<a name="1217"></a>        case LG_CustomMissionMenu:
+<a name="1218"></a>        case LG_RetryPlanningCampaign:     <span class="source_comment">//RETRY PLANNING IN CAMPAIGNMODE        
+</span><a name="1219"></a>            <span class="source_comment">// do nothing
+</span><a name="1220"></a>            break;
+<a name="1221"></a>
+<a name="1222"></a>        case LG_NextLevel:
+<a name="1223"></a>            if (ViewportOwner.<span class="source_type"><a href="../engine/actor.html" class="source">Actor</a></span>.<span class="source_type">Level</span>.NetMode != NM_Standalone)
+<a name="1224"></a>                ViewportOwner.<span class="source_type"><a href="../engine/actor.html" class="source">Actor</a></span>.StopAllMusic();
+<a name="1225"></a>            ViewportOwner.<span class="source_type"><a href="../engine/actor.html" class="source">Actor</a></span>.<span class="source_type">Level</span>.SetBankSound(BANK_UnloadAll);
+<a name="1226"></a>            ViewportOwner.<span class="source_type"><a href="../engine/actor.html" class="source">Actor</a></span>.<span class="source_type">Level</span>.FinalizeLoading();    
+<a name="1227"></a>            break;
+<a name="1228"></a>
+<a name="1229"></a>        case LG_QuitGame:
+<a name="1230"></a>        case LG_Trainning:
+<a name="1231"></a>        case LG_MultiPlayerMenu:
+<a name="1232"></a>		case LG_InitMod:
+<a name="1233"></a>            ViewportOwner.<span class="source_type"><a href="../engine/actor.html" class="source">Actor</a></span>.StopAllMusic();
+<a name="1234"></a>        case LG_MainMenu:        
+<a name="1235"></a>        default:
+<a name="1236"></a>            ViewportOwner.<span class="source_type"><a href="../engine/actor.html" class="source">Actor</a></span>.<span class="source_type">Level</span>.SetBankSound(BANK_UnloadAll);
+<a name="1237"></a>            ViewportOwner.<span class="source_type"><a href="../engine/actor.html" class="source">Actor</a></span>.<span class="source_type">Level</span>.FinalizeLoading();    
+<a name="1238"></a>            break;
+<a name="1239"></a>    }
+<a name="1240"></a>}
+<a name="1241"></a>
+<a name="1242"></a>function CleanPlanning()
+<a name="1243"></a>{
+<a name="1244"></a>    if(ViewportOwner.<span class="source_type"><a href="../engine/actor.html" class="source">Actor</a></span>.<span class="source_type">Level</span>.NetMode == NM_Standalone)
+<a name="1245"></a>    {
+<a name="1246"></a>		if ( (master == none) || (master.m_StartGameInfo == none))
+<a name="1247"></a>			return;
+<a name="1248"></a>
+<a name="1249"></a>        <span class="source_comment">//Remove teamaster.m_StartGameInfom planning waypoints
+</span><a name="1250"></a>        <span class="source_comment">//Should not do this if we plan on using same map we played!
+</span><a name="1251"></a>        master.m_StartGameInfo.m_TeamInfo[<span class="source_int">0</span>].m_iNumberOfMembers=<span class="source_int">0</span>;
+<a name="1252"></a>        master.m_StartGameInfo.m_TeamInfo[<span class="source_int">1</span>].m_iNumberOfMembers=<span class="source_int">0</span>;
+<a name="1253"></a>        master.m_StartGameInfo.m_TeamInfo[<span class="source_int">2</span>].m_iNumberOfMembers=<span class="source_int">0</span>;
+<a name="1254"></a>		if(master.m_StartGameInfo.m_TeamInfo[<span class="source_int">0</span>].m_pPlanning == none)
+<a name="1255"></a>			return;
+<a name="1256"></a>
+<a name="1257"></a>        master.m_StartGameInfo.m_TeamInfo[<span class="source_int">0</span>].m_pPlanning.DeleteAllNode();
+<a name="1258"></a>        master.m_StartGameInfo.m_TeamInfo[<span class="source_int">1</span>].m_pPlanning.DeleteAllNode();
+<a name="1259"></a>        master.m_StartGameInfo.m_TeamInfo[<span class="source_int">2</span>].m_pPlanning.DeleteAllNode();
+<a name="1260"></a>        master.m_StartGameInfo.m_TeamInfo[<span class="source_int">0</span>].m_pPlanning.m_pTeamManager = none;
+<a name="1261"></a>        master.m_StartGameInfo.m_TeamInfo[<span class="source_int">1</span>].m_pPlanning.m_pTeamManager = none;
+<a name="1262"></a>        master.m_StartGameInfo.m_TeamInfo[<span class="source_int">2</span>].m_pPlanning.m_pTeamManager = none;
+<a name="1263"></a>    }
+<a name="1264"></a>}
+<a name="1265"></a>
+<a name="1266"></a>function CloseR6MainMenu(optional <span class="source_type">BOOL</span> bKeepInputSystem)
+<a name="1267"></a>{    
+<a name="1268"></a>
+<a name="1269"></a>    if(bShowLog)log(<span class="source_string">"R6Console CloseR6MainMenu"</span>);
+<a name="1270"></a>
+<a name="1271"></a>    <span class="source_type">class</span><span class="source_name">'Actor'</span>.static.GetModMgr().UnRegisterAllObject();
+<a name="1272"></a>    <span class="source_type">class</span><span class="source_name">'Actor'</span>.static.GetModMgr().RegisterObject( self ); <span class="source_comment">// exception for this one
+</span><a name="1273"></a>
+<a name="1274"></a>    bVisible = false;
+<a name="1275"></a>    ResetUWindow();
+<a name="1276"></a>    
+<a name="1277"></a>    if(bKeepInputSystem == false)
+<a name="1278"></a>    {
+<a name="1279"></a>        <span class="source_comment">// Set the input to the game setting.
+</span><a name="1280"></a>        <span class="source_comment">// 0 is the inGame input setting 
+</span><a name="1281"></a>        <span class="source_comment">// 1 is the Planning input setting
+</span><a name="1282"></a>        ViewportOwner.<span class="source_type"><a href="../engine/actor.html" class="source">Actor</a></span>.ChangeInputSet(<span class="source_int">0</span>);
+<a name="1283"></a>        ViewportOwner.<span class="source_type"><a href="../engine/actor.html" class="source">Actor</a></span>.<span class="source_type">Level</span>.m_bPlaySound = true;
+<a name="1284"></a>    }
+<a name="1285"></a>}
+<a name="1286"></a>
+<a name="1287"></a>function PreloadMapForPlanning()
+<a name="1288"></a>{
+<a name="1289"></a>	local <span class="source_type">INT</span>					iPlayerSpawnNumber;
+<a name="1290"></a>            
+<a name="1291"></a>
+<a name="1292"></a>    ConsoleCommand(<span class="source_string">"Start "</span>$master.m_StartGameInfo.m_MapName$<span class="source_string">"?SpawnNum="</span>$iPlayerSpawnNumber);   
+<a name="1293"></a>
+<a name="1294"></a>    <span class="source_comment">// Set the input to the planning setting.
+</span><a name="1295"></a>    <span class="source_comment">// 0 is the InGame input setting 
+</span><a name="1296"></a>    <span class="source_comment">// 1 is the Planning input setting
+</span><a name="1297"></a>    ViewportOwner.<span class="source_type"><a href="../engine/actor.html" class="source">Actor</a></span>.ChangeInputSet(<span class="source_int">1</span>);
+<a name="1298"></a>             
+<a name="1299"></a>}
+<a name="1300"></a>
+<a name="1301"></a> 
+<a name="1302"></a>function CreateInGameMenus()
+<a name="1303"></a>{
+<a name="1304"></a>	local <span class="source_type"><a href="../uwindow/uwindowmenuclassdefines.html" class="source">UWindowMenuClassDefines</a></span> pMenuDefGSServers;
+<a name="1305"></a>
+<a name="1306"></a>    log(<span class="source_string">"R6Console CreateInGameMenus bLaunchMultiPlayer"</span>@bLaunchMultiPlayer);
+<a name="1307"></a>
+<a name="1308"></a>	pMenuDefGSServers = new(none) <span class="source_type">class</span><span class="source_name">'UWindowMenuClassDefines'</span>;
+<a name="1309"></a>	pMenuDefGSServers.Created();
+<a name="1310"></a>
+<a name="1311"></a><span class="source_macro">#ifndefMPDEMO    
+</span><a name="1312"></a>    if(bLaunchMultiPlayer)
+<a name="1313"></a>    {        
+<a name="1314"></a><span class="source_macro">#endif
+</span><a name="1315"></a><span class="source_macro">#ifndefSPDEMO
+</span><a name="1316"></a>		RootWindow=pMenuDefGSServers.InGameMultiRoot;
+<a name="1317"></a>	    bUWindowActive = True;
+<a name="1318"></a>		CreateRootWindow(None); 
+<a name="1319"></a>		LaunchUWindow();
+<a name="1320"></a><span class="source_macro">#endif
+</span><a name="1321"></a><span class="source_macro">#ifndefMPDEMO
+</span><a name="1322"></a>    }        
+<a name="1323"></a>    else
+<a name="1324"></a>	{
+<a name="1325"></a>		RootWindow=pMenuDefGSServers.InGameSingleRoot;
+<a name="1326"></a>		CreateRootWindow(None); 
+<a name="1327"></a>	}
+<a name="1328"></a><span class="source_macro">#endif
+</span><a name="1329"></a>}
+<a name="1330"></a>
+<a name="1331"></a>function ResetR6Game()
+<a name="1332"></a>{  
+<a name="1333"></a>    if(bShowLog)log(<span class="source_string">"R6Console ResetR6Game"</span>);
+<a name="1334"></a>    bLaunchWasCalled = true; 
+<a name="1335"></a>    bResetLevel = true;
+<a name="1336"></a>}
+<a name="1337"></a>
+<a name="1338"></a>function LaunchR6Game(OPTIONAL <span class="source_type">BOOL</span> bSkipFrameAndStart_)
+<a name="1339"></a>{
+<a name="1340"></a>    if(bShowLog)log(<span class="source_string">"R6Console LaunchR6Game"</span>);
+<a name="1341"></a>    bLaunchWasCalled = true; 
+<a name="1342"></a>    m_bSkipAFrameAndStart = bSkipFrameAndStart_; 
+<a name="1343"></a>}
+<a name="1344"></a>
+<a name="1345"></a>function LaunchR6MultiPlayerGame()
+<a name="1346"></a>{     
+<a name="1347"></a>    if(bShowLog)log(<span class="source_string">"R6Console LaunchR6MultiPlayerGame"</span>);
+<a name="1348"></a>    bLaunchWasCalled = true;
+<a name="1349"></a>    bLaunchMultiPlayer = true;   
+<a name="1350"></a>}
+<a name="1351"></a>
+<a name="1352"></a><span class="source_comment">//=================================================================================
+</span><a name="1353"></a><span class="source_comment">// LaunchTraining(): Launch training map and in-game menu, process is like single player map loading
+</span><a name="1354"></a><span class="source_comment">//=================================================================================
+</span><a name="1355"></a>function LaunchTraining()
+<a name="1356"></a>{
+<a name="1357"></a>    <span class="source_comment">//For now, nothing more to do than preloading map.
+</span><a name="1358"></a>    master.m_StartGameInfo.m_bIsPlaying = true;
+<a name="1359"></a>    PreloadMapForPlanning();
+<a name="1360"></a>}
+<a name="1361"></a>
+<a name="1362"></a>function StartR6Game( OPTIONAL <span class="source_type">bool</span> bResetLevel  )
+<a name="1363"></a>{
+<a name="1364"></a>	local <span class="source_type"><a href="../r6engine/r6playercontroller.html" class="source">R6PlayerController</a></span> aPC;
+<a name="1365"></a>    
+<a name="1366"></a>
+<a name="1367"></a>    if(bShowLog)log(<span class="source_string">"R6Console StartR6Game bResetLevel="</span>@bResetLevel);
+<a name="1368"></a>
+<a name="1369"></a>    ViewportOwner.<span class="source_type"><a href="../engine/actor.html" class="source">Actor</a></span>.StopMusic(m_StopMainMenuMusic);
+<a name="1370"></a>
+<a name="1371"></a>	m_bStartR6GameInProgress = true;
+<a name="1372"></a>    
+<a name="1373"></a>    if ( !bResetLevel )
+<a name="1374"></a>    {
+<a name="1375"></a>        <span class="source_type">class</span><span class="source_name">'Actor'</span>.static.GetCanvas().m_iNewResolutionX = <span class="source_int">0</span>;
+<a name="1376"></a>        <span class="source_type">class</span><span class="source_name">'Actor'</span>.static.GetCanvas().m_iNewResolutionY = <span class="source_int">0</span>;
+<a name="1377"></a>        <span class="source_type">class</span><span class="source_name">'Actor'</span>.static.GetCanvas().m_bChangeResRequested = true;
+<a name="1378"></a>    }
+<a name="1379"></a>
+<a name="1380"></a>    <span class="source_comment">//Remove Menu from memory
+</span><a name="1381"></a>    if ( !bResetLevel )
+<a name="1382"></a>        CloseR6MainMenu();
+<a name="1383"></a>    
+<a name="1384"></a>    <span class="source_comment">//Load in game menus
+</span><a name="1385"></a>   if ( !bResetLevel )
+<a name="1386"></a>        CreateInGameMenus();  
+<a name="1387"></a>
+<a name="1388"></a>    if(bLaunchMultiPlayer == false)
+<a name="1389"></a>    {        
+<a name="1390"></a>        <span class="source_comment">//start spawning specific objects for the game selected
+</span><a name="1391"></a>        <span class="source_comment">//Spawn the Rainbow Team and the other pawns (terrorists, hostage, civilian) And change the controller.
+</span><a name="1392"></a>		if( ViewportOwner.<span class="source_type"><a href="../engine/actor.html" class="source">Actor</a></span>.<span class="source_type">Level</span>.Game.IsA(<span class="source_name">'R6GameInfo'</span>) )
+<a name="1393"></a>		{
+<a name="1394"></a>            ViewportOwner.<span class="source_type"><a href="../engine/actor.html" class="source">Actor</a></span>.<span class="source_type">Level</span>.Game.DeployCharacters(ViewportOwner.<span class="source_type"><a href="../engine/actor.html" class="source">Actor</a></span>);
+<a name="1395"></a>		}
+<a name="1396"></a>    }
+<a name="1397"></a>
+<a name="1398"></a>    <span class="source_comment">//Change the HUD
+</span><a name="1399"></a>	ViewportOwner.<span class="source_type"><a href="../engine/actor.html" class="source">Actor</a></span>.ClientSetHUD(<span class="source_type">class</span><span class="source_name">'R6Game.R6HUD'</span> ,none); <span class="source_comment">//Second is scoreboard???
+</span><a name="1400"></a>
+<a name="1401"></a>    <span class="source_comment">// We flagged a lot of stuff to be destroyed, force garbage collection
+</span><a name="1402"></a>    <span class="source_type">class</span><span class="source_name">'Actor'</span>.static.GarbageCollect();
+<a name="1403"></a>
+<a name="1404"></a>    <span class="source_comment">// Init mission objectives, will look for pawn marked with special objectives flags...
+</span><a name="1405"></a>	if( (ViewportOwner.<span class="source_type"><a href="../engine/actor.html" class="source">Actor</a></span>.<span class="source_type">Level</span>.NetMode == NM_Standalone) && (ViewportOwner.<span class="source_type"><a href="../engine/actor.html" class="source">Actor</a></span>.<span class="source_type">Level</span>.Game.IsA(<span class="source_name">'R6AbstractGameInfo'</span>)) )
+<a name="1406"></a>    {
+<a name="1407"></a>        <span class="source_type"><a href="../r6abstract/r6abstractgameinfo.html" class="source">R6AbstractGameInfo</a></span>(ViewportOwner.<span class="source_type"><a href="../engine/actor.html" class="source">Actor</a></span>.<span class="source_type">Level</span>.Game).SpawnAIandInitGoInGame();
+<a name="1408"></a>        ViewportOwner.<span class="source_type"><a href="../engine/actor.html" class="source">Actor</a></span>.<span class="source_type">Level</span>.Game.m_bGameStarted = true;
+<a name="1409"></a>    }
+<a name="1410"></a>
+<a name="1411"></a>    <span class="source_comment">// Set bMultiPlayerGameActive used by game service manager
+</span><a name="1412"></a>    if ( bLaunchMultiPlayer )
+<a name="1413"></a>    {
+<a name="1414"></a>        bMultiPlayerGameActive = TRUE;
+<a name="1415"></a>
+<a name="1416"></a>        <span class="source_comment">//if ( !m_GameService.NativeGetMSClientInitialized() )
+</span><a name="1417"></a>        <span class="source_comment">//    m_GameService.InitializeMSClient();
+</span><a name="1418"></a>    }
+<a name="1419"></a>	else
+<a name="1420"></a>	{
+<a name="1421"></a>        <span class="source_comment">// Add the sound for the gun use in the map.
+</span><a name="1422"></a>    	aPC = <span class="source_type"><a href="../r6engine/r6playercontroller.html" class="source">R6PlayerController</a></span>(ViewportOwner.<span class="source_type"><a href="../engine/actor.html" class="source">Actor</a></span>);
+<a name="1423"></a>		if (aPC != none)
+<a name="1424"></a>		{
+<a name="1425"></a>
+<a name="1426"></a>            if (<span class="source_type"><a href="../r6game/r6gameinfo.html" class="source">R6GameInfo</a></span>(ViewportOwner.<span class="source_type"><a href="../engine/actor.html" class="source">Actor</a></span>.<span class="source_type">Level</span>.Game).m_bUseClarkVoice)
+<a name="1427"></a>            {
+<a name="1428"></a>                <span class="source_comment">// Set clark bank name
+</span><a name="1429"></a>                aPC.AddSoundBankName(<span class="source_type"><a href="../engine/r6missiondescription.html" class="source">R6MissionDescription</a></span>(<span class="source_type"><a href="../r6game/r6console.html" class="source">R6Console</a></span>(Root.<span class="source_type"><a href="../engine/console.html" class="source">console</a></span>).master.m_StartGameInfo.m_CurrentMission).m_InGameVoiceClarkBankName);
+<a name="1430"></a>                ViewportOwner.<span class="source_type"><a href="../engine/actor.html" class="source">Actor</a></span>.<span class="source_type">Level</span>.m_sndPlayMissionIntro = <span class="source_type"><a href="../engine/r6missiondescription.html" class="source">R6MissionDescription</a></span>(<span class="source_type"><a href="../r6game/r6console.html" class="source">R6Console</a></span>(Root.<span class="source_type"><a href="../engine/console.html" class="source">console</a></span>).master.m_StartGameInfo.m_CurrentMission).m_PlayMissionIntro;
+<a name="1431"></a>                ViewportOwner.<span class="source_type"><a href="../engine/actor.html" class="source">Actor</a></span>.<span class="source_type">Level</span>.m_sndPlayMissionExtro = <span class="source_type"><a href="../engine/r6missiondescription.html" class="source">R6MissionDescription</a></span>(<span class="source_type"><a href="../r6game/r6console.html" class="source">R6Console</a></span>(Root.<span class="source_type"><a href="../engine/console.html" class="source">console</a></span>).master.m_StartGameInfo.m_CurrentMission).m_PlayMissionExtro;
+<a name="1432"></a>            }
+<a name="1433"></a>
+<a name="1434"></a>            ViewportOwner.<span class="source_type"><a href="../engine/actor.html" class="source">Actor</a></span>.ServerSendBankToLoad();
+<a name="1435"></a>
+<a name="1436"></a>            aPC.ServerReadyToLoadWeaponSound();
+<a name="1437"></a>		}
+<a name="1438"></a>	}
+<a name="1439"></a>
+<a name="1440"></a>    <span class="source_comment">//log("Garbage collecter DONE!");    
+</span><a name="1441"></a>    bLaunchMultiPlayer = false;
+<a name="1442"></a>	m_bStartR6GameInProgress = false;
+<a name="1443"></a>}
+<a name="1444"></a>
+<a name="1445"></a>exec function unlock()
+<a name="1446"></a>{
+<a name="1447"></a>	local <span class="source_type">INT</span> <span class="source_type">i</span>, j;
+<a name="1448"></a>
+<a name="1449"></a>	for ( <span class="source_type">i</span> = <span class="source_int">0</span>; <span class="source_type">i</span> &lt; m_aCampaigns.Length; <span class="source_type">i</span>++)
+<a name="1450"></a>	{
+<a name="1451"></a>		<span class="source_comment">// for this campaign, unlock his map
+</span><a name="1452"></a>		for(j = <span class="source_int">0</span>; j &lt; m_aCampaigns[<span class="source_type">i</span>].m_missions.Length; j++)
+<a name="1453"></a>		{
+<a name="1454"></a>			m_aCampaigns[<span class="source_type">i</span>].m_missions[j].m_bIsLocked = false;
+<a name="1455"></a>		}
+<a name="1456"></a>	}
+<a name="1457"></a>}
+<a name="1458"></a>
+<a name="1459"></a>
+<a name="1460"></a><span class="source_macro">#ifdefDEBUG
+</span><a name="1461"></a>exec function gg()
+<a name="1462"></a>{
+<a name="1463"></a>    GoToGame();
+<a name="1464"></a>}
+<a name="1465"></a>
+<a name="1466"></a>exec function GoToGame()
+<a name="1467"></a>{
+<a name="1468"></a>    master.m_StartGameInfo.m_SkipPlanningPhase = true;
+<a name="1469"></a>    <span class="source_comment">//Use default values in startgame
+</span><a name="1470"></a>    
+<a name="1471"></a>    PreloadMapForPlanning();
+<a name="1472"></a>
+<a name="1473"></a>    LaunchR6Game();
+<a name="1474"></a>}
+<a name="1475"></a><span class="source_macro">#endif
+</span><a name="1476"></a>
+<a name="1477"></a>function SendGoCode(<span class="source_type"><a href="../core/object.html#EGoCode" class="source">EGoCode</a></span> eGo)
+<a name="1478"></a>{
+<a name="1479"></a>    local <span class="source_type">INT</span> <span class="source_type">i</span>;
+<a name="1480"></a>    
+<a name="1481"></a>    for(<span class="source_type">i</span>=<span class="source_int">0</span>;<span class="source_type">i</span>&lt;<span class="source_int">3</span>;<span class="source_type">i</span>++)
+<a name="1482"></a>    {
+<a name="1483"></a>        Master.m_StartGameInfo.m_TeamInfo[<span class="source_type">i</span>].m_pPlanning.NotifyActionPoint(NODEMSG_GoCodeLaunched, eGo);
+<a name="1484"></a>    }
+<a name="1485"></a>}
+<a name="1486"></a>
+<a name="1487"></a>
+<a name="1488"></a><span class="source_comment">//==============================================================================
+</span><a name="1489"></a><span class="source_comment">// GetSpawnNumber -  Helper function, returns the spawning point number.
+</span><a name="1490"></a><span class="source_comment">//==============================================================================
+</span><a name="1491"></a>function <span class="source_type">INT</span> GetSpawnNumber()
+<a name="1492"></a>{
+<a name="1493"></a>    local <span class="source_type"><a href="../engine/r6startgameinfo.html" class="source">R6StartGameInfo</a></span>       StartGameInfo;
+<a name="1494"></a>
+<a name="1495"></a>    StartGameInfo = master.m_StartGameInfo;
+<a name="1496"></a>    if (StartGameInfo == none)
+<a name="1497"></a>        return <span class="source_int">0</span>;
+<a name="1498"></a>
+<a name="1499"></a>    if (!StartGameInfo.m_bIsPlaying)
+<a name="1500"></a>        return <span class="source_int">0</span>;
+<a name="1501"></a>
+<a name="1502"></a>    return StartGameInfo.m_TeamInfo[StartGameInfo.m_iTeamStart].m_iSpawningPointNumber;
+<a name="1503"></a>}
+<a name="1504"></a>
+<a name="1505"></a><span class="source_comment">// Debug functions to test router/lobby server errors
+</span><a name="1506"></a>
+<a name="1507"></a>
+<a name="1508"></a><span class="source_macro">#ifdefDEBUG
+</span><a name="1509"></a><span class="source_comment">//exec function lobbyDisconnect()
+</span><a name="1510"></a><span class="source_comment">//{
+</span><a name="1511"></a><span class="source_comment">//   m_GameService.TestRegServerLobbyDisconnect();
+</span><a name="1512"></a><span class="source_comment">//
+</span><a name="1513"></a><span class="source_macro">#endif
+</span><a name="1514"></a>
+<a name="1515"></a>
+<a name="1516"></a>
+<a name="1517"></a>
+<a name="1518"></a><span class="source_comment">//
+</span><a name="1519"></a><span class="source_comment">//exec function router()
+</span><a name="1520"></a><span class="source_comment">//{
+</span><a name="1521"></a><span class="source_comment">//    m_GameService.m_bMSClientRouterDisconnect = TRUE;
+</span><a name="1522"></a><span class="source_comment">//}
+</span><a name="1523"></a>
+<a name="1524"></a><span class="source_comment">///////////////////////////////////////////////////////////////
+</span><a name="1525"></a><span class="source_comment">// Call the gameservice manager function regularly
+</span><a name="1526"></a><span class="source_comment">///////////////////////////////////////////////////////////////
+</span><a name="1527"></a>event GameServiceTick()
+<a name="1528"></a>{
+<a name="1529"></a>    <span class="source_comment">// Call either the MSClient manager if we are using the in game
+</span><a name="1530"></a>    <span class="source_comment">// menus system as a brawswer for on line gaming, or use the 
+</span><a name="1531"></a>    <span class="source_comment">// GSClient manager if the game was launched by ubi.com
+</span><a name="1532"></a>
+<a name="1533"></a>    if ( m_bStartedByGSClient )
+<a name="1534"></a>        <span class="source_type">class</span><span class="source_name">'Actor'</span>.static.GetGameManager().GSClientManager(self);
+<a name="1535"></a>    else
+<a name="1536"></a>        MSClientManager();
+<a name="1537"></a>
+<a name="1538"></a>}
+<a name="1539"></a>
+<a name="1540"></a><span class="source_comment">///////////////////////////////////////////////////////////////
+</span><a name="1541"></a><span class="source_comment">// This function manages the ubi.com MSClient SDK integration
+</span><a name="1542"></a><span class="source_comment">///////////////////////////////////////////////////////////////
+</span><a name="1543"></a>
+<a name="1544"></a>function MSClientManager()
+<a name="1545"></a>{
+<a name="1546"></a><span class="source_macro">#ifndefSPDEMO
+</span><a name="1547"></a>    local <span class="source_type">BOOL</span> bMSCLientActive;     <span class="source_comment">// Poll MSCLient callbacks
+</span><a name="1548"></a>    local <span class="source_type"><a href="../r6engine/r6gamereplicationinfo.html" class="source">R6GameReplicationInfo</a></span>   pReplInfo;
+<a name="1549"></a>    local <span class="source_type">BOOL</span> bServerIDValid;
+<a name="1550"></a>
+<a name="1551"></a>    <span class="source_comment">// Make sure replication information is valid
+</span><a name="1552"></a>    pReplInfo = None;
+<a name="1553"></a>    if ( master.m_MenuCommunication != None )
+<a name="1554"></a>    {
+<a name="1555"></a>        if ( master.m_MenuCommunication.m_GameRepInfo != None )
+<a name="1556"></a>            pReplInfo = <span class="source_type"><a href="../r6engine/r6gamereplicationinfo.html" class="source">R6GameReplicationInfo</a></span>(master.m_MenuCommunication.m_GameRepInfo);
+<a name="1557"></a>    }
+<a name="1558"></a>
+<a name="1559"></a>    <span class="source_comment">// While a multiplayer game is active, make sure we are connected to
+</span><a name="1560"></a>    <span class="source_comment">// ubi.com and that we update ubi.com as to which server we are conected to
+</span><a name="1561"></a>
+<a name="1562"></a>	if (m_GameService == None)
+<a name="1563"></a>		return;
+<a name="1564"></a>
+<a name="1565"></a>    if ( bMultiPlayerGameActive && pReplInfo != None )
+<a name="1566"></a>    {    
+<a name="1567"></a>
+<a name="1568"></a>        <span class="source_comment">// Make sure we are connected to ubi.com, if not
+</span><a name="1569"></a>        <span class="source_comment">// do not retry until at least 30 seconds.  Only try during the countdown
+</span><a name="1570"></a>        <span class="source_comment">// stage.
+</span><a name="1571"></a>
+<a name="1572"></a>        if ( pReplInfo.m_eCurrectServerState == pReplInfo.RSS_CountDownStage )
+<a name="1573"></a>        {
+<a name="1574"></a>
+<a name="1575"></a>            bServerIDValid = ( pReplInfo.m_iGameSvrLobbyID != <span class="source_int">0</span> && pReplInfo.m_iGameSvrGroupID != <span class="source_int">0</span> );
+<a name="1576"></a>
+<a name="1577"></a>            switch ( m_GameService.m_eMenuLoginMasterSvr )
+<a name="1578"></a>            {
+<a name="1579"></a>                case EMENU_REQ_FAILURE:
+<a name="1580"></a>                    m_GameService.m_eMenuLoginMasterSvr = EMENU_REQ_NONE;
+<a name="1581"></a>                    m_iRetryTime = m_GameService.NativeGetSeconds() + K_TimeRetryConnect;
+<a name="1582"></a>                    if (bShowLog) log ( <span class="source_string">"Failed to log in to ubi.com"</span> );
+<a name="1583"></a>                    break;
+<a name="1584"></a>                case EMENU_REQ_SUCCESS:
+<a name="1585"></a>                    m_GameService.m_eMenuLoginMasterSvr = EMENU_REQ_NONE;
+<a name="1586"></a>                    break;
+<a name="1587"></a>                case EMENU_REQ_NONE:
+<a name="1588"></a>                    if ( bServerIDValid && !m_GameService.NativeGetMSClientInitialized() && m_GameService.NativeGetSeconds() &gt; m_iRetryTime )
+<a name="1589"></a>                    {
+<a name="1590"></a>                        m_GameService.InitializeMSClient();
+<a name="1591"></a>                        if (bShowLog) log (<span class="source_string">"retry"</span>);
+<a name="1592"></a>                    }
+<a name="1593"></a>                    break;
+<a name="1594"></a>            }
+<a name="1595"></a>    
+<a name="1596"></a>            <span class="source_comment">// If we have not already sent the "Join Server" message to ubi.com, do so now.
+</span><a name="1597"></a>            <span class="source_comment">// Make sure the server LobbyID and RoomID are both valid first.
+</span><a name="1598"></a>
+<a name="1599"></a><span class="source_comment">//            bServerIDValid = ( pReplInfo.m_iGameSvrLobbyID != 0 && pReplInfo.m_iGameSvrGroupID != 0 );
+</span><a name="1600"></a>
+<a name="1601"></a>            if ( m_GameService.m_bLoggedInUbiDotCom && !m_GameService.m_bServerJoined && bServerIDValid &&
+<a name="1602"></a>                     m_GameService.m_eMenuJoinServer == EMENU_REQ_NONE &&
+<a name="1603"></a>                     m_GameService.NativeGetSeconds() &gt; m_iRetryTime )
+<a name="1604"></a>            {
+<a name="1605"></a>
+<a name="1606"></a>                m_GameService.joinServer( pReplInfo.m_iGameSvrLobbyID,
+<a name="1607"></a>                                          pReplInfo.m_iGameSvrGroupID, 
+<a name="1608"></a>                                          szStoreGamePassWd );
+<a name="1609"></a>            }
+<a name="1610"></a>        }
+<a name="1611"></a>
+<a name="1612"></a>        <span class="source_comment">// The following does not retry if we get a failure, 
+</span><a name="1613"></a>        <span class="source_comment">// but this could be added if necessary
+</span><a name="1614"></a>
+<a name="1615"></a>        switch ( m_GameService.m_eMenuJoinServer )
+<a name="1616"></a>        {
+<a name="1617"></a>
+<a name="1618"></a>            case EMENU_REQ_SUCCESS:
+<a name="1619"></a>                if (bShowLog) log (<span class="source_string">"Server Join success"</span>);
+<a name="1620"></a>                m_GameService.m_eMenuJoinServer = EMENU_REQ_NONE;
+<a name="1621"></a>                break;
+<a name="1622"></a>            case EMENU_REQ_FAILURE:
+<a name="1623"></a>                if (bShowLog) log (<span class="source_string">"Server Join Failure"</span>);
+<a name="1624"></a>                m_iRetryTime = m_GameService.NativeGetSeconds() + K_TimeRetryConnect;
+<a name="1625"></a>                m_GameService.m_eMenuJoinServer = EMENU_REQ_NONE;
+<a name="1626"></a>                break;
+<a name="1627"></a>
+<a name="1628"></a>        }
+<a name="1629"></a>            
+<a name="1630"></a>    }
+<a name="1631"></a>
+<a name="1632"></a>    <span class="source_comment">// We have been disconnected from ubi.com router, log out and
+</span><a name="1633"></a>    <span class="source_comment">// restart from scratch
+</span><a name="1634"></a>
+<a name="1635"></a>    if ( m_GameService.m_bMSClientRouterDisconnect )
+<a name="1636"></a>    {
+<a name="1637"></a>        m_iRetryTime = m_GameService.NativeGetSeconds() + K_TimeRetryConnect;
+<a name="1638"></a>        m_GameService.UnInitializeMSClient();
+<a name="1639"></a>        m_GameService.m_bMSClientRouterDisconnect = FALSE;
+<a name="1640"></a>    }
+<a name="1641"></a>
+<a name="1642"></a>    <span class="source_comment">// We have been disocnnected fron the ubi.com lobby server,
+</span><a name="1643"></a>    <span class="source_comment">// rejoin the server
+</span><a name="1644"></a>
+<a name="1645"></a>    if ( m_GameService.m_bMSClientLobbyDisconnect )
+<a name="1646"></a>    {
+<a name="1647"></a>        if ( m_GameService.m_bServerJoined )
+<a name="1648"></a>             m_GameService.NativeMSCLientLeaveServer();
+<a name="1649"></a>
+<a name="1650"></a>        m_GameService.m_bMSClientLobbyDisconnect = FALSE;
+<a name="1651"></a>        m_iRetryTime = m_GameService.NativeGetSeconds() + K_TimeRetryConnect;
+<a name="1652"></a>
+<a name="1653"></a>    }
+<a name="1654"></a>
+<a name="1655"></a>    <span class="source_comment">// For non-dedicated servers, the instance of the R6GSServers class
+</span><a name="1656"></a>    <span class="source_comment">// that runs in R6MuiltiplayerGameInfo will need to use the MSClient
+</span><a name="1657"></a>    <span class="source_comment">// library to join the user to his own server.  For this reason we
+</span><a name="1658"></a>    <span class="source_comment">// use the m_bMSCLientActive active flag set in R6MuiltiplayerGameInfo
+</span><a name="1659"></a>    <span class="source_comment">// to tell us when we cannot use the MSClient callbacks.
+</span><a name="1660"></a>
+<a name="1661"></a><span class="source_comment">//    if ( ViewportOwner.Actor.Level.NetMode == NM_ListenServer )
+</span><a name="1662"></a><span class="source_comment">//        bMSCLientActive = !R6MultiPlayerGameInfo(ViewportOwner.Actor.Level.Game).m_bMSCLientActive;
+</span><a name="1663"></a><span class="source_comment">//    else
+</span><a name="1664"></a><span class="source_comment">//        bMSCLientActive = TRUE;
+</span><a name="1665"></a>
+<a name="1666"></a>    m_GameService.GameServiceManager( TRUE, TRUE, FALSE, FALSE );
+<a name="1667"></a><span class="source_macro">#endif //SPDEMO
+</span><a name="1668"></a>}
+<a name="1669"></a>
+<a name="1670"></a>
+<a name="1671"></a>
+<a name="1672"></a><span class="source_comment">///////////////////////////////////////////////////////////////
+</span><a name="1673"></a><span class="source_comment">// Minimize the game and stop backgoround music from playing
+</span><a name="1674"></a><span class="source_comment">///////////////////////////////////////////////////////////////
+</span><a name="1675"></a>function MinimizeAndPauseMusic()
+<a name="1676"></a>{
+<a name="1677"></a>
+<a name="1678"></a>    ViewportOwner.<span class="source_type"><a href="../engine/actor.html" class="source">Actor</a></span>.StopAllMusic();
+<a name="1679"></a>
+<a name="1680"></a>    ConsoleCommand(<span class="source_string">"MINIMIZEAPP"</span>);
+<a name="1681"></a>
+<a name="1682"></a>}
+<a name="1683"></a>
+<a name="1684"></a>
+<a name="1685"></a><span class="source_comment">//------------------------------------------------------------------
+</span><a name="1686"></a><span class="source_comment">// GetCampaignFromString
+</span><a name="1687"></a><span class="source_comment">//	
+</span><a name="1688"></a><span class="source_comment">//------------------------------------------------------------------
+</span><a name="1689"></a>function <span class="source_type"><a href="../r6game/r6campaign.html" class="source">R6Campaign</a></span> GetCampaignFromString( <span class="source_type">string</span> <span class="source_type">szName</span> )
+<a name="1690"></a>{
+<a name="1691"></a>    local <span class="source_type">INT</span>  <span class="source_type">i</span>, j;
+<a name="1692"></a>
+<a name="1693"></a>    while ( <span class="source_type">i</span> &lt; m_aCampaigns.length )
+<a name="1694"></a>    {
+<a name="1695"></a>        if ( caps( m_aCampaigns[<span class="source_type">i</span>].m_szCampaignFile ) == caps( <span class="source_type">szName</span> ) )
+<a name="1696"></a>        {
+<a name="1697"></a>            return m_aCampaigns[<span class="source_type">i</span>];
+<a name="1698"></a>        }
+<a name="1699"></a>        ++<span class="source_type">i</span>;
+<a name="1700"></a>    }
+<a name="1701"></a>
+<a name="1702"></a>    return none;
+<a name="1703"></a>}
+<a name="1704"></a>
+<a name="1705"></a><span class="source_comment">//------------------------------------------------------------------
+</span><a name="1706"></a><span class="source_comment">// UnlockMissions
+</span><a name="1707"></a><span class="source_comment">//	- updated every time UpdateCurrentMapAvailable is changed
+</span><a name="1708"></a><span class="source_comment">//------------------------------------------------------------------
+</span><a name="1709"></a>function UnlockMissions()
+<a name="1710"></a>{
+<a name="1711"></a>    local <span class="source_type">INT</span>  <span class="source_type">i</span>, iMissionIndex, iMaxMissionIndex;
+<a name="1712"></a>    local <span class="source_type"><a href="../r6game/r6campaign.html" class="source">R6Campaign</a></span> campaign;
+<a name="1713"></a>
+<a name="1714"></a>    if ( m_playerCustomMission == none )
+<a name="1715"></a>        return;
+<a name="1716"></a>
+<a name="1717"></a>    for ( <span class="source_type">i</span> = <span class="source_int">0</span>; <span class="source_type">i</span> &lt; m_playerCustomMission.m_aCampaignFileName.Length; <span class="source_type">i</span>++)
+<a name="1718"></a>    {
+<a name="1719"></a>        campaign = GetCampaignFromString( m_playerCustomMission.m_aCampaignFileName[<span class="source_type">i</span>] );
+<a name="1720"></a>
+<a name="1721"></a>        <span class="source_comment">// for this campaign, unlock his map
+</span><a name="1722"></a>        if ( campaign != none )
+<a name="1723"></a>        {
+<a name="1724"></a>            <span class="source_comment">// get the max mission to unlock
+</span><a name="1725"></a>            iMaxMissionIndex = m_playerCustomMission.m_iNbMapUnlock[<span class="source_type">i</span>];
+<a name="1726"></a>            iMaxMissionIndex++; <span class="source_comment">// start from 1 to max
+</span><a name="1727"></a>                
+<a name="1728"></a>            <span class="source_comment">//if(bShowLog) log( " iMaxMissionIndex=" $iMaxMissionIndex$ " saved=" $m_playerCustomMission.m_iNbMapUnlock[i]$ " m_missions.length=" $campaign.m_missions.length );
+</span><a name="1729"></a>            
+<a name="1730"></a>            <span class="source_comment">// check for limit
+</span><a name="1731"></a>            iMaxMissionIndex = Clamp( iMaxMissionIndex, <span class="source_int">0</span>, campaign.m_missions.length );
+<a name="1732"></a>            iMissionIndex = <span class="source_int">0</span>;
+<a name="1733"></a>            
+<a name="1734"></a>            <span class="source_comment">// unlock map for that campaign
+</span><a name="1735"></a>            while ( iMissionIndex &lt; iMaxMissionIndex )
+<a name="1736"></a>            {
+<a name="1737"></a>                campaign.m_missions[ iMissionIndex ].m_bIsLocked = false;
+<a name="1738"></a>                <span class="source_comment">//log( "unlocked map= " $campaign.m_missions[ iMissionIndex ].m_mapName );
+</span><a name="1739"></a>                ++iMissionIndex;
+<a name="1740"></a>            }
+<a name="1741"></a>        }
+<a name="1742"></a>    }
+<a name="1743"></a>}
+<a name="1744"></a>
+<a name="1745"></a><span class="source_comment">//------------------------------------------------------------------
+</span><a name="1746"></a><span class="source_comment">// UpdateCurrentMapAvailable
+</span><a name="1747"></a><span class="source_comment">// 
+</span><a name="1748"></a><span class="source_comment">//------------------------------------------------------------------
+</span><a name="1749"></a>function <span class="source_type">BOOL</span> UpdateCurrentMapAvailable(<span class="source_type"><a href="../r6game/r6playercampaign.html" class="source">R6PlayerCampaign</a></span> pCampaign, optional <span class="source_type">BOOL</span> bCheckCampaignMission)
+<a name="1750"></a>{
+<a name="1751"></a>    local <span class="source_type">BOOL</span> bFileChange;
+<a name="1752"></a>    local <span class="source_type">BOOL</span> bInTab;
+<a name="1753"></a>    local <span class="source_type">INT</span>  <span class="source_type">i</span>,j;
+<a name="1754"></a>    local <span class="source_type">string</span>    szIniFile;
+<a name="1755"></a>	local <span class="source_type"><a href="../r6game/r6campaign.html" class="source">R6Campaign</a></span> pCampaignMatch;
+<a name="1756"></a>
+<a name="1757"></a>    <span class="source_comment">// for all player campaign
+</span><a name="1758"></a>    for (<span class="source_type">i</span>=<span class="source_int">0</span>; <span class="source_type">i</span>&lt; m_playerCustomMission.m_aCampaignFileName.Length; <span class="source_type">i</span>++)
+<a name="1759"></a>    {
+<a name="1760"></a>        if (m_playerCustomMission.m_aCampaignFileName[<span class="source_type">i</span>] == pCampaign.m_CampaignFileName)
+<a name="1761"></a>        {
+<a name="1762"></a>            bInTab = true;
+<a name="1763"></a>            if (m_playerCustomMission.m_iNbMapUnlock[<span class="source_type">i</span>] &lt; pCampaign.m_iNoMission)
+<a name="1764"></a>            {
+<a name="1765"></a>                bFileChange = true;
+<a name="1766"></a>                m_playerCustomMission.m_iNbMapUnlock[<span class="source_type">i</span>] = pCampaign.m_iNoMission;
+<a name="1767"></a>                
+<a name="1768"></a>            }
+<a name="1769"></a>            break;
+<a name="1770"></a>        }
+<a name="1771"></a>    }
+<a name="1772"></a>	
+<a name="1773"></a>    if (!bInTab && pCampaign.m_CampaignFileName != <span class="source_string">""</span>)
+<a name="1774"></a>    {
+<a name="1775"></a>        m_playerCustomMission.m_aCampaignFileName[m_playerCustomMission.m_aCampaignFileName.Length] = pCampaign.m_CampaignFileName;
+<a name="1776"></a>        m_playerCustomMission.m_iNbMapUnlock[m_playerCustomMission.m_iNbMapUnlock.Length] = pCampaign.m_iNoMission;
+<a name="1777"></a>        bFileChange = true;
+<a name="1778"></a>    }
+<a name="1779"></a>
+<a name="1780"></a>	if(bCheckCampaignMission == true)
+<a name="1781"></a>	{
+<a name="1782"></a>		for(<span class="source_type">i</span> = <span class="source_int">0</span>; <span class="source_type">i</span> &lt; m_aCampaigns.length; <span class="source_type">i</span>++)
+<a name="1783"></a>		{
+<a name="1784"></a>			if(pCampaign.m_CampaignFileName == m_aCampaigns[<span class="source_type">i</span>].m_szCampaignFile)
+<a name="1785"></a>			{
+<a name="1786"></a>				pCampaignMatch = m_aCampaigns[<span class="source_type">i</span>];
+<a name="1787"></a>				break;
+<a name="1788"></a>			}
+<a name="1789"></a>		}
+<a name="1790"></a>
+<a name="1791"></a>		<span class="source_type">i</span>=<span class="source_int">0</span>;
+<a name="1792"></a>		while ((pCampaignMatch != none) && (<span class="source_type">i</span> &lt; pCampaignMatch.missions.Length))
+<a name="1793"></a>		{
+<a name="1794"></a>			pCampaignMatch.missions[<span class="source_type">i</span>] = caps( pCampaignMatch.missions[<span class="source_type">i</span>] );
+<a name="1795"></a>			szIniFile = pCampaignMatch.missions[<span class="source_type">i</span>]$ <span class="source_string">".INI"</span>;
+<a name="1796"></a>
+<a name="1797"></a>			<span class="source_comment">// Change the flag campaign mission
+</span><a name="1798"></a>			j = <span class="source_int">0</span>;
+<a name="1799"></a>			while ( j &lt; m_aMissionDescriptions.Length )
+<a name="1800"></a>			{
+<a name="1801"></a>				if ( m_aMissionDescriptions[j].m_missionIniFile == szIniFile )
+<a name="1802"></a>				{
+<a name="1803"></a>					m_aMissionDescriptions[j].m_bCampaignMission = true;
+<a name="1804"></a>					break;
+<a name="1805"></a>				}
+<a name="1806"></a>				j++;
+<a name="1807"></a>			}
+<a name="1808"></a>			<span class="source_type">i</span>++;
+<a name="1809"></a>		}
+<a name="1810"></a>	}
+<a name="1811"></a>
+<a name="1812"></a>    if ( bFileChange )
+<a name="1813"></a>    {
+<a name="1814"></a>        <span class="source_comment">// a map has been unlocked, update mission descriptions
+</span><a name="1815"></a>        UnlockMissions();
+<a name="1816"></a>    }
+<a name="1817"></a>
+<a name="1818"></a>    return bFileChange;
+<a name="1819"></a>}
+<a name="1820"></a>
+<a name="1821"></a>function <span class="source_type">BOOL</span> MapAlreadyInList(<span class="source_type">string</span> szIniFilename)
+<a name="1822"></a>{
+<a name="1823"></a>	local <span class="source_type">INT</span> <span class="source_type">i</span>;
+<a name="1824"></a>	for(<span class="source_type">i</span>=<span class="source_int">0</span>; <span class="source_type">i</span> &lt; m_aMissionDescriptions.length; <span class="source_type">i</span>++)
+<a name="1825"></a>	{
+<a name="1826"></a>		<span class="source_comment">//log("comparing "$szIniFileName$" with "$m_aMissionDescriptions[i].m_missionIniFile);
+</span><a name="1827"></a>		if( szIniFileName == m_aMissionDescriptions[<span class="source_type">i</span>].m_missionIniFile )
+<a name="1828"></a>		{
+<a name="1829"></a>			return true;
+<a name="1830"></a>		}
+<a name="1831"></a>	}
+<a name="1832"></a>	return false;
+<a name="1833"></a>}
+<a name="1834"></a><span class="source_comment">//------------------------------------------------------------------
+</span><a name="1835"></a><span class="source_comment">// GetAllMissionDescriptions
+</span><a name="1836"></a><span class="source_comment">//	
+</span><a name="1837"></a><span class="source_comment">//------------------------------------------------------------------
+</span><a name="1838"></a>function GetAllMissionDescriptions(<span class="source_type">string</span> szCurrentMapDir)
+<a name="1839"></a>{
+<a name="1840"></a>    local <span class="source_type">int</span> <span class="source_type">i</span>, j, iFiles, iIniFiles, <span class="source_type">index</span>;
+<a name="1841"></a>    local <span class="source_type"><a href="../engine/r6filemanager.html" class="source">R6FileManager</a></span>         pIniFileManager;
+<a name="1842"></a>    local <span class="source_type">string</span>                <span class="source_type">szName</span>,    szFilename;
+<a name="1843"></a>    local <span class="source_type">string</span>                szIniName, szIniFilename;
+<a name="1844"></a>    local <span class="source_type">bool</span>                  bMissionIsValid;
+<a name="1845"></a>    local <span class="source_type"><a href="../engine/r6filemanager.html" class="source">R6FileManager</a></span>		    pFileManager;
+<a name="1846"></a>
+<a name="1847"></a>	pIniFileManager = new(none) <span class="source_type">class</span><span class="source_name">'R6FileManager'</span>;
+<a name="1848"></a>	pFileManager = new(none) <span class="source_type">class</span><span class="source_name">'R6FileManager'</span>;
+<a name="1849"></a>
+<a name="1850"></a>	iIniFiles = pIniFileManager.GetNbFile(szCurrentMapDir, <span class="source_string">"ini"</span>);
+<a name="1851"></a>	iFiles = pFileManager.GetNbFile(szCurrentMapDir, <span class="source_type">class</span><span class="source_name">'Actor'</span>.static.GetMapNameExt() );
+<a name="1852"></a>
+<a name="1853"></a>	if(bShowLog) log(<span class="source_string">"Looking for maps In Dir : "</span> $ szCurrentMapDir $ <span class="source_string">", found : "</span> $ iIniFiles $ <span class="source_string">" .ini files"</span> $ <span class="source_string">" and "</span> $ iFiles $ <span class="source_string">".rsm"</span>);
+<a name="1854"></a>
+<a name="1855"></a>	<span class="source_comment">// loop on all .ini
+</span><a name="1856"></a>	for ( <span class="source_type">i</span> = <span class="source_int">0</span>; <span class="source_type">i</span> &lt; iIniFiles; <span class="source_type">i</span>++ )
+<a name="1857"></a>	{
+<a name="1858"></a>		pIniFileManager.GetFileName( <span class="source_type">i</span>, szIniFilename );
+<a name="1859"></a>
+<a name="1860"></a>		if ( szIniFilename == <span class="source_string">""</span> )
+<a name="1861"></a>			continue;
+<a name="1862"></a>
+<a name="1863"></a>		bMissionIsValid = true;
+<a name="1864"></a>		<span class="source_type">index</span> = m_aMissionDescriptions.Length;
+<a name="1865"></a>
+<a name="1866"></a>		if(MapAlreadyInList(szIniFilename))
+<a name="1867"></a>			continue;
+<a name="1868"></a>
+<a name="1869"></a>		m_aMissionDescriptions[ <span class="source_type">index</span> ] = new(none) <span class="source_type">class</span><span class="source_name">'Engine.R6MissionDescription'</span>;
+<a name="1870"></a>		m_aMissionDescriptions[ <span class="source_type">index</span> ].Init( ViewportOwner.<span class="source_type"><a href="../engine/actor.html" class="source">Actor</a></span>.<span class="source_type">Level</span>, szCurrentMapDir $ szIniFilename );
+<a name="1871"></a>
+<a name="1872"></a>		<span class="source_comment">// the it's a mission description ini file
+</span><a name="1873"></a>		if ( m_aMissionDescriptions[ <span class="source_type">index</span> ].m_mapName != <span class="source_string">""</span> )
+<a name="1874"></a>		{
+<a name="1875"></a>			<span class="source_comment">// find the map
+</span><a name="1876"></a>			for ( j = <span class="source_int">0</span>; j &lt; iFiles; j++ )
+<a name="1877"></a>			{
+<a name="1878"></a>				bMissionIsValid = false;
+<a name="1879"></a>				pFileManager.GetFileName( j, szFilename );
+<a name="1880"></a>
+<a name="1881"></a>				if ( szFilename == <span class="source_string">""</span> )
+<a name="1882"></a>					continue;
+<a name="1883"></a>
+<a name="1884"></a>				<span class="source_type">szName</span> = Left(szFilename, InStr(szFilename,<span class="source_string">"."</span>));
+<a name="1885"></a>				<span class="source_type">szName</span> = caps( <span class="source_type">szName</span> );
+<a name="1886"></a>
+<a name="1887"></a>				if ( <span class="source_type">szName</span> == caps(m_aMissionDescriptions[ <span class="source_type">index</span> ].m_mapName) )
+<a name="1888"></a>				{
+<a name="1889"></a>					bMissionIsValid = true;
+<a name="1890"></a>					break;
+<a name="1891"></a>				}
+<a name="1892"></a>			}
+<a name="1893"></a>		} 
+<a name="1894"></a>		else 
+<a name="1895"></a>		{
+<a name="1896"></a>			bMissionIsValid = false;
+<a name="1897"></a>		}
+<a name="1898"></a>
+<a name="1899"></a>		if ( !bMissionIsValid ) 
+<a name="1900"></a>		{
+<a name="1901"></a>			m_aMissionDescriptions.remove( <span class="source_type">index</span>, <span class="source_int">1</span> );
+<a name="1902"></a>		}
+<a name="1903"></a>    }
+<a name="1904"></a>
+<a name="1905"></a>	UnlockMissions();
+<a name="1906"></a>}
+<a name="1907"></a>
+<a name="1908"></a>
+<a name="1909"></a>function GetRestKitDescName(<span class="source_type"><a href="../engine/gamereplicationinfo.html" class="source">GameReplicationInfo</a></span> GameRepInfo, <span class="source_type"><a href="../engine/r6serverinfo.html" class="source">R6ServerInfo</a></span>  pServerOptions)
+<a name="1910"></a>{
+<a name="1911"></a>    local <span class="source_type">int</span> _iCount;
+<a name="1912"></a>    local <span class="source_type">BOOL</span> _bFound;
+<a name="1913"></a>    local <span class="source_type">class</span>&lt;<span class="source_type"><a href="../r6description/r6description.html" class="source">R6Description</a></span>&gt; WeaponClass;
+<a name="1914"></a>    local <span class="source_type"><a href="../r6engine/r6gamereplicationinfo.html" class="source">R6GameReplicationInfo</a></span> _GRI;
+<a name="1915"></a>
+<a name="1916"></a>	<span class="source_comment">// MPF - Eric
+</span><a name="1917"></a>	local <span class="source_type"><a href="../engine/r6mod.html" class="source">R6Mod</a></span>	pCurrentMod;
+<a name="1918"></a>	local <span class="source_type">INT</span>	<span class="source_type">i</span>;
+<a name="1919"></a>	pCurrentMod = <span class="source_type">class</span><span class="source_name">'Actor'</span>.static.GetModMgr().m_pCurrentMod;
+<a name="1920"></a>    
+<a name="1921"></a>    _GRI = <span class="source_type"><a href="../r6engine/r6gamereplicationinfo.html" class="source">R6GameReplicationInfo</a></span>(GameRepInfo);
+<a name="1922"></a>	
+<a name="1923"></a>	for (<span class="source_type">i</span> = <span class="source_int">0</span>; <span class="source_type">i</span> &lt; pCurrentMod.m_aDescriptionPackage.Length; <span class="source_type">i</span>++)
+<a name="1924"></a>	{
+<a name="1925"></a>		WeaponClass = <span class="source_type">class</span>&lt;<span class="source_type"><a href="../r6description/r6description.html" class="source">R6Description</a></span>&gt;(GetFirstPackageClass(pCurrentMod.m_aDescriptionPackage[<span class="source_type">i</span>]$<span class="source_string">".u"</span>, <span class="source_type">class</span><span class="source_name">'R6Description'</span>));
+<a name="1926"></a>		
+<a name="1927"></a>		for (_iCount=<span class="source_int">0</span> ; (_iCount &lt; ArrayCount(_GRI.m_szSubMachineGunsRes)) && (_GRI.m_szSubMachineGunsRes[_iCount]!=<span class="source_string">""</span>); _iCount++)
+<a name="1928"></a>		{
+<a name="1929"></a>			_bFound = false;
+<a name="1930"></a>			
+<a name="1931"></a>			while ((WeaponClass != None) && (_bFound==false))
+<a name="1932"></a>			{
+<a name="1933"></a>				if (WeaponClass.Default.m_NameID == _GRI.m_szSubMachineGunsRes[_iCount])
+<a name="1934"></a>				{
+<a name="1935"></a>					pServerOptions.RestrictedSubMachineGuns[_iCount] = WeaponClass;
+<a name="1936"></a>					_bFound=true;
+<a name="1937"></a>				}
+<a name="1938"></a>				WeaponClass = <span class="source_type">class</span>&lt;<span class="source_type"><a href="../r6description/r6description.html" class="source">R6Description</a></span>&gt;(GetNextClass());
+<a name="1939"></a>			}
+<a name="1940"></a>			WeaponClass = <span class="source_type">class</span>&lt;<span class="source_type"><a href="../r6description/r6description.html" class="source">R6Description</a></span>&gt;(RewindToFirstClass());
+<a name="1941"></a>		}
+<a name="1942"></a>		
+<a name="1943"></a>		
+<a name="1944"></a>		for (_iCount=<span class="source_int">0</span>; (_iCount &lt; ArrayCount(_GRI.m_szShotGunRes)) && (_GRI.m_szShotGunRes[_iCount]!=<span class="source_string">""</span>);  _iCount++)
+<a name="1945"></a>		{
+<a name="1946"></a>			_bFound = false;
+<a name="1947"></a>			while ((WeaponClass != None) && (_bFound==false))
+<a name="1948"></a>			{
+<a name="1949"></a>				if (WeaponClass.Default.m_NameID == _GRI.m_szShotGunRes[_iCount])
+<a name="1950"></a>				{
+<a name="1951"></a>					pServerOptions.RestrictedShotGuns[_iCount] = WeaponClass;
+<a name="1952"></a>					_bFound=true;
+<a name="1953"></a>				}
+<a name="1954"></a>				WeaponClass = <span class="source_type">class</span>&lt;<span class="source_type"><a href="../r6description/r6description.html" class="source">R6Description</a></span>&gt;(GetNextClass());
+<a name="1955"></a>			}  
+<a name="1956"></a>			WeaponClass = <span class="source_type">class</span>&lt;<span class="source_type"><a href="../r6description/r6description.html" class="source">R6Description</a></span>&gt;(RewindToFirstClass());
+<a name="1957"></a>		}
+<a name="1958"></a>		
+<a name="1959"></a>		for (_iCount=<span class="source_int">0</span>; (_iCount &lt; ArrayCount(_GRI.m_szAssRifleRes)) && (_GRI.m_szAssRifleRes[_iCount]!=<span class="source_string">""</span>);  _iCount++)
+<a name="1960"></a>		{
+<a name="1961"></a>			_bFound = false;
+<a name="1962"></a>			while ((WeaponClass != None) && (_bFound==false))
+<a name="1963"></a>			{
+<a name="1964"></a>				if (WeaponClass.Default.m_NameID == _GRI.m_szAssRifleRes[_iCount])
+<a name="1965"></a>				{
+<a name="1966"></a>					pServerOptions.RestrictedAssultRifles[_iCount] = WeaponClass;
+<a name="1967"></a>					_bFound=true;
+<a name="1968"></a>				}
+<a name="1969"></a>				WeaponClass = <span class="source_type">class</span>&lt;<span class="source_type"><a href="../r6description/r6description.html" class="source">R6Description</a></span>&gt;(GetNextClass());
+<a name="1970"></a>			}  
+<a name="1971"></a>			WeaponClass = <span class="source_type">class</span>&lt;<span class="source_type"><a href="../r6description/r6description.html" class="source">R6Description</a></span>&gt;(RewindToFirstClass());
+<a name="1972"></a>		}
+<a name="1973"></a>		
+<a name="1974"></a>		for (_iCount=<span class="source_int">0</span>; (_iCount &lt; ArrayCount(_GRI.m_szMachGunRes)) && (_GRI.m_szMachGunRes[_iCount]!=<span class="source_string">""</span>);  _iCount++)
+<a name="1975"></a>		{
+<a name="1976"></a>			_bFound = false;
+<a name="1977"></a>			while ((WeaponClass != None) && (_bFound==false))
+<a name="1978"></a>			{
+<a name="1979"></a>				if (WeaponClass.Default.m_NameID == _GRI.m_szMachGunRes[_iCount])
+<a name="1980"></a>				{
+<a name="1981"></a>					pServerOptions.RestrictedMachineGuns[_iCount] = WeaponClass;
+<a name="1982"></a>					_bFound=true;
+<a name="1983"></a>				}
+<a name="1984"></a>				WeaponClass = <span class="source_type">class</span>&lt;<span class="source_type"><a href="../r6description/r6description.html" class="source">R6Description</a></span>&gt;(GetNextClass());
+<a name="1985"></a>			}  
+<a name="1986"></a>			WeaponClass = <span class="source_type">class</span>&lt;<span class="source_type"><a href="../r6description/r6description.html" class="source">R6Description</a></span>&gt;(RewindToFirstClass());
+<a name="1987"></a>		}
+<a name="1988"></a>		
+<a name="1989"></a>		for (_iCount=<span class="source_int">0</span>; (_iCount &lt; ArrayCount(_GRI.m_szSnipRifleRes)) && (_GRI.m_szSnipRifleRes[_iCount]!=<span class="source_string">""</span>);  _iCount++)
+<a name="1990"></a>		{
+<a name="1991"></a>			_bFound = false;
+<a name="1992"></a>			while ((WeaponClass != None) && (_bFound==false))
+<a name="1993"></a>			{
+<a name="1994"></a>				if (WeaponClass.Default.m_NameID == _GRI.m_szSnipRifleRes[_iCount])
+<a name="1995"></a>				{
+<a name="1996"></a>					pServerOptions.RestrictedSniperRifles[_iCount] = WeaponClass;
+<a name="1997"></a>					_bFound=true;
+<a name="1998"></a>				}
+<a name="1999"></a>				WeaponClass = <span class="source_type">class</span>&lt;<span class="source_type"><a href="../r6description/r6description.html" class="source">R6Description</a></span>&gt;(GetNextClass());
+<a name="2000"></a>			}  
+<a name="2001"></a>			WeaponClass = <span class="source_type">class</span>&lt;<span class="source_type"><a href="../r6description/r6description.html" class="source">R6Description</a></span>&gt;(RewindToFirstClass());
+<a name="2002"></a>		}
+<a name="2003"></a>		
+<a name="2004"></a>		<span class="source_comment">//Insert All Secondary Descriptions except None
+</span><a name="2005"></a>		
+<a name="2006"></a>		for (_iCount=<span class="source_int">0</span>; (_iCount &lt; ArrayCount(_GRI.m_szPistolRes)) && (_GRI.m_szPistolRes[_iCount]!=<span class="source_string">""</span>); _iCount++)
+<a name="2007"></a>		{
+<a name="2008"></a>			_bFound = false;
+<a name="2009"></a>			while ((WeaponClass != None) && (_bFound==false))
+<a name="2010"></a>			{
+<a name="2011"></a>				if (WeaponClass.Default.m_NameID == _GRI.m_szPistolRes[_iCount])
+<a name="2012"></a>				{
+<a name="2013"></a>					pServerOptions.RestrictedPistols[_iCount] = WeaponClass;
+<a name="2014"></a>					_bFound=true;
+<a name="2015"></a>				}
+<a name="2016"></a>				WeaponClass = <span class="source_type">class</span>&lt;<span class="source_type"><a href="../r6description/r6description.html" class="source">R6Description</a></span>&gt;(GetNextClass());
+<a name="2017"></a>			}  
+<a name="2018"></a>			WeaponClass = <span class="source_type">class</span>&lt;<span class="source_type"><a href="../r6description/r6description.html" class="source">R6Description</a></span>&gt;(RewindToFirstClass());
+<a name="2019"></a>		}
+<a name="2020"></a>		
+<a name="2021"></a>		for (_iCount=<span class="source_int">0</span>; (_iCount &lt; ArrayCount(_GRI.m_szMachPistolRes)) && (_GRI.m_szMachPistolRes[_iCount]!=<span class="source_string">""</span>); _iCount++)
+<a name="2022"></a>		{
+<a name="2023"></a>			_bFound = false;
+<a name="2024"></a>			while ((WeaponClass != None) && (_bFound==false))
+<a name="2025"></a>			{
+<a name="2026"></a>				if (WeaponClass.Default.m_NameID == _GRI.m_szMachPistolRes[_iCount])
+<a name="2027"></a>				{
+<a name="2028"></a>					pServerOptions.RestrictedMachinePistols[_iCount] = WeaponClass;
+<a name="2029"></a>					_bFound=true;
+<a name="2030"></a>				}
+<a name="2031"></a>				WeaponClass = <span class="source_type">class</span>&lt;<span class="source_type"><a href="../r6description/r6description.html" class="source">R6Description</a></span>&gt;(GetNextClass());
+<a name="2032"></a>			}  
+<a name="2033"></a>			WeaponClass = <span class="source_type">class</span>&lt;<span class="source_type"><a href="../r6description/r6description.html" class="source">R6Description</a></span>&gt;(RewindToFirstClass());
+<a name="2034"></a>		}
+<a name="2035"></a>		
+<a name="2036"></a>		FreePackageObjects();
+<a name="2037"></a>	}
+<a name="2038"></a>}
+<a name="2039"></a>
+<a name="2040"></a>defaultproperties
+<a name="2041"></a>{
+<a name="2042"></a>     m_StopMainMenuMusic=<span class="source_type">Sound</span><span class="source_name">'Music.Play_theme_Musicsilence'</span>
+<a name="2043"></a>     RootWindow=<span class="source_string">"R6Menu.R6MenuRootWindow"</span>
+<a name="2044"></a>}
+<a name="2045"></a></pre></td></tr></table></div>
+<hr />
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../r6game/r6game-overview.html">Package</a></td>
+	<td class="header"><a href="../r6game/r6console.html">Class</a></td>
+	<td class="header_hilight">Source</td>
+	<td class="header"><a class="header" href="../classtree.html#R6Console">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../Source_r6game/r6campaign.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../Source_r6game/r6coopmode.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+
+<div class="stats">Class file time: sam. 18/9/2004 14:39:50.000 - Creation time: mar. 26/5/2026 18:33:19.492 - Created with <a href="http://wiki.beyondunreal.com/wiki/UnCodeX" target="_blank">UnCodeX</a></div>
+
+</body>
+</html>

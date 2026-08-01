@@ -1,0 +1,91 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+	<title>UnCodeX - Source: R63rdWeapons.NormalAssaultAK47</title>
+	<meta name="Generator" content="UnCodeX 241" />
+	<link rel="stylesheet" href="../DocStyle2.css" type="text/css" title="Original Purple" />
+	<link rel="alternative stylesheet" href="../DocStyle2-blue.css" type="text/css" title="Blue" />
+	<link rel="alternative stylesheet" href="../DocStyle2-red.css" type="text/css" title="Red" />
+	<!--[if IE]>
+	<link rel="stylesheet" href="../DocStyle2-msie.css" type="text/css" />
+	<![endif]-->
+	<script src="../styleswitcher.js" type="text/javascript"></script>
+</head>
+<body>
+
+<div class="header">
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../r63rdweapons/r63rdweapons-overview.html">Package</a></td>
+	<td class="header"><a href="../r63rdweapons/normalassaultak47.html">Class</a></td>
+	<td class="header_hilight">Source</td>
+	<td class="header"><a class="header" href="../classtree.html#NormalAssaultAK47">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../Source_r63rdweapons/lmgrpd.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../Source_r63rdweapons/normalassaultak74.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html#Source_r63rdweapons/normalassaultak47.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+</div>
+<div class="spacer"></div>
+
+<h1><a href="../r63rdweapons/r63rdweapons-overview.html">R63rdWeapons</a>.<a href="../r63rdweapons/normalassaultak47.html">NormalAssaultAK47</a></h1>
+<br />
+<div class="source"><table class="source"><tr><td class="source_lineno"><span class="source_lineno">00001<br />00002<br />00003<br />00004<br />00005<br />00006<br />00007<br />00008<br />00009<br />00010<br />00011<br />00012<br />00013<br />00014<br />00015<br />00016<br />00017<br />00018<br />00019<br />00020<br />
+00021<br />00022<br />00023<br />00024<br />00025<br />00026<br />00027<br />00028<br />00029<br />00030<br />00031<br />00032</span></td>
+<td class="source"><pre class="source"><a name="1"></a><span class="source_comment">//============================================================================//
+</span><a name="2"></a><span class="source_comment">//  NormalAssaultAK47.uc
+</span><a name="3"></a><span class="source_comment">//  Copyright 2001 Ubi Soft, Inc. All Rights Reserved.
+</span><a name="4"></a><span class="source_comment">//============================================================================//
+</span><a name="5"></a>
+<a name="6"></a>
+<a name="7"></a><span class="source_type">Class</span> <span class="source_type"><a href="../r63rdweapons/normalassaultak47.html" class="source">NormalAssaultAK47</a></span> extends <span class="source_type"><a href="../r63rdweapons/assaultak47.html" class="source">AssaultAK47</a></span>;
+<a name="8"></a>
+<a name="9"></a>defaultproperties
+<a name="10"></a>{
+<a name="11"></a>     m_iClipCapacity=<span class="source_int">30</span>
+<a name="12"></a>     m_iNbOfClips=<span class="source_int">6</span>
+<a name="13"></a>     m_iNbOfExtraClips=<span class="source_int">3</span>
+<a name="14"></a>     m_fMuzzleVelocity=<span class="source_int">42900.000000</span>
+<a name="15"></a>     m_MuzzleScale=<span class="source_int">0.756527</span>
+<a name="16"></a>     m_fFireSoundRadius=<span class="source_int">2860.000000</span>
+<a name="17"></a>     m_pReticuleClass=<span class="source_type">Class</span><span class="source_name">'R6Weapons.R6RifleReticule'</span>
+<a name="18"></a>     m_pBulletClass=<span class="source_type">Class</span><span class="source_name">'R6Weapons.ammo762mmM43NormalFMJ'</span>
+<a name="19"></a>     m_stAccuracyValues=(fBaseAccuracy=<span class="source_int">1.096060</span>,fShuffleAccuracy=<span class="source_int">1.955122</span>,fWalkingAccuracy=<span class="source_int">2.932684</span>,fWalkingFastAccuracy=<span class="source_int">12.097320</span>,fRunningAccuracy=<span class="source_int">12.097320</span>,fReticuleTime=<span class="source_int">0.876250</span>,fAccuracyChange=<span class="source_int">6.357965</span>,fWeaponJump=<span class="source_int">14.088409</span>)
+<a name="20"></a>     m_EquipSnd=<span class="source_type">Sound</span><span class="source_name">'CommonAssaultRiffles.Play_Assault_Equip'</span>
+<a name="21"></a>     m_UnEquipSnd=<span class="source_type">Sound</span><span class="source_name">'CommonAssaultRiffles.Play_Assault_Unequip'</span>
+<a name="22"></a>     m_ReloadSnd=<span class="source_type">Sound</span><span class="source_name">'Assault_AK47_Reloads.Play_AK47_Reload'</span>
+<a name="23"></a>     m_ReloadEmptySnd=<span class="source_type">Sound</span><span class="source_name">'Assault_AK47_Reloads.Play_AK47_ReloadEmpty'</span>
+<a name="24"></a>     m_ChangeROFSnd=<span class="source_type">Sound</span><span class="source_name">'CommonAssaultRiffles.Play_Assault_ROF'</span>
+<a name="25"></a>     m_SingleFireStereoSnd=<span class="source_type">Sound</span><span class="source_name">'Assault_AK47.Play_AK47_SingleShots'</span>
+<a name="26"></a>     m_FullAutoStereoSnd=<span class="source_type">Sound</span><span class="source_name">'Assault_AK47.Play_AK47_AutoShots'</span>
+<a name="27"></a>     m_FullAutoEndStereoSnd=<span class="source_type">Sound</span><span class="source_name">'Assault_AK47.Stop_AK47_AutoShots_Go'</span>
+<a name="28"></a>     m_TriggerSnd=<span class="source_type">Sound</span><span class="source_name">'CommonAssaultRiffles.Play_Assault_Trigger'</span>
+<a name="29"></a>     m_szMagazineClass=<span class="source_string">"R63rdWeapons.R63rdMAGAK47"</span>
+<a name="30"></a>     m_szMuzzleClass=<span class="source_string">"R6WeaponGadgets.R63rdMuzzleAK47"</span>
+<a name="31"></a>}
+<a name="32"></a></pre></td></tr></table></div>
+<hr />
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../r63rdweapons/r63rdweapons-overview.html">Package</a></td>
+	<td class="header"><a href="../r63rdweapons/normalassaultak47.html">Class</a></td>
+	<td class="header_hilight">Source</td>
+	<td class="header"><a class="header" href="../classtree.html#NormalAssaultAK47">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../Source_r63rdweapons/lmgrpd.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../Source_r63rdweapons/normalassaultak74.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+
+<div class="stats">Class file time: sam. 18/9/2004 14:39:46.000 - Creation time: mar. 26/5/2026 18:33:18.598 - Created with <a href="http://wiki.beyondunreal.com/wiki/UnCodeX" target="_blank">UnCodeX</a></div>
+
+</body>
+</html>

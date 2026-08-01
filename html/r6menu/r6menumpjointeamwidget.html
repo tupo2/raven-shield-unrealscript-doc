@@ -1,0 +1,588 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+	<title>UnCodeX - R6Menu.R6MenuMPJoinTeamWidget</title>
+	<meta name="Generator" content="UnCodeX 241" />
+	<link rel="stylesheet" href="../DocStyle2.css" type="text/css" title="Original Purple" />
+	<link rel="alternative stylesheet" href="../DocStyle2-blue.css" type="text/css" title="Blue" />
+	<link rel="alternative stylesheet" href="../DocStyle2-red.css" type="text/css" title="Red" />
+	<!--[if IE]>
+	<link rel="stylesheet" href="../DocStyle2-msie.css" type="text/css" />
+	<![endif]-->
+	<script src="../styleswitcher.js" type="text/javascript"></script>
+</head>
+<body>
+
+<div class="header">
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../r6menu/r6menu-overview.html">Package</a></td>
+	<td class="header_hilight">Class</td>
+	<td class="header"><a href="../Source_r6menu/r6menumpjointeamwidget.html">Source</a></td>
+	<td class="header"><a class="header" href="../classtree.html#R6MenuMPJoinTeamWidget">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../r6menu/r6menumpinterwidget.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../r6menu/r6menumpmanagetab.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html#r6menu/r6menumpjointeamwidget.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+</div>
+<div class="spacer"></div>
+
+<h1><a href="../r6menu/r6menu-overview.html">R6Menu</a>.R6MenuMPJoinTeamWidget</h1>
+
+<dl>
+<dt>Extends</dt><dd><a href="../r6menu/r6menuwidget.html">R6MenuWidget</a></dd>
+
+</dl>
+
+<p></p>
+
+<pre class="tree"><a href="../core/core-overview.html">core</a>.<a href="../core/object.html">Object</a>
+|   
++-- <a href="../uwindow/uwindow-overview.html">UWindow</a>.<a href="../uwindow/uwindowbase.html">UWindowBase</a>
+   |   
+   +-- <a href="../uwindow/uwindow-overview.html">UWindow</a>.<a href="../uwindow/uwindowwindow.html">UWindowWindow</a>
+      |   
+      +-- <a href="../uwindow/uwindow-overview.html">UWindow</a>.<a href="../uwindow/uwindowclientwindow.html">UWindowClientWindow</a>
+         |   
+         +-- <a href="../uwindow/uwindow-overview.html">UWindow</a>.<a href="../uwindow/uwindowdialogclientwindow.html">UWindowDialogClientWindow</a>
+            |   
+            +-- <a href="../r6menu/r6menu-overview.html">R6Menu</a>.<a href="../r6menu/r6menuwidget.html">R6MenuWidget</a>
+               |   
+               +-- <a href="../r6menu/r6menu-overview.html">R6Menu</a>.<a href="../r6menu/r6menumpjointeamwidget.html">R6MenuMPJoinTeamWidget</a>
+</pre>
+
+
+
+<hr />
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Constants Summary</th>
+</tr>
+<tr><td width="40%"><a href="#_C_iMIN_TIME_FOR_WELCOME_SCREEN" name="C_iMIN_TIME_FOR_WELCOME_SCREEN" title="go to the details">C_iMIN_TIME_FOR_WELCOME_SCREEN</a></td><td width="10%">=</td><td width="50%">10</td></tr>
+
+</table>
+
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th colspan="2" class="title">Variables Summary</th>
+</tr>
+<tr><td nowrap="nowrap" width="33%">Array&lt;Class&gt;</td><td width="66%"><a href="#_m_AArmorDescriptions" name="m_AArmorDescriptions" title="go to the details">m_AArmorDescriptions</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../r6window/r6windowbitmap.html">R6WindowBitmap</a></td><td width="66%"><a href="#_m_BetweenCharIcon" name="m_BetweenCharIcon" title="go to the details">m_BetweenCharIcon</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_m_bIsTeamGame" name="m_bIsTeamGame" title="go to the details">m_bIsTeamGame</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">FLOAT</td><td width="66%"><a href="#_m_fTimeAutoTeam" name="m_fTimeAutoTeam" title="go to the details">m_fTimeAutoTeam</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">FLOAT</td><td width="66%"><a href="#_m_fTimeForRefresh" name="m_fTimeForRefresh" title="go to the details">m_fTimeForRefresh</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">INT</td><td width="66%"><a href="#_m_iBetweenCharXPos" name="m_iBetweenCharXPos" title="go to the details">m_iBetweenCharXPos</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">INT</td><td width="66%"><a href="#_m_iBetweenCharYPos" name="m_iBetweenCharYPos" title="go to the details">m_iBetweenCharYPos</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">INT</td><td width="66%"><a href="#_m_iButtonHeight" name="m_iButtonHeight" title="go to the details">m_iButtonHeight</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">INT</td><td width="66%"><a href="#_m_iButtonWidth" name="m_iButtonWidth" title="go to the details">m_iButtonWidth</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">INT</td><td width="66%"><a href="#_m_iLeftCharXPos" name="m_iLeftCharXPos" title="go to the details">m_iLeftCharXPos</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">INT</td><td width="66%"><a href="#_m_iLeftCharYPos" name="m_iLeftCharYPos" title="go to the details">m_iLeftCharYPos</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">INT</td><td width="66%"><a href="#_m_iRightCharXPos" name="m_iRightCharXPos" title="go to the details">m_iRightCharXPos</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">INT</td><td width="66%"><a href="#_m_iRightCharYPos" name="m_iRightCharYPos" title="go to the details">m_iRightCharYPos</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">INT</td><td width="66%"><a href="#_m_iSingleCharXPos" name="m_iSingleCharXPos" title="go to the details">m_iSingleCharXPos</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">INT</td><td width="66%"><a href="#_m_iSingleCharYPos" name="m_iSingleCharYPos" title="go to the details">m_iSingleCharYPos</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">INT</td><td width="66%"><a href="#_m_iYBetweenButtonPadding" name="m_iYBetweenButtonPadding" title="go to the details">m_iYBetweenButtonPadding</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../r6window/r6windowbitmap.html">R6WindowBitmap</a></td><td width="66%"><a href="#_m_LeftChar" name="m_LeftChar" title="go to the details">m_LeftChar</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../r6menu/r6windowbuttonmpingame.html">R6WindowButtonMPInGame</a></td><td width="66%"><a href="#_m_pButAlphaTeam" name="m_pButAlphaTeam" title="go to the details">m_pButAlphaTeam</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../r6menu/r6windowbuttonmpingame.html">R6WindowButtonMPInGame</a></td><td width="66%"><a href="#_m_pButAutoTeam" name="m_pButAutoTeam" title="go to the details">m_pButAutoTeam</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../r6menu/r6windowbuttonmpingame.html">R6WindowButtonMPInGame</a></td><td width="66%"><a href="#_m_pButBravoTeam" name="m_pButBravoTeam" title="go to the details">m_pButBravoTeam</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../r6menu/r6windowbuttonmpingame.html">R6WindowButtonMPInGame</a></td><td width="66%"><a href="#_m_pButCurrentSelected" name="m_pButCurrentSelected" title="go to the details">m_pButCurrentSelected</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../r6menu/r6windowbuttonmpingame.html">R6WindowButtonMPInGame</a></td><td width="66%"><a href="#_m_pButSpectator" name="m_pButSpectator" title="go to the details">m_pButSpectator</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../core/object.html#Region">Region</a></td><td width="66%"><a href="#_m_pHelpReg" name="m_pHelpReg" title="go to the details">m_pHelpReg</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../r6menu/r6menuhelpwindow.html">R6MenuHelpWindow</a></td><td width="66%"><a href="#_m_pHelpTextWindow" name="m_pHelpTextWindow" title="go to the details">m_pHelpTextWindow</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../r6window/r6windowtextlabelext.html">R6WindowTextLabelExt</a></td><td width="66%"><a href="#_m_pInfoText" name="m_pInfoText" title="go to the details">m_pInfoText</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../core/object.html#Region">Region</a></td><td width="66%"><a href="#_m_RAlphaChar" name="m_RAlphaChar" title="go to the details">m_RAlphaChar</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../core/object.html#Region">Region</a></td><td width="66%"><a href="#_m_RBetaChar" name="m_RBetaChar" title="go to the details">m_RBetaChar</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../core/object.html#Region">Region</a></td><td width="66%"><a href="#_m_RBetweenChar" name="m_RBetweenChar" title="go to the details">m_RBetweenChar</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../r6window/r6windowbitmap.html">R6WindowBitmap</a></td><td width="66%"><a href="#_m_RightChar" name="m_RightChar" title="go to the details">m_RightChar</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../core/object.html#Region">Region</a></td><td width="66%"><a href="#_m_RSpectatorChar" name="m_RSpectatorChar" title="go to the details">m_RSpectatorChar</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../r6window/r6windowbitmap.html">R6WindowBitmap</a></td><td width="66%"><a href="#_m_SingleChar" name="m_SingleChar" title="go to the details">m_SingleChar</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_m_szMenuGreenTeamPawnClass" name="m_szMenuGreenTeamPawnClass" title="go to the details">m_szMenuGreenTeamPawnClass</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_m_szMenuRedTeamPawnClass" name="m_szMenuRedTeamPawnClass" title="go to the details">m_szMenuRedTeamPawnClass</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../engine/texture.html">Texture</a></td><td width="66%"><a href="#_m_TAlphaChar" name="m_TAlphaChar" title="go to the details">m_TAlphaChar</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../engine/texture.html">Texture</a></td><td width="66%"><a href="#_m_TBetaChar" name="m_TBetaChar" title="go to the details">m_TBetaChar</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../engine/texture.html">Texture</a></td><td width="66%"><a href="#_m_TBetweenChar" name="m_TBetweenChar" title="go to the details">m_TBetweenChar</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../engine/texture.html">Texture</a></td><td width="66%"><a href="#_m_TSpectatorChar" name="m_TSpectatorChar" title="go to the details">m_TSpectatorChar</a></td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Variables from <a href="../r6menu/r6menu-overview.html">R6Menu</a>.<a href="../r6menu/r6menuwidget.html">R6MenuWidget</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../r6menu/r6menuwidget.html#m_fLeftMouseXClipping">m_fLeftMouseXClipping</a>, <a href="../r6menu/r6menuwidget.html#m_fLeftMouseYClipping">m_fLeftMouseYClipping</a>, <a href="../r6menu/r6menuwidget.html#m_fRightMouseXClipping">m_fRightMouseXClipping</a>, <a href="../r6menu/r6menuwidget.html#m_fRightMouseYClipping">m_fRightMouseYClipping</a></td>
+</tr>
+</table>
+<table>
+<tr>
+	<th class="inherittitle">Inherited Variables from <a href="../uwindow/uwindow-overview.html">UWindow</a>.<a href="../uwindow/uwindowdialogclientwindow.html">UWindowDialogClientWindow</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../uwindow/uwindowdialogclientwindow.html#DesiredHeight">DesiredHeight</a>, <a href="../uwindow/uwindowdialogclientwindow.html#DesiredWidth">DesiredWidth</a>, <a href="../uwindow/uwindowdialogclientwindow.html#TabLast">TabLast</a></td>
+</tr>
+</table>
+
+
+<br />
+
+
+
+
+
+
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Functions Summary</th>
+</tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_CreateBitmaps-" name="CreateBitmaps" title="go to the details">CreateBitmaps</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_CreateButtons-" name="CreateButtons" title="go to the details">CreateButtons</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_Created-" name="Created" title="go to the details">Created</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_CreateTextLabels-" name="CreateTextLabels" title="go to the details">CreateTextLabels</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_FillDescriptionArray-" name="FillDescriptionArray" title="go to the details">FillDescriptionArray</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_HideWindow-" name="HideWindow" title="go to the details">HideWindow</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_Notify-" name="Notify" title="go to the details">Notify</a> (<a href="../uwindow/uwindowdialogcontrol.html">UWindowDialogControl</a> C, byte E))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_RefreshBitmaps-" name="RefreshBitmaps" title="go to the details">RefreshBitmaps</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_RefreshButtons-" name="RefreshButtons" title="go to the details">RefreshButtons</a> (string _szCurrentGameType))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_RefreshButtonsStatus-" name="RefreshButtonsStatus" title="go to the details">RefreshButtonsStatus</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_RefreshServerInfo-" name="RefreshServerInfo" title="go to the details">RefreshServerInfo</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_SetMenuToDisplay-" name="SetMenuToDisplay" title="go to the details">SetMenuToDisplay</a> (string _szCurrentGameType))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_Tick-" name="Tick" title="go to the details">Tick</a> (float deltaTime))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_ToolTip-" name="ToolTip" title="go to the details">ToolTip</a> (string strTip))<br /><span class="function_state"></span></td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Functions from <a href="../r6menu/r6menu-overview.html">R6Menu</a>.<a href="../r6menu/r6menuwidget.html">R6MenuWidget</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../r6menu/r6menuwidget.html#KeyDown">KeyDown</a>, <a href="../r6menu/r6menuwidget.html#Reset">Reset</a>, <a href="../r6menu/r6menuwidget.html#SetMousePos">SetMousePos</a></td>
+</tr>
+</table>
+<table>
+<tr>
+	<th class="inherittitle">Inherited Functions from <a href="../uwindow/uwindow-overview.html">UWindow</a>.<a href="../uwindow/uwindowdialogclientwindow.html">UWindowDialogClientWindow</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../uwindow/uwindowdialogclientwindow.html#CreateControl">CreateControl</a>, <a href="../uwindow/uwindowdialogclientwindow.html#GetDesiredDimensions">GetDesiredDimensions</a>, <a href="../uwindow/uwindowdialogclientwindow.html#Notify">Notify</a>, <a href="../uwindow/uwindowdialogclientwindow.html#OKPressed">OKPressed</a></td>
+</tr>
+</table>
+
+
+<br />
+
+
+
+<hr />
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Constants Detail</th>
+</tr>
+</table>
+
+<h4><a name="_C_iMIN_TIME_FOR_WELCOME_SCREEN" class="hidden"></a>C_iMIN_TIME_FOR_WELCOME_SCREEN <a href="../Source_r6menu/r6menumpjointeamwidget.html#12" class="small">Source code</a></h4>
+<div class="declaration">const C_iMIN_TIME_FOR_WELCOME_SCREEN = <span class="source_int">10</span>;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th class="title">Variables Detail</th>
+</tr>
+</table>
+
+<h4><a name="_m_AArmorDescriptions" class="hidden"></a>m_AArmorDescriptions <a href="../Source_r6menu/r6menumpjointeamwidget.html#50" class="small">Source code</a></h4>
+<div class="declaration">var Array&lt;<span class="source_type">Class</span>&gt; m_AArmorDescriptions;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_BetweenCharIcon" class="hidden"></a>m_BetweenCharIcon <a href="../Source_r6menu/r6menumpjointeamwidget.html#33" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../r6window/r6windowbitmap.html" class="source">R6WindowBitmap</a></span> m_BetweenCharIcon;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_bIsTeamGame" class="hidden"></a>m_bIsTeamGame <a href="../Source_r6menu/r6menumpjointeamwidget.html#55" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">bool</span> m_bIsTeamGame;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_fTimeAutoTeam" class="hidden"></a>m_fTimeAutoTeam <a href="../Source_r6menu/r6menumpjointeamwidget.html#53" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">FLOAT</span> m_fTimeAutoTeam;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_fTimeForRefresh" class="hidden"></a>m_fTimeForRefresh <a href="../Source_r6menu/r6menumpjointeamwidget.html#52" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">FLOAT</span> m_fTimeForRefresh;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_iBetweenCharXPos" class="hidden"></a>m_iBetweenCharXPos <a href="../Source_r6menu/r6menumpjointeamwidget.html#35" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">INT</span> m_iBetweenCharXPos;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_iBetweenCharYPos" class="hidden"></a>m_iBetweenCharYPos <a href="../Source_r6menu/r6menumpjointeamwidget.html#35" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">INT</span> m_iBetweenCharYPos;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_iButtonHeight" class="hidden"></a>m_iButtonHeight <a href="../Source_r6menu/r6menumpjointeamwidget.html#27" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">INT</span> m_iButtonHeight;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_iButtonWidth" class="hidden"></a>m_iButtonWidth <a href="../Source_r6menu/r6menumpjointeamwidget.html#27" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">INT</span> m_iButtonWidth;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_iLeftCharXPos" class="hidden"></a>m_iLeftCharXPos <a href="../Source_r6menu/r6menumpjointeamwidget.html#35" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">INT</span> m_iLeftCharXPos;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_iLeftCharYPos" class="hidden"></a>m_iLeftCharYPos <a href="../Source_r6menu/r6menumpjointeamwidget.html#35" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">INT</span> m_iLeftCharYPos;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_iRightCharXPos" class="hidden"></a>m_iRightCharXPos <a href="../Source_r6menu/r6menumpjointeamwidget.html#35" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">INT</span> m_iRightCharXPos;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_iRightCharYPos" class="hidden"></a>m_iRightCharYPos <a href="../Source_r6menu/r6menumpjointeamwidget.html#35" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">INT</span> m_iRightCharYPos;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_iSingleCharXPos" class="hidden"></a>m_iSingleCharXPos <a href="../Source_r6menu/r6menumpjointeamwidget.html#35" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">INT</span> m_iSingleCharXPos;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_iSingleCharYPos" class="hidden"></a>m_iSingleCharYPos <a href="../Source_r6menu/r6menumpjointeamwidget.html#35" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">INT</span> m_iSingleCharYPos;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_iYBetweenButtonPadding" class="hidden"></a>m_iYBetweenButtonPadding <a href="../Source_r6menu/r6menumpjointeamwidget.html#26" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">INT</span> m_iYBetweenButtonPadding;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_LeftChar" class="hidden"></a>m_LeftChar <a href="../Source_r6menu/r6menumpjointeamwidget.html#31" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../r6window/r6windowbitmap.html" class="source">R6WindowBitmap</a></span> m_LeftChar;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_pButAlphaTeam" class="hidden"></a>m_pButAlphaTeam <a href="../Source_r6menu/r6menumpjointeamwidget.html#14" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../r6menu/r6windowbuttonmpingame.html" class="source">R6WindowButtonMPInGame</a></span> m_pButAlphaTeam;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_pButAutoTeam" class="hidden"></a>m_pButAutoTeam <a href="../Source_r6menu/r6menumpjointeamwidget.html#16" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../r6menu/r6windowbuttonmpingame.html" class="source">R6WindowButtonMPInGame</a></span> m_pButAutoTeam;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_pButBravoTeam" class="hidden"></a>m_pButBravoTeam <a href="../Source_r6menu/r6menumpjointeamwidget.html#15" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../r6menu/r6windowbuttonmpingame.html" class="source">R6WindowButtonMPInGame</a></span> m_pButBravoTeam;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_pButCurrentSelected" class="hidden"></a>m_pButCurrentSelected <a href="../Source_r6menu/r6menumpjointeamwidget.html#19" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../r6menu/r6windowbuttonmpingame.html" class="source">R6WindowButtonMPInGame</a></span> m_pButCurrentSelected;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_pButSpectator" class="hidden"></a>m_pButSpectator <a href="../Source_r6menu/r6menumpjointeamwidget.html#17" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../r6menu/r6windowbuttonmpingame.html" class="source">R6WindowButtonMPInGame</a></span> m_pButSpectator;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_pHelpReg" class="hidden"></a>m_pHelpReg <a href="../Source_r6menu/r6menumpjointeamwidget.html#24" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../core/object.html#Region" class="source">Region</a></span> m_pHelpReg;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_pHelpTextWindow" class="hidden"></a>m_pHelpTextWindow <a href="../Source_r6menu/r6menumpjointeamwidget.html#23" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../r6menu/r6menuhelpwindow.html" class="source">R6MenuHelpWindow</a></span> m_pHelpTextWindow;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_pInfoText" class="hidden"></a>m_pInfoText <a href="../Source_r6menu/r6menumpjointeamwidget.html#21" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../r6window/r6windowtextlabelext.html" class="source">R6WindowTextLabelExt</a></span> m_pInfoText;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_RAlphaChar" class="hidden"></a>m_RAlphaChar <a href="../Source_r6menu/r6menumpjointeamwidget.html#46" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../core/object.html#Region" class="source">Region</a></span> m_RAlphaChar;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_RBetaChar" class="hidden"></a>m_RBetaChar <a href="../Source_r6menu/r6menumpjointeamwidget.html#48" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../core/object.html#Region" class="source">Region</a></span> m_RBetaChar;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_RBetweenChar" class="hidden"></a>m_RBetweenChar <a href="../Source_r6menu/r6menumpjointeamwidget.html#41" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../core/object.html#Region" class="source">Region</a></span> m_RBetweenChar;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_RightChar" class="hidden"></a>m_RightChar <a href="../Source_r6menu/r6menumpjointeamwidget.html#32" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../r6window/r6windowbitmap.html" class="source">R6WindowBitmap</a></span> m_RightChar;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_RSpectatorChar" class="hidden"></a>m_RSpectatorChar <a href="../Source_r6menu/r6menumpjointeamwidget.html#43" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../core/object.html#Region" class="source">Region</a></span> m_RSpectatorChar;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_SingleChar" class="hidden"></a>m_SingleChar <a href="../Source_r6menu/r6menumpjointeamwidget.html#30" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../r6window/r6windowbitmap.html" class="source">R6WindowBitmap</a></span> m_SingleChar;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_szMenuGreenTeamPawnClass" class="hidden"></a>m_szMenuGreenTeamPawnClass <a href="../Source_r6menu/r6menumpjointeamwidget.html#57" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">string</span> m_szMenuGreenTeamPawnClass;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_szMenuRedTeamPawnClass" class="hidden"></a>m_szMenuRedTeamPawnClass <a href="../Source_r6menu/r6menumpjointeamwidget.html#58" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">string</span> m_szMenuRedTeamPawnClass;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_TAlphaChar" class="hidden"></a>m_TAlphaChar <a href="../Source_r6menu/r6menumpjointeamwidget.html#45" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../engine/texture.html" class="source">Texture</a></span> m_TAlphaChar;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_TBetaChar" class="hidden"></a>m_TBetaChar <a href="../Source_r6menu/r6menumpjointeamwidget.html#47" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../engine/texture.html" class="source">Texture</a></span> m_TBetaChar;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_TBetweenChar" class="hidden"></a>m_TBetweenChar <a href="../Source_r6menu/r6menumpjointeamwidget.html#40" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../engine/texture.html" class="source">Texture</a></span> m_TBetweenChar;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_TSpectatorChar" class="hidden"></a>m_TSpectatorChar <a href="../Source_r6menu/r6menumpjointeamwidget.html#42" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../engine/texture.html" class="source">Texture</a></span> m_TSpectatorChar;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+
+
+<br />
+
+
+
+
+
+
+
+<table class="title">
+<tr>
+	<th class="title">Functions Detail</th>
+</tr>
+</table>
+
+<h4><a name="_CreateBitmaps-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> CreateBitmaps <span class="function_state"></span> <a href="../Source_r6menu/r6menumpjointeamwidget.html#367" class="small">Source code</a></h4>
+<div class="declaration"> function  CreateBitmaps ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_CreateButtons-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> CreateButtons <span class="function_state"></span> <a href="../Source_r6menu/r6menumpjointeamwidget.html#202" class="small">Source code</a></h4>
+<div class="declaration"> function  CreateButtons ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_Created-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> Created <span class="function_state"></span> <a href="../Source_r6menu/r6menumpjointeamwidget.html#60" class="small">Source code</a></h4>
+<div class="declaration"> function  Created ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_CreateTextLabels-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> CreateTextLabels <span class="function_state"></span> <a href="../Source_r6menu/r6menumpjointeamwidget.html#323" class="small">Source code</a></h4>
+<div class="declaration"> function  CreateTextLabels ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_FillDescriptionArray-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> FillDescriptionArray <span class="function_state"></span> <a href="../Source_r6menu/r6menumpjointeamwidget.html#75" class="small">Source code</a></h4>
+<div class="declaration"> function  FillDescriptionArray ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_HideWindow-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> HideWindow <span class="function_state"></span> <a href="../Source_r6menu/r6menumpjointeamwidget.html#497" class="small">Source code</a></h4>
+<div class="declaration"> function  HideWindow ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_Notify-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> Notify <span class="function_state"></span> <a href="../Source_r6menu/r6menumpjointeamwidget.html#437" class="small">Source code</a></h4>
+<div class="declaration"> function  Notify ( <span class="source_type"><a href="../uwindow/uwindowdialogcontrol.html" class="source">UWindowDialogControl</a></span> <span class="source_type">C</span>, <span class="source_type">byte</span> E) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_RefreshBitmaps-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> RefreshBitmaps <span class="function_state"></span> <a href="../Source_r6menu/r6menumpjointeamwidget.html#399" class="small">Source code</a></h4>
+<div class="declaration"> function  RefreshBitmaps ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_RefreshButtons-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> RefreshButtons <span class="function_state"></span> <a href="../Source_r6menu/r6menumpjointeamwidget.html#257" class="small">Source code</a></h4>
+<div class="declaration"> function  RefreshButtons ( <span class="source_type">string</span> _szCurrentGameType) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_RefreshButtonsStatus-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> RefreshButtonsStatus <span class="function_state"></span> <a href="../Source_r6menu/r6menumpjointeamwidget.html#301" class="small">Source code</a></h4>
+<div class="declaration"> function  RefreshButtonsStatus ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_RefreshServerInfo-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> RefreshServerInfo <span class="function_state"></span> <a href="../Source_r6menu/r6menumpjointeamwidget.html#182" class="small">Source code</a></h4>
+<div class="declaration"> function  RefreshServerInfo ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_SetMenuToDisplay-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> SetMenuToDisplay <span class="function_state"></span> <a href="../Source_r6menu/r6menumpjointeamwidget.html#165" class="small">Source code</a></h4>
+<div class="declaration"> function  SetMenuToDisplay ( <span class="source_type">string</span> _szCurrentGameType) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_Tick-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> Tick <span class="function_state"></span> <a href="../Source_r6menu/r6menumpjointeamwidget.html#99" class="small">Source code</a></h4>
+<div class="declaration"> function  Tick ( <span class="source_type">float</span> <span class="source_type">deltaTime</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ToolTip-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> ToolTip <span class="function_state"></span> <a href="../Source_r6menu/r6menumpjointeamwidget.html#428" class="small">Source code</a></h4>
+<div class="declaration"> function  ToolTip ( <span class="source_type">string</span> strTip) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+
+
+<br />
+
+
+<table class="title">
+<tr>
+	<th class="title">Defaultproperties</th>
+</tr>
+</table>
+<br />
+<div class="source"><table class="source"><tr><td class="source"><pre class="source">defaultproperties
+{
+     m_iYBetweenButtonPadding=<span class="source_int">20</span>
+     m_iButtonHeight=<span class="source_int">25</span>
+     m_iButtonWidth=<span class="source_int">220</span>
+     m_iSingleCharXPos=<span class="source_int">420</span>
+     m_iSingleCharYPos=<span class="source_int">120</span>
+     m_iLeftCharXPos=<span class="source_int">340</span>
+     m_iLeftCharYPos=<span class="source_int">120</span>
+     m_iRightCharXPos=<span class="source_int">491</span>
+     m_iRightCharYPos=<span class="source_int">120</span>
+     m_iBetweenCharXPos=<span class="source_int">453</span>
+     m_iBetweenCharYPos=<span class="source_int">170</span>
+     m_TBetweenChar=<span class="source_type"><a href="../engine/texture.html" class="source">Texture</a></span><span class="source_name">'R6MenuTextures.Gui_BoxScroll'</span>
+     m_TSpectatorChar=<span class="source_type"><a href="../engine/texture.html" class="source">Texture</a></span><span class="source_name">'R6MenuTextures.Gui_BoxScroll'</span>
+     m_pHelpReg=(X=<span class="source_int">45</span>,Y=<span class="source_int">326</span>,W=<span class="source_int">299</span>,<span class="source_type">H</span>=<span class="source_int">40</span>)
+     m_RBetweenChar=(X=<span class="source_int">188</span>,Y=<span class="source_int">396</span>,W=<span class="source_int">58</span>,<span class="source_type">H</span>=<span class="source_int">77</span>)
+     m_RSpectatorChar=(X=<span class="source_int">112</span>,Y=<span class="source_int">145</span>,W=<span class="source_int">133</span>,<span class="source_type">H</span>=<span class="source_int">251</span>)
+}
+</pre></td></tr></table></div>
+
+
+
+<hr />
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../r6menu/r6menu-overview.html">Package</a></td>
+	<td class="header_hilight">Class</td>
+	<td class="header"><a href="../Source_r6menu/r6menumpjointeamwidget.html">Source</a></td>
+	<td class="header"><a class="header" href="../classtree.html#R6MenuMPJoinTeamWidget">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../r6menu/r6menumpinterwidget.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../r6menu/r6menumpmanagetab.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+
+<div class="stats">Creation time: mar. 26/5/2026 18:33:12.414 - Created with <a href="http://wiki.beyondunreal.com/wiki/UnCodeX" target="_blank">UnCodeX</a></div>
+
+</body>
+</html>

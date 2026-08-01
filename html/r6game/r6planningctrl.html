@@ -1,0 +1,1137 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+	<title>UnCodeX - R6Game.R6PlanningCtrl</title>
+	<meta name="Generator" content="UnCodeX 241" />
+	<link rel="stylesheet" href="../DocStyle2.css" type="text/css" title="Original Purple" />
+	<link rel="alternative stylesheet" href="../DocStyle2-blue.css" type="text/css" title="Blue" />
+	<link rel="alternative stylesheet" href="../DocStyle2-red.css" type="text/css" title="Red" />
+	<!--[if IE]>
+	<link rel="stylesheet" href="../DocStyle2-msie.css" type="text/css" />
+	<![endif]-->
+	<script src="../styleswitcher.js" type="text/javascript"></script>
+</head>
+<body>
+
+<div class="header">
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../r6game/r6game-overview.html">Package</a></td>
+	<td class="header_hilight">Class</td>
+	<td class="header"><a href="../Source_r6game/r6planningctrl.html">Source</a></td>
+	<td class="header"><a class="header" href="../classtree.html#R6PlanningCtrl">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../r6game/r6planningbreach.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../r6game/r6planninggrenade.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html#r6game/r6planningctrl.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+</div>
+<div class="spacer"></div>
+
+<h1><a href="../r6game/r6game-overview.html">R6Game</a>.R6PlanningCtrl</h1>
+
+<dl>
+<dt>Extends</dt><dd><a href="../engine/playercontroller.html">PlayerController</a></dd>
+<dt>Modifiers</dt><dd>native </dd>
+</dl>
+
+<p></p>
+
+<pre class="tree"><a href="../core/core-overview.html">core</a>.<a href="../core/object.html">Object</a>
+|   
++-- <a href="../engine/engine-overview.html">engine</a>.<a href="../engine/actor.html">Actor</a>
+   |   
+   +-- <a href="../engine/engine-overview.html">engine</a>.<a href="../engine/controller.html">Controller</a>
+      |   
+      +-- <a href="../engine/engine-overview.html">engine</a>.<a href="../engine/playercontroller.html">PlayerController</a>
+         |   
+         +-- <a href="../r6game/r6game-overview.html">R6Game</a>.<a href="../r6game/r6planningctrl.html">R6PlanningCtrl</a>
+</pre>
+
+
+
+<hr />
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Constants Summary</th>
+</tr>
+<tr><td width="40%"><a href="#_R6InputKey_ActionPopup" name="R6InputKey_ActionPopup" title="go to the details">R6InputKey_ActionPopup</a></td><td width="10%">=</td><td width="50%">1024</td></tr>
+<tr><td width="40%"><a href="#_R6InputKey_PathFlagPopup" name="R6InputKey_PathFlagPopup" title="go to the details">R6InputKey_PathFlagPopup</a></td><td width="10%">=</td><td width="50%">1026</td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Contants from <a href="../engine/engine-overview.html">engine</a>.<a href="../engine/playercontroller.html">PlayerController</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../engine/playercontroller.html#K_GlobalID_size">K_GlobalID_size</a></td>
+</tr>
+</table>
+<table>
+<tr>
+	<th class="inherittitle">Inherited Contants from <a href="../engine/engine-overview.html">engine</a>.<a href="../engine/controller.html">Controller</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../engine/controller.html#LATENT_MOVETOWARD">LATENT_MOVETOWARD</a></td>
+</tr>
+</table>
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th colspan="2" class="title">Variables Summary</th>
+</tr>
+<tr><td nowrap="nowrap" width="33%">INT</td><td width="66%"><a href="#_m_3DWindowPositionH" name="m_3DWindowPositionH" title="go to the details">m_3DWindowPositionH</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">INT</td><td width="66%"><a href="#_m_3DWindowPositionW" name="m_3DWindowPositionW" title="go to the details">m_3DWindowPositionW</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">INT</td><td width="66%"><a href="#_m_3DWindowPositionX" name="m_3DWindowPositionX" title="go to the details">m_3DWindowPositionX</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">INT</td><td width="66%"><a href="#_m_3DWindowPositionY" name="m_3DWindowPositionY" title="go to the details">m_3DWindowPositionY</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">BOOL</td><td width="66%"><a href="#_m_bActionPointSelected" name="m_bActionPointSelected" title="go to the details">m_bActionPointSelected</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">BOOL</td><td width="66%"><a href="#_m_bCanMoveFirstPoint" name="m_bCanMoveFirstPoint" title="go to the details">m_bCanMoveFirstPoint</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">BOOL</td><td width="66%"><a href="#_m_bClickedOnRange" name="m_bClickedOnRange" title="go to the details">m_bClickedOnRange</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">BOOL</td><td width="66%"><a href="#_m_bClickToFindLocation" name="m_bClickToFindLocation" title="go to the details">m_bClickToFindLocation</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_m_bFirstTick" name="m_bFirstTick" title="go to the details">m_bFirstTick</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">BOOL</td><td width="66%"><a href="#_m_bLockCamera" name="m_bLockCamera" title="go to the details">m_bLockCamera</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">BOOL</td><td width="66%"><a href="#_m_bMove3DView" name="m_bMove3DView" title="go to the details">m_bMove3DView</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">BOOL</td><td width="66%"><a href="#_m_bPlayMode" name="m_bPlayMode" title="go to the details">m_bPlayMode</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">BOOL</td><td width="66%"><a href="#_m_bRender3DView" name="m_bRender3DView" title="go to the details">m_bRender3DView</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">BOOL</td><td width="66%"><a href="#_m_bSetSnipeDirection" name="m_bSetSnipeDirection" title="go to the details">m_bSetSnipeDirection</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../engine/actor.html">actor</a></td><td width="66%"><a href="#_m_CamSpot" name="m_CamSpot" title="go to the details">m_CamSpot</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">FLOAT</td><td width="66%"><a href="#_m_fAngleMax" name="m_fAngleMax" title="go to the details">m_fAngleMax</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">FLOAT</td><td width="66%"><a href="#_m_fAngleRate" name="m_fAngleRate" title="go to the details">m_fAngleRate</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">FLOAT</td><td width="66%"><a href="#_m_fCameraAngle" name="m_fCameraAngle" title="go to the details">m_fCameraAngle</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">FLOAT</td><td width="66%"><a href="#_m_fCamRate" name="m_fCamRate" title="go to the details">m_fCamRate</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">FLOAT</td><td width="66%"><a href="#_m_fDebugRangeScale" name="m_fDebugRangeScale" title="go to the details">m_fDebugRangeScale</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">FLOAT</td><td width="66%"><a href="#_m_fLastMouseX" name="m_fLastMouseX" title="go to the details">m_fLastMouseX</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">FLOAT</td><td width="66%"><a href="#_m_fLastMouseY" name="m_fLastMouseY" title="go to the details">m_fLastMouseY</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">FLOAT</td><td width="66%"><a href="#_m_fRotateDelta" name="m_fRotateDelta" title="go to the details">m_fRotateDelta</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">FLOAT</td><td width="66%"><a href="#_m_fRotateRate" name="m_fRotateRate" title="go to the details">m_fRotateRate</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">FLOAT</td><td width="66%"><a href="#_m_fZoom" name="m_fZoom" title="go to the details">m_fZoom</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">FLOAT</td><td width="66%"><a href="#_m_fZoomDelta" name="m_fZoomDelta" title="go to the details">m_fZoomDelta</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">FLOAT</td><td width="66%"><a href="#_m_fZoomFactor" name="m_fZoomFactor" title="go to the details">m_fZoomFactor</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">FLOAT</td><td width="66%"><a href="#_m_fZoomMax" name="m_fZoomMax" title="go to the details">m_fZoomMax</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">FLOAT</td><td width="66%"><a href="#_m_fZoomMin" name="m_fZoomMin" title="go to the details">m_fZoomMin</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">FLOAT</td><td width="66%"><a href="#_m_fZoomRate" name="m_fZoomRate" title="go to the details">m_fZoomRate</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">INT</td><td width="66%"><a href="#_m_iCurrentTeam" name="m_iCurrentTeam" title="go to the details">m_iCurrentTeam</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">INT</td><td width="66%"><a href="#_m_iLevelDisplay" name="m_iLevelDisplay" title="go to the details">m_iLevelDisplay</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../r6game/r6cameradirection.html">R6CameraDirection</a></td><td width="66%"><a href="#_m_pCameraDirIcon" name="m_pCameraDirIcon" title="go to the details">m_pCameraDirIcon</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../r6game/r6filemanagerplanning.html">R6FileManagerPlanning</a></td><td width="66%"><a href="#_m_pFileManager" name="m_pFileManager" title="go to the details">m_pFileManager</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../engine/texture.html">Texture</a></td><td width="66%"><a href="#_m_pIconTex[12]" name="m_pIconTex[12]" title="go to the details">m_pIconTex[12]</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">Sound</td><td width="66%"><a href="#_m_PlanningBadClickSnd" name="m_PlanningBadClickSnd" title="go to the details">m_PlanningBadClickSnd</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">Sound</td><td width="66%"><a href="#_m_PlanningGoodClickSnd" name="m_PlanningGoodClickSnd" title="go to the details">m_PlanningGoodClickSnd</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">Sound</td><td width="66%"><a href="#_m_PlanningRemoveSnd" name="m_PlanningRemoveSnd" title="go to the details">m_PlanningRemoveSnd</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../engine/actor.html">Actor</a></td><td width="66%"><a href="#_m_pOldHitActor" name="m_pOldHitActor" title="go to the details">m_pOldHitActor</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../r6game/r6planninginfo.html">R6PlanningInfo</a></td><td width="66%"><a href="#_m_pTeamInfo[3]" name="m_pTeamInfo[3]" title="go to the details">m_pTeamInfo[3]</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../core/object.html#Rotator">Rotator</a></td><td width="66%"><a href="#_m_rCamRot" name="m_rCamRot" title="go to the details">m_rCamRot</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../core/object.html#Vector">Vector</a></td><td width="66%"><a href="#_m_vCamDelta" name="m_vCamDelta" title="go to the details">m_vCamDelta</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../core/object.html#Vector">Vector</a></td><td width="66%"><a href="#_m_vCamDesiredPos" name="m_vCamDesiredPos" title="go to the details">m_vCamDesiredPos</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../core/object.html#Vector">Vector</a></td><td width="66%"><a href="#_m_vCamPos" name="m_vCamPos" title="go to the details">m_vCamPos</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../core/object.html#Vector">Vector</a></td><td width="66%"><a href="#_m_vCamPosNoRot" name="m_vCamPosNoRot" title="go to the details">m_vCamPosNoRot</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../core/object.html#Vector">Vector</a></td><td width="66%"><a href="#_m_vCurrentCameraPos" name="m_vCurrentCameraPos" title="go to the details">m_vCurrentCameraPos</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../core/object.html#Vector">Vector</a></td><td width="66%"><a href="#_m_vMaxLocation" name="m_vMaxLocation" title="go to the details">m_vMaxLocation</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../core/object.html#Vector">Vector</a></td><td width="66%"><a href="#_m_vMinLocation" name="m_vMinLocation" title="go to the details">m_vMinLocation</a></td></tr>
+<tr><th colspan="2" class="small">Debug</th></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bShowLog" name="bShowLog" title="go to the details">bShowLog</a></td></tr>
+<tr><th colspan="2" class="small">R6Planning</th></tr>
+<tr><td nowrap="nowrap" width="33%">FLOAT</td><td width="66%"><a href="#_m_fCastingHeight" name="m_fCastingHeight" title="go to the details">m_fCastingHeight</a></td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Variables from <a href="../engine/engine-overview.html">engine</a>.<a href="../engine/playercontroller.html">PlayerController</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../engine/playercontroller.html#aBaseX">aBaseX</a>, <a href="../engine/playercontroller.html#aBaseY">aBaseY</a>, <a href="../engine/playercontroller.html#aBaseZ">aBaseZ</a>, <a href="../engine/playercontroller.html#aForward">aForward</a>, <a href="../engine/playercontroller.html#AimingHelp">AimingHelp</a>, <a href="../engine/playercontroller.html#aLookUp">aLookUp</a>, <a href="../engine/playercontroller.html#aMouseX">aMouseX</a>, <a href="../engine/playercontroller.html#aMouseY">aMouseY</a>, <a href="../engine/playercontroller.html#aStrafe">aStrafe</a>, <a href="../engine/playercontroller.html#aTurn">aTurn</a>, <a href="../engine/playercontroller.html#aUp">aUp</a>, <a href="../engine/playercontroller.html#bAlwaysMouseLook">bAlwaysMouseLook</a>, <a href="../engine/playercontroller.html#bBehindView">bBehindView</a>, <a href="../engine/playercontroller.html#bCameraPositionLocked">bCameraPositionLocked</a>, <a href="../engine/playercontroller.html#bCenterView">bCenterView</a>, <a href="../engine/playercontroller.html#bCheatFlying">bCheatFlying</a>, <a href="../engine/playercontroller.html#bFixedCamera">bFixedCamera</a>, <a href="../engine/playercontroller.html#bFreeCamera">bFreeCamera</a>, <a href="../engine/playercontroller.html#bFreeLook">bFreeLook</a>, <a href="../engine/playercontroller.html#bFrozen">bFrozen</a>, <a href="../engine/playercontroller.html#bIsTyping">bIsTyping</a>, <a href="../engine/playercontroller.html#bJumpStatus">bJumpStatus</a>, <a href="../engine/playercontroller.html#bKeyboardLook">bKeyboardLook</a>, <a href="../engine/playercontroller.html#bLook">bLook</a>, <a href="../engine/playercontroller.html#bLookUpStairs">bLookUpStairs</a>, <a href="../engine/playercontroller.html#bOnlySpectator">bOnlySpectator</a>, <a href="../engine/playercontroller.html#bPressedJump">bPressedJump</a>, <a href="../engine/playercontroller.html#bSetTurnRot">bSetTurnRot</a>, <a href="../engine/playercontroller.html#bSnapLevel">bSnapLevel</a>, <a href="../engine/playercontroller.html#bSnapToLevel">bSnapToLevel</a>, <a href="../engine/playercontroller.html#bStrafe">bStrafe</a>, <a href="../engine/playercontroller.html#bTurn180">bTurn180</a>, <a href="../engine/playercontroller.html#bTurnToNearest">bTurnToNearest</a>, <a href="../engine/playercontroller.html#bUpdatePosition">bUpdatePosition</a>, <a href="../engine/playercontroller.html#bUpdating">bUpdating</a>, <a href="../engine/playercontroller.html#bXAxis">bXAxis</a>, <a href="../engine/playercontroller.html#bYAxis">bYAxis</a>, <a href="../engine/playercontroller.html#bZeroRoll">bZeroRoll</a>, <a href="../engine/playercontroller.html#bZooming">bZooming</a>, <a href="../engine/playercontroller.html#CameraDist">CameraDist</a>, <a href="../engine/playercontroller.html#CameraEffects">CameraEffects</a>, <a href="../engine/playercontroller.html#CheatClass">CheatClass</a>, <a href="../engine/playercontroller.html#CheatManager">CheatManager</a>, <a href="../engine/playercontroller.html#ClientUpdateTime">ClientUpdateTime</a>, <a href="../engine/playercontroller.html#ConstantGlowFog">ConstantGlowFog</a>, <a href="../engine/playercontroller.html#ConstantGlowScale">ConstantGlowScale</a>, <a href="../engine/playercontroller.html#CurrentTimeStamp">CurrentTimeStamp</a>, <a href="../engine/playercontroller.html#DefaultFOV">DefaultFOV</a>, <a href="../engine/playercontroller.html#DemoViewPitch">DemoViewPitch</a>, <a href="../engine/playercontroller.html#DemoViewYaw">DemoViewYaw</a>, <a href="../engine/playercontroller.html#DesiredFlashFog">DesiredFlashFog</a>, <a href="../engine/playercontroller.html#DesiredFlashScale">DesiredFlashScale</a>, <a href="../engine/playercontroller.html#DesiredFOV">DesiredFOV</a>, <a href="../engine/playercontroller.html#DoubleClickDir">DoubleClickDir</a>, <a href="../engine/playercontroller.html#EnemyTurnSpeed">EnemyTurnSpeed</a>, <a href="../engine/playercontroller.html#FlashFog">FlashFog</a>, <a href="../engine/playercontroller.html#FlashScale">FlashScale</a>, <a href="../engine/playercontroller.html#FreeMoves">FreeMoves</a>, <a href="../engine/playercontroller.html#GameReplicationInfo">GameReplicationInfo</a>, <a href="../engine/playercontroller.html#GroundPitch">GroundPitch</a>, <a href="../engine/playercontroller.html#InputClass">InputClass</a>, <a href="../engine/playercontroller.html#InstantFlash">InstantFlash</a>, <a href="../engine/playercontroller.html#InstantFog">InstantFog</a>, <a href="../engine/playercontroller.html#iPBEnabled">iPBEnabled</a>, <a href="../engine/playercontroller.html#LastPlaySound">LastPlaySound</a>, <a href="../engine/playercontroller.html#LastUpdateTime">LastUpdateTime</a>, <a href="../engine/playercontroller.html#LocalMessageClass">LocalMessageClass</a>, <a href="../engine/playercontroller.html#MaxShakeOffset">MaxShakeOffset</a>, <a href="../engine/playercontroller.html#MaxShakeRoll">MaxShakeRoll</a>, <a href="../engine/playercontroller.html#MaxTimeMargin">MaxTimeMargin</a>, <a href="../engine/playercontroller.html#Misc1">Misc1</a>, <a href="../engine/playercontroller.html#Misc2">Misc2</a>, <a href="../engine/playercontroller.html#myHUD">myHUD</a>, <a href="../engine/playercontroller.html#m_bHeatVisionActive">m_bHeatVisionActive</a>, <a href="../engine/playercontroller.html#m_bInitFirstTick">m_bInitFirstTick</a>, <a href="../engine/playercontroller.html#m_bInstructionTouch">m_bInstructionTouch</a>, <a href="../engine/playercontroller.html#m_bLoadSoundGun">m_bLoadSoundGun</a>, <a href="../engine/playercontroller.html#m_bRadarActive">m_bRadarActive</a>, <a href="../engine/playercontroller.html#m_bReadyToEnterSpectatorMode">m_bReadyToEnterSpectatorMode</a>, <a href="../engine/playercontroller.html#m_eCameraMode">m_eCameraMode</a>, <a href="../engine/playercontroller.html#m_fLoginTime">m_fLoginTime</a>, <a href="../engine/playercontroller.html#m_fNextUpdateTime">m_fNextUpdateTime</a>, <a href="../engine/playercontroller.html#m_iChangeNameLastTime">m_iChangeNameLastTime</a>, <a href="../engine/playercontroller.html#m_PlayerPrefs">m_PlayerPrefs</a>, <a href="../engine/playercontroller.html#m_PlayerStartInfo">m_PlayerStartInfo</a>, <a href="../engine/playercontroller.html#m_PreLogOut">m_PreLogOut</a>, <a href="../engine/playercontroller.html#m_SaveOldClientBase">m_SaveOldClientBase</a>, <a href="../engine/playercontroller.html#m_stPlayerVerCDKeyStatus">m_stPlayerVerCDKeyStatus</a>, <a href="../engine/playercontroller.html#m_stPlayerVerModCDKeyStatus">m_stPlayerVerModCDKeyStatus</a>, <a href="../engine/playercontroller.html#m_szGlobalID">m_szGlobalID</a>, <a href="../engine/playercontroller.html#m_szIpAddr">m_szIpAddr</a>, <a href="../engine/playercontroller.html#m_TeamSelection">m_TeamSelection</a>, <a href="../engine/playercontroller.html#NetClientMaxTickRate">NetClientMaxTickRate</a>, <a href="../engine/playercontroller.html#ngWorldSecret">ngWorldSecret</a>, <a href="../engine/playercontroller.html#NoPauseMessage">NoPauseMessage</a>, <a href="../engine/playercontroller.html#OldFloor">OldFloor</a>, <a href="../engine/playercontroller.html#OrthoZoom">OrthoZoom</a>, <a href="../engine/playercontroller.html#OwnCamera">OwnCamera</a>, <a href="../engine/playercontroller.html#PendingMove">PendingMove</a>, <a href="../engine/playercontroller.html#Player">Player</a>, <a href="../engine/playercontroller.html#PlayerInput">PlayerInput</a>, <a href="../engine/playercontroller.html#ProgressColor[4]">ProgressColor[4]</a>, <a href="../engine/playercontroller.html#ProgressMessage[4]">ProgressMessage[4]</a>, <a href="../engine/playercontroller.html#ProgressTimeOut">ProgressTimeOut</a>, <a href="../engine/playercontroller.html#QuickSaveString">QuickSaveString</a>, <a href="../engine/playercontroller.html#ReceivedSecretChecksum">ReceivedSecretChecksum</a>, <a href="../engine/playercontroller.html#RendMap">RendMap</a>, <a href="../engine/playercontroller.html#SavedMoves">SavedMoves</a>, <a href="../engine/playercontroller.html#ServerTimeStamp">ServerTimeStamp</a>, <a href="../engine/playercontroller.html#ShakeOffset">ShakeOffset</a>, <a href="../engine/playercontroller.html#ShakeOffsetRate">ShakeOffsetRate</a>, <a href="../engine/playercontroller.html#ShakeOffsetTime">ShakeOffsetTime</a>, <a href="../engine/playercontroller.html#ShakeRollRate">ShakeRollRate</a>, <a href="../engine/playercontroller.html#ShakeRollTime">ShakeRollTime</a>, <a href="../engine/playercontroller.html#ShowFlags">ShowFlags</a>, <a href="../engine/playercontroller.html#Song">Song</a>, <a href="../engine/playercontroller.html#TargetEyeHeight">TargetEyeHeight</a>, <a href="../engine/playercontroller.html#TargetViewRotation">TargetViewRotation</a>, <a href="../engine/playercontroller.html#TargetWeaponViewOffset">TargetWeaponViewOffset</a>, <a href="../engine/playercontroller.html#TimeMargin">TimeMargin</a>, <a href="../engine/playercontroller.html#Transition">Transition</a>, <a href="../engine/playercontroller.html#TurnRot180">TurnRot180</a>, <a href="../engine/playercontroller.html#TurnTarget">TurnTarget</a>, <a href="../engine/playercontroller.html#ViewingFrom">ViewingFrom</a>, <a href="../engine/playercontroller.html#ViewTarget">ViewTarget</a>, <a href="../engine/playercontroller.html#WaitDelay">WaitDelay</a>, <a href="../engine/playercontroller.html#WeaponUpdate">WeaponUpdate</a>, <a href="../engine/playercontroller.html#ZoomLevel">ZoomLevel</a></td>
+</tr>
+</table>
+<table>
+<tr>
+	<th class="inherittitle">Inherited Variables from <a href="../engine/engine-overview.html">engine</a>.<a href="../engine/controller.html">Controller</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../engine/controller.html#AdjustLoc">AdjustLoc</a>, <a href="../engine/controller.html#AttitudeToPlayer">AttitudeToPlayer</a>, <a href="../engine/controller.html#bAdjusting">bAdjusting</a>, <a href="../engine/controller.html#bAdvancedTactics">bAdvancedTactics</a>, <a href="../engine/controller.html#bAltFire">bAltFire</a>, <a href="../engine/controller.html#bCanDoSpecial">bCanDoSpecial</a>, <a href="../engine/controller.html#bCanOpenDoors">bCanOpenDoors</a>, <a href="../engine/controller.html#bControlAnimations">bControlAnimations</a>, <a href="../engine/controller.html#bDuck">bDuck</a>, <a href="../engine/controller.html#bEnemyInfoValid">bEnemyInfoValid</a>, <a href="../engine/controller.html#bFire">bFire</a>, <a href="../engine/controller.html#bGodMode">bGodMode</a>, <a href="../engine/controller.html#bIsPlayer">bIsPlayer</a>, <a href="../engine/controller.html#bLOSflag">bLOSflag</a>, <a href="../engine/controller.html#bPreparingMove">bPreparingMove</a>, <a href="../engine/controller.html#bRun">bRun</a>, <a href="../engine/controller.html#CurrentPath">CurrentPath</a>, <a href="../engine/controller.html#Destination">Destination</a>, <a href="../engine/controller.html#Enemy">Enemy</a>, <a href="../engine/controller.html#FocalPoint">FocalPoint</a>, <a href="../engine/controller.html#Focus">Focus</a>, <a href="../engine/controller.html#FovAngle">FovAngle</a>, <a href="../engine/controller.html#GoalList[4]">GoalList[4]</a>, <a href="../engine/controller.html#GroundPitchTime">GroundPitchTime</a>, <a href="../engine/controller.html#Handedness">Handedness</a>, <a href="../engine/controller.html#home">home</a>, <a href="../engine/controller.html#LastSeeingPos">LastSeeingPos</a>, <a href="../engine/controller.html#LastSeenPos">LastSeenPos</a>, <a href="../engine/controller.html#LastSeenTime">LastSeenTime</a>, <a href="../engine/controller.html#MinHitWall">MinHitWall</a>, <a href="../engine/controller.html#MonitoredPawn">MonitoredPawn</a>, <a href="../engine/controller.html#MonitorMaxDistSq">MonitorMaxDistSq</a>, <a href="../engine/controller.html#MonitorStartLoc">MonitorStartLoc</a>, <a href="../engine/controller.html#MoveTarget">MoveTarget</a>, <a href="../engine/controller.html#MoveTimer">MoveTimer</a>, <a href="../engine/controller.html#m_bAngleDown">m_bAngleDown</a>, <a href="../engine/controller.html#m_bAngleUp">m_bAngleUp</a>, <a href="../engine/controller.html#m_bCrawl">m_bCrawl</a>, <a href="../engine/controller.html#m_bGoLevelDown">m_bGoLevelDown</a>, <a href="../engine/controller.html#m_bGoLevelUp">m_bGoLevelUp</a>, <a href="../engine/controller.html#m_bHideReticule">m_bHideReticule</a>, <a href="../engine/controller.html#m_bLevelDown">m_bLevelDown</a>, <a href="../engine/controller.html#m_bLevelUp">m_bLevelUp</a>, <a href="../engine/controller.html#m_bLockWeaponActions">m_bLockWeaponActions</a>, <a href="../engine/controller.html#m_bMoveDown">m_bMoveDown</a>, <a href="../engine/controller.html#m_bMoveLeft">m_bMoveLeft</a>, <a href="../engine/controller.html#m_bMoveRight">m_bMoveRight</a>, <a href="../engine/controller.html#m_bMoveUp">m_bMoveUp</a>, <a href="../engine/controller.html#m_bRotateCCW">m_bRotateCCW</a>, <a href="../engine/controller.html#m_bRotateCW">m_bRotateCW</a>, <a href="../engine/controller.html#m_bZoomIn">m_bZoomIn</a>, <a href="../engine/controller.html#m_bZoomOut">m_bZoomOut</a>, <a href="../engine/controller.html#m_eMoveToResult">m_eMoveToResult</a>, <a href="../engine/controller.html#m_PawnRepInfo">m_PawnRepInfo</a>, <a href="../engine/controller.html#nextController">nextController</a>, <a href="../engine/controller.html#NextLabel">NextLabel</a>, <a href="../engine/controller.html#NextState">NextState</a>, <a href="../engine/controller.html#OldMessageTime">OldMessageTime</a>, <a href="../engine/controller.html#Pawn">Pawn</a>, <a href="../engine/controller.html#PawnClass">PawnClass</a>, <a href="../engine/controller.html#PendingMover">PendingMover</a>, <a href="../engine/controller.html#PlayerReplicationInfo">PlayerReplicationInfo</a>, <a href="../engine/controller.html#PlayerReplicationInfoClass">PlayerReplicationInfoClass</a>, <a href="../engine/controller.html#PreviousPawnClass">PreviousPawnClass</a>, <a href="../engine/controller.html#RouteCache[16]">RouteCache[16]</a>, <a href="../engine/controller.html#RouteDist">RouteDist</a>, <a href="../engine/controller.html#RouteGoal">RouteGoal</a>, <a href="../engine/controller.html#SightCounter">SightCounter</a>, <a href="../engine/controller.html#StartSpot">StartSpot</a>, <a href="../engine/controller.html#Stimulus">Stimulus</a>, <a href="../engine/controller.html#Target">Target</a>, <a href="../engine/controller.html#ViewX">ViewX</a>, <a href="../engine/controller.html#ViewY">ViewY</a>, <a href="../engine/controller.html#ViewZ">ViewZ</a>, <a href="../engine/controller.html#VoiceType">VoiceType</a></td>
+</tr>
+</table>
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Enumerations Summary</th>
+</tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Enumerations from <a href="../engine/engine-overview.html">engine</a>.<a href="../engine/playercontroller.html">PlayerController</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../engine/playercontroller.html#eCameraMode">eCameraMode</a></td>
+</tr>
+</table>
+<table>
+<tr>
+	<th class="inherittitle">Inherited Enumerations from <a href="../engine/engine-overview.html">engine</a>.<a href="../engine/controller.html">Controller</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../engine/controller.html#EAttitude">EAttitude</a>, <a href="../engine/controller.html#ECDKEYST_STATUS">ECDKEYST_STATUS</a>, <a href="../engine/controller.html#ECDKEY_VALID_REQ">ECDKEY_VALID_REQ</a>, <a href="../engine/controller.html#EMoveToResult">EMoveToResult</a></td>
+</tr>
+</table>
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Structures Summary</th>
+</tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Structures from <a href="../engine/engine-overview.html">engine</a>.<a href="../engine/playercontroller.html">PlayerController</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../engine/playercontroller.html#PlayerPrefInfo">PlayerPrefInfo</a></td>
+</tr>
+</table>
+<table>
+<tr>
+	<th class="inherittitle">Inherited Structures from <a href="../engine/engine-overview.html">engine</a>.<a href="../engine/controller.html">Controller</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../engine/controller.html#PlayerVerCDKeyStatus">PlayerVerCDKeyStatus</a></td>
+</tr>
+</table>
+
+
+<br />
+
+
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Functions Summary</th>
+</tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_AdjustView-" name="AdjustView" title="go to the details">AdjustView</a> (float DeltaTime ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_Ajust3DRotation-" name="Ajust3DRotation" title="go to the details">Ajust3DRotation</a> (FLOAT X, FLOAT Y))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_BeginState-PlayerWaiting" name="BeginState" title="go to the details">BeginState</a> ()<br /><span class="function_state">PlayerWaiting</span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_CancelActionPointAction-" name="CancelActionPointAction" title="go to the details">CancelActionPointAction</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>bool&nbsp;</td><td><a href="#_CastActionPointAt-" name="CastActionPointAt" title="go to the details">CastActionPointAt</a> (<a href="../core/object.html#Vector">vector</a> vLocation, INT iFirstFloor, INT iSecondFloor, INT X, INT Y))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_ChangeLevelDisplay-" name="ChangeLevelDisplay" title="go to the details">ChangeLevelDisplay</a> (int iStep))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_Coords-" name="Coords" title="go to the details">Coords</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_dbgDrawPath-" name="dbgDrawPath" title="go to the details">dbgDrawPath</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_DeleteAllNode-" name="DeleteAllNode" title="go to the details">DeleteAllNode</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_DeleteEverySingleNode-" name="DeleteEverySingleNode" title="go to the details">DeleteEverySingleNode</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_DeleteOneNode-" name="DeleteOneNode" title="go to the details">DeleteOneNode</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_DeleteWaypoint-" name="DeleteWaypoint" title="go to the details">DeleteWaypoint</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_DesignRange-" name="DesignRange" title="go to the details">DesignRange</a> (FLOAT fNewScale))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_event.gif" alt="event" title="event" /></td><td>&nbsp;</td><td><a href="#_Destroyed-" name="Destroyed" title="go to the details">Destroyed</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_EndState-PlayerWaiting" name="EndState" title="go to the details">EndState</a> ()<br /><span class="function_state">PlayerWaiting</span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_FirstWaypoint-" name="FirstWaypoint" title="go to the details">FirstWaypoint</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_FixFOV-" name="FixFOV" title="go to the details">FixFOV</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td><a href="../engine/texture.html">Texture</a>&nbsp;</td><td><a href="#_GetActionTypeTexture-" name="GetActionTypeTexture" title="go to the details">GetActionTypeTexture</a> (<a href="../core/object.html#EPlanActionType">EPlanActionType</a> eActionType, optional INT iMilestone))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>BOOL&nbsp;</td><td><a href="#_GetClickResult-" name="GetClickResult" title="go to the details">GetClickResult</a> (FLOAT X, FLOAT Y, out <a href="../core/object.html#Vector">Vector</a> HitLocation, out <a href="../engine/actor.html">actor</a> HitActor, out INT iChangeLevelTo)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td><a href="../core/object.html#EPlanActionType">EPlanActionType</a>&nbsp;</td><td><a href="#_GetCurrentActionType-" name="GetCurrentActionType" title="go to the details">GetCurrentActionType</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td><a href="../r6game/r6actionpoint.html">R6ActionPoint</a>&nbsp;</td><td><a href="#_GetCurrentPoint-" name="GetCurrentPoint" title="go to the details">GetCurrentPoint</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td><a href="../core/object.html#EMovementMode">EMovementMode</a>&nbsp;</td><td><a href="#_GetMovementMode-" name="GetMovementMode" title="go to the details">GetMovementMode</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td><a href="../core/object.html#Vector">Vector</a>&nbsp;</td><td><a href="#_GetXYPoint-" name="GetXYPoint" title="go to the details">GetXYPoint</a> (FLOAT X, FLOAT Y, FLOAT Height)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_GotoFirstNode-" name="GotoFirstNode" title="go to the details">GotoFirstNode</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_GotoLastNode-" name="GotoLastNode" title="go to the details">GotoLastNode</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_GotoNextNode-" name="GotoNextNode" title="go to the details">GotoNextNode</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_GotoNode-" name="GotoNode" title="go to the details">GotoNode</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_GotoPrevNode-" name="GotoPrevNode" title="go to the details">GotoPrevNode</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_InitNewPlanning-" name="InitNewPlanning" title="go to the details">InitNewPlanning</a> (INT iSelectedTeam))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_LastWaypoint-" name="LastWaypoint" title="go to the details">LastWaypoint</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_LMouseDown-" name="LMouseDown" title="go to the details">LMouseDown</a> (FLOAT X, FLOAT Y))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_LMouseUp-" name="LMouseUp" title="go to the details">LMouseUp</a> (FLOAT X, FLOAT Y))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_MouseMove-" name="MouseMove" title="go to the details">MouseMove</a> (FLOAT X, FLOAT Y))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_MoveActionPointTo-" name="MoveActionPointTo" title="go to the details">MoveActionPointTo</a> (<a href="../core/object.html#Vector">vector</a> vHitLocation, INT iFirstFloor, INT iSecondFloor))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_MoveCamOver-" name="MoveCamOver" title="go to the details">MoveCamOver</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_NextWaypoint-" name="NextWaypoint" title="go to the details">NextWaypoint</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>BOOL&nbsp;</td><td><a href="#_PlanningTrace-" name="PlanningTrace" title="go to the details">PlanningTrace</a> (<a href="../core/object.html#Vector">vector</a> vTraceEnd, <a href="../core/object.html#Vector">vector</a> vTraceStart)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_event.gif" alt="event" title="event" /></td><td>&nbsp;</td><td><a href="#_PlayerCalcView-" name="PlayerCalcView" title="go to the details">PlayerCalcView</a> (out <a href="../engine/actor.html">Actor</a> aViewActor, out <a href="../core/object.html#Vector">Vector</a> vCameraLocation, out Rotator rCameraRotation ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_event.gif" alt="event" title="event" /></td><td>&nbsp;</td><td><a href="#_PlayerTick-" name="PlayerTick" title="go to the details">PlayerTick</a> (float fDeltaTime ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_PositionCameraOnInsertionZone-" name="PositionCameraOnInsertionZone" title="go to the details">PositionCameraOnInsertionZone</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_PostBeginPlay-" name="PostBeginPlay" title="go to the details">PostBeginPlay</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_PrevWaypoint-" name="PrevWaypoint" title="go to the details">PrevWaypoint</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_ProcessMove-PlayerWalking" name="ProcessMove" title="go to the details">ProcessMove</a> (float DeltaTime, <a href="../core/object.html#Vector">vector</a> NewAccel, <a href="../engine/actor.html#EDoubleClickDir">eDoubleClickDir</a> DoubleClickMove, <a href="../core/object.html#Rotator">rotator</a> DeltaRot))<br /><span class="function_state">PlayerWalking</span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_ResetAllID-" name="ResetAllID" title="go to the details">ResetAllID</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_ResetIDs-" name="ResetIDs" title="go to the details">ResetIDs</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_RMouseDown-" name="RMouseDown" title="go to the details">RMouseDown</a> (FLOAT X, FLOAT Y))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_RMouseUp-" name="RMouseUp" title="go to the details">RMouseUp</a> (FLOAT X, FLOAT Y))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_Set3DViewPosition-" name="Set3DViewPosition" title="go to the details">Set3DViewPosition</a> (INT NewX, INT NewY, INT NewH, INT NewW))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_SetPlanningInfo-" name="SetPlanningInfo" title="go to the details">SetPlanningInfo</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_StartPlayingPlanning-" name="StartPlayingPlanning" title="go to the details">StartPlayingPlanning</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_StopPlayingPlanning-" name="StopPlayingPlanning" title="go to the details">StopPlayingPlanning</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_SwitchToGoldTeam-" name="SwitchToGoldTeam" title="go to the details">SwitchToGoldTeam</a> (optional BOOL bForceFunction))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_SwitchToGreenTeam-" name="SwitchToGreenTeam" title="go to the details">SwitchToGreenTeam</a> (optional BOOL bForceFunction))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_SwitchToRedTeam-" name="SwitchToRedTeam" title="go to the details">SwitchToRedTeam</a> (optional BOOL bForceFunction))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_Toggle3DView-" name="Toggle3DView" title="go to the details">Toggle3DView</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_TurnOff3DMove-" name="TurnOff3DMove" title="go to the details">TurnOff3DMove</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_TurnOff3DView-" name="TurnOff3DView" title="go to the details">TurnOff3DView</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_TurnOn3DMove-" name="TurnOn3DMove" title="go to the details">TurnOn3DMove</a> (FLOAT X, FLOAT Y))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_ViewGoldTeam-" name="ViewGoldTeam" title="go to the details">ViewGoldTeam</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_ViewGreenTeam-" name="ViewGreenTeam" title="go to the details">ViewGreenTeam</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_ViewRedTeam-" name="ViewRedTeam" title="go to the details">ViewRedTeam</a> ()))<br /><span class="function_state"></span></td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Functions from <a href="../engine/engine-overview.html">engine</a>.<a href="../engine/playercontroller.html">PlayerController</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../engine/playercontroller.html#ActivateInventoryItem">ActivateInventoryItem</a>, <a href="../engine/playercontroller.html#ActivateItem">ActivateItem</a>, <a href="../engine/playercontroller.html#AddCameraEffect">AddCameraEffect</a>, <a href="../engine/playercontroller.html#AddCheats">AddCheats</a>, <a href="../engine/playercontroller.html#AdjustRadius">AdjustRadius</a>, <a href="../engine/playercontroller.html#AdjustView">AdjustView</a>, <a href="../engine/playercontroller.html#AltFire">AltFire</a>, <a href="../engine/playercontroller.html#AskForPawn">AskForPawn</a>, <a href="../engine/playercontroller.html#AttitudeTo">AttitudeTo</a>, <a href="../engine/playercontroller.html#BeginState">BeginState</a>, <a href="../engine/playercontroller.html#BehindView">BehindView</a>, <a href="../engine/playercontroller.html#Bind">Bind</a>, <a href="../engine/playercontroller.html#CalcBehindView">CalcBehindView</a>, <a href="../engine/playercontroller.html#CalcFirstPersonView">CalcFirstPersonView</a>, <a href="../engine/playercontroller.html#ChangeAlwaysMouseLook">ChangeAlwaysMouseLook</a>, <a href="../engine/playercontroller.html#ChangedWeapon">ChangedWeapon</a>, <a href="../engine/playercontroller.html#ChangeInputSet">ChangeInputSet</a>, <a href="../engine/playercontroller.html#ChangeName">ChangeName</a>, <a href="../engine/playercontroller.html#ChangeStairLook">ChangeStairLook</a>, <a href="../engine/playercontroller.html#ChangeTeam">ChangeTeam</a>, <a href="../engine/playercontroller.html#ChangeVolumeTypeLinear">ChangeVolumeTypeLinear</a>, <a href="../engine/playercontroller.html#CheckShake">CheckShake</a>, <a href="../engine/playercontroller.html#ClearDoubleClick">ClearDoubleClick</a>, <a href="../engine/playercontroller.html#ClearProgressMessages">ClearProgressMessages</a>, <a href="../engine/playercontroller.html#ClientAdjustBase">ClientAdjustBase</a>, <a href="../engine/playercontroller.html#ClientAdjustGlow">ClientAdjustGlow</a>, <a href="../engine/playercontroller.html#ClientAdjustPosition">ClientAdjustPosition</a>, <a href="../engine/playercontroller.html#ClientCantRequestChangeNameYet">ClientCantRequestChangeNameYet</a>, <a href="../engine/playercontroller.html#ClientChangeName">ClientChangeName</a>, <a href="../engine/playercontroller.html#ClientErrorMessageLocalized">ClientErrorMessageLocalized</a>, <a href="../engine/playercontroller.html#ClientFlash">ClientFlash</a>, <a href="../engine/playercontroller.html#ClientGotoState">ClientGotoState</a>, <a href="../engine/playercontroller.html#ClientHearSound">ClientHearSound</a>, <a href="../engine/playercontroller.html#ClientInstantFlash">ClientInstantFlash</a>, <a href="../engine/playercontroller.html#ClientMessage">ClientMessage</a>, <a href="../engine/playercontroller.html#ClientPBKickedOutMessage">ClientPBKickedOutMessage</a>, <a href="../engine/playercontroller.html#ClientPBKickMsg">ClientPBKickMsg</a>, <a href="../engine/playercontroller.html#ClientPlaySound">ClientPlaySound</a>, <a href="../engine/playercontroller.html#ClientReliablePlaySound">ClientReliablePlaySound</a>, <a href="../engine/playercontroller.html#ClientReplicateSkins">ClientReplicateSkins</a>, <a href="../engine/playercontroller.html#ClientRestart">ClientRestart</a>, <a href="../engine/playercontroller.html#ClientSetBehindView">ClientSetBehindView</a>, <a href="../engine/playercontroller.html#ClientSetFixedCamera">ClientSetFixedCamera</a>, <a href="../engine/playercontroller.html#ClientSetFlash">ClientSetFlash</a>, <a href="../engine/playercontroller.html#ClientSetHUD">ClientSetHUD</a>, <a href="../engine/playercontroller.html#ClientSetMusic">ClientSetMusic</a>, <a href="../engine/playercontroller.html#ClientSetNewViewTarget">ClientSetNewViewTarget</a>, <a href="../engine/playercontroller.html#ClientShake">ClientShake</a>, <a href="../engine/playercontroller.html#ClientStopSound">ClientStopSound</a>, <a href="../engine/playercontroller.html#ClientTravel">ClientTravel</a>, <a href="../engine/playercontroller.html#ClientUpdatePosition">ClientUpdatePosition</a>, <a href="../engine/playercontroller.html#ClientVoiceMessage">ClientVoiceMessage</a>, <a href="../engine/playercontroller.html#CompressAccel">CompressAccel</a>, <a href="../engine/playercontroller.html#ConsoleCommand">ConsoleCommand</a>, <a href="../engine/playercontroller.html#CopyToClipboard">CopyToClipboard</a>, <a href="../engine/playercontroller.html#damageAttitudeTo">damageAttitudeTo</a>, <a href="../engine/playercontroller.html#Destroyed">Destroyed</a>, <a href="../engine/playercontroller.html#EndMatineeCamera">EndMatineeCamera</a>, <a href="../engine/playercontroller.html#EndState">EndState</a>, <a href="../engine/playercontroller.html#EndZoom">EndZoom</a>, <a href="../engine/playercontroller.html#EnterStartState">EnterStartState</a>, <a href="../engine/playercontroller.html#FindGoodView">FindGoodView</a>, <a href="../engine/playercontroller.html#FindStairRotation">FindStairRotation</a>, <a href="../engine/playercontroller.html#Fire">Fire</a>, <a href="../engine/playercontroller.html#FixFOV">FixFOV</a>, <a href="../engine/playercontroller.html#ForceDeathUpdate">ForceDeathUpdate</a>, <a href="../engine/playercontroller.html#ForceReload">ForceReload</a>, <a href="../engine/playercontroller.html#GetActionKey">GetActionKey</a>, <a href="../engine/playercontroller.html#GetDefaultURL">GetDefaultURL</a>, <a href="../engine/playercontroller.html#GetEntryLevel">GetEntryLevel</a>, <a href="../engine/playercontroller.html#GetEnumName">GetEnumName</a>, <a href="../engine/playercontroller.html#GetFacingDirection">GetFacingDirection</a>, <a href="../engine/playercontroller.html#GetFreeMove">GetFreeMove</a>, <a href="../engine/playercontroller.html#GetGender">GetGender</a>, <a href="../engine/playercontroller.html#GetKey">GetKey</a>, <a href="../engine/playercontroller.html#GetLocalPlayerIp">GetLocalPlayerIp</a>, <a href="../engine/playercontroller.html#GetNGSecret">GetNGSecret</a>, <a href="../engine/playercontroller.html#GetPBConnectStatus">GetPBConnectStatus</a>, <a href="../engine/playercontroller.html#getPlayerInput">getPlayerInput</a>, <a href="../engine/playercontroller.html#GetPlayerNetworkAddress">GetPlayerNetworkAddress</a>, <a href="../engine/playercontroller.html#GetViewRotation">GetViewRotation</a>, <a href="../engine/playercontroller.html#GivePawn">GivePawn</a>, <a href="../engine/playercontroller.html#HandleServerMsg">HandleServerMsg</a>, <a href="../engine/playercontroller.html#HandleWalking">HandleWalking</a>, <a href="../engine/playercontroller.html#InitInputSystem">InitInputSystem</a>, <a href="../engine/playercontroller.html#InitMatineeCamera">InitMatineeCamera</a>, <a href="../engine/playercontroller.html#InitMultiPlayerOptions">InitMultiPlayerOptions</a>, <a href="../engine/playercontroller.html#IsPBEnabled">IsPBEnabled</a>, <a href="../engine/playercontroller.html#IsPlayerPassiveSpectator">IsPlayerPassiveSpectator</a>, <a href="../engine/playercontroller.html#Jump">Jump</a>, <a href="../engine/playercontroller.html#LongClientAdjustPosition">LongClientAdjustPosition</a>, <a href="../engine/playercontroller.html#MoveAutonomous">MoveAutonomous</a>, <a href="../engine/playercontroller.html#Name">Name</a>, <a href="../engine/playercontroller.html#NextWeapon">NextWeapon</a>, <a href="../engine/playercontroller.html#NotifyHitWall">NotifyHitWall</a>, <a href="../engine/playercontroller.html#NotifyLanded">NotifyLanded</a>, <a href="../engine/playercontroller.html#NotifyPhysicsVolumeChange">NotifyPhysicsVolumeChange</a>, <a href="../engine/playercontroller.html#PasteFromClipboard">PasteFromClipboard</a>, <a href="../engine/playercontroller.html#Pause">Pause</a>, <a href="../engine/playercontroller.html#PawnDied">PawnDied</a>, <a href="../engine/playercontroller.html#PB_CanPlayerSpawn">PB_CanPlayerSpawn</a>, <a href="../engine/playercontroller.html#PendingStasis">PendingStasis</a>, <a href="../engine/playercontroller.html#PlayBeepSound">PlayBeepSound</a>, <a href="../engine/playercontroller.html#PlayerCalcView">PlayerCalcView</a>, <a href="../engine/playercontroller.html#PlayerMove">PlayerMove</a>, <a href="../engine/playercontroller.html#PlayerTick">PlayerTick</a>, <a href="../engine/playercontroller.html#Possess">Possess</a>, <a href="../engine/playercontroller.html#PostBeginPlay">PostBeginPlay</a>, <a href="../engine/playercontroller.html#PreClientTravel">PreClientTravel</a>, <a href="../engine/playercontroller.html#PrevItem">PrevItem</a>, <a href="../engine/playercontroller.html#PrevWeapon">PrevWeapon</a>, <a href="../engine/playercontroller.html#ProcessMove">ProcessMove</a>, <a href="../engine/playercontroller.html#ReceiveLocalizedMessage">ReceiveLocalizedMessage</a>, <a href="../engine/playercontroller.html#RemoveCameraEffect">RemoveCameraEffect</a>, <a href="../engine/playercontroller.html#ReplicateMove">ReplicateMove</a>, <a href="../engine/playercontroller.html#Reset">Reset</a>, <a href="../engine/playercontroller.html#ResetFOV">ResetFOV</a>, <a href="../engine/playercontroller.html#ResetKeyboard">ResetKeyboard</a>, <a href="../engine/playercontroller.html#ResettingLevel">ResettingLevel</a>, <a href="../engine/playercontroller.html#Restart">Restart</a>, <a href="../engine/playercontroller.html#RestartLevel">RestartLevel</a>, <a href="../engine/playercontroller.html#Say">Say</a>, <a href="../engine/playercontroller.html#ServerChangeName">ServerChangeName</a>, <a href="../engine/playercontroller.html#ServerMove">ServerMove</a>, <a href="../engine/playercontroller.html#ServerPlayerPref">ServerPlayerPref</a>, <a href="../engine/playercontroller.html#ServerReadyToLoadWeaponSound">ServerReadyToLoadWeaponSound</a>, <a href="../engine/playercontroller.html#ServerRestartGame">ServerRestartGame</a>, <a href="../engine/playercontroller.html#ServerRestartPlayer">ServerRestartPlayer</a>, <a href="../engine/playercontroller.html#ServerSetPlayerReadyStatus">ServerSetPlayerReadyStatus</a>, <a href="../engine/playercontroller.html#ServerTeamRequested">ServerTeamRequested</a>, <a href="../engine/playercontroller.html#ServerTKPopUpDone">ServerTKPopUpDone</a>, <a href="../engine/playercontroller.html#ServerToggleHeatVision">ServerToggleHeatVision</a>, <a href="../engine/playercontroller.html#ServerToggleRadar">ServerToggleRadar</a>, <a href="../engine/playercontroller.html#ServerUse">ServerUse</a>, <a href="../engine/playercontroller.html#ServerViewNextPlayer">ServerViewNextPlayer</a>, <a href="../engine/playercontroller.html#ServerViewSelf">ServerViewSelf</a>, <a href="../engine/playercontroller.html#SetFOV">SetFOV</a>, <a href="../engine/playercontroller.html#SetFOVAngle">SetFOVAngle</a>, <a href="../engine/playercontroller.html#SetKey">SetKey</a>, <a href="../engine/playercontroller.html#SetMatchResult">SetMatchResult</a>, <a href="../engine/playercontroller.html#SetName">SetName</a>, <a href="../engine/playercontroller.html#SetNGSecret">SetNGSecret</a>, <a href="../engine/playercontroller.html#SetOption">SetOption</a>, <a href="../engine/playercontroller.html#SetPause">SetPause</a>, <a href="../engine/playercontroller.html#SetProgressMessage">SetProgressMessage</a>, <a href="../engine/playercontroller.html#SetProgressTime">SetProgressTime</a>, <a href="../engine/playercontroller.html#SetSensitivity">SetSensitivity</a>, <a href="../engine/playercontroller.html#SetSoundOptions">SetSoundOptions</a>, <a href="../engine/playercontroller.html#SetViewTarget">SetViewTarget</a>, <a href="../engine/playercontroller.html#ShakeView">ShakeView</a>, <a href="../engine/playercontroller.html#ShortClientAdjustPosition">ShortClientAdjustPosition</a>, <a href="../engine/playercontroller.html#ShorterServerMove">ShorterServerMove</a>, <a href="../engine/playercontroller.html#ShortServerMove">ShortServerMove</a>, <a href="../engine/playercontroller.html#ShouldDisplayIncomingMessages">ShouldDisplayIncomingMessages</a>, <a href="../engine/playercontroller.html#SpawnDefaultHUD">SpawnDefaultHUD</a>, <a href="../engine/playercontroller.html#SpecialDestroy">SpecialDestroy</a>, <a href="../engine/playercontroller.html#Speech">Speech</a>, <a href="../engine/playercontroller.html#StartZoom">StartZoom</a>, <a href="../engine/playercontroller.html#StopZoom">StopZoom</a>, <a href="../engine/playercontroller.html#Suicide">Suicide</a>, <a href="../engine/playercontroller.html#SwitchWeapon">SwitchWeapon</a>, <a href="../engine/playercontroller.html#TeamMessage">TeamMessage</a>, <a href="../engine/playercontroller.html#TeamSay">TeamSay</a>, <a href="../engine/playercontroller.html#ThrowWeapon">ThrowWeapon</a>, <a href="../engine/playercontroller.html#Timer">Timer</a>, <a href="../engine/playercontroller.html#ToggleRadar">ToggleRadar</a>, <a href="../engine/playercontroller.html#ToggleZoom">ToggleZoom</a>, <a href="../engine/playercontroller.html#TravelPostAccept">TravelPostAccept</a>, <a href="../engine/playercontroller.html#TurnAround">TurnAround</a>, <a href="../engine/playercontroller.html#TurnTowardNearestEnemy">TurnTowardNearestEnemy</a>, <a href="../engine/playercontroller.html#Typing">Typing</a>, <a href="../engine/playercontroller.html#UnPossess">UnPossess</a>, <a href="../engine/playercontroller.html#UpdateOptions">UpdateOptions</a>, <a href="../engine/playercontroller.html#UpdateRotation">UpdateRotation</a>, <a href="../engine/playercontroller.html#UpdateURL">UpdateURL</a>, <a href="../engine/playercontroller.html#Use">Use</a>, <a href="../engine/playercontroller.html#VeryShortClientAdjustPosition">VeryShortClientAdjustPosition</a>, <a href="../engine/playercontroller.html#ViewFlash">ViewFlash</a>, <a href="../engine/playercontroller.html#ViewShake">ViewShake</a>, <a href="../engine/playercontroller.html#WantsSmoothedView">WantsSmoothedView</a></td>
+</tr>
+</table>
+<table>
+<tr>
+	<th class="inherittitle">Inherited Functions from <a href="../engine/engine-overview.html">engine</a>.<a href="../engine/controller.html">Controller</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../engine/controller.html#actorReachable">actorReachable</a>, <a href="../engine/controller.html#AddController">AddController</a>, <a href="../engine/controller.html#AdjustView">AdjustView</a>, <a href="../engine/controller.html#AIHearSound">AIHearSound</a>, <a href="../engine/controller.html#AttitudeTo">AttitudeTo</a>, <a href="../engine/controller.html#BeginState">BeginState</a>, <a href="../engine/controller.html#BotVoiceMessage">BotVoiceMessage</a>, <a href="../engine/controller.html#CanSee">CanSee</a>, <a href="../engine/controller.html#ChangedWeapon">ChangedWeapon</a>, <a href="../engine/controller.html#CheckFutureSight">CheckFutureSight</a>, <a href="../engine/controller.html#ClearPaths">ClearPaths</a>, <a href="../engine/controller.html#ClientDying">ClientDying</a>, <a href="../engine/controller.html#ClientGameEnded">ClientGameEnded</a>, <a href="../engine/controller.html#ClientSetLocation">ClientSetLocation</a>, <a href="../engine/controller.html#ClientSetRotation">ClientSetRotation</a>, <a href="../engine/controller.html#ClientVoiceMessage">ClientVoiceMessage</a>, <a href="../engine/controller.html#damageAttitudeTo">damageAttitudeTo</a>, <a href="../engine/controller.html#Destroyed">Destroyed</a>, <a href="../engine/controller.html#DisplayDebug">DisplayDebug</a>, <a href="../engine/controller.html#EAdjustJump">EAdjustJump</a>, <a href="../engine/controller.html#EndClimbLadder">EndClimbLadder</a>, <a href="../engine/controller.html#EnemyNotVisible">EnemyNotVisible</a>, <a href="../engine/controller.html#FearThisSpot">FearThisSpot</a>, <a href="../engine/controller.html#FindBestInventoryPath">FindBestInventoryPath</a>, <a href="../engine/controller.html#FindPathTo">FindPathTo</a>, <a href="../engine/controller.html#FindPathToward">FindPathToward</a>, <a href="../engine/controller.html#FindPathTowardNearest">FindPathTowardNearest</a>, <a href="../engine/controller.html#FindRandomDest">FindRandomDest</a>, <a href="../engine/controller.html#FinishRotation">FinishRotation</a>, <a href="../engine/controller.html#FireWeaponAt">FireWeaponAt</a>, <a href="../engine/controller.html#GetFacingDirection">GetFacingDirection</a>, <a href="../engine/controller.html#GetMessageIndex">GetMessageIndex</a>, <a href="../engine/controller.html#GetViewRotation">GetViewRotation</a>, <a href="../engine/controller.html#HearNoise">HearNoise</a>, <a href="../engine/controller.html#InitPlayerReplicationInfo">InitPlayerReplicationInfo</a>, <a href="../engine/controller.html#InLatentExecution">InLatentExecution</a>, <a href="../engine/controller.html#LineOfSightTo">LineOfSightTo</a>, <a href="../engine/controller.html#logX">logX</a>, <a href="../engine/controller.html#LongFall">LongFall</a>, <a href="../engine/controller.html#Map">Map</a>, <a href="../engine/controller.html#MayFall">MayFall</a>, <a href="../engine/controller.html#MonitoredPawnAlert">MonitoredPawnAlert</a>, <a href="../engine/controller.html#MoverFinished">MoverFinished</a>, <a href="../engine/controller.html#MoveTo">MoveTo</a>, <a href="../engine/controller.html#MoveToward">MoveToward</a>, <a href="../engine/controller.html#NotifyBump">NotifyBump</a>, <a href="../engine/controller.html#NotifyHeadVolumeChange">NotifyHeadVolumeChange</a>, <a href="../engine/controller.html#NotifyHitMover">NotifyHitMover</a>, <a href="../engine/controller.html#NotifyHitWall">NotifyHitWall</a>, <a href="../engine/controller.html#NotifyKilled">NotifyKilled</a>, <a href="../engine/controller.html#NotifyLanded">NotifyLanded</a>, <a href="../engine/controller.html#NotifyPhysicsVolumeChange">NotifyPhysicsVolumeChange</a>, <a href="../engine/controller.html#NotifyTakeHit">NotifyTakeHit</a>, <a href="../engine/controller.html#PawnDied">PawnDied</a>, <a href="../engine/controller.html#PawnIsInPain">PawnIsInPain</a>, <a href="../engine/controller.html#PendingStasis">PendingStasis</a>, <a href="../engine/controller.html#PickAnyTarget">PickAnyTarget</a>, <a href="../engine/controller.html#PickTarget">PickTarget</a>, <a href="../engine/controller.html#PickWallAdjust">PickWallAdjust</a>, <a href="../engine/controller.html#PlaySoundAffectedByGrenade">PlaySoundAffectedByGrenade</a>, <a href="../engine/controller.html#PlaySoundCurrentAction">PlaySoundCurrentAction</a>, <a href="../engine/controller.html#PlaySoundDamage">PlaySoundDamage</a>, <a href="../engine/controller.html#PlaySoundInflictedDamage">PlaySoundInflictedDamage</a>, <a href="../engine/controller.html#pointReachable">pointReachable</a>, <a href="../engine/controller.html#Possess">Possess</a>, <a href="../engine/controller.html#PostBeginPlay">PostBeginPlay</a>, <a href="../engine/controller.html#PreBeginPlay">PreBeginPlay</a>, <a href="../engine/controller.html#PrepareForMove">PrepareForMove</a>, <a href="../engine/controller.html#R6DamageAttitudeTo">R6DamageAttitudeTo</a>, <a href="../engine/controller.html#ReceiveWarning">ReceiveWarning</a>, <a href="../engine/controller.html#RemoveController">RemoveController</a>, <a href="../engine/controller.html#RenderOverlays">RenderOverlays</a>, <a href="../engine/controller.html#Reset">Reset</a>, <a href="../engine/controller.html#Restart">Restart</a>, <a href="../engine/controller.html#SameTeamAs">SameTeamAs</a>, <a href="../engine/controller.html#SeeMonster">SeeMonster</a>, <a href="../engine/controller.html#SeePlayer">SeePlayer</a>, <a href="../engine/controller.html#SendMessage">SendMessage</a>, <a href="../engine/controller.html#SendVoiceMessage">SendVoiceMessage</a>, <a href="../engine/controller.html#ServerReStartPlayer">ServerReStartPlayer</a>, <a href="../engine/controller.html#SetFall">SetFall</a>, <a href="../engine/controller.html#SetWeaponSound">SetWeaponSound</a>, <a href="../engine/controller.html#ShakeView">ShakeView</a>, <a href="../engine/controller.html#StartMonitoring">StartMonitoring</a>, <a href="../engine/controller.html#StopFiring">StopFiring</a>, <a href="../engine/controller.html#StopWaiting">StopWaiting</a>, <a href="../engine/controller.html#SwitchToBestWeapon">SwitchToBestWeapon</a>, <a href="../engine/controller.html#UnderLift">UnderLift</a>, <a href="../engine/controller.html#WaitForLanding">WaitForLanding</a>, <a href="../engine/controller.html#WaitForMover">WaitForMover</a>, <a href="../engine/controller.html#WantsSmoothedView">WantsSmoothedView</a>, <a href="../engine/controller.html#WouldReactToNoise">WouldReactToNoise</a>, <a href="../engine/controller.html#WouldReactToSeeing">WouldReactToSeeing</a></td>
+</tr>
+</table>
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th class="title">States Summary</th>
+</tr>
+</table>
+
+<table>
+<tr>
+	<th>PlayerWaiting <a href="../Source_r6game/r6planningctrl.html#1471" class="small">Source code</a></th>
+</tr>
+<tr>
+	<td>
+	<span class="declaration"><span class="us_keyw">auto state</span> PlayerWaiting <span class="us_keyw"></span> </span><br />
+	<blockquote class="comment">
+	
+	</blockquote>
+	</td>
+</tr>
+<tr>
+	<td><a href="#_BeginState+PlayerWaiting">BeginState</a>, <a href="#_EndState+PlayerWaiting">EndState</a></td>
+</tr>
+</table>
+<table>
+<tr>
+	<th>PlayerWalking <a href="../Source_r6game/r6planningctrl.html#378" class="small">Source code</a></th>
+</tr>
+<tr>
+	<td>
+	<span class="declaration"><span class="us_keyw"> state</span> PlayerWalking <span class="us_keyw"></span> </span><br />
+	<blockquote class="comment">
+	
+	</blockquote>
+	</td>
+</tr>
+<tr>
+	<td><a href="#_ProcessMove+PlayerWalking">ProcessMove</a></td>
+</tr>
+</table>
+
+
+<br />
+
+<hr />
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Constants Detail</th>
+</tr>
+</table>
+
+<h4><a name="_R6InputKey_ActionPopup" class="hidden"></a>R6InputKey_ActionPopup <a href="../Source_r6game/r6planningctrl.html#84" class="small">Source code</a></h4>
+<div class="declaration">const R6InputKey_ActionPopup = <span class="source_int">1024</span>;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_R6InputKey_PathFlagPopup" class="hidden"></a>R6InputKey_PathFlagPopup <a href="../Source_r6game/r6planningctrl.html#85" class="small">Source code</a></h4>
+<div class="declaration">const R6InputKey_PathFlagPopup = <span class="source_int">1026</span>;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th class="title">Variables Detail</th>
+</tr>
+</table>
+
+<h4><a name="_m_3DWindowPositionH" class="hidden"></a>m_3DWindowPositionH <a href="../Source_r6game/r6planningctrl.html#56" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">INT</span> m_3DWindowPositionH;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_3DWindowPositionW" class="hidden"></a>m_3DWindowPositionW <a href="../Source_r6game/r6planningctrl.html#55" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">INT</span> m_3DWindowPositionW;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_3DWindowPositionX" class="hidden"></a>m_3DWindowPositionX <a href="../Source_r6game/r6planningctrl.html#53" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">INT</span> m_3DWindowPositionX;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_3DWindowPositionY" class="hidden"></a>m_3DWindowPositionY <a href="../Source_r6game/r6planningctrl.html#54" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">INT</span> m_3DWindowPositionY;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_bActionPointSelected" class="hidden"></a>m_bActionPointSelected <a href="../Source_r6game/r6planningctrl.html#59" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">BOOL</span> m_bActionPointSelected;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_bCanMoveFirstPoint" class="hidden"></a>m_bCanMoveFirstPoint <a href="../Source_r6game/r6planningctrl.html#60" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">BOOL</span> m_bCanMoveFirstPoint;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_bClickedOnRange" class="hidden"></a>m_bClickedOnRange <a href="../Source_r6game/r6planningctrl.html#62" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">BOOL</span> m_bClickedOnRange;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_bClickToFindLocation" class="hidden"></a>m_bClickToFindLocation <a href="../Source_r6game/r6planningctrl.html#61" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">BOOL</span> m_bClickToFindLocation;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_bFirstTick" class="hidden"></a>m_bFirstTick <a href="../Source_r6game/r6planningctrl.html#77" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">bool</span> m_bFirstTick;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_bLockCamera" class="hidden"></a>m_bLockCamera <a href="../Source_r6game/r6planningctrl.html#65" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">BOOL</span> m_bLockCamera;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_bMove3DView" class="hidden"></a>m_bMove3DView <a href="../Source_r6game/r6planningctrl.html#58" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">BOOL</span> m_bMove3DView;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_bPlayMode" class="hidden"></a>m_bPlayMode <a href="../Source_r6game/r6planningctrl.html#64" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">BOOL</span> m_bPlayMode;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_bRender3DView" class="hidden"></a>m_bRender3DView <a href="../Source_r6game/r6planningctrl.html#57" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">BOOL</span> m_bRender3DView;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_bSetSnipeDirection" class="hidden"></a>m_bSetSnipeDirection <a href="../Source_r6game/r6planningctrl.html#63" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">BOOL</span> m_bSetSnipeDirection;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_CamSpot" class="hidden"></a>m_CamSpot <a href="../Source_r6game/r6planningctrl.html#48" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../engine/actor.html" class="source">actor</a></span> m_CamSpot;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_fAngleMax" class="hidden"></a>m_fAngleMax <a href="../Source_r6game/r6planningctrl.html#40" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">FLOAT</span> m_fAngleMax;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_fAngleRate" class="hidden"></a>m_fAngleRate <a href="../Source_r6game/r6planningctrl.html#39" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">FLOAT</span> m_fAngleRate;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_fCameraAngle" class="hidden"></a>m_fCameraAngle <a href="../Source_r6game/r6planningctrl.html#38" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">FLOAT</span> m_fCameraAngle;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_fCamRate" class="hidden"></a>m_fCamRate <a href="../Source_r6game/r6planningctrl.html#46" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">FLOAT</span> m_fCamRate;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_fDebugRangeScale" class="hidden"></a>m_fDebugRangeScale <a href="../Source_r6game/r6planningctrl.html#74" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">FLOAT</span> m_fDebugRangeScale;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_fLastMouseX" class="hidden"></a>m_fLastMouseX <a href="../Source_r6game/r6planningctrl.html#28" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">FLOAT</span> m_fLastMouseX;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_fLastMouseY" class="hidden"></a>m_fLastMouseY <a href="../Source_r6game/r6planningctrl.html#29" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">FLOAT</span> m_fLastMouseY;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_fRotateDelta" class="hidden"></a>m_fRotateDelta <a href="../Source_r6game/r6planningctrl.html#42" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">FLOAT</span> m_fRotateDelta;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_fRotateRate" class="hidden"></a>m_fRotateRate <a href="../Source_r6game/r6planningctrl.html#43" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">FLOAT</span> m_fRotateRate;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_fZoom" class="hidden"></a>m_fZoom <a href="../Source_r6game/r6planningctrl.html#31" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">FLOAT</span> m_fZoom;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_fZoomDelta" class="hidden"></a>m_fZoomDelta <a href="../Source_r6game/r6planningctrl.html#32" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">FLOAT</span> m_fZoomDelta;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_fZoomFactor" class="hidden"></a>m_fZoomFactor <a href="../Source_r6game/r6planningctrl.html#36" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">FLOAT</span> m_fZoomFactor;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_fZoomMax" class="hidden"></a>m_fZoomMax <a href="../Source_r6game/r6planningctrl.html#35" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">FLOAT</span> m_fZoomMax;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_fZoomMin" class="hidden"></a>m_fZoomMin <a href="../Source_r6game/r6planningctrl.html#34" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">FLOAT</span> m_fZoomMin;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_fZoomRate" class="hidden"></a>m_fZoomRate <a href="../Source_r6game/r6planningctrl.html#33" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">FLOAT</span> m_fZoomRate;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_iCurrentTeam" class="hidden"></a>m_iCurrentTeam <a href="../Source_r6game/r6planningctrl.html#13" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">INT</span> m_iCurrentTeam;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_iLevelDisplay" class="hidden"></a>m_iLevelDisplay <a href="../Source_r6game/r6planningctrl.html#70" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">INT</span> m_iLevelDisplay;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_pCameraDirIcon" class="hidden"></a>m_pCameraDirIcon <a href="../Source_r6game/r6planningctrl.html#16" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../r6game/r6cameradirection.html" class="source">R6CameraDirection</a></span> m_pCameraDirIcon;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_pFileManager" class="hidden"></a>m_pFileManager <a href="../Source_r6game/r6planningctrl.html#15" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../r6game/r6filemanagerplanning.html" class="source">R6FileManagerPlanning</a></span> m_pFileManager;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_pIconTex[12]" class="hidden"></a>m_pIconTex[12] <a href="../Source_r6game/r6planningctrl.html#19" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../engine/texture.html" class="source">Texture</a></span> m_pIconTex[<span class="source_int">12</span>];</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_PlanningBadClickSnd" class="hidden"></a>m_PlanningBadClickSnd <a href="../Source_r6game/r6planningctrl.html#79" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">Sound</span> m_PlanningBadClickSnd;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_PlanningGoodClickSnd" class="hidden"></a>m_PlanningGoodClickSnd <a href="../Source_r6game/r6planningctrl.html#80" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">Sound</span> m_PlanningGoodClickSnd;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_PlanningRemoveSnd" class="hidden"></a>m_PlanningRemoveSnd <a href="../Source_r6game/r6planningctrl.html#81" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">Sound</span> m_PlanningRemoveSnd;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_pOldHitActor" class="hidden"></a>m_pOldHitActor <a href="../Source_r6game/r6planningctrl.html#17" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../engine/actor.html" class="source">Actor</a></span> m_pOldHitActor;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_pTeamInfo[3]" class="hidden"></a>m_pTeamInfo[3] <a href="../Source_r6game/r6planningctrl.html#14" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../r6game/r6planninginfo.html" class="source">R6PlanningInfo</a></span> m_pTeamInfo[<span class="source_int">3</span>];</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_rCamRot" class="hidden"></a>m_rCamRot <a href="../Source_r6game/r6planningctrl.html#26" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../core/object.html#Rotator" class="source">Rotator</a></span> m_rCamRot;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_vCamDelta" class="hidden"></a>m_vCamDelta <a href="../Source_r6game/r6planningctrl.html#45" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../core/object.html#Vector" class="source">Vector</a></span> m_vCamDelta;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_vCamDesiredPos" class="hidden"></a>m_vCamDesiredPos <a href="../Source_r6game/r6planningctrl.html#25" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../core/object.html#Vector" class="source">Vector</a></span> m_vCamDesiredPos;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_vCamPos" class="hidden"></a>m_vCamPos <a href="../Source_r6game/r6planningctrl.html#23" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../core/object.html#Vector" class="source">Vector</a></span> m_vCamPos;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_vCamPosNoRot" class="hidden"></a>m_vCamPosNoRot <a href="../Source_r6game/r6planningctrl.html#24" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../core/object.html#Vector" class="source">Vector</a></span> m_vCamPosNoRot;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_vCurrentCameraPos" class="hidden"></a>m_vCurrentCameraPos <a href="../Source_r6game/r6planningctrl.html#22" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../core/object.html#Vector" class="source">Vector</a></span> m_vCurrentCameraPos;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_vMaxLocation" class="hidden"></a>m_vMaxLocation <a href="../Source_r6game/r6planningctrl.html#68" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../core/object.html#Vector" class="source">Vector</a></span> m_vMaxLocation;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_vMinLocation" class="hidden"></a>m_vMinLocation <a href="../Source_r6game/r6planningctrl.html#67" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../core/object.html#Vector" class="source">Vector</a></span> m_vMinLocation;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h3 class="vartag">Debug</h3>
+<h4><a name="_bShowLog" class="hidden"></a>bShowLog <a href="../Source_r6game/r6planningctrl.html#72" class="small">Source code</a></h4>
+<div class="declaration">var(Debug) <span class="source_type">bool</span> bShowLog;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h3 class="vartag">R6Planning</h3>
+<h4><a name="_m_fCastingHeight" class="hidden"></a>m_fCastingHeight <a href="../Source_r6game/r6planningctrl.html#51" class="small">Source code</a></h4>
+<div class="declaration">var(R6Planning) const <span class="source_type">FLOAT</span> m_fCastingHeight;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+
+
+<br />
+
+
+
+
+
+
+
+<table class="title">
+<tr>
+	<th class="title">Functions Detail</th>
+</tr>
+</table>
+
+<h4><a name="_AdjustView-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> AdjustView <span class="function_state"></span> <a href="../Source_r6game/r6planningctrl.html#616" class="small">Source code</a></h4>
+<div class="declaration"> function  AdjustView ( <span class="source_type">float</span> <span class="source_type">DeltaTime</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_Ajust3DRotation-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> Ajust3DRotation <span class="function_state"></span> <a href="../Source_r6game/r6planningctrl.html#644" class="small">Source code</a></h4>
+<div class="declaration"> function  Ajust3DRotation ( <span class="source_type">FLOAT</span> X, <span class="source_type">FLOAT</span> Y) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_BeginState-PlayerWaiting" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> BeginState <span class="function_state">PlayerWaiting</span> <a href="../Source_r6game/r6planningctrl.html#1474" class="small">Source code</a></h4>
+<div class="declaration"> function  BeginState (  )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_CancelActionPointAction-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> CancelActionPointAction <span class="function_state"></span> <a href="../Source_r6game/r6planningctrl.html#1104" class="small">Source code</a></h4>
+<div class="declaration"> function  CancelActionPointAction ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_CastActionPointAt-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> CastActionPointAt <span class="function_state"></span> <a href="../Source_r6game/r6planningctrl.html#1215" class="small">Source code</a></h4>
+<div class="declaration"> function <span class="source_type">bool</span> CastActionPointAt ( <span class="source_type"><a href="../core/object.html#Vector" class="source">vector</a></span> vLocation, <span class="source_type">INT</span> iFirstFloor, <span class="source_type">INT</span> iSecondFloor, <span class="source_type">INT</span> X, <span class="source_type">INT</span> Y) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ChangeLevelDisplay-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> ChangeLevelDisplay <span class="function_state"></span> <a href="../Source_r6game/r6planningctrl.html#653" class="small">Source code</a></h4>
+<div class="declaration"> function  ChangeLevelDisplay ( <span class="source_type">int</span> iStep) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_Coords-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> Coords <span class="function_state"></span> <a href="../Source_r6game/r6planningctrl.html#591" class="small">Source code</a></h4>
+<div class="declaration">exec function  <span class="source_type"><a href="../core/object.html#Coords" class="source">Coords</a></span> ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_dbgDrawPath-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> dbgDrawPath <span class="function_state"></span> <a href="../Source_r6game/r6planningctrl.html#1477" class="small">Source code</a></h4>
+<div class="declaration">exec function  dbgDrawPath ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_DeleteAllNode-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> DeleteAllNode <span class="function_state"></span> <a href="../Source_r6game/r6planningctrl.html#1348" class="small">Source code</a></h4>
+<div class="declaration"> function  DeleteAllNode ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_DeleteEverySingleNode-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> DeleteEverySingleNode <span class="function_state"></span> <a href="../Source_r6game/r6planningctrl.html#1376" class="small">Source code</a></h4>
+<div class="declaration"> function  DeleteEverySingleNode ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_DeleteOneNode-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> DeleteOneNode <span class="function_state"></span> <a href="../Source_r6game/r6planningctrl.html#1327" class="small">Source code</a></h4>
+<div class="declaration"> function  DeleteOneNode ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_DeleteWaypoint-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> DeleteWaypoint <span class="function_state"></span> <a href="../Source_r6game/r6planningctrl.html#483" class="small">Source code</a></h4>
+<div class="declaration">exec function  DeleteWaypoint ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_DesignRange-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> DesignRange <span class="function_state"></span> <a href="../Source_r6game/r6planningctrl.html#1484" class="small">Source code</a></h4>
+<div class="declaration">exec function  DesignRange ( <span class="source_type">FLOAT</span> fNewScale) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_Destroyed-" class="hidden"></a><img src="../img_event.gif" alt="" title="event" /> Destroyed <span class="function_state"></span> <a href="../Source_r6game/r6planningctrl.html#230" class="small">Source code</a></h4>
+<div class="declaration"> event  Destroyed ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_EndState-PlayerWaiting" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> EndState <span class="function_state">PlayerWaiting</span> <a href="../Source_r6game/r6planningctrl.html#1473" class="small">Source code</a></h4>
+<div class="declaration"> function  EndState (  )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_FirstWaypoint-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> FirstWaypoint <span class="function_state"></span> <a href="../Source_r6game/r6planningctrl.html#507" class="small">Source code</a></h4>
+<div class="declaration">exec function  FirstWaypoint ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_FixFOV-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> FixFOV <span class="function_state"></span> <a href="../Source_r6game/r6planningctrl.html#612" class="small">Source code</a></h4>
+<div class="declaration"> function  FixFOV ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GetActionTypeTexture-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> GetActionTypeTexture <span class="function_state"></span> <a href="../Source_r6game/r6planningctrl.html#1143" class="small">Source code</a></h4>
+<div class="declaration"> function <span class="source_type"><a href="../engine/texture.html" class="source">Texture</a></span> GetActionTypeTexture ( <span class="source_type"><a href="../core/object.html#EPlanActionType" class="source">EPlanActionType</a></span> <span class="source_type"><a href="../r6engine/r6interactiveobjectaction.html#EActionType" class="source">eActionType</a></span>, optional <span class="source_type">INT</span> iMilestone) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GetClickResult-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> GetClickResult <span class="function_state"></span> <a href="../Source_r6game/r6planningctrl.html#87" class="small">Source code</a></h4>
+<div class="declaration">native(<span class="source_int">2013</span>) final function <span class="source_type">BOOL</span> GetClickResult ( <span class="source_type">FLOAT</span> X, <span class="source_type">FLOAT</span> Y, out <span class="source_type"><a href="../core/object.html#Vector" class="source">Vector</a></span> <span class="source_type">HitLocation</span>, out <span class="source_type"><a href="../engine/actor.html" class="source">actor</a></span> HitActor, out <span class="source_type">INT</span> iChangeLevelTo )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GetCurrentActionType-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> GetCurrentActionType <span class="function_state"></span> <a href="../Source_r6game/r6planningctrl.html#1434" class="small">Source code</a></h4>
+<div class="declaration"> function <span class="source_type"><a href="../core/object.html#EPlanActionType" class="source">EPlanActionType</a></span> GetCurrentActionType ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GetCurrentPoint-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> GetCurrentPoint <span class="function_state"></span> <a href="../Source_r6game/r6planningctrl.html#1429" class="small">Source code</a></h4>
+<div class="declaration"> function <span class="source_type"><a href="../r6game/r6actionpoint.html" class="source">R6ActionPoint</a></span> GetCurrentPoint ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GetMovementMode-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> GetMovementMode <span class="function_state"></span> <a href="../Source_r6game/r6planningctrl.html#1439" class="small">Source code</a></h4>
+<div class="declaration"> function <span class="source_type"><a href="../core/object.html#EMovementMode" class="source">EMovementMode</a></span> GetMovementMode ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GetXYPoint-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> GetXYPoint <span class="function_state"></span> <a href="../Source_r6game/r6planningctrl.html#89" class="small">Source code</a></h4>
+<div class="declaration">native(<span class="source_int">2016</span>) final function <span class="source_type"><a href="../core/object.html#Vector" class="source">Vector</a></span> GetXYPoint ( <span class="source_type">FLOAT</span> X, <span class="source_type">FLOAT</span> Y, <span class="source_type">FLOAT</span> Height )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GotoFirstNode-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> GotoFirstNode <span class="function_state"></span> <a href="../Source_r6game/r6planningctrl.html#1389" class="small">Source code</a></h4>
+<div class="declaration"> function  GotoFirstNode ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GotoLastNode-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> GotoLastNode <span class="function_state"></span> <a href="../Source_r6game/r6planningctrl.html#1397" class="small">Source code</a></h4>
+<div class="declaration"> function  GotoLastNode ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GotoNextNode-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> GotoNextNode <span class="function_state"></span> <a href="../Source_r6game/r6planningctrl.html#1405" class="small">Source code</a></h4>
+<div class="declaration"> function  GotoNextNode ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GotoNode-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> GotoNode <span class="function_state"></span> <a href="../Source_r6game/r6planningctrl.html#1421" class="small">Source code</a></h4>
+<div class="declaration"> function  GotoNode ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GotoPrevNode-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> GotoPrevNode <span class="function_state"></span> <a href="../Source_r6game/r6planningctrl.html#1413" class="small">Source code</a></h4>
+<div class="declaration"> function  GotoPrevNode ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_InitNewPlanning-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> InitNewPlanning <span class="function_state"></span> <a href="../Source_r6game/r6planningctrl.html#216" class="small">Source code</a></h4>
+<div class="declaration"> function  InitNewPlanning ( <span class="source_type">INT</span> iSelectedTeam) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_LastWaypoint-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> LastWaypoint <span class="function_state"></span> <a href="../Source_r6game/r6planningctrl.html#515" class="small">Source code</a></h4>
+<div class="declaration">exec function  LastWaypoint ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_LMouseDown-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> LMouseDown <span class="function_state"></span> <a href="../Source_r6game/r6planningctrl.html#676" class="small">Source code</a></h4>
+<div class="declaration"> function  LMouseDown ( <span class="source_type">FLOAT</span> X, <span class="source_type">FLOAT</span> Y) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_LMouseUp-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> LMouseUp <span class="function_state"></span> <a href="../Source_r6game/r6planningctrl.html#865" class="small">Source code</a></h4>
+<div class="declaration"> function  LMouseUp ( <span class="source_type">FLOAT</span> X, <span class="source_type">FLOAT</span> Y) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_MouseMove-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> MouseMove <span class="function_state"></span> <a href="../Source_r6game/r6planningctrl.html#1081" class="small">Source code</a></h4>
+<div class="declaration"> function  MouseMove ( <span class="source_type">FLOAT</span> X, <span class="source_type">FLOAT</span> Y) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_MoveActionPointTo-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> MoveActionPointTo <span class="function_state"></span> <a href="../Source_r6game/r6planningctrl.html#1163" class="small">Source code</a></h4>
+<div class="declaration"> function  MoveActionPointTo ( <span class="source_type"><a href="../core/object.html#Vector" class="source">vector</a></span> vHitLocation, <span class="source_type">INT</span> iFirstFloor, <span class="source_type">INT</span> iSecondFloor) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_MoveCamOver-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> MoveCamOver <span class="function_state"></span> <a href="../Source_r6game/r6planningctrl.html#1445" class="small">Source code</a></h4>
+<div class="declaration"> function  MoveCamOver ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_NextWaypoint-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> NextWaypoint <span class="function_state"></span> <a href="../Source_r6game/r6planningctrl.html#499" class="small">Source code</a></h4>
+<div class="declaration">exec function  NextWaypoint ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_PlanningTrace-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> PlanningTrace <span class="function_state"></span> <a href="../Source_r6game/r6planningctrl.html#91" class="small">Source code</a></h4>
+<div class="declaration">native(<span class="source_int">2017</span>) final function <span class="source_type">BOOL</span> PlanningTrace ( <span class="source_type"><a href="../core/object.html#Vector" class="source">vector</a></span> vTraceEnd, <span class="source_type"><a href="../core/object.html#Vector" class="source">vector</a></span> vTraceStart )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_PlayerCalcView-" class="hidden"></a><img src="../img_event.gif" alt="" title="event" /> PlayerCalcView <span class="function_state"></span> <a href="../Source_r6game/r6planningctrl.html#601" class="small">Source code</a></h4>
+<div class="declaration"> event  PlayerCalcView ( out <span class="source_type"><a href="../engine/actor.html" class="source">Actor</a></span> aViewActor, out <span class="source_type"><a href="../core/object.html#Vector" class="source">Vector</a></span> vCameraLocation, out <span class="source_type"><a href="../core/object.html#Rotator" class="source">Rotator</a></span> <span class="source_type">rCameraRotation</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_PlayerTick-" class="hidden"></a><img src="../img_event.gif" alt="" title="event" /> PlayerTick <span class="function_state"></span> <a href="../Source_r6game/r6planningctrl.html#244" class="small">Source code</a></h4>
+<div class="declaration"> event  PlayerTick ( <span class="source_type">float</span> <span class="source_type">fDeltaTime</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_PositionCameraOnInsertionZone-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> PositionCameraOnInsertionZone <span class="function_state"></span> <a href="../Source_r6game/r6planningctrl.html#1358" class="small">Source code</a></h4>
+<div class="declaration"> function  PositionCameraOnInsertionZone ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_PostBeginPlay-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> PostBeginPlay <span class="function_state"></span> <a href="../Source_r6game/r6planningctrl.html#93" class="small">Source code</a></h4>
+<div class="declaration"> function  PostBeginPlay ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_PrevWaypoint-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> PrevWaypoint <span class="function_state"></span> <a href="../Source_r6game/r6planningctrl.html#491" class="small">Source code</a></h4>
+<div class="declaration">exec function  PrevWaypoint ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ProcessMove-PlayerWalking" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> ProcessMove <span class="function_state">PlayerWalking</span> <a href="../Source_r6game/r6planningctrl.html#380" class="small">Source code</a></h4>
+<div class="declaration"> function  ProcessMove ( <span class="source_type">float</span> <span class="source_type">DeltaTime</span>, <span class="source_type"><a href="../core/object.html#Vector" class="source">vector</a></span> NewAccel, <span class="source_type"><a href="../engine/actor.html#EDoubleClickDir" class="source">eDoubleClickDir</a></span> DoubleClickMove, <span class="source_type"><a href="../core/object.html#Rotator" class="source">rotator</a></span> DeltaRot) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ResetAllID-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> ResetAllID <span class="function_state"></span> <a href="../Source_r6game/r6planningctrl.html#1130" class="small">Source code</a></h4>
+<div class="declaration"> function  ResetAllID ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ResetIDs-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> ResetIDs <span class="function_state"></span> <a href="../Source_r6game/r6planningctrl.html#1138" class="small">Source code</a></h4>
+<div class="declaration"> function  ResetIDs ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_RMouseDown-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> RMouseDown <span class="function_state"></span> <a href="../Source_r6game/r6planningctrl.html#928" class="small">Source code</a></h4>
+<div class="declaration"> function  RMouseDown ( <span class="source_type">FLOAT</span> X, <span class="source_type">FLOAT</span> Y) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_RMouseUp-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> RMouseUp <span class="function_state"></span> <a href="../Source_r6game/r6planningctrl.html#861" class="small">Source code</a></h4>
+<div class="declaration"> function  RMouseUp ( <span class="source_type">FLOAT</span> X, <span class="source_type">FLOAT</span> Y) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_Set3DViewPosition-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> Set3DViewPosition <span class="function_state"></span> <a href="../Source_r6game/r6planningctrl.html#184" class="small">Source code</a></h4>
+<div class="declaration"> function  Set3DViewPosition ( <span class="source_type">INT</span> NewX, <span class="source_type">INT</span> NewY, <span class="source_type">INT</span> NewH, <span class="source_type">INT</span> NewW) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_SetPlanningInfo-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> SetPlanningInfo <span class="function_state"></span> <a href="../Source_r6game/r6planningctrl.html#192" class="small">Source code</a></h4>
+<div class="declaration"> function  SetPlanningInfo ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_StartPlayingPlanning-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> StartPlayingPlanning <span class="function_state"></span> <a href="../Source_r6game/r6planningctrl.html#1458" class="small">Source code</a></h4>
+<div class="declaration"> function  StartPlayingPlanning ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_StopPlayingPlanning-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> StopPlayingPlanning <span class="function_state"></span> <a href="../Source_r6game/r6planningctrl.html#1464" class="small">Source code</a></h4>
+<div class="declaration"> function  StopPlayingPlanning ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_SwitchToGoldTeam-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> SwitchToGoldTeam <span class="function_state"></span> <a href="../Source_r6game/r6planningctrl.html#551" class="small">Source code</a></h4>
+<div class="declaration">exec function  SwitchToGoldTeam ( optional <span class="source_type">BOOL</span> bForceFunction) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_SwitchToGreenTeam-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> SwitchToGreenTeam <span class="function_state"></span> <a href="../Source_r6game/r6planningctrl.html#537" class="small">Source code</a></h4>
+<div class="declaration">exec function  SwitchToGreenTeam ( optional <span class="source_type">BOOL</span> bForceFunction) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_SwitchToRedTeam-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> SwitchToRedTeam <span class="function_state"></span> <a href="../Source_r6game/r6planningctrl.html#523" class="small">Source code</a></h4>
+<div class="declaration">exec function  SwitchToRedTeam ( optional <span class="source_type">BOOL</span> bForceFunction) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_Toggle3DView-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> Toggle3DView <span class="function_state"></span> <a href="../Source_r6game/r6planningctrl.html#619" class="small">Source code</a></h4>
+<div class="declaration"> function  Toggle3DView ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_TurnOff3DMove-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> TurnOff3DMove <span class="function_state"></span> <a href="../Source_r6game/r6planningctrl.html#639" class="small">Source code</a></h4>
+<div class="declaration"> function  TurnOff3DMove ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_TurnOff3DView-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> TurnOff3DView <span class="function_state"></span> <a href="../Source_r6game/r6planningctrl.html#624" class="small">Source code</a></h4>
+<div class="declaration"> function  TurnOff3DView ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_TurnOn3DMove-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> TurnOn3DMove <span class="function_state"></span> <a href="../Source_r6game/r6planningctrl.html#630" class="small">Source code</a></h4>
+<div class="declaration"> function  TurnOn3DMove ( <span class="source_type">FLOAT</span> X, <span class="source_type">FLOAT</span> Y) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ViewGoldTeam-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> ViewGoldTeam <span class="function_state"></span> <a href="../Source_r6game/r6planningctrl.html#582" class="small">Source code</a></h4>
+<div class="declaration">exec function  ViewGoldTeam ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ViewGreenTeam-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> ViewGreenTeam <span class="function_state"></span> <a href="../Source_r6game/r6planningctrl.html#574" class="small">Source code</a></h4>
+<div class="declaration">exec function  ViewGreenTeam ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ViewRedTeam-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> ViewRedTeam <span class="function_state"></span> <a href="../Source_r6game/r6planningctrl.html#565" class="small">Source code</a></h4>
+<div class="declaration">exec function  ViewRedTeam ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+
+
+<br />
+
+
+<table class="title">
+<tr>
+	<th class="title">Defaultproperties</th>
+</tr>
+</table>
+<br />
+<div class="source"><table class="source"><tr><td class="source"><pre class="source">defaultproperties
+{
+     m_bFirstTick=True
+     m_fZoom=<span class="source_int">0.250000</span>
+     m_fZoomRate=<span class="source_int">0.200000</span>
+     m_fZoomMin=<span class="source_int">0.050000</span>
+     m_fZoomMax=<span class="source_int">0.400000</span>
+     m_fZoomFactor=<span class="source_int">2.000000</span>
+     m_fAngleRate=<span class="source_int">4000.000000</span>
+     m_fAngleMax=-<span class="source_int">25000.000000</span>
+     m_fRotateRate=<span class="source_int">6000.000000</span>
+     m_fCamRate=<span class="source_int">1000.000000</span>
+     m_fCastingHeight=<span class="source_int">100.000000</span>
+     m_fDebugRangeScale=<span class="source_int">1.000000</span>
+     m_pIconTex(<span class="source_int">0</span>)=<span class="source_type"><a href="../engine/texture.html" class="source">Texture</a></span><span class="source_name">'R6Planning.Icons.PlanIcon_Alpha'</span>
+     m_pIconTex(<span class="source_int">1</span>)=<span class="source_type"><a href="../engine/texture.html" class="source">Texture</a></span><span class="source_name">'R6Planning.Icons.PlanIcon_Bravo'</span>
+     m_pIconTex(<span class="source_int">2</span>)=<span class="source_type"><a href="../engine/texture.html" class="source">Texture</a></span><span class="source_name">'R6Planning.Icons.PlanIcon_Charlie'</span>
+     m_pIconTex(<span class="source_int">3</span>)=<span class="source_type"><a href="../engine/texture.html" class="source">Texture</a></span><span class="source_name">'R6Planning.Icons.PlanIcon_Milestone1'</span>
+     m_pIconTex(<span class="source_int">4</span>)=<span class="source_type"><a href="../engine/texture.html" class="source">Texture</a></span><span class="source_name">'R6Planning.Icons.PlanIcon_Milestone2'</span>
+     m_pIconTex(<span class="source_int">5</span>)=<span class="source_type"><a href="../engine/texture.html" class="source">Texture</a></span><span class="source_name">'R6Planning.Icons.PlanIcon_Milestone3'</span>
+     m_pIconTex(<span class="source_int">6</span>)=<span class="source_type"><a href="../engine/texture.html" class="source">Texture</a></span><span class="source_name">'R6Planning.Icons.PlanIcon_Milestone4'</span>
+     m_pIconTex(<span class="source_int">7</span>)=<span class="source_type"><a href="../engine/texture.html" class="source">Texture</a></span><span class="source_name">'R6Planning.Icons.PlanIcon_Milestone5'</span>
+     m_pIconTex(<span class="source_int">8</span>)=<span class="source_type"><a href="../engine/texture.html" class="source">Texture</a></span><span class="source_name">'R6Planning.Icons.PlanIcon_Milestone6'</span>
+     m_pIconTex(<span class="source_int">9</span>)=<span class="source_type"><a href="../engine/texture.html" class="source">Texture</a></span><span class="source_name">'R6Planning.Icons.PlanIcon_Milestone7'</span>
+     m_pIconTex(<span class="source_int">10</span>)=<span class="source_type"><a href="../engine/texture.html" class="source">Texture</a></span><span class="source_name">'R6Planning.Icons.PlanIcon_Milestone8'</span>
+     m_pIconTex(<span class="source_int">11</span>)=<span class="source_type"><a href="../engine/texture.html" class="source">Texture</a></span><span class="source_name">'R6Planning.Icons.PlanIcon_Milestone9'</span>
+     m_PlanningBadClickSnd=<span class="source_type">Sound</span><span class="source_name">'SFX_Menus.Play_Planning_BadClick'</span>
+     m_PlanningGoodClickSnd=<span class="source_type">Sound</span><span class="source_name">'SFX_Menus.Play_Planning_GoodClick'</span>
+     m_vCurrentCameraPos=(X=<span class="source_int">1.000000</span>,<span class="source_type">Z</span>=<span class="source_int">15000.000000</span>)
+     m_vCamPos=(X=<span class="source_int">1.000000</span>,<span class="source_type">Z</span>=<span class="source_int">15000.000000</span>)
+     m_rCamRot=(Pitch=<span class="source_int">49153</span>)
+     bBehindView=True
+     InputClass=<span class="source_type">Class</span><span class="source_name">'R6Game.R6PlanningPlayerInput'</span>
+     RemoteRole=ROLE_None
+}
+</pre></td></tr></table></div>
+
+
+
+<hr />
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../r6game/r6game-overview.html">Package</a></td>
+	<td class="header_hilight">Class</td>
+	<td class="header"><a href="../Source_r6game/r6planningctrl.html">Source</a></td>
+	<td class="header"><a class="header" href="../classtree.html#R6PlanningCtrl">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../r6game/r6planningbreach.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../r6game/r6planninggrenade.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+
+<div class="stats">Creation time: mar. 26/5/2026 18:33:13.480 - Created with <a href="http://wiki.beyondunreal.com/wiki/UnCodeX" target="_blank">UnCodeX</a></div>
+
+</body>
+</html>

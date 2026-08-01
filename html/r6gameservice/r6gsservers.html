@@ -1,0 +1,2263 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+	<title>UnCodeX - R6GameService.R6GSServers</title>
+	<meta name="Generator" content="UnCodeX 241" />
+	<link rel="stylesheet" href="../DocStyle2.css" type="text/css" title="Original Purple" />
+	<link rel="alternative stylesheet" href="../DocStyle2-blue.css" type="text/css" title="Blue" />
+	<link rel="alternative stylesheet" href="../DocStyle2-red.css" type="text/css" title="Red" />
+	<!--[if IE]>
+	<link rel="stylesheet" href="../DocStyle2-msie.css" type="text/css" />
+	<![endif]-->
+	<script src="../styleswitcher.js" type="text/javascript"></script>
+</head>
+<body>
+
+<div class="header">
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../r6gameservice/r6gameservice-overview.html">Package</a></td>
+	<td class="header_hilight">Class</td>
+	<td class="header"><a href="../Source_r6gameservice/r6gsservers.html">Source</a></td>
+	<td class="header"><a class="header" href="../classtree.html#R6GSServers">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../r6gameservice/evilpatchservice.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../r6gameservice/r6lanservers.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html#r6gameservice/r6gsservers.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+</div>
+<div class="spacer"></div>
+
+<h1><a href="../r6gameservice/r6gameservice-overview.html">R6GameService</a>.R6GSServers</h1>
+
+<dl>
+<dt>Extends</dt><dd><a href="../r6gameservice/r6serverlist.html">R6ServerList</a></dd>
+<dt>Modifiers</dt><dd>native </dd>
+</dl>
+
+<p></p>
+
+<pre class="tree"><a href="../core/core-overview.html">core</a>.<a href="../core/object.html">Object</a>
+|   
++-- <a href="../r6abstract/r6abstract-overview.html">R6Abstract</a>.<a href="../r6abstract/r6abstractgameservice.html">R6AbstractGameService</a>
+   |   
+   +-- <a href="../r6gameservice/r6gameservice-overview.html">R6GameService</a>.<a href="../r6gameservice/r6serverlist.html">R6ServerList</a>
+      |   
+      +-- <a href="../r6gameservice/r6gameservice-overview.html">R6GameService</a>.<a href="../r6gameservice/r6gsservers.html">R6GSServers</a>
+</pre>
+
+
+
+<hr />
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Constants Summary</th>
+</tr>
+<tr><td width="40%"><a href="#_K_MAX_SIZE_UBISERVERNAME" name="K_MAX_SIZE_UBISERVERNAME" title="go to the details">K_MAX_SIZE_UBISERVERNAME</a></td><td width="10%">=</td><td width="50%">32</td></tr>
+<tr><td width="40%"><a href="#_K_TimeRetryConnect" name="K_TimeRetryConnect" title="go to the details">K_TimeRetryConnect</a></td><td width="10%">=</td><td width="50%">15</td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Contants from <a href="../r6gameservice/r6gameservice-overview.html">R6GameService</a>.<a href="../r6gameservice/r6serverlist.html">R6ServerList</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../r6gameservice/r6serverlist.html#K_GlobalID_size">K_GlobalID_size</a></td>
+</tr>
+</table>
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th colspan="2" class="title">Variables Summary</th>
+</tr>
+<tr><td nowrap="nowrap" width="33%">BOOL</td><td width="66%"><a href="#_bShowLog" name="bShowLog" title="go to the details">bShowLog</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">BOOL</td><td width="66%"><a href="#_m_bAutoLoginFailed" name="m_bAutoLoginFailed" title="go to the details">m_bAutoLoginFailed</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">BOOL</td><td width="66%"><a href="#_m_bAutoLoginInProgress" name="m_bAutoLoginInProgress" title="go to the details">m_bAutoLoginInProgress</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">BOOL</td><td width="66%"><a href="#_m_bCDKeyNotUsed" name="m_bCDKeyNotUsed" title="go to the details">m_bCDKeyNotUsed</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">BOOL</td><td width="66%"><a href="#_m_bConnectedToServer" name="m_bConnectedToServer" title="go to the details">m_bConnectedToServer</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">BOOL</td><td width="66%"><a href="#_m_bGameServiceInit" name="m_bGameServiceInit" title="go to the details">m_bGameServiceInit</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">BOOL</td><td width="66%"><a href="#_m_bGSClientInitialized" name="m_bGSClientInitialized" title="go to the details">m_bGSClientInitialized</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">BOOL</td><td width="66%"><a href="#_m_bInitGame" name="m_bInitGame" title="go to the details">m_bInitGame</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">BOOL</td><td width="66%"><a href="#_m_bLoggedInToFriendService" name="m_bLoggedInToFriendService" title="go to the details">m_bLoggedInToFriendService</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">BOOL</td><td width="66%"><a href="#_m_bLoggedInToLobbyService" name="m_bLoggedInToLobbyService" title="go to the details">m_bLoggedInToLobbyService</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">BOOL</td><td width="66%"><a href="#_m_bLoggedInToServer" name="m_bLoggedInToServer" title="go to the details">m_bLoggedInToServer</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">BOOL</td><td width="66%"><a href="#_m_bLoggedInUbiDotCom" name="m_bLoggedInUbiDotCom" title="go to the details">m_bLoggedInUbiDotCom</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">BOOL</td><td width="66%"><a href="#_m_bMODCDKeyRequest" name="m_bMODCDKeyRequest" title="go to the details">m_bMODCDKeyRequest</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">BOOL</td><td width="66%"><a href="#_m_bMSRequestFinished" name="m_bMSRequestFinished" title="go to the details">m_bMSRequestFinished</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">BOOL</td><td width="66%"><a href="#_m_bPingReceived" name="m_bPingReceived" title="go to the details">m_bPingReceived</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">INT</td><td width="66%"><a href="#_m_bPingsPending" name="m_bPingsPending" title="go to the details">m_bPingsPending</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">BOOL</td><td width="66%"><a href="#_m_bRefreshFinished" name="m_bRefreshFinished" title="go to the details">m_bRefreshFinished</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">BOOL</td><td width="66%"><a href="#_m_bRefreshInProgress" name="m_bRefreshInProgress" title="go to the details">m_bRefreshInProgress</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">BOOL</td><td width="66%"><a href="#_m_bRegSrvrConnectionLost" name="m_bRegSrvrConnectionLost" title="go to the details">m_bRegSrvrConnectionLost</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">BOOL</td><td width="66%"><a href="#_m_bServerJoined" name="m_bServerJoined" title="go to the details">m_bServerJoined</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">BOOL</td><td width="66%"><a href="#_m_bStartedByGSClient" name="m_bStartedByGSClient" title="go to the details">m_bStartedByGSClient</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">BOOL</td><td width="66%"><a href="#_m_bUbiAccntInfoEntered" name="m_bUbiAccntInfoEntered" title="go to the details">m_bUbiAccntInfoEntered</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">BOOL</td><td width="66%"><a href="#_m_bUbiComClientDied" name="m_bUbiComClientDied" title="go to the details">m_bUbiComClientDied</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">BOOL</td><td width="66%"><a href="#_m_bUbiComRoomDestroyed" name="m_bUbiComRoomDestroyed" title="go to the details">m_bUbiComRoomDestroyed</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">BOOL</td><td width="66%"><a href="#_m_bUpdateServer" name="m_bUpdateServer" title="go to the details">m_bUpdateServer</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">BOOL</td><td width="66%"><a href="#_m_bUseCDKey" name="m_bUseCDKey" title="go to the details">m_bUseCDKey</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">BOOL</td><td width="66%"><a href="#_m_bValidActivationID" name="m_bValidActivationID" title="go to the details">m_bValidActivationID</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../r6gameservice/r6gsservers.html#EGSRequestState">EGSRequestState</a></td><td width="66%"><a href="#_m_eCDKeyNotUsedRequest" name="m_eCDKeyNotUsedRequest" title="go to the details">m_eCDKeyNotUsedRequest</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../r6gameservice/r6gsservers.html#EGSRequestState">EGSRequestState</a></td><td width="66%"><a href="#_m_eCreateAccountRequest" name="m_eCreateAccountRequest" title="go to the details">m_eCreateAccountRequest</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../r6gameservice/r6gsservers.html#EGSRequestState">EGSRequestState</a></td><td width="66%"><a href="#_m_eCreateGameRequest" name="m_eCreateGameRequest" title="go to the details">m_eCreateGameRequest</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../r6gameservice/r6gsservers.html#EGSRequestState">EGSRequestState</a></td><td width="66%"><a href="#_m_eGameConnectedRequest" name="m_eGameConnectedRequest" title="go to the details">m_eGameConnectedRequest</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../r6gameservice/r6gsservers.html#EGSRequestState">EGSRequestState</a></td><td width="66%"><a href="#_m_eGameReadyRequest" name="m_eGameReadyRequest" title="go to the details">m_eGameReadyRequest</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../r6gameservice/r6gsservers.html#EGSRequestState">EGSRequestState</a></td><td width="66%"><a href="#_m_eGameStartRequest" name="m_eGameStartRequest" title="go to the details">m_eGameStartRequest</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../r6gameservice/r6gsservers.html#EGSGameState">EGSGameState</a></td><td width="66%"><a href="#_m_eGSGameState" name="m_eGSGameState" title="go to the details">m_eGSGameState</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../r6gameservice/r6gsservers.html#EGSRequestState">EGSRequestState</a></td><td width="66%"><a href="#_m_eJoinLobbyRequest" name="m_eJoinLobbyRequest" title="go to the details">m_eJoinLobbyRequest</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../r6gameservice/r6gsservers.html#EGSRequestState">EGSRequestState</a></td><td width="66%"><a href="#_m_eJoinRoomRequest" name="m_eJoinRoomRequest" title="go to the details">m_eJoinRoomRequest</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../r6gameservice/r6gsservers.html#EGSRequestState">EGSRequestState</a></td><td width="66%"><a href="#_m_eJoinServerRequest" name="m_eJoinServerRequest" title="go to the details">m_eJoinServerRequest</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../r6gameservice/r6gsservers.html#EGSRequestState">EGSRequestState</a></td><td width="66%"><a href="#_m_eJoinWaitModuleRequest" name="m_eJoinWaitModuleRequest" title="go to the details">m_eJoinWaitModuleRequest</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../r6gameservice/r6gsservers.html#EGSRequestState">EGSRequestState</a></td><td width="66%"><a href="#_m_eLoginFriendServiceRequest" name="m_eLoginFriendServiceRequest" title="go to the details">m_eLoginFriendServiceRequest</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../r6gameservice/r6gsservers.html#EGSRequestState">EGSRequestState</a></td><td width="66%"><a href="#_m_eLoginLobbyServiceRequest" name="m_eLoginLobbyServiceRequest" title="go to the details">m_eLoginLobbyServiceRequest</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../r6gameservice/r6gsservers.html#EGSRequestState">EGSRequestState</a></td><td width="66%"><a href="#_m_eLoginRouterRequest" name="m_eLoginRouterRequest" title="go to the details">m_eLoginRouterRequest</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../r6gameservice/r6gsservers.html#EGSRequestState">EGSRequestState</a></td><td width="66%"><a href="#_m_eLoginWaitModuleRequest" name="m_eLoginWaitModuleRequest" title="go to the details">m_eLoginWaitModuleRequest</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../r6gameservice/r6gsservers.html#EMenuRequestState">EMenuRequestState</a></td><td width="66%"><a href="#_m_eMenuCDKeyAuthorization" name="m_eMenuCDKeyAuthorization" title="go to the details">m_eMenuCDKeyAuthorization</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../r6gameservice/r6gsservers.html#EFailureReasons">EFailureReasons</a></td><td width="66%"><a href="#_m_eMenuCDKeyFailReason" name="m_eMenuCDKeyFailReason" title="go to the details">m_eMenuCDKeyFailReason</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../r6gameservice/r6gsservers.html#EMenuRequestState">EMenuRequestState</a></td><td width="66%"><a href="#_m_eMenuCDKeyNotUsed" name="m_eMenuCDKeyNotUsed" title="go to the details">m_eMenuCDKeyNotUsed</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../r6gameservice/r6gsservers.html#EFailureReasons">EFailureReasons</a></td><td width="66%"><a href="#_m_eMenuCrAcctFailReason" name="m_eMenuCrAcctFailReason" title="go to the details">m_eMenuCrAcctFailReason</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../r6gameservice/r6gsservers.html#EMenuRequestState">EMenuRequestState</a></td><td width="66%"><a href="#_m_eMenuCreateAccount" name="m_eMenuCreateAccount" title="go to the details">m_eMenuCreateAccount</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../r6gameservice/r6gsservers.html#EMenuRequestState">EMenuRequestState</a></td><td width="66%"><a href="#_m_eMenuCreateGame" name="m_eMenuCreateGame" title="go to the details">m_eMenuCreateGame</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../r6gameservice/r6gsservers.html#EFailureReasons">EFailureReasons</a></td><td width="66%"><a href="#_m_eMenuCrGameFailReason" name="m_eMenuCrGameFailReason" title="go to the details">m_eMenuCrGameFailReason</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../r6gameservice/r6gsservers.html#EMenuRequestState">EMenuRequestState</a></td><td width="66%"><a href="#_m_eMenuGetCDKeyActID" name="m_eMenuGetCDKeyActID" title="go to the details">m_eMenuGetCDKeyActID</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../r6gameservice/r6gsservers.html#EMenuRequestState">EMenuRequestState</a></td><td width="66%"><a href="#_m_eMenuJoinLobby" name="m_eMenuJoinLobby" title="go to the details">m_eMenuJoinLobby</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../r6gameservice/r6gsservers.html#EFailureReasons">EFailureReasons</a></td><td width="66%"><a href="#_m_eMenuJoinRoomFailReason" name="m_eMenuJoinRoomFailReason" title="go to the details">m_eMenuJoinRoomFailReason</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../r6gameservice/r6gsservers.html#EMenuRequestState">EMenuRequestState</a></td><td width="66%"><a href="#_m_eMenuJoinServer" name="m_eMenuJoinServer" title="go to the details">m_eMenuJoinServer</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../r6gameservice/r6gsservers.html#EFailureReasons">EFailureReasons</a></td><td width="66%"><a href="#_m_eMenuLoginFailReason" name="m_eMenuLoginFailReason" title="go to the details">m_eMenuLoginFailReason</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../r6gameservice/r6gsservers.html#EMenuRequestState">EMenuRequestState</a></td><td width="66%"><a href="#_m_eMenuLoginMasterSvr" name="m_eMenuLoginMasterSvr" title="go to the details">m_eMenuLoginMasterSvr</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../r6gameservice/r6gsservers.html#EMenuRequestState">EMenuRequestState</a></td><td width="66%"><a href="#_m_eMenuLoginRegServer" name="m_eMenuLoginRegServer" title="go to the details">m_eMenuLoginRegServer</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../r6gameservice/r6gsservers.html#EMenuRequestState">EMenuRequestState</a></td><td width="66%"><a href="#_m_eMenuLoginUbidotcom" name="m_eMenuLoginUbidotcom" title="go to the details">m_eMenuLoginUbidotcom</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../r6gameservice/r6gsservers.html#EFailureReasons">EFailureReasons</a></td><td width="66%"><a href="#_m_eMenuLogMasSvrFailReason" name="m_eMenuLogMasSvrFailReason" title="go to the details">m_eMenuLogMasSvrFailReason</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../r6gameservice/r6gsservers.html#EMenuRequestState">EMenuRequestState</a></td><td width="66%"><a href="#_m_eMenuUpdateServer" name="m_eMenuUpdateServer" title="go to the details">m_eMenuUpdateServer</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../r6gameservice/r6gsservers.html#EMenuRequestState">EMenuRequestState</a></td><td width="66%"><a href="#_m_eMenuUserValidation" name="m_eMenuUserValidation" title="go to the details">m_eMenuUserValidation</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../r6gameservice/r6gsservers.html#EGSRequestState">EGSRequestState</a></td><td width="66%"><a href="#_m_eMSClientInitRequest" name="m_eMSClientInitRequest" title="go to the details">m_eMSClientInitRequest</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../r6gameservice/r6gsservers.html#EGSRequestState">EGSRequestState</a></td><td width="66%"><a href="#_m_eRegServerConnectRequest" name="m_eRegServerConnectRequest" title="go to the details">m_eRegServerConnectRequest</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../r6gameservice/r6gsservers.html#EGSRequestState">EGSRequestState</a></td><td width="66%"><a href="#_m_eRegServerGetLobbiesRequest" name="m_eRegServerGetLobbiesRequest" title="go to the details">m_eRegServerGetLobbiesRequest</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../r6gameservice/r6gsservers.html#EGSRequestState">EGSRequestState</a></td><td width="66%"><a href="#_m_eRegServerLoginRequest" name="m_eRegServerLoginRequest" title="go to the details">m_eRegServerLoginRequest</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../r6gameservice/r6gsservers.html#EGSRequestState">EGSRequestState</a></td><td width="66%"><a href="#_m_eRegServerLoginRouterRequest" name="m_eRegServerLoginRouterRequest" title="go to the details">m_eRegServerLoginRouterRequest</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../r6gameservice/r6gsservers.html#EGSRequestState">EGSRequestState</a></td><td width="66%"><a href="#_m_eRegServerRegOnLobbyRequest" name="m_eRegServerRegOnLobbyRequest" title="go to the details">m_eRegServerRegOnLobbyRequest</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../r6gameservice/r6gsservers.html#EGSRequestState">EGSRequestState</a></td><td width="66%"><a href="#_m_eRegServerUpdateRequest" name="m_eRegServerUpdateRequest" title="go to the details">m_eRegServerUpdateRequest</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../r6gameservice/r6gsservers.html#ERegServerRequestState">ERegServerRequestState</a></td><td width="66%"><a href="#_m_eRSReqState" name="m_eRSReqState" title="go to the details">m_eRSReqState</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../r6gameservice/r6gsservers.html#EGSRequestState">EGSRequestState</a></td><td width="66%"><a href="#_m_eUserValidationRequest" name="m_eUserValidationRequest" title="go to the details">m_eUserValidationRequest</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">FLOAT</td><td width="66%"><a href="#_m_fCDKeyGetActIDTime" name="m_fCDKeyGetActIDTime" title="go to the details">m_fCDKeyGetActIDTime</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">FLOAT</td><td width="66%"><a href="#_m_fCDKeyGetAuthorizationTime" name="m_fCDKeyGetAuthorizationTime" title="go to the details">m_fCDKeyGetAuthorizationTime</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">FLOAT</td><td width="66%"><a href="#_m_fCDKeyStartTime" name="m_fCDKeyStartTime" title="go to the details">m_fCDKeyStartTime</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">FLOAT</td><td width="66%"><a href="#_m_fCreateAccountStartTime" name="m_fCreateAccountStartTime" title="go to the details">m_fCreateAccountStartTime</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">FLOAT</td><td width="66%"><a href="#_m_fCreateGameStartTime" name="m_fCreateGameStartTime" title="go to the details">m_fCreateGameStartTime</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">FLOAT</td><td width="66%"><a href="#_m_fGameConnectedStartTime" name="m_fGameConnectedStartTime" title="go to the details">m_fGameConnectedStartTime</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">FLOAT</td><td width="66%"><a href="#_m_fGameReadyStartTime" name="m_fGameReadyStartTime" title="go to the details">m_fGameReadyStartTime</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">FLOAT</td><td width="66%"><a href="#_m_fGameStartStartTime" name="m_fGameStartStartTime" title="go to the details">m_fGameStartStartTime</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">FLOAT</td><td width="66%"><a href="#_m_fJoinLobbyStartTime" name="m_fJoinLobbyStartTime" title="go to the details">m_fJoinLobbyStartTime</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">FLOAT</td><td width="66%"><a href="#_m_fJoinRoomStartTime" name="m_fJoinRoomStartTime" title="go to the details">m_fJoinRoomStartTime</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">FLOAT</td><td width="66%"><a href="#_m_fJoinServerTime" name="m_fJoinServerTime" title="go to the details">m_fJoinServerTime</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">FLOAT</td><td width="66%"><a href="#_m_fJoinWaitModuleStartTime" name="m_fJoinWaitModuleStartTime" title="go to the details">m_fJoinWaitModuleStartTime</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">FLOAT</td><td width="66%"><a href="#_m_fLoginFriendServiceStartTime" name="m_fLoginFriendServiceStartTime" title="go to the details">m_fLoginFriendServiceStartTime</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">FLOAT</td><td width="66%"><a href="#_m_fLoginLobbyServiceStartTime" name="m_fLoginLobbyServiceStartTime" title="go to the details">m_fLoginLobbyServiceStartTime</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">FLOAT</td><td width="66%"><a href="#_m_fLoginRouterStartTime" name="m_fLoginRouterStartTime" title="go to the details">m_fLoginRouterStartTime</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">FLOAT</td><td width="66%"><a href="#_m_fLoginWaitModuleStartTime" name="m_fLoginWaitModuleStartTime" title="go to the details">m_fLoginWaitModuleStartTime</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">FLOAT</td><td width="66%"><a href="#_m_fMaxTimeForResponse" name="m_fMaxTimeForResponse" title="go to the details">m_fMaxTimeForResponse</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">FLOAT</td><td width="66%"><a href="#_m_fMSClientInitStartTime" name="m_fMSClientInitStartTime" title="go to the details">m_fMSClientInitStartTime</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">FLOAT</td><td width="66%"><a href="#_m_fRefreshTime" name="m_fRefreshTime" title="go to the details">m_fRefreshTime</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">FLOAT</td><td width="66%"><a href="#_m_fRegServerConnectTime" name="m_fRegServerConnectTime" title="go to the details">m_fRegServerConnectTime</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">FLOAT</td><td width="66%"><a href="#_m_fRegServerGetLobbiesTime" name="m_fRegServerGetLobbiesTime" title="go to the details">m_fRegServerGetLobbiesTime</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">FLOAT</td><td width="66%"><a href="#_m_fRegServerLoginTime" name="m_fRegServerLoginTime" title="go to the details">m_fRegServerLoginTime</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">FLOAT</td><td width="66%"><a href="#_m_fRegServerRegOnLobbyTime" name="m_fRegServerRegOnLobbyTime" title="go to the details">m_fRegServerRegOnLobbyTime</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">FLOAT</td><td width="66%"><a href="#_m_fRegServerRouterLoginTime" name="m_fRegServerRouterLoginTime" title="go to the details">m_fRegServerRouterLoginTime</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">FLOAT</td><td width="66%"><a href="#_m_fRegServerUpdateTime" name="m_fRegServerUpdateTime" title="go to the details">m_fRegServerUpdateTime</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">FLOAT</td><td width="66%"><a href="#_m_fUserValidationTime" name="m_fUserValidationTime" title="go to the details">m_fUserValidationTime</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../r6gameservice/r6gsservers.html#stLobby">stLobby</a></td><td width="66%"><a href="#_m_GaveServerID" name="m_GaveServerID" title="go to the details">m_GaveServerID</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">INT</td><td width="66%"><a href="#_m_iGroupID" name="m_iGroupID" title="go to the details">m_iGroupID</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">INT</td><td width="66%"><a href="#_m_iGSNumPlayers" name="m_iGSNumPlayers" title="go to the details">m_iGSNumPlayers</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">INT</td><td width="66%"><a href="#_m_iLobbyIndex" name="m_iLobbyIndex" title="go to the details">m_iLobbyIndex</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">INT</td><td width="66%"><a href="#_m_iLobbySrvID" name="m_iLobbySrvID" title="go to the details">m_iLobbySrvID</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">INT</td><td width="66%"><a href="#_m_iMaxAvailPorts" name="m_iMaxAvailPorts" title="go to the details">m_iMaxAvailPorts</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">INT</td><td width="66%"><a href="#_m_iModCDKeyPort" name="m_iModCDKeyPort" title="go to the details">m_iModCDKeyPort</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">INT</td><td width="66%"><a href="#_m_iOwnGroupID" name="m_iOwnGroupID" title="go to the details">m_iOwnGroupID</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">INT</td><td width="66%"><a href="#_m_iOwnLobbySrvID" name="m_iOwnLobbySrvID" title="go to the details">m_iOwnLobbySrvID</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">INT</td><td width="66%"><a href="#_m_iRegSvrPort" name="m_iRegSvrPort" title="go to the details">m_iRegSvrPort</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">INT</td><td width="66%"><a href="#_m_iRetryTime" name="m_iRetryTime" title="go to the details">m_iRetryTime</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">INT</td><td width="66%"><a href="#_m_iRoomCreatedGroupID" name="m_iRoomCreatedGroupID" title="go to the details">m_iRoomCreatedGroupID</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">INT</td><td width="66%"><a href="#_m_iRSCDKeyPort" name="m_iRSCDKeyPort" title="go to the details">m_iRSCDKeyPort</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">INT</td><td width="66%"><a href="#_m_iWaitModulePort" name="m_iWaitModulePort" title="go to the details">m_iWaitModulePort</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../r6gameservice/r6modinfo.html">R6ModInfo</a></td><td width="66%"><a href="#_m_ModGSInfo" name="m_ModGSInfo" title="go to the details">m_ModGSInfo</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">array&lt;INT&gt;</td><td width="66%"><a href="#_m_PingReqList" name="m_PingReqList" title="go to the details">m_PingReqList</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_m_szAuthorizationID" name="m_szAuthorizationID" title="go to the details">m_szAuthorizationID</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_m_szCDKey" name="m_szCDKey" title="go to the details">m_szCDKey</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_m_szCountry" name="m_szCountry" title="go to the details">m_szCountry</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_m_szEmail" name="m_szEmail" title="go to the details">m_szEmail</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_m_szFirstName" name="m_szFirstName" title="go to the details">m_szFirstName</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_m_szGlobalID" name="m_szGlobalID" title="go to the details">m_szGlobalID</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_m_szGSClientAltIP" name="m_szGSClientAltIP" title="go to the details">m_szGSClientAltIP</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_m_szGSClientIP" name="m_szGSClientIP" title="go to the details">m_szGSClientIP</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_m_szGSInitFileName" name="m_szGSInitFileName" title="go to the details">m_szGSInitFileName</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_m_szGSPassword" name="m_szGSPassword" title="go to the details">m_szGSPassword</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_m_szGSServerName" name="m_szGSServerName" title="go to the details">m_szGSServerName</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_m_szGSVersion" name="m_szGSVersion" title="go to the details">m_szGSVersion</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_m_szLastName" name="m_szLastName" title="go to the details">m_szLastName</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_m_szModAuthorizationID" name="m_szModAuthorizationID" title="go to the details">m_szModAuthorizationID</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_m_szNetGameName" name="m_szNetGameName" title="go to the details">m_szNetGameName</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_m_szPassword" name="m_szPassword" title="go to the details">m_szPassword</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_m_szRegSvrUserID" name="m_szRegSvrUserID" title="go to the details">m_szRegSvrUserID</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_m_szRSAuthorizationID" name="m_szRSAuthorizationID" title="go to the details">m_szRSAuthorizationID</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_m_szRSGlobalID" name="m_szRSGlobalID" title="go to the details">m_szRSGlobalID</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_m_szSavedPwd" name="m_szSavedPwd" title="go to the details">m_szSavedPwd</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_m_szUBIClientVersion" name="m_szUBIClientVersion" title="go to the details">m_szUBIClientVersion</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_m_szUbiGuestAcct" name="m_szUbiGuestAcct" title="go to the details">m_szUbiGuestAcct</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_m_szUbiHomePage" name="m_szUbiHomePage" title="go to the details">m_szUbiHomePage</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_m_szUbiRemFileURL" name="m_szUbiRemFileURL" title="go to the details">m_szUbiRemFileURL</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">BYTE</td><td width="66%"><a href="#_m_ucActivationID[16]" name="m_ucActivationID[16]" title="go to the details">m_ucActivationID[16]</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">BYTE</td><td width="66%"><a href="#_m_ucProcessActivationID[16]" name="m_ucProcessActivationID[16]" title="go to the details">m_ucProcessActivationID[16]</a></td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Variables from <a href="../r6gameservice/r6gameservice-overview.html">R6GameService</a>.<a href="../r6gameservice/r6serverlist.html">R6ServerList</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../r6gameservice/r6serverlist.html#m_bAutoLISave">m_bAutoLISave</a>, <a href="../r6gameservice/r6serverlist.html#m_bDedicatedServer">m_bDedicatedServer</a>, <a href="../r6gameservice/r6serverlist.html#m_bIndRefrInProgress">m_bIndRefrInProgress</a>, <a href="../r6gameservice/r6serverlist.html#m_bSavePWSave">m_bSavePWSave</a>, <a href="../r6gameservice/r6serverlist.html#m_bServerInfoChanged">m_bServerInfoChanged</a>, <a href="../r6gameservice/r6serverlist.html#m_bServerListChanged">m_bServerListChanged</a>, <a href="../r6gameservice/r6serverlist.html#m_ClientBeacon">m_ClientBeacon</a>, <a href="../r6gameservice/r6serverlist.html#m_CrGameSrvInfo">m_CrGameSrvInfo</a>, <a href="../r6gameservice/r6serverlist.html#m_favoriteServersList">m_favoriteServersList</a>, <a href="../r6gameservice/r6serverlist.html#m_Filters">m_Filters</a>, <a href="../r6gameservice/r6serverlist.html#m_GameServerList">m_GameServerList</a>, <a href="../r6gameservice/r6serverlist.html#m_GSLSortIdx">m_GSLSortIdx</a>, <a href="../r6gameservice/r6serverlist.html#m_iIndRefrIndex">m_iIndRefrIndex</a>, <a href="../r6gameservice/r6serverlist.html#m_iSelSrvIndex">m_iSelSrvIndex</a>, <a href="../r6gameservice/r6serverlist.html#m_ModValidResponseList">m_ModValidResponseList</a>, <a href="../r6gameservice/r6serverlist.html#m_szGameVersion">m_szGameVersion</a>, <a href="../r6gameservice/r6serverlist.html#m_ValidResponseList">m_ValidResponseList</a></td>
+</tr>
+</table>
+<table>
+<tr>
+	<th class="inherittitle">Inherited Variables from <a href="../r6abstract/r6abstract-overview.html">R6Abstract</a>.<a href="../r6abstract/r6abstractgameservice.html">R6AbstractGameService</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../r6abstract/r6abstractgameservice.html#m_bClientWaitMatchStartReply">m_bClientWaitMatchStartReply</a>, <a href="../r6abstract/r6abstractgameservice.html#m_bClientWillSubmitResult">m_bClientWillSubmitResult</a>, <a href="../r6abstract/r6abstractgameservice.html#m_bMSClientLobbyDisconnect">m_bMSClientLobbyDisconnect</a>, <a href="../r6abstract/r6abstractgameservice.html#m_bMSClientRouterDisconnect">m_bMSClientRouterDisconnect</a>, <a href="../r6abstract/r6abstractgameservice.html#m_bServerWaitMatchStartReply">m_bServerWaitMatchStartReply</a>, <a href="../r6abstract/r6abstractgameservice.html#m_bWaitSubmitMatchReply">m_bWaitSubmitMatchReply</a>, <a href="../r6abstract/r6abstractgameservice.html#m_LocalPlayerController">m_LocalPlayerController</a>, <a href="../r6abstract/r6abstractgameservice.html#m_szUserID">m_szUserID</a></td>
+</tr>
+</table>
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Enumerations Summary</th>
+</tr>
+<tr><td><a href="#_EFailureReasons" name="EFailureReasons" title="go to the details">EFailureReasons</a><br /><span class="small">EFAIL_DEFAULT,
+EFAIL_SERVER_CONNECT,
+EFAIL_PASSWORDNOTCORRECT,
+EFAIL_ROOMFULL,
+EFAIL_ALREADYCONNECTED,
+EFAIL_NOTREGISTERED,
+EFAIL_NOTDISCONNECTED,
+EFAIL_PLAYERALREADYREGISTERED,
+EFAIL_TIMED_OUT,
+EFAIL_CDKEYUSED,
+EFAIL_INVALIDCDKEY,
+EFAIL_DATABASEFAILED,
+EFAIL_BANNEDACCOUNT,
+EFAIL_BLOCKEDACCOUNT,
+EFAIL_LOCKEDACCOUNT</span></td></tr>
+<tr><td><a href="#_EGSGameState" name="EGSGameState" title="go to the details">EGSGameState</a><br /><span class="small">EGS_WAITING_FOR_GS_INIT,
+EGS_CLIENT_INIT_RCVD,
+EGS_CLIENT_WAITING_CHSTA,
+EGS_CLIENT_CHSTA_RCVD,
+EGS_CLIENT_IN_GAME,
+EGS_SERVER_INIT_RCVD,
+EGS_SERVER_WAITING_CHSTA,
+EGS_SERVER_CHSTA_RCVD,
+EGS_SERVER_SETTING_UP_GAME,
+EGS_TERMINATE_RCVD,
+EGS_SERVER_READY</span></td></tr>
+<tr><td><a href="#_EGSMESSAGE_ID" name="EGSMESSAGE_ID" title="go to the details">EGSMESSAGE_ID</a><br /><span class="small">EGSMESSAGE_INITMASTERSESSION_AK,
+EGSMESSAGE_MASTERSESSION_AK,
+EGSMESSAGE_READYTORECEIVECONNECTIONS,
+EGSMESSAGE_INITCLIENTSESSION_AK,
+EGSMESSAGE_CLIENTSESSION_AK,
+EGSMESSAGE_SWITCHTOGS</span></td></tr>
+<tr><td><a href="#_EGSRequestState" name="EGSRequestState" title="go to the details">EGSRequestState</a><br /><span class="small">EGSREQ_NONE,
+EGSREQ_FIRST_PASS,
+EGSREQ_WAITING_FOR_RESPONSE,
+EGSREQ_FAILED,
+EGSREQ_CONNECT_FAILED,
+EGSREQ_INUSE_FAILED,
+EGSREQ_SUCCESS,
+EGSREQ_PROCESS_FAILURE</span></td></tr>
+<tr><td><a href="#_EMenuRequestState" name="EMenuRequestState" title="go to the details">EMenuRequestState</a><br /><span class="small">EMENU_REQ_NONE,
+EMENU_REQ_PENDING,
+EMENU_REQ_SUCCESS,
+EMENU_REQ_FAILURE,
+EMENU_REQ_TIMEOUT,
+EMENU_REQ_TIMEOUT_ERROR,
+EMENU_REQ_INUSE_ERROR,
+EMENU_REQ_NOTCHALLENGED,
+EMENU_REQ_INT_ERROR</span></td></tr>
+<tr><td><a href="#_ERegServerRequestState" name="ERegServerRequestState" title="go to the details">ERegServerRequestState</a><br /><span class="small">ERSREQ_NONE,
+ERSREQ_INIT,
+ERSREQ_LOGIN,
+ERSREQ_SUCCESS,
+ERSREQ_FAILURE</span></td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Enumerations from <a href="../r6gameservice/r6gameservice-overview.html">R6GameService</a>.<a href="../r6gameservice/r6serverlist.html">R6ServerList</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../r6gameservice/r6serverlist.html#eSortCategory">eSortCategory</a></td>
+</tr>
+</table>
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Structures Summary</th>
+</tr>
+<tr><td><a href="#_stChatMessage" name="stChatMessage" title="go to the details">stChatMessage</a><br /><span class="small">szUserId, szMessage</span></td></tr>
+<tr><td><a href="#_stFriend" name="stFriend" title="go to the details">stFriend</a><br /><span class="small">szAlias, iStatus</span></td></tr>
+<tr><td><a href="#_stLobby" name="stLobby" title="go to the details">stLobby</a><br /><span class="small">iGroupID, iLobbySrvID</span></td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Structures from <a href="../r6gameservice/r6gameservice-overview.html">R6GameService</a>.<a href="../r6gameservice/r6serverlist.html">R6ServerList</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../r6gameservice/r6serverlist.html#IpAddr">IpAddr</a>, <a href="../r6gameservice/r6serverlist.html#stFilterSettings">stFilterSettings</a>, <a href="../r6gameservice/r6serverlist.html#stGameData">stGameData</a>, <a href="../r6gameservice/r6serverlist.html#stGameServer">stGameServer</a>, <a href="../r6gameservice/r6serverlist.html#stGameTypeAndMap">stGameTypeAndMap</a>, <a href="../r6gameservice/r6serverlist.html#stRemotePlayers">stRemotePlayers</a>, <a href="../r6gameservice/r6serverlist.html#stValidationResponse">stValidationResponse</a></td>
+</tr>
+</table>
+
+
+<br />
+
+
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Functions Summary</th>
+</tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_AddPlayerToIDList-" name="AddPlayerToIDList" title="go to the details">AddPlayerToIDList</a> (string szAuthID, string szIPAddr, string szUbiBanID, BOOL bProcessMod)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>BOOL&nbsp;</td><td><a href="#_CallNativeProcessIcmpPing-" name="CallNativeProcessIcmpPing" title="go to the details">CallNativeProcessIcmpPing</a> (string _ServerIpAddress, out INT piPingTime))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_CallNativeSetMatchResult-" name="CallNativeSetMatchResult" title="go to the details">CallNativeSetMatchResult</a> (string szUbiUserID, INT iField, INT iValue))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_CancelGSCDKeyActID-" name="CancelGSCDKeyActID" title="go to the details">CancelGSCDKeyActID</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_CleanPlayerIDList-" name="CleanPlayerIDList" title="go to the details">CleanPlayerIDList</a> (<a href="../engine/controller.html">Controller</a> _ControllerList)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_CopyActivationIDInByteArray-" name="CopyActivationIDInByteArray" title="go to the details">CopyActivationIDInByteArray</a> (BYTE _pArraySrc[16], OUT BYTE _pArrayDest[16]))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_Created-" name="Created" title="go to the details">Created</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_DisconnectAllCDKeyPlayers-" name="DisconnectAllCDKeyPlayers" title="go to the details">DisconnectAllCDKeyPlayers</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>string&nbsp;</td><td><a href="#_DisplayTime-" name="DisplayTime" title="go to the details">DisplayTime</a> (INT _iTimeToConvert))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_event.gif" alt="event" title="event" /></td><td>&nbsp;</td><td><a href="#_EndOfRoundDataSent-" name="EndOfRoundDataSent" title="go to the details">EndOfRoundDataSent</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_FillCreateGameInfo-" name="FillCreateGameInfo" title="go to the details">FillCreateGameInfo</a> (<a href="../engine/gameinfo.html">GameInfo</a> pGameInfo, LevelInfo pLevel ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_GameServiceManager-" name="GameServiceManager" title="go to the details">GameServiceManager</a> (BOOL _bMSClient, BOOL _bCDKey, BOOL _bRegServer, BOOL _bGSClient ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>BOOL&nbsp;</td><td><a href="#_GetCDKeyInitialised-" name="GetCDKeyInitialised" title="go to the details">GetCDKeyInitialised</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td><a href="../r6gameservice/r6gsservers.html#ERegServerRequestState">ERegServerRequestState</a>&nbsp;</td><td><a href="#_GetGameServiceRequestState-" name="GetGameServiceRequestState" title="go to the details">GetGameServiceRequestState</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>string&nbsp;</td><td><a href="#_GetGlobalIdFromPlayerIDList-" name="GetGlobalIdFromPlayerIDList" title="go to the details">GetGlobalIdFromPlayerIDList</a> (string szAuthID)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>string&nbsp;</td><td><a href="#_GetIDListAuthID-" name="GetIDListAuthID" title="go to the details">GetIDListAuthID</a> (INT iIdx)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>string&nbsp;</td><td><a href="#_GetIDListIPAddr-" name="GetIDListIPAddr" title="go to the details">GetIDListIPAddr</a> (INT iIdx)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>INT&nbsp;</td><td><a href="#_GetIDListSize-" name="GetIDListSize" title="go to the details">GetIDListSize</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>string&nbsp;</td><td><a href="#_GetLocallyBoundIpAddr-" name="GetLocallyBoundIpAddr" title="go to the details">GetLocallyBoundIpAddr</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>INT&nbsp;</td><td><a href="#_GetMaxUbiServerNameSize-" name="GetMaxUbiServerNameSize" title="go to the details">GetMaxUbiServerNameSize</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>BOOL&nbsp;</td><td><a href="#_GetRegisteredWithMS-" name="GetRegisteredWithMS" title="go to the details">GetRegisteredWithMS</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>string&nbsp;</td><td><a href="#_GetSelectedServerIP-" name="GetSelectedServerIP" title="go to the details">GetSelectedServerIP</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>INT&nbsp;</td><td><a href="#_getServerListSize-" name="getServerListSize" title="go to the details">getServerListSize</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>BOOL&nbsp;</td><td><a href="#_HandleAnyLobbyConnectionFail-" name="HandleAnyLobbyConnectionFail" title="go to the details">HandleAnyLobbyConnectionFail</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_HandleNewLobbyConnection-" name="HandleNewLobbyConnection" title="go to the details">HandleNewLobbyConnection</a> (<a href="../engine/levelinfo.html">LevelInfo</a> _Level))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>BOOL&nbsp;</td><td><a href="#_initGSCDKey-" name="initGSCDKey" title="go to the details">initGSCDKey</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_Initialize-" name="Initialize" title="go to the details">Initialize</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>BOOL&nbsp;</td><td><a href="#_InitializeMSClient-" name="InitializeMSClient" title="go to the details">InitializeMSClient</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>BOOL&nbsp;</td><td><a href="#_InitializeRegServer-" name="InitializeRegServer" title="go to the details">InitializeRegServer</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_InitModInfo-" name="InitModInfo" title="go to the details">InitModInfo</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_InitProcessUpdateUbiServer-" name="InitProcessUpdateUbiServer" title="go to the details">InitProcessUpdateUbiServer</a> (<a href="../engine/gameinfo.html">GameInfo</a> pGameInfo, <a href="../engine/levelinfo.html">LevelInfo</a> pLevel))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>BOOL&nbsp;</td><td><a href="#_IsModCDKeyProcess-" name="IsModCDKeyProcess" title="go to the details">IsModCDKeyProcess</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_joinServer-" name="joinServer" title="go to the details">joinServer</a> (INT iLobbyID, INT iGroupID, string szPassword ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_LogDebugProcessCDKeyRequest-" name="LogDebugProcessCDKeyRequest" title="go to the details">LogDebugProcessCDKeyRequest</a> (<a href="../engine/playercontroller.html">PlayerController</a> _aPlayerController, BOOL _bExit))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_LogGSVersion-" name="LogGSVersion" title="go to the details">LogGSVersion</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_LoginRegServer-" name="LoginRegServer" title="go to the details">LoginRegServer</a> (<a href="../engine/gameinfo.html">GameInfo</a> pGameInfo, <a href="../engine/levelinfo.html">LevelInfo</a> pLevel))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_LogOutServer-" name="LogOutServer" title="go to the details">LogOutServer</a> (<a href="../r6engine/r6gamereplicationinfo.html">R6GameReplicationInfo</a> _GRI))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_MasterServerManager-" name="MasterServerManager" title="go to the details">MasterServerManager</a> (<a href="../r6abstract/r6abstractgameinfo.html">R6AbstractGameInfo</a> _GameInfo, <a href="../engine/levelinfo.html">LevelInfo</a> _Level))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>string&nbsp;</td><td><a href="#_MyID-" name="MyID" title="go to the details">MyID</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_NativeCDKeyDisconnecUser-" name="NativeCDKeyDisconnecUser" title="go to the details">NativeCDKeyDisconnecUser</a> (string szAuthID)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>INT&nbsp;</td><td><a href="#_NativeCDKeyValidateUser-" name="NativeCDKeyValidateUser" title="go to the details">NativeCDKeyValidateUser</a> (string szAuthID, BOOL bExtraTime, BOOL bProcessMod)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>BOOL&nbsp;</td><td><a href="#_NativeCheckGSClientAlive-" name="NativeCheckGSClientAlive" title="go to the details">NativeCheckGSClientAlive</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>BOOL&nbsp;</td><td><a href="#_NativeGetInitialized-" name="NativeGetInitialized" title="go to the details">NativeGetInitialized</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>BOOL&nbsp;</td><td><a href="#_NativeGetLoggedInUbiDotCom-" name="NativeGetLoggedInUbiDotCom" title="go to the details">NativeGetLoggedInUbiDotCom</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>BOOL&nbsp;</td><td><a href="#_NativeGetMSClientInitialized-" name="NativeGetMSClientInitialized" title="go to the details">NativeGetMSClientInitialized</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>BOOL&nbsp;</td><td><a href="#_NativeGetRegServerIntialized-" name="NativeGetRegServerIntialized" title="go to the details">NativeGetRegServerIntialized</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>FLOAT&nbsp;</td><td><a href="#_NativeGetSeconds-" name="NativeGetSeconds" title="go to the details">NativeGetSeconds</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>BOOL&nbsp;</td><td><a href="#_NativeGetServerRegistered-" name="NativeGetServerRegistered" title="go to the details">NativeGetServerRegistered</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>BOOL&nbsp;</td><td><a href="#_NativeGSClientPostMessage-" name="NativeGSClientPostMessage" title="go to the details">NativeGSClientPostMessage</a> (<a href="../r6gameservice/r6gsservers.html#EGSMESSAGE_ID">EGSMESSAGE_ID</a> eMessageID)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>BOOL&nbsp;</td><td><a href="#_NativeGSClientUpdateServerInfo-" name="NativeGSClientUpdateServerInfo" title="go to the details">NativeGSClientUpdateServerInfo</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>BOOL&nbsp;</td><td><a href="#_NativeInit-" name="NativeInit" title="go to the details">NativeInit</a> (string szLocalBoundIp)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>BOOL&nbsp;</td><td><a href="#_NativeInitCDKey-" name="NativeInitCDKey" title="go to the details">NativeInitCDKey</a> (INT iRSCDKeyPort, INT iModCDKeyPort)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>BOOL&nbsp;</td><td><a href="#_NativeInitGSClient-" name="NativeInitGSClient" title="go to the details">NativeInitGSClient</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_NativeInitMSClient-" name="NativeInitMSClient" title="go to the details">NativeInitMSClient</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>BOOL&nbsp;</td><td><a href="#_NativeInitRegServer-" name="NativeInitRegServer" title="go to the details">NativeInitRegServer</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_NativeMSCLientJoinServer-" name="NativeMSCLientJoinServer" title="go to the details">NativeMSCLientJoinServer</a> (INT iLobbyID, INT iGroupID, string szPassword)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>BOOL&nbsp;</td><td><a href="#_NativeMSCLientLeaveServer-" name="NativeMSCLientLeaveServer" title="go to the details">NativeMSCLientLeaveServer</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_NativeMSClientReqAltInfo-" name="NativeMSClientReqAltInfo" title="go to the details">NativeMSClientReqAltInfo</a> (INT iLobbyID, INT iGroupID)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_NativeMSClientServerConnected-" name="NativeMSClientServerConnected" title="go to the details">NativeMSClientServerConnected</a> (INT iLobbyID, INT iGroupID)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_NativePingReq-" name="NativePingReq" title="go to the details">NativePingReq</a> (string szSvrName, string szIPAddress)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_NativePollCallbacks-" name="NativePollCallbacks" title="go to the details">NativePollCallbacks</a> (BOOL _bMSClient, BOOL _bCDKey, BOOL _bRegServer, BOOL _bGSClient)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_NativeProcessAuthIdRequest-" name="NativeProcessAuthIdRequest" title="go to the details">NativeProcessAuthIdRequest</a> (<a href="../engine/controller.html">Controller</a> _ControllerList)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>BOOL&nbsp;</td><td><a href="#_NativeProcessIcmpPing-" name="NativeProcessIcmpPing" title="go to the details">NativeProcessIcmpPing</a> (string _ServerIpAddress, out INT piPingTime)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>BOOL&nbsp;</td><td><a href="#_NativeReceiveAltInfo-" name="NativeReceiveAltInfo" title="go to the details">NativeReceiveAltInfo</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>BOOL&nbsp;</td><td><a href="#_NativeReceiveServer-" name="NativeReceiveServer" title="go to the details">NativeReceiveServer</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_NativeReceiveValidation-" name="NativeReceiveValidation" title="go to the details">NativeReceiveValidation</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_NativeRefreshServer-" name="NativeRefreshServer" title="go to the details">NativeRefreshServer</a> (INT iIdx)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_NativeRegisterServer-" name="NativeRegisterServer" title="go to the details">NativeRegisterServer</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_NativeRegServerGetLobbies-" name="NativeRegServerGetLobbies" title="go to the details">NativeRegServerGetLobbies</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_NativeRegServerMemberJoin-" name="NativeRegServerMemberJoin" title="go to the details">NativeRegServerMemberJoin</a> (string szUbiUserID)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_NativeRegServerMemberLeave-" name="NativeRegServerMemberLeave" title="go to the details">NativeRegServerMemberLeave</a> (string szUbiUserID)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_NativeRegServerRouterLogin-" name="NativeRegServerRouterLogin" title="go to the details">NativeRegServerRouterLogin</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_NativeRegServerServerClose-" name="NativeRegServerServerClose" title="go to the details">NativeRegServerServerClose</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_NativeRegServerShutDown-" name="NativeRegServerShutDown" title="go to the details">NativeRegServerShutDown</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_NativeRequestMSList-" name="NativeRequestMSList" title="go to the details">NativeRequestMSList</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_NativeRouterDisconnect-" name="NativeRouterDisconnect" title="go to the details">NativeRouterDisconnect</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_NativeServerLogin-" name="NativeServerLogin" title="go to the details">NativeServerLogin</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_NativeServerRoundFinish-" name="NativeServerRoundFinish" title="go to the details">NativeServerRoundFinish</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_NativeServerRoundStart-" name="NativeServerRoundStart" title="go to the details">NativeServerRoundStart</a> (INT uiMode)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_NativeSetMatchResult-" name="NativeSetMatchResult" title="go to the details">NativeSetMatchResult</a> (string szUbiUserID, INT iField, INT iValue)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_NativeUnInitCDKey-" name="NativeUnInitCDKey" title="go to the details">NativeUnInitCDKey</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>BOOL&nbsp;</td><td><a href="#_NativeUnInitMSClient-" name="NativeUnInitMSClient" title="go to the details">NativeUnInitMSClient</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_NativeUpdateServer-" name="NativeUpdateServer" title="go to the details">NativeUpdateServer</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>BOOL&nbsp;</td><td><a href="#_OnSameSubNet-" name="OnSameSubNet" title="go to the details">OnSameSubNet</a> (String szIPAddr)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>BOOL&nbsp;</td><td><a href="#_PlayerIsInIDList-" name="PlayerIsInIDList" title="go to the details">PlayerIsInIDList</a> (string szAuthID, string szIPAddr, BOOL bProcessMod)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_ProcessInternetSrv-" name="ProcessInternetSrv" title="go to the details">ProcessInternetSrv</a> (<a href="../r6abstract/r6abstractgameinfo.html">R6AbstractGameInfo</a> _GameInfo, <a href="../engine/levelinfo.html">LevelInfo</a> _Level))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_ProcessJoinServerRequest-" name="ProcessJoinServerRequest" title="go to the details">ProcessJoinServerRequest</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_ProcessMSClientInitRequest-" name="ProcessMSClientInitRequest" title="go to the details">ProcessMSClientInitRequest</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_ProcessPC_CDKeyRequest-" name="ProcessPC_CDKeyRequest" title="go to the details">ProcessPC_CDKeyRequest</a> (<a href="../r6abstract/r6abstractgameinfo.html">R6AbstractGameInfo</a> _GameInfo, <a href="../engine/levelinfo.html">LevelInfo</a> _Level, OUT <a href="../engine/playercontroller.html">PlayerController</a> _aPlayerController, bool bProcessMod))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_ProcessRegServerGetLobbiesRequest-" name="ProcessRegServerGetLobbiesRequest" title="go to the details">ProcessRegServerGetLobbiesRequest</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_ProcessRegServerLoginRequest-" name="ProcessRegServerLoginRequest" title="go to the details">ProcessRegServerLoginRequest</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_ProcessRegServerLoginRouterRequest-" name="ProcessRegServerLoginRouterRequest" title="go to the details">ProcessRegServerLoginRouterRequest</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_ProcessRegServerRegOnLobbyRequest-" name="ProcessRegServerRegOnLobbyRequest" title="go to the details">ProcessRegServerRegOnLobbyRequest</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_ProcessRegServerUpdateRequest-" name="ProcessRegServerUpdateRequest" title="go to the details">ProcessRegServerUpdateRequest</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_RefreshOneServer-" name="RefreshOneServer" title="go to the details">RefreshOneServer</a> (INT sortedListIdx ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_RefreshServers-" name="RefreshServers" title="go to the details">RefreshServers</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_RemoveFromIDList-" name="RemoveFromIDList" title="go to the details">RemoveFromIDList</a> (INT iIdx)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_RequestGSCDKeyActID-" name="RequestGSCDKeyActID" title="go to the details">RequestGSCDKeyActID</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_RequestGSCDKeyAuthID-" name="RequestGSCDKeyAuthID" title="go to the details">RequestGSCDKeyAuthID</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_RequestModCDKeyProcess-" name="RequestModCDKeyProcess" title="go to the details">RequestModCDKeyProcess</a> (BOOL _bRequestAS))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_ResetAuthId-" name="ResetAuthId" title="go to the details">ResetAuthId</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_SaveInfo-" name="SaveInfo" title="go to the details">SaveInfo</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_SetCDKeyInitialised-" name="SetCDKeyInitialised" title="go to the details">SetCDKeyInitialised</a> (BOOL bCDKeyInitialised)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_SetGameServiceRequestState-" name="SetGameServiceRequestState" title="go to the details">SetGameServiceRequestState</a> (<a href="../r6gameservice/r6gsservers.html#ERegServerRequestState">ERegServerRequestState</a> eRegServerState)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_event.gif" alt="event" title="event" /></td><td>&nbsp;</td><td><a href="#_SetGlobalIDToString-" name="SetGlobalIDToString" title="go to the details">SetGlobalIDToString</a> (BYTE _globalID[K_GlobalID_size]))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>BOOL&nbsp;</td><td><a href="#_SetGSClientComInterface-" name="SetGSClientComInterface" title="go to the details">SetGSClientComInterface</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_event.gif" alt="event" title="event" /></td><td>&nbsp;</td><td><a href="#_SetGSGameState-" name="SetGSGameState" title="go to the details">SetGSGameState</a> (<a href="../r6gameservice/r6gsservers.html#EGSGameState">EGSGameState</a> eNewGameState))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_SetLastServerQueried-" name="SetLastServerQueried" title="go to the details">SetLastServerQueried</a> (string szIPAddress)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_SetRegisteredWithMS-" name="SetRegisteredWithMS" title="go to the details">SetRegisteredWithMS</a> (BOOL bRegisteredWithMS)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_SetUbiAccount-" name="SetUbiAccount" title="go to the details">SetUbiAccount</a> (string szUserID, string szPassword ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_StartAutoLogin-" name="StartAutoLogin" title="go to the details">StartAutoLogin</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_TestRegServerLobbyDisconnect-" name="TestRegServerLobbyDisconnect" title="go to the details">TestRegServerLobbyDisconnect</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>BOOL&nbsp;</td><td><a href="#_UnInitializeMSClient-" name="UnInitializeMSClient" title="go to the details">UnInitializeMSClient</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_UpdateServerRegServer-" name="UpdateServerRegServer" title="go to the details">UpdateServerRegServer</a> (<a href="../engine/gameinfo.html">GameInfo</a> pGameInfo, <a href="../engine/levelinfo.html">LevelInfo</a> pLevel))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_UpdateServerUbiCom-" name="UpdateServerUbiCom" title="go to the details">UpdateServerUbiCom</a> (<a href="../engine/gameinfo.html">GameInfo</a> pGameInfo, <a href="../engine/levelinfo.html">LevelInfo</a> pLevel))<br /><span class="function_state"></span></td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Functions from <a href="../r6gameservice/r6gameservice-overview.html">R6GameService</a>.<a href="../r6gameservice/r6serverlist.html">R6ServerList</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../r6gameservice/r6serverlist.html#AddToFavorites">AddToFavorites</a>, <a href="../r6gameservice/r6serverlist.html#Created">Created</a>, <a href="../r6gameservice/r6serverlist.html#DelFromFavorites">DelFromFavorites</a>, <a href="../r6gameservice/r6serverlist.html#GetDisplayListSize">GetDisplayListSize</a>, <a href="../r6gameservice/r6serverlist.html#getServerListItem">getServerListItem</a>, <a href="../r6gameservice/r6serverlist.html#getSvrData">getSvrData</a>, <a href="../r6gameservice/r6serverlist.html#GetTotalPlayers">GetTotalPlayers</a>, <a href="../r6gameservice/r6serverlist.html#IsAFavorite">IsAFavorite</a>, <a href="../r6gameservice/r6serverlist.html#NativeFillSvrContainer">NativeFillSvrContainer</a>, <a href="../r6gameservice/r6serverlist.html#NativeGetGroupID">NativeGetGroupID</a>, <a href="../r6gameservice/r6serverlist.html#NativeGetLobbyID">NativeGetLobbyID</a>, <a href="../r6gameservice/r6serverlist.html#NativeGetMaxPlayers">NativeGetMaxPlayers</a>, <a href="../r6gameservice/r6serverlist.html#NativeGetMilliSeconds">NativeGetMilliSeconds</a>, <a href="../r6gameservice/r6serverlist.html#NativeGetOwnSvrPort">NativeGetOwnSvrPort</a>, <a href="../r6gameservice/r6serverlist.html#NativeGetPingTime">NativeGetPingTime</a>, <a href="../r6gameservice/r6serverlist.html#NativeGetPingTimeOut">NativeGetPingTimeOut</a>, <a href="../r6gameservice/r6serverlist.html#NativeInitFavorites">NativeInitFavorites</a>, <a href="../r6gameservice/r6serverlist.html#NativeResetSvrContainer">NativeResetSvrContainer</a>, <a href="../r6gameservice/r6serverlist.html#NativeSetOwnSvrPort">NativeSetOwnSvrPort</a>, <a href="../r6gameservice/r6serverlist.html#NativeUpdateFavorites">NativeUpdateFavorites</a>, <a href="../r6gameservice/r6serverlist.html#SetSelectedServer">SetSelectedServer</a>, <a href="../r6gameservice/r6serverlist.html#SortPlayersByKills">SortPlayersByKills</a>, <a href="../r6gameservice/r6serverlist.html#SortServers">SortServers</a>, <a href="../r6gameservice/r6serverlist.html#UpdateFilters">UpdateFilters</a></td>
+</tr>
+</table>
+<table>
+<tr>
+	<th class="inherittitle">Inherited Functions from <a href="../r6abstract/r6abstract-overview.html">R6Abstract</a>.<a href="../r6abstract/r6abstractgameservice.html">R6AbstractGameService</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../r6abstract/r6abstractgameservice.html#CallNativeProcessIcmpPing">CallNativeProcessIcmpPing</a>, <a href="../r6abstract/r6abstractgameservice.html#CallNativeSetMatchResult">CallNativeSetMatchResult</a>, <a href="../r6abstract/r6abstractgameservice.html#MyID">MyID</a>, <a href="../r6abstract/r6abstractgameservice.html#NativeSubmitMatchResult">NativeSubmitMatchResult</a></td>
+</tr>
+</table>
+
+
+<br />
+
+
+
+<hr />
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Constants Detail</th>
+</tr>
+</table>
+
+<h4><a name="_K_MAX_SIZE_UBISERVERNAME" class="hidden"></a>K_MAX_SIZE_UBISERVERNAME <a href="../Source_r6gameservice/r6gsservers.html#13" class="small">Source code</a></h4>
+<div class="declaration">const K_MAX_SIZE_UBISERVERNAME = <span class="source_int">32</span>;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_K_TimeRetryConnect" class="hidden"></a>K_TimeRetryConnect <a href="../Source_r6gameservice/r6gsservers.html#14" class="small">Source code</a></h4>
+<div class="declaration">const K_TimeRetryConnect = <span class="source_int">15</span>;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th class="title">Variables Detail</th>
+</tr>
+</table>
+
+<h4><a name="_bShowLog" class="hidden"></a>bShowLog <a href="../Source_r6gameservice/r6gsservers.html#344" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">BOOL</span> bShowLog;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_bAutoLoginFailed" class="hidden"></a>m_bAutoLoginFailed <a href="../Source_r6gameservice/r6gsservers.html#287" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">BOOL</span> m_bAutoLoginFailed;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_bAutoLoginInProgress" class="hidden"></a>m_bAutoLoginInProgress <a href="../Source_r6gameservice/r6gsservers.html#286" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">BOOL</span> m_bAutoLoginInProgress;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_bCDKeyNotUsed" class="hidden"></a>m_bCDKeyNotUsed <a href="../Source_r6gameservice/r6gsservers.html#156" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">BOOL</span> m_bCDKeyNotUsed;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_bConnectedToServer" class="hidden"></a>m_bConnectedToServer <a href="../Source_r6gameservice/r6gsservers.html#152" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">BOOL</span> m_bConnectedToServer;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_bGameServiceInit" class="hidden"></a>m_bGameServiceInit <a href="../Source_r6gameservice/r6gsservers.html#151" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">BOOL</span> m_bGameServiceInit;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_bGSClientInitialized" class="hidden"></a>m_bGSClientInitialized <a href="../Source_r6gameservice/r6gsservers.html#161" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">BOOL</span> m_bGSClientInitialized;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_bInitGame" class="hidden"></a>m_bInitGame <a href="../Source_r6gameservice/r6gsservers.html#264" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">BOOL</span> m_bInitGame;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_bLoggedInToFriendService" class="hidden"></a>m_bLoggedInToFriendService <a href="../Source_r6gameservice/r6gsservers.html#155" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">BOOL</span> m_bLoggedInToFriendService;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_bLoggedInToLobbyService" class="hidden"></a>m_bLoggedInToLobbyService <a href="../Source_r6gameservice/r6gsservers.html#154" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">BOOL</span> m_bLoggedInToLobbyService;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_bLoggedInToServer" class="hidden"></a>m_bLoggedInToServer <a href="../Source_r6gameservice/r6gsservers.html#153" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">BOOL</span> m_bLoggedInToServer;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_bLoggedInUbiDotCom" class="hidden"></a>m_bLoggedInUbiDotCom <a href="../Source_r6gameservice/r6gsservers.html#262" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">BOOL</span> m_bLoggedInUbiDotCom;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_bMODCDKeyRequest" class="hidden"></a>m_bMODCDKeyRequest <a href="../Source_r6gameservice/r6gsservers.html#157" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">BOOL</span> m_bMODCDKeyRequest;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_bMSRequestFinished" class="hidden"></a>m_bMSRequestFinished <a href="../Source_r6gameservice/r6gsservers.html#166" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">BOOL</span> m_bMSRequestFinished;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_bPingReceived" class="hidden"></a>m_bPingReceived <a href="../Source_r6gameservice/r6gsservers.html#258" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">BOOL</span> m_bPingReceived;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_bPingsPending" class="hidden"></a>m_bPingsPending <a href="../Source_r6gameservice/r6gsservers.html#167" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">INT</span> m_bPingsPending;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_bRefreshFinished" class="hidden"></a>m_bRefreshFinished <a href="../Source_r6gameservice/r6gsservers.html#165" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">BOOL</span> m_bRefreshFinished;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_bRefreshInProgress" class="hidden"></a>m_bRefreshInProgress <a href="../Source_r6gameservice/r6gsservers.html#164" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">BOOL</span> m_bRefreshInProgress;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_bRegSrvrConnectionLost" class="hidden"></a>m_bRegSrvrConnectionLost <a href="../Source_r6gameservice/r6gsservers.html#160" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">BOOL</span> m_bRegSrvrConnectionLost;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_bServerJoined" class="hidden"></a>m_bServerJoined <a href="../Source_r6gameservice/r6gsservers.html#159" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">BOOL</span> m_bServerJoined;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_bStartedByGSClient" class="hidden"></a>m_bStartedByGSClient <a href="../Source_r6gameservice/r6gsservers.html#343" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">BOOL</span> m_bStartedByGSClient;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_bUbiAccntInfoEntered" class="hidden"></a>m_bUbiAccntInfoEntered <a href="../Source_r6gameservice/r6gsservers.html#261" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">BOOL</span> m_bUbiAccntInfoEntered;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_bUbiComClientDied" class="hidden"></a>m_bUbiComClientDied <a href="../Source_r6gameservice/r6gsservers.html#283" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">BOOL</span> m_bUbiComClientDied;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_bUbiComRoomDestroyed" class="hidden"></a>m_bUbiComRoomDestroyed <a href="../Source_r6gameservice/r6gsservers.html#284" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">BOOL</span> m_bUbiComRoomDestroyed;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_bUpdateServer" class="hidden"></a>m_bUpdateServer <a href="../Source_r6gameservice/r6gsservers.html#265" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">BOOL</span> m_bUpdateServer;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_bUseCDKey" class="hidden"></a>m_bUseCDKey <a href="../Source_r6gameservice/r6gsservers.html#208" class="small">Source code</a></h4>
+<div class="declaration">var config <span class="source_type">BOOL</span> m_bUseCDKey;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_bValidActivationID" class="hidden"></a>m_bValidActivationID <a href="../Source_r6gameservice/r6gsservers.html#223" class="small">Source code</a></h4>
+<div class="declaration">var config <span class="source_type">BOOL</span> m_bValidActivationID;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_eCDKeyNotUsedRequest" class="hidden"></a>m_eCDKeyNotUsedRequest <a href="../Source_r6gameservice/r6gsservers.html#299" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../r6gameservice/r6gsservers.html#EGSRequestState" class="source">EGSRequestState</a></span> m_eCDKeyNotUsedRequest;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_eCreateAccountRequest" class="hidden"></a>m_eCreateAccountRequest <a href="../Source_r6gameservice/r6gsservers.html#295" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../r6gameservice/r6gsservers.html#EGSRequestState" class="source">EGSRequestState</a></span> m_eCreateAccountRequest;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_eCreateGameRequest" class="hidden"></a>m_eCreateGameRequest <a href="../Source_r6gameservice/r6gsservers.html#298" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../r6gameservice/r6gsservers.html#EGSRequestState" class="source">EGSRequestState</a></span> m_eCreateGameRequest;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_eGameConnectedRequest" class="hidden"></a>m_eGameConnectedRequest <a href="../Source_r6gameservice/r6gsservers.html#305" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../r6gameservice/r6gsservers.html#EGSRequestState" class="source">EGSRequestState</a></span> m_eGameConnectedRequest;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_eGameReadyRequest" class="hidden"></a>m_eGameReadyRequest <a href="../Source_r6gameservice/r6gsservers.html#304" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../r6gameservice/r6gsservers.html#EGSRequestState" class="source">EGSRequestState</a></span> m_eGameReadyRequest;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_eGameStartRequest" class="hidden"></a>m_eGameStartRequest <a href="../Source_r6gameservice/r6gsservers.html#303" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../r6gameservice/r6gsservers.html#EGSRequestState" class="source">EGSRequestState</a></span> m_eGameStartRequest;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_eGSGameState" class="hidden"></a>m_eGSGameState <a href="../Source_r6gameservice/r6gsservers.html#189" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../r6gameservice/r6gsservers.html#EGSGameState" class="source">EGSGameState</a></span> m_eGSGameState;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_eJoinLobbyRequest" class="hidden"></a>m_eJoinLobbyRequest <a href="../Source_r6gameservice/r6gsservers.html#300" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../r6gameservice/r6gsservers.html#EGSRequestState" class="source">EGSRequestState</a></span> m_eJoinLobbyRequest;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_eJoinRoomRequest" class="hidden"></a>m_eJoinRoomRequest <a href="../Source_r6gameservice/r6gsservers.html#301" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../r6gameservice/r6gsservers.html#EGSRequestState" class="source">EGSRequestState</a></span> m_eJoinRoomRequest;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_eJoinServerRequest" class="hidden"></a>m_eJoinServerRequest <a href="../Source_r6gameservice/r6gsservers.html#313" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../r6gameservice/r6gsservers.html#EGSRequestState" class="source">EGSRequestState</a></span> m_eJoinServerRequest;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_eJoinWaitModuleRequest" class="hidden"></a>m_eJoinWaitModuleRequest <a href="../Source_r6gameservice/r6gsservers.html#294" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../r6gameservice/r6gsservers.html#EGSRequestState" class="source">EGSRequestState</a></span> m_eJoinWaitModuleRequest;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_eLoginFriendServiceRequest" class="hidden"></a>m_eLoginFriendServiceRequest <a href="../Source_r6gameservice/r6gsservers.html#296" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../r6gameservice/r6gsservers.html#EGSRequestState" class="source">EGSRequestState</a></span> m_eLoginFriendServiceRequest;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_eLoginLobbyServiceRequest" class="hidden"></a>m_eLoginLobbyServiceRequest <a href="../Source_r6gameservice/r6gsservers.html#297" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../r6gameservice/r6gsservers.html#EGSRequestState" class="source">EGSRequestState</a></span> m_eLoginLobbyServiceRequest;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_eLoginRouterRequest" class="hidden"></a>m_eLoginRouterRequest <a href="../Source_r6gameservice/r6gsservers.html#292" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../r6gameservice/r6gsservers.html#EGSRequestState" class="source">EGSRequestState</a></span> m_eLoginRouterRequest;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_eLoginWaitModuleRequest" class="hidden"></a>m_eLoginWaitModuleRequest <a href="../Source_r6gameservice/r6gsservers.html#293" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../r6gameservice/r6gsservers.html#EGSRequestState" class="source">EGSRequestState</a></span> m_eLoginWaitModuleRequest;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_eMenuCDKeyAuthorization" class="hidden"></a>m_eMenuCDKeyAuthorization <a href="../Source_r6gameservice/r6gsservers.html#185" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../r6gameservice/r6gsservers.html#EMenuRequestState" class="source">EMenuRequestState</a></span> m_eMenuCDKeyAuthorization;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_eMenuCDKeyFailReason" class="hidden"></a>m_eMenuCDKeyFailReason <a href="../Source_r6gameservice/r6gsservers.html#178" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../r6gameservice/r6gsservers.html#EFailureReasons" class="source">EFailureReasons</a></span> m_eMenuCDKeyFailReason;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_eMenuCDKeyNotUsed" class="hidden"></a>m_eMenuCDKeyNotUsed <a href="../Source_r6gameservice/r6gsservers.html#177" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../r6gameservice/r6gsservers.html#EMenuRequestState" class="source">EMenuRequestState</a></span> m_eMenuCDKeyNotUsed;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_eMenuCrAcctFailReason" class="hidden"></a>m_eMenuCrAcctFailReason <a href="../Source_r6gameservice/r6gsservers.html#174" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../r6gameservice/r6gsservers.html#EFailureReasons" class="source">EFailureReasons</a></span> m_eMenuCrAcctFailReason;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_eMenuCreateAccount" class="hidden"></a>m_eMenuCreateAccount <a href="../Source_r6gameservice/r6gsservers.html#173" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../r6gameservice/r6gsservers.html#EMenuRequestState" class="source">EMenuRequestState</a></span> m_eMenuCreateAccount;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_eMenuCreateGame" class="hidden"></a>m_eMenuCreateGame <a href="../Source_r6gameservice/r6gsservers.html#175" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../r6gameservice/r6gsservers.html#EMenuRequestState" class="source">EMenuRequestState</a></span> m_eMenuCreateGame;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_eMenuCrGameFailReason" class="hidden"></a>m_eMenuCrGameFailReason <a href="../Source_r6gameservice/r6gsservers.html#176" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../r6gameservice/r6gsservers.html#EFailureReasons" class="source">EFailureReasons</a></span> m_eMenuCrGameFailReason;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_eMenuGetCDKeyActID" class="hidden"></a>m_eMenuGetCDKeyActID <a href="../Source_r6gameservice/r6gsservers.html#184" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../r6gameservice/r6gsservers.html#EMenuRequestState" class="source">EMenuRequestState</a></span> m_eMenuGetCDKeyActID;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_eMenuJoinLobby" class="hidden"></a>m_eMenuJoinLobby <a href="../Source_r6gameservice/r6gsservers.html#179" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../r6gameservice/r6gsservers.html#EMenuRequestState" class="source">EMenuRequestState</a></span> m_eMenuJoinLobby;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_eMenuJoinRoomFailReason" class="hidden"></a>m_eMenuJoinRoomFailReason <a href="../Source_r6gameservice/r6gsservers.html#188" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../r6gameservice/r6gsservers.html#EFailureReasons" class="source">EFailureReasons</a></span> m_eMenuJoinRoomFailReason;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_eMenuJoinServer" class="hidden"></a>m_eMenuJoinServer <a href="../Source_r6gameservice/r6gsservers.html#187" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../r6gameservice/r6gsservers.html#EMenuRequestState" class="source">EMenuRequestState</a></span> m_eMenuJoinServer;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_eMenuLoginFailReason" class="hidden"></a>m_eMenuLoginFailReason <a href="../Source_r6gameservice/r6gsservers.html#172" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../r6gameservice/r6gsservers.html#EFailureReasons" class="source">EFailureReasons</a></span> m_eMenuLoginFailReason;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_eMenuLoginMasterSvr" class="hidden"></a>m_eMenuLoginMasterSvr <a href="../Source_r6gameservice/r6gsservers.html#180" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../r6gameservice/r6gsservers.html#EMenuRequestState" class="source">EMenuRequestState</a></span> m_eMenuLoginMasterSvr;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_eMenuLoginRegServer" class="hidden"></a>m_eMenuLoginRegServer <a href="../Source_r6gameservice/r6gsservers.html#182" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../r6gameservice/r6gsservers.html#EMenuRequestState" class="source">EMenuRequestState</a></span> m_eMenuLoginRegServer;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_eMenuLoginUbidotcom" class="hidden"></a>m_eMenuLoginUbidotcom <a href="../Source_r6gameservice/r6gsservers.html#171" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../r6gameservice/r6gsservers.html#EMenuRequestState" class="source">EMenuRequestState</a></span> m_eMenuLoginUbidotcom;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_eMenuLogMasSvrFailReason" class="hidden"></a>m_eMenuLogMasSvrFailReason <a href="../Source_r6gameservice/r6gsservers.html#181" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../r6gameservice/r6gsservers.html#EFailureReasons" class="source">EFailureReasons</a></span> m_eMenuLogMasSvrFailReason;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_eMenuUpdateServer" class="hidden"></a>m_eMenuUpdateServer <a href="../Source_r6gameservice/r6gsservers.html#183" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../r6gameservice/r6gsservers.html#EMenuRequestState" class="source">EMenuRequestState</a></span> m_eMenuUpdateServer;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_eMenuUserValidation" class="hidden"></a>m_eMenuUserValidation <a href="../Source_r6gameservice/r6gsservers.html#186" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../r6gameservice/r6gsservers.html#EMenuRequestState" class="source">EMenuRequestState</a></span> m_eMenuUserValidation;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_eMSClientInitRequest" class="hidden"></a>m_eMSClientInitRequest <a href="../Source_r6gameservice/r6gsservers.html#302" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../r6gameservice/r6gsservers.html#EGSRequestState" class="source">EGSRequestState</a></span> m_eMSClientInitRequest;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_eRegServerConnectRequest" class="hidden"></a>m_eRegServerConnectRequest <a href="../Source_r6gameservice/r6gsservers.html#309" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../r6gameservice/r6gsservers.html#EGSRequestState" class="source">EGSRequestState</a></span> m_eRegServerConnectRequest;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_eRegServerGetLobbiesRequest" class="hidden"></a>m_eRegServerGetLobbiesRequest <a href="../Source_r6gameservice/r6gsservers.html#307" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../r6gameservice/r6gsservers.html#EGSRequestState" class="source">EGSRequestState</a></span> m_eRegServerGetLobbiesRequest;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_eRegServerLoginRequest" class="hidden"></a>m_eRegServerLoginRequest <a href="../Source_r6gameservice/r6gsservers.html#310" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../r6gameservice/r6gsservers.html#EGSRequestState" class="source">EGSRequestState</a></span> m_eRegServerLoginRequest;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_eRegServerLoginRouterRequest" class="hidden"></a>m_eRegServerLoginRouterRequest <a href="../Source_r6gameservice/r6gsservers.html#306" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../r6gameservice/r6gsservers.html#EGSRequestState" class="source">EGSRequestState</a></span> m_eRegServerLoginRouterRequest;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_eRegServerRegOnLobbyRequest" class="hidden"></a>m_eRegServerRegOnLobbyRequest <a href="../Source_r6gameservice/r6gsservers.html#308" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../r6gameservice/r6gsservers.html#EGSRequestState" class="source">EGSRequestState</a></span> m_eRegServerRegOnLobbyRequest;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_eRegServerUpdateRequest" class="hidden"></a>m_eRegServerUpdateRequest <a href="../Source_r6gameservice/r6gsservers.html#311" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../r6gameservice/r6gsservers.html#EGSRequestState" class="source">EGSRequestState</a></span> m_eRegServerUpdateRequest;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_eRSReqState" class="hidden"></a>m_eRSReqState <a href="../Source_r6gameservice/r6gsservers.html#190" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../r6gameservice/r6gsservers.html#ERegServerRequestState" class="source">ERegServerRequestState</a></span> m_eRSReqState;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_eUserValidationRequest" class="hidden"></a>m_eUserValidationRequest <a href="../Source_r6gameservice/r6gsservers.html#312" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../r6gameservice/r6gsservers.html#EGSRequestState" class="source">EGSRequestState</a></span> m_eUserValidationRequest;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_fCDKeyGetActIDTime" class="hidden"></a>m_fCDKeyGetActIDTime <a href="../Source_r6gameservice/r6gsservers.html#338" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">FLOAT</span> m_fCDKeyGetActIDTime;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_fCDKeyGetAuthorizationTime" class="hidden"></a>m_fCDKeyGetAuthorizationTime <a href="../Source_r6gameservice/r6gsservers.html#339" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">FLOAT</span> m_fCDKeyGetAuthorizationTime;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_fCDKeyStartTime" class="hidden"></a>m_fCDKeyStartTime <a href="../Source_r6gameservice/r6gsservers.html#323" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">FLOAT</span> m_fCDKeyStartTime;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_fCreateAccountStartTime" class="hidden"></a>m_fCreateAccountStartTime <a href="../Source_r6gameservice/r6gsservers.html#320" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">FLOAT</span> m_fCreateAccountStartTime;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_fCreateGameStartTime" class="hidden"></a>m_fCreateGameStartTime <a href="../Source_r6gameservice/r6gsservers.html#324" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">FLOAT</span> m_fCreateGameStartTime;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_fGameConnectedStartTime" class="hidden"></a>m_fGameConnectedStartTime <a href="../Source_r6gameservice/r6gsservers.html#330" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">FLOAT</span> m_fGameConnectedStartTime;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_fGameReadyStartTime" class="hidden"></a>m_fGameReadyStartTime <a href="../Source_r6gameservice/r6gsservers.html#329" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">FLOAT</span> m_fGameReadyStartTime;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_fGameStartStartTime" class="hidden"></a>m_fGameStartStartTime <a href="../Source_r6gameservice/r6gsservers.html#328" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">FLOAT</span> m_fGameStartStartTime;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_fJoinLobbyStartTime" class="hidden"></a>m_fJoinLobbyStartTime <a href="../Source_r6gameservice/r6gsservers.html#326" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">FLOAT</span> m_fJoinLobbyStartTime;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_fJoinRoomStartTime" class="hidden"></a>m_fJoinRoomStartTime <a href="../Source_r6gameservice/r6gsservers.html#327" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">FLOAT</span> m_fJoinRoomStartTime;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_fJoinServerTime" class="hidden"></a>m_fJoinServerTime <a href="../Source_r6gameservice/r6gsservers.html#341" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">FLOAT</span> m_fJoinServerTime;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_fJoinWaitModuleStartTime" class="hidden"></a>m_fJoinWaitModuleStartTime <a href="../Source_r6gameservice/r6gsservers.html#319" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">FLOAT</span> m_fJoinWaitModuleStartTime;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_fLoginFriendServiceStartTime" class="hidden"></a>m_fLoginFriendServiceStartTime <a href="../Source_r6gameservice/r6gsservers.html#321" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">FLOAT</span> m_fLoginFriendServiceStartTime;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_fLoginLobbyServiceStartTime" class="hidden"></a>m_fLoginLobbyServiceStartTime <a href="../Source_r6gameservice/r6gsservers.html#322" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">FLOAT</span> m_fLoginLobbyServiceStartTime;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_fLoginRouterStartTime" class="hidden"></a>m_fLoginRouterStartTime <a href="../Source_r6gameservice/r6gsservers.html#317" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">FLOAT</span> m_fLoginRouterStartTime;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_fLoginWaitModuleStartTime" class="hidden"></a>m_fLoginWaitModuleStartTime <a href="../Source_r6gameservice/r6gsservers.html#318" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">FLOAT</span> m_fLoginWaitModuleStartTime;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_fMaxTimeForResponse" class="hidden"></a>m_fMaxTimeForResponse <a href="../Source_r6gameservice/r6gsservers.html#333" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">FLOAT</span> m_fMaxTimeForResponse;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_fMSClientInitStartTime" class="hidden"></a>m_fMSClientInitStartTime <a href="../Source_r6gameservice/r6gsservers.html#325" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">FLOAT</span> m_fMSClientInitStartTime;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_fRefreshTime" class="hidden"></a>m_fRefreshTime <a href="../Source_r6gameservice/r6gsservers.html#342" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">FLOAT</span> m_fRefreshTime;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_fRegServerConnectTime" class="hidden"></a>m_fRegServerConnectTime <a href="../Source_r6gameservice/r6gsservers.html#335" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">FLOAT</span> m_fRegServerConnectTime;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_fRegServerGetLobbiesTime" class="hidden"></a>m_fRegServerGetLobbiesTime <a href="../Source_r6gameservice/r6gsservers.html#332" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">FLOAT</span> m_fRegServerGetLobbiesTime;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_fRegServerLoginTime" class="hidden"></a>m_fRegServerLoginTime <a href="../Source_r6gameservice/r6gsservers.html#336" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">FLOAT</span> m_fRegServerLoginTime;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_fRegServerRegOnLobbyTime" class="hidden"></a>m_fRegServerRegOnLobbyTime <a href="../Source_r6gameservice/r6gsservers.html#334" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">FLOAT</span> m_fRegServerRegOnLobbyTime;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_fRegServerRouterLoginTime" class="hidden"></a>m_fRegServerRouterLoginTime <a href="../Source_r6gameservice/r6gsservers.html#331" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">FLOAT</span> m_fRegServerRouterLoginTime;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_fRegServerUpdateTime" class="hidden"></a>m_fRegServerUpdateTime <a href="../Source_r6gameservice/r6gsservers.html#337" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">FLOAT</span> m_fRegServerUpdateTime;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_fUserValidationTime" class="hidden"></a>m_fUserValidationTime <a href="../Source_r6gameservice/r6gsservers.html#340" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">FLOAT</span> m_fUserValidationTime;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_GaveServerID" class="hidden"></a>m_GaveServerID <a href="../Source_r6gameservice/r6gsservers.html#269" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../r6gameservice/r6gsservers.html#stLobby" class="source">stLobby</a></span> m_GaveServerID;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_iGroupID" class="hidden"></a>m_iGroupID <a href="../Source_r6gameservice/r6gsservers.html#253" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">INT</span> m_iGroupID;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_iGSNumPlayers" class="hidden"></a>m_iGSNumPlayers <a href="../Source_r6gameservice/r6gsservers.html#280" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">INT</span> m_iGSNumPlayers;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_iLobbyIndex" class="hidden"></a>m_iLobbyIndex <a href="../Source_r6gameservice/r6gsservers.html#203" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">INT</span> m_iLobbyIndex;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_iLobbySrvID" class="hidden"></a>m_iLobbySrvID <a href="../Source_r6gameservice/r6gsservers.html#254" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">INT</span> m_iLobbySrvID;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_iMaxAvailPorts" class="hidden"></a>m_iMaxAvailPorts <a href="../Source_r6gameservice/r6gsservers.html#275" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">INT</span> m_iMaxAvailPorts;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_iModCDKeyPort" class="hidden"></a>m_iModCDKeyPort <a href="../Source_r6gameservice/r6gsservers.html#222" class="small">Source code</a></h4>
+<div class="declaration">var config <span class="source_type">INT</span> m_iModCDKeyPort;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_iOwnGroupID" class="hidden"></a>m_iOwnGroupID <a href="../Source_r6gameservice/r6gsservers.html#240" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">INT</span> m_iOwnGroupID;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_iOwnLobbySrvID" class="hidden"></a>m_iOwnLobbySrvID <a href="../Source_r6gameservice/r6gsservers.html#241" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">INT</span> m_iOwnLobbySrvID;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_iRegSvrPort" class="hidden"></a>m_iRegSvrPort <a href="../Source_r6gameservice/r6gsservers.html#231" class="small">Source code</a></h4>
+<div class="declaration">var config <span class="source_type">INT</span> m_iRegSvrPort;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_iRetryTime" class="hidden"></a>m_iRetryTime <a href="../Source_r6gameservice/r6gsservers.html#263" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">INT</span> m_iRetryTime;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_iRoomCreatedGroupID" class="hidden"></a>m_iRoomCreatedGroupID <a href="../Source_r6gameservice/r6gsservers.html#255" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">INT</span> m_iRoomCreatedGroupID;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_iRSCDKeyPort" class="hidden"></a>m_iRSCDKeyPort <a href="../Source_r6gameservice/r6gsservers.html#221" class="small">Source code</a></h4>
+<div class="declaration">var config <span class="source_type">INT</span> m_iRSCDKeyPort;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_iWaitModulePort" class="hidden"></a>m_iWaitModulePort <a href="../Source_r6gameservice/r6gsservers.html#195" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">INT</span> m_iWaitModulePort;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_ModGSInfo" class="hidden"></a>m_ModGSInfo <a href="../Source_r6gameservice/r6gsservers.html#147" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../r6gameservice/r6modinfo.html" class="source">R6ModInfo</a></span> m_ModGSInfo;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_PingReqList" class="hidden"></a>m_PingReqList <a href="../Source_r6gameservice/r6gsservers.html#140" class="small">Source code</a></h4>
+<div class="declaration">var array&lt;<span class="source_type">INT</span>&gt; m_PingReqList;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_szAuthorizationID" class="hidden"></a>m_szAuthorizationID <a href="../Source_r6gameservice/r6gsservers.html#245" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">string</span> m_szAuthorizationID;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_szCDKey" class="hidden"></a>m_szCDKey <a href="../Source_r6gameservice/r6gsservers.html#214" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">string</span> m_szCDKey;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_szCountry" class="hidden"></a>m_szCountry <a href="../Source_r6gameservice/r6gsservers.html#238" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">string</span> m_szCountry;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_szEmail" class="hidden"></a>m_szEmail <a href="../Source_r6gameservice/r6gsservers.html#239" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">string</span> m_szEmail;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_szFirstName" class="hidden"></a>m_szFirstName <a href="../Source_r6gameservice/r6gsservers.html#236" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">string</span> m_szFirstName;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_szGlobalID" class="hidden"></a>m_szGlobalID <a href="../Source_r6gameservice/r6gsservers.html#226" class="small">Source code</a></h4>
+<div class="declaration">var config <span class="source_type">string</span> m_szGlobalID;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_szGSClientAltIP" class="hidden"></a>m_szGSClientAltIP <a href="../Source_r6gameservice/r6gsservers.html#278" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">string</span> m_szGSClientAltIP;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_szGSClientIP" class="hidden"></a>m_szGSClientIP <a href="../Source_r6gameservice/r6gsservers.html#277" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">string</span> m_szGSClientIP;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_szGSInitFileName" class="hidden"></a>m_szGSInitFileName <a href="../Source_r6gameservice/r6gsservers.html#273" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">string</span> m_szGSInitFileName;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_szGSPassword" class="hidden"></a>m_szGSPassword <a href="../Source_r6gameservice/r6gsservers.html#281" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">string</span> m_szGSPassword;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_szGSServerName" class="hidden"></a>m_szGSServerName <a href="../Source_r6gameservice/r6gsservers.html#279" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">string</span> m_szGSServerName;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_szGSVersion" class="hidden"></a>m_szGSVersion <a href="../Source_r6gameservice/r6gsservers.html#213" class="small">Source code</a></h4>
+<div class="declaration">var config <span class="source_type">string</span> m_szGSVersion;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_szLastName" class="hidden"></a>m_szLastName <a href="../Source_r6gameservice/r6gsservers.html#237" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">string</span> m_szLastName;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_szModAuthorizationID" class="hidden"></a>m_szModAuthorizationID <a href="../Source_r6gameservice/r6gsservers.html#247" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">string</span> m_szModAuthorizationID;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_szNetGameName" class="hidden"></a>m_szNetGameName <a href="../Source_r6gameservice/r6gsservers.html#211" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">string</span> m_szNetGameName;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_szPassword" class="hidden"></a>m_szPassword <a href="../Source_r6gameservice/r6gsservers.html#250" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">string</span> m_szPassword;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_szRegSvrUserID" class="hidden"></a>m_szRegSvrUserID <a href="../Source_r6gameservice/r6gsservers.html#249" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">string</span> m_szRegSvrUserID;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_szRSAuthorizationID" class="hidden"></a>m_szRSAuthorizationID <a href="../Source_r6gameservice/r6gsservers.html#246" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">string</span> m_szRSAuthorizationID;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_szRSGlobalID" class="hidden"></a>m_szRSGlobalID <a href="../Source_r6gameservice/r6gsservers.html#227" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">string</span> m_szRSGlobalID;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_szSavedPwd" class="hidden"></a>m_szSavedPwd <a href="../Source_r6gameservice/r6gsservers.html#232" class="small">Source code</a></h4>
+<div class="declaration">var config <span class="source_type">string</span> m_szSavedPwd;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_szUBIClientVersion" class="hidden"></a>m_szUBIClientVersion <a href="../Source_r6gameservice/r6gsservers.html#212" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">string</span> m_szUBIClientVersion;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_szUbiGuestAcct" class="hidden"></a>m_szUbiGuestAcct <a href="../Source_r6gameservice/r6gsservers.html#219" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">string</span> m_szUbiGuestAcct;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_szUbiHomePage" class="hidden"></a>m_szUbiHomePage <a href="../Source_r6gameservice/r6gsservers.html#230" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">string</span> m_szUbiHomePage;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_szUbiRemFileURL" class="hidden"></a>m_szUbiRemFileURL <a href="../Source_r6gameservice/r6gsservers.html#229" class="small">Source code</a></h4>
+<div class="declaration">var config <span class="source_type">string</span> m_szUbiRemFileURL;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_ucActivationID[16]" class="hidden"></a>m_ucActivationID[16] <a href="../Source_r6gameservice/r6gsservers.html#224" class="small">Source code</a></h4>
+<div class="declaration">var config <span class="source_type">BYTE</span> m_ucActivationID[<span class="source_int">16</span>];</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_ucProcessActivationID[16]" class="hidden"></a>m_ucProcessActivationID[16] <a href="../Source_r6gameservice/r6gsservers.html#225" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">BYTE</span> m_ucProcessActivationID[<span class="source_int">16</span>];</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th class="title">Enumerations Detail</th>
+</tr>
+</table>
+
+<h4><a name="_EFailureReasons" class="hidden"></a>EFailureReasons <a href="../Source_r6gameservice/r6gsservers.html#87" class="small">Source code</a></h4>
+<div class="declaration">enum <span class="source_type"><a href="../r6gameservice/r6gsservers.html#EFailureReasons" class="source">EFailureReasons</a></span><br />
+{<blockquote>EFAIL_DEFAULT,
+EFAIL_SERVER_CONNECT,
+EFAIL_PASSWORDNOTCORRECT,
+EFAIL_ROOMFULL,
+EFAIL_ALREADYCONNECTED,
+EFAIL_NOTREGISTERED,
+EFAIL_NOTDISCONNECTED,
+EFAIL_PLAYERALREADYREGISTERED,
+EFAIL_TIMED_OUT,
+EFAIL_CDKEYUSED,
+EFAIL_INVALIDCDKEY,
+EFAIL_DATABASEFAILED,
+EFAIL_BANNEDACCOUNT,
+EFAIL_BLOCKEDACCOUNT,
+EFAIL_LOCKEDACCOUNT</blockquote>};
+</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_EGSGameState" class="hidden"></a>EGSGameState <a href="../Source_r6gameservice/r6gsservers.html#59" class="small">Source code</a></h4>
+<div class="declaration">enum <span class="source_type"><a href="../r6gameservice/r6gsservers.html#EGSGameState" class="source">EGSGameState</a></span><br />
+{<blockquote>EGS_WAITING_FOR_GS_INIT,
+EGS_CLIENT_INIT_RCVD,
+EGS_CLIENT_WAITING_CHSTA,
+EGS_CLIENT_CHSTA_RCVD,
+EGS_CLIENT_IN_GAME,
+EGS_SERVER_INIT_RCVD,
+EGS_SERVER_WAITING_CHSTA,
+EGS_SERVER_CHSTA_RCVD,
+EGS_SERVER_SETTING_UP_GAME,
+EGS_TERMINATE_RCVD,
+EGS_SERVER_READY</blockquote>};
+</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_EGSMESSAGE_ID" class="hidden"></a>EGSMESSAGE_ID <a href="../Source_r6gameservice/r6gsservers.html#76" class="small">Source code</a></h4>
+<div class="declaration">enum <span class="source_type"><a href="../r6gameservice/r6gsservers.html#EGSMESSAGE_ID" class="source">EGSMESSAGE_ID</a></span><br />
+{<blockquote>EGSMESSAGE_INITMASTERSESSION_AK,
+EGSMESSAGE_MASTERSESSION_AK,
+EGSMESSAGE_READYTORECEIVECONNECTIONS,
+EGSMESSAGE_INITCLIENTSESSION_AK,
+EGSMESSAGE_CLIENTSESSION_AK,
+EGSMESSAGE_SWITCHTOGS</blockquote>};
+</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_EGSRequestState" class="hidden"></a>EGSRequestState <a href="../Source_r6gameservice/r6gsservers.html#29" class="small">Source code</a></h4>
+<div class="declaration">enum <span class="source_type"><a href="../r6gameservice/r6gsservers.html#EGSRequestState" class="source">EGSRequestState</a></span><br />
+{<blockquote>EGSREQ_NONE,
+EGSREQ_FIRST_PASS,
+EGSREQ_WAITING_FOR_RESPONSE,
+EGSREQ_FAILED,
+EGSREQ_CONNECT_FAILED,
+EGSREQ_INUSE_FAILED,
+EGSREQ_SUCCESS,
+EGSREQ_PROCESS_FAILURE</blockquote>};
+</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_EMenuRequestState" class="hidden"></a>EMenuRequestState <a href="../Source_r6gameservice/r6gsservers.html#44" class="small">Source code</a></h4>
+<div class="declaration">enum <span class="source_type"><a href="../r6gameservice/r6gsservers.html#EMenuRequestState" class="source">EMenuRequestState</a></span><br />
+{<blockquote>EMENU_REQ_NONE,
+EMENU_REQ_PENDING,
+EMENU_REQ_SUCCESS,
+EMENU_REQ_FAILURE,
+EMENU_REQ_TIMEOUT,
+EMENU_REQ_TIMEOUT_ERROR,
+EMENU_REQ_INUSE_ERROR,
+EMENU_REQ_NOTCHALLENGED,
+EMENU_REQ_INT_ERROR</blockquote>};
+</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ERegServerRequestState" class="hidden"></a>ERegServerRequestState <a href="../Source_r6gameservice/r6gsservers.html#16" class="small">Source code</a></h4>
+<div class="declaration">enum <span class="source_type"><a href="../r6gameservice/r6gsservers.html#ERegServerRequestState" class="source">ERegServerRequestState</a></span><br />
+{<blockquote>ERSREQ_NONE,
+ERSREQ_INIT,
+ERSREQ_LOGIN,
+ERSREQ_SUCCESS,
+ERSREQ_FAILURE</blockquote>};
+</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th class="title">Structures Detail</th>
+</tr>
+</table>
+
+<h4><a name="_stChatMessage" class="hidden"></a>stChatMessage <a href="../Source_r6gameservice/r6gsservers.html#113" class="small">Source code</a></h4>
+<div class="declaration">struct <span class="source_type"><a href="../r6gameservice/r6gsservers.html#stChatMessage" class="source">stChatMessage</a></span><br />
+{<blockquote>var <span class="source_type">string</span> szMessage;<br />
+var <span class="source_type">string</span> szUserId;<br />
+</blockquote>};
+</div>
+<blockquote class="comment">
+
+<br />
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_stFriend" class="hidden"></a>stFriend <a href="../Source_r6gameservice/r6gsservers.html#119" class="small">Source code</a></h4>
+<div class="declaration">struct <span class="source_type"><a href="../r6gameservice/r6gsservers.html#stFriend" class="source">stFriend</a></span><br />
+{<blockquote>var <span class="source_type">INT</span> iStatus;<br />
+var <span class="source_type">string</span> szAlias;<br />
+</blockquote>};
+</div>
+<blockquote class="comment">
+
+<br />
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_stLobby" class="hidden"></a>stLobby <a href="../Source_r6gameservice/r6gsservers.html#125" class="small">Source code</a></h4>
+<div class="declaration">struct <span class="source_type"><a href="../r6gameservice/r6gsservers.html#stLobby" class="source">stLobby</a></span><br />
+{<blockquote>var <span class="source_type">INT</span> iGroupID;<br />
+var <span class="source_type">INT</span> iLobbySrvID;<br />
+</blockquote>};
+</div>
+<blockquote class="comment">
+
+<br />
+
+</blockquote>
+<hr class="small" />
+
+
+<br />
+
+
+
+<table class="title">
+<tr>
+	<th class="title">Functions Detail</th>
+</tr>
+</table>
+
+<h4><a name="_AddPlayerToIDList-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> AddPlayerToIDList <span class="function_state"></span> <a href="../Source_r6gameservice/r6gsservers.html#394" class="small">Source code</a></h4>
+<div class="declaration">native(<span class="source_int">1238</span>) final function  AddPlayerToIDList ( <span class="source_type">string</span> szAuthID, <span class="source_type">string</span> szIPAddr, <span class="source_type">string</span> szUbiBanID, <span class="source_type">BOOL</span> bProcessMod )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_CallNativeProcessIcmpPing-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> CallNativeProcessIcmpPing <span class="function_state"></span> <a href="../Source_r6gameservice/r6gsservers.html#436" class="small">Source code</a></h4>
+<div class="declaration"> function <span class="source_type">BOOL</span> CallNativeProcessIcmpPing ( <span class="source_type">string</span> _ServerIpAddress, out <span class="source_type">INT</span> piPingTime) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_CallNativeSetMatchResult-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> CallNativeSetMatchResult <span class="function_state"></span> <a href="../Source_r6gameservice/r6gsservers.html#441" class="small">Source code</a></h4>
+<div class="declaration"> function  CallNativeSetMatchResult ( <span class="source_type">string</span> szUbiUserID, <span class="source_type">INT</span> iField, <span class="source_type">INT</span> iValue) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_CancelGSCDKeyActID-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> CancelGSCDKeyActID <span class="function_state"></span> <a href="../Source_r6gameservice/r6gsservers.html#430" class="small">Source code</a></h4>
+<div class="declaration">native(<span class="source_int">1219</span>) final function  CancelGSCDKeyActID (  )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_CleanPlayerIDList-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> CleanPlayerIDList <span class="function_state"></span> <a href="../Source_r6gameservice/r6gsservers.html#416" class="small">Source code</a></h4>
+<div class="declaration">native(<span class="source_int">1308</span>) final function  CleanPlayerIDList ( <span class="source_type"><a href="../engine/controller.html" class="source">Controller</a></span> _ControllerList )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_CopyActivationIDInByteArray-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> CopyActivationIDInByteArray <span class="function_state"></span> <a href="../Source_r6gameservice/r6gsservers.html#2000" class="small">Source code</a></h4>
+<div class="declaration"> function  CopyActivationIDInByteArray ( <span class="source_type">BYTE</span> _pArraySrc[<span class="source_int">16</span>], OUT <span class="source_type">BYTE</span> _pArrayDest[<span class="source_int">16</span>]) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_Created-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> Created <span class="function_state"></span> <a href="../Source_r6gameservice/r6gsservers.html#453" class="small">Source code</a></h4>
+<div class="declaration"> function  Created ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_DisconnectAllCDKeyPlayers-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> DisconnectAllCDKeyPlayers <span class="function_state"></span> <a href="../Source_r6gameservice/r6gsservers.html#425" class="small">Source code</a></h4>
+<div class="declaration">native(<span class="source_int">1307</span>) final function  DisconnectAllCDKeyPlayers (  )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_DisplayTime-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> DisplayTime <span class="function_state"></span> <a href="../Source_r6gameservice/r6gsservers.html#1346" class="small">Source code</a></h4>
+<div class="declaration"> function <span class="source_type">string</span> DisplayTime ( <span class="source_type">INT</span> _iTimeToConvert) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_EndOfRoundDataSent-" class="hidden"></a><img src="../img_event.gif" alt="" title="event" /> EndOfRoundDataSent <span class="function_state"></span> <a href="../Source_r6gameservice/r6gsservers.html#1423" class="small">Source code</a></h4>
+<div class="declaration"> event  EndOfRoundDataSent ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_FillCreateGameInfo-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> FillCreateGameInfo <span class="function_state"></span> <a href="../Source_r6gameservice/r6gsservers.html#1149" class="small">Source code</a></h4>
+<div class="declaration"> function  FillCreateGameInfo ( <span class="source_type"><a href="../engine/gameinfo.html" class="source">GameInfo</a></span> pGameInfo, <span class="source_type"><a href="../engine/levelinfo.html" class="source">LevelInfo</a></span> <span class="source_type">pLevel</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GameServiceManager-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> GameServiceManager <span class="function_state"></span> <a href="../Source_r6gameservice/r6gsservers.html#539" class="small">Source code</a></h4>
+<div class="declaration"> function  GameServiceManager ( <span class="source_type">BOOL</span> _bMSClient, <span class="source_type">BOOL</span> _bCDKey, <span class="source_type">BOOL</span> _bRegServer, <span class="source_type">BOOL</span> <span class="source_type">_bGSClient</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GetCDKeyInitialised-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> GetCDKeyInitialised <span class="function_state"></span> <a href="../Source_r6gameservice/r6gsservers.html#423" class="small">Source code</a></h4>
+<div class="declaration">native(<span class="source_int">1266</span>) final function <span class="source_type">BOOL</span> GetCDKeyInitialised (  )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GetGameServiceRequestState-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> GetGameServiceRequestState <span class="function_state"></span> <a href="../Source_r6gameservice/r6gsservers.html#419" class="small">Source code</a></h4>
+<div class="declaration">native(<span class="source_int">1247</span>) final function <span class="source_type"><a href="../r6gameservice/r6gsservers.html#ERegServerRequestState" class="source">ERegServerRequestState</a></span> GetGameServiceRequestState (  )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GetGlobalIdFromPlayerIDList-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> GetGlobalIdFromPlayerIDList <span class="function_state"></span> <a href="../Source_r6gameservice/r6gsservers.html#396" class="small">Source code</a></h4>
+<div class="declaration">native(<span class="source_int">1315</span>) final function <span class="source_type">string</span> GetGlobalIdFromPlayerIDList ( <span class="source_type">string</span> szAuthID )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GetIDListAuthID-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> GetIDListAuthID <span class="function_state"></span> <a href="../Source_r6gameservice/r6gsservers.html#399" class="small">Source code</a></h4>
+<div class="declaration">native(<span class="source_int">1285</span>) final function <span class="source_type">string</span> GetIDListAuthID ( <span class="source_type">INT</span> iIdx )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GetIDListIPAddr-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> GetIDListIPAddr <span class="function_state"></span> <a href="../Source_r6gameservice/r6gsservers.html#398" class="small">Source code</a></h4>
+<div class="declaration">native(<span class="source_int">1284</span>) final function <span class="source_type">string</span> GetIDListIPAddr ( <span class="source_type">INT</span> iIdx )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GetIDListSize-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> GetIDListSize <span class="function_state"></span> <a href="../Source_r6gameservice/r6gsservers.html#400" class="small">Source code</a></h4>
+<div class="declaration">native(<span class="source_int">1286</span>) final function <span class="source_type">INT</span> GetIDListSize (  )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GetLocallyBoundIpAddr-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> GetLocallyBoundIpAddr <span class="function_state"></span> <a href="../Source_r6gameservice/r6gsservers.html#999" class="small">Source code</a></h4>
+<div class="declaration"> function <span class="source_type">string</span> GetLocallyBoundIpAddr ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GetMaxUbiServerNameSize-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> GetMaxUbiServerNameSize <span class="function_state"></span> <a href="../Source_r6gameservice/r6gsservers.html#1432" class="small">Source code</a></h4>
+<div class="declaration"> function <span class="source_type">INT</span> GetMaxUbiServerNameSize ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GetRegisteredWithMS-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> GetRegisteredWithMS <span class="function_state"></span> <a href="../Source_r6gameservice/r6gsservers.html#421" class="small">Source code</a></h4>
+<div class="declaration">native(<span class="source_int">1252</span>) final function <span class="source_type">BOOL</span> GetRegisteredWithMS (  )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GetSelectedServerIP-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> GetSelectedServerIP <span class="function_state"></span> <a href="../Source_r6gameservice/r6gsservers.html#1380" class="small">Source code</a></h4>
+<div class="declaration"> function <span class="source_type">string</span> GetSelectedServerIP ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_getServerListSize-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> getServerListSize <span class="function_state"></span> <a href="../Source_r6gameservice/r6gsservers.html#445" class="small">Source code</a></h4>
+<div class="declaration"> function <span class="source_type">INT</span> getServerListSize ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_HandleAnyLobbyConnectionFail-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> HandleAnyLobbyConnectionFail <span class="function_state"></span> <a href="../Source_r6gameservice/r6gsservers.html#427" class="small">Source code</a></h4>
+<div class="declaration">native(<span class="source_int">1310</span>) final function <span class="source_type">BOOL</span> HandleAnyLobbyConnectionFail (  )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_HandleNewLobbyConnection-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> HandleNewLobbyConnection <span class="function_state"></span> <a href="../Source_r6gameservice/r6gsservers.html#1439" class="small">Source code</a></h4>
+<div class="declaration"> function  HandleNewLobbyConnection ( <span class="source_type"><a href="../engine/levelinfo.html" class="source">LevelInfo</a></span> _Level) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_initGSCDKey-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> initGSCDKey <span class="function_state"></span> <a href="../Source_r6gameservice/r6gsservers.html#1287" class="small">Source code</a></h4>
+<div class="declaration"> function <span class="source_type">BOOL</span> initGSCDKey ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_Initialize-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> Initialize <span class="function_state"></span> <a href="../Source_r6gameservice/r6gsservers.html#1018" class="small">Source code</a></h4>
+<div class="declaration"> function  Initialize ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_InitializeMSClient-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> InitializeMSClient <span class="function_state"></span> <a href="../Source_r6gameservice/r6gsservers.html#1027" class="small">Source code</a></h4>
+<div class="declaration"> function <span class="source_type">BOOL</span> InitializeMSClient ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_InitializeRegServer-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> InitializeRegServer <span class="function_state"></span> <a href="../Source_r6gameservice/r6gsservers.html#1085" class="small">Source code</a></h4>
+<div class="declaration"> function <span class="source_type">BOOL</span> InitializeRegServer ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_InitModInfo-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> InitModInfo <span class="function_state"></span> <a href="../Source_r6gameservice/r6gsservers.html#499" class="small">Source code</a></h4>
+<div class="declaration"> function  InitModInfo ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_InitProcessUpdateUbiServer-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> InitProcessUpdateUbiServer <span class="function_state"></span> <a href="../Source_r6gameservice/r6gsservers.html#1124" class="small">Source code</a></h4>
+<div class="declaration"> function  InitProcessUpdateUbiServer ( <span class="source_type"><a href="../engine/gameinfo.html" class="source">GameInfo</a></span> pGameInfo, <span class="source_type"><a href="../engine/levelinfo.html" class="source">LevelInfo</a></span> <span class="source_type">pLevel</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_IsModCDKeyProcess-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> IsModCDKeyProcess <span class="function_state"></span> <a href="../Source_r6gameservice/r6gsservers.html#1929" class="small">Source code</a></h4>
+<div class="declaration"> function <span class="source_type">BOOL</span> IsModCDKeyProcess ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_joinServer-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> joinServer <span class="function_state"></span> <a href="../Source_r6gameservice/r6gsservers.html#1316" class="small">Source code</a></h4>
+<div class="declaration"> function  joinServer ( <span class="source_type">INT</span> iLobbyID, <span class="source_type">INT</span> iGroupID, <span class="source_type">string</span> <span class="source_type">szPassword</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_LogDebugProcessCDKeyRequest-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> LogDebugProcessCDKeyRequest <span class="function_state"></span> <a href="../Source_r6gameservice/r6gsservers.html#1954" class="small">Source code</a></h4>
+<div class="declaration"> function  LogDebugProcessCDKeyRequest ( <span class="source_type"><a href="../engine/playercontroller.html" class="source">PlayerController</a></span> _aPlayerController, <span class="source_type">BOOL</span> _bExit) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_LogGSVersion-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> LogGSVersion <span class="function_state"></span> <a href="../Source_r6gameservice/r6gsservers.html#413" class="small">Source code</a></h4>
+<div class="declaration">native(<span class="source_int">1300</span>) final function  LogGSVersion (  )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_LoginRegServer-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> LoginRegServer <span class="function_state"></span> <a href="../Source_r6gameservice/r6gsservers.html#1110" class="small">Source code</a></h4>
+<div class="declaration"> function  LoginRegServer ( <span class="source_type"><a href="../engine/gameinfo.html" class="source">GameInfo</a></span> pGameInfo, <span class="source_type"><a href="../engine/levelinfo.html" class="source">LevelInfo</a></span> <span class="source_type">pLevel</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_LogOutServer-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> LogOutServer <span class="function_state"></span> <a href="../Source_r6gameservice/r6gsservers.html#1453" class="small">Source code</a></h4>
+<div class="declaration"> function  LogOutServer ( <span class="source_type"><a href="../r6engine/r6gamereplicationinfo.html" class="source">R6GameReplicationInfo</a></span> _GRI) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_MasterServerManager-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> MasterServerManager <span class="function_state"></span> <a href="../Source_r6gameservice/r6gsservers.html#1467" class="small">Source code</a></h4>
+<div class="declaration"> function  MasterServerManager ( <span class="source_type"><a href="../r6abstract/r6abstractgameinfo.html" class="source">R6AbstractGameInfo</a></span> _GameInfo, <span class="source_type"><a href="../engine/levelinfo.html" class="source">LevelInfo</a></span> _Level) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_MyID-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> MyID <span class="function_state"></span> <a href="../Source_r6gameservice/r6gsservers.html#1811" class="small">Source code</a></h4>
+<div class="declaration"> function <span class="source_type">string</span> MyID ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_NativeCDKeyDisconnecUser-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> NativeCDKeyDisconnecUser <span class="function_state"></span> <a href="../Source_r6gameservice/r6gsservers.html#424" class="small">Source code</a></h4>
+<div class="declaration">native(<span class="source_int">1263</span>) final function  NativeCDKeyDisconnecUser ( <span class="source_type">string</span> szAuthID )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_NativeCDKeyValidateUser-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> NativeCDKeyValidateUser <span class="function_state"></span> <a href="../Source_r6gameservice/r6gsservers.html#372" class="small">Source code</a></h4>
+<div class="declaration">native(<span class="source_int">1261</span>) final function <span class="source_type">INT</span> NativeCDKeyValidateUser ( <span class="source_type">string</span> szAuthID, <span class="source_type">BOOL</span> bExtraTime,  <span class="source_type">BOOL</span> bProcessMod )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_NativeCheckGSClientAlive-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> NativeCheckGSClientAlive <span class="function_state"></span> <a href="../Source_r6gameservice/r6gsservers.html#405" class="small">Source code</a></h4>
+<div class="declaration">native(<span class="source_int">1350</span>) final function <span class="source_type">BOOL</span> NativeCheckGSClientAlive (  )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_NativeGetInitialized-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> NativeGetInitialized <span class="function_state"></span> <a href="../Source_r6gameservice/r6gsservers.html#366" class="small">Source code</a></h4>
+<div class="declaration">native(<span class="source_int">1248</span>) final function <span class="source_type">BOOL</span> NativeGetInitialized (  )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_NativeGetLoggedInUbiDotCom-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> NativeGetLoggedInUbiDotCom <span class="function_state"></span> <a href="../Source_r6gameservice/r6gsservers.html#377" class="small">Source code</a></h4>
+<div class="declaration">native(<span class="source_int">1268</span>) final function <span class="source_type">BOOL</span> NativeGetLoggedInUbiDotCom (  )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_NativeGetMSClientInitialized-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> NativeGetMSClientInitialized <span class="function_state"></span> <a href="../Source_r6gameservice/r6gsservers.html#376" class="small">Source code</a></h4>
+<div class="declaration">native(<span class="source_int">1267</span>) final function <span class="source_type">BOOL</span> NativeGetMSClientInitialized (  )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_NativeGetRegServerIntialized-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> NativeGetRegServerIntialized <span class="function_state"></span> <a href="../Source_r6gameservice/r6gsservers.html#389" class="small">Source code</a></h4>
+<div class="declaration">native(<span class="source_int">1275</span>) final function <span class="source_type">BOOL</span> NativeGetRegServerIntialized (  )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_NativeGetSeconds-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> NativeGetSeconds <span class="function_state"></span> <a href="../Source_r6gameservice/r6gsservers.html#354" class="small">Source code</a></h4>
+<div class="declaration">native(<span class="source_int">1203</span>) final function <span class="source_type">FLOAT</span> NativeGetSeconds (  )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_NativeGetServerRegistered-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> NativeGetServerRegistered <span class="function_state"></span> <a href="../Source_r6gameservice/r6gsservers.html#392" class="small">Source code</a></h4>
+<div class="declaration">native(<span class="source_int">1204</span>) final function <span class="source_type">BOOL</span> NativeGetServerRegistered (  )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_NativeGSClientPostMessage-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> NativeGSClientPostMessage <span class="function_state"></span> <a href="../Source_r6gameservice/r6gsservers.html#403" class="small">Source code</a></h4>
+<div class="declaration">native(<span class="source_int">1289</span>) final function <span class="source_type">BOOL</span> NativeGSClientPostMessage ( <span class="source_type"><a href="../r6gameservice/r6gsservers.html#EGSMESSAGE_ID" class="source">EGSMESSAGE_ID</a></span> eMessageID )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_NativeGSClientUpdateServerInfo-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> NativeGSClientUpdateServerInfo <span class="function_state"></span> <a href="../Source_r6gameservice/r6gsservers.html#404" class="small">Source code</a></h4>
+<div class="declaration">native(<span class="source_int">1293</span>) final function <span class="source_type">BOOL</span> NativeGSClientUpdateServerInfo (  )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_NativeInit-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> NativeInit <span class="function_state"></span> <a href="../Source_r6gameservice/r6gsservers.html#353" class="small">Source code</a></h4>
+<div class="declaration">native(<span class="source_int">1201</span>) final function <span class="source_type">BOOL</span> NativeInit ( <span class="source_type">string</span> szLocalBoundIp )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_NativeInitCDKey-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> NativeInitCDKey <span class="function_state"></span> <a href="../Source_r6gameservice/r6gsservers.html#370" class="small">Source code</a></h4>
+<div class="declaration">native(<span class="source_int">1259</span>) final function <span class="source_type">BOOL</span> NativeInitCDKey ( <span class="source_type">INT</span> iRSCDKeyPort, <span class="source_type">INT</span> iModCDKeyPort )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_NativeInitGSClient-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> NativeInitGSClient <span class="function_state"></span> <a href="../Source_r6gameservice/r6gsservers.html#402" class="small">Source code</a></h4>
+<div class="declaration">native(<span class="source_int">1288</span>) final function <span class="source_type">BOOL</span> NativeInitGSClient (  )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_NativeInitMSClient-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> NativeInitMSClient <span class="function_state"></span> <a href="../Source_r6gameservice/r6gsservers.html#382" class="small">Source code</a></h4>
+<div class="declaration">native(<span class="source_int">1234</span>) final function  NativeInitMSClient (  )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_NativeInitRegServer-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> NativeInitRegServer <span class="function_state"></span> <a href="../Source_r6gameservice/r6gsservers.html#360" class="small">Source code</a></h4>
+<div class="declaration">native(<span class="source_int">1240</span>) final function <span class="source_type">BOOL</span> NativeInitRegServer (  )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_NativeMSCLientJoinServer-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> NativeMSCLientJoinServer <span class="function_state"></span> <a href="../Source_r6gameservice/r6gsservers.html#391" class="small">Source code</a></h4>
+<div class="declaration">native(<span class="source_int">1277</span>) final function  NativeMSCLientJoinServer ( <span class="source_type">INT</span> iLobbyID, <span class="source_type">INT</span> iGroupID, <span class="source_type">string</span> <span class="source_type">szPassword</span> )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_NativeMSCLientLeaveServer-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> NativeMSCLientLeaveServer <span class="function_state"></span> <a href="../Source_r6gameservice/r6gsservers.html#385" class="small">Source code</a></h4>
+<div class="declaration">native(<span class="source_int">1272</span>) final function <span class="source_type">BOOL</span> NativeMSCLientLeaveServer (  )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_NativeMSClientReqAltInfo-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> NativeMSClientReqAltInfo <span class="function_state"></span> <a href="../Source_r6gameservice/r6gsservers.html#387" class="small">Source code</a></h4>
+<div class="declaration">native(<span class="source_int">1220</span>) final function  NativeMSClientReqAltInfo ( <span class="source_type">INT</span> iLobbyID, <span class="source_type">INT</span> iGroupID )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_NativeMSClientServerConnected-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> NativeMSClientServerConnected <span class="function_state"></span> <a href="../Source_r6gameservice/r6gsservers.html#415" class="small">Source code</a></h4>
+<div class="declaration">native(<span class="source_int">1354</span>) final function  NativeMSClientServerConnected ( <span class="source_type">INT</span> iLobbyID, <span class="source_type">INT</span> iGroupID )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_NativePingReq-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> NativePingReq <span class="function_state"></span> <a href="../Source_r6gameservice/r6gsservers.html#368" class="small">Source code</a></h4>
+<div class="declaration">native(<span class="source_int">1254</span>) final function  NativePingReq ( <span class="source_type">string</span> szSvrName, <span class="source_type">string</span> szIPAddress )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_NativePollCallbacks-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> NativePollCallbacks <span class="function_state"></span> <a href="../Source_r6gameservice/r6gsservers.html#355" class="small">Source code</a></h4>
+<div class="declaration">native(<span class="source_int">1205</span>) final function  NativePollCallbacks ( <span class="source_type">BOOL</span> _bMSClient, <span class="source_type">BOOL</span> _bCDKey, <span class="source_type">BOOL</span> _bRegServer, <span class="source_type">BOOL</span> <span class="source_type">_bGSClient</span> )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_NativeProcessAuthIdRequest-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> NativeProcessAuthIdRequest <span class="function_state"></span> <a href="../Source_r6gameservice/r6gsservers.html#434" class="small">Source code</a></h4>
+<div class="declaration">native(<span class="source_int">1217</span>) final function  NativeProcessAuthIdRequest ( <span class="source_type"><a href="../engine/controller.html" class="source">Controller</a></span> _ControllerList )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_NativeProcessIcmpPing-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> NativeProcessIcmpPing <span class="function_state"></span> <a href="../Source_r6gameservice/r6gsservers.html#411" class="small">Source code</a></h4>
+<div class="declaration">native(<span class="source_int">1298</span>) final function <span class="source_type">BOOL</span> NativeProcessIcmpPing ( <span class="source_type">string</span> _ServerIpAddress, out <span class="source_type">INT</span> piPingTime )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_NativeReceiveAltInfo-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> NativeReceiveAltInfo <span class="function_state"></span> <a href="../Source_r6gameservice/r6gsservers.html#357" class="small">Source code</a></h4>
+<div class="declaration">native(<span class="source_int">1237</span>) final function <span class="source_type">BOOL</span> NativeReceiveAltInfo (  )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_NativeReceiveServer-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> NativeReceiveServer <span class="function_state"></span> <a href="../Source_r6gameservice/r6gsservers.html#356" class="small">Source code</a></h4>
+<div class="declaration">native(<span class="source_int">1214</span>) final function <span class="source_type">BOOL</span> NativeReceiveServer (  )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_NativeReceiveValidation-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> NativeReceiveValidation <span class="function_state"></span> <a href="../Source_r6gameservice/r6gsservers.html#375" class="small">Source code</a></h4>
+<div class="declaration">native(<span class="source_int">1264</span>) final function  NativeReceiveValidation (  )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_NativeRefreshServer-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> NativeRefreshServer <span class="function_state"></span> <a href="../Source_r6gameservice/r6gsservers.html#386" class="small">Source code</a></h4>
+<div class="declaration">native(<span class="source_int">1255</span>) final function  NativeRefreshServer ( <span class="source_type">INT</span> iIdx )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_NativeRegisterServer-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> NativeRegisterServer <span class="function_state"></span> <a href="../Source_r6gameservice/r6gsservers.html#363" class="small">Source code</a></h4>
+<div class="declaration">native(<span class="source_int">1243</span>) final function  NativeRegisterServer (  )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_NativeRegServerGetLobbies-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> NativeRegServerGetLobbies <span class="function_state"></span> <a href="../Source_r6gameservice/r6gsservers.html#362" class="small">Source code</a></h4>
+<div class="declaration">native(<span class="source_int">1242</span>) final function  NativeRegServerGetLobbies (  )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_NativeRegServerMemberJoin-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> NativeRegServerMemberJoin <span class="function_state"></span> <a href="../Source_r6gameservice/r6gsservers.html#378" class="small">Source code</a></h4>
+<div class="declaration">native(<span class="source_int">1269</span>) final function  NativeRegServerMemberJoin ( <span class="source_type">string</span> szUbiUserID )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_NativeRegServerMemberLeave-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> NativeRegServerMemberLeave <span class="function_state"></span> <a href="../Source_r6gameservice/r6gsservers.html#379" class="small">Source code</a></h4>
+<div class="declaration">native(<span class="source_int">1270</span>) final function  NativeRegServerMemberLeave ( <span class="source_type">string</span> szUbiUserID )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_NativeRegServerRouterLogin-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> NativeRegServerRouterLogin <span class="function_state"></span> <a href="../Source_r6gameservice/r6gsservers.html#361" class="small">Source code</a></h4>
+<div class="declaration">native(<span class="source_int">1241</span>) final function  NativeRegServerRouterLogin (  )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_NativeRegServerServerClose-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> NativeRegServerServerClose <span class="function_state"></span> <a href="../Source_r6gameservice/r6gsservers.html#388" class="small">Source code</a></h4>
+<div class="declaration">native(<span class="source_int">1274</span>) final function  NativeRegServerServerClose (  )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_NativeRegServerShutDown-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> NativeRegServerShutDown <span class="function_state"></span> <a href="../Source_r6gameservice/r6gsservers.html#390" class="small">Source code</a></h4>
+<div class="declaration">native(<span class="source_int">1276</span>) final function  NativeRegServerShutDown (  )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_NativeRequestMSList-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> NativeRequestMSList <span class="function_state"></span> <a href="../Source_r6gameservice/r6gsservers.html#381" class="small">Source code</a></h4>
+<div class="declaration">native(<span class="source_int">1235</span>) final function  NativeRequestMSList (  )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_NativeRouterDisconnect-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> NativeRouterDisconnect <span class="function_state"></span> <a href="../Source_r6gameservice/r6gsservers.html#364" class="small">Source code</a></h4>
+<div class="declaration">native(<span class="source_int">1244</span>) final function  NativeRouterDisconnect (  )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_NativeServerLogin-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> NativeServerLogin <span class="function_state"></span> <a href="../Source_r6gameservice/r6gsservers.html#365" class="small">Source code</a></h4>
+<div class="declaration">native(<span class="source_int">1245</span>) final function  NativeServerLogin (  )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_NativeServerRoundFinish-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> NativeServerRoundFinish <span class="function_state"></span> <a href="../Source_r6gameservice/r6gsservers.html#409" class="small">Source code</a></h4>
+<div class="declaration">native(<span class="source_int">1295</span>) final function  NativeServerRoundFinish (  )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_NativeServerRoundStart-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> NativeServerRoundStart <span class="function_state"></span> <a href="../Source_r6gameservice/r6gsservers.html#408" class="small">Source code</a></h4>
+<div class="declaration">native(<span class="source_int">1294</span>) final function  NativeServerRoundStart ( <span class="source_type">INT</span> uiMode )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_NativeSetMatchResult-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> NativeSetMatchResult <span class="function_state"></span> <a href="../Source_r6gameservice/r6gsservers.html#410" class="small">Source code</a></h4>
+<div class="declaration">native(<span class="source_int">1296</span>) final function  NativeSetMatchResult ( <span class="source_type">string</span> szUbiUserID, <span class="source_type">INT</span> iField, <span class="source_type">INT</span> iValue )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_NativeUnInitCDKey-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> NativeUnInitCDKey <span class="function_state"></span> <a href="../Source_r6gameservice/r6gsservers.html#371" class="small">Source code</a></h4>
+<div class="declaration">native(<span class="source_int">1260</span>) final function  NativeUnInitCDKey (  )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_NativeUnInitMSClient-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> NativeUnInitMSClient <span class="function_state"></span> <a href="../Source_r6gameservice/r6gsservers.html#383" class="small">Source code</a></h4>
+<div class="declaration">native(<span class="source_int">1249</span>) final function <span class="source_type">BOOL</span> NativeUnInitMSClient (  )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_NativeUpdateServer-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> NativeUpdateServer <span class="function_state"></span> <a href="../Source_r6gameservice/r6gsservers.html#367" class="small">Source code</a></h4>
+<div class="declaration">native(<span class="source_int">1250</span>) final function  NativeUpdateServer (  )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_OnSameSubNet-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> OnSameSubNet <span class="function_state"></span> <a href="../Source_r6gameservice/r6gsservers.html#428" class="small">Source code</a></h4>
+<div class="declaration">native(<span class="source_int">1313</span>) final function <span class="source_type">BOOL</span> OnSameSubNet ( <span class="source_type">String</span> szIPAddr )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_PlayerIsInIDList-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> PlayerIsInIDList <span class="function_state"></span> <a href="../Source_r6gameservice/r6gsservers.html#395" class="small">Source code</a></h4>
+<div class="declaration">native(<span class="source_int">1239</span>) final function <span class="source_type">BOOL</span> PlayerIsInIDList ( <span class="source_type">string</span> szAuthID, <span class="source_type">string</span> szIPAddr, <span class="source_type">BOOL</span> bProcessMod )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ProcessInternetSrv-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> ProcessInternetSrv <span class="function_state"></span> <a href="../Source_r6gameservice/r6gsservers.html#1508" class="small">Source code</a></h4>
+<div class="declaration"> function  ProcessInternetSrv ( <span class="source_type"><a href="../r6abstract/r6abstractgameinfo.html" class="source">R6AbstractGameInfo</a></span> _GameInfo, <span class="source_type"><a href="../engine/levelinfo.html" class="source">LevelInfo</a></span> _Level) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ProcessJoinServerRequest-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> ProcessJoinServerRequest <span class="function_state"></span> <a href="../Source_r6gameservice/r6gsservers.html#949" class="small">Source code</a></h4>
+<div class="declaration"> function  ProcessJoinServerRequest ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ProcessMSClientInitRequest-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> ProcessMSClientInitRequest <span class="function_state"></span> <a href="../Source_r6gameservice/r6gsservers.html#651" class="small">Source code</a></h4>
+<div class="declaration"> function  ProcessMSClientInitRequest ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ProcessPC_CDKeyRequest-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> ProcessPC_CDKeyRequest <span class="function_state"></span> <a href="../Source_r6gameservice/r6gsservers.html#1587" class="small">Source code</a></h4>
+<div class="declaration"> function  ProcessPC_CDKeyRequest ( <span class="source_type"><a href="../r6abstract/r6abstractgameinfo.html" class="source">R6AbstractGameInfo</a></span> _GameInfo, 
+                                <span class="source_type"><a href="../engine/levelinfo.html" class="source">LevelInfo</a></span> _Level, 
+                                OUT <span class="source_type"><a href="../engine/playercontroller.html" class="source">PlayerController</a></span> _aPlayerController, 
+                                <span class="source_type">bool</span> bProcessMod) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ProcessRegServerGetLobbiesRequest-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> ProcessRegServerGetLobbiesRequest <span class="function_state"></span> <a href="../Source_r6gameservice/r6gsservers.html#761" class="small">Source code</a></h4>
+<div class="declaration"> function  ProcessRegServerGetLobbiesRequest ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ProcessRegServerLoginRequest-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> ProcessRegServerLoginRequest <span class="function_state"></span> <a href="../Source_r6gameservice/r6gsservers.html#855" class="small">Source code</a></h4>
+<div class="declaration"> function  ProcessRegServerLoginRequest ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ProcessRegServerLoginRouterRequest-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> ProcessRegServerLoginRouterRequest <span class="function_state"></span> <a href="../Source_r6gameservice/r6gsservers.html#705" class="small">Source code</a></h4>
+<div class="declaration"> function  ProcessRegServerLoginRouterRequest ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ProcessRegServerRegOnLobbyRequest-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> ProcessRegServerRegOnLobbyRequest <span class="function_state"></span> <a href="../Source_r6gameservice/r6gsservers.html#807" class="small">Source code</a></h4>
+<div class="declaration"> function  ProcessRegServerRegOnLobbyRequest ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ProcessRegServerUpdateRequest-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> ProcessRegServerUpdateRequest <span class="function_state"></span> <a href="../Source_r6gameservice/r6gsservers.html#902" class="small">Source code</a></h4>
+<div class="declaration"> function  ProcessRegServerUpdateRequest ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_RefreshOneServer-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> RefreshOneServer <span class="function_state"></span> <a href="../Source_r6gameservice/r6gsservers.html#513" class="small">Source code</a></h4>
+<div class="declaration"> function  RefreshOneServer ( <span class="source_type">INT</span> <span class="source_type">sortedListIdx</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_RefreshServers-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> RefreshServers <span class="function_state"></span> <a href="../Source_r6gameservice/r6gsservers.html#1250" class="small">Source code</a></h4>
+<div class="declaration"> function  RefreshServers ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_RemoveFromIDList-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> RemoveFromIDList <span class="function_state"></span> <a href="../Source_r6gameservice/r6gsservers.html#397" class="small">Source code</a></h4>
+<div class="declaration">native(<span class="source_int">1290</span>) final function  RemoveFromIDList ( <span class="source_type">INT</span> iIdx )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_RequestGSCDKeyActID-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> RequestGSCDKeyActID <span class="function_state"></span> <a href="../Source_r6gameservice/r6gsservers.html#429" class="small">Source code</a></h4>
+<div class="declaration">native(<span class="source_int">1226</span>) final function  RequestGSCDKeyActID (  )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_RequestGSCDKeyAuthID-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> RequestGSCDKeyAuthID <span class="function_state"></span> <a href="../Source_r6gameservice/r6gsservers.html#431" class="small">Source code</a></h4>
+<div class="declaration">native(<span class="source_int">1218</span>) final function  RequestGSCDKeyAuthID (  )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_RequestModCDKeyProcess-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> RequestModCDKeyProcess <span class="function_state"></span> <a href="../Source_r6gameservice/r6gsservers.html#1934" class="small">Source code</a></h4>
+<div class="declaration"> function  RequestModCDKeyProcess ( <span class="source_type">BOOL</span> _bRequestAS) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ResetAuthId-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> ResetAuthId <span class="function_state"></span> <a href="../Source_r6gameservice/r6gsservers.html#426" class="small">Source code</a></h4>
+<div class="declaration">native(<span class="source_int">1309</span>) final function  ResetAuthId (  )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_SaveInfo-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> SaveInfo <span class="function_state"></span> <a href="../Source_r6gameservice/r6gsservers.html#1990" class="small">Source code</a></h4>
+<div class="declaration"> function  SaveInfo ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_SetCDKeyInitialised-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> SetCDKeyInitialised <span class="function_state"></span> <a href="../Source_r6gameservice/r6gsservers.html#422" class="small">Source code</a></h4>
+<div class="declaration">native(<span class="source_int">1265</span>) final function  SetCDKeyInitialised ( <span class="source_type">BOOL</span> bCDKeyInitialised )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_SetGameServiceRequestState-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> SetGameServiceRequestState <span class="function_state"></span> <a href="../Source_r6gameservice/r6gsservers.html#418" class="small">Source code</a></h4>
+<div class="declaration">native(<span class="source_int">1246</span>) final function  SetGameServiceRequestState ( <span class="source_type"><a href="../r6gameservice/r6gsservers.html#ERegServerRequestState" class="source">ERegServerRequestState</a></span> eRegServerState )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_SetGlobalIDToString-" class="hidden"></a><img src="../img_event.gif" alt="" title="event" /> SetGlobalIDToString <span class="function_state"></span> <a href="../Source_r6gameservice/r6gsservers.html#1805" class="small">Source code</a></h4>
+<div class="declaration"> event  SetGlobalIDToString ( <span class="source_type">BYTE</span> _globalID[K_GlobalID_size]) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_SetGSClientComInterface-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> SetGSClientComInterface <span class="function_state"></span> <a href="../Source_r6gameservice/r6gsservers.html#412" class="small">Source code</a></h4>
+<div class="declaration">native(<span class="source_int">1299</span>) final function <span class="source_type">BOOL</span> SetGSClientComInterface (  )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_SetGSGameState-" class="hidden"></a><img src="../img_event.gif" alt="" title="event" /> SetGSGameState <span class="function_state"></span> <a href="../Source_r6gameservice/r6gsservers.html#1816" class="small">Source code</a></h4>
+<div class="declaration"> event  SetGSGameState ( <span class="source_type"><a href="../r6gameservice/r6gsservers.html#EGSGameState" class="source">EGSGameState</a></span> eNewGameState) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_SetLastServerQueried-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> SetLastServerQueried <span class="function_state"></span> <a href="../Source_r6gameservice/r6gsservers.html#432" class="small">Source code</a></h4>
+<div class="declaration">native(<span class="source_int">1253</span>) final function  SetLastServerQueried ( <span class="source_type">string</span> szIPAddress )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_SetRegisteredWithMS-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> SetRegisteredWithMS <span class="function_state"></span> <a href="../Source_r6gameservice/r6gsservers.html#420" class="small">Source code</a></h4>
+<div class="declaration">native(<span class="source_int">1251</span>) final function  SetRegisteredWithMS ( <span class="source_type">BOOL</span> bRegisteredWithMS )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_SetUbiAccount-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> SetUbiAccount <span class="function_state"></span> <a href="../Source_r6gameservice/r6gsservers.html#1076" class="small">Source code</a></h4>
+<div class="declaration"> function  SetUbiAccount ( <span class="source_type">string</span> szUserID, <span class="source_type">string</span> <span class="source_type">szPassword</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_StartAutoLogin-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> StartAutoLogin <span class="function_state"></span> <a href="../Source_r6gameservice/r6gsservers.html#1411" class="small">Source code</a></h4>
+<div class="declaration"> function  StartAutoLogin ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_TestRegServerLobbyDisconnect-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> TestRegServerLobbyDisconnect <span class="function_state"></span> <a href="../Source_r6gameservice/r6gsservers.html#414" class="small">Source code</a></h4>
+<div class="declaration">native(<span class="source_int">1353</span>) final function  TestRegServerLobbyDisconnect (  )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_UnInitializeMSClient-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> UnInitializeMSClient <span class="function_state"></span> <a href="../Source_r6gameservice/r6gsservers.html#1060" class="small">Source code</a></h4>
+<div class="declaration"> function <span class="source_type">BOOL</span> UnInitializeMSClient ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_UpdateServerRegServer-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> UpdateServerRegServer <span class="function_state"></span> <a href="../Source_r6gameservice/r6gsservers.html#1132" class="small">Source code</a></h4>
+<div class="declaration"> function  UpdateServerRegServer ( <span class="source_type"><a href="../engine/gameinfo.html" class="source">GameInfo</a></span> pGameInfo, <span class="source_type"><a href="../engine/levelinfo.html" class="source">LevelInfo</a></span> <span class="source_type">pLevel</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_UpdateServerUbiCom-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> UpdateServerUbiCom <span class="function_state"></span> <a href="../Source_r6gameservice/r6gsservers.html#1139" class="small">Source code</a></h4>
+<div class="declaration"> function  UpdateServerUbiCom ( <span class="source_type"><a href="../engine/gameinfo.html" class="source">GameInfo</a></span> pGameInfo, <span class="source_type"><a href="../engine/levelinfo.html" class="source">LevelInfo</a></span> <span class="source_type">pLevel</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+
+
+<br />
+
+
+<table class="title">
+<tr>
+	<th class="title">Defaultproperties</th>
+</tr>
+</table>
+<br />
+<div class="source"><table class="source"><tr><td class="source"><pre class="source">defaultproperties
+{
+     m_ucActivationID(<span class="source_int">0</span>)=<span class="source_int">148</span>
+     m_ucActivationID(<span class="source_int">1</span>)=<span class="source_int">96</span>
+     m_ucActivationID(<span class="source_int">2</span>)=<span class="source_int">108</span>
+     m_ucActivationID(<span class="source_int">3</span>)=<span class="source_int">149</span>
+     m_ucActivationID(<span class="source_int">4</span>)=<span class="source_int">96</span>
+     m_ucActivationID(<span class="source_int">5</span>)=<span class="source_int">184</span>
+     m_ucActivationID(<span class="source_int">6</span>)=<span class="source_int">73</span>
+     m_ucActivationID(<span class="source_int">7</span>)=<span class="source_int">122</span>
+     m_ucActivationID(<span class="source_int">8</span>)=<span class="source_int">191</span>
+     m_ucActivationID(<span class="source_int">9</span>)=<span class="source_int">242</span>
+     m_ucActivationID(<span class="source_int">10</span>)=<span class="source_int">76</span>
+     m_ucActivationID(<span class="source_int">11</span>)=<span class="source_int">159</span>
+     m_ucActivationID(<span class="source_int">12</span>)=<span class="source_int">201</span>
+     m_ucActivationID(<span class="source_int">13</span>)=<span class="source_int">145</span>
+     m_ucActivationID(<span class="source_int">14</span>)=<span class="source_int">66</span>
+     m_ucActivationID(<span class="source_int">15</span>)=<span class="source_int">188</span>
+     m_iRSCDKeyPort=<span class="source_int">5777</span>
+     m_iModCDKeyPort=<span class="source_int">10777</span>
+     m_iRegSvrPort=<span class="source_int">6777</span>
+     m_bValidActivationID=True
+     m_bUpdateServer=True
+     m_fMaxTimeForResponse=<span class="source_int">10.000000</span>
+     m_szGSVersion=<span class="source_string">"393"</span>
+     m_szUbiGuestAcct=<span class="source_string">"Ubi_Guest"</span>
+     m_szUbiRemFileURL=<span class="source_string">"http://gsconnect.ubisoft.com/gsinit.php?user=%s&dp=%s"</span>
+     m_szUbiHomePage=<span class="source_string">"http://www.ubi.com/login/newuser?l=%s"</span>
+     m_szSavedPwd=<span class="source_string">"bc2333"</span>
+     m_szGSInitFileName=<span class="source_string">"./GSRouters.dat"</span>
+     m_iSelSrvIndex=-<span class="source_int">1</span>
+     m_bSavePWSave=True
+     m_bAutoLISave=True
+     m_Filters=(bDeathMatch=True,bTeamDeathMatch=True,bDisarmBomb=True,bHostageRescueAdv=True,bEscortPilot=True,bMission=True,bTerroristHunt=True,bTerroristHuntAdv=True,bScatteredHuntAdv=True,bCaptureTheEnemyAdv=True,bKamikaze=True,bHostageRescueCoop=True,bDefend=True,bRecon=True,bSquadDeathMatch=True,bSquadTeamDeathMatch=True,bDebugGameMode=True)
+     m_szUserID=<span class="source_string">"theorem"</span>
+}
+</pre></td></tr></table></div>
+
+
+
+<hr />
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../r6gameservice/r6gameservice-overview.html">Package</a></td>
+	<td class="header_hilight">Class</td>
+	<td class="header"><a href="../Source_r6gameservice/r6gsservers.html">Source</a></td>
+	<td class="header"><a class="header" href="../classtree.html#R6GSServers">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../r6gameservice/evilpatchservice.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../r6gameservice/r6lanservers.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+
+<div class="stats">Creation time: mar. 26/5/2026 18:33:11.203 - Created with <a href="http://wiki.beyondunreal.com/wiki/UnCodeX" target="_blank">UnCodeX</a></div>
+
+</body>
+</html>

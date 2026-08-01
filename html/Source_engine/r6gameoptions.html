@@ -1,0 +1,358 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+	<title>UnCodeX - Source: engine.R6GameOptions</title>
+	<meta name="Generator" content="UnCodeX 241" />
+	<link rel="stylesheet" href="../DocStyle2.css" type="text/css" title="Original Purple" />
+	<link rel="alternative stylesheet" href="../DocStyle2-blue.css" type="text/css" title="Blue" />
+	<link rel="alternative stylesheet" href="../DocStyle2-red.css" type="text/css" title="Red" />
+	<!--[if IE]>
+	<link rel="stylesheet" href="../DocStyle2-msie.css" type="text/css" />
+	<![endif]-->
+	<script src="../styleswitcher.js" type="text/javascript"></script>
+</head>
+<body>
+
+<div class="header">
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../engine/engine-overview.html">Package</a></td>
+	<td class="header"><a href="../engine/r6gameoptions.html">Class</a></td>
+	<td class="header_hilight">Source</td>
+	<td class="header"><a class="header" href="../classtree.html#R6GameOptions">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../Source_engine/r6gamemenucom.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../Source_engine/r6glowlight.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html#Source_engine/r6gameoptions.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+</div>
+<div class="spacer"></div>
+
+<h1><a href="../engine/engine-overview.html">engine</a>.<a href="../engine/r6gameoptions.html">R6GameOptions</a></h1>
+<br />
+<div class="source"><table class="source"><tr><td class="source_lineno"><span class="source_lineno">00001<br />00002<br />00003<br />00004<br />00005<br />00006<br />00007<br />00008<br />00009<br />00010<br />00011<br />00012<br />00013<br />00014<br />00015<br />00016<br />00017<br />00018<br />00019<br />00020<br />
+00021<br />00022<br />00023<br />00024<br />00025<br />00026<br />00027<br />00028<br />00029<br />00030<br />00031<br />00032<br />00033<br />00034<br />00035<br />00036<br />00037<br />00038<br />00039<br />00040<br />
+00041<br />00042<br />00043<br />00044<br />00045<br />00046<br />00047<br />00048<br />00049<br />00050<br />00051<br />00052<br />00053<br />00054<br />00055<br />00056<br />00057<br />00058<br />00059<br />00060<br />
+00061<br />00062<br />00063<br />00064<br />00065<br />00066<br />00067<br />00068<br />00069<br />00070<br />00071<br />00072<br />00073<br />00074<br />00075<br />00076<br />00077<br />00078<br />00079<br />00080<br />
+00081<br />00082<br />00083<br />00084<br />00085<br />00086<br />00087<br />00088<br />00089<br />00090<br />00091<br />00092<br />00093<br />00094<br />00095<br />00096<br />00097<br />00098<br />00099<br />00100<br />
+00101<br />00102<br />00103<br />00104<br />00105<br />00106<br />00107<br />00108<br />00109<br />00110<br />00111<br />00112<br />00113<br />00114<br />00115<br />00116<br />00117<br />00118<br />00119<br />00120<br />
+00121<br />00122<br />00123<br />00124<br />00125<br />00126<br />00127<br />00128<br />00129<br />00130<br />00131<br />00132<br />00133<br />00134<br />00135<br />00136<br />00137<br />00138<br />00139<br />00140<br />
+00141<br />00142<br />00143<br />00144<br />00145<br />00146<br />00147<br />00148<br />00149<br />00150<br />00151<br />00152<br />00153<br />00154<br />00155<br />00156<br />00157<br />00158<br />00159<br />00160<br />
+00161<br />00162<br />00163<br />00164<br />00165<br />00166<br />00167<br />00168<br />00169<br />00170<br />00171<br />00172<br />00173<br />00174<br />00175<br />00176<br />00177<br />00178<br />00179<br />00180<br />
+00181<br />00182<br />00183<br />00184<br />00185<br />00186<br />00187<br />00188<br />00189<br />00190<br />00191<br />00192<br />00193<br />00194<br />00195<br />00196<br />00197<br />00198<br />00199<br />00200<br />
+00201<br />00202<br />00203<br />00204<br />00205<br />00206<br />00207<br />00208<br />00209<br />00210<br />00211<br />00212<br />00213<br />00214<br />00215<br />00216<br />00217<br />00218<br />00219<br />00220<br />
+00221<br />00222<br />00223<br />00224<br />00225<br />00226<br />00227<br />00228<br />00229<br />00230<br />00231<br />00232<br />00233<br />00234<br />00235<br />00236<br />00237<br />00238<br />00239<br />00240<br />
+00241<br />00242<br />00243<br />00244<br />00245<br />00246<br />00247<br />00248<br />00249<br />00250<br />00251<br />00252<br />00253<br />00254<br />00255<br />00256<br />00257<br />00258<br />00259<br />00260<br />
+00261<br />00262<br />00263<br />00264<br />00265<br />00266<br />00267<br />00268<br />00269<br />00270<br />00271<br />00272<br />00273<br />00274<br />00275<br />00276<br />00277<br />00278<br />00279<br />00280<br />
+00281<br />00282<br />00283<br />00284<br />00285<br />00286</span></td>
+<td class="source"><pre class="source"><a name="1"></a><span class="source_comment">//=============================================================================
+</span><a name="2"></a><span class="source_comment">//  R6GameOptions.uc : This class is in charge on keeping the different game options
+</span><a name="3"></a><span class="source_comment">//  Copyright 2002 Ubi Soft, Inc. All Rights Reserved.
+</span><a name="4"></a><span class="source_comment">//
+</span><a name="5"></a><span class="source_comment">//  Revision history:
+</span><a name="6"></a><span class="source_comment">//    2002/05/27 * Created by Alexandre Dionne
+</span><a name="7"></a><span class="source_comment">//    2002/06/13 * Added graphic options
+</span><a name="8"></a><span class="source_comment">//=============================================================================
+</span><a name="9"></a>
+<a name="10"></a><span class="source_type">class</span> <span class="source_type"><a href="../engine/r6gameoptions.html" class="source">R6GameOptions</a></span> extends <span class="source_type"><a href="../core/object.html" class="source">Object</a></span>
+<a name="11"></a>    config(<span class="source_type">USER</span>)
+<a name="12"></a>    native;
+<a name="13"></a>
+<a name="14"></a><span class="source_comment">//=============================================================================
+</span><a name="15"></a><span class="source_comment">// NON-CONFIG VARIABLES
+</span><a name="16"></a><span class="source_comment">//=============================================================================
+</span><a name="17"></a>var <span class="source_type">BOOL</span> EAXCompatible;	<span class="source_comment">// if the sound card support EAX
+</span><a name="18"></a>var <span class="source_type">BOOL</span> m_bChangeResolution;
+<a name="19"></a><span class="source_comment">//#ifdefR6PUNKBUSTER
+</span><a name="20"></a>var <span class="source_type">BOOL</span> m_bPBInstalled;   <span class="source_comment">// if PB is installed
+</span><a name="21"></a><span class="source_comment">//#endif
+</span><a name="22"></a>
+<a name="23"></a><span class="source_comment">// ========================================================
+</span><a name="24"></a><span class="source_comment">// ========================================================
+</span><a name="25"></a><span class="source_comment">// NOTE: IF YOU ADD A NEW VARIABLE CONFIG IN THIS CLASS, AND ITS AN OPTIONS
+</span><a name="26"></a><span class="source_comment">//	     DON`T FORGET TO PUT THE DEFAULT VALUE IN DEFAULT.INI FILE
+</span><a name="27"></a><span class="source_comment">// ========================================================
+</span><a name="28"></a><span class="source_comment">// ========================================================
+</span><a name="29"></a>var config <span class="source_type"><a href="../core/object.html#Color" class="source">color</a></span>  m_reticuleFriendColour;	<span class="source_comment">// when the reticule is on a friend
+</span><a name="30"></a>var config <span class="source_type">string</span> MPAutoSelection;			<span class="source_comment">// auto selection in MP (force to GREEN, RED or nothing)
+</span><a name="31"></a>var config <span class="source_type">BOOL</span>   SplashScreen;				<span class="source_comment">// for german version
+</span><a name="32"></a>var config <span class="source_type">FLOAT</span>  CountDownDelayTime;       <span class="source_comment">// Time between all player are ready and the beginning of the round
+</span><a name="33"></a>
+<a name="34"></a><span class="source_comment">//=============================================================================
+</span><a name="35"></a><span class="source_comment">// GAME
+</span><a name="36"></a><span class="source_comment">//=============================================================================
+</span><a name="37"></a>var <span class="source_type">bool</span> UnlimitedPractice;					<span class="source_comment">// Unlimited Practice
+</span><a name="38"></a>var config <span class="source_type">bool</span> AlwaysRun;					<span class="source_comment">// Automatically makes the operative run whenever the player gives the move command
+</span><a name="39"></a>var config <span class="source_type">bool</span> InvertMouse;				<span class="source_comment">// When ON, if the mouse is pushed the targeting reticule will go down, and if the mouse is pulled, the targeting reticule will go up.
+</span><a name="40"></a>var config <span class="source_type">bool</span> Hide3DView;                 <span class="source_comment">// always have the 3d View active in the planning
+</span><a name="41"></a>var config <span class="source_type">BOOL</span> PopUpLoadPlan;				<span class="source_comment">// Enable/disable pop-up load planning
+</span><a name="42"></a>var config <span class="source_type">BOOL</span> PopUpQuickPlay;				<span class="source_comment">// Enable/disable Quick play pop-up
+</span><a name="43"></a>var config <span class="source_type">FLOAT</span> MouseSensitivity;			<span class="source_comment">// Sets the amount of movement the mouse gives to the targeting reticule.
+</span><a name="44"></a>var config <span class="source_type">INT</span> AutoTargetSlider;			<span class="source_comment">// 0= off, 1=?, 2=?, 3=? TODO!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+</span><a name="45"></a>
+<a name="46"></a><span class="source_comment">//=============================================================================
+</span><a name="47"></a><span class="source_comment">// SOUND
+</span><a name="48"></a><span class="source_comment">//=============================================================================
+</span><a name="49"></a>enum <span class="source_type"><a href="../engine/r6gameoptions.html#EGameOptionsAudioVirtual" class="source">EGameOptionsAudioVirtual</a></span>
+<a name="50"></a>{
+<a name="51"></a>    eAV_High,
+<a name="52"></a>    eAV_Low,
+<a name="53"></a>    eAV_None
+<a name="54"></a>};
+<a name="55"></a>
+<a name="56"></a>var config <span class="source_type">INT</span>	AmbientVolume;				<span class="source_comment">// the ambient volume
+</span><a name="57"></a>var config <span class="source_type">INT</span>	VoicesVolume;				<span class="source_comment">// the voices volume
+</span><a name="58"></a>var config <span class="source_type">INT</span>	MusicVolume;				<span class="source_comment">// the music volume
+</span><a name="59"></a>var config <span class="source_type">INT</span>  SndQuality;					<span class="source_comment">// the sound quality
+</span><a name="60"></a>var config <span class="source_type">BOOL</span> SndHardware;				<span class="source_comment">// 3D Audio Hardware Acceleration
+</span><a name="61"></a>var config <span class="source_type">BOOL</span> EAX;						<span class="source_comment">// EAX
+</span><a name="62"></a>var config <span class="source_type"><a href="../engine/r6gameoptions.html#EGameOptionsAudioVirtual" class="source">EGameOptionsAudioVirtual</a></span> AudioVirtual;	<span class="source_comment">// the audio virtualization
+</span><a name="63"></a>
+<a name="64"></a><span class="source_comment">//=============================================================================
+</span><a name="65"></a><span class="source_comment">// MULTI
+</span><a name="66"></a><span class="source_comment">//=============================================================================
+</span><a name="67"></a>enum <span class="source_type"><a href="../engine/r6gameoptions.html#EGameOptionsNetSpeed" class="source">EGameOptionsNetSpeed</a></span>
+<a name="68"></a>{
+<a name="69"></a>	eNS_T1,
+<a name="70"></a>	eNS_T3,
+<a name="71"></a>	eNS_Cable,
+<a name="72"></a>	eNS_ADSL,
+<a name="73"></a>	eNS_Modem
+<a name="74"></a>};
+<a name="75"></a>
+<a name="76"></a>var config <span class="source_type"><a href="../engine/r6gameoptions.html#EGameOptionsNetSpeed" class="source">EGameOptionsNetSpeed</a></span> NetSpeed;	<span class="source_comment">// The speed connection
+</span><a name="77"></a>var config <span class="source_type">string</span> CharacterName;			<span class="source_comment">// multiplayer char name
+</span><a name="78"></a>var config <span class="source_type">INT</span>    Gender;					<span class="source_comment">// gender of the player (a int for Button ID)
+</span><a name="79"></a>var config <span class="source_type">string</span> ArmPatchTexture;			<span class="source_comment">// Skins, ArmPatches, etc.
+</span><a name="80"></a>var config <span class="source_type">INT</span>    ChangeNameTime;           <span class="source_comment">// Time between a change name
+</span><a name="81"></a>var config <span class="source_type">BOOL</span>	  ActivePunkBuster;			<span class="source_comment">// Active PunkBuster in client
+</span><a name="82"></a>var config <span class="source_type">BOOL</span>	  WantTriggerLag;           <span class="source_comment">// Activate Trigger Lag
+</span><a name="83"></a>
+<a name="84"></a><span class="source_comment">//=============================================================================
+</span><a name="85"></a><span class="source_comment">// GRAPHIC
+</span><a name="86"></a><span class="source_comment">//=============================================================================
+</span><a name="87"></a>enum <span class="source_type"><a href="../engine/r6gameoptions.html#EGameOptionsGraphicLevel" class="source">EGameOptionsGraphicLevel</a></span>
+<a name="88"></a>{
+<a name="89"></a>    eGL_Low,
+<a name="90"></a>    eGL_Medium,
+<a name="91"></a>    eGL_High
+<a name="92"></a>};
+<a name="93"></a>
+<a name="94"></a>enum <span class="source_type"><a href="../engine/r6gameoptions.html#EGameOptionsEffectLevel" class="source">EGameOptionsEffectLevel</a></span>
+<a name="95"></a>{
+<a name="96"></a>    eEL_None,
+<a name="97"></a>    eEL_Low,
+<a name="98"></a>    eEL_Medium,
+<a name="99"></a>    eEL_High
+<a name="100"></a>};
+<a name="101"></a>
+<a name="102"></a><span class="source_comment">//=============================================================================
+</span><a name="103"></a><span class="source_comment">// HUD FILTERS
+</span><a name="104"></a><span class="source_comment">//=============================================================================
+</span><a name="105"></a>var config <span class="source_type">bool</span>   HUDShowCharacterInfo;
+<a name="106"></a>var config <span class="source_type">bool</span>   HUDShowCurrentTeamInfo;
+<a name="107"></a>var config <span class="source_type">bool</span>   HUDShowOtherTeamInfo;
+<a name="108"></a>var config <span class="source_type">bool</span>   HUDShowWeaponInfo;
+<a name="109"></a>var config <span class="source_type">bool</span>   HUDShowFPWeapon;
+<a name="110"></a>var config <span class="source_type">bool</span>   HUDShowReticule;
+<a name="111"></a>var config <span class="source_type">bool</span>   HUDShowWaypointInfo;
+<a name="112"></a>var config <span class="source_type">bool</span>   HUDShowActionIcon;
+<a name="113"></a>var config <span class="source_type">BOOL</span>   HUDShowPlayersName;							<span class="source_comment">// show the teammates names
+</span><a name="114"></a>var config <span class="source_type">bool</span>   ShowRadar;                <span class="source_comment">// show radar in multiplayer
+</span><a name="115"></a>var config <span class="source_type"><a href="../core/object.html#Color" class="source">color</a></span>  HUDMPColor;
+<a name="116"></a>var config <span class="source_type"><a href="../core/object.html#Color" class="source">color</a></span>  HUDMPDarkColor;
+<a name="117"></a>
+<a name="118"></a><span class="source_comment">// Textures
+</span><a name="119"></a>var config <span class="source_type"><a href="../engine/r6gameoptions.html#EGameOptionsGraphicLevel" class="source">EGameOptionsGraphicLevel</a></span>     TextureDetail;
+<a name="120"></a>var config <span class="source_type"><a href="../engine/r6gameoptions.html#EGameOptionsGraphicLevel" class="source">EGameOptionsGraphicLevel</a></span>     LightmapDetail;
+<a name="121"></a>
+<a name="122"></a><span class="source_comment">// Character's LOD
+</span><a name="123"></a>var config <span class="source_type"><a href="../engine/r6gameoptions.html#EGameOptionsGraphicLevel" class="source">EGameOptionsGraphicLevel</a></span>     RainbowsDetail;
+<a name="124"></a>var config <span class="source_type"><a href="../engine/r6gameoptions.html#EGameOptionsGraphicLevel" class="source">EGameOptionsGraphicLevel</a></span>     HostagesDetail;
+<a name="125"></a>var config <span class="source_type"><a href="../engine/r6gameoptions.html#EGameOptionsGraphicLevel" class="source">EGameOptionsGraphicLevel</a></span>     TerrosDetail;
+<a name="126"></a>
+<a name="127"></a><span class="source_comment">// Character's shadow
+</span><a name="128"></a>var config <span class="source_type"><a href="../engine/r6gameoptions.html#EGameOptionsEffectLevel" class="source">EGameOptionsEffectLevel</a></span>      RainbowsShadowLevel;
+<a name="129"></a>var config <span class="source_type"><a href="../engine/r6gameoptions.html#EGameOptionsEffectLevel" class="source">EGameOptionsEffectLevel</a></span>      HostagesShadowLevel;
+<a name="130"></a>var config <span class="source_type"><a href="../engine/r6gameoptions.html#EGameOptionsEffectLevel" class="source">EGameOptionsEffectLevel</a></span>      TerrosShadowLevel;
+<a name="131"></a>
+<a name="132"></a><span class="source_comment">// Misc graphics
+</span><a name="133"></a>var config <span class="source_type">INT</span>							R6ScreenSizeX;
+<a name="134"></a>var config <span class="source_type">INT</span>							R6ScreenSizeY;
+<a name="135"></a>var config <span class="source_type">INT</span>							R6ScreenRefreshRate;
+<a name="136"></a>var config <span class="source_type">BOOL</span>                         AnimatedGeometry;
+<a name="137"></a>var config <span class="source_type">BOOL</span>                         HideDeadBodies;
+<a name="138"></a>var config <span class="source_type"><a href="../engine/r6gameoptions.html#EGameOptionsEffectLevel" class="source">EGameOptionsEffectLevel</a></span>      GoreLevel;
+<a name="139"></a>var config <span class="source_type"><a href="../engine/r6gameoptions.html#EGameOptionsEffectLevel" class="source">EGameOptionsEffectLevel</a></span>      DecalsDetail;
+<a name="140"></a>var config <span class="source_type">BOOL</span>                         ShowRefreshRates;
+<a name="141"></a>var config <span class="source_type">BOOL</span>                         LowDetailSmoke;
+<a name="142"></a>var config <span class="source_type">BOOL</span>                         AllowChangeResInGame;
+<a name="143"></a>
+<a name="144"></a><span class="source_comment">//=============================================================================
+</span><a name="145"></a><span class="source_comment">// PATCH SERVICE
+</span><a name="146"></a><span class="source_comment">//=============================================================================
+</span><a name="147"></a>
+<a name="148"></a>var config <span class="source_type">bool</span>							AutoPatchDownload;
+<a name="149"></a>
+<a name="150"></a>
+<a name="151"></a><span class="source_comment">//=========================================
+</span><a name="152"></a><span class="source_comment">// ResetGameToDefault: Reset the game options, use default.ini value
+</span><a name="153"></a><span class="source_comment">//=========================================
+</span><a name="154"></a>function ResetGameToDefault()
+<a name="155"></a>{
+<a name="156"></a>	ResetConfig(<span class="source_string">"AlwaysRun"</span>);				<span class="source_comment">// False
+</span><a name="157"></a>	ResetConfig(<span class="source_string">"InvertMouse"</span>);				<span class="source_comment">// False
+</span><a name="158"></a>    ResetConfig(<span class="source_string">"Hide3DView"</span>);              <span class="source_comment">// False
+</span><a name="159"></a>	ResetConfig(<span class="source_string">"MouseSensitivity"</span>);		<span class="source_comment">// 50
+</span><a name="160"></a>	ResetConfig(<span class="source_string">"AutoTargetSlider"</span>);		<span class="source_comment">// 0
+</span><a name="161"></a>	ResetConfig(<span class="source_string">"PopUpLoadPlan"</span>);			<span class="source_comment">// True
+</span><a name="162"></a>	ResetConfig(<span class="source_string">"PopUpQuickPlay"</span>);			<span class="source_comment">// True
+</span><a name="163"></a>}
+<a name="164"></a>
+<a name="165"></a><span class="source_comment">//=========================================
+</span><a name="166"></a><span class="source_comment">// ResetGameToDefault: Reset the game options, use default.ini value
+</span><a name="167"></a><span class="source_comment">//=========================================
+</span><a name="168"></a>function ResetSoundToDefault( <span class="source_type">BOOL</span> _bInGame)
+<a name="169"></a>{
+<a name="170"></a>	ResetConfig(<span class="source_string">"AmbientVolume"</span>);			<span class="source_comment">// 50
+</span><a name="171"></a>	ResetConfig(<span class="source_string">"MovementVolume"</span>);			<span class="source_comment">// 50
+</span><a name="172"></a>	ResetConfig(<span class="source_string">"VoicesVolume"</span>);			<span class="source_comment">// 50
+</span><a name="173"></a>	ResetConfig(<span class="source_string">"MusicVolume"</span>);				<span class="source_comment">// 50
+</span><a name="174"></a>	ResetConfig(<span class="source_string">"SndHardware"</span>);				<span class="source_comment">// False
+</span><a name="175"></a>	ResetConfig(<span class="source_string">"EAX"</span>);						<span class="source_comment">// False
+</span><a name="176"></a>	ResetConfig(<span class="source_string">"AudioVirtual"</span>);			<span class="source_comment">// eAV_None
+</span><a name="177"></a>
+<a name="178"></a>	if (!_bInGame)
+<a name="179"></a>	{
+<a name="180"></a>		ResetConfig(<span class="source_string">"SndQuality"</span>);			<span class="source_comment">// True -- HIGH
+</span><a name="181"></a>	}
+<a name="182"></a>}
+<a name="183"></a>
+<a name="184"></a><span class="source_comment">//=========================================
+</span><a name="185"></a><span class="source_comment">// ResetGraphicsToDefault: Reset the graphics options, use default.ini value
+</span><a name="186"></a><span class="source_comment">//=========================================
+</span><a name="187"></a>function ResetGraphicsToDefault( <span class="source_type">BOOL</span> _bInGame)
+<a name="188"></a>{
+<a name="189"></a>	ResetConfig(<span class="source_string">"R6ScreenSizeX"</span>);			<span class="source_comment">// 800 x
+</span><a name="190"></a>	ResetConfig(<span class="source_string">"R6ScreenSizeY"</span>);			<span class="source_comment">// 600
+</span><a name="191"></a>    ResetConfig(<span class="source_string">"R6ScreenRefreshRate"</span>);     <span class="source_comment">// 60
+</span><a name="192"></a>	ResetConfig(<span class="source_string">"TextureDetail"</span>);			<span class="source_comment">// eGL_High
+</span><a name="193"></a>	ResetConfig(<span class="source_string">"LightmapDetail"</span>);			<span class="source_comment">// eGL_Medium
+</span><a name="194"></a>	ResetConfig(<span class="source_string">"RainbowsDetail"</span>);			<span class="source_comment">// eGL_High
+</span><a name="195"></a>	ResetConfig(<span class="source_string">"TerrosDetail"</span>);			<span class="source_comment">// eGL_High
+</span><a name="196"></a>	ResetConfig(<span class="source_string">"HostagesDetail"</span>);			<span class="source_comment">// eGL_High
+</span><a name="197"></a>	ResetConfig(<span class="source_string">"AnimatedGeometry"</span>);		<span class="source_comment">// True
+</span><a name="198"></a>	ResetConfig(<span class="source_string">"HideDeadBodies"</span>);          <span class="source_comment">// False
+</span><a name="199"></a>    ResetConfig(<span class="source_string">"ShowRefreshRates"</span>);        <span class="source_comment">// False
+</span><a name="200"></a>    ResetConfig(<span class="source_string">"LowDetailSmoke"</span>);          <span class="source_comment">// False
+</span><a name="201"></a>
+<a name="202"></a>	if ( !_bInGame)
+<a name="203"></a>	{
+<a name="204"></a>		ResetConfig(<span class="source_string">"RainbowsShadowLevel"</span>);		<span class="source_comment">// eEL_High
+</span><a name="205"></a>		ResetConfig(<span class="source_string">"HostagesShadowLevel"</span>);		<span class="source_comment">// eEL_None
+</span><a name="206"></a>		ResetConfig(<span class="source_string">"TerrosShadowLevel"</span>);		<span class="source_comment">// eEL_None
+</span><a name="207"></a>		ResetConfig(<span class="source_string">"DecalsDetail"</span>);            <span class="source_comment">// eEL_Medium
+</span><a name="208"></a>		ResetConfig(<span class="source_string">"GoreLevel"</span>);				<span class="source_comment">// eEL_High
+</span><a name="209"></a>	}
+<a name="210"></a>}
+<a name="211"></a>
+<a name="212"></a><span class="source_comment">//=========================================
+</span><a name="213"></a><span class="source_comment">// ResetGraphicsToDefault: Reset the graphics options, use default.ini value
+</span><a name="214"></a><span class="source_comment">//=========================================
+</span><a name="215"></a>function ResetMultiToDefault()
+<a name="216"></a>{
+<a name="217"></a>	ResetConfig(<span class="source_string">"CharacterName"</span>);			<span class="source_comment">// John Doe
+</span><a name="218"></a>	ResetConfig(<span class="source_string">"NetSpeed"</span>);				<span class="source_comment">// 
+</span><a name="219"></a>	ResetConfig(<span class="source_string">"Gender"</span>);					<span class="source_comment">// 0 = male 
+</span><a name="220"></a>    ResetConfig(<span class="source_string">"ArmPatchTexture"</span>);
+<a name="221"></a>    ResetConfig(<span class="source_string">"WantTriggerLag"</span>);          <span class="source_comment">//False
+</span><a name="222"></a>}
+<a name="223"></a>
+<a name="224"></a><span class="source_comment">//=========================================
+</span><a name="225"></a><span class="source_comment">// ResetHudToDefault: Reset the hud options, use default.ini value
+</span><a name="226"></a><span class="source_comment">//=========================================
+</span><a name="227"></a>function ResetHudToDefault()
+<a name="228"></a>{
+<a name="229"></a>	ResetConfig(<span class="source_string">"HUDShowCharacterInfo"</span>);	<span class="source_comment">// true
+</span><a name="230"></a>    ResetConfig(<span class="source_string">"HUDShowCurrentTeamInfo"</span>);	<span class="source_comment">// true
+</span><a name="231"></a>	ResetConfig(<span class="source_string">"HUDShowOtherTeamInfo"</span>);	<span class="source_comment">// true
+</span><a name="232"></a>    ResetConfig(<span class="source_string">"HUDShowWeaponInfo"</span>);	    <span class="source_comment">// true
+</span><a name="233"></a>	ResetConfig(<span class="source_string">"HUDShowFPWeapon"</span>);			<span class="source_comment">// true
+</span><a name="234"></a>    ResetConfig(<span class="source_string">"HUDShowReticule"</span>);			<span class="source_comment">// true
+</span><a name="235"></a>	ResetConfig(<span class="source_string">"HUDShowWaypointInfo"</span>);		<span class="source_comment">// true
+</span><a name="236"></a>    ResetConfig(<span class="source_string">"HUDShowActionIcon"</span>);	    <span class="source_comment">// true
+</span><a name="237"></a>	ResetConfig(<span class="source_string">"HUDShowPlayersName"</span>);		<span class="source_comment">// true
+</span><a name="238"></a>	ResetConfig(<span class="source_string">"ShowRadar"</span>);               <span class="source_comment">// true
+</span><a name="239"></a>}
+<a name="240"></a>
+<a name="241"></a><span class="source_comment">//=========================================
+</span><a name="242"></a><span class="source_comment">// ResetPatchServiceToDefault: Reset the patch service options, use default.ini value
+</span><a name="243"></a><span class="source_comment">//=========================================
+</span><a name="244"></a>function ResetPatchServiceToDefault()
+<a name="245"></a>{
+<a name="246"></a>	ResetConfig(<span class="source_string">"AutoPatchDownload"</span>);	<span class="source_comment">// false
+</span><a name="247"></a>}
+<a name="248"></a>
+<a name="249"></a>defaultproperties
+<a name="250"></a>{
+<a name="251"></a>     AudioVirtual=eAV_None
+<a name="252"></a>     TextureDetail=eGL_High
+<a name="253"></a>     LightmapDetail=eGL_High
+<a name="254"></a>     GoreLevel=eEL_High
+<a name="255"></a>     DecalsDetail=eEL_Medium
+<a name="256"></a>     AmbientVolume=<span class="source_int">100</span>
+<a name="257"></a>     VoicesVolume=<span class="source_int">100</span>
+<a name="258"></a>     MusicVolume=<span class="source_int">100</span>
+<a name="259"></a>     SndQuality=<span class="source_int">1</span>
+<a name="260"></a>     Gender=<span class="source_int">1</span>
+<a name="261"></a>     ChangeNameTime=<span class="source_int">60</span>
+<a name="262"></a>     R6ScreenSizeX=<span class="source_int">1024</span>
+<a name="263"></a>     R6ScreenSizeY=<span class="source_int">768</span>
+<a name="264"></a>     R6ScreenRefreshRate=<span class="source_int">100</span>
+<a name="265"></a>     AlwaysRun=True
+<a name="266"></a>     PopUpLoadPlan=True
+<a name="267"></a>     PopUpQuickPlay=True
+<a name="268"></a>     ActivePunkBuster=True
+<a name="269"></a>     HUDShowCharacterInfo=True
+<a name="270"></a>     HUDShowCurrentTeamInfo=True
+<a name="271"></a>     HUDShowOtherTeamInfo=True
+<a name="272"></a>     HUDShowWeaponInfo=True
+<a name="273"></a>     HUDShowFPWeapon=True
+<a name="274"></a>     HUDShowReticule=True
+<a name="275"></a>     HUDShowWaypointInfo=True
+<a name="276"></a>     HUDShowActionIcon=True
+<a name="277"></a>     HUDShowPlayersName=True
+<a name="278"></a>     ShowRadar=True
+<a name="279"></a>     ShowRefreshRates=True
+<a name="280"></a>     LowDetailSmoke=True
+<a name="281"></a>     MouseSensitivity=<span class="source_int">60.000004</span>
+<a name="282"></a>     m_reticuleFriendColour=(G=<span class="source_int">255</span>)
+<a name="283"></a>     HUDMPColor=(<span class="source_type">B</span>=<span class="source_int">239</span>,G=<span class="source_int">209</span>,<span class="source_type">R</span>=<span class="source_int">129</span>,<span class="source_type">A</span>=<span class="source_int">75</span>)
+<a name="284"></a>     characterName=<span class="source_string">"UBu"</span>
+<a name="285"></a>}
+<a name="286"></a></pre></td></tr></table></div>
+<hr />
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../engine/engine-overview.html">Package</a></td>
+	<td class="header"><a href="../engine/r6gameoptions.html">Class</a></td>
+	<td class="header_hilight">Source</td>
+	<td class="header"><a class="header" href="../classtree.html#R6GameOptions">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../Source_engine/r6gamemenucom.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../Source_engine/r6glowlight.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+
+<div class="stats">Class file time: sam. 18/9/2004 14:39:26.000 - Creation time: mar. 26/5/2026 18:33:19.934 - Created with <a href="http://wiki.beyondunreal.com/wiki/UnCodeX" target="_blank">UnCodeX</a></div>
+
+</body>
+</html>

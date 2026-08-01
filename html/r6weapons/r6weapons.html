@@ -1,0 +1,1959 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+	<title>UnCodeX - R6Weapons.R6Weapons</title>
+	<meta name="Generator" content="UnCodeX 241" />
+	<link rel="stylesheet" href="../DocStyle2.css" type="text/css" title="Original Purple" />
+	<link rel="alternative stylesheet" href="../DocStyle2-blue.css" type="text/css" title="Blue" />
+	<link rel="alternative stylesheet" href="../DocStyle2-red.css" type="text/css" title="Red" />
+	<!--[if IE]>
+	<link rel="stylesheet" href="../DocStyle2-msie.css" type="text/css" />
+	<![endif]-->
+	<script src="../styleswitcher.js" type="text/javascript"></script>
+</head>
+<body>
+
+<div class="header">
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../r6weapons/r6weapons-overview.html">Package</a></td>
+	<td class="header_hilight">Class</td>
+	<td class="header"><a href="../Source_r6weapons/r6weapons.html">Source</a></td>
+	<td class="header"><a class="header" href="../classtree.html#R6Weapons">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../r6weapons/r6tracer.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../r6weapons/r6withweapondotreticule.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html#r6weapons/r6weapons.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+</div>
+<div class="spacer"></div>
+
+<h1><a href="../r6weapons/r6weapons-overview.html">R6Weapons</a>.R6Weapons</h1>
+
+<dl>
+<dt>Extends</dt><dd><a href="../r6abstract/r6abstractweapon.html">R6AbstractWeapon</a></dd>
+<dt>Modifiers</dt><dd>native abstract </dd>
+</dl>
+
+<p></p>
+
+<pre class="tree"><a href="../core/core-overview.html">core</a>.<a href="../core/object.html">Object</a>
+|   
++-- <a href="../engine/engine-overview.html">engine</a>.<a href="../engine/actor.html">Actor</a>
+   |   
+   +-- <a href="../engine/engine-overview.html">engine</a>.<a href="../engine/r6engineweapon.html">R6EngineWeapon</a>
+      |   
+      +-- <a href="../r6abstract/r6abstract-overview.html">R6Abstract</a>.<a href="../r6abstract/r6abstractweapon.html">R6AbstractWeapon</a>
+         |   
+         +-- <a href="../r6weapons/r6weapons-overview.html">R6Weapons</a>.<a href="../r6weapons/r6weapons.html">R6Weapons</a>
+</pre>
+
+<h4>Direct Known Subclasses:</h4>
+<blockquote>
+	<a href="../r6weapons/r6assaultrifle.html">R6AssaultRifle</a>, <a href="../r6weapons/r6gadget.html">R6Gadget</a>, <a href="../r6weapons/r6machinegun.html">R6MachineGun</a>, <a href="../r6weapons/r6pistol.html">R6Pistol</a>, <a href="../r6weapons/r6shotgun.html">R6Shotgun</a>, <a href="../r6weapons/r6sniperrifle.html">R6SniperRifle</a>, <a href="../r6weapons/r6submachinegun.html">R6SubMachineGun</a>
+</blockquote>
+
+<hr />
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Constants Summary</th>
+</tr>
+<tr><td width="40%"><a href="#_AccuracyLostWhenWounded" name="AccuracyLostWhenWounded" title="go to the details">AccuracyLostWhenWounded</a></td><td width="10%">=</td><td width="50%">1.2</td></tr>
+
+</table>
+
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th colspan="2" class="title">Variables Summary</th>
+</tr>
+<tr><td nowrap="nowrap" width="33%">INT</td><td width="66%"><a href="#_C_iMaxNbOfClips" name="C_iMaxNbOfClips" title="go to the details">C_iMaxNbOfClips</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">BOOL</td><td width="66%"><a href="#_m_bEmptyAllClips" name="m_bEmptyAllClips" title="go to the details">m_bEmptyAllClips</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">BOOL</td><td width="66%"><a href="#_m_bFireOn" name="m_bFireOn" title="go to the details">m_bFireOn</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">BOOL</td><td width="66%"><a href="#_m_bPlayLoopingSound" name="m_bPlayLoopingSound" title="go to the details">m_bPlayLoopingSound</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">FLOAT</td><td width="66%"><a href="#_m_fAverageDegChanges" name="m_fAverageDegChanges" title="go to the details">m_fAverageDegChanges</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">FLOAT</td><td width="66%"><a href="#_m_fAverageDegTable[5]" name="m_fAverageDegTable[5]" title="go to the details">m_fAverageDegTable[5]</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">FLOAT</td><td width="66%"><a href="#_m_fCurrentFireJump" name="m_fCurrentFireJump" title="go to the details">m_fCurrentFireJump</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">FLOAT</td><td width="66%"><a href="#_m_fDesiredAccuracy" name="m_fDesiredAccuracy" title="go to the details">m_fDesiredAccuracy</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">FLOAT</td><td width="66%"><a href="#_m_fDisplayFOV" name="m_fDisplayFOV" title="go to the details">m_fDisplayFOV</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">FLOAT</td><td width="66%"><a href="#_m_fEffectiveAccuracy" name="m_fEffectiveAccuracy" title="go to the details">m_fEffectiveAccuracy</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">FLOAT</td><td width="66%"><a href="#_m_fFireSoundRadius" name="m_fFireSoundRadius" title="go to the details">m_fFireSoundRadius</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">FLOAT</td><td width="66%"><a href="#_m_fMaxAngleError" name="m_fMaxAngleError" title="go to the details">m_fMaxAngleError</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">FLOAT</td><td width="66%"><a href="#_m_fOldWorstAccuracy" name="m_fOldWorstAccuracy" title="go to the details">m_fOldWorstAccuracy</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">FLOAT</td><td width="66%"><a href="#_m_fStablePercentage" name="m_fStablePercentage" title="go to the details">m_fStablePercentage</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">FLOAT</td><td width="66%"><a href="#_m_fWorstAccuracy" name="m_fWorstAccuracy" title="go to the details">m_fWorstAccuracy</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">INT</td><td width="66%"><a href="#_m_iCurrentAverage" name="m_iCurrentAverage" title="go to the details">m_iCurrentAverage</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">INT</td><td width="66%"><a href="#_m_iCurrentClip" name="m_iCurrentClip" title="go to the details">m_iCurrentClip</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">INT</td><td width="66%"><a href="#_m_iCurrentNbOfClips" name="m_iCurrentNbOfClips" title="go to the details">m_iCurrentNbOfClips</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">BYTE</td><td width="66%"><a href="#_m_iNbOfRoundsInBurst" name="m_iNbOfRoundsInBurst" title="go to the details">m_iNbOfRoundsInBurst</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">INT</td><td width="66%"><a href="#_m_iNbOfRoundsToShoot" name="m_iNbOfRoundsToShoot" title="go to the details">m_iNbOfRoundsToShoot</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../engine/r6sfx.html">R6SFX</a></td><td width="66%"><a href="#_m_pEmptyShellsEmitter" name="m_pEmptyShellsEmitter" title="go to the details">m_pEmptyShellsEmitter</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../engine/r6sfx.html">R6SFX</a></td><td width="66%"><a href="#_m_pMuzzleFlashEmitter" name="m_pMuzzleFlashEmitter" title="go to the details">m_pMuzzleFlashEmitter</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../core/object.html#Rotator">rotator</a></td><td width="66%"><a href="#_m_rBuckFirstBullet" name="m_rBuckFirstBullet" title="go to the details">m_rBuckFirstBullet</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../r6weapons/r6reticule.html">R6Reticule</a></td><td width="66%"><a href="#_m_ReticuleInstance" name="m_ReticuleInstance" title="go to the details">m_ReticuleInstance</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../core/object.html#Rotator">rotator</a></td><td width="66%"><a href="#_m_rLastRotation" name="m_rLastRotation" title="go to the details">m_rLastRotation</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../core/object.html#Vector">Vector</a></td><td width="66%"><a href="#_m_vPawnLocWhenKilled" name="m_vPawnLocWhenKilled" title="go to the details">m_vPawnLocWhenKilled</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">BYTE</td><td width="66%"><a href="#_m_wNbOfBounce" name="m_wNbOfBounce" title="go to the details">m_wNbOfBounce</a></td></tr>
+<tr><th colspan="2" class="small">Debug</th></tr>
+<tr><td nowrap="nowrap" width="33%">BOOL</td><td width="66%"><a href="#_bShowLog" name="bShowLog" title="go to the details">bShowLog</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">BOOL</td><td width="66%"><a href="#_m_bSoundLog" name="m_bSoundLog" title="go to the details">m_bSoundLog</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">INT</td><td width="66%"><a href="#_m_iDbgNextReticule" name="m_iDbgNextReticule" title="go to the details">m_iDbgNextReticule</a></td></tr>
+<tr><th colspan="2" class="small">MuzzleFlash</th></tr>
+<tr><td nowrap="nowrap" width="33%">FLOAT</td><td width="66%"><a href="#_m_MuzzleScale" name="m_MuzzleScale" title="go to the details">m_MuzzleScale</a></td></tr>
+<tr><th colspan="2" class="small">R6Clip</th></tr>
+<tr><td nowrap="nowrap" width="33%">BYTE</td><td width="66%"><a href="#_m_aiNbOfBullets[20]" name="m_aiNbOfBullets[20]" title="go to the details">m_aiNbOfBullets[20]</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">INT</td><td width="66%"><a href="#_m_iClipCapacity" name="m_iClipCapacity" title="go to the details">m_iClipCapacity</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">INT</td><td width="66%"><a href="#_m_iNbOfClips" name="m_iNbOfClips" title="go to the details">m_iNbOfClips</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">INT</td><td width="66%"><a href="#_m_iNbOfExtraClips" name="m_iNbOfExtraClips" title="go to the details">m_iNbOfExtraClips</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">class&lt;<a href="../r6weapons/r6bullet.html">R6Bullet</a>&gt;</td><td width="66%"><a href="#_m_pBulletClass" name="m_pBulletClass" title="go to the details">m_pBulletClass</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">class&lt;<a href="../engine/r6sfx.html">R6SFX</a>&gt;</td><td width="66%"><a href="#_m_pEmptyShells" name="m_pEmptyShells" title="go to the details">m_pEmptyShells</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">class&lt;<a href="../engine/r6sfx.html">R6SFX</a>&gt;</td><td width="66%"><a href="#_m_pMuzzleFlash" name="m_pMuzzleFlash" title="go to the details">m_pMuzzleFlash</a></td></tr>
+<tr><th colspan="2" class="small">R6Firing</th></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../engine/r6engineweapon.html#eRateOfFire">eRateOfFire</a></td><td width="66%"><a href="#_m_eRateOfFire" name="m_eRateOfFire" title="go to the details">m_eRateOfFire</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">FLOAT</td><td width="66%"><a href="#_m_fRateOfFire" name="m_fRateOfFire" title="go to the details">m_fRateOfFire</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../r6weapons/r6weapons.html#stAccuracyType">stAccuracyType</a></td><td width="66%"><a href="#_m_stAccuracyValues" name="m_stAccuracyValues" title="go to the details">m_stAccuracyValues</a></td></tr>
+<tr><th colspan="2" class="small">R6GunProperties</th></tr>
+<tr><td nowrap="nowrap" width="33%">FLOAT</td><td width="66%"><a href="#_m_fMuzzleVelocity" name="m_fMuzzleVelocity" title="go to the details">m_fMuzzleVelocity</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">class&lt;<a href="../r6weapons/r6reticule.html">R6Reticule</a>&gt;</td><td width="66%"><a href="#_m_pReticuleClass" name="m_pReticuleClass" title="go to the details">m_pReticuleClass</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">class&lt;<a href="../r6weapons/r6reticule.html">R6Reticule</a>&gt;</td><td width="66%"><a href="#_m_pWithWeaponReticuleClass" name="m_pWithWeaponReticuleClass" title="go to the details">m_pWithWeaponReticuleClass</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../r6weapons/r6weapons.html#stWeaponCaps">stWeaponCaps</a></td><td width="66%"><a href="#_m_stWeaponCaps" name="m_stWeaponCaps" title="go to the details">m_stWeaponCaps</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../engine/texture.html">Texture</a></td><td width="66%"><a href="#_m_WeaponIcon" name="m_WeaponIcon" title="go to the details">m_WeaponIcon</a></td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Variables from <a href="../r6abstract/r6abstract-overview.html">R6Abstract</a>.<a href="../r6abstract/r6abstractweapon.html">R6AbstractWeapon</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../r6abstract/r6abstractweapon.html#m_bHiddenWhenNotInUse">m_bHiddenWhenNotInUse</a>, <a href="../r6abstract/r6abstractweapon.html#m_BipodGadget">m_BipodGadget</a>, <a href="../r6abstract/r6abstractweapon.html#m_FPGadget">m_FPGadget</a>, <a href="../r6abstract/r6abstractweapon.html#m_FPHands">m_FPHands</a>, <a href="../r6abstract/r6abstractweapon.html#m_FPWeapon">m_FPWeapon</a>, <a href="../r6abstract/r6abstractweapon.html#m_MagazineGadget">m_MagazineGadget</a>, <a href="../r6abstract/r6abstractweapon.html#m_MuzzleGadget">m_MuzzleGadget</a>, <a href="../r6abstract/r6abstractweapon.html#m_pFPHandsClass">m_pFPHandsClass</a>, <a href="../r6abstract/r6abstractweapon.html#m_pFPWeaponClass">m_pFPWeaponClass</a>, <a href="../r6abstract/r6abstractweapon.html#m_ScopeGadget">m_ScopeGadget</a>, <a href="../r6abstract/r6abstractweapon.html#m_SelectedWeaponGadget">m_SelectedWeaponGadget</a>, <a href="../r6abstract/r6abstractweapon.html#m_WeaponGadgetClass">m_WeaponGadgetClass</a></td>
+</tr>
+</table>
+<table>
+<tr>
+	<th class="inherittitle">Inherited Variables from <a href="../engine/engine-overview.html">engine</a>.<a href="../engine/r6engineweapon.html">R6EngineWeapon</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../engine/r6engineweapon.html#bFiredABullet">bFiredABullet</a>, <a href="../engine/r6engineweapon.html#BobDamping">BobDamping</a>, <a href="../engine/r6engineweapon.html#m_AttachPoint">m_AttachPoint</a>, <a href="../engine/r6engineweapon.html#m_bBipod">m_bBipod</a>, <a href="../engine/r6engineweapon.html#m_bBipodDeployed">m_bBipodDeployed</a>, <a href="../engine/r6engineweapon.html#m_bDeployBipod">m_bDeployBipod</a>, <a href="../engine/r6engineweapon.html#m_bDisplayHudInfo">m_bDisplayHudInfo</a>, <a href="../engine/r6engineweapon.html#m_BipodSnd">m_BipodSnd</a>, <a href="../engine/r6engineweapon.html#m_bIsSilenced">m_bIsSilenced</a>, <a href="../engine/r6engineweapon.html#m_bPawnIsWalking">m_bPawnIsWalking</a>, <a href="../engine/r6engineweapon.html#m_bUnlimitedClip">m_bUnlimitedClip</a>, <a href="../engine/r6engineweapon.html#m_BurstFireStereoSnd">m_BurstFireStereoSnd</a>, <a href="../engine/r6engineweapon.html#m_bUseMicroAnim">m_bUseMicroAnim</a>, <a href="../engine/r6engineweapon.html#m_ChangeROFSnd">m_ChangeROFSnd</a>, <a href="../engine/r6engineweapon.html#m_CommonWeaponZoomSnd">m_CommonWeaponZoomSnd</a>, <a href="../engine/r6engineweapon.html#m_eGripType">m_eGripType</a>, <a href="../engine/r6engineweapon.html#m_EmptyMagSnd">m_EmptyMagSnd</a>, <a href="../engine/r6engineweapon.html#m_EquipSnd">m_EquipSnd</a>, <a href="../engine/r6engineweapon.html#m_eWeaponType">m_eWeaponType</a>, <a href="../engine/r6engineweapon.html#m_fFireAnimRate">m_fFireAnimRate</a>, <a href="../engine/r6engineweapon.html#m_fFPBlend">m_fFPBlend</a>, <a href="../engine/r6engineweapon.html#m_fMaxZoom">m_fMaxZoom</a>, <a href="../engine/r6engineweapon.html#m_fPauseWhenChanging">m_fPauseWhenChanging</a>, <a href="../engine/r6engineweapon.html#m_FPFlashLocation">m_FPFlashLocation</a>, <a href="../engine/r6engineweapon.html#m_FPMuzzleFlashTexture">m_FPMuzzleFlashTexture</a>, <a href="../engine/r6engineweapon.html#m_fReloadEmptyTime">m_fReloadEmptyTime</a>, <a href="../engine/r6engineweapon.html#m_fReloadTime">m_fReloadTime</a>, <a href="../engine/r6engineweapon.html#m_fTimeDisplayParticule">m_fTimeDisplayParticule</a>, <a href="../engine/r6engineweapon.html#m_FullAutoEndMonoSnd">m_FullAutoEndMonoSnd</a>, <a href="../engine/r6engineweapon.html#m_FullAutoEndStereoSnd">m_FullAutoEndStereoSnd</a>, <a href="../engine/r6engineweapon.html#m_FullAutoStereoSnd">m_FullAutoStereoSnd</a>, <a href="../engine/r6engineweapon.html#m_HoldAttachPoint">m_HoldAttachPoint</a>, <a href="../engine/r6engineweapon.html#m_HoldAttachPoint2">m_HoldAttachPoint2</a>, <a href="../engine/r6engineweapon.html#m_HUDTexture">m_HUDTexture</a>, <a href="../engine/r6engineweapon.html#m_HUDTexturePos">m_HUDTexturePos</a>, <a href="../engine/r6engineweapon.html#m_iNbBulletsInWeapon">m_iNbBulletsInWeapon</a>, <a href="../engine/r6engineweapon.html#m_iNbParticlesToCreate">m_iNbParticlesToCreate</a>, <a href="../engine/r6engineweapon.html#m_InventoryGroup">m_InventoryGroup</a>, <a href="../engine/r6engineweapon.html#m_NameID">m_NameID</a>, <a href="../engine/r6engineweapon.html#m_PawnFiringAnim">m_PawnFiringAnim</a>, <a href="../engine/r6engineweapon.html#m_PawnFiringAnimProne">m_PawnFiringAnimProne</a>, <a href="../engine/r6engineweapon.html#m_PawnReloadAnim">m_PawnReloadAnim</a>, <a href="../engine/r6engineweapon.html#m_PawnReloadAnimProne">m_PawnReloadAnimProne</a>, <a href="../engine/r6engineweapon.html#m_PawnReloadAnimProneTactical">m_PawnReloadAnimProneTactical</a>, <a href="../engine/r6engineweapon.html#m_PawnReloadAnimTactical">m_PawnReloadAnimTactical</a>, <a href="../engine/r6engineweapon.html#m_PawnWaitAnimHigh">m_PawnWaitAnimHigh</a>, <a href="../engine/r6engineweapon.html#m_PawnWaitAnimLow">m_PawnWaitAnimLow</a>, <a href="../engine/r6engineweapon.html#m_PawnWaitAnimProne">m_PawnWaitAnimProne</a>, <a href="../engine/r6engineweapon.html#m_ReloadEmptySnd">m_ReloadEmptySnd</a>, <a href="../engine/r6engineweapon.html#m_ReloadSnd">m_ReloadSnd</a>, <a href="../engine/r6engineweapon.html#m_ReloadSound">m_ReloadSound</a>, <a href="../engine/r6engineweapon.html#m_ScopeAdd">m_ScopeAdd</a>, <a href="../engine/r6engineweapon.html#m_ScopeTexture">m_ScopeTexture</a>, <a href="../engine/r6engineweapon.html#m_ShellBurstFireSnd">m_ShellBurstFireSnd</a>, <a href="../engine/r6engineweapon.html#m_ShellEndFullAutoSnd">m_ShellEndFullAutoSnd</a>, <a href="../engine/r6engineweapon.html#m_ShellFullAutoSnd">m_ShellFullAutoSnd</a>, <a href="../engine/r6engineweapon.html#m_ShellSingleFireSnd">m_ShellSingleFireSnd</a>, <a href="../engine/r6engineweapon.html#m_SingleFireEndStereoSnd">m_SingleFireEndStereoSnd</a>, <a href="../engine/r6engineweapon.html#m_SingleFireStereoSnd">m_SingleFireStereoSnd</a>, <a href="../engine/r6engineweapon.html#m_SniperZoomFirstSnd">m_SniperZoomFirstSnd</a>, <a href="../engine/r6engineweapon.html#m_SniperZoomSecondSnd">m_SniperZoomSecondSnd</a>, <a href="../engine/r6engineweapon.html#m_szMagazineClass">m_szMagazineClass</a>, <a href="../engine/r6engineweapon.html#m_szMuzzleClass">m_szMuzzleClass</a>, <a href="../engine/r6engineweapon.html#m_szSilencerClass">m_szSilencerClass</a>, <a href="../engine/r6engineweapon.html#m_szTacticalLightClass">m_szTacticalLightClass</a>, <a href="../engine/r6engineweapon.html#m_TriggerSnd">m_TriggerSnd</a>, <a href="../engine/r6engineweapon.html#m_UnEquipSnd">m_UnEquipSnd</a>, <a href="../engine/r6engineweapon.html#m_vPositionOffset">m_vPositionOffset</a>, <a href="../engine/r6engineweapon.html#m_WeaponDesc">m_WeaponDesc</a>, <a href="../engine/r6engineweapon.html#m_WeaponShortName">m_WeaponShortName</a>, <a href="../engine/r6engineweapon.html#m_WithScopeSM">m_WithScopeSM</a></td>
+</tr>
+</table>
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Enumerations Summary</th>
+</tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Enumerations from <a href="../engine/engine-overview.html">engine</a>.<a href="../engine/r6engineweapon.html">R6EngineWeapon</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../engine/r6engineweapon.html#eGadgetType">eGadgetType</a>, <a href="../engine/r6engineweapon.html#eGripType">eGripType</a>, <a href="../engine/r6engineweapon.html#eRateOfFire">eRateOfFire</a>, <a href="../engine/r6engineweapon.html#eWeaponGrenadeType">eWeaponGrenadeType</a>, <a href="../engine/r6engineweapon.html#EWeaponSound">EWeaponSound</a>, <a href="../engine/r6engineweapon.html#eWeaponType">eWeaponType</a></td>
+</tr>
+</table>
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Structures Summary</th>
+</tr>
+<tr><td><a href="#_stAccuracyType" name="stAccuracyType" title="go to the details">stAccuracyType</a><br /><span class="small">fBaseAccuracy, fShuffleAccuracy, fWalkingAccuracy, fWalkingFastAccuracy, fRunningAccuracy, fReticuleTime, fAccuracyChange, fWeaponJump</span></td></tr>
+<tr><td><a href="#_stWeaponCaps" name="stWeaponCaps" title="go to the details">stWeaponCaps</a><br /><span class="small">bSingle, bThreeRound, bFullAuto, bCMag, bMuzzle, bSilencer, bLight, bMiniScope, bHeatVision</span></td></tr>
+
+</table>
+
+
+
+<br />
+
+
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Functions Summary</th>
+</tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_AddClips-" name="AddClips" title="go to the details">AddClips</a> (INT iNbOfExtraClips))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_AddExtraClip-" name="AddExtraClip" title="go to the details">AddExtraClip</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>bool&nbsp;</td><td><a href="#_AffectActor-" name="AffectActor" title="go to the details">AffectActor</a> (INT BulletGroup, <a href="../engine/actor.html">actor</a> ActorAffected))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_AltFire-" name="AltFire" title="go to the details">AltFire</a> (FLOAT fValue ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_AltFire-BringWeaponUp" name="AltFire" title="go to the details">AltFire</a> (float Value ))<br /><span class="function_state">BringWeaponUp</span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_AltFire-CloseBipod" name="AltFire" title="go to the details">AltFire</a> (float Value ))<br /><span class="function_state">CloseBipod</span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_AltFire-DeployBipod" name="AltFire" title="go to the details">AltFire</a> (float Value ))<br /><span class="function_state">DeployBipod</span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_AltFire-DiscardWeapon" name="AltFire" title="go to the details">AltFire</a> (float Value ))<br /><span class="function_state">DiscardWeapon</span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_AltFire-NormalFire" name="AltFire" title="go to the details">AltFire</a> (float Value ))<br /><span class="function_state">NormalFire</span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_AltFire-PutWeaponDown" name="AltFire" title="go to the details">AltFire</a> (float Value ))<br /><span class="function_state">PutWeaponDown</span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_AltFire-RaiseWeapon" name="AltFire" title="go to the details">AltFire</a> (float Value ))<br /><span class="function_state">RaiseWeapon</span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_AltFire-Reloading" name="AltFire" title="go to the details">AltFire</a> (float Value ))<br /><span class="function_state">Reloading</span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_AltFire-ZoomIn" name="AltFire" title="go to the details">AltFire</a> (float Value ))<br /><span class="function_state">ZoomIn</span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_AttachEmittersTo3rdWeapon-" name="AttachEmittersTo3rdWeapon" title="go to the details">AttachEmittersTo3rdWeapon</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_AttachEmittersToFPWeapon-" name="AttachEmittersToFPWeapon" title="go to the details">AttachEmittersToFPWeapon</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_BeginState-BringWeaponUp" name="BeginState" title="go to the details">BeginState</a> ()))<br /><span class="function_state">BringWeaponUp</span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_BeginState-CloseBipod" name="BeginState" title="go to the details">BeginState</a> ()))<br /><span class="function_state">CloseBipod</span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_BeginState-DeployBipod" name="BeginState" title="go to the details">BeginState</a> ()))<br /><span class="function_state">DeployBipod</span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_BeginState-DiscardWeapon" name="BeginState" title="go to the details">BeginState</a> ()))<br /><span class="function_state">DiscardWeapon</span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_BeginState-NormalFire" name="BeginState" title="go to the details">BeginState</a> ()))<br /><span class="function_state">NormalFire</span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_BeginState-PutWeaponDown" name="BeginState" title="go to the details">BeginState</a> ()))<br /><span class="function_state">PutWeaponDown</span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_BeginState-RaiseWeapon" name="BeginState" title="go to the details">BeginState</a> ()))<br /><span class="function_state">RaiseWeapon</span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_BeginState-Reloading" name="BeginState" title="go to the details">BeginState</a> ()))<br /><span class="function_state">Reloading</span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_BeginState-ZoomIn" name="BeginState" title="go to the details">BeginState</a> ()))<br /><span class="function_state">ZoomIn</span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_BeginState-ZoomOut" name="BeginState" title="go to the details">BeginState</a> ()))<br /><span class="function_state">ZoomOut</span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>BOOL&nbsp;</td><td><a href="#_CanSwitchToWeapon-" name="CanSwitchToWeapon" title="go to the details">CanSwitchToWeapon</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_ChangeClip-Reloading" name="ChangeClip" title="go to the details">ChangeClip</a> ()))<br /><span class="function_state">Reloading</span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>BOOL&nbsp;</td><td><a href="#_CheckForPlaceToFall-" name="CheckForPlaceToFall" title="go to the details">CheckForPlaceToFall</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>BOOL&nbsp;</td><td><a href="#_ClientAltFire-" name="ClientAltFire" title="go to the details">ClientAltFire</a> (FLOAT fValue ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_ClientsFireBullet-" name="ClientsFireBullet" title="go to the details">ClientsFireBullet</a> (BYTE iBulletNbFired))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_ClientShowBulletFire-" name="ClientShowBulletFire" title="go to the details">ClientShowBulletFire</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_ClientStartChangeClip-" name="ClientStartChangeClip" title="go to the details">ClientStartChangeClip</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_ClientStartFiring-" name="ClientStartFiring" title="go to the details">ClientStartFiring</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_ClientStopFire-" name="ClientStopFire" title="go to the details">ClientStopFire</a> (optional BOOL bSoundOnly))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_ClientYourOwnerIs-" name="ClientYourOwnerIs" title="go to the details">ClientYourOwnerIs</a> (<a href="../engine/actor.html">actor</a> OwnerFromServer))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_CreateWeaponEmitters-" name="CreateWeaponEmitters" title="go to the details">CreateWeaponEmitters</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_DbgNextReticule-" name="DbgNextReticule" title="go to the details">DbgNextReticule</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_event.gif" alt="event" title="event" /></td><td>&nbsp;</td><td><a href="#_DeployWeaponBipod-" name="DeployWeaponBipod" title="go to the details">DeployWeaponBipod</a> (BOOL bBipodOpen))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_event.gif" alt="event" title="event" /></td><td>&nbsp;</td><td><a href="#_Destroyed-" name="Destroyed" title="go to the details">Destroyed</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_DisplayWeaponDGBInfo-" name="DisplayWeaponDGBInfo" title="go to the details">DisplayWeaponDGBInfo</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_DoSingleFire-NormalFire" name="DoSingleFire" title="go to the details">DoSingleFire</a> ()))<br /><span class="function_state">NormalFire</span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_EndState-BringWeaponUp" name="EndState" title="go to the details">EndState</a> ()))<br /><span class="function_state">BringWeaponUp</span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_EndState-DeployBipod" name="EndState" title="go to the details">EndState</a> ()))<br /><span class="function_state">DeployBipod</span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_EndState-DiscardWeapon" name="EndState" title="go to the details">EndState</a> ()))<br /><span class="function_state">DiscardWeapon</span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_EndState-NormalFire" name="EndState" title="go to the details">EndState</a> ()))<br /><span class="function_state">NormalFire</span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_EndState-RaiseWeapon" name="EndState" title="go to the details">EndState</a> ()))<br /><span class="function_state">RaiseWeapon</span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_EndState-Reloading" name="EndState" title="go to the details">EndState</a> ()))<br /><span class="function_state">Reloading</span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_EndState-ZoomIn" name="EndState" title="go to the details">EndState</a> ()))<br /><span class="function_state">ZoomIn</span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_FillClips-" name="FillClips" title="go to the details">FillClips</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_Fire-" name="Fire" title="go to the details">Fire</a> (FLOAT fValue ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_Fire-BringWeaponUp" name="Fire" title="go to the details">Fire</a> (float Value ))<br /><span class="function_state">BringWeaponUp</span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_Fire-CloseBipod" name="Fire" title="go to the details">Fire</a> (float Value ))<br /><span class="function_state">CloseBipod</span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_Fire-DeployBipod" name="Fire" title="go to the details">Fire</a> (float Value ))<br /><span class="function_state">DeployBipod</span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_Fire-DiscardWeapon" name="Fire" title="go to the details">Fire</a> (float Value ))<br /><span class="function_state">DiscardWeapon</span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_Fire-NormalFire" name="Fire" title="go to the details">Fire</a> (float Value ))<br /><span class="function_state">NormalFire</span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_Fire-PutWeaponDown" name="Fire" title="go to the details">Fire</a> (float Value ))<br /><span class="function_state">PutWeaponDown</span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_Fire-RaiseWeapon" name="Fire" title="go to the details">Fire</a> (float Value ))<br /><span class="function_state">RaiseWeapon</span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_Fire-Reloading" name="Fire" title="go to the details">Fire</a> (float Value)<br /><span class="function_state">Reloading</span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_Fire-ZoomIn" name="Fire" title="go to the details">Fire</a> (float Value ))<br /><span class="function_state">ZoomIn</span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_FirstPersonAnimOver-BringWeaponUp" name="FirstPersonAnimOver" title="go to the details">FirstPersonAnimOver</a> ()))<br /><span class="function_state">BringWeaponUp</span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_FirstPersonAnimOver-CloseBipod" name="FirstPersonAnimOver" title="go to the details">FirstPersonAnimOver</a> ()))<br /><span class="function_state">CloseBipod</span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_FirstPersonAnimOver-DeployBipod" name="FirstPersonAnimOver" title="go to the details">FirstPersonAnimOver</a> ()))<br /><span class="function_state">DeployBipod</span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_FirstPersonAnimOver-DiscardWeapon" name="FirstPersonAnimOver" title="go to the details">FirstPersonAnimOver</a> ()))<br /><span class="function_state">DiscardWeapon</span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_FirstPersonAnimOver-NormalFire" name="FirstPersonAnimOver" title="go to the details">FirstPersonAnimOver</a> ()))<br /><span class="function_state">NormalFire</span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_FirstPersonAnimOver-PutWeaponDown" name="FirstPersonAnimOver" title="go to the details">FirstPersonAnimOver</a> ()<br /><span class="function_state">PutWeaponDown</span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_FirstPersonAnimOver-RaiseWeapon" name="FirstPersonAnimOver" title="go to the details">FirstPersonAnimOver</a> ()))<br /><span class="function_state">RaiseWeapon</span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_FirstPersonAnimOver-Reloading" name="FirstPersonAnimOver" title="go to the details">FirstPersonAnimOver</a> ()))<br /><span class="function_state">Reloading</span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_FirstPersonAnimOver-ZoomIn" name="FirstPersonAnimOver" title="go to the details">FirstPersonAnimOver</a> ()))<br /><span class="function_state">ZoomIn</span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_FirstPersonAnimOver-ZoomOut" name="FirstPersonAnimOver" title="go to the details">FirstPersonAnimOver</a> ()))<br /><span class="function_state">ZoomOut</span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_FullAmmo-" name="FullAmmo" title="go to the details">FullAmmo</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_FullCurrentClip-" name="FullCurrentClip" title="go to the details">FullCurrentClip</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td><a href="../engine/texture.html">Texture</a>&nbsp;</td><td><a href="#_Get2DIcon-" name="Get2DIcon" title="go to the details">Get2DIcon</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td><a href="../r6abstract/r6abstractbulletmanager.html">R6AbstractBulletManager</a>&nbsp;</td><td><a href="#_GetBulletManager-" name="GetBulletManager" title="go to the details">GetBulletManager</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>INT&nbsp;</td><td><a href="#_GetClipCapacity-" name="GetClipCapacity" title="go to the details">GetClipCapacity</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>FLOAT&nbsp;</td><td><a href="#_GetCurrentMaxAngle-" name="GetCurrentMaxAngle" title="go to the details">GetCurrentMaxAngle</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>FLOAT&nbsp;</td><td><a href="#_GetExplosionDelay-" name="GetExplosionDelay" title="go to the details">GetExplosionDelay</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_GetFiringDirection-" name="GetFiringDirection" title="go to the details">GetFiringDirection</a> (out <a href="../core/object.html#Vector">vector</a> vOrigin, out <a href="../core/object.html#Rotator">rotator</a> rRotation, optional INT iBulletNumber))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>FLOAT&nbsp;</td><td><a href="#_GetMuzzleVelocity-" name="GetMuzzleVelocity" title="go to the details">GetMuzzleVelocity</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>INT&nbsp;</td><td><a href="#_GetNbOfClips-" name="GetNbOfClips" title="go to the details">GetNbOfClips</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>INT&nbsp;</td><td><a href="#_GetNbOfRoundsForROF-" name="GetNbOfRoundsForROF" title="go to the details">GetNbOfRoundsForROF</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td><a href="../engine/r6engineweapon.html#eRateOfFire">eRateOfFire</a>&nbsp;</td><td><a href="#_GetRateOfFire-" name="GetRateOfFire" title="go to the details">GetRateOfFire</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>INT&nbsp;</td><td><a href="#_GetReloadProgress-Reloading" name="GetReloadProgress" title="go to the details">GetReloadProgress</a> ()))<br /><span class="function_state">Reloading</span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>FLOAT&nbsp;</td><td><a href="#_GetWeaponJump-" name="GetWeaponJump" title="go to the details">GetWeaponJump</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>FLOAT&nbsp;</td><td><a href="#_GetWeaponRange-" name="GetWeaponRange" title="go to the details">GetWeaponRange</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_GiveBulletToWeapon-" name="GiveBulletToWeapon" title="go to the details">GiveBulletToWeapon</a> (string aBulletName))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>BOOL&nbsp;</td><td><a href="#_GunIsFull-" name="GunIsFull" title="go to the details">GunIsFull</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>BOOL&nbsp;</td><td><a href="#_HasAmmo-" name="HasAmmo" title="go to the details">HasAmmo</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>BOOL&nbsp;</td><td><a href="#_HasAtLeastOneFullClip-" name="HasAtLeastOneFullClip" title="go to the details">HasAtLeastOneFullClip</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>BOOL&nbsp;</td><td><a href="#_HasBulletType-" name="HasBulletType" title="go to the details">HasBulletType</a> (name strBulletName ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>BOOL&nbsp;</td><td><a href="#_HasScope-" name="HasScope" title="go to the details">HasScope</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_event.gif" alt="event" title="event" /></td><td>&nbsp;</td><td><a href="#_HideAttachment-" name="HideAttachment" title="go to the details">HideAttachment</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_HitWall-" name="HitWall" title="go to the details">HitWall</a> (<a href="../core/object.html#Vector">vector</a> HitNormal, actor Wall ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>BOOL&nbsp;</td><td><a href="#_IsAtBestAccuracy-" name="IsAtBestAccuracy" title="go to the details">IsAtBestAccuracy</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>BOOL&nbsp;</td><td><a href="#_LoadFirstPersonWeapon-" name="LoadFirstPersonWeapon" title="go to the details">LoadFirstPersonWeapon</a> (optional <a href="../engine/pawn.html">Pawn</a> NetOwner, optional <a href="../engine/controller.html">Controller</a> LocalPlayerController))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_LocalStopFire-" name="LocalStopFire" title="go to the details">LocalStopFire</a> (optional BOOL bSoundOnly))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>INT&nbsp;</td><td><a href="#_NbBulletToShot-" name="NbBulletToShot" title="go to the details">NbBulletToShot</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>INT&nbsp;</td><td><a href="#_NumberOfBulletsLeftInClip-" name="NumberOfBulletsLeftInClip" title="go to the details">NumberOfBulletsLeftInClip</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_event.gif" alt="event" title="event" /></td><td>&nbsp;</td><td><a href="#_PawnIsMoving-" name="PawnIsMoving" title="go to the details">PawnIsMoving</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_event.gif" alt="event" title="event" /></td><td>&nbsp;</td><td><a href="#_PawnStoppedMoving-" name="PawnStoppedMoving" title="go to the details">PawnStoppedMoving</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_PerfectAim-" name="PerfectAim" title="go to the details">PerfectAim</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_PlayReloading-" name="PlayReloading" title="go to the details">PlayReloading</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_PlayReloading-BringWeaponUp" name="PlayReloading" title="go to the details">PlayReloading</a> ()))<br /><span class="function_state">BringWeaponUp</span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_PlayReloading-CloseBipod" name="PlayReloading" title="go to the details">PlayReloading</a> ()))<br /><span class="function_state">CloseBipod</span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_PlayReloading-DeployBipod" name="PlayReloading" title="go to the details">PlayReloading</a> ()))<br /><span class="function_state">DeployBipod</span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_PlayReloading-DiscardWeapon" name="PlayReloading" title="go to the details">PlayReloading</a> ()))<br /><span class="function_state">DiscardWeapon</span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_PlayReloading-NormalFire" name="PlayReloading" title="go to the details">PlayReloading</a> ()))<br /><span class="function_state">NormalFire</span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_PlayReloading-PutWeaponDown" name="PlayReloading" title="go to the details">PlayReloading</a> ()))<br /><span class="function_state">PutWeaponDown</span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_PlayReloading-RaiseWeapon" name="PlayReloading" title="go to the details">PlayReloading</a> ()))<br /><span class="function_state">RaiseWeapon</span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_PlayReloading-Reloading" name="PlayReloading" title="go to the details">PlayReloading</a> ()))<br /><span class="function_state">Reloading</span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_PlayReloading-ZoomIn" name="PlayReloading" title="go to the details">PlayReloading</a> ()))<br /><span class="function_state">ZoomIn</span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_PostBeginPlay-" name="PostBeginPlay" title="go to the details">PostBeginPlay</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_PostRender-" name="PostRender" title="go to the details">PostRender</a> (canvas <a href="../engine/canvas.html">Canvas</a> ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_PutAtOwnerFeet-" name="PutAtOwnerFeet" title="go to the details">PutAtOwnerFeet</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_R6SetGadget-" name="R6SetGadget" title="go to the details">R6SetGadget</a> (class&lt;<a href="../r6abstract/r6abstractgadget.html">R6AbstractGadget</a>&gt; pWeaponGadgetClass))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_R6SetReticule-" name="R6SetReticule" title="go to the details">R6SetReticule</a> (optional <a href="../engine/controller.html">Controller</a> LocalPlayerController))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_ReloadShotGun-" name="ReloadShotGun" title="go to the details">ReloadShotGun</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_RemoveFirstPersonWeapon-" name="RemoveFirstPersonWeapon" title="go to the details">RemoveFirstPersonWeapon</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_event.gif" alt="event" title="event" /></td><td>&nbsp;</td><td><a href="#_RenderOverlays-" name="RenderOverlays" title="go to the details">RenderOverlays</a> (canvas <a href="../engine/canvas.html">Canvas</a> ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_ServerAddClips-" name="ServerAddClips" title="go to the details">ServerAddClips</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_ServerChangeClip-" name="ServerChangeClip" title="go to the details">ServerChangeClip</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_ServerFireBullet-" name="ServerFireBullet" title="go to the details">ServerFireBullet</a> (FLOAT fMaxAngleErrorFromClient))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_ServerSetNextRateOfFire-" name="ServerSetNextRateOfFire" title="go to the details">ServerSetNextRateOfFire</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_ServerStartChangeClip-" name="ServerStartChangeClip" title="go to the details">ServerStartChangeClip</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_ServerStartFiring-" name="ServerStartFiring" title="go to the details">ServerStartFiring</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_ServerStopFire-" name="ServerStopFire" title="go to the details">ServerStopFire</a> (optional BOOL bSoundOnly))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_ServerWhoIsMyOwner-" name="ServerWhoIsMyOwner" title="go to the details">ServerWhoIsMyOwner</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_SetAccuracyOnHit-" name="SetAccuracyOnHit" title="go to the details">SetAccuracyOnHit</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_SetGadgets-" name="SetGadgets" title="go to the details">SetGadgets</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_event.gif" alt="event" title="event" /></td><td>&nbsp;</td><td><a href="#_SetIdentifyTarget-" name="SetIdentifyTarget" title="go to the details">SetIdentifyTarget</a> (bool bIdentifyCharacter, bool bFriendly, string characterName))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_SetNextRateOfFire-" name="SetNextRateOfFire" title="go to the details">SetNextRateOfFire</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>BOOL&nbsp;</td><td><a href="#_SetRateOfFire-" name="SetRateOfFire" title="go to the details">SetRateOfFire</a> (<a href="../engine/r6engineweapon.html#eRateOfFire">eRateOfFire</a> eNewRateOfFire))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_SetRelevant-" name="SetRelevant" title="go to the details">SetRelevant</a> (BOOL bNewAlwaysRelevant ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_SetTearOff-" name="SetTearOff" title="go to the details">SetTearOff</a> (BOOL bNewTearOff ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_SetTerroristNbOfClips-" name="SetTerroristNbOfClips" title="go to the details">SetTerroristNbOfClips</a> (INT iNewNumber))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_ShowInfo-" name="ShowInfo" title="go to the details">ShowInfo</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_event.gif" alt="event" title="event" /></td><td>&nbsp;</td><td><a href="#_ShowWeaponParticules-" name="ShowWeaponParticules" title="go to the details">ShowWeaponParticules</a> (<a href="../engine/r6engineweapon.html#EWeaponSound">EWeaponSound</a> eWeaponSound))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_SpawnSelectedGadget-" name="SpawnSelectedGadget" title="go to the details">SpawnSelectedGadget</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_StartFalling-" name="StartFalling" title="go to the details">StartFalling</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_StartFiring-NormalFire" name="StartFiring" title="go to the details">StartFiring</a> ()))<br /><span class="function_state">NormalFire</span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_StartLoopingAnims-" name="StartLoopingAnims" title="go to the details">StartLoopingAnims</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_StopAltFire-BringWeaponUp" name="StopAltFire" title="go to the details">StopAltFire</a> ()))<br /><span class="function_state">BringWeaponUp</span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_StopAltFire-CloseBipod" name="StopAltFire" title="go to the details">StopAltFire</a> ()))<br /><span class="function_state">CloseBipod</span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_StopAltFire-DeployBipod" name="StopAltFire" title="go to the details">StopAltFire</a> ()))<br /><span class="function_state">DeployBipod</span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_StopAltFire-DiscardWeapon" name="StopAltFire" title="go to the details">StopAltFire</a> ()))<br /><span class="function_state">DiscardWeapon</span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_StopAltFire-NormalFire" name="StopAltFire" title="go to the details">StopAltFire</a> ()))<br /><span class="function_state">NormalFire</span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_StopAltFire-PutWeaponDown" name="StopAltFire" title="go to the details">StopAltFire</a> ()))<br /><span class="function_state">PutWeaponDown</span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_StopAltFire-RaiseWeapon" name="StopAltFire" title="go to the details">StopAltFire</a> ()))<br /><span class="function_state">RaiseWeapon</span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_StopAltFire-Reloading" name="StopAltFire" title="go to the details">StopAltFire</a> ()))<br /><span class="function_state">Reloading</span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_StopAltFire-ZoomIn" name="StopAltFire" title="go to the details">StopAltFire</a> ()))<br /><span class="function_state">ZoomIn</span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_StopFallingAndSetCorrectRotation-" name="StopFallingAndSetCorrectRotation" title="go to the details">StopFallingAndSetCorrectRotation</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_StopFire-" name="StopFire" title="go to the details">StopFire</a> (optional BOOL bSoundOnly))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_StopFire-BringWeaponUp" name="StopFire" title="go to the details">StopFire</a> (optional BOOL bSoundOnly ))<br /><span class="function_state">BringWeaponUp</span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_StopFire-DiscardWeapon" name="StopFire" title="go to the details">StopFire</a> (optional BOOL bSoundOnly ))<br /><span class="function_state">DiscardWeapon</span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_StopFire-PutWeaponDown" name="StopFire" title="go to the details">StopFire</a> (optional BOOL bSoundOnly ))<br /><span class="function_state">PutWeaponDown</span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_StopFire-RaiseWeapon" name="StopFire" title="go to the details">StopFire</a> (optional BOOL bSoundOnly ))<br /><span class="function_state">RaiseWeapon</span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_event.gif" alt="event" title="event" /></td><td>&nbsp;</td><td><a href="#_Tick-Reloading" name="Tick" title="go to the details">Tick</a> (FLOAT fDeltaTime))<br /><span class="function_state">Reloading</span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_Timer-NormalFire" name="Timer" title="go to the details">Timer</a> ()))<br /><span class="function_state">NormalFire</span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_TurnOffEmitters-" name="TurnOffEmitters" title="go to the details">TurnOffEmitters</a> (BOOL bTurnOff))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_UpdateAllAttachments-" name="UpdateAllAttachments" title="go to the details">UpdateAllAttachments</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_event.gif" alt="event" title="event" /></td><td>&nbsp;</td><td><a href="#_UpdateWeaponAttachment-" name="UpdateWeaponAttachment" title="go to the details">UpdateWeaponAttachment</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_UseScopeStaticMesh-" name="UseScopeStaticMesh" title="go to the details">UseScopeStaticMesh</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_WeaponInitialization-" name="WeaponInitialization" title="go to the details">WeaponInitialization</a> (Pawn pawnOwner ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_WeaponZoomSound-" name="WeaponZoomSound" title="go to the details">WeaponZoomSound</a> (BOOL bFirstZoom))<br /><span class="function_state"></span></td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Functions from <a href="../r6abstract/r6abstract-overview.html">R6Abstract</a>.<a href="../r6abstract/r6abstractweapon.html">R6AbstractWeapon</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../r6abstract/r6abstractweapon.html#CreateWeaponEmitters">CreateWeaponEmitters</a>, <a href="../r6abstract/r6abstractweapon.html#GetBulletManager">GetBulletManager</a>, <a href="../r6abstract/r6abstractweapon.html#R6SetGadget">R6SetGadget</a>, <a href="../r6abstract/r6abstractweapon.html#SpawnSelectedGadget">SpawnSelectedGadget</a></td>
+</tr>
+</table>
+<table>
+<tr>
+	<th class="inherittitle">Inherited Functions from <a href="../engine/engine-overview.html">engine</a>.<a href="../engine/r6engineweapon.html">R6EngineWeapon</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../engine/r6engineweapon.html#AddClips">AddClips</a>, <a href="../engine/r6engineweapon.html#AddExtraClip">AddExtraClip</a>, <a href="../engine/r6engineweapon.html#AffectActor">AffectActor</a>, <a href="../engine/r6engineweapon.html#AltFire">AltFire</a>, <a href="../engine/r6engineweapon.html#AttachEmittersTo3rdWeapon">AttachEmittersTo3rdWeapon</a>, <a href="../engine/r6engineweapon.html#AttachEmittersToFPWeapon">AttachEmittersToFPWeapon</a>, <a href="../engine/r6engineweapon.html#AttachMagazine">AttachMagazine</a>, <a href="../engine/r6engineweapon.html#CanSwitchToWeapon">CanSwitchToWeapon</a>, <a href="../engine/r6engineweapon.html#ChangeClip">ChangeClip</a>, <a href="../engine/r6engineweapon.html#ClientAddShell">ClientAddShell</a>, <a href="../engine/r6engineweapon.html#ClientAltFire">ClientAltFire</a>, <a href="../engine/r6engineweapon.html#ClientFire">ClientFire</a>, <a href="../engine/r6engineweapon.html#ClientShowInfo">ClientShowInfo</a>, <a href="../engine/r6engineweapon.html#ClientStopFire">ClientStopFire</a>, <a href="../engine/r6engineweapon.html#DeployWeaponBipod">DeployWeaponBipod</a>, <a href="../engine/r6engineweapon.html#DisableWeaponOrGadget">DisableWeaponOrGadget</a>, <a href="../engine/r6engineweapon.html#DisplayWeaponDGBInfo">DisplayWeaponDGBInfo</a>, <a href="../engine/r6engineweapon.html#FillClips">FillClips</a>, <a href="../engine/r6engineweapon.html#Fire">Fire</a>, <a href="../engine/r6engineweapon.html#FirstPersonAnimOver">FirstPersonAnimOver</a>, <a href="../engine/r6engineweapon.html#FullAmmo">FullAmmo</a>, <a href="../engine/r6engineweapon.html#FullCurrentClip">FullCurrentClip</a>, <a href="../engine/r6engineweapon.html#Get2DIcon">Get2DIcon</a>, <a href="../engine/r6engineweapon.html#GetClipCapacity">GetClipCapacity</a>, <a href="../engine/r6engineweapon.html#GetCurrentMaxAngle">GetCurrentMaxAngle</a>, <a href="../engine/r6engineweapon.html#GetExplosionDelay">GetExplosionDelay</a>, <a href="../engine/r6engineweapon.html#GetFiringAnimName">GetFiringAnimName</a>, <a href="../engine/r6engineweapon.html#GetHighWaitAnimName">GetHighWaitAnimName</a>, <a href="../engine/r6engineweapon.html#GetMuzzleVelocity">GetMuzzleVelocity</a>, <a href="../engine/r6engineweapon.html#GetNbOfClips">GetNbOfClips</a>, <a href="../engine/r6engineweapon.html#GetProneFiringAnimName">GetProneFiringAnimName</a>, <a href="../engine/r6engineweapon.html#GetProneReloadAnimName">GetProneReloadAnimName</a>, <a href="../engine/r6engineweapon.html#GetProneReloadAnimTacticalName">GetProneReloadAnimTacticalName</a>, <a href="../engine/r6engineweapon.html#GetProneWaitAnimName">GetProneWaitAnimName</a>, <a href="../engine/r6engineweapon.html#GetRateOfFire">GetRateOfFire</a>, <a href="../engine/r6engineweapon.html#GetReloadAnimName">GetReloadAnimName</a>, <a href="../engine/r6engineweapon.html#GetReloadAnimTacticalName">GetReloadAnimTacticalName</a>, <a href="../engine/r6engineweapon.html#GetSaveDistanceToThrow">GetSaveDistanceToThrow</a>, <a href="../engine/r6engineweapon.html#GetWaitAnimName">GetWaitAnimName</a>, <a href="../engine/r6engineweapon.html#GetWeaponJump">GetWeaponJump</a>, <a href="../engine/r6engineweapon.html#GetWeaponRange">GetWeaponRange</a>, <a href="../engine/r6engineweapon.html#GiveBulletToWeapon">GiveBulletToWeapon</a>, <a href="../engine/r6engineweapon.html#GiveMoreAmmo">GiveMoreAmmo</a>, <a href="../engine/r6engineweapon.html#GotBipod">GotBipod</a>, <a href="../engine/r6engineweapon.html#GunIsFull">GunIsFull</a>, <a href="../engine/r6engineweapon.html#HasAmmo">HasAmmo</a>, <a href="../engine/r6engineweapon.html#HasAtLeastOneFullClip">HasAtLeastOneFullClip</a>, <a href="../engine/r6engineweapon.html#HasBulletType">HasBulletType</a>, <a href="../engine/r6engineweapon.html#HasScope">HasScope</a>, <a href="../engine/r6engineweapon.html#IsAtBestAccuracy">IsAtBestAccuracy</a>, <a href="../engine/r6engineweapon.html#IsGoggles">IsGoggles</a>, <a href="../engine/r6engineweapon.html#IsLMG">IsLMG</a>, <a href="../engine/r6engineweapon.html#IsPumpShotGun">IsPumpShotGun</a>, <a href="../engine/r6engineweapon.html#IsSniperRifle">IsSniperRifle</a>, <a href="../engine/r6engineweapon.html#LoadFirstPersonWeapon">LoadFirstPersonWeapon</a>, <a href="../engine/r6engineweapon.html#LocalStopFire">LocalStopFire</a>, <a href="../engine/r6engineweapon.html#NPCDetonateCharge">NPCDetonateCharge</a>, <a href="../engine/r6engineweapon.html#NPCPlaceCharge">NPCPlaceCharge</a>, <a href="../engine/r6engineweapon.html#NumberOfBulletsLeftInClip">NumberOfBulletsLeftInClip</a>, <a href="../engine/r6engineweapon.html#PawnIsMoving">PawnIsMoving</a>, <a href="../engine/r6engineweapon.html#PawnStoppedMoving">PawnStoppedMoving</a>, <a href="../engine/r6engineweapon.html#PerfectAim">PerfectAim</a>, <a href="../engine/r6engineweapon.html#PlayReloading">PlayReloading</a>, <a href="../engine/r6engineweapon.html#PostRender">PostRender</a>, <a href="../engine/r6engineweapon.html#R6SetReticule">R6SetReticule</a>, <a href="../engine/r6engineweapon.html#RemoveFirstPersonWeapon">RemoveFirstPersonWeapon</a>, <a href="../engine/r6engineweapon.html#ServerDetonate">ServerDetonate</a>, <a href="../engine/r6engineweapon.html#ServerPlaceCharge">ServerPlaceCharge</a>, <a href="../engine/r6engineweapon.html#ServerPlaceChargeAnimation">ServerPlaceChargeAnimation</a>, <a href="../engine/r6engineweapon.html#ServerPutBulletInShotgun">ServerPutBulletInShotgun</a>, <a href="../engine/r6engineweapon.html#ServerShowInfo">ServerShowInfo</a>, <a href="../engine/r6engineweapon.html#ServerStopFire">ServerStopFire</a>, <a href="../engine/r6engineweapon.html#SetAccuracyOnHit">SetAccuracyOnHit</a>, <a href="../engine/r6engineweapon.html#SetGadgets">SetGadgets</a>, <a href="../engine/r6engineweapon.html#SetHeartBeatRange">SetHeartBeatRange</a>, <a href="../engine/r6engineweapon.html#SetHoldAttachPoint">SetHoldAttachPoint</a>, <a href="../engine/r6engineweapon.html#SetIdentifyTarget">SetIdentifyTarget</a>, <a href="../engine/r6engineweapon.html#SetNextRateOfFire">SetNextRateOfFire</a>, <a href="../engine/r6engineweapon.html#SetRateOfFire">SetRateOfFire</a>, <a href="../engine/r6engineweapon.html#SetRelevant">SetRelevant</a>, <a href="../engine/r6engineweapon.html#SetTearOff">SetTearOff</a>, <a href="../engine/r6engineweapon.html#SetTerroristNbOfClips">SetTerroristNbOfClips</a>, <a href="../engine/r6engineweapon.html#ShowInfo">ShowInfo</a>, <a href="../engine/r6engineweapon.html#ShowWeaponParticules">ShowWeaponParticules</a>, <a href="../engine/r6engineweapon.html#StartFalling">StartFalling</a>, <a href="../engine/r6engineweapon.html#StartLoopingAnims">StartLoopingAnims</a>, <a href="../engine/r6engineweapon.html#StopAltFire">StopAltFire</a>, <a href="../engine/r6engineweapon.html#StopFire">StopFire</a>, <a href="../engine/r6engineweapon.html#ThrowGrenade">ThrowGrenade</a>, <a href="../engine/r6engineweapon.html#Toggle3rdBipod">Toggle3rdBipod</a>, <a href="../engine/r6engineweapon.html#TurnOffEmitters">TurnOffEmitters</a>, <a href="../engine/r6engineweapon.html#UpdateHands">UpdateHands</a>, <a href="../engine/r6engineweapon.html#UpdateWeaponAttachment">UpdateWeaponAttachment</a>, <a href="../engine/r6engineweapon.html#UseScopeStaticMesh">UseScopeStaticMesh</a>, <a href="../engine/r6engineweapon.html#WeaponInitialization">WeaponInitialization</a>, <a href="../engine/r6engineweapon.html#WeaponZoomSound">WeaponZoomSound</a></td>
+</tr>
+</table>
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th class="title">States Summary</th>
+</tr>
+</table>
+
+<table>
+<tr>
+	<th>BringWeaponUp <a href="../Source_r6weapons/r6weapons.html#1959" class="small">Source code</a></th>
+</tr>
+<tr>
+	<td>
+	<span class="declaration"><span class="us_keyw"> state</span> BringWeaponUp <span class="us_keyw"></span> </span><br />
+	<blockquote class="comment">
+	
+	</blockquote>
+	</td>
+</tr>
+<tr>
+	<td><a href="#_AltFire+BringWeaponUp">AltFire</a>, <a href="#_BeginState+BringWeaponUp">BeginState</a>, <a href="#_EndState+BringWeaponUp">EndState</a>, <a href="#_Fire+BringWeaponUp">Fire</a>, <a href="#_FirstPersonAnimOver+BringWeaponUp">FirstPersonAnimOver</a>, <a href="#_PlayReloading+BringWeaponUp">PlayReloading</a>, <a href="#_StopAltFire+BringWeaponUp">StopAltFire</a>, <a href="#_StopFire+BringWeaponUp">StopFire</a></td>
+</tr>
+</table>
+<table>
+<tr>
+	<th>CloseBipod <a href="../Source_r6weapons/r6weapons.html#2032" class="small">Source code</a></th>
+</tr>
+<tr>
+	<td>
+	<span class="declaration"><span class="us_keyw"> state</span> CloseBipod <span class="us_keyw"></span> </span><br />
+	<blockquote class="comment">
+	
+	</blockquote>
+	</td>
+</tr>
+<tr>
+	<td><a href="#_AltFire+CloseBipod">AltFire</a>, <a href="#_BeginState+CloseBipod">BeginState</a>, <a href="#_Fire+CloseBipod">Fire</a>, <a href="#_FirstPersonAnimOver+CloseBipod">FirstPersonAnimOver</a>, <a href="#_PlayReloading+CloseBipod">PlayReloading</a>, <a href="#_StopAltFire+CloseBipod">StopAltFire</a></td>
+</tr>
+</table>
+<table>
+<tr>
+	<th>DeployBipod <a href="../Source_r6weapons/r6weapons.html#2000" class="small">Source code</a></th>
+</tr>
+<tr>
+	<td>
+	<span class="declaration"><span class="us_keyw"> state</span> DeployBipod <span class="us_keyw"></span> </span><br />
+	<blockquote class="comment">
+	
+	</blockquote>
+	</td>
+</tr>
+<tr>
+	<td><a href="#_AltFire+DeployBipod">AltFire</a>, <a href="#_BeginState+DeployBipod">BeginState</a>, <a href="#_EndState+DeployBipod">EndState</a>, <a href="#_Fire+DeployBipod">Fire</a>, <a href="#_FirstPersonAnimOver+DeployBipod">FirstPersonAnimOver</a>, <a href="#_PlayReloading+DeployBipod">PlayReloading</a>, <a href="#_StopAltFire+DeployBipod">StopAltFire</a></td>
+</tr>
+</table>
+<table>
+<tr>
+	<th>DiscardWeapon <a href="../Source_r6weapons/r6weapons.html#1828" class="small">Source code</a></th>
+</tr>
+<tr>
+	<td>
+	<span class="declaration"><span class="us_keyw"> state</span> DiscardWeapon <span class="us_keyw"></span> </span><br />
+	<blockquote class="comment">
+	
+	</blockquote>
+	</td>
+</tr>
+<tr>
+	<td><a href="#_AltFire+DiscardWeapon">AltFire</a>, <a href="#_BeginState+DiscardWeapon">BeginState</a>, <a href="#_EndState+DiscardWeapon">EndState</a>, <a href="#_Fire+DiscardWeapon">Fire</a>, <a href="#_FirstPersonAnimOver+DiscardWeapon">FirstPersonAnimOver</a>, <a href="#_PlayReloading+DiscardWeapon">PlayReloading</a>, <a href="#_StopAltFire+DiscardWeapon">StopAltFire</a>, <a href="#_StopFire+DiscardWeapon">StopFire</a></td>
+</tr>
+</table>
+<table>
+<tr>
+	<th>NormalFire <a href="../Source_r6weapons/r6weapons.html#1425" class="small">Source code</a></th>
+</tr>
+<tr>
+	<td>
+	<span class="declaration"><span class="us_keyw"> state</span> NormalFire <span class="us_keyw"></span> </span><br />
+	<blockquote class="comment">
+	
+	</blockquote>
+	</td>
+</tr>
+<tr>
+	<td><a href="#_AltFire+NormalFire">AltFire</a>, <a href="#_BeginState+NormalFire">BeginState</a>, <a href="#_DoSingleFire+NormalFire">DoSingleFire</a>, <a href="#_EndState+NormalFire">EndState</a>, <a href="#_Fire+NormalFire">Fire</a>, <a href="#_FirstPersonAnimOver+NormalFire">FirstPersonAnimOver</a>, <a href="#_PlayReloading+NormalFire">PlayReloading</a>, <a href="#_StartFiring+NormalFire">StartFiring</a>, <a href="#_StopAltFire+NormalFire">StopAltFire</a>, <a href="#_Timer+NormalFire">Timer</a></td>
+</tr>
+</table>
+<table>
+<tr>
+	<th>PutWeaponDown <a href="../Source_r6weapons/r6weapons.html#1932" class="small">Source code</a></th>
+</tr>
+<tr>
+	<td>
+	<span class="declaration"><span class="us_keyw"> state</span> PutWeaponDown <span class="us_keyw"></span> </span><br />
+	<blockquote class="comment">
+	
+	</blockquote>
+	</td>
+</tr>
+<tr>
+	<td><a href="#_AltFire+PutWeaponDown">AltFire</a>, <a href="#_BeginState+PutWeaponDown">BeginState</a>, <a href="#_Fire+PutWeaponDown">Fire</a>, <a href="#_FirstPersonAnimOver+PutWeaponDown">FirstPersonAnimOver</a>, <a href="#_PlayReloading+PutWeaponDown">PlayReloading</a>, <a href="#_StopAltFire+PutWeaponDown">StopAltFire</a>, <a href="#_StopFire+PutWeaponDown">StopFire</a></td>
+</tr>
+</table>
+<table>
+<tr>
+	<th>RaiseWeapon <a href="../Source_r6weapons/r6weapons.html#1864" class="small">Source code</a></th>
+</tr>
+<tr>
+	<td>
+	<span class="declaration"><span class="us_keyw"> state</span> RaiseWeapon <span class="us_keyw"></span> </span><br />
+	<blockquote class="comment">
+	
+	</blockquote>
+	</td>
+</tr>
+<tr>
+	<td><a href="#_AltFire+RaiseWeapon">AltFire</a>, <a href="#_BeginState+RaiseWeapon">BeginState</a>, <a href="#_EndState+RaiseWeapon">EndState</a>, <a href="#_Fire+RaiseWeapon">Fire</a>, <a href="#_FirstPersonAnimOver+RaiseWeapon">FirstPersonAnimOver</a>, <a href="#_PlayReloading+RaiseWeapon">PlayReloading</a>, <a href="#_StopAltFire+RaiseWeapon">StopAltFire</a>, <a href="#_StopFire+RaiseWeapon">StopFire</a></td>
+</tr>
+</table>
+<table>
+<tr>
+	<th>Reloading <a href="../Source_r6weapons/r6weapons.html#1709" class="small">Source code</a></th>
+</tr>
+<tr>
+	<td>
+	<span class="declaration"><span class="us_keyw"> state</span> Reloading <span class="us_keyw"></span> </span><br />
+	<blockquote class="comment">
+	
+	</blockquote>
+	</td>
+</tr>
+<tr>
+	<td><a href="#_AltFire+Reloading">AltFire</a>, <a href="#_BeginState+Reloading">BeginState</a>, <a href="#_ChangeClip+Reloading">ChangeClip</a>, <a href="#_EndState+Reloading">EndState</a>, <a href="#_Fire+Reloading">Fire</a>, <a href="#_FirstPersonAnimOver+Reloading">FirstPersonAnimOver</a>, <a href="#_GetReloadProgress+Reloading">GetReloadProgress</a>, <a href="#_PlayReloading+Reloading">PlayReloading</a>, <a href="#_StopAltFire+Reloading">StopAltFire</a>, <a href="#_Tick+Reloading">Tick</a></td>
+</tr>
+</table>
+<table>
+<tr>
+	<th>ZoomIn <a href="../Source_r6weapons/r6weapons.html#2068" class="small">Source code</a></th>
+</tr>
+<tr>
+	<td>
+	<span class="declaration"><span class="us_keyw"> state</span> ZoomIn <span class="us_keyw"></span> </span><br />
+	<blockquote class="comment">
+	
+	</blockquote>
+	</td>
+</tr>
+<tr>
+	<td><a href="#_AltFire+ZoomIn">AltFire</a>, <a href="#_BeginState+ZoomIn">BeginState</a>, <a href="#_EndState+ZoomIn">EndState</a>, <a href="#_Fire+ZoomIn">Fire</a>, <a href="#_FirstPersonAnimOver+ZoomIn">FirstPersonAnimOver</a>, <a href="#_PlayReloading+ZoomIn">PlayReloading</a>, <a href="#_StopAltFire+ZoomIn">StopAltFire</a></td>
+</tr>
+</table>
+<table>
+<tr>
+	<th>ZoomOut <a href="../Source_r6weapons/r6weapons.html#2108" class="small">Source code</a></th>
+</tr>
+<tr>
+	<td>
+	<span class="declaration"><span class="us_keyw"> state</span> ZoomOut <span class="us_keyw"></span> </span><br />
+	<blockquote class="comment">
+	
+	</blockquote>
+	</td>
+</tr>
+<tr>
+	<td><a href="#_BeginState+ZoomOut">BeginState</a>, <a href="#_FirstPersonAnimOver+ZoomOut">FirstPersonAnimOver</a></td>
+</tr>
+</table>
+
+
+<br />
+
+<hr />
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Constants Detail</th>
+</tr>
+</table>
+
+<h4><a name="_AccuracyLostWhenWounded" class="hidden"></a>AccuracyLostWhenWounded <a href="../Source_r6weapons/r6weapons.html#106" class="small">Source code</a></h4>
+<div class="declaration">const AccuracyLostWhenWounded = <span class="source_int">1.2</span>;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th class="title">Variables Detail</th>
+</tr>
+</table>
+
+<h4><a name="_C_iMaxNbOfClips" class="hidden"></a>C_iMaxNbOfClips <a href="../Source_r6weapons/r6weapons.html#49" class="small">Source code</a></h4>
+<div class="declaration">var const <span class="source_type">INT</span> C_iMaxNbOfClips;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_bEmptyAllClips" class="hidden"></a>m_bEmptyAllClips <a href="../Source_r6weapons/r6weapons.html#100" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">BOOL</span> m_bEmptyAllClips;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_bFireOn" class="hidden"></a>m_bFireOn <a href="../Source_r6weapons/r6weapons.html#99" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">BOOL</span> m_bFireOn;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_bPlayLoopingSound" class="hidden"></a>m_bPlayLoopingSound <a href="../Source_r6weapons/r6weapons.html#89" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">BOOL</span> m_bPlayLoopingSound;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_fAverageDegChanges" class="hidden"></a>m_fAverageDegChanges <a href="../Source_r6weapons/r6weapons.html#78" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">FLOAT</span> m_fAverageDegChanges;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_fAverageDegTable[5]" class="hidden"></a>m_fAverageDegTable[5] <a href="../Source_r6weapons/r6weapons.html#79" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">FLOAT</span> m_fAverageDegTable[<span class="source_int">5</span>];</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_fCurrentFireJump" class="hidden"></a>m_fCurrentFireJump <a href="../Source_r6weapons/r6weapons.html#87" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">FLOAT</span> m_fCurrentFireJump;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_fDesiredAccuracy" class="hidden"></a>m_fDesiredAccuracy <a href="../Source_r6weapons/r6weapons.html#85" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">FLOAT</span> m_fDesiredAccuracy;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_fDisplayFOV" class="hidden"></a>m_fDisplayFOV <a href="../Source_r6weapons/r6weapons.html#98" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">FLOAT</span> m_fDisplayFOV;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_fEffectiveAccuracy" class="hidden"></a>m_fEffectiveAccuracy <a href="../Source_r6weapons/r6weapons.html#84" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">FLOAT</span> m_fEffectiveAccuracy;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_fFireSoundRadius" class="hidden"></a>m_fFireSoundRadius <a href="../Source_r6weapons/r6weapons.html#88" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">FLOAT</span> m_fFireSoundRadius;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_fMaxAngleError" class="hidden"></a>m_fMaxAngleError <a href="../Source_r6weapons/r6weapons.html#86" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">FLOAT</span> m_fMaxAngleError;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_fOldWorstAccuracy" class="hidden"></a>m_fOldWorstAccuracy <a href="../Source_r6weapons/r6weapons.html#83" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">FLOAT</span> m_fOldWorstAccuracy;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_fStablePercentage" class="hidden"></a>m_fStablePercentage <a href="../Source_r6weapons/r6weapons.html#81" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">FLOAT</span> m_fStablePercentage;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_fWorstAccuracy" class="hidden"></a>m_fWorstAccuracy <a href="../Source_r6weapons/r6weapons.html#82" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">FLOAT</span> m_fWorstAccuracy;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_iCurrentAverage" class="hidden"></a>m_iCurrentAverage <a href="../Source_r6weapons/r6weapons.html#80" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">INT</span> m_iCurrentAverage;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_iCurrentClip" class="hidden"></a>m_iCurrentClip <a href="../Source_r6weapons/r6weapons.html#71" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">INT</span> m_iCurrentClip;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_iCurrentNbOfClips" class="hidden"></a>m_iCurrentNbOfClips <a href="../Source_r6weapons/r6weapons.html#73" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">INT</span> m_iCurrentNbOfClips;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_iNbOfRoundsInBurst" class="hidden"></a>m_iNbOfRoundsInBurst <a href="../Source_r6weapons/r6weapons.html#74" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">BYTE</span> m_iNbOfRoundsInBurst;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_iNbOfRoundsToShoot" class="hidden"></a>m_iNbOfRoundsToShoot <a href="../Source_r6weapons/r6weapons.html#72" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">INT</span> m_iNbOfRoundsToShoot;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_pEmptyShellsEmitter" class="hidden"></a>m_pEmptyShellsEmitter <a href="../Source_r6weapons/r6weapons.html#65" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../engine/r6sfx.html" class="source">R6SFX</a></span> m_pEmptyShellsEmitter;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_pMuzzleFlashEmitter" class="hidden"></a>m_pMuzzleFlashEmitter <a href="../Source_r6weapons/r6weapons.html#67" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../engine/r6sfx.html" class="source">R6SFX</a></span> m_pMuzzleFlashEmitter;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_rBuckFirstBullet" class="hidden"></a>m_rBuckFirstBullet <a href="../Source_r6weapons/r6weapons.html#77" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../core/object.html#Rotator" class="source">rotator</a></span> m_rBuckFirstBullet;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_ReticuleInstance" class="hidden"></a>m_ReticuleInstance <a href="../Source_r6weapons/r6weapons.html#57" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../r6weapons/r6reticule.html" class="source">R6Reticule</a></span> m_ReticuleInstance;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_rLastRotation" class="hidden"></a>m_rLastRotation <a href="../Source_r6weapons/r6weapons.html#76" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../core/object.html#Rotator" class="source">rotator</a></span> m_rLastRotation;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_vPawnLocWhenKilled" class="hidden"></a>m_vPawnLocWhenKilled <a href="../Source_r6weapons/r6weapons.html#103" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../core/object.html#Vector" class="source">Vector</a></span> m_vPawnLocWhenKilled;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_wNbOfBounce" class="hidden"></a>m_wNbOfBounce <a href="../Source_r6weapons/r6weapons.html#104" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">BYTE</span> m_wNbOfBounce;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h3 class="vartag">Debug</h3>
+<h4><a name="_bShowLog" class="hidden"></a>bShowLog <a href="../Source_r6weapons/r6weapons.html#96" class="small">Source code</a></h4>
+<div class="declaration">var(Debug) <span class="source_type">BOOL</span> bShowLog;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_bSoundLog" class="hidden"></a>m_bSoundLog <a href="../Source_r6weapons/r6weapons.html#95" class="small">Source code</a></h4>
+<div class="declaration">var(Debug) <span class="source_type">BOOL</span> m_bSoundLog;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_iDbgNextReticule" class="hidden"></a>m_iDbgNextReticule <a href="../Source_r6weapons/r6weapons.html#97" class="small">Source code</a></h4>
+<div class="declaration">var(Debug) <span class="source_type">INT</span> m_iDbgNextReticule;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h3 class="vartag">MuzzleFlash</h3>
+<h4><a name="_m_MuzzleScale" class="hidden"></a>m_MuzzleScale <a href="../Source_r6weapons/r6weapons.html#68" class="small">Source code</a></h4>
+<div class="declaration">var(MuzzleFlash) <span class="source_type">FLOAT</span> m_MuzzleScale;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h3 class="vartag">R6Clip</h3>
+<h4><a name="_m_aiNbOfBullets[20]" class="hidden"></a>m_aiNbOfBullets[20] <a href="../Source_r6weapons/r6weapons.html#62" class="small">Source code</a></h4>
+<div class="declaration">var(R6Clip) <span class="source_type">BYTE</span> m_aiNbOfBullets[<span class="source_int">20</span>];</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_iClipCapacity" class="hidden"></a>m_iClipCapacity <a href="../Source_r6weapons/r6weapons.html#59" class="small">Source code</a></h4>
+<div class="declaration">var(R6Clip) <span class="source_type">INT</span> m_iClipCapacity;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_iNbOfClips" class="hidden"></a>m_iNbOfClips <a href="../Source_r6weapons/r6weapons.html#60" class="small">Source code</a></h4>
+<div class="declaration">var(R6Clip) <span class="source_type">INT</span> m_iNbOfClips;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_iNbOfExtraClips" class="hidden"></a>m_iNbOfExtraClips <a href="../Source_r6weapons/r6weapons.html#61" class="small">Source code</a></h4>
+<div class="declaration">var(R6Clip) <span class="source_type">INT</span> m_iNbOfExtraClips;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_pBulletClass" class="hidden"></a>m_pBulletClass <a href="../Source_r6weapons/r6weapons.html#63" class="small">Source code</a></h4>
+<div class="declaration">var(R6Clip) <span class="source_type">class</span>&lt;<span class="source_type"><a href="../r6weapons/r6bullet.html" class="source">R6Bullet</a></span>&gt; m_pBulletClass;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_pEmptyShells" class="hidden"></a>m_pEmptyShells <a href="../Source_r6weapons/r6weapons.html#64" class="small">Source code</a></h4>
+<div class="declaration">var(R6Clip) <span class="source_type">class</span>&lt;<span class="source_type"><a href="../engine/r6sfx.html" class="source">R6SFX</a></span>&gt; m_pEmptyShells;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_pMuzzleFlash" class="hidden"></a>m_pMuzzleFlash <a href="../Source_r6weapons/r6weapons.html#66" class="small">Source code</a></h4>
+<div class="declaration">var(R6Clip) <span class="source_type">class</span>&lt;<span class="source_type"><a href="../engine/r6sfx.html" class="source">R6SFX</a></span>&gt; m_pMuzzleFlash;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h3 class="vartag">R6Firing</h3>
+<h4><a name="_m_eRateOfFire" class="hidden"></a>m_eRateOfFire <a href="../Source_r6weapons/r6weapons.html#93" class="small">Source code</a></h4>
+<div class="declaration">var(R6Firing) <span class="source_type"><a href="../engine/r6engineweapon.html#eRateOfFire" class="source">eRateOfFire</a></span> m_eRateOfFire;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_fRateOfFire" class="hidden"></a>m_fRateOfFire <a href="../Source_r6weapons/r6weapons.html#91" class="small">Source code</a></h4>
+<div class="declaration">var(R6Firing) <span class="source_type">FLOAT</span> m_fRateOfFire;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_stAccuracyValues" class="hidden"></a>m_stAccuracyValues <a href="../Source_r6weapons/r6weapons.html#92" class="small">Source code</a></h4>
+<div class="declaration">var(R6Firing) <span class="source_type"><a href="../r6weapons/r6weapons.html#stAccuracyType" class="source">stAccuracyType</a></span> m_stAccuracyValues;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h3 class="vartag">R6GunProperties</h3>
+<h4><a name="_m_fMuzzleVelocity" class="hidden"></a>m_fMuzzleVelocity <a href="../Source_r6weapons/r6weapons.html#51" class="small">Source code</a></h4>
+<div class="declaration">var(R6GunProperties) <span class="source_type">FLOAT</span> m_fMuzzleVelocity;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_pReticuleClass" class="hidden"></a>m_pReticuleClass <a href="../Source_r6weapons/r6weapons.html#55" class="small">Source code</a></h4>
+<div class="declaration">var(R6GunProperties) <span class="source_type">class</span>&lt;<span class="source_type"><a href="../r6weapons/r6reticule.html" class="source">R6Reticule</a></span>&gt; m_pReticuleClass;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_pWithWeaponReticuleClass" class="hidden"></a>m_pWithWeaponReticuleClass <a href="../Source_r6weapons/r6weapons.html#56" class="small">Source code</a></h4>
+<div class="declaration">var(R6GunProperties) <span class="source_type">class</span>&lt;<span class="source_type"><a href="../r6weapons/r6reticule.html" class="source">R6Reticule</a></span>&gt; m_pWithWeaponReticuleClass;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_stWeaponCaps" class="hidden"></a>m_stWeaponCaps <a href="../Source_r6weapons/r6weapons.html#52" class="small">Source code</a></h4>
+<div class="declaration">var(R6GunProperties) <span class="source_type"><a href="../r6weapons/r6weapons.html#stWeaponCaps" class="source">stWeaponCaps</a></span> m_stWeaponCaps;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_WeaponIcon" class="hidden"></a>m_WeaponIcon <a href="../Source_r6weapons/r6weapons.html#53" class="small">Source code</a></h4>
+<div class="declaration">var(R6GunProperties) <span class="source_type"><a href="../engine/texture.html" class="source">Texture</a></span> m_WeaponIcon;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+
+
+<br />
+
+
+
+<table class="title">
+<tr>
+	<th class="title">Structures Detail</th>
+</tr>
+</table>
+
+<h4><a name="_stAccuracyType" class="hidden"></a>stAccuracyType <a href="../Source_r6weapons/r6weapons.html#36" class="small">Source code</a></h4>
+<div class="declaration">struct <span class="source_type"><a href="../r6weapons/r6weapons.html#stAccuracyType" class="source">stAccuracyType</a></span><br />
+{<blockquote>var(<span class="source_type"><a href="../r6weapons/r6weapons.html" class="source">R6Weapons</a></span>) <span class="source_type">FLOAT</span> fAccuracyChange;<br />
+var(<span class="source_type"><a href="../r6weapons/r6weapons.html" class="source">R6Weapons</a></span>) <span class="source_type">FLOAT</span> fBaseAccuracy;<br />
+var(<span class="source_type"><a href="../r6weapons/r6weapons.html" class="source">R6Weapons</a></span>) <span class="source_type">FLOAT</span> fReticuleTime;<br />
+var(<span class="source_type"><a href="../r6weapons/r6weapons.html" class="source">R6Weapons</a></span>) <span class="source_type">FLOAT</span> fRunningAccuracy;<br />
+var(<span class="source_type"><a href="../r6weapons/r6weapons.html" class="source">R6Weapons</a></span>) <span class="source_type">FLOAT</span> fShuffleAccuracy;<br />
+var(<span class="source_type"><a href="../r6weapons/r6weapons.html" class="source">R6Weapons</a></span>) <span class="source_type">FLOAT</span> fWalkingAccuracy;<br />
+var(<span class="source_type"><a href="../r6weapons/r6weapons.html" class="source">R6Weapons</a></span>) <span class="source_type">FLOAT</span> fWalkingFastAccuracy;<br />
+var(<span class="source_type"><a href="../r6weapons/r6weapons.html" class="source">R6Weapons</a></span>) <span class="source_type">FLOAT</span> fWeaponJump;<br />
+</blockquote>};
+</div>
+<blockquote class="comment">
+
+<br />
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_stWeaponCaps" class="hidden"></a>stWeaponCaps <a href="../Source_r6weapons/r6weapons.html#22" class="small">Source code</a></h4>
+<div class="declaration">struct <span class="source_type"><a href="../r6weapons/r6weapons.html#stWeaponCaps" class="source">stWeaponCaps</a></span><br />
+{<blockquote>var(<span class="source_type"><a href="../r6weapons/r6weapons.html" class="source">R6Weapons</a></span>) <span class="source_type">INT</span> bCMag;<br />
+var(<span class="source_type"><a href="../r6weapons/r6weapons.html" class="source">R6Weapons</a></span>) <span class="source_type">INT</span> bFullAuto;<br />
+var(<span class="source_type"><a href="../r6weapons/r6weapons.html" class="source">R6Weapons</a></span>) <span class="source_type">INT</span> bHeatVision;<br />
+var(<span class="source_type"><a href="../r6weapons/r6weapons.html" class="source">R6Weapons</a></span>) <span class="source_type">INT</span> bLight;<br />
+var(<span class="source_type"><a href="../r6weapons/r6weapons.html" class="source">R6Weapons</a></span>) <span class="source_type">INT</span> bMiniScope;<br />
+var(<span class="source_type"><a href="../r6weapons/r6weapons.html" class="source">R6Weapons</a></span>) <span class="source_type">INT</span> bMuzzle;<br />
+var(<span class="source_type"><a href="../r6weapons/r6weapons.html" class="source">R6Weapons</a></span>) <span class="source_type">INT</span> bSilencer;<br />
+var(<span class="source_type"><a href="../r6weapons/r6weapons.html" class="source">R6Weapons</a></span>) <span class="source_type">INT</span> bSingle;<br />
+var(<span class="source_type"><a href="../r6weapons/r6weapons.html" class="source">R6Weapons</a></span>) <span class="source_type">INT</span> bThreeRound;<br />
+</blockquote>};
+</div>
+<blockquote class="comment">
+
+<br />
+
+</blockquote>
+<hr class="small" />
+
+
+<br />
+
+
+
+<table class="title">
+<tr>
+	<th class="title">Functions Detail</th>
+</tr>
+</table>
+
+<h4><a name="_AddClips-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> AddClips <span class="function_state"></span> <a href="../Source_r6weapons/r6weapons.html#778" class="small">Source code</a></h4>
+<div class="declaration">simulated function  AddClips ( <span class="source_type">INT</span> iNbOfExtraClips) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_AddExtraClip-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> AddExtraClip <span class="function_state"></span> <a href="../Source_r6weapons/r6weapons.html#767" class="small">Source code</a></h4>
+<div class="declaration">simulated function  AddExtraClip ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_AffectActor-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> AffectActor <span class="function_state"></span> <a href="../Source_r6weapons/r6weapons.html#2236" class="small">Source code</a></h4>
+<div class="declaration"> function <span class="source_type">bool</span> AffectActor ( <span class="source_type">INT</span> BulletGroup, <span class="source_type"><a href="../engine/actor.html" class="source">actor</a></span> ActorAffected) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_AltFire-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> AltFire <span class="function_state"></span> <a href="../Source_r6weapons/r6weapons.html#1164" class="small">Source code</a></h4>
+<div class="declaration">simulated function  AltFire ( <span class="source_type">FLOAT</span> <span class="source_type">fValue</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_AltFire-BringWeaponUp" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> AltFire <span class="function_state">BringWeaponUp</span> <a href="../Source_r6weapons/r6weapons.html#1962" class="small">Source code</a></h4>
+<div class="declaration"> function  AltFire ( <span class="source_type">float</span> <span class="source_type">Value</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_AltFire-CloseBipod" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> AltFire <span class="function_state">CloseBipod</span> <a href="../Source_r6weapons/r6weapons.html#2035" class="small">Source code</a></h4>
+<div class="declaration"> function  AltFire ( <span class="source_type">float</span> <span class="source_type">Value</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_AltFire-DeployBipod" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> AltFire <span class="function_state">DeployBipod</span> <a href="../Source_r6weapons/r6weapons.html#2003" class="small">Source code</a></h4>
+<div class="declaration"> function  AltFire ( <span class="source_type">float</span> <span class="source_type">Value</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_AltFire-DiscardWeapon" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> AltFire <span class="function_state">DiscardWeapon</span> <a href="../Source_r6weapons/r6weapons.html#1831" class="small">Source code</a></h4>
+<div class="declaration"> function  AltFire ( <span class="source_type">float</span> <span class="source_type">Value</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_AltFire-NormalFire" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> AltFire <span class="function_state">NormalFire</span> <a href="../Source_r6weapons/r6weapons.html#1437" class="small">Source code</a></h4>
+<div class="declaration"> function  AltFire ( <span class="source_type">float</span> <span class="source_type">Value</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_AltFire-PutWeaponDown" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> AltFire <span class="function_state">PutWeaponDown</span> <a href="../Source_r6weapons/r6weapons.html#1935" class="small">Source code</a></h4>
+<div class="declaration"> function  AltFire ( <span class="source_type">float</span> <span class="source_type">Value</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_AltFire-RaiseWeapon" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> AltFire <span class="function_state">RaiseWeapon</span> <a href="../Source_r6weapons/r6weapons.html#1867" class="small">Source code</a></h4>
+<div class="declaration"> function  AltFire ( <span class="source_type">float</span> <span class="source_type">Value</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_AltFire-Reloading" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> AltFire <span class="function_state">Reloading</span> <a href="../Source_r6weapons/r6weapons.html#1714" class="small">Source code</a></h4>
+<div class="declaration"> function  AltFire ( <span class="source_type">float</span> <span class="source_type">Value</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_AltFire-ZoomIn" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> AltFire <span class="function_state">ZoomIn</span> <a href="../Source_r6weapons/r6weapons.html#2071" class="small">Source code</a></h4>
+<div class="declaration"> function  AltFire ( <span class="source_type">float</span> <span class="source_type">Value</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_AttachEmittersTo3rdWeapon-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> AttachEmittersTo3rdWeapon <span class="function_state"></span> <a href="../Source_r6weapons/r6weapons.html#538" class="small">Source code</a></h4>
+<div class="declaration">simulated function  AttachEmittersTo3rdWeapon ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_AttachEmittersToFPWeapon-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> AttachEmittersToFPWeapon <span class="function_state"></span> <a href="../Source_r6weapons/r6weapons.html#513" class="small">Source code</a></h4>
+<div class="declaration">simulated function  AttachEmittersToFPWeapon ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_BeginState-BringWeaponUp" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> BeginState <span class="function_state">BringWeaponUp</span> <a href="../Source_r6weapons/r6weapons.html#1979" class="small">Source code</a></h4>
+<div class="declaration">simulated function  BeginState ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_BeginState-CloseBipod" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> BeginState <span class="function_state">CloseBipod</span> <a href="../Source_r6weapons/r6weapons.html#2051" class="small">Source code</a></h4>
+<div class="declaration">simulated function  BeginState ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_BeginState-DeployBipod" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> BeginState <span class="function_state">DeployBipod</span> <a href="../Source_r6weapons/r6weapons.html#2020" class="small">Source code</a></h4>
+<div class="declaration">simulated function  BeginState ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_BeginState-DiscardWeapon" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> BeginState <span class="function_state">DiscardWeapon</span> <a href="../Source_r6weapons/r6weapons.html#1843" class="small">Source code</a></h4>
+<div class="declaration">simulated function  BeginState ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_BeginState-NormalFire" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> BeginState <span class="function_state">NormalFire</span> <a href="../Source_r6weapons/r6weapons.html#1484" class="small">Source code</a></h4>
+<div class="declaration">simulated function  BeginState ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_BeginState-PutWeaponDown" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> BeginState <span class="function_state">PutWeaponDown</span> <a href="../Source_r6weapons/r6weapons.html#1942" class="small">Source code</a></h4>
+<div class="declaration">simulated function  BeginState ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_BeginState-RaiseWeapon" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> BeginState <span class="function_state">RaiseWeapon</span> <a href="../Source_r6weapons/r6weapons.html#1911" class="small">Source code</a></h4>
+<div class="declaration">simulated function  BeginState ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_BeginState-Reloading" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> BeginState <span class="function_state">Reloading</span> <a href="../Source_r6weapons/r6weapons.html#1770" class="small">Source code</a></h4>
+<div class="declaration">simulated function  BeginState ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_BeginState-ZoomIn" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> BeginState <span class="function_state">ZoomIn</span> <a href="../Source_r6weapons/r6weapons.html#2093" class="small">Source code</a></h4>
+<div class="declaration">simulated function  BeginState ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_BeginState-ZoomOut" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> BeginState <span class="function_state">ZoomOut</span> <a href="../Source_r6weapons/r6weapons.html#2124" class="small">Source code</a></h4>
+<div class="declaration">simulated function  BeginState ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_CanSwitchToWeapon-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> CanSwitchToWeapon <span class="function_state"></span> <a href="../Source_r6weapons/r6weapons.html#2547" class="small">Source code</a></h4>
+<div class="declaration"> function <span class="source_type">BOOL</span> CanSwitchToWeapon ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ChangeClip-Reloading" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> ChangeClip <span class="function_state">Reloading</span> <a href="../Source_r6weapons/r6weapons.html#1739" class="small">Source code</a></h4>
+<div class="declaration">simulated function  ChangeClip ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_CheckForPlaceToFall-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> CheckForPlaceToFall <span class="function_state"></span> <a href="../Source_r6weapons/r6weapons.html#2411" class="small">Source code</a></h4>
+<div class="declaration">simulated function <span class="source_type">BOOL</span> CheckForPlaceToFall ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ClientAltFire-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> ClientAltFire <span class="function_state"></span> <a href="../Source_r6weapons/r6weapons.html#1145" class="small">Source code</a></h4>
+<div class="declaration">simulated function <span class="source_type">BOOL</span> ClientAltFire ( <span class="source_type">FLOAT</span> <span class="source_type">fValue</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ClientsFireBullet-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> ClientsFireBullet <span class="function_state"></span> <a href="../Source_r6weapons/r6weapons.html#1387" class="small">Source code</a></h4>
+<div class="declaration"> function  ClientsFireBullet ( <span class="source_type">BYTE</span> iBulletNbFired) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ClientShowBulletFire-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> ClientShowBulletFire <span class="function_state"></span> <a href="../Source_r6weapons/r6weapons.html#1276" class="small">Source code</a></h4>
+<div class="declaration"> function  ClientShowBulletFire ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ClientStartChangeClip-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> ClientStartChangeClip <span class="function_state"></span> <a href="../Source_r6weapons/r6weapons.html#1574" class="small">Source code</a></h4>
+<div class="declaration"> function  ClientStartChangeClip ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ClientStartFiring-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> ClientStartFiring <span class="function_state"></span> <a href="../Source_r6weapons/r6weapons.html#1021" class="small">Source code</a></h4>
+<div class="declaration"> function  ClientStartFiring ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ClientStopFire-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> ClientStopFire <span class="function_state"></span> <a href="../Source_r6weapons/r6weapons.html#1074" class="small">Source code</a></h4>
+<div class="declaration"> function  ClientStopFire ( optional <span class="source_type">BOOL</span> <span class="source_type">bSoundOnly</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ClientYourOwnerIs-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> ClientYourOwnerIs <span class="function_state"></span> <a href="../Source_r6weapons/r6weapons.html#424" class="small">Source code</a></h4>
+<div class="declaration"> function  ClientYourOwnerIs ( <span class="source_type"><a href="../engine/actor.html" class="source">actor</a></span> OwnerFromServer) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_CreateWeaponEmitters-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> CreateWeaponEmitters <span class="function_state"></span> <a href="../Source_r6weapons/r6weapons.html#874" class="small">Source code</a></h4>
+<div class="declaration">simulated function  CreateWeaponEmitters ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_DbgNextReticule-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> DbgNextReticule <span class="function_state"></span> <a href="../Source_r6weapons/r6weapons.html#2169" class="small">Source code</a></h4>
+<div class="declaration">exec function  DbgNextReticule ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_DeployWeaponBipod-" class="hidden"></a><img src="../img_event.gif" alt="" title="event" /> DeployWeaponBipod <span class="function_state"></span> <a href="../Source_r6weapons/r6weapons.html#2060" class="small">Source code</a></h4>
+<div class="declaration">simulated event  DeployWeaponBipod ( <span class="source_type">BOOL</span> bBipodOpen) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_Destroyed-" class="hidden"></a><img src="../img_event.gif" alt="" title="event" /> Destroyed <span class="function_state"></span> <a href="../Source_r6weapons/r6weapons.html#250" class="small">Source code</a></h4>
+<div class="declaration">simulated event  Destroyed ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_DisplayWeaponDGBInfo-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> DisplayWeaponDGBInfo <span class="function_state"></span> <a href="../Source_r6weapons/r6weapons.html#2580" class="small">Source code</a></h4>
+<div class="declaration">simulated function  DisplayWeaponDGBInfo ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_DoSingleFire-NormalFire" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> DoSingleFire <span class="function_state">NormalFire</span> <a href="../Source_r6weapons/r6weapons.html#1559" class="small">Source code</a></h4>
+<div class="declaration"> function  DoSingleFire ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_EndState-BringWeaponUp" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> EndState <span class="function_state">BringWeaponUp</span> <a href="../Source_r6weapons/r6weapons.html#1990" class="small">Source code</a></h4>
+<div class="declaration">simulated function  EndState ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_EndState-DeployBipod" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> EndState <span class="function_state">DeployBipod</span> <a href="../Source_r6weapons/r6weapons.html#2027" class="small">Source code</a></h4>
+<div class="declaration"> function  EndState ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_EndState-DiscardWeapon" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> EndState <span class="function_state">DiscardWeapon</span> <a href="../Source_r6weapons/r6weapons.html#1858" class="small">Source code</a></h4>
+<div class="declaration">simulated function  EndState ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_EndState-NormalFire" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> EndState <span class="function_state">NormalFire</span> <a href="../Source_r6weapons/r6weapons.html#1445" class="small">Source code</a></h4>
+<div class="declaration"> function  EndState ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_EndState-RaiseWeapon" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> EndState <span class="function_state">RaiseWeapon</span> <a href="../Source_r6weapons/r6weapons.html#1872" class="small">Source code</a></h4>
+<div class="declaration"> function  EndState ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_EndState-Reloading" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> EndState <span class="function_state">Reloading</span> <a href="../Source_r6weapons/r6weapons.html#1755" class="small">Source code</a></h4>
+<div class="declaration"> function  EndState ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_EndState-ZoomIn" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> EndState <span class="function_state">ZoomIn</span> <a href="../Source_r6weapons/r6weapons.html#2102" class="small">Source code</a></h4>
+<div class="declaration">simulated function  EndState ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_FillClips-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> FillClips <span class="function_state"></span> <a href="../Source_r6weapons/r6weapons.html#331" class="small">Source code</a></h4>
+<div class="declaration">simulated function  FillClips ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_Fire-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> Fire <span class="function_state"></span> <a href="../Source_r6weapons/r6weapons.html#1016" class="small">Source code</a></h4>
+<div class="declaration"> function  Fire ( <span class="source_type">FLOAT</span> <span class="source_type">fValue</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_Fire-BringWeaponUp" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> Fire <span class="function_state">BringWeaponUp</span> <a href="../Source_r6weapons/r6weapons.html#1961" class="small">Source code</a></h4>
+<div class="declaration"> function  Fire ( <span class="source_type">float</span> <span class="source_type">Value</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_Fire-CloseBipod" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> Fire <span class="function_state">CloseBipod</span> <a href="../Source_r6weapons/r6weapons.html#2034" class="small">Source code</a></h4>
+<div class="declaration"> function  Fire ( <span class="source_type">float</span> <span class="source_type">Value</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_Fire-DeployBipod" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> Fire <span class="function_state">DeployBipod</span> <a href="../Source_r6weapons/r6weapons.html#2002" class="small">Source code</a></h4>
+<div class="declaration"> function  Fire ( <span class="source_type">float</span> <span class="source_type">Value</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_Fire-DiscardWeapon" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> Fire <span class="function_state">DiscardWeapon</span> <a href="../Source_r6weapons/r6weapons.html#1830" class="small">Source code</a></h4>
+<div class="declaration"> function  Fire ( <span class="source_type">float</span> <span class="source_type">Value</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_Fire-NormalFire" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> Fire <span class="function_state">NormalFire</span> <a href="../Source_r6weapons/r6weapons.html#1429" class="small">Source code</a></h4>
+<div class="declaration"> function  Fire ( <span class="source_type">float</span> <span class="source_type">Value</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_Fire-PutWeaponDown" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> Fire <span class="function_state">PutWeaponDown</span> <a href="../Source_r6weapons/r6weapons.html#1934" class="small">Source code</a></h4>
+<div class="declaration"> function  Fire ( <span class="source_type">float</span> <span class="source_type">Value</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_Fire-RaiseWeapon" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> Fire <span class="function_state">RaiseWeapon</span> <a href="../Source_r6weapons/r6weapons.html#1866" class="small">Source code</a></h4>
+<div class="declaration"> function  Fire ( <span class="source_type">float</span> <span class="source_type">Value</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_Fire-Reloading" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> Fire <span class="function_state">Reloading</span> <a href="../Source_r6weapons/r6weapons.html#1713" class="small">Source code</a></h4>
+<div class="declaration"> function  Fire ( <span class="source_type">float</span> <span class="source_type">Value</span> )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_Fire-ZoomIn" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> Fire <span class="function_state">ZoomIn</span> <a href="../Source_r6weapons/r6weapons.html#2070" class="small">Source code</a></h4>
+<div class="declaration"> function  Fire ( <span class="source_type">float</span> <span class="source_type">Value</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_FirstPersonAnimOver-BringWeaponUp" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> FirstPersonAnimOver <span class="function_state">BringWeaponUp</span> <a href="../Source_r6weapons/r6weapons.html#1967" class="small">Source code</a></h4>
+<div class="declaration"> function  FirstPersonAnimOver ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_FirstPersonAnimOver-CloseBipod" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> FirstPersonAnimOver <span class="function_state">CloseBipod</span> <a href="../Source_r6weapons/r6weapons.html#2040" class="small">Source code</a></h4>
+<div class="declaration"> function  FirstPersonAnimOver ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_FirstPersonAnimOver-DeployBipod" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> FirstPersonAnimOver <span class="function_state">DeployBipod</span> <a href="../Source_r6weapons/r6weapons.html#2008" class="small">Source code</a></h4>
+<div class="declaration"> function  FirstPersonAnimOver ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_FirstPersonAnimOver-DiscardWeapon" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> FirstPersonAnimOver <span class="function_state">DiscardWeapon</span> <a href="../Source_r6weapons/r6weapons.html#1836" class="small">Source code</a></h4>
+<div class="declaration"> function  FirstPersonAnimOver ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_FirstPersonAnimOver-NormalFire" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> FirstPersonAnimOver <span class="function_state">NormalFire</span> <a href="../Source_r6weapons/r6weapons.html#1458" class="small">Source code</a></h4>
+<div class="declaration">simulated function  FirstPersonAnimOver ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_FirstPersonAnimOver-PutWeaponDown" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> FirstPersonAnimOver <span class="function_state">PutWeaponDown</span> <a href="../Source_r6weapons/r6weapons.html#1940" class="small">Source code</a></h4>
+<div class="declaration"> function  FirstPersonAnimOver (  )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_FirstPersonAnimOver-RaiseWeapon" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> FirstPersonAnimOver <span class="function_state">RaiseWeapon</span> <a href="../Source_r6weapons/r6weapons.html#1893" class="small">Source code</a></h4>
+<div class="declaration"> function  FirstPersonAnimOver ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_FirstPersonAnimOver-Reloading" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> FirstPersonAnimOver <span class="function_state">Reloading</span> <a href="../Source_r6weapons/r6weapons.html#1718" class="small">Source code</a></h4>
+<div class="declaration"> function  FirstPersonAnimOver ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_FirstPersonAnimOver-ZoomIn" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> FirstPersonAnimOver <span class="function_state">ZoomIn</span> <a href="../Source_r6weapons/r6weapons.html#2076" class="small">Source code</a></h4>
+<div class="declaration"> function  FirstPersonAnimOver ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_FirstPersonAnimOver-ZoomOut" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> FirstPersonAnimOver <span class="function_state">ZoomOut</span> <a href="../Source_r6weapons/r6weapons.html#2111" class="small">Source code</a></h4>
+<div class="declaration"> function  FirstPersonAnimOver ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_FullAmmo-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> FullAmmo <span class="function_state"></span> <a href="../Source_r6weapons/r6weapons.html#2134" class="small">Source code</a></h4>
+<div class="declaration"> function  FullAmmo ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_FullCurrentClip-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> FullCurrentClip <span class="function_state"></span> <a href="../Source_r6weapons/r6weapons.html#1569" class="small">Source code</a></h4>
+<div class="declaration"> function  FullCurrentClip ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_Get2DIcon-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> Get2DIcon <span class="function_state"></span> <a href="../Source_r6weapons/r6weapons.html#2231" class="small">Source code</a></h4>
+<div class="declaration"> function <span class="source_type"><a href="../engine/texture.html" class="source">Texture</a></span> Get2DIcon ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GetBulletManager-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> GetBulletManager <span class="function_state"></span> <a href="../Source_r6weapons/r6weapons.html#1153" class="small">Source code</a></h4>
+<div class="declaration"> function <span class="source_type"><a href="../r6abstract/r6abstractbulletmanager.html" class="source">R6AbstractBulletManager</a></span> GetBulletManager ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GetClipCapacity-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> GetClipCapacity <span class="function_state"></span> <a href="../Source_r6weapons/r6weapons.html#1129" class="small">Source code</a></h4>
+<div class="declaration"> function <span class="source_type">INT</span> GetClipCapacity ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GetCurrentMaxAngle-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> GetCurrentMaxAngle <span class="function_state"></span> <a href="../Source_r6weapons/r6weapons.html#833" class="small">Source code</a></h4>
+<div class="declaration"> function <span class="source_type">FLOAT</span> GetCurrentMaxAngle ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GetExplosionDelay-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> GetExplosionDelay <span class="function_state"></span> <a href="../Source_r6weapons/r6weapons.html#2305" class="small">Source code</a></h4>
+<div class="declaration"> function <span class="source_type">FLOAT</span> GetExplosionDelay ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GetFiringDirection-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> GetFiringDirection <span class="function_state"></span> <a href="../Source_r6weapons/r6weapons.html#900" class="small">Source code</a></h4>
+<div class="declaration"> function  GetFiringDirection ( out <span class="source_type"><a href="../core/object.html#Vector" class="source">vector</a></span> vOrigin, out <span class="source_type"><a href="../core/object.html#Rotator" class="source">rotator</a></span> rRotation, optional <span class="source_type">INT</span> iBulletNumber) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GetMuzzleVelocity-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> GetMuzzleVelocity <span class="function_state"></span> <a href="../Source_r6weapons/r6weapons.html#1139" class="small">Source code</a></h4>
+<div class="declaration"> function <span class="source_type">FLOAT</span> GetMuzzleVelocity ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GetNbOfClips-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> GetNbOfClips <span class="function_state"></span> <a href="../Source_r6weapons/r6weapons.html#807" class="small">Source code</a></h4>
+<div class="declaration"> function <span class="source_type">INT</span> GetNbOfClips ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GetNbOfRoundsForROF-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> GetNbOfRoundsForROF <span class="function_state"></span> <a href="../Source_r6weapons/r6weapons.html#743" class="small">Source code</a></h4>
+<div class="declaration"> function <span class="source_type">INT</span> GetNbOfRoundsForROF ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GetRateOfFire-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> GetRateOfFire <span class="function_state"></span> <a href="../Source_r6weapons/r6weapons.html#738" class="small">Source code</a></h4>
+<div class="declaration"> function <span class="source_type"><a href="../engine/r6engineweapon.html#eRateOfFire" class="source">eRateOfFire</a></span> GetRateOfFire ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GetReloadProgress-Reloading" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> GetReloadProgress <span class="function_state">Reloading</span> <a href="../Source_r6weapons/r6weapons.html#1809" class="small">Source code</a></h4>
+<div class="declaration"> function <span class="source_type">INT</span> GetReloadProgress ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GetWeaponJump-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> GetWeaponJump <span class="function_state"></span> <a href="../Source_r6weapons/r6weapons.html#365" class="small">Source code</a></h4>
+<div class="declaration"> function <span class="source_type">FLOAT</span> GetWeaponJump ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GetWeaponRange-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> GetWeaponRange <span class="function_state"></span> <a href="../Source_r6weapons/r6weapons.html#360" class="small">Source code</a></h4>
+<div class="declaration"> function <span class="source_type">FLOAT</span> GetWeaponRange ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GiveBulletToWeapon-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> GiveBulletToWeapon <span class="function_state"></span> <a href="../Source_r6weapons/r6weapons.html#2214" class="small">Source code</a></h4>
+<div class="declaration"> function  GiveBulletToWeapon ( <span class="source_type">string</span> aBulletName) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GunIsFull-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> GunIsFull <span class="function_state"></span> <a href="../Source_r6weapons/r6weapons.html#1134" class="small">Source code</a></h4>
+<div class="declaration">simulated function <span class="source_type">BOOL</span> GunIsFull ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_HasAmmo-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> HasAmmo <span class="function_state"></span> <a href="../Source_r6weapons/r6weapons.html#1119" class="small">Source code</a></h4>
+<div class="declaration">simulated function <span class="source_type">BOOL</span> HasAmmo ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_HasAtLeastOneFullClip-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> HasAtLeastOneFullClip <span class="function_state"></span> <a href="../Source_r6weapons/r6weapons.html#812" class="small">Source code</a></h4>
+<div class="declaration"> function <span class="source_type">BOOL</span> HasAtLeastOneFullClip ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_HasBulletType-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> HasBulletType <span class="function_state"></span> <a href="../Source_r6weapons/r6weapons.html#2223" class="small">Source code</a></h4>
+<div class="declaration"> function <span class="source_type">BOOL</span> HasBulletType ( <span class="source_type">name</span> <span class="source_type">strBulletName</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_HasScope-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> HasScope <span class="function_state"></span> <a href="../Source_r6weapons/r6weapons.html#131" class="small">Source code</a></h4>
+<div class="declaration"> function <span class="source_type">BOOL</span> HasScope ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_HideAttachment-" class="hidden"></a><img src="../img_event.gif" alt="" title="event" /> HideAttachment <span class="function_state"></span> <a href="../Source_r6weapons/r6weapons.html#128" class="small">Source code</a></h4>
+<div class="declaration">simulated event  HideAttachment (  )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_HitWall-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> HitWall <span class="function_state"></span> <a href="../Source_r6weapons/r6weapons.html#2374" class="small">Source code</a></h4>
+<div class="declaration">simulated function  <span class="source_type">HitWall</span> ( <span class="source_type"><a href="../core/object.html#Vector" class="source">vector</a></span> <span class="source_type">HitNormal</span>, <span class="source_type"><a href="../engine/actor.html" class="source">actor</a></span> <span class="source_type">Wall</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_IsAtBestAccuracy-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> IsAtBestAccuracy <span class="function_state"></span> <a href="../Source_r6weapons/r6weapons.html#839" class="small">Source code</a></h4>
+<div class="declaration"> function <span class="source_type">BOOL</span> IsAtBestAccuracy ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_LoadFirstPersonWeapon-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> LoadFirstPersonWeapon <span class="function_state"></span> <a href="../Source_r6weapons/r6weapons.html#448" class="small">Source code</a></h4>
+<div class="declaration">simulated function <span class="source_type">BOOL</span> LoadFirstPersonWeapon ( optional <span class="source_type"><a href="../engine/pawn.html" class="source">Pawn</a></span> NetOwner, optional <span class="source_type"><a href="../engine/controller.html" class="source">Controller</a></span> LocalPlayerController) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_LocalStopFire-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> LocalStopFire <span class="function_state"></span> <a href="../Source_r6weapons/r6weapons.html#1046" class="small">Source code</a></h4>
+<div class="declaration"> function  LocalStopFire ( optional <span class="source_type">BOOL</span> <span class="source_type">bSoundOnly</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_NbBulletToShot-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> NbBulletToShot <span class="function_state"></span> <a href="../Source_r6weapons/r6weapons.html#2310" class="small">Source code</a></h4>
+<div class="declaration"> function <span class="source_type">INT</span> NbBulletToShot ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_NumberOfBulletsLeftInClip-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> NumberOfBulletsLeftInClip <span class="function_state"></span> <a href="../Source_r6weapons/r6weapons.html#1124" class="small">Source code</a></h4>
+<div class="declaration">simulated function <span class="source_type">INT</span> NumberOfBulletsLeftInClip ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_PawnIsMoving-" class="hidden"></a><img src="../img_event.gif" alt="" title="event" /> PawnIsMoving <span class="function_state"></span> <a href="../Source_r6weapons/r6weapons.html#580" class="small">Source code</a></h4>
+<div class="declaration">simulated event  PawnIsMoving ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_PawnStoppedMoving-" class="hidden"></a><img src="../img_event.gif" alt="" title="event" /> PawnStoppedMoving <span class="function_state"></span> <a href="../Source_r6weapons/r6weapons.html#586" class="small">Source code</a></h4>
+<div class="declaration">simulated event  PawnStoppedMoving ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_PerfectAim-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> PerfectAim <span class="function_state"></span> <a href="../Source_r6weapons/r6weapons.html#2156" class="small">Source code</a></h4>
+<div class="declaration"> function  PerfectAim ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_PlayReloading-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> PlayReloading <span class="function_state"></span> <a href="../Source_r6weapons/r6weapons.html#1688" class="small">Source code</a></h4>
+<div class="declaration">simulated function  PlayReloading ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_PlayReloading-BringWeaponUp" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> PlayReloading <span class="function_state">BringWeaponUp</span> <a href="../Source_r6weapons/r6weapons.html#1965" class="small">Source code</a></h4>
+<div class="declaration"> function  PlayReloading ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_PlayReloading-CloseBipod" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> PlayReloading <span class="function_state">CloseBipod</span> <a href="../Source_r6weapons/r6weapons.html#2038" class="small">Source code</a></h4>
+<div class="declaration"> function  PlayReloading ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_PlayReloading-DeployBipod" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> PlayReloading <span class="function_state">DeployBipod</span> <a href="../Source_r6weapons/r6weapons.html#2006" class="small">Source code</a></h4>
+<div class="declaration"> function  PlayReloading ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_PlayReloading-DiscardWeapon" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> PlayReloading <span class="function_state">DiscardWeapon</span> <a href="../Source_r6weapons/r6weapons.html#1834" class="small">Source code</a></h4>
+<div class="declaration"> function  PlayReloading ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_PlayReloading-NormalFire" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> PlayReloading <span class="function_state">NormalFire</span> <a href="../Source_r6weapons/r6weapons.html#1439" class="small">Source code</a></h4>
+<div class="declaration"> function  PlayReloading ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_PlayReloading-PutWeaponDown" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> PlayReloading <span class="function_state">PutWeaponDown</span> <a href="../Source_r6weapons/r6weapons.html#1938" class="small">Source code</a></h4>
+<div class="declaration"> function  PlayReloading ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_PlayReloading-RaiseWeapon" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> PlayReloading <span class="function_state">RaiseWeapon</span> <a href="../Source_r6weapons/r6weapons.html#1870" class="small">Source code</a></h4>
+<div class="declaration"> function  PlayReloading ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_PlayReloading-Reloading" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> PlayReloading <span class="function_state">Reloading</span> <a href="../Source_r6weapons/r6weapons.html#1716" class="small">Source code</a></h4>
+<div class="declaration"> function  PlayReloading ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_PlayReloading-ZoomIn" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> PlayReloading <span class="function_state">ZoomIn</span> <a href="../Source_r6weapons/r6weapons.html#2074" class="small">Source code</a></h4>
+<div class="declaration"> function  PlayReloading ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_PostBeginPlay-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> PostBeginPlay <span class="function_state"></span> <a href="../Source_r6weapons/r6weapons.html#314" class="small">Source code</a></h4>
+<div class="declaration">simulated function  PostBeginPlay ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_PostRender-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> PostRender <span class="function_state"></span> <a href="../Source_r6weapons/r6weapons.html#989" class="small">Source code</a></h4>
+<div class="declaration">simulated function  PostRender ( <span class="source_type"><a href="../engine/canvas.html" class="source">canvas</a></span> <span class="source_type"><a href="../engine/canvas.html" class="source">Canvas</a></span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_PutAtOwnerFeet-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> PutAtOwnerFeet <span class="function_state"></span> <a href="../Source_r6weapons/r6weapons.html#2476" class="small">Source code</a></h4>
+<div class="declaration">simulated function  PutAtOwnerFeet ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_R6SetGadget-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> R6SetGadget <span class="function_state"></span> <a href="../Source_r6weapons/r6weapons.html#2241" class="small">Source code</a></h4>
+<div class="declaration">simulated function  R6SetGadget ( <span class="source_type">class</span>&lt;<span class="source_type"><a href="../r6abstract/r6abstractgadget.html" class="source">R6AbstractGadget</a></span>&gt; pWeaponGadgetClass) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_R6SetReticule-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> R6SetReticule <span class="function_state"></span> <a href="../Source_r6weapons/r6weapons.html#385" class="small">Source code</a></h4>
+<div class="declaration">simulated function  R6SetReticule ( optional <span class="source_type"><a href="../engine/controller.html" class="source">Controller</a></span> LocalPlayerController) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ReloadShotGun-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> ReloadShotGun <span class="function_state"></span> <a href="../Source_r6weapons/r6weapons.html#672" class="small">Source code</a></h4>
+<div class="declaration"> function  ReloadShotGun ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_RemoveFirstPersonWeapon-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> RemoveFirstPersonWeapon <span class="function_state"></span> <a href="../Source_r6weapons/r6weapons.html#613" class="small">Source code</a></h4>
+<div class="declaration">simulated function  RemoveFirstPersonWeapon ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_RenderOverlays-" class="hidden"></a><img src="../img_event.gif" alt="" title="event" /> RenderOverlays <span class="function_state"></span> <a href="../Source_r6weapons/r6weapons.html#955" class="small">Source code</a></h4>
+<div class="declaration">simulated event  RenderOverlays ( <span class="source_type"><a href="../engine/canvas.html" class="source">canvas</a></span> <span class="source_type"><a href="../engine/canvas.html" class="source">Canvas</a></span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ServerAddClips-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> ServerAddClips <span class="function_state"></span> <a href="../Source_r6weapons/r6weapons.html#772" class="small">Source code</a></h4>
+<div class="declaration">simulated function  ServerAddClips ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ServerChangeClip-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> ServerChangeClip <span class="function_state"></span> <a href="../Source_r6weapons/r6weapons.html#1604" class="small">Source code</a></h4>
+<div class="declaration"> function  ServerChangeClip ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ServerFireBullet-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> ServerFireBullet <span class="function_state"></span> <a href="../Source_r6weapons/r6weapons.html#1169" class="small">Source code</a></h4>
+<div class="declaration"> function  ServerFireBullet ( <span class="source_type">FLOAT</span> fMaxAngleErrorFromClient) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ServerSetNextRateOfFire-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> ServerSetNextRateOfFire <span class="function_state"></span> <a href="../Source_r6weapons/r6weapons.html#688" class="small">Source code</a></h4>
+<div class="declaration">exec function  ServerSetNextRateOfFire ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ServerStartChangeClip-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> ServerStartChangeClip <span class="function_state"></span> <a href="../Source_r6weapons/r6weapons.html#1589" class="small">Source code</a></h4>
+<div class="declaration"> function  ServerStartChangeClip ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ServerStartFiring-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> ServerStartFiring <span class="function_state"></span> <a href="../Source_r6weapons/r6weapons.html#1032" class="small">Source code</a></h4>
+<div class="declaration"> function  ServerStartFiring ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ServerStopFire-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> ServerStopFire <span class="function_state"></span> <a href="../Source_r6weapons/r6weapons.html#1063" class="small">Source code</a></h4>
+<div class="declaration"> function  ServerStopFire ( optional <span class="source_type">BOOL</span> <span class="source_type">bSoundOnly</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ServerWhoIsMyOwner-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> ServerWhoIsMyOwner <span class="function_state"></span> <a href="../Source_r6weapons/r6weapons.html#419" class="small">Source code</a></h4>
+<div class="declaration"> function  ServerWhoIsMyOwner ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_SetAccuracyOnHit-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> SetAccuracyOnHit <span class="function_state"></span> <a href="../Source_r6weapons/r6weapons.html#2575" class="small">Source code</a></h4>
+<div class="declaration"> function  SetAccuracyOnHit ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_SetGadgets-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> SetGadgets <span class="function_state"></span> <a href="../Source_r6weapons/r6weapons.html#169" class="small">Source code</a></h4>
+<div class="declaration">simulated function  SetGadgets ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_SetIdentifyTarget-" class="hidden"></a><img src="../img_event.gif" alt="" title="event" /> SetIdentifyTarget <span class="function_state"></span> <a href="../Source_r6weapons/r6weapons.html#370" class="small">Source code</a></h4>
+<div class="declaration"> event  SetIdentifyTarget ( <span class="source_type">bool</span> bIdentifyCharacter, <span class="source_type">bool</span> bFriendly, <span class="source_type">string</span> characterName) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_SetNextRateOfFire-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> SetNextRateOfFire <span class="function_state"></span> <a href="../Source_r6weapons/r6weapons.html#679" class="small">Source code</a></h4>
+<div class="declaration">exec function  SetNextRateOfFire ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_SetRateOfFire-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> SetRateOfFire <span class="function_state"></span> <a href="../Source_r6weapons/r6weapons.html#716" class="small">Source code</a></h4>
+<div class="declaration"> function <span class="source_type">BOOL</span> SetRateOfFire ( <span class="source_type"><a href="../engine/r6engineweapon.html#eRateOfFire" class="source">eRateOfFire</a></span> eNewRateOfFire) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_SetRelevant-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> SetRelevant <span class="function_state"></span> <a href="../Source_r6weapons/r6weapons.html#2323" class="small">Source code</a></h4>
+<div class="declaration"> function  SetRelevant ( <span class="source_type">BOOL</span> <span class="source_type">bNewAlwaysRelevant</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_SetTearOff-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> SetTearOff <span class="function_state"></span> <a href="../Source_r6weapons/r6weapons.html#2343" class="small">Source code</a></h4>
+<div class="declaration"> function  SetTearOff ( <span class="source_type">BOOL</span> <span class="source_type">bNewTearOff</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_SetTerroristNbOfClips-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> SetTerroristNbOfClips <span class="function_state"></span> <a href="../Source_r6weapons/r6weapons.html#801" class="small">Source code</a></h4>
+<div class="declaration"> function  SetTerroristNbOfClips ( <span class="source_type">INT</span> iNewNumber) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ShowInfo-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> ShowInfo <span class="function_state"></span> <a href="../Source_r6weapons/r6weapons.html#2585" class="small">Source code</a></h4>
+<div class="declaration">simulated function  ShowInfo ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ShowWeaponParticules-" class="hidden"></a><img src="../img_event.gif" alt="" title="event" /> ShowWeaponParticules <span class="function_state"></span> <a href="../Source_r6weapons/r6weapons.html#2552" class="small">Source code</a></h4>
+<div class="declaration">simulated event  ShowWeaponParticules ( <span class="source_type"><a href="../engine/r6engineweapon.html#EWeaponSound" class="source">EWeaponSound</a></span> <span class="source_type"><a href="../engine/r6engineweapon.html#EWeaponSound" class="source">eWeaponSound</a></span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_SpawnSelectedGadget-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> SpawnSelectedGadget <span class="function_state"></span> <a href="../Source_r6weapons/r6weapons.html#144" class="small">Source code</a></h4>
+<div class="declaration">simulated function  SpawnSelectedGadget ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_StartFalling-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> StartFalling <span class="function_state"></span> <a href="../Source_r6weapons/r6weapons.html#2485" class="small">Source code</a></h4>
+<div class="declaration">simulated function  StartFalling ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_StartFiring-NormalFire" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> StartFiring <span class="function_state">NormalFire</span> <a href="../Source_r6weapons/r6weapons.html#1492" class="small">Source code</a></h4>
+<div class="declaration">simulated function  StartFiring ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_StartLoopingAnims-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> StartLoopingAnims <span class="function_state"></span> <a href="../Source_r6weapons/r6weapons.html#593" class="small">Source code</a></h4>
+<div class="declaration"> function  StartLoopingAnims ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_StopAltFire-BringWeaponUp" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> StopAltFire <span class="function_state">BringWeaponUp</span> <a href="../Source_r6weapons/r6weapons.html#1964" class="small">Source code</a></h4>
+<div class="declaration"> function  StopAltFire ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_StopAltFire-CloseBipod" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> StopAltFire <span class="function_state">CloseBipod</span> <a href="../Source_r6weapons/r6weapons.html#2037" class="small">Source code</a></h4>
+<div class="declaration"> function  StopAltFire ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_StopAltFire-DeployBipod" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> StopAltFire <span class="function_state">DeployBipod</span> <a href="../Source_r6weapons/r6weapons.html#2005" class="small">Source code</a></h4>
+<div class="declaration"> function  StopAltFire ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_StopAltFire-DiscardWeapon" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> StopAltFire <span class="function_state">DiscardWeapon</span> <a href="../Source_r6weapons/r6weapons.html#1833" class="small">Source code</a></h4>
+<div class="declaration"> function  StopAltFire ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_StopAltFire-NormalFire" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> StopAltFire <span class="function_state">NormalFire</span> <a href="../Source_r6weapons/r6weapons.html#1438" class="small">Source code</a></h4>
+<div class="declaration"> function  StopAltFire ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_StopAltFire-PutWeaponDown" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> StopAltFire <span class="function_state">PutWeaponDown</span> <a href="../Source_r6weapons/r6weapons.html#1937" class="small">Source code</a></h4>
+<div class="declaration"> function  StopAltFire ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_StopAltFire-RaiseWeapon" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> StopAltFire <span class="function_state">RaiseWeapon</span> <a href="../Source_r6weapons/r6weapons.html#1869" class="small">Source code</a></h4>
+<div class="declaration"> function  StopAltFire ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_StopAltFire-Reloading" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> StopAltFire <span class="function_state">Reloading</span> <a href="../Source_r6weapons/r6weapons.html#1715" class="small">Source code</a></h4>
+<div class="declaration"> function  StopAltFire ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_StopAltFire-ZoomIn" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> StopAltFire <span class="function_state">ZoomIn</span> <a href="../Source_r6weapons/r6weapons.html#2073" class="small">Source code</a></h4>
+<div class="declaration"> function  StopAltFire ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_StopFallingAndSetCorrectRotation-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> StopFallingAndSetCorrectRotation <span class="function_state"></span> <a href="../Source_r6weapons/r6weapons.html#2453" class="small">Source code</a></h4>
+<div class="declaration">simulated function  StopFallingAndSetCorrectRotation ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_StopFire-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> StopFire <span class="function_state"></span> <a href="../Source_r6weapons/r6weapons.html#1112" class="small">Source code</a></h4>
+<div class="declaration"> function  StopFire ( optional <span class="source_type">BOOL</span> <span class="source_type">bSoundOnly</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_StopFire-BringWeaponUp" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> StopFire <span class="function_state">BringWeaponUp</span> <a href="../Source_r6weapons/r6weapons.html#1963" class="small">Source code</a></h4>
+<div class="declaration"> function  StopFire ( optional <span class="source_type">BOOL</span> <span class="source_type">bSoundOnly</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_StopFire-DiscardWeapon" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> StopFire <span class="function_state">DiscardWeapon</span> <a href="../Source_r6weapons/r6weapons.html#1832" class="small">Source code</a></h4>
+<div class="declaration"> function  StopFire ( optional <span class="source_type">BOOL</span> <span class="source_type">bSoundOnly</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_StopFire-PutWeaponDown" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> StopFire <span class="function_state">PutWeaponDown</span> <a href="../Source_r6weapons/r6weapons.html#1936" class="small">Source code</a></h4>
+<div class="declaration"> function  StopFire ( optional <span class="source_type">BOOL</span> <span class="source_type">bSoundOnly</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_StopFire-RaiseWeapon" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> StopFire <span class="function_state">RaiseWeapon</span> <a href="../Source_r6weapons/r6weapons.html#1868" class="small">Source code</a></h4>
+<div class="declaration"> function  StopFire ( optional <span class="source_type">BOOL</span> <span class="source_type">bSoundOnly</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_Tick-Reloading" class="hidden"></a><img src="../img_event.gif" alt="" title="event" /> Tick <span class="function_state">Reloading</span> <a href="../Source_r6weapons/r6weapons.html#1818" class="small">Source code</a></h4>
+<div class="declaration"> event  Tick ( <span class="source_type">FLOAT</span> <span class="source_type">fDeltaTime</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_Timer-NormalFire" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> Timer <span class="function_state">NormalFire</span> <a href="../Source_r6weapons/r6weapons.html#1540" class="small">Source code</a></h4>
+<div class="declaration">simulated function  Timer ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_TurnOffEmitters-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> TurnOffEmitters <span class="function_state"></span> <a href="../Source_r6weapons/r6weapons.html#663" class="small">Source code</a></h4>
+<div class="declaration">simulated function  TurnOffEmitters ( <span class="source_type">BOOL</span> bTurnOff) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_UpdateAllAttachments-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> UpdateAllAttachments <span class="function_state"></span> <a href="../Source_r6weapons/r6weapons.html#649" class="small">Source code</a></h4>
+<div class="declaration">simulated function  UpdateAllAttachments ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_UpdateWeaponAttachment-" class="hidden"></a><img src="../img_event.gif" alt="" title="event" /> UpdateWeaponAttachment <span class="function_state"></span> <a href="../Source_r6weapons/r6weapons.html#2315" class="small">Source code</a></h4>
+<div class="declaration">simulated event  UpdateWeaponAttachment ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_UseScopeStaticMesh-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> UseScopeStaticMesh <span class="function_state"></span> <a href="../Source_r6weapons/r6weapons.html#136" class="small">Source code</a></h4>
+<div class="declaration">simulated function  UseScopeStaticMesh ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_WeaponInitialization-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> WeaponInitialization <span class="function_state"></span> <a href="../Source_r6weapons/r6weapons.html#844" class="small">Source code</a></h4>
+<div class="declaration">simulated function  WeaponInitialization ( <span class="source_type"><a href="../engine/pawn.html" class="source">Pawn</a></span> <span class="source_type">pawnOwner</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_WeaponZoomSound-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> WeaponZoomSound <span class="function_state"></span> <a href="../Source_r6weapons/r6weapons.html#1693" class="small">Source code</a></h4>
+<div class="declaration">simulated function  WeaponZoomSound ( <span class="source_type">BOOL</span> bFirstZoom) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+
+
+<br />
+
+
+<table class="title">
+<tr>
+	<th class="title">Defaultproperties</th>
+</tr>
+</table>
+<br />
+<div class="source"><table class="source"><tr><td class="source"><pre class="source">defaultproperties
+{
+     C_iMaxNbOfClips=<span class="source_int">20</span>
+     m_iClipCapacity=<span class="source_int">9999</span>
+     m_iNbOfClips=<span class="source_int">1</span>
+     m_bPlayLoopingSound=True
+     m_fMuzzleVelocity=<span class="source_int">10000.000000</span>
+     m_fStablePercentage=<span class="source_int">0.500000</span>
+     m_fFireSoundRadius=<span class="source_int">700.000000</span>
+     m_fRateOfFire=<span class="source_int">0.100000</span>
+     m_fDisplayFOV=<span class="source_int">80.000000</span>
+     m_WeaponIcon=<span class="source_type"><a href="../engine/texture.html" class="source">Texture</a></span><span class="source_name">'R6WeaponsIcons.Icons.IconTest'</span>
+     m_pWithWeaponReticuleClass=<span class="source_type">Class</span><span class="source_name">'R6Weapons.R6WithWeaponReticule'</span>
+     m_stAccuracyValues=(fBaseAccuracy=<span class="source_int">1.500000</span>,fShuffleAccuracy=<span class="source_int">1.900000</span>,fWalkingAccuracy=<span class="source_int">4.700000</span>,fWalkingFastAccuracy=<span class="source_int">6.700000</span>,fRunningAccuracy=<span class="source_int">11.500000</span>,fReticuleTime=<span class="source_int">1.000000</span>,fAccuracyChange=<span class="source_int">1.650000</span>,fWeaponJump=<span class="source_int">3.310000</span>)
+     m_ScopeAdd=<span class="source_type"><a href="../engine/texture.html" class="source">Texture</a></span><span class="source_name">'Inventory_t.Scope.ScopeBlurTexAdd'</span>
+     m_CommonWeaponZoomSnd=<span class="source_type">Sound</span><span class="source_name">'CommonWeapons.Play_WeaponZoom'</span>
+     m_PawnWaitAnimLow=<span class="source_string">"StandSubGunLow_nt"</span>
+     m_PawnWaitAnimHigh=<span class="source_string">"StandSubGunHigh_nt"</span>
+     m_PawnWaitAnimProne=<span class="source_string">"ProneSubGun_nt"</span>
+     m_PawnFiringAnim=<span class="source_string">"StandFireSubGun"</span>
+     m_PawnFiringAnimProne=<span class="source_string">"ProneFireSubGun"</span>
+     m_PawnReloadAnim=<span class="source_string">"StandReloadSubGun"</span>
+     m_PawnReloadAnimTactical=<span class="source_string">"StandTacReloadSubGun"</span>
+     m_PawnReloadAnimProne=<span class="source_string">"ProneReloadSubGun"</span>
+     m_PawnReloadAnimProneTactical=<span class="source_string">"ProneTacReloadSubGun"</span>
+     DrawType=DT_StaticMesh
+     bReplicateInstigator=True
+     bSkipActorPropertyReplication=True
+     m_bForceBaseReplication=True
+     m_bDeleteOnReset=True
+     m_fSoundRadiusActivation=<span class="source_int">5600.000000</span>
+     <span class="source_type">StaticMesh</span>=<span class="source_type">StaticMesh</span><span class="source_name">'R6Weapons.RedWeaponStaticMesh'</span>
+     DrawScale3D=(X=-<span class="source_int">1.000000</span>,Y=-<span class="source_int">1.000000</span>)
+}
+</pre></td></tr></table></div>
+
+
+
+<hr />
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../r6weapons/r6weapons-overview.html">Package</a></td>
+	<td class="header_hilight">Class</td>
+	<td class="header"><a href="../Source_r6weapons/r6weapons.html">Source</a></td>
+	<td class="header"><a class="header" href="../classtree.html#R6Weapons">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../r6weapons/r6tracer.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../r6weapons/r6withweapondotreticule.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+
+<div class="stats">Creation time: mar. 26/5/2026 18:33:14.882 - Created with <a href="http://wiki.beyondunreal.com/wiki/UnCodeX" target="_blank">UnCodeX</a></div>
+
+</body>
+</html>

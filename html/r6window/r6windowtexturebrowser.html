@@ -1,0 +1,350 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+	<title>UnCodeX - R6Window.R6WindowTextureBrowser</title>
+	<meta name="Generator" content="UnCodeX 241" />
+	<link rel="stylesheet" href="../DocStyle2.css" type="text/css" title="Original Purple" />
+	<link rel="alternative stylesheet" href="../DocStyle2-blue.css" type="text/css" title="Blue" />
+	<link rel="alternative stylesheet" href="../DocStyle2-red.css" type="text/css" title="Red" />
+	<!--[if IE]>
+	<link rel="stylesheet" href="../DocStyle2-msie.css" type="text/css" />
+	<![endif]-->
+	<script src="../styleswitcher.js" type="text/javascript"></script>
+</head>
+<body>
+
+<div class="header">
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../r6window/r6window-overview.html">Package</a></td>
+	<td class="header_hilight">Class</td>
+	<td class="header"><a href="../Source_r6window/r6windowtexturebrowser.html">Source</a></td>
+	<td class="header"><a class="header" href="../classtree.html#R6WindowTextureBrowser">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../r6window/r6windowtextlistradio.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../r6window/r6windowubicdkeycheck.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html#r6window/r6windowtexturebrowser.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+</div>
+<div class="spacer"></div>
+
+<h1><a href="../r6window/r6window-overview.html">R6Window</a>.R6WindowTextureBrowser</h1>
+
+<dl>
+<dt>Extends</dt><dd><a href="../uwindow/uwindowdialogclientwindow.html">UWindowDialogClientWindow</a></dd>
+
+</dl>
+
+<p></p>
+
+<pre class="tree"><a href="../core/core-overview.html">core</a>.<a href="../core/object.html">Object</a>
+|   
++-- <a href="../uwindow/uwindow-overview.html">UWindow</a>.<a href="../uwindow/uwindowbase.html">UWindowBase</a>
+   |   
+   +-- <a href="../uwindow/uwindow-overview.html">UWindow</a>.<a href="../uwindow/uwindowwindow.html">UWindowWindow</a>
+      |   
+      +-- <a href="../uwindow/uwindow-overview.html">UWindow</a>.<a href="../uwindow/uwindowclientwindow.html">UWindowClientWindow</a>
+         |   
+         +-- <a href="../uwindow/uwindow-overview.html">UWindow</a>.<a href="../uwindow/uwindowdialogclientwindow.html">UWindowDialogClientWindow</a>
+            |   
+            +-- <a href="../r6window/r6window-overview.html">R6Window</a>.<a href="../r6window/r6windowtexturebrowser.html">R6WindowTextureBrowser</a>
+</pre>
+
+
+
+<hr />
+
+
+
+<table class="title">
+<tr>
+	<th colspan="2" class="title">Variables Summary</th>
+</tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bShowLog" name="bShowLog" title="go to the details">bShowLog</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">BOOL</td><td width="66%"><a href="#_m_bBitMapInitialized" name="m_bBitMapInitialized" title="go to the details">m_bBitMapInitialized</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">BOOL</td><td width="66%"><a href="#_m_bSBInitialized" name="m_bSBInitialized" title="go to the details">m_bSBInitialized</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../r6window/r6windowbitmap.html">R6WindowBitMap</a></td><td width="66%"><a href="#_m_CurrentSelection" name="m_CurrentSelection" title="go to the details">m_CurrentSelection</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../uwindow/uwindowhscrollbar.html">UWindowHScrollBar</a></td><td width="66%"><a href="#_m_HSB" name="m_HSB" title="go to the details">m_HSB</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_m_iNbDisplayedElement" name="m_iNbDisplayedElement" title="go to the details">m_iNbDisplayedElement</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../r6window/r6windowtextlabelext.html">R6WindowTextLabelExt</a></td><td width="66%"><a href="#_m_pTextLabel" name="m_pTextLabel" title="go to the details">m_pTextLabel</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">Array&lt;<a href="../engine/texture.html">Texture</a>&gt;</td><td width="66%"><a href="#_m_TextureCollection" name="m_TextureCollection" title="go to the details">m_TextureCollection</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">Array&lt;<a href="../core/object.html#Region">Region</a>&gt;</td><td width="66%"><a href="#_m_TextureRegionCollection" name="m_TextureRegionCollection" title="go to the details">m_TextureRegionCollection</a></td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Variables from <a href="../uwindow/uwindow-overview.html">UWindow</a>.<a href="../uwindow/uwindowdialogclientwindow.html">UWindowDialogClientWindow</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../uwindow/uwindowdialogclientwindow.html#DesiredHeight">DesiredHeight</a>, <a href="../uwindow/uwindowdialogclientwindow.html#DesiredWidth">DesiredWidth</a>, <a href="../uwindow/uwindowdialogclientwindow.html#TabLast">TabLast</a></td>
+</tr>
+</table>
+
+
+<br />
+
+
+
+
+
+
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Functions Summary</th>
+</tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>int&nbsp;</td><td><a href="#_AddTexture-" name="AddTexture" title="go to the details">AddTexture</a> (<a href="../engine/texture.html">Texture</a> _Texture, <a href="../core/object.html#Region">Region</a> _Region))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_Clear-" name="Clear" title="go to the details">Clear</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_CreateBitmap-" name="CreateBitmap" title="go to the details">CreateBitmap</a> (int X, int Y, int W, int H))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_CreateSB-" name="CreateSB" title="go to the details">CreateSB</a> (int X, int Y, int W, int H))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_CreateTextLabel-" name="CreateTextLabel" title="go to the details">CreateTextLabel</a> (int X, int Y, int W, int H, string _szText, string _szToolTip))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_GetCurrentSelectedTexture-" name="GetCurrentSelectedTexture" title="go to the details">GetCurrentSelectedTexture</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>int&nbsp;</td><td><a href="#_GetCurrentTextureIndex-" name="GetCurrentTextureIndex" title="go to the details">GetCurrentTextureIndex</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td><a href="../engine/texture.html">Texture</a>&nbsp;</td><td><a href="#_GetTextureAtIndex-" name="GetTextureAtIndex" title="go to the details">GetTextureAtIndex</a> (int _Index))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>int&nbsp;</td><td><a href="#_GetTextureIndex-" name="GetTextureIndex" title="go to the details">GetTextureIndex</a> (<a href="../engine/texture.html">Texture</a> _Texture))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_Notify-" name="Notify" title="go to the details">Notify</a> (<a href="../uwindow/uwindowdialogcontrol.html">UWindowDialogControl</a> C, byte E))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_RemoveTexture-" name="RemoveTexture" title="go to the details">RemoveTexture</a> (<a href="../engine/texture.html">Texture</a> _Texture))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_RemoveTextureFromIndex-" name="RemoveTextureFromIndex" title="go to the details">RemoveTextureFromIndex</a> (int _index))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_SetBitmapBorder-" name="SetBitmapBorder" title="go to the details">SetBitmapBorder</a> (bool _bDrawBorder, <a href="../core/object.html#Color">color</a> _borderColor))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_SetBitmapProperties-" name="SetBitmapProperties" title="go to the details">SetBitmapProperties</a> (bool _bStretch, bool _bCenter, INT _iDrawStyle, bool _bUseColor, OPTIONAL <a href="../core/object.html#Color">color</a> _TextureColor))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_SetCurrentTextureFromIndex-" name="SetCurrentTextureFromIndex" title="go to the details">SetCurrentTextureFromIndex</a> (int _Index))<br /><span class="function_state"></span></td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Functions from <a href="../uwindow/uwindow-overview.html">UWindow</a>.<a href="../uwindow/uwindowdialogclientwindow.html">UWindowDialogClientWindow</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../uwindow/uwindowdialogclientwindow.html#CreateControl">CreateControl</a>, <a href="../uwindow/uwindowdialogclientwindow.html#GetDesiredDimensions">GetDesiredDimensions</a>, <a href="../uwindow/uwindowdialogclientwindow.html#Notify">Notify</a>, <a href="../uwindow/uwindowdialogclientwindow.html#OKPressed">OKPressed</a></td>
+</tr>
+</table>
+<table>
+<tr>
+	<th class="inherittitle">Inherited Functions from <a href="../uwindow/uwindow-overview.html">UWindow</a>.<a href="../uwindow/uwindowclientwindow.html">UWindowClientWindow</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../uwindow/uwindowclientwindow.html#Close">Close</a></td>
+</tr>
+</table>
+
+
+<br />
+
+
+
+<hr />
+
+
+
+<table class="title">
+<tr>
+	<th class="title">Variables Detail</th>
+</tr>
+</table>
+
+<h4><a name="_bShowLog" class="hidden"></a>bShowLog <a href="../Source_r6window/r6windowtexturebrowser.html#25" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">bool</span> bShowLog;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_bBitMapInitialized" class="hidden"></a>m_bBitMapInitialized <a href="../Source_r6window/r6windowtexturebrowser.html#21" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">BOOL</span> m_bBitMapInitialized;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_bSBInitialized" class="hidden"></a>m_bSBInitialized <a href="../Source_r6window/r6windowtexturebrowser.html#20" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">BOOL</span> m_bSBInitialized;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_CurrentSelection" class="hidden"></a>m_CurrentSelection <a href="../Source_r6window/r6windowtexturebrowser.html#16" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../r6window/r6windowbitmap.html" class="source">R6WindowBitMap</a></span> m_CurrentSelection;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_HSB" class="hidden"></a>m_HSB <a href="../Source_r6window/r6windowtexturebrowser.html#17" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../uwindow/uwindowhscrollbar.html" class="source">UWindowHScrollBar</a></span> m_HSB;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_iNbDisplayedElement" class="hidden"></a>m_iNbDisplayedElement <a href="../Source_r6window/r6windowtexturebrowser.html#22" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">int</span> m_iNbDisplayedElement;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_pTextLabel" class="hidden"></a>m_pTextLabel <a href="../Source_r6window/r6windowtexturebrowser.html#18" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../r6window/r6windowtextlabelext.html" class="source">R6WindowTextLabelExt</a></span> m_pTextLabel;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_TextureCollection" class="hidden"></a>m_TextureCollection <a href="../Source_r6window/r6windowtexturebrowser.html#13" class="small">Source code</a></h4>
+<div class="declaration">var Array&lt;<span class="source_type"><a href="../engine/texture.html" class="source">Texture</a></span>&gt; m_TextureCollection;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_TextureRegionCollection" class="hidden"></a>m_TextureRegionCollection <a href="../Source_r6window/r6windowtexturebrowser.html#14" class="small">Source code</a></h4>
+<div class="declaration">var Array&lt;<span class="source_type"><a href="../core/object.html#Region" class="source">Region</a></span>&gt; m_TextureRegionCollection;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+
+
+<br />
+
+
+
+
+
+
+
+<table class="title">
+<tr>
+	<th class="title">Functions Detail</th>
+</tr>
+</table>
+
+<h4><a name="_AddTexture-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> AddTexture <span class="function_state"></span> <a href="../Source_r6window/r6windowtexturebrowser.html#183" class="small">Source code</a></h4>
+<div class="declaration"> function <span class="source_type">int</span> AddTexture ( <span class="source_type"><a href="../engine/texture.html" class="source">Texture</a></span> _Texture, <span class="source_type"><a href="../core/object.html#Region" class="source">Region</a></span> _Region) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_Clear-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> Clear <span class="function_state"></span> <a href="../Source_r6window/r6windowtexturebrowser.html#294" class="small">Source code</a></h4>
+<div class="declaration"> function  Clear ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_CreateBitmap-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> CreateBitmap <span class="function_state"></span> <a href="../Source_r6window/r6windowtexturebrowser.html#32" class="small">Source code</a></h4>
+<div class="declaration"> function  CreateBitmap ( <span class="source_type">int</span> X, <span class="source_type">int</span> Y, <span class="source_type">int</span> W, <span class="source_type">int</span> <span class="source_type">H</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_CreateSB-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> CreateSB <span class="function_state"></span> <a href="../Source_r6window/r6windowtexturebrowser.html#66" class="small">Source code</a></h4>
+<div class="declaration"> function  CreateSB ( <span class="source_type">int</span> X, <span class="source_type">int</span> Y, <span class="source_type">int</span> W, <span class="source_type">int</span> <span class="source_type">H</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_CreateTextLabel-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> CreateTextLabel <span class="function_state"></span> <a href="../Source_r6window/r6windowtexturebrowser.html#75" class="small">Source code</a></h4>
+<div class="declaration"> function  CreateTextLabel ( <span class="source_type">int</span> X, <span class="source_type">int</span> Y, <span class="source_type">int</span> W, <span class="source_type">int</span> <span class="source_type">H</span>, <span class="source_type">string</span> _szText, <span class="source_type">string</span> _szToolTip) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GetCurrentSelectedTexture-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> GetCurrentSelectedTexture <span class="function_state"></span> <a href="../Source_r6window/r6windowtexturebrowser.html#286" class="small">Source code</a></h4>
+<div class="declaration"> function  GetCurrentSelectedTexture ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GetCurrentTextureIndex-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> GetCurrentTextureIndex <span class="function_state"></span> <a href="../Source_r6window/r6windowtexturebrowser.html#250" class="small">Source code</a></h4>
+<div class="declaration"> function <span class="source_type">int</span> GetCurrentTextureIndex ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GetTextureAtIndex-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> GetTextureAtIndex <span class="function_state"></span> <a href="../Source_r6window/r6windowtexturebrowser.html#278" class="small">Source code</a></h4>
+<div class="declaration"> function <span class="source_type"><a href="../engine/texture.html" class="source">Texture</a></span> GetTextureAtIndex ( <span class="source_type">int</span> _Index) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GetTextureIndex-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> GetTextureIndex <span class="function_state"></span> <a href="../Source_r6window/r6windowtexturebrowser.html#241" class="small">Source code</a></h4>
+<div class="declaration"> function <span class="source_type">int</span> GetTextureIndex ( <span class="source_type"><a href="../engine/texture.html" class="source">Texture</a></span> _Texture) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_Notify-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> Notify <span class="function_state"></span> <a href="../Source_r6window/r6windowtexturebrowser.html#92" class="small">Source code</a></h4>
+<div class="declaration"> function  Notify ( <span class="source_type"><a href="../uwindow/uwindowdialogcontrol.html" class="source">UWindowDialogControl</a></span> <span class="source_type">C</span>, <span class="source_type">byte</span> E) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_RemoveTexture-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> RemoveTexture <span class="function_state"></span> <a href="../Source_r6window/r6windowtexturebrowser.html#211" class="small">Source code</a></h4>
+<div class="declaration"> function  RemoveTexture ( <span class="source_type"><a href="../engine/texture.html" class="source">Texture</a></span> _Texture) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_RemoveTextureFromIndex-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> RemoveTextureFromIndex <span class="function_state"></span> <a href="../Source_r6window/r6windowtexturebrowser.html#225" class="small">Source code</a></h4>
+<div class="declaration"> function  RemoveTextureFromIndex ( <span class="source_type">int</span> _index) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_SetBitmapBorder-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> SetBitmapBorder <span class="function_state"></span> <a href="../Source_r6window/r6windowtexturebrowser.html#53" class="small">Source code</a></h4>
+<div class="declaration"> function  SetBitmapBorder ( <span class="source_type">bool</span> _bDrawBorder, <span class="source_type"><a href="../core/object.html#Color" class="source">color</a></span> _borderColor) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_SetBitmapProperties-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> SetBitmapProperties <span class="function_state"></span> <a href="../Source_r6window/r6windowtexturebrowser.html#41" class="small">Source code</a></h4>
+<div class="declaration"> function  SetBitmapProperties ( <span class="source_type">bool</span> _bStretch, <span class="source_type">bool</span> _bCenter, <span class="source_type">INT</span> _iDrawStyle, <span class="source_type">bool</span> _bUseColor, OPTIONAL <span class="source_type"><a href="../core/object.html#Color" class="source">color</a></span> _TextureColor) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_SetCurrentTextureFromIndex-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> SetCurrentTextureFromIndex <span class="function_state"></span> <a href="../Source_r6window/r6windowtexturebrowser.html#267" class="small">Source code</a></h4>
+<div class="declaration"> function  SetCurrentTextureFromIndex ( <span class="source_type">int</span> _Index) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+
+
+<br />
+
+
+<table class="title">
+<tr>
+	<th class="title">Defaultproperties</th>
+</tr>
+</table>
+<br />
+<div class="source"><table class="source"><tr><td class="source"><pre class="source">defaultproperties
+{
+     m_iNbDisplayedElement=<span class="source_int">1</span>
+}
+</pre></td></tr></table></div>
+
+
+
+<hr />
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../r6window/r6window-overview.html">Package</a></td>
+	<td class="header_hilight">Class</td>
+	<td class="header"><a href="../Source_r6window/r6windowtexturebrowser.html">Source</a></td>
+	<td class="header"><a class="header" href="../classtree.html#R6WindowTextureBrowser">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../r6window/r6windowtextlistradio.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../r6window/r6windowubicdkeycheck.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+
+<div class="stats">Creation time: mar. 26/5/2026 18:33:15.413 - Created with <a href="http://wiki.beyondunreal.com/wiki/UnCodeX" target="_blank">UnCodeX</a></div>
+
+</body>
+</html>

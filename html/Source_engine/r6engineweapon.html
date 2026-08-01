@@ -1,0 +1,449 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+	<title>UnCodeX - Source: engine.R6EngineWeapon</title>
+	<meta name="Generator" content="UnCodeX 241" />
+	<link rel="stylesheet" href="../DocStyle2.css" type="text/css" title="Original Purple" />
+	<link rel="alternative stylesheet" href="../DocStyle2-blue.css" type="text/css" title="Blue" />
+	<link rel="alternative stylesheet" href="../DocStyle2-red.css" type="text/css" title="Red" />
+	<!--[if IE]>
+	<link rel="stylesheet" href="../DocStyle2-msie.css" type="text/css" />
+	<![endif]-->
+	<script src="../styleswitcher.js" type="text/javascript"></script>
+</head>
+<body>
+
+<div class="header">
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../engine/engine-overview.html">Package</a></td>
+	<td class="header"><a href="../engine/r6engineweapon.html">Class</a></td>
+	<td class="header_hilight">Source</td>
+	<td class="header"><a class="header" href="../classtree.html#R6EngineWeapon">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../Source_engine/r6enginefirstpersonweapon.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../Source_engine/r6eviltesting.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html#Source_engine/r6engineweapon.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+</div>
+<div class="spacer"></div>
+
+<h1><a href="../engine/engine-overview.html">engine</a>.<a href="../engine/r6engineweapon.html">R6EngineWeapon</a></h1>
+<br />
+<div class="source"><table class="source"><tr><td class="source_lineno"><span class="source_lineno">00001<br />00002<br />00003<br />00004<br />00005<br />00006<br />00007<br />00008<br />00009<br />00010<br />00011<br />00012<br />00013<br />00014<br />00015<br />00016<br />00017<br />00018<br />00019<br />00020<br />
+00021<br />00022<br />00023<br />00024<br />00025<br />00026<br />00027<br />00028<br />00029<br />00030<br />00031<br />00032<br />00033<br />00034<br />00035<br />00036<br />00037<br />00038<br />00039<br />00040<br />
+00041<br />00042<br />00043<br />00044<br />00045<br />00046<br />00047<br />00048<br />00049<br />00050<br />00051<br />00052<br />00053<br />00054<br />00055<br />00056<br />00057<br />00058<br />00059<br />00060<br />
+00061<br />00062<br />00063<br />00064<br />00065<br />00066<br />00067<br />00068<br />00069<br />00070<br />00071<br />00072<br />00073<br />00074<br />00075<br />00076<br />00077<br />00078<br />00079<br />00080<br />
+00081<br />00082<br />00083<br />00084<br />00085<br />00086<br />00087<br />00088<br />00089<br />00090<br />00091<br />00092<br />00093<br />00094<br />00095<br />00096<br />00097<br />00098<br />00099<br />00100<br />
+00101<br />00102<br />00103<br />00104<br />00105<br />00106<br />00107<br />00108<br />00109<br />00110<br />00111<br />00112<br />00113<br />00114<br />00115<br />00116<br />00117<br />00118<br />00119<br />00120<br />
+00121<br />00122<br />00123<br />00124<br />00125<br />00126<br />00127<br />00128<br />00129<br />00130<br />00131<br />00132<br />00133<br />00134<br />00135<br />00136<br />00137<br />00138<br />00139<br />00140<br />
+00141<br />00142<br />00143<br />00144<br />00145<br />00146<br />00147<br />00148<br />00149<br />00150<br />00151<br />00152<br />00153<br />00154<br />00155<br />00156<br />00157<br />00158<br />00159<br />00160<br />
+00161<br />00162<br />00163<br />00164<br />00165<br />00166<br />00167<br />00168<br />00169<br />00170<br />00171<br />00172<br />00173<br />00174<br />00175<br />00176<br />00177<br />00178<br />00179<br />00180<br />
+00181<br />00182<br />00183<br />00184<br />00185<br />00186<br />00187<br />00188<br />00189<br />00190<br />00191<br />00192<br />00193<br />00194<br />00195<br />00196<br />00197<br />00198<br />00199<br />00200<br />
+00201<br />00202<br />00203<br />00204<br />00205<br />00206<br />00207<br />00208<br />00209<br />00210<br />00211<br />00212<br />00213<br />00214<br />00215<br />00216<br />00217<br />00218<br />00219<br />00220<br />
+00221<br />00222<br />00223<br />00224<br />00225<br />00226<br />00227<br />00228<br />00229<br />00230<br />00231<br />00232<br />00233<br />00234<br />00235<br />00236<br />00237<br />00238<br />00239<br />00240<br />
+00241<br />00242<br />00243<br />00244<br />00245<br />00246<br />00247<br />00248<br />00249<br />00250<br />00251<br />00252<br />00253<br />00254<br />00255<br />00256<br />00257<br />00258<br />00259<br />00260<br />
+00261<br />00262<br />00263<br />00264<br />00265<br />00266<br />00267<br />00268<br />00269<br />00270<br />00271<br />00272<br />00273<br />00274<br />00275<br />00276<br />00277<br />00278<br />00279<br />00280<br />
+00281<br />00282<br />00283<br />00284<br />00285<br />00286<br />00287<br />00288<br />00289<br />00290<br />00291<br />00292<br />00293<br />00294<br />00295<br />00296<br />00297<br />00298<br />00299<br />00300<br />
+00301<br />00302<br />00303<br />00304<br />00305<br />00306<br />00307<br />00308<br />00309<br />00310<br />00311<br />00312<br />00313<br />00314<br />00315<br />00316<br />00317<br />00318<br />00319<br />00320<br />
+00321<br />00322<br />00323<br />00324<br />00325<br />00326<br />00327<br />00328<br />00329<br />00330<br />00331<br />00332<br />00333<br />00334<br />00335<br />00336<br />00337<br />00338<br />00339<br />00340<br />
+00341<br />00342<br />00343<br />00344<br />00345<br />00346<br />00347<br />00348<br />00349<br />00350<br />00351<br />00352<br />00353<br />00354<br />00355<br />00356<br />00357<br />00358<br />00359<br />00360<br />
+00361<br />00362<br />00363<br />00364<br />00365<br />00366<br />00367<br />00368<br />00369<br />00370<br />00371<br />00372<br />00373</span></td>
+<td class="source"><pre class="source"><a name="1"></a><span class="source_comment">//========================================================================================
+</span><a name="2"></a><span class="source_comment">//  R6EngineWeapon.uc :     This is the base class for the r6Weapon class.  It's here
+</span><a name="3"></a><span class="source_comment">//                          to put a pointer in the Pawn Class. and replace the 
+</span><a name="4"></a><span class="source_comment">//                          weapon/inventory system
+</span><a name="5"></a><span class="source_comment">//
+</span><a name="6"></a><span class="source_comment">//  Copyright 2001 Ubi Soft, Inc. All Rights Reserved.
+</span><a name="7"></a><span class="source_comment">//
+</span><a name="8"></a><span class="source_comment">//  Revision history:
+</span><a name="9"></a><span class="source_comment">//    July 18th, 2001 * Created by Joel Tremblay
+</span><a name="10"></a><span class="source_comment">//=============================================================================
+</span><a name="11"></a><span class="source_type">class</span> <span class="source_type"><a href="../engine/r6engineweapon.html" class="source">R6EngineWeapon</a></span> extends <span class="source_type"><a href="../engine/actor.html" class="source">actor</a></span>
+<a name="12"></a>    abstract
+<a name="13"></a>    native;
+<a name="14"></a>
+<a name="15"></a>
+<a name="16"></a>enum <span class="source_type"><a href="../engine/r6engineweapon.html#eWeaponType" class="source">eWeaponType</a></span>
+<a name="17"></a>{
+<a name="18"></a>    WT_Pistol,
+<a name="19"></a>    WT_Sub,
+<a name="20"></a>    WT_Assault,
+<a name="21"></a>    WT_ShotGun,
+<a name="22"></a>    WT_Sniper,
+<a name="23"></a>    WT_LMG,
+<a name="24"></a>    WT_Grenade,
+<a name="25"></a>    WT_Gadget
+<a name="26"></a>};
+<a name="27"></a>
+<a name="28"></a>enum <span class="source_type"><a href="../engine/r6engineweapon.html#eGripType" class="source">eGripType</a></span>
+<a name="29"></a>{
+<a name="30"></a>	GRIP_None,
+<a name="31"></a>	GRIP_Aug,
+<a name="32"></a>	GRIP_BullPup,
+<a name="33"></a>	GRIP_LMG,
+<a name="34"></a>	GRIP_P90,
+<a name="35"></a>	GRIP_ShotGun,
+<a name="36"></a>	GRIP_Uzi,
+<a name="37"></a>	GRIP_SubGun,
+<a name="38"></a>	GRIP_HandGun
+<a name="39"></a>};
+<a name="40"></a>
+<a name="41"></a>enum <span class="source_type"><a href="../engine/r6engineweapon.html#eWeaponGrenadeType" class="source">eWeaponGrenadeType</a></span>
+<a name="42"></a>{
+<a name="43"></a>    GT_GrenadeNone,
+<a name="44"></a>	GT_GrenadeFrag,
+<a name="45"></a>	GT_GrenadeGas,
+<a name="46"></a>	GT_GrenadeFlash,
+<a name="47"></a>	GT_GrenadeSmoke
+<a name="48"></a>};
+<a name="49"></a>
+<a name="50"></a>enum <span class="source_type"><a href="../engine/r6engineweapon.html#eRateOfFire" class="source">eRateOfFire</a></span>
+<a name="51"></a>{
+<a name="52"></a>    ROF_Single,
+<a name="53"></a>    ROF_ThreeRound,
+<a name="54"></a>    ROF_FullAuto
+<a name="55"></a>};
+<a name="56"></a>
+<a name="57"></a>enum <span class="source_type"><a href="../engine/r6engineweapon.html#eGadgetType" class="source">eGadgetType</a></span>
+<a name="58"></a>{
+<a name="59"></a>    GAD_Other,
+<a name="60"></a>    GAD_SniperRifleScope,
+<a name="61"></a>    GAD_Magazine,
+<a name="62"></a>    GAD_Bipod,
+<a name="63"></a>    GAD_Muzzle,
+<a name="64"></a>    GAD_Silencer,
+<a name="65"></a>    GAD_Light
+<a name="66"></a>};
+<a name="67"></a>
+<a name="68"></a>enum <span class="source_type"><a href="../engine/r6engineweapon.html#EWeaponSound" class="source">EWeaponSound</a></span>
+<a name="69"></a>{
+<a name="70"></a>    WSOUND_None,
+<a name="71"></a>    WSOUND_Initialize,
+<a name="72"></a>    WSOUND_PlayTrigger,
+<a name="73"></a>    WSOUND_PlayFireSingleShot,
+<a name="74"></a>    WSOUND_PlayFireEndSingleShot,
+<a name="75"></a>    WSOUND_PlayFireThreeBurst,
+<a name="76"></a>    WSOUND_PlayFireFullAuto,
+<a name="77"></a>    WSOUND_PlayEmptyMag,
+<a name="78"></a>    WSOUND_PlayReloadEmpty,
+<a name="79"></a>    WSOUND_PlayReload,
+<a name="80"></a>    WSOUND_StopFireFullAuto
+<a name="81"></a>};
+<a name="82"></a>
+<a name="83"></a>var <span class="source_type">FLOAT</span>       m_fTimeDisplayParticule;
+<a name="84"></a>var <span class="source_type">INT</span>         m_iNbParticlesToCreate;
+<a name="85"></a>
+<a name="86"></a>var (R6GunProperties) <span class="source_type"><a href="../engine/r6engineweapon.html#eWeaponType" class="source">eWeaponType</a></span> m_eWeaponType;
+<a name="87"></a>var  				  <span class="source_type"><a href="../engine/r6engineweapon.html#eGripType" class="source">eGripType</a></span>   m_eGripType;
+<a name="88"></a>var (R6GunProperties) <span class="source_type">BOOL</span>        m_bDisplayHudInfo;
+<a name="89"></a>
+<a name="90"></a><span class="source_comment">//Weapon Management
+</span><a name="91"></a>var		<span class="source_type">INT</span>				m_InventoryGroup;     <span class="source_comment">// The weapon/gadget set, 0-3
+</span><a name="92"></a>var     <span class="source_type">string</span>          m_NameID;             <span class="source_comment">// Weapon Name ID 
+</span><a name="93"></a>var     <span class="source_type">string</span>          m_WeaponDesc;         <span class="source_comment">// Weapon Name
+</span><a name="94"></a>var		<span class="source_type">string</span>			m_WeaponShortName;    <span class="source_comment">// Abreviation for this weapon in some menu
+</span><a name="95"></a>
+<a name="96"></a><span class="source_comment">// Animation names for the Pawn
+</span><a name="97"></a>var (R6Animation) <span class="source_type">name</span> m_PawnWaitAnimLow;           <span class="source_comment">// Rainbow
+</span><a name="98"></a>var (R6Animation) <span class="source_type">name</span> m_PawnWaitAnimHigh;          <span class="source_comment">// Rainbow
+</span><a name="99"></a>var (R6Animation) <span class="source_type">name</span> m_PawnWaitAnimProne;         <span class="source_comment">// Rainbow
+</span><a name="100"></a>
+<a name="101"></a>var (R6Animation) <span class="source_type">name</span> m_PawnFiringAnim;            <span class="source_comment">// Rainbow
+</span><a name="102"></a>var (R6Animation) <span class="source_type">name</span> m_PawnFiringAnimProne;       <span class="source_comment">// Rainbow
+</span><a name="103"></a>var (R6Animation) <span class="source_type">name</span> m_PawnReloadAnim;            <span class="source_comment">// Rainbow
+</span><a name="104"></a>var (R6Animation) <span class="source_type">name</span> m_PawnReloadAnimTactical;    <span class="source_comment">// Rainbow 
+</span><a name="105"></a>var (R6Animation) <span class="source_type">name</span> m_PawnReloadAnimProne;       <span class="source_comment">// Rainbow
+</span><a name="106"></a>var (R6Animation) <span class="source_type">name</span> m_PawnReloadAnimProneTactical;    <span class="source_comment">// Rainbow 
+</span><a name="107"></a>
+<a name="108"></a><span class="source_comment">// Attachments
+</span><a name="109"></a>var (R6Attachment) <span class="source_type">name</span> m_AttachPoint;
+<a name="110"></a>var (R6Attachment) <span class="source_type">name</span> m_HoldAttachPoint;
+<a name="111"></a>var (R6Attachment) <span class="source_type">name</span> m_HoldAttachPoint2; 
+<a name="112"></a>
+<a name="113"></a>var (R6Attachment) <span class="source_type">string</span> m_szMagazineClass;
+<a name="114"></a>var (R6Attachment) <span class="source_type">string</span> m_szMuzzleClass;
+<a name="115"></a>var (R6Attachment) <span class="source_type">string</span> m_szSilencerClass;
+<a name="116"></a>var (R6Attachment) <span class="source_type">string</span> m_szTacticalLightClass;
+<a name="117"></a>
+<a name="118"></a>var (R6Sounds)	<span class="source_type">Sound</span> m_ReloadSound;
+<a name="119"></a>
+<a name="120"></a>var (R6GunProperties) <span class="source_type"><a href="../core/object.html#Vector" class="source">vector</a></span>  m_vPositionOffset;      <span class="source_comment">// Offsets to display the weapon
+</span><a name="121"></a>var (R6GunProperties) <span class="source_type">FLOAT</span>   m_fMaxZoom;             <span class="source_comment">//Max zoom for gun with integrated scope
+</span><a name="122"></a>var (R6GunProperties) <span class="source_type"><a href="../engine/texture.html" class="source">Texture</a></span> m_ScopeTexture;           <span class="source_comment">//Scope texture while zooming.
+</span><a name="123"></a>var (R6GunProperties) <span class="source_type"><a href="../engine/texture.html" class="source">Texture</a></span> m_ScopeAdd;               <span class="source_comment">//Scope add texture (not used in heat or night vision)
+</span><a name="124"></a>var (R6GunProperties) <span class="source_type">StaticMesh</span> m_WithScopeSM;         <span class="source_comment">//Mesh used when gadget is a scope.
+</span><a name="125"></a>var (R6GunProperties) <span class="source_type"><a href="../engine/texture.html" class="source">Texture</a></span> m_FPMuzzleFlashTexture;   <span class="source_comment">// to override the texture in the emitter.
+</span><a name="126"></a>
+<a name="127"></a>
+<a name="128"></a>var                   <span class="source_type">FLOAT</span>      m_fFireAnimRate; <span class="source_comment">// m_fRateOfFire / 0.1
+</span><a name="129"></a>var                   <span class="source_type">FLOAT</span>      m_fFPBlend;      <span class="source_comment">// anim blending while firing (based on weapon energy).
+</span><a name="130"></a>var	(R6GunProperties) <span class="source_type">FLOAT</span>		 BobDamping;		 <span class="source_comment">// how much to damp view bob
+</span><a name="131"></a>
+<a name="132"></a>var (R6GunProperties) <span class="source_type">FLOAT</span>      m_fReloadTime;
+<a name="133"></a>var (R6GunProperties) <span class="source_type">FLOAT</span>      m_fReloadEmptyTime;
+<a name="134"></a>var                   <span class="source_type">FLOAT</span>      m_fPauseWhenChanging;
+<a name="135"></a>var (R6GunProperties) <span class="source_type">BOOL</span>       m_bBipod;
+<a name="136"></a>var                   <span class="source_type">BOOL</span>       m_bDeployBipod;
+<a name="137"></a>var                   <span class="source_type">BOOL</span>       m_bBipodDeployed;
+<a name="138"></a>
+<a name="139"></a>var         <span class="source_type">BOOL</span>        bFiredABullet;                      <span class="source_comment">// To play the firing animation
+</span><a name="140"></a>
+<a name="141"></a>var         <span class="source_type">BOOL</span>        m_bPawnIsWalking;   <span class="source_comment">// To keep the bobing animation after changing weapon.
+</span><a name="142"></a>var         <span class="source_type">BOOL</span>        m_bIsSilenced;      <span class="source_comment">// weapon is either inherently silenced or has a weapon gadget added to silence it - 19 feb 2002 rbrek
+</span><a name="143"></a>var         <span class="source_type">BOOL</span>        m_bUnlimitedClip;   <span class="source_comment">// Weapon have infinite number of clip (for terrorist)
+</span><a name="144"></a>var         <span class="source_type">BOOL</span>        m_bUseMicroAnim;    <span class="source_comment">// Weapon have use micro animation (for terrorist)
+</span><a name="145"></a>
+<a name="146"></a>var         <span class="source_type"><a href="../core/object.html#Vector" class="source">vector</a></span>      m_FPFlashLocation;
+<a name="147"></a>
+<a name="148"></a>var <span class="source_type">BYTE</span>                m_iNbBulletsInWeapon; <span class="source_comment">//Current Number Of bullets in weapon, to be replicated
+</span><a name="149"></a>
+<a name="150"></a><span class="source_comment">// Sound Stuff
+</span><a name="151"></a>var (R6WeaponSound)   <span class="source_type">sound</span> m_EquipSnd;              <span class="source_comment">// Sound when the player pick his weapon
+</span><a name="152"></a>var (R6WeaponSound)   <span class="source_type">sound</span> m_UnEquipSnd;           <span class="source_comment">// Sound when the player store his weapon
+</span><a name="153"></a>var (R6WeaponSound)   <span class="source_type">sound</span> m_ReloadSnd;            <span class="source_comment">// Reload Sound
+</span><a name="154"></a>var (R6WeaponSound)   <span class="source_type">sound</span> m_ReloadEmptySnd;       <span class="source_comment">// Reload Sound when the mag is empty
+</span><a name="155"></a>var (R6WeaponSound)   <span class="source_type">sound</span> m_ChangeROFSnd;         <span class="source_comment">// Change Rate of Fire sound
+</span><a name="156"></a>var (R6WeaponSound)   <span class="source_type">sound</span> m_SingleFireStereoSnd;  <span class="source_comment">// Single shot stereo (for 1st person view)
+</span><a name="157"></a>var (R6WeaponSound)   <span class="source_type">sound</span> m_SingleFireEndStereoSnd;<span class="source_comment">// Single shot that is interruptible.
+</span><a name="158"></a>var (R6WeaponSound)   <span class="source_type">sound</span> m_BurstFireStereoSnd;   <span class="source_comment">// 3 rounds burst stereo
+</span><a name="159"></a>var (R6WeaponSound)   <span class="source_type">sound</span> m_FullAutoStereoSnd;    <span class="source_comment">// Full Auto Stereo
+</span><a name="160"></a>var (R6WeaponSound)   <span class="source_type">sound</span> m_FullAutoEndMonoSnd;   <span class="source_comment">// Last bullet in full auto for mono sound
+</span><a name="161"></a>var (R6WeaponSound)   <span class="source_type">sound</span> m_FullAutoEndStereoSnd; <span class="source_comment">// Last bullet in full auto for stereo sound
+</span><a name="162"></a>var (R6WeaponSound)   <span class="source_type">sound</span> m_EmptyMagSnd;          <span class="source_comment">// Sound when the mag is empty
+</span><a name="163"></a>var (R6WeaponSound)   <span class="source_type">sound</span> m_TriggerSnd;           <span class="source_comment">// Trigger Sound
+</span><a name="164"></a>
+<a name="165"></a>var (R6WeaponSound)   <span class="source_type">sound</span> m_ShellSingleFireSnd;	<span class="source_comment">// Single Fire Shell
+</span><a name="166"></a>var (R6WeaponSound)   <span class="source_type">sound</span> m_ShellBurstFireSnd;    <span class="source_comment">// 3 rounds burst shell 
+</span><a name="167"></a>var (R6WeaponSound)   <span class="source_type">sound</span> m_ShellFullAutoSnd;     <span class="source_comment">// Full Auto shell only for LMG
+</span><a name="168"></a>var (R6WeaponSound)   <span class="source_type">sound</span> m_ShellEndFullAutoSnd;  <span class="source_comment">// End Full Auto Shell
+</span><a name="169"></a>
+<a name="170"></a>var (R6WeaponSound)   <span class="source_type">sound</span> m_CommonWeaponZoomSnd;
+<a name="171"></a>var (R6WeaponSound)   <span class="source_type">sound</span> m_SniperZoomFirstSnd;    <span class="source_comment">// First zoom sound
+</span><a name="172"></a>var (R6WeaponSound)   <span class="source_type">sound</span> m_SniperZoomSecondSnd;   <span class="source_comment">// Second zoom sound
+</span><a name="173"></a>
+<a name="174"></a>var (R6WeaponSound)   <span class="source_type">sound</span> m_BipodSnd;				 <span class="source_comment">// Use bipod with the gun
+</span><a name="175"></a>
+<a name="176"></a>var <span class="source_type"><a href="../engine/material.html" class="source">Material</a></span> m_HUDTexture;
+<a name="177"></a>var <span class="source_type"><a href="../core/object.html#Plane" class="source">Plane</a></span>	 m_HUDTexturePos;
+<a name="178"></a>
+<a name="179"></a>replication
+<a name="180"></a>{
+<a name="181"></a>	reliable if (Role &lt; ROLE_Authority) 
+<a name="182"></a>		ServerStopFire;
+<a name="183"></a>
+<a name="184"></a>	reliable if (Role == ROLE_Authority) 
+<a name="185"></a>		StopFire, ClientStopFire;
+<a name="186"></a>
+<a name="187"></a>    unreliable if (Role &lt; ROLE_Authority)
+<a name="188"></a>        ServerDetonate, ServerPlaceCharge, ServerPlaceChargeAnimation, ServerPutBulletInShotgun,
+<a name="189"></a>        ServerShowInfo;<span class="source_comment">//R6DEBUG
+</span><a name="190"></a>
+<a name="191"></a>    unreliable if (Role == ROLE_Authority)
+<a name="192"></a>        m_bUnlimitedClip, m_bDeployBipod, m_iNbBulletsInWeapon;
+<a name="193"></a>
+<a name="194"></a>    unreliable if (Role == ROLE_Authority)
+<a name="195"></a>		WeaponZoomSound;
+<a name="196"></a>
+<a name="197"></a>    unreliable if (bNetOwner && Role == ROLE_Authority)
+<a name="198"></a>        m_fMaxZoom;
+<a name="199"></a>}
+<a name="200"></a>
+<a name="201"></a>simulated function PostRender( <span class="source_type"><a href="../engine/canvas.html" class="source">canvas</a></span> <span class="source_type"><a href="../engine/canvas.html" class="source">Canvas</a></span> );
+<a name="202"></a>
+<a name="203"></a>simulated event DeployWeaponBipod(<span class="source_type">BOOL</span> bBipodOpen);
+<a name="204"></a>
+<a name="205"></a>simulated function <span class="source_type">bool</span> ClientFire( <span class="source_type">float</span> <span class="source_type">Value</span> );
+<a name="206"></a>simulated function <span class="source_type">bool</span> ClientAltFire( <span class="source_type">float</span> <span class="source_type">Value</span> );
+<a name="207"></a>
+<a name="208"></a>function Fire( <span class="source_type">float</span> <span class="source_type">Value</span> );
+<a name="209"></a>function AltFire( <span class="source_type">float</span> <span class="source_type">Value</span> );
+<a name="210"></a>
+<a name="211"></a>simulated function <span class="source_type">BOOL</span> LoadFirstPersonWeapon(optional <span class="source_type"><a href="../engine/pawn.html" class="source">Pawn</a></span> NetOwner, optional <span class="source_type"><a href="../engine/controller.html" class="source">Controller</a></span> LocalPlayerController){return false;}
+<a name="212"></a>simulated function RemoveFirstPersonWeapon();
+<a name="213"></a>simulated function AttachEmittersToFPWeapon();
+<a name="214"></a>simulated function AttachEmittersTo3rdWeapon();
+<a name="215"></a>simulated function DisableWeaponOrGadget();
+<a name="216"></a>simulated function TurnOffEmitters(<span class="source_type">BOOL</span> bTurnOff);
+<a name="217"></a>
+<a name="218"></a>function GiveMoreAmmo();
+<a name="219"></a>
+<a name="220"></a>function AttachMagazine();
+<a name="221"></a>simulated function <span class="source_type">INT</span> NumberOfBulletsLeftInClip();
+<a name="222"></a>function <span class="source_type">FLOAT</span> GetCurrentMaxAngle();
+<a name="223"></a>function <span class="source_type">BOOL</span> IsAtBestAccuracy();
+<a name="224"></a>
+<a name="225"></a>function <span class="source_type">FLOAT</span> GetWeaponJump();
+<a name="226"></a>exec function SetNextRateOfFire();
+<a name="227"></a>function <span class="source_type">BOOL</span> SetRateOfFire(<span class="source_type"><a href="../engine/r6engineweapon.html#eRateOfFire" class="source">eRateOfFire</a></span> eNewRateOfFire);
+<a name="228"></a>function <span class="source_type"><a href="../engine/r6engineweapon.html#eRateOfFire" class="source">eRateOfFire</a></span> GetRateOfFire();
+<a name="229"></a>function SetHoldAttachPoint();
+<a name="230"></a>function UseScopeStaticMesh();
+<a name="231"></a>
+<a name="232"></a>function SetTerroristNbOfClips(<span class="source_type">INT</span> iNewNumber);
+<a name="233"></a>function <span class="source_type">INT</span> GetNbOfClips();
+<a name="234"></a>function <span class="source_type">BOOL</span> HasAtLeastOneFullClip();
+<a name="235"></a>function <span class="source_type">INT</span> GetClipCapacity();
+<a name="236"></a>function <span class="source_type">FLOAT</span> GetMuzzleVelocity();
+<a name="237"></a><span class="source_comment">/////////////////////////
+</span><a name="238"></a><span class="source_comment">// ANIMATION FUNCTIONS //
+</span><a name="239"></a><span class="source_comment">/////////////////////////
+</span><a name="240"></a>simulated function <span class="source_type">name</span> GetWaitAnimName()           {return m_PawnWaitAnimLow;}         <span class="source_comment">// Rainbow
+</span><a name="241"></a>simulated function <span class="source_type">name</span> GetHighWaitAnimName()       {return m_PawnWaitAnimHigh;}        <span class="source_comment">// Rainbow
+</span><a name="242"></a>simulated function <span class="source_type">name</span> GetProneWaitAnimName()      {return m_PawnWaitAnimProne;}       <span class="source_comment">// Rainbow
+</span><a name="243"></a>
+<a name="244"></a>simulated function <span class="source_type">name</span> GetFiringAnimName()         {return m_PawnFiringAnim;}          <span class="source_comment">// Rainbow
+</span><a name="245"></a>simulated function <span class="source_type">name</span> GetProneFiringAnimName()    {return m_PawnFiringAnimProne;}     <span class="source_comment">// Rainbow
+</span><a name="246"></a>simulated function <span class="source_type">name</span> GetReloadAnimName()         {return m_PawnReloadAnim;}          <span class="source_comment">// Rainbow
+</span><a name="247"></a>simulated function <span class="source_type">name</span> GetReloadAnimTacticalName() {return m_PawnReloadAnimTactical;}  <span class="source_comment">// Rainbow
+</span><a name="248"></a>simulated function <span class="source_type">name</span> GetProneReloadAnimName()    {return m_PawnReloadAnimProne;}     <span class="source_comment">// Rainbow
+</span><a name="249"></a>simulated function <span class="source_type">name</span> GetProneReloadAnimTacticalName() {return m_PawnReloadAnimProneTactical;} <span class="source_comment">//Rainbow
+</span><a name="250"></a>
+<a name="251"></a>simulated function PlayReloading();
+<a name="252"></a>
+<a name="253"></a><span class="source_comment">//First Person walking animation (bobing)
+</span><a name="254"></a>simulated event PawnIsMoving();
+<a name="255"></a>simulated event PawnStoppedMoving();
+<a name="256"></a>
+<a name="257"></a>function <span class="source_type">BOOL</span> HasAmmo();
+<a name="258"></a>function ChangeClip(); 
+<a name="259"></a>function FullCurrentClip();
+<a name="260"></a>function FillClips();
+<a name="261"></a>function AddExtraClip();
+<a name="262"></a>simulated function AddClips(<span class="source_type">INT</span> iNbOfExtraClips);
+<a name="263"></a>function <span class="source_type">BOOL</span> CanSwitchToWeapon();
+<a name="264"></a>
+<a name="265"></a>function ServerStopFire(optional <span class="source_type">BOOL</span> <span class="source_type">bSoundOnly</span>);
+<a name="266"></a>function ClientStopFire(optional <span class="source_type">BOOL</span> <span class="source_type">bSoundOnly</span>);
+<a name="267"></a>function LocalStopFire(optional <span class="source_type">BOOL</span> <span class="source_type">bSoundOnly</span>);
+<a name="268"></a>function StopFire(optional <span class="source_type">BOOL</span> <span class="source_type">bSoundOnly</span>);
+<a name="269"></a>function StopAltFire();
+<a name="270"></a>
+<a name="271"></a>function FullAmmo();
+<a name="272"></a>function PerfectAim();
+<a name="273"></a>
+<a name="274"></a>event SetIdentifyTarget(<span class="source_type">bool</span> bIdentifyCharacter, <span class="source_type">bool</span> bFriendly, <span class="source_type">string</span> characterName);
+<a name="275"></a>simulated function R6SetReticule(optional <span class="source_type"><a href="../engine/controller.html" class="source">Controller</a></span> LocalPlayerController);
+<a name="276"></a>simulated function UpdateHands();
+<a name="277"></a>simulated function WeaponInitialization( <span class="source_type"><a href="../engine/pawn.html" class="source">Pawn</a></span> <span class="source_type">pawnOwner</span> );
+<a name="278"></a>
+<a name="279"></a>function StartLoopingAnims();
+<a name="280"></a>simulated function FirstPersonAnimOver(){}
+<a name="281"></a>function ServerPutBulletInShotgun(){}
+<a name="282"></a>function ClientAddShell(){}
+<a name="283"></a>function <span class="source_type">BOOL</span> GunIsFull(){return false;}
+<a name="284"></a>simulated function <span class="source_type">BOOL</span> GotBipod(){return m_bBipod;}
+<a name="285"></a>function Toggle3rdBipod(<span class="source_type">BOOL</span> bBipodOpen);
+<a name="286"></a>
+<a name="287"></a><span class="source_comment">//Grenade specific functions
+</span><a name="288"></a>function ThrowGrenade();
+<a name="289"></a>function <span class="source_type">FLOAT</span> GetSaveDistanceToThrow() { return <span class="source_int">0</span>; }
+<a name="290"></a>
+<a name="291"></a><span class="source_comment">// Charge specific functions
+</span><a name="292"></a>function ServerPlaceCharge(<span class="source_type"><a href="../core/object.html#Vector" class="source">vector</a></span> vLocation);
+<a name="293"></a>function ServerDetonate();
+<a name="294"></a>function ServerPlaceChargeAnimation();
+<a name="295"></a>function NPCPlaceCharge(<span class="source_type"><a href="../engine/actor.html" class="source">actor</a></span> aDoor);
+<a name="296"></a>function NPCDetonateCharge();
+<a name="297"></a>
+<a name="298"></a>function GiveBulletToWeapon(<span class="source_type">string</span> aBulletName);
+<a name="299"></a>function <span class="source_type">BOOL</span> HasBulletType( <span class="source_type">name</span> strBulletType );
+<a name="300"></a>
+<a name="301"></a>simulated event <span class="source_type">BOOL</span> IsGoggles() { return false; }
+<a name="302"></a>function SetHeartBeatRange(<span class="source_type">FLOAT</span> fRange);
+<a name="303"></a>function WeaponZoomSound(<span class="source_type">BOOL</span> bFirstZoom);
+<a name="304"></a>
+<a name="305"></a>function <span class="source_type"><a href="../engine/texture.html" class="source">Texture</a></span> Get2DIcon();
+<a name="306"></a>simulated function StartFalling();
+<a name="307"></a>
+<a name="308"></a>simulated function SetGadgets();
+<a name="309"></a>
+<a name="310"></a>function <span class="source_type">bool</span> AffectActor(<span class="source_type">int</span> BulletGroup, <span class="source_type"><a href="../engine/actor.html" class="source">actor</a></span> ActorAffected);
+<a name="311"></a>
+<a name="312"></a>simulated function <span class="source_type">BOOL</span> IsPumpShotGun() { return false; }
+<a name="313"></a>function <span class="source_type">BOOL</span> IsSniperRifle() { return m_eWeaponType == WT_Sniper; }
+<a name="314"></a>simulated function <span class="source_type">BOOL</span> IsLMG() { return m_eWeaponType == WT_LMG; }
+<a name="315"></a>function <span class="source_type">BOOL</span> HasScope();
+<a name="316"></a>function <span class="source_type">FLOAT</span> GetExplosionDelay();
+<a name="317"></a>function <span class="source_type">FLOAT</span> GetWeaponRange();
+<a name="318"></a>simulated event UpdateWeaponAttachment( );
+<a name="319"></a>function SetRelevant( <span class="source_type">BOOL</span> <span class="source_type">bNewAlwaysRelevant</span> );
+<a name="320"></a>function SetTearOff( <span class="source_type">BOOL</span> <span class="source_type">bNewTearOff</span> );
+<a name="321"></a>simulated event ShowWeaponParticules(<span class="source_type"><a href="../engine/r6engineweapon.html#EWeaponSound" class="source">EWeaponSound</a></span> <span class="source_type"><a href="../engine/r6engineweapon.html#EWeaponSound" class="source">eWeaponSound</a></span>);
+<a name="322"></a>
+<a name="323"></a>function SetAccuracyOnHit();
+<a name="324"></a>
+<a name="325"></a>simulated function ServerShowInfo()
+<a name="326"></a>{
+<a name="327"></a><span class="source_macro">#ifdefDEBUG
+</span><a name="328"></a>    if(<span class="source_type">Level</span>.NetMode == NM_DedicatedServer)
+<a name="329"></a>        ShowInfo();
+<a name="330"></a><span class="source_macro">#endif
+</span><a name="331"></a>}
+<a name="332"></a>
+<a name="333"></a><span class="source_macro">#ifdefDEBUG
+</span><a name="334"></a>simulated function DisplayWeaponDGBInfo()
+<a name="335"></a>{
+<a name="336"></a>    ClientShowInfo();
+<a name="337"></a>    ServerShowInfo();
+<a name="338"></a>}
+<a name="339"></a>
+<a name="340"></a>simulated function ClientShowInfo()
+<a name="341"></a>{
+<a name="342"></a>    ShowInfo();
+<a name="343"></a>}
+<a name="344"></a>
+<a name="345"></a>simulated function ShowInfo()
+<a name="346"></a>{
+<a name="347"></a>    log(<span class="source_string">"-----------------------------------------------------------------------------------------------------------------"</span>);
+<a name="348"></a>    log(<span class="source_string">"Weapon "</span>$Self$<span class="source_string">" is in state : "</span>$GetStateName());
+<a name="349"></a>    log(<span class="source_string">"Owner "</span>$<span class="source_type">Owner</span>$<span class="source_string">" is in state : "</span>$<span class="source_type">Owner</span>.GetStateName());
+<a name="350"></a>    log(<span class="source_string">"Controller "</span>$<span class="source_type"><a href="../engine/pawn.html" class="source">Pawn</a></span>(<span class="source_type">Owner</span>).<span class="source_type"><a href="../engine/controller.html" class="source">Controller</a></span>$<span class="source_string">" is in state : "</span>$<span class="source_type"><a href="../engine/pawn.html" class="source">Pawn</a></span>(<span class="source_type">Owner</span>).<span class="source_type"><a href="../engine/controller.html" class="source">Controller</a></span>.GetStateName());
+<a name="351"></a>    
+<a name="352"></a>    log(<span class="source_string">"Controller.Pawn : "</span>$<span class="source_type"><a href="../engine/pawn.html" class="source">Pawn</a></span>(<span class="source_type">Owner</span>).<span class="source_type"><a href="../engine/controller.html" class="source">Controller</a></span>.<span class="source_type"><a href="../engine/pawn.html" class="source">Pawn</a></span>);
+<a name="353"></a>    log(<span class="source_string">"pawn.Weapon "</span>$<span class="source_type"><a href="../engine/pawn.html" class="source">Pawn</a></span>(<span class="source_type">Owner</span>).EngineWeapon);
+<a name="354"></a>    log(<span class="source_string">"Pawn.Owner "</span>$<span class="source_type"><a href="../engine/pawn.html" class="source">Pawn</a></span>(<span class="source_type">Owner</span>).<span class="source_type">Owner</span>);
+<a name="355"></a>
+<a name="356"></a>    log(<span class="source_string">"Weapon.REmoteRole = "</span>$RemoteRole);
+<a name="357"></a>    log(<span class="source_string">"Weapon.Role = "</span>$Role);
+<a name="358"></a>}
+<a name="359"></a><span class="source_macro">#endif
+</span><a name="360"></a>
+<a name="361"></a>defaultproperties
+<a name="362"></a>{
+<a name="363"></a>     m_eGripType=GRIP_SubGun
+<a name="364"></a>     m_InventoryGroup=<span class="source_int">1</span>
+<a name="365"></a>     m_fMaxZoom=<span class="source_int">1.500000</span>
+<a name="366"></a>     m_fFireAnimRate=<span class="source_int">1.000000</span>
+<a name="367"></a>     BobDamping=<span class="source_int">0.960000</span>
+<a name="368"></a>     m_fReloadTime=<span class="source_int">2.500000</span>
+<a name="369"></a>     m_fReloadEmptyTime=<span class="source_int">3.000000</span>
+<a name="370"></a>     m_fPauseWhenChanging=<span class="source_int">0.500000</span>
+<a name="371"></a>     RemoteRole=ROLE_SimulatedProxy
+<a name="372"></a>}
+<a name="373"></a></pre></td></tr></table></div>
+<hr />
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../engine/engine-overview.html">Package</a></td>
+	<td class="header"><a href="../engine/r6engineweapon.html">Class</a></td>
+	<td class="header_hilight">Source</td>
+	<td class="header"><a class="header" href="../classtree.html#R6EngineWeapon">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../Source_engine/r6enginefirstpersonweapon.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../Source_engine/r6eviltesting.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+
+<div class="stats">Class file time: sam. 18/9/2004 14:39:26.000 - Creation time: mar. 26/5/2026 18:33:19.844 - Created with <a href="http://wiki.beyondunreal.com/wiki/UnCodeX" target="_blank">UnCodeX</a></div>
+
+</body>
+</html>

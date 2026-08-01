@@ -1,0 +1,678 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+	<title>UnCodeX - IpDrv.ClientBeaconReceiver</title>
+	<meta name="Generator" content="UnCodeX 241" />
+	<link rel="stylesheet" href="../DocStyle2.css" type="text/css" title="Original Purple" />
+	<link rel="alternative stylesheet" href="../DocStyle2-blue.css" type="text/css" title="Blue" />
+	<link rel="alternative stylesheet" href="../DocStyle2-red.css" type="text/css" title="Red" />
+	<!--[if IE]>
+	<link rel="stylesheet" href="../DocStyle2-msie.css" type="text/css" />
+	<![endif]-->
+	<script src="../styleswitcher.js" type="text/javascript"></script>
+</head>
+<body>
+
+<div class="header">
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../ipdrv/ipdrv-overview.html">Package</a></td>
+	<td class="header_hilight">Class</td>
+	<td class="header"><a href="../Source_ipdrv/clientbeaconreceiver.html">Source</a></td>
+	<td class="header"><a class="header" href="../classtree.html#ClientBeaconReceiver">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../ipdrv/udplink.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../ipdrv/internetlink.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html#ipdrv/clientbeaconreceiver.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+</div>
+<div class="spacer"></div>
+
+<h1><a href="../ipdrv/ipdrv-overview.html">IpDrv</a>.ClientBeaconReceiver</h1>
+
+<dl>
+<dt>Extends</dt><dd><a href="../ipdrv/udpbeacon.html">UdpBeacon</a></dd>
+<dt>Modifiers</dt><dd>transient </dd>
+</dl>
+
+<p></p>
+
+<pre class="tree"><a href="../core/core-overview.html">core</a>.<a href="../core/object.html">Object</a>
+|   
++-- <a href="../engine/engine-overview.html">engine</a>.<a href="../engine/actor.html">Actor</a>
+   |   
+   +-- <a href="../engine/engine-overview.html">engine</a>.<a href="../engine/info.html">Info</a>
+      |   
+      +-- <a href="../engine/engine-overview.html">engine</a>.<a href="../engine/internetinfo.html">InternetInfo</a>
+         |   
+         +-- <a href="../ipdrv/ipdrv-overview.html">IpDrv</a>.<a href="../ipdrv/internetlink.html">InternetLink</a>
+            |   
+            +-- <a href="../ipdrv/ipdrv-overview.html">IpDrv</a>.<a href="../ipdrv/udplink.html">UdpLink</a>
+               |   
+               +-- <a href="../ipdrv/ipdrv-overview.html">IpDrv</a>.<a href="../ipdrv/udpbeacon.html">UdpBeacon</a>
+                  |   
+                  +-- <a href="../ipdrv/ipdrv-overview.html">IpDrv</a>.<a href="../ipdrv/clientbeaconreceiver.html">ClientBeaconReceiver</a>
+</pre>
+
+
+
+<hr />
+
+
+
+<table class="title">
+<tr>
+	<th colspan="2" class="title">Variables Summary</th>
+</tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../ipdrv/clientbeaconreceiver.html#BeaconInfo">BeaconInfo</a></td><td width="66%"><a href="#_Beacons[32]" name="Beacons[32]" title="go to the details">Beacons[32]</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../ipdrv/clientbeaconreceiver.html#PreJoinResponseInfo">PreJoinResponseInfo</a></td><td width="66%"><a href="#_PreJoinInfo" name="PreJoinInfo" title="go to the details">PreJoinInfo</a></td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Variables from <a href="../ipdrv/ipdrv-overview.html">IpDrv</a>.<a href="../ipdrv/udpbeacon.html">UdpBeacon</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../ipdrv/udpbeacon.html#AIBkpMarker">AIBkpMarker</a>, <a href="../ipdrv/udpbeacon.html#AllowRadarMarker">AllowRadarMarker</a>, <a href="../ipdrv/udpbeacon.html#AutoBalTeamMarker">AutoBalTeamMarker</a>, <a href="../ipdrv/udpbeacon.html#BeaconPort">BeaconPort</a>, <a href="../ipdrv/udpbeacon.html#BeaconPortMarker">BeaconPortMarker</a>, <a href="../ipdrv/udpbeacon.html#BeaconProduct">BeaconProduct</a>, <a href="../ipdrv/udpbeacon.html#BeaconTimeout">BeaconTimeout</a>, <a href="../ipdrv/udpbeacon.html#BetTimeMarker">BetTimeMarker</a>, <a href="../ipdrv/udpbeacon.html#BombTimeMarker">BombTimeMarker</a>, <a href="../ipdrv/udpbeacon.html#boundport">boundport</a>, <a href="../ipdrv/udpbeacon.html#DecicatedMarker">DecicatedMarker</a>, <a href="../ipdrv/udpbeacon.html#DoBeacon">DoBeacon</a>, <a href="../ipdrv/udpbeacon.html#ForceFPWpnMarker">ForceFPWpnMarker</a>, <a href="../ipdrv/udpbeacon.html#FriendlyFireMarker">FriendlyFireMarker</a>, <a href="../ipdrv/udpbeacon.html#GamePortMarker">GamePortMarker</a>, <a href="../ipdrv/udpbeacon.html#GameTypeMarker">GameTypeMarker</a>, <a href="../ipdrv/udpbeacon.html#GameVersionMarker">GameVersionMarker</a>, <a href="../ipdrv/udpbeacon.html#GroupIDMarker">GroupIDMarker</a>, <a href="../ipdrv/udpbeacon.html#InternetServerMarker">InternetServerMarker</a>, <a href="../ipdrv/udpbeacon.html#KeyWordMarker">KeyWordMarker</a>, <a href="../ipdrv/udpbeacon.html#LobbyServerIDMarker">LobbyServerIDMarker</a>, <a href="../ipdrv/udpbeacon.html#LocalIpAddress">LocalIpAddress</a>, <a href="../ipdrv/udpbeacon.html#LockedMarker">LockedMarker</a>, <a href="../ipdrv/udpbeacon.html#MapListMarker">MapListMarker</a>, <a href="../ipdrv/udpbeacon.html#MapNameMarker">MapNameMarker</a>, <a href="../ipdrv/udpbeacon.html#MaxPlayersMarker">MaxPlayersMarker</a>, <a href="../ipdrv/udpbeacon.html#MenuGmNameMarker">MenuGmNameMarker</a>, <a href="../ipdrv/udpbeacon.html#ModNameMarker">ModNameMarker</a>, <a href="../ipdrv/udpbeacon.html#NumPlayersMarker">NumPlayersMarker</a>, <a href="../ipdrv/udpbeacon.html#NumTerroMarker">NumTerroMarker</a>, <a href="../ipdrv/udpbeacon.html#OptionsListMarker">OptionsListMarker</a>, <a href="../ipdrv/udpbeacon.html#PlayerKillMarker">PlayerKillMarker</a>, <a href="../ipdrv/udpbeacon.html#PlayerListMarker">PlayerListMarker</a>, <a href="../ipdrv/udpbeacon.html#PlayerPingMarker">PlayerPingMarker</a>, <a href="../ipdrv/udpbeacon.html#PlayerTimeMarker">PlayerTimeMarker</a>, <a href="../ipdrv/udpbeacon.html#PreJoinQueryMarker">PreJoinQueryMarker</a>, <a href="../ipdrv/udpbeacon.html#PunkBusterMarker">PunkBusterMarker</a>, <a href="../ipdrv/udpbeacon.html#RotateMapMarker">RotateMapMarker</a>, <a href="../ipdrv/udpbeacon.html#RoundsPerMatchMarker">RoundsPerMatchMarker</a>, <a href="../ipdrv/udpbeacon.html#RoundTimeMarker">RoundTimeMarker</a>, <a href="../ipdrv/udpbeacon.html#ServerBeaconPort">ServerBeaconPort</a>, <a href="../ipdrv/udpbeacon.html#ShowNamesMarker">ShowNamesMarker</a>, <a href="../ipdrv/udpbeacon.html#SvrNameMarker">SvrNameMarker</a>, <a href="../ipdrv/udpbeacon.html#TKPenaltyMarker">TKPenaltyMarker</a>, <a href="../ipdrv/udpbeacon.html#UdpServerQueryPort">UdpServerQueryPort</a></td>
+</tr>
+</table>
+<table>
+<tr>
+	<th class="inherittitle">Inherited Variables from <a href="../ipdrv/ipdrv-overview.html">IpDrv</a>.<a href="../ipdrv/udplink.html">UdpLink</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../ipdrv/udplink.html#BroadcastAddr">BroadcastAddr</a></td>
+</tr>
+</table>
+
+
+<br />
+
+
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Structures Summary</th>
+</tr>
+<tr><td><a href="#_BeaconInfo" name="BeaconInfo" title="go to the details">BeaconInfo</a><br /><span class="small">Addr, Time, Text, iNumPlayers, iMaxPlayers, szCurrGameType, szMapName, szSvrName, bDedicated, bLocked, mapList[32], szGameType[32], szPlayerName[32], szPlayerTime[32], iPlayerPingTime[32], iPlayerKillCount[32], iRoundsPerMap, fRndTime, fBetTime, fBombTime, bShowNames, bInternetServer, bFriendlyFire, bAutoBalTeam, bTKPenalty, bNewData, bRadar, iPort, szGameVersion, iLobbyID, iGroupID, iBeaconPort, iNumTerro, bAIBkp, bRotateMap, bForceFPWpn, szModName, bPunkBuster</span></td></tr>
+<tr><td><a href="#_PreJoinResponseInfo" name="PreJoinResponseInfo" title="go to the details">PreJoinResponseInfo</a><br /><span class="small">bResponseRcvd, iLobbyID, iGroupID, bLocked, szGameVersion, bInternetServer, iNumPlayers, iMaxPlayers, iPunkBusterEnabled</span></td></tr>
+
+</table>
+
+
+
+<br />
+
+
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Functions Summary</th>
+</tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_BeginPlay-" name="BeginPlay" title="go to the details">BeginPlay</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_BroadcastBeacon-" name="BroadcastBeacon" title="go to the details">BroadcastBeacon</a> (<a href="../ipdrv/internetlink.html#IpAddr">IpAddr</a> Addr))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_ClearBeacon-" name="ClearBeacon" title="go to the details">ClearBeacon</a> (INT i ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_DecodeKeyWordPair-" name="DecodeKeyWordPair" title="go to the details">DecodeKeyWordPair</a> (string szKeyWord, int iIndex ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_DecodeKeyWordString-" name="DecodeKeyWordString" title="go to the details">DecodeKeyWordString</a> (INT iBeaconIdx, string szKewWordString ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_Destroyed-" name="Destroyed" title="go to the details">Destroyed</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>BOOL&nbsp;</td><td><a href="#_GetAIBackup-" name="GetAIBackup" title="go to the details">GetAIBackup</a> (INT i ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>BOOL&nbsp;</td><td><a href="#_GetAutoBalanceTeam-" name="GetAutoBalanceTeam" title="go to the details">GetAutoBalanceTeam</a> (INT i ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>string&nbsp;</td><td><a href="#_GetBeaconAddress-" name="GetBeaconAddress" title="go to the details">GetBeaconAddress</a> (int i ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>INT&nbsp;</td><td><a href="#_GetBeaconIntAddress-" name="GetBeaconIntAddress" title="go to the details">GetBeaconIntAddress</a> (INT i ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>INT&nbsp;</td><td><a href="#_GetBeaconListSize-" name="GetBeaconListSize" title="go to the details">GetBeaconListSize</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>INT&nbsp;</td><td><a href="#_GetBeaconPort-" name="GetBeaconPort" title="go to the details">GetBeaconPort</a> (INT i ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>string&nbsp;</td><td><a href="#_GetBeaconText-" name="GetBeaconText" title="go to the details">GetBeaconText</a> (int i))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>FLOAT&nbsp;</td><td><a href="#_GetBetTime-" name="GetBetTime" title="go to the details">GetBetTime</a> (INT i ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>FLOAT&nbsp;</td><td><a href="#_GetBombTime-" name="GetBombTime" title="go to the details">GetBombTime</a> (INT i ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>string&nbsp;</td><td><a href="#_GetCurrGameType-" name="GetCurrGameType" title="go to the details">GetCurrGameType</a> (INT i ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>BOOL&nbsp;</td><td><a href="#_GetDedicated-" name="GetDedicated" title="go to the details">GetDedicated</a> (INT i ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>string&nbsp;</td><td><a href="#_GetFirstMapName-" name="GetFirstMapName" title="go to the details">GetFirstMapName</a> (INT i ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>BOOL&nbsp;</td><td><a href="#_GetForceFirstPersonWeapon-" name="GetForceFirstPersonWeapon" title="go to the details">GetForceFirstPersonWeapon</a> (INT i ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>BOOL&nbsp;</td><td><a href="#_GetFriendlyFire-" name="GetFriendlyFire" title="go to the details">GetFriendlyFire</a> (INT i ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>string&nbsp;</td><td><a href="#_GetGameType-" name="GetGameType" title="go to the details">GetGameType</a> (INT iBeacon, INT i ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>INT&nbsp;</td><td><a href="#_GetGroupID-" name="GetGroupID" title="go to the details">GetGroupID</a> (INT i ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>BOOL&nbsp;</td><td><a href="#_GetInternetServer-" name="GetInternetServer" title="go to the details">GetInternetServer</a> (INT i ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_GetKeyValue-" name="GetKeyValue" title="go to the details">GetKeyValue</a> (string Pair, out string Key, out string Value ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>INT&nbsp;</td><td><a href="#_GetLobbyID-" name="GetLobbyID" title="go to the details">GetLobbyID</a> (INT i ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>BOOL&nbsp;</td><td><a href="#_GetLocked-" name="GetLocked" title="go to the details">GetLocked</a> (INT i ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>INT&nbsp;</td><td><a href="#_GetMapListSize-" name="GetMapListSize" title="go to the details">GetMapListSize</a> (INT i ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>INT&nbsp;</td><td><a href="#_GetMaxPlayers-" name="GetMaxPlayers" title="go to the details">GetMaxPlayers</a> (INT i ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>string&nbsp;</td><td><a href="#_GetModName-" name="GetModName" title="go to the details">GetModName</a> (INT i ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>BOOL&nbsp;</td><td><a href="#_GetNewDataFlag-" name="GetNewDataFlag" title="go to the details">GetNewDataFlag</a> (INT i ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>INT&nbsp;</td><td><a href="#_GetNumPlayers-" name="GetNumPlayers" title="go to the details">GetNumPlayers</a> (INT i ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>INT&nbsp;</td><td><a href="#_GetNumTerrorists-" name="GetNumTerrorists" title="go to the details">GetNumTerrorists</a> (INT i ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>string&nbsp;</td><td><a href="#_GetOneMapName-" name="GetOneMapName" title="go to the details">GetOneMapName</a> (INT iBeacon, INT i ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>INT&nbsp;</td><td><a href="#_GetPlayerKillCount-" name="GetPlayerKillCount" title="go to the details">GetPlayerKillCount</a> (INT iBeacon, INT i ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>INT&nbsp;</td><td><a href="#_GetPlayerListSize-" name="GetPlayerListSize" title="go to the details">GetPlayerListSize</a> (INT i ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>string&nbsp;</td><td><a href="#_GetPlayerName-" name="GetPlayerName" title="go to the details">GetPlayerName</a> (INT iBeacon, INT i ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>INT&nbsp;</td><td><a href="#_GetPlayerPingTime-" name="GetPlayerPingTime" title="go to the details">GetPlayerPingTime</a> (INT iBeacon, INT i ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>string&nbsp;</td><td><a href="#_GetPlayerTime-" name="GetPlayerTime" title="go to the details">GetPlayerTime</a> (INT iBeacon, INT i ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>INT&nbsp;</td><td><a href="#_GetPortNumber-" name="GetPortNumber" title="go to the details">GetPortNumber</a> (INT i ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>BOOL&nbsp;</td><td><a href="#_GetPunkBusterEnabled-" name="GetPunkBusterEnabled" title="go to the details">GetPunkBusterEnabled</a> (INT i ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>BOOL&nbsp;</td><td><a href="#_GetRadar-" name="GetRadar" title="go to the details">GetRadar</a> (INT i))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>BOOL&nbsp;</td><td><a href="#_GetRotateMap-" name="GetRotateMap" title="go to the details">GetRotateMap</a> (INT i ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>FLOAT&nbsp;</td><td><a href="#_GetRoundsPerMap-" name="GetRoundsPerMap" title="go to the details">GetRoundsPerMap</a> (INT i ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>FLOAT&nbsp;</td><td><a href="#_GetRoundTime-" name="GetRoundTime" title="go to the details">GetRoundTime</a> (INT i ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>string&nbsp;</td><td><a href="#_GetServerGameVersion-" name="GetServerGameVersion" title="go to the details">GetServerGameVersion</a> (INT i ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>BOOL&nbsp;</td><td><a href="#_GetShowEnemyNames-" name="GetShowEnemyNames" title="go to the details">GetShowEnemyNames</a> (INT i ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>string&nbsp;</td><td><a href="#_GetSvrName-" name="GetSvrName" title="go to the details">GetSvrName</a> (INT i ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>BOOL&nbsp;</td><td><a href="#_GetTKPenalty-" name="GetTKPenalty" title="go to the details">GetTKPenalty</a> (INT i ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>bool&nbsp;</td><td><a href="#_GrabOption-" name="GrabOption" title="go to the details">GrabOption</a> (out string Options, out string Result ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>string&nbsp;</td><td><a href="#_ParseOption-" name="ParseOption" title="go to the details">ParseOption</a> (string Options, string InKey ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>BOOL&nbsp;</td><td><a href="#_PreJoinQuery-" name="PreJoinQuery" title="go to the details">PreJoinQuery</a> (string szIP, INT iBeaconPort ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_event.gif" alt="event" title="event" /></td><td>&nbsp;</td><td><a href="#_ReceivedText-" name="ReceivedText" title="go to the details">ReceivedText</a> (<a href="../ipdrv/internetlink.html#IpAddr">IpAddr</a> Addr, string Text ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_RefreshServers-" name="RefreshServers" title="go to the details">RefreshServers</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_SetNewDataFlag-" name="SetNewDataFlag" title="go to the details">SetNewDataFlag</a> (INT i, BOOL bNewData ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_Timer-" name="Timer" title="go to the details">Timer</a> ()))<br /><span class="function_state"></span></td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Functions from <a href="../ipdrv/ipdrv-overview.html">IpDrv</a>.<a href="../ipdrv/udpbeacon.html">UdpBeacon</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../ipdrv/udpbeacon.html#BeginPlay">BeginPlay</a>, <a href="../ipdrv/udpbeacon.html#BroadcastBeacon">BroadcastBeacon</a>, <a href="../ipdrv/udpbeacon.html#BroadcastBeaconQuery">BroadcastBeaconQuery</a>, <a href="../ipdrv/udpbeacon.html#BuildBeaconText">BuildBeaconText</a>, <a href="../ipdrv/udpbeacon.html#Destroyed">Destroyed</a>, <a href="../ipdrv/udpbeacon.html#DisplayTime">DisplayTime</a>, <a href="../ipdrv/udpbeacon.html#InitBeaconProduct">InitBeaconProduct</a>, <a href="../ipdrv/udpbeacon.html#ReceivedText">ReceivedText</a>, <a href="../ipdrv/udpbeacon.html#RespondPreJoinQuery">RespondPreJoinQuery</a>, <a href="../ipdrv/udpbeacon.html#Timer">Timer</a></td>
+</tr>
+</table>
+<table>
+<tr>
+	<th class="inherittitle">Inherited Functions from <a href="../ipdrv/ipdrv-overview.html">IpDrv</a>.<a href="../ipdrv/udplink.html">UdpLink</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../ipdrv/udplink.html#BindPort">BindPort</a>, <a href="../ipdrv/udplink.html#CheckForPlayerTimeouts">CheckForPlayerTimeouts</a>, <a href="../ipdrv/udplink.html#GetMaxAvailPorts">GetMaxAvailPorts</a>, <a href="../ipdrv/udplink.html#GetPlayingTime">GetPlayingTime</a>, <a href="../ipdrv/udplink.html#ReadBinary">ReadBinary</a>, <a href="../ipdrv/udplink.html#ReadText">ReadText</a>, <a href="../ipdrv/udplink.html#ReceivedBinary">ReceivedBinary</a>, <a href="../ipdrv/udplink.html#ReceivedLine">ReceivedLine</a>, <a href="../ipdrv/udplink.html#ReceivedText">ReceivedText</a>, <a href="../ipdrv/udplink.html#SendBinary">SendBinary</a>, <a href="../ipdrv/udplink.html#SendText">SendText</a>, <a href="../ipdrv/udplink.html#SetPlayingTime">SetPlayingTime</a></td>
+</tr>
+</table>
+
+
+<br />
+
+
+
+<hr />
+
+
+
+<table class="title">
+<tr>
+	<th class="title">Variables Detail</th>
+</tr>
+</table>
+
+<h4><a name="_Beacons[32]" class="hidden"></a>Beacons[32] <a href="../Source_ipdrv/clientbeaconreceiver.html#7" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../ipdrv/clientbeaconreceiver.html#BeaconInfo" class="source">BeaconInfo</a></span> Beacons[<span class="source_int">32</span>];</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_PreJoinInfo" class="hidden"></a>PreJoinInfo <a href="../Source_ipdrv/clientbeaconreceiver.html#62" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../ipdrv/clientbeaconreceiver.html#PreJoinResponseInfo" class="source">PreJoinResponseInfo</a></span> PreJoinInfo;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+
+
+<br />
+
+
+
+<table class="title">
+<tr>
+	<th class="title">Structures Detail</th>
+</tr>
+</table>
+
+<h4><a name="_BeaconInfo" class="hidden"></a>BeaconInfo <a href="../Source_ipdrv/clientbeaconreceiver.html#7" class="small">Source code</a></h4>
+<div class="declaration">struct <span class="source_type"><a href="../ipdrv/clientbeaconreceiver.html#BeaconInfo" class="source">BeaconInfo</a></span><br />
+{<blockquote>var <span class="source_type"><a href="../ipdrv/internetlink.html#IpAddr" class="source">IpAddr</a></span> Addr;<br />
+var <span class="source_type">BOOL</span> bAIBkp;<br />
+var <span class="source_type">BOOL</span> bAutoBalTeam;<br />
+var <span class="source_type">BOOL</span> bDedicated;<br />
+var <span class="source_type">BOOL</span> bForceFPWpn;<br />
+var <span class="source_type">BOOL</span> bFriendlyFire;<br />
+var <span class="source_type">BOOL</span> bInternetServer;<br />
+var <span class="source_type">BOOL</span> bLocked;<br />
+var <span class="source_type">BOOL</span> <span class="source_type">bNewData</span>;<br />
+var <span class="source_type">BOOL</span> bPunkBuster;<br />
+var <span class="source_type">BOOL</span> bRadar;<br />
+var <span class="source_type">BOOL</span> bRotateMap;<br />
+var <span class="source_type">BOOL</span> bShowNames;<br />
+var <span class="source_type">BOOL</span> bTKPenalty;<br />
+var <span class="source_type">FLOAT</span> fBetTime;<br />
+var <span class="source_type">FLOAT</span> fBombTime;<br />
+var <span class="source_type">FLOAT</span> fRndTime;<br />
+var <span class="source_type">INT</span> <span class="source_type">iBeaconPort</span>;<br />
+var <span class="source_type">INT</span> iGroupID;<br />
+var <span class="source_type">INT</span> iLobbyID;<br />
+var <span class="source_type">INT</span> iMaxPlayers;<br />
+var <span class="source_type">INT</span> iNumPlayers;<br />
+var <span class="source_type">INT</span> iNumTerro;<br />
+var <span class="source_type">INT</span> iPlayerKillCount[<span class="source_int">32</span>];<br />
+var <span class="source_type">INT</span> iPlayerPingTime[<span class="source_int">32</span>];<br />
+var <span class="source_type">INT</span> iPort;<br />
+var <span class="source_type">INT</span> iRoundsPerMap;<br />
+var <span class="source_type">string</span> <span class="source_type"><a href="../engine/maplist.html" class="source">mapList</a></span>[<span class="source_int">32</span>];<br />
+var <span class="source_type">string</span> szCurrGameType;<br />
+var <span class="source_type">string</span> szGameType[<span class="source_int">32</span>];<br />
+var <span class="source_type">string</span> szGameVersion;<br />
+var <span class="source_type">string</span> szMapName;<br />
+var <span class="source_type">string</span> szModName;<br />
+var <span class="source_type">string</span> szPlayerName[<span class="source_int">32</span>];<br />
+var <span class="source_type">string</span> szPlayerTime[<span class="source_int">32</span>];<br />
+var <span class="source_type">string</span> szSvrName;<br />
+var <span class="source_type">string</span> <span class="source_type">Text</span>;<br />
+var <span class="source_type">float</span> <span class="source_type"><a href="../core/time.html" class="source">Time</a></span>;<br />
+</blockquote>};
+</div>
+<blockquote class="comment">
+
+<br />
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_PreJoinResponseInfo" class="hidden"></a>PreJoinResponseInfo <a href="../Source_ipdrv/clientbeaconreceiver.html#62" class="small">Source code</a></h4>
+<div class="declaration">struct <span class="source_type"><a href="../ipdrv/clientbeaconreceiver.html#PreJoinResponseInfo" class="source">PreJoinResponseInfo</a></span><br />
+{<blockquote>var <span class="source_type">BOOL</span> bInternetServer;<br />
+var <span class="source_type">BOOL</span> bLocked;<br />
+var <span class="source_type">BOOL</span> bResponseRcvd;<br />
+var <span class="source_type">INT</span> iGroupID;<br />
+var <span class="source_type">INT</span> iLobbyID;<br />
+var <span class="source_type">INT</span> iMaxPlayers;<br />
+var <span class="source_type">INT</span> iNumPlayers;<br />
+var <span class="source_type">INT</span> iPunkBusterEnabled;<br />
+var <span class="source_type">string</span> szGameVersion;<br />
+</blockquote>};
+</div>
+<blockquote class="comment">
+
+<br />
+
+</blockquote>
+<hr class="small" />
+
+
+<br />
+
+
+
+<table class="title">
+<tr>
+	<th class="title">Functions Detail</th>
+</tr>
+</table>
+
+<h4><a name="_BeginPlay-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> BeginPlay <span class="function_state"></span> <a href="../Source_ipdrv/clientbeaconreceiver.html#86" class="small">Source code</a></h4>
+<div class="declaration"> function  BeginPlay ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_BroadcastBeacon-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> BroadcastBeacon <span class="function_state"></span> <a href="../Source_ipdrv/clientbeaconreceiver.html#133" class="small">Source code</a></h4>
+<div class="declaration"> function  BroadcastBeacon ( <span class="source_type"><a href="../ipdrv/internetlink.html#IpAddr" class="source">IpAddr</a></span> Addr) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ClearBeacon-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> ClearBeacon <span class="function_state"></span> <a href="../Source_ipdrv/clientbeaconreceiver.html#617" class="small">Source code</a></h4>
+<div class="declaration"> function  ClearBeacon ( <span class="source_type">INT</span> <span class="source_type">i</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_DecodeKeyWordPair-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> DecodeKeyWordPair <span class="function_state"></span> <a href="../Source_ipdrv/clientbeaconreceiver.html#801" class="small">Source code</a></h4>
+<div class="declaration"> function  DecodeKeyWordPair ( <span class="source_type">string</span> szKeyWord, <span class="source_type">int</span> <span class="source_type">iIndex</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_DecodeKeyWordString-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> DecodeKeyWordString <span class="function_state"></span> <a href="../Source_ipdrv/clientbeaconreceiver.html#758" class="small">Source code</a></h4>
+<div class="declaration"> function  DecodeKeyWordString ( <span class="source_type">INT</span> iBeaconIdx, <span class="source_type">string</span> <span class="source_type">szKewWordString</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_Destroyed-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> Destroyed <span class="function_state"></span> <a href="../Source_ipdrv/clientbeaconreceiver.html#113" class="small">Source code</a></h4>
+<div class="declaration"> function  Destroyed ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GetAIBackup-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> GetAIBackup <span class="function_state"></span> <a href="../Source_ipdrv/clientbeaconreceiver.html#594" class="small">Source code</a></h4>
+<div class="declaration"> function <span class="source_type">BOOL</span> GetAIBackup ( <span class="source_type">INT</span> <span class="source_type">i</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GetAutoBalanceTeam-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> GetAutoBalanceTeam <span class="function_state"></span> <a href="../Source_ipdrv/clientbeaconreceiver.html#550" class="small">Source code</a></h4>
+<div class="declaration"> function <span class="source_type">BOOL</span> GetAutoBalanceTeam ( <span class="source_type">INT</span> <span class="source_type">i</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GetBeaconAddress-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> GetBeaconAddress <span class="function_state"></span> <a href="../Source_ipdrv/clientbeaconreceiver.html#76" class="small">Source code</a></h4>
+<div class="declaration"> function <span class="source_type">string</span> GetBeaconAddress ( <span class="source_type">int</span> <span class="source_type">i</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GetBeaconIntAddress-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> GetBeaconIntAddress <span class="function_state"></span> <a href="../Source_ipdrv/clientbeaconreceiver.html#411" class="small">Source code</a></h4>
+<div class="declaration"> function <span class="source_type">INT</span> GetBeaconIntAddress ( <span class="source_type">INT</span> <span class="source_type">i</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GetBeaconListSize-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> GetBeaconListSize <span class="function_state"></span> <a href="../Source_ipdrv/clientbeaconreceiver.html#406" class="small">Source code</a></h4>
+<div class="declaration"> function <span class="source_type">INT</span> GetBeaconListSize ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GetBeaconPort-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> GetBeaconPort <span class="function_state"></span> <a href="../Source_ipdrv/clientbeaconreceiver.html#586" class="small">Source code</a></h4>
+<div class="declaration"> function <span class="source_type">INT</span> GetBeaconPort ( <span class="source_type">INT</span> <span class="source_type">i</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GetBeaconText-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> GetBeaconText <span class="function_state"></span> <a href="../Source_ipdrv/clientbeaconreceiver.html#81" class="small">Source code</a></h4>
+<div class="declaration"> function <span class="source_type">string</span> GetBeaconText ( <span class="source_type">int</span> <span class="source_type">i</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GetBetTime-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> GetBetTime <span class="function_state"></span> <a href="../Source_ipdrv/clientbeaconreceiver.html#468" class="small">Source code</a></h4>
+<div class="declaration"> function <span class="source_type">FLOAT</span> GetBetTime ( <span class="source_type">INT</span> <span class="source_type">i</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GetBombTime-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> GetBombTime <span class="function_state"></span> <a href="../Source_ipdrv/clientbeaconreceiver.html#472" class="small">Source code</a></h4>
+<div class="declaration"> function <span class="source_type">FLOAT</span> GetBombTime ( <span class="source_type">INT</span> <span class="source_type">i</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GetCurrGameType-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> GetCurrGameType <span class="function_state"></span> <a href="../Source_ipdrv/clientbeaconreceiver.html#562" class="small">Source code</a></h4>
+<div class="declaration"> function <span class="source_type">string</span> GetCurrGameType ( <span class="source_type">INT</span> <span class="source_type">i</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GetDedicated-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> GetDedicated <span class="function_state"></span> <a href="../Source_ipdrv/clientbeaconreceiver.html#450" class="small">Source code</a></h4>
+<div class="declaration"> function <span class="source_type">BOOL</span> GetDedicated ( <span class="source_type">INT</span> <span class="source_type">i</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GetFirstMapName-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> GetFirstMapName <span class="function_state"></span> <a href="../Source_ipdrv/clientbeaconreceiver.html#431" class="small">Source code</a></h4>
+<div class="declaration"> function <span class="source_type">string</span> GetFirstMapName ( <span class="source_type">INT</span> <span class="source_type">i</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GetForceFirstPersonWeapon-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> GetForceFirstPersonWeapon <span class="function_state"></span> <a href="../Source_ipdrv/clientbeaconreceiver.html#602" class="small">Source code</a></h4>
+<div class="declaration"> function <span class="source_type">BOOL</span> GetForceFirstPersonWeapon ( <span class="source_type">INT</span> <span class="source_type">i</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GetFriendlyFire-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> GetFriendlyFire <span class="function_state"></span> <a href="../Source_ipdrv/clientbeaconreceiver.html#546" class="small">Source code</a></h4>
+<div class="declaration"> function <span class="source_type">BOOL</span> GetFriendlyFire ( <span class="source_type">INT</span> <span class="source_type">i</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GetGameType-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> GetGameType <span class="function_state"></span> <a href="../Source_ipdrv/clientbeaconreceiver.html#533" class="small">Source code</a></h4>
+<div class="declaration"> function <span class="source_type">string</span> GetGameType ( <span class="source_type">INT</span> iBeacon, <span class="source_type">INT</span> <span class="source_type">i</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GetGroupID-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> GetGroupID <span class="function_state"></span> <a href="../Source_ipdrv/clientbeaconreceiver.html#582" class="small">Source code</a></h4>
+<div class="declaration"> function <span class="source_type">INT</span> GetGroupID ( <span class="source_type">INT</span> <span class="source_type">i</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GetInternetServer-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> GetInternetServer <span class="function_state"></span> <a href="../Source_ipdrv/clientbeaconreceiver.html#542" class="small">Source code</a></h4>
+<div class="declaration"> function <span class="source_type">BOOL</span> GetInternetServer ( <span class="source_type">INT</span> <span class="source_type">i</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GetKeyValue-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> GetKeyValue <span class="function_state"></span> <a href="../Source_ipdrv/clientbeaconreceiver.html#724" class="small">Source code</a></h4>
+<div class="declaration"> function  GetKeyValue ( <span class="source_type">string</span> Pair, out <span class="source_type">string</span> Key, out <span class="source_type">string</span> <span class="source_type">Value</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GetLobbyID-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> GetLobbyID <span class="function_state"></span> <a href="../Source_ipdrv/clientbeaconreceiver.html#578" class="small">Source code</a></h4>
+<div class="declaration"> function <span class="source_type">INT</span> GetLobbyID ( <span class="source_type">INT</span> <span class="source_type">i</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GetLocked-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> GetLocked <span class="function_state"></span> <a href="../Source_ipdrv/clientbeaconreceiver.html#446" class="small">Source code</a></h4>
+<div class="declaration"> function <span class="source_type">BOOL</span> GetLocked ( <span class="source_type">INT</span> <span class="source_type">i</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GetMapListSize-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> GetMapListSize <span class="function_state"></span> <a href="../Source_ipdrv/clientbeaconreceiver.html#478" class="small">Source code</a></h4>
+<div class="declaration"> function <span class="source_type">INT</span> GetMapListSize ( <span class="source_type">INT</span> <span class="source_type">i</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GetMaxPlayers-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> GetMaxPlayers <span class="function_state"></span> <a href="../Source_ipdrv/clientbeaconreceiver.html#416" class="small">Source code</a></h4>
+<div class="declaration"> function <span class="source_type">INT</span> GetMaxPlayers ( <span class="source_type">INT</span> <span class="source_type">i</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GetModName-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> GetModName <span class="function_state"></span> <a href="../Source_ipdrv/clientbeaconreceiver.html#441" class="small">Source code</a></h4>
+<div class="declaration"> function <span class="source_type">string</span> GetModName ( <span class="source_type">INT</span> <span class="source_type">i</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GetNewDataFlag-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> GetNewDataFlag <span class="function_state"></span> <a href="../Source_ipdrv/clientbeaconreceiver.html#566" class="small">Source code</a></h4>
+<div class="declaration"> function <span class="source_type">BOOL</span> GetNewDataFlag ( <span class="source_type">INT</span> <span class="source_type">i</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GetNumPlayers-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> GetNumPlayers <span class="function_state"></span> <a href="../Source_ipdrv/clientbeaconreceiver.html#426" class="small">Source code</a></h4>
+<div class="declaration"> function <span class="source_type">INT</span> GetNumPlayers ( <span class="source_type">INT</span> <span class="source_type">i</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GetNumTerrorists-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> GetNumTerrorists <span class="function_state"></span> <a href="../Source_ipdrv/clientbeaconreceiver.html#590" class="small">Source code</a></h4>
+<div class="declaration"> function <span class="source_type">INT</span> GetNumTerrorists ( <span class="source_type">INT</span> <span class="source_type">i</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GetOneMapName-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> GetOneMapName <span class="function_state"></span> <a href="../Source_ipdrv/clientbeaconreceiver.html#487" class="small">Source code</a></h4>
+<div class="declaration"> function <span class="source_type">string</span> GetOneMapName ( <span class="source_type">INT</span> iBeacon, <span class="source_type">INT</span> <span class="source_type">i</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GetPlayerKillCount-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> GetPlayerKillCount <span class="function_state"></span> <a href="../Source_ipdrv/clientbeaconreceiver.html#515" class="small">Source code</a></h4>
+<div class="declaration"> function <span class="source_type">INT</span> GetPlayerKillCount ( <span class="source_type">INT</span> iBeacon, <span class="source_type">INT</span> <span class="source_type">i</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GetPlayerListSize-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> GetPlayerListSize <span class="function_state"></span> <a href="../Source_ipdrv/clientbeaconreceiver.html#492" class="small">Source code</a></h4>
+<div class="declaration"> function <span class="source_type">INT</span> GetPlayerListSize ( <span class="source_type">INT</span> <span class="source_type">i</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GetPlayerName-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> GetPlayerName <span class="function_state"></span> <a href="../Source_ipdrv/clientbeaconreceiver.html#501" class="small">Source code</a></h4>
+<div class="declaration"> function <span class="source_type">string</span> GetPlayerName ( <span class="source_type">INT</span> iBeacon, <span class="source_type">INT</span> <span class="source_type">i</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GetPlayerPingTime-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> GetPlayerPingTime <span class="function_state"></span> <a href="../Source_ipdrv/clientbeaconreceiver.html#511" class="small">Source code</a></h4>
+<div class="declaration"> function <span class="source_type">INT</span> GetPlayerPingTime ( <span class="source_type">INT</span> iBeacon, <span class="source_type">INT</span> <span class="source_type">i</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GetPlayerTime-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> GetPlayerTime <span class="function_state"></span> <a href="../Source_ipdrv/clientbeaconreceiver.html#506" class="small">Source code</a></h4>
+<div class="declaration"> function <span class="source_type">string</span> GetPlayerTime ( <span class="source_type">INT</span> iBeacon, <span class="source_type">INT</span> <span class="source_type">i</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GetPortNumber-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> GetPortNumber <span class="function_state"></span> <a href="../Source_ipdrv/clientbeaconreceiver.html#421" class="small">Source code</a></h4>
+<div class="declaration"> function <span class="source_type">INT</span> GetPortNumber ( <span class="source_type">INT</span> <span class="source_type">i</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GetPunkBusterEnabled-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> GetPunkBusterEnabled <span class="function_state"></span> <a href="../Source_ipdrv/clientbeaconreceiver.html#608" class="small">Source code</a></h4>
+<div class="declaration"> function <span class="source_type">BOOL</span> GetPunkBusterEnabled ( <span class="source_type">INT</span> <span class="source_type">i</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GetRadar-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> GetRadar <span class="function_state"></span> <a href="../Source_ipdrv/clientbeaconreceiver.html#558" class="small">Source code</a></h4>
+<div class="declaration"> function <span class="source_type">BOOL</span> GetRadar ( <span class="source_type">INT</span> <span class="source_type">i</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GetRotateMap-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> GetRotateMap <span class="function_state"></span> <a href="../Source_ipdrv/clientbeaconreceiver.html#598" class="small">Source code</a></h4>
+<div class="declaration"> function <span class="source_type">BOOL</span> GetRotateMap ( <span class="source_type">INT</span> <span class="source_type">i</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GetRoundsPerMap-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> GetRoundsPerMap <span class="function_state"></span> <a href="../Source_ipdrv/clientbeaconreceiver.html#455" class="small">Source code</a></h4>
+<div class="declaration"> function <span class="source_type">FLOAT</span> GetRoundsPerMap ( <span class="source_type">INT</span> <span class="source_type">i</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GetRoundTime-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> GetRoundTime <span class="function_state"></span> <a href="../Source_ipdrv/clientbeaconreceiver.html#464" class="small">Source code</a></h4>
+<div class="declaration"> function <span class="source_type">FLOAT</span> GetRoundTime ( <span class="source_type">INT</span> <span class="source_type">i</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GetServerGameVersion-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> GetServerGameVersion <span class="function_state"></span> <a href="../Source_ipdrv/clientbeaconreceiver.html#570" class="small">Source code</a></h4>
+<div class="declaration"> function <span class="source_type">string</span> GetServerGameVersion ( <span class="source_type">INT</span> <span class="source_type">i</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GetShowEnemyNames-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> GetShowEnemyNames <span class="function_state"></span> <a href="../Source_ipdrv/clientbeaconreceiver.html#538" class="small">Source code</a></h4>
+<div class="declaration"> function <span class="source_type">BOOL</span> GetShowEnemyNames ( <span class="source_type">INT</span> <span class="source_type">i</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GetSvrName-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> GetSvrName <span class="function_state"></span> <a href="../Source_ipdrv/clientbeaconreceiver.html#435" class="small">Source code</a></h4>
+<div class="declaration"> function <span class="source_type">string</span> GetSvrName ( <span class="source_type">INT</span> <span class="source_type">i</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GetTKPenalty-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> GetTKPenalty <span class="function_state"></span> <a href="../Source_ipdrv/clientbeaconreceiver.html#554" class="small">Source code</a></h4>
+<div class="declaration"> function <span class="source_type">BOOL</span> GetTKPenalty ( <span class="source_type">INT</span> <span class="source_type">i</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GrabOption-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> GrabOption <span class="function_state"></span> <a href="../Source_ipdrv/clientbeaconreceiver.html#699" class="small">Source code</a></h4>
+<div class="declaration"> function <span class="source_type">bool</span> GrabOption ( out <span class="source_type">string</span> Options, out <span class="source_type">string</span> <span class="source_type">Result</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ParseOption-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> ParseOption <span class="function_state"></span> <a href="../Source_ipdrv/clientbeaconreceiver.html#741" class="small">Source code</a></h4>
+<div class="declaration"> function <span class="source_type">string</span> ParseOption ( <span class="source_type">string</span> Options, <span class="source_type">string</span> <span class="source_type">InKey</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_PreJoinQuery-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> PreJoinQuery <span class="function_state"></span> <a href="../Source_ipdrv/clientbeaconreceiver.html#175" class="small">Source code</a></h4>
+<div class="declaration"> function <span class="source_type">BOOL</span> PreJoinQuery ( <span class="source_type">string</span> szIP, <span class="source_type">INT</span> <span class="source_type">iBeaconPort</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ReceivedText-" class="hidden"></a><img src="../img_event.gif" alt="" title="event" /> ReceivedText <span class="function_state"></span> <a href="../Source_ipdrv/clientbeaconreceiver.html#214" class="small">Source code</a></h4>
+<div class="declaration"> event  ReceivedText ( <span class="source_type"><a href="../ipdrv/internetlink.html#IpAddr" class="source">IpAddr</a></span> Addr, <span class="source_type">string</span> <span class="source_type">Text</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_RefreshServers-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> RefreshServers <span class="function_state"></span> <a href="../Source_ipdrv/clientbeaconreceiver.html#668" class="small">Source code</a></h4>
+<div class="declaration"> function  RefreshServers ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_SetNewDataFlag-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> SetNewDataFlag <span class="function_state"></span> <a href="../Source_ipdrv/clientbeaconreceiver.html#574" class="small">Source code</a></h4>
+<div class="declaration"> function  SetNewDataFlag ( <span class="source_type">INT</span> <span class="source_type">i</span>, <span class="source_type">BOOL</span> <span class="source_type">bNewData</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_Timer-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> Timer <span class="function_state"></span> <a href="../Source_ipdrv/clientbeaconreceiver.html#118" class="small">Source code</a></h4>
+<div class="declaration"> function  Timer ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+
+
+<br />
+
+
+<table class="title">
+<tr>
+	<th class="title">Defaultproperties</th>
+</tr>
+</table>
+<br />
+<div class="source"><table class="source"><tr><td class="source"><pre class="source">defaultproperties
+{
+}
+</pre></td></tr></table></div>
+
+
+
+<hr />
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../ipdrv/ipdrv-overview.html">Package</a></td>
+	<td class="header_hilight">Class</td>
+	<td class="header"><a href="../Source_ipdrv/clientbeaconreceiver.html">Source</a></td>
+	<td class="header"><a class="header" href="../classtree.html#ClientBeaconReceiver">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../ipdrv/udplink.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../ipdrv/internetlink.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+
+<div class="stats">Creation time: mar. 26/5/2026 18:33:06.786 - Created with <a href="http://wiki.beyondunreal.com/wiki/UnCodeX" target="_blank">UnCodeX</a></div>
+
+</body>
+</html>

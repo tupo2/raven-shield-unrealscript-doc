@@ -1,0 +1,286 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+	<title>UnCodeX - R6Engine.R6SubActionAnimSequence</title>
+	<meta name="Generator" content="UnCodeX 241" />
+	<link rel="stylesheet" href="../DocStyle2.css" type="text/css" title="Original Purple" />
+	<link rel="alternative stylesheet" href="../DocStyle2-blue.css" type="text/css" title="Blue" />
+	<link rel="alternative stylesheet" href="../DocStyle2-red.css" type="text/css" title="Red" />
+	<!--[if IE]>
+	<link rel="stylesheet" href="../DocStyle2-msie.css" type="text/css" />
+	<![endif]-->
+	<script src="../styleswitcher.js" type="text/javascript"></script>
+</head>
+<body>
+
+<div class="header">
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../r6engine/r6engine-overview.html">Package</a></td>
+	<td class="header_hilight">Class</td>
+	<td class="header"><a href="../Source_r6engine/r6subactionanimsequence.html">Source</a></td>
+	<td class="header"><a class="header" href="../classtree.html#R6SubActionAnimSequence">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../r6engine/r6stairvolume.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../r6engine/r6subactionlookat.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html#r6engine/r6subactionanimsequence.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+</div>
+<div class="spacer"></div>
+
+<h1><a href="../r6engine/r6engine-overview.html">R6Engine</a>.R6SubActionAnimSequence</h1>
+
+<dl>
+<dt>Extends</dt><dd><a href="../engine/matsubaction.html">MatSubAction</a></dd>
+<dt>Modifiers</dt><dd>native </dd>
+</dl>
+
+<p></p>
+
+<pre class="tree"><a href="../core/core-overview.html">core</a>.<a href="../core/object.html">Object</a>
+|   
++-- <a href="../engine/engine-overview.html">engine</a>.<a href="../engine/matobject.html">MatObject</a>
+   |   
+   +-- <a href="../engine/engine-overview.html">engine</a>.<a href="../engine/matsubaction.html">MatSubAction</a>
+      |   
+      +-- <a href="../r6engine/r6engine-overview.html">R6Engine</a>.<a href="../r6engine/r6subactionanimsequence.html">R6SubActionAnimSequence</a>
+</pre>
+
+
+
+<hr />
+
+
+
+<table class="title">
+<tr>
+	<th colspan="2" class="title">Variables Summary</th>
+</tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_m_bFirstTime" name="m_bFirstTime" title="go to the details">m_bFirstTime</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_m_bResetAnimation" name="m_bResetAnimation" title="go to the details">m_bResetAnimation</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_m_CurIndex" name="m_CurIndex" title="go to the details">m_CurIndex</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../r6engine/r6playanim.html">R6PlayAnim</a></td><td width="66%"><a href="#_m_CurSequence" name="m_CurSequence" title="go to the details">m_CurSequence</a></td></tr>
+<tr><th colspan="2" class="small">R6Animation</th></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../engine/actor.html">Actor</a></td><td width="66%"><a href="#_m_AffectedActor" name="m_AffectedActor" title="go to the details">m_AffectedActor</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../r6engine/r6pawn.html">R6Pawn</a></td><td width="66%"><a href="#_m_AffectedPawn" name="m_AffectedPawn" title="go to the details">m_AffectedPawn</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_m_bUseRootMotion" name="m_bUseRootMotion" title="go to the details">m_bUseRootMotion</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">array&lt;<a href="../r6engine/r6playanim.html">R6PlayAnim</a>&gt;</td><td width="66%"><a href="#_m_Sequences" name="m_Sequences" title="go to the details">m_Sequences</a></td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Variables from <a href="../engine/engine-overview.html">engine</a>.<a href="../engine/matsubaction.html">MatSubAction</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../engine/matsubaction.html#Delay">Delay</a>, <a href="../engine/matsubaction.html#Desc">Desc</a>, <a href="../engine/matsubaction.html#Duration">Duration</a>, <a href="../engine/matsubaction.html#Icon">Icon</a>, <a href="../engine/matsubaction.html#m_pSceneManager">m_pSceneManager</a>, <a href="../engine/matsubaction.html#PctDuration">PctDuration</a>, <a href="../engine/matsubaction.html#PctEnding">PctEnding</a>, <a href="../engine/matsubaction.html#PctStarting">PctStarting</a>, <a href="../engine/matsubaction.html#Status">Status</a></td>
+</tr>
+</table>
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Enumerations Summary</th>
+</tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Enumerations from <a href="../engine/engine-overview.html">engine</a>.<a href="../engine/matsubaction.html">MatSubAction</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../engine/matsubaction.html#ESAStatus">ESAStatus</a></td>
+</tr>
+</table>
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Structures Summary</th>
+</tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Structures from <a href="../engine/engine-overview.html">engine</a>.<a href="../engine/matobject.html">MatObject</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../engine/matobject.html#Orientation">Orientation</a></td>
+</tr>
+</table>
+
+
+<br />
+
+
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Functions Summary</th>
+</tr>
+<tr><td nowrap="nowrap"><img src="../img_event.gif" alt="event" title="event" /></td><td>&nbsp;</td><td><a href="#_Initialize-" name="Initialize" title="go to the details">Initialize</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_event.gif" alt="event" title="event" /></td><td>&nbsp;</td><td><a href="#_SequenceChanged-" name="SequenceChanged" title="go to the details">SequenceChanged</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_event.gif" alt="event" title="event" /></td><td>&nbsp;</td><td><a href="#_SequenceFinished-" name="SequenceFinished" title="go to the details">SequenceFinished</a> ()))<br /><span class="function_state"></span></td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Functions from <a href="../engine/engine-overview.html">engine</a>.<a href="../engine/matsubaction.html">MatSubAction</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../engine/matsubaction.html#Initialize">Initialize</a></td>
+</tr>
+</table>
+
+
+<br />
+
+
+
+<hr />
+
+
+
+<table class="title">
+<tr>
+	<th class="title">Variables Detail</th>
+</tr>
+</table>
+
+<h4><a name="_m_bFirstTime" class="hidden"></a>m_bFirstTime <a href="../Source_r6engine/r6subactionanimsequence.html#24" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">bool</span> m_bFirstTime;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_bResetAnimation" class="hidden"></a>m_bResetAnimation <a href="../Source_r6engine/r6subactionanimsequence.html#25" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">bool</span> m_bResetAnimation;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_CurIndex" class="hidden"></a>m_CurIndex <a href="../Source_r6engine/r6subactionanimsequence.html#22" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">int</span> m_CurIndex;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_CurSequence" class="hidden"></a>m_CurSequence <a href="../Source_r6engine/r6subactionanimsequence.html#23" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../r6engine/r6playanim.html" class="source">R6PlayAnim</a></span> m_CurSequence;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h3 class="vartag">R6Animation</h3>
+<h4><a name="_m_AffectedActor" class="hidden"></a>m_AffectedActor <a href="../Source_r6engine/r6subactionanimsequence.html#17" class="small">Source code</a></h4>
+<div class="declaration">var(R6Animation) <span class="source_type"><a href="../engine/actor.html" class="source">Actor</a></span> m_AffectedActor;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_AffectedPawn" class="hidden"></a>m_AffectedPawn <a href="../Source_r6engine/r6subactionanimsequence.html#16" class="small">Source code</a></h4>
+<div class="declaration">var(R6Animation) <span class="source_type"><a href="../r6engine/r6pawn.html" class="source">R6Pawn</a></span> m_AffectedPawn;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_bUseRootMotion" class="hidden"></a>m_bUseRootMotion <a href="../Source_r6engine/r6subactionanimsequence.html#18" class="small">Source code</a></h4>
+<div class="declaration">var(R6Animation) <span class="source_type">bool</span> m_bUseRootMotion;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_Sequences" class="hidden"></a>m_Sequences <a href="../Source_r6engine/r6subactionanimsequence.html#15" class="small">Source code</a></h4>
+<div class="declaration">var(R6Animation) export editinline array&lt;<span class="source_type"><a href="../r6engine/r6playanim.html" class="source">R6PlayAnim</a></span>&gt; m_Sequences;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+
+
+<br />
+
+
+
+
+
+
+
+<table class="title">
+<tr>
+	<th class="title">Functions Detail</th>
+</tr>
+</table>
+
+<h4><a name="_Initialize-" class="hidden"></a><img src="../img_event.gif" alt="" title="event" /> Initialize <span class="function_state"></span> <a href="../Source_r6engine/r6subactionanimsequence.html#30" class="small">Source code</a></h4>
+<div class="declaration"> event  Initialize ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_SequenceChanged-" class="hidden"></a><img src="../img_event.gif" alt="" title="event" /> SequenceChanged <span class="function_state"></span> <a href="../Source_r6engine/r6subactionanimsequence.html#42" class="small">Source code</a></h4>
+<div class="declaration"> event  SequenceChanged ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_SequenceFinished-" class="hidden"></a><img src="../img_event.gif" alt="" title="event" /> SequenceFinished <span class="function_state"></span> <a href="../Source_r6engine/r6subactionanimsequence.html#48" class="small">Source code</a></h4>
+<div class="declaration"> event  SequenceFinished ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+
+
+<br />
+
+
+<table class="title">
+<tr>
+	<th class="title">Defaultproperties</th>
+</tr>
+</table>
+<br />
+<div class="source"><table class="source"><tr><td class="source"><pre class="source">defaultproperties
+{
+     m_bUseRootMotion=True
+     m_bFirstTime=True
+     Icon=<span class="source_type"><a href="../engine/texture.html" class="source">Texture</a></span><span class="source_name">'R6Engine.R6SubActionAnimSequenceIcon'</span>
+     <span class="source_type">Desc</span>=<span class="source_string">"PlayAnimation"</span>
+}
+</pre></td></tr></table></div>
+
+
+
+<hr />
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../r6engine/r6engine-overview.html">Package</a></td>
+	<td class="header_hilight">Class</td>
+	<td class="header"><a href="../Source_r6engine/r6subactionanimsequence.html">Source</a></td>
+	<td class="header"><a class="header" href="../classtree.html#R6SubActionAnimSequence">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../r6engine/r6stairvolume.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../r6engine/r6subactionlookat.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+
+<div class="stats">Creation time: mar. 26/5/2026 18:33:14.454 - Created with <a href="http://wiki.beyondunreal.com/wiki/UnCodeX" target="_blank">UnCodeX</a></div>
+
+</body>
+</html>

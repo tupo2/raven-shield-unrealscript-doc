@@ -1,0 +1,324 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+	<title>UnCodeX - Source: R6Weapons.R6HBSSAJammerGadget</title>
+	<meta name="Generator" content="UnCodeX 241" />
+	<link rel="stylesheet" href="../DocStyle2.css" type="text/css" title="Original Purple" />
+	<link rel="alternative stylesheet" href="../DocStyle2-blue.css" type="text/css" title="Blue" />
+	<link rel="alternative stylesheet" href="../DocStyle2-red.css" type="text/css" title="Red" />
+	<!--[if IE]>
+	<link rel="stylesheet" href="../DocStyle2-msie.css" type="text/css" />
+	<![endif]-->
+	<script src="../styleswitcher.js" type="text/javascript"></script>
+</head>
+<body>
+
+<div class="header">
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../r6weapons/r6weapons-overview.html">Package</a></td>
+	<td class="header"><a href="../r6weapons/r6hbssajammergadget.html">Class</a></td>
+	<td class="header_hilight">Source</td>
+	<td class="header"><a class="header" href="../classtree.html#R6HBSSAJammerGadget">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../Source_r6weapons/r6hbsjammergadget.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../Source_r6weapons/r6impactfraggrenade.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html#Source_r6weapons/r6hbssajammergadget.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+</div>
+<div class="spacer"></div>
+
+<h1><a href="../r6weapons/r6weapons-overview.html">R6Weapons</a>.<a href="../r6weapons/r6hbssajammergadget.html">R6HBSSAJammerGadget</a></h1>
+<br />
+<div class="source"><table class="source"><tr><td class="source_lineno"><span class="source_lineno">00001<br />00002<br />00003<br />00004<br />00005<br />00006<br />00007<br />00008<br />00009<br />00010<br />00011<br />00012<br />00013<br />00014<br />00015<br />00016<br />00017<br />00018<br />00019<br />00020<br />
+00021<br />00022<br />00023<br />00024<br />00025<br />00026<br />00027<br />00028<br />00029<br />00030<br />00031<br />00032<br />00033<br />00034<br />00035<br />00036<br />00037<br />00038<br />00039<br />00040<br />
+00041<br />00042<br />00043<br />00044<br />00045<br />00046<br />00047<br />00048<br />00049<br />00050<br />00051<br />00052<br />00053<br />00054<br />00055<br />00056<br />00057<br />00058<br />00059<br />00060<br />
+00061<br />00062<br />00063<br />00064<br />00065<br />00066<br />00067<br />00068<br />00069<br />00070<br />00071<br />00072<br />00073<br />00074<br />00075<br />00076<br />00077<br />00078<br />00079<br />00080<br />
+00081<br />00082<br />00083<br />00084<br />00085<br />00086<br />00087<br />00088<br />00089<br />00090<br />00091<br />00092<br />00093<br />00094<br />00095<br />00096<br />00097<br />00098<br />00099<br />00100<br />
+00101<br />00102<br />00103<br />00104<br />00105<br />00106<br />00107<br />00108<br />00109<br />00110<br />00111<br />00112<br />00113<br />00114<br />00115<br />00116<br />00117<br />00118<br />00119<br />00120<br />
+00121<br />00122<br />00123<br />00124<br />00125<br />00126<br />00127<br />00128<br />00129<br />00130<br />00131<br />00132<br />00133<br />00134<br />00135<br />00136<br />00137<br />00138<br />00139<br />00140<br />
+00141<br />00142<br />00143<br />00144<br />00145<br />00146<br />00147<br />00148<br />00149<br />00150<br />00151<br />00152<br />00153<br />00154<br />00155<br />00156<br />00157<br />00158<br />00159<br />00160<br />
+00161<br />00162<br />00163<br />00164<br />00165<br />00166<br />00167<br />00168<br />00169<br />00170<br />00171<br />00172<br />00173<br />00174<br />00175<br />00176<br />00177<br />00178<br />00179<br />00180<br />
+00181<br />00182<br />00183<br />00184<br />00185<br />00186<br />00187<br />00188<br />00189<br />00190<br />00191<br />00192<br />00193<br />00194<br />00195<br />00196<br />00197<br />00198<br />00199<br />00200<br />
+00201<br />00202<br />00203<br />00204<br />00205<br />00206<br />00207<br />00208<br />00209<br />00210<br />00211<br />00212<br />00213<br />00214<br />00215<br />00216<br />00217<br />00218<br />00219<br />00220<br />
+00221<br />00222<br />00223<br />00224<br />00225<br />00226<br />00227<br />00228<br />00229<br />00230<br />00231<br />00232<br />00233<br />00234<br />00235<br />00236<br />00237<br />00238<br />00239<br />00240<br />
+00241<br />00242<br />00243<br />00244<br />00245<br />00246<br />00247<br />00248<br />00249<br />00250<br />00251<br />00252<br />00253<br />00254</span></td>
+<td class="source"><pre class="source"><a name="1"></a><span class="source_comment">//=============================================================================
+</span><a name="2"></a><span class="source_comment">//  [R6HBSSAJammerGadget.uc] Heart Beat Sensor Stant Alone Jammer Gadget
+</span><a name="3"></a><span class="source_comment">//=============================================================================
+</span><a name="4"></a><span class="source_type">class</span> <span class="source_type"><a href="../r6weapons/r6hbssajammergadget.html" class="source">R6HBSSAJammerGadget</a></span> extends <span class="source_type"><a href="../r6weapons/r6demolitionsgadget.html" class="source">R6DemolitionsGadget</a></span>;
+<a name="5"></a>
+<a name="6"></a>function Fire( <span class="source_type">FLOAT</span> <span class="source_type">fValue</span> )
+<a name="7"></a>{
+<a name="8"></a>    if(<span class="source_type"><a href="../engine/pawn.html" class="source">Pawn</a></span>(<span class="source_type">Owner</span>).<span class="source_type"><a href="../engine/controller.html" class="source">controller</a></span>.m_bLockWeaponActions == false)
+<a name="9"></a>        GotoState(<span class="source_name">'ArmingCharge'</span>);
+<a name="10"></a>}
+<a name="11"></a>
+<a name="12"></a>
+<a name="13"></a>simulated function PlaceChargeAnimation()
+<a name="14"></a>{
+<a name="15"></a>	<span class="source_comment">//R6Pawn(Owner).PlayClaymoreAnimation();
+</span><a name="16"></a>    ServerPlaceChargeAnimation();
+<a name="17"></a>}
+<a name="18"></a>
+<a name="19"></a>function ServerPlaceChargeAnimation()
+<a name="20"></a>{
+<a name="21"></a>	<span class="source_type"><a href="../r6engine/r6pawn.html" class="source">R6Pawn</a></span>(<span class="source_type">owner</span>).SetNextPendingAction(PENDING_SetClaymore);
+<a name="22"></a>}
+<a name="23"></a>
+<a name="24"></a>function SetAmmoStaticMesh()
+<a name="25"></a>{
+<a name="26"></a>    m_FPWeapon.m_smGun.SetStaticMesh( <span class="source_type">StaticMesh</span><span class="source_name">'R61stWeapons_SM.Items.R61stHBSSAJ'</span> );
+<a name="27"></a>}
+<a name="28"></a>
+<a name="29"></a>simulated function ServerPlaceCharge(<span class="source_type"><a href="../core/object.html#Vector" class="source">vector</a></span> vLocation)
+<a name="30"></a>{
+<a name="31"></a>	local  <span class="source_type"><a href="../core/object.html#Rotator" class="source">rotator</a></span>		rDesiredRotation;
+<a name="32"></a>    local <span class="source_type"><a href="../r6engine/r6saheartbeatjammer.html" class="source">R6SAHeartBeatJammer</a></span> aSAHeartBeatJammer;
+<a name="33"></a>    
+<a name="34"></a>    if(m_iNbBulletsInWeapon == <span class="source_int">0</span>)
+<a name="35"></a>        return;
+<a name="36"></a>
+<a name="37"></a>	m_iNbBulletsInWeapon--;
+<a name="38"></a>
+<a name="39"></a>    if (m_iNbBulletsInWeapon == <span class="source_int">0</span>)
+<a name="40"></a>        m_bHide = true;
+<a name="41"></a>
+<a name="42"></a>
+<a name="43"></a>	rDesiredRotation = <span class="source_type"><a href="../engine/pawn.html" class="source">Pawn</a></span>(<span class="source_type">owner</span>).GetViewRotation();
+<a name="44"></a>    if(bShowLog) log(<span class="source_string">"aSAHeartBeatJammer :: ServerPlaceCharge() rDesiredRotation="</span>$rDesiredRotation$<span class="source_string">" vLocation="</span>$vLocation);
+<a name="45"></a>	rDesiredRotation.pitch = <span class="source_int">0</span>;
+<a name="46"></a>	rDesiredRotation.yaw += <span class="source_int">32768</span>;
+<a name="47"></a>
+<a name="48"></a>    aSAHeartBeatJammer = Spawn( <span class="source_type">class</span><span class="source_name">'R6SAHeartBeatJammer'</span> );
+<a name="49"></a>    aSAHeartBeatJammer.Instigator = none;
+<a name="50"></a>    aSAHeartBeatJammer.SetLocation(vLocation + vect(<span class="source_int">0</span>,<span class="source_int">0</span>,<span class="source_int">10</span>));
+<a name="51"></a>	aSAHeartBeatJammer.SetRotation(rDesiredRotation);
+<a name="52"></a>    aSAHeartBeatJammer.SetSpeed(<span class="source_int">0</span>);
+<a name="53"></a>}
+<a name="54"></a>
+<a name="55"></a>state ArmingCharge
+<a name="56"></a>{
+<a name="57"></a>	function BeginState()	
+<a name="58"></a>	{
+<a name="59"></a>		if(bShowLog) log(self$<span class="source_string">" entered state ArmingCharge..."</span>);		
+<a name="60"></a>		<span class="source_comment">// switch to charge static mesh
+</span><a name="61"></a>		SetStaticMesh(m_ChargeStaticMesh);
+<a name="62"></a>		<span class="source_type"><a href="../engine/pawn.html" class="source">Pawn</a></span>(<span class="source_type">owner</span>).AttachToBone(self, m_AttachPoint);
+<a name="63"></a>		
+<a name="64"></a>		m_bDetonated = FALSE;
+<a name="65"></a>		if(<span class="source_type"><a href="../engine/pawn.html" class="source">Pawn</a></span>(<span class="source_type">Owner</span>).<span class="source_type"><a href="../engine/controller.html" class="source">Controller</a></span>.bFire == <span class="source_int">1</span>)
+<a name="66"></a>			Fire(<span class="source_int">0</span>);
+<a name="67"></a>	}
+<a name="68"></a>
+<a name="69"></a>	function Timer()
+<a name="70"></a>	{
+<a name="71"></a>        local <span class="source_type"><a href="../r6engine/r6pawn.html" class="source">R6Pawn</a></span> <span class="source_type">PawnOwner</span>;
+<a name="72"></a>        <span class="source_type">PawnOwner</span> = <span class="source_type"><a href="../r6engine/r6pawn.html" class="source">R6Pawn</a></span>(<span class="source_type">Owner</span>);
+<a name="73"></a>
+<a name="74"></a>        if(!<span class="source_type">PawnOwner</span>.m_bIsPlayer || <span class="source_type">PawnOwner</span>.m_bPostureTransition || !m_bInstallingCharge)
+<a name="75"></a>    		return;		<span class="source_comment">// was probably cancelled...
+</span><a name="76"></a>
+<a name="77"></a>		if(bShowLog) log(self$<span class="source_string">" state ArmingCharge : Timer() has expired "</span>$<span class="source_type"><a href="../r6engine/r6playercontroller.html" class="source">R6PlayerController</a></span>(<span class="source_type"><a href="../engine/pawn.html" class="source">Pawn</a></span>(<span class="source_type">Owner</span>).<span class="source_type"><a href="../engine/controller.html" class="source">controller</a></span>).m_bPlacedExplosive);
+<a name="78"></a>        
+<a name="79"></a>        <span class="source_comment">//Check here if the animation was started.  It might happend with network lag.
+</span><a name="80"></a>        if(<span class="source_type"><a href="../r6engine/r6playercontroller.html" class="source">R6PlayerController</a></span>(<span class="source_type"><a href="../engine/pawn.html" class="source">Pawn</a></span>(<span class="source_type">Owner</span>).<span class="source_type"><a href="../engine/controller.html" class="source">controller</a></span>).m_bPlacedExplosive)
+<a name="81"></a>        {
+<a name="82"></a>		    ServerPlaceCharge(m_vLocation); 
+<a name="83"></a>		    m_bChargeInPosition = true;
+<a name="84"></a>		    m_bInstallingCharge = false;
+<a name="85"></a>
+<a name="86"></a>            if (<span class="source_type">Level</span>.NetMode == NM_Standalone || <span class="source_type">Level</span>.NetMode == NM_ListenServer)
+<a name="87"></a>            {
+<a name="88"></a>                if(m_iNbBulletsInWeapon != <span class="source_int">0</span>)
+<a name="89"></a>                {
+<a name="90"></a>                    GotoState(<span class="source_name">'GetNextCharge'</span>);
+<a name="91"></a>                }
+<a name="92"></a>                else
+<a name="93"></a>                {
+<a name="94"></a>                    GotoState(<span class="source_name">'NoChargesLeft'</span>);
+<a name="95"></a>                }
+<a name="96"></a>            }
+<a name="97"></a>        }
+<a name="98"></a>    }
+<a name="99"></a>
+<a name="100"></a>	function Fire( <span class="source_type">FLOAT</span> <span class="source_type">fValue</span> ) 
+<a name="101"></a>	{
+<a name="102"></a>        local <span class="source_type"><a href="../r6engine/r6playercontroller.html" class="source">R6PlayerController</a></span> PlayerCtrl;
+<a name="103"></a>        PlayerCtrl = <span class="source_type"><a href="../r6engine/r6playercontroller.html" class="source">R6PlayerController</a></span>(<span class="source_type"><a href="../r6engine/r6pawn.html" class="source">R6Pawn</a></span>(<span class="source_type">Owner</span>).<span class="source_type"><a href="../engine/controller.html" class="source">controller</a></span>);
+<a name="104"></a>
+<a name="105"></a>        if(m_bChargeInPosition || !m_bCanPlaceCharge || (PlayerCtrl.m_bLockWeaponActions == true))
+<a name="106"></a>			return;
+<a name="107"></a> 
+<a name="108"></a>        if (m_SingleFireStereoSnd != None) 
+<a name="109"></a>        {
+<a name="110"></a>            <span class="source_type">Owner</span>.PlaySound(m_SingleFireStereoSnd, SLOT_Guns);
+<a name="111"></a>        }
+<a name="112"></a>        PlayerCtrl.m_bLockWeaponActions = TRUE;
+<a name="113"></a>		<span class="source_comment">// DROP! set location of remote charge (must be on ground)
+</span><a name="114"></a>		HideReticule();
+<a name="115"></a>		PlayerCtrl.GotoState(<span class="source_name">'PlayerSetExplosive'</span>);		
+<a name="116"></a>		PlaceChargeAnimation();
+<a name="117"></a>
+<a name="118"></a>		m_vLocation = PlayerCtrl.m_vDefaultLocation;
+<a name="119"></a>
+<a name="120"></a>		SetTimer(<span class="source_int">0.1</span>, true);  <span class="source_comment">//check every 0.1 seconds if animation is over... // SetTimer(3, false);
+</span><a name="121"></a>        m_bInstallingCharge = true;
+<a name="122"></a>		if(m_FPHands != none)
+<a name="123"></a>			m_FPHands.GotoState(<span class="source_name">'DiscardWeapon'</span>);
+<a name="124"></a>	}
+<a name="125"></a>    
+<a name="126"></a>    function FirstPersonAnimOver()
+<a name="127"></a>    {
+<a name="128"></a>        if(m_bCancelChargeInstallation == true)
+<a name="129"></a>        {
+<a name="130"></a>            m_bCancelChargeInstallation = false;
+<a name="131"></a>            <span class="source_type"><a href="../engine/pawn.html" class="source">Pawn</a></span>(<span class="source_type">Owner</span>).<span class="source_type"><a href="../engine/controller.html" class="source">controller</a></span>.m_bLockWeaponActions = FALSE;
+<a name="132"></a>        }
+<a name="133"></a>    }
+<a name="134"></a>}
+<a name="135"></a>state GetNextCharge
+<a name="136"></a>{
+<a name="137"></a>    function BeginState()
+<a name="138"></a>	{
+<a name="139"></a>		if(bShowLog) log(self$<span class="source_string">" state HBSAJ GetNextCharge : beginState() "</span>);
+<a name="140"></a>		m_bChargeInPosition = false;
+<a name="141"></a>		m_bRaiseWeapon = false;
+<a name="142"></a>		SetTimer(<span class="source_int">0.1</span>, true);  <span class="source_comment">//check every 0.1 seconds if animation is over... // SetTimer(3, false);
+</span><a name="143"></a>        <span class="source_type"><a href="../engine/pawn.html" class="source">Pawn</a></span>(<span class="source_type">Owner</span>).<span class="source_type"><a href="../engine/controller.html" class="source">controller</a></span>.m_bLockWeaponActions = false;
+<a name="144"></a>        if(m_FPHands != none)
+<a name="145"></a>        {
+<a name="146"></a>			m_FPHands.GotoState(<span class="source_name">'RaiseWeapon'</span>);
+<a name="147"></a>        }
+<a name="148"></a>        else
+<a name="149"></a>        {
+<a name="150"></a>            FirstPersonAnimOver();
+<a name="151"></a>        }
+<a name="152"></a>
+<a name="153"></a>	}
+<a name="154"></a>    function FirstPersonAnimOver()
+<a name="155"></a>    {
+<a name="156"></a>		m_bRaiseWeapon = true;
+<a name="157"></a>    }
+<a name="158"></a>
+<a name="159"></a>	function Timer()
+<a name="160"></a>    {
+<a name="161"></a>        if (!m_bRaiseWeapon)
+<a name="162"></a>            return;
+<a name="163"></a>
+<a name="164"></a>        if (<span class="source_type"><a href="../engine/pawn.html" class="source">Pawn</a></span>(<span class="source_type">Owner</span>).<span class="source_type"><a href="../engine/controller.html" class="source">Controller</a></span>.bFire == <span class="source_int">1</span>)
+<a name="165"></a>            return;
+<a name="166"></a>
+<a name="167"></a>        GotoState(<span class="source_name">'ArmingCharge'</span>);
+<a name="168"></a>    }
+<a name="169"></a>
+<a name="170"></a>}
+<a name="171"></a>
+<a name="172"></a>state RaiseWeapon
+<a name="173"></a>{
+<a name="174"></a>    function FirstPersonAnimOver()
+<a name="175"></a>    {
+<a name="176"></a>        <span class="source_type"><a href="../r6engine/r6playercontroller.html" class="source">R6PlayerController</a></span>(<span class="source_type"><a href="../engine/pawn.html" class="source">Pawn</a></span>(<span class="source_type">Owner</span>).<span class="source_type"><a href="../engine/controller.html" class="source">controller</a></span>).ServerWeaponUpAnimDone();
+<a name="177"></a>        GotoState(<span class="source_name">'ArmingCharge'</span>);
+<a name="178"></a>    }
+<a name="179"></a>
+<a name="180"></a>    simulated function BeginState()
+<a name="181"></a>    {
+<a name="182"></a>
+<a name="183"></a>        if (bShowLog) log(<span class="source_string">"WEAPON - BeginState of RaiseWeapon for "</span>$self);
+<a name="184"></a>        if(m_FPHands != none)
+<a name="185"></a>        {
+<a name="186"></a>            m_FPHands.GotoState(<span class="source_name">'RaiseWeapon'</span>);
+<a name="187"></a>            m_FPWeapon.m_smGun.bHidden = FALSE;
+<a name="188"></a>        }
+<a name="189"></a>        else
+<a name="190"></a>        {
+<a name="191"></a>            FirstPersonAnimOver();
+<a name="192"></a>        }
+<a name="193"></a>        <span class="source_type"><a href="../engine/pawn.html" class="source">Pawn</a></span>(<span class="source_type">Owner</span>).<span class="source_type"><a href="../engine/controller.html" class="source">controller</a></span>.m_bLockWeaponActions = true;
+<a name="194"></a>    }
+<a name="195"></a>
+<a name="196"></a>    simulated function EndState()
+<a name="197"></a>    {
+<a name="198"></a>        <span class="source_type"><a href="../engine/pawn.html" class="source">Pawn</a></span>(<span class="source_type">Owner</span>).<span class="source_type"><a href="../engine/controller.html" class="source">controller</a></span>.m_bHideReticule = false;
+<a name="199"></a>        <span class="source_type"><a href="../engine/pawn.html" class="source">Pawn</a></span>(<span class="source_type">Owner</span>).<span class="source_type"><a href="../engine/controller.html" class="source">controller</a></span>.m_bLockWeaponActions = false;
+<a name="200"></a>    }
+<a name="201"></a>
+<a name="202"></a>}
+<a name="203"></a>simulated event HideAttachment()
+<a name="204"></a>{
+<a name="205"></a>    GotoState(<span class="source_name">'NoChargesLeft'</span>);
+<a name="206"></a>    Super.HideAttachment();
+<a name="207"></a>}
+<a name="208"></a>
+<a name="209"></a>event NbBulletChange()
+<a name="210"></a>{
+<a name="211"></a>    if(m_iNbBulletsInWeapon &gt; <span class="source_int">0</span>)
+<a name="212"></a>        GotoState(<span class="source_name">'GetNextCharge'</span>);
+<a name="213"></a>    else
+<a name="214"></a>        GotoState(<span class="source_name">'NoChargesLeft'</span>);
+<a name="215"></a>}
+<a name="216"></a>
+<a name="217"></a>
+<a name="218"></a>function <span class="source_type">BOOL</span> CanSwitchToWeapon()
+<a name="219"></a>{
+<a name="220"></a>    if (m_iNbBulletsInWeapon &gt; <span class="source_int">0</span>)
+<a name="221"></a>        return true;
+<a name="222"></a>    else
+<a name="223"></a>        return false;
+<a name="224"></a>}
+<a name="225"></a>
+<a name="226"></a>state NoChargesLeft
+<a name="227"></a>{
+<a name="228"></a>	function BeginState()
+<a name="229"></a>	{
+<a name="230"></a>		if(bShowLog) log(self$<span class="source_string">" HBSSAJammer state NoChargesLeft : BeginState()..."</span>);
+<a name="231"></a>		<span class="source_type"><a href="../engine/pawn.html" class="source">Pawn</a></span>(<span class="source_type">Owner</span>).<span class="source_type"><a href="../engine/controller.html" class="source">controller</a></span>.m_bHideReticule = TRUE;
+<a name="232"></a>        <span class="source_type"><a href="../engine/pawn.html" class="source">Pawn</a></span>(<span class="source_type">Owner</span>).<span class="source_type"><a href="../engine/controller.html" class="source">controller</a></span>.m_bLockWeaponActions = FALSE;
+<a name="233"></a>    }
+<a name="234"></a>}
+<a name="235"></a>
+<a name="236"></a>defaultproperties
+<a name="237"></a>{
+<a name="238"></a>     m_ChargeStaticMesh=<span class="source_type">StaticMesh</span><span class="source_name">'R63rdWeapons_SM.Items.R63rdHBSensorSA_Jamer'</span>
+<a name="239"></a>     m_iClipCapacity=<span class="source_int">1</span>
+<a name="240"></a>     m_fMuzzleVelocity=<span class="source_int">1000.000000</span>
+<a name="241"></a>     m_pFPHandsClass=<span class="source_type">Class</span><span class="source_name">'R61stWeapons.R61stHandsGripHBSSAJ'</span>
+<a name="242"></a>     m_pFPWeaponClass=<span class="source_type">Class</span><span class="source_name">'R61stWeapons.R61stHBSSAJ'</span>
+<a name="243"></a>     m_HUDTexture=<span class="source_type"><a href="../engine/texture.html" class="source">Texture</a></span><span class="source_name">'R6HUD.HUDElements'</span>
+<a name="244"></a>     m_PawnWaitAnimLow=<span class="source_string">"StandGrenade_nt"</span>
+<a name="245"></a>     m_PawnWaitAnimHigh=<span class="source_string">"StandGrenade_nt"</span>
+<a name="246"></a>     m_PawnWaitAnimProne=<span class="source_string">"ProneGrenade_nt"</span>
+<a name="247"></a>     m_PawnFiringAnim=<span class="source_string">"CrouchClaymore"</span>
+<a name="248"></a>     m_PawnFiringAnimProne=<span class="source_string">"ProneClaymore"</span>
+<a name="249"></a>     m_AttachPoint=<span class="source_string">"TagSAHBSensorJammer"</span>
+<a name="250"></a>     m_HUDTexturePos=(W=<span class="source_int">32.000000</span>,X=<span class="source_int">300.000000</span>,<span class="source_type">Y</span>=<span class="source_int">384.000000</span>,<span class="source_type">Z</span>=<span class="source_int">100.000000</span>)
+<a name="251"></a>     m_NameID=<span class="source_string">"HBSSAJammerGadget"</span>
+<a name="252"></a>     <span class="source_type">StaticMesh</span>=<span class="source_type">StaticMesh</span><span class="source_name">'R63rdWeapons_SM.Items.R63rdHBSensorSA_Jamer'</span>
+<a name="253"></a>}
+<a name="254"></a></pre></td></tr></table></div>
+<hr />
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../r6weapons/r6weapons-overview.html">Package</a></td>
+	<td class="header"><a href="../r6weapons/r6hbssajammergadget.html">Class</a></td>
+	<td class="header_hilight">Source</td>
+	<td class="header"><a class="header" href="../classtree.html#R6HBSSAJammerGadget">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../Source_r6weapons/r6hbsjammergadget.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../Source_r6weapons/r6impactfraggrenade.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+
+<div class="stats">Class file time: sam. 18/9/2004 14:39:42.000 - Creation time: mar. 26/5/2026 18:33:19.997 - Created with <a href="http://wiki.beyondunreal.com/wiki/UnCodeX" target="_blank">UnCodeX</a></div>
+
+</body>
+</html>

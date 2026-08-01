@@ -1,0 +1,93 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+	<title>UnCodeX - Source: R6WeaponGadgets.R6MagazineGadget</title>
+	<meta name="Generator" content="UnCodeX 241" />
+	<link rel="stylesheet" href="../DocStyle2.css" type="text/css" title="Original Purple" />
+	<link rel="alternative stylesheet" href="../DocStyle2-blue.css" type="text/css" title="Blue" />
+	<link rel="alternative stylesheet" href="../DocStyle2-red.css" type="text/css" title="Red" />
+	<!--[if IE]>
+	<link rel="stylesheet" href="../DocStyle2-msie.css" type="text/css" />
+	<![endif]-->
+	<script src="../styleswitcher.js" type="text/javascript"></script>
+</head>
+<body>
+
+<div class="header">
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../r6weapongadgets/r6weapongadgets-overview.html">Package</a></td>
+	<td class="header"><a href="../r6weapongadgets/r6magazinegadget.html">Class</a></td>
+	<td class="header_hilight">Source</td>
+	<td class="header"><a class="header" href="../classtree.html#R6MagazineGadget">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../Source_r6weapongadgets/r6bipodmeshes.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../Source_r6weapongadgets/r6miniscopegadget.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html#Source_r6weapongadgets/r6magazinegadget.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+</div>
+<div class="spacer"></div>
+
+<h1><a href="../r6weapongadgets/r6weapongadgets-overview.html">R6WeaponGadgets</a>.<a href="../r6weapongadgets/r6magazinegadget.html">R6MagazineGadget</a></h1>
+<br />
+<div class="source"><table class="source"><tr><td class="source_lineno"><span class="source_lineno">00001<br />00002<br />00003<br />00004<br />00005<br />00006<br />00007<br />00008<br />00009<br />00010<br />00011<br />00012<br />00013<br />00014<br />00015<br />00016<br />00017<br />00018<br />00019<br />00020<br />
+00021<br />00022<br />00023<br />00024<br />00025<br />00026<br />00027<br />00028<br />00029<br />00030<br />00031<br />00032<br />00033<br />00034</span></td>
+<td class="source"><pre class="source"><a name="1"></a><span class="source_comment">//=============================================================================
+</span><a name="2"></a><span class="source_comment">//  R6MuzzleGadget.uc : This is the base Class for all Silencer.
+</span><a name="3"></a><span class="source_comment">//                        this class uses the Subgun silencer.  
+</span><a name="4"></a><span class="source_comment">//                        For other meshes overload this one
+</span><a name="5"></a><span class="source_comment">//  Copyright 2001-2002 Ubi Soft, Inc. All Rights Reserved.
+</span><a name="6"></a><span class="source_comment">//
+</span><a name="7"></a><span class="source_comment">//  Revision history:
+</span><a name="8"></a><span class="source_comment">//    2002/3/20 * Created by Serge Dore
+</span><a name="9"></a><span class="source_comment">//=============================================================================
+</span><a name="10"></a><span class="source_type">class</span> <span class="source_type"><a href="../r6weapongadgets/r6magazinegadget.html" class="source">R6MagazineGadget</a></span> extends <span class="source_type"><a href="../r6abstract/r6abstractgadget.html" class="source">R6AbstractGadget</a></span>;
+<a name="11"></a>
+<a name="12"></a>simulated function UpdateAttachment( <span class="source_type"><a href="../engine/r6engineweapon.html" class="source">R6EngineWeapon</a></span> <span class="source_type">weapOwner</span> )
+<a name="13"></a>{
+<a name="14"></a>    local <span class="source_type"><a href="../core/object.html#Vector" class="source">vector</a></span> vTagLocation;
+<a name="15"></a>    local <span class="source_type"><a href="../core/object.html#Rotator" class="source">rotator</a></span> rTagRotator;    
+<a name="16"></a>
+<a name="17"></a>    Super.UpdateAttachment( <span class="source_type">weapOwner</span> );
+<a name="18"></a>
+<a name="19"></a>    SetBase( none );
+<a name="20"></a>    SetBase( <span class="source_type">weapOwner</span>, <span class="source_type">weapOwner</span>.Location );
+<a name="21"></a>    
+<a name="22"></a>    <span class="source_comment">//Use Muzzle tag for the silencer.
+</span><a name="23"></a>    <span class="source_type">weapOwner</span>.GetTagInformations( <span class="source_string">"TagMagazine"</span>, vTagLocation, rTagRotator );
+<a name="24"></a>    SetRelativeLocation(vTagLocation);
+<a name="25"></a>    SetRelativeRotation(rTagRotator);
+<a name="26"></a>}
+<a name="27"></a>
+<a name="28"></a>defaultproperties
+<a name="29"></a>{
+<a name="30"></a>     m_eGadgetType=GAD_Magazine
+<a name="31"></a>     m_NameID=<span class="source_string">"CMag"</span>
+<a name="32"></a>     m_bDrawFromBase=True
+<a name="33"></a>}
+<a name="34"></a></pre></td></tr></table></div>
+<hr />
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../r6weapongadgets/r6weapongadgets-overview.html">Package</a></td>
+	<td class="header"><a href="../r6weapongadgets/r6magazinegadget.html">Class</a></td>
+	<td class="header_hilight">Source</td>
+	<td class="header"><a class="header" href="../classtree.html#R6MagazineGadget">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../Source_r6weapongadgets/r6bipodmeshes.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../Source_r6weapongadgets/r6miniscopegadget.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+
+<div class="stats">Class file time: sam. 18/9/2004 14:39:44.000 - Creation time: mar. 26/5/2026 18:33:20.201 - Created with <a href="http://wiki.beyondunreal.com/wiki/UnCodeX" target="_blank">UnCodeX</a></div>
+
+</body>
+</html>

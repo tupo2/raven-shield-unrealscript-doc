@@ -1,0 +1,365 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+	<title>UnCodeX - R6Game.R6InstructionSoundVolume</title>
+	<meta name="Generator" content="UnCodeX 241" />
+	<link rel="stylesheet" href="../DocStyle2.css" type="text/css" title="Original Purple" />
+	<link rel="alternative stylesheet" href="../DocStyle2-blue.css" type="text/css" title="Blue" />
+	<link rel="alternative stylesheet" href="../DocStyle2-red.css" type="text/css" title="Red" />
+	<!--[if IE]>
+	<link rel="stylesheet" href="../DocStyle2-msie.css" type="text/css" />
+	<![endif]-->
+	<script src="../styleswitcher.js" type="text/javascript"></script>
+</head>
+<body>
+
+<div class="header">
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../r6game/r6game-overview.html">Package</a></td>
+	<td class="header_hilight">Class</td>
+	<td class="header"><a href="../Source_r6game/r6instructionsoundvolume.html">Source</a></td>
+	<td class="header"><a class="header" href="../classtree.html#R6InstructionSoundVolume">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../r6game/r6insertionzone.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../r6game/r6lonewolfgame.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html#r6game/r6instructionsoundvolume.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+</div>
+<div class="spacer"></div>
+
+<h1><a href="../r6game/r6game-overview.html">R6Game</a>.R6InstructionSoundVolume</h1>
+
+<dl>
+<dt>Extends</dt><dd><a href="../r6game/r6soundvolume.html">R6SoundVolume</a></dd>
+<dt>Modifiers</dt><dd>native </dd>
+</dl>
+
+<p></p>
+
+<pre class="tree"><a href="../core/core-overview.html">core</a>.<a href="../core/object.html">Object</a>
+|   
++-- <a href="../engine/engine-overview.html">engine</a>.<a href="../engine/actor.html">Actor</a>
+   |   
+   +-- <a href="../engine/engine-overview.html">engine</a>.<a href="../engine/brush.html">Brush</a>
+      |   
+      +-- <a href="../engine/engine-overview.html">engine</a>.<a href="../engine/volume.html">Volume</a>
+         |   
+         +-- <a href="../r6game/r6game-overview.html">R6Game</a>.<a href="../r6game/r6soundvolume.html">R6SoundVolume</a>
+            |   
+            +-- <a href="../r6game/r6game-overview.html">R6Game</a>.<a href="../r6game/r6instructionsoundvolume.html">R6InstructionSoundVolume</a>
+</pre>
+
+
+
+<hr />
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Constants Summary</th>
+</tr>
+<tr><td width="40%"><a href="#_TimeBetweenStep" name="TimeBetweenStep" title="go to the details">TimeBetweenStep</a></td><td width="10%">=</td><td width="50%">15</td></tr>
+
+</table>
+
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th colspan="2" class="title">Variables Summary</th>
+</tr>
+<tr><td nowrap="nowrap" width="33%">BOOL</td><td width="66%"><a href="#_m_bSoundIsPlaying" name="m_bSoundIsPlaying" title="go to the details">m_bSoundIsPlaying</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">FLOAT</td><td width="66%"><a href="#_m_fTime" name="m_fTime" title="go to the details">m_fTime</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">FLOAT</td><td width="66%"><a href="#_m_fTimeHud" name="m_fTimeHud" title="go to the details">m_fTimeHud</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">FLOAT</td><td width="66%"><a href="#_m_fTimerSound" name="m_fTimerSound" title="go to the details">m_fTimerSound</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">INT</td><td width="66%"><a href="#_m_fTimerStep" name="m_fTimerStep" title="go to the details">m_fTimerStep</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">INT</td><td width="66%"><a href="#_m_IDHudStep" name="m_IDHudStep" title="go to the details">m_IDHudStep</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">INT</td><td width="66%"><a href="#_m_iHudStep" name="m_iHudStep" title="go to the details">m_iHudStep</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">INT</td><td width="66%"><a href="#_m_iSoundIndex" name="m_iSoundIndex" title="go to the details">m_iSoundIndex</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../r6game/r6trainingmgr.html">R6TrainingMgr</a></td><td width="66%"><a href="#_m_TrainingMgr" name="m_TrainingMgr" title="go to the details">m_TrainingMgr</a></td></tr>
+<tr><th colspan="2" class="small">R6Sound</th></tr>
+<tr><td nowrap="nowrap" width="33%">INT</td><td width="66%"><a href="#_m_iBoxNumber" name="m_iBoxNumber" title="go to the details">m_iBoxNumber</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">Sound</td><td width="66%"><a href="#_m_sndIntructionSoundStop" name="m_sndIntructionSoundStop" title="go to the details">m_sndIntructionSoundStop</a></td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Variables from <a href="../r6game/r6game-overview.html">R6Game</a>.<a href="../r6game/r6soundvolume.html">R6SoundVolume</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../r6game/r6soundvolume.html#m_EntrySound">m_EntrySound</a>, <a href="../r6game/r6soundvolume.html#m_eSoundSlot">m_eSoundSlot</a>, <a href="../r6game/r6soundvolume.html#m_ExitSound">m_ExitSound</a></td>
+</tr>
+</table>
+<table>
+<tr>
+	<th class="inherittitle">Inherited Variables from <a href="../engine/engine-overview.html">engine</a>.<a href="../engine/volume.html">Volume</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../engine/volume.html#AssociatedActor">AssociatedActor</a>, <a href="../engine/volume.html#AssociatedActorTag">AssociatedActorTag</a>, <a href="../engine/volume.html#DecoList">DecoList</a>, <a href="../engine/volume.html#LocationName">LocationName</a>, <a href="../engine/volume.html#LocationPriority">LocationPriority</a></td>
+</tr>
+</table>
+
+
+<br />
+
+
+
+
+
+
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Functions Summary</th>
+</tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_ChangeTextAndSound-" name="ChangeTextAndSound" title="go to the details">ChangeTextAndSound</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_ReadyToChangeText-" name="ReadyToChangeText" title="go to the details">ReadyToChangeText</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_ResetOriginalData-" name="ResetOriginalData" title="go to the details">ResetOriginalData</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_SetHudStep-" name="SetHudStep" title="go to the details">SetHudStep</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_SkipToNextInstruction-" name="SkipToNextInstruction" title="go to the details">SkipToNextInstruction</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_StopInstruction-" name="StopInstruction" title="go to the details">StopInstruction</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_Tick-" name="Tick" title="go to the details">Tick</a> (float DeltaTime))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_event.gif" alt="event" title="event" /></td><td>&nbsp;</td><td><a href="#_Touch-" name="Touch" title="go to the details">Touch</a> (<a href="../engine/actor.html">Actor</a> Other))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_event.gif" alt="event" title="event" /></td><td>&nbsp;</td><td><a href="#_UnTouch-" name="UnTouch" title="go to the details">UnTouch</a> (<a href="../engine/actor.html">Actor</a> Other))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>BOOL&nbsp;</td><td><a href="#_UseSound-" name="UseSound" title="go to the details">UseSound</a> ()<br /><span class="function_state"></span></td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Functions from <a href="../r6game/r6game-overview.html">R6Game</a>.<a href="../r6game/r6soundvolume.html">R6SoundVolume</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../r6game/r6soundvolume.html#Touch">Touch</a>, <a href="../r6game/r6soundvolume.html#UnTouch">UnTouch</a></td>
+</tr>
+</table>
+<table>
+<tr>
+	<th class="inherittitle">Inherited Functions from <a href="../engine/engine-overview.html">engine</a>.<a href="../engine/volume.html">Volume</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../engine/volume.html#BeginState">BeginState</a>, <a href="../engine/volume.html#DisplayDebug">DisplayDebug</a>, <a href="../engine/volume.html#Encompasses">Encompasses</a>, <a href="../engine/volume.html#PostBeginPlay">PostBeginPlay</a>, <a href="../engine/volume.html#touch">touch</a>, <a href="../engine/volume.html#untouch">untouch</a></td>
+</tr>
+</table>
+
+
+<br />
+
+
+
+<hr />
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Constants Detail</th>
+</tr>
+</table>
+
+<h4><a name="_TimeBetweenStep" class="hidden"></a>TimeBetweenStep <a href="../Source_r6game/r6instructionsoundvolume.html#25" class="small">Source code</a></h4>
+<div class="declaration">const TimeBetweenStep = <span class="source_int">15</span>;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th class="title">Variables Detail</th>
+</tr>
+</table>
+
+<h4><a name="_m_bSoundIsPlaying" class="hidden"></a>m_bSoundIsPlaying <a href="../Source_r6game/r6instructionsoundvolume.html#15" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">BOOL</span> m_bSoundIsPlaying;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_fTime" class="hidden"></a>m_fTime <a href="../Source_r6game/r6instructionsoundvolume.html#16" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">FLOAT</span> m_fTime;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_fTimeHud" class="hidden"></a>m_fTimeHud <a href="../Source_r6game/r6instructionsoundvolume.html#19" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">FLOAT</span> m_fTimeHud;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_fTimerSound" class="hidden"></a>m_fTimerSound <a href="../Source_r6game/r6instructionsoundvolume.html#18" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">FLOAT</span> m_fTimerSound;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_fTimerStep" class="hidden"></a>m_fTimerStep <a href="../Source_r6game/r6instructionsoundvolume.html#22" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">INT</span> m_fTimerStep;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_IDHudStep" class="hidden"></a>m_IDHudStep <a href="../Source_r6game/r6instructionsoundvolume.html#21" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">INT</span> m_IDHudStep;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_iHudStep" class="hidden"></a>m_iHudStep <a href="../Source_r6game/r6instructionsoundvolume.html#20" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">INT</span> m_iHudStep;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_iSoundIndex" class="hidden"></a>m_iSoundIndex <a href="../Source_r6game/r6instructionsoundvolume.html#14" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">INT</span> m_iSoundIndex;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_TrainingMgr" class="hidden"></a>m_TrainingMgr <a href="../Source_r6game/r6instructionsoundvolume.html#24" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../r6game/r6trainingmgr.html" class="source">R6TrainingMgr</a></span> m_TrainingMgr;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h3 class="vartag">R6Sound</h3>
+<h4><a name="_m_iBoxNumber" class="hidden"></a>m_iBoxNumber <a href="../Source_r6game/r6instructionsoundvolume.html#13" class="small">Source code</a></h4>
+<div class="declaration">var(R6Sound) <span class="source_type">INT</span> m_iBoxNumber;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_sndIntructionSoundStop" class="hidden"></a>m_sndIntructionSoundStop <a href="../Source_r6game/r6instructionsoundvolume.html#12" class="small">Source code</a></h4>
+<div class="declaration">var(R6Sound) <span class="source_type">Sound</span> m_sndIntructionSoundStop;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+
+
+<br />
+
+
+
+
+
+
+
+<table class="title">
+<tr>
+	<th class="title">Functions Detail</th>
+</tr>
+</table>
+
+<h4><a name="_ChangeTextAndSound-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> ChangeTextAndSound <span class="function_state"></span> <a href="../Source_r6game/r6instructionsoundvolume.html#115" class="small">Source code</a></h4>
+<div class="declaration"> function  ChangeTextAndSound ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ReadyToChangeText-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> ReadyToChangeText <span class="function_state"></span> <a href="../Source_r6game/r6instructionsoundvolume.html#201" class="small">Source code</a></h4>
+<div class="declaration"> function  ReadyToChangeText ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ResetOriginalData-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> ResetOriginalData <span class="function_state"></span> <a href="../Source_r6game/r6instructionsoundvolume.html#30" class="small">Source code</a></h4>
+<div class="declaration">simulated function  ResetOriginalData ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_SetHudStep-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> SetHudStep <span class="function_state"></span> <a href="../Source_r6game/r6instructionsoundvolume.html#212" class="small">Source code</a></h4>
+<div class="declaration"> function  SetHudStep ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_SkipToNextInstruction-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> SkipToNextInstruction <span class="function_state"></span> <a href="../Source_r6game/r6instructionsoundvolume.html#89" class="small">Source code</a></h4>
+<div class="declaration"> function  SkipToNextInstruction ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_StopInstruction-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> StopInstruction <span class="function_state"></span> <a href="../Source_r6game/r6instructionsoundvolume.html#106" class="small">Source code</a></h4>
+<div class="declaration"> function  StopInstruction ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_Tick-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> Tick <span class="function_state"></span> <a href="../Source_r6game/r6instructionsoundvolume.html#151" class="small">Source code</a></h4>
+<div class="declaration"> function  Tick ( <span class="source_type">float</span> <span class="source_type">DeltaTime</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_Touch-" class="hidden"></a><img src="../img_event.gif" alt="" title="event" /> Touch <span class="function_state"></span> <a href="../Source_r6game/r6instructionsoundvolume.html#38" class="small">Source code</a></h4>
+<div class="declaration">simulated event  Touch ( <span class="source_type"><a href="../engine/actor.html" class="source">Actor</a></span> <span class="source_type">Other</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_UnTouch-" class="hidden"></a><img src="../img_event.gif" alt="" title="event" /> UnTouch <span class="function_state"></span> <a href="../Source_r6game/r6instructionsoundvolume.html#70" class="small">Source code</a></h4>
+<div class="declaration">simulated event  UnTouch ( <span class="source_type"><a href="../engine/actor.html" class="source">Actor</a></span> <span class="source_type">Other</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_UseSound-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> UseSound <span class="function_state"></span> <a href="../Source_r6game/r6instructionsoundvolume.html#27" class="small">Source code</a></h4>
+<div class="declaration">native(<span class="source_int">2732</span>) final function <span class="source_type">BOOL</span> UseSound (  )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+
+
+<br />
+
+
+<table class="title">
+<tr>
+	<th class="title">Defaultproperties</th>
+</tr>
+</table>
+<br />
+<div class="source"><table class="source"><tr><td class="source"><pre class="source">defaultproperties
+{
+     m_eSoundSlot=SLOT_Instruction
+     bStatic=False
+     bNoDelete=False
+}
+</pre></td></tr></table></div>
+
+
+
+<hr />
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../r6game/r6game-overview.html">Package</a></td>
+	<td class="header_hilight">Class</td>
+	<td class="header"><a href="../Source_r6game/r6instructionsoundvolume.html">Source</a></td>
+	<td class="header"><a class="header" href="../classtree.html#R6InstructionSoundVolume">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../r6game/r6insertionzone.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../r6game/r6lonewolfgame.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+
+<div class="stats">Creation time: mar. 26/5/2026 18:33:11.493 - Created with <a href="http://wiki.beyondunreal.com/wiki/UnCodeX" target="_blank">UnCodeX</a></div>
+
+</body>
+</html>

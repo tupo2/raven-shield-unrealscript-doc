@@ -1,0 +1,512 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+	<title>UnCodeX - R6Menu.R6MenuPlanningWidget</title>
+	<meta name="Generator" content="UnCodeX 241" />
+	<link rel="stylesheet" href="../DocStyle2.css" type="text/css" title="Original Purple" />
+	<link rel="alternative stylesheet" href="../DocStyle2-blue.css" type="text/css" title="Blue" />
+	<link rel="alternative stylesheet" href="../DocStyle2-red.css" type="text/css" title="Red" />
+	<!--[if IE]>
+	<link rel="stylesheet" href="../DocStyle2-msie.css" type="text/css" />
+	<![endif]-->
+	<script src="../styleswitcher.js" type="text/javascript"></script>
+</head>
+<body>
+
+<div class="header">
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../r6menu/r6menu-overview.html">Package</a></td>
+	<td class="header_hilight">Class</td>
+	<td class="header"><a href="../Source_r6menu/r6menuplanningwidget.html">Source</a></td>
+	<td class="header"><a class="header" href="../classtree.html#R6MenuPlanningWidget">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../r6menu/r6menuplanningbar.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../r6menu/r6menupopuplistbutton.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html#r6menu/r6menuplanningwidget.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+</div>
+<div class="spacer"></div>
+
+<h1><a href="../r6menu/r6menu-overview.html">R6Menu</a>.R6MenuPlanningWidget</h1>
+
+<dl>
+<dt>Extends</dt><dd><a href="../r6menu/r6menulaptopwidget.html">R6MenuLaptopWidget</a></dd>
+
+</dl>
+
+<p></p>
+
+<pre class="tree"><a href="../core/core-overview.html">core</a>.<a href="../core/object.html">Object</a>
+|   
++-- <a href="../uwindow/uwindow-overview.html">UWindow</a>.<a href="../uwindow/uwindowbase.html">UWindowBase</a>
+   |   
+   +-- <a href="../uwindow/uwindow-overview.html">UWindow</a>.<a href="../uwindow/uwindowwindow.html">UWindowWindow</a>
+      |   
+      +-- <a href="../uwindow/uwindow-overview.html">UWindow</a>.<a href="../uwindow/uwindowclientwindow.html">UWindowClientWindow</a>
+         |   
+         +-- <a href="../uwindow/uwindow-overview.html">UWindow</a>.<a href="../uwindow/uwindowdialogclientwindow.html">UWindowDialogClientWindow</a>
+            |   
+            +-- <a href="../r6menu/r6menu-overview.html">R6Menu</a>.<a href="../r6menu/r6menuwidget.html">R6MenuWidget</a>
+               |   
+               +-- <a href="../r6menu/r6menu-overview.html">R6Menu</a>.<a href="../r6menu/r6menulaptopwidget.html">R6MenuLaptopWidget</a>
+                  |   
+                  +-- <a href="../r6menu/r6menu-overview.html">R6Menu</a>.<a href="../r6menu/r6menuplanningwidget.html">R6MenuPlanningWidget</a>
+</pre>
+
+
+
+<hr />
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Constants Summary</th>
+</tr>
+<tr><td width="40%"><a href="#_R6InputKey_ActionPopup" name="R6InputKey_ActionPopup" title="go to the details">R6InputKey_ActionPopup</a></td><td width="10%">=</td><td width="50%">1024</td></tr>
+<tr><td width="40%"><a href="#_R6InputKey_NewNode" name="R6InputKey_NewNode" title="go to the details">R6InputKey_NewNode</a></td><td width="10%">=</td><td width="50%">1025</td></tr>
+<tr><td width="40%"><a href="#_R6InputKey_PathFlagPopup" name="R6InputKey_PathFlagPopup" title="go to the details">R6InputKey_PathFlagPopup</a></td><td width="10%">=</td><td width="50%">1026</td></tr>
+
+</table>
+
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th colspan="2" class="title">Variables Summary</th>
+</tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bShowLog" name="bShowLog" title="go to the details">bShowLog</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../uwindow/uwindowwindow.html">UWindowWindow</a></td><td width="66%"><a href="#_DEB_FocusedWindow" name="DEB_FocusedWindow" title="go to the details">DEB_FocusedWindow</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../r6menu/r6menu3dviewonoffbutton.html">R6Menu3DViewOnOffButton</a></td><td width="66%"><a href="#_m_3DButton" name="m_3DButton" title="go to the details">m_3DButton</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../r6menu/r6window3dbutton.html">R6Window3DButton</a></td><td width="66%"><a href="#_m_3DWindow" name="m_3DWindow" title="go to the details">m_3DWindow</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_m_bClosePopup" name="m_bClosePopup" title="go to the details">m_bClosePopup</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_m_bMoveRLByLaptop" name="m_bMoveRLByLaptop" title="go to the details">m_bMoveRLByLaptop</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_m_bMoveUDByLaptop" name="m_bMoveUDByLaptop" title="go to the details">m_bMoveUDByLaptop</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_m_bPopUpMenuPoint" name="m_bPopUpMenuPoint" title="go to the details">m_bPopUpMenuPoint</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_m_bPopUpMenuSpeed" name="m_bPopUpMenuSpeed" title="go to the details">m_bPopUpMenuSpeed</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../r6window/r6windowtextlabel.html">R6WindowTextLabel</a></td><td width="66%"><a href="#_m_CodeName" name="m_CodeName" title="go to the details">m_CodeName</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../r6window/r6windowtextlabel.html">R6WindowTextLabel</a></td><td width="66%"><a href="#_m_DateTime" name="m_DateTime" title="go to the details">m_DateTime</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">FLOAT</td><td width="66%"><a href="#_m_fLabelHeight" name="m_fLabelHeight" title="go to the details">m_fLabelHeight</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">FLOAT</td><td width="66%"><a href="#_m_fLMouseDownX" name="m_fLMouseDownX" title="go to the details">m_fLMouseDownX</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">FLOAT</td><td width="66%"><a href="#_m_fLMouseDownY" name="m_fLMouseDownY" title="go to the details">m_fLMouseDownY</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">Font</td><td width="66%"><a href="#_m_labelFont" name="m_labelFont" title="go to the details">m_labelFont</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../r6menu/r6menulegendbutton.html">R6MenuLegendButton</a></td><td width="66%"><a href="#_m_LegendButton" name="m_LegendButton" title="go to the details">m_LegendButton</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../r6menu/r6windowlegend.html">R6WindowLegend</a></td><td width="66%"><a href="#_m_LegendWindow" name="m_LegendWindow" title="go to the details">m_LegendWindow</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../r6window/r6windowtextlabel.html">R6WindowTextLabel</a></td><td width="66%"><a href="#_m_Location" name="m_Location" title="go to the details">m_Location</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../r6menu/r6menuplanningbar.html">R6MenuPlanningBar</a></td><td width="66%"><a href="#_m_PlanningBar" name="m_PlanningBar" title="go to the details">m_PlanningBar</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../r6menu/r6menumodemenu.html">R6MenuModeMenu</a></td><td width="66%"><a href="#_m_PopUpMenuMode" name="m_PopUpMenuMode" title="go to the details">m_PopUpMenuMode</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../r6menu/r6menuactionpointmenu.html">R6MenuActionPointMenu</a></td><td width="66%"><a href="#_m_PopUpMenuPoint" name="m_PopUpMenuPoint" title="go to the details">m_PopUpMenuPoint</a></td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Variables from <a href="../r6menu/r6menu-overview.html">R6Menu</a>.<a href="../r6menu/r6menulaptopwidget.html">R6MenuLaptopWidget</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../r6menu/r6menulaptopwidget.html#m_Bottom">m_Bottom</a>, <a href="../r6menu/r6menulaptopwidget.html#m_EmptyBox1">m_EmptyBox1</a>, <a href="../r6menu/r6menulaptopwidget.html#m_EmptyBox2">m_EmptyBox2</a>, <a href="../r6menu/r6menulaptopwidget.html#m_fLaptopPadding">m_fLaptopPadding</a>, <a href="../r6menu/r6menulaptopwidget.html#m_HelpTextBar">m_HelpTextBar</a>, <a href="../r6menu/r6menulaptopwidget.html#m_Left">m_Left</a>, <a href="../r6menu/r6menulaptopwidget.html#m_NavBar">m_NavBar</a>, <a href="../r6menu/r6menulaptopwidget.html#m_RBackGround">m_RBackGround</a>, <a href="../r6menu/r6menulaptopwidget.html#m_Right">m_Right</a>, <a href="../r6menu/r6menulaptopwidget.html#m_TBackGround">m_TBackGround</a>, <a href="../r6menu/r6menulaptopwidget.html#m_Top">m_Top</a></td>
+</tr>
+</table>
+<table>
+<tr>
+	<th class="inherittitle">Inherited Variables from <a href="../r6menu/r6menu-overview.html">R6Menu</a>.<a href="../r6menu/r6menuwidget.html">R6MenuWidget</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../r6menu/r6menuwidget.html#m_fLeftMouseXClipping">m_fLeftMouseXClipping</a>, <a href="../r6menu/r6menuwidget.html#m_fLeftMouseYClipping">m_fLeftMouseYClipping</a>, <a href="../r6menu/r6menuwidget.html#m_fRightMouseXClipping">m_fRightMouseXClipping</a>, <a href="../r6menu/r6menuwidget.html#m_fRightMouseYClipping">m_fRightMouseYClipping</a></td>
+</tr>
+</table>
+
+
+<br />
+
+
+
+
+
+
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Functions Summary</th>
+</tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_CloseAllPopup-" name="CloseAllPopup" title="go to the details">CloseAllPopup</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_Created-" name="Created" title="go to the details">Created</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_DisplayActionTypePopUp-" name="DisplayActionTypePopUp" title="go to the details">DisplayActionTypePopUp</a> (float X, float Y))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_DisplayPathFlagPopUp-" name="DisplayPathFlagPopUp" title="go to the details">DisplayPathFlagPopUp</a> (float X, float Y))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_Hide3DAndLegend-" name="Hide3DAndLegend" title="go to the details">Hide3DAndLegend</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_HideWindow-" name="HideWindow" title="go to the details">HideWindow</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_KeyType-" name="KeyType" title="go to the details">KeyType</a> (int iInputKey, float X, float Y))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_LMouseDown-" name="LMouseDown" title="go to the details">LMouseDown</a> (FLOAT fMouseX, FLOAT fMouseY))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_LMouseUp-" name="LMouseUp" title="go to the details">LMouseUp</a> (FLOAT fMouseX, FLOAT fMouseY))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_MouseMove-" name="MouseMove" title="go to the details">MouseMove</a> (FLOAT fMouseX, FLOAT fMouseY))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_Paint-" name="Paint" title="go to the details">Paint</a> (<a href="../engine/canvas.html">Canvas</a> C, FLOAT X, FLOAT Y))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_Reset-" name="Reset" title="go to the details">Reset</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_ResetTeams-" name="ResetTeams" title="go to the details">ResetTeams</a> (INT iWhatToReset))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_RMouseDown-" name="RMouseDown" title="go to the details">RMouseDown</a> (FLOAT fMouseX, FLOAT fMouseY))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_RMouseUp-" name="RMouseUp" title="go to the details">RMouseUp</a> (FLOAT fMouseX, FLOAT fMouseY))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_SetMousePos-" name="SetMousePos" title="go to the details">SetMousePos</a> (FLOAT X, FLOAT Y))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_ShowWindow-" name="ShowWindow" title="go to the details">ShowWindow</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_Tick-" name="Tick" title="go to the details">Tick</a> (FLOAT fDelta))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_WindowEvent-" name="WindowEvent" title="go to the details">WindowEvent</a> (<a href="../uwindow/uwindowwindow.html#WinMessage">WinMessage</a> Msg, <a href="../engine/canvas.html">Canvas</a> C, float X, float Y, int Key))<br /><span class="function_state"></span></td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Functions from <a href="../r6menu/r6menu-overview.html">R6Menu</a>.<a href="../r6menu/r6menulaptopwidget.html">R6MenuLaptopWidget</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../r6menu/r6menulaptopwidget.html#Created">Created</a>, <a href="../r6menu/r6menulaptopwidget.html#DrawLaptopFrame">DrawLaptopFrame</a>, <a href="../r6menu/r6menulaptopwidget.html#Paint">Paint</a>, <a href="../r6menu/r6menulaptopwidget.html#SetMousePos">SetMousePos</a></td>
+</tr>
+</table>
+<table>
+<tr>
+	<th class="inherittitle">Inherited Functions from <a href="../r6menu/r6menu-overview.html">R6Menu</a>.<a href="../r6menu/r6menuwidget.html">R6MenuWidget</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../r6menu/r6menuwidget.html#KeyDown">KeyDown</a>, <a href="../r6menu/r6menuwidget.html#Reset">Reset</a>, <a href="../r6menu/r6menuwidget.html#SetMousePos">SetMousePos</a></td>
+</tr>
+</table>
+
+
+<br />
+
+
+
+<hr />
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Constants Detail</th>
+</tr>
+</table>
+
+<h4><a name="_R6InputKey_ActionPopup" class="hidden"></a>R6InputKey_ActionPopup <a href="../Source_r6menu/r6menuplanningwidget.html#43" class="small">Source code</a></h4>
+<div class="declaration">const R6InputKey_ActionPopup = <span class="source_int">1024</span>;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_R6InputKey_NewNode" class="hidden"></a>R6InputKey_NewNode <a href="../Source_r6menu/r6menuplanningwidget.html#44" class="small">Source code</a></h4>
+<div class="declaration">const R6InputKey_NewNode = <span class="source_int">1025</span>;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_R6InputKey_PathFlagPopup" class="hidden"></a>R6InputKey_PathFlagPopup <a href="../Source_r6menu/r6menuplanningwidget.html#45" class="small">Source code</a></h4>
+<div class="declaration">const R6InputKey_PathFlagPopup = <span class="source_int">1026</span>;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th class="title">Variables Detail</th>
+</tr>
+</table>
+
+<h4><a name="_bShowLog" class="hidden"></a>bShowLog <a href="../Source_r6menu/r6menuplanningwidget.html#40" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">bool</span> bShowLog;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_DEB_FocusedWindow" class="hidden"></a>DEB_FocusedWindow <a href="../Source_r6menu/r6menuplanningwidget.html#39" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../uwindow/uwindowwindow.html" class="source">UWindowWindow</a></span> DEB_FocusedWindow;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_3DButton" class="hidden"></a>m_3DButton <a href="../Source_r6menu/r6menuplanningwidget.html#11" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../r6menu/r6menu3dviewonoffbutton.html" class="source">R6Menu3DViewOnOffButton</a></span> m_3DButton;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_3DWindow" class="hidden"></a>m_3DWindow <a href="../Source_r6menu/r6menuplanningwidget.html#13" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../r6menu/r6window3dbutton.html" class="source">R6Window3DButton</a></span> m_3DWindow;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_bClosePopup" class="hidden"></a>m_bClosePopup <a href="../Source_r6menu/r6menuplanningwidget.html#33" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">bool</span> m_bClosePopup;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_bMoveRLByLaptop" class="hidden"></a>m_bMoveRLByLaptop <a href="../Source_r6menu/r6menuplanningwidget.html#31" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">bool</span> m_bMoveRLByLaptop;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_bMoveUDByLaptop" class="hidden"></a>m_bMoveUDByLaptop <a href="../Source_r6menu/r6menuplanningwidget.html#30" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">bool</span> m_bMoveUDByLaptop;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_bPopUpMenuPoint" class="hidden"></a>m_bPopUpMenuPoint <a href="../Source_r6menu/r6menuplanningwidget.html#25" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">bool</span> m_bPopUpMenuPoint;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_bPopUpMenuSpeed" class="hidden"></a>m_bPopUpMenuSpeed <a href="../Source_r6menu/r6menuplanningwidget.html#26" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">bool</span> m_bPopUpMenuSpeed;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_CodeName" class="hidden"></a>m_CodeName <a href="../Source_r6menu/r6menuplanningwidget.html#16" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../r6window/r6windowtextlabel.html" class="source">R6WindowTextLabel</a></span> m_CodeName;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_DateTime" class="hidden"></a>m_DateTime <a href="../Source_r6menu/r6menuplanningwidget.html#16" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../r6window/r6windowtextlabel.html" class="source">R6WindowTextLabel</a></span> m_DateTime;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_fLabelHeight" class="hidden"></a>m_fLabelHeight <a href="../Source_r6menu/r6menuplanningwidget.html#20" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">FLOAT</span> m_fLabelHeight;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_fLMouseDownX" class="hidden"></a>m_fLMouseDownX <a href="../Source_r6menu/r6menuplanningwidget.html#28" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">FLOAT</span> m_fLMouseDownX;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_fLMouseDownY" class="hidden"></a>m_fLMouseDownY <a href="../Source_r6menu/r6menuplanningwidget.html#29" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">FLOAT</span> m_fLMouseDownY;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_labelFont" class="hidden"></a>m_labelFont <a href="../Source_r6menu/r6menuplanningwidget.html#19" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">Font</span> m_labelFont;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_LegendButton" class="hidden"></a>m_LegendButton <a href="../Source_r6menu/r6menuplanningwidget.html#12" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../r6menu/r6menulegendbutton.html" class="source">R6MenuLegendButton</a></span> m_LegendButton;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_LegendWindow" class="hidden"></a>m_LegendWindow <a href="../Source_r6menu/r6menuplanningwidget.html#14" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../r6menu/r6windowlegend.html" class="source">R6WindowLegend</a></span> m_LegendWindow;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_Location" class="hidden"></a>m_Location <a href="../Source_r6menu/r6menuplanningwidget.html#16" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../r6window/r6windowtextlabel.html" class="source">R6WindowTextLabel</a></span> m_Location;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_PlanningBar" class="hidden"></a>m_PlanningBar <a href="../Source_r6menu/r6menuplanningwidget.html#10" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../r6menu/r6menuplanningbar.html" class="source">R6MenuPlanningBar</a></span> m_PlanningBar;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_PopUpMenuMode" class="hidden"></a>m_PopUpMenuMode <a href="../Source_r6menu/r6menuplanningwidget.html#24" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../r6menu/r6menumodemenu.html" class="source">R6MenuModeMenu</a></span> m_PopUpMenuMode;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_PopUpMenuPoint" class="hidden"></a>m_PopUpMenuPoint <a href="../Source_r6menu/r6menuplanningwidget.html#23" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../r6menu/r6menuactionpointmenu.html" class="source">R6MenuActionPointMenu</a></span> m_PopUpMenuPoint;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+
+
+<br />
+
+
+
+
+
+
+
+<table class="title">
+<tr>
+	<th class="title">Functions Detail</th>
+</tr>
+</table>
+
+<h4><a name="_CloseAllPopup-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> CloseAllPopup <span class="function_state"></span> <a href="../Source_r6menu/r6menuplanningwidget.html#647" class="small">Source code</a></h4>
+<div class="declaration"> function  CloseAllPopup ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_Created-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> Created <span class="function_state"></span> <a href="../Source_r6menu/r6menuplanningwidget.html#47" class="small">Source code</a></h4>
+<div class="declaration"> function  Created ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_DisplayActionTypePopUp-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> DisplayActionTypePopUp <span class="function_state"></span> <a href="../Source_r6menu/r6menuplanningwidget.html#576" class="small">Source code</a></h4>
+<div class="declaration"> function  DisplayActionTypePopUp ( <span class="source_type">float</span> X, <span class="source_type">float</span> Y) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_DisplayPathFlagPopUp-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> DisplayPathFlagPopUp <span class="function_state"></span> <a href="../Source_r6menu/r6menuplanningwidget.html#612" class="small">Source code</a></h4>
+<div class="declaration"> function  DisplayPathFlagPopUp ( <span class="source_type">float</span> X, <span class="source_type">float</span> Y) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_Hide3DAndLegend-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> Hide3DAndLegend <span class="function_state"></span> <a href="../Source_r6menu/r6menuplanningwidget.html#201" class="small">Source code</a></h4>
+<div class="declaration"> function  Hide3DAndLegend ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_HideWindow-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> HideWindow <span class="function_state"></span> <a href="../Source_r6menu/r6menuplanningwidget.html#187" class="small">Source code</a></h4>
+<div class="declaration"> function  HideWindow ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_KeyType-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> KeyType <span class="function_state"></span> <a href="../Source_r6menu/r6menuplanningwidget.html#563" class="small">Source code</a></h4>
+<div class="declaration"> function  KeyType ( <span class="source_type">int</span> iInputKey, <span class="source_type">float</span> X, <span class="source_type">float</span> Y) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_LMouseDown-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> LMouseDown <span class="function_state"></span> <a href="../Source_r6menu/r6menuplanningwidget.html#440" class="small">Source code</a></h4>
+<div class="declaration"> function  LMouseDown ( <span class="source_type">FLOAT</span> fMouseX, <span class="source_type">FLOAT</span> fMouseY) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_LMouseUp-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> LMouseUp <span class="function_state"></span> <a href="../Source_r6menu/r6menuplanningwidget.html#460" class="small">Source code</a></h4>
+<div class="declaration"> function  LMouseUp ( <span class="source_type">FLOAT</span> fMouseX, <span class="source_type">FLOAT</span> fMouseY) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_MouseMove-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> MouseMove <span class="function_state"></span> <a href="../Source_r6menu/r6menuplanningwidget.html#506" class="small">Source code</a></h4>
+<div class="declaration"> function  MouseMove ( <span class="source_type">FLOAT</span> fMouseX, <span class="source_type">FLOAT</span> fMouseY) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_Paint-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> Paint <span class="function_state"></span> <a href="../Source_r6menu/r6menuplanningwidget.html#276" class="small">Source code</a></h4>
+<div class="declaration"> function  Paint ( <span class="source_type"><a href="../engine/canvas.html" class="source">Canvas</a></span> <span class="source_type">C</span>, <span class="source_type">FLOAT</span> X, <span class="source_type">FLOAT</span> Y) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_Reset-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> Reset <span class="function_state"></span> <a href="../Source_r6menu/r6menuplanningwidget.html#175" class="small">Source code</a></h4>
+<div class="declaration"> function  Reset ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ResetTeams-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> ResetTeams <span class="function_state"></span> <a href="../Source_r6menu/r6menuplanningwidget.html#180" class="small">Source code</a></h4>
+<div class="declaration"> function  ResetTeams ( <span class="source_type">INT</span> iWhatToReset) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_RMouseDown-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> RMouseDown <span class="function_state"></span> <a href="../Source_r6menu/r6menuplanningwidget.html#473" class="small">Source code</a></h4>
+<div class="declaration"> function  RMouseDown ( <span class="source_type">FLOAT</span> fMouseX, <span class="source_type">FLOAT</span> fMouseY) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_RMouseUp-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> RMouseUp <span class="function_state"></span> <a href="../Source_r6menu/r6menuplanningwidget.html#493" class="small">Source code</a></h4>
+<div class="declaration"> function  RMouseUp ( <span class="source_type">FLOAT</span> fMouseX, <span class="source_type">FLOAT</span> fMouseY) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_SetMousePos-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> SetMousePos <span class="function_state"></span> <a href="../Source_r6menu/r6menuplanningwidget.html#522" class="small">Source code</a></h4>
+<div class="declaration"> function  SetMousePos ( <span class="source_type">FLOAT</span> X, <span class="source_type">FLOAT</span> Y) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ShowWindow-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> ShowWindow <span class="function_state"></span> <a href="../Source_r6menu/r6menuplanningwidget.html#216" class="small">Source code</a></h4>
+<div class="declaration"> function  ShowWindow ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_Tick-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> Tick <span class="function_state"></span> <a href="../Source_r6menu/r6menuplanningwidget.html#324" class="small">Source code</a></h4>
+<div class="declaration"> function  Tick ( <span class="source_type">FLOAT</span> <span class="source_type">fDelta</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_WindowEvent-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> WindowEvent <span class="function_state"></span> <a href="../Source_r6menu/r6menuplanningwidget.html#665" class="small">Source code</a></h4>
+<div class="declaration"> function  WindowEvent ( <span class="source_type"><a href="../uwindow/uwindowwindow.html#WinMessage" class="source">WinMessage</a></span> <span class="source_type">Msg</span>, <span class="source_type"><a href="../engine/canvas.html" class="source">Canvas</a></span> <span class="source_type">C</span>, <span class="source_type">float</span> X, <span class="source_type">float</span> Y, <span class="source_type">int</span> <span class="source_type">Key</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+
+
+<br />
+
+
+<table class="title">
+<tr>
+	<th class="title">Defaultproperties</th>
+</tr>
+</table>
+<br />
+<div class="source"><table class="source"><tr><td class="source"><pre class="source">defaultproperties
+{
+     m_fLabelHeight=<span class="source_int">18.000000</span>
+}
+</pre></td></tr></table></div>
+
+
+
+<hr />
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../r6menu/r6menu-overview.html">Package</a></td>
+	<td class="header_hilight">Class</td>
+	<td class="header"><a href="../Source_r6menu/r6menuplanningwidget.html">Source</a></td>
+	<td class="header"><a class="header" href="../classtree.html#R6MenuPlanningWidget">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../r6menu/r6menuplanningbar.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../r6menu/r6menupopuplistbutton.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+
+<div class="stats">Creation time: mar. 26/5/2026 18:33:12.616 - Created with <a href="http://wiki.beyondunreal.com/wiki/UnCodeX" target="_blank">UnCodeX</a></div>
+
+</body>
+</html>

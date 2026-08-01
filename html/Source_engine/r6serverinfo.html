@@ -1,0 +1,182 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+	<title>UnCodeX - Source: engine.R6ServerInfo</title>
+	<meta name="Generator" content="UnCodeX 241" />
+	<link rel="stylesheet" href="../DocStyle2.css" type="text/css" title="Original Purple" />
+	<link rel="alternative stylesheet" href="../DocStyle2-blue.css" type="text/css" title="Blue" />
+	<link rel="alternative stylesheet" href="../DocStyle2-red.css" type="text/css" title="Red" />
+	<!--[if IE]>
+	<link rel="stylesheet" href="../DocStyle2-msie.css" type="text/css" />
+	<![endif]-->
+	<script src="../styleswitcher.js" type="text/javascript"></script>
+</head>
+<body>
+
+<div class="header">
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../engine/engine-overview.html">Package</a></td>
+	<td class="header"><a href="../engine/r6serverinfo.html">Class</a></td>
+	<td class="header_hilight">Source</td>
+	<td class="header"><a class="header" href="../classtree.html#R6ServerInfo">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../Source_engine/r6rainbowstartinfo.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../Source_engine/r6sfx.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html#Source_engine/r6serverinfo.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+</div>
+<div class="spacer"></div>
+
+<h1><a href="../engine/engine-overview.html">engine</a>.<a href="../engine/r6serverinfo.html">R6ServerInfo</a></h1>
+<br />
+<div class="source"><table class="source"><tr><td class="source_lineno"><span class="source_lineno">00001<br />00002<br />00003<br />00004<br />00005<br />00006<br />00007<br />00008<br />00009<br />00010<br />00011<br />00012<br />00013<br />00014<br />00015<br />00016<br />00017<br />00018<br />00019<br />00020<br />
+00021<br />00022<br />00023<br />00024<br />00025<br />00026<br />00027<br />00028<br />00029<br />00030<br />00031<br />00032<br />00033<br />00034<br />00035<br />00036<br />00037<br />00038<br />00039<br />00040<br />
+00041<br />00042<br />00043<br />00044<br />00045<br />00046<br />00047<br />00048<br />00049<br />00050<br />00051<br />00052<br />00053<br />00054<br />00055<br />00056<br />00057<br />00058<br />00059<br />00060<br />
+00061<br />00062<br />00063<br />00064<br />00065<br />00066<br />00067<br />00068<br />00069<br />00070<br />00071<br />00072<br />00073<br />00074<br />00075<br />00076<br />00077<br />00078<br />00079<br />00080<br />
+00081<br />00082<br />00083<br />00084<br />00085<br />00086<br />00087<br />00088<br />00089<br />00090<br />00091<br />00092<br />00093<br />00094<br />00095<br />00096<br />00097<br />00098<br />00099<br />00100<br />
+00101<br />00102<br />00103<br />00104<br />00105<br />00106<br />00107<br />00108<br />00109<br />00110<br />00111<br />00112<br />00113<br />00114<br />00115<br />00116<br />00117<br />00118<br />00119</span></td>
+<td class="source"><pre class="source"><a name="0"></a><span class="source_type">class</span> <span class="source_type"><a href="../engine/r6serverinfo.html" class="source">R6ServerInfo</a></span> extends <span class="source_type"><a href="../core/object.html" class="source">Object</a></span>
+<a name="2"></a>	config(server)
+<a name="3"></a>    native;
+<a name="4"></a>
+<a name="5"></a>var config <span class="source_type">string</span> ServerName;
+<a name="6"></a>var config <span class="source_type">bool</span> CamFirstPerson;
+<a name="7"></a>var config <span class="source_type">bool</span> CamThirdPerson;
+<a name="8"></a>var config <span class="source_type">bool</span> CamFreeThirdP;
+<a name="9"></a>var config <span class="source_type">bool</span> CamGhost;
+<a name="10"></a>var config <span class="source_type">bool</span> CamFadeToBlack;
+<a name="11"></a>var config <span class="source_type">bool</span> CamTeamOnly;
+<a name="12"></a>var config <span class="source_type">int</span> MaxPlayers;
+<a name="13"></a>var config <span class="source_type">int</span> NbTerro;
+<a name="14"></a>
+<a name="15"></a>var config <span class="source_type">bool</span> UsePassword;
+<a name="16"></a>var config <span class="source_type">string</span> GamePassword;
+<a name="17"></a>
+<a name="18"></a>var config <span class="source_type">float</span> SpamThreshold;  <span class="source_comment">//3 or more "say" inside that period (seconds) trigger ChatLock
+</span><a name="19"></a>var config <span class="source_type">float</span> ChatLockDuration;	<span class="source_comment">//Duration of ChatLock (seconds)
+</span><a name="20"></a>var config <span class="source_type">float</span> VoteBroadcastMaxFrequency; <span class="source_comment">//Delay (seconds) before sending a new vote broadcast
+</span><a name="21"></a>
+<a name="22"></a>var config <span class="source_type">string</span> MOTD;
+<a name="23"></a>
+<a name="24"></a>var config <span class="source_type">int</span> RoundTime;
+<a name="25"></a>var config <span class="source_type">int</span> RoundsPerMatch;
+<a name="26"></a>var config <span class="source_type">int</span> BetweenRoundTime;
+<a name="27"></a>
+<a name="28"></a>var config <span class="source_type">bool</span>   UseAdminPassword;
+<a name="29"></a>var config <span class="source_type">string</span> AdminPassword;
+<a name="30"></a>
+<a name="31"></a>var config <span class="source_type">int</span> BombTime;
+<a name="32"></a>var config <span class="source_type">INT</span> DiffLevel;
+<a name="33"></a>
+<a name="34"></a>var config <span class="source_type">bool</span> ShowNames;
+<a name="35"></a>var config <span class="source_type">bool</span> InternetServer;
+<a name="36"></a>var config <span class="source_type">bool</span> DedicatedServer;
+<a name="37"></a>var config <span class="source_type">bool</span> FriendlyFire;
+<a name="38"></a>var config <span class="source_type">bool</span> Autobalance;
+<a name="39"></a>var config <span class="source_type">bool</span> TeamKillerPenalty;
+<a name="40"></a>var config <span class="source_type">bool</span> AllowRadar;
+<a name="41"></a>var config <span class="source_type">bool</span> ForceFPersonWeapon;
+<a name="42"></a>var config <span class="source_type">bool</span> AIBkp;
+<a name="43"></a>var config <span class="source_type">bool</span> RotateMap;
+<a name="44"></a>var config Array&lt;<span class="source_type">class</span>&gt; RestrictedSubMachineGuns;
+<a name="45"></a>var config Array&lt;<span class="source_type">class</span>&gt; RestrictedShotGuns;
+<a name="46"></a>var config Array&lt;<span class="source_type">class</span>&gt; RestrictedAssultRifles;
+<a name="47"></a>var config Array&lt;<span class="source_type">class</span>&gt; RestrictedMachineGuns;
+<a name="48"></a>var config Array&lt;<span class="source_type">class</span>&gt; RestrictedSniperRifles;
+<a name="49"></a>var config Array&lt;<span class="source_type">class</span>&gt; RestrictedPistols;
+<a name="50"></a>var config Array&lt;<span class="source_type">class</span>&gt; RestrictedMachinePistols;
+<a name="51"></a>var config Array&lt;<span class="source_type">string</span>&gt; RestrictedPrimary;
+<a name="52"></a>var config Array&lt;<span class="source_type">string</span>&gt; RestrictedSecondary;
+<a name="53"></a>var config Array&lt;<span class="source_type">string</span>&gt; RestrictedMiscGadgets;
+<a name="54"></a>var <span class="source_type"><a href="../engine/r6maplist.html" class="source">R6MapList</a></span> m_ServerMapList;
+<a name="55"></a>var <span class="source_type"><a href="../engine/gameinfo.html" class="source">GameInfo</a></span> m_GameInfo;
+<a name="56"></a>
+<a name="57"></a><span class="source_comment">// on reset we want to avoid reloading the original values
+</span><a name="58"></a><span class="source_comment">// we want to keep proper config values
+</span><a name="59"></a>function PostBeginPlay()
+<a name="60"></a>{
+<a name="61"></a>}
+<a name="62"></a>
+<a name="63"></a>function ClearSettings()
+<a name="64"></a>{
+<a name="65"></a>    RestrictedSubMachineGuns.remove(<span class="source_int">0</span>, RestrictedSubMachineGuns.length);    
+<a name="66"></a>    RestrictedSubMachineGuns.remove(<span class="source_int">0</span>, RestrictedSubMachineGuns.length);    
+<a name="67"></a>    RestrictedShotGuns.remove(<span class="source_int">0</span>, RestrictedShotGuns.length);    
+<a name="68"></a>    RestrictedAssultRifles.remove(<span class="source_int">0</span>, RestrictedAssultRifles.length);    
+<a name="69"></a>    RestrictedMachineGuns.remove(<span class="source_int">0</span>, RestrictedMachineGuns.length);    
+<a name="70"></a>    RestrictedSniperRifles.remove(<span class="source_int">0</span>, RestrictedSniperRifles.length);    
+<a name="71"></a>    RestrictedPistols.remove(<span class="source_int">0</span>, RestrictedPistols.length);    
+<a name="72"></a>    RestrictedMachinePistols.remove(<span class="source_int">0</span>, RestrictedMachinePistols.length);    
+<a name="73"></a>    RestrictedPrimary.remove(<span class="source_int">0</span>, RestrictedPrimary.length);    
+<a name="74"></a>    RestrictedSecondary.remove(<span class="source_int">0</span>, RestrictedSecondary.length);    
+<a name="75"></a>    RestrictedMiscGadgets.remove(<span class="source_int">0</span>, RestrictedMiscGadgets.length);    
+<a name="76"></a>}
+<a name="77"></a>
+<a name="78"></a>event RestartServer()
+<a name="79"></a>{
+<a name="80"></a>    if (m_GameInfo!=none)
+<a name="81"></a>    {
+<a name="82"></a>        m_GameInfo.AbortScoreSubmission();
+<a name="83"></a>        m_GameInfo.bChangeLevels = true;
+<a name="84"></a>        m_GameInfo.m_bChangedServerConfig = true;
+<a name="85"></a>        m_GameInfo.SetJumpingMaps(true, <span class="source_int">0</span>);
+<a name="86"></a>        m_GameInfo.RestartGameMgr();
+<a name="87"></a>    }
+<a name="88"></a>}
+<a name="89"></a>
+<a name="90"></a>defaultproperties
+<a name="91"></a>{
+<a name="92"></a>     MaxPlayers=<span class="source_int">8</span>
+<a name="93"></a>     NbTerro=<span class="source_int">32</span>
+<a name="94"></a>     RoundTime=<span class="source_int">600</span>
+<a name="95"></a>     RoundsPerMatch=<span class="source_int">20</span>
+<a name="96"></a>     BetweenRoundTime=<span class="source_int">20</span>
+<a name="97"></a>     BombTime=<span class="source_int">45</span>
+<a name="98"></a>     DiffLevel=<span class="source_int">1</span>
+<a name="99"></a>     CamFirstPerson=True
+<a name="100"></a>     CamThirdPerson=True
+<a name="101"></a>     CamFreeThirdP=True
+<a name="102"></a>     CamGhost=True
+<a name="103"></a>     UseAdminPassword=True
+<a name="104"></a>     ShowNames=True
+<a name="105"></a>     InternetServer=True
+<a name="106"></a>     DedicatedServer=True
+<a name="107"></a>     FriendlyFire=True
+<a name="108"></a>     Autobalance=True
+<a name="109"></a>     TeamKillerPenalty=True
+<a name="110"></a>     AllowRadar=True
+<a name="111"></a>     RotateMap=True
+<a name="112"></a>     SpamThreshold=<span class="source_int">5.000000</span>
+<a name="113"></a>     ChatLockDuration=<span class="source_int">15.000000</span>
+<a name="114"></a>     VoteBroadcastMaxFrequency=<span class="source_int">15.000000</span>
+<a name="115"></a>     ServerName=<span class="source_string">"test"</span>
+<a name="116"></a>     MOTD=<span class="source_string">"Welcome to Raven Shield"</span>
+<a name="117"></a>     AdminPassword=<span class="source_string">"111"</span>
+<a name="118"></a>}
+<a name="119"></a></pre></td></tr></table></div>
+<hr />
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../engine/engine-overview.html">Package</a></td>
+	<td class="header"><a href="../engine/r6serverinfo.html">Class</a></td>
+	<td class="header_hilight">Source</td>
+	<td class="header"><a class="header" href="../classtree.html#R6ServerInfo">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../Source_engine/r6rainbowstartinfo.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../Source_engine/r6sfx.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+
+<div class="stats">Class file time: sam. 18/9/2004 14:39:26.000 - Creation time: mar. 26/5/2026 18:33:21.295 - Created with <a href="http://wiki.beyondunreal.com/wiki/UnCodeX" target="_blank">UnCodeX</a></div>
+
+</body>
+</html>

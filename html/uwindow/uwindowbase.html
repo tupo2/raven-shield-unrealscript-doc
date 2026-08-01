@@ -1,0 +1,849 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+	<title>UnCodeX - UWindow.UWindowBase</title>
+	<meta name="Generator" content="UnCodeX 241" />
+	<link rel="stylesheet" href="../DocStyle2.css" type="text/css" title="Original Purple" />
+	<link rel="alternative stylesheet" href="../DocStyle2-blue.css" type="text/css" title="Blue" />
+	<link rel="alternative stylesheet" href="../DocStyle2-red.css" type="text/css" title="Red" />
+	<!--[if IE]>
+	<link rel="stylesheet" href="../DocStyle2-msie.css" type="text/css" />
+	<![endif]-->
+	<script src="../styleswitcher.js" type="text/javascript"></script>
+</head>
+<body>
+
+<div class="header">
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../uwindow/uwindow-overview.html">Package</a></td>
+	<td class="header_hilight">Class</td>
+	<td class="header"><a href="../Source_uwindow/uwindowbase.html">Source</a></td>
+	<td class="header"><a class="header" href="../classtree.html#UWindowBase">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../uwindow/windowconsole.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../uwindow/uwindowbitmap.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html#uwindow/uwindowbase.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+</div>
+<div class="spacer"></div>
+
+<h1><a href="../uwindow/uwindow-overview.html">UWindow</a>.UWindowBase</h1>
+
+<dl>
+<dt>Extends</dt><dd><a href="../core/object.html">Object</a></dd>
+
+</dl>
+
+<p></p>
+
+<pre class="tree"><a href="../core/core-overview.html">core</a>.<a href="../core/object.html">Object</a>
+|   
++-- <a href="../uwindow/uwindow-overview.html">UWindow</a>.<a href="../uwindow/uwindowbase.html">UWindowBase</a>
+</pre>
+
+<h4>Direct Known Subclasses:</h4>
+<blockquote>
+	<a href="../uwindow/uwindowlist.html">UWindowList</a>, <a href="../uwindow/uwindowlookandfeel.html">UWindowLookAndFeel</a>, <a href="../uwindow/uwindowwindow.html">UWindowWindow</a>
+</blockquote>
+
+<hr />
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Constants Summary</th>
+</tr>
+<tr><td width="40%"><a href="#_F_Bold" name="F_Bold" title="go to the details">F_Bold</a></td><td width="10%">=</td><td width="50%">1</td></tr>
+<tr><td width="40%"><a href="#_F_CheckBoxButton" name="F_CheckBoxButton" title="go to the details">F_CheckBoxButton</a></td><td width="10%">=</td><td width="50%">17</td></tr>
+<tr><td width="40%"><a href="#_F_FirstMenuButton" name="F_FirstMenuButton" title="go to the details">F_FirstMenuButton</a></td><td width="10%">=</td><td width="50%">14</td></tr>
+<tr><td width="40%"><a href="#_F_HelpWindow" name="F_HelpWindow" title="go to the details">F_HelpWindow</a></td><td width="10%">=</td><td width="50%">12</td></tr>
+<tr><td width="40%"><a href="#_F_IntelTitle" name="F_IntelTitle" title="go to the details">F_IntelTitle</a></td><td width="10%">=</td><td width="50%">9</td></tr>
+<tr><td width="40%"><a href="#_F_Large" name="F_Large" title="go to the details">F_Large</a></td><td width="10%">=</td><td width="50%">2</td></tr>
+<tr><td width="40%"><a href="#_F_LargeBold" name="F_LargeBold" title="go to the details">F_LargeBold</a></td><td width="10%">=</td><td width="50%">3</td></tr>
+<tr><td width="40%"><a href="#_F_ListItemBig" name="F_ListItemBig" title="go to the details">F_ListItemBig</a></td><td width="10%">=</td><td width="50%">11</td></tr>
+<tr><td width="40%"><a href="#_F_ListItemSmall" name="F_ListItemSmall" title="go to the details">F_ListItemSmall</a></td><td width="10%">=</td><td width="50%">10</td></tr>
+<tr><td width="40%"><a href="#_F_MainButton" name="F_MainButton" title="go to the details">F_MainButton</a></td><td width="10%">=</td><td width="50%">15</td></tr>
+<tr><td width="40%"><a href="#_F_MenuMainTitle" name="F_MenuMainTitle" title="go to the details">F_MenuMainTitle</a></td><td width="10%">=</td><td width="50%">4</td></tr>
+<tr><td width="40%"><a href="#_F_Normal" name="F_Normal" title="go to the details">F_Normal</a></td><td width="10%">=</td><td width="50%">0</td></tr>
+<tr><td width="40%"><a href="#_F_ocraext17" name="F_ocraext17" title="go to the details">F_ocraext17</a></td><td width="10%">=</td><td width="50%">0</td></tr>
+<tr><td width="40%"><a href="#_F_PopUpTitle" name="F_PopUpTitle" title="go to the details">F_PopUpTitle</a></td><td width="10%">=</td><td width="50%">8</td></tr>
+<tr><td width="40%"><a href="#_F_PrincipalButton" name="F_PrincipalButton" title="go to the details">F_PrincipalButton</a></td><td width="10%">=</td><td width="50%">16</td></tr>
+<tr><td width="40%"><a href="#_F_SmallTitle" name="F_SmallTitle" title="go to the details">F_SmallTitle</a></td><td width="10%">=</td><td width="50%">5</td></tr>
+<tr><td width="40%"><a href="#_F_TabMainTitle" name="F_TabMainTitle" title="go to the details">F_TabMainTitle</a></td><td width="10%">=</td><td width="50%">7</td></tr>
+<tr><td width="40%"><a href="#_F_VerySmallTitle" name="F_VerySmallTitle" title="go to the details">F_VerySmallTitle</a></td><td width="10%">=</td><td width="50%">6</td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Contants from <a href="../core/core-overview.html">core</a>.<a href="../core/object.html">Object</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../core/object.html#MaxInt">MaxInt</a>, <a href="../core/object.html#Pi">Pi</a>, <a href="../core/object.html#RF_NotForClient">RF_NotForClient</a>, <a href="../core/object.html#RF_NotForEdit">RF_NotForEdit</a>, <a href="../core/object.html#RF_NotForServer">RF_NotForServer</a>, <a href="../core/object.html#RF_Public">RF_Public</a>, <a href="../core/object.html#RF_Transactional">RF_Transactional</a>, <a href="../core/object.html#RF_Transient">RF_Transient</a></td>
+</tr>
+</table>
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th colspan="2" class="title">Variables Summary</th>
+</tr>
+<tr><th colspan="2" class="small">Display</th></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../uwindow/uwindowbase.html#ERenderStyle">ERenderStyle</a></td><td width="66%"><a href="#_Style" name="Style" title="go to the details">Style</a></td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Variables from <a href="../core/core-overview.html">core</a>.<a href="../core/object.html">Object</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../core/object.html#Class">Class</a>, <a href="../core/object.html#DName">DName</a>, <a href="../core/object.html#Name">Name</a>, <a href="../core/object.html#ObjectFlags">ObjectFlags</a>, <a href="../core/object.html#ObjectInternal[6]">ObjectInternal[6]</a>, <a href="../core/object.html#Outer">Outer</a></td>
+</tr>
+</table>
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Enumerations Summary</th>
+</tr>
+<tr><td><a href="#_EButtonName" name="EButtonName" title="go to the details">EButtonName</a><br /><span class="small">EBN_None,
+EBN_RoundPerMatch,
+EBN_RoundTime,
+EBN_NB_Players,
+EBN_BombTimer,
+EBN_Spectator,
+EBN_RoundPerMission,
+EBN_TimeBetRound,
+EBN_NB_of_Terro,
+EBN_InternetServer,
+EBN_DedicatedServer,
+EBN_FriendlyFire,
+EBN_AllowTeamNames,
+EBN_AutoBalTeam,
+EBN_TKPenalty,
+EBN_AllowRadar,
+EBN_RotateMap,
+EBN_AIBkp,
+EBN_ForceFPersonWp,
+EBN_Recruit,
+EBN_Veteran,
+EBN_Elite,
+EBN_PunkBuster,
+EBN_DiffLevel,
+EBN_CamFirstPerson,
+EBN_CamThirdPerson,
+EBN_CamFreeThirdP,
+EBN_CamGhost,
+EBN_CamFadeToBk,
+EBN_CamTeamOnly,
+EBN_LogIn,
+EBN_LogOut,
+EBN_Join,
+EBN_JoinIP,
+EBN_Refresh,
+EBN_Create,
+EBN_Cancel,
+EBN_Launch,
+EBN_EditMsg,
+EBN_CancelUbiCom,
+EBN_Max</span></td></tr>
+<tr><td><a href="#_EPopUpID" name="EPopUpID" title="go to the details">EPopUpID</a><br /><span class="small">EPopUpID_None,
+EPopUpID_MsgOfTheDay,
+EPopUpID_FileWriteError,
+EPopUpID_FileWriteErrorBackupPln,
+EPopUpID_SaveFileExist,
+EPopUpID_PlanDeleteError,
+EPopUpID_InvalidLoad,
+EPopUpID_MPServerOpt,
+EPopUpID_MPKitRest,
+EPopUpID_MPGearRoom,
+EPopUpID_EnterIP,
+EPopUpID_JoinIPError,
+EPopUpID_JoinIPWait,
+EPopUpID_UbiAccount,
+EPopUpID_LoginError,
+EPopUpID_UbiComDisconnected,
+EPopUpID_CDKeyPleaseWait,
+EPopUpID_EnterCDKey,
+EPopUpID_Password,
+EPopUpID_JoinRoomError,
+EPopUpID_JoinRoomErrorCDKeyInUse,
+EPopUpID_JoinRoomErrorCDKeySrvNotResp,
+EPopUpID_JoinRoomErrorPassWd,
+EPopUpID_JoinRoomErrorSrvFull,
+EPopUpID_ErrorConnect,
+EPopUpID_PunkBusterOnlyError,
+EPopUpID_PunkBusterDisabledServerWarn,
+EPopUpID_InvalidPassword,
+EPopUpID_QueryServerWait,
+EPopUpID_QueryServerError,
+EPopUpID_TKPenalty,
+EPopUpID_LeaveInGameToMultiMenu,
+EPopUpID_RefreshServerList,
+EPopUpID_DownLoadingInProgress,
+EPopUpID_AdvFilters,
+EPopUpID_CoopFilters,
+EPopUpID_QuickPlay,
+EPopUpID_LoadDelPlan,
+EPopUpID_SaveDelPlan,
+EPopUpID_DeleteCampaign,
+EPopUpID_OverWriteCampaign,
+EPopUpID_DelAllWayPoints,
+EPopUpID_DelAllTeamsWayPoints,
+EPopUpID_LeavePlanningToMain,
+EPopUpID_SavePlanning,
+EPopUpID_LoadPlanning,
+EPopUpID_PlanningIncomplete,
+EPopUpID_LeaveInGameToMain,
+EPopUpID_LeaveInGameToQuit,
+EPopUpID_AbortMissionRetryAction,
+EPopUpID_AbortMissionRetryPlan,
+EPopUpID_QuitTraining,
+EPopUpID_OptionsResetDefault,
+EPopUpID_TextOnly,
+EPopUpID_Max</span></td></tr>
+<tr><td><a href="#_ERenderStyle" name="ERenderStyle" title="go to the details">ERenderStyle</a><br /><span class="small">STY_None,
+STY_Normal,
+STY_Masked,
+STY_Translucent,
+STY_Modulated,
+STY_Alpha,
+STY_Particle,
+STY_Highlight</span></td></tr>
+<tr><td><a href="#_ERestKitID" name="ERestKitID" title="go to the details">ERestKitID</a><br /><span class="small">ERestKit_SubMachineGuns,
+ERestKit_Shotguns,
+ERestKit_AssaultRifle,
+ERestKit_MachineGuns,
+ERestKit_SniperRifle,
+ERestKit_Pistol,
+ERestKit_MachinePistol,
+ERestKit_PriWpnGadget,
+ERestKit_SecWpnGadget,
+ERestKit_MiscGadget,
+ERestKit_Max</span></td></tr>
+<tr><td><a href="#_FrameHitTest" name="FrameHitTest" title="go to the details">FrameHitTest</a><br /><span class="small">HT_NW,
+HT_N,
+HT_NE,
+HT_W,
+HT_E,
+HT_SW,
+HT_S,
+HT_SE,
+HT_TitleBar,
+HT_DragHandle,
+HT_None</span></td></tr>
+<tr><td><a href="#_MenuSound" name="MenuSound" title="go to the details">MenuSound</a><br /><span class="small">MS_MenuPullDown,
+MS_MenuCloseUp,
+MS_MenuItem,
+MS_WindowOpen,
+MS_WindowClose,
+MS_ChangeTab</span></td></tr>
+<tr><td><a href="#_MessageBoxButtons" name="MessageBoxButtons" title="go to the details">MessageBoxButtons</a><br /><span class="small">MB_YesNo,
+MB_OKCancel,
+MB_OK,
+MB_YesNoCancel,
+MB_Cancel,
+MB_None</span></td></tr>
+<tr><td><a href="#_MessageBoxResult" name="MessageBoxResult" title="go to the details">MessageBoxResult</a><br /><span class="small">MR_None,
+MR_Yes,
+MR_No,
+MR_OK,
+MR_Cancel</span></td></tr>
+<tr><td><a href="#_PropertyCondition" name="PropertyCondition" title="go to the details">PropertyCondition</a><br /><span class="small">PC_None,
+PC_LessThan,
+PC_Equal,
+PC_GreaterThan,
+PC_NotEqual,
+PC_Contains,
+PC_NotContains</span></td></tr>
+<tr><td><a href="#_TextAlign" name="TextAlign" title="go to the details">TextAlign</a><br /><span class="small">TA_Left,
+TA_Right,
+TA_Center</span></td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Enumerations from <a href="../core/core-overview.html">core</a>.<a href="../core/object.html">Object</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../core/object.html#ECamOrientation">ECamOrientation</a>, <a href="../core/object.html#EGoCode">EGoCode</a>, <a href="../core/object.html#EMovementMode">EMovementMode</a>, <a href="../core/object.html#EMovementSpeed">EMovementSpeed</a>, <a href="../core/object.html#ENodeNotify">ENodeNotify</a>, <a href="../core/object.html#EPlanAction">EPlanAction</a>, <a href="../core/object.html#EPlanActionType">EPlanActionType</a>, <a href="../core/object.html#ePlayerTeamSelection">ePlayerTeamSelection</a>, <a href="../core/object.html#ESheerAxis">ESheerAxis</a></td>
+</tr>
+</table>
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Structures Summary</th>
+</tr>
+<tr><td><a href="#_HTMLStyle" name="HTMLStyle" title="go to the details">HTMLStyle</a><br /><span class="small">BulletLevel, LinkDestination, TextColor, BGColor, bCenter, bLink, bUnderline, bNoBR, bHeading, bBold, bBlink</span></td></tr>
+<tr><td><a href="#_RegionButton" name="RegionButton" title="go to the details">RegionButton</a><br /><span class="small">Up, Down, Over, Disabled</span></td></tr>
+<tr><td><a href="#_TexRegion" name="TexRegion" title="go to the details">TexRegion</a><br /><span class="small">X, Y, W, H, T</span></td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Structures from <a href="../core/core-overview.html">core</a>.<a href="../core/object.html">Object</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../core/object.html#BoundingVolume">BoundingVolume</a>, <a href="../core/object.html#Box">Box</a>, <a href="../core/object.html#Color">Color</a>, <a href="../core/object.html#CompressedPosition">CompressedPosition</a>, <a href="../core/object.html#Coords">Coords</a>, <a href="../core/object.html#Guid">Guid</a>, <a href="../core/object.html#InterpCurve">InterpCurve</a>, <a href="../core/object.html#InterpCurvePoint">InterpCurvePoint</a>, <a href="../core/object.html#Matrix">Matrix</a>, <a href="../core/object.html#Plane">Plane</a>, <a href="../core/object.html#Range">Range</a>, <a href="../core/object.html#RangeVector">RangeVector</a>, <a href="../core/object.html#Region">Region</a>, <a href="../core/object.html#Rotator">Rotator</a>, <a href="../core/object.html#Scale">Scale</a>, <a href="../core/object.html#Vector">Vector</a></td>
+</tr>
+</table>
+
+
+<br />
+
+
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Functions Summary</th>
+</tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td><a href="../core/object.html">Object</a>&nbsp;</td><td><a href="#_BuildObjectWithProperties-" name="BuildObjectWithProperties" title="go to the details">BuildObjectWithProperties</a> (string Text))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>string&nbsp;</td><td><a href="#_GetEPopUpID-" name="GetEPopUpID" title="go to the details">GetEPopUpID</a> (<a href="../uwindow/uwindowbase.html#EPopUpID">EPopUpID</a> _EPopUpID))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td><a href="../core/object.html#Region">Region</a>&nbsp;</td><td><a href="#_GetRegion-" name="GetRegion" title="go to the details">GetRegion</a> (<a href="../uwindow/uwindowbase.html#TexRegion">TexRegion</a> T))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>int&nbsp;</td><td><a href="#_InStrAfter-" name="InStrAfter" title="go to the details">InStrAfter</a> (string Text, string Match, int Pos))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td><a href="../core/object.html#Region">Region</a>&nbsp;</td><td><a href="#_NewRegion-" name="NewRegion" title="go to the details">NewRegion</a> (float X, float Y, float W, float H))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td><a href="../uwindow/uwindowbase.html#TexRegion">TexRegion</a>&nbsp;</td><td><a href="#_NewTexRegion-" name="NewTexRegion" title="go to the details">NewTexRegion</a> (float X, float Y, float W, float H, <a href="../engine/texture.html">Texture</a> T))<br /><span class="function_state"></span></td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Functions from <a href="../core/core-overview.html">core</a>.<a href="../core/object.html">Object</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../core/object.html#!">!</a>, <a href="../core/object.html#!=">!=</a>, <a href="../core/object.html#$">$</a>, <a href="../core/object.html#%">%</a>, <a href="../core/object.html#&">&</a>, <a href="../core/object.html#&&">&&</a>, <a href="../core/object.html#*">*</a>, <a href="../core/object.html#**">**</a>, <a href="../core/object.html#*=">*=</a>, <a href="../core/object.html#+">+</a>, <a href="../core/object.html#++">++</a>, <a href="../core/object.html#+=">+=</a>, <a href="../core/object.html#-">-</a>, <a href="../core/object.html#--">--</a>, <a href="../core/object.html#-=">-=</a>, <a href="../core/object.html#/ ">/ </a>, <a href="../core/object.html#/=">/=</a>, <a href="../core/object.html#&lt;">&lt;</a>, <a href="../core/object.html#&lt;&lt;">&lt;&lt;</a>, <a href="../core/object.html#&lt;=">&lt;=</a>, <a href="../core/object.html#==">==</a>, <a href="../core/object.html#&gt;">&gt;</a>, <a href="../core/object.html#&gt;=">&gt;=</a>, <a href="../core/object.html#&gt;&gt;">&gt;&gt;</a>, <a href="../core/object.html#&gt;&gt;&gt;">&gt;&gt;&gt;</a>, <a href="../core/object.html#@">@</a>, <a href="../core/object.html#Abs">Abs</a>, <a href="../core/object.html#Acos">Acos</a>, <a href="../core/object.html#Asc">Asc</a>, <a href="../core/object.html#Asin">Asin</a>, <a href="../core/object.html#Atan">Atan</a>, <a href="../core/object.html#Atoi">Atoi</a>, <a href="../core/object.html#BeginState">BeginState</a>, <a href="../core/object.html#Caps">Caps</a>, <a href="../core/object.html#Chr">Chr</a>, <a href="../core/object.html#Clamp">Clamp</a>, <a href="../core/object.html#ClassIsChildOf">ClassIsChildOf</a>, <a href="../core/object.html#ClearOuter">ClearOuter</a>, <a href="../core/object.html#Clock">Clock</a>, <a href="../core/object.html#ClockwiseFrom">ClockwiseFrom</a>, <a href="../core/object.html#Cos">Cos</a>, <a href="../core/object.html#Cross">Cross</a>, <a href="../core/object.html#Disable">Disable</a>, <a href="../core/object.html#Dot">Dot</a>, <a href="../core/object.html#DynamicLoadObject">DynamicLoadObject</a>, <a href="../core/object.html#Enable">Enable</a>, <a href="../core/object.html#EndState">EndState</a>, <a href="../core/object.html#Exp">Exp</a>, <a href="../core/object.html#FClamp">FClamp</a>, <a href="../core/object.html#FindObject">FindObject</a>, <a href="../core/object.html#FMax">FMax</a>, <a href="../core/object.html#FMin">FMin</a>, <a href="../core/object.html#FRand">FRand</a>, <a href="../core/object.html#FreePackageObjects">FreePackageObjects</a>, <a href="../core/object.html#GetAxes">GetAxes</a>, <a href="../core/object.html#GetEnum">GetEnum</a>, <a href="../core/object.html#GetFirstPackageClass">GetFirstPackageClass</a>, <a href="../core/object.html#GetNextClass">GetNextClass</a>, <a href="../core/object.html#GetPropertyText">GetPropertyText</a>, <a href="../core/object.html#GetRegistryKey">GetRegistryKey</a>, <a href="../core/object.html#GetStateName">GetStateName</a>, <a href="../core/object.html#GetUnAxes">GetUnAxes</a>, <a href="../core/object.html#GotoState">GotoState</a>, <a href="../core/object.html#InitMod">InitMod</a>, <a href="../core/object.html#InStr">InStr</a>, <a href="../core/object.html#InterpCurveEval">InterpCurveEval</a>, <a href="../core/object.html#Invert">Invert</a>, <a href="../core/object.html#IsA">IsA</a>, <a href="../core/object.html#IsInState">IsInState</a>, <a href="../core/object.html#Itoa">Itoa</a>, <a href="../core/object.html#Left">Left</a>, <a href="../core/object.html#Len">Len</a>, <a href="../core/object.html#Lerp">Lerp</a>, <a href="../core/object.html#LoadConfig">LoadConfig</a>, <a href="../core/object.html#Localize">Localize</a>, <a href="../core/object.html#Log">Log</a>, <a href="../core/object.html#Loge">Loge</a>, <a href="../core/object.html#LogSnd">LogSnd</a>, <a href="../core/object.html#Max">Max</a>, <a href="../core/object.html#Mid">Mid</a>, <a href="../core/object.html#Min">Min</a>, <a href="../core/object.html#MirrorVectorByNormal">MirrorVectorByNormal</a>, <a href="../core/object.html#Normal">Normal</a>, <a href="../core/object.html#Normalize">Normalize</a>, <a href="../core/object.html#OrthoRotation">OrthoRotation</a>, <a href="../core/object.html#Rand">Rand</a>, <a href="../core/object.html#RandRange">RandRange</a>, <a href="../core/object.html#RemoveInvalidChars">RemoveInvalidChars</a>, <a href="../core/object.html#ResetConfig">ResetConfig</a>, <a href="../core/object.html#RewindToFirstClass">RewindToFirstClass</a>, <a href="../core/object.html#Right">Right</a>, <a href="../core/object.html#RotRand">RotRand</a>, <a href="../core/object.html#SaveConfig">SaveConfig</a>, <a href="../core/object.html#SetPropertyText">SetPropertyText</a>, <a href="../core/object.html#SetRegistryKey">SetRegistryKey</a>, <a href="../core/object.html#ShortestAngle2D">ShortestAngle2D</a>, <a href="../core/object.html#Sin">Sin</a>, <a href="../core/object.html#Smerp">Smerp</a>, <a href="../core/object.html#Sqrt">Sqrt</a>, <a href="../core/object.html#Square">Square</a>, <a href="../core/object.html#StaticSaveConfig">StaticSaveConfig</a>, <a href="../core/object.html#Strnicmp">Strnicmp</a>, <a href="../core/object.html#Tan">Tan</a>, <a href="../core/object.html#Unclock">Unclock</a>, <a href="../core/object.html#VRand">VRand</a>, <a href="../core/object.html#VSize">VSize</a>, <a href="../core/object.html#Warn">Warn</a>, <a href="../core/object.html#^">^</a>, <a href="../core/object.html#^^">^^</a>, <a href="../core/object.html#|">|</a>, <a href="../core/object.html#||">||</a>, <a href="../core/object.html#~">~</a>, <a href="../core/object.html#~=">~=</a></td>
+</tr>
+</table>
+
+
+<br />
+
+
+
+<hr />
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Constants Detail</th>
+</tr>
+</table>
+
+<h4><a name="_F_Bold" class="hidden"></a>F_Bold <a href="../Source_uwindow/uwindowbase.html#5" class="small">Source code</a></h4>
+<div class="declaration">const F_Bold = <span class="source_int">1</span>;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_F_CheckBoxButton" class="hidden"></a>F_CheckBoxButton <a href="../Source_uwindow/uwindowbase.html#33" class="small">Source code</a></h4>
+<div class="declaration">const F_CheckBoxButton = <span class="source_int">17</span>;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_F_FirstMenuButton" class="hidden"></a>F_FirstMenuButton <a href="../Source_uwindow/uwindowbase.html#30" class="small">Source code</a></h4>
+<div class="declaration">const F_FirstMenuButton = <span class="source_int">14</span>;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_F_HelpWindow" class="hidden"></a>F_HelpWindow <a href="../Source_uwindow/uwindowbase.html#27" class="small">Source code</a></h4>
+<div class="declaration">const F_HelpWindow = <span class="source_int">12</span>;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_F_IntelTitle" class="hidden"></a>F_IntelTitle <a href="../Source_uwindow/uwindowbase.html#22" class="small">Source code</a></h4>
+<div class="declaration">const F_IntelTitle = <span class="source_int">9</span>;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_F_Large" class="hidden"></a>F_Large <a href="../Source_uwindow/uwindowbase.html#6" class="small">Source code</a></h4>
+<div class="declaration">const F_Large = <span class="source_int">2</span>;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_F_LargeBold" class="hidden"></a>F_LargeBold <a href="../Source_uwindow/uwindowbase.html#7" class="small">Source code</a></h4>
+<div class="declaration">const F_LargeBold = <span class="source_int">3</span>;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_F_ListItemBig" class="hidden"></a>F_ListItemBig <a href="../Source_uwindow/uwindowbase.html#26" class="small">Source code</a></h4>
+<div class="declaration">const F_ListItemBig = <span class="source_int">11</span>;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_F_ListItemSmall" class="hidden"></a>F_ListItemSmall <a href="../Source_uwindow/uwindowbase.html#25" class="small">Source code</a></h4>
+<div class="declaration">const F_ListItemSmall = <span class="source_int">10</span>;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_F_MainButton" class="hidden"></a>F_MainButton <a href="../Source_uwindow/uwindowbase.html#31" class="small">Source code</a></h4>
+<div class="declaration">const F_MainButton = <span class="source_int">15</span>;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_F_MenuMainTitle" class="hidden"></a>F_MenuMainTitle <a href="../Source_uwindow/uwindowbase.html#17" class="small">Source code</a></h4>
+<div class="declaration">const F_MenuMainTitle = <span class="source_int">4</span>;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_F_Normal" class="hidden"></a>F_Normal <a href="../Source_uwindow/uwindowbase.html#4" class="small">Source code</a></h4>
+<div class="declaration">const F_Normal = <span class="source_int">0</span>;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_F_ocraext17" class="hidden"></a>F_ocraext17 <a href="../Source_uwindow/uwindowbase.html#10" class="small">Source code</a></h4>
+<div class="declaration">const F_ocraext17 = <span class="source_int">0</span>;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_F_PopUpTitle" class="hidden"></a>F_PopUpTitle <a href="../Source_uwindow/uwindowbase.html#21" class="small">Source code</a></h4>
+<div class="declaration">const F_PopUpTitle = <span class="source_int">8</span>;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_F_PrincipalButton" class="hidden"></a>F_PrincipalButton <a href="../Source_uwindow/uwindowbase.html#32" class="small">Source code</a></h4>
+<div class="declaration">const F_PrincipalButton = <span class="source_int">16</span>;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_F_SmallTitle" class="hidden"></a>F_SmallTitle <a href="../Source_uwindow/uwindowbase.html#18" class="small">Source code</a></h4>
+<div class="declaration">const F_SmallTitle = <span class="source_int">5</span>;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_F_TabMainTitle" class="hidden"></a>F_TabMainTitle <a href="../Source_uwindow/uwindowbase.html#20" class="small">Source code</a></h4>
+<div class="declaration">const F_TabMainTitle = <span class="source_int">7</span>;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_F_VerySmallTitle" class="hidden"></a>F_VerySmallTitle <a href="../Source_uwindow/uwindowbase.html#19" class="small">Source code</a></h4>
+<div class="declaration">const F_VerySmallTitle = <span class="source_int">6</span>;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th class="title">Variables Detail</th>
+</tr>
+</table>
+
+<h3 class="vartag">Display</h3>
+<h4><a name="_Style" class="hidden"></a>Style <a href="../Source_uwindow/uwindowbase.html#266" class="small">Source code</a></h4>
+<div class="declaration">var(Display) <span class="source_type"><a href="../uwindow/uwindowbase.html#ERenderStyle" class="source">ERenderStyle</a></span> Style;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th class="title">Enumerations Detail</th>
+</tr>
+</table>
+
+<h4><a name="_EButtonName" class="hidden"></a>EButtonName <a href="../Source_uwindow/uwindowbase.html#127" class="small">Source code</a></h4>
+<div class="declaration">enum <span class="source_type"><a href="../uwindow/uwindowbase.html#EButtonName" class="source">EButtonName</a></span><br />
+{<blockquote>EBN_None,
+EBN_RoundPerMatch,
+EBN_RoundTime,
+EBN_NB_Players,
+EBN_BombTimer,
+EBN_Spectator,
+EBN_RoundPerMission,
+EBN_TimeBetRound,
+EBN_NB_of_Terro,
+EBN_InternetServer,
+EBN_DedicatedServer,
+EBN_FriendlyFire,
+EBN_AllowTeamNames,
+EBN_AutoBalTeam,
+EBN_TKPenalty,
+EBN_AllowRadar,
+EBN_RotateMap,
+EBN_AIBkp,
+EBN_ForceFPersonWp,
+EBN_Recruit,
+EBN_Veteran,
+EBN_Elite,
+EBN_PunkBuster,
+EBN_DiffLevel,
+EBN_CamFirstPerson,
+EBN_CamThirdPerson,
+EBN_CamFreeThirdP,
+EBN_CamGhost,
+EBN_CamFadeToBk,
+EBN_CamTeamOnly,
+EBN_LogIn,
+EBN_LogOut,
+EBN_Join,
+EBN_JoinIP,
+EBN_Refresh,
+EBN_Create,
+EBN_Cancel,
+EBN_Launch,
+EBN_EditMsg,
+EBN_CancelUbiCom,
+EBN_Max</blockquote>};
+</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_EPopUpID" class="hidden"></a>EPopUpID <a href="../Source_uwindow/uwindowbase.html#181" class="small">Source code</a></h4>
+<div class="declaration">enum <span class="source_type"><a href="../uwindow/uwindowbase.html#EPopUpID" class="source">EPopUpID</a></span><br />
+{<blockquote>EPopUpID_None,
+EPopUpID_MsgOfTheDay,
+EPopUpID_FileWriteError,
+EPopUpID_FileWriteErrorBackupPln,
+EPopUpID_SaveFileExist,
+EPopUpID_PlanDeleteError,
+EPopUpID_InvalidLoad,
+EPopUpID_MPServerOpt,
+EPopUpID_MPKitRest,
+EPopUpID_MPGearRoom,
+EPopUpID_EnterIP,
+EPopUpID_JoinIPError,
+EPopUpID_JoinIPWait,
+EPopUpID_UbiAccount,
+EPopUpID_LoginError,
+EPopUpID_UbiComDisconnected,
+EPopUpID_CDKeyPleaseWait,
+EPopUpID_EnterCDKey,
+EPopUpID_Password,
+EPopUpID_JoinRoomError,
+EPopUpID_JoinRoomErrorCDKeyInUse,
+EPopUpID_JoinRoomErrorCDKeySrvNotResp,
+EPopUpID_JoinRoomErrorPassWd,
+EPopUpID_JoinRoomErrorSrvFull,
+EPopUpID_ErrorConnect,
+EPopUpID_PunkBusterOnlyError,
+EPopUpID_PunkBusterDisabledServerWarn,
+EPopUpID_InvalidPassword,
+EPopUpID_QueryServerWait,
+EPopUpID_QueryServerError,
+EPopUpID_TKPenalty,
+EPopUpID_LeaveInGameToMultiMenu,
+EPopUpID_RefreshServerList,
+EPopUpID_DownLoadingInProgress,
+EPopUpID_AdvFilters,
+EPopUpID_CoopFilters,
+EPopUpID_QuickPlay,
+EPopUpID_LoadDelPlan,
+EPopUpID_SaveDelPlan,
+EPopUpID_DeleteCampaign,
+EPopUpID_OverWriteCampaign,
+EPopUpID_DelAllWayPoints,
+EPopUpID_DelAllTeamsWayPoints,
+EPopUpID_LeavePlanningToMain,
+EPopUpID_SavePlanning,
+EPopUpID_LoadPlanning,
+EPopUpID_PlanningIncomplete,
+EPopUpID_LeaveInGameToMain,
+EPopUpID_LeaveInGameToQuit,
+EPopUpID_AbortMissionRetryAction,
+EPopUpID_AbortMissionRetryPlan,
+EPopUpID_QuitTraining,
+EPopUpID_OptionsResetDefault,
+EPopUpID_TextOnly,
+EPopUpID_Max</blockquote>};
+</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ERenderStyle" class="hidden"></a>ERenderStyle <a href="../Source_uwindow/uwindowbase.html#266" class="small">Source code</a></h4>
+<div class="declaration">enum <span class="source_type"><a href="../uwindow/uwindowbase.html#ERenderStyle" class="source">ERenderStyle</a></span><br />
+{<blockquote>STY_None,
+STY_Normal,
+STY_Masked,
+STY_Translucent,
+STY_Modulated,
+STY_Alpha,
+STY_Particle,
+STY_Highlight</blockquote>};
+</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ERestKitID" class="hidden"></a>ERestKitID <a href="../Source_uwindow/uwindowbase.html#244" class="small">Source code</a></h4>
+<div class="declaration">enum <span class="source_type"><a href="../uwindow/uwindowbase.html#ERestKitID" class="source">ERestKitID</a></span><br />
+{<blockquote>ERestKit_SubMachineGuns,
+ERestKit_Shotguns,
+ERestKit_AssaultRifle,
+ERestKit_MachineGuns,
+ERestKit_SniperRifle,
+ERestKit_Pistol,
+ERestKit_MachinePistol,
+ERestKit_PriWpnGadget,
+ERestKit_SecWpnGadget,
+ERestKit_MiscGadget,
+ERestKit_Max</blockquote>};
+</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_FrameHitTest" class="hidden"></a>FrameHitTest <a href="../Source_uwindow/uwindowbase.html#72" class="small">Source code</a></h4>
+<div class="declaration">enum <span class="source_type"><a href="../uwindow/uwindowbase.html#FrameHitTest" class="source">FrameHitTest</a></span><br />
+{<blockquote>HT_NW,
+HT_N,
+HT_NE,
+HT_W,
+HT_E,
+HT_SW,
+HT_S,
+HT_SE,
+HT_TitleBar,
+HT_DragHandle,
+HT_None</blockquote>};
+</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_MenuSound" class="hidden"></a>MenuSound <a href="../Source_uwindow/uwindowbase.html#87" class="small">Source code</a></h4>
+<div class="declaration">enum <span class="source_type"><a href="../uwindow/uwindowbase.html#MenuSound" class="source">MenuSound</a></span><br />
+{<blockquote>MS_MenuPullDown,
+MS_MenuCloseUp,
+MS_MenuItem,
+MS_WindowOpen,
+MS_WindowClose,
+MS_ChangeTab</blockquote>};
+</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_MessageBoxButtons" class="hidden"></a>MessageBoxButtons <a href="../Source_uwindow/uwindowbase.html#97" class="small">Source code</a></h4>
+<div class="declaration">enum <span class="source_type"><a href="../uwindow/uwindowbase.html#MessageBoxButtons" class="source">MessageBoxButtons</a></span><br />
+{<blockquote>MB_YesNo,
+MB_OKCancel,
+MB_OK,
+MB_YesNoCancel,
+MB_Cancel,
+MB_None</blockquote>};
+</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_MessageBoxResult" class="hidden"></a>MessageBoxResult <a href="../Source_uwindow/uwindowbase.html#107" class="small">Source code</a></h4>
+<div class="declaration">enum <span class="source_type"><a href="../uwindow/uwindowbase.html#MessageBoxResult" class="source">MessageBoxResult</a></span><br />
+{<blockquote>MR_None,
+MR_Yes,
+MR_No,
+MR_OK,
+MR_Cancel</blockquote>};
+</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_PropertyCondition" class="hidden"></a>PropertyCondition <a href="../Source_uwindow/uwindowbase.html#116" class="small">Source code</a></h4>
+<div class="declaration">enum <span class="source_type"><a href="../uwindow/uwindowbase.html#PropertyCondition" class="source">PropertyCondition</a></span><br />
+{<blockquote>PC_None,
+PC_LessThan,
+PC_Equal,
+PC_GreaterThan,
+PC_NotEqual,
+PC_Contains,
+PC_NotContains</blockquote>};
+</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_TextAlign" class="hidden"></a>TextAlign <a href="../Source_uwindow/uwindowbase.html#65" class="small">Source code</a></h4>
+<div class="declaration">enum <span class="source_type"><a href="../uwindow/uwindowbase.html#TextAlign" class="source">TextAlign</a></span><br />
+{<blockquote>TA_Left,
+TA_Right,
+TA_Center</blockquote>};
+</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th class="title">Structures Detail</th>
+</tr>
+</table>
+
+<h4><a name="_HTMLStyle" class="hidden"></a>HTMLStyle <a href="../Source_uwindow/uwindowbase.html#284" class="small">Source code</a></h4>
+<div class="declaration">struct <span class="source_type"><a href="../uwindow/uwindowbase.html#HTMLStyle" class="source">HTMLStyle</a></span><br />
+{<blockquote>var <span class="source_type">bool</span> bBlink;<br />
+var <span class="source_type">bool</span> bBold;<br />
+var <span class="source_type">bool</span> bCenter;<br />
+var <span class="source_type"><a href="../core/object.html#Color" class="source">Color</a></span> BGColor;<br />
+var <span class="source_type">bool</span> bHeading;<br />
+var <span class="source_type">bool</span> bLink;<br />
+var <span class="source_type">bool</span> bNoBR;<br />
+var <span class="source_type">int</span> BulletLevel;<br />
+var <span class="source_type">bool</span> bUnderline;<br />
+var <span class="source_type">string</span> LinkDestination;<br />
+var <span class="source_type"><a href="../core/object.html#Color" class="source">Color</a></span> TextColor;<br />
+</blockquote>};
+</div>
+<blockquote class="comment">
+
+<br />
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_RegionButton" class="hidden"></a>RegionButton <a href="../Source_uwindow/uwindowbase.html#57" class="small">Source code</a></h4>
+<div class="declaration">struct <span class="source_type"><a href="../uwindow/uwindowbase.html#RegionButton" class="source">RegionButton</a></span><br />
+{<blockquote>var <span class="source_type"><a href="../core/object.html#Region" class="source">Region</a></span> Disabled;<br />
+var <span class="source_type"><a href="../core/object.html#Region" class="source">Region</a></span> Down;<br />
+var <span class="source_type"><a href="../core/object.html#Region" class="source">Region</a></span> Over;<br />
+var <span class="source_type"><a href="../core/object.html#Region" class="source">Region</a></span> Up;<br />
+</blockquote>};
+</div>
+<blockquote class="comment">
+
+<br />
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_TexRegion" class="hidden"></a>TexRegion <a href="../Source_uwindow/uwindowbase.html#48" class="small">Source code</a></h4>
+<div class="declaration">struct <span class="source_type"><a href="../uwindow/uwindowbase.html#TexRegion" class="source">TexRegion</a></span><br />
+{<blockquote>var(<span class="source_type"><a href="../uwindow/uwindowbase.html" class="source">UWindowBase</a></span>) <span class="source_type">int</span> <span class="source_type">H</span>;<br />
+var(<span class="source_type"><a href="../uwindow/uwindowbase.html" class="source">UWindowBase</a></span>) <span class="source_type"><a href="../engine/texture.html" class="source">Texture</a></span> <span class="source_type">T</span>;<br />
+var(<span class="source_type"><a href="../uwindow/uwindowbase.html" class="source">UWindowBase</a></span>) <span class="source_type">int</span> W;<br />
+var(<span class="source_type"><a href="../uwindow/uwindowbase.html" class="source">UWindowBase</a></span>) <span class="source_type">int</span> X;<br />
+var(<span class="source_type"><a href="../uwindow/uwindowbase.html" class="source">UWindowBase</a></span>) <span class="source_type">int</span> <span class="source_type">Y</span>;<br />
+</blockquote>};
+</div>
+<blockquote class="comment">
+
+<br />
+
+</blockquote>
+<hr class="small" />
+
+
+<br />
+
+
+
+<table class="title">
+<tr>
+	<th class="title">Functions Detail</th>
+</tr>
+</table>
+
+<h4><a name="_BuildObjectWithProperties-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> BuildObjectWithProperties <span class="function_state"></span> <a href="../Source_uwindow/uwindowbase.html#342" class="small">Source code</a></h4>
+<div class="declaration">static function <span class="source_type"><a href="../core/object.html" class="source">Object</a></span> BuildObjectWithProperties ( <span class="source_type">string</span> <span class="source_type">Text</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GetEPopUpID-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> GetEPopUpID <span class="function_state"></span> <a href="../Source_uwindow/uwindowbase.html#418" class="small">Source code</a></h4>
+<div class="declaration"> function <span class="source_type">string</span> GetEPopUpID ( <span class="source_type"><a href="../uwindow/uwindowbase.html#EPopUpID" class="source">EPopUpID</a></span> <span class="source_type">_EPopUpID</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GetRegion-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> GetRegion <span class="function_state"></span> <a href="../Source_uwindow/uwindowbase.html#320" class="small">Source code</a></h4>
+<div class="declaration"> function <span class="source_type"><a href="../core/object.html#Region" class="source">Region</a></span> GetRegion ( <span class="source_type"><a href="../uwindow/uwindowbase.html#TexRegion" class="source">TexRegion</a></span> <span class="source_type">T</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_InStrAfter-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> InStrAfter <span class="function_state"></span> <a href="../Source_uwindow/uwindowbase.html#332" class="small">Source code</a></h4>
+<div class="declaration">static function <span class="source_type">int</span> InStrAfter ( <span class="source_type">string</span> <span class="source_type">Text</span>, <span class="source_type">string</span> Match, <span class="source_type">int</span> Pos) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_NewRegion-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> NewRegion <span class="function_state"></span> <a href="../Source_uwindow/uwindowbase.html#299" class="small">Source code</a></h4>
+<div class="declaration"> function <span class="source_type"><a href="../core/object.html#Region" class="source">Region</a></span> NewRegion ( <span class="source_type">float</span> X, <span class="source_type">float</span> <span class="source_type">Y</span>, <span class="source_type">float</span> W, <span class="source_type">float</span> <span class="source_type">H</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_NewTexRegion-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> NewTexRegion <span class="function_state"></span> <a href="../Source_uwindow/uwindowbase.html#309" class="small">Source code</a></h4>
+<div class="declaration"> function <span class="source_type"><a href="../uwindow/uwindowbase.html#TexRegion" class="source">TexRegion</a></span> NewTexRegion ( <span class="source_type">float</span> X, <span class="source_type">float</span> <span class="source_type">Y</span>, <span class="source_type">float</span> W, <span class="source_type">float</span> <span class="source_type">H</span>, <span class="source_type"><a href="../engine/texture.html" class="source">Texture</a></span> <span class="source_type">T</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+
+
+<br />
+
+
+<table class="title">
+<tr>
+	<th class="title">Defaultproperties</th>
+</tr>
+</table>
+<br />
+<div class="source"><table class="source"><tr><td class="source"><pre class="source">defaultproperties
+{
+}
+</pre></td></tr></table></div>
+
+
+
+<hr />
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../uwindow/uwindow-overview.html">Package</a></td>
+	<td class="header_hilight">Class</td>
+	<td class="header"><a href="../Source_uwindow/uwindowbase.html">Source</a></td>
+	<td class="header"><a class="header" href="../classtree.html#UWindowBase">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../uwindow/windowconsole.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../uwindow/uwindowbitmap.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+
+<div class="stats">Creation time: mar. 26/5/2026 18:33:16.294 - Created with <a href="http://wiki.beyondunreal.com/wiki/UnCodeX" target="_blank">UnCodeX</a></div>
+
+</body>
+</html>

@@ -1,0 +1,1151 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+	<title>UnCodeX - R6Menu.R6MenuRSLookAndFeel</title>
+	<meta name="Generator" content="UnCodeX 241" />
+	<link rel="stylesheet" href="../DocStyle2.css" type="text/css" title="Original Purple" />
+	<link rel="alternative stylesheet" href="../DocStyle2-blue.css" type="text/css" title="Blue" />
+	<link rel="alternative stylesheet" href="../DocStyle2-red.css" type="text/css" title="Red" />
+	<!--[if IE]>
+	<link rel="stylesheet" href="../DocStyle2-msie.css" type="text/css" />
+	<![endif]-->
+	<script src="../styleswitcher.js" type="text/javascript"></script>
+</head>
+<body>
+
+<div class="header">
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../r6menu/r6menu-overview.html">Package</a></td>
+	<td class="header_hilight">Class</td>
+	<td class="header"><a href="../Source_r6menu/r6menurslookandfeel.html">Source</a></td>
+	<td class="header"><a class="header" href="../classtree.html#R6MenuRSLookAndFeel">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../r6menu/r6menurootwindow.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../r6menu/r6menusaveplan.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html#r6menu/r6menurslookandfeel.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+</div>
+<div class="spacer"></div>
+
+<h1><a href="../r6menu/r6menu-overview.html">R6Menu</a>.R6MenuRSLookAndFeel</h1>
+
+<dl>
+<dt>Extends</dt><dd><a href="../r6window/r6windowlookandfeel.html">R6WindowLookAndFeel</a></dd>
+
+</dl>
+
+<p></p>
+
+<pre class="tree"><a href="../core/core-overview.html">core</a>.<a href="../core/object.html">Object</a>
+|   
++-- <a href="../uwindow/uwindow-overview.html">UWindow</a>.<a href="../uwindow/uwindowbase.html">UWindowBase</a>
+   |   
+   +-- <a href="../uwindow/uwindow-overview.html">UWindow</a>.<a href="../uwindow/uwindowlookandfeel.html">UWindowLookAndFeel</a>
+      |   
+      +-- <a href="../r6window/r6window-overview.html">R6Window</a>.<a href="../r6window/r6windowlookandfeel.html">R6WindowLookAndFeel</a>
+         |   
+         +-- <a href="../r6menu/r6menu-overview.html">R6Menu</a>.<a href="../r6menu/r6menurslookandfeel.html">R6MenuRSLookAndFeel</a>
+</pre>
+
+
+
+<hr />
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Constants Summary</th>
+</tr>
+<tr><td width="40%"><a href="#_BRSIZEBORDER" name="BRSIZEBORDER" title="go to the details">BRSIZEBORDER</a></td><td width="10%">=</td><td width="50%">15</td></tr>
+<tr><td width="40%"><a href="#_RadioButtonHeight" name="RadioButtonHeight" title="go to the details">RadioButtonHeight</a></td><td width="10%">=</td><td width="50%">17</td></tr>
+<tr><td width="40%"><a href="#_RadioButtonWidth" name="RadioButtonWidth" title="go to the details">RadioButtonWidth</a></td><td width="10%">=</td><td width="50%">16</td></tr>
+<tr><td width="40%"><a href="#_SIZEBORDER" name="SIZEBORDER" title="go to the details">SIZEBORDER</a></td><td width="10%">=</td><td width="50%">3</td></tr>
+
+</table>
+
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th colspan="2" class="title">Variables Summary</th>
+</tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../uwindow/uwindowbase.html#RegionButton">RegionButton</a></td><td width="66%"><a href="#_m_BLTitleC" name="m_BLTitleC" title="go to the details">m_BLTitleC</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../uwindow/uwindowbase.html#RegionButton">RegionButton</a></td><td width="66%"><a href="#_m_BLTitleL" name="m_BLTitleL" title="go to the details">m_BLTitleL</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../uwindow/uwindowbase.html#RegionButton">RegionButton</a></td><td width="66%"><a href="#_m_BLTitleR" name="m_BLTitleR" title="go to the details">m_BLTitleR</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">INT</td><td width="66%"><a href="#_m_fComboImageX" name="m_fComboImageX" title="go to the details">m_fComboImageX</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">INT</td><td width="66%"><a href="#_m_fComboImageY" name="m_fComboImageY" title="go to the details">m_fComboImageY</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_m_fCurrentPct" name="m_fCurrentPct" title="go to the details">m_fCurrentPct</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">INT</td><td width="66%"><a href="#_m_fHSBButtonImageX" name="m_fHSBButtonImageX" title="go to the details">m_fHSBButtonImageX</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">INT</td><td width="66%"><a href="#_m_fHSBButtonImageY" name="m_fHSBButtonImageY" title="go to the details">m_fHSBButtonImageY</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../core/object.html#Region">Region</a></td><td width="66%"><a href="#_m_FrameSB" name="m_FrameSB" title="go to the details">m_FrameSB</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../core/object.html#Region">Region</a></td><td width="66%"><a href="#_m_FrameSBL" name="m_FrameSBL" title="go to the details">m_FrameSBL</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../core/object.html#Region">Region</a></td><td width="66%"><a href="#_m_FrameSBR" name="m_FrameSBR" title="go to the details">m_FrameSBR</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_m_fScrollRate" name="m_fScrollRate" title="go to the details">m_fScrollRate</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">FLOAT</td><td width="66%"><a href="#_m_fTextHeaderHeight" name="m_fTextHeaderHeight" title="go to the details">m_fTextHeaderHeight</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">INT</td><td width="66%"><a href="#_m_fVSBButtonImageX" name="m_fVSBButtonImageX" title="go to the details">m_fVSBButtonImageX</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">INT</td><td width="66%"><a href="#_m_fVSBButtonImageY" name="m_fVSBButtonImageY" title="go to the details">m_fVSBButtonImageY</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_m_iMultiplyer" name="m_iMultiplyer" title="go to the details">m_iMultiplyer</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../core/object.html#Region">Region</a></td><td width="66%"><a href="#_m_NavBarBack[12]" name="m_NavBarBack[12]" title="go to the details">m_NavBarBack[12]</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../engine/texture.html">Texture</a></td><td width="66%"><a href="#_m_NavBarTex" name="m_NavBarTex" title="go to the details">m_NavBarTex</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../core/object.html#Region">Region</a></td><td width="66%"><a href="#_m_PopupArrowDown" name="m_PopupArrowDown" title="go to the details">m_PopupArrowDown</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../core/object.html#Region">Region</a></td><td width="66%"><a href="#_m_PopupArrowUp" name="m_PopupArrowUp" title="go to the details">m_PopupArrowUp</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../uwindow/uwindowbase.html#RegionButton">RegionButton</a></td><td width="66%"><a href="#_m_RArrow[2]" name="m_RArrow[2]" title="go to the details">m_RArrow[2]</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../uwindow/uwindowbase.html#RegionButton">RegionButton</a></td><td width="66%"><a href="#_m_RBAcceptCancel[2]" name="m_RBAcceptCancel[2]" title="go to the details">m_RBAcceptCancel[2]</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../core/object.html#Region">Region</a></td><td width="66%"><a href="#_m_RSquareBgLeft" name="m_RSquareBgLeft" title="go to the details">m_RSquareBgLeft</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../core/object.html#Region">Region</a></td><td width="66%"><a href="#_m_RSquareBgMid" name="m_RSquareBgMid" title="go to the details">m_RSquareBgMid</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../core/object.html#Region">Region</a></td><td width="66%"><a href="#_m_RSquareBgRight" name="m_RSquareBgRight" title="go to the details">m_RSquareBgRight</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../core/object.html#Region">Region</a></td><td width="66%"><a href="#_m_SBDownGear" name="m_SBDownGear" title="go to the details">m_SBDownGear</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../core/object.html#Region">Region</a></td><td width="66%"><a href="#_m_SBScrollerActive" name="m_SBScrollerActive" title="go to the details">m_SBScrollerActive</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../core/object.html#Region">Region</a></td><td width="66%"><a href="#_m_SBUpGear" name="m_SBUpGear" title="go to the details">m_SBUpGear</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../r6menu/r6menurslookandfeel.html#STLapTopFrame">STLapTopFrame</a></td><td width="66%"><a href="#_m_stLapTopFrame" name="m_stLapTopFrame" title="go to the details">m_stLapTopFrame</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../r6menu/r6menurslookandfeel.html#STLapTopFramePlus">STLapTopFramePlus</a></td><td width="66%"><a href="#_m_stLapTopFramePlus" name="m_stLapTopFramePlus" title="go to the details">m_stLapTopFramePlus</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../engine/texture.html">Texture</a></td><td width="66%"><a href="#_m_TIcon" name="m_TIcon" title="go to the details">m_TIcon</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../core/object.html#Region">Region</a></td><td width="66%"><a href="#_m_topLeftCornerR" name="m_topLeftCornerR" title="go to the details">m_topLeftCornerR</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../engine/texture.html">Texture</a></td><td width="66%"><a href="#_m_TSquareBg" name="m_TSquareBg" title="go to the details">m_TSquareBg</a></td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Variables from <a href="../r6window/r6window-overview.html">R6Window</a>.<a href="../r6window/r6windowlookandfeel.html">R6WindowLookAndFeel</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../r6window/r6windowlookandfeel.html#m_CBorder">m_CBorder</a>, <a href="../r6window/r6windowlookandfeel.html#m_CloseBoxDown">m_CloseBoxDown</a>, <a href="../r6window/r6windowlookandfeel.html#m_CloseBoxUp">m_CloseBoxUp</a>, <a href="../r6window/r6windowlookandfeel.html#m_iCloseBoxOffsetX">m_iCloseBoxOffsetX</a>, <a href="../r6window/r6windowlookandfeel.html#m_iCloseBoxOffsetY">m_iCloseBoxOffsetY</a>, <a href="../r6window/r6windowlookandfeel.html#m_iListHPadding">m_iListHPadding</a>, <a href="../r6window/r6windowlookandfeel.html#m_iListVPadding">m_iListVPadding</a>, <a href="../r6window/r6windowlookandfeel.html#m_iScrollerOffset">m_iScrollerOffset</a>, <a href="../r6window/r6windowlookandfeel.html#m_iSize_ScrollBarFrameW">m_iSize_ScrollBarFrameW</a>, <a href="../r6window/r6windowlookandfeel.html#m_iVScrollerWidth">m_iVScrollerWidth</a>, <a href="../r6window/r6windowlookandfeel.html#m_R6ScrollTexture">m_R6ScrollTexture</a>, <a href="../r6window/r6windowlookandfeel.html#m_RButtonBackGround">m_RButtonBackGround</a>, <a href="../r6window/r6windowlookandfeel.html#m_SBBackground">m_SBBackground</a>, <a href="../r6window/r6windowlookandfeel.html#m_SBDown">m_SBDown</a>, <a href="../r6window/r6windowlookandfeel.html#m_SBHBorder">m_SBHBorder</a>, <a href="../r6window/r6windowlookandfeel.html#m_SBLeft">m_SBLeft</a>, <a href="../r6window/r6windowlookandfeel.html#m_SBRight">m_SBRight</a>, <a href="../r6window/r6windowlookandfeel.html#m_SBScroller">m_SBScroller</a>, <a href="../r6window/r6windowlookandfeel.html#m_SBUp">m_SBUp</a>, <a href="../r6window/r6windowlookandfeel.html#m_SBVBorder">m_SBVBorder</a>, <a href="../r6window/r6windowlookandfeel.html#m_TButtonBackGround">m_TButtonBackGround</a></td>
+</tr>
+</table>
+<table>
+<tr>
+	<th class="inherittitle">Inherited Variables from <a href="../uwindow/uwindow-overview.html">UWindow</a>.<a href="../uwindow/uwindowlookandfeel.html">UWindowLookAndFeel</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../uwindow/uwindowlookandfeel.html#Active">Active</a>, <a href="../uwindow/uwindowlookandfeel.html#ActiveS">ActiveS</a>, <a href="../uwindow/uwindowlookandfeel.html#BevelUpArea">BevelUpArea</a>, <a href="../uwindow/uwindowlookandfeel.html#BevelUpB">BevelUpB</a>, <a href="../uwindow/uwindowlookandfeel.html#BevelUpBL">BevelUpBL</a>, <a href="../uwindow/uwindowlookandfeel.html#BevelUpBR">BevelUpBR</a>, <a href="../uwindow/uwindowlookandfeel.html#BevelUpL">BevelUpL</a>, <a href="../uwindow/uwindowlookandfeel.html#BevelUpR">BevelUpR</a>, <a href="../uwindow/uwindowlookandfeel.html#BevelUpT">BevelUpT</a>, <a href="../uwindow/uwindowlookandfeel.html#BevelUpTL">BevelUpTL</a>, <a href="../uwindow/uwindowlookandfeel.html#BevelUpTR">BevelUpTR</a>, <a href="../uwindow/uwindowlookandfeel.html#ColumnHeadingHeight">ColumnHeadingHeight</a>, <a href="../uwindow/uwindowlookandfeel.html#ComboBtnDisabled">ComboBtnDisabled</a>, <a href="../uwindow/uwindowlookandfeel.html#ComboBtnDown">ComboBtnDown</a>, <a href="../uwindow/uwindowlookandfeel.html#ComboBtnOver">ComboBtnOver</a>, <a href="../uwindow/uwindowlookandfeel.html#ComboBtnUp">ComboBtnUp</a>, <a href="../uwindow/uwindowlookandfeel.html#EditBoxBevel">EditBoxBevel</a>, <a href="../uwindow/uwindowlookandfeel.html#EditBoxTextColor">EditBoxTextColor</a>, <a href="../uwindow/uwindowlookandfeel.html#FrameActiveTitleColor">FrameActiveTitleColor</a>, <a href="../uwindow/uwindowlookandfeel.html#FrameB">FrameB</a>, <a href="../uwindow/uwindowlookandfeel.html#FrameBL">FrameBL</a>, <a href="../uwindow/uwindowlookandfeel.html#FrameBR">FrameBR</a>, <a href="../uwindow/uwindowlookandfeel.html#FrameInactiveTitleColor">FrameInactiveTitleColor</a>, <a href="../uwindow/uwindowlookandfeel.html#FrameL">FrameL</a>, <a href="../uwindow/uwindowlookandfeel.html#FrameR">FrameR</a>, <a href="../uwindow/uwindowlookandfeel.html#FrameT">FrameT</a>, <a href="../uwindow/uwindowlookandfeel.html#FrameTitleX">FrameTitleX</a>, <a href="../uwindow/uwindowlookandfeel.html#FrameTitleY">FrameTitleY</a>, <a href="../uwindow/uwindowlookandfeel.html#FrameTL">FrameTL</a>, <a href="../uwindow/uwindowlookandfeel.html#FrameTR">FrameTR</a>, <a href="../uwindow/uwindowlookandfeel.html#HeadingActiveTitleColor">HeadingActiveTitleColor</a>, <a href="../uwindow/uwindowlookandfeel.html#HeadingInActiveTitleColor">HeadingInActiveTitleColor</a>, <a href="../uwindow/uwindowlookandfeel.html#HLine">HLine</a>, <a href="../uwindow/uwindowlookandfeel.html#Inactive">Inactive</a>, <a href="../uwindow/uwindowlookandfeel.html#InactiveS">InactiveS</a>, <a href="../uwindow/uwindowlookandfeel.html#Misc">Misc</a>, <a href="../uwindow/uwindowlookandfeel.html#MiscBevelArea[4]">MiscBevelArea[4]</a>, <a href="../uwindow/uwindowlookandfeel.html#MiscBevelBL[4]">MiscBevelBL[4]</a>, <a href="../uwindow/uwindowlookandfeel.html#MiscBevelBR[4]">MiscBevelBR[4]</a>, <a href="../uwindow/uwindowlookandfeel.html#MiscBevelB[4]">MiscBevelB[4]</a>, <a href="../uwindow/uwindowlookandfeel.html#MiscBevelL[4]">MiscBevelL[4]</a>, <a href="../uwindow/uwindowlookandfeel.html#MiscBevelR[4]">MiscBevelR[4]</a>, <a href="../uwindow/uwindowlookandfeel.html#MiscBevelTL[4]">MiscBevelTL[4]</a>, <a href="../uwindow/uwindowlookandfeel.html#MiscBevelTR[4]">MiscBevelTR[4]</a>, <a href="../uwindow/uwindowlookandfeel.html#MiscBevelT[4]">MiscBevelT[4]</a>, <a href="../uwindow/uwindowlookandfeel.html#Pulldown_HBorder">Pulldown_HBorder</a>, <a href="../uwindow/uwindowlookandfeel.html#Pulldown_ItemHeight">Pulldown_ItemHeight</a>, <a href="../uwindow/uwindowlookandfeel.html#Pulldown_TextBorder">Pulldown_TextBorder</a>, <a href="../uwindow/uwindowlookandfeel.html#Pulldown_VBorder">Pulldown_VBorder</a>, <a href="../uwindow/uwindowlookandfeel.html#Size_ComboButtonWidth">Size_ComboButtonWidth</a>, <a href="../uwindow/uwindowlookandfeel.html#Size_ComboHeight">Size_ComboHeight</a>, <a href="../uwindow/uwindowlookandfeel.html#Size_MinScrollbarHeight">Size_MinScrollbarHeight</a>, <a href="../uwindow/uwindowlookandfeel.html#Size_ScrollbarButtonHeight">Size_ScrollbarButtonHeight</a>, <a href="../uwindow/uwindowlookandfeel.html#Size_ScrollbarWidth">Size_ScrollbarWidth</a>, <a href="../uwindow/uwindowlookandfeel.html#Size_TabAreaHeight">Size_TabAreaHeight</a>, <a href="../uwindow/uwindowlookandfeel.html#Size_TabAreaOverhangHeight">Size_TabAreaOverhangHeight</a>, <a href="../uwindow/uwindowlookandfeel.html#Size_TabSpacing">Size_TabSpacing</a>, <a href="../uwindow/uwindowlookandfeel.html#Size_TabTextOffset">Size_TabTextOffset</a>, <a href="../uwindow/uwindowlookandfeel.html#Size_TabXOffset">Size_TabXOffset</a>, <a href="../uwindow/uwindowlookandfeel.html#TabBackground">TabBackground</a>, <a href="../uwindow/uwindowlookandfeel.html#TabSelectedL">TabSelectedL</a>, <a href="../uwindow/uwindowlookandfeel.html#TabSelectedM">TabSelectedM</a>, <a href="../uwindow/uwindowlookandfeel.html#TabSelectedR">TabSelectedR</a>, <a href="../uwindow/uwindowlookandfeel.html#TabUnselectedL">TabUnselectedL</a>, <a href="../uwindow/uwindowlookandfeel.html#TabUnselectedM">TabUnselectedM</a>, <a href="../uwindow/uwindowlookandfeel.html#TabUnselectedR">TabUnselectedR</a></td>
+</tr>
+</table>
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Enumerations Summary</th>
+</tr>
+<tr><td><a href="#_ENavBarButton" name="ENavBarButton" title="go to the details">ENavBarButton</a><br /><span class="small">NBB_Home,
+NBB_Option,
+NBB_Archive,
+NBB_TeleCom,
+NBB_Roster,
+NBB_Gear,
+NBB_Planning,
+NBB_Play,
+NBB_Load,
+NBB_Save</span></td></tr>
+<tr><td><a href="#_ERSBLButton" name="ERSBLButton" title="go to the details">ERSBLButton</a><br /><span class="small">ERSBL_BLActive,
+ERSBL_BLLeft,
+ERSBL_BLRight</span></td></tr>
+<tr><td><a href="#_eSignChoiceButton" name="eSignChoiceButton" title="go to the details">eSignChoiceButton</a><br /><span class="small">eSCB_Accept,
+eSCB_Cancel</span></td></tr>
+
+</table>
+
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Structures Summary</th>
+</tr>
+<tr><td><a href="#_STFrameColor" name="STFrameColor" title="go to the details">STFrameColor</a><br /><span class="small">TextColor, SelTextColor, DisableColor, TitleColor, TitleBack, ButtonBack, SelButtonBack, ButtonLine</span></td></tr>
+<tr><td><a href="#_STLapTopFrame" name="STLapTopFrame" title="go to the details">STLapTopFrame</a><br /><span class="small">TL, T, TR, L, R, BL, B, BR, L2, R2, L3, R3, L4, R4</span></td></tr>
+<tr><td><a href="#_STLapTopFramePlus" name="STLapTopFramePlus" title="go to the details">STLapTopFramePlus</a><br /><span class="small">T1, T2, T3, T4On, T4Off</span></td></tr>
+<tr><td><a href="#_STWindowFrame" name="STWindowFrame" title="go to the details">STWindowFrame</a><br /><span class="small">TL, T, TR, L, R, BL, B, BR</span></td></tr>
+
+</table>
+
+
+
+<br />
+
+
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Functions Summary</th>
+</tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_Button_SetupEnumSignChoice-" name="Button_SetupEnumSignChoice" title="go to the details">Button_SetupEnumSignChoice</a> (<a href="../uwindow/uwindowbutton.html">UWindowButton</a> W, INT eRegionId))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_Button_SetupMapList-" name="Button_SetupMapList" title="go to the details">Button_SetupMapList</a> (<a href="../uwindow/uwindowbutton.html">UWindowButton</a> W, bool _bInverseTex))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td><a href="../core/object.html#Region">Region</a>&nbsp;</td><td><a href="#_CenterIconInBox-" name="CenterIconInBox" title="go to the details">CenterIconInBox</a> (FLOAT _fX, FLOAT _fY, FLOAT _fWidth, FLOAT _fHeight, <a href="../core/object.html#Region">Region</a> _RIconRegion))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_ComboList_DrawBackground-" name="ComboList_DrawBackground" title="go to the details">ComboList_DrawBackground</a> (<a href="../uwindow/uwindowcombolist.html">UWindowComboList</a> W, <a href="../engine/canvas.html">Canvas</a> C))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_ComboList_DrawItem-" name="ComboList_DrawItem" title="go to the details">ComboList_DrawItem</a> (<a href="../uwindow/uwindowcombolist.html">UWindowComboList</a> Combo, <a href="../engine/canvas.html">Canvas</a> C, FLOAT X, FLOAT Y, FLOAT W, FLOAT H, string Text, bool bSelected))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_Combo_Draw-" name="Combo_Draw" title="go to the details">Combo_Draw</a> (<a href="../uwindow/uwindowcombocontrol.html">UWindowComboControl</a> W, <a href="../engine/canvas.html">Canvas</a> C))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_Combo_SetupButton-" name="Combo_SetupButton" title="go to the details">Combo_SetupButton</a> (<a href="../uwindow/uwindowcombobutton.html">UWindowComboButton</a> W))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_Combo_SetupSizes-" name="Combo_SetupSizes" title="go to the details">Combo_SetupSizes</a> (<a href="../uwindow/uwindowcombocontrol.html">UWindowComboControl</a> W, <a href="../engine/canvas.html">Canvas</a> C))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_DrawBGShading-" name="DrawBGShading" title="go to the details">DrawBGShading</a> (<a href="../uwindow/uwindowwindow.html">UWindowWindow</a> Window, <a href="../engine/canvas.html">Canvas</a> C, FLOAT X, FLOAT Y, FLOAT W, FLOAT H))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_DrawBox-" name="DrawBox" title="go to the details">DrawBox</a> (<a href="../uwindow/uwindowwindow.html">UWindowWindow</a> W, <a href="../engine/canvas.html">Canvas</a> C, float X, float Y, float Width, float Height))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_DrawButtonBorder-" name="DrawButtonBorder" title="go to the details">DrawButtonBorder</a> (<a href="../uwindow/uwindowwindow.html">UWindowWindow</a> W, <a href="../engine/canvas.html">Canvas</a> C, optional bool _bDefineBorderColor))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_DrawClientArea-" name="DrawClientArea" title="go to the details">DrawClientArea</a> (<a href="../uwindow/uwindowclientwindow.html">UWindowClientWindow</a> W, <a href="../engine/canvas.html">Canvas</a> C))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_DrawHSplitterB-" name="DrawHSplitterB" title="go to the details">DrawHSplitterB</a> (<a href="../r6window/r6windowhsplitter.html">R6WindowHSplitter</a> W, <a href="../engine/canvas.html">Canvas</a> C))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_DrawHSplitterT-" name="DrawHSplitterT" title="go to the details">DrawHSplitterT</a> (<a href="../r6window/r6windowhsplitter.html">R6WindowHSplitter</a> W, <a href="../engine/canvas.html">Canvas</a> C))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_DrawInGamePlayerStats-" name="DrawInGamePlayerStats" title="go to the details">DrawInGamePlayerStats</a> (<a href="../uwindow/uwindowwindow.html">UWindowWindow</a> W, <a href="../engine/canvas.html">Canvas</a> C, INT _iPlayerStats, FLOAT _fX, FLOAT _fY, FLOAT _fHeight, FLOAT _fWidth))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_DrawNavigationBar-" name="DrawNavigationBar" title="go to the details">DrawNavigationBar</a> (<a href="../r6menu/r6menunavigationbar.html">R6MenuNavigationBar</a> W, <a href="../engine/canvas.html">Canvas</a> C))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_DrawPopupButtonDisable-" name="DrawPopupButtonDisable" title="go to the details">DrawPopupButtonDisable</a> (<a href="../r6menu/r6menupopupstaydownbutton.html">R6MenuPopUpStayDownButton</a> W, <a href="../engine/canvas.html">Canvas</a> C))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_DrawPopupButtonDown-" name="DrawPopupButtonDown" title="go to the details">DrawPopupButtonDown</a> (<a href="../r6menu/r6menupopupstaydownbutton.html">R6MenuPopUpStayDownButton</a> W, <a href="../engine/canvas.html">Canvas</a> C))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_DrawPopupButtonOver-" name="DrawPopupButtonOver" title="go to the details">DrawPopupButtonOver</a> (<a href="../r6menu/r6menupopupstaydownbutton.html">R6MenuPopUpStayDownButton</a> W, <a href="../engine/canvas.html">Canvas</a> C))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_DrawPopupButtonUp-" name="DrawPopupButtonUp" title="go to the details">DrawPopupButtonUp</a> (<a href="../r6menu/r6menupopupstaydownbutton.html">R6MenuPopUpStayDownButton</a> W, <a href="../engine/canvas.html">Canvas</a> C))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_DrawPopUpFrameWindow-" name="DrawPopUpFrameWindow" title="go to the details">DrawPopUpFrameWindow</a> (<a href="../r6window/r6windowpopupbox.html">R6WindowPopUpBox</a> W, <a href="../engine/canvas.html">Canvas</a> C))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_DrawPopUpTextBackGround-" name="DrawPopUpTextBackGround" title="go to the details">DrawPopUpTextBackGround</a> (<a href="../uwindow/uwindowwindow.html">UWindowWindow</a> W, <a href="../engine/canvas.html">Canvas</a> C, FLOAT _fHeight ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_DrawSpecialButtonBorder-" name="DrawSpecialButtonBorder" title="go to the details">DrawSpecialButtonBorder</a> (<a href="../r6window/r6windowbutton.html">R6WindowButton</a> Button, <a href="../engine/canvas.html">Canvas</a> C, FLOAT X, FLOAT Y))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_DrawWinTop-" name="DrawWinTop" title="go to the details">DrawWinTop</a> (<a href="../r6window/r6windowhsplitter.html">R6WindowHSplitter</a> W, <a href="../engine/canvas.html">Canvas</a> C))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_Editbox_Draw-" name="Editbox_Draw" title="go to the details">Editbox_Draw</a> (<a href="../uwindow/uwindoweditcontrol.html">UWindowEditControl</a> W, <a href="../engine/canvas.html">Canvas</a> C))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_Editbox_SetupSizes-" name="Editbox_SetupSizes" title="go to the details">Editbox_SetupSizes</a> (<a href="../uwindow/uwindoweditcontrol.html">UWindowEditControl</a> W, <a href="../engine/canvas.html">Canvas</a> C))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_FW_DrawWindowFrame-" name="FW_DrawWindowFrame" title="go to the details">FW_DrawWindowFrame</a> (<a href="../uwindow/uwindowframedwindow.html">UWindowFramedWindow</a> W, <a href="../engine/canvas.html">Canvas</a> C))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td><a href="../core/object.html#Region">Region</a>&nbsp;</td><td><a href="#_FW_GetClientArea-" name="FW_GetClientArea" title="go to the details">FW_GetClientArea</a> (<a href="../uwindow/uwindowframedwindow.html">UWindowFramedWindow</a> W))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td><a href="../uwindow/uwindowbase.html#FrameHitTest">FrameHitTest</a>&nbsp;</td><td><a href="#_FW_HitTest-" name="FW_HitTest" title="go to the details">FW_HitTest</a> (<a href="../uwindow/uwindowframedwindow.html">UWindowFramedWindow</a> W, FLOAT X, FLOAT Y))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_FW_SetupFrameButtons-" name="FW_SetupFrameButtons" title="go to the details">FW_SetupFrameButtons</a> (<a href="../uwindow/uwindowframedwindow.html">UWindowFramedWindow</a> W, <a href="../engine/canvas.html">Canvas</a> C))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>FLOAT&nbsp;</td><td><a href="#_GetTextHeaderSize-" name="GetTextHeaderSize" title="go to the details">GetTextHeaderSize</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_List_DrawBackground-" name="List_DrawBackground" title="go to the details">List_DrawBackground</a> (<a href="../uwindow/uwindowlistcontrol.html">UWindowListControl</a> W, <a href="../engine/canvas.html">Canvas</a> C))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_Menu_DrawMenuBar-" name="Menu_DrawMenuBar" title="go to the details">Menu_DrawMenuBar</a> (<a href="../uwindow/uwindowmenubar.html">UWindowMenuBar</a> W, <a href="../engine/canvas.html">Canvas</a> C))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_Menu_DrawMenuBarItem-" name="Menu_DrawMenuBarItem" title="go to the details">Menu_DrawMenuBarItem</a> (<a href="../uwindow/uwindowmenubar.html">UWindowMenuBar</a> B, <a href="../uwindow/uwindowmenubaritem.html">UWindowMenuBarItem</a> I, FLOAT X, FLOAT Y, FLOAT W, FLOAT H, <a href="../engine/canvas.html">Canvas</a> C))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_Menu_DrawPulldownMenuBackground-" name="Menu_DrawPulldownMenuBackground" title="go to the details">Menu_DrawPulldownMenuBackground</a> (<a href="../uwindow/uwindowpulldownmenu.html">UWindowPulldownMenu</a> W, <a href="../engine/canvas.html">Canvas</a> C))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_Menu_DrawPulldownMenuItem-" name="Menu_DrawPulldownMenuItem" title="go to the details">Menu_DrawPulldownMenuItem</a> (<a href="../uwindow/uwindowpulldownmenu.html">UWindowPulldownMenu</a> M, <a href="../uwindow/uwindowpulldownmenuitem.html">UWindowPulldownMenuItem</a> Item, <a href="../engine/canvas.html">Canvas</a> C, FLOAT X, FLOAT Y, FLOAT W, FLOAT H, bool bSelected))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_R6FW_DrawWindowFrame-" name="R6FW_DrawWindowFrame" title="go to the details">R6FW_DrawWindowFrame</a> (<a href="../r6window/r6windowframedwindow.html">R6WindowFramedWindow</a> W, <a href="../engine/canvas.html">Canvas</a> C))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td><a href="../core/object.html#Region">Region</a>&nbsp;</td><td><a href="#_R6FW_GetClientArea-" name="R6FW_GetClientArea" title="go to the details">R6FW_GetClientArea</a> (<a href="../r6window/r6windowframedwindow.html">R6WindowFramedWindow</a> W))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td><a href="../uwindow/uwindowbase.html#FrameHitTest">FrameHitTest</a>&nbsp;</td><td><a href="#_R6FW_HitTest-" name="R6FW_HitTest" title="go to the details">R6FW_HitTest</a> (<a href="../r6window/r6windowframedwindow.html">R6WindowFramedWindow</a> W, FLOAT X, FLOAT Y))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_R6FW_SetupFrameButtons-" name="R6FW_SetupFrameButtons" title="go to the details">R6FW_SetupFrameButtons</a> (<a href="../r6window/r6windowframedwindow.html">R6WindowFramedWindow</a> W, <a href="../engine/canvas.html">Canvas</a> C))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td><a href="../engine/texture.html">Texture</a>&nbsp;</td><td><a href="#_R6GetTexture-" name="R6GetTexture" title="go to the details">R6GetTexture</a> (<a href="../r6window/r6windowframedwindow.html">R6WindowFramedWindow</a> W))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_R6List_DrawBackground-" name="R6List_DrawBackground" title="go to the details">R6List_DrawBackground</a> (<a href="../r6window/r6windowlistbox.html">R6WindowListBox</a> W, <a href="../engine/canvas.html">Canvas</a> C))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_SB_HDraw-" name="SB_HDraw" title="go to the details">SB_HDraw</a> (<a href="../uwindow/uwindowhscrollbar.html">UWindowHScrollbar</a> W, <a href="../engine/canvas.html">Canvas</a> C))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_SB_SetupDownButton-" name="SB_SetupDownButton" title="go to the details">SB_SetupDownButton</a> (<a href="../uwindow/uwindowsbdownbutton.html">UWindowSBDownButton</a> W))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_SB_SetupLeftButton-" name="SB_SetupLeftButton" title="go to the details">SB_SetupLeftButton</a> (<a href="../uwindow/uwindowsbleftbutton.html">UWindowSBLeftButton</a> W))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_SB_SetupRightButton-" name="SB_SetupRightButton" title="go to the details">SB_SetupRightButton</a> (<a href="../uwindow/uwindowsbrightbutton.html">UWindowSBRightButton</a> W))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_SB_SetupUpButton-" name="SB_SetupUpButton" title="go to the details">SB_SetupUpButton</a> (<a href="../uwindow/uwindowsbupbutton.html">UWindowSBUpButton</a> W))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_SB_VDraw-" name="SB_VDraw" title="go to the details">SB_VDraw</a> (<a href="../uwindow/uwindowvscrollbar.html">UWindowVScrollbar</a> W, <a href="../engine/canvas.html">Canvas</a> C))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_Setup-" name="Setup" title="go to the details">Setup</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_Tab_DrawTab-" name="Tab_DrawTab" title="go to the details">Tab_DrawTab</a> (<a href="../uwindow/uwindowtabcontroltabarea.html">UWindowTabControlTabArea</a> Tab, <a href="../engine/canvas.html">Canvas</a> C, bool bActiveTab, bool bLeftmostTab, FLOAT X, FLOAT Y, FLOAT W, FLOAT H, string Text, bool bShowText))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_Tab_DrawTabPageArea-" name="Tab_DrawTabPageArea" title="go to the details">Tab_DrawTabPageArea</a> (<a href="../uwindow/uwindowpagecontrol.html">UWindowPageControl</a> W, <a href="../engine/canvas.html">Canvas</a> C, <a href="../uwindow/uwindowpagewindow.html">UWindowPageWindow</a> P))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_Tab_GetTabSize-" name="Tab_GetTabSize" title="go to the details">Tab_GetTabSize</a> (<a href="../uwindow/uwindowtabcontroltabarea.html">UWindowTabControlTabArea</a> Tab, <a href="../engine/canvas.html">Canvas</a> C, string Text, out FLOAT W, out FLOAT H))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_Tab_SetTabPageSize-" name="Tab_SetTabPageSize" title="go to the details">Tab_SetTabPageSize</a> (<a href="../uwindow/uwindowpagecontrol.html">UWindowPageControl</a> W, <a href="../uwindow/uwindowpagewindow.html">UWindowPageWindow</a> P))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_Tab_SetupLeftButton-" name="Tab_SetupLeftButton" title="go to the details">Tab_SetupLeftButton</a> (<a href="../uwindow/uwindowtabcontrolleftbutton.html">UWindowTabControlLeftButton</a> W))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_Tab_SetupRightButton-" name="Tab_SetupRightButton" title="go to the details">Tab_SetupRightButton</a> (<a href="../uwindow/uwindowtabcontrolrightbutton.html">UWindowTabControlRightButton</a> W))<br /><span class="function_state"></span></td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Functions from <a href="../r6window/r6window-overview.html">R6Window</a>.<a href="../r6window/r6windowlookandfeel.html">R6WindowLookAndFeel</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../r6window/r6windowlookandfeel.html#Button_SetupEnumSignChoice">Button_SetupEnumSignChoice</a>, <a href="../r6window/r6windowlookandfeel.html#DrawBGShading">DrawBGShading</a>, <a href="../r6window/r6windowlookandfeel.html#DrawBox">DrawBox</a>, <a href="../r6window/r6windowlookandfeel.html#DrawButtonBorder">DrawButtonBorder</a>, <a href="../r6window/r6windowlookandfeel.html#DrawHSplitterB">DrawHSplitterB</a>, <a href="../r6window/r6windowlookandfeel.html#DrawHSplitterT">DrawHSplitterT</a>, <a href="../r6window/r6windowlookandfeel.html#DrawInGamePlayerStats">DrawInGamePlayerStats</a>, <a href="../r6window/r6windowlookandfeel.html#DrawMPDedicatedIcon">DrawMPDedicatedIcon</a>, <a href="../r6window/r6windowlookandfeel.html#DrawMPFavoriteIcon">DrawMPFavoriteIcon</a>, <a href="../r6window/r6windowlookandfeel.html#DrawMPLockedIcon">DrawMPLockedIcon</a>, <a href="../r6window/r6windowlookandfeel.html#DrawMPSpectatorIcon">DrawMPSpectatorIcon</a>, <a href="../r6window/r6windowlookandfeel.html#DrawPopUpFrameWindow">DrawPopUpFrameWindow</a>, <a href="../r6window/r6windowlookandfeel.html#DrawPopUpTextBackGround">DrawPopUpTextBackGround</a>, <a href="../r6window/r6windowlookandfeel.html#DrawSpecialButtonBorder">DrawSpecialButtonBorder</a>, <a href="../r6window/r6windowlookandfeel.html#DrawWinTop">DrawWinTop</a>, <a href="../r6window/r6windowlookandfeel.html#List_DrawBackground">List_DrawBackground</a>, <a href="../r6window/r6windowlookandfeel.html#R6FW_DrawWindowFrame">R6FW_DrawWindowFrame</a>, <a href="../r6window/r6windowlookandfeel.html#R6FW_GetClientArea">R6FW_GetClientArea</a>, <a href="../r6window/r6windowlookandfeel.html#R6FW_HitTest">R6FW_HitTest</a>, <a href="../r6window/r6windowlookandfeel.html#R6FW_SetupFrameButtons">R6FW_SetupFrameButtons</a>, <a href="../r6window/r6windowlookandfeel.html#R6GetTexture">R6GetTexture</a>, <a href="../r6window/r6windowlookandfeel.html#R6List_DrawBackground">R6List_DrawBackground</a></td>
+</tr>
+</table>
+<table>
+<tr>
+	<th class="inherittitle">Inherited Functions from <a href="../uwindow/uwindow-overview.html">UWindow</a>.<a href="../uwindow/uwindowlookandfeel.html">UWindowLookAndFeel</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../uwindow/uwindowlookandfeel.html#Button_DrawSmallButton">Button_DrawSmallButton</a>, <a href="../uwindow/uwindowlookandfeel.html#ComboList_DrawBackground">ComboList_DrawBackground</a>, <a href="../uwindow/uwindowlookandfeel.html#ComboList_DrawItem">ComboList_DrawItem</a>, <a href="../uwindow/uwindowlookandfeel.html#Combo_Draw">Combo_Draw</a>, <a href="../uwindow/uwindowlookandfeel.html#Combo_SetupButton">Combo_SetupButton</a>, <a href="../uwindow/uwindowlookandfeel.html#Combo_SetupLeftButton">Combo_SetupLeftButton</a>, <a href="../uwindow/uwindowlookandfeel.html#Combo_SetupRightButton">Combo_SetupRightButton</a>, <a href="../uwindow/uwindowlookandfeel.html#Combo_SetupSizes">Combo_SetupSizes</a>, <a href="../uwindow/uwindowlookandfeel.html#ControlFrame_Draw">ControlFrame_Draw</a>, <a href="../uwindow/uwindowlookandfeel.html#ControlFrame_SetupSizes">ControlFrame_SetupSizes</a>, <a href="../uwindow/uwindowlookandfeel.html#DrawClientArea">DrawClientArea</a>, <a href="../uwindow/uwindowlookandfeel.html#DrawSimpleBorder">DrawSimpleBorder</a>, <a href="../uwindow/uwindowlookandfeel.html#Editbox_Draw">Editbox_Draw</a>, <a href="../uwindow/uwindowlookandfeel.html#Editbox_SetupSizes">Editbox_SetupSizes</a>, <a href="../uwindow/uwindowlookandfeel.html#FW_DrawWindowFrame">FW_DrawWindowFrame</a>, <a href="../uwindow/uwindowlookandfeel.html#FW_GetClientArea">FW_GetClientArea</a>, <a href="../uwindow/uwindowlookandfeel.html#FW_HitTest">FW_HitTest</a>, <a href="../uwindow/uwindowlookandfeel.html#FW_SetupFrameButtons">FW_SetupFrameButtons</a>, <a href="../uwindow/uwindowlookandfeel.html#GetTexture">GetTexture</a>, <a href="../uwindow/uwindowlookandfeel.html#Menu_DrawMenuBar">Menu_DrawMenuBar</a>, <a href="../uwindow/uwindowlookandfeel.html#Menu_DrawMenuBarItem">Menu_DrawMenuBarItem</a>, <a href="../uwindow/uwindowlookandfeel.html#Menu_DrawPulldownMenuBackground">Menu_DrawPulldownMenuBackground</a>, <a href="../uwindow/uwindowlookandfeel.html#Menu_DrawPulldownMenuItem">Menu_DrawPulldownMenuItem</a>, <a href="../uwindow/uwindowlookandfeel.html#PlayMenuSound">PlayMenuSound</a>, <a href="../uwindow/uwindowlookandfeel.html#SB_HDraw">SB_HDraw</a>, <a href="../uwindow/uwindowlookandfeel.html#SB_SetupDownButton">SB_SetupDownButton</a>, <a href="../uwindow/uwindowlookandfeel.html#SB_SetupLeftButton">SB_SetupLeftButton</a>, <a href="../uwindow/uwindowlookandfeel.html#SB_SetupRightButton">SB_SetupRightButton</a>, <a href="../uwindow/uwindowlookandfeel.html#SB_SetupUpButton">SB_SetupUpButton</a>, <a href="../uwindow/uwindowlookandfeel.html#SB_VDraw">SB_VDraw</a>, <a href="../uwindow/uwindowlookandfeel.html#Setup">Setup</a>, <a href="../uwindow/uwindowlookandfeel.html#Tab_DrawTab">Tab_DrawTab</a>, <a href="../uwindow/uwindowlookandfeel.html#Tab_DrawTabPageArea">Tab_DrawTabPageArea</a>, <a href="../uwindow/uwindowlookandfeel.html#Tab_GetTabSize">Tab_GetTabSize</a>, <a href="../uwindow/uwindowlookandfeel.html#Tab_SetTabPageSize">Tab_SetTabPageSize</a>, <a href="../uwindow/uwindowlookandfeel.html#Tab_SetupLeftButton">Tab_SetupLeftButton</a>, <a href="../uwindow/uwindowlookandfeel.html#Tab_SetupRightButton">Tab_SetupRightButton</a></td>
+</tr>
+</table>
+
+
+<br />
+
+
+
+<hr />
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Constants Detail</th>
+</tr>
+</table>
+
+<h4><a name="_BRSIZEBORDER" class="hidden"></a>BRSIZEBORDER <a href="../Source_r6menu/r6menurslookandfeel.html#147" class="small">Source code</a></h4>
+<div class="declaration">const BRSIZEBORDER = <span class="source_int">15</span>;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_RadioButtonHeight" class="hidden"></a>RadioButtonHeight <a href="../Source_r6menu/r6menurslookandfeel.html#149" class="small">Source code</a></h4>
+<div class="declaration">const RadioButtonHeight = <span class="source_int">17</span>;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_RadioButtonWidth" class="hidden"></a>RadioButtonWidth <a href="../Source_r6menu/r6menurslookandfeel.html#150" class="small">Source code</a></h4>
+<div class="declaration">const RadioButtonWidth = <span class="source_int">16</span>;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_SIZEBORDER" class="hidden"></a>SIZEBORDER <a href="../Source_r6menu/r6menurslookandfeel.html#146" class="small">Source code</a></h4>
+<div class="declaration">const SIZEBORDER = <span class="source_int">3</span>;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th class="title">Variables Detail</th>
+</tr>
+</table>
+
+<h4><a name="_m_BLTitleC" class="hidden"></a>m_BLTitleC <a href="../Source_r6menu/r6menurslookandfeel.html#99" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../uwindow/uwindowbase.html#RegionButton" class="source">RegionButton</a></span> m_BLTitleC;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_BLTitleL" class="hidden"></a>m_BLTitleL <a href="../Source_r6menu/r6menurslookandfeel.html#98" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../uwindow/uwindowbase.html#RegionButton" class="source">RegionButton</a></span> m_BLTitleL;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_BLTitleR" class="hidden"></a>m_BLTitleR <a href="../Source_r6menu/r6menurslookandfeel.html#100" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../uwindow/uwindowbase.html#RegionButton" class="source">RegionButton</a></span> m_BLTitleR;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_fComboImageX" class="hidden"></a>m_fComboImageX <a href="../Source_r6menu/r6menurslookandfeel.html#162" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">INT</span> m_fComboImageX;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_fComboImageY" class="hidden"></a>m_fComboImageY <a href="../Source_r6menu/r6menurslookandfeel.html#162" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">INT</span> m_fComboImageY;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_fCurrentPct" class="hidden"></a>m_fCurrentPct <a href="../Source_r6menu/r6menurslookandfeel.html#124" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">float</span> m_fCurrentPct;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_fHSBButtonImageX" class="hidden"></a>m_fHSBButtonImageX <a href="../Source_r6menu/r6menurslookandfeel.html#154" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">INT</span> m_fHSBButtonImageX;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_fHSBButtonImageY" class="hidden"></a>m_fHSBButtonImageY <a href="../Source_r6menu/r6menurslookandfeel.html#155" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">INT</span> m_fHSBButtonImageY;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_FrameSB" class="hidden"></a>m_FrameSB <a href="../Source_r6menu/r6menurslookandfeel.html#93" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../core/object.html#Region" class="source">Region</a></span> m_FrameSB;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_FrameSBL" class="hidden"></a>m_FrameSBL <a href="../Source_r6menu/r6menurslookandfeel.html#92" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../core/object.html#Region" class="source">Region</a></span> m_FrameSBL;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_FrameSBR" class="hidden"></a>m_FrameSBR <a href="../Source_r6menu/r6menurslookandfeel.html#94" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../core/object.html#Region" class="source">Region</a></span> m_FrameSBR;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_fScrollRate" class="hidden"></a>m_fScrollRate <a href="../Source_r6menu/r6menurslookandfeel.html#124" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">float</span> m_fScrollRate;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_fTextHeaderHeight" class="hidden"></a>m_fTextHeaderHeight <a href="../Source_r6menu/r6menurslookandfeel.html#138" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">FLOAT</span> m_fTextHeaderHeight;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_fVSBButtonImageX" class="hidden"></a>m_fVSBButtonImageX <a href="../Source_r6menu/r6menurslookandfeel.html#154" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">INT</span> m_fVSBButtonImageX;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_fVSBButtonImageY" class="hidden"></a>m_fVSBButtonImageY <a href="../Source_r6menu/r6menurslookandfeel.html#155" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">INT</span> m_fVSBButtonImageY;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_iMultiplyer" class="hidden"></a>m_iMultiplyer <a href="../Source_r6menu/r6menurslookandfeel.html#125" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">int</span> m_iMultiplyer;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_NavBarBack[12]" class="hidden"></a>m_NavBarBack[12] <a href="../Source_r6menu/r6menurslookandfeel.html#120" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../core/object.html#Region" class="source">Region</a></span> m_NavBarBack[<span class="source_int">12</span>];</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_NavBarTex" class="hidden"></a>m_NavBarTex <a href="../Source_r6menu/r6menurslookandfeel.html#108" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../engine/texture.html" class="source">Texture</a></span> m_NavBarTex;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_PopupArrowDown" class="hidden"></a>m_PopupArrowDown <a href="../Source_r6menu/r6menurslookandfeel.html#112" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../core/object.html#Region" class="source">Region</a></span> m_PopupArrowDown;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_PopupArrowUp" class="hidden"></a>m_PopupArrowUp <a href="../Source_r6menu/r6menurslookandfeel.html#111" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../core/object.html#Region" class="source">Region</a></span> m_PopupArrowUp;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_RArrow[2]" class="hidden"></a>m_RArrow[2] <a href="../Source_r6menu/r6menurslookandfeel.html#142" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../uwindow/uwindowbase.html#RegionButton" class="source">RegionButton</a></span> m_RArrow[<span class="source_int">2</span>];</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_RBAcceptCancel[2]" class="hidden"></a>m_RBAcceptCancel[2] <a href="../Source_r6menu/r6menurslookandfeel.html#133" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../uwindow/uwindowbase.html#RegionButton" class="source">RegionButton</a></span> m_RBAcceptCancel[<span class="source_int">2</span>];</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_RSquareBgLeft" class="hidden"></a>m_RSquareBgLeft <a href="../Source_r6menu/r6menurslookandfeel.html#167" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../core/object.html#Region" class="source">Region</a></span> m_RSquareBgLeft;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_RSquareBgMid" class="hidden"></a>m_RSquareBgMid <a href="../Source_r6menu/r6menurslookandfeel.html#168" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../core/object.html#Region" class="source">Region</a></span> m_RSquareBgMid;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_RSquareBgRight" class="hidden"></a>m_RSquareBgRight <a href="../Source_r6menu/r6menurslookandfeel.html#169" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../core/object.html#Region" class="source">Region</a></span> m_RSquareBgRight;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_SBDownGear" class="hidden"></a>m_SBDownGear <a href="../Source_r6menu/r6menurslookandfeel.html#158" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../core/object.html#Region" class="source">Region</a></span> m_SBDownGear;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_SBScrollerActive" class="hidden"></a>m_SBScrollerActive <a href="../Source_r6menu/r6menurslookandfeel.html#156" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../core/object.html#Region" class="source">Region</a></span> m_SBScrollerActive;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_SBUpGear" class="hidden"></a>m_SBUpGear <a href="../Source_r6menu/r6menurslookandfeel.html#157" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../core/object.html#Region" class="source">Region</a></span> m_SBUpGear;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_stLapTopFrame" class="hidden"></a>m_stLapTopFrame <a href="../Source_r6menu/r6menurslookandfeel.html#116" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../r6menu/r6menurslookandfeel.html#STLapTopFrame" class="source">STLapTopFrame</a></span> m_stLapTopFrame;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_stLapTopFramePlus" class="hidden"></a>m_stLapTopFramePlus <a href="../Source_r6menu/r6menurslookandfeel.html#117" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../r6menu/r6menurslookandfeel.html#STLapTopFramePlus" class="source">STLapTopFramePlus</a></span> m_stLapTopFramePlus;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_TIcon" class="hidden"></a>m_TIcon <a href="../Source_r6menu/r6menurslookandfeel.html#137" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../engine/texture.html" class="source">Texture</a></span> m_TIcon;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_topLeftCornerR" class="hidden"></a>m_topLeftCornerR <a href="../Source_r6menu/r6menurslookandfeel.html#129" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../core/object.html#Region" class="source">Region</a></span> m_topLeftCornerR;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_TSquareBg" class="hidden"></a>m_TSquareBg <a href="../Source_r6menu/r6menurslookandfeel.html#170" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../engine/texture.html" class="source">Texture</a></span> m_TSquareBg;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th class="title">Enumerations Detail</th>
+</tr>
+</table>
+
+<h4><a name="_ENavBarButton" class="hidden"></a>ENavBarButton <a href="../Source_r6menu/r6menurslookandfeel.html#18" class="small">Source code</a></h4>
+<div class="declaration">enum <span class="source_type"><a href="../r6menu/r6menurslookandfeel.html#ENavBarButton" class="source">ENavBarButton</a></span><br />
+{<blockquote>NBB_Home,
+NBB_Option,
+NBB_Archive,
+NBB_TeleCom,
+NBB_Roster,
+NBB_Gear,
+NBB_Planning,
+NBB_Play,
+NBB_Load,
+NBB_Save</blockquote>};
+</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ERSBLButton" class="hidden"></a>ERSBLButton <a href="../Source_r6menu/r6menurslookandfeel.html#11" class="small">Source code</a></h4>
+<div class="declaration">enum <span class="source_type"><a href="../r6menu/r6menurslookandfeel.html#ERSBLButton" class="source">ERSBLButton</a></span><br />
+{<blockquote>ERSBL_BLActive,
+ERSBL_BLLeft,
+ERSBL_BLRight</blockquote>};
+</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_eSignChoiceButton" class="hidden"></a>eSignChoiceButton <a href="../Source_r6menu/r6menurslookandfeel.html#33" class="small">Source code</a></h4>
+<div class="declaration">enum <span class="source_type"><a href="../r6menu/r6menurslookandfeel.html#eSignChoiceButton" class="source">eSignChoiceButton</a></span><br />
+{<blockquote>eSCB_Accept,
+eSCB_Cancel</blockquote>};
+</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th class="title">Structures Detail</th>
+</tr>
+</table>
+
+<h4><a name="_STFrameColor" class="hidden"></a>STFrameColor <a href="../Source_r6menu/r6menurslookandfeel.html#52" class="small">Source code</a></h4>
+<div class="declaration">struct <span class="source_type"><a href="../r6menu/r6menurslookandfeel.html#STFrameColor" class="source">STFrameColor</a></span><br />
+{<blockquote>var <span class="source_type"><a href="../core/object.html#Color" class="source">Color</a></span> ButtonBack;<br />
+var <span class="source_type"><a href="../core/object.html#Color" class="source">Color</a></span> ButtonLine;<br />
+var <span class="source_type"><a href="../core/object.html#Color" class="source">Color</a></span> DisableColor;<br />
+var <span class="source_type"><a href="../core/object.html#Color" class="source">Color</a></span> SelButtonBack;<br />
+var <span class="source_type"><a href="../core/object.html#Color" class="source">Color</a></span> SelTextColor;<br />
+var <span class="source_type"><a href="../core/object.html#Color" class="source">Color</a></span> TextColor;<br />
+var <span class="source_type"><a href="../core/object.html#Color" class="source">Color</a></span> TitleBack;<br />
+var <span class="source_type"><a href="../core/object.html#Color" class="source">Color</a></span> TitleColor;<br />
+</blockquote>};
+</div>
+<blockquote class="comment">
+
+<br />
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_STLapTopFrame" class="hidden"></a>STLapTopFrame <a href="../Source_r6menu/r6menurslookandfeel.html#64" class="small">Source code</a></h4>
+<div class="declaration">struct <span class="source_type"><a href="../r6menu/r6menurslookandfeel.html#STLapTopFrame" class="source">STLapTopFrame</a></span><br />
+{<blockquote>var <span class="source_type"><a href="../core/object.html#Region" class="source">Region</a></span> <span class="source_type">B</span>;<br />
+var <span class="source_type"><a href="../core/object.html#Region" class="source">Region</a></span> BL;<br />
+var <span class="source_type"><a href="../core/object.html#Region" class="source">Region</a></span> BR;<br />
+var <span class="source_type"><a href="../core/object.html#Region" class="source">Region</a></span> L;<br />
+var <span class="source_type"><a href="../core/object.html#Region" class="source">Region</a></span> L2;<br />
+var <span class="source_type"><a href="../core/object.html#Region" class="source">Region</a></span> L3;<br />
+var <span class="source_type"><a href="../core/object.html#Region" class="source">Region</a></span> L4;<br />
+var <span class="source_type"><a href="../core/object.html#Region" class="source">Region</a></span> <span class="source_type">R</span>;<br />
+var <span class="source_type"><a href="../core/object.html#Region" class="source">Region</a></span> R2;<br />
+var <span class="source_type"><a href="../core/object.html#Region" class="source">Region</a></span> R3;<br />
+var <span class="source_type"><a href="../core/object.html#Region" class="source">Region</a></span> R4;<br />
+var <span class="source_type"><a href="../core/object.html#Region" class="source">Region</a></span> <span class="source_type">T</span>;<br />
+var <span class="source_type"><a href="../core/object.html#Region" class="source">Region</a></span> TL;<br />
+var <span class="source_type"><a href="../core/object.html#Region" class="source">Region</a></span> TR;<br />
+</blockquote>};
+</div>
+<blockquote class="comment">
+
+<br />
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_STLapTopFramePlus" class="hidden"></a>STLapTopFramePlus <a href="../Source_r6menu/r6menurslookandfeel.html#83" class="small">Source code</a></h4>
+<div class="declaration">struct <span class="source_type"><a href="../r6menu/r6menurslookandfeel.html#STLapTopFramePlus" class="source">STLapTopFramePlus</a></span><br />
+{<blockquote>var <span class="source_type"><a href="../core/object.html#Region" class="source">Region</a></span> T1;<br />
+var <span class="source_type"><a href="../core/object.html#Region" class="source">Region</a></span> T2;<br />
+var <span class="source_type"><a href="../core/object.html#Region" class="source">Region</a></span> T3;<br />
+var <span class="source_type"><a href="../core/object.html#Region" class="source">Region</a></span> T4Off;<br />
+var <span class="source_type"><a href="../core/object.html#Region" class="source">Region</a></span> T4On;<br />
+</blockquote>};
+</div>
+<blockquote class="comment">
+
+<br />
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_STWindowFrame" class="hidden"></a>STWindowFrame <a href="../Source_r6menu/r6menurslookandfeel.html#40" class="small">Source code</a></h4>
+<div class="declaration">struct <span class="source_type"><a href="../r6menu/r6menurslookandfeel.html#STWindowFrame" class="source">STWindowFrame</a></span><br />
+{<blockquote>var <span class="source_type"><a href="../core/object.html#Region" class="source">Region</a></span> <span class="source_type">B</span>;<br />
+var <span class="source_type"><a href="../core/object.html#Region" class="source">Region</a></span> BL;<br />
+var <span class="source_type"><a href="../core/object.html#Region" class="source">Region</a></span> BR;<br />
+var <span class="source_type"><a href="../core/object.html#Region" class="source">Region</a></span> L;<br />
+var <span class="source_type"><a href="../core/object.html#Region" class="source">Region</a></span> <span class="source_type">R</span>;<br />
+var <span class="source_type"><a href="../core/object.html#Region" class="source">Region</a></span> <span class="source_type">T</span>;<br />
+var <span class="source_type"><a href="../core/object.html#Region" class="source">Region</a></span> TL;<br />
+var <span class="source_type"><a href="../core/object.html#Region" class="source">Region</a></span> TR;<br />
+</blockquote>};
+</div>
+<blockquote class="comment">
+
+<br />
+
+</blockquote>
+<hr class="small" />
+
+
+<br />
+
+
+
+<table class="title">
+<tr>
+	<th class="title">Functions Detail</th>
+</tr>
+</table>
+
+<h4><a name="_Button_SetupEnumSignChoice-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> Button_SetupEnumSignChoice <span class="function_state"></span> <a href="../Source_r6menu/r6menurslookandfeel.html#187" class="small">Source code</a></h4>
+<div class="declaration"> function  Button_SetupEnumSignChoice ( <span class="source_type"><a href="../uwindow/uwindowbutton.html" class="source">UWindowButton</a></span> W, <span class="source_type">INT</span> eRegionId) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_Button_SetupMapList-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> Button_SetupMapList <span class="function_state"></span> <a href="../Source_r6menu/r6menurslookandfeel.html#202" class="small">Source code</a></h4>
+<div class="declaration"> function  Button_SetupMapList ( <span class="source_type"><a href="../uwindow/uwindowbutton.html" class="source">UWindowButton</a></span> W, <span class="source_type">bool</span> _bInverseTex) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_CenterIconInBox-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> CenterIconInBox <span class="function_state"></span> <a href="../Source_r6menu/r6menurslookandfeel.html#1718" class="small">Source code</a></h4>
+<div class="declaration"> function <span class="source_type"><a href="../core/object.html#Region" class="source">Region</a></span> CenterIconInBox ( <span class="source_type">FLOAT</span> _fX, <span class="source_type">FLOAT</span> _fY, <span class="source_type">FLOAT</span> _fWidth, <span class="source_type">FLOAT</span> <span class="source_type">_fHeight</span>, <span class="source_type"><a href="../core/object.html#Region" class="source">Region</a></span> _RIconRegion) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ComboList_DrawBackground-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> ComboList_DrawBackground <span class="function_state"></span> <a href="../Source_r6menu/r6menurslookandfeel.html#892" class="small">Source code</a></h4>
+<div class="declaration"> function  ComboList_DrawBackground ( <span class="source_type"><a href="../uwindow/uwindowcombolist.html" class="source">UWindowComboList</a></span> W, <span class="source_type"><a href="../engine/canvas.html" class="source">Canvas</a></span> <span class="source_type">C</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ComboList_DrawItem-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> ComboList_DrawItem <span class="function_state"></span> <a href="../Source_r6menu/r6menurslookandfeel.html#900" class="small">Source code</a></h4>
+<div class="declaration"> function  ComboList_DrawItem ( <span class="source_type"><a href="../uwindow/uwindowcombolist.html" class="source">UWindowComboList</a></span> Combo, <span class="source_type"><a href="../engine/canvas.html" class="source">Canvas</a></span> <span class="source_type">C</span>, <span class="source_type">FLOAT</span> X, <span class="source_type">FLOAT</span> Y, <span class="source_type">FLOAT</span> W, <span class="source_type">FLOAT</span> <span class="source_type">H</span>, <span class="source_type">string</span> <span class="source_type">Text</span>, <span class="source_type">bool</span> <span class="source_type">bSelected</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_Combo_Draw-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> Combo_Draw <span class="function_state"></span> <a href="../Source_r6menu/r6menurslookandfeel.html#767" class="small">Source code</a></h4>
+<div class="declaration"> function  Combo_Draw ( <span class="source_type"><a href="../uwindow/uwindowcombocontrol.html" class="source">UWindowComboControl</a></span> W, <span class="source_type"><a href="../engine/canvas.html" class="source">Canvas</a></span> <span class="source_type">C</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_Combo_SetupButton-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> Combo_SetupButton <span class="function_state"></span> <a href="../Source_r6menu/r6menurslookandfeel.html#928" class="small">Source code</a></h4>
+<div class="declaration"> function  Combo_SetupButton ( <span class="source_type"><a href="../uwindow/uwindowcombobutton.html" class="source">UWindowComboButton</a></span> W) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_Combo_SetupSizes-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> Combo_SetupSizes <span class="function_state"></span> <a href="../Source_r6menu/r6menurslookandfeel.html#708" class="small">Source code</a></h4>
+<div class="declaration"> function  Combo_SetupSizes ( <span class="source_type"><a href="../uwindow/uwindowcombocontrol.html" class="source">UWindowComboControl</a></span> W, <span class="source_type"><a href="../engine/canvas.html" class="source">Canvas</a></span> <span class="source_type">C</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_DrawBGShading-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> DrawBGShading <span class="function_state"></span> <a href="../Source_r6menu/r6menurslookandfeel.html#1624" class="small">Source code</a></h4>
+<div class="declaration"> function  DrawBGShading ( <span class="source_type"><a href="../uwindow/uwindowwindow.html" class="source">UWindowWindow</a></span> Window, <span class="source_type"><a href="../engine/canvas.html" class="source">Canvas</a></span> <span class="source_type">C</span>, <span class="source_type">FLOAT</span> X, <span class="source_type">FLOAT</span> Y, <span class="source_type">FLOAT</span> W, <span class="source_type">FLOAT</span> <span class="source_type">H</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_DrawBox-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> DrawBox <span class="function_state"></span> <a href="../Source_r6menu/r6menurslookandfeel.html#1604" class="small">Source code</a></h4>
+<div class="declaration"> function  DrawBox ( <span class="source_type"><a href="../uwindow/uwindowwindow.html" class="source">UWindowWindow</a></span> W, <span class="source_type"><a href="../engine/canvas.html" class="source">Canvas</a></span> <span class="source_type">C</span>, <span class="source_type">float</span> X, <span class="source_type">float</span> Y, <span class="source_type">float</span> Width, <span class="source_type">float</span> Height) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_DrawButtonBorder-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> DrawButtonBorder <span class="function_state"></span> <a href="../Source_r6menu/r6menurslookandfeel.html#1556" class="small">Source code</a></h4>
+<div class="declaration"> function  DrawButtonBorder ( <span class="source_type"><a href="../uwindow/uwindowwindow.html" class="source">UWindowWindow</a></span> W, <span class="source_type"><a href="../engine/canvas.html" class="source">Canvas</a></span> <span class="source_type">C</span>, optional <span class="source_type">bool</span> _bDefineBorderColor) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_DrawClientArea-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> DrawClientArea <span class="function_state"></span> <a href="../Source_r6menu/r6menurslookandfeel.html#701" class="small">Source code</a></h4>
+<div class="declaration"> function  DrawClientArea ( <span class="source_type"><a href="../uwindow/uwindowclientwindow.html" class="source">UWindowClientWindow</a></span> W, <span class="source_type"><a href="../engine/canvas.html" class="source">Canvas</a></span> <span class="source_type">C</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_DrawHSplitterB-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> DrawHSplitterB <span class="function_state"></span> <a href="../Source_r6menu/r6menurslookandfeel.html#1391" class="small">Source code</a></h4>
+<div class="declaration"> function  DrawHSplitterB ( <span class="source_type"><a href="../r6window/r6windowhsplitter.html" class="source">R6WindowHSplitter</a></span> W, <span class="source_type"><a href="../engine/canvas.html" class="source">Canvas</a></span> <span class="source_type">C</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_DrawHSplitterT-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> DrawHSplitterT <span class="function_state"></span> <a href="../Source_r6menu/r6menurslookandfeel.html#1384" class="small">Source code</a></h4>
+<div class="declaration"> function  DrawHSplitterT ( <span class="source_type"><a href="../r6window/r6windowhsplitter.html" class="source">R6WindowHSplitter</a></span> W, <span class="source_type"><a href="../engine/canvas.html" class="source">Canvas</a></span> <span class="source_type">C</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_DrawInGamePlayerStats-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> DrawInGamePlayerStats <span class="function_state"></span> <a href="../Source_r6menu/r6menurslookandfeel.html#1663" class="small">Source code</a></h4>
+<div class="declaration"> function  DrawInGamePlayerStats ( <span class="source_type"><a href="../uwindow/uwindowwindow.html" class="source">UWindowWindow</a></span> W, <span class="source_type"><a href="../engine/canvas.html" class="source">Canvas</a></span> <span class="source_type">C</span>, <span class="source_type">INT</span> _iPlayerStats, <span class="source_type">FLOAT</span> _fX, <span class="source_type">FLOAT</span> _fY, <span class="source_type">FLOAT</span> <span class="source_type">_fHeight</span>, <span class="source_type">FLOAT</span> _fWidth) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_DrawNavigationBar-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> DrawNavigationBar <span class="function_state"></span> <a href="../Source_r6menu/r6menurslookandfeel.html#1503" class="small">Source code</a></h4>
+<div class="declaration"> function  DrawNavigationBar ( <span class="source_type"><a href="../r6menu/r6menunavigationbar.html" class="source">R6MenuNavigationBar</a></span> W, <span class="source_type"><a href="../engine/canvas.html" class="source">Canvas</a></span> <span class="source_type">C</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_DrawPopupButtonDisable-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> DrawPopupButtonDisable <span class="function_state"></span> <a href="../Source_r6menu/r6menurslookandfeel.html#1476" class="small">Source code</a></h4>
+<div class="declaration"> function  DrawPopupButtonDisable ( <span class="source_type"><a href="../r6menu/r6menupopupstaydownbutton.html" class="source">R6MenuPopUpStayDownButton</a></span> W, <span class="source_type"><a href="../engine/canvas.html" class="source">Canvas</a></span> <span class="source_type">C</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_DrawPopupButtonDown-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> DrawPopupButtonDown <span class="function_state"></span> <a href="../Source_r6menu/r6menurslookandfeel.html#1398" class="small">Source code</a></h4>
+<div class="declaration"> function  DrawPopupButtonDown ( <span class="source_type"><a href="../r6menu/r6menupopupstaydownbutton.html" class="source">R6MenuPopUpStayDownButton</a></span> W, <span class="source_type"><a href="../engine/canvas.html" class="source">Canvas</a></span> <span class="source_type">C</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_DrawPopupButtonOver-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> DrawPopupButtonOver <span class="function_state"></span> <a href="../Source_r6menu/r6menurslookandfeel.html#1455" class="small">Source code</a></h4>
+<div class="declaration"> function  DrawPopupButtonOver ( <span class="source_type"><a href="../r6menu/r6menupopupstaydownbutton.html" class="source">R6MenuPopUpStayDownButton</a></span> W, <span class="source_type"><a href="../engine/canvas.html" class="source">Canvas</a></span> <span class="source_type">C</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_DrawPopupButtonUp-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> DrawPopupButtonUp <span class="function_state"></span> <a href="../Source_r6menu/r6menurslookandfeel.html#1433" class="small">Source code</a></h4>
+<div class="declaration"> function  DrawPopupButtonUp ( <span class="source_type"><a href="../r6menu/r6menupopupstaydownbutton.html" class="source">R6MenuPopUpStayDownButton</a></span> W, <span class="source_type"><a href="../engine/canvas.html" class="source">Canvas</a></span> <span class="source_type">C</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_DrawPopUpFrameWindow-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> DrawPopUpFrameWindow <span class="function_state"></span> <a href="../Source_r6menu/r6menurslookandfeel.html#420" class="small">Source code</a></h4>
+<div class="declaration"> function  DrawPopUpFrameWindow ( <span class="source_type"><a href="../r6window/r6windowpopupbox.html" class="source">R6WindowPopUpBox</a></span> W, <span class="source_type"><a href="../engine/canvas.html" class="source">Canvas</a></span> <span class="source_type">C</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_DrawPopUpTextBackGround-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> DrawPopUpTextBackGround <span class="function_state"></span> <a href="../Source_r6menu/r6menurslookandfeel.html#1635" class="small">Source code</a></h4>
+<div class="declaration"> function  DrawPopUpTextBackGround ( <span class="source_type"><a href="../uwindow/uwindowwindow.html" class="source">UWindowWindow</a></span> W, <span class="source_type"><a href="../engine/canvas.html" class="source">Canvas</a></span> <span class="source_type">C</span>, <span class="source_type">FLOAT</span> <span class="source_type">_fHeight</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_DrawSpecialButtonBorder-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> DrawSpecialButtonBorder <span class="function_state"></span> <a href="../Source_r6menu/r6menurslookandfeel.html#1579" class="small">Source code</a></h4>
+<div class="declaration"> function  DrawSpecialButtonBorder ( <span class="source_type"><a href="../r6window/r6windowbutton.html" class="source">R6WindowButton</a></span> Button, <span class="source_type"><a href="../engine/canvas.html" class="source">Canvas</a></span> <span class="source_type">C</span>, <span class="source_type">FLOAT</span> X, <span class="source_type">FLOAT</span> Y) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_DrawWinTop-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> DrawWinTop <span class="function_state"></span> <a href="../Source_r6menu/r6menurslookandfeel.html#1377" class="small">Source code</a></h4>
+<div class="declaration"> function  DrawWinTop ( <span class="source_type"><a href="../r6window/r6windowhsplitter.html" class="source">R6WindowHSplitter</a></span> W, <span class="source_type"><a href="../engine/canvas.html" class="source">Canvas</a></span> <span class="source_type">C</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_Editbox_Draw-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> Editbox_Draw <span class="function_state"></span> <a href="../Source_r6menu/r6menurslookandfeel.html#987" class="small">Source code</a></h4>
+<div class="declaration"> function  Editbox_Draw ( <span class="source_type"><a href="../uwindow/uwindoweditcontrol.html" class="source">UWindowEditControl</a></span> W, <span class="source_type"><a href="../engine/canvas.html" class="source">Canvas</a></span> <span class="source_type">C</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_Editbox_SetupSizes-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> Editbox_SetupSizes <span class="function_state"></span> <a href="../Source_r6menu/r6menurslookandfeel.html#950" class="small">Source code</a></h4>
+<div class="declaration"> function  Editbox_SetupSizes ( <span class="source_type"><a href="../uwindow/uwindoweditcontrol.html" class="source">UWindowEditControl</a></span> W, <span class="source_type"><a href="../engine/canvas.html" class="source">Canvas</a></span> <span class="source_type">C</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_FW_DrawWindowFrame-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> FW_DrawWindowFrame <span class="function_state"></span> <a href="../Source_r6menu/r6menurslookandfeel.html#241" class="small">Source code</a></h4>
+<div class="declaration"> function  FW_DrawWindowFrame ( <span class="source_type"><a href="../uwindow/uwindowframedwindow.html" class="source">UWindowFramedWindow</a></span> W, <span class="source_type"><a href="../engine/canvas.html" class="source">Canvas</a></span> <span class="source_type">C</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_FW_GetClientArea-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> FW_GetClientArea <span class="function_state"></span> <a href="../Source_r6menu/r6menurslookandfeel.html#618" class="small">Source code</a></h4>
+<div class="declaration"> function <span class="source_type"><a href="../core/object.html#Region" class="source">Region</a></span> FW_GetClientArea ( <span class="source_type"><a href="../uwindow/uwindowframedwindow.html" class="source">UWindowFramedWindow</a></span> W) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_FW_HitTest-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> FW_HitTest <span class="function_state"></span> <a href="../Source_r6menu/r6menurslookandfeel.html#651" class="small">Source code</a></h4>
+<div class="declaration"> function <span class="source_type"><a href="../uwindow/uwindowbase.html#FrameHitTest" class="source">FrameHitTest</a></span> FW_HitTest ( <span class="source_type"><a href="../uwindow/uwindowframedwindow.html" class="source">UWindowFramedWindow</a></span> W, <span class="source_type">FLOAT</span> X, <span class="source_type">FLOAT</span> Y) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_FW_SetupFrameButtons-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> FW_SetupFrameButtons <span class="function_state"></span> <a href="../Source_r6menu/r6menurslookandfeel.html#574" class="small">Source code</a></h4>
+<div class="declaration"> function  FW_SetupFrameButtons ( <span class="source_type"><a href="../uwindow/uwindowframedwindow.html" class="source">UWindowFramedWindow</a></span> W, <span class="source_type"><a href="../engine/canvas.html" class="source">Canvas</a></span> <span class="source_type">C</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GetTextHeaderSize-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> GetTextHeaderSize <span class="function_state"></span> <a href="../Source_r6menu/r6menurslookandfeel.html#1736" class="small">Source code</a></h4>
+<div class="declaration"> function <span class="source_type">FLOAT</span> GetTextHeaderSize ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_List_DrawBackground-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> List_DrawBackground <span class="function_state"></span> <a href="../Source_r6menu/r6menurslookandfeel.html#878" class="small">Source code</a></h4>
+<div class="declaration"> function  List_DrawBackground ( <span class="source_type"><a href="../uwindow/uwindowlistcontrol.html" class="source">UWindowListControl</a></span> W, <span class="source_type"><a href="../engine/canvas.html" class="source">Canvas</a></span> <span class="source_type">C</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_Menu_DrawMenuBar-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> Menu_DrawMenuBar <span class="function_state"></span> <a href="../Source_r6menu/r6menurslookandfeel.html#1348" class="small">Source code</a></h4>
+<div class="declaration"> function  Menu_DrawMenuBar ( <span class="source_type"><a href="../uwindow/uwindowmenubar.html" class="source">UWindowMenuBar</a></span> W, <span class="source_type"><a href="../engine/canvas.html" class="source">Canvas</a></span> <span class="source_type">C</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_Menu_DrawMenuBarItem-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> Menu_DrawMenuBarItem <span class="function_state"></span> <a href="../Source_r6menu/r6menurslookandfeel.html#1353" class="small">Source code</a></h4>
+<div class="declaration"> function  Menu_DrawMenuBarItem ( <span class="source_type"><a href="../uwindow/uwindowmenubar.html" class="source">UWindowMenuBar</a></span> <span class="source_type">B</span>, <span class="source_type"><a href="../uwindow/uwindowmenubaritem.html" class="source">UWindowMenuBarItem</a></span> <span class="source_type">I</span>, <span class="source_type">FLOAT</span> X, <span class="source_type">FLOAT</span> Y, <span class="source_type">FLOAT</span> W, <span class="source_type">FLOAT</span> <span class="source_type">H</span>, <span class="source_type"><a href="../engine/canvas.html" class="source">Canvas</a></span> <span class="source_type">C</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_Menu_DrawPulldownMenuBackground-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> Menu_DrawPulldownMenuBackground <span class="function_state"></span> <a href="../Source_r6menu/r6menurslookandfeel.html#1368" class="small">Source code</a></h4>
+<div class="declaration"> function  Menu_DrawPulldownMenuBackground ( <span class="source_type"><a href="../uwindow/uwindowpulldownmenu.html" class="source">UWindowPulldownMenu</a></span> W, <span class="source_type"><a href="../engine/canvas.html" class="source">Canvas</a></span> <span class="source_type">C</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_Menu_DrawPulldownMenuItem-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> Menu_DrawPulldownMenuItem <span class="function_state"></span> <a href="../Source_r6menu/r6menurslookandfeel.html#1372" class="small">Source code</a></h4>
+<div class="declaration"> function  Menu_DrawPulldownMenuItem ( <span class="source_type"><a href="../uwindow/uwindowpulldownmenu.html" class="source">UWindowPulldownMenu</a></span> M, <span class="source_type"><a href="../uwindow/uwindowpulldownmenuitem.html" class="source">UWindowPulldownMenuItem</a></span> <span class="source_type">Item</span>, <span class="source_type"><a href="../engine/canvas.html" class="source">Canvas</a></span> <span class="source_type">C</span>, <span class="source_type">FLOAT</span> X, <span class="source_type">FLOAT</span> Y, <span class="source_type">FLOAT</span> W, <span class="source_type">FLOAT</span> <span class="source_type">H</span>, <span class="source_type">bool</span> <span class="source_type">bSelected</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_R6FW_DrawWindowFrame-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> R6FW_DrawWindowFrame <span class="function_state"></span> <a href="../Source_r6menu/r6menurslookandfeel.html#351" class="small">Source code</a></h4>
+<div class="declaration"> function  R6FW_DrawWindowFrame ( <span class="source_type"><a href="../r6window/r6windowframedwindow.html" class="source">R6WindowFramedWindow</a></span> W, <span class="source_type"><a href="../engine/canvas.html" class="source">Canvas</a></span> <span class="source_type">C</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_R6FW_GetClientArea-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> R6FW_GetClientArea <span class="function_state"></span> <a href="../Source_r6menu/r6menurslookandfeel.html#638" class="small">Source code</a></h4>
+<div class="declaration"> function <span class="source_type"><a href="../core/object.html#Region" class="source">Region</a></span> R6FW_GetClientArea ( <span class="source_type"><a href="../r6window/r6windowframedwindow.html" class="source">R6WindowFramedWindow</a></span> W) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_R6FW_HitTest-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> R6FW_HitTest <span class="function_state"></span> <a href="../Source_r6menu/r6menurslookandfeel.html#676" class="small">Source code</a></h4>
+<div class="declaration"> function <span class="source_type"><a href="../uwindow/uwindowbase.html#FrameHitTest" class="source">FrameHitTest</a></span> R6FW_HitTest ( <span class="source_type"><a href="../r6window/r6windowframedwindow.html" class="source">R6WindowFramedWindow</a></span> W, <span class="source_type">FLOAT</span> X, <span class="source_type">FLOAT</span> Y) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_R6FW_SetupFrameButtons-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> R6FW_SetupFrameButtons <span class="function_state"></span> <a href="../Source_r6menu/r6menurslookandfeel.html#598" class="small">Source code</a></h4>
+<div class="declaration"> function  R6FW_SetupFrameButtons ( <span class="source_type"><a href="../r6window/r6windowframedwindow.html" class="source">R6WindowFramedWindow</a></span> W, <span class="source_type"><a href="../engine/canvas.html" class="source">Canvas</a></span> <span class="source_type">C</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_R6GetTexture-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> R6GetTexture <span class="function_state"></span> <a href="../Source_r6menu/r6menurslookandfeel.html#233" class="small">Source code</a></h4>
+<div class="declaration"> function <span class="source_type"><a href="../engine/texture.html" class="source">Texture</a></span> R6GetTexture ( <span class="source_type"><a href="../r6window/r6windowframedwindow.html" class="source">R6WindowFramedWindow</a></span> W) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_R6List_DrawBackground-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> R6List_DrawBackground <span class="function_state"></span> <a href="../Source_r6menu/r6menurslookandfeel.html#794" class="small">Source code</a></h4>
+<div class="declaration"> function  R6List_DrawBackground ( <span class="source_type"><a href="../r6window/r6windowlistbox.html" class="source">R6WindowListBox</a></span> W, <span class="source_type"><a href="../engine/canvas.html" class="source">Canvas</a></span> <span class="source_type">C</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_SB_HDraw-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> SB_HDraw <span class="function_state"></span> <a href="../Source_r6menu/r6menurslookandfeel.html#1260" class="small">Source code</a></h4>
+<div class="declaration"> function  SB_HDraw ( <span class="source_type"><a href="../uwindow/uwindowhscrollbar.html" class="source">UWindowHScrollbar</a></span> W, <span class="source_type"><a href="../engine/canvas.html" class="source">Canvas</a></span> <span class="source_type">C</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_SB_SetupDownButton-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> SB_SetupDownButton <span class="function_state"></span> <a href="../Source_r6menu/r6menurslookandfeel.html#1146" class="small">Source code</a></h4>
+<div class="declaration"> function  SB_SetupDownButton ( <span class="source_type"><a href="../uwindow/uwindowsbdownbutton.html" class="source">UWindowSBDownButton</a></span> W) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_SB_SetupLeftButton-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> SB_SetupLeftButton <span class="function_state"></span> <a href="../Source_r6menu/r6menurslookandfeel.html#1179" class="small">Source code</a></h4>
+<div class="declaration"> function  SB_SetupLeftButton ( <span class="source_type"><a href="../uwindow/uwindowsbleftbutton.html" class="source">UWindowSBLeftButton</a></span> W) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_SB_SetupRightButton-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> SB_SetupRightButton <span class="function_state"></span> <a href="../Source_r6menu/r6menurslookandfeel.html#1202" class="small">Source code</a></h4>
+<div class="declaration"> function  SB_SetupRightButton ( <span class="source_type"><a href="../uwindow/uwindowsbrightbutton.html" class="source">UWindowSBRightButton</a></span> W) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_SB_SetupUpButton-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> SB_SetupUpButton <span class="function_state"></span> <a href="../Source_r6menu/r6menurslookandfeel.html#1113" class="small">Source code</a></h4>
+<div class="declaration"> function  SB_SetupUpButton ( <span class="source_type"><a href="../uwindow/uwindowsbupbutton.html" class="source">UWindowSBUpButton</a></span> W) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_SB_VDraw-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> SB_VDraw <span class="function_state"></span> <a href="../Source_r6menu/r6menurslookandfeel.html#1228" class="small">Source code</a></h4>
+<div class="declaration"> function  SB_VDraw ( <span class="source_type"><a href="../uwindow/uwindowvscrollbar.html" class="source">UWindowVScrollbar</a></span> W, <span class="source_type"><a href="../engine/canvas.html" class="source">Canvas</a></span> <span class="source_type">C</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_Setup-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> Setup <span class="function_state"></span> <a href="../Source_r6menu/r6menurslookandfeel.html#172" class="small">Source code</a></h4>
+<div class="declaration"> function  Setup ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_Tab_DrawTab-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> Tab_DrawTab <span class="function_state"></span> <a href="../Source_r6menu/r6menurslookandfeel.html#1001" class="small">Source code</a></h4>
+<div class="declaration"> function  Tab_DrawTab ( <span class="source_type"><a href="../uwindow/uwindowtabcontroltabarea.html" class="source">UWindowTabControlTabArea</a></span> Tab, <span class="source_type"><a href="../engine/canvas.html" class="source">Canvas</a></span> <span class="source_type">C</span>, <span class="source_type">bool</span> bActiveTab, <span class="source_type">bool</span> bLeftmostTab, <span class="source_type">FLOAT</span> X, <span class="source_type">FLOAT</span> Y, <span class="source_type">FLOAT</span> W, <span class="source_type">FLOAT</span> <span class="source_type">H</span>, <span class="source_type">string</span> <span class="source_type">Text</span>, <span class="source_type">bool</span> bShowText) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_Tab_DrawTabPageArea-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> Tab_DrawTabPageArea <span class="function_state"></span> <a href="../Source_r6menu/r6menurslookandfeel.html#1331" class="small">Source code</a></h4>
+<div class="declaration"> function  Tab_DrawTabPageArea ( <span class="source_type"><a href="../uwindow/uwindowpagecontrol.html" class="source">UWindowPageControl</a></span> W, <span class="source_type"><a href="../engine/canvas.html" class="source">Canvas</a></span> <span class="source_type">C</span>, <span class="source_type"><a href="../uwindow/uwindowpagewindow.html" class="source">UWindowPageWindow</a></span> <span class="source_type">P</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_Tab_GetTabSize-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> Tab_GetTabSize <span class="function_state"></span> <a href="../Source_r6menu/r6menurslookandfeel.html#1336" class="small">Source code</a></h4>
+<div class="declaration"> function  Tab_GetTabSize ( <span class="source_type"><a href="../uwindow/uwindowtabcontroltabarea.html" class="source">UWindowTabControlTabArea</a></span> Tab, <span class="source_type"><a href="../engine/canvas.html" class="source">Canvas</a></span> <span class="source_type">C</span>, <span class="source_type">string</span> <span class="source_type">Text</span>, out <span class="source_type">FLOAT</span> W, out <span class="source_type">FLOAT</span> <span class="source_type">H</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_Tab_SetTabPageSize-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> Tab_SetTabPageSize <span class="function_state"></span> <a href="../Source_r6menu/r6menurslookandfeel.html#1324" class="small">Source code</a></h4>
+<div class="declaration"> function  Tab_SetTabPageSize ( <span class="source_type"><a href="../uwindow/uwindowpagecontrol.html" class="source">UWindowPageControl</a></span> W, <span class="source_type"><a href="../uwindow/uwindowpagewindow.html" class="source">UWindowPageWindow</a></span> <span class="source_type">P</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_Tab_SetupLeftButton-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> Tab_SetupLeftButton <span class="function_state"></span> <a href="../Source_r6menu/r6menurslookandfeel.html#1275" class="small">Source code</a></h4>
+<div class="declaration"> function  Tab_SetupLeftButton ( <span class="source_type"><a href="../uwindow/uwindowtabcontrolleftbutton.html" class="source">UWindowTabControlLeftButton</a></span> W) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_Tab_SetupRightButton-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> Tab_SetupRightButton <span class="function_state"></span> <a href="../Source_r6menu/r6menurslookandfeel.html#1300" class="small">Source code</a></h4>
+<div class="declaration"> function  Tab_SetupRightButton ( <span class="source_type"><a href="../uwindow/uwindowtabcontrolrightbutton.html" class="source">UWindowTabControlRightButton</a></span> W) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+
+
+<br />
+
+
+<table class="title">
+<tr>
+	<th class="title">Defaultproperties</th>
+</tr>
+</table>
+<br />
+<div class="source"><table class="source"><tr><td class="source"><pre class="source">defaultproperties
+{
+     m_iMultiplyer=-<span class="source_int">1</span>
+     m_fVSBButtonImageX=<span class="source_int">1</span>
+     m_fHSBButtonImageX=<span class="source_int">2</span>
+     m_fVSBButtonImageY=<span class="source_int">2</span>
+     m_fHSBButtonImageY=<span class="source_int">2</span>
+     m_fComboImageX=<span class="source_int">1</span>
+     m_fComboImageY=<span class="source_int">2</span>
+     m_fScrollRate=<span class="source_int">200.000000</span>
+     m_fTextHeaderHeight=<span class="source_int">30.000000</span>
+     m_TSquareBg=<span class="source_type"><a href="../engine/texture.html" class="source">Texture</a></span><span class="source_name">'R6MenuTextures.Gui_BoxScroll'</span>
+     m_FrameSBL=(W=<span class="source_int">1</span>,<span class="source_type">H</span>=<span class="source_int">1</span>)
+     m_FrameSB=(X=<span class="source_int">107</span>,Y=<span class="source_int">17</span>,W=<span class="source_int">16</span>,<span class="source_type">H</span>=<span class="source_int">17</span>)
+     m_FrameSBR=(W=<span class="source_int">1</span>,<span class="source_type">H</span>=<span class="source_int">1</span>)
+     m_BLTitleL=(Up=(W=<span class="source_int">3</span>,<span class="source_type">H</span>=<span class="source_int">22</span>),Down=(Y=<span class="source_int">22</span>,W=<span class="source_int">3</span>,<span class="source_type">H</span>=<span class="source_int">22</span>),Over=(Y=<span class="source_int">44</span>,W=<span class="source_int">3</span>,<span class="source_type">H</span>=<span class="source_int">22</span>),Disabled=(Y=<span class="source_int">66</span>,W=<span class="source_int">3</span>,<span class="source_type">H</span>=<span class="source_int">22</span>))
+     m_BLTitleC=(Up=(X=<span class="source_int">3</span>,W=<span class="source_int">2</span>,<span class="source_type">H</span>=<span class="source_int">22</span>),Down=(X=<span class="source_int">3</span>,Y=<span class="source_int">22</span>,W=<span class="source_int">2</span>,<span class="source_type">H</span>=<span class="source_int">22</span>),Over=(X=<span class="source_int">3</span>,Y=<span class="source_int">44</span>,W=<span class="source_int">2</span>,<span class="source_type">H</span>=<span class="source_int">22</span>),Disabled=(X=<span class="source_int">3</span>,Y=<span class="source_int">66</span>,W=<span class="source_int">2</span>,<span class="source_type">H</span>=<span class="source_int">22</span>))
+     m_BLTitleR=(Up=(X=<span class="source_int">18</span>,W=<span class="source_int">3</span>,<span class="source_type">H</span>=<span class="source_int">22</span>),Down=(X=<span class="source_int">18</span>,Y=<span class="source_int">22</span>,W=<span class="source_int">3</span>,<span class="source_type">H</span>=<span class="source_int">22</span>),Over=(X=<span class="source_int">18</span>,Y=<span class="source_int">44</span>,W=<span class="source_int">3</span>,<span class="source_type">H</span>=<span class="source_int">22</span>),Disabled=(X=<span class="source_int">18</span>,Y=<span class="source_int">66</span>,W=<span class="source_int">3</span>,<span class="source_type">H</span>=<span class="source_int">22</span>))
+     m_PopupArrowUp=(X=<span class="source_int">87</span>,Y=<span class="source_int">53</span>,W=<span class="source_int">6</span>,<span class="source_type">H</span>=<span class="source_int">7</span>)
+     m_PopupArrowDown=(X=<span class="source_int">80</span>,Y=<span class="source_int">53</span>,W=<span class="source_int">6</span>,<span class="source_type">H</span>=<span class="source_int">7</span>)
+     m_stLapTopFrame=(TL=(W=<span class="source_int">256</span>,<span class="source_type">H</span>=<span class="source_int">32</span>),<span class="source_type">t</span>=(X=<span class="source_int">45</span>,Y=<span class="source_int">32</span>,W=<span class="source_int">211</span>,<span class="source_type">H</span>=<span class="source_int">32</span>),TR=(X=<span class="source_int">167</span>,Y=<span class="source_int">172</span>,W=<span class="source_int">87</span>,<span class="source_type">H</span>=<span class="source_int">32</span>),L=(X=<span class="source_int">63</span>,Y=<span class="source_int">136</span>,W=<span class="source_int">20</span>,<span class="source_type">H</span>=<span class="source_int">120</span>),<span class="source_type">R</span>=(Y=<span class="source_int">136</span>,W=<span class="source_int">20</span>,<span class="source_type">H</span>=<span class="source_int">120</span>),BL=(Y=<span class="source_int">64</span>,W=<span class="source_int">256</span>,<span class="source_type">H</span>=<span class="source_int">36</span>),<span class="source_type">B</span>=(Y=<span class="source_int">100</span>,W=<span class="source_int">256</span>,<span class="source_type">H</span>=<span class="source_int">36</span>),BR=(X=<span class="source_int">126</span>,Y=<span class="source_int">136</span>,W=<span class="source_int">128</span>,<span class="source_type">H</span>=<span class="source_int">36</span>),L2=(X=<span class="source_int">84</span>,Y=<span class="source_int">136</span>,W=<span class="source_int">20</span>,<span class="source_type">H</span>=<span class="source_int">120</span>),R2=(X=<span class="source_int">21</span>,Y=<span class="source_int">136</span>,W=<span class="source_int">20</span>,<span class="source_type">H</span>=<span class="source_int">120</span>),L3=(X=<span class="source_int">105</span>,Y=<span class="source_int">136</span>,W=<span class="source_int">20</span>,<span class="source_type">H</span>=<span class="source_int">120</span>),R3=(X=<span class="source_int">42</span>,Y=<span class="source_int">136</span>,W=<span class="source_int">20</span>,<span class="source_type">H</span>=<span class="source_int">120</span>),L4=(X=<span class="source_int">147</span>,Y=<span class="source_int">172</span>,W=<span class="source_int">20</span>,<span class="source_type">H</span>=<span class="source_int">52</span>),R4=(X=<span class="source_int">126</span>,Y=<span class="source_int">172</span>,W=<span class="source_int">20</span>,<span class="source_type">H</span>=<span class="source_int">52</span>))
+     m_stLapTopFramePlus=(T1=(Y=<span class="source_int">32</span>,W=<span class="source_int">38</span>,<span class="source_type">H</span>=<span class="source_int">32</span>),T2=(W=<span class="source_int">24</span>,<span class="source_type">H</span>=<span class="source_int">32</span>),T3=(X=<span class="source_int">39</span>,Y=<span class="source_int">32</span>,W=<span class="source_int">5</span>,<span class="source_type">H</span>=<span class="source_int">32</span>),T4On=(X=<span class="source_int">45</span>,W=<span class="source_int">19</span>,<span class="source_type">H</span>=<span class="source_int">32</span>),T4Off=(X=<span class="source_int">25</span>,W=<span class="source_int">19</span>,<span class="source_type">H</span>=<span class="source_int">32</span>))
+     m_NavBarBack(<span class="source_int">0</span>)=(X=<span class="source_int">246</span>,Y=<span class="source_int">157</span>,W=<span class="source_int">4</span>,<span class="source_type">H</span>=<span class="source_int">37</span>)
+     m_NavBarBack(<span class="source_int">1</span>)=(X=<span class="source_int">244</span>,Y=<span class="source_int">120</span>,W=<span class="source_int">12</span>,<span class="source_type">H</span>=<span class="source_int">37</span>)
+     m_NavBarBack(<span class="source_int">2</span>)=(X=<span class="source_int">220</span>,Y=<span class="source_int">41</span>,W=<span class="source_int">8</span>,<span class="source_type">H</span>=<span class="source_int">41</span>)
+     m_NavBarBack(<span class="source_int">3</span>)=(X=<span class="source_int">229</span>,Y=<span class="source_int">41</span>,W=<span class="source_int">10</span>,<span class="source_type">H</span>=<span class="source_int">41</span>)
+     m_NavBarBack(<span class="source_int">4</span>)=(X=<span class="source_int">240</span>,Y=<span class="source_int">41</span>,W=<span class="source_int">15</span>,<span class="source_type">H</span>=<span class="source_int">41</span>)
+     m_NavBarBack(<span class="source_int">5</span>)=(X=<span class="source_int">220</span>,Y=<span class="source_int">82</span>,W=<span class="source_int">14</span>,<span class="source_type">H</span>=<span class="source_int">41</span>)
+     m_NavBarBack(<span class="source_int">6</span>)=(X=<span class="source_int">235</span>,Y=<span class="source_int">82</span>,W=<span class="source_int">12</span>,<span class="source_type">H</span>=<span class="source_int">41</span>)
+     m_NavBarBack(<span class="source_int">7</span>)=(X=<span class="source_int">248</span>,Y=<span class="source_int">82</span>,W=<span class="source_int">6</span>,<span class="source_type">H</span>=<span class="source_int">41</span>)
+     m_NavBarBack(<span class="source_int">8</span>)=(X=<span class="source_int">220</span>,Y=<span class="source_int">123</span>,W=<span class="source_int">9</span>,<span class="source_type">H</span>=<span class="source_int">41</span>)
+     m_NavBarBack(<span class="source_int">9</span>)=(X=<span class="source_int">230</span>,Y=<span class="source_int">123</span>,W=<span class="source_int">10</span>,<span class="source_type">H</span>=<span class="source_int">41</span>)
+     m_NavBarBack(<span class="source_int">10</span>)=(X=<span class="source_int">226</span>,W=<span class="source_int">16</span>,<span class="source_type">H</span>=<span class="source_int">41</span>)
+     m_NavBarBack(<span class="source_int">11</span>)=(X=<span class="source_int">226</span>,Y=<span class="source_int">41</span>,W=<span class="source_int">19</span>,<span class="source_type">H</span>=<span class="source_int">41</span>)
+     m_topLeftCornerR=(X=<span class="source_int">12</span>,Y=<span class="source_int">56</span>,W=<span class="source_int">6</span>,<span class="source_type">H</span>=<span class="source_int">8</span>)
+     m_RBAcceptCancel(<span class="source_int">0</span>)=(Up=(X=<span class="source_int">11</span>,W=<span class="source_int">19</span>,<span class="source_type">H</span>=<span class="source_int">13</span>),Down=(X=<span class="source_int">11</span>,Y=<span class="source_int">26</span>,W=<span class="source_int">19</span>,<span class="source_type">H</span>=<span class="source_int">13</span>),Over=(X=<span class="source_int">11</span>,Y=<span class="source_int">13</span>,W=<span class="source_int">19</span>,<span class="source_type">H</span>=<span class="source_int">13</span>))
+     m_RBAcceptCancel(<span class="source_int">1</span>)=(Up=(X=<span class="source_int">30</span>,W=<span class="source_int">19</span>,<span class="source_type">H</span>=<span class="source_int">13</span>),Down=(X=<span class="source_int">30</span>,Y=<span class="source_int">26</span>,W=<span class="source_int">19</span>,<span class="source_type">H</span>=<span class="source_int">13</span>),Over=(X=<span class="source_int">30</span>,Y=<span class="source_int">13</span>,W=<span class="source_int">19</span>,<span class="source_type">H</span>=<span class="source_int">13</span>))
+     m_RArrow(<span class="source_int">0</span>)=(Up=(X=<span class="source_int">94</span>,Y=<span class="source_int">47</span>,W=<span class="source_int">10</span>,<span class="source_type">H</span>=<span class="source_int">7</span>),Down=(X=<span class="source_int">94</span>,Y=<span class="source_int">54</span>,W=<span class="source_int">10</span>,<span class="source_type">H</span>=<span class="source_int">7</span>),Over=(X=<span class="source_int">94</span>,Y=<span class="source_int">47</span>,W=<span class="source_int">10</span>,<span class="source_type">H</span>=<span class="source_int">7</span>),Disabled=(X=<span class="source_int">94</span>,Y=<span class="source_int">47</span>,W=<span class="source_int">10</span>,<span class="source_type">H</span>=<span class="source_int">7</span>))
+     m_RArrow(<span class="source_int">1</span>)=(Up=(X=<span class="source_int">104</span>,Y=<span class="source_int">47</span>,W=-<span class="source_int">10</span>,<span class="source_type">H</span>=<span class="source_int">7</span>),Down=(X=<span class="source_int">104</span>,Y=<span class="source_int">54</span>,W=-<span class="source_int">10</span>,<span class="source_type">H</span>=<span class="source_int">7</span>),Over=(X=<span class="source_int">104</span>,Y=<span class="source_int">47</span>,W=-<span class="source_int">10</span>,<span class="source_type">H</span>=<span class="source_int">7</span>),Disabled=(X=<span class="source_int">104</span>,Y=<span class="source_int">47</span>,W=-<span class="source_int">10</span>,<span class="source_type">H</span>=<span class="source_int">7</span>))
+     m_SBScrollerActive=(X=<span class="source_int">64</span>,Y=<span class="source_int">1</span>,W=<span class="source_int">10</span>,<span class="source_type">H</span>=<span class="source_int">16</span>)
+     m_SBUpGear=(X=<span class="source_int">87</span>,Y=<span class="source_int">30</span>,W=<span class="source_int">11</span>,<span class="source_type">H</span>=<span class="source_int">8</span>)
+     m_SBDownGear=(X=<span class="source_int">87</span>,Y=<span class="source_int">38</span>,W=<span class="source_int">11</span>,<span class="source_type">H</span>=-<span class="source_int">8</span>)
+     m_RSquareBgLeft=(X=<span class="source_int">26</span>,Y=<span class="source_int">40</span>,W=<span class="source_int">4</span>,<span class="source_type">H</span>=<span class="source_int">17</span>)
+     m_RSquareBgMid=(X=<span class="source_int">30</span>,Y=<span class="source_int">40</span>,W=<span class="source_int">1</span>,<span class="source_type">H</span>=<span class="source_int">17</span>)
+     m_RSquareBgRight=(X=<span class="source_int">45</span>,Y=<span class="source_int">40</span>,W=<span class="source_int">4</span>,<span class="source_type">H</span>=<span class="source_int">17</span>)
+     m_iCloseBoxOffsetX=<span class="source_int">3</span>
+     m_iCloseBoxOffsetY=<span class="source_int">5</span>
+     m_iListHPadding=<span class="source_int">1</span>
+     m_iListVPadding=<span class="source_int">1</span>
+     m_iSize_ScrollBarFrameW=<span class="source_int">1</span>
+     m_iVScrollerWidth=<span class="source_int">9</span>
+     m_iScrollerOffset=<span class="source_int">1</span>
+     m_TButtonBackGround=<span class="source_type"><a href="../engine/texture.html" class="source">Texture</a></span><span class="source_name">'R6MenuTextures.Gui_BoxScroll'</span>
+     m_SBUp=(Up=(W=<span class="source_int">11</span>,<span class="source_type">H</span>=<span class="source_int">8</span>),Down=(Y=<span class="source_int">16</span>,W=<span class="source_int">11</span>,<span class="source_type">H</span>=<span class="source_int">8</span>),Over=(Y=<span class="source_int">8</span>,W=<span class="source_int">11</span>,<span class="source_type">H</span>=<span class="source_int">8</span>),Disabled=(Y=<span class="source_int">16</span>,W=<span class="source_int">11</span>,<span class="source_type">H</span>=<span class="source_int">8</span>))
+     m_SBDown=(Up=(Y=<span class="source_int">8</span>,W=<span class="source_int">11</span>,<span class="source_type">H</span>=-<span class="source_int">8</span>),Down=(Y=<span class="source_int">24</span>,W=<span class="source_int">11</span>,<span class="source_type">H</span>=-<span class="source_int">8</span>),Over=(Y=<span class="source_int">16</span>,W=<span class="source_int">11</span>,<span class="source_type">H</span>=-<span class="source_int">8</span>),Disabled=(Y=<span class="source_int">24</span>,W=<span class="source_int">11</span>,<span class="source_type">H</span>=-<span class="source_int">8</span>))
+     m_SBRight=(Up=(X=<span class="source_int">9</span>,Y=<span class="source_int">25</span>,W=-<span class="source_int">8</span>,<span class="source_type">H</span>=<span class="source_int">9</span>),Down=(X=<span class="source_int">9</span>,Y=<span class="source_int">43</span>,W=-<span class="source_int">8</span>,<span class="source_type">H</span>=<span class="source_int">9</span>),Over=(X=<span class="source_int">9</span>,Y=<span class="source_int">34</span>,W=-<span class="source_int">8</span>,<span class="source_type">H</span>=<span class="source_int">9</span>),Disabled=(X=<span class="source_int">9</span>,Y=<span class="source_int">34</span>,W=-<span class="source_int">8</span>,<span class="source_type">H</span>=<span class="source_int">9</span>))
+     m_SBLeft=(Up=(X=<span class="source_int">1</span>,Y=<span class="source_int">25</span>,W=<span class="source_int">8</span>,<span class="source_type">H</span>=<span class="source_int">9</span>),Down=(X=<span class="source_int">1</span>,Y=<span class="source_int">43</span>,W=<span class="source_int">8</span>,<span class="source_type">H</span>=<span class="source_int">9</span>),Over=(X=<span class="source_int">1</span>,Y=<span class="source_int">34</span>,W=<span class="source_int">8</span>,<span class="source_type">H</span>=<span class="source_int">9</span>),Disabled=(X=<span class="source_int">1</span>,Y=<span class="source_int">34</span>,W=<span class="source_int">8</span>,<span class="source_type">H</span>=<span class="source_int">9</span>))
+     m_SBBackground=(X=<span class="source_int">15</span>,Y=<span class="source_int">28</span>,W=<span class="source_int">14</span>,<span class="source_type">H</span>=<span class="source_int">4</span>)
+     m_SBVBorder=(X=<span class="source_int">64</span>,Y=<span class="source_int">56</span>,W=<span class="source_int">1</span>,<span class="source_type">H</span>=<span class="source_int">1</span>)
+     m_SBHBorder=(X=<span class="source_int">64</span>,Y=<span class="source_int">56</span>,W=<span class="source_int">1</span>,<span class="source_type">H</span>=<span class="source_int">1</span>)
+     m_SBScroller=(X=<span class="source_int">51</span>,Y=<span class="source_int">1</span>,W=<span class="source_int">10</span>,<span class="source_type">H</span>=<span class="source_int">16</span>)
+     m_CloseBoxUp=(X=<span class="source_int">82</span>,Y=<span class="source_int">29</span>,W=<span class="source_int">13</span>,<span class="source_type">H</span>=<span class="source_int">13</span>)
+     m_CloseBoxDown=(X=<span class="source_int">82</span>,Y=<span class="source_int">16</span>,W=<span class="source_int">13</span>,<span class="source_type">H</span>=<span class="source_int">13</span>)
+     m_RButtonBackGround=(X=<span class="source_int">12</span>,Y=<span class="source_int">40</span>,W=<span class="source_int">14</span>,<span class="source_type">H</span>=<span class="source_int">14</span>)
+     m_CBorder=(<span class="source_type">B</span>=<span class="source_int">176</span>,G=<span class="source_int">136</span>,<span class="source_type">R</span>=<span class="source_int">15</span>)
+     FrameTitleX=<span class="source_int">6</span>
+     FrameTitleY=<span class="source_int">4</span>
+     ColumnHeadingHeight=<span class="source_int">13</span>
+     EditBoxBevel=<span class="source_int">2</span>
+     Size_ComboHeight=<span class="source_int">12.000000</span>
+     Size_ComboButtonWidth=<span class="source_int">13.000000</span>
+     Size_ScrollbarWidth=<span class="source_int">13.000000</span>
+     Size_ScrollbarButtonHeight=<span class="source_int">12.000000</span>
+     Size_MinScrollbarHeight=<span class="source_int">6.000000</span>
+     Size_TabAreaHeight=<span class="source_int">15.000000</span>
+     Size_TabAreaOverhangHeight=<span class="source_int">2.000000</span>
+     Size_TabXOffset=<span class="source_int">1.000000</span>
+     Size_TabTextOffset=<span class="source_int">12.000000</span>
+     Pulldown_ItemHeight=<span class="source_int">15.000000</span>
+     Pulldown_VBorder=<span class="source_int">3.000000</span>
+     Pulldown_HBorder=<span class="source_int">3.000000</span>
+     Pulldown_TextBorder=<span class="source_int">9.000000</span>
+     FrameTL=(W=<span class="source_int">12</span>,<span class="source_type">H</span>=<span class="source_int">16</span>)
+     FrameT=(X=<span class="source_int">12</span>,W=<span class="source_int">1</span>,<span class="source_type">H</span>=<span class="source_int">16</span>)
+     FrameTR=(X=<span class="source_int">116</span>,W=<span class="source_int">12</span>,<span class="source_type">H</span>=<span class="source_int">16</span>)
+     FrameL=(Y=<span class="source_int">17</span>,W=<span class="source_int">4</span>,<span class="source_type">H</span>=<span class="source_int">18</span>)
+     FrameR=(Y=<span class="source_int">17</span>,W=<span class="source_int">4</span>,<span class="source_type">H</span>=<span class="source_int">18</span>)
+     FrameBL=(Y=<span class="source_int">126</span>,W=<span class="source_int">4</span>,<span class="source_type">H</span>=<span class="source_int">2</span>)
+     FrameB=(X=<span class="source_int">2</span>,Y=<span class="source_int">126</span>,W=<span class="source_int">1</span>,<span class="source_type">H</span>=<span class="source_int">2</span>)
+     FrameBR=(X=<span class="source_int">124</span>,Y=<span class="source_int">125</span>,W=<span class="source_int">4</span>,<span class="source_type">H</span>=<span class="source_int">2</span>)
+     FrameActiveTitleColor=(<span class="source_type">B</span>=<span class="source_int">255</span>,G=<span class="source_int">255</span>,<span class="source_type">R</span>=<span class="source_int">255</span>)
+     FrameInactiveTitleColor=(<span class="source_type">B</span>=<span class="source_int">255</span>,G=<span class="source_int">255</span>,<span class="source_type">R</span>=<span class="source_int">255</span>)
+     BevelUpTL=(X=<span class="source_int">4</span>,Y=<span class="source_int">16</span>,W=<span class="source_int">2</span>,<span class="source_type">H</span>=<span class="source_int">2</span>)
+     BevelUpT=(X=<span class="source_int">10</span>,Y=<span class="source_int">16</span>,W=<span class="source_int">1</span>,<span class="source_type">H</span>=<span class="source_int">2</span>)
+     BevelUpTR=(X=<span class="source_int">18</span>,Y=<span class="source_int">16</span>,W=<span class="source_int">2</span>,<span class="source_type">H</span>=<span class="source_int">2</span>)
+     BevelUpL=(X=<span class="source_int">4</span>,Y=<span class="source_int">20</span>,W=<span class="source_int">2</span>,<span class="source_type">H</span>=<span class="source_int">1</span>)
+     BevelUpR=(X=<span class="source_int">18</span>,Y=<span class="source_int">20</span>,W=<span class="source_int">2</span>,<span class="source_type">H</span>=<span class="source_int">1</span>)
+     BevelUpBL=(X=<span class="source_int">4</span>,Y=<span class="source_int">30</span>,W=<span class="source_int">2</span>,<span class="source_type">H</span>=<span class="source_int">2</span>)
+     BevelUpB=(X=<span class="source_int">10</span>,Y=<span class="source_int">30</span>,W=<span class="source_int">1</span>,<span class="source_type">H</span>=<span class="source_int">2</span>)
+     BevelUpBR=(X=<span class="source_int">18</span>,Y=<span class="source_int">30</span>,W=<span class="source_int">2</span>,<span class="source_type">H</span>=<span class="source_int">2</span>)
+     BevelUpArea=(X=<span class="source_int">8</span>,Y=<span class="source_int">20</span>,W=<span class="source_int">1</span>,<span class="source_type">H</span>=<span class="source_int">1</span>)
+     MiscBevelTL(<span class="source_int">0</span>)=(X=<span class="source_int">11</span>,W=<span class="source_int">1</span>,<span class="source_type">H</span>=<span class="source_int">1</span>)
+     MiscBevelTL(<span class="source_int">1</span>)=(X=<span class="source_int">11</span>,W=<span class="source_int">1</span>,<span class="source_type">H</span>=<span class="source_int">1</span>)
+     MiscBevelTL(<span class="source_int">2</span>)=(X=<span class="source_int">11</span>,W=<span class="source_int">1</span>,<span class="source_type">H</span>=<span class="source_int">1</span>)
+     MiscBevelT(<span class="source_int">0</span>)=(X=<span class="source_int">11</span>,W=<span class="source_int">1</span>,<span class="source_type">H</span>=<span class="source_int">1</span>)
+     MiscBevelT(<span class="source_int">1</span>)=(X=<span class="source_int">11</span>,W=<span class="source_int">1</span>,<span class="source_type">H</span>=<span class="source_int">1</span>)
+     MiscBevelT(<span class="source_int">2</span>)=(X=<span class="source_int">11</span>,W=<span class="source_int">1</span>,<span class="source_type">H</span>=<span class="source_int">1</span>)
+     MiscBevelTR(<span class="source_int">0</span>)=(X=<span class="source_int">11</span>,W=<span class="source_int">1</span>,<span class="source_type">H</span>=<span class="source_int">1</span>)
+     MiscBevelTR(<span class="source_int">1</span>)=(X=<span class="source_int">11</span>,W=<span class="source_int">1</span>,<span class="source_type">H</span>=<span class="source_int">1</span>)
+     MiscBevelTR(<span class="source_int">2</span>)=(X=<span class="source_int">11</span>,W=<span class="source_int">1</span>,<span class="source_type">H</span>=<span class="source_int">1</span>)
+     MiscBevelL(<span class="source_int">0</span>)=(X=<span class="source_int">11</span>,W=<span class="source_int">1</span>,<span class="source_type">H</span>=<span class="source_int">1</span>)
+     MiscBevelL(<span class="source_int">1</span>)=(X=<span class="source_int">11</span>,W=<span class="source_int">1</span>,<span class="source_type">H</span>=<span class="source_int">1</span>)
+     MiscBevelL(<span class="source_int">2</span>)=(X=<span class="source_int">11</span>,W=<span class="source_int">1</span>,<span class="source_type">H</span>=<span class="source_int">1</span>)
+     MiscBevelR(<span class="source_int">0</span>)=(X=<span class="source_int">11</span>,W=<span class="source_int">1</span>,<span class="source_type">H</span>=<span class="source_int">1</span>)
+     MiscBevelR(<span class="source_int">1</span>)=(X=<span class="source_int">11</span>,W=<span class="source_int">1</span>,<span class="source_type">H</span>=<span class="source_int">1</span>)
+     MiscBevelR(<span class="source_int">2</span>)=(X=<span class="source_int">11</span>,W=<span class="source_int">1</span>,<span class="source_type">H</span>=<span class="source_int">1</span>)
+     MiscBevelBL(<span class="source_int">0</span>)=(X=<span class="source_int">11</span>,W=<span class="source_int">1</span>,<span class="source_type">H</span>=<span class="source_int">1</span>)
+     MiscBevelBL(<span class="source_int">1</span>)=(X=<span class="source_int">11</span>,W=<span class="source_int">1</span>,<span class="source_type">H</span>=<span class="source_int">1</span>)
+     MiscBevelBL(<span class="source_int">2</span>)=(X=<span class="source_int">11</span>,W=<span class="source_int">1</span>,<span class="source_type">H</span>=<span class="source_int">1</span>)
+     MiscBevelB(<span class="source_int">0</span>)=(X=<span class="source_int">11</span>,W=<span class="source_int">1</span>,<span class="source_type">H</span>=<span class="source_int">1</span>)
+     MiscBevelB(<span class="source_int">1</span>)=(X=<span class="source_int">11</span>,W=<span class="source_int">1</span>,<span class="source_type">H</span>=<span class="source_int">1</span>)
+     MiscBevelB(<span class="source_int">2</span>)=(X=<span class="source_int">11</span>,W=<span class="source_int">1</span>,<span class="source_type">H</span>=<span class="source_int">1</span>)
+     MiscBevelBR(<span class="source_int">0</span>)=(X=<span class="source_int">11</span>,W=<span class="source_int">1</span>,<span class="source_type">H</span>=<span class="source_int">1</span>)
+     MiscBevelBR(<span class="source_int">1</span>)=(X=<span class="source_int">11</span>,W=<span class="source_int">1</span>,<span class="source_type">H</span>=<span class="source_int">1</span>)
+     MiscBevelBR(<span class="source_int">2</span>)=(X=<span class="source_int">11</span>,W=<span class="source_int">1</span>,<span class="source_type">H</span>=<span class="source_int">1</span>)
+     MiscBevelArea(<span class="source_int">0</span>)=(X=<span class="source_int">12</span>,Y=<span class="source_int">1</span>,W=<span class="source_int">1</span>,<span class="source_type">H</span>=<span class="source_int">1</span>)
+     MiscBevelArea(<span class="source_int">1</span>)=(X=<span class="source_int">20</span>,Y=<span class="source_int">16</span>,W=<span class="source_int">1</span>,<span class="source_type">H</span>=<span class="source_int">1</span>)
+     MiscBevelArea(<span class="source_int">2</span>)=(X=<span class="source_int">20</span>,Y=<span class="source_int">16</span>,W=<span class="source_int">1</span>,<span class="source_type">H</span>=<span class="source_int">1</span>)
+     ComboBtnUp=(Y=<span class="source_int">8</span>,W=<span class="source_int">11</span>,<span class="source_type">H</span>=-<span class="source_int">8</span>)
+     ComboBtnDown=(Y=<span class="source_int">24</span>,W=<span class="source_int">11</span>,<span class="source_type">H</span>=-<span class="source_int">8</span>)
+     ComboBtnDisabled=(Y=<span class="source_int">24</span>,W=<span class="source_int">11</span>,<span class="source_type">H</span>=-<span class="source_int">8</span>)
+     ComboBtnOver=(Y=<span class="source_int">16</span>,W=<span class="source_int">11</span>,<span class="source_type">H</span>=-<span class="source_int">8</span>)
+     HLine=(X=<span class="source_int">5</span>,Y=<span class="source_int">78</span>,W=<span class="source_int">1</span>,<span class="source_type">H</span>=<span class="source_int">2</span>)
+     EditBoxTextColor=(<span class="source_type">B</span>=<span class="source_int">255</span>,G=<span class="source_int">255</span>,<span class="source_type">R</span>=<span class="source_int">255</span>)
+     TabSelectedL=(Y=<span class="source_int">64</span>,W=<span class="source_int">54</span>,<span class="source_type">H</span>=<span class="source_int">25</span>)
+     TabSelectedM=(X=<span class="source_int">41</span>,Y=<span class="source_int">57</span>,W=<span class="source_int">2</span>,<span class="source_type">H</span>=<span class="source_int">3</span>)
+     TabSelectedR=(X=<span class="source_int">54</span>,Y=<span class="source_int">64</span>,W=<span class="source_int">32</span>,<span class="source_type">H</span>=<span class="source_int">25</span>)
+     TabUnselectedL=(X=<span class="source_int">86</span>,Y=<span class="source_int">64</span>,W=<span class="source_int">54</span>,<span class="source_type">H</span>=<span class="source_int">25</span>)
+     TabUnselectedM=(X=<span class="source_int">60</span>,Y=<span class="source_int">80</span>,W=<span class="source_int">1</span>,<span class="source_type">H</span>=<span class="source_int">15</span>)
+     TabUnselectedR=(X=<span class="source_int">140</span>,Y=<span class="source_int">64</span>,W=<span class="source_int">32</span>,<span class="source_type">H</span>=<span class="source_int">25</span>)
+     TabBackground=(X=<span class="source_int">4</span>,Y=<span class="source_int">7</span>,W=<span class="source_int">1</span>,<span class="source_type">H</span>=<span class="source_int">1</span>)
+}
+</pre></td></tr></table></div>
+
+
+
+<hr />
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../r6menu/r6menu-overview.html">Package</a></td>
+	<td class="header_hilight">Class</td>
+	<td class="header"><a href="../Source_r6menu/r6menurslookandfeel.html">Source</a></td>
+	<td class="header"><a class="header" href="../classtree.html#R6MenuRSLookAndFeel">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../r6menu/r6menurootwindow.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../r6menu/r6menusaveplan.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+
+<div class="stats">Creation time: mar. 26/5/2026 18:33:12.664 - Created with <a href="http://wiki.beyondunreal.com/wiki/UnCodeX" target="_blank">UnCodeX</a></div>
+
+</body>
+</html>

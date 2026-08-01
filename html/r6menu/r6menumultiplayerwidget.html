@@ -1,0 +1,1117 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+	<title>UnCodeX - R6Menu.R6MenuMultiPlayerWidget</title>
+	<meta name="Generator" content="UnCodeX 241" />
+	<link rel="stylesheet" href="../DocStyle2.css" type="text/css" title="Original Purple" />
+	<link rel="alternative stylesheet" href="../DocStyle2-blue.css" type="text/css" title="Blue" />
+	<link rel="alternative stylesheet" href="../DocStyle2-red.css" type="text/css" title="Red" />
+	<!--[if IE]>
+	<link rel="stylesheet" href="../DocStyle2-msie.css" type="text/css" />
+	<![endif]-->
+	<script src="../styleswitcher.js" type="text/javascript"></script>
+</head>
+<body>
+
+<div class="header">
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../r6menu/r6menu-overview.html">Package</a></td>
+	<td class="header_hilight">Class</td>
+	<td class="header"><a href="../Source_r6menu/r6menumultiplayerwidget.html">Source</a></td>
+	<td class="header"><a class="header" href="../classtree.html#R6MenuMultiPlayerWidget">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../r6menu/r6menumpteambar.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../r6menu/r6menunavigationbar.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html#r6menu/r6menumultiplayerwidget.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+</div>
+<div class="spacer"></div>
+
+<h1><a href="../r6menu/r6menu-overview.html">R6Menu</a>.R6MenuMultiPlayerWidget</h1>
+
+<dl>
+<dt>Extends</dt><dd><a href="../r6menu/r6menuwidget.html">R6MenuWidget</a></dd>
+<dt>Modifiers</dt><dd>Config ( User ) </dd>
+</dl>
+
+<p></p>
+
+<pre class="tree"><a href="../core/core-overview.html">core</a>.<a href="../core/object.html">Object</a>
+|   
++-- <a href="../uwindow/uwindow-overview.html">UWindow</a>.<a href="../uwindow/uwindowbase.html">UWindowBase</a>
+   |   
+   +-- <a href="../uwindow/uwindow-overview.html">UWindow</a>.<a href="../uwindow/uwindowwindow.html">UWindowWindow</a>
+      |   
+      +-- <a href="../uwindow/uwindow-overview.html">UWindow</a>.<a href="../uwindow/uwindowclientwindow.html">UWindowClientWindow</a>
+         |   
+         +-- <a href="../uwindow/uwindow-overview.html">UWindow</a>.<a href="../uwindow/uwindowdialogclientwindow.html">UWindowDialogClientWindow</a>
+            |   
+            +-- <a href="../r6menu/r6menu-overview.html">R6Menu</a>.<a href="../r6menu/r6menuwidget.html">R6MenuWidget</a>
+               |   
+               +-- <a href="../r6menu/r6menu-overview.html">R6Menu</a>.<a href="../r6menu/r6menumultiplayerwidget.html">R6MenuMultiPlayerWidget</a>
+</pre>
+
+
+
+<hr />
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Constants Summary</th>
+</tr>
+<tr><td width="40%"><a href="#_C_fDIST_BETWEEN_BUTTON" name="C_fDIST_BETWEEN_BUTTON" title="go to the details">C_fDIST_BETWEEN_BUTTON</a></td><td width="10%">=</td><td width="50%">30</td></tr>
+<tr><td width="40%"><a href="#_K_FFIRST_WINDOWHEIGHT" name="K_FFIRST_WINDOWHEIGHT" title="go to the details">K_FFIRST_WINDOWHEIGHT</a></td><td width="10%">=</td><td width="50%">154</td></tr>
+<tr><td width="40%"><a href="#_K_FIRST_TABWINDOW_WIDTH" name="K_FIRST_TABWINDOW_WIDTH" title="go to the details">K_FIRST_TABWINDOW_WIDTH</a></td><td width="10%">=</td><td width="50%">500</td></tr>
+<tr><td width="40%"><a href="#_K_FSECOND_WINDOWHEIGHT" name="K_FSECOND_WINDOWHEIGHT" title="go to the details">K_FSECOND_WINDOWHEIGHT</a></td><td width="10%">=</td><td width="50%">90</td></tr>
+<tr><td width="40%"><a href="#_K_LIST_UPDATE_TIME" name="K_LIST_UPDATE_TIME" title="go to the details">K_LIST_UPDATE_TIME</a></td><td width="10%">=</td><td width="50%">1000</td></tr>
+<tr><td width="40%"><a href="#_K_REFRESH_TIMEOUT" name="K_REFRESH_TIMEOUT" title="go to the details">K_REFRESH_TIMEOUT</a></td><td width="10%">=</td><td width="50%">2.0</td></tr>
+<tr><td width="40%"><a href="#_K_SEC_TABWINDOW_WIDTH" name="K_SEC_TABWINDOW_WIDTH" title="go to the details">K_SEC_TABWINDOW_WIDTH</a></td><td width="10%">=</td><td width="50%">600</td></tr>
+<tr><td width="40%"><a href="#_K_WINDOWWIDTH" name="K_WINDOWWIDTH" title="go to the details">K_WINDOWWIDTH</a></td><td width="10%">=</td><td width="50%">620</td></tr>
+<tr><td width="40%"><a href="#_K_WINDOWWIDTH_NOBORDER" name="K_WINDOWWIDTH_NOBORDER" title="go to the details">K_WINDOWWIDTH_NOBORDER</a></td><td width="10%">=</td><td width="50%">616</td></tr>
+<tr><td width="40%"><a href="#_K_XSTARTPOS" name="K_XSTARTPOS" title="go to the details">K_XSTARTPOS</a></td><td width="10%">=</td><td width="50%">10</td></tr>
+<tr><td width="40%"><a href="#_K_XSTARTPOS_NOBORDER" name="K_XSTARTPOS_NOBORDER" title="go to the details">K_XSTARTPOS_NOBORDER</a></td><td width="10%">=</td><td width="50%">12</td></tr>
+<tr><td width="40%"><a href="#_K_XTABOFFSET" name="K_XTABOFFSET" title="go to the details">K_XTABOFFSET</a></td><td width="10%">=</td><td width="50%">5</td></tr>
+<tr><td width="40%"><a href="#_K_YPOS_FIRST_TABWINDOW" name="K_YPOS_FIRST_TABWINDOW" title="go to the details">K_YPOS_FIRST_TABWINDOW</a></td><td width="10%">=</td><td width="50%">126</td></tr>
+<tr><td width="40%"><a href="#_K_YPOS_HELPTEXT_WINDOW" name="K_YPOS_HELPTEXT_WINDOW" title="go to the details">K_YPOS_HELPTEXT_WINDOW</a></td><td width="10%">=</td><td width="50%">430</td></tr>
+<tr><td width="40%"><a href="#_K_YPOS_SECOND_TABWINDOW" name="K_YPOS_SECOND_TABWINDOW" title="go to the details">K_YPOS_SECOND_TABWINDOW</a></td><td width="10%">=</td><td width="50%">296</td></tr>
+
+</table>
+
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th colspan="2" class="title">Variables Summary</th>
+</tr>
+<tr><td nowrap="nowrap" width="33%">BOOL</td><td width="66%"><a href="#_m_bChangeMap" name="m_bChangeMap" title="go to the details">m_bChangeMap</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">BOOL</td><td width="66%"><a href="#_m_bFPassWindowActv" name="m_bFPassWindowActv" title="go to the details">m_bFPassWindowActv</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">BOOL</td><td width="66%"><a href="#_m_bGetServerInfo" name="m_bGetServerInfo" title="go to the details">m_bGetServerInfo</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">BOOL</td><td width="66%"><a href="#_m_bIntRefreshFPass" name="m_bIntRefreshFPass" title="go to the details">m_bIntRefreshFPass</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">BOOL</td><td width="66%"><a href="#_m_bJoinIPInProgress" name="m_bJoinIPInProgress" title="go to the details">m_bJoinIPInProgress</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">BOOL</td><td width="66%"><a href="#_m_bLanRefreshFPass" name="m_bLanRefreshFPass" title="go to the details">m_bLanRefreshFPass</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">BOOL</td><td width="66%"><a href="#_m_bLastTypeOfSort" name="m_bLastTypeOfSort" title="go to the details">m_bLastTypeOfSort</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">BOOL</td><td width="66%"><a href="#_m_bListUpdateReq" name="m_bListUpdateReq" title="go to the details">m_bListUpdateReq</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">BOOL</td><td width="66%"><a href="#_m_bPreJoinInProgress" name="m_bPreJoinInProgress" title="go to the details">m_bPreJoinInProgress</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">BOOL</td><td width="66%"><a href="#_m_bQueryServerInfoInProgress" name="m_bQueryServerInfoInProgress" title="go to the details">m_bQueryServerInfoInProgress</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../r6menu/r6windowbuttonmultimenu.html">R6WindowButtonMultiMenu</a></td><td width="66%"><a href="#_m_ButtonCreate" name="m_ButtonCreate" title="go to the details">m_ButtonCreate</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../r6menu/r6windowbuttonmultimenu.html">R6WindowButtonMultiMenu</a></td><td width="66%"><a href="#_m_ButtonJoin" name="m_ButtonJoin" title="go to the details">m_ButtonJoin</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../r6menu/r6windowbuttonmultimenu.html">R6WindowButtonMultiMenu</a></td><td width="66%"><a href="#_m_ButtonJoinIP" name="m_ButtonJoinIP" title="go to the details">m_ButtonJoinIP</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../r6menu/r6windowbuttonmultimenu.html">R6WindowButtonMultiMenu</a></td><td width="66%"><a href="#_m_ButtonLogInOut" name="m_ButtonLogInOut" title="go to the details">m_ButtonLogInOut</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../r6window/r6windowbutton.html">R6WindowButton</a></td><td width="66%"><a href="#_m_ButtonMainMenu" name="m_ButtonMainMenu" title="go to the details">m_ButtonMainMenu</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../r6window/r6windowbutton.html">R6WindowButton</a></td><td width="66%"><a href="#_m_ButtonOptions" name="m_ButtonOptions" title="go to the details">m_ButtonOptions</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../r6menu/r6windowbuttonmultimenu.html">R6WindowButtonMultiMenu</a></td><td width="66%"><a href="#_m_ButtonRefresh" name="m_ButtonRefresh" title="go to the details">m_ButtonRefresh</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../r6menu/r6menumultiplayerwidget.html#MultiPlayerTabID">MultiPlayerTabID</a></td><td width="66%"><a href="#_m_ConnectionTab" name="m_ConnectionTab" title="go to the details">m_ConnectionTab</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../r6menu/r6menumultiplayerwidget.html#MultiPlayerTabID">MultiPlayerTabID</a></td><td width="66%"><a href="#_m_FilterTab" name="m_FilterTab" title="go to the details">m_FilterTab</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../r6window/r6windowtextlabelcurved.html">R6WindowTextLabelCurved</a></td><td width="66%"><a href="#_m_FirstTabWindow" name="m_FirstTabWindow" title="go to the details">m_FirstTabWindow</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">FLOAT</td><td width="66%"><a href="#_m_fMouseX" name="m_fMouseX" title="go to the details">m_fMouseX</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">FLOAT</td><td width="66%"><a href="#_m_fMouseY" name="m_fMouseY" title="go to the details">m_fMouseY</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">INT</td><td width="66%"><a href="#_m_FrameCounter" name="m_FrameCounter" title="go to the details">m_FrameCounter</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">FLOAT</td><td width="66%"><a href="#_m_fRefeshDeltaTime" name="m_fRefeshDeltaTime" title="go to the details">m_fRefeshDeltaTime</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../r6gameservice/r6gsservers.html">R6GSServers</a></td><td width="66%"><a href="#_m_GameService" name="m_GameService" title="go to the details">m_GameService</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">INT</td><td width="66%"><a href="#_m_iLastSortCategory" name="m_iLastSortCategory" title="go to the details">m_iLastSortCategory</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">INT</td><td width="66%"><a href="#_m_iLastTabSel" name="m_iLastTabSel" title="go to the details">m_iLastTabSel</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">INT</td><td width="66%"><a href="#_m_iTimeLastUpdate" name="m_iTimeLastUpdate" title="go to the details">m_iTimeLastUpdate</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">INT</td><td width="66%"><a href="#_m_iTotalPlayers" name="m_iTotalPlayers" title="go to the details">m_iTotalPlayers</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../r6gameservice/r6lanservers.html">R6LanServers</a></td><td width="66%"><a href="#_m_LanServers" name="m_LanServers" title="go to the details">m_LanServers</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../r6window/r6windowtextlabel.html">R6WindowTextLabel</a></td><td width="66%"><a href="#_m_LMenuTitle" name="m_LMenuTitle" title="go to the details">m_LMenuTitle</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../r6menu/r6menumultiplayerwidget.html#eLoginSuccessAction">eLoginSuccessAction</a></td><td width="66%"><a href="#_m_LoginSuccessAction" name="m_LoginSuccessAction" title="go to the details">m_LoginSuccessAction</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../uwindow/uwindowlistboxitem.html">UWindowListBoxItem</a></td><td width="66%"><a href="#_m_oldSelItem" name="m_oldSelItem" title="go to the details">m_oldSelItem</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../r6window/r6windowpageswitch.html">R6WindowPageSwitch</a></td><td width="66%"><a href="#_m_PageCount" name="m_PageCount" title="go to the details">m_PageCount</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../r6menu/r6menumpbutserverlist.html">R6MenuMPButServerList</a></td><td width="66%"><a href="#_m_pButServerList" name="m_pButServerList" title="go to the details">m_pButServerList</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../r6window/r6windowubicdkeycheck.html">R6WindowUbiCDKeyCheck</a></td><td width="66%"><a href="#_m_pCDKeyCheckWindow" name="m_pCDKeyCheckWindow" title="go to the details">m_pCDKeyCheckWindow</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../r6menu/r6menumpmanagetab.html">R6MenuMPManageTab</a></td><td width="66%"><a href="#_m_pFirstTabManager" name="m_pFirstTabManager" title="go to the details">m_pFirstTabManager</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../r6window/r6windowsimpleframedwindowext.html">R6WindowSimpleFramedWindowExt</a></td><td width="66%"><a href="#_m_pFirstWindowBorder" name="m_pFirstWindowBorder" title="go to the details">m_pFirstWindowBorder</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../r6menu/r6menuhelpwindow.html">R6MenuHelpWindow</a></td><td width="66%"><a href="#_m_pHelpTextWindow" name="m_pHelpTextWindow" title="go to the details">m_pHelpTextWindow</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../r6window/r6windowjoinip.html">R6WindowJoinIp</a></td><td width="66%"><a href="#_m_pJoinIPWindow" name="m_pJoinIPWindow" title="go to the details">m_pJoinIPWindow</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../r6window/r6windowubilogin.html">R6WindowUbiLogIn</a></td><td width="66%"><a href="#_m_pLoginWindow" name="m_pLoginWindow" title="go to the details">m_pLoginWindow</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../r6window/r6windowqueryserverinfo.html">R6WindowQueryServerInfo</a></td><td width="66%"><a href="#_m_pQueryServerInfo" name="m_pQueryServerInfo" title="go to the details">m_pQueryServerInfo</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../r6window/r6windowrightclickmenu.html">R6WindowRightClickMenu</a></td><td width="66%"><a href="#_m_pRightClickMenu" name="m_pRightClickMenu" title="go to the details">m_pRightClickMenu</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../r6menu/r6menumpmanagetab.html">R6MenuMPManageTab</a></td><td width="66%"><a href="#_m_pSecondTabManager" name="m_pSecondTabManager" title="go to the details">m_pSecondTabManager</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../r6menu/r6menumpmenutab.html">R6MenuMPMenuTab</a></td><td width="66%"><a href="#_m_pSecondWindow" name="m_pSecondWindow" title="go to the details">m_pSecondWindow</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../r6window/r6windowsimpleframedwindowext.html">R6WindowSimpleFramedWindowExt</a></td><td width="66%"><a href="#_m_pSecondWindowBorder" name="m_pSecondWindowBorder" title="go to the details">m_pSecondWindowBorder</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../r6menu/r6menumpmenutab.html">R6MenuMPMenuTab</a></td><td width="66%"><a href="#_m_pSecondWindowFilter" name="m_pSecondWindowFilter" title="go to the details">m_pSecondWindowFilter</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../r6menu/r6menumpmenutab.html">R6MenuMPMenuTab</a></td><td width="66%"><a href="#_m_pSecondWindowGameMode" name="m_pSecondWindowGameMode" title="go to the details">m_pSecondWindowGameMode</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../r6menu/r6menumpmenutab.html">R6MenuMPMenuTab</a></td><td width="66%"><a href="#_m_pSecondWindowServerInfo" name="m_pSecondWindowServerInfo" title="go to the details">m_pSecondWindowServerInfo</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../r6window/r6windowtextlabelcurved.html">R6WindowTextLabelCurved</a></td><td width="66%"><a href="#_m_SecondTabWindow" name="m_SecondTabWindow" title="go to the details">m_SecondTabWindow</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../r6window/r6windowtextlabelext.html">R6WindowTextLabelExt</a></td><td width="66%"><a href="#_m_ServerDescription" name="m_ServerDescription" title="go to the details">m_ServerDescription</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../r6window/r6windowserverinfomapbox.html">R6WindowServerInfoMapBox</a></td><td width="66%"><a href="#_m_ServerInfoMapBox" name="m_ServerInfoMapBox" title="go to the details">m_ServerInfoMapBox</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../r6window/r6windowserverinfooptionsbox.html">R6WindowServerInfoOptionsBox</a></td><td width="66%"><a href="#_m_ServerInfoOptionsBox" name="m_ServerInfoOptionsBox" title="go to the details">m_ServerInfoOptionsBox</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../r6window/r6windowserverinfoplayerbox.html">R6WindowServerInfoPlayerBox</a></td><td width="66%"><a href="#_m_ServerInfoPlayerBox" name="m_ServerInfoPlayerBox" title="go to the details">m_ServerInfoPlayerBox</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../r6window/r6windowserverlistbox.html">R6WindowServerListBox</a></td><td width="66%"><a href="#_m_ServerListBox" name="m_ServerListBox" title="go to the details">m_ServerListBox</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_m_szGamePwd" name="m_szGamePwd" title="go to the details">m_szGamePwd</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_m_szMultiLoc[2]" name="m_szMultiLoc[2]" title="go to the details">m_szMultiLoc[2]</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_m_szPopUpIP" name="m_szPopUpIP" title="go to the details">m_szPopUpIP</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_m_szServerIP" name="m_szServerIP" title="go to the details">m_szServerIP</a></td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Variables from <a href="../r6menu/r6menu-overview.html">R6Menu</a>.<a href="../r6menu/r6menuwidget.html">R6MenuWidget</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../r6menu/r6menuwidget.html#m_fLeftMouseXClipping">m_fLeftMouseXClipping</a>, <a href="../r6menu/r6menuwidget.html#m_fLeftMouseYClipping">m_fLeftMouseYClipping</a>, <a href="../r6menu/r6menuwidget.html#m_fRightMouseXClipping">m_fRightMouseXClipping</a>, <a href="../r6menu/r6menuwidget.html#m_fRightMouseYClipping">m_fRightMouseYClipping</a></td>
+</tr>
+</table>
+<table>
+<tr>
+	<th class="inherittitle">Inherited Variables from <a href="../uwindow/uwindow-overview.html">UWindow</a>.<a href="../uwindow/uwindowdialogclientwindow.html">UWindowDialogClientWindow</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../uwindow/uwindowdialogclientwindow.html#DesiredHeight">DesiredHeight</a>, <a href="../uwindow/uwindowdialogclientwindow.html#DesiredWidth">DesiredWidth</a>, <a href="../uwindow/uwindowdialogclientwindow.html#TabLast">TabLast</a></td>
+</tr>
+</table>
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Enumerations Summary</th>
+</tr>
+<tr><td><a href="#_eLoginSuccessAction" name="eLoginSuccessAction" title="go to the details">eLoginSuccessAction</a><br /><span class="small">eLSAct_None,
+eLSAct_JoinIP,
+eLSAct_Join,
+eLSAct_InternetTab,
+eLSAct_LaunchServer,
+eLSAct_CloseWindow,
+eLSAct_SwitchToInternetTab</span></td></tr>
+<tr><td><a href="#_eServerInfoID" name="eServerInfoID" title="go to the details">eServerInfoID</a><br /><span class="small">eServerInfoID_DeathMatch,
+eServerInfoID_TeamDeathMatch,
+eServerInfoID_Bomb,
+eServerInfoID_HostageAdv,
+eServerInfoID_Escort,
+eServerInfoID_Mission,
+eServerInfoID_Terrorist,
+eServerInfoID_HostageCoop,
+eServerInfoID_Defend,
+eServerInfoID_Recon,
+eServerInfoID_Unlocked,
+eServerInfoID_Favorites,
+eServerInfoID_Dedicated,
+eServerInfoID_PunkBuster,
+eServerInfoID_NotEmpty,
+eServerInfoID_NotFull,
+eServerInfoID_Responding,
+eServerInfoID_HasPlayer,
+eServerInfoID_SameVersion</span></td></tr>
+<tr><td><a href="#_MultiPlayerTabID" name="MultiPlayerTabID" title="go to the details">MultiPlayerTabID</a><br /><span class="small">TAB_Lan_Server,
+TAB_Internet_Server,
+TAB_Game_Mode,
+TAB_Tech_Filter,
+TAB_Server_Info</span></td></tr>
+
+</table>
+
+
+
+<br />
+
+
+
+
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Functions Summary</th>
+</tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_AddServerToFavorites-" name="AddServerToFavorites" title="go to the details">AddServerToFavorites</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_BackToMainMenu-" name="BackToMainMenu" title="go to the details">BackToMainMenu</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_ClearServerInfo-" name="ClearServerInfo" title="go to the details">ClearServerInfo</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_Created-" name="Created" title="go to the details">Created</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_DelServerFromFavorites-" name="DelServerFromFavorites" title="go to the details">DelServerFromFavorites</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_DisplayRightClickMenu-" name="DisplayRightClickMenu" title="go to the details">DisplayRightClickMenu</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_GetGSServers-" name="GetGSServers" title="go to the details">GetGSServers</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_GetLanServers-" name="GetLanServers" title="go to the details">GetLanServers</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_GetServerInfo-" name="GetServerInfo" title="go to the details">GetServerInfo</a> (<a href="../r6gameservice/r6serverlist.html">R6ServerList</a> pServerList))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_InitButton-" name="InitButton" title="go to the details">InitButton</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_InitFirstTabWindow-" name="InitFirstTabWindow" title="go to the details">InitFirstTabWindow</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_InitInfoBar-" name="InitInfoBar" title="go to the details">InitInfoBar</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_InitRightClickMenu-" name="InitRightClickMenu" title="go to the details">InitRightClickMenu</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_InitSecondTabWindow-" name="InitSecondTabWindow" title="go to the details">InitSecondTabWindow</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_InitServerInfoMap-" name="InitServerInfoMap" title="go to the details">InitServerInfoMap</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_InitServerInfoOptions-" name="InitServerInfoOptions" title="go to the details">InitServerInfoOptions</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_InitServerInfoPlayer-" name="InitServerInfoPlayer" title="go to the details">InitServerInfoPlayer</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_InitServerList-" name="InitServerList" title="go to the details">InitServerList</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_InitText-" name="InitText" title="go to the details">InitText</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_JoinSelectedServerRequested-" name="JoinSelectedServerRequested" title="go to the details">JoinSelectedServerRequested</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_JoinServer-" name="JoinServer" title="go to the details">JoinServer</a> (string szIPAddress))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_ManageTabSelection-" name="ManageTabSelection" title="go to the details">ManageTabSelection</a> (INT _MPTabChoiceID))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_ManageToolTip-" name="ManageToolTip" title="go to the details">ManageToolTip</a> (string _strTip, optional BOOL _bForceATip))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_Notify-" name="Notify" title="go to the details">Notify</a> (<a href="../uwindow/uwindowdialogcontrol.html">UWindowDialogControl</a> C, byte E))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_Paint-" name="Paint" title="go to the details">Paint</a> (<a href="../engine/canvas.html">Canvas</a> C, FLOAT X, FLOAT Y))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_PopUpBoxDone-" name="PopUpBoxDone" title="go to the details">PopUpBoxDone</a> (<a href="../uwindow/uwindowbase.html#MessageBoxResult">MessageBoxResult</a> Result, <a href="../uwindow/uwindowbase.html#EPopUpID">ePopUpID</a> _ePopUpID))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_PromptConnectionError-" name="PromptConnectionError" title="go to the details">PromptConnectionError</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_QueryReceivedStartPreJoin-" name="QueryReceivedStartPreJoin" title="go to the details">QueryReceivedStartPreJoin</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_QuickJoin-" name="QuickJoin" title="go to the details">QuickJoin</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_Refresh-" name="Refresh" title="go to the details">Refresh</a> (BOOL bActivatedByUser ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_ResetMultiplayerMenu-" name="ResetMultiplayerMenu" title="go to the details">ResetMultiplayerMenu</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_ResortServerList-" name="ResortServerList" title="go to the details">ResortServerList</a> (INT iCategory, BOOL _bAscending ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_SendMessage-" name="SendMessage" title="go to the details">SendMessage</a> (eR6MenuWidgetMessage eMessage ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_SetServerFilterBooleans-" name="SetServerFilterBooleans" title="go to the details">SetServerFilterBooleans</a> (INT _iServerInfoID, bool _bNewChoice ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_SetServerFilterFasterThan-" name="SetServerFilterFasterThan" title="go to the details">SetServerFilterFasterThan</a> (INT iFasterThan ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_SetServerFilterHasPlayer-" name="SetServerFilterHasPlayer" title="go to the details">SetServerFilterHasPlayer</a> (string szPlayerName, bool _bActive ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_ShowWindow-" name="ShowWindow" title="go to the details">ShowWindow</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_Tick-" name="Tick" title="go to the details">Tick</a> (float deltaTime))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_ToolTip-" name="ToolTip" title="go to the details">ToolTip</a> (string strTip))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_UpdateFavorites-" name="UpdateFavorites" title="go to the details">UpdateFavorites</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_UpdateServerFilters-" name="UpdateServerFilters" title="go to the details">UpdateServerFilters</a> ()))<br /><span class="function_state"></span></td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Functions from <a href="../r6menu/r6menu-overview.html">R6Menu</a>.<a href="../r6menu/r6menuwidget.html">R6MenuWidget</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../r6menu/r6menuwidget.html#KeyDown">KeyDown</a>, <a href="../r6menu/r6menuwidget.html#Reset">Reset</a>, <a href="../r6menu/r6menuwidget.html#SetMousePos">SetMousePos</a></td>
+</tr>
+</table>
+<table>
+<tr>
+	<th class="inherittitle">Inherited Functions from <a href="../uwindow/uwindow-overview.html">UWindow</a>.<a href="../uwindow/uwindowdialogclientwindow.html">UWindowDialogClientWindow</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../uwindow/uwindowdialogclientwindow.html#CreateControl">CreateControl</a>, <a href="../uwindow/uwindowdialogclientwindow.html#GetDesiredDimensions">GetDesiredDimensions</a>, <a href="../uwindow/uwindowdialogclientwindow.html#Notify">Notify</a>, <a href="../uwindow/uwindowdialogclientwindow.html#OKPressed">OKPressed</a></td>
+</tr>
+</table>
+
+
+<br />
+
+
+
+<hr />
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Constants Detail</th>
+</tr>
+</table>
+
+<h4><a name="_C_fDIST_BETWEEN_BUTTON" class="hidden"></a>C_fDIST_BETWEEN_BUTTON <a href="../Source_r6menu/r6menumultiplayerwidget.html#69" class="small">Source code</a></h4>
+<div class="declaration">const C_fDIST_BETWEEN_BUTTON = <span class="source_int">30</span>;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_K_FFIRST_WINDOWHEIGHT" class="hidden"></a>K_FFIRST_WINDOWHEIGHT <a href="../Source_r6menu/r6menumultiplayerwidget.html#64" class="small">Source code</a></h4>
+<div class="declaration">const K_FFIRST_WINDOWHEIGHT = <span class="source_int">154</span>;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_K_FIRST_TABWINDOW_WIDTH" class="hidden"></a>K_FIRST_TABWINDOW_WIDTH <a href="../Source_r6menu/r6menumultiplayerwidget.html#62" class="small">Source code</a></h4>
+<div class="declaration">const K_FIRST_TABWINDOW_WIDTH = <span class="source_int">500</span>;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_K_FSECOND_WINDOWHEIGHT" class="hidden"></a>K_FSECOND_WINDOWHEIGHT <a href="../Source_r6menu/r6menumultiplayerwidget.html#65" class="small">Source code</a></h4>
+<div class="declaration">const K_FSECOND_WINDOWHEIGHT = <span class="source_int">90</span>;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_K_LIST_UPDATE_TIME" class="hidden"></a>K_LIST_UPDATE_TIME <a href="../Source_r6menu/r6menumultiplayerwidget.html#70" class="small">Source code</a></h4>
+<div class="declaration">const K_LIST_UPDATE_TIME = <span class="source_int">1000</span>;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_K_REFRESH_TIMEOUT" class="hidden"></a>K_REFRESH_TIMEOUT <a href="../Source_r6menu/r6menumultiplayerwidget.html#71" class="small">Source code</a></h4>
+<div class="declaration">const K_REFRESH_TIMEOUT = <span class="source_int">2.0</span>;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_K_SEC_TABWINDOW_WIDTH" class="hidden"></a>K_SEC_TABWINDOW_WIDTH <a href="../Source_r6menu/r6menumultiplayerwidget.html#63" class="small">Source code</a></h4>
+<div class="declaration">const K_SEC_TABWINDOW_WIDTH = <span class="source_int">600</span>;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_K_WINDOWWIDTH" class="hidden"></a>K_WINDOWWIDTH <a href="../Source_r6menu/r6menumultiplayerwidget.html#58" class="small">Source code</a></h4>
+<div class="declaration">const K_WINDOWWIDTH = <span class="source_int">620</span>;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_K_WINDOWWIDTH_NOBORDER" class="hidden"></a>K_WINDOWWIDTH_NOBORDER <a href="../Source_r6menu/r6menumultiplayerwidget.html#60" class="small">Source code</a></h4>
+<div class="declaration">const K_WINDOWWIDTH_NOBORDER = <span class="source_int">616</span>;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_K_XSTARTPOS" class="hidden"></a>K_XSTARTPOS <a href="../Source_r6menu/r6menumultiplayerwidget.html#57" class="small">Source code</a></h4>
+<div class="declaration">const K_XSTARTPOS = <span class="source_int">10</span>;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_K_XSTARTPOS_NOBORDER" class="hidden"></a>K_XSTARTPOS_NOBORDER <a href="../Source_r6menu/r6menumultiplayerwidget.html#59" class="small">Source code</a></h4>
+<div class="declaration">const K_XSTARTPOS_NOBORDER = <span class="source_int">12</span>;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_K_XTABOFFSET" class="hidden"></a>K_XTABOFFSET <a href="../Source_r6menu/r6menumultiplayerwidget.html#61" class="small">Source code</a></h4>
+<div class="declaration">const K_XTABOFFSET = <span class="source_int">5</span>;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_K_YPOS_FIRST_TABWINDOW" class="hidden"></a>K_YPOS_FIRST_TABWINDOW <a href="../Source_r6menu/r6menumultiplayerwidget.html#66" class="small">Source code</a></h4>
+<div class="declaration">const K_YPOS_FIRST_TABWINDOW = <span class="source_int">126</span>;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_K_YPOS_HELPTEXT_WINDOW" class="hidden"></a>K_YPOS_HELPTEXT_WINDOW <a href="../Source_r6menu/r6menumultiplayerwidget.html#68" class="small">Source code</a></h4>
+<div class="declaration">const K_YPOS_HELPTEXT_WINDOW = <span class="source_int">430</span>;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_K_YPOS_SECOND_TABWINDOW" class="hidden"></a>K_YPOS_SECOND_TABWINDOW <a href="../Source_r6menu/r6menumultiplayerwidget.html#67" class="small">Source code</a></h4>
+<div class="declaration">const K_YPOS_SECOND_TABWINDOW = <span class="source_int">296</span>;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th class="title">Variables Detail</th>
+</tr>
+</table>
+
+<h4><a name="_m_bChangeMap" class="hidden"></a>m_bChangeMap <a href="../Source_r6menu/r6menumultiplayerwidget.html#142" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">BOOL</span> m_bChangeMap;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_bFPassWindowActv" class="hidden"></a>m_bFPassWindowActv <a href="../Source_r6menu/r6menumultiplayerwidget.html#144" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">BOOL</span> m_bFPassWindowActv;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_bGetServerInfo" class="hidden"></a>m_bGetServerInfo <a href="../Source_r6menu/r6menumultiplayerwidget.html#149" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">BOOL</span> m_bGetServerInfo;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_bIntRefreshFPass" class="hidden"></a>m_bIntRefreshFPass <a href="../Source_r6menu/r6menumultiplayerwidget.html#151" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">BOOL</span> m_bIntRefreshFPass;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_bJoinIPInProgress" class="hidden"></a>m_bJoinIPInProgress <a href="../Source_r6menu/r6menumultiplayerwidget.html#146" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">BOOL</span> m_bJoinIPInProgress;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_bLanRefreshFPass" class="hidden"></a>m_bLanRefreshFPass <a href="../Source_r6menu/r6menumultiplayerwidget.html#150" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">BOOL</span> m_bLanRefreshFPass;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_bLastTypeOfSort" class="hidden"></a>m_bLastTypeOfSort <a href="../Source_r6menu/r6menumultiplayerwidget.html#143" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">BOOL</span> m_bLastTypeOfSort;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_bListUpdateReq" class="hidden"></a>m_bListUpdateReq <a href="../Source_r6menu/r6menumultiplayerwidget.html#141" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">BOOL</span> m_bListUpdateReq;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_bPreJoinInProgress" class="hidden"></a>m_bPreJoinInProgress <a href="../Source_r6menu/r6menumultiplayerwidget.html#145" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">BOOL</span> m_bPreJoinInProgress;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_bQueryServerInfoInProgress" class="hidden"></a>m_bQueryServerInfoInProgress <a href="../Source_r6menu/r6menumultiplayerwidget.html#147" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">BOOL</span> m_bQueryServerInfoInProgress;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_ButtonCreate" class="hidden"></a>m_ButtonCreate <a href="../Source_r6menu/r6menumultiplayerwidget.html#85" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../r6menu/r6windowbuttonmultimenu.html" class="source">R6WindowButtonMultiMenu</a></span> m_ButtonCreate;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_ButtonJoin" class="hidden"></a>m_ButtonJoin <a href="../Source_r6menu/r6menumultiplayerwidget.html#82" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../r6menu/r6windowbuttonmultimenu.html" class="source">R6WindowButtonMultiMenu</a></span> m_ButtonJoin;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_ButtonJoinIP" class="hidden"></a>m_ButtonJoinIP <a href="../Source_r6menu/r6menumultiplayerwidget.html#83" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../r6menu/r6windowbuttonmultimenu.html" class="source">R6WindowButtonMultiMenu</a></span> m_ButtonJoinIP;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_ButtonLogInOut" class="hidden"></a>m_ButtonLogInOut <a href="../Source_r6menu/r6menumultiplayerwidget.html#81" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../r6menu/r6windowbuttonmultimenu.html" class="source">R6WindowButtonMultiMenu</a></span> m_ButtonLogInOut;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_ButtonMainMenu" class="hidden"></a>m_ButtonMainMenu <a href="../Source_r6menu/r6menumultiplayerwidget.html#76" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../r6window/r6windowbutton.html" class="source">R6WindowButton</a></span> m_ButtonMainMenu;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_ButtonOptions" class="hidden"></a>m_ButtonOptions <a href="../Source_r6menu/r6menumultiplayerwidget.html#77" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../r6window/r6windowbutton.html" class="source">R6WindowButton</a></span> m_ButtonOptions;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_ButtonRefresh" class="hidden"></a>m_ButtonRefresh <a href="../Source_r6menu/r6menumultiplayerwidget.html#84" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../r6menu/r6windowbuttonmultimenu.html" class="source">R6WindowButtonMultiMenu</a></span> m_ButtonRefresh;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_ConnectionTab" class="hidden"></a>m_ConnectionTab <a href="../Source_r6menu/r6menumultiplayerwidget.html#117" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../r6menu/r6menumultiplayerwidget.html#MultiPlayerTabID" class="source">MultiPlayerTabID</a></span> m_ConnectionTab;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_FilterTab" class="hidden"></a>m_FilterTab <a href="../Source_r6menu/r6menumultiplayerwidget.html#118" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../r6menu/r6menumultiplayerwidget.html#MultiPlayerTabID" class="source">MultiPlayerTabID</a></span> m_FilterTab;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_FirstTabWindow" class="hidden"></a>m_FirstTabWindow <a href="../Source_r6menu/r6menumultiplayerwidget.html#87" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../r6window/r6windowtextlabelcurved.html" class="source">R6WindowTextLabelCurved</a></span> m_FirstTabWindow;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_fMouseX" class="hidden"></a>m_fMouseX <a href="../Source_r6menu/r6menumultiplayerwidget.html#131" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">FLOAT</span> m_fMouseX;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_fMouseY" class="hidden"></a>m_fMouseY <a href="../Source_r6menu/r6menumultiplayerwidget.html#132" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">FLOAT</span> m_fMouseY;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_FrameCounter" class="hidden"></a>m_FrameCounter <a href="../Source_r6menu/r6menumultiplayerwidget.html#114" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">INT</span> m_FrameCounter;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_fRefeshDeltaTime" class="hidden"></a>m_fRefeshDeltaTime <a href="../Source_r6menu/r6menumultiplayerwidget.html#148" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">FLOAT</span> m_fRefeshDeltaTime;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_GameService" class="hidden"></a>m_GameService <a href="../Source_r6menu/r6menumultiplayerwidget.html#112" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../r6gameservice/r6gsservers.html" class="source">R6GSServers</a></span> m_GameService;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_iLastSortCategory" class="hidden"></a>m_iLastSortCategory <a href="../Source_r6menu/r6menumultiplayerwidget.html#137" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">INT</span> m_iLastSortCategory;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_iLastTabSel" class="hidden"></a>m_iLastTabSel <a href="../Source_r6menu/r6menumultiplayerwidget.html#138" class="small">Source code</a></h4>
+<div class="declaration">var config <span class="source_type">INT</span> m_iLastTabSel;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_iTimeLastUpdate" class="hidden"></a>m_iTimeLastUpdate <a href="../Source_r6menu/r6menumultiplayerwidget.html#136" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">INT</span> m_iTimeLastUpdate;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_iTotalPlayers" class="hidden"></a>m_iTotalPlayers <a href="../Source_r6menu/r6menumultiplayerwidget.html#139" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">INT</span> m_iTotalPlayers;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_LanServers" class="hidden"></a>m_LanServers <a href="../Source_r6menu/r6menumultiplayerwidget.html#113" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../r6gameservice/r6lanservers.html" class="source">R6LanServers</a></span> m_LanServers;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_LMenuTitle" class="hidden"></a>m_LMenuTitle <a href="../Source_r6menu/r6menumultiplayerwidget.html#73" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../r6window/r6windowtextlabel.html" class="source">R6WindowTextLabel</a></span> m_LMenuTitle;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_LoginSuccessAction" class="hidden"></a>m_LoginSuccessAction <a href="../Source_r6menu/r6menumultiplayerwidget.html#134" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../r6menu/r6menumultiplayerwidget.html#eLoginSuccessAction" class="source">eLoginSuccessAction</a></span> m_LoginSuccessAction;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_oldSelItem" class="hidden"></a>m_oldSelItem <a href="../Source_r6menu/r6menumultiplayerwidget.html#115" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../uwindow/uwindowlistboxitem.html" class="source">UWindowListBoxItem</a></span> m_oldSelItem;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_PageCount" class="hidden"></a>m_PageCount <a href="../Source_r6menu/r6menumultiplayerwidget.html#79" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../r6window/r6windowpageswitch.html" class="source">R6WindowPageSwitch</a></span> m_PageCount;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_pButServerList" class="hidden"></a>m_pButServerList <a href="../Source_r6menu/r6menumultiplayerwidget.html#91" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../r6menu/r6menumpbutserverlist.html" class="source">R6MenuMPButServerList</a></span> m_pButServerList;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_pCDKeyCheckWindow" class="hidden"></a>m_pCDKeyCheckWindow <a href="../Source_r6menu/r6menumultiplayerwidget.html#121" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../r6window/r6windowubicdkeycheck.html" class="source">R6WindowUbiCDKeyCheck</a></span> m_pCDKeyCheckWindow;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_pFirstTabManager" class="hidden"></a>m_pFirstTabManager <a href="../Source_r6menu/r6menumultiplayerwidget.html#93" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../r6menu/r6menumpmanagetab.html" class="source">R6MenuMPManageTab</a></span> m_pFirstTabManager;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_pFirstWindowBorder" class="hidden"></a>m_pFirstWindowBorder <a href="../Source_r6menu/r6menumultiplayerwidget.html#101" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../r6window/r6windowsimpleframedwindowext.html" class="source">R6WindowSimpleFramedWindowExt</a></span> m_pFirstWindowBorder;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_pHelpTextWindow" class="hidden"></a>m_pHelpTextWindow <a href="../Source_r6menu/r6menumultiplayerwidget.html#104" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../r6menu/r6menuhelpwindow.html" class="source">R6MenuHelpWindow</a></span> m_pHelpTextWindow;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_pJoinIPWindow" class="hidden"></a>m_pJoinIPWindow <a href="../Source_r6menu/r6menumultiplayerwidget.html#122" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../r6window/r6windowjoinip.html" class="source">R6WindowJoinIp</a></span> m_pJoinIPWindow;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_pLoginWindow" class="hidden"></a>m_pLoginWindow <a href="../Source_r6menu/r6menumultiplayerwidget.html#120" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../r6window/r6windowubilogin.html" class="source">R6WindowUbiLogIn</a></span> m_pLoginWindow;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_pQueryServerInfo" class="hidden"></a>m_pQueryServerInfo <a href="../Source_r6menu/r6menumultiplayerwidget.html#123" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../r6window/r6windowqueryserverinfo.html" class="source">R6WindowQueryServerInfo</a></span> m_pQueryServerInfo;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_pRightClickMenu" class="hidden"></a>m_pRightClickMenu <a href="../Source_r6menu/r6menumultiplayerwidget.html#126" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../r6window/r6windowrightclickmenu.html" class="source">R6WindowRightClickMenu</a></span> m_pRightClickMenu;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_pSecondTabManager" class="hidden"></a>m_pSecondTabManager <a href="../Source_r6menu/r6menumultiplayerwidget.html#94" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../r6menu/r6menumpmanagetab.html" class="source">R6MenuMPManageTab</a></span> m_pSecondTabManager;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_pSecondWindow" class="hidden"></a>m_pSecondWindow <a href="../Source_r6menu/r6menumultiplayerwidget.html#96" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../r6menu/r6menumpmenutab.html" class="source">R6MenuMPMenuTab</a></span> m_pSecondWindow;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_pSecondWindowBorder" class="hidden"></a>m_pSecondWindowBorder <a href="../Source_r6menu/r6menumultiplayerwidget.html#102" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../r6window/r6windowsimpleframedwindowext.html" class="source">R6WindowSimpleFramedWindowExt</a></span> m_pSecondWindowBorder;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_pSecondWindowFilter" class="hidden"></a>m_pSecondWindowFilter <a href="../Source_r6menu/r6menumultiplayerwidget.html#98" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../r6menu/r6menumpmenutab.html" class="source">R6MenuMPMenuTab</a></span> m_pSecondWindowFilter;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_pSecondWindowGameMode" class="hidden"></a>m_pSecondWindowGameMode <a href="../Source_r6menu/r6menumultiplayerwidget.html#97" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../r6menu/r6menumpmenutab.html" class="source">R6MenuMPMenuTab</a></span> m_pSecondWindowGameMode;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_pSecondWindowServerInfo" class="hidden"></a>m_pSecondWindowServerInfo <a href="../Source_r6menu/r6menumultiplayerwidget.html#99" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../r6menu/r6menumpmenutab.html" class="source">R6MenuMPMenuTab</a></span> m_pSecondWindowServerInfo;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_SecondTabWindow" class="hidden"></a>m_SecondTabWindow <a href="../Source_r6menu/r6menumultiplayerwidget.html#88" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../r6window/r6windowtextlabelcurved.html" class="source">R6WindowTextLabelCurved</a></span> m_SecondTabWindow;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_ServerDescription" class="hidden"></a>m_ServerDescription <a href="../Source_r6menu/r6menumultiplayerwidget.html#89" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../r6window/r6windowtextlabelext.html" class="source">R6WindowTextLabelExt</a></span> m_ServerDescription;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_ServerInfoMapBox" class="hidden"></a>m_ServerInfoMapBox <a href="../Source_r6menu/r6menumultiplayerwidget.html#109" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../r6window/r6windowserverinfomapbox.html" class="source">R6WindowServerInfoMapBox</a></span> m_ServerInfoMapBox;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_ServerInfoOptionsBox" class="hidden"></a>m_ServerInfoOptionsBox <a href="../Source_r6menu/r6menumultiplayerwidget.html#110" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../r6window/r6windowserverinfooptionsbox.html" class="source">R6WindowServerInfoOptionsBox</a></span> m_ServerInfoOptionsBox;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_ServerInfoPlayerBox" class="hidden"></a>m_ServerInfoPlayerBox <a href="../Source_r6menu/r6menumultiplayerwidget.html#108" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../r6window/r6windowserverinfoplayerbox.html" class="source">R6WindowServerInfoPlayerBox</a></span> m_ServerInfoPlayerBox;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_ServerListBox" class="hidden"></a>m_ServerListBox <a href="../Source_r6menu/r6menumultiplayerwidget.html#106" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../r6window/r6windowserverlistbox.html" class="source">R6WindowServerListBox</a></span> m_ServerListBox;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_szGamePwd" class="hidden"></a>m_szGamePwd <a href="../Source_r6menu/r6menumultiplayerwidget.html#124" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">string</span> m_szGamePwd;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_szMultiLoc[2]" class="hidden"></a>m_szMultiLoc[2] <a href="../Source_r6menu/r6menumultiplayerwidget.html#129" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">string</span> m_szMultiLoc[<span class="source_int">2</span>];</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_szPopUpIP" class="hidden"></a>m_szPopUpIP <a href="../Source_r6menu/r6menumultiplayerwidget.html#125" class="small">Source code</a></h4>
+<div class="declaration">var config <span class="source_type">string</span> m_szPopUpIP;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_szServerIP" class="hidden"></a>m_szServerIP <a href="../Source_r6menu/r6menumultiplayerwidget.html#128" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">string</span> m_szServerIP;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th class="title">Enumerations Detail</th>
+</tr>
+</table>
+
+<h4><a name="_eLoginSuccessAction" class="hidden"></a>eLoginSuccessAction <a href="../Source_r6menu/r6menumultiplayerwidget.html#46" class="small">Source code</a></h4>
+<div class="declaration">enum <span class="source_type"><a href="../r6menu/r6menumultiplayerwidget.html#eLoginSuccessAction" class="source">eLoginSuccessAction</a></span><br />
+{<blockquote>eLSAct_None,
+eLSAct_JoinIP,
+eLSAct_Join,
+eLSAct_InternetTab,
+eLSAct_LaunchServer,
+eLSAct_CloseWindow,
+eLSAct_SwitchToInternetTab</blockquote>};
+</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_eServerInfoID" class="hidden"></a>eServerInfoID <a href="../Source_r6menu/r6menumultiplayerwidget.html#21" class="small">Source code</a></h4>
+<div class="declaration">enum <span class="source_type"><a href="../r6menu/r6menumultiplayerwidget.html#eServerInfoID" class="source">eServerInfoID</a></span><br />
+{<blockquote>eServerInfoID_DeathMatch,
+eServerInfoID_TeamDeathMatch,
+eServerInfoID_Bomb,
+eServerInfoID_HostageAdv,
+eServerInfoID_Escort,
+eServerInfoID_Mission,
+eServerInfoID_Terrorist,
+eServerInfoID_HostageCoop,
+eServerInfoID_Defend,
+eServerInfoID_Recon,
+eServerInfoID_Unlocked,
+eServerInfoID_Favorites,
+eServerInfoID_Dedicated,
+eServerInfoID_PunkBuster,
+eServerInfoID_NotEmpty,
+eServerInfoID_NotFull,
+eServerInfoID_Responding,
+eServerInfoID_HasPlayer,
+eServerInfoID_SameVersion</blockquote>};
+</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_MultiPlayerTabID" class="hidden"></a>MultiPlayerTabID <a href="../Source_r6menu/r6menumultiplayerwidget.html#12" class="small">Source code</a></h4>
+<div class="declaration">enum <span class="source_type"><a href="../r6menu/r6menumultiplayerwidget.html#MultiPlayerTabID" class="source">MultiPlayerTabID</a></span><br />
+{<blockquote>TAB_Lan_Server,
+TAB_Internet_Server,
+TAB_Game_Mode,
+TAB_Tech_Filter,
+TAB_Server_Info</blockquote>};
+</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+
+
+<br />
+
+
+
+
+
+<table class="title">
+<tr>
+	<th class="title">Functions Detail</th>
+</tr>
+</table>
+
+<h4><a name="_AddServerToFavorites-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> AddServerToFavorites <span class="function_state"></span> <a href="../Source_r6menu/r6menumultiplayerwidget.html#1417" class="small">Source code</a></h4>
+<div class="declaration"> function  AddServerToFavorites ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_BackToMainMenu-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> BackToMainMenu <span class="function_state"></span> <a href="../Source_r6menu/r6menumultiplayerwidget.html#2005" class="small">Source code</a></h4>
+<div class="declaration"> function  BackToMainMenu ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ClearServerInfo-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> ClearServerInfo <span class="function_state"></span> <a href="../Source_r6menu/r6menumultiplayerwidget.html#1144" class="small">Source code</a></h4>
+<div class="declaration"> function  ClearServerInfo ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_Created-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> Created <span class="function_state"></span> <a href="../Source_r6menu/r6menumultiplayerwidget.html#153" class="small">Source code</a></h4>
+<div class="declaration"> function  Created ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_DelServerFromFavorites-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> DelServerFromFavorites <span class="function_state"></span> <a href="../Source_r6menu/r6menumultiplayerwidget.html#1431" class="small">Source code</a></h4>
+<div class="declaration"> function  DelServerFromFavorites ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_DisplayRightClickMenu-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> DisplayRightClickMenu <span class="function_state"></span> <a href="../Source_r6menu/r6menumultiplayerwidget.html#1492" class="small">Source code</a></h4>
+<div class="declaration"> function  DisplayRightClickMenu ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GetGSServers-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> GetGSServers <span class="function_state"></span> <a href="../Source_r6menu/r6menumultiplayerwidget.html#891" class="small">Source code</a></h4>
+<div class="declaration"> function  GetGSServers ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GetLanServers-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> GetLanServers <span class="function_state"></span> <a href="../Source_r6menu/r6menumultiplayerwidget.html#750" class="small">Source code</a></h4>
+<div class="declaration"> function  GetLanServers ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GetServerInfo-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> GetServerInfo <span class="function_state"></span> <a href="../Source_r6menu/r6menumultiplayerwidget.html#1024" class="small">Source code</a></h4>
+<div class="declaration"> function  GetServerInfo ( <span class="source_type"><a href="../r6gameservice/r6serverlist.html" class="source">R6ServerList</a></span> pServerList) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_InitButton-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> InitButton <span class="function_state"></span> <a href="../Source_r6menu/r6menumultiplayerwidget.html#1573" class="small">Source code</a></h4>
+<div class="declaration"> function  InitButton ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_InitFirstTabWindow-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> InitFirstTabWindow <span class="function_state"></span> <a href="../Source_r6menu/r6menumultiplayerwidget.html#1683" class="small">Source code</a></h4>
+<div class="declaration"> function  InitFirstTabWindow ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_InitInfoBar-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> InitInfoBar <span class="function_state"></span> <a href="../Source_r6menu/r6menumultiplayerwidget.html#1672" class="small">Source code</a></h4>
+<div class="declaration"> function  InitInfoBar ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_InitRightClickMenu-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> InitRightClickMenu <span class="function_state"></span> <a href="../Source_r6menu/r6menumultiplayerwidget.html#1816" class="small">Source code</a></h4>
+<div class="declaration"> function  InitRightClickMenu ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_InitSecondTabWindow-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> InitSecondTabWindow <span class="function_state"></span> <a href="../Source_r6menu/r6menumultiplayerwidget.html#1773" class="small">Source code</a></h4>
+<div class="declaration"> function  InitSecondTabWindow ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_InitServerInfoMap-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> InitServerInfoMap <span class="function_state"></span> <a href="../Source_r6menu/r6menumultiplayerwidget.html#1739" class="small">Source code</a></h4>
+<div class="declaration"> function  InitServerInfoMap ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_InitServerInfoOptions-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> InitServerInfoOptions <span class="function_state"></span> <a href="../Source_r6menu/r6menumultiplayerwidget.html#1756" class="small">Source code</a></h4>
+<div class="declaration"> function  InitServerInfoOptions ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_InitServerInfoPlayer-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> InitServerInfoPlayer <span class="function_state"></span> <a href="../Source_r6menu/r6menumultiplayerwidget.html#1723" class="small">Source code</a></h4>
+<div class="declaration"> function  InitServerInfoPlayer ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_InitServerList-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> InitServerList <span class="function_state"></span> <a href="../Source_r6menu/r6menumultiplayerwidget.html#1704" class="small">Source code</a></h4>
+<div class="declaration"> function  InitServerList ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_InitText-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> InitText <span class="function_state"></span> <a href="../Source_r6menu/r6menumultiplayerwidget.html#1559" class="small">Source code</a></h4>
+<div class="declaration"> function  InitText ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_JoinSelectedServerRequested-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> JoinSelectedServerRequested <span class="function_state"></span> <a href="../Source_r6menu/r6menumultiplayerwidget.html#1173" class="small">Source code</a></h4>
+<div class="declaration"> function  JoinSelectedServerRequested ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_JoinServer-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> JoinServer <span class="function_state"></span> <a href="../Source_r6menu/r6menumultiplayerwidget.html#1317" class="small">Source code</a></h4>
+<div class="declaration"> function  JoinServer ( <span class="source_type">string</span> szIPAddress) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ManageTabSelection-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> ManageTabSelection <span class="function_state"></span> <a href="../Source_r6menu/r6menumultiplayerwidget.html#483" class="small">Source code</a></h4>
+<div class="declaration"> function  ManageTabSelection ( <span class="source_type">INT</span> _MPTabChoiceID) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ManageToolTip-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> ManageToolTip <span class="function_state"></span> <a href="../Source_r6menu/r6menumultiplayerwidget.html#440" class="small">Source code</a></h4>
+<div class="declaration"> function  ManageToolTip ( <span class="source_type">string</span> _strTip, optional <span class="source_type">BOOL</span> _bForceATip) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_Notify-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> Notify <span class="function_state"></span> <a href="../Source_r6menu/r6menumultiplayerwidget.html#1978" class="small">Source code</a></h4>
+<div class="declaration"> function  Notify ( <span class="source_type"><a href="../uwindow/uwindowdialogcontrol.html" class="source">UWindowDialogControl</a></span> <span class="source_type">C</span>, <span class="source_type">byte</span> E) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_Paint-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> Paint <span class="function_state"></span> <a href="../Source_r6menu/r6menumultiplayerwidget.html#245" class="small">Source code</a></h4>
+<div class="declaration"> function  Paint ( <span class="source_type"><a href="../engine/canvas.html" class="source">Canvas</a></span> <span class="source_type">C</span>, <span class="source_type">FLOAT</span> X, <span class="source_type">FLOAT</span> Y) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_PopUpBoxDone-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> PopUpBoxDone <span class="function_state"></span> <a href="../Source_r6menu/r6menumultiplayerwidget.html#1481" class="small">Source code</a></h4>
+<div class="declaration"> function  PopUpBoxDone ( <span class="source_type"><a href="../uwindow/uwindowbase.html#MessageBoxResult" class="source">MessageBoxResult</a></span> <span class="source_type">Result</span>, <span class="source_type"><a href="../uwindow/uwindowbase.html#EPopUpID" class="source">ePopUpID</a></span> _ePopUpID) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_PromptConnectionError-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> PromptConnectionError <span class="function_state"></span> <a href="../Source_r6menu/r6menumultiplayerwidget.html#1440" class="small">Source code</a></h4>
+<div class="declaration"> function  PromptConnectionError ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_QueryReceivedStartPreJoin-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> QueryReceivedStartPreJoin <span class="function_state"></span> <a href="../Source_r6menu/r6menumultiplayerwidget.html#1206" class="small">Source code</a></h4>
+<div class="declaration"> function  QueryReceivedStartPreJoin ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_QuickJoin-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> QuickJoin <span class="function_state"></span> <a href="../Source_r6menu/r6menumultiplayerwidget.html#1155" class="small">Source code</a></h4>
+<div class="declaration"> function  QuickJoin ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_Refresh-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> Refresh <span class="function_state"></span> <a href="../Source_r6menu/r6menumultiplayerwidget.html#703" class="small">Source code</a></h4>
+<div class="declaration"> function  Refresh ( <span class="source_type">BOOL</span> <span class="source_type">bActivatedByUser</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ResetMultiplayerMenu-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> ResetMultiplayerMenu <span class="function_state"></span> <a href="../Source_r6menu/r6menumultiplayerwidget.html#2012" class="small">Source code</a></h4>
+<div class="declaration"> function  ResetMultiplayerMenu ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ResortServerList-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> ResortServerList <span class="function_state"></span> <a href="../Source_r6menu/r6menumultiplayerwidget.html#1542" class="small">Source code</a></h4>
+<div class="declaration"> function  ResortServerList ( <span class="source_type">INT</span> iCategory, <span class="source_type">BOOL</span> <span class="source_type">_bAscending</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_SendMessage-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> SendMessage <span class="function_state"></span> <a href="../Source_r6menu/r6menumultiplayerwidget.html#1834" class="small">Source code</a></h4>
+<div class="declaration"> function  SendMessage ( eR6MenuWidgetMessage <span class="source_type">eMessage</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_SetServerFilterBooleans-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> SetServerFilterBooleans <span class="function_state"></span> <a href="../Source_r6menu/r6menumultiplayerwidget.html#548" class="small">Source code</a></h4>
+<div class="declaration"> function  SetServerFilterBooleans ( <span class="source_type">INT</span> _iServerInfoID, <span class="source_type">bool</span> <span class="source_type">_bNewChoice</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_SetServerFilterFasterThan-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> SetServerFilterFasterThan <span class="function_state"></span> <a href="../Source_r6menu/r6menumultiplayerwidget.html#659" class="small">Source code</a></h4>
+<div class="declaration"> function  SetServerFilterFasterThan ( <span class="source_type">INT</span> <span class="source_type">iFasterThan</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_SetServerFilterHasPlayer-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> SetServerFilterHasPlayer <span class="function_state"></span> <a href="../Source_r6menu/r6menumultiplayerwidget.html#638" class="small">Source code</a></h4>
+<div class="declaration"> function  SetServerFilterHasPlayer ( <span class="source_type">string</span> <span class="source_type">szPlayerName</span>, <span class="source_type">bool</span> <span class="source_type">_bActive</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ShowWindow-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> ShowWindow <span class="function_state"></span> <a href="../Source_r6menu/r6menumultiplayerwidget.html#389" class="small">Source code</a></h4>
+<div class="declaration"> function  ShowWindow ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_Tick-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> Tick <span class="function_state"></span> <a href="../Source_r6menu/r6menumultiplayerwidget.html#1234" class="small">Source code</a></h4>
+<div class="declaration"> function  Tick ( <span class="source_type">float</span> <span class="source_type">deltaTime</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ToolTip-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> ToolTip <span class="function_state"></span> <a href="../Source_r6menu/r6menumultiplayerwidget.html#435" class="small">Source code</a></h4>
+<div class="declaration"> function  ToolTip ( <span class="source_type">string</span> strTip) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_UpdateFavorites-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> UpdateFavorites <span class="function_state"></span> <a href="../Source_r6menu/r6menumultiplayerwidget.html#1511" class="small">Source code</a></h4>
+<div class="declaration"> function  UpdateFavorites ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_UpdateServerFilters-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> UpdateServerFilters <span class="function_state"></span> <a href="../Source_r6menu/r6menumultiplayerwidget.html#673" class="small">Source code</a></h4>
+<div class="declaration"> function  UpdateServerFilters ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+
+
+<br />
+
+
+<table class="title">
+<tr>
+	<th class="title">Defaultproperties</th>
+</tr>
+</table>
+<br />
+<div class="source"><table class="source"><tr><td class="source"><pre class="source">defaultproperties
+{
+     m_iLastTabSel=<span class="source_int">1</span>
+     m_bLanRefreshFPass=True
+     m_bIntRefreshFPass=True
+     m_szPopUpIP=<span class="source_string">"211.177.19.52"</span>
+}
+</pre></td></tr></table></div>
+
+
+
+<hr />
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../r6menu/r6menu-overview.html">Package</a></td>
+	<td class="header_hilight">Class</td>
+	<td class="header"><a href="../Source_r6menu/r6menumultiplayerwidget.html">Source</a></td>
+	<td class="header"><a class="header" href="../classtree.html#R6MenuMultiPlayerWidget">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../r6menu/r6menumpteambar.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../r6menu/r6menunavigationbar.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+
+<div class="stats">Creation time: mar. 26/5/2026 18:33:12.479 - Created with <a href="http://wiki.beyondunreal.com/wiki/UnCodeX" target="_blank">UnCodeX</a></div>
+
+</body>
+</html>

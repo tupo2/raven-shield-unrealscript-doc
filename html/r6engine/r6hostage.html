@@ -1,0 +1,1303 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+	<title>UnCodeX - R6Engine.R6Hostage</title>
+	<meta name="Generator" content="UnCodeX 241" />
+	<link rel="stylesheet" href="../DocStyle2.css" type="text/css" title="Original Purple" />
+	<link rel="alternative stylesheet" href="../DocStyle2-blue.css" type="text/css" title="Blue" />
+	<link rel="alternative stylesheet" href="../DocStyle2-red.css" type="text/css" title="Red" />
+	<!--[if IE]>
+	<link rel="stylesheet" href="../DocStyle2-msie.css" type="text/css" />
+	<![endif]-->
+	<script src="../styleswitcher.js" type="text/javascript"></script>
+</head>
+<body>
+
+<div class="header">
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../r6engine/r6engine-overview.html">Package</a></td>
+	<td class="header_hilight">Class</td>
+	<td class="header"><a href="../Source_r6engine/r6hostage.html">Source</a></td>
+	<td class="header"><a class="header" href="../classtree.html#R6Hostage">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../r6engine/r6grenadedecal.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../r6engine/r6hostageai.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html#r6engine/r6hostage.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+</div>
+<div class="spacer"></div>
+
+<h1><a href="../r6engine/r6engine-overview.html">R6Engine</a>.R6Hostage</h1>
+
+<dl>
+<dt>Extends</dt><dd><a href="../r6engine/r6pawn.html">R6Pawn</a></dd>
+<dt>Modifiers</dt><dd>notplaceable native abstract </dd>
+</dl>
+
+<p></p>
+
+<pre class="tree"><a href="../core/core-overview.html">core</a>.<a href="../core/object.html">Object</a>
+|   
++-- <a href="../engine/engine-overview.html">engine</a>.<a href="../engine/actor.html">Actor</a>
+   |   
+   +-- <a href="../engine/engine-overview.html">engine</a>.<a href="../engine/pawn.html">Pawn</a>
+      |   
+      +-- <a href="../r6abstract/r6abstract-overview.html">R6Abstract</a>.<a href="../r6abstract/r6abstractpawn.html">R6AbstractPawn</a>
+         |   
+         +-- <a href="../r6engine/r6engine-overview.html">R6Engine</a>.<a href="../r6engine/r6pawn.html">R6Pawn</a>
+            |   
+            +-- <a href="../r6engine/r6engine-overview.html">R6Engine</a>.<a href="../r6engine/r6hostage.html">R6Hostage</a>
+</pre>
+
+<h4>Direct Known Subclasses:</h4>
+<blockquote>
+	<a href="../r6characters/r6hostagepawn.html">R6HostagePawn</a>, <a href="../r6engine/r6matineehostage.html">R6MatineeHostage</a>
+</blockquote>
+
+<hr />
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Constants Summary</th>
+</tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Contants from <a href="../r6engine/r6engine-overview.html">R6Engine</a>.<a href="../r6engine/r6pawn.html">R6Pawn</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../r6engine/r6pawn.html#C_fHeadHeight">C_fHeadHeight</a>, <a href="../r6engine/r6pawn.html#C_fHeadRadius">C_fHeadRadius</a>, <a href="../r6engine/r6pawn.html#C_fPeekCrouchLeftMax">C_fPeekCrouchLeftMax</a>, <a href="../r6engine/r6pawn.html#C_fPeekCrouchRightMax">C_fPeekCrouchRightMax</a>, <a href="../r6engine/r6pawn.html#C_fPeekLeftMax">C_fPeekLeftMax</a>, <a href="../r6engine/r6pawn.html#C_fPeekMiddleMax">C_fPeekMiddleMax</a>, <a href="../r6engine/r6pawn.html#C_fPeekProneTime">C_fPeekProneTime</a>, <a href="../r6engine/r6pawn.html#C_fPeekRightMax">C_fPeekRightMax</a>, <a href="../r6engine/r6pawn.html#C_fPeekSpeedInMs">C_fPeekSpeedInMs</a>, <a href="../r6engine/r6pawn.html#C_fPrePivotStairOffset">C_fPrePivotStairOffset</a>, <a href="../r6engine/r6pawn.html#C_iBaseAnimChannel">C_iBaseAnimChannel</a>, <a href="../r6engine/r6pawn.html#C_iBaseBlendAnimChannel">C_iBaseBlendAnimChannel</a>, <a href="../r6engine/r6pawn.html#C_iHeartRateMaxOther">C_iHeartRateMaxOther</a>, <a href="../r6engine/r6pawn.html#C_iHeartRateMaxTerrorist">C_iHeartRateMaxTerrorist</a>, <a href="../r6engine/r6pawn.html#C_iHeartRateMinOther">C_iHeartRateMinOther</a>, <a href="../r6engine/r6pawn.html#C_iHeartRateMinTerrorist">C_iHeartRateMinTerrorist</a>, <a href="../r6engine/r6pawn.html#C_iPawnSpecificChannel">C_iPawnSpecificChannel</a>, <a href="../r6engine/r6pawn.html#C_iPeekingAnimChannel">C_iPeekingAnimChannel</a>, <a href="../r6engine/r6pawn.html#C_iPostureAnimChannel">C_iPostureAnimChannel</a>, <a href="../r6engine/r6pawn.html#C_iRotationOffsetBipod">C_iRotationOffsetBipod</a>, <a href="../r6engine/r6pawn.html#C_iRotationOffsetNormal">C_iRotationOffsetNormal</a>, <a href="../r6engine/r6pawn.html#C_iRotationOffsetProne">C_iRotationOffsetProne</a>, <a href="../r6engine/r6pawn.html#C_iWeaponLeftAnimChannel">C_iWeaponLeftAnimChannel</a>, <a href="../r6engine/r6pawn.html#C_iWeaponRightAnimChannel">C_iWeaponRightAnimChannel</a>, <a href="../r6engine/r6pawn.html#C_MaxPendingAction">C_MaxPendingAction</a>, <a href="../r6engine/r6pawn.html#C_NoiseTimerFrequency">C_NoiseTimerFrequency</a></td>
+</tr>
+</table>
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th colspan="2" class="title">Variables Summary</th>
+</tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_m_bCivilian" name="m_bCivilian" title="go to the details">m_bCivilian</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_m_bCrouchToScaredStandBegin" name="m_bCrouchToScaredStandBegin" title="go to the details">m_bCrouchToScaredStandBegin</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_m_bEscorted" name="m_bEscorted" title="go to the details">m_bEscorted</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_m_bExtracted" name="m_bExtracted" title="go to the details">m_bExtracted</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_m_bFeedbackExtracted" name="m_bFeedbackExtracted" title="go to the details">m_bFeedbackExtracted</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_m_bFreed" name="m_bFreed" title="go to the details">m_bFreed</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_m_bFrozen" name="m_bFrozen" title="go to the details">m_bFrozen</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">BOOL</td><td width="66%"><a href="#_m_bInitFinished" name="m_bInitFinished" title="go to the details">m_bInitFinished</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_m_bIsFoetus" name="m_bIsFoetus" title="go to the details">m_bIsFoetus</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_m_bIsKneeling" name="m_bIsKneeling" title="go to the details">m_bIsKneeling</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">BOOL</td><td width="66%"><a href="#_m_bPatrolForward" name="m_bPatrolForward" title="go to the details">m_bPatrolForward</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_m_bPoliceManCanSeeRainbows" name="m_bPoliceManCanSeeRainbows" title="go to the details">m_bPoliceManCanSeeRainbows</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_m_bPoliceManHasWeapon" name="m_bPoliceManHasWeapon" title="go to the details">m_bPoliceManHasWeapon</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_m_bPoliceManMp1" name="m_bPoliceManMp1" title="go to the details">m_bPoliceManMp1</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_m_bReactionAnim" name="m_bReactionAnim" title="go to the details">m_bReactionAnim</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">byte</td><td width="66%"><a href="#_m_bRepWaitAnimIndex" name="m_bRepWaitAnimIndex" title="go to the details">m_bRepWaitAnimIndex</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">byte</td><td width="66%"><a href="#_m_bSavedRepWaitAnimIndex" name="m_bSavedRepWaitAnimIndex" title="go to the details">m_bSavedRepWaitAnimIndex</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_m_bStartAsCivilian" name="m_bStartAsCivilian" title="go to the details">m_bStartAsCivilian</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../r6engine/r6hostageai.html">R6HostageAI</a></td><td width="66%"><a href="#_m_controller" name="m_controller" title="go to the details">m_controller</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../r6engine/r6dzonepathnode.html">R6DZonePathNode</a></td><td width="66%"><a href="#_m_currentNode" name="m_currentNode" title="go to the details">m_currentNode</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../r6engine/r6deploymentzone.html">R6DeploymentZone</a></td><td width="66%"><a href="#_m_DZone" name="m_DZone" title="go to the details">m_DZone</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../r6engine/r6hostage.html#ECivPatrolType">ECivPatrolType</a></td><td width="66%"><a href="#_m_eCivPatrol" name="m_eCivPatrol" title="go to the details">m_eCivPatrol</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../r6engine/r6hostage.html#STRepHostageAnim">STRepHostageAnim</a></td><td width="66%"><a href="#_m_eCurrentRepHostageAnim" name="m_eCurrentRepHostageAnim" title="go to the details">m_eCurrentRepHostageAnim</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../r6engine/r6hostage.html#EHandsUpType">EHandsUpType</a></td><td width="66%"><a href="#_m_eHandsUpType" name="m_eHandsUpType" title="go to the details">m_eHandsUpType</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../r6engine/r6hostage.html#STRepHostageAnim">STRepHostageAnim</a></td><td width="66%"><a href="#_m_eSavedRepHostageAnim" name="m_eSavedRepHostageAnim" title="go to the details">m_eSavedRepHostageAnim</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../r6engine/r6rainbow.html">R6Rainbow</a></td><td width="66%"><a href="#_m_escortedByRainbow" name="m_escortedByRainbow" title="go to the details">m_escortedByRainbow</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">name</td><td width="66%"><a href="#_m_globalState" name="m_globalState" title="go to the details">m_globalState</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">INT</td><td width="66%"><a href="#_m_iIndex" name="m_iIndex" title="go to the details">m_iIndex</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../r6engine/r6hostagemgr.html">R6HostageMgr</a></td><td width="66%"><a href="#_m_mgr" name="m_mgr" title="go to the details">m_mgr</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">name</td><td width="66%"><a href="#_m_NocsSeeRainbowsName" name="m_NocsSeeRainbowsName" title="go to the details">m_NocsSeeRainbowsName</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">name</td><td width="66%"><a href="#_m_NocsWaitingName" name="m_NocsWaitingName" title="go to the details">m_NocsWaitingName</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_m_szUsedTemplate" name="m_szUsedTemplate" title="go to the details">m_szUsedTemplate</a></td></tr>
+<tr><th colspan="2" class="small">Personality</th></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../r6engine/r6pawn.html#EHostagePersonality">EHostagePersonality</a></td><td width="66%"><a href="#_m_ePersonality" name="m_ePersonality" title="go to the details">m_ePersonality</a></td></tr>
+<tr><th colspan="2" class="small">R6Hostage</th></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../engine/actor.html#RandomTweenNum">RandomTweenNum</a></td><td width="66%"><a href="#_m_changeOrientationTween" name="m_changeOrientationTween" title="go to the details">m_changeOrientationTween</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../engine/actor.html#RandomTweenNum">RandomTweenNum</a></td><td width="66%"><a href="#_m_patrolAreaWaitTween" name="m_patrolAreaWaitTween" title="go to the details">m_patrolAreaWaitTween</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../engine/actor.html#RandomTweenNum">RandomTweenNum</a></td><td width="66%"><a href="#_m_sightRadiusTween" name="m_sightRadiusTween" title="go to the details">m_sightRadiusTween</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../engine/actor.html#RandomTweenNum">RandomTweenNum</a></td><td width="66%"><a href="#_m_updatePaceTween" name="m_updatePaceTween" title="go to the details">m_updatePaceTween</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../engine/actor.html#RandomTweenNum">RandomTweenNum</a></td><td width="66%"><a href="#_m_waitingGoCrouchTween" name="m_waitingGoCrouchTween" title="go to the details">m_waitingGoCrouchTween</a></td></tr>
+<tr><th colspan="2" class="small">StartingPosition</th></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../r6engine/r6hostage.html#EStartingPosition">EStartingPosition</a></td><td width="66%"><a href="#_m_ePosition" name="m_ePosition" title="go to the details">m_ePosition</a></td></tr>
+<tr><th colspan="2" class="small">StayInThisState</th></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../engine/actor.html#RandomTweenNum">RandomTweenNum</a></td><td width="66%"><a href="#_m_stayCautiousGuardedStateTime" name="m_stayCautiousGuardedStateTime" title="go to the details">m_stayCautiousGuardedStateTime</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../engine/actor.html#RandomTweenNum">RandomTweenNum</a></td><td width="66%"><a href="#_m_stayFrozenTime" name="m_stayFrozenTime" title="go to the details">m_stayFrozenTime</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../engine/actor.html#RandomTweenNum">RandomTweenNum</a></td><td width="66%"><a href="#_m_stayInFoetusTime" name="m_stayInFoetusTime" title="go to the details">m_stayInFoetusTime</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../engine/actor.html#RandomTweenNum">RandomTweenNum</a></td><td width="66%"><a href="#_m_stayProneTime" name="m_stayProneTime" title="go to the details">m_stayProneTime</a></td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Variables from <a href="../r6engine/r6engine-overview.html">R6Engine</a>.<a href="../r6engine/r6pawn.html">R6Pawn</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../r6engine/r6pawn.html#m_ArmPatches[2]">m_ArmPatches[2]</a>, <a href="../r6engine/r6pawn.html#m_bActivateHeatVision">m_bActivateHeatVision</a>, <a href="../r6engine/r6pawn.html#m_bActivateNightVision">m_bActivateNightVision</a>, <a href="../r6engine/r6pawn.html#m_bActivateScopeVision">m_bActivateScopeVision</a>, <a href="../r6engine/r6pawn.html#m_bAim">m_bAim</a>, <a href="../r6engine/r6pawn.html#m_bAutoClimbLadders">m_bAutoClimbLadders</a>, <a href="../r6engine/r6pawn.html#m_bAvoidFacingWalls">m_bAvoidFacingWalls</a>, <a href="../r6engine/r6pawn.html#m_bCanArmBomb">m_bCanArmBomb</a>, <a href="../r6engine/r6pawn.html#m_bCanClimbObject">m_bCanClimbObject</a>, <a href="../r6engine/r6pawn.html#m_bCanDisarmBomb">m_bCanDisarmBomb</a>, <a href="../r6engine/r6pawn.html#m_bCanFireFriends">m_bCanFireFriends</a>, <a href="../r6engine/r6pawn.html#m_bCanFireNeutrals">m_bCanFireNeutrals</a>, <a href="../r6engine/r6pawn.html#m_bChangingWeapon">m_bChangingWeapon</a>, <a href="../r6engine/r6pawn.html#m_bDesignToggleLog">m_bDesignToggleLog</a>, <a href="../r6engine/r6pawn.html#m_bDontHearPlayer">m_bDontHearPlayer</a>, <a href="../r6engine/r6pawn.html#m_bDontKill">m_bDontKill</a>, <a href="../r6engine/r6pawn.html#m_bDontSeePlayer">m_bDontSeePlayer</a>, <a href="../r6engine/r6pawn.html#m_bEngaged">m_bEngaged</a>, <a href="../r6engine/r6pawn.html#m_bHasArmPatches">m_bHasArmPatches</a>, <a href="../r6engine/r6pawn.html#m_bHelmetWasHit">m_bHelmetWasHit</a>, <a href="../r6engine/r6pawn.html#m_bInteractingWithDevice">m_bInteractingWithDevice</a>, <a href="../r6engine/r6pawn.html#m_bIsClimbingLadder">m_bIsClimbingLadder</a>, <a href="../r6engine/r6pawn.html#m_bIsClimbingStairs">m_bIsClimbingStairs</a>, <a href="../r6engine/r6pawn.html#m_bIsFiringState">m_bIsFiringState</a>, <a href="../r6engine/r6pawn.html#m_bIsKneeling">m_bIsKneeling</a>, <a href="../r6engine/r6pawn.html#m_bIsMovingUpStairs">m_bIsMovingUpStairs</a>, <a href="../r6engine/r6pawn.html#m_bIsSniping">m_bIsSniping</a>, <a href="../r6engine/r6pawn.html#m_bLeftFootDown">m_bLeftFootDown</a>, <a href="../r6engine/r6pawn.html#m_bModifyBones">m_bModifyBones</a>, <a href="../r6engine/r6pawn.html#m_bMovingDiagonally">m_bMovingDiagonally</a>, <a href="../r6engine/r6pawn.html#m_bNightVisionAnimation">m_bNightVisionAnimation</a>, <a href="../r6engine/r6pawn.html#m_bOldCanWalkOffLedges">m_bOldCanWalkOffLedges</a>, <a href="../r6engine/r6pawn.html#m_bOldServerCancelPlacingCharge">m_bOldServerCancelPlacingCharge</a>, <a href="../r6engine/r6pawn.html#m_bPawnIsChangingWeapon">m_bPawnIsChangingWeapon</a>, <a href="../r6engine/r6pawn.html#m_bPawnIsReloading">m_bPawnIsReloading</a>, <a href="../r6engine/r6pawn.html#m_bPawnReloadShotgunLoop">m_bPawnReloadShotgunLoop</a>, <a href="../r6engine/r6pawn.html#m_bPawnSpecificAnimInProgress">m_bPawnSpecificAnimInProgress</a>, <a href="../r6engine/r6pawn.html#m_bPeekingReturnToCenter">m_bPeekingReturnToCenter</a>, <a href="../r6engine/r6pawn.html#m_bPlayingComAnimation">m_bPlayingComAnimation</a>, <a href="../r6engine/r6pawn.html#m_bPostureTransition">m_bPostureTransition</a>, <a href="../r6engine/r6pawn.html#m_bPreviousAnimPlayOnce">m_bPreviousAnimPlayOnce</a>, <a href="../r6engine/r6pawn.html#m_BreathingEmitter">m_BreathingEmitter</a>, <a href="../r6engine/r6pawn.html#m_bReAttachToRightHand">m_bReAttachToRightHand</a>, <a href="../r6engine/r6pawn.html#m_bReloadAnimLoop">m_bReloadAnimLoop</a>, <a href="../r6engine/r6pawn.html#m_bReloadingWeapon">m_bReloadingWeapon</a>, <a href="../r6engine/r6pawn.html#m_bRepPlayWaitAnim">m_bRepPlayWaitAnim</a>, <a href="../r6engine/r6pawn.html#m_bSavedPlayWaitAnim">m_bSavedPlayWaitAnim</a>, <a href="../r6engine/r6pawn.html#m_bSlideEnd">m_bSlideEnd</a>, <a href="../r6engine/r6pawn.html#m_bSoundChangePosture">m_bSoundChangePosture</a>, <a href="../r6engine/r6pawn.html#m_bSuicided">m_bSuicided</a>, <a href="../r6engine/r6pawn.html#m_bSuicideType">m_bSuicideType</a>, <a href="../r6engine/r6pawn.html#m_bTerroSawMeDead">m_bTerroSawMeDead</a>, <a href="../r6engine/r6pawn.html#m_bToggleServerCancelPlacingCharge">m_bToggleServerCancelPlacingCharge</a>, <a href="../r6engine/r6pawn.html#m_bUseKarmaRagdoll">m_bUseKarmaRagdoll</a>, <a href="../r6engine/r6pawn.html#m_bUsingBipod">m_bUsingBipod</a>, <a href="../r6engine/r6pawn.html#m_bWallAdjustmentDone">m_bWallAdjustmentDone</a>, <a href="../r6engine/r6pawn.html#m_bWasPeeking">m_bWasPeeking</a>, <a href="../r6engine/r6pawn.html#m_bWasPeekingLeft">m_bWasPeekingLeft</a>, <a href="../r6engine/r6pawn.html#m_bWeaponGadgetActivated">m_bWeaponGadgetActivated</a>, <a href="../r6engine/r6pawn.html#m_bWeaponTransition">m_bWeaponTransition</a>, <a href="../r6engine/r6pawn.html#m_byRemainingWaitZero">m_byRemainingWaitZero</a>, <a href="../r6engine/r6pawn.html#m_climbObject">m_climbObject</a>, <a href="../r6engine/r6pawn.html#m_crouchDefaultAnimName">m_crouchDefaultAnimName</a>, <a href="../r6engine/r6pawn.html#m_crouchFallName">m_crouchFallName</a>, <a href="../r6engine/r6pawn.html#m_crouchLandName">m_crouchLandName</a>, <a href="../r6engine/r6pawn.html#m_crouchStairRunDownName">m_crouchStairRunDownName</a>, <a href="../r6engine/r6pawn.html#m_crouchStairRunUpName">m_crouchStairRunUpName</a>, <a href="../r6engine/r6pawn.html#m_crouchStairWalkDownBackName">m_crouchStairWalkDownBackName</a>, <a href="../r6engine/r6pawn.html#m_crouchStairWalkDownName">m_crouchStairWalkDownName</a>, <a href="../r6engine/r6pawn.html#m_crouchStairWalkDownRightName">m_crouchStairWalkDownRightName</a>, <a href="../r6engine/r6pawn.html#m_crouchStairWalkUpBackName">m_crouchStairWalkUpBackName</a>, <a href="../r6engine/r6pawn.html#m_crouchStairWalkUpName">m_crouchStairWalkUpName</a>, <a href="../r6engine/r6pawn.html#m_crouchStairWalkUpRightName">m_crouchStairWalkUpRightName</a>, <a href="../r6engine/r6pawn.html#m_crouchWalkForwardName">m_crouchWalkForwardName</a>, <a href="../r6engine/r6pawn.html#m_Door">m_Door</a>, <a href="../r6engine/r6pawn.html#m_Door2">m_Door2</a>, <a href="../r6engine/r6pawn.html#m_eArmorType">m_eArmorType</a>, <a href="../r6engine/r6pawn.html#m_eDeviceAnim">m_eDeviceAnim</a>, <a href="../r6engine/r6pawn.html#m_eLastHitPart">m_eLastHitPart</a>, <a href="../r6engine/r6pawn.html#m_eLastUsingHands">m_eLastUsingHands</a>, <a href="../r6engine/r6pawn.html#m_eMovementPace">m_eMovementPace</a>, <a href="../r6engine/r6pawn.html#m_eOldPeekingMode">m_eOldPeekingMode</a>, <a href="../r6engine/r6pawn.html#m_ePawnIsUsingHand">m_ePawnIsUsingHand</a>, <a href="../r6engine/r6pawn.html#m_ePendingAction[C_MaxPendingAction]">m_ePendingAction[C_MaxPendingAction]</a>, <a href="../r6engine/r6pawn.html#m_ePlayerIsUsingHands">m_ePlayerIsUsingHands</a>, <a href="../r6engine/r6pawn.html#m_eStrafeDirection">m_eStrafeDirection</a>, <a href="../r6engine/r6pawn.html#m_fBipodRotation">m_fBipodRotation</a>, <a href="../r6engine/r6pawn.html#m_fCrouchedRunningBackwardStrafeSpeed">m_fCrouchedRunningBackwardStrafeSpeed</a>, <a href="../r6engine/r6pawn.html#m_fCrouchedRunningSpeed">m_fCrouchedRunningSpeed</a>, <a href="../r6engine/r6pawn.html#m_fCrouchedWalkingBackwardStrafeSpeed">m_fCrouchedWalkingBackwardStrafeSpeed</a>, <a href="../r6engine/r6pawn.html#m_fCrouchedWalkingSpeed">m_fCrouchedWalkingSpeed</a>, <a href="../r6engine/r6pawn.html#m_fFallingHeight">m_fFallingHeight</a>, <a href="../r6engine/r6pawn.html#m_fFiringTimer">m_fFiringTimer</a>, <a href="../r6engine/r6pawn.html#m_fGunswitchSpeedMultiplier">m_fGunswitchSpeedMultiplier</a>, <a href="../r6engine/r6pawn.html#m_fHBDefcon">m_fHBDefcon</a>, <a href="../r6engine/r6pawn.html#m_fHBMove">m_fHBMove</a>, <a href="../r6engine/r6pawn.html#m_fHBTime">m_fHBTime</a>, <a href="../r6engine/r6pawn.html#m_fHBWound">m_fHBWound</a>, <a href="../r6engine/r6pawn.html#m_fLastFSPUpdate">m_fLastFSPUpdate</a>, <a href="../r6engine/r6pawn.html#m_fLastValidPeeking">m_fLastValidPeeking</a>, <a href="../r6engine/r6pawn.html#m_fLastVRPUpdate">m_fLastVRPUpdate</a>, <a href="../r6engine/r6pawn.html#m_fLeftDirtyFootStepRemainingTime">m_fLeftDirtyFootStepRemainingTime</a>, <a href="../r6engine/r6pawn.html#m_fNoiseTimer">m_fNoiseTimer</a>, <a href="../r6engine/r6pawn.html#m_fOldCrouchBlendRate">m_fOldCrouchBlendRate</a>, <a href="../r6engine/r6pawn.html#m_fOldPeekBlendRate">m_fOldPeekBlendRate</a>, <a href="../r6engine/r6pawn.html#m_FOV">m_FOV</a>, <a href="../r6engine/r6pawn.html#m_FOVClass">m_FOVClass</a>, <a href="../r6engine/r6pawn.html#m_fPeeking">m_fPeeking</a>, <a href="../r6engine/r6pawn.html#m_fPeekingGoal">m_fPeekingGoal</a>, <a href="../r6engine/r6pawn.html#m_fPeekingGoalModifier">m_fPeekingGoalModifier</a>, <a href="../r6engine/r6pawn.html#m_fPrePivotLastUpdate">m_fPrePivotLastUpdate</a>, <a href="../r6engine/r6pawn.html#m_fProneSpeed">m_fProneSpeed</a>, <a href="../r6engine/r6pawn.html#m_fProneStrafeSpeed">m_fProneStrafeSpeed</a>, <a href="../r6engine/r6pawn.html#m_fReloadSpeedMultiplier">m_fReloadSpeedMultiplier</a>, <a href="../r6engine/r6pawn.html#m_fRightDirtyFootStepRemainingTime">m_fRightDirtyFootStepRemainingTime</a>, <a href="../r6engine/r6pawn.html#m_fRunningBackwardStrafeSpeed">m_fRunningBackwardStrafeSpeed</a>, <a href="../r6engine/r6pawn.html#m_fRunningSpeed">m_fRunningSpeed</a>, <a href="../r6engine/r6pawn.html#m_fSkillAssault">m_fSkillAssault</a>, <a href="../r6engine/r6pawn.html#m_fSkillDemolitions">m_fSkillDemolitions</a>, <a href="../r6engine/r6pawn.html#m_fSkillElectronics">m_fSkillElectronics</a>, <a href="../r6engine/r6pawn.html#m_fSkillLeadership">m_fSkillLeadership</a>, <a href="../r6engine/r6pawn.html#m_fSkillObservation">m_fSkillObservation</a>, <a href="../r6engine/r6pawn.html#m_fSkillSelfControl">m_fSkillSelfControl</a>, <a href="../r6engine/r6pawn.html#m_fSkillSniper">m_fSkillSniper</a>, <a href="../r6engine/r6pawn.html#m_fSkillStealth">m_fSkillStealth</a>, <a href="../r6engine/r6pawn.html#m_fStunShakeTime">m_fStunShakeTime</a>, <a href="../r6engine/r6pawn.html#m_fTimeGrenadeEffectBeforeSound">m_fTimeGrenadeEffectBeforeSound</a>, <a href="../r6engine/r6pawn.html#m_fTimeStartBodyFallSound">m_fTimeStartBodyFallSound</a>, <a href="../r6engine/r6pawn.html#m_fWalkingBackwardStrafeSpeed">m_fWalkingBackwardStrafeSpeed</a>, <a href="../r6engine/r6pawn.html#m_fWalkingSpeed">m_fWalkingSpeed</a>, <a href="../r6engine/r6pawn.html#m_fWallCheckDistance">m_fWallCheckDistance</a>, <a href="../r6engine/r6pawn.html#m_fWeaponJump">m_fWeaponJump</a>, <a href="../r6engine/r6pawn.html#m_fZoomJumpReturn">m_fZoomJumpReturn</a>, <a href="../r6engine/r6pawn.html#m_hLipSynchData">m_hLipSynchData</a>, <a href="../r6engine/r6pawn.html#m_hurtStandWalkLeftName">m_hurtStandWalkLeftName</a>, <a href="../r6engine/r6pawn.html#m_hurtStandWalkRightName">m_hurtStandWalkRightName</a>, <a href="../r6engine/r6pawn.html#m_iDesignHeavyTweak">m_iDesignHeavyTweak</a>, <a href="../r6engine/r6pawn.html#m_iDesignLightTweak">m_iDesignLightTweak</a>, <a href="../r6engine/r6pawn.html#m_iDesignMediumTweak">m_iDesignMediumTweak</a>, <a href="../r6engine/r6pawn.html#m_iDesignRandomTweak">m_iDesignRandomTweak</a>, <a href="../r6engine/r6pawn.html#m_iForceKill">m_iForceKill</a>, <a href="../r6engine/r6pawn.html#m_iForceStun">m_iForceStun</a>, <a href="../r6engine/r6pawn.html#m_iID">m_iID</a>, <a href="../r6engine/r6pawn.html#m_iLastBipodRotation">m_iLastBipodRotation</a>, <a href="../r6engine/r6pawn.html#m_iLocalCurrentActionIndex">m_iLocalCurrentActionIndex</a>, <a href="../r6engine/r6pawn.html#m_iMaxRotationOffset">m_iMaxRotationOffset</a>, <a href="../r6engine/r6pawn.html#m_iNetCurrentActionIndex">m_iNetCurrentActionIndex</a>, <a href="../r6engine/r6pawn.html#m_iPendingActionInt[C_MaxPendingAction]">m_iPendingActionInt[C_MaxPendingAction]</a>, <a href="../r6engine/r6pawn.html#m_iPermanentID">m_iPermanentID</a>, <a href="../r6engine/r6pawn.html#m_iRepBipodRotationRatio">m_iRepBipodRotationRatio</a>, <a href="../r6engine/r6pawn.html#m_iUniqueID">m_iUniqueID</a>, <a href="../r6engine/r6pawn.html#m_iVisibilityTest">m_iVisibilityTest</a>, <a href="../r6engine/r6pawn.html#m_KilledBy">m_KilledBy</a>, <a href="../r6engine/r6pawn.html#m_Ladder">m_Ladder</a>, <a href="../r6engine/r6pawn.html#m_LeftDirtyFootStep">m_LeftDirtyFootStep</a>, <a href="../r6engine/r6pawn.html#m_pBulletManager">m_pBulletManager</a>, <a href="../r6engine/r6pawn.html#m_potentialActionActor">m_potentialActionActor</a>, <a href="../r6engine/r6pawn.html#m_ragdoll">m_ragdoll</a>, <a href="../r6engine/r6pawn.html#m_rHead">m_rHead</a>, <a href="../r6engine/r6pawn.html#m_rHitDirection">m_rHitDirection</a>, <a href="../r6engine/r6pawn.html#m_RightDirtyFootStep">m_RightDirtyFootStep</a>, <a href="../r6engine/r6pawn.html#m_rJaw">m_rJaw</a>, <a href="../r6engine/r6pawn.html#m_rLCalf">m_rLCalf</a>, <a href="../r6engine/r6pawn.html#m_rLClavicle">m_rLClavicle</a>, <a href="../r6engine/r6pawn.html#m_rLFinger0">m_rLFinger0</a>, <a href="../r6engine/r6pawn.html#m_rLFoot">m_rLFoot</a>, <a href="../r6engine/r6pawn.html#m_rLForeArm">m_rLForeArm</a>, <a href="../r6engine/r6pawn.html#m_rLHand">m_rLHand</a>, <a href="../r6engine/r6pawn.html#m_rLThigh">m_rLThigh</a>, <a href="../r6engine/r6pawn.html#m_rLToe">m_rLToe</a>, <a href="../r6engine/r6pawn.html#m_rLUpperArm">m_rLUpperArm</a>, <a href="../r6engine/r6pawn.html#m_rNeck">m_rNeck</a>, <a href="../r6engine/r6pawn.html#m_rPelvis">m_rPelvis</a>, <a href="../r6engine/r6pawn.html#m_rPonyTail1">m_rPonyTail1</a>, <a href="../r6engine/r6pawn.html#m_rPonyTail2">m_rPonyTail2</a>, <a href="../r6engine/r6pawn.html#m_rPrevRotationOffset">m_rPrevRotationOffset</a>, <a href="../r6engine/r6pawn.html#m_rRCalf">m_rRCalf</a>, <a href="../r6engine/r6pawn.html#m_rRClavicle">m_rRClavicle</a>, <a href="../r6engine/r6pawn.html#m_rRFinger0">m_rRFinger0</a>, <a href="../r6engine/r6pawn.html#m_rRFoot">m_rRFoot</a>, <a href="../r6engine/r6pawn.html#m_rRForeArm">m_rRForeArm</a>, <a href="../r6engine/r6pawn.html#m_rRHand">m_rRHand</a>, <a href="../r6engine/r6pawn.html#m_rRoot">m_rRoot</a>, <a href="../r6engine/r6pawn.html#m_rRThigh">m_rRThigh</a>, <a href="../r6engine/r6pawn.html#m_rRToe">m_rRToe</a>, <a href="../r6engine/r6pawn.html#m_rRUpperArm">m_rRUpperArm</a>, <a href="../r6engine/r6pawn.html#m_rSpine">m_rSpine</a>, <a href="../r6engine/r6pawn.html#m_rSpine1">m_rSpine1</a>, <a href="../r6engine/r6pawn.html#m_rSpine2">m_rSpine2</a>, <a href="../r6engine/r6pawn.html#m_rViewRotation">m_rViewRotation</a>, <a href="../r6engine/r6pawn.html#m_sndCrouchToStand">m_sndCrouchToStand</a>, <a href="../r6engine/r6pawn.html#m_sndDeathClothes">m_sndDeathClothes</a>, <a href="../r6engine/r6pawn.html#m_sndDeathClothesStop">m_sndDeathClothesStop</a>, <a href="../r6engine/r6pawn.html#m_sndNightVisionActivation">m_sndNightVisionActivation</a>, <a href="../r6engine/r6pawn.html#m_sndNightVisionDeactivation">m_sndNightVisionDeactivation</a>, <a href="../r6engine/r6pawn.html#m_sndStandToCrouch">m_sndStandToCrouch</a>, <a href="../r6engine/r6pawn.html#m_sndThermalScopeActivation">m_sndThermalScopeActivation</a>, <a href="../r6engine/r6pawn.html#m_sndThermalScopeDeactivation">m_sndThermalScopeDeactivation</a>, <a href="../r6engine/r6pawn.html#m_SoundRepInfo">m_SoundRepInfo</a>, <a href="../r6engine/r6pawn.html#m_standClimb64DefaultAnimName">m_standClimb64DefaultAnimName</a>, <a href="../r6engine/r6pawn.html#m_standClimb96DefaultAnimName">m_standClimb96DefaultAnimName</a>, <a href="../r6engine/r6pawn.html#m_standDefaultAnimName">m_standDefaultAnimName</a>, <a href="../r6engine/r6pawn.html#m_standFallName">m_standFallName</a>, <a href="../r6engine/r6pawn.html#m_standLandName">m_standLandName</a>, <a href="../r6engine/r6pawn.html#m_standRunBackName">m_standRunBackName</a>, <a href="../r6engine/r6pawn.html#m_standRunForwardName">m_standRunForwardName</a>, <a href="../r6engine/r6pawn.html#m_standRunLeftName">m_standRunLeftName</a>, <a href="../r6engine/r6pawn.html#m_standRunRightName">m_standRunRightName</a>, <a href="../r6engine/r6pawn.html#m_standStairRunDownBackName">m_standStairRunDownBackName</a>, <a href="../r6engine/r6pawn.html#m_standStairRunDownName">m_standStairRunDownName</a>, <a href="../r6engine/r6pawn.html#m_standStairRunDownRightName">m_standStairRunDownRightName</a>, <a href="../r6engine/r6pawn.html#m_standStairRunUpBackName">m_standStairRunUpBackName</a>, <a href="../r6engine/r6pawn.html#m_standStairRunUpName">m_standStairRunUpName</a>, <a href="../r6engine/r6pawn.html#m_standStairRunUpRightName">m_standStairRunUpRightName</a>, <a href="../r6engine/r6pawn.html#m_standStairWalkDownBackName">m_standStairWalkDownBackName</a>, <a href="../r6engine/r6pawn.html#m_standStairWalkDownName">m_standStairWalkDownName</a>, <a href="../r6engine/r6pawn.html#m_standStairWalkDownRightName">m_standStairWalkDownRightName</a>, <a href="../r6engine/r6pawn.html#m_standStairWalkUpBackName">m_standStairWalkUpBackName</a>, <a href="../r6engine/r6pawn.html#m_standStairWalkUpName">m_standStairWalkUpName</a>, <a href="../r6engine/r6pawn.html#m_standStairWalkUpRightName">m_standStairWalkUpRightName</a>, <a href="../r6engine/r6pawn.html#m_standTurnLeftName">m_standTurnLeftName</a>, <a href="../r6engine/r6pawn.html#m_standTurnRightName">m_standTurnRightName</a>, <a href="../r6engine/r6pawn.html#m_standWalkBackName">m_standWalkBackName</a>, <a href="../r6engine/r6pawn.html#m_standWalkForwardName">m_standWalkForwardName</a>, <a href="../r6engine/r6pawn.html#m_standWalkLeftName">m_standWalkLeftName</a>, <a href="../r6engine/r6pawn.html#m_standWalkRightName">m_standWalkRightName</a>, <a href="../r6engine/r6pawn.html#m_TeamMemberRepInfo">m_TeamMemberRepInfo</a>, <a href="../r6engine/r6pawn.html#m_TrackActor">m_TrackActor</a>, <a href="../r6engine/r6pawn.html#m_vFiringStartPoint">m_vFiringStartPoint</a>, <a href="../r6engine/r6pawn.html#m_vPrePivotProneBackup">m_vPrePivotProneBackup</a>, <a href="../r6engine/r6pawn.html#m_vStairDirection">m_vStairDirection</a>, <a href="../r6engine/r6pawn.html#m_WeaponAnimPlaying">m_WeaponAnimPlaying</a></td>
+</tr>
+</table>
+<table>
+<tr>
+	<th class="inherittitle">Inherited Variables from <a href="../r6abstract/r6abstract-overview.html">R6Abstract</a>.<a href="../r6abstract/r6abstractpawn.html">R6AbstractPawn</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../r6abstract/r6abstractpawn.html#bShowLog">bShowLog</a></td>
+</tr>
+</table>
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Enumerations Summary</th>
+</tr>
+<tr><td><a href="#_ECivPatrolType" name="ECivPatrolType" title="go to the details">ECivPatrolType</a><br /><span class="small">CIVPATROL_None,
+CIVPATROL_Path,
+CIVPATROL_Area,
+CIVPATROL_Point</span></td></tr>
+<tr><td><a href="#_EHandsUpType" name="EHandsUpType" title="go to the details">EHandsUpType</a><br /><span class="small">HANDSUP_none,
+HANDSUP_kneeling,
+HANDSUP_standing</span></td></tr>
+<tr><td><a href="#_EStandWalkingAnim" name="EStandWalkingAnim" title="go to the details">EStandWalkingAnim</a><br /><span class="small">eStandWalkingAnim_default,
+eStandWalkingAnim_scared,
+</span></td></tr>
+<tr><td><a href="#_EStartingPosition" name="EStartingPosition" title="go to the details">EStartingPosition</a><br /><span class="small">POS_Stand,
+POS_Kneel,
+POS_Prone,
+POS_Foetus,
+POS_Crouch,
+POS_Random</span></td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Enumerations from <a href="../r6engine/r6engine-overview.html">R6Engine</a>.<a href="../r6engine/r6pawn.html">R6Pawn</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../r6engine/r6pawn.html#eArmor">eArmor</a>, <a href="../r6engine/r6pawn.html#eBodyPart">eBodyPart</a>, <a href="../r6engine/r6pawn.html#eDeviceAnimToPlay">eDeviceAnimToPlay</a>, <a href="../r6engine/r6pawn.html#eHands">eHands</a>, <a href="../r6engine/r6pawn.html#EHeadAttachmentType">EHeadAttachmentType</a>, <a href="../r6engine/r6pawn.html#EHostagePersonality">EHostagePersonality</a>, <a href="../r6engine/r6pawn.html#eMovementDirection">eMovementDirection</a>, <a href="../r6engine/r6pawn.html#eMovementPace">eMovementPace</a>, <a href="../r6engine/r6pawn.html#EPendingAction">EPendingAction</a>, <a href="../r6engine/r6pawn.html#eStrafeDirection">eStrafeDirection</a>, <a href="../r6engine/r6pawn.html#ETerroristType">ETerroristType</a></td>
+</tr>
+</table>
+<table>
+<tr>
+	<th class="inherittitle">Inherited Enumerations from <a href="../r6abstract/r6abstract-overview.html">R6Abstract</a>.<a href="../r6abstract/r6abstractpawn.html">R6AbstractPawn</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../r6abstract/r6abstractpawn.html#ESkills">ESkills</a></td>
+</tr>
+</table>
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Structures Summary</th>
+</tr>
+<tr><td><a href="#_STRepHostageAnim" name="STRepHostageAnim" title="go to the details">STRepHostageAnim</a><br /><span class="small">m_eRepStandWalkingAnim, m_bRepPlayMoving</span></td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Structures from <a href="../r6engine/r6engine-overview.html">R6Engine</a>.<a href="../r6engine/r6pawn.html">R6Pawn</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../r6engine/r6pawn.html#STWeaponAnim">STWeaponAnim</a></td>
+</tr>
+</table>
+
+
+<br />
+
+
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Functions Summary</th>
+</tr>
+<tr><td nowrap="nowrap"><img src="../img_event.gif" alt="event" title="event" /></td><td>&nbsp;</td><td><a href="#_AnimEnd-" name="AnimEnd" title="go to the details">AnimEnd</a> (INT iChannel))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_AnimNotify_CrouchToScaredStandBegin-" name="AnimNotify_CrouchToScaredStandBegin" title="go to the details">AnimNotify_CrouchToScaredStandBegin</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_AnimNotify_CrouchToScaredStandEnd-" name="AnimNotify_CrouchToScaredStandEnd" title="go to the details">AnimNotify_CrouchToScaredStandEnd</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_BeginState-Crouching" name="BeginState" title="go to the details">BeginState</a> ()))<br /><span class="function_state">Crouching</span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_BeginState-Foetus" name="BeginState" title="go to the details">BeginState</a> ()))<br /><span class="function_state">Foetus</span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_BeginState-Kneeling" name="BeginState" title="go to the details">BeginState</a> ()))<br /><span class="function_state">Kneeling</span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_BeginState-Prone" name="BeginState" title="go to the details">BeginState</a> ()))<br /><span class="function_state">Prone</span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>bool&nbsp;</td><td><a href="#_CanBeAffectedByGrenade-" name="CanBeAffectedByGrenade" title="go to the details">CanBeAffectedByGrenade</a> (<a href="../engine/actor.html">Actor</a> aGrenade, EGrenadeType eType ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_EndState-Foetus" name="EndState" title="go to the details">EndState</a> ()))<br /><span class="function_state">Foetus</span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_EndState-Kneeling" name="EndState" title="go to the details">EndState</a> ()))<br /><span class="function_state">Kneeling</span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_EnteredExtractionZone-" name="EnteredExtractionZone" title="go to the details">EnteredExtractionZone</a> (R6AbstractExtractionZone zone ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_event.gif" alt="event" title="event" /></td><td><a href="../core/object.html#Vector">vector</a>&nbsp;</td><td><a href="#_EyePosition-" name="EyePosition" title="go to the details">EyePosition</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_event.gif" alt="event" title="event" /></td><td>&nbsp;</td><td><a href="#_FinishInitialization-" name="FinishInitialization" title="go to the details">FinishInitialization</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_event.gif" alt="event" title="event" /></td><td>BOOL&nbsp;</td><td><a href="#_GetReticuleInfo-" name="GetReticuleInfo" title="go to the details">GetReticuleInfo</a> (<a href="../engine/pawn.html">Pawn</a> ownerReticule, OUT string szName ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_event.gif" alt="event" title="event" /></td><td>&nbsp;</td><td><a href="#_GotoCrouch-" name="GotoCrouch" title="go to the details">GotoCrouch</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_event.gif" alt="event" title="event" /></td><td>&nbsp;</td><td><a href="#_GotoCrouch-Crouching" name="GotoCrouch" title="go to the details">GotoCrouch</a> ()))<br /><span class="function_state">Crouching</span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_event.gif" alt="event" title="event" /></td><td>&nbsp;</td><td><a href="#_GotoCrouch-Foetus" name="GotoCrouch" title="go to the details">GotoCrouch</a> ()))<br /><span class="function_state">Foetus</span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_event.gif" alt="event" title="event" /></td><td>&nbsp;</td><td><a href="#_GotoCrouch-Kneeling" name="GotoCrouch" title="go to the details">GotoCrouch</a> ()))<br /><span class="function_state">Kneeling</span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_event.gif" alt="event" title="event" /></td><td>&nbsp;</td><td><a href="#_GotoCrouch-Prone" name="GotoCrouch" title="go to the details">GotoCrouch</a> ()))<br /><span class="function_state">Prone</span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_event.gif" alt="event" title="event" /></td><td>&nbsp;</td><td><a href="#_GotoFoetus-" name="GotoFoetus" title="go to the details">GotoFoetus</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_event.gif" alt="event" title="event" /></td><td>&nbsp;</td><td><a href="#_GotoFoetus-Crouching" name="GotoFoetus" title="go to the details">GotoFoetus</a> ()))<br /><span class="function_state">Crouching</span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_event.gif" alt="event" title="event" /></td><td>&nbsp;</td><td><a href="#_GotoFoetus-Foetus" name="GotoFoetus" title="go to the details">GotoFoetus</a> ()))<br /><span class="function_state">Foetus</span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_event.gif" alt="event" title="event" /></td><td>&nbsp;</td><td><a href="#_GotoFoetus-Kneeling" name="GotoFoetus" title="go to the details">GotoFoetus</a> ()))<br /><span class="function_state">Kneeling</span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_event.gif" alt="event" title="event" /></td><td>&nbsp;</td><td><a href="#_GotoFoetus-Prone" name="GotoFoetus" title="go to the details">GotoFoetus</a> ()))<br /><span class="function_state">Prone</span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_GotoFrozen-" name="GotoFrozen" title="go to the details">GotoFrozen</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_GotoFrozen-Kneeling" name="GotoFrozen" title="go to the details">GotoFrozen</a> ()))<br /><span class="function_state">Kneeling</span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_event.gif" alt="event" title="event" /></td><td>&nbsp;</td><td><a href="#_GotoKneel-" name="GotoKneel" title="go to the details">GotoKneel</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_event.gif" alt="event" title="event" /></td><td>&nbsp;</td><td><a href="#_GotoKneel-Crouching" name="GotoKneel" title="go to the details">GotoKneel</a> ()))<br /><span class="function_state">Crouching</span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_event.gif" alt="event" title="event" /></td><td>&nbsp;</td><td><a href="#_GotoKneel-Foetus" name="GotoKneel" title="go to the details">GotoKneel</a> ()))<br /><span class="function_state">Foetus</span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_event.gif" alt="event" title="event" /></td><td>&nbsp;</td><td><a href="#_GotoKneel-Kneeling" name="GotoKneel" title="go to the details">GotoKneel</a> ()))<br /><span class="function_state">Kneeling</span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_event.gif" alt="event" title="event" /></td><td>&nbsp;</td><td><a href="#_GotoKneel-Prone" name="GotoKneel" title="go to the details">GotoKneel</a> ()))<br /><span class="function_state">Prone</span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_event.gif" alt="event" title="event" /></td><td>&nbsp;</td><td><a href="#_GotoProne-" name="GotoProne" title="go to the details">GotoProne</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_event.gif" alt="event" title="event" /></td><td>&nbsp;</td><td><a href="#_GotoProne-Crouching" name="GotoProne" title="go to the details">GotoProne</a> ()))<br /><span class="function_state">Crouching</span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_event.gif" alt="event" title="event" /></td><td>&nbsp;</td><td><a href="#_GotoProne-Foetus" name="GotoProne" title="go to the details">GotoProne</a> ()))<br /><span class="function_state">Foetus</span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_event.gif" alt="event" title="event" /></td><td>&nbsp;</td><td><a href="#_GotoProne-Kneeling" name="GotoProne" title="go to the details">GotoProne</a> ()))<br /><span class="function_state">Kneeling</span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_event.gif" alt="event" title="event" /></td><td>&nbsp;</td><td><a href="#_GotoProne-Prone" name="GotoProne" title="go to the details">GotoProne</a> ()))<br /><span class="function_state">Prone</span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_event.gif" alt="event" title="event" /></td><td>&nbsp;</td><td><a href="#_GotoStand-" name="GotoStand" title="go to the details">GotoStand</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_event.gif" alt="event" title="event" /></td><td>&nbsp;</td><td><a href="#_GotoStand-Crouching" name="GotoStand" title="go to the details">GotoStand</a> ()))<br /><span class="function_state">Crouching</span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_event.gif" alt="event" title="event" /></td><td>&nbsp;</td><td><a href="#_GotoStand-Foetus" name="GotoStand" title="go to the details">GotoStand</a> ()))<br /><span class="function_state">Foetus</span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_event.gif" alt="event" title="event" /></td><td>&nbsp;</td><td><a href="#_GotoStand-Kneeling" name="GotoStand" title="go to the details">GotoStand</a> ()))<br /><span class="function_state">Kneeling</span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_event.gif" alt="event" title="event" /></td><td>&nbsp;</td><td><a href="#_GotoStand-Prone" name="GotoStand" title="go to the details">GotoStand</a> ()))<br /><span class="function_state">Prone</span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>bool&nbsp;</td><td><a href="#_HasBumpPriority-" name="HasBumpPriority" title="go to the details">HasBumpPriority</a> (R6Pawn bumpedBy ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>bool&nbsp;</td><td><a href="#_isFoetus-" name="isFoetus" title="go to the details">isFoetus</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>bool&nbsp;</td><td><a href="#_isKneeling-" name="isKneeling" title="go to the details">isKneeling</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>bool&nbsp;</td><td><a href="#_isStanding-" name="isStanding" title="go to the details">isStanding</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>bool&nbsp;</td><td><a href="#_isStandingHandUp-" name="isStandingHandUp" title="go to the details">isStandingHandUp</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_logAnim-" name="logAnim" title="go to the details">logAnim</a> (string sz ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_PlayBlinded-" name="PlayBlinded" title="go to the details">PlayBlinded</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_PlayCoughing-" name="PlayCoughing" title="go to the details">PlayCoughing</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_PlayCrouchToProne-" name="PlayCrouchToProne" title="go to the details">PlayCrouchToProne</a> (OPTIONAL bool bForcedByClient ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_PlayDoorAnim-" name="PlayDoorAnim" title="go to the details">PlayDoorAnim</a> (<a href="../r6engine/r6iorotatingdoor.html">R6IORotatingDoor</a> door))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_PlayDuck-" name="PlayDuck" title="go to the details">PlayDuck</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_PlayProneToCrouch-" name="PlayProneToCrouch" title="go to the details">PlayProneToCrouch</a> (OPTIONAL bool bForcedByClient ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_PlayReaction-" name="PlayReaction" title="go to the details">PlayReaction</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_PlayReaction-Kneeling" name="PlayReaction" title="go to the details">PlayReaction</a> ()))<br /><span class="function_state">Kneeling</span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_event.gif" alt="event" title="event" /></td><td>&nbsp;</td><td><a href="#_PlaySpecialPendingAction-" name="PlaySpecialPendingAction" title="go to the details">PlaySpecialPendingAction</a> (EPendingAction eAction ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_PlayWaiting-" name="PlayWaiting" title="go to the details">PlayWaiting</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_PlayWeaponAnimation-" name="PlayWeaponAnimation" title="go to the details">PlayWeaponAnimation</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_event.gif" alt="event" title="event" /></td><td>&nbsp;</td><td><a href="#_PostBeginPlay-" name="PostBeginPlay" title="go to the details">PostBeginPlay</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_event.gif" alt="event" title="event" /></td><td>&nbsp;</td><td><a href="#_PostNetBeginPlay-" name="PostNetBeginPlay" title="go to the details">PostNetBeginPlay</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>bool&nbsp;</td><td><a href="#_ProcessBuildDeathMessage-" name="ProcessBuildDeathMessage" title="go to the details">ProcessBuildDeathMessage</a> (<a href="../engine/pawn.html">Pawn</a> Killer, OUT string szPlayerName ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>string&nbsp;</td><td><a href="#_R6GetCircumstantialActionString-" name="R6GetCircumstantialActionString" title="go to the details">R6GetCircumstantialActionString</a> (INT iAction ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_event.gif" alt="event" title="event" /></td><td>&nbsp;</td><td><a href="#_R6QueryCircumstantialAction-" name="R6QueryCircumstantialAction" title="go to the details">R6QueryCircumstantialAction</a> (FLOAT fDistance, Out <a href="../engine/r6abstractcircumstantialactionquery.html">R6AbstractCircumstantialActionQuery</a> Query, PlayerController <a href="../engine/playercontroller.html">playerController</a> ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>INT&nbsp;</td><td><a href="#_R6TakeDamage-" name="R6TakeDamage" title="go to the details">R6TakeDamage</a> (INT iKillValue, INT iStunValue, <a href="../engine/pawn.html">Pawn</a> instigatedBy, <a href="../core/object.html#Vector">vector</a> vHitLocation, <a href="../core/object.html#Vector">vector</a> vMomentum, INT iBulletToArmorModifier, optional int iBulletGoup))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_ResetWeaponAnimation-" name="ResetWeaponAnimation" title="go to the details">ResetWeaponAnimation</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_event.gif" alt="event" title="event" /></td><td>&nbsp;</td><td><a href="#_SetAnimInfo-" name="SetAnimInfo" title="go to the details">SetAnimInfo</a> (INT id ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_SetAnimTransition-" name="SetAnimTransition" title="go to the details">SetAnimTransition</a> (INT iAnimToPlay, name pawnStateToGo ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_setCrouch-" name="setCrouch" title="go to the details">setCrouch</a> (bool bIsCrouch ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_setFrozen-" name="setFrozen" title="go to the details">setFrozen</a> (bool bFreeze ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_setProne-" name="setProne" title="go to the details">setProne</a> (bool bIsProne ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_SetStandWalkingAnim-" name="SetStandWalkingAnim" title="go to the details">SetStandWalkingAnim</a> (<a href="../r6engine/r6hostage.html#EStandWalkingAnim">EStandWalkingAnim</a> eAnim, bool bUpdatePlayMoving ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_SetToNormalWeapon-" name="SetToNormalWeapon" title="go to the details">SetToNormalWeapon</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_Tick-" name="Tick" title="go to the details">Tick</a> (FLOAT fDeltaTime))<br /><span class="function_state"></span></td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Functions from <a href="../r6engine/r6engine-overview.html">R6Engine</a>.<a href="../r6engine/r6pawn.html">R6Pawn</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../r6engine/r6pawn.html#ActionRequest">ActionRequest</a>, <a href="../r6engine/r6pawn.html#AdjustFluidCollisionCylinder">AdjustFluidCollisionCylinder</a>, <a href="../r6engine/r6pawn.html#AdjustPawnForDiagonalStrafing">AdjustPawnForDiagonalStrafing</a>, <a href="../r6engine/r6pawn.html#AffectedByGrenade">AffectedByGrenade</a>, <a href="../r6engine/r6pawn.html#AimDown">AimDown</a>, <a href="../r6engine/r6pawn.html#AimUp">AimUp</a>, <a href="../r6engine/r6pawn.html#AnimateClimbing">AnimateClimbing</a>, <a href="../r6engine/r6pawn.html#AnimateCrouchRunning">AnimateCrouchRunning</a>, <a href="../r6engine/r6pawn.html#AnimateCrouchRunningDownStairs">AnimateCrouchRunningDownStairs</a>, <a href="../r6engine/r6pawn.html#AnimateCrouchRunningUpStairs">AnimateCrouchRunningUpStairs</a>, <a href="../r6engine/r6pawn.html#AnimateCrouchTurning">AnimateCrouchTurning</a>, <a href="../r6engine/r6pawn.html#AnimateCrouchWalking">AnimateCrouchWalking</a>, <a href="../r6engine/r6pawn.html#AnimateCrouchWalkingDownStairs">AnimateCrouchWalkingDownStairs</a>, <a href="../r6engine/r6pawn.html#AnimateCrouchWalkingUpStairs">AnimateCrouchWalkingUpStairs</a>, <a href="../r6engine/r6pawn.html#AnimateProneTurning">AnimateProneTurning</a>, <a href="../r6engine/r6pawn.html#AnimateProneWalking">AnimateProneWalking</a>, <a href="../r6engine/r6pawn.html#AnimateRunning">AnimateRunning</a>, <a href="../r6engine/r6pawn.html#AnimateRunningDownStairs">AnimateRunningDownStairs</a>, <a href="../r6engine/r6pawn.html#AnimateRunningUpStairs">AnimateRunningUpStairs</a>, <a href="../r6engine/r6pawn.html#AnimateStandTurning">AnimateStandTurning</a>, <a href="../r6engine/r6pawn.html#AnimateStoppedOnLadder">AnimateStoppedOnLadder</a>, <a href="../r6engine/r6pawn.html#AnimateWalking">AnimateWalking</a>, <a href="../r6engine/r6pawn.html#AnimateWalkingDownStairs">AnimateWalkingDownStairs</a>, <a href="../r6engine/r6pawn.html#AnimateWalkingUpStairs">AnimateWalkingUpStairs</a>, <a href="../r6engine/r6pawn.html#AnimEnd">AnimEnd</a>, <a href="../r6engine/r6pawn.html#ArmorSkillEffect">ArmorSkillEffect</a>, <a href="../r6engine/r6pawn.html#Arrested">Arrested</a>, <a href="../r6engine/r6pawn.html#AttachClipToWeapon">AttachClipToWeapon</a>, <a href="../r6engine/r6pawn.html#AttachCollisionBox">AttachCollisionBox</a>, <a href="../r6engine/r6pawn.html#AttachToClimbableObject">AttachToClimbableObject</a>, <a href="../r6engine/r6pawn.html#AttachWeapon">AttachWeapon</a>, <a href="../r6engine/r6pawn.html#AvoidLedges">AvoidLedges</a>, <a href="../r6engine/r6pawn.html#BaseChange">BaseChange</a>, <a href="../r6engine/r6pawn.html#BeginState">BeginState</a>, <a href="../r6engine/r6pawn.html#BoltActionSwitchToRight">BoltActionSwitchToRight</a>, <a href="../r6engine/r6pawn.html#BuildDeathMessage">BuildDeathMessage</a>, <a href="../r6engine/r6pawn.html#CanBeAffectedByGrenade">CanBeAffectedByGrenade</a>, <a href="../r6engine/r6pawn.html#CanInteractWithObjects">CanInteractWithObjects</a>, <a href="../r6engine/r6pawn.html#CanPeek">CanPeek</a>, <a href="../r6engine/r6pawn.html#ChangeAnimation">ChangeAnimation</a>, <a href="../r6engine/r6pawn.html#CheckCylinderTranslation">CheckCylinderTranslation</a>, <a href="../r6engine/r6pawn.html#CheckForHelmet">CheckForHelmet</a>, <a href="../r6engine/r6pawn.html#CheckForPassiveGadget">CheckForPassiveGadget</a>, <a href="../r6engine/r6pawn.html#ClientSetFree">ClientSetFree</a>, <a href="../r6engine/r6pawn.html#ClientSetJumpValues">ClientSetJumpValues</a>, <a href="../r6engine/r6pawn.html#ClientSurrender">ClientSurrender</a>, <a href="../r6engine/r6pawn.html#ClimbLadder">ClimbLadder</a>, <a href="../r6engine/r6pawn.html#ClimbStairs">ClimbStairs</a>, <a href="../r6engine/r6pawn.html#CreateBulletManager">CreateBulletManager</a>, <a href="../r6engine/r6pawn.html#CrouchToStand">CrouchToStand</a>, <a href="../r6engine/r6pawn.html#Destroyed">Destroyed</a>, <a href="../r6engine/r6pawn.html#DetachFromClimbableObject">DetachFromClimbableObject</a>, <a href="../r6engine/r6pawn.html#DrawViewRotation">DrawViewRotation</a>, <a href="../r6engine/r6pawn.html#DropWeaponToGround">DropWeaponToGround</a>, <a href="../r6engine/r6pawn.html#EncroachedBy">EncroachedBy</a>, <a href="../r6engine/r6pawn.html#EndClimbLadder">EndClimbLadder</a>, <a href="../r6engine/r6pawn.html#EndClimbStairs">EndClimbStairs</a>, <a href="../r6engine/r6pawn.html#EndCrawl">EndCrawl</a>, <a href="../r6engine/r6pawn.html#EndCrouch">EndCrouch</a>, <a href="../r6engine/r6pawn.html#EndOfGrenadeEffect">EndOfGrenadeEffect</a>, <a href="../r6engine/r6pawn.html#EndOfLadderSlide">EndOfLadderSlide</a>, <a href="../r6engine/r6pawn.html#EndPeekingMode">EndPeekingMode</a>, <a href="../r6engine/r6pawn.html#EnteredExtractionZone">EnteredExtractionZone</a>, <a href="../r6engine/r6pawn.html#EyePosition">EyePosition</a>, <a href="../r6engine/r6pawn.html#FaceRotation">FaceRotation</a>, <a href="../r6engine/r6pawn.html#Falling">Falling</a>, <a href="../r6engine/r6pawn.html#FellOutOfWorld">FellOutOfWorld</a>, <a href="../r6engine/r6pawn.html#FirstPassReset">FirstPassReset</a>, <a href="../r6engine/r6pawn.html#FootStep">FootStep</a>, <a href="../r6engine/r6pawn.html#FootStepLadder">FootStepLadder</a>, <a href="../r6engine/r6pawn.html#FootStepLeft">FootStepLeft</a>, <a href="../r6engine/r6pawn.html#FootStepRight">FootStepRight</a>, <a href="../r6engine/r6pawn.html#GetBodyPartFromBoneID">GetBodyPartFromBoneID</a>, <a href="../r6engine/r6pawn.html#GetChangeWeaponAnimation">GetChangeWeaponAnimation</a>, <a href="../r6engine/r6pawn.html#GetClipInHand">GetClipInHand</a>, <a href="../r6engine/r6pawn.html#GetFireWeaponAnimation">GetFireWeaponAnimation</a>, <a href="../r6engine/r6pawn.html#GetFiringRotation">GetFiringRotation</a>, <a href="../r6engine/r6pawn.html#GetFiringStartPoint">GetFiringStartPoint</a>, <a href="../r6engine/r6pawn.html#GetGrenadeStartLocation">GetGrenadeStartLocation</a>, <a href="../r6engine/r6pawn.html#GetHandLocation">GetHandLocation</a>, <a href="../r6engine/r6pawn.html#GetHumanLeaderForAIPawn">GetHumanLeaderForAIPawn</a>, <a href="../r6engine/r6pawn.html#GetKillResult">GetKillResult</a>, <a href="../r6engine/r6pawn.html#GetMaxRotationOffset">GetMaxRotationOffset</a>, <a href="../r6engine/r6pawn.html#GetMovementDirection">GetMovementDirection</a>, <a href="../r6engine/r6pawn.html#GetNormalWeaponAnimation">GetNormalWeaponAnimation</a>, <a href="../r6engine/r6pawn.html#GetPawnSpecificAnimation">GetPawnSpecificAnimation</a>, <a href="../r6engine/r6pawn.html#GetPeekAnimName">GetPeekAnimName</a>, <a href="../r6engine/r6pawn.html#GetPeekingRate">GetPeekingRate</a>, <a href="../r6engine/r6pawn.html#GetPeekingRatioNorm">GetPeekingRatioNorm</a>, <a href="../r6engine/r6pawn.html#GetReloadWeaponAnimation">GetReloadWeaponAnimation</a>, <a href="../r6engine/r6pawn.html#GetRotationOffset">GetRotationOffset</a>, <a href="../r6engine/r6pawn.html#GetSkill">GetSkill</a>, <a href="../r6engine/r6pawn.html#GetStanceJumpModifier">GetStanceJumpModifier</a>, <a href="../r6engine/r6pawn.html#GetStanceReticuleModifier">GetStanceReticuleModifier</a>, <a href="../r6engine/r6pawn.html#GetStunResult">GetStunResult</a>, <a href="../r6engine/r6pawn.html#GetThroughResult">GetThroughResult</a>, <a href="../r6engine/r6pawn.html#GetThrowGrenadeAnimation">GetThrowGrenadeAnimation</a>, <a href="../r6engine/r6pawn.html#GetViewRotation">GetViewRotation</a>, <a href="../r6engine/r6pawn.html#GetWeapon">GetWeapon</a>, <a href="../r6engine/r6pawn.html#GetWeaponInGroup">GetWeaponInGroup</a>, <a href="../r6engine/r6pawn.html#GunShouldFollowHead">GunShouldFollowHead</a>, <a href="../r6engine/r6pawn.html#HandGripLadder">HandGripLadder</a>, <a href="../r6engine/r6pawn.html#HasBumpPriority">HasBumpPriority</a>, <a href="../r6engine/r6pawn.html#HasPawnSpecificWeaponAnimation">HasPawnSpecificWeaponAnimation</a>, <a href="../r6engine/r6pawn.html#IncrementBulletsFired">IncrementBulletsFired</a>, <a href="../r6engine/r6pawn.html#IncrementFragCount">IncrementFragCount</a>, <a href="../r6engine/r6pawn.html#InitBackwardAnims">InitBackwardAnims</a>, <a href="../r6engine/r6pawn.html#InitBiPodPosture">InitBiPodPosture</a>, <a href="../r6engine/r6pawn.html#IsFighting">IsFighting</a>, <a href="../r6engine/r6pawn.html#IsFullPeekingOver">IsFullPeekingOver</a>, <a href="../r6engine/r6pawn.html#IsMovingForward">IsMovingForward</a>, <a href="../r6engine/r6pawn.html#IsMovingUpLadder">IsMovingUpLadder</a>, <a href="../r6engine/r6pawn.html#IsPeeking">IsPeeking</a>, <a href="../r6engine/r6pawn.html#IsPeekingLeft">IsPeekingLeft</a>, <a href="../r6engine/r6pawn.html#IsRunning">IsRunning</a>, <a href="../r6engine/r6pawn.html#IsStationary">IsStationary</a>, <a href="../r6engine/r6pawn.html#IsTouching">IsTouching</a>, <a href="../r6engine/r6pawn.html#IsUsingHeartBeatSensor">IsUsingHeartBeatSensor</a>, <a href="../r6engine/r6pawn.html#IsValidClimber">IsValidClimber</a>, <a href="../r6engine/r6pawn.html#IsWalking">IsWalking</a>, <a href="../r6engine/r6pawn.html#KImpact">KImpact</a>, <a href="../r6engine/r6pawn.html#Landed">Landed</a>, <a href="../r6engine/r6pawn.html#LeftExtractionZone">LeftExtractionZone</a>, <a href="../r6engine/r6pawn.html#LocateLadderActor">LocateLadderActor</a>, <a href="../r6engine/r6pawn.html#logWarning">logWarning</a>, <a href="../r6engine/r6pawn.html#logX">logX</a>, <a href="../r6engine/r6pawn.html#MoveHitBone">MoveHitBone</a>, <a href="../r6engine/r6pawn.html#PawnCanBeHurtFrom">PawnCanBeHurtFrom</a>, <a href="../r6engine/r6pawn.html#PawnHaveFinishedRotation">PawnHaveFinishedRotation</a>, <a href="../r6engine/r6pawn.html#PawnLook">PawnLook</a>, <a href="../r6engine/r6pawn.html#PawnLookAbsolute">PawnLookAbsolute</a>, <a href="../r6engine/r6pawn.html#PawnLookAt">PawnLookAt</a>, <a href="../r6engine/r6pawn.html#PawnTrackActor">PawnTrackActor</a>, <a href="../r6engine/r6pawn.html#PlayBlinded">PlayBlinded</a>, <a href="../r6engine/r6pawn.html#PlayBreachDoorAnimation">PlayBreachDoorAnimation</a>, <a href="../r6engine/r6pawn.html#PlayClaymoreAnimation">PlayClaymoreAnimation</a>, <a href="../r6engine/r6pawn.html#PlayCoughing">PlayCoughing</a>, <a href="../r6engine/r6pawn.html#PlayCrouchedDoorAnim">PlayCrouchedDoorAnim</a>, <a href="../r6engine/r6pawn.html#PlayCrouchToProne">PlayCrouchToProne</a>, <a href="../r6engine/r6pawn.html#PlayCrouchWaiting">PlayCrouchWaiting</a>, <a href="../r6engine/r6pawn.html#PlayDoorAnim">PlayDoorAnim</a>, <a href="../r6engine/r6pawn.html#PlayDuck">PlayDuck</a>, <a href="../r6engine/r6pawn.html#PlayEndClimbing">PlayEndClimbing</a>, <a href="../r6engine/r6pawn.html#PlayFalling">PlayFalling</a>, <a href="../r6engine/r6pawn.html#PlayFluidPeekingAnim">PlayFluidPeekingAnim</a>, <a href="../r6engine/r6pawn.html#PlayInteraction">PlayInteraction</a>, <a href="../r6engine/r6pawn.html#PlayInteractWithDeviceAnimation">PlayInteractWithDeviceAnimation</a>, <a href="../r6engine/r6pawn.html#PlayLandingAnimation">PlayLandingAnimation</a>, <a href="../r6engine/r6pawn.html#PlayLocalWeaponSound">PlayLocalWeaponSound</a>, <a href="../r6engine/r6pawn.html#PlayMoving">PlayMoving</a>, <a href="../r6engine/r6pawn.html#PlayPeekingAnim">PlayPeekingAnim</a>, <a href="../r6engine/r6pawn.html#PlayPostEndLadder">PlayPostEndLadder</a>, <a href="../r6engine/r6pawn.html#PlayPostRootMotionAnimation">PlayPostRootMotionAnimation</a>, <a href="../r6engine/r6pawn.html#PlayPostStartLadder">PlayPostStartLadder</a>, <a href="../r6engine/r6pawn.html#PlayProneFireAnimation">PlayProneFireAnimation</a>, <a href="../r6engine/r6pawn.html#PlayProneToCrouch">PlayProneToCrouch</a>, <a href="../r6engine/r6pawn.html#PlayRemoteChargeAnimation">PlayRemoteChargeAnimation</a>, <a href="../r6engine/r6pawn.html#PlayRootMotionAnimation">PlayRootMotionAnimation</a>, <a href="../r6engine/r6pawn.html#PlaySecureTerrorist">PlaySecureTerrorist</a>, <a href="../r6engine/r6pawn.html#PlaySpecialPendingAction">PlaySpecialPendingAction</a>, <a href="../r6engine/r6pawn.html#PlayStartClimbing">PlayStartClimbing</a>, <a href="../r6engine/r6pawn.html#PlaySurfaceSwitch">PlaySurfaceSwitch</a>, <a href="../r6engine/r6pawn.html#PlayVoices">PlayVoices</a>, <a href="../r6engine/r6pawn.html#PlayWaiting">PlayWaiting</a>, <a href="../r6engine/r6pawn.html#PlayWeaponAnimation">PlayWeaponAnimation</a>, <a href="../r6engine/r6pawn.html#PlayWeaponSound">PlayWeaponSound</a>, <a href="../r6engine/r6pawn.html#PossessedBy">PossessedBy</a>, <a href="../r6engine/r6pawn.html#PostBeginPlay">PostBeginPlay</a>, <a href="../r6engine/r6pawn.html#PostNetBeginPlay">PostNetBeginPlay</a>, <a href="../r6engine/r6pawn.html#PotentialClimbableObject">PotentialClimbableObject</a>, <a href="../r6engine/r6pawn.html#PotentialClimbLadder">PotentialClimbLadder</a>, <a href="../r6engine/r6pawn.html#PotentialOpenDoor">PotentialOpenDoor</a>, <a href="../r6engine/r6pawn.html#PrepareDemolitionsAnimation">PrepareDemolitionsAnimation</a>, <a href="../r6engine/r6pawn.html#ProcessBuildDeathMessage">ProcessBuildDeathMessage</a>, <a href="../r6engine/r6pawn.html#PutShellInWeapon">PutShellInWeapon</a>, <a href="../r6engine/r6pawn.html#R6BlendAnim">R6BlendAnim</a>, <a href="../r6engine/r6pawn.html#R6CalcDrawLocation">R6CalcDrawLocation</a>, <a href="../r6engine/r6pawn.html#R6ClientAffectedByFlashbang">R6ClientAffectedByFlashbang</a>, <a href="../r6engine/r6pawn.html#R6DeadEndedMoving">R6DeadEndedMoving</a>, <a href="../r6engine/r6pawn.html#R6Died">R6Died</a>, <a href="../r6engine/r6pawn.html#R6GetViewRotation">R6GetViewRotation</a>, <a href="../r6engine/r6pawn.html#R6JumpOffPawn">R6JumpOffPawn</a>, <a href="../r6engine/r6pawn.html#R6LoopAnim">R6LoopAnim</a>, <a href="../r6engine/r6pawn.html#R6MakeMovementNoise">R6MakeMovementNoise</a>, <a href="../r6engine/r6pawn.html#R6PlayAnim">R6PlayAnim</a>, <a href="../r6engine/r6pawn.html#R6ResetAnimBlendParams">R6ResetAnimBlendParams</a>, <a href="../r6engine/r6pawn.html#R6ResetLookDirection">R6ResetLookDirection</a>, <a href="../r6engine/r6pawn.html#R6Surrender">R6Surrender</a>, <a href="../r6engine/r6pawn.html#R6TakeDamage">R6TakeDamage</a>, <a href="../r6engine/r6pawn.html#R6TakeDamageCTE">R6TakeDamageCTE</a>, <a href="../r6engine/r6pawn.html#ReloadingWeaponEnd">ReloadingWeaponEnd</a>, <a href="../r6engine/r6pawn.html#ReloadWeapon">ReloadWeapon</a>, <a href="../r6engine/r6pawn.html#RemovePotentialClimbableObject">RemovePotentialClimbableObject</a>, <a href="../r6engine/r6pawn.html#RemovePotentialClimbLadder">RemovePotentialClimbLadder</a>, <a href="../r6engine/r6pawn.html#RemovePotentialOpenDoor">RemovePotentialOpenDoor</a>, <a href="../r6engine/r6pawn.html#RenderGunDirection">RenderGunDirection</a>, <a href="../r6engine/r6pawn.html#ResetBipodPosture">ResetBipodPosture</a>, <a href="../r6engine/r6pawn.html#ResetBoneRotation">ResetBoneRotation</a>, <a href="../r6engine/r6pawn.html#ResetDiagonalStrafing">ResetDiagonalStrafing</a>, <a href="../r6engine/r6pawn.html#RotateBone">RotateBone</a>, <a href="../r6engine/r6pawn.html#SendPlaySound">SendPlaySound</a>, <a href="../r6engine/r6pawn.html#ServerActionRequest">ServerActionRequest</a>, <a href="../r6engine/r6pawn.html#ServerChangedWeapon">ServerChangedWeapon</a>, <a href="../r6engine/r6pawn.html#ServerClimbLadder">ServerClimbLadder</a>, <a href="../r6engine/r6pawn.html#ServerForceKillResult">ServerForceKillResult</a>, <a href="../r6engine/r6pawn.html#ServerForceStunResult">ServerForceStunResult</a>, <a href="../r6engine/r6pawn.html#ServerGivesWeaponToClient">ServerGivesWeaponToClient</a>, <a href="../r6engine/r6pawn.html#ServerGod">ServerGod</a>, <a href="../r6engine/r6pawn.html#ServerPerformDoorAction">ServerPerformDoorAction</a>, <a href="../r6engine/r6pawn.html#ServerPlayReloadAnimAgain">ServerPlayReloadAnimAgain</a>, <a href="../r6engine/r6pawn.html#ServerSetBetTime">ServerSetBetTime</a>, <a href="../r6engine/r6pawn.html#ServerSetRoundTime">ServerSetRoundTime</a>, <a href="../r6engine/r6pawn.html#ServerSuicidePawn">ServerSuicidePawn</a>, <a href="../r6engine/r6pawn.html#ServerSurrender">ServerSurrender</a>, <a href="../r6engine/r6pawn.html#ServerSwitchReloadingWeapon">ServerSwitchReloadingWeapon</a>, <a href="../r6engine/r6pawn.html#ServerToggleCollision">ServerToggleCollision</a>, <a href="../r6engine/r6pawn.html#SetAudioInfo">SetAudioInfo</a>, <a href="../r6engine/r6pawn.html#SetAvoidFacingWalls">SetAvoidFacingWalls</a>, <a href="../r6engine/r6pawn.html#SetCrouchBlend">SetCrouchBlend</a>, <a href="../r6engine/r6pawn.html#SetDefaultWalkAnim">SetDefaultWalkAnim</a>, <a href="../r6engine/r6pawn.html#SetFree">SetFree</a>, <a href="../r6engine/r6pawn.html#SetFriendlyFire">SetFriendlyFire</a>, <a href="../r6engine/r6pawn.html#SetNextPendingAction">SetNextPendingAction</a>, <a href="../r6engine/r6pawn.html#SetPawnScale">SetPawnScale</a>, <a href="../r6engine/r6pawn.html#SetPeekingInfo">SetPeekingInfo</a>, <a href="../r6engine/r6pawn.html#SetRandomWaiting">SetRandomWaiting</a>, <a href="../r6engine/r6pawn.html#SetRotationOffset">SetRotationOffset</a>, <a href="../r6engine/r6pawn.html#SkillModifier">SkillModifier</a>, <a href="../r6engine/r6pawn.html#SpawnRagDoll">SpawnRagDoll</a>, <a href="../r6engine/r6pawn.html#StandToCrouch">StandToCrouch</a>, <a href="../r6engine/r6pawn.html#StartClimbObject">StartClimbObject</a>, <a href="../r6engine/r6pawn.html#StartCrawl">StartCrawl</a>, <a href="../r6engine/r6pawn.html#StartCrouch">StartCrouch</a>, <a href="../r6engine/r6pawn.html#StartFluidPeeking">StartFluidPeeking</a>, <a href="../r6engine/r6pawn.html#StartFullPeeking">StartFullPeeking</a>, <a href="../r6engine/r6pawn.html#StartLipSynch">StartLipSynch</a>, <a href="../r6engine/r6pawn.html#StopAnimForRG">StopAnimForRG</a>, <a href="../r6engine/r6pawn.html#StopLipSynch">StopLipSynch</a>, <a href="../r6engine/r6pawn.html#StopWeaponSound">StopWeaponSound</a>, <a href="../r6engine/r6pawn.html#Surrender">Surrender</a>, <a href="../r6engine/r6pawn.html#TakeDamage">TakeDamage</a>, <a href="../r6engine/r6pawn.html#Tick">Tick</a>, <a href="../r6engine/r6pawn.html#Timer">Timer</a>, <a href="../r6engine/r6pawn.html#ToggleGadget">ToggleGadget</a>, <a href="../r6engine/r6pawn.html#ToggleHeatProperties">ToggleHeatProperties</a>, <a href="../r6engine/r6pawn.html#ToggleHeatVision">ToggleHeatVision</a>, <a href="../r6engine/r6pawn.html#ToggleNightProperties">ToggleNightProperties</a>, <a href="../r6engine/r6pawn.html#ToggleNightVision">ToggleNightVision</a>, <a href="../r6engine/r6pawn.html#ToggleScopeProperties">ToggleScopeProperties</a>, <a href="../r6engine/r6pawn.html#ToggleScopeVision">ToggleScopeVision</a>, <a href="../r6engine/r6pawn.html#TornOff">TornOff</a>, <a href="../r6engine/r6pawn.html#TurnAwayFromNearbyWalls">TurnAwayFromNearbyWalls</a>, <a href="../r6engine/r6pawn.html#TurnToFaceActor">TurnToFaceActor</a>, <a href="../r6engine/r6pawn.html#UpdateBipodPosture">UpdateBipodPosture</a>, <a href="../r6engine/r6pawn.html#UpdateBones">UpdateBones</a>, <a href="../r6engine/r6pawn.html#UpdatePawnTrackActor">UpdatePawnTrackActor</a>, <a href="../r6engine/r6pawn.html#UpdateVisualEffects">UpdateVisualEffects</a>, <a href="../r6engine/r6pawn.html#WeaponBipod">WeaponBipod</a>, <a href="../r6engine/r6pawn.html#WeaponBipodLast">WeaponBipodLast</a>, <a href="../r6engine/r6pawn.html#WhichBodyPartWasHit">WhichBodyPartWasHit</a>, <a href="../r6engine/r6pawn.html#ZoneChange">ZoneChange</a></td>
+</tr>
+</table>
+<table>
+<tr>
+	<th class="inherittitle">Inherited Functions from <a href="../r6abstract/r6abstract-overview.html">R6Abstract</a>.<a href="../r6abstract/r6abstractpawn.html">R6AbstractPawn</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../r6abstract/r6abstractpawn.html#ClientGetWeapon">ClientGetWeapon</a>, <a href="../r6abstract/r6abstractpawn.html#GetSkill">GetSkill</a>, <a href="../r6abstract/r6abstractpawn.html#GetWeapon">GetWeapon</a></td>
+</tr>
+</table>
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th class="title">States Summary</th>
+</tr>
+</table>
+
+<table>
+<tr>
+	<th>Crouching <a href="../Source_r6engine/r6hostage.html#881" class="small">Source code</a></th>
+</tr>
+<tr>
+	<td>
+	<span class="declaration"><span class="us_keyw">simulated state</span> Crouching <span class="us_keyw"></span> </span><br />
+	<blockquote class="comment">
+	
+	</blockquote>
+	</td>
+</tr>
+<tr>
+	<td><a href="#_BeginState+Crouching">BeginState</a>, <a href="#_GotoCrouch+Crouching">GotoCrouch</a>, <a href="#_GotoFoetus+Crouching">GotoFoetus</a>, <a href="#_GotoKneel+Crouching">GotoKneel</a>, <a href="#_GotoProne+Crouching">GotoProne</a>, <a href="#_GotoStand+Crouching">GotoStand</a></td>
+</tr>
+</table>
+<table>
+<tr>
+	<th>Foetus <a href="../Source_r6engine/r6hostage.html#1074" class="small">Source code</a></th>
+</tr>
+<tr>
+	<td>
+	<span class="declaration"><span class="us_keyw">simulated state</span> Foetus <span class="us_keyw"></span> </span><br />
+	<blockquote class="comment">
+	/*******************************************************************************/
+	</blockquote>
+	</td>
+</tr>
+<tr>
+	<td><a href="#_BeginState+Foetus">BeginState</a>, <a href="#_EndState+Foetus">EndState</a>, <a href="#_GotoCrouch+Foetus">GotoCrouch</a>, <a href="#_GotoFoetus+Foetus">GotoFoetus</a>, <a href="#_GotoKneel+Foetus">GotoKneel</a>, <a href="#_GotoProne+Foetus">GotoProne</a>, <a href="#_GotoStand+Foetus">GotoStand</a></td>
+</tr>
+</table>
+<table>
+<tr>
+	<th>Kneeling <a href="../Source_r6engine/r6hostage.html#930" class="small">Source code</a></th>
+</tr>
+<tr>
+	<td>
+	<span class="declaration"><span class="us_keyw">simulated state</span> Kneeling <span class="us_keyw"></span> </span><br />
+	<blockquote class="comment">
+	
+	</blockquote>
+	</td>
+</tr>
+<tr>
+	<td><a href="#_BeginState+Kneeling">BeginState</a>, <a href="#_EndState+Kneeling">EndState</a>, <a href="#_GotoCrouch+Kneeling">GotoCrouch</a>, <a href="#_GotoFoetus+Kneeling">GotoFoetus</a>, <a href="#_GotoFrozen+Kneeling">GotoFrozen</a>, <a href="#_GotoKneel+Kneeling">GotoKneel</a>, <a href="#_GotoProne+Kneeling">GotoProne</a>, <a href="#_GotoStand+Kneeling">GotoStand</a>, <a href="#_PlayReaction+Kneeling">PlayReaction</a></td>
+</tr>
+</table>
+<table>
+<tr>
+	<th>Prone <a href="../Source_r6engine/r6hostage.html#1031" class="small">Source code</a></th>
+</tr>
+<tr>
+	<td>
+	<span class="declaration"><span class="us_keyw">simulated state</span> Prone <span class="us_keyw"></span> </span><br />
+	<blockquote class="comment">
+	
+	</blockquote>
+	</td>
+</tr>
+<tr>
+	<td><a href="#_BeginState+Prone">BeginState</a>, <a href="#_GotoCrouch+Prone">GotoCrouch</a>, <a href="#_GotoFoetus+Prone">GotoFoetus</a>, <a href="#_GotoKneel+Prone">GotoKneel</a>, <a href="#_GotoProne+Prone">GotoProne</a>, <a href="#_GotoStand+Prone">GotoStand</a></td>
+</tr>
+</table>
+
+
+<br />
+
+<hr />
+
+
+
+<table class="title">
+<tr>
+	<th class="title">Variables Detail</th>
+</tr>
+</table>
+
+<h4><a name="_m_bCivilian" class="hidden"></a>m_bCivilian <a href="../Source_r6engine/r6hostage.html#70" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">bool</span> m_bCivilian;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_bCrouchToScaredStandBegin" class="hidden"></a>m_bCrouchToScaredStandBegin <a href="../Source_r6engine/r6hostage.html#93" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">bool</span> m_bCrouchToScaredStandBegin;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_bEscorted" class="hidden"></a>m_bEscorted <a href="../Source_r6engine/r6hostage.html#97" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">bool</span> m_bEscorted;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_bExtracted" class="hidden"></a>m_bExtracted <a href="../Source_r6engine/r6hostage.html#98" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">bool</span> m_bExtracted;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_bFeedbackExtracted" class="hidden"></a>m_bFeedbackExtracted <a href="../Source_r6engine/r6hostage.html#99" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">bool</span> m_bFeedbackExtracted;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_bFreed" class="hidden"></a>m_bFreed <a href="../Source_r6engine/r6hostage.html#96" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">bool</span> m_bFreed;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_bFrozen" class="hidden"></a>m_bFrozen <a href="../Source_r6engine/r6hostage.html#86" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">bool</span> m_bFrozen;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_bInitFinished" class="hidden"></a>m_bInitFinished <a href="../Source_r6engine/r6hostage.html#68" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">BOOL</span> m_bInitFinished;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_bIsFoetus" class="hidden"></a>m_bIsFoetus <a href="../Source_r6engine/r6hostage.html#85" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">bool</span> m_bIsFoetus;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_bIsKneeling" class="hidden"></a>m_bIsKneeling <a href="../Source_r6engine/r6hostage.html#84" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">bool</span> m_bIsKneeling;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_bPatrolForward" class="hidden"></a>m_bPatrolForward <a href="../Source_r6engine/r6hostage.html#75" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">BOOL</span> m_bPatrolForward;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_bPoliceManCanSeeRainbows" class="hidden"></a>m_bPoliceManCanSeeRainbows <a href="../Source_r6engine/r6hostage.html#80" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">bool</span> m_bPoliceManCanSeeRainbows;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_bPoliceManHasWeapon" class="hidden"></a>m_bPoliceManHasWeapon <a href="../Source_r6engine/r6hostage.html#79" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">bool</span> m_bPoliceManHasWeapon;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_bPoliceManMp1" class="hidden"></a>m_bPoliceManMp1 <a href="../Source_r6engine/r6hostage.html#78" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">bool</span> m_bPoliceManMp1;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_bReactionAnim" class="hidden"></a>m_bReactionAnim <a href="../Source_r6engine/r6hostage.html#91" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">bool</span> m_bReactionAnim;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_bRepWaitAnimIndex" class="hidden"></a>m_bRepWaitAnimIndex <a href="../Source_r6engine/r6hostage.html#101" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">byte</span> m_bRepWaitAnimIndex;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_bSavedRepWaitAnimIndex" class="hidden"></a>m_bSavedRepWaitAnimIndex <a href="../Source_r6engine/r6hostage.html#102" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">byte</span> m_bSavedRepWaitAnimIndex;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_bStartAsCivilian" class="hidden"></a>m_bStartAsCivilian <a href="../Source_r6engine/r6hostage.html#69" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">bool</span> m_bStartAsCivilian;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_controller" class="hidden"></a>m_controller <a href="../Source_r6engine/r6hostage.html#90" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../r6engine/r6hostageai.html" class="source">R6HostageAI</a></span> m_controller;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_currentNode" class="hidden"></a>m_currentNode <a href="../Source_r6engine/r6hostage.html#74" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../r6engine/r6dzonepathnode.html" class="source">R6DZonePathNode</a></span> m_currentNode;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_DZone" class="hidden"></a>m_DZone <a href="../Source_r6engine/r6hostage.html#67" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../r6engine/r6deploymentzone.html" class="source">R6DeploymentZone</a></span> m_DZone;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_eCivPatrol" class="hidden"></a>m_eCivPatrol <a href="../Source_r6engine/r6hostage.html#72" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../r6engine/r6hostage.html#ECivPatrolType" class="source">ECivPatrolType</a></span> m_eCivPatrol;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_eCurrentRepHostageAnim" class="hidden"></a>m_eCurrentRepHostageAnim <a href="../Source_r6engine/r6hostage.html#105" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../r6engine/r6hostage.html#STRepHostageAnim" class="source">STRepHostageAnim</a></span> m_eCurrentRepHostageAnim;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_eHandsUpType" class="hidden"></a>m_eHandsUpType <a href="../Source_r6engine/r6hostage.html#88" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../r6engine/r6hostage.html#EHandsUpType" class="source">EHandsUpType</a></span> m_eHandsUpType;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_eSavedRepHostageAnim" class="hidden"></a>m_eSavedRepHostageAnim <a href="../Source_r6engine/r6hostage.html#104" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../r6engine/r6hostage.html#STRepHostageAnim" class="source">STRepHostageAnim</a></span> m_eSavedRepHostageAnim;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_escortedByRainbow" class="hidden"></a>m_escortedByRainbow <a href="../Source_r6engine/r6hostage.html#95" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../r6engine/r6rainbow.html" class="source">R6Rainbow</a></span> m_escortedByRainbow;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_globalState" class="hidden"></a>m_globalState <a href="../Source_r6engine/r6hostage.html#87" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">name</span> m_globalState;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_iIndex" class="hidden"></a>m_iIndex <a href="../Source_r6engine/r6hostage.html#92" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">INT</span> m_iIndex;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_mgr" class="hidden"></a>m_mgr <a href="../Source_r6engine/r6hostage.html#89" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../r6engine/r6hostagemgr.html" class="source">R6HostageMgr</a></span> m_mgr;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_NocsSeeRainbowsName" class="hidden"></a>m_NocsSeeRainbowsName <a href="../Source_r6engine/r6hostage.html#82" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">name</span> m_NocsSeeRainbowsName;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_NocsWaitingName" class="hidden"></a>m_NocsWaitingName <a href="../Source_r6engine/r6hostage.html#81" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">name</span> m_NocsWaitingName;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_szUsedTemplate" class="hidden"></a>m_szUsedTemplate <a href="../Source_r6engine/r6hostage.html#65" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">string</span> m_szUsedTemplate;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h3 class="vartag">Personality</h3>
+<h4><a name="_m_ePersonality" class="hidden"></a>m_ePersonality <a href="../Source_r6engine/r6hostage.html#66" class="small">Source code</a></h4>
+<div class="declaration">var(Personality) <span class="source_type"><a href="../r6engine/r6pawn.html#EHostagePersonality" class="source">EHostagePersonality</a></span> m_ePersonality;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h3 class="vartag">R6Hostage</h3>
+<h4><a name="_m_changeOrientationTween" class="hidden"></a>m_changeOrientationTween <a href="../Source_r6engine/r6hostage.html#59" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../r6engine/r6hostage.html" class="source">R6Hostage</a></span>) <span class="source_type"><a href="../engine/actor.html#RandomTweenNum" class="source">RandomTweenNum</a></span> m_changeOrientationTween;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_patrolAreaWaitTween" class="hidden"></a>m_patrolAreaWaitTween <a href="../Source_r6engine/r6hostage.html#58" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../r6engine/r6hostage.html" class="source">R6Hostage</a></span>) <span class="source_type"><a href="../engine/actor.html#RandomTweenNum" class="source">RandomTweenNum</a></span> m_patrolAreaWaitTween;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_sightRadiusTween" class="hidden"></a>m_sightRadiusTween <a href="../Source_r6engine/r6hostage.html#60" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../r6engine/r6hostage.html" class="source">R6Hostage</a></span>) <span class="source_type"><a href="../engine/actor.html#RandomTweenNum" class="source">RandomTweenNum</a></span> m_sightRadiusTween;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_updatePaceTween" class="hidden"></a>m_updatePaceTween <a href="../Source_r6engine/r6hostage.html#61" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../r6engine/r6hostage.html" class="source">R6Hostage</a></span>) <span class="source_type"><a href="../engine/actor.html#RandomTweenNum" class="source">RandomTweenNum</a></span> m_updatePaceTween;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_waitingGoCrouchTween" class="hidden"></a>m_waitingGoCrouchTween <a href="../Source_r6engine/r6hostage.html#62" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../r6engine/r6hostage.html" class="source">R6Hostage</a></span>) <span class="source_type"><a href="../engine/actor.html#RandomTweenNum" class="source">RandomTweenNum</a></span> m_waitingGoCrouchTween;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h3 class="vartag">StartingPosition</h3>
+<h4><a name="_m_ePosition" class="hidden"></a>m_ePosition <a href="../Source_r6engine/r6hostage.html#71" class="small">Source code</a></h4>
+<div class="declaration">var(StartingPosition) <span class="source_type"><a href="../r6engine/r6hostage.html#EStartingPosition" class="source">EStartingPosition</a></span> m_ePosition;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h3 class="vartag">StayInThisState</h3>
+<h4><a name="_m_stayCautiousGuardedStateTime" class="hidden"></a>m_stayCautiousGuardedStateTime <a href="../Source_r6engine/r6hostage.html#57" class="small">Source code</a></h4>
+<div class="declaration">var(StayInThisState) <span class="source_type"><a href="../engine/actor.html#RandomTweenNum" class="source">RandomTweenNum</a></span> m_stayCautiousGuardedStateTime;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_stayFrozenTime" class="hidden"></a>m_stayFrozenTime <a href="../Source_r6engine/r6hostage.html#55" class="small">Source code</a></h4>
+<div class="declaration">var(StayInThisState) <span class="source_type"><a href="../engine/actor.html#RandomTweenNum" class="source">RandomTweenNum</a></span> m_stayFrozenTime;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_stayInFoetusTime" class="hidden"></a>m_stayInFoetusTime <a href="../Source_r6engine/r6hostage.html#54" class="small">Source code</a></h4>
+<div class="declaration">var(StayInThisState) <span class="source_type"><a href="../engine/actor.html#RandomTweenNum" class="source">RandomTweenNum</a></span> m_stayInFoetusTime;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_stayProneTime" class="hidden"></a>m_stayProneTime <a href="../Source_r6engine/r6hostage.html#56" class="small">Source code</a></h4>
+<div class="declaration">var(StayInThisState) <span class="source_type"><a href="../engine/actor.html#RandomTweenNum" class="source">RandomTweenNum</a></span> m_stayProneTime;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th class="title">Enumerations Detail</th>
+</tr>
+</table>
+
+<h4><a name="_ECivPatrolType" class="hidden"></a>ECivPatrolType <a href="../Source_r6engine/r6hostage.html#32" class="small">Source code</a></h4>
+<div class="declaration">enum <span class="source_type"><a href="../r6engine/r6hostage.html#ECivPatrolType" class="source">ECivPatrolType</a></span><br />
+{<blockquote>CIVPATROL_None,
+CIVPATROL_Path,
+CIVPATROL_Area,
+CIVPATROL_Point</blockquote>};
+</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_EHandsUpType" class="hidden"></a>EHandsUpType <a href="../Source_r6engine/r6hostage.html#15" class="small">Source code</a></h4>
+<div class="declaration">enum <span class="source_type"><a href="../r6engine/r6hostage.html#EHandsUpType" class="source">EHandsUpType</a></span><br />
+{<blockquote>HANDSUP_none,
+HANDSUP_kneeling,
+HANDSUP_standing</blockquote>};
+</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_EStandWalkingAnim" class="hidden"></a>EStandWalkingAnim <a href="../Source_r6engine/r6hostage.html#40" class="small">Source code</a></h4>
+<div class="declaration">enum <span class="source_type"><a href="../r6engine/r6hostage.html#EStandWalkingAnim" class="source">EStandWalkingAnim</a></span><br />
+{<blockquote>eStandWalkingAnim_default,
+eStandWalkingAnim_scared,
+</blockquote>};
+</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_EStartingPosition" class="hidden"></a>EStartingPosition <a href="../Source_r6engine/r6hostage.html#22" class="small">Source code</a></h4>
+<div class="declaration">enum <span class="source_type"><a href="../r6engine/r6hostage.html#EStartingPosition" class="source">EStartingPosition</a></span><br />
+{<blockquote>POS_Stand,
+POS_Kneel,
+POS_Prone,
+POS_Foetus,
+POS_Crouch,
+POS_Random</blockquote>};
+</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th class="title">Structures Detail</th>
+</tr>
+</table>
+
+<h4><a name="_STRepHostageAnim" class="hidden"></a>STRepHostageAnim <a href="../Source_r6engine/r6hostage.html#46" class="small">Source code</a></h4>
+<div class="declaration">struct <span class="source_type"><a href="../r6engine/r6hostage.html#STRepHostageAnim" class="source">STRepHostageAnim</a></span><br />
+{<blockquote>var <span class="source_type">bool</span> m_bRepPlayMoving;<br />
+var <span class="source_type"><a href="../r6engine/r6hostage.html#EStandWalkingAnim" class="source">EStandWalkingAnim</a></span> m_eRepStandWalkingAnim;<br />
+</blockquote>};
+</div>
+<blockquote class="comment">
+
+<br />
+
+</blockquote>
+<hr class="small" />
+
+
+<br />
+
+
+
+<table class="title">
+<tr>
+	<th class="title">Functions Detail</th>
+</tr>
+</table>
+
+<h4><a name="_AnimEnd-" class="hidden"></a><img src="../img_event.gif" alt="" title="event" /> AnimEnd <span class="function_state"></span> <a href="../Source_r6engine/r6hostage.html#198" class="small">Source code</a></h4>
+<div class="declaration">simulated event  AnimEnd ( <span class="source_type">INT</span> iChannel) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_AnimNotify_CrouchToScaredStandBegin-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> AnimNotify_CrouchToScaredStandBegin <span class="function_state"></span> <a href="../Source_r6engine/r6hostage.html#853" class="small">Source code</a></h4>
+<div class="declaration"> function  AnimNotify_CrouchToScaredStandBegin ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_AnimNotify_CrouchToScaredStandEnd-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> AnimNotify_CrouchToScaredStandEnd <span class="function_state"></span> <a href="../Source_r6engine/r6hostage.html#842" class="small">Source code</a></h4>
+<div class="declaration"> function  AnimNotify_CrouchToScaredStandEnd ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_BeginState-Crouching" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> BeginState <span class="function_state">Crouching</span> <a href="../Source_r6engine/r6hostage.html#883" class="small">Source code</a></h4>
+<div class="declaration">simulated function  BeginState ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_BeginState-Foetus" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> BeginState <span class="function_state">Foetus</span> <a href="../Source_r6engine/r6hostage.html#1101" class="small">Source code</a></h4>
+<div class="declaration">simulated function  BeginState ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_BeginState-Kneeling" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> BeginState <span class="function_state">Kneeling</span> <a href="../Source_r6engine/r6hostage.html#933" class="small">Source code</a></h4>
+<div class="declaration">simulated function  BeginState ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_BeginState-Prone" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> BeginState <span class="function_state">Prone</span> <a href="../Source_r6engine/r6hostage.html#1033" class="small">Source code</a></h4>
+<div class="declaration">simulated function  BeginState ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_CanBeAffectedByGrenade-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> CanBeAffectedByGrenade <span class="function_state"></span> <a href="../Source_r6engine/r6hostage.html#1170" class="small">Source code</a></h4>
+<div class="declaration">simulated function <span class="source_type">bool</span> CanBeAffectedByGrenade ( <span class="source_type"><a href="../engine/actor.html" class="source">Actor</a></span> aGrenade, <span class="source_type"><a href="../engine/pawn.html#EGrenadeType" class="source">EGrenadeType</a></span> <span class="source_type">eType</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_EndState-Foetus" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> EndState <span class="function_state">Foetus</span> <a href="../Source_r6engine/r6hostage.html#1106" class="small">Source code</a></h4>
+<div class="declaration">simulated function  EndState ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_EndState-Kneeling" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> EndState <span class="function_state">Kneeling</span> <a href="../Source_r6engine/r6hostage.html#943" class="small">Source code</a></h4>
+<div class="declaration">simulated function  EndState ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_EnteredExtractionZone-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> EnteredExtractionZone <span class="function_state"></span> <a href="../Source_r6engine/r6hostage.html#1254" class="small">Source code</a></h4>
+<div class="declaration"> function  EnteredExtractionZone ( <span class="source_type"><a href="../r6abstract/r6abstractextractionzone.html" class="source">R6AbstractExtractionZone</a></span> <span class="source_type">zone</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_EyePosition-" class="hidden"></a><img src="../img_event.gif" alt="" title="event" /> EyePosition <span class="function_state"></span> <a href="../Source_r6engine/r6hostage.html#1290" class="small">Source code</a></h4>
+<div class="declaration"> event <span class="source_type"><a href="../core/object.html#Vector" class="source">vector</a></span> EyePosition ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_FinishInitialization-" class="hidden"></a><img src="../img_event.gif" alt="" title="event" /> FinishInitialization <span class="function_state"></span> <a href="../Source_r6engine/r6hostage.html#150" class="small">Source code</a></h4>
+<div class="declaration"> event  FinishInitialization ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GetReticuleInfo-" class="hidden"></a><img src="../img_event.gif" alt="" title="event" /> GetReticuleInfo <span class="function_state"></span> <a href="../Source_r6engine/r6hostage.html#140" class="small">Source code</a></h4>
+<div class="declaration">simulated event <span class="source_type">BOOL</span> GetReticuleInfo ( <span class="source_type"><a href="../engine/pawn.html" class="source">Pawn</a></span> ownerReticule, OUT <span class="source_type">string</span> <span class="source_type">szName</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GotoCrouch-" class="hidden"></a><img src="../img_event.gif" alt="" title="event" /> GotoCrouch <span class="function_state"></span> <a href="../Source_r6engine/r6hostage.html#788" class="small">Source code</a></h4>
+<div class="declaration">simulated event  GotoCrouch ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GotoCrouch-Crouching" class="hidden"></a><img src="../img_event.gif" alt="" title="event" /> GotoCrouch <span class="function_state">Crouching</span> <a href="../Source_r6engine/r6hostage.html#897" class="small">Source code</a></h4>
+<div class="declaration">simulated event  GotoCrouch ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GotoCrouch-Foetus" class="hidden"></a><img src="../img_event.gif" alt="" title="event" /> GotoCrouch <span class="function_state">Foetus</span> <a href="../Source_r6engine/r6hostage.html#1090" class="small">Source code</a></h4>
+<div class="declaration">simulated event  GotoCrouch ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GotoCrouch-Kneeling" class="hidden"></a><img src="../img_event.gif" alt="" title="event" /> GotoCrouch <span class="function_state">Kneeling</span> <a href="../Source_r6engine/r6hostage.html#1005" class="small">Source code</a></h4>
+<div class="declaration">simulated event  GotoCrouch ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GotoCrouch-Prone" class="hidden"></a><img src="../img_event.gif" alt="" title="event" /> GotoCrouch <span class="function_state">Prone</span> <a href="../Source_r6engine/r6hostage.html#1063" class="small">Source code</a></h4>
+<div class="declaration">simulated event  GotoCrouch ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GotoFoetus-" class="hidden"></a><img src="../img_event.gif" alt="" title="event" /> GotoFoetus <span class="function_state"></span> <a href="../Source_r6engine/r6hostage.html#810" class="small">Source code</a></h4>
+<div class="declaration">simulated event  GotoFoetus ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GotoFoetus-Crouching" class="hidden"></a><img src="../img_event.gif" alt="" title="event" /> GotoFoetus <span class="function_state">Crouching</span> <a href="../Source_r6engine/r6hostage.html#901" class="small">Source code</a></h4>
+<div class="declaration">simulated event  GotoFoetus ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GotoFoetus-Foetus" class="hidden"></a><img src="../img_event.gif" alt="" title="event" /> GotoFoetus <span class="function_state">Foetus</span> <a href="../Source_r6engine/r6hostage.html#1086" class="small">Source code</a></h4>
+<div class="declaration">simulated event  GotoFoetus ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GotoFoetus-Kneeling" class="hidden"></a><img src="../img_event.gif" alt="" title="event" /> GotoFoetus <span class="function_state">Kneeling</span> <a href="../Source_r6engine/r6hostage.html#993" class="small">Source code</a></h4>
+<div class="declaration">simulated event  GotoFoetus ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GotoFoetus-Prone" class="hidden"></a><img src="../img_event.gif" alt="" title="event" /> GotoFoetus <span class="function_state">Prone</span> <a href="../Source_r6engine/r6hostage.html#1054" class="small">Source code</a></h4>
+<div class="declaration">simulated event  GotoFoetus ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GotoFrozen-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> GotoFrozen <span class="function_state"></span> <a href="../Source_r6engine/r6hostage.html#829" class="small">Source code</a></h4>
+<div class="declaration"> function  GotoFrozen ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GotoFrozen-Kneeling" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> GotoFrozen <span class="function_state">Kneeling</span> <a href="../Source_r6engine/r6hostage.html#975" class="small">Source code</a></h4>
+<div class="declaration">simulated function  GotoFrozen ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GotoKneel-" class="hidden"></a><img src="../img_event.gif" alt="" title="event" /> GotoKneel <span class="function_state"></span> <a href="../Source_r6engine/r6hostage.html#795" class="small">Source code</a></h4>
+<div class="declaration">simulated event  GotoKneel ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GotoKneel-Crouching" class="hidden"></a><img src="../img_event.gif" alt="" title="event" /> GotoKneel <span class="function_state">Crouching</span> <a href="../Source_r6engine/r6hostage.html#919" class="small">Source code</a></h4>
+<div class="declaration">simulated event  GotoKneel ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GotoKneel-Foetus" class="hidden"></a><img src="../img_event.gif" alt="" title="event" /> GotoKneel <span class="function_state">Foetus</span> <a href="../Source_r6engine/r6hostage.html#1081" class="small">Source code</a></h4>
+<div class="declaration">simulated event  GotoKneel ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GotoKneel-Kneeling" class="hidden"></a><img src="../img_event.gif" alt="" title="event" /> GotoKneel <span class="function_state">Kneeling</span> <a href="../Source_r6engine/r6hostage.html#988" class="small">Source code</a></h4>
+<div class="declaration">simulated event  GotoKneel ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GotoKneel-Prone" class="hidden"></a><img src="../img_event.gif" alt="" title="event" /> GotoKneel <span class="function_state">Prone</span> <a href="../Source_r6engine/r6hostage.html#1049" class="small">Source code</a></h4>
+<div class="declaration">simulated event  GotoKneel ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GotoProne-" class="hidden"></a><img src="../img_event.gif" alt="" title="event" /> GotoProne <span class="function_state"></span> <a href="../Source_r6engine/r6hostage.html#822" class="small">Source code</a></h4>
+<div class="declaration">simulated event  GotoProne ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GotoProne-Crouching" class="hidden"></a><img src="../img_event.gif" alt="" title="event" /> GotoProne <span class="function_state">Crouching</span> <a href="../Source_r6engine/r6hostage.html#913" class="small">Source code</a></h4>
+<div class="declaration">simulated event  GotoProne ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GotoProne-Foetus" class="hidden"></a><img src="../img_event.gif" alt="" title="event" /> GotoProne <span class="function_state">Foetus</span> <a href="../Source_r6engine/r6hostage.html#1096" class="small">Source code</a></h4>
+<div class="declaration">simulated event  GotoProne ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GotoProne-Kneeling" class="hidden"></a><img src="../img_event.gif" alt="" title="event" /> GotoProne <span class="function_state">Kneeling</span> <a href="../Source_r6engine/r6hostage.html#1000" class="small">Source code</a></h4>
+<div class="declaration">simulated event  GotoProne ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GotoProne-Prone" class="hidden"></a><img src="../img_event.gif" alt="" title="event" /> GotoProne <span class="function_state">Prone</span> <a href="../Source_r6engine/r6hostage.html#1059" class="small">Source code</a></h4>
+<div class="declaration">simulated event  GotoProne ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GotoStand-" class="hidden"></a><img src="../img_event.gif" alt="" title="event" /> GotoStand <span class="function_state"></span> <a href="../Source_r6engine/r6hostage.html#780" class="small">Source code</a></h4>
+<div class="declaration">simulated event  GotoStand ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GotoStand-Crouching" class="hidden"></a><img src="../img_event.gif" alt="" title="event" /> GotoStand <span class="function_state">Crouching</span> <a href="../Source_r6engine/r6hostage.html#907" class="small">Source code</a></h4>
+<div class="declaration">simulated event  GotoStand ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GotoStand-Foetus" class="hidden"></a><img src="../img_event.gif" alt="" title="event" /> GotoStand <span class="function_state">Foetus</span> <a href="../Source_r6engine/r6hostage.html#1076" class="small">Source code</a></h4>
+<div class="declaration">simulated event  GotoStand ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GotoStand-Kneeling" class="hidden"></a><img src="../img_event.gif" alt="" title="event" /> GotoStand <span class="function_state">Kneeling</span> <a href="../Source_r6engine/r6hostage.html#982" class="small">Source code</a></h4>
+<div class="declaration">simulated event  GotoStand ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GotoStand-Prone" class="hidden"></a><img src="../img_event.gif" alt="" title="event" /> GotoStand <span class="function_state">Prone</span> <a href="../Source_r6engine/r6hostage.html#1043" class="small">Source code</a></h4>
+<div class="declaration">simulated event  GotoStand ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_HasBumpPriority-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> HasBumpPriority <span class="function_state"></span> <a href="../Source_r6engine/r6hostage.html#183" class="small">Source code</a></h4>
+<div class="declaration"> function <span class="source_type">bool</span> HasBumpPriority ( <span class="source_type"><a href="../r6engine/r6pawn.html" class="source">R6Pawn</a></span> <span class="source_type">bumpedBy</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_isFoetus-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> isFoetus <span class="function_state"></span> <a href="../Source_r6engine/r6hostage.html#448" class="small">Source code</a></h4>
+<div class="declaration"> function <span class="source_type">bool</span> isFoetus ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_isKneeling-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> isKneeling <span class="function_state"></span> <a href="../Source_r6engine/r6hostage.html#456" class="small">Source code</a></h4>
+<div class="declaration"> function <span class="source_type">bool</span> isKneeling ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_isStanding-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> isStanding <span class="function_state"></span> <a href="../Source_r6engine/r6hostage.html#431" class="small">Source code</a></h4>
+<div class="declaration"> function <span class="source_type">bool</span> isStanding ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_isStandingHandUp-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> isStandingHandUp <span class="function_state"></span> <a href="../Source_r6engine/r6hostage.html#439" class="small">Source code</a></h4>
+<div class="declaration"> function <span class="source_type">bool</span> isStandingHandUp ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_logAnim-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> logAnim <span class="function_state"></span> <a href="../Source_r6engine/r6hostage.html#175" class="small">Source code</a></h4>
+<div class="declaration"> function  logAnim ( <span class="source_type">string</span> <span class="source_type">sz</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_PlayBlinded-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> PlayBlinded <span class="function_state"></span> <a href="../Source_r6engine/r6hostage.html#1140" class="small">Source code</a></h4>
+<div class="declaration">simulated function  PlayBlinded ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_PlayCoughing-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> PlayCoughing <span class="function_state"></span> <a href="../Source_r6engine/r6hostage.html#1113" class="small">Source code</a></h4>
+<div class="declaration">simulated function  PlayCoughing ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_PlayCrouchToProne-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> PlayCrouchToProne <span class="function_state"></span> <a href="../Source_r6engine/r6hostage.html#873" class="small">Source code</a></h4>
+<div class="declaration">simulated function  PlayCrouchToProne ( OPTIONAL <span class="source_type">bool</span> <span class="source_type">bForcedByClient</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_PlayDoorAnim-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> PlayDoorAnim <span class="function_state"></span> <a href="../Source_r6engine/r6hostage.html#1186" class="small">Source code</a></h4>
+<div class="declaration">simulated function  PlayDoorAnim ( <span class="source_type"><a href="../r6engine/r6iorotatingdoor.html" class="source">R6IORotatingDoor</a></span> <span class="source_type"><a href="../engine/door.html" class="source">door</a></span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_PlayDuck-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> PlayDuck <span class="function_state"></span> <a href="../Source_r6engine/r6hostage.html#864" class="small">Source code</a></h4>
+<div class="declaration"> function  PlayDuck ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_PlayProneToCrouch-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> PlayProneToCrouch <span class="function_state"></span> <a href="../Source_r6engine/r6hostage.html#1016" class="small">Source code</a></h4>
+<div class="declaration">simulated function  PlayProneToCrouch ( OPTIONAL <span class="source_type">bool</span> <span class="source_type">bForcedByClient</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_PlayReaction-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> PlayReaction <span class="function_state"></span> <a href="../Source_r6engine/r6hostage.html#558" class="small">Source code</a></h4>
+<div class="declaration"> function  PlayReaction ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_PlayReaction-Kneeling" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> PlayReaction <span class="function_state">Kneeling</span> <a href="../Source_r6engine/r6hostage.html#952" class="small">Source code</a></h4>
+<div class="declaration">simulated function  PlayReaction ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_PlaySpecialPendingAction-" class="hidden"></a><img src="../img_event.gif" alt="" title="event" /> PlaySpecialPendingAction <span class="function_state"></span> <a href="../Source_r6engine/r6hostage.html#256" class="small">Source code</a></h4>
+<div class="declaration">simulated event  PlaySpecialPendingAction ( EPendingAction <span class="source_type">eAction</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_PlayWaiting-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> PlayWaiting <span class="function_state"></span> <a href="../Source_r6engine/r6hostage.html#589" class="small">Source code</a></h4>
+<div class="declaration">simulated function  PlayWaiting ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_PlayWeaponAnimation-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> PlayWeaponAnimation <span class="function_state"></span> <a href="../Source_r6engine/r6hostage.html#502" class="small">Source code</a></h4>
+<div class="declaration"> function  PlayWeaponAnimation ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_PostBeginPlay-" class="hidden"></a><img src="../img_event.gif" alt="" title="event" /> PostBeginPlay <span class="function_state"></span> <a href="../Source_r6engine/r6hostage.html#349" class="small">Source code</a></h4>
+<div class="declaration">simulated event  PostBeginPlay ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_PostNetBeginPlay-" class="hidden"></a><img src="../img_event.gif" alt="" title="event" /> PostNetBeginPlay <span class="function_state"></span> <a href="../Source_r6engine/r6hostage.html#367" class="small">Source code</a></h4>
+<div class="declaration">simulated event  PostNetBeginPlay ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ProcessBuildDeathMessage-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> ProcessBuildDeathMessage <span class="function_state"></span> <a href="../Source_r6engine/r6hostage.html#1269" class="small">Source code</a></h4>
+<div class="declaration"> function <span class="source_type">bool</span> ProcessBuildDeathMessage ( <span class="source_type"><a href="../engine/pawn.html" class="source">Pawn</a></span> Killer, OUT <span class="source_type">string</span> <span class="source_type">szPlayerName</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_R6GetCircumstantialActionString-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> R6GetCircumstantialActionString <span class="function_state"></span> <a href="../Source_r6engine/r6hostage.html#1239" class="small">Source code</a></h4>
+<div class="declaration">simulated function <span class="source_type">string</span> R6GetCircumstantialActionString ( <span class="source_type">INT</span> <span class="source_type">iAction</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_R6QueryCircumstantialAction-" class="hidden"></a><img src="../img_event.gif" alt="" title="event" /> R6QueryCircumstantialAction <span class="function_state"></span> <a href="../Source_r6engine/r6hostage.html#1204" class="small">Source code</a></h4>
+<div class="declaration"> event  R6QueryCircumstantialAction ( <span class="source_type">FLOAT</span> <span class="source_type">fDistance</span>, Out <span class="source_type"><a href="../engine/r6abstractcircumstantialactionquery.html" class="source">R6AbstractCircumstantialActionQuery</a></span> Query, <span class="source_type"><a href="../engine/playercontroller.html" class="source">PlayerController</a></span> <span class="source_type"><a href="../engine/playercontroller.html" class="source">playerController</a></span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_R6TakeDamage-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> R6TakeDamage <span class="function_state"></span> <a href="../Source_r6engine/r6hostage.html#466" class="small">Source code</a></h4>
+<div class="declaration"> function <span class="source_type">INT</span> R6TakeDamage ( <span class="source_type">INT</span> iKillValue, <span class="source_type">INT</span> iStunValue, 
+                            <span class="source_type"><a href="../engine/pawn.html" class="source">Pawn</a></span> instigatedBy, <span class="source_type"><a href="../core/object.html#Vector" class="source">vector</a></span> vHitLocation, 
+                            <span class="source_type"><a href="../core/object.html#Vector" class="source">vector</a></span> vMomentum, <span class="source_type">INT</span> iBulletToArmorModifier, optional <span class="source_type">int</span> iBulletGoup) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ResetWeaponAnimation-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> ResetWeaponAnimation <span class="function_state"></span> <a href="../Source_r6engine/r6hostage.html#509" class="small">Source code</a></h4>
+<div class="declaration"> function  ResetWeaponAnimation ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_SetAnimInfo-" class="hidden"></a><img src="../img_event.gif" alt="" title="event" /> SetAnimInfo <span class="function_state"></span> <a href="../Source_r6engine/r6hostage.html#274" class="small">Source code</a></h4>
+<div class="declaration">simulated event  SetAnimInfo ( <span class="source_type">INT</span> <span class="source_type">id</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_SetAnimTransition-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> SetAnimTransition <span class="function_state"></span> <a href="../Source_r6engine/r6hostage.html#336" class="small">Source code</a></h4>
+<div class="declaration">simulated function  SetAnimTransition ( <span class="source_type">INT</span> iAnimToPlay, <span class="source_type">name</span> <span class="source_type">pawnStateToGo</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_setCrouch-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> setCrouch <span class="function_state"></span> <a href="../Source_r6engine/r6hostage.html#406" class="small">Source code</a></h4>
+<div class="declaration"> function  setCrouch ( <span class="source_type">bool</span> <span class="source_type">bIsCrouch</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_setFrozen-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> setFrozen <span class="function_state"></span> <a href="../Source_r6engine/r6hostage.html#398" class="small">Source code</a></h4>
+<div class="declaration"> function  setFrozen ( <span class="source_type">bool</span> <span class="source_type">bFreeze</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_setProne-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> setProne <span class="function_state"></span> <a href="../Source_r6engine/r6hostage.html#421" class="small">Source code</a></h4>
+<div class="declaration"> function  setProne ( <span class="source_type">bool</span> <span class="source_type">bIsProne</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_SetStandWalkingAnim-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> SetStandWalkingAnim <span class="function_state"></span> <a href="../Source_r6engine/r6hostage.html#518" class="small">Source code</a></h4>
+<div class="declaration">simulated function  SetStandWalkingAnim ( <span class="source_type"><a href="../r6engine/r6hostage.html#EStandWalkingAnim" class="source">EStandWalkingAnim</a></span> eAnim, <span class="source_type">bool</span> <span class="source_type">bUpdatePlayMoving</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_SetToNormalWeapon-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> SetToNormalWeapon <span class="function_state"></span> <a href="../Source_r6engine/r6hostage.html#1314" class="small">Source code</a></h4>
+<div class="declaration"> function  SetToNormalWeapon ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_Tick-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> Tick <span class="function_state"></span> <a href="../Source_r6engine/r6hostage.html#114" class="small">Source code</a></h4>
+<div class="declaration">simulated function  Tick ( <span class="source_type">FLOAT</span> fDeltaTime) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+
+
+<br />
+
+
+<table class="title">
+<tr>
+	<th class="title">Defaultproperties</th>
+</tr>
+</table>
+<br />
+<div class="source"><table class="source"><tr><td class="source"><pre class="source">defaultproperties
+{
+     m_ePersonality=HPERSO_Normal
+     m_iIndex=-<span class="source_int">1</span>
+     m_bPatrolForward=True
+     m_stayInFoetusTime=(m_fMin=<span class="source_int">5.000000</span>,m_fMax=<span class="source_int">8.000000</span>)
+     m_stayFrozenTime=(m_fMin=<span class="source_int">1.000000</span>,m_fMax=<span class="source_int">3.000000</span>)
+     m_stayProneTime=(m_fMin=<span class="source_int">3.000000</span>,m_fMax=<span class="source_int">4.000000</span>)
+     m_stayCautiousGuardedStateTime=(m_fMin=<span class="source_int">7.000000</span>,m_fMax=<span class="source_int">10.000000</span>)
+     m_patrolAreaWaitTween=(m_fMin=<span class="source_int">2.000000</span>,m_fMax=<span class="source_int">4.000000</span>)
+     m_changeOrientationTween=(m_fMin=<span class="source_int">5.000000</span>,m_fMax=<span class="source_int">15.000000</span>)
+     m_sightRadiusTween=(m_fMin=<span class="source_int">4000.000000</span>,m_fMax=<span class="source_int">5000.000000</span>)
+     m_updatePaceTween=(m_fMin=<span class="source_int">1.500000</span>,m_fMax=<span class="source_int">2.600000</span>)
+     m_waitingGoCrouchTween=(m_fMin=<span class="source_int">2.500000</span>,m_fMax=<span class="source_int">4.000000</span>)
+     m_bAutoClimbLadders=True
+     m_bAvoidFacingWalls=False
+     m_fWalkingSpeed=<span class="source_int">250.000000</span>
+     m_fWalkingBackwardStrafeSpeed=<span class="source_int">100.000000</span>
+     m_fRunningSpeed=<span class="source_int">400.000000</span>
+     m_fRunningBackwardStrafeSpeed=<span class="source_int">320.000000</span>
+     m_fCrouchedWalkingSpeed=<span class="source_int">125.000000</span>
+     m_fCrouchedWalkingBackwardStrafeSpeed=<span class="source_int">100.000000</span>
+     m_fCrouchedRunningSpeed=<span class="source_int">250.000000</span>
+     m_fCrouchedRunningBackwardStrafeSpeed=<span class="source_int">250.000000</span>
+     m_standRunBackName=<span class="source_string">"ScaredStandWalkBack"</span>
+     m_standWalkBackName=<span class="source_string">"ScaredStandWalkBack"</span>
+     m_standFallName=<span class="source_string">"ScaredStandFall"</span>
+     m_standLandName=<span class="source_string">"ScaredStandLand"</span>
+     m_crouchFallName=<span class="source_string">"crouchFall"</span>
+     m_crouchWalkForwardName=<span class="source_string">"CrouchRunForward"</span>
+     m_standStairWalkUpName=<span class="source_string">"StandStairWalkUp"</span>
+     m_standStairWalkUpBackName=<span class="source_string">"StandStairWalkUp"</span>
+     m_standStairWalkDownName=<span class="source_string">"StandStairWalkDown"</span>
+     m_standStairWalkDownBackName=<span class="source_string">"StandStairWalkDown"</span>
+     m_standStairWalkDownRightName=<span class="source_string">"StandWalkRight"</span>
+     m_standStairRunUpName=<span class="source_string">"StandStairRunUp"</span>
+     m_standStairRunUpBackName=<span class="source_string">"StandStairRunUp"</span>
+     m_standStairRunUpRightName=<span class="source_string">"StandWalkRight"</span>
+     m_standStairRunDownName=<span class="source_string">"StandStairRunDown"</span>
+     m_standStairRunDownBackName=<span class="source_string">"StandStairRunDown"</span>
+     m_standStairRunDownRightName=<span class="source_string">"StandWalkRight"</span>
+     m_crouchStairWalkDownName=<span class="source_string">"CrouchStairWalkDown"</span>
+     m_crouchStairWalkDownBackName=<span class="source_string">"CrouchStairWalkUp"</span>
+     m_crouchStairWalkDownRightName=<span class="source_string">"CrouchWalkRight"</span>
+     m_crouchStairWalkUpName=<span class="source_string">"CrouchStairWalkUp"</span>
+     m_crouchStairWalkUpBackName=<span class="source_string">"CrouchStairWalkDown"</span>
+     m_crouchStairWalkUpRightName=<span class="source_string">"CrouchWalkRight"</span>
+     m_crouchStairRunUpName=<span class="source_string">"CrouchStairWalkUp"</span>
+     m_crouchStairRunDownName=<span class="source_string">"CrouchStairWalkDown"</span>
+     m_crouchDefaultAnimName=<span class="source_string">"Crouch_nt"</span>
+     m_standDefaultAnimName=<span class="source_string">"Stand_nt"</span>
+     m_ePawnType=PAWN_Hostage
+     m_bMakesTrailsWhenProning=True
+     ControllerClass=<span class="source_type">Class</span><span class="source_name">'R6Engine.R6HostageAI'</span>
+     CollisionHeight=<span class="source_int">80.000000</span>
+     Begin <span class="source_type"><a href="../core/object.html" class="source">Object</a></span> <span class="source_type">Class</span>=<span class="source_type"><a href="../engine/karmaparamsskel.html" class="source">KarmaParamsSkel</a></span> <span class="source_type">Name</span>=KarmaParamsSkel17
+         KConvulseSpacing=(<span class="source_type">Max</span>=<span class="source_int">2.200000</span>)
+         KSkeleton=<span class="source_string">"terroskel"</span>
+         KStartEnabled=True
+         bHighDetailOnly=False
+         KLinearDamping=<span class="source_int">0.500000</span>
+         KAngularDamping=<span class="source_int">0.500000</span>
+         KBuoyancy=<span class="source_int">1.000000</span>
+         KVelDropBelowThreshold=<span class="source_int">50.000000</span>
+         KFriction=<span class="source_int">0.600000</span>
+         KRestitution=<span class="source_int">0.300000</span>
+         KImpactThreshold=<span class="source_int">150.000000</span>
+         <span class="source_type">Name</span>=<span class="source_string">"KarmaParamsSkel17"</span>
+     End <span class="source_type"><a href="../core/object.html" class="source">Object</a></span>
+     KParams=<span class="source_type"><a href="../engine/karmaparamsskel.html" class="source">KarmaParamsSkel</a></span><span class="source_name">'R6Engine.KarmaParamsSkel17'</span>
+     RotationRate=(Yaw=<span class="source_int">45000</span>)
+}
+</pre></td></tr></table></div>
+
+
+
+<hr />
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../r6engine/r6engine-overview.html">Package</a></td>
+	<td class="header_hilight">Class</td>
+	<td class="header"><a href="../Source_r6engine/r6hostage.html">Source</a></td>
+	<td class="header"><a class="header" href="../classtree.html#R6Hostage">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../r6engine/r6grenadedecal.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../r6engine/r6hostageai.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+
+<div class="stats">Creation time: mar. 26/5/2026 18:33:11.303 - Created with <a href="http://wiki.beyondunreal.com/wiki/UnCodeX" target="_blank">UnCodeX</a></div>
+
+</body>
+</html>

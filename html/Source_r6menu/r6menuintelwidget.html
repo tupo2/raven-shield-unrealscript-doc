@@ -1,0 +1,544 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+	<title>UnCodeX - Source: R6Menu.R6MenuIntelWidget</title>
+	<meta name="Generator" content="UnCodeX 241" />
+	<link rel="stylesheet" href="../DocStyle2.css" type="text/css" title="Original Purple" />
+	<link rel="alternative stylesheet" href="../DocStyle2-blue.css" type="text/css" title="Blue" />
+	<link rel="alternative stylesheet" href="../DocStyle2-red.css" type="text/css" title="Red" />
+	<!--[if IE]>
+	<link rel="stylesheet" href="../DocStyle2-msie.css" type="text/css" />
+	<![endif]-->
+	<script src="../styleswitcher.js" type="text/javascript"></script>
+</head>
+<body>
+
+<div class="header">
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../r6menu/r6menu-overview.html">Package</a></td>
+	<td class="header"><a href="../r6menu/r6menuintelwidget.html">Class</a></td>
+	<td class="header_hilight">Source</td>
+	<td class="header"><a class="header" href="../classtree.html#R6MenuIntelWidget">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../Source_r6menu/r6menuintelradioarea.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../Source_r6menu/r6menulaptopwidget.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html#Source_r6menu/r6menuintelwidget.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+</div>
+<div class="spacer"></div>
+
+<h1><a href="../r6menu/r6menu-overview.html">R6Menu</a>.<a href="../r6menu/r6menuintelwidget.html">R6MenuIntelWidget</a></h1>
+<br />
+<div class="source"><table class="source"><tr><td class="source_lineno"><span class="source_lineno">00001<br />00002<br />00003<br />00004<br />00005<br />00006<br />00007<br />00008<br />00009<br />00010<br />00011<br />00012<br />00013<br />00014<br />00015<br />00016<br />00017<br />00018<br />00019<br />00020<br />
+00021<br />00022<br />00023<br />00024<br />00025<br />00026<br />00027<br />00028<br />00029<br />00030<br />00031<br />00032<br />00033<br />00034<br />00035<br />00036<br />00037<br />00038<br />00039<br />00040<br />
+00041<br />00042<br />00043<br />00044<br />00045<br />00046<br />00047<br />00048<br />00049<br />00050<br />00051<br />00052<br />00053<br />00054<br />00055<br />00056<br />00057<br />00058<br />00059<br />00060<br />
+00061<br />00062<br />00063<br />00064<br />00065<br />00066<br />00067<br />00068<br />00069<br />00070<br />00071<br />00072<br />00073<br />00074<br />00075<br />00076<br />00077<br />00078<br />00079<br />00080<br />
+00081<br />00082<br />00083<br />00084<br />00085<br />00086<br />00087<br />00088<br />00089<br />00090<br />00091<br />00092<br />00093<br />00094<br />00095<br />00096<br />00097<br />00098<br />00099<br />00100<br />
+00101<br />00102<br />00103<br />00104<br />00105<br />00106<br />00107<br />00108<br />00109<br />00110<br />00111<br />00112<br />00113<br />00114<br />00115<br />00116<br />00117<br />00118<br />00119<br />00120<br />
+00121<br />00122<br />00123<br />00124<br />00125<br />00126<br />00127<br />00128<br />00129<br />00130<br />00131<br />00132<br />00133<br />00134<br />00135<br />00136<br />00137<br />00138<br />00139<br />00140<br />
+00141<br />00142<br />00143<br />00144<br />00145<br />00146<br />00147<br />00148<br />00149<br />00150<br />00151<br />00152<br />00153<br />00154<br />00155<br />00156<br />00157<br />00158<br />00159<br />00160<br />
+00161<br />00162<br />00163<br />00164<br />00165<br />00166<br />00167<br />00168<br />00169<br />00170<br />00171<br />00172<br />00173<br />00174<br />00175<br />00176<br />00177<br />00178<br />00179<br />00180<br />
+00181<br />00182<br />00183<br />00184<br />00185<br />00186<br />00187<br />00188<br />00189<br />00190<br />00191<br />00192<br />00193<br />00194<br />00195<br />00196<br />00197<br />00198<br />00199<br />00200<br />
+00201<br />00202<br />00203<br />00204<br />00205<br />00206<br />00207<br />00208<br />00209<br />00210<br />00211<br />00212<br />00213<br />00214<br />00215<br />00216<br />00217<br />00218<br />00219<br />00220<br />
+00221<br />00222<br />00223<br />00224<br />00225<br />00226<br />00227<br />00228<br />00229<br />00230<br />00231<br />00232<br />00233<br />00234<br />00235<br />00236<br />00237<br />00238<br />00239<br />00240<br />
+00241<br />00242<br />00243<br />00244<br />00245<br />00246<br />00247<br />00248<br />00249<br />00250<br />00251<br />00252<br />00253<br />00254<br />00255<br />00256<br />00257<br />00258<br />00259<br />00260<br />
+00261<br />00262<br />00263<br />00264<br />00265<br />00266<br />00267<br />00268<br />00269<br />00270<br />00271<br />00272<br />00273<br />00274<br />00275<br />00276<br />00277<br />00278<br />00279<br />00280<br />
+00281<br />00282<br />00283<br />00284<br />00285<br />00286<br />00287<br />00288<br />00289<br />00290<br />00291<br />00292<br />00293<br />00294<br />00295<br />00296<br />00297<br />00298<br />00299<br />00300<br />
+00301<br />00302<br />00303<br />00304<br />00305<br />00306<br />00307<br />00308<br />00309<br />00310<br />00311<br />00312<br />00313<br />00314<br />00315<br />00316<br />00317<br />00318<br />00319<br />00320<br />
+00321<br />00322<br />00323<br />00324<br />00325<br />00326<br />00327<br />00328<br />00329<br />00330<br />00331<br />00332<br />00333<br />00334<br />00335<br />00336<br />00337<br />00338<br />00339<br />00340<br />
+00341<br />00342<br />00343<br />00344<br />00345<br />00346<br />00347<br />00348<br />00349<br />00350<br />00351<br />00352<br />00353<br />00354<br />00355<br />00356<br />00357<br />00358<br />00359<br />00360<br />
+00361<br />00362<br />00363<br />00364<br />00365<br />00366<br />00367<br />00368<br />00369<br />00370<br />00371<br />00372<br />00373<br />00374<br />00375<br />00376<br />00377<br />00378<br />00379<br />00380<br />
+00381<br />00382<br />00383<br />00384<br />00385<br />00386<br />00387<br />00388<br />00389<br />00390<br />00391<br />00392<br />00393<br />00394<br />00395<br />00396<br />00397<br />00398<br />00399<br />00400<br />
+00401<br />00402<br />00403<br />00404<br />00405<br />00406<br />00407<br />00408<br />00409<br />00410<br />00411<br />00412<br />00413<br />00414<br />00415<br />00416<br />00417<br />00418<br />00419<br />00420<br />
+00421<br />00422<br />00423<br />00424<br />00425<br />00426<br />00427<br />00428<br />00429<br />00430<br />00431<br />00432<br />00433<br />00434<br />00435<br />00436<br />00437<br />00438<br />00439<br />00440<br />
+00441<br />00442<br />00443<br />00444<br />00445<br />00446<br />00447<br />00448<br />00449<br />00450<br />00451<br />00452<br />00453<br />00454<br />00455<br />00456<br />00457<br />00458<br />00459<br />00460<br />
+00461<br />00462<br />00463</span></td>
+<td class="source"><pre class="source"><a name="1"></a><span class="source_comment">//=============================================================================
+</span><a name="2"></a><span class="source_comment">//  R6MenuIntelWidget.uc : This is the Intel menu
+</span><a name="3"></a><span class="source_comment">//  Copyright 2001 Ubi Soft, Inc. All Rights Reserved.
+</span><a name="4"></a><span class="source_comment">//
+</span><a name="5"></a><span class="source_comment">//  Revision history:
+</span><a name="6"></a><span class="source_comment">//    2001/11/12 * Created by Alexandre Dionne
+</span><a name="7"></a><span class="source_comment">//=============================================================================
+</span><a name="8"></a><span class="source_type">class</span> <span class="source_type"><a href="../r6menu/r6menuintelwidget.html" class="source">R6MenuIntelWidget</a></span> extends <span class="source_type"><a href="../r6menu/r6menulaptopwidget.html" class="source">R6MenuLaptopWidget</a></span>;
+<a name="9"></a>
+<a name="10"></a>enum <span class="source_type"><a href="../r6menu/r6menuintelwidget.html#EMenuIntelButtonID" class="source">EMenuIntelButtonID</a></span>
+<a name="11"></a>{
+<a name="12"></a>    ButtonControlID,
+<a name="13"></a>    ButtonClarkID,
+<a name="14"></a>    ButtonSweenyID,
+<a name="15"></a>    ButtonNewsID,
+<a name="16"></a>    ButtonMissionID
+<a name="17"></a>};
+<a name="18"></a>
+<a name="19"></a>const szScrollTextArraySize = <span class="source_int">10</span>;                                           <span class="source_comment">// the size of the scroll text area
+</span><a name="20"></a>const K_fVideoWidth         = <span class="source_int">438</span>;                                          <span class="source_comment">// the video window width
+</span><a name="21"></a>const K_fVideoHeight        = <span class="source_int">230</span>;                                          <span class="source_comment">// the video window height
+</span><a name="22"></a>
+<a name="23"></a>var <span class="source_type"><a href="../r6window/r6windowwrappedtextarea.html" class="source">R6WindowWrappedTextArea</a></span>		m_SrcrollingTextArea, 
+<a name="24"></a>                                m_MissionObjectives;
+<a name="25"></a>var <span class="source_type"><a href="../r6menu/r6menuvideo.html" class="source">R6MenuVideo</a></span>                 m_MissionDesc;
+<a name="26"></a>
+<a name="27"></a>var <span class="source_type"><a href="../r6window/r6windowbitmap.html" class="source">R6WindowBitMap</a></span>              m_2DSpeaker;
+<a name="28"></a>var <span class="source_type"><a href="../core/object.html#Region" class="source">Region</a></span>                      m_RControl,
+<a name="29"></a>                                m_RClark,
+<a name="30"></a>                                m_RSweeney,
+<a name="31"></a>                                m_RNewsWire,
+<a name="32"></a>                                m_RMissionOrder;
+<a name="33"></a>
+<a name="34"></a>var <span class="source_type"><a href="../engine/texture.html" class="source">Texture</a></span>                     m_TSpeaker;
+<a name="35"></a>
+<a name="36"></a>var <span class="source_type"><a href="../r6menu/r6menuintelradioarea.html" class="source">R6MenuIntelRadioArea</a></span>        m_SpeakerControls;
+<a name="37"></a>var <span class="source_type"><a href="../r6window/r6windowtextlabel.html" class="source">R6WindowTextLabel</a></span>			m_CodeName, 
+<a name="38"></a>                                m_DateTime, 
+<a name="39"></a>                                m_Location;
+<a name="40"></a>                                
+<a name="41"></a>
+<a name="42"></a>var <span class="source_type"><a href="../engine/texture.html" class="source">Texture</a></span>                     m_Texture;
+<a name="43"></a>var <span class="source_type">Font</span>                        m_labelFont;
+<a name="44"></a>var <span class="source_type">Font</span>                        m_R6Font14;
+<a name="45"></a>
+<a name="46"></a>var <span class="source_type">string</span>                      m_szScrollingText;
+<a name="47"></a>
+<a name="48"></a>var <span class="source_type">FLOAT</span>                       m_fLaptopPadding, 
+<a name="49"></a>                                m_fPaddingBetweenElements;
+<a name="50"></a>var <span class="source_type">FLOAT</span>                       m_fVideoLeft,
+<a name="51"></a>                                m_fVideoRight,
+<a name="52"></a>                                m_fVideoTop,
+<a name="53"></a>                                m_fVideoBottom,
+<a name="54"></a>                                m_fLabelHeight,
+<a name="55"></a>                                m_fSpeakerWidgetWidth,
+<a name="56"></a>                                m_fSpeakerWidgetHeight;
+<a name="57"></a>
+<a name="58"></a>var <span class="source_type">FLOAT</span>                       m_fRightTileModulo,
+<a name="59"></a>                                m_fLeftTileModulo,
+<a name="60"></a>                                m_fBottomTileModulo,
+<a name="61"></a>                                m_fRightBGWidth,
+<a name="62"></a>                                m_fUpBGWidth,
+<a name="63"></a>                                m_fBottomHeight;
+<a name="64"></a>
+<a name="65"></a>var <span class="source_type">bool</span>                        m_bAddText;
+<a name="66"></a>var <span class="source_type">bool</span>                        bShowLog;
+<a name="67"></a>
+<a name="68"></a>var <span class="source_type">INT</span>                         m_iCurrentSpeaker;
+<a name="69"></a>var <span class="source_type">Sound</span>                       m_sndPlayEvent;
+<a name="70"></a>
+<a name="71"></a>
+<a name="72"></a>function Created()
+<a name="73"></a>{
+<a name="74"></a>	local <span class="source_type">INT</span>    LabelWidth;
+<a name="75"></a>    
+<a name="76"></a>    
+<a name="77"></a>    Super.Created();
+<a name="78"></a>
+<a name="79"></a>	m_Texture = <span class="source_type"><a href="../engine/texture.html" class="source">Texture</a></span>(DynamicLoadObject(<span class="source_string">"R6MenuTextures.Gui_BoxScroll"</span>, <span class="source_type">class</span><span class="source_name">'Texture'</span>));
+<a name="80"></a>	
+<a name="81"></a>	m_labelFont = Root.Fonts[F_IntelTitle];
+<a name="82"></a>    m_R6Font14  = Root.Fonts[F_SmallTitle]; 	
+<a name="83"></a>
+<a name="84"></a>    
+<a name="85"></a>    <span class="source_comment">//*******************************************************************************************
+</span><a name="86"></a>    <span class="source_comment">//                                 Title Labels
+</span><a name="87"></a>    <span class="source_comment">//*******************************************************************************************
+</span><a name="88"></a>	LabelWidth = <span class="source_type">int</span>(m_Right.WinLeft - m_left.WinWidth )/<span class="source_int">3</span>;
+<a name="89"></a>    <span class="source_comment">// CODE NAME
+</span><a name="90"></a>	m_CodeName = <span class="source_type"><a href="../r6window/r6windowtextlabel.html" class="source">R6WindowTextLabel</a></span>(CreateWindow(<span class="source_type">class</span><span class="source_name">'R6WindowTextLabel'</span>, 
+<a name="91"></a>                                                m_left.WinWidth, 
+<a name="92"></a>                                                m_Top.WinHeight, 
+<a name="93"></a>		                                        LabelWidth, 
+<a name="94"></a>                                                m_fLabelHeight,
+<a name="95"></a>                                                self));
+<a name="96"></a>    
+<a name="97"></a>
+<a name="98"></a>    <span class="source_comment">// DATE TIME
+</span><a name="99"></a>	m_DateTime = <span class="source_type"><a href="../r6window/r6windowtextlabel.html" class="source">R6WindowTextLabel</a></span>(CreateWindow(<span class="source_type">class</span><span class="source_name">'R6WindowTextLabel'</span>, 
+<a name="100"></a>                                                m_CodeName.WinLeft + m_CodeName.WinWidth,
+<a name="101"></a>                                                m_Top.WinHeight, 
+<a name="102"></a>                                                LabelWidth,
+<a name="103"></a>                                                m_fLabelHeight,
+<a name="104"></a>                                                self));
+<a name="105"></a>    
+<a name="106"></a>
+<a name="107"></a>    <span class="source_comment">// LOCATION
+</span><a name="108"></a>	m_Location = <span class="source_type"><a href="../r6window/r6windowtextlabel.html" class="source">R6WindowTextLabel</a></span>(CreateWindow(<span class="source_type">class</span><span class="source_name">'R6WindowTextLabel'</span>, 
+<a name="109"></a>                                                m_DateTime.WinLeft + m_DateTime.WinWidth, 
+<a name="110"></a>                                                m_Top.WinHeight, 
+<a name="111"></a>                                        		m_DateTime.WinWidth, 
+<a name="112"></a>                                                m_fLabelHeight,
+<a name="113"></a>                                                self));
+<a name="114"></a>
+<a name="115"></a>
+<a name="116"></a>    <span class="source_comment">//*******************************************************************************************
+</span><a name="117"></a>    <span class="source_comment">//                                 Speaker Left widget
+</span><a name="118"></a>    <span class="source_comment">//*******************************************************************************************
+</span><a name="119"></a>    m_2DSpeaker = <span class="source_type"><a href="../r6window/r6windowbitmap.html" class="source">R6WindowBitMap</a></span>(CreateWindow(<span class="source_type">class</span><span class="source_name">'R6WindowBitMap'</span>,
+<a name="120"></a>                                       m_Left.WinWidth + m_fLaptopPadding,
+<a name="121"></a>                                       m_CodeName.WinTop + m_fLabelHeight,
+<a name="122"></a>                                       m_fSpeakerWidgetWidth, 
+<a name="123"></a>                                       m_fSpeakerWidgetHeight,
+<a name="124"></a>                                       self));
+<a name="125"></a>    m_2DSpeaker.m_bDrawBorder = true;
+<a name="126"></a>    m_2DSpeaker.m_BorderColor = Root.Colors.GrayLight;
+<a name="127"></a>    m_2DSpeaker.<span class="source_type">T</span> = m_TSpeaker;
+<a name="128"></a>    
+<a name="129"></a>	 
+<a name="130"></a>    
+<a name="131"></a>    <span class="source_comment">//*******************************************************************************************
+</span><a name="132"></a>    <span class="source_comment">//                           the Controls under the speaker widget
+</span><a name="133"></a>    <span class="source_comment">//*******************************************************************************************
+</span><a name="134"></a>    m_SpeakerControls = <span class="source_type"><a href="../r6menu/r6menuintelradioarea.html" class="source">R6MenuIntelRadioArea</a></span>(CreateWindow(<span class="source_type">class</span><span class="source_name">'R6MenuIntelRadioArea'</span>,
+<a name="135"></a>                                                          m_2DSpeaker.WinLeft,
+<a name="136"></a>                                                          m_2DSpeaker.WinTop + m_2DSpeaker.WinHeight,
+<a name="137"></a>                                                          m_2DSpeaker.WinWidth,
+<a name="138"></a>                                                          K_fVideoHeight - m_2DSpeaker.WinHeight, 
+<a name="139"></a>                                                          self));
+<a name="140"></a>
+<a name="141"></a>    m_SpeakerControls.m_BorderColor = Root.Colors.GrayLight;
+<a name="142"></a>
+<a name="143"></a>    m_iCurrentSpeaker = -<span class="source_int">1</span>;   
+<a name="144"></a>
+<a name="145"></a>    
+<a name="146"></a>   
+<a name="147"></a>    
+<a name="148"></a>    <span class="source_comment">//*******************************************************************************************
+</span><a name="149"></a>    <span class="source_comment">//                           the video zone
+</span><a name="150"></a>    <span class="source_comment">//*******************************************************************************************
+</span><a name="151"></a>
+<a name="152"></a>    <span class="source_comment">// these values are needed to display the  background
+</span><a name="153"></a>    m_fVideoTop = m_2DSpeaker.WinTop; 
+<a name="154"></a>    m_fVideoLeft = m_Right.WinLeft - K_fVideoWidth -m_fLaptopPadding;
+<a name="155"></a>    m_fVideoRight = m_Right.WinLeft - m_fLaptopPadding;
+<a name="156"></a>    m_fVideoBottom = m_fVideoTop + K_fVideoHeight;
+<a name="157"></a>
+<a name="158"></a>    <span class="source_comment">//To use less cpu juice for drawing the bg
+</span><a name="159"></a>    m_fRightTileModulo = m_fVideoRight % m_TBackGround.USize;
+<a name="160"></a>    m_fLeftTileModulo  = m_fVideoLeft % m_TBackGround.USize;
+<a name="161"></a>    m_fBottomTileModulo = m_fVideoBottom % m_TBackGround.VSize;
+<a name="162"></a>    m_fRightBGWidth = WinWidth - m_fVideoRight;
+<a name="163"></a>    m_fUpBGWidth = m_fVideoRight - m_fVideoLeft;
+<a name="164"></a>    m_fBottomHeight = WinHeight - m_fVideoBottom;
+<a name="165"></a>    
+<a name="166"></a>    
+<a name="167"></a>    m_MissionDesc = <span class="source_type"><a href="../r6menu/r6menuvideo.html" class="source">R6MenuVideo</a></span>(CreateWindow(<span class="source_type">class</span><span class="source_name">'R6MenuVideo'</span>, 
+<a name="168"></a>                                             m_fVideoLeft,
+<a name="169"></a>                                             m_fVideoTop,
+<a name="170"></a>                                             K_fVideoWidth,
+<a name="171"></a>                                             K_fVideoHeight, self));
+<a name="172"></a>    m_MissionDesc.m_BorderColor = Root.Colors.GrayLight;    
+<a name="173"></a>
+<a name="174"></a>
+<a name="175"></a>    <span class="source_comment">//*******************************************************************************************
+</span><a name="176"></a>    <span class="source_comment">//                           Big Scrolling text Area under the video
+</span><a name="177"></a>    <span class="source_comment">//*******************************************************************************************
+</span><a name="178"></a>    m_SrcrollingTextArea = <span class="source_type"><a href="../r6window/r6windowwrappedtextarea.html" class="source">R6WindowWrappedTextArea</a></span>(CreateWindow(<span class="source_type">class</span><span class="source_name">'R6WindowWrappedTextArea'</span>, 
+<a name="179"></a>                                                                m_fVideoLeft,
+<a name="180"></a>                                                          	    m_fVideoBottom + m_fPaddingBetweenElements,
+<a name="181"></a>                                                                K_fVideoWidth, 
+<a name="182"></a>                                                                m_HelpTextBar.WinTop - m_fPaddingBetweenElements - m_fVideoBottom - m_fPaddingBetweenElements,
+<a name="183"></a>                                                                self));
+<a name="184"></a>		
+<a name="185"></a>	m_SrcrollingTextArea.m_BorderColor = Root.Colors.GrayLight;
+<a name="186"></a>    m_SrcrollingTextArea.SetScrollable(true);
+<a name="187"></a>    m_SrcrollingTextArea.VertSB.SetBorderColor(Root.Colors.GrayLight);  
+<a name="188"></a>    m_SrcrollingTextArea.VertSB.SetHideWhenDisable(true);
+<a name="189"></a>    m_SrcrollingTextArea.VertSB.SetEffect(true);
+<a name="190"></a>
+<a name="191"></a>    
+<a name="192"></a>    <span class="source_comment">//*******************************************************************************************
+</span><a name="193"></a>    <span class="source_comment">//                           Mission objectives
+</span><a name="194"></a>    <span class="source_comment">//*******************************************************************************************
+</span><a name="195"></a>	m_MissionObjectives = <span class="source_type"><a href="../r6window/r6windowwrappedtextarea.html" class="source">R6WindowWrappedTextArea</a></span>(CreateWindow(<span class="source_type">class</span><span class="source_name">'R6WindowWrappedTextArea'</span>, 
+<a name="196"></a>		                                                       m_2DSpeaker.WinLeft, 
+<a name="197"></a>                                                               m_SrcrollingTextArea.WinTop, 
+<a name="198"></a>                                   	                           m_2DSpeaker.WinWidth,
+<a name="199"></a>                                                               m_SrcrollingTextArea.WinHeight,
+<a name="200"></a>                                                               self));
+<a name="201"></a>
+<a name="202"></a>	m_MissionObjectives.m_BorderColor = Root.Colors.GrayLight;
+<a name="203"></a>    m_MissionObjectives.SetScrollable(true);
+<a name="204"></a>	m_MissionObjectives.VertSB.SetBorderColor(Root.Colors.GrayLight);  
+<a name="205"></a>    m_MissionObjectives.VertSB.SetHideWhenDisable(true);
+<a name="206"></a>    m_MissionObjectives.VertSB.SetEffect(true);
+<a name="207"></a>    m_MissionObjectives.m_BorderStyle = <span class="source_type"><a href="../uwindow/uwindowbase.html#ERenderStyle" class="source">ERenderStyle</a></span>.STY_Normal;    
+<a name="208"></a>
+<a name="209"></a>    GetLevel().m_bPlaySound = false;    
+<a name="210"></a>    
+<a name="211"></a>    m_NavBar.m_BriefingButton.bDisabled = true;
+<a name="212"></a>}
+<a name="213"></a>
+<a name="214"></a>function Reset()
+<a name="215"></a>{
+<a name="216"></a>    m_iCurrentSpeaker = -<span class="source_int">1</span>;    
+<a name="217"></a>    m_SpeakerControls.Reset();
+<a name="218"></a>}
+<a name="219"></a>
+<a name="220"></a>function HideWindow()
+<a name="221"></a>{
+<a name="222"></a>    Super.HideWindow();
+<a name="223"></a>    
+<a name="224"></a>	StopIntelWidgetSound();
+<a name="225"></a>    GetPlayerOwner().FadeSound(<span class="source_int">3</span>, <span class="source_int">100</span>, SLOT_Music);
+<a name="226"></a>}
+<a name="227"></a>
+<a name="228"></a>function ShowWindow()
+<a name="229"></a>{
+<a name="230"></a>    local <span class="source_type">int</span> itempSpeaker;
+<a name="231"></a>    local <span class="source_type">int</span> <span class="source_type">i</span>;
+<a name="232"></a>    local <span class="source_type"><a href="../engine/r6missiondescription.html" class="source">R6MissionDescription</a></span>        CurrentMission;        
+<a name="233"></a>    local <span class="source_type"><a href="../r6abstract/r6missionobjectivemgr.html" class="source">R6MissionObjectiveMgr</a></span> moMgr;
+<a name="234"></a>
+<a name="235"></a>    Super.ShowWindow();
+<a name="236"></a>
+<a name="237"></a>    GetLevel().m_bPlaySound = false;    
+<a name="238"></a>
+<a name="239"></a>    if(bShowLog)log(<span class="source_string">"R6MenuIntelWidget::Show()"</span>);
+<a name="240"></a>
+<a name="241"></a>    CurrentMission = <span class="source_type"><a href="../engine/r6missiondescription.html" class="source">R6MissionDescription</a></span>(<span class="source_type"><a href="../r6game/r6console.html" class="source">R6Console</a></span>(Root.<span class="source_type"><a href="../engine/console.html" class="source">console</a></span>).master.m_StartGameInfo.m_CurrentMission);
+<a name="242"></a>
+<a name="243"></a>    m_CodeName.SetProperties( Localize(CurrentMission.m_MapName,<span class="source_string">"ID_CODENAME"</span>,CurrentMission.LocalizationFile),
+<a name="244"></a>                              TA_Center, m_labelFont, Root.Colors.White, false);
+<a name="245"></a>
+<a name="246"></a>    m_DateTime.SetProperties( Localize(CurrentMission.m_MapName,<span class="source_string">"ID_DATETIME"</span>,CurrentMission.LocalizationFile),
+<a name="247"></a>                              TA_Center, m_labelFont, Root.Colors.White, false);
+<a name="248"></a>    
+<a name="249"></a>    m_Location.SetProperties( Localize(CurrentMission.m_MapName,<span class="source_string">"ID_LOCATION"</span>,CurrentMission.LocalizationFile),
+<a name="250"></a>                              TA_Center, m_labelFont, Root.Colors.White, false);
+<a name="251"></a>
+<a name="252"></a>    m_SpeakerControls.AssociateButtons();
+<a name="253"></a>
+<a name="254"></a>    
+<a name="255"></a>    m_MissionDesc.PlayVideo( m_Right.WinLeft - K_fVideoWidth -m_fLaptopPadding,
+<a name="256"></a>                             m_SrcrollingTextArea.WinTop -<span class="source_int">230</span> - m_fPaddingBetweenElements,
+<a name="257"></a>                             <span class="source_type"><a href="../r6abstract/r6abstractgameinfo.html" class="source">R6AbstractGameInfo</a></span>(Root.<span class="source_type"><a href="../engine/console.html" class="source">Console</a></span>.ViewportOwner.<span class="source_type"><a href="../engine/actor.html" class="source">Actor</a></span>.<span class="source_type">Level</span>.Game).GetIntelVideoName(CurrentMission)$<span class="source_string">".bik"</span>); 
+<a name="258"></a>    
+<a name="259"></a>    m_MissionObjectives.clear();
+<a name="260"></a>
+<a name="261"></a>    <span class="source_comment">//Load Sounds
+</span><a name="262"></a>    GetPlayerOwner().AddSoundBank(CurrentMission.m_AudioBankName, LBS_Gun);
+<a name="263"></a>    GetLevel().FinalizeLoading();    
+<a name="264"></a>    GetLevel().SetBankSound(BANK_UnloadGun);
+<a name="265"></a>    
+<a name="266"></a>    m_MissionObjectives.clear();
+<a name="267"></a>    m_MissionObjectives.m_fXOffset=<span class="source_int">10</span>;
+<a name="268"></a>    m_MissionObjectives.m_fYOffset=<span class="source_int">5</span>;
+<a name="269"></a>    m_MissionObjectives.AddText( Localize(<span class="source_string">"Briefing"</span>,<span class="source_string">"Objectives"</span>,<span class="source_string">"R6Menu"</span>), Root.Colors.BlueLight, Root.Fonts[F_SmallTitle]);
+<a name="270"></a>    
+<a name="271"></a>
+<a name="272"></a>    moMgr = <span class="source_type"><a href="../r6abstract/r6abstractgameinfo.html" class="source">R6AbstractGameInfo</a></span>(Root.<span class="source_type"><a href="../engine/console.html" class="source">Console</a></span>.ViewportOwner.<span class="source_type"><a href="../engine/actor.html" class="source">Actor</a></span>.<span class="source_type">Level</span>.Game).m_missionMgr;
+<a name="273"></a>    
+<a name="274"></a>    for ( <span class="source_type">i</span> = <span class="source_int">0</span>; <span class="source_type">i</span> &lt; moMgr.m_aMissionObjectives.Length; ++<span class="source_type">i</span> )
+<a name="275"></a>    {
+<a name="276"></a>        if ( (!moMgr.m_aMissionObjectives[<span class="source_type">i</span>].m_bMoralityObjective)  && (moMgr.m_aMissionObjectives[<span class="source_type">i</span>].m_bVisibleInMenu))
+<a name="277"></a>        {                                
+<a name="278"></a>            
+<a name="279"></a>            m_MissionObjectives.AddText( Localize( <span class="source_string">"Game"</span>, moMgr.m_aMissionObjectives[<span class="source_type">i</span>].m_szDescriptionInMenu, moMgr.<span class="source_type">Level</span>.GetMissionObjLocFile( moMgr.m_aMissionObjectives[<span class="source_type">i</span>] ) ), 
+<a name="280"></a>                                            Root.Colors.White, 
+<a name="281"></a>                                            Root.Fonts[F_ListItemSmall]);      
+<a name="282"></a>
+<a name="283"></a>            m_MissionObjectives.AddText( <span class="source_string">" "</span>, 
+<a name="284"></a>                                         Root.Colors.White, 
+<a name="285"></a>                                         Root.Fonts[F_ListItemSmall]); 
+<a name="286"></a>        }     
+<a name="287"></a>    }    
+<a name="288"></a>    
+<a name="289"></a>
+<a name="290"></a>    itempSpeaker = m_iCurrentSpeaker;
+<a name="291"></a>    m_iCurrentSpeaker = -<span class="source_int">1</span>;
+<a name="292"></a>    if(bShowLog)log(<span class="source_string">"itempSpeaker"</span>@itempSpeaker);
+<a name="293"></a>
+<a name="294"></a>    if( !m_SpeakerControls.m_ControlButton.bDisabled)
+<a name="295"></a>    {    
+<a name="296"></a>        if(itempSpeaker == -<span class="source_int">1</span>)
+<a name="297"></a>            ManageButtonSelection(<span class="source_int">0</span>);
+<a name="298"></a>        else
+<a name="299"></a>            ManageButtonSelection(itempSpeaker);
+<a name="300"></a>    }
+<a name="301"></a>}
+<a name="302"></a>
+<a name="303"></a>
+<a name="304"></a>function Paint( <span class="source_type"><a href="../engine/canvas.html" class="source">Canvas</a></span> <span class="source_type">C</span>, <span class="source_type">FLOAT</span> X, <span class="source_type">FLOAT</span> <span class="source_type">Y</span>)
+<a name="305"></a>{
+<a name="306"></a>    
+<a name="307"></a>    <span class="source_comment">// we have to cut in four part the background to see the video (the video display is process before the menu!)
+</span><a name="308"></a>    <span class="source_comment">// left part of the video    
+</span><a name="309"></a>    
+<a name="310"></a>    DrawStretchedTextureSegment( <span class="source_type">C</span>, <span class="source_int">0</span>, <span class="source_int">0</span>, m_fVideoLeft, WinHeight, 
+<a name="311"></a>                                    <span class="source_int">0</span>, <span class="source_int">0</span>, m_fVideoLeft, WinHeight, m_TBackGround );
+<a name="312"></a>
+<a name="313"></a>    <span class="source_comment">// right part of the video
+</span><a name="314"></a>    DrawStretchedTextureSegment( <span class="source_type">C</span>, m_fVideoRight, <span class="source_int">0</span>, m_fRightBGWidth, WinHeight, 
+<a name="315"></a>                                    m_fRightTileModulo , <span class="source_int">0</span>, m_fRightBGWidth, WinHeight, m_TBackGround );
+<a name="316"></a>    <span class="source_comment">// up part of the video
+</span><a name="317"></a>    DrawStretchedTextureSegment( <span class="source_type">C</span>, m_fVideoLeft, <span class="source_int">0</span>, m_fUpBGWidth, m_fVideoTop, 
+<a name="318"></a>                                    m_fLeftTileModulo, <span class="source_int">0</span>, m_fUpBGWidth, m_fVideoTop, m_TBackGround );
+<a name="319"></a>    
+<a name="320"></a>    <span class="source_comment">// down part of the video
+</span><a name="321"></a>    DrawStretchedTextureSegment( <span class="source_type">C</span>, m_fVideoLeft, m_fVideoBottom, m_fUpBGWidth, m_fBottomHeight, 
+<a name="322"></a>                                    m_fLeftTileModulo, m_fBottomTileModulo, m_fUpBGWidth, m_fBottomHeight, m_TBackGround );
+<a name="323"></a>    
+<a name="324"></a>    DrawLaptopFrame( <span class="source_type">C</span> );
+<a name="325"></a>    
+<a name="326"></a>}
+<a name="327"></a>
+<a name="328"></a>
+<a name="329"></a>function DisplayText( <span class="source_type">FLOAT</span> _X, <span class="source_type">FLOAT</span> _Y, <span class="source_type">Font</span> _TextFont, <span class="source_type"><a href="../core/object.html#Color" class="source">Color</a></span> _color, <span class="source_type"><a href="../r6window/r6windowwrappedtextarea.html" class="source">R6WindowWrappedTextArea</a></span> _R6WindowWrappedTextArea)
+<a name="330"></a>{
+<a name="331"></a>
+<a name="332"></a>        _R6WindowWrappedTextArea.m_fXOffset = _X;
+<a name="333"></a>        _R6WindowWrappedTextArea.m_fYOffset = _Y;
+<a name="334"></a>        _R6WindowWrappedTextArea.AddText( m_szScrollingText, _color, _TextFont);
+<a name="335"></a>}
+<a name="336"></a>
+<a name="337"></a>
+<a name="338"></a><span class="source_comment">// set all the text corresponding with _szOriginal#
+</span><a name="339"></a><span class="source_comment">// return true if at least we find one valid sentence at _szOriginal
+</span><a name="340"></a>function <span class="source_type">bool</span> SetMissionText( <span class="source_type">string</span> _szOriginal)
+<a name="341"></a>{
+<a name="342"></a>    local <span class="source_type">string</span> szTemp;
+<a name="343"></a>    local <span class="source_type">INT</span>    <span class="source_type">i</span>;
+<a name="344"></a>    local <span class="source_type">bool</span>   bFindText;
+<a name="345"></a>    local <span class="source_type"><a href="../engine/r6missiondescription.html" class="source">R6MissionDescription</a></span>        CurrentMission;    
+<a name="346"></a>    
+<a name="347"></a>    m_szScrollingText = <span class="source_string">""</span>;
+<a name="348"></a>    
+<a name="349"></a>    if(<span class="source_type"><a href="../r6game/r6gameinfo.html" class="source">R6GameInfo</a></span>(Root.<span class="source_type"><a href="../engine/console.html" class="source">Console</a></span>.ViewportOwner.<span class="source_type"><a href="../engine/actor.html" class="source">Actor</a></span>.<span class="source_type">Level</span>.Game).m_bUsingCampaignBriefing == true)
+<a name="350"></a>    {
+<a name="351"></a>        CurrentMission = <span class="source_type"><a href="../engine/r6missiondescription.html" class="source">R6MissionDescription</a></span>(<span class="source_type"><a href="../r6game/r6console.html" class="source">R6Console</a></span>(Root.<span class="source_type"><a href="../engine/console.html" class="source">console</a></span>).master.m_StartGameInfo.m_CurrentMission);        
+<a name="352"></a>        m_szScrollingText = Localize( CurrentMission.m_MapName, _szOriginal, CurrentMission.LocalizationFile, true, true);
+<a name="353"></a>    }
+<a name="354"></a>    else
+<a name="355"></a>    {      
+<a name="356"></a>      m_szScrollingText = Localize( GetLevel().GameTypeToString(GetLevel().Game.m_szGameTypeFlag ), _szOriginal, 
+<a name="357"></a>                                    GetLevel().GameTypeLocalizationFile(GetLevel().Game.m_szGameTypeFlag), true, true);
+<a name="358"></a>    }    
+<a name="359"></a>    
+<a name="360"></a>    return (m_szScrollingText != <span class="source_string">""</span>);
+<a name="361"></a>}
+<a name="362"></a>
+<a name="363"></a><span class="source_comment">// depending the selected button, find the text corresponding and fill it in a text array ( this is for R6Mission.int)
+</span><a name="364"></a><span class="source_comment">// ex ID_CONTROL, ID_CONTROL1, ID_CONTROL2, ID_CONTROL3, etc... 
+</span><a name="365"></a>function ManageButtonSelection( <span class="source_type">INT</span> _eButtonSelection)
+<a name="366"></a>{
+<a name="367"></a>    local <span class="source_type">bool</span> bChangeText;    
+<a name="368"></a>    local <span class="source_type"><a href="../engine/r6missiondescription.html" class="source">R6MissionDescription</a></span>        CurrentMission;
+<a name="369"></a>    
+<a name="370"></a>
+<a name="371"></a>    if(bShowLog)log(<span class="source_string">"ManageButtonSelection"</span>@m_iCurrentSpeaker@_eButtonSelection);
+<a name="372"></a>    
+<a name="373"></a>    if (m_iCurrentSpeaker == _eButtonSelection)
+<a name="374"></a>    {
+<a name="375"></a>        if(bShowLog)log(<span class="source_string">"Nothing To Do!"</span>);
+<a name="376"></a>        return;
+<a name="377"></a>    }
+<a name="378"></a>
+<a name="379"></a>    m_iCurrentSpeaker = _eButtonSelection;
+<a name="380"></a>    CurrentMission = <span class="source_type"><a href="../engine/r6missiondescription.html" class="source">R6MissionDescription</a></span>(<span class="source_type"><a href="../r6game/r6console.html" class="source">R6Console</a></span>(Root.<span class="source_type"><a href="../engine/console.html" class="source">console</a></span>).master.m_StartGameInfo.m_CurrentMission);
+<a name="381"></a>
+<a name="382"></a>    if (m_sndPlayEvent != none)
+<a name="383"></a>        GetPlayerOwner().StopSound(m_sndPlayEvent);
+<a name="384"></a>    
+<a name="385"></a>    m_sndPlayEvent = none;
+<a name="386"></a>    <span class="source_comment">// get the specific text and clear the previous one
+</span><a name="387"></a>    switch(_eButtonSelection)
+<a name="388"></a>    {
+<a name="389"></a>        case <span class="source_type"><a href="../r6menu/r6menuintelwidget.html#EMenuIntelButtonID" class="source">EMenuIntelButtonID</a></span>.ButtonControlID :
+<a name="390"></a>            SetMissionText( <span class="source_string">"ID_CONTROL"</span>);      
+<a name="391"></a>
+<a name="392"></a>            if( <span class="source_type"><a href="../r6game/r6gameinfo.html" class="source">R6GameInfo</a></span>(Root.<span class="source_type"><a href="../engine/console.html" class="source">Console</a></span>.ViewportOwner.<span class="source_type"><a href="../engine/actor.html" class="source">Actor</a></span>.<span class="source_type">Level</span>.Game).m_bUsingCampaignBriefing == true )
+<a name="393"></a>            {
+<a name="394"></a>                m_sndPlayEvent = CurrentMission.m_PlayEventControl;
+<a name="395"></a>
+<a name="396"></a>            }
+<a name="397"></a>            m_2DSpeaker.<span class="source_type">R</span> = m_RControl;
+<a name="398"></a>            break;
+<a name="399"></a>        case <span class="source_type"><a href="../r6menu/r6menuintelwidget.html#EMenuIntelButtonID" class="source">EMenuIntelButtonID</a></span>.ButtonClarkID :
+<a name="400"></a>            SetMissionText( <span class="source_string">"ID_CLARK"</span>);            
+<a name="401"></a>
+<a name="402"></a>            if( <span class="source_type"><a href="../r6game/r6gameinfo.html" class="source">R6GameInfo</a></span>(Root.<span class="source_type"><a href="../engine/console.html" class="source">Console</a></span>.ViewportOwner.<span class="source_type"><a href="../engine/actor.html" class="source">Actor</a></span>.<span class="source_type">Level</span>.Game).m_bUsingCampaignBriefing == true )
+<a name="403"></a>            {
+<a name="404"></a>                m_sndPlayEvent = CurrentMission.m_PlayEventClark;
+<a name="405"></a>            }
+<a name="406"></a>
+<a name="407"></a>            m_2DSpeaker.<span class="source_type">R</span> = m_RClark;
+<a name="408"></a>            break;
+<a name="409"></a>        case <span class="source_type"><a href="../r6menu/r6menuintelwidget.html#EMenuIntelButtonID" class="source">EMenuIntelButtonID</a></span>.ButtonSweenyID :
+<a name="410"></a>            SetMissionText( <span class="source_string">"ID_SWEENY"</span>);   
+<a name="411"></a>            
+<a name="412"></a>            if( <span class="source_type"><a href="../r6game/r6gameinfo.html" class="source">R6GameInfo</a></span>(Root.<span class="source_type"><a href="../engine/console.html" class="source">Console</a></span>.ViewportOwner.<span class="source_type"><a href="../engine/actor.html" class="source">Actor</a></span>.<span class="source_type">Level</span>.Game).m_bUsingCampaignBriefing == true )
+<a name="413"></a>            {
+<a name="414"></a>                m_sndPlayEvent = CurrentMission.m_PlayEventSweeney;
+<a name="415"></a>            }
+<a name="416"></a>            m_2DSpeaker.<span class="source_type">R</span> = m_RSweeney;
+<a name="417"></a>            break;
+<a name="418"></a>        case <span class="source_type"><a href="../r6menu/r6menuintelwidget.html#EMenuIntelButtonID" class="source">EMenuIntelButtonID</a></span>.ButtonNewsID :
+<a name="419"></a>            SetMissionText( <span class="source_string">"ID_NEWSWIRE"</span>);            
+<a name="420"></a>            m_2DSpeaker.<span class="source_type">R</span> = m_RNewsWire;
+<a name="421"></a>            break;        
+<a name="422"></a>        case <span class="source_type"><a href="../r6menu/r6menuintelwidget.html#EMenuIntelButtonID" class="source">EMenuIntelButtonID</a></span>.ButtonMissionID :
+<a name="423"></a>            SetMissionText( <span class="source_string">"ID_MISSION_ORDER"</span>);            
+<a name="424"></a>            m_2DSpeaker.<span class="source_type">R</span> = m_RMissionOrder;
+<a name="425"></a>            break;
+<a name="426"></a>        default:
+<a name="427"></a>            break;
+<a name="428"></a>    }
+<a name="429"></a>
+<a name="430"></a>    if(m_sndPlayEvent != none)
+<a name="431"></a>    {
+<a name="432"></a>        GetPlayerOwner().PlaySound(m_sndPlayEvent, SLOT_Speak);   
+<a name="433"></a>        GetPlayerOwner().FadeSound(<span class="source_int">3</span>, <span class="source_int">15</span>, SLOT_Music);
+<a name="434"></a>    }
+<a name="435"></a>
+<a name="436"></a>    m_SrcrollingTextArea.Clear();
+<a name="437"></a>    DisplayText( <span class="source_int">10</span>, <span class="source_int">4</span>, Root.Fonts[F_ListItemSmall], Root.Colors.White, m_SrcrollingTextArea);
+<a name="438"></a>}
+<a name="439"></a>
+<a name="440"></a>function StopIntelWidgetSound()
+<a name="441"></a>{
+<a name="442"></a>    m_MissionDesc.StopVideo();
+<a name="443"></a>    
+<a name="444"></a>    GetPlayerOwner().StopSound(m_sndPlayEvent); 
+<a name="445"></a>    m_sndPlayEvent = none;
+<a name="446"></a>}
+<a name="447"></a>
+<a name="448"></a>defaultproperties
+<a name="449"></a>{
+<a name="450"></a>     m_bAddText=True
+<a name="451"></a>     m_fLaptopPadding=<span class="source_int">2.000000</span>
+<a name="452"></a>     m_fPaddingBetweenElements=<span class="source_int">3.000000</span>
+<a name="453"></a>     m_fLabelHeight=<span class="source_int">18.000000</span>
+<a name="454"></a>     m_fSpeakerWidgetWidth=<span class="source_int">156.000000</span>
+<a name="455"></a>     m_fSpeakerWidgetHeight=<span class="source_int">117.000000</span>
+<a name="456"></a>     m_TSpeaker=<span class="source_type"><a href="../engine/texture.html" class="source">Texture</a></span><span class="source_name">'R6MenuTextures.Gui_04_a00'</span>
+<a name="457"></a>     m_RControl=(W=<span class="source_int">155</span>,<span class="source_type">H</span>=<span class="source_int">116</span>)
+<a name="458"></a>     m_RClark=(<span class="source_type">Y</span>=<span class="source_int">117</span>,W=<span class="source_int">155</span>,<span class="source_type">H</span>=<span class="source_int">116</span>)
+<a name="459"></a>     m_RSweeney=(X=<span class="source_int">156</span>,W=<span class="source_int">155</span>,<span class="source_type">H</span>=<span class="source_int">116</span>)
+<a name="460"></a>     m_RNewsWire=(X=<span class="source_int">156</span>,<span class="source_type">Y</span>=<span class="source_int">117</span>,W=<span class="source_int">155</span>,<span class="source_type">H</span>=<span class="source_int">116</span>)
+<a name="461"></a>     m_RMissionOrder=(X=<span class="source_int">312</span>,W=<span class="source_int">155</span>,<span class="source_type">H</span>=<span class="source_int">116</span>)
+<a name="462"></a>}
+<a name="463"></a></pre></td></tr></table></div>
+<hr />
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../r6menu/r6menu-overview.html">Package</a></td>
+	<td class="header"><a href="../r6menu/r6menuintelwidget.html">Class</a></td>
+	<td class="header_hilight">Source</td>
+	<td class="header"><a class="header" href="../classtree.html#R6MenuIntelWidget">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../Source_r6menu/r6menuintelradioarea.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../Source_r6menu/r6menulaptopwidget.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+
+<div class="stats">Class file time: sam. 18/9/2004 14:39:54.000 - Creation time: mar. 26/5/2026 18:33:20.388 - Created with <a href="http://wiki.beyondunreal.com/wiki/UnCodeX" target="_blank">UnCodeX</a></div>
+
+</body>
+</html>

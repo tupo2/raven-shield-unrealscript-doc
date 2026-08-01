@@ -1,0 +1,1652 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+	<title>UnCodeX - R6Game.R6GameInfo</title>
+	<meta name="Generator" content="UnCodeX 241" />
+	<link rel="stylesheet" href="../DocStyle2.css" type="text/css" title="Original Purple" />
+	<link rel="alternative stylesheet" href="../DocStyle2-blue.css" type="text/css" title="Blue" />
+	<link rel="alternative stylesheet" href="../DocStyle2-red.css" type="text/css" title="Red" />
+	<!--[if IE]>
+	<link rel="stylesheet" href="../DocStyle2-msie.css" type="text/css" />
+	<![endif]-->
+	<script src="../styleswitcher.js" type="text/javascript"></script>
+</head>
+<body>
+
+<div class="header">
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../r6game/r6game-overview.html">Package</a></td>
+	<td class="header_hilight">Class</td>
+	<td class="header"><a href="../Source_r6game/r6gameinfo.html">Source</a></td>
+	<td class="header"><a class="header" href="../classtree.html#R6GameInfo">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../r6game/r6filemanagerplanning.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../r6game/r6gamemanager.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html#r6game/r6gameinfo.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+</div>
+<div class="spacer"></div>
+
+<h1><a href="../r6game/r6game-overview.html">R6Game</a>.R6GameInfo</h1>
+
+<dl>
+<dt>Extends</dt><dd><a href="../r6abstract/r6abstractgameinfo.html">R6AbstractGameInfo</a></dd>
+<dt>Modifiers</dt><dd>native </dd>
+</dl>
+
+<p></p>
+
+<pre class="tree"><a href="../core/core-overview.html">core</a>.<a href="../core/object.html">Object</a>
+|   
++-- <a href="../engine/engine-overview.html">engine</a>.<a href="../engine/actor.html">Actor</a>
+   |   
+   +-- <a href="../engine/engine-overview.html">engine</a>.<a href="../engine/info.html">Info</a>
+      |   
+      +-- <a href="../engine/engine-overview.html">engine</a>.<a href="../engine/gameinfo.html">GameInfo</a>
+         |   
+         +-- <a href="../r6abstract/r6abstract-overview.html">R6Abstract</a>.<a href="../r6abstract/r6abstractgameinfo.html">R6AbstractGameInfo</a>
+            |   
+            +-- <a href="../r6game/r6game-overview.html">R6Game</a>.<a href="../r6game/r6gameinfo.html">R6GameInfo</a>
+</pre>
+
+<h4>Direct Known Subclasses:</h4>
+<blockquote>
+	<a href="../r6game/r6lonewolfgame.html">R6LoneWolfGame</a>, <a href="../r6game/r6multiplayergameinfo.html">R6MultiPlayerGameInfo</a>, <a href="../r6game/r6storymodegame.html">R6StoryModeGame</a>
+</blockquote>
+
+<hr />
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Constants Summary</th>
+</tr>
+<tr><td width="40%"><a href="#_CMaxPlayers" name="CMaxPlayers" title="go to the details">CMaxPlayers</a></td><td width="10%">=</td><td width="50%">16</td></tr>
+<tr><td width="40%"><a href="#_CMaxRainbowAI" name="CMaxRainbowAI" title="go to the details">CMaxRainbowAI</a></td><td width="10%">=</td><td width="50%">6</td></tr>
+
+</table>
+
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th colspan="2" class="title">Variables Summary</th>
+</tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bNoRestart" name="bNoRestart" title="go to the details">bNoRestart</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../core/object.html#Plane">Plane</a></td><td width="66%"><a href="#_DefaultFaceCoords" name="DefaultFaceCoords" title="go to the details">DefaultFaceCoords</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../engine/material.html">Material</a></td><td width="66%"><a href="#_DefaultFaceTexture" name="DefaultFaceTexture" title="go to the details">DefaultFaceTexture</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../engine/navigationpoint.html">NavigationPoint</a></td><td width="66%"><a href="#_LastStartSpot" name="LastStartSpot" title="go to the details">LastStartSpot</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">BOOL</td><td width="66%"><a href="#_m_bAdminPasswordReq" name="m_bAdminPasswordReq" title="go to the details">m_bAdminPasswordReq</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">BOOL</td><td width="66%"><a href="#_m_bAIBkp" name="m_bAIBkp" title="go to the details">m_bAIBkp</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">BOOL</td><td width="66%"><a href="#_m_bAutoBalance" name="m_bAutoBalance" title="go to the details">m_bAutoBalance</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">byte</td><td width="66%"><a href="#_m_bCurrentFemaleId" name="m_bCurrentFemaleId" title="go to the details">m_bCurrentFemaleId</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">byte</td><td width="66%"><a href="#_m_bCurrentMaleId" name="m_bCurrentMaleId" title="go to the details">m_bCurrentMaleId</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">BOOL</td><td width="66%"><a href="#_m_bFadeStarted" name="m_bFadeStarted" title="go to the details">m_bFadeStarted</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_m_bFeedbackHostageExtracted" name="m_bFeedbackHostageExtracted" title="go to the details">m_bFeedbackHostageExtracted</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_m_bFeedbackHostageKilled" name="m_bFeedbackHostageKilled" title="go to the details">m_bFeedbackHostageKilled</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">BOOL</td><td width="66%"><a href="#_m_bFFPWeapon" name="m_bFFPWeapon" title="go to the details">m_bFFPWeapon</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">BOOL</td><td width="66%"><a href="#_m_bGadgMiscRes" name="m_bGadgMiscRes" title="go to the details">m_bGadgMiscRes</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">BOOL</td><td width="66%"><a href="#_m_bGadgPrimaryRes" name="m_bGadgPrimaryRes" title="go to the details">m_bGadgPrimaryRes</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">BOOL</td><td width="66%"><a href="#_m_bGadgSecondayRes" name="m_bGadgSecondayRes" title="go to the details">m_bGadgSecondayRes</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_m_bIsRadarAllowed" name="m_bIsRadarAllowed" title="go to the details">m_bIsRadarAllowed</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_m_bIsWritableMapAllowed" name="m_bIsWritableMapAllowed" title="go to the details">m_bIsWritableMapAllowed</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_m_bJumpingMaps" name="m_bJumpingMaps" title="go to the details">m_bJumpingMaps</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">BOOL</td><td width="66%"><a href="#_m_bPWAssRifleRes" name="m_bPWAssRifleRes" title="go to the details">m_bPWAssRifleRes</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">BOOL</td><td width="66%"><a href="#_m_bPWMachGunRes" name="m_bPWMachGunRes" title="go to the details">m_bPWMachGunRes</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">BOOL</td><td width="66%"><a href="#_m_bPWShotGunRes" name="m_bPWShotGunRes" title="go to the details">m_bPWShotGunRes</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">BOOL</td><td width="66%"><a href="#_m_bPWSnipRifleRes" name="m_bPWSnipRifleRes" title="go to the details">m_bPWSnipRifleRes</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">BOOL</td><td width="66%"><a href="#_m_bPWSubMachGunRes" name="m_bPWSubMachGunRes" title="go to the details">m_bPWSubMachGunRes</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">byte</td><td width="66%"><a href="#_m_bRainbowFaces[30]" name="m_bRainbowFaces[30]" title="go to the details">m_bRainbowFaces[30]</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_m_bRepAllowRadarOption" name="m_bRepAllowRadarOption" title="go to the details">m_bRepAllowRadarOption</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">BOOL</td><td width="66%"><a href="#_m_bRotateMap" name="m_bRotateMap" title="go to the details">m_bRotateMap</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_m_bServerAllowRadarRep" name="m_bServerAllowRadarRep" title="go to the details">m_bServerAllowRadarRep</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">BOOL</td><td width="66%"><a href="#_m_bShowNames" name="m_bShowNames" title="go to the details">m_bShowNames</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">BOOL</td><td width="66%"><a href="#_m_bSWMachPistolRes" name="m_bSWMachPistolRes" title="go to the details">m_bSWMachPistolRes</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">BOOL</td><td width="66%"><a href="#_m_bSWPistolRes" name="m_bSWPistolRes" title="go to the details">m_bSWPistolRes</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">BOOL</td><td width="66%"><a href="#_m_bTKPenalty" name="m_bTKPenalty" title="go to the details">m_bTKPenalty</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_m_bUnlockAllDoors" name="m_bUnlockAllDoors" title="go to the details">m_bUnlockAllDoors</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_m_bUsingCampaignBriefing" name="m_bUsingCampaignBriefing" title="go to the details">m_bUsingCampaignBriefing</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_m_bUsingPlayerCampaign" name="m_bUsingPlayerCampaign" title="go to the details">m_bUsingPlayerCampaign</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../r6engine/r6commonrainbowvoices.html">R6CommonRainbowVoices</a></td><td width="66%"><a href="#_m_CommonRainbowMemberVoicesMgr" name="m_CommonRainbowMemberVoicesMgr" title="go to the details">m_CommonRainbowMemberVoicesMgr</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../r6engine/r6commonrainbowvoices.html">R6CommonRainbowVoices</a></td><td width="66%"><a href="#_m_CommonRainbowPlayerVoicesMgr" name="m_CommonRainbowPlayerVoicesMgr" title="go to the details">m_CommonRainbowPlayerVoicesMgr</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">UWindowRootWindow.eGameWidgetID</td><td width="66%"><a href="#_m_eEndGameWidgetID" name="m_eEndGameWidgetID" title="go to the details">m_eEndGameWidgetID</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">FLOAT</td><td width="66%"><a href="#_m_fBombTime" name="m_fBombTime" title="go to the details">m_fBombTime</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">FLOAT</td><td width="66%"><a href="#_m_fPausedAtTime" name="m_fPausedAtTime" title="go to the details">m_fPausedAtTime</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">FLOAT</td><td width="66%"><a href="#_m_fRoundEndTime" name="m_fRoundEndTime" title="go to the details">m_fRoundEndTime</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">FLOAT</td><td width="66%"><a href="#_m_fRoundStartTime" name="m_fRoundStartTime" title="go to the details">m_fRoundStartTime</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">array&lt;string&gt;</td><td width="66%"><a href="#_m_gameModeList" name="m_gameModeList" title="go to the details">m_gameModeList</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../r6gameservice/r6gsservers.html">R6GSServers</a></td><td width="66%"><a href="#_m_GameService" name="m_GameService" title="go to the details">m_GameService</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">Array&lt;<a href="../r6engine/r6hostagevoices.html">R6HostageVoices</a>&gt;</td><td width="66%"><a href="#_m_HostageVoicesFemaleMgr" name="m_HostageVoicesFemaleMgr" title="go to the details">m_HostageVoicesFemaleMgr</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">Array&lt;<a href="../r6engine/r6hostagevoices.html">R6HostageVoices</a>&gt;</td><td width="66%"><a href="#_m_HostageVoicesMaleMgr" name="m_HostageVoicesMaleMgr" title="go to the details">m_HostageVoicesMaleMgr</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">INT</td><td width="66%"><a href="#_m_iAssRifleResMask" name="m_iAssRifleResMask" title="go to the details">m_iAssRifleResMask</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">INT</td><td width="66%"><a href="#_m_iCurrentID" name="m_iCurrentID" title="go to the details">m_iCurrentID</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">INT</td><td width="66%"><a href="#_m_iDeathCameraMode" name="m_iDeathCameraMode" title="go to the details">m_iDeathCameraMode</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">INT</td><td width="66%"><a href="#_m_iGadgMiscResMask" name="m_iGadgMiscResMask" title="go to the details">m_iGadgMiscResMask</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">INT</td><td width="66%"><a href="#_m_iGadgPrimaryResMask" name="m_iGadgPrimaryResMask" title="go to the details">m_iGadgPrimaryResMask</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">INT</td><td width="66%"><a href="#_m_iGadgSecondaryResMask" name="m_iGadgSecondaryResMask" title="go to the details">m_iGadgSecondaryResMask</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">INT</td><td width="66%"><a href="#_m_iIDVoicesMgr" name="m_iIDVoicesMgr" title="go to the details">m_iIDVoicesMgr</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_m_iJumpMapIndex" name="m_iJumpMapIndex" title="go to the details">m_iJumpMapIndex</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">INT</td><td width="66%"><a href="#_m_iMachGunResMask" name="m_iMachGunResMask" title="go to the details">m_iMachGunResMask</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">INT</td><td width="66%"><a href="#_m_iMachPistolResMask" name="m_iMachPistolResMask" title="go to the details">m_iMachPistolResMask</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">INT</td><td width="66%"><a href="#_m_iMaxOperatives" name="m_iMaxOperatives" title="go to the details">m_iMaxOperatives</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">INT</td><td width="66%"><a href="#_m_iNbOfRestart" name="m_iNbOfRestart" title="go to the details">m_iNbOfRestart</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">INT</td><td width="66%"><a href="#_m_iPistolResMask" name="m_iPistolResMask" title="go to the details">m_iPistolResMask</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">INT</td><td width="66%"><a href="#_m_iRoundsPerMatch" name="m_iRoundsPerMatch" title="go to the details">m_iRoundsPerMatch</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">INT</td><td width="66%"><a href="#_m_iShotGunResMask" name="m_iShotGunResMask" title="go to the details">m_iShotGunResMask</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">INT</td><td width="66%"><a href="#_m_iSnipRifleResMask" name="m_iSnipRifleResMask" title="go to the details">m_iSnipRifleResMask</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">INT</td><td width="66%"><a href="#_m_iSubMachineGunsResMask" name="m_iSubMachineGunsResMask" title="go to the details">m_iSubMachineGunsResMask</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">Array&lt;<a href="../r6engine/r6terrorist.html">R6Terrorist</a>&gt;</td><td width="66%"><a href="#_m_listAllTerrorists" name="m_listAllTerrorists" title="go to the details">m_listAllTerrorists</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">array&lt;string&gt;</td><td width="66%"><a href="#_m_mapList" name="m_mapList" title="go to the details">m_mapList</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../r6engine/r6multicommonvoices.html">R6MultiCommonVoices</a></td><td width="66%"><a href="#_m_MultiCommonVoicesMgr" name="m_MultiCommonVoicesMgr" title="go to the details">m_MultiCommonVoicesMgr</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../r6engine/r6multicoopvoices.html">R6MultiCoopVoices</a></td><td width="66%"><a href="#_m_MultiCoopMemberVoicesMgr" name="m_MultiCoopMemberVoicesMgr" title="go to the details">m_MultiCoopMemberVoicesMgr</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">Array&lt;<a href="../r6engine/r6multicoopvoices.html">R6MultiCoopVoices</a>&gt;</td><td width="66%"><a href="#_m_MultiCoopPlayerVoicesMgr" name="m_MultiCoopPlayerVoicesMgr" title="go to the details">m_MultiCoopPlayerVoicesMgr</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../r6gameservice/r6gsservers.html">R6GSServers</a></td><td width="66%"><a href="#_m_PersistantGameService" name="m_PersistantGameService" title="go to the details">m_PersistantGameService</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../r6engine/r6prerecordedmsgvoices.html">R6PreRecordedMsgVoices</a></td><td width="66%"><a href="#_m_PreRecordedMsgVoicesMgr" name="m_PreRecordedMsgVoicesMgr" title="go to the details">m_PreRecordedMsgVoicesMgr</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">Array&lt;<a href="../r6engine/r6rainbowai.html">R6RainbowAI</a>&gt;</td><td width="66%"><a href="#_m_RainbowAIBackup" name="m_RainbowAIBackup" title="go to the details">m_RainbowAIBackup</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../r6engine/r6rainbowmembervoices.html">R6RainbowMemberVoices</a></td><td width="66%"><a href="#_m_RainbowMemberVoicesMgr" name="m_RainbowMemberVoicesMgr" title="go to the details">m_RainbowMemberVoicesMgr</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">Array&lt;<a href="../r6engine/r6rainbowotherteamvoices.html">R6RainbowOtherTeamVoices</a>&gt;</td><td width="66%"><a href="#_m_RainbowOtherTeamVoicesMgr" name="m_RainbowOtherTeamVoicesMgr" title="go to the details">m_RainbowOtherTeamVoicesMgr</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../r6engine/r6rainbowplayervoices.html">R6RainbowPlayerVoices</a></td><td width="66%"><a href="#_m_RainbowPlayerVoicesMgr" name="m_RainbowPlayerVoicesMgr" title="go to the details">m_RainbowPlayerVoicesMgr</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_m_szMessageOfDay" name="m_szMessageOfDay" title="go to the details">m_szMessageOfDay</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_m_szSvrName" name="m_szSvrName" title="go to the details">m_szSvrName</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">Array&lt;<a href="../r6engine/r6terroristvoices.html">R6TerroristVoices</a>&gt;</td><td width="66%"><a href="#_m_TerroristVoicesMgr" name="m_TerroristVoicesMgr" title="go to the details">m_TerroristVoicesMgr</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">byte</td><td width="66%"><a href="#_R6DefaultWeaponInput" name="R6DefaultWeaponInput" title="go to the details">R6DefaultWeaponInput</a></td></tr>
+<tr><th colspan="2" class="small">Debug</th></tr>
+<tr><td nowrap="nowrap" width="33%">BOOL</td><td width="66%"><a href="#_bShowLog" name="bShowLog" title="go to the details">bShowLog</a></td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Variables from <a href="../r6abstract/r6abstract-overview.html">R6Abstract</a>.<a href="../r6abstract/r6abstractgameinfo.html">R6AbstractGameInfo</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../r6abstract/r6abstractgameinfo.html#m_bEndGameIgnoreGamePlayCheck">m_bEndGameIgnoreGamePlayCheck</a>, <a href="../r6abstract/r6abstractgameinfo.html#m_bFriendlyFire">m_bFriendlyFire</a>, <a href="../r6abstract/r6abstractgameinfo.html#m_bGameOverButAllowDeath">m_bGameOverButAllowDeath</a>, <a href="../r6abstract/r6abstractgameinfo.html#m_bInternetSvr">m_bInternetSvr</a>, <a href="../r6abstract/r6abstractgameinfo.html#m_bTimerStarted">m_bTimerStarted</a>, <a href="../r6abstract/r6abstractgameinfo.html#m_fEndingTime">m_fEndingTime</a>, <a href="../r6abstract/r6abstractgameinfo.html#m_fEndKickVoteTime">m_fEndKickVoteTime</a>, <a href="../r6abstract/r6abstractgameinfo.html#m_fTimeBetRounds">m_fTimeBetRounds</a>, <a href="../r6abstract/r6abstractgameinfo.html#m_fTimerStartTime">m_fTimerStartTime</a>, <a href="../r6abstract/r6abstractgameinfo.html#m_iDiffLevel">m_iDiffLevel</a>, <a href="../r6abstract/r6abstractgameinfo.html#m_iNbOfRainbowAIToSpawn">m_iNbOfRainbowAIToSpawn</a>, <a href="../r6abstract/r6abstractgameinfo.html#m_iNbOfTerroristToSpawn">m_iNbOfTerroristToSpawn</a>, <a href="../r6abstract/r6abstractgameinfo.html#m_KickersName">m_KickersName</a>, <a href="../r6abstract/r6abstractgameinfo.html#m_missionMgr">m_missionMgr</a>, <a href="../r6abstract/r6abstractgameinfo.html#m_noiseMgr">m_noiseMgr</a>, <a href="../r6abstract/r6abstractgameinfo.html#m_pCurPlayerCtrlMdfSrvInfo">m_pCurPlayerCtrlMdfSrvInfo</a>, <a href="../r6abstract/r6abstractgameinfo.html#m_Player">m_Player</a>, <a href="../r6abstract/r6abstractgameinfo.html#m_PlayerKick">m_PlayerKick</a>, <a href="../r6abstract/r6abstractgameinfo.html#m_szDefaultActionPlan">m_szDefaultActionPlan</a>, <a href="../r6abstract/r6abstractgameinfo.html#m_UdpBeacon">m_UdpBeacon</a></td>
+</tr>
+</table>
+<table>
+<tr>
+	<th class="inherittitle">Inherited Variables from <a href="../engine/engine-overview.html">engine</a>.<a href="../engine/gameinfo.html">GameInfo</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../engine/gameinfo.html#AccessControl">AccessControl</a>, <a href="../engine/gameinfo.html#AccessControlClass">AccessControlClass</a>, <a href="../engine/gameinfo.html#bAlreadyChanged">bAlreadyChanged</a>, <a href="../engine/gameinfo.html#bAlternateMode">bAlternateMode</a>, <a href="../engine/gameinfo.html#BaseMutator">BaseMutator</a>, <a href="../engine/gameinfo.html#bCanChangeSkin">bCanChangeSkin</a>, <a href="../engine/gameinfo.html#bCanViewOthers">bCanViewOthers</a>, <a href="../engine/gameinfo.html#bChangeLevels">bChangeLevels</a>, <a href="../engine/gameinfo.html#bDelayedStart">bDelayedStart</a>, <a href="../engine/gameinfo.html#BeaconName">BeaconName</a>, <a href="../engine/gameinfo.html#bGameEnded">bGameEnded</a>, <a href="../engine/gameinfo.html#bLocalLog">bLocalLog</a>, <a href="../engine/gameinfo.html#bLoggingGame">bLoggingGame</a>, <a href="../engine/gameinfo.html#BotMenuType">BotMenuType</a>, <a href="../engine/gameinfo.html#bOverTime">bOverTime</a>, <a href="../engine/gameinfo.html#bPauseable">bPauseable</a>, <a href="../engine/gameinfo.html#bRestartLevel">bRestartLevel</a>, <a href="../engine/gameinfo.html#BroadcastHandler">BroadcastHandler</a>, <a href="../engine/gameinfo.html#BroadcastHandlerClass">BroadcastHandlerClass</a>, <a href="../engine/gameinfo.html#bTeamGame">bTeamGame</a>, <a href="../engine/gameinfo.html#bWaitingToStartMatch">bWaitingToStartMatch</a>, <a href="../engine/gameinfo.html#bWorldLog">bWorldLog</a>, <a href="../engine/gameinfo.html#CurrentID">CurrentID</a>, <a href="../engine/gameinfo.html#DeathMessageClass">DeathMessageClass</a>, <a href="../engine/gameinfo.html#DefaultPlayerClassName">DefaultPlayerClassName</a>, <a href="../engine/gameinfo.html#DefaultPlayerName">DefaultPlayerName</a>, <a href="../engine/gameinfo.html#Difficulty">Difficulty</a>, <a href="../engine/gameinfo.html#GameMessageClass">GameMessageClass</a>, <a href="../engine/gameinfo.html#GameName">GameName</a>, <a href="../engine/gameinfo.html#GameOptionsMenuType">GameOptionsMenuType</a>, <a href="../engine/gameinfo.html#GameReplicationInfo">GameReplicationInfo</a>, <a href="../engine/gameinfo.html#GameReplicationInfoClass">GameReplicationInfoClass</a>, <a href="../engine/gameinfo.html#GameRulesModifiers">GameRulesModifiers</a>, <a href="../engine/gameinfo.html#GameSpeed">GameSpeed</a>, <a href="../engine/gameinfo.html#GameUMenuType">GameUMenuType</a>, <a href="../engine/gameinfo.html#GoreLevel">GoreLevel</a>, <a href="../engine/gameinfo.html#HUDType">HUDType</a>, <a href="../engine/gameinfo.html#MapListType">MapListType</a>, <a href="../engine/gameinfo.html#MapPrefix">MapPrefix</a>, <a href="../engine/gameinfo.html#MaxPlayers">MaxPlayers</a>, <a href="../engine/gameinfo.html#MaxSpectators">MaxSpectators</a>, <a href="../engine/gameinfo.html#MultiplayerUMenuType">MultiplayerUMenuType</a>, <a href="../engine/gameinfo.html#MutatorClass">MutatorClass</a>, <a href="../engine/gameinfo.html#m_BankListToLoad">m_BankListToLoad</a>, <a href="../engine/gameinfo.html#m_bChangedServerConfig">m_bChangedServerConfig</a>, <a href="../engine/gameinfo.html#m_bCompilingStats">m_bCompilingStats</a>, <a href="../engine/gameinfo.html#m_bGameOver">m_bGameOver</a>, <a href="../engine/gameinfo.html#m_bGameStarted">m_bGameStarted</a>, <a href="../engine/gameinfo.html#m_bLadderStats">m_bLadderStats</a>, <a href="../engine/gameinfo.html#m_bPendingLevelExists">m_bPendingLevelExists</a>, <a href="../engine/gameinfo.html#m_bPlayIntroVideo">m_bPlayIntroVideo</a>, <a href="../engine/gameinfo.html#m_bPlayOutroVideo">m_bPlayOutroVideo</a>, <a href="../engine/gameinfo.html#m_bUseClarkVoice">m_bUseClarkVoice</a>, <a href="../engine/gameinfo.html#m_szCurrGameType">m_szCurrGameType</a>, <a href="../engine/gameinfo.html#m_szGameOptions">m_szGameOptions</a>, <a href="../engine/gameinfo.html#m_szGameTypeFlag">m_szGameTypeFlag</a>, <a href="../engine/gameinfo.html#NumBots">NumBots</a>, <a href="../engine/gameinfo.html#NumPlayers">NumPlayers</a>, <a href="../engine/gameinfo.html#NumSpectators">NumSpectators</a>, <a href="../engine/gameinfo.html#PlayerControllerClass">PlayerControllerClass</a>, <a href="../engine/gameinfo.html#PlayerControllerClassName">PlayerControllerClassName</a>, <a href="../engine/gameinfo.html#RulesMenuType">RulesMenuType</a>, <a href="../engine/gameinfo.html#SettingsMenuType">SettingsMenuType</a>, <a href="../engine/gameinfo.html#StartTime">StartTime</a>, <a href="../engine/gameinfo.html#StatLog">StatLog</a>, <a href="../engine/gameinfo.html#StatLogClass">StatLogClass</a></td>
+</tr>
+</table>
+
+
+<br />
+
+
+
+
+
+
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Functions Summary</th>
+</tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_AbortScoreSubmission-" name="AbortScoreSubmission" title="go to the details">AbortScoreSubmission</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_event.gif" alt="event" title="event" /></td><td>&nbsp;</td><td><a href="#_AcceptInventory-" name="AcceptInventory" title="go to the details">AcceptInventory</a> (<a href="../engine/pawn.html">pawn</a> PlayerPawn))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_AdminResetRound-" name="AdminResetRound" title="go to the details">AdminResetRound</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_ApplyTeamKillerPenalty-" name="ApplyTeamKillerPenalty" title="go to the details">ApplyTeamKillerPenalty</a> (Pawn aPawn ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_BaseEndGame-" name="BaseEndGame" title="go to the details">BaseEndGame</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_BroadcastGameMsg-" name="BroadcastGameMsg" title="go to the details">BroadcastGameMsg</a> (string szLocFile, string szPreMsg, string szMsgID, optional Sound sndGameStatus, OPTIONAL int iLifeTime ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_BroadcastGameTypeDescription-" name="BroadcastGameTypeDescription" title="go to the details">BroadcastGameTypeDescription</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_BroadcastMissionObjMsg-" name="BroadcastMissionObjMsg" title="go to the details">BroadcastMissionObjMsg</a> (string szLocFile, string szPreMsg, string szMsgID, optional Sound sndGameStatus, OPTIONAL int iLifeTime))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_event.gif" alt="event" title="event" /></td><td>bool&nbsp;</td><td><a href="#_CanPlayIntroVideo-" name="CanPlayIntroVideo" title="go to the details">CanPlayIntroVideo</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_event.gif" alt="event" title="event" /></td><td>bool&nbsp;</td><td><a href="#_CanPlayOutroVideo-" name="CanPlayOutroVideo" title="go to the details">CanPlayOutroVideo</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_ChangeName-" name="ChangeName" title="go to the details">ChangeName</a> (<a href="../engine/controller.html">Controller</a> Other, coerce string S, bool bNameChange, optional bool bDontBroadcastNameChange ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_ChangeOperatives-" name="ChangeOperatives" title="go to the details">ChangeOperatives</a> (<a href="../engine/playercontroller.html">PlayerController</a> inPlayerController, INT iTeamId, INT iOperativeId))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_ChangeTeams-" name="ChangeTeams" title="go to the details">ChangeTeams</a> (<a href="../engine/playercontroller.html">PlayerController</a> inPlayerController, optional bool bNextTeam, optional <a href="../engine/actor.html">Actor</a> newRainbowTeam))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>bool&nbsp;</td><td><a href="#_CheckEndGame-" name="CheckEndGame" title="go to the details">CheckEndGame</a> (<a href="../engine/playerreplicationinfo.html">PlayerReplicationInfo</a> Winner, string Reason))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_CheckForExtractionZone-" name="CheckForExtractionZone" title="go to the details">CheckForExtractionZone</a> (R6MissionObjectiveBase mo ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_CheckForHostage-" name="CheckForHostage" title="go to the details">CheckForHostage</a> (<a href="../engine/r6missionobjectivebase.html">R6MissionObjectiveBase</a> mo, int iMinNum ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_CheckForTerrorist-" name="CheckForTerrorist" title="go to the details">CheckForTerrorist</a> (<a href="../engine/r6missionobjectivebase.html">R6MissionObjectiveBase</a> mo, int iMinNum ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_CreateBackupRainbowAI-" name="CreateBackupRainbowAI" title="go to the details">CreateBackupRainbowAI</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_CreateRainbowTeam-" name="CreateRainbowTeam" title="go to the details">CreateRainbowTeam</a> (int NewTeamNumber, <a href="../engine/r6teamstartinfo.html">R6TeamStartInfo</a> TeamInfo, BOOL bIsPlaying, INT iTeamStart, <a href="../engine/playercontroller.html">PlayerController</a> aRainbowPC))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_DeployCharacters-" name="DeployCharacters" title="go to the details">DeployCharacters</a> (<a href="../engine/playercontroller.html">PlayerController</a> ControlledByPlayer))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_DeployRainbowTeam-" name="DeployRainbowTeam" title="go to the details">DeployRainbowTeam</a> (<a href="../engine/playercontroller.html">PlayerController</a> newPlayer))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_DestroyBeacon-" name="DestroyBeacon" title="go to the details">DestroyBeacon</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_EndGame-" name="EndGame" title="go to the details">EndGame</a> (<a href="../engine/playerreplicationinfo.html">PlayerReplicationInfo</a> Winner, string Reason ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_EnteredExtractionZone-" name="EnteredExtractionZone" title="go to the details">EnteredExtractionZone</a> (<a href="../engine/actor.html">actor</a> other))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_Find2DTexture-" name="Find2DTexture" title="go to the details">Find2DTexture</a> (string TeamClass, out <a href="../engine/material.html">Material</a> MenuTexture, out <a href="../core/object.html#Region">Object.Region</a> TextureRegion))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td><a href="../engine/navigationpoint.html">NavigationPoint</a>&nbsp;</td><td><a href="#_FindPlayerStart-" name="FindPlayerStart" title="go to the details">FindPlayerStart</a> (<a href="../engine/controller.html">Controller</a> Player, optional byte InTeam, optional string incomingName ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td><a href="../r6game/r6insertionzone.html">R6InsertionZone</a>&nbsp;</td><td><a href="#_FindTeamInsertionZone-" name="FindTeamInsertionZone" title="go to the details">FindTeamInsertionZone</a> (INT iSpawningPointNumber ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_FirstPassReset-" name="FirstPassReset" title="go to the details">FirstPassReset</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td><a href="../r6abstract/r6abstractinsertionzone.html">R6AbstractInsertionZone</a>&nbsp;</td><td><a href="#_GetAStartSpot-" name="GetAStartSpot" title="go to the details">GetAStartSpot</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td><a href="../core/object.html">Object</a>&nbsp;</td><td><a href="#_GetCommonRainbowMemberVoicesMgr-" name="GetCommonRainbowMemberVoicesMgr" title="go to the details">GetCommonRainbowMemberVoicesMgr</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td><a href="../core/object.html">Object</a>&nbsp;</td><td><a href="#_GetCommonRainbowPlayerVoicesMgr-" name="GetCommonRainbowPlayerVoicesMgr" title="go to the details">GetCommonRainbowPlayerVoicesMgr</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td><a href="../core/object.html">Object</a>&nbsp;</td><td><a href="#_GetHostageVoicesMgr-" name="GetHostageVoicesMgr" title="go to the details">GetHostageVoicesMgr</a> (<a href="../engine/actor.html#EHostageNationality">EHostageNationality</a> eNationality, BOOL IsFemale))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td><a href="../core/object.html">Object</a>&nbsp;</td><td><a href="#_GetMultiCommonVoicesMgr-" name="GetMultiCommonVoicesMgr" title="go to the details">GetMultiCommonVoicesMgr</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td><a href="../core/object.html">Object</a>&nbsp;</td><td><a href="#_GetMultiCoopMemberVoicesMgr-" name="GetMultiCoopMemberVoicesMgr" title="go to the details">GetMultiCoopMemberVoicesMgr</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td><a href="../core/object.html">Object</a>&nbsp;</td><td><a href="#_GetMultiCoopPlayerVoicesMgr-" name="GetMultiCoopPlayerVoicesMgr" title="go to the details">GetMultiCoopPlayerVoicesMgr</a> (INT iTeam))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_GetNbHumanPlayerInTeam-" name="GetNbHumanPlayerInTeam" title="go to the details">GetNbHumanPlayerInTeam</a> (OUT int iAlphaNb, OUT int iBravoNb)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>int&nbsp;</td><td><a href="#_GetNbTerroNeutralized-" name="GetNbTerroNeutralized" title="go to the details">GetNbTerroNeutralized</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td><a href="../engine/actor.html">Actor</a>&nbsp;</td><td><a href="#_GetNewTeam-" name="GetNewTeam" title="go to the details">GetNewTeam</a> (<a href="../engine/actor.html">Actor</a> aCurrentTeam, optional bool bNextTeam))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td><a href="../r6abstract/r6abstractnoisemgr.html">R6AbstractNoiseMgr</a>&nbsp;</td><td><a href="#_GetNoiseMgr-" name="GetNoiseMgr" title="go to the details">GetNoiseMgr</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td><a href="../core/object.html">Object</a>&nbsp;</td><td><a href="#_GetPreRecordedMsgVoicesMgr-" name="GetPreRecordedMsgVoicesMgr" title="go to the details">GetPreRecordedMsgVoicesMgr</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td><a href="../engine/actor.html">actor</a>&nbsp;</td><td><a href="#_GetRainbowAIFromTable-" name="GetRainbowAIFromTable" title="go to the details">GetRainbowAIFromTable</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td><a href="../core/object.html">Object</a>&nbsp;</td><td><a href="#_GetRainbowMemberVoicesMgr-" name="GetRainbowMemberVoicesMgr" title="go to the details">GetRainbowMemberVoicesMgr</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td><a href="../core/object.html">Object</a>&nbsp;</td><td><a href="#_GetRainbowOtherTeamVoicesMgr-" name="GetRainbowOtherTeamVoicesMgr" title="go to the details">GetRainbowOtherTeamVoicesMgr</a> (INT iIDVoicesMgr))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td><a href="../core/object.html">Object</a>&nbsp;</td><td><a href="#_GetRainbowPlayerVoicesMgr-" name="GetRainbowPlayerVoicesMgr" title="go to the details">GetRainbowPlayerVoicesMgr</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td><a href="../core/object.html">Object</a>&nbsp;</td><td><a href="#_GetRainbowTeam-" name="GetRainbowTeam" title="go to the details">GetRainbowTeam</a> (INT eTeamName))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_GetSystemUserName-" name="GetSystemUserName" title="go to the details">GetSystemUserName</a> (OUT string szUserName)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>INT&nbsp;</td><td><a href="#_GetTeamNumBit-" name="GetTeamNumBit" title="go to the details">GetTeamNumBit</a> (INT num ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td><a href="../core/object.html">Object</a>&nbsp;</td><td><a href="#_GetTerroristVoicesMgr-" name="GetTerroristVoicesMgr" title="go to the details">GetTerroristVoicesMgr</a> (<a href="../engine/actor.html#ETerroristNationality">ETerroristNationality</a> eNationality))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td><a href="../r6game/r6trainingmgr.html">R6TrainingMgr</a>&nbsp;</td><td><a href="#_GetTrainingMgr-" name="GetTrainingMgr" title="go to the details">GetTrainingMgr</a> (R6Pawn p ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_IncrementRoundsFired-" name="IncrementRoundsFired" title="go to the details">IncrementRoundsFired</a> (<a href="../engine/pawn.html">Pawn</a> Instigator, BOOL ForceIncrement))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_event.gif" alt="event" title="event" /></td><td>&nbsp;</td><td><a href="#_InitGame-" name="InitGame" title="go to the details">InitGame</a> (string Options, out string Error ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_InitGameReplicationInfo-" name="InitGameReplicationInfo" title="go to the details">InitGameReplicationInfo</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_InitObjectives-" name="InitObjectives" title="go to the details">InitObjectives</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_InitObjectivesOfStoryMode-" name="InitObjectivesOfStoryMode" title="go to the details">InitObjectivesOfStoryMode</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_InstructAllTeamsToFollowPlanning-" name="InstructAllTeamsToFollowPlanning" title="go to the details">InstructAllTeamsToFollowPlanning</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_InstructAllTeamsToHoldPosition-" name="InstructAllTeamsToHoldPosition" title="go to the details">InstructAllTeamsToHoldPosition</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>bool&nbsp;</td><td><a href="#_IsARainbowAlive-" name="IsARainbowAlive" title="go to the details">IsARainbowAlive</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>bool&nbsp;</td><td><a href="#_IsInResArray-" name="IsInResArray" title="go to the details">IsInResArray</a> (string szWeaponNameId, string RestrictionArray[32]))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>bool&nbsp;</td><td><a href="#_IsLastRoundOfTheMatch-" name="IsLastRoundOfTheMatch" title="go to the details">IsLastRoundOfTheMatch</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>bool&nbsp;</td><td><a href="#_IsPrimaryGadgetRestricted-" name="IsPrimaryGadgetRestricted" title="go to the details">IsPrimaryGadgetRestricted</a> (string szWeaponGadgetName))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>bool&nbsp;</td><td><a href="#_IsPrimaryWeaponRestricted-" name="IsPrimaryWeaponRestricted" title="go to the details">IsPrimaryWeaponRestricted</a> (string szWeaponName))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>bool&nbsp;</td><td><a href="#_IsPrimaryWeaponRestrictedToPawn-" name="IsPrimaryWeaponRestrictedToPawn" title="go to the details">IsPrimaryWeaponRestrictedToPawn</a> (Pawn aPawn ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>bool&nbsp;</td><td><a href="#_IsSecondaryGadgetRestricted-" name="IsSecondaryGadgetRestricted" title="go to the details">IsSecondaryGadgetRestricted</a> (string szWeaponGadgetName))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>bool&nbsp;</td><td><a href="#_IsSecondaryWeaponRestricted-" name="IsSecondaryWeaponRestricted" title="go to the details">IsSecondaryWeaponRestricted</a> (string szWeaponName))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>bool&nbsp;</td><td><a href="#_IsSecondaryWeaponRestrictedToPawn-" name="IsSecondaryWeaponRestrictedToPawn" title="go to the details">IsSecondaryWeaponRestrictedToPawn</a> (Pawn aPawn ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>bool&nbsp;</td><td><a href="#_IsTertiaryWeaponRestricted-" name="IsTertiaryWeaponRestricted" title="go to the details">IsTertiaryWeaponRestricted</a> (string szWeaponName))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>bool&nbsp;</td><td><a href="#_IsTertiaryWeaponRestrictedForGamePlay-" name="IsTertiaryWeaponRestrictedForGamePlay" title="go to the details">IsTertiaryWeaponRestrictedForGamePlay</a> (<a href="../engine/pawn.html">Pawn</a> aPawn, string szWeaponName))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>bool&nbsp;</td><td><a href="#_IsTertiaryWeaponRestrictedToPawn-" name="IsTertiaryWeaponRestrictedToPawn" title="go to the details">IsTertiaryWeaponRestrictedToPawn</a> (Pawn aPawn ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>bool&nbsp;</td><td><a href="#_IsUnlimitedPractice-" name="IsUnlimitedPractice" title="go to the details">IsUnlimitedPractice</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_LoadPlanningInTraining-" name="LoadPlanningInTraining" title="go to the details">LoadPlanningInTraining</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_event.gif" alt="event" title="event" /></td><td><a href="../engine/playercontroller.html">PlayerController</a>&nbsp;</td><td><a href="#_Login-" name="Login" title="go to the details">Login</a> (string Portal, string Options, out string Error
+))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_Logout-" name="Logout" title="go to the details">Logout</a> (Controller Exiting ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>INT&nbsp;</td><td><a href="#_MPSelectOperativeFace-" name="MPSelectOperativeFace" title="go to the details">MPSelectOperativeFace</a> (bool bIsFemale))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_PawnKilled-" name="PawnKilled" title="go to the details">PawnKilled</a> (Pawn killed ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_PlayerReadySelected-" name="PlayerReadySelected" title="go to the details">PlayerReadySelected</a> (<a href="../engine/playercontroller.html">PlayerController</a> _Controller))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_PlayTeleportEffect-" name="PlayTeleportEffect" title="go to the details">PlayTeleportEffect</a> (bool bOut, bool bSound))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_PostBeginPlay-" name="PostBeginPlay" title="go to the details">PostBeginPlay</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_event.gif" alt="event" title="event" /></td><td>&nbsp;</td><td><a href="#_PostLogin-" name="PostLogin" title="go to the details">PostLogin</a> (PlayerController NewPlayer ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_event.gif" alt="event" title="event" /></td><td>&nbsp;</td><td><a href="#_PreLogOut-" name="PreLogOut" title="go to the details">PreLogOut</a> (<a href="../engine/playercontroller.html">PlayerController</a> ExitingPlayer))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_ProcessChangeLevelSystem-" name="ProcessChangeLevelSystem" title="go to the details">ProcessChangeLevelSystem</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>BOOL&nbsp;</td><td><a href="#_ProcessPlayerReadyStatus-" name="ProcessPlayerReadyStatus" title="go to the details">ProcessPlayerReadyStatus</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td><a href="../engine/navigationpoint.html">NavigationPoint</a>&nbsp;</td><td><a href="#_R6FindPlayerStart-" name="R6FindPlayerStart" title="go to the details">R6FindPlayerStart</a> (<a href="../engine/controller.html">Controller</a> Player, optional INT SpawnPointNumber, optional string incomingName ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_R6GameInfoMakeNoise-" name="R6GameInfoMakeNoise" title="go to the details">R6GameInfoMakeNoise</a> (<a href="../engine/actor.html#ESoundType">Actor.ESoundType</a> eType, Actor soundsource ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_R6SetPawnClassInMultiPlayer-" name="R6SetPawnClassInMultiPlayer" title="go to the details">R6SetPawnClassInMultiPlayer</a> (<a href="../engine/controller.html">Controller</a> _PlayerController))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>bool&nbsp;</td><td><a href="#_RainbowOperativesStillAlive-" name="RainbowOperativesStillAlive" title="go to the details">RainbowOperativesStillAlive</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>float&nbsp;</td><td><a href="#_RatePlayerStart-" name="RatePlayerStart" title="go to the details">RatePlayerStart</a> (<a href="../engine/navigationpoint.html">NavigationPoint</a> NavPoint, byte Team, <a href="../engine/controller.html">Controller</a> Player))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_RemoveAIBackup-" name="RemoveAIBackup" title="go to the details">RemoveAIBackup</a> (<a href="../r6engine/r6playercontroller.html">R6PlayerController</a> _playerController))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_RemoveTerroFromList-" name="RemoveTerroFromList" title="go to the details">RemoveTerroFromList</a> (Pawn toRemove ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_ResetBroadcastGameMsg-" name="ResetBroadcastGameMsg" title="go to the details">ResetBroadcastGameMsg</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_ResetMatchStat-" name="ResetMatchStat" title="go to the details">ResetMatchStat</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_ResetOriginalData-" name="ResetOriginalData" title="go to the details">ResetOriginalData</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_ResetPenalty-" name="ResetPenalty" title="go to the details">ResetPenalty</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_ResetPlayerBlur-" name="ResetPlayerBlur" title="go to the details">ResetPlayerBlur</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_ResetRepMissionObjectives-" name="ResetRepMissionObjectives" title="go to the details">ResetRepMissionObjectives</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_ResetRound-" name="ResetRound" title="go to the details">ResetRound</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_RestartGame-" name="RestartGame" title="go to the details">RestartGame</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_RestartGameMgr-" name="RestartGameMgr" title="go to the details">RestartGameMgr</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_RestartPlayer-" name="RestartPlayer" title="go to the details">RestartPlayer</a> (Controller aPlayer ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_SaveTrainingPlanning-" name="SaveTrainingPlanning" title="go to the details">SaveTrainingPlanning</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>INT&nbsp;</td><td><a href="#_SearchOperativesArray-" name="SearchOperativesArray" title="go to the details">SearchOperativesArray</a> (bool bIsFemale, INT iStartIndex))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>bool&nbsp;</td><td><a href="#_SetController-" name="SetController" title="go to the details">SetController</a> (<a href="../engine/playercontroller.html">PlayerController</a> pController, <a href="../engine/player.html">Player</a> pPlayer)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_SetDefaultTeamFriendlies-" name="SetDefaultTeamFriendlies" title="go to the details">SetDefaultTeamFriendlies</a> (<a href="../engine/pawn.html">Pawn</a> aPawn))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_SetGamePassword-" name="SetGamePassword" title="go to the details">SetGamePassword</a> (string szPasswd))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_SetGameTypeInLocal-" name="SetGameTypeInLocal" title="go to the details">SetGameTypeInLocal</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_SetJumpingMaps-" name="SetJumpingMaps" title="go to the details">SetJumpingMaps</a> (bool _flagSetting, int iNextMapIndex))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_SetPawnTeamFriendlies-" name="SetPawnTeamFriendlies" title="go to the details">SetPawnTeamFriendlies</a> (<a href="../engine/pawn.html">Pawn</a> aPawn))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_SetPlayerInPenaltyBox-" name="SetPlayerInPenaltyBox" title="go to the details">SetPlayerInPenaltyBox</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_SetRainbowTeam-" name="SetRainbowTeam" title="go to the details">SetRainbowTeam</a> (INT eTeamName, <a href="../r6engine/r6rainbowteam.html">R6RainbowTeam</a> newTeam))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_SetTeamKillerPenalty-" name="SetTeamKillerPenalty" title="go to the details">SetTeamKillerPenalty</a> (<a href="../engine/pawn.html">Pawn</a> DeadPawn, <a href="../engine/pawn.html">Pawn</a> KillerPawn))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_SetUdpBeacon-" name="SetUdpBeacon" title="go to the details">SetUdpBeacon</a> (<a href="../engine/internetinfo.html">InternetInfo</a> _udpBeacon))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_SetUnlimitedPractice-" name="SetUnlimitedPractice" title="go to the details">SetUnlimitedPractice</a> (bool bUnlimitedPractice, bool bInGameProcess ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_SpawnAI-" name="SpawnAI" title="go to the details">SpawnAI</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_SpawnAIandInitGoInGame-" name="SpawnAIandInitGoInGame" title="go to the details">SpawnAIandInitGoInGame</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>BOOL&nbsp;</td><td><a href="#_SpawnNumberToNavPoint-" name="SpawnNumberToNavPoint" title="go to the details">SpawnNumberToNavPoint</a> (int _iSpawnNumber, out <a href="../engine/navigationpoint.html">NavigationPoint</a> _StartNavPoint))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>bool&nbsp;</td><td><a href="#_Stats_getPlayerInfo-" name="Stats_getPlayerInfo" title="go to the details">Stats_getPlayerInfo</a> (OUT string sz, <a href="../r6engine/r6pawn.html">R6Pawn</a> pPawn, PlayerReplicationInfo pInfo ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_Tick-" name="Tick" title="go to the details">Tick</a> (float DeltaTime))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_ToggleRestart-" name="ToggleRestart" title="go to the details">ToggleRestart</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_UpdateRepMissionObjectives-" name="UpdateRepMissionObjectives" title="go to the details">UpdateRepMissionObjectives</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_UpdateRepMissionObjectivesStatus-" name="UpdateRepMissionObjectivesStatus" title="go to the details">UpdateRepMissionObjectivesStatus</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_UpdateRepResArrays-" name="UpdateRepResArrays" title="go to the details">UpdateRepResArrays</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_event.gif" alt="event" title="event" /></td><td>&nbsp;</td><td><a href="#_UpdateServer-" name="UpdateServer" title="go to the details">UpdateServer</a> ()))<br /><span class="function_state"></span></td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Functions from <a href="../r6abstract/r6abstract-overview.html">R6Abstract</a>.<a href="../r6abstract/r6abstractgameinfo.html">R6AbstractGameInfo</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../r6abstract/r6abstractgameinfo.html#AbortMission">AbortMission</a>, <a href="../r6abstract/r6abstractgameinfo.html#AdminResetRound">AdminResetRound</a>, <a href="../r6abstract/r6abstractgameinfo.html#ApplyTeamKillerPenalty">ApplyTeamKillerPenalty</a>, <a href="../r6abstract/r6abstractgameinfo.html#BaseEndGame">BaseEndGame</a>, <a href="../r6abstract/r6abstractgameinfo.html#BroadcastGameMsg">BroadcastGameMsg</a>, <a href="../r6abstract/r6abstractgameinfo.html#BroadcastMissionObjMsg">BroadcastMissionObjMsg</a>, <a href="../r6abstract/r6abstractgameinfo.html#CanSwitchTeamMember">CanSwitchTeamMember</a>, <a href="../r6abstract/r6abstractgameinfo.html#ChangeOperatives">ChangeOperatives</a>, <a href="../r6abstract/r6abstractgameinfo.html#ChangeTeams">ChangeTeams</a>, <a href="../r6abstract/r6abstractgameinfo.html#CheckEndGame">CheckEndGame</a>, <a href="../r6abstract/r6abstractgameinfo.html#CompleteMission">CompleteMission</a>, <a href="../r6abstract/r6abstractgameinfo.html#CreateMissionObjectiveMgr">CreateMissionObjectiveMgr</a>, <a href="../r6abstract/r6abstractgameinfo.html#EndGameAndJumpToMapID">EndGameAndJumpToMapID</a>, <a href="../r6abstract/r6abstractgameinfo.html#EnteredExtractionZone">EnteredExtractionZone</a>, <a href="../r6abstract/r6abstractgameinfo.html#Find2DTexture">Find2DTexture</a>, <a href="../r6abstract/r6abstractgameinfo.html#GetCommonRainbowMemberVoicesMgr">GetCommonRainbowMemberVoicesMgr</a>, <a href="../r6abstract/r6abstractgameinfo.html#GetCommonRainbowPlayerVoicesMgr">GetCommonRainbowPlayerVoicesMgr</a>, <a href="../r6abstract/r6abstractgameinfo.html#GetEndGamePauseTime">GetEndGamePauseTime</a>, <a href="../r6abstract/r6abstractgameinfo.html#GetGameMsgLifeTime">GetGameMsgLifeTime</a>, <a href="../r6abstract/r6abstractgameinfo.html#GetHostageVoicesMgr">GetHostageVoicesMgr</a>, <a href="../r6abstract/r6abstractgameinfo.html#GetIntelVideoName">GetIntelVideoName</a>, <a href="../r6abstract/r6abstractgameinfo.html#GetMultiCommonVoicesMgr">GetMultiCommonVoicesMgr</a>, <a href="../r6abstract/r6abstractgameinfo.html#GetMultiCoopMemberVoicesMgr">GetMultiCoopMemberVoicesMgr</a>, <a href="../r6abstract/r6abstractgameinfo.html#GetMultiCoopPlayerVoicesMgr">GetMultiCoopPlayerVoicesMgr</a>, <a href="../r6abstract/r6abstractgameinfo.html#GetNbOfRainbowAIToSpawn">GetNbOfRainbowAIToSpawn</a>, <a href="../r6abstract/r6abstractgameinfo.html#GetNewTeam">GetNewTeam</a>, <a href="../r6abstract/r6abstractgameinfo.html#GetNoiseMgr">GetNoiseMgr</a>, <a href="../r6abstract/r6abstractgameinfo.html#GetPreRecordedMsgVoicesMgr">GetPreRecordedMsgVoicesMgr</a>, <a href="../r6abstract/r6abstractgameinfo.html#GetRainbowAIFromTable">GetRainbowAIFromTable</a>, <a href="../r6abstract/r6abstractgameinfo.html#GetRainbowMemberVoicesMgr">GetRainbowMemberVoicesMgr</a>, <a href="../r6abstract/r6abstractgameinfo.html#GetRainbowOtherTeamVoicesMgr">GetRainbowOtherTeamVoicesMgr</a>, <a href="../r6abstract/r6abstractgameinfo.html#GetRainbowPlayerVoicesMgr">GetRainbowPlayerVoicesMgr</a>, <a href="../r6abstract/r6abstractgameinfo.html#GetRainbowTeam">GetRainbowTeam</a>, <a href="../r6abstract/r6abstractgameinfo.html#GetTerroristVoicesMgr">GetTerroristVoicesMgr</a>, <a href="../r6abstract/r6abstractgameinfo.html#IncrementRoundsFired">IncrementRoundsFired</a>, <a href="../r6abstract/r6abstractgameinfo.html#InitObjectives">InitObjectives</a>, <a href="../r6abstract/r6abstractgameinfo.html#InstructAllTeamsToFollowPlanning">InstructAllTeamsToFollowPlanning</a>, <a href="../r6abstract/r6abstractgameinfo.html#InstructAllTeamsToHoldPosition">InstructAllTeamsToHoldPosition</a>, <a href="../r6abstract/r6abstractgameinfo.html#IObjectDestroyed">IObjectDestroyed</a>, <a href="../r6abstract/r6abstractgameinfo.html#IObjectInteract">IObjectInteract</a>, <a href="../r6abstract/r6abstractgameinfo.html#IsLastRoundOfTheMatch">IsLastRoundOfTheMatch</a>, <a href="../r6abstract/r6abstractgameinfo.html#IsTeamSelectionLocked">IsTeamSelectionLocked</a>, <a href="../r6abstract/r6abstractgameinfo.html#IsUnlimitedPractice">IsUnlimitedPractice</a>, <a href="../r6abstract/r6abstractgameinfo.html#LeftExtractionZone">LeftExtractionZone</a>, <a href="../r6abstract/r6abstractgameinfo.html#LogVoteInfo">LogVoteInfo</a>, <a href="../r6abstract/r6abstractgameinfo.html#NotifyMatchStart">NotifyMatchStart</a>, <a href="../r6abstract/r6abstractgameinfo.html#PauseCountDown">PauseCountDown</a>, <a href="../r6abstract/r6abstractgameinfo.html#PawnHeard">PawnHeard</a>, <a href="../r6abstract/r6abstractgameinfo.html#PawnKilled">PawnKilled</a>, <a href="../r6abstract/r6abstractgameinfo.html#PawnSecure">PawnSecure</a>, <a href="../r6abstract/r6abstractgameinfo.html#PawnSeen">PawnSeen</a>, <a href="../r6abstract/r6abstractgameinfo.html#PlayerReadySelected">PlayerReadySelected</a>, <a href="../r6abstract/r6abstractgameinfo.html#PostBeginPlay">PostBeginPlay</a>, <a href="../r6abstract/r6abstractgameinfo.html#ProcessKickVote">ProcessKickVote</a>, <a href="../r6abstract/r6abstractgameinfo.html#ProcessPlayerReadyStatus">ProcessPlayerReadyStatus</a>, <a href="../r6abstract/r6abstractgameinfo.html#RainbowOperativesStillAlive">RainbowOperativesStillAlive</a>, <a href="../r6abstract/r6abstractgameinfo.html#RemoveController">RemoveController</a>, <a href="../r6abstract/r6abstractgameinfo.html#RemoveObjectives">RemoveObjectives</a>, <a href="../r6abstract/r6abstractgameinfo.html#RemoveTerroFromList">RemoveTerroFromList</a>, <a href="../r6abstract/r6abstractgameinfo.html#ResetPenalty">ResetPenalty</a>, <a href="../r6abstract/r6abstractgameinfo.html#ResetPlayerTeam">ResetPlayerTeam</a>, <a href="../r6abstract/r6abstractgameinfo.html#ResetRepMissionObjectives">ResetRepMissionObjectives</a>, <a href="../r6abstract/r6abstractgameinfo.html#ResetRound">ResetRound</a>, <a href="../r6abstract/r6abstractgameinfo.html#SetDefaultTeamFriendlies">SetDefaultTeamFriendlies</a>, <a href="../r6abstract/r6abstractgameinfo.html#SetJumpingMaps">SetJumpingMaps</a>, <a href="../r6abstract/r6abstractgameinfo.html#SetPawnTeamFriendlies">SetPawnTeamFriendlies</a>, <a href="../r6abstract/r6abstractgameinfo.html#SetTeamKillerPenalty">SetTeamKillerPenalty</a>, <a href="../r6abstract/r6abstractgameinfo.html#SetUnlimitedPractice">SetUnlimitedPractice</a>, <a href="../r6abstract/r6abstractgameinfo.html#SpawnAIandInitGoInGame">SpawnAIandInitGoInGame</a>, <a href="../r6abstract/r6abstractgameinfo.html#StartTimer">StartTimer</a>, <a href="../r6abstract/r6abstractgameinfo.html#TimerCountdown">TimerCountdown</a>, <a href="../r6abstract/r6abstractgameinfo.html#UnPauseCountDown">UnPauseCountDown</a>, <a href="../r6abstract/r6abstractgameinfo.html#UpdateRepMissionObjectives">UpdateRepMissionObjectives</a>, <a href="../r6abstract/r6abstractgameinfo.html#UpdateRepMissionObjectivesStatus">UpdateRepMissionObjectivesStatus</a>, <a href="../r6abstract/r6abstractgameinfo.html#UpdateRepResArrays">UpdateRepResArrays</a></td>
+</tr>
+</table>
+<table>
+<tr>
+	<th class="inherittitle">Inherited Functions from <a href="../engine/engine-overview.html">engine</a>.<a href="../engine/gameinfo.html">GameInfo</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../engine/gameinfo.html#AbortScoreSubmission">AbortScoreSubmission</a>, <a href="../engine/gameinfo.html#AcceptInventory">AcceptInventory</a>, <a href="../engine/gameinfo.html#AddDefaultInventory">AddDefaultInventory</a>, <a href="../engine/gameinfo.html#AtCapacity">AtCapacity</a>, <a href="../engine/gameinfo.html#Broadcast">Broadcast</a>, <a href="../engine/gameinfo.html#BroadcastDeathMessage">BroadcastDeathMessage</a>, <a href="../engine/gameinfo.html#BroadcastLocalized">BroadcastLocalized</a>, <a href="../engine/gameinfo.html#BroadcastTeam">BroadcastTeam</a>, <a href="../engine/gameinfo.html#CanPlayIntroVideo">CanPlayIntroVideo</a>, <a href="../engine/gameinfo.html#CanPlayOutroVideo">CanPlayOutroVideo</a>, <a href="../engine/gameinfo.html#CanSpectate">CanSpectate</a>, <a href="../engine/gameinfo.html#ChangeName">ChangeName</a>, <a href="../engine/gameinfo.html#ChangeTeam">ChangeTeam</a>, <a href="../engine/gameinfo.html#CheckEndGame">CheckEndGame</a>, <a href="../engine/gameinfo.html#CheckScore">CheckScore</a>, <a href="../engine/gameinfo.html#DeployCharacters">DeployCharacters</a>, <a href="../engine/gameinfo.html#DetailChange">DetailChange</a>, <a href="../engine/gameinfo.html#EndGame">EndGame</a>, <a href="../engine/gameinfo.html#EndLogging">EndLogging</a>, <a href="../engine/gameinfo.html#FindPlayerStart">FindPlayerStart</a>, <a href="../engine/gameinfo.html#GameEnding">GameEnding</a>, <a href="../engine/gameinfo.html#GetBeaconText">GetBeaconText</a>, <a href="../engine/gameinfo.html#GetCurrentMapNum">GetCurrentMapNum</a>, <a href="../engine/gameinfo.html#GetDefaultPlayerClass">GetDefaultPlayerClass</a>, <a href="../engine/gameinfo.html#GetInfo">GetInfo</a>, <a href="../engine/gameinfo.html#GetIntOption">GetIntOption</a>, <a href="../engine/gameinfo.html#GetKeyValue">GetKeyValue</a>, <a href="../engine/gameinfo.html#GetNetworkNumber">GetNetworkNumber</a>, <a href="../engine/gameinfo.html#GetRules">GetRules</a>, <a href="../engine/gameinfo.html#GetServerPort">GetServerPort</a>, <a href="../engine/gameinfo.html#GrabOption">GrabOption</a>, <a href="../engine/gameinfo.html#InitGame">InitGame</a>, <a href="../engine/gameinfo.html#InitGameReplicationInfo">InitGameReplicationInfo</a>, <a href="../engine/gameinfo.html#InitLogging">InitLogging</a>, <a href="../engine/gameinfo.html#IsOnTeam">IsOnTeam</a>, <a href="../engine/gameinfo.html#KickBan">KickBan</a>, <a href="../engine/gameinfo.html#Killed">Killed</a>, <a href="../engine/gameinfo.html#LogGameParameters">LogGameParameters</a>, <a href="../engine/gameinfo.html#Login">Login</a>, <a href="../engine/gameinfo.html#Logout">Logout</a>, <a href="../engine/gameinfo.html#MPSelectOperativeFace">MPSelectOperativeFace</a>, <a href="../engine/gameinfo.html#NameInUse">NameInUse</a>, <a href="../engine/gameinfo.html#NotifyKilled">NotifyKilled</a>, <a href="../engine/gameinfo.html#ParseKillMessage">ParseKillMessage</a>, <a href="../engine/gameinfo.html#ParseOption">ParseOption</a>, <a href="../engine/gameinfo.html#PickTeam">PickTeam</a>, <a href="../engine/gameinfo.html#PostBeginPlay">PostBeginPlay</a>, <a href="../engine/gameinfo.html#PostLogin">PostLogin</a>, <a href="../engine/gameinfo.html#PreBeginPlay">PreBeginPlay</a>, <a href="../engine/gameinfo.html#PreLogin">PreLogin</a>, <a href="../engine/gameinfo.html#PreLogOut">PreLogOut</a>, <a href="../engine/gameinfo.html#PreventDeath">PreventDeath</a>, <a href="../engine/gameinfo.html#ProcessR6Availabilty">ProcessR6Availabilty</a>, <a href="../engine/gameinfo.html#ProcessServerTravel">ProcessServerTravel</a>, <a href="../engine/gameinfo.html#R6GameInfoMakeNoise">R6GameInfoMakeNoise</a>, <a href="../engine/gameinfo.html#RatePlayerStart">RatePlayerStart</a>, <a href="../engine/gameinfo.html#ReduceDamage">ReduceDamage</a>, <a href="../engine/gameinfo.html#Reset">Reset</a>, <a href="../engine/gameinfo.html#RestartGame">RestartGame</a>, <a href="../engine/gameinfo.html#RestartGameMgr">RestartGameMgr</a>, <a href="../engine/gameinfo.html#RestartPlayer">RestartPlayer</a>, <a href="../engine/gameinfo.html#ScoreKill">ScoreKill</a>, <a href="../engine/gameinfo.html#ScoreObjective">ScoreObjective</a>, <a href="../engine/gameinfo.html#SendPlayer">SendPlayer</a>, <a href="../engine/gameinfo.html#SendStartMessage">SendStartMessage</a>, <a href="../engine/gameinfo.html#SetCompilingStats">SetCompilingStats</a>, <a href="../engine/gameinfo.html#SetCurrentMapNum">SetCurrentMapNum</a>, <a href="../engine/gameinfo.html#SetGamePassword">SetGamePassword</a>, <a href="../engine/gameinfo.html#SetGameSpeed">SetGameSpeed</a>, <a href="../engine/gameinfo.html#SetJumpingMaps">SetJumpingMaps</a>, <a href="../engine/gameinfo.html#SetPause">SetPause</a>, <a href="../engine/gameinfo.html#SetPlayerDefaults">SetPlayerDefaults</a>, <a href="../engine/gameinfo.html#SetRoundRestartedByJoinFlag">SetRoundRestartedByJoinFlag</a>, <a href="../engine/gameinfo.html#SetUdpBeacon">SetUdpBeacon</a>, <a href="../engine/gameinfo.html#StartMatch">StartMatch</a>, <a href="../engine/gameinfo.html#Timer">Timer</a>, <a href="../engine/gameinfo.html#ToggleRestart">ToggleRestart</a>, <a href="../engine/gameinfo.html#TooManyBots">TooManyBots</a>, <a href="../engine/gameinfo.html#TransformName">TransformName</a>, <a href="../engine/gameinfo.html#UpdateServer">UpdateServer</a></td>
+</tr>
+</table>
+
+
+<br />
+
+
+
+<hr />
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Constants Detail</th>
+</tr>
+</table>
+
+<h4><a name="_CMaxPlayers" class="hidden"></a>CMaxPlayers <a href="../Source_r6game/r6gameinfo.html#126" class="small">Source code</a></h4>
+<div class="declaration">const CMaxPlayers = <span class="source_int">16</span>;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_CMaxRainbowAI" class="hidden"></a>CMaxRainbowAI <a href="../Source_r6game/r6gameinfo.html#43" class="small">Source code</a></h4>
+<div class="declaration">const CMaxRainbowAI = <span class="source_int">6</span>;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th class="title">Variables Detail</th>
+</tr>
+</table>
+
+<h4><a name="_bNoRestart" class="hidden"></a>bNoRestart <a href="../Source_r6game/r6gameinfo.html#47" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">bool</span> bNoRestart;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_DefaultFaceCoords" class="hidden"></a>DefaultFaceCoords <a href="../Source_r6game/r6gameinfo.html#124" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../core/object.html#Plane" class="source">Plane</a></span> DefaultFaceCoords;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_DefaultFaceTexture" class="hidden"></a>DefaultFaceTexture <a href="../Source_r6game/r6gameinfo.html#123" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../engine/material.html" class="source">Material</a></span> DefaultFaceTexture;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_LastStartSpot" class="hidden"></a>LastStartSpot <a href="../Source_r6game/r6gameinfo.html#41" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../engine/navigationpoint.html" class="source">NavigationPoint</a></span> LastStartSpot;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_bAdminPasswordReq" class="hidden"></a>m_bAdminPasswordReq <a href="../Source_r6game/r6gameinfo.html#106" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">BOOL</span> m_bAdminPasswordReq;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_bAIBkp" class="hidden"></a>m_bAIBkp <a href="../Source_r6game/r6gameinfo.html#107" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">BOOL</span> m_bAIBkp;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_bAutoBalance" class="hidden"></a>m_bAutoBalance <a href="../Source_r6game/r6gameinfo.html#92" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">BOOL</span> m_bAutoBalance;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_bCurrentFemaleId" class="hidden"></a>m_bCurrentFemaleId <a href="../Source_r6game/r6gameinfo.html#110" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">byte</span> m_bCurrentFemaleId;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_bCurrentMaleId" class="hidden"></a>m_bCurrentMaleId <a href="../Source_r6game/r6gameinfo.html#111" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">byte</span> m_bCurrentMaleId;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_bFadeStarted" class="hidden"></a>m_bFadeStarted <a href="../Source_r6game/r6gameinfo.html#109" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">BOOL</span> m_bFadeStarted;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_bFeedbackHostageExtracted" class="hidden"></a>m_bFeedbackHostageExtracted <a href="../Source_r6game/r6gameinfo.html#121" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">bool</span> m_bFeedbackHostageExtracted;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_bFeedbackHostageKilled" class="hidden"></a>m_bFeedbackHostageKilled <a href="../Source_r6game/r6gameinfo.html#120" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">bool</span> m_bFeedbackHostageKilled;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_bFFPWeapon" class="hidden"></a>m_bFFPWeapon <a href="../Source_r6game/r6gameinfo.html#105" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">BOOL</span> m_bFFPWeapon;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_bGadgMiscRes" class="hidden"></a>m_bGadgMiscRes <a href="../Source_r6game/r6gameinfo.html#103" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">BOOL</span> m_bGadgMiscRes;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_bGadgPrimaryRes" class="hidden"></a>m_bGadgPrimaryRes <a href="../Source_r6game/r6gameinfo.html#101" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">BOOL</span> m_bGadgPrimaryRes;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_bGadgSecondayRes" class="hidden"></a>m_bGadgSecondayRes <a href="../Source_r6game/r6gameinfo.html#102" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">BOOL</span> m_bGadgSecondayRes;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_bIsRadarAllowed" class="hidden"></a>m_bIsRadarAllowed <a href="../Source_r6game/r6gameinfo.html#52" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">bool</span> m_bIsRadarAllowed;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_bIsWritableMapAllowed" class="hidden"></a>m_bIsWritableMapAllowed <a href="../Source_r6game/r6gameinfo.html#53" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">bool</span> m_bIsWritableMapAllowed;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_bJumpingMaps" class="hidden"></a>m_bJumpingMaps <a href="../Source_r6game/r6gameinfo.html#64" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">bool</span> m_bJumpingMaps;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_bPWAssRifleRes" class="hidden"></a>m_bPWAssRifleRes <a href="../Source_r6game/r6gameinfo.html#96" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">BOOL</span> m_bPWAssRifleRes;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_bPWMachGunRes" class="hidden"></a>m_bPWMachGunRes <a href="../Source_r6game/r6gameinfo.html#97" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">BOOL</span> m_bPWMachGunRes;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_bPWShotGunRes" class="hidden"></a>m_bPWShotGunRes <a href="../Source_r6game/r6gameinfo.html#95" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">BOOL</span> m_bPWShotGunRes;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_bPWSnipRifleRes" class="hidden"></a>m_bPWSnipRifleRes <a href="../Source_r6game/r6gameinfo.html#98" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">BOOL</span> m_bPWSnipRifleRes;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_bPWSubMachGunRes" class="hidden"></a>m_bPWSubMachGunRes <a href="../Source_r6game/r6gameinfo.html#94" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">BOOL</span> m_bPWSubMachGunRes;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_bRainbowFaces[30]" class="hidden"></a>m_bRainbowFaces[30] <a href="../Source_r6game/r6gameinfo.html#112" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">byte</span> m_bRainbowFaces[<span class="source_int">30</span>];</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_bRepAllowRadarOption" class="hidden"></a>m_bRepAllowRadarOption <a href="../Source_r6game/r6gameinfo.html#51" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">bool</span> m_bRepAllowRadarOption;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_bRotateMap" class="hidden"></a>m_bRotateMap <a href="../Source_r6game/r6gameinfo.html#108" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">BOOL</span> m_bRotateMap;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_bServerAllowRadarRep" class="hidden"></a>m_bServerAllowRadarRep <a href="../Source_r6game/r6gameinfo.html#50" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">bool</span> m_bServerAllowRadarRep;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_bShowNames" class="hidden"></a>m_bShowNames <a href="../Source_r6game/r6gameinfo.html#104" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">BOOL</span> m_bShowNames;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_bSWMachPistolRes" class="hidden"></a>m_bSWMachPistolRes <a href="../Source_r6game/r6gameinfo.html#100" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">BOOL</span> m_bSWMachPistolRes;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_bSWPistolRes" class="hidden"></a>m_bSWPistolRes <a href="../Source_r6game/r6gameinfo.html#99" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">BOOL</span> m_bSWPistolRes;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_bTKPenalty" class="hidden"></a>m_bTKPenalty <a href="../Source_r6game/r6gameinfo.html#93" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">BOOL</span> m_bTKPenalty;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_bUnlockAllDoors" class="hidden"></a>m_bUnlockAllDoors <a href="../Source_r6game/r6gameinfo.html#56" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">bool</span> m_bUnlockAllDoors;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_bUsingCampaignBriefing" class="hidden"></a>m_bUsingCampaignBriefing <a href="../Source_r6game/r6gameinfo.html#55" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">bool</span> m_bUsingCampaignBriefing;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_bUsingPlayerCampaign" class="hidden"></a>m_bUsingPlayerCampaign <a href="../Source_r6game/r6gameinfo.html#54" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">bool</span> m_bUsingPlayerCampaign;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_CommonRainbowMemberVoicesMgr" class="hidden"></a>m_CommonRainbowMemberVoicesMgr <a href="../Source_r6game/r6gameinfo.html#22" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../r6engine/r6commonrainbowvoices.html" class="source">R6CommonRainbowVoices</a></span> m_CommonRainbowMemberVoicesMgr;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_CommonRainbowPlayerVoicesMgr" class="hidden"></a>m_CommonRainbowPlayerVoicesMgr <a href="../Source_r6game/r6gameinfo.html#21" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../r6engine/r6commonrainbowvoices.html" class="source">R6CommonRainbowVoices</a></span> m_CommonRainbowPlayerVoicesMgr;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_eEndGameWidgetID" class="hidden"></a>m_eEndGameWidgetID <a href="../Source_r6game/r6gameinfo.html#40" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../uwindow/uwindowrootwindow.html" class="source">UWindowRootWindow</a></span>.eGameWidgetID m_eEndGameWidgetID;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_fBombTime" class="hidden"></a>m_fBombTime <a href="../Source_r6game/r6gameinfo.html#87" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">FLOAT</span> m_fBombTime;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_fPausedAtTime" class="hidden"></a>m_fPausedAtTime <a href="../Source_r6game/r6gameinfo.html#60" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">FLOAT</span> m_fPausedAtTime;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_fRoundEndTime" class="hidden"></a>m_fRoundEndTime <a href="../Source_r6game/r6gameinfo.html#59" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">FLOAT</span> m_fRoundEndTime;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_fRoundStartTime" class="hidden"></a>m_fRoundStartTime <a href="../Source_r6game/r6gameinfo.html#58" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">FLOAT</span> m_fRoundStartTime;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_gameModeList" class="hidden"></a>m_gameModeList <a href="../Source_r6game/r6gameinfo.html#75" class="small">Source code</a></h4>
+<div class="declaration">var array&lt;<span class="source_type">string</span>&gt; m_gameModeList;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_GameService" class="hidden"></a>m_GameService <a href="../Source_r6game/r6gameinfo.html#114" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../r6gameservice/r6gsservers.html" class="source">R6GSServers</a></span> m_GameService;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_HostageVoicesFemaleMgr" class="hidden"></a>m_HostageVoicesFemaleMgr <a href="../Source_r6game/r6gameinfo.html#34" class="small">Source code</a></h4>
+<div class="declaration">var Array&lt;<span class="source_type"><a href="../r6engine/r6hostagevoices.html" class="source">R6HostageVoices</a></span>&gt; m_HostageVoicesFemaleMgr;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_HostageVoicesMaleMgr" class="hidden"></a>m_HostageVoicesMaleMgr <a href="../Source_r6game/r6gameinfo.html#33" class="small">Source code</a></h4>
+<div class="declaration">var Array&lt;<span class="source_type"><a href="../r6engine/r6hostagevoices.html" class="source">R6HostageVoices</a></span>&gt; m_HostageVoicesMaleMgr;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_iAssRifleResMask" class="hidden"></a>m_iAssRifleResMask <a href="../Source_r6game/r6gameinfo.html#78" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">INT</span> m_iAssRifleResMask;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_iCurrentID" class="hidden"></a>m_iCurrentID <a href="../Source_r6game/r6gameinfo.html#38" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">INT</span> m_iCurrentID;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_iDeathCameraMode" class="hidden"></a>m_iDeathCameraMode <a href="../Source_r6game/r6gameinfo.html#73" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">INT</span> m_iDeathCameraMode;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_iGadgMiscResMask" class="hidden"></a>m_iGadgMiscResMask <a href="../Source_r6game/r6gameinfo.html#85" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">INT</span> m_iGadgMiscResMask;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_iGadgPrimaryResMask" class="hidden"></a>m_iGadgPrimaryResMask <a href="../Source_r6game/r6gameinfo.html#83" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">INT</span> m_iGadgPrimaryResMask;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_iGadgSecondaryResMask" class="hidden"></a>m_iGadgSecondaryResMask <a href="../Source_r6game/r6gameinfo.html#84" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">INT</span> m_iGadgSecondaryResMask;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_iIDVoicesMgr" class="hidden"></a>m_iIDVoicesMgr <a href="../Source_r6game/r6gameinfo.html#118" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">INT</span> m_iIDVoicesMgr;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_iJumpMapIndex" class="hidden"></a>m_iJumpMapIndex <a href="../Source_r6game/r6gameinfo.html#65" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">int</span> m_iJumpMapIndex;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_iMachGunResMask" class="hidden"></a>m_iMachGunResMask <a href="../Source_r6game/r6gameinfo.html#79" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">INT</span> m_iMachGunResMask;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_iMachPistolResMask" class="hidden"></a>m_iMachPistolResMask <a href="../Source_r6game/r6gameinfo.html#82" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">INT</span> m_iMachPistolResMask;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_iMaxOperatives" class="hidden"></a>m_iMaxOperatives <a href="../Source_r6game/r6gameinfo.html#39" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">INT</span> m_iMaxOperatives;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_iNbOfRestart" class="hidden"></a>m_iNbOfRestart <a href="../Source_r6game/r6gameinfo.html#117" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">INT</span> m_iNbOfRestart;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_iPistolResMask" class="hidden"></a>m_iPistolResMask <a href="../Source_r6game/r6gameinfo.html#81" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">INT</span> m_iPistolResMask;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_iRoundsPerMatch" class="hidden"></a>m_iRoundsPerMatch <a href="../Source_r6game/r6gameinfo.html#71" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">INT</span> m_iRoundsPerMatch;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_iShotGunResMask" class="hidden"></a>m_iShotGunResMask <a href="../Source_r6game/r6gameinfo.html#77" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">INT</span> m_iShotGunResMask;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_iSnipRifleResMask" class="hidden"></a>m_iSnipRifleResMask <a href="../Source_r6game/r6gameinfo.html#80" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">INT</span> m_iSnipRifleResMask;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_iSubMachineGunsResMask" class="hidden"></a>m_iSubMachineGunsResMask <a href="../Source_r6game/r6gameinfo.html#76" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">INT</span> m_iSubMachineGunsResMask;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_listAllTerrorists" class="hidden"></a>m_listAllTerrorists <a href="../Source_r6game/r6gameinfo.html#35" class="small">Source code</a></h4>
+<div class="declaration">var Array&lt;<span class="source_type"><a href="../r6engine/r6terrorist.html" class="source">R6Terrorist</a></span>&gt; m_listAllTerrorists;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_mapList" class="hidden"></a>m_mapList <a href="../Source_r6game/r6gameinfo.html#74" class="small">Source code</a></h4>
+<div class="declaration">var array&lt;<span class="source_type">string</span>&gt; m_mapList;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_MultiCommonVoicesMgr" class="hidden"></a>m_MultiCommonVoicesMgr <a href="../Source_r6game/r6gameinfo.html#29" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../r6engine/r6multicommonvoices.html" class="source">R6MultiCommonVoices</a></span> m_MultiCommonVoicesMgr;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_MultiCoopMemberVoicesMgr" class="hidden"></a>m_MultiCoopMemberVoicesMgr <a href="../Source_r6game/r6gameinfo.html#27" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../r6engine/r6multicoopvoices.html" class="source">R6MultiCoopVoices</a></span> m_MultiCoopMemberVoicesMgr;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_MultiCoopPlayerVoicesMgr" class="hidden"></a>m_MultiCoopPlayerVoicesMgr <a href="../Source_r6game/r6gameinfo.html#26" class="small">Source code</a></h4>
+<div class="declaration">var Array&lt;<span class="source_type"><a href="../r6engine/r6multicoopvoices.html" class="source">R6MultiCoopVoices</a></span>&gt; m_MultiCoopPlayerVoicesMgr;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_PersistantGameService" class="hidden"></a>m_PersistantGameService <a href="../Source_r6game/r6gameinfo.html#115" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../r6gameservice/r6gsservers.html" class="source">R6GSServers</a></span> m_PersistantGameService;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_PreRecordedMsgVoicesMgr" class="hidden"></a>m_PreRecordedMsgVoicesMgr <a href="../Source_r6game/r6gameinfo.html#28" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../r6engine/r6prerecordedmsgvoices.html" class="source">R6PreRecordedMsgVoices</a></span> m_PreRecordedMsgVoicesMgr;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_RainbowAIBackup" class="hidden"></a>m_RainbowAIBackup <a href="../Source_r6game/r6gameinfo.html#44" class="small">Source code</a></h4>
+<div class="declaration">var Array&lt;<span class="source_type"><a href="../r6engine/r6rainbowai.html" class="source">R6RainbowAI</a></span>&gt; m_RainbowAIBackup;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_RainbowMemberVoicesMgr" class="hidden"></a>m_RainbowMemberVoicesMgr <a href="../Source_r6game/r6gameinfo.html#24" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../r6engine/r6rainbowmembervoices.html" class="source">R6RainbowMemberVoices</a></span> m_RainbowMemberVoicesMgr;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_RainbowOtherTeamVoicesMgr" class="hidden"></a>m_RainbowOtherTeamVoicesMgr <a href="../Source_r6game/r6gameinfo.html#25" class="small">Source code</a></h4>
+<div class="declaration">var Array&lt;<span class="source_type"><a href="../r6engine/r6rainbowotherteamvoices.html" class="source">R6RainbowOtherTeamVoices</a></span>&gt; m_RainbowOtherTeamVoicesMgr;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_RainbowPlayerVoicesMgr" class="hidden"></a>m_RainbowPlayerVoicesMgr <a href="../Source_r6game/r6gameinfo.html#23" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../r6engine/r6rainbowplayervoices.html" class="source">R6RainbowPlayerVoices</a></span> m_RainbowPlayerVoicesMgr;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_szMessageOfDay" class="hidden"></a>m_szMessageOfDay <a href="../Source_r6game/r6gameinfo.html#68" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">string</span> m_szMessageOfDay;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_szSvrName" class="hidden"></a>m_szSvrName <a href="../Source_r6game/r6gameinfo.html#69" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">string</span> m_szSvrName;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_TerroristVoicesMgr" class="hidden"></a>m_TerroristVoicesMgr <a href="../Source_r6game/r6gameinfo.html#32" class="small">Source code</a></h4>
+<div class="declaration">var Array&lt;<span class="source_type"><a href="../r6engine/r6terroristvoices.html" class="source">R6TerroristVoices</a></span>&gt; m_TerroristVoicesMgr;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_R6DefaultWeaponInput" class="hidden"></a>R6DefaultWeaponInput <a href="../Source_r6game/r6gameinfo.html#19" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">byte</span> R6DefaultWeaponInput;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h3 class="vartag">Debug</h3>
+<h4><a name="_bShowLog" class="hidden"></a>bShowLog <a href="../Source_r6game/r6gameinfo.html#37" class="small">Source code</a></h4>
+<div class="declaration">var(Debug) <span class="source_type">BOOL</span> bShowLog;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+
+
+<br />
+
+
+
+
+
+
+
+<table class="title">
+<tr>
+	<th class="title">Functions Detail</th>
+</tr>
+</table>
+
+<h4><a name="_AbortScoreSubmission-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> AbortScoreSubmission <span class="function_state"></span> <a href="../Source_r6game/r6gameinfo.html#3866" class="small">Source code</a></h4>
+<div class="declaration"> function  AbortScoreSubmission ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_AcceptInventory-" class="hidden"></a><img src="../img_event.gif" alt="" title="event" /> AcceptInventory <span class="function_state"></span> <a href="../Source_r6game/r6gameinfo.html#188" class="small">Source code</a></h4>
+<div class="declaration">simulated event  AcceptInventory ( <span class="source_type"><a href="../engine/pawn.html" class="source">pawn</a></span> <span class="source_type">PlayerPawn</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_AdminResetRound-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> AdminResetRound <span class="function_state"></span> <a href="../Source_r6game/r6gameinfo.html#3306" class="small">Source code</a></h4>
+<div class="declaration"> function  AdminResetRound ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ApplyTeamKillerPenalty-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> ApplyTeamKillerPenalty <span class="function_state"></span> <a href="../Source_r6game/r6gameinfo.html#3049" class="small">Source code</a></h4>
+<div class="declaration"> function  ApplyTeamKillerPenalty ( <span class="source_type"><a href="../engine/pawn.html" class="source">Pawn</a></span> <span class="source_type">aPawn</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_BaseEndGame-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> BaseEndGame <span class="function_state"></span> <a href="../Source_r6game/r6gameinfo.html#2888" class="small">Source code</a></h4>
+<div class="declaration"> function  BaseEndGame ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_BroadcastGameMsg-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> BroadcastGameMsg <span class="function_state"></span> <a href="../Source_r6game/r6gameinfo.html#3719" class="small">Source code</a></h4>
+<div class="declaration"> function  BroadcastGameMsg ( <span class="source_type">string</span> <span class="source_type">szLocFile</span>, <span class="source_type">string</span> szPreMsg, <span class="source_type">string</span> szMsgID, optional <span class="source_type">Sound</span> sndGameStatus, OPTIONAL <span class="source_type">int</span> <span class="source_type">iLifeTime</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_BroadcastGameTypeDescription-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> BroadcastGameTypeDescription <span class="function_state"></span> <a href="../Source_r6game/r6gameinfo.html#3699" class="small">Source code</a></h4>
+<div class="declaration"> function  BroadcastGameTypeDescription ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_BroadcastMissionObjMsg-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> BroadcastMissionObjMsg <span class="function_state"></span> <a href="../Source_r6game/r6gameinfo.html#3738" class="small">Source code</a></h4>
+<div class="declaration"> function  BroadcastMissionObjMsg ( <span class="source_type">string</span> <span class="source_type">szLocFile</span>, <span class="source_type">string</span> szPreMsg, <span class="source_type">string</span> szMsgID, optional <span class="source_type">Sound</span> sndGameStatus, OPTIONAL <span class="source_type">int</span> <span class="source_type">iLifeTime</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_CanPlayIntroVideo-" class="hidden"></a><img src="../img_event.gif" alt="" title="event" /> CanPlayIntroVideo <span class="function_state"></span> <a href="../Source_r6game/r6gameinfo.html#3905" class="small">Source code</a></h4>
+<div class="declaration"> event <span class="source_type">bool</span> CanPlayIntroVideo ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_CanPlayOutroVideo-" class="hidden"></a><img src="../img_event.gif" alt="" title="event" /> CanPlayOutroVideo <span class="function_state"></span> <a href="../Source_r6game/r6gameinfo.html#3920" class="small">Source code</a></h4>
+<div class="declaration"> event <span class="source_type">bool</span> CanPlayOutroVideo ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ChangeName-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> ChangeName <span class="function_state"></span> <a href="../Source_r6game/r6gameinfo.html#3958" class="small">Source code</a></h4>
+<div class="declaration"> function  ChangeName ( <span class="source_type"><a href="../engine/controller.html" class="source">Controller</a></span> <span class="source_type">Other</span>, coerce <span class="source_type">string</span> <span class="source_type">S</span>, <span class="source_type">bool</span> bNameChange, optional <span class="source_type">bool</span> <span class="source_type">bDontBroadcastNameChange</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ChangeOperatives-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> ChangeOperatives <span class="function_state"></span> <a href="../Source_r6game/r6gameinfo.html#2027" class="small">Source code</a></h4>
+<div class="declaration"> function  ChangeOperatives ( <span class="source_type"><a href="../engine/playercontroller.html" class="source">PlayerController</a></span> inPlayerController, <span class="source_type">INT</span> <span class="source_type">iTeamId</span>, <span class="source_type">INT</span> iOperativeId) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ChangeTeams-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> ChangeTeams <span class="function_state"></span> <a href="../Source_r6game/r6gameinfo.html#2071" class="small">Source code</a></h4>
+<div class="declaration"> function  ChangeTeams ( <span class="source_type"><a href="../engine/playercontroller.html" class="source">PlayerController</a></span> inPlayerController, optional <span class="source_type">bool</span> bNextTeam, optional <span class="source_type"><a href="../engine/actor.html" class="source">Actor</a></span> newRainbowTeam) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_CheckEndGame-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> CheckEndGame <span class="function_state"></span> <a href="../Source_r6game/r6gameinfo.html#2866" class="small">Source code</a></h4>
+<div class="declaration"> function <span class="source_type">bool</span> CheckEndGame ( <span class="source_type"><a href="../engine/playerreplicationinfo.html" class="source">PlayerReplicationInfo</a></span> Winner, <span class="source_type">string</span> <span class="source_type">Reason</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_CheckForExtractionZone-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> CheckForExtractionZone <span class="function_state"></span> <a href="../Source_r6game/r6gameinfo.html#2703" class="small">Source code</a></h4>
+<div class="declaration"> function  CheckForExtractionZone ( <span class="source_type"><a href="../engine/r6missionobjectivebase.html" class="source">R6MissionObjectiveBase</a></span> <span class="source_type">mo</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_CheckForHostage-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> CheckForHostage <span class="function_state"></span> <a href="../Source_r6game/r6gameinfo.html#2748" class="small">Source code</a></h4>
+<div class="declaration"> function  CheckForHostage ( <span class="source_type"><a href="../engine/r6missionobjectivebase.html" class="source">R6MissionObjectiveBase</a></span> <span class="source_type">mo</span>, <span class="source_type">int</span> <span class="source_type">iMinNum</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_CheckForTerrorist-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> CheckForTerrorist <span class="function_state"></span> <a href="../Source_r6game/r6gameinfo.html#2727" class="small">Source code</a></h4>
+<div class="declaration"> function  CheckForTerrorist ( <span class="source_type"><a href="../engine/r6missionobjectivebase.html" class="source">R6MissionObjectiveBase</a></span> <span class="source_type">mo</span>, <span class="source_type">int</span> <span class="source_type">iMinNum</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_CreateBackupRainbowAI-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> CreateBackupRainbowAI <span class="function_state"></span> <a href="../Source_r6game/r6gameinfo.html#932" class="small">Source code</a></h4>
+<div class="declaration"> function  CreateBackupRainbowAI ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_CreateRainbowTeam-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> CreateRainbowTeam <span class="function_state"></span> <a href="../Source_r6game/r6gameinfo.html#1815" class="small">Source code</a></h4>
+<div class="declaration"> function  CreateRainbowTeam ( <span class="source_type">int</span> NewTeamNumber, <span class="source_type"><a href="../engine/r6teamstartinfo.html" class="source">R6TeamStartInfo</a></span> <span class="source_type"><a href="../engine/teaminfo.html" class="source">TeamInfo</a></span>, <span class="source_type">BOOL</span> bIsPlaying, <span class="source_type">INT</span> iTeamStart, <span class="source_type"><a href="../engine/playercontroller.html" class="source">PlayerController</a></span> aRainbowPC) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_DeployCharacters-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> DeployCharacters <span class="function_state"></span> <a href="../Source_r6game/r6gameinfo.html#1716" class="small">Source code</a></h4>
+<div class="declaration"> function  DeployCharacters ( <span class="source_type"><a href="../engine/playercontroller.html" class="source">PlayerController</a></span> ControlledByPlayer) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_DeployRainbowTeam-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> DeployRainbowTeam <span class="function_state"></span> <a href="../Source_r6game/r6gameinfo.html#974" class="small">Source code</a></h4>
+<div class="declaration"> function  DeployRainbowTeam ( <span class="source_type"><a href="../engine/playercontroller.html" class="source">PlayerController</a></span> <span class="source_type">newPlayer</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_DestroyBeacon-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> DestroyBeacon <span class="function_state"></span> <a href="../Source_r6game/r6gameinfo.html#3856" class="small">Source code</a></h4>
+<div class="declaration"> function  DestroyBeacon ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_EndGame-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> EndGame <span class="function_state"></span> <a href="../Source_r6game/r6gameinfo.html#2914" class="small">Source code</a></h4>
+<div class="declaration"> function  EndGame ( <span class="source_type"><a href="../engine/playerreplicationinfo.html" class="source">PlayerReplicationInfo</a></span> Winner, <span class="source_type">string</span> <span class="source_type">Reason</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_EnteredExtractionZone-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> EnteredExtractionZone <span class="function_state"></span> <a href="../Source_r6game/r6gameinfo.html#3879" class="small">Source code</a></h4>
+<div class="declaration"> function  EnteredExtractionZone ( <span class="source_type"><a href="../engine/actor.html" class="source">actor</a></span> <span class="source_type">other</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_Find2DTexture-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> Find2DTexture <span class="function_state"></span> <a href="../Source_r6game/r6gameinfo.html#1611" class="small">Source code</a></h4>
+<div class="declaration"> function  Find2DTexture ( <span class="source_type">string</span> TeamClass, out <span class="source_type"><a href="../engine/material.html" class="source">Material</a></span> MenuTexture, out <span class="source_type"><a href="../core/object.html" class="source">Object</a></span>.<span class="source_type"><a href="../core/object.html#Region" class="source">Region</a></span> TextureRegion) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_FindPlayerStart-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> FindPlayerStart <span class="function_state"></span> <a href="../Source_r6game/r6gameinfo.html#1343" class="small">Source code</a></h4>
+<div class="declaration"> function <span class="source_type"><a href="../engine/navigationpoint.html" class="source">NavigationPoint</a></span> FindPlayerStart ( <span class="source_type"><a href="../engine/controller.html" class="source">Controller</a></span> <span class="source_type"><a href="../engine/player.html" class="source">Player</a></span>, optional <span class="source_type">byte</span> InTeam, optional <span class="source_type">string</span> <span class="source_type">incomingName</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_FindTeamInsertionZone-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> FindTeamInsertionZone <span class="function_state"></span> <a href="../Source_r6game/r6gameinfo.html#1878" class="small">Source code</a></h4>
+<div class="declaration"> function <span class="source_type"><a href="../r6game/r6insertionzone.html" class="source">R6InsertionZone</a></span> FindTeamInsertionZone ( <span class="source_type">INT</span> <span class="source_type">iSpawningPointNumber</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_FirstPassReset-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> FirstPassReset <span class="function_state"></span> <a href="../Source_r6game/r6gameinfo.html#138" class="small">Source code</a></h4>
+<div class="declaration">simulated function  FirstPassReset ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GetAStartSpot-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> GetAStartSpot <span class="function_state"></span> <a href="../Source_r6game/r6gameinfo.html#159" class="small">Source code</a></h4>
+<div class="declaration"> function <span class="source_type"><a href="../r6abstract/r6abstractinsertionzone.html" class="source">R6AbstractInsertionZone</a></span> GetAStartSpot ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GetCommonRainbowMemberVoicesMgr-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> GetCommonRainbowMemberVoicesMgr <span class="function_state"></span> <a href="../Source_r6game/r6gameinfo.html#2339" class="small">Source code</a></h4>
+<div class="declaration"> function <span class="source_type"><a href="../core/object.html" class="source">Object</a></span> GetCommonRainbowMemberVoicesMgr ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GetCommonRainbowPlayerVoicesMgr-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> GetCommonRainbowPlayerVoicesMgr <span class="function_state"></span> <a href="../Source_r6game/r6gameinfo.html#2325" class="small">Source code</a></h4>
+<div class="declaration"> function <span class="source_type"><a href="../core/object.html" class="source">Object</a></span> GetCommonRainbowPlayerVoicesMgr ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GetHostageVoicesMgr-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> GetHostageVoicesMgr <span class="function_state"></span> <a href="../Source_r6game/r6gameinfo.html#2443" class="small">Source code</a></h4>
+<div class="declaration"> function <span class="source_type"><a href="../core/object.html" class="source">Object</a></span> GetHostageVoicesMgr ( <span class="source_type"><a href="../engine/actor.html#EHostageNationality" class="source">EHostageNationality</a></span> eNationality, <span class="source_type">BOOL</span> IsFemale) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GetMultiCommonVoicesMgr-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> GetMultiCommonVoicesMgr <span class="function_state"></span> <a href="../Source_r6game/r6gameinfo.html#2310" class="small">Source code</a></h4>
+<div class="declaration"> function <span class="source_type"><a href="../core/object.html" class="source">Object</a></span> GetMultiCommonVoicesMgr ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GetMultiCoopMemberVoicesMgr-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> GetMultiCoopMemberVoicesMgr <span class="function_state"></span> <a href="../Source_r6game/r6gameinfo.html#2284" class="small">Source code</a></h4>
+<div class="declaration"> function <span class="source_type"><a href="../core/object.html" class="source">Object</a></span> GetMultiCoopMemberVoicesMgr ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GetMultiCoopPlayerVoicesMgr-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> GetMultiCoopPlayerVoicesMgr <span class="function_state"></span> <a href="../Source_r6game/r6gameinfo.html#2235" class="small">Source code</a></h4>
+<div class="declaration"> function <span class="source_type"><a href="../core/object.html" class="source">Object</a></span> GetMultiCoopPlayerVoicesMgr ( <span class="source_type">INT</span> iTeam) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GetNbHumanPlayerInTeam-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> GetNbHumanPlayerInTeam <span class="function_state"></span> <a href="../Source_r6game/r6gameinfo.html#136" class="small">Source code</a></h4>
+<div class="declaration"> function  GetNbHumanPlayerInTeam ( OUT <span class="source_type">int</span> iAlphaNb, OUT <span class="source_type">int</span> iBravoNb )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GetNbTerroNeutralized-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> GetNbTerroNeutralized <span class="function_state"></span> <a href="../Source_r6game/r6gameinfo.html#3941" class="small">Source code</a></h4>
+<div class="declaration"> function <span class="source_type">int</span> GetNbTerroNeutralized ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GetNewTeam-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> GetNewTeam <span class="function_state"></span> <a href="../Source_r6game/r6gameinfo.html#1958" class="small">Source code</a></h4>
+<div class="declaration"> function <span class="source_type"><a href="../engine/actor.html" class="source">Actor</a></span> GetNewTeam ( <span class="source_type"><a href="../engine/actor.html" class="source">Actor</a></span> aCurrentTeam, optional <span class="source_type">bool</span> bNextTeam) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GetNoiseMgr-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> GetNoiseMgr <span class="function_state"></span> <a href="../Source_r6game/r6gameinfo.html#2518" class="small">Source code</a></h4>
+<div class="declaration"> function <span class="source_type"><a href="../r6abstract/r6abstractnoisemgr.html" class="source">R6AbstractNoiseMgr</a></span> GetNoiseMgr ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GetPreRecordedMsgVoicesMgr-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> GetPreRecordedMsgVoicesMgr <span class="function_state"></span> <a href="../Source_r6game/r6gameinfo.html#2297" class="small">Source code</a></h4>
+<div class="declaration"> function <span class="source_type"><a href="../core/object.html" class="source">Object</a></span> GetPreRecordedMsgVoicesMgr ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GetRainbowAIFromTable-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> GetRainbowAIFromTable <span class="function_state"></span> <a href="../Source_r6game/r6gameinfo.html#952" class="small">Source code</a></h4>
+<div class="declaration"> function <span class="source_type"><a href="../engine/actor.html" class="source">actor</a></span> GetRainbowAIFromTable ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GetRainbowMemberVoicesMgr-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> GetRainbowMemberVoicesMgr <span class="function_state"></span> <a href="../Source_r6game/r6gameinfo.html#2368" class="small">Source code</a></h4>
+<div class="declaration"> function <span class="source_type"><a href="../core/object.html" class="source">Object</a></span> GetRainbowMemberVoicesMgr ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GetRainbowOtherTeamVoicesMgr-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> GetRainbowOtherTeamVoicesMgr <span class="function_state"></span> <a href="../Source_r6game/r6gameinfo.html#2383" class="small">Source code</a></h4>
+<div class="declaration"> function <span class="source_type"><a href="../core/object.html" class="source">Object</a></span> GetRainbowOtherTeamVoicesMgr ( <span class="source_type">INT</span> iIDVoicesMgr) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GetRainbowPlayerVoicesMgr-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> GetRainbowPlayerVoicesMgr <span class="function_state"></span> <a href="../Source_r6game/r6gameinfo.html#2354" class="small">Source code</a></h4>
+<div class="declaration"> function <span class="source_type"><a href="../core/object.html" class="source">Object</a></span> GetRainbowPlayerVoicesMgr ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GetRainbowTeam-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> GetRainbowTeam <span class="function_state"></span> <a href="../Source_r6game/r6gameinfo.html#176" class="small">Source code</a></h4>
+<div class="declaration"> function <span class="source_type"><a href="../core/object.html" class="source">Object</a></span> GetRainbowTeam ( <span class="source_type">INT</span> eTeamName) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GetSystemUserName-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> GetSystemUserName <span class="function_state"></span> <a href="../Source_r6game/r6gameinfo.html#129" class="small">Source code</a></h4>
+<div class="declaration">native(<span class="source_int">1504</span>) final function  GetSystemUserName ( OUT <span class="source_type">string</span> szUserName )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GetTeamNumBit-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> GetTeamNumBit <span class="function_state"></span> <a href="../Source_r6game/r6gameinfo.html#2652" class="small">Source code</a></h4>
+<div class="declaration"> function <span class="source_type">INT</span> GetTeamNumBit ( <span class="source_type">INT</span> <span class="source_type">num</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GetTerroristVoicesMgr-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> GetTerroristVoicesMgr <span class="function_state"></span> <a href="../Source_r6game/r6gameinfo.html#2405" class="small">Source code</a></h4>
+<div class="declaration"> function <span class="source_type"><a href="../core/object.html" class="source">Object</a></span> GetTerroristVoicesMgr ( <span class="source_type"><a href="../engine/actor.html#ETerroristNationality" class="source">ETerroristNationality</a></span> eNationality) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GetTrainingMgr-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> GetTrainingMgr <span class="function_state"></span> <a href="../Source_r6game/r6gameinfo.html#2510" class="small">Source code</a></h4>
+<div class="declaration"> function <span class="source_type"><a href="../r6game/r6trainingmgr.html" class="source">R6TrainingMgr</a></span> GetTrainingMgr ( <span class="source_type"><a href="../r6engine/r6pawn.html" class="source">R6Pawn</a></span> <span class="source_type">p</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_IncrementRoundsFired-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> IncrementRoundsFired <span class="function_state"></span> <a href="../Source_r6game/r6gameinfo.html#2607" class="small">Source code</a></h4>
+<div class="declaration"> function  IncrementRoundsFired ( <span class="source_type"><a href="../engine/pawn.html" class="source">Pawn</a></span> Instigator, <span class="source_type">BOOL</span> ForceIncrement) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_InitGame-" class="hidden"></a><img src="../img_event.gif" alt="" title="event" /> InitGame <span class="function_state"></span> <a href="../Source_r6game/r6gameinfo.html#745" class="small">Source code</a></h4>
+<div class="declaration"> event  InitGame ( <span class="source_type">string</span> Options, out <span class="source_type">string</span> <span class="source_type">Error</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_InitGameReplicationInfo-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> InitGameReplicationInfo <span class="function_state"></span> <a href="../Source_r6game/r6gameinfo.html#2594" class="small">Source code</a></h4>
+<div class="declaration"> function  InitGameReplicationInfo ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_InitObjectives-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> InitObjectives <span class="function_state"></span> <a href="../Source_r6game/r6gameinfo.html#2768" class="small">Source code</a></h4>
+<div class="declaration"> function  InitObjectives ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_InitObjectivesOfStoryMode-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> InitObjectivesOfStoryMode <span class="function_state"></span> <a href="../Source_r6game/r6gameinfo.html#2930" class="small">Source code</a></h4>
+<div class="declaration"> function  InitObjectivesOfStoryMode ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_InstructAllTeamsToFollowPlanning-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> InstructAllTeamsToFollowPlanning <span class="function_state"></span> <a href="../Source_r6game/r6gameinfo.html#2206" class="small">Source code</a></h4>
+<div class="declaration"> function  InstructAllTeamsToFollowPlanning ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_InstructAllTeamsToHoldPosition-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> InstructAllTeamsToHoldPosition <span class="function_state"></span> <a href="../Source_r6game/r6gameinfo.html#2176" class="small">Source code</a></h4>
+<div class="declaration"> function  InstructAllTeamsToHoldPosition ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_IsARainbowAlive-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> IsARainbowAlive <span class="function_state"></span> <a href="../Source_r6game/r6gameinfo.html#1932" class="small">Source code</a></h4>
+<div class="declaration"> function <span class="source_type">bool</span> IsARainbowAlive ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_IsInResArray-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> IsInResArray <span class="function_state"></span> <a href="../Source_r6game/r6gameinfo.html#463" class="small">Source code</a></h4>
+<div class="declaration"> function <span class="source_type">bool</span> IsInResArray ( <span class="source_type">string</span> szWeaponNameId, <span class="source_type">string</span> RestrictionArray[<span class="source_int">32</span>]) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_IsLastRoundOfTheMatch-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> IsLastRoundOfTheMatch <span class="function_state"></span> <a href="../Source_r6game/r6gameinfo.html#3001" class="small">Source code</a></h4>
+<div class="declaration"> function <span class="source_type">bool</span> IsLastRoundOfTheMatch ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_IsPrimaryGadgetRestricted-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> IsPrimaryGadgetRestricted <span class="function_state"></span> <a href="../Source_r6game/r6gameinfo.html#355" class="small">Source code</a></h4>
+<div class="declaration"> function <span class="source_type">bool</span> IsPrimaryGadgetRestricted ( <span class="source_type">string</span> szWeaponGadgetName) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_IsPrimaryWeaponRestricted-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> IsPrimaryWeaponRestricted <span class="function_state"></span> <a href="../Source_r6game/r6gameinfo.html#328" class="small">Source code</a></h4>
+<div class="declaration"> function <span class="source_type">bool</span> IsPrimaryWeaponRestricted ( <span class="source_type">string</span> szWeaponName) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_IsPrimaryWeaponRestrictedToPawn-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> IsPrimaryWeaponRestrictedToPawn <span class="function_state"></span> <a href="../Source_r6game/r6gameinfo.html#294" class="small">Source code</a></h4>
+<div class="declaration"> function <span class="source_type">bool</span> IsPrimaryWeaponRestrictedToPawn ( <span class="source_type"><a href="../engine/pawn.html" class="source">Pawn</a></span> <span class="source_type">aPawn</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_IsSecondaryGadgetRestricted-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> IsSecondaryGadgetRestricted <span class="function_state"></span> <a href="../Source_r6game/r6gameinfo.html#377" class="small">Source code</a></h4>
+<div class="declaration"> function <span class="source_type">bool</span> IsSecondaryGadgetRestricted ( <span class="source_type">string</span> szWeaponGadgetName) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_IsSecondaryWeaponRestricted-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> IsSecondaryWeaponRestricted <span class="function_state"></span> <a href="../Source_r6game/r6gameinfo.html#401" class="small">Source code</a></h4>
+<div class="declaration"> function <span class="source_type">bool</span> IsSecondaryWeaponRestricted ( <span class="source_type">string</span> szWeaponName) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_IsSecondaryWeaponRestrictedToPawn-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> IsSecondaryWeaponRestrictedToPawn <span class="function_state"></span> <a href="../Source_r6game/r6gameinfo.html#303" class="small">Source code</a></h4>
+<div class="declaration"> function <span class="source_type">bool</span> IsSecondaryWeaponRestrictedToPawn ( <span class="source_type"><a href="../engine/pawn.html" class="source">Pawn</a></span> <span class="source_type">aPawn</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_IsTertiaryWeaponRestricted-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> IsTertiaryWeaponRestricted <span class="function_state"></span> <a href="../Source_r6game/r6gameinfo.html#426" class="small">Source code</a></h4>
+<div class="declaration"> function <span class="source_type">bool</span> IsTertiaryWeaponRestricted ( <span class="source_type">string</span> szWeaponName) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_IsTertiaryWeaponRestrictedForGamePlay-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> IsTertiaryWeaponRestrictedForGamePlay <span class="function_state"></span> <a href="../Source_r6game/r6gameinfo.html#320" class="small">Source code</a></h4>
+<div class="declaration"> function <span class="source_type">bool</span> IsTertiaryWeaponRestrictedForGamePlay ( <span class="source_type"><a href="../engine/pawn.html" class="source">Pawn</a></span> <span class="source_type">aPawn</span>, <span class="source_type">string</span> szWeaponName) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_IsTertiaryWeaponRestrictedToPawn-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> IsTertiaryWeaponRestrictedToPawn <span class="function_state"></span> <a href="../Source_r6game/r6gameinfo.html#312" class="small">Source code</a></h4>
+<div class="declaration"> function <span class="source_type">bool</span> IsTertiaryWeaponRestrictedToPawn ( <span class="source_type"><a href="../engine/pawn.html" class="source">Pawn</a></span> <span class="source_type">aPawn</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_IsUnlimitedPractice-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> IsUnlimitedPractice <span class="function_state"></span> <a href="../Source_r6game/r6gameinfo.html#3824" class="small">Source code</a></h4>
+<div class="declaration"> function <span class="source_type">bool</span> IsUnlimitedPractice ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_LoadPlanningInTraining-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> LoadPlanningInTraining <span class="function_state"></span> <a href="../Source_r6game/r6gameinfo.html#1659" class="small">Source code</a></h4>
+<div class="declaration"> function  LoadPlanningInTraining (  )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_Login-" class="hidden"></a><img src="../img_event.gif" alt="" title="event" /> Login <span class="function_state"></span> <a href="../Source_r6game/r6gameinfo.html#1050" class="small">Source code</a></h4>
+<div class="declaration"> event <span class="source_type"><a href="../engine/playercontroller.html" class="source">PlayerController</a></span> Login ( <span class="source_type">string</span> Portal,
+    <span class="source_type">string</span> Options,
+    out <span class="source_type">string</span> <span class="source_type">Error</span>
+) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_Logout-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> Logout <span class="function_state"></span> <a href="../Source_r6game/r6gameinfo.html#1178" class="small">Source code</a></h4>
+<div class="declaration"> function  Logout ( <span class="source_type"><a href="../engine/controller.html" class="source">Controller</a></span> <span class="source_type">Exiting</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_MPSelectOperativeFace-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> MPSelectOperativeFace <span class="function_state"></span> <a href="../Source_r6game/r6gameinfo.html#3247" class="small">Source code</a></h4>
+<div class="declaration"> function <span class="source_type">INT</span> MPSelectOperativeFace ( <span class="source_type">bool</span> bIsFemale) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_PawnKilled-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> PawnKilled <span class="function_state"></span> <a href="../Source_r6game/r6gameinfo.html#3771" class="small">Source code</a></h4>
+<div class="declaration"> function  PawnKilled ( <span class="source_type"><a href="../engine/pawn.html" class="source">Pawn</a></span> <span class="source_type">killed</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_PlayerReadySelected-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> PlayerReadySelected <span class="function_state"></span> <a href="../Source_r6game/r6gameinfo.html#2960" class="small">Source code</a></h4>
+<div class="declaration"> function  PlayerReadySelected ( <span class="source_type"><a href="../engine/playercontroller.html" class="source">PlayerController</a></span> _Controller) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_PlayTeleportEffect-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> PlayTeleportEffect <span class="function_state"></span> <a href="../Source_r6game/r6gameinfo.html#2587" class="small">Source code</a></h4>
+<div class="declaration"> function  PlayTeleportEffect ( <span class="source_type">bool</span> bOut, <span class="source_type">bool</span> bSound) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_PostBeginPlay-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> PostBeginPlay <span class="function_state"></span> <a href="../Source_r6game/r6gameinfo.html#481" class="small">Source code</a></h4>
+<div class="declaration"> function  PostBeginPlay ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_PostLogin-" class="hidden"></a><img src="../img_event.gif" alt="" title="event" /> PostLogin <span class="function_state"></span> <a href="../Source_r6game/r6gameinfo.html#1664" class="small">Source code</a></h4>
+<div class="declaration"> event  PostLogin ( <span class="source_type"><a href="../engine/playercontroller.html" class="source">PlayerController</a></span> <span class="source_type">NewPlayer</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_PreLogOut-" class="hidden"></a><img src="../img_event.gif" alt="" title="event" /> PreLogOut <span class="function_state"></span> <a href="../Source_r6game/r6gameinfo.html#1153" class="small">Source code</a></h4>
+<div class="declaration"> event  PreLogOut ( <span class="source_type"><a href="../engine/playercontroller.html" class="source">PlayerController</a></span> ExitingPlayer) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ProcessChangeLevelSystem-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> ProcessChangeLevelSystem <span class="function_state"></span> <a href="../Source_r6game/r6gameinfo.html#3017" class="small">Source code</a></h4>
+<div class="declaration"> function  ProcessChangeLevelSystem ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ProcessPlayerReadyStatus-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> ProcessPlayerReadyStatus <span class="function_state"></span> <a href="../Source_r6game/r6gameinfo.html#3671" class="small">Source code</a></h4>
+<div class="declaration"> function <span class="source_type">BOOL</span> ProcessPlayerReadyStatus ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_R6FindPlayerStart-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> R6FindPlayerStart <span class="function_state"></span> <a href="../Source_r6game/r6gameinfo.html#1329" class="small">Source code</a></h4>
+<div class="declaration"> function <span class="source_type"><a href="../engine/navigationpoint.html" class="source">NavigationPoint</a></span> R6FindPlayerStart ( <span class="source_type"><a href="../engine/controller.html" class="source">Controller</a></span> <span class="source_type"><a href="../engine/player.html" class="source">Player</a></span>, optional <span class="source_type">INT</span> SpawnPointNumber, optional <span class="source_type">string</span> <span class="source_type">incomingName</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_R6GameInfoMakeNoise-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> R6GameInfoMakeNoise <span class="function_state"></span> <a href="../Source_r6game/r6gameinfo.html#2579" class="small">Source code</a></h4>
+<div class="declaration"> function  R6GameInfoMakeNoise ( <span class="source_type"><a href="../engine/actor.html" class="source">Actor</a></span>.<span class="source_type"><a href="../engine/actor.html#ESoundType" class="source">ESoundType</a></span> <span class="source_type">eType</span>, <span class="source_type"><a href="../engine/actor.html" class="source">Actor</a></span> <span class="source_type">soundsource</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_R6SetPawnClassInMultiPlayer-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> R6SetPawnClassInMultiPlayer <span class="function_state"></span> <a href="../Source_r6game/r6gameinfo.html#1579" class="small">Source code</a></h4>
+<div class="declaration"> function  R6SetPawnClassInMultiPlayer ( <span class="source_type"><a href="../engine/controller.html" class="source">Controller</a></span> _PlayerController) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_RainbowOperativesStillAlive-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> RainbowOperativesStillAlive <span class="function_state"></span> <a href="../Source_r6game/r6gameinfo.html#1909" class="small">Source code</a></h4>
+<div class="declaration"> function <span class="source_type">bool</span> RainbowOperativesStillAlive ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_RatePlayerStart-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> RatePlayerStart <span class="function_state"></span> <a href="../Source_r6game/r6gameinfo.html#1408" class="small">Source code</a></h4>
+<div class="declaration"> function <span class="source_type">float</span> RatePlayerStart ( <span class="source_type"><a href="../engine/navigationpoint.html" class="source">NavigationPoint</a></span> NavPoint, <span class="source_type">byte</span> Team, <span class="source_type"><a href="../engine/controller.html" class="source">Controller</a></span> <span class="source_type"><a href="../engine/player.html" class="source">Player</a></span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_RemoveAIBackup-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> RemoveAIBackup <span class="function_state"></span> <a href="../Source_r6game/r6gameinfo.html#1159" class="small">Source code</a></h4>
+<div class="declaration"> function  RemoveAIBackup ( <span class="source_type"><a href="../r6engine/r6playercontroller.html" class="source">R6PlayerController</a></span> _playerController) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_RemoveTerroFromList-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> RemoveTerroFromList <span class="function_state"></span> <a href="../Source_r6game/r6gameinfo.html#3799" class="small">Source code</a></h4>
+<div class="declaration"> function  RemoveTerroFromList ( <span class="source_type"><a href="../engine/pawn.html" class="source">Pawn</a></span> <span class="source_type">toRemove</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ResetBroadcastGameMsg-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> ResetBroadcastGameMsg <span class="function_state"></span> <a href="../Source_r6game/r6gameinfo.html#3753" class="small">Source code</a></h4>
+<div class="declaration"> function  ResetBroadcastGameMsg ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ResetMatchStat-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> ResetMatchStat <span class="function_state"></span> <a href="../Source_r6game/r6gameinfo.html#3287" class="small">Source code</a></h4>
+<div class="declaration"> function  ResetMatchStat ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ResetOriginalData-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> ResetOriginalData <span class="function_state"></span> <a href="../Source_r6game/r6gameinfo.html#3319" class="small">Source code</a></h4>
+<div class="declaration">simulated function  ResetOriginalData ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ResetPenalty-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> ResetPenalty <span class="function_state"></span> <a href="../Source_r6game/r6gameinfo.html#3381" class="small">Source code</a></h4>
+<div class="declaration"> function  ResetPenalty ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ResetPlayerBlur-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> ResetPlayerBlur <span class="function_state"></span> <a href="../Source_r6game/r6gameinfo.html#3366" class="small">Source code</a></h4>
+<div class="declaration"> function  ResetPlayerBlur ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ResetRepMissionObjectives-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> ResetRepMissionObjectives <span class="function_state"></span> <a href="../Source_r6game/r6gameinfo.html#2821" class="small">Source code</a></h4>
+<div class="declaration"> function  ResetRepMissionObjectives ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ResetRound-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> ResetRound <span class="function_state"></span> <a href="../Source_r6game/r6gameinfo.html#3499" class="small">Source code</a></h4>
+<div class="declaration"> function  ResetRound ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_RestartGame-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> RestartGame <span class="function_state"></span> <a href="../Source_r6game/r6gameinfo.html#2532" class="small">Source code</a></h4>
+<div class="declaration"> function  RestartGame ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_RestartGameMgr-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> RestartGameMgr <span class="function_state"></span> <a href="../Source_r6game/r6gameinfo.html#3397" class="small">Source code</a></h4>
+<div class="declaration"> function  RestartGameMgr ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_RestartPlayer-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> RestartPlayer <span class="function_state"></span> <a href="../Source_r6game/r6gameinfo.html#1511" class="small">Source code</a></h4>
+<div class="declaration"> function  RestartPlayer ( <span class="source_type"><a href="../engine/controller.html" class="source">Controller</a></span> <span class="source_type">aPlayer</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_SaveTrainingPlanning-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> SaveTrainingPlanning <span class="function_state"></span> <a href="../Source_r6game/r6gameinfo.html#2570" class="small">Source code</a></h4>
+<div class="declaration">exec function  SaveTrainingPlanning ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_SearchOperativesArray-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> SearchOperativesArray <span class="function_state"></span> <a href="../Source_r6game/r6gameinfo.html#3224" class="small">Source code</a></h4>
+<div class="declaration"> function <span class="source_type">INT</span> SearchOperativesArray ( <span class="source_type">bool</span> bIsFemale, <span class="source_type">INT</span> iStartIndex) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_SetController-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> SetController <span class="function_state"></span> <a href="../Source_r6game/r6gameinfo.html#128" class="small">Source code</a></h4>
+<div class="declaration">native(<span class="source_int">2010</span>) final function <span class="source_type">bool</span> SetController ( <span class="source_type"><a href="../engine/playercontroller.html" class="source">PlayerController</a></span> <span class="source_type">pController</span>, <span class="source_type"><a href="../engine/player.html" class="source">Player</a></span> pPlayer )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_SetDefaultTeamFriendlies-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> SetDefaultTeamFriendlies <span class="function_state"></span> <a href="../Source_r6game/r6gameinfo.html#2661" class="small">Source code</a></h4>
+<div class="declaration"> function  SetDefaultTeamFriendlies ( <span class="source_type"><a href="../engine/pawn.html" class="source">Pawn</a></span> <span class="source_type">aPawn</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_SetGamePassword-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> SetGamePassword <span class="function_state"></span> <a href="../Source_r6game/r6gameinfo.html#923" class="small">Source code</a></h4>
+<div class="declaration"> function  SetGamePassword ( <span class="source_type">string</span> szPasswd) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_SetGameTypeInLocal-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> SetGameTypeInLocal <span class="function_state"></span> <a href="../Source_r6game/r6gameinfo.html#3551" class="small">Source code</a></h4>
+<div class="declaration"> function  SetGameTypeInLocal ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_SetJumpingMaps-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> SetJumpingMaps <span class="function_state"></span> <a href="../Source_r6game/r6gameinfo.html#2988" class="small">Source code</a></h4>
+<div class="declaration"> function  SetJumpingMaps ( <span class="source_type">bool</span> _flagSetting, <span class="source_type">int</span> iNextMapIndex) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_SetPawnTeamFriendlies-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> SetPawnTeamFriendlies <span class="function_state"></span> <a href="../Source_r6game/r6gameinfo.html#2643" class="small">Source code</a></h4>
+<div class="declaration"> function  SetPawnTeamFriendlies ( <span class="source_type"><a href="../engine/pawn.html" class="source">Pawn</a></span> <span class="source_type">aPawn</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_SetPlayerInPenaltyBox-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> SetPlayerInPenaltyBox <span class="function_state"></span> <a href="../Source_r6game/r6gameinfo.html#3342" class="small">Source code</a></h4>
+<div class="declaration"> function  SetPlayerInPenaltyBox ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_SetRainbowTeam-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> SetRainbowTeam <span class="function_state"></span> <a href="../Source_r6game/r6gameinfo.html#181" class="small">Source code</a></h4>
+<div class="declaration"> function  SetRainbowTeam ( <span class="source_type">INT</span> eTeamName, <span class="source_type"><a href="../r6engine/r6rainbowteam.html" class="source">R6RainbowTeam</a></span> newTeam) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_SetTeamKillerPenalty-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> SetTeamKillerPenalty <span class="function_state"></span> <a href="../Source_r6game/r6gameinfo.html#3641" class="small">Source code</a></h4>
+<div class="declaration"> function  SetTeamKillerPenalty ( <span class="source_type"><a href="../engine/pawn.html" class="source">Pawn</a></span> DeadPawn, <span class="source_type"><a href="../engine/pawn.html" class="source">Pawn</a></span> KillerPawn) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_SetUdpBeacon-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> SetUdpBeacon <span class="function_state"></span> <a href="../Source_r6game/r6gameinfo.html#131" class="small">Source code</a></h4>
+<div class="declaration"> function  SetUdpBeacon ( <span class="source_type"><a href="../engine/internetinfo.html" class="source">InternetInfo</a></span> _udpBeacon) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_SetUnlimitedPractice-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> SetUnlimitedPractice <span class="function_state"></span> <a href="../Source_r6game/r6gameinfo.html#3832" class="small">Source code</a></h4>
+<div class="declaration">exec function  SetUnlimitedPractice ( <span class="source_type">bool</span> bUnlimitedPractice, <span class="source_type">bool</span> <span class="source_type">bInGameProcess</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_SpawnAI-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> SpawnAI <span class="function_state"></span> <a href="../Source_r6game/r6gameinfo.html#3527" class="small">Source code</a></h4>
+<div class="declaration"> function  SpawnAI ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_SpawnAIandInitGoInGame-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> SpawnAIandInitGoInGame <span class="function_state"></span> <a href="../Source_r6game/r6gameinfo.html#3586" class="small">Source code</a></h4>
+<div class="declaration"> function  SpawnAIandInitGoInGame ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_SpawnNumberToNavPoint-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> SpawnNumberToNavPoint <span class="function_state"></span> <a href="../Source_r6game/r6gameinfo.html#1290" class="small">Source code</a></h4>
+<div class="declaration"> function <span class="source_type">BOOL</span> SpawnNumberToNavPoint ( <span class="source_type">int</span> _iSpawnNumber, out <span class="source_type"><a href="../engine/navigationpoint.html" class="source">NavigationPoint</a></span> _StartNavPoint) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_Stats_getPlayerInfo-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> Stats_getPlayerInfo <span class="function_state"></span> <a href="../Source_r6game/r6gameinfo.html#1479" class="small">Source code</a></h4>
+<div class="declaration"> function <span class="source_type">bool</span> Stats_getPlayerInfo ( OUT <span class="source_type">string</span> <span class="source_type">sz</span>, <span class="source_type"><a href="../r6engine/r6pawn.html" class="source">R6Pawn</a></span> pPawn, <span class="source_type"><a href="../engine/playerreplicationinfo.html" class="source">PlayerReplicationInfo</a></span> <span class="source_type">pInfo</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_Tick-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> Tick <span class="function_state"></span> <a href="../Source_r6game/r6gameinfo.html#3064" class="small">Source code</a></h4>
+<div class="declaration"> function  Tick ( <span class="source_type">float</span> <span class="source_type">DeltaTime</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ToggleRestart-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> ToggleRestart <span class="function_state"></span> <a href="../Source_r6game/r6gameinfo.html#2565" class="small">Source code</a></h4>
+<div class="declaration"> function  ToggleRestart ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_UpdateRepMissionObjectives-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> UpdateRepMissionObjectives <span class="function_state"></span> <a href="../Source_r6game/r6gameinfo.html#2840" class="small">Source code</a></h4>
+<div class="declaration"> function  UpdateRepMissionObjectives ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_UpdateRepMissionObjectivesStatus-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> UpdateRepMissionObjectivesStatus <span class="function_state"></span> <a href="../Source_r6game/r6gameinfo.html#2830" class="small">Source code</a></h4>
+<div class="declaration"> function  UpdateRepMissionObjectivesStatus ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_UpdateRepResArrays-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> UpdateRepResArrays <span class="function_state"></span> <a href="../Source_r6game/r6gameinfo.html#596" class="small">Source code</a></h4>
+<div class="declaration"> function  UpdateRepResArrays ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_UpdateServer-" class="hidden"></a><img src="../img_event.gif" alt="" title="event" /> UpdateServer <span class="function_state"></span> <a href="../Source_r6game/r6gameinfo.html#3980" class="small">Source code</a></h4>
+<div class="declaration"> event  UpdateServer ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+
+
+<br />
+
+
+<table class="title">
+<tr>
+	<th class="title">Defaultproperties</th>
+</tr>
+</table>
+<br />
+<div class="source"><table class="source"><tr><td class="source"><pre class="source">defaultproperties
+{
+     m_eEndGameWidgetID=InGameID_Debriefing
+     m_bRainbowFaces(<span class="source_int">7</span>)=<span class="source_int">1</span>
+     m_bRainbowFaces(<span class="source_int">11</span>)=<span class="source_int">1</span>
+     m_bRainbowFaces(<span class="source_int">23</span>)=<span class="source_int">1</span>
+     m_bRainbowFaces(<span class="source_int">24</span>)=<span class="source_int">1</span>
+     m_bRainbowFaces(<span class="source_int">27</span>)=<span class="source_int">1</span>
+     m_bRainbowFaces(<span class="source_int">28</span>)=<span class="source_int">1</span>
+     m_iCurrentID=<span class="source_int">1</span>
+     m_iMaxOperatives=<span class="source_int">8</span>
+     m_bIsRadarAllowed=True
+     m_bIsWritableMapAllowed=True
+     m_bFeedbackHostageKilled=True
+     m_bFeedbackHostageExtracted=True
+     DefaultFaceTexture=<span class="source_type"><a href="../engine/texture.html" class="source">Texture</a></span><span class="source_name">'R6MenuOperative.RS6_Memeber_01'</span>
+     DefaultFaceCoords=(W=<span class="source_int">42.000000</span>,X=<span class="source_int">472.000000</span>,Y=<span class="source_int">308.000000</span>,<span class="source_type">Z</span>=<span class="source_int">38.000000</span>)
+     m_fTimeBetRounds=<span class="source_int">5.000000</span>
+     CurrentID=<span class="source_int">100</span>
+     GameReplicationInfoClass=<span class="source_type">Class</span><span class="source_name">'R6Engine.R6GameReplicationInfo'</span>
+     DefaultPlayerClassName=<span class="source_string">"R6Game.R6PlanningPawn"</span>
+     HUDType=<span class="source_string">"R6Game.R6PlanningHud"</span>
+     GameName=<span class="source_string">"Rainbow6"</span>
+     PlayerControllerClassName=<span class="source_string">"R6Game.R6PlanningCtrl"</span>
+     m_szGameTypeFlag=<span class="source_string">"RGM_NoRulesMode"</span>
+}
+</pre></td></tr></table></div>
+
+
+
+<hr />
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../r6game/r6game-overview.html">Package</a></td>
+	<td class="header_hilight">Class</td>
+	<td class="header"><a href="../Source_r6game/r6gameinfo.html">Source</a></td>
+	<td class="header"><a class="header" href="../classtree.html#R6GameInfo">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../r6game/r6filemanagerplanning.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../r6game/r6gamemanager.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+
+<div class="stats">Creation time: mar. 26/5/2026 18:33:11.053 - Created with <a href="http://wiki.beyondunreal.com/wiki/UnCodeX" target="_blank">UnCodeX</a></div>
+
+</body>
+</html>

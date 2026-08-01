@@ -1,0 +1,938 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+	<title>UnCodeX - Source: R6Menu.R6MenuCreditsWidget</title>
+	<meta name="Generator" content="UnCodeX 241" />
+	<link rel="stylesheet" href="../DocStyle2.css" type="text/css" title="Original Purple" />
+	<link rel="alternative stylesheet" href="../DocStyle2-blue.css" type="text/css" title="Blue" />
+	<link rel="alternative stylesheet" href="../DocStyle2-red.css" type="text/css" title="Red" />
+	<!--[if IE]>
+	<link rel="stylesheet" href="../DocStyle2-msie.css" type="text/css" />
+	<![endif]-->
+	<script src="../styleswitcher.js" type="text/javascript"></script>
+</head>
+<body>
+
+<div class="header">
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../r6menu/r6menu-overview.html">Package</a></td>
+	<td class="header"><a href="../r6menu/r6menucreditswidget.html">Class</a></td>
+	<td class="header_hilight">Source</td>
+	<td class="header"><a class="header" href="../classtree.html#R6MenuCreditsWidget">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../Source_r6menu/r6menucredits.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../Source_r6menu/r6menucustommissionnbterroselect.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html#Source_r6menu/r6menucreditswidget.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+</div>
+<div class="spacer"></div>
+
+<h1><a href="../r6menu/r6menu-overview.html">R6Menu</a>.<a href="../r6menu/r6menucreditswidget.html">R6MenuCreditsWidget</a></h1>
+<br />
+<div class="source"><table class="source"><tr><td class="source_lineno"><span class="source_lineno">00001<br />00002<br />00003<br />00004<br />00005<br />00006<br />00007<br />00008<br />00009<br />00010<br />00011<br />00012<br />00013<br />00014<br />00015<br />00016<br />00017<br />00018<br />00019<br />00020<br />
+00021<br />00022<br />00023<br />00024<br />00025<br />00026<br />00027<br />00028<br />00029<br />00030<br />00031<br />00032<br />00033<br />00034<br />00035<br />00036<br />00037<br />00038<br />00039<br />00040<br />
+00041<br />00042<br />00043<br />00044<br />00045<br />00046<br />00047<br />00048<br />00049<br />00050<br />00051<br />00052<br />00053<br />00054<br />00055<br />00056<br />00057<br />00058<br />00059<br />00060<br />
+00061<br />00062<br />00063<br />00064<br />00065<br />00066<br />00067<br />00068<br />00069<br />00070<br />00071<br />00072<br />00073<br />00074<br />00075<br />00076<br />00077<br />00078<br />00079<br />00080<br />
+00081<br />00082<br />00083<br />00084<br />00085<br />00086<br />00087<br />00088<br />00089<br />00090<br />00091<br />00092<br />00093<br />00094<br />00095<br />00096<br />00097<br />00098<br />00099<br />00100<br />
+00101<br />00102<br />00103<br />00104<br />00105<br />00106<br />00107<br />00108<br />00109<br />00110<br />00111<br />00112<br />00113<br />00114<br />00115<br />00116<br />00117<br />00118<br />00119<br />00120<br />
+00121<br />00122<br />00123<br />00124<br />00125<br />00126<br />00127<br />00128<br />00129<br />00130<br />00131<br />00132<br />00133<br />00134<br />00135<br />00136<br />00137<br />00138<br />00139<br />00140<br />
+00141<br />00142<br />00143<br />00144<br />00145<br />00146<br />00147<br />00148<br />00149<br />00150<br />00151<br />00152<br />00153<br />00154<br />00155<br />00156<br />00157<br />00158<br />00159<br />00160<br />
+00161<br />00162<br />00163<br />00164<br />00165<br />00166<br />00167<br />00168<br />00169<br />00170<br />00171<br />00172<br />00173<br />00174<br />00175<br />00176<br />00177<br />00178<br />00179<br />00180<br />
+00181<br />00182<br />00183<br />00184<br />00185<br />00186<br />00187<br />00188<br />00189<br />00190<br />00191<br />00192<br />00193<br />00194<br />00195<br />00196<br />00197<br />00198<br />00199<br />00200<br />
+00201<br />00202<br />00203<br />00204<br />00205<br />00206<br />00207<br />00208<br />00209<br />00210<br />00211<br />00212<br />00213<br />00214<br />00215<br />00216<br />00217<br />00218<br />00219<br />00220<br />
+00221<br />00222<br />00223<br />00224<br />00225<br />00226<br />00227<br />00228<br />00229<br />00230<br />00231<br />00232<br />00233<br />00234<br />00235<br />00236<br />00237<br />00238<br />00239<br />00240<br />
+00241<br />00242<br />00243<br />00244<br />00245<br />00246<br />00247<br />00248<br />00249<br />00250<br />00251<br />00252<br />00253<br />00254<br />00255<br />00256<br />00257<br />00258<br />00259<br />00260<br />
+00261<br />00262<br />00263<br />00264<br />00265<br />00266<br />00267<br />00268<br />00269<br />00270<br />00271<br />00272<br />00273<br />00274<br />00275<br />00276<br />00277<br />00278<br />00279<br />00280<br />
+00281<br />00282<br />00283<br />00284<br />00285<br />00286<br />00287<br />00288<br />00289<br />00290<br />00291<br />00292<br />00293<br />00294<br />00295<br />00296<br />00297<br />00298<br />00299<br />00300<br />
+00301<br />00302<br />00303<br />00304<br />00305<br />00306<br />00307<br />00308<br />00309<br />00310<br />00311<br />00312<br />00313<br />00314<br />00315<br />00316<br />00317<br />00318<br />00319<br />00320<br />
+00321<br />00322<br />00323<br />00324<br />00325<br />00326<br />00327<br />00328<br />00329<br />00330<br />00331<br />00332<br />00333<br />00334<br />00335<br />00336<br />00337<br />00338<br />00339<br />00340<br />
+00341<br />00342<br />00343<br />00344<br />00345<br />00346<br />00347<br />00348<br />00349<br />00350<br />00351<br />00352<br />00353<br />00354<br />00355<br />00356<br />00357<br />00358<br />00359<br />00360<br />
+00361<br />00362<br />00363<br />00364<br />00365<br />00366<br />00367<br />00368<br />00369<br />00370<br />00371<br />00372<br />00373<br />00374<br />00375<br />00376<br />00377<br />00378<br />00379<br />00380<br />
+00381<br />00382<br />00383<br />00384<br />00385<br />00386<br />00387<br />00388<br />00389<br />00390<br />00391<br />00392<br />00393<br />00394<br />00395<br />00396<br />00397<br />00398<br />00399<br />00400<br />
+00401<br />00402<br />00403<br />00404<br />00405<br />00406<br />00407<br />00408<br />00409<br />00410<br />00411<br />00412<br />00413<br />00414<br />00415<br />00416<br />00417<br />00418<br />00419<br />00420<br />
+00421<br />00422<br />00423<br />00424<br />00425<br />00426<br />00427<br />00428<br />00429<br />00430<br />00431<br />00432<br />00433<br />00434<br />00435<br />00436<br />00437<br />00438<br />00439<br />00440<br />
+00441<br />00442<br />00443<br />00444<br />00445<br />00446<br />00447<br />00448<br />00449<br />00450<br />00451<br />00452<br />00453<br />00454<br />00455<br />00456<br />00457<br />00458<br />00459<br />00460<br />
+00461<br />00462<br />00463<br />00464<br />00465<br />00466<br />00467<br />00468<br />00469<br />00470<br />00471<br />00472<br />00473<br />00474<br />00475<br />00476<br />00477<br />00478<br />00479<br />00480<br />
+00481<br />00482<br />00483<br />00484<br />00485<br />00486<br />00487<br />00488<br />00489<br />00490<br />00491<br />00492<br />00493<br />00494<br />00495<br />00496<br />00497<br />00498<br />00499<br />00500<br />
+00501<br />00502<br />00503<br />00504<br />00505<br />00506<br />00507<br />00508<br />00509<br />00510<br />00511<br />00512<br />00513<br />00514<br />00515<br />00516<br />00517<br />00518<br />00519<br />00520<br />
+00521<br />00522<br />00523<br />00524<br />00525<br />00526<br />00527<br />00528<br />00529<br />00530<br />00531<br />00532<br />00533<br />00534<br />00535<br />00536<br />00537<br />00538<br />00539<br />00540<br />
+00541<br />00542<br />00543<br />00544<br />00545<br />00546<br />00547<br />00548<br />00549<br />00550<br />00551<br />00552<br />00553<br />00554<br />00555<br />00556<br />00557<br />00558<br />00559<br />00560<br />
+00561<br />00562<br />00563<br />00564<br />00565<br />00566<br />00567<br />00568<br />00569<br />00570<br />00571<br />00572<br />00573<br />00574<br />00575<br />00576<br />00577<br />00578<br />00579<br />00580<br />
+00581<br />00582<br />00583<br />00584<br />00585<br />00586<br />00587<br />00588<br />00589<br />00590<br />00591<br />00592<br />00593<br />00594<br />00595<br />00596<br />00597<br />00598<br />00599<br />00600<br />
+00601<br />00602<br />00603<br />00604<br />00605<br />00606<br />00607<br />00608<br />00609<br />00610<br />00611<br />00612<br />00613<br />00614<br />00615<br />00616<br />00617<br />00618<br />00619<br />00620<br />
+00621<br />00622<br />00623<br />00624<br />00625<br />00626<br />00627<br />00628<br />00629<br />00630<br />00631<br />00632<br />00633<br />00634<br />00635<br />00636<br />00637<br />00638<br />00639<br />00640<br />
+00641<br />00642<br />00643<br />00644<br />00645<br />00646<br />00647<br />00648<br />00649<br />00650<br />00651<br />00652<br />00653<br />00654<br />00655<br />00656<br />00657<br />00658<br />00659<br />00660<br />
+00661<br />00662<br />00663<br />00664<br />00665<br />00666<br />00667<br />00668<br />00669<br />00670<br />00671<br />00672<br />00673<br />00674<br />00675<br />00676<br />00677<br />00678<br />00679<br />00680<br />
+00681<br />00682<br />00683<br />00684<br />00685<br />00686<br />00687<br />00688<br />00689<br />00690<br />00691<br />00692<br />00693<br />00694<br />00695<br />00696<br />00697<br />00698<br />00699<br />00700<br />
+00701<br />00702<br />00703<br />00704<br />00705<br />00706<br />00707<br />00708<br />00709<br />00710<br />00711<br />00712<br />00713<br />00714<br />00715<br />00716<br />00717<br />00718<br />00719<br />00720<br />
+00721<br />00722<br />00723<br />00724<br />00725<br />00726<br />00727<br />00728<br />00729<br />00730<br />00731<br />00732<br />00733<br />00734<br />00735<br />00736<br />00737<br />00738<br />00739<br />00740<br />
+00741<br />00742<br />00743<br />00744<br />00745<br />00746<br />00747<br />00748<br />00749<br />00750<br />00751<br />00752<br />00753<br />00754<br />00755<br />00756<br />00757<br />00758<br />00759<br />00760<br />
+00761<br />00762<br />00763<br />00764<br />00765<br />00766<br />00767<br />00768<br />00769<br />00770<br />00771<br />00772<br />00773<br />00774<br />00775<br />00776<br />00777<br />00778<br />00779<br />00780<br />
+00781<br />00782<br />00783<br />00784<br />00785<br />00786<br />00787<br />00788<br />00789<br />00790<br />00791<br />00792<br />00793<br />00794<br />00795<br />00796<br />00797<br />00798<br />00799<br />00800<br />
+00801<br />00802<br />00803<br />00804<br />00805<br />00806<br />00807<br />00808<br />00809<br />00810<br />00811<br />00812<br />00813<br />00814<br />00815<br />00816<br />00817<br />00818<br />00819<br />00820<br />
+00821<br />00822<br />00823<br />00824<br />00825<br />00826<br />00827<br />00828<br />00829<br />00830<br />00831<br />00832<br />00833<br />00834<br />00835<br />00836<br />00837<br />00838<br />00839</span></td>
+<td class="source"><pre class="source"><a name="1"></a><span class="source_comment">//=============================================================================
+</span><a name="2"></a><span class="source_comment">//  R6MenuCreditsWidget.uc : (add small description)
+</span><a name="3"></a><span class="source_comment">//  Copyright 2001 Ubi Soft, Inc. All Rights Reserved.
+</span><a name="4"></a><span class="source_comment">//
+</span><a name="5"></a><span class="source_comment">//  Revision history:
+</span><a name="6"></a><span class="source_comment">//    2001/11/22 * Created by Alexandre Dionne
+</span><a name="7"></a><span class="source_comment">//=============================================================================
+</span><a name="8"></a><span class="source_type">class</span> <span class="source_type"><a href="../r6menu/r6menucreditswidget.html" class="source">R6MenuCreditsWidget</a></span> extends <span class="source_type"><a href="../r6menu/r6menuwidget.html" class="source">R6MenuWidget</a></span>
+<a name="9"></a><span class="source_comment">// MPF - Eric
+</span><a name="10"></a>	Config(R6Credits);
+<a name="11"></a>
+<a name="12"></a>var <span class="source_type"><a href="../r6window/r6windowtextlabel.html" class="source">R6WindowTextLabel</a></span>			m_LMenuTitle; 
+<a name="13"></a>var <span class="source_type"><a href="../r6window/r6windowbutton.html" class="source">R6WindowButton</a></span>	            m_ButtonMainMenu;
+<a name="14"></a>
+<a name="15"></a>var <span class="source_type"><a href="../r6menu/r6menucredits.html" class="source">R6MenuCredits</a></span>				m_ListOfCredits;
+<a name="16"></a>var <span class="source_type"><a href="../core/object.html#Region" class="source">Region</a></span>                      m_RVideo;
+<a name="17"></a>
+<a name="18"></a>var <span class="source_type">INT</span>                         m_IBottomVideoY, m_IBottomVideoH, m_IRightVideoX, m_IRightVideoTextX, m_IRightVideoW, m_ILeftVideoW;
+<a name="19"></a>
+<a name="20"></a>var config array&lt;<span class="source_type">string</span>&gt;		CreditsName;
+<a name="21"></a>
+<a name="22"></a>function Created()
+<a name="23"></a>{
+<a name="24"></a>    m_ListOfCredits = <span class="source_type"><a href="../r6menu/r6menucredits.html" class="source">R6MenuCredits</a></span>(CreateWindow(<span class="source_type">class</span><span class="source_name">'R6MenuCredits'</span>, m_RVideo.X, m_RVideo.<span class="source_type">Y</span>, m_RVideo.W, m_RVideo.<span class="source_type">H</span>, self));
+<a name="25"></a>
+<a name="26"></a>	m_ButtonMainMenu = <span class="source_type"><a href="../r6window/r6windowbutton.html" class="source">R6WindowButton</a></span>(CreateControl( <span class="source_type">class</span><span class="source_name">'R6WindowButton'</span>, <span class="source_int">10</span>, <span class="source_int">425</span>, <span class="source_int">250</span>, <span class="source_int">25</span>, self));
+<a name="27"></a>    m_ButtonMainMenu.ToolTipString      = Localize(<span class="source_string">"Tip"</span>,<span class="source_string">"ButtonMainMenu"</span>,<span class="source_string">"R6Menu"</span>);
+<a name="28"></a>	m_ButtonMainMenu.<span class="source_type">Text</span>               = Localize(<span class="source_string">"SinglePlayer"</span>,<span class="source_string">"ButtonMainMenu"</span>,<span class="source_string">"R6Menu"</span>);	
+<a name="29"></a>	m_ButtonMainMenu.Align              = TA_LEFT;
+<a name="30"></a>	m_ButtonMainMenu.m_buttonFont       = Root.Fonts[F_MainButton];
+<a name="31"></a>	m_ButtonMainMenu.ResizeToText();
+<a name="32"></a>    
+<a name="33"></a>    m_LMenuTitle = <span class="source_type"><a href="../r6window/r6windowtextlabel.html" class="source">R6WindowTextLabel</a></span>(CreateWindow(<span class="source_type">class</span><span class="source_name">'R6WindowTextLabel'</span>, <span class="source_int">0</span>, <span class="source_int">18</span>, WinWidth - <span class="source_int">8</span>, <span class="source_int">25</span>, self));
+<a name="34"></a>	m_LMenuTitle.<span class="source_type">Text</span> = Localize(<span class="source_string">"Credits"</span>,<span class="source_string">"Title"</span>,<span class="source_string">"R6Menu"</span>);
+<a name="35"></a>	m_LMenuTitle.Align               = TA_Right;
+<a name="36"></a>	m_LMenuTitle.m_Font              = Root.Fonts[F_MenuMainTitle];
+<a name="37"></a>	m_LMenuTitle.m_BGTexture         = None;
+<a name="38"></a>    m_LMenuTitle.m_bDrawBorders      = False;
+<a name="39"></a>
+<a name="40"></a>    
+<a name="41"></a>    m_IBottomVideoY = m_RVideo.<span class="source_type">Y</span> + m_RVideo.<span class="source_type">H</span>;
+<a name="42"></a>    m_IBottomVideoH = <span class="source_int">512</span> - m_IBottomVideoY;  
+<a name="43"></a>	
+<a name="44"></a>	<span class="source_comment">// MPF - Eric
+</span><a name="45"></a>	LoadConfig(<span class="source_type">class</span><span class="source_name">'Actor'</span>.static.GetModMgr().GetCreditsFile());
+<a name="46"></a>}
+<a name="47"></a>
+<a name="48"></a>function Paint( <span class="source_type"><a href="../engine/canvas.html" class="source">Canvas</a></span> <span class="source_type">C</span>, <span class="source_type">FLOAT</span> X, <span class="source_type">FLOAT</span> <span class="source_type">Y</span>)
+<a name="49"></a>{
+<a name="50"></a>	local <span class="source_type"><a href="../r6window/r6windowrootwindow.html" class="source">R6WindowRootWindow</a></span> R6WRoot;
+<a name="51"></a>
+<a name="52"></a>	R6WRoot = <span class="source_type"><a href="../r6window/r6windowrootwindow.html" class="source">R6WindowRootWindow</a></span>(Root);
+<a name="53"></a>
+<a name="54"></a>    <span class="source_comment">//Top of video    
+</span><a name="55"></a>    DrawStretchedTextureSegment(<span class="source_type">C</span>, <span class="source_int">0</span>,<span class="source_int">0</span>,<span class="source_int">512</span>,m_RVideo.<span class="source_type">Y</span>,<span class="source_int">0</span>,<span class="source_int">0</span>,<span class="source_int">512</span>,m_RVideo.<span class="source_type">Y</span>,    R6WRoot.m_BGTexture[<span class="source_int">0</span>]);
+<a name="56"></a>    DrawStretchedTextureSegment(<span class="source_type">C</span>, <span class="source_int">512</span>,<span class="source_int">0</span>,<span class="source_int">512</span>,m_RVideo.<span class="source_type">Y</span>,<span class="source_int">0</span>,<span class="source_int">0</span>,<span class="source_int">512</span>,m_RVideo.<span class="source_type">Y</span>,  R6WRoot.m_BGTexture[<span class="source_int">1</span>]);
+<a name="57"></a>    
+<a name="58"></a>    <span class="source_comment">//Sides of video 
+</span><a name="59"></a>    DrawStretchedTextureSegment(<span class="source_type">C</span>, <span class="source_int">0</span>,m_RVideo.<span class="source_type">Y</span>,m_ILeftVideoW,m_RVideo.<span class="source_type">H</span>,<span class="source_int">0</span>,m_RVideo.<span class="source_type">Y</span>,m_ILeftVideoW,m_RVideo.<span class="source_type">H</span>,    R6WRoot.m_BGTexture[<span class="source_int">0</span>]);
+<a name="60"></a>    DrawStretchedTextureSegment(<span class="source_type">C</span>, m_IRightVideoX,m_RVideo.<span class="source_type">Y</span>,m_IRightVideoW,m_RVideo.<span class="source_type">H</span>,m_IRightVideoTextX,m_RVideo.<span class="source_type">Y</span>,m_IRightVideoW,m_RVideo.<span class="source_type">H</span>,  R6WRoot.m_BGTexture[<span class="source_int">1</span>]);
+<a name="61"></a>
+<a name="62"></a>
+<a name="63"></a>    <span class="source_comment">//Bottom of Video
+</span><a name="64"></a>    DrawStretchedTextureSegment(<span class="source_type">C</span>, <span class="source_int">0</span>,m_IBottomVideoY,<span class="source_int">512</span>,m_IBottomVideoH,   <span class="source_int">0</span>,m_IBottomVideoY,<span class="source_int">512</span>,m_IBottomVideoH,    R6WRoot.m_BGTexture[<span class="source_int">0</span>]);
+<a name="65"></a>    DrawStretchedTextureSegment(<span class="source_type">C</span>, <span class="source_int">512</span>,m_IBottomVideoY,<span class="source_int">512</span>,m_IBottomVideoH, <span class="source_int">0</span>,m_IBottomVideoY,<span class="source_int">512</span>,m_IBottomVideoH,  R6WRoot.m_BGTexture[<span class="source_int">1</span>]);
+<a name="66"></a>}
+<a name="67"></a>
+<a name="68"></a>function ShowWindow()
+<a name="69"></a>{
+<a name="70"></a>    local <span class="source_type">float</span> X, <span class="source_type">Y</span>;
+<a name="71"></a>    
+<a name="72"></a>	GetLevel().m_bAllow3DRendering = false;
+<a name="73"></a>
+<a name="74"></a>	<span class="source_comment">// randomly update the background texture
+</span><a name="75"></a>    Root.SetLoadRandomBackgroundImage(<span class="source_string">"Credits"</span>);
+<a name="76"></a>
+<a name="77"></a>    Super.ShowWindow();
+<a name="78"></a>
+<a name="79"></a>	if (m_ListOfCredits.Items.Next == None)
+<a name="80"></a>	{
+<a name="81"></a>		<span class="source_comment">// read the file and fill all the credits array
+</span><a name="82"></a>		FillListOfCredits();
+<a name="83"></a>	}
+<a name="84"></a>
+<a name="85"></a>	<span class="source_comment">// reset credits scroll parameters
+</span><a name="86"></a>	m_ListOfCredits.ResetCredits();
+<a name="87"></a>}
+<a name="88"></a>
+<a name="89"></a>function HideWindow()
+<a name="90"></a>{
+<a name="91"></a>	GetLevel().m_bAllow3DRendering = true;
+<a name="92"></a>
+<a name="93"></a>	Super.HideWindow();
+<a name="94"></a>}
+<a name="95"></a>
+<a name="96"></a>function FillListOfCredits()
+<a name="97"></a>{
+<a name="98"></a>	local <span class="source_type"><a href="../r6window/r6windowlistboxcreditsitem.html" class="source">R6WindowListBoxCreditsItem</a></span> pItem;
+<a name="99"></a>	local <span class="source_type">string</span> szTemp;
+<a name="100"></a>	local <span class="source_type">int</span> <span class="source_type">i</span>;
+<a name="101"></a>
+<a name="102"></a>	for ( <span class="source_type">i</span> =<span class="source_int">0</span>; <span class="source_type">i</span> &lt; CreditsName.Length; <span class="source_type">i</span>++)
+<a name="103"></a>	{
+<a name="104"></a>		pItem = <span class="source_type"><a href="../r6window/r6windowlistboxcreditsitem.html" class="source">R6WindowListBoxCreditsItem</a></span>( m_ListOfCredits.Items.Append( <span class="source_type">class</span><span class="source_name">'R6WindowListBoxCreditsItem'</span>));
+<a name="105"></a>
+<a name="106"></a>		if (pItem != None)
+<a name="107"></a>		{
+<a name="108"></a>			pItem.Init( CreditsName[<span class="source_type">i</span>]);
+<a name="109"></a>		}
+<a name="110"></a>	}
+<a name="111"></a>}
+<a name="112"></a>
+<a name="113"></a>function Notify(<span class="source_type"><a href="../uwindow/uwindowdialogcontrol.html" class="source">UWindowDialogControl</a></span> <span class="source_type">C</span>, <span class="source_type">byte</span> E)
+<a name="114"></a>{ 
+<a name="115"></a>    if( E == DE_Click )
+<a name="116"></a>    {
+<a name="117"></a>		if (<span class="source_type">C</span> == m_ButtonMainMenu)
+<a name="118"></a>		{
+<a name="119"></a>            Root.ChangeCurrentWidget(MainMenuWidgetID);
+<a name="120"></a>        }
+<a name="121"></a>    }    
+<a name="122"></a>}
+<a name="123"></a>
+<a name="124"></a><span class="source_comment">//=========================================================================================
+</span><a name="125"></a><span class="source_comment">// TO REMOVE FOR THE END OF THE PROJECT
+</span><a name="126"></a><span class="source_comment">//=========================================================================================
+</span><a name="127"></a>function WindowEvent(<span class="source_type"><a href="../uwindow/uwindowwindow.html#WinMessage" class="source">WinMessage</a></span> <span class="source_type">Msg</span>, <span class="source_type"><a href="../engine/canvas.html" class="source">Canvas</a></span> <span class="source_type">C</span>, <span class="source_type">float</span> X, <span class="source_type">float</span> <span class="source_type">Y</span>, <span class="source_type">int</span> <span class="source_type">Key</span>) 
+<a name="128"></a>{
+<a name="129"></a>    switch( <span class="source_type">Msg</span> )
+<a name="130"></a>    {
+<a name="131"></a>		case WM_KeyDown:
+<a name="132"></a>			if (<span class="source_type">Key</span> == Root.<span class="source_type"><a href="../engine/console.html" class="source">Console</a></span>.<span class="source_type"><a href="../engine/interactions.html#EInputKey" class="source">EInputKey</a></span>.IK_GreyMinus)
+<a name="133"></a>			{
+<a name="134"></a>				if (m_ListOfCredits.m_fScrollSpeed &gt; <span class="source_int">0</span>)
+<a name="135"></a>					m_ListOfCredits.m_fScrollSpeed = <span class="source_type">Max</span>( <span class="source_int">0</span>, m_ListOfCredits.m_fScrollSpeed - <span class="source_int">0.5</span>);
+<a name="136"></a>
+<a name="137"></a><span class="source_macro">#ifdefDEBUG
+</span><a name="138"></a>				log(<span class="source_string">"Scroll speed: "</span>$m_ListOfCredits.m_fScrollSpeed);
+<a name="139"></a><span class="source_macro">#endif
+</span><a name="140"></a>			}
+<a name="141"></a>			else if (<span class="source_type">Key</span> == Root.<span class="source_type"><a href="../engine/console.html" class="source">Console</a></span>.<span class="source_type"><a href="../engine/interactions.html#EInputKey" class="source">EInputKey</a></span>.IK_GreyPlus)
+<a name="142"></a>			{
+<a name="143"></a>				m_ListOfCredits.m_fScrollSpeed += <span class="source_int">0.5</span>;
+<a name="144"></a><span class="source_macro">#ifdefDEBUG
+</span><a name="145"></a>				log(<span class="source_string">"Scroll speed: "</span>$m_ListOfCredits.m_fScrollSpeed);
+<a name="146"></a><span class="source_macro">#endif
+</span><a name="147"></a>			}
+<a name="148"></a>			else if (<span class="source_type">Key</span> == Root.<span class="source_type"><a href="../engine/console.html" class="source">Console</a></span>.<span class="source_type"><a href="../engine/interactions.html#EInputKey" class="source">EInputKey</a></span>.IK_GreyStar)
+<a name="149"></a>			{
+<a name="150"></a>				m_ListOfCredits.m_bStopScroll = !m_ListOfCredits.m_bStopScroll;
+<a name="151"></a>			}
+<a name="152"></a>			break;
+<a name="153"></a>	}
+<a name="154"></a>
+<a name="155"></a>	Super.WindowEvent( <span class="source_type">Msg</span>, <span class="source_type">C</span>, X, <span class="source_type">Y</span>, <span class="source_type">Key</span>);
+<a name="156"></a>}
+<a name="157"></a>
+<a name="158"></a>defaultproperties
+<a name="159"></a>{
+<a name="160"></a>     m_IRightVideoX=<span class="source_int">570</span>
+<a name="161"></a>     m_IRightVideoTextX=<span class="source_int">58</span>
+<a name="162"></a>     m_IRightVideoW=<span class="source_int">454</span>
+<a name="163"></a>     m_ILeftVideoW=<span class="source_int">70</span>
+<a name="164"></a>     CreditsName(<span class="source_int">0</span>)=<span class="source_string">"[370]"</span>
+<a name="165"></a>     CreditsName(<span class="source_int">1</span>)=<span class="source_string">"[T0]Tom Clancy's Rainbow Six 3"</span>
+<a name="166"></a>     CreditsName(<span class="source_int">2</span>)=<span class="source_string">"[T0]Raven Shield"</span>
+<a name="167"></a>     CreditsName(<span class="source_int">3</span>)=<span class="source_string">"[80]"</span>
+<a name="168"></a>     CreditsName(<span class="source_int">4</span>)=<span class="source_string">"[T0]Creative Team"</span>
+<a name="169"></a>     CreditsName(<span class="source_int">5</span>)=<span class="source_string">"[30]"</span>
+<a name="170"></a>     CreditsName(<span class="source_int">6</span>)=<span class="source_string">"[T1]Producer"</span>
+<a name="171"></a>     CreditsName(<span class="source_int">7</span>)=<span class="source_string">"[T2]Chadi Lebbos  [LeViaT]"</span>
+<a name="172"></a>     CreditsName(<span class="source_int">8</span>)=<span class="source_string">"[20]"</span>
+<a name="173"></a>     CreditsName(<span class="source_int">9</span>)=<span class="source_string">"[T1]Associate Producer"</span>
+<a name="174"></a>     CreditsName(<span class="source_int">10</span>)=<span class="source_string">"[T2]Patrick Naud  [Dr.No]"</span>
+<a name="175"></a>     CreditsName(<span class="source_int">11</span>)=<span class="source_string">"[20]"</span>
+<a name="176"></a>     CreditsName(<span class="source_int">12</span>)=<span class="source_string">"[T1]Senior Producer"</span>
+<a name="177"></a>     CreditsName(<span class="source_int">13</span>)=<span class="source_string">"[T2]Mathieu Ferland  [Tim]"</span>
+<a name="178"></a>     CreditsName(<span class="source_int">14</span>)=<span class="source_string">"[20]"</span>
+<a name="179"></a>     CreditsName(<span class="source_int">15</span>)=<span class="source_string">"[T1]Lead Game Designer / Manual Writer"</span>
+<a name="180"></a>     CreditsName(<span class="source_int">16</span>)=<span class="source_string">"[T2]Michael McCoy  [Yuri]"</span>
+<a name="181"></a>     CreditsName(<span class="source_int">17</span>)=<span class="source_string">"[20]"</span>
+<a name="182"></a>     CreditsName(<span class="source_int">18</span>)=<span class="source_string">"[T1]Game Designers"</span>
+<a name="183"></a>     CreditsName(<span class="source_int">19</span>)=<span class="source_string">"[T2]Daniel Bérubé  [Berlu]"</span>
+<a name="184"></a>     CreditsName(<span class="source_int">20</span>)=<span class="source_string">"[T2]Maxime Béland  [M4X1M3]"</span>
+<a name="185"></a>     CreditsName(<span class="source_int">21</span>)=<span class="source_string">"[20]"</span>
+<a name="186"></a>     CreditsName(<span class="source_int">22</span>)=<span class="source_string">"[T1]Lead Programmer"</span>
+<a name="187"></a>     CreditsName(<span class="source_int">23</span>)=<span class="source_string">"[T2]Eric Bégin  [Arsenic]"</span>
+<a name="188"></a>     CreditsName(<span class="source_int">24</span>)=<span class="source_string">"[20]"</span>
+<a name="189"></a>     CreditsName(<span class="source_int">25</span>)=<span class="source_string">"[T1]Programmers"</span>
+<a name="190"></a>     CreditsName(<span class="source_int">26</span>)=<span class="source_string">"[T2]Alexandre Dionne  [Azimut]"</span>
+<a name="191"></a>     CreditsName(<span class="source_int">27</span>)=<span class="source_string">"[T2]Aristomenis Kolokathis  [Rooster]"</span>
+<a name="192"></a>     CreditsName(<span class="source_int">28</span>)=<span class="source_string">"[T2]Guillaume Borgia  [Gwigre]"</span>
+<a name="193"></a>     CreditsName(<span class="source_int">29</span>)=<span class="source_string">"[T2]Jean-François Dubé  [Deks]"</span>
+<a name="194"></a>     CreditsName(<span class="source_int">30</span>)=<span class="source_string">"[T2]Joel Tremblay  [Alkoliq]"</span>
+<a name="195"></a>     CreditsName(<span class="source_int">31</span>)=<span class="source_string">"[T2]John Bennett"</span>
+<a name="196"></a>     CreditsName(<span class="source_int">32</span>)=<span class="source_string">"[T2]Patrick Garon  [Pago]"</span>
+<a name="197"></a>     CreditsName(<span class="source_int">33</span>)=<span class="source_string">"[T2]Rima Brek  [Magnet]"</span>
+<a name="198"></a>     CreditsName(<span class="source_int">34</span>)=<span class="source_string">"[T2]Serge Doré  [Magic]"</span>
+<a name="199"></a>     CreditsName(<span class="source_int">35</span>)=<span class="source_string">"[T2]Yannick Joly  [Thor]"</span>
+<a name="200"></a>     CreditsName(<span class="source_int">36</span>)=<span class="source_string">"[20]"</span>
+<a name="201"></a>     CreditsName(<span class="source_int">37</span>)=<span class="source_string">"[T1]Collaborating Programmers"</span>
+<a name="202"></a>     CreditsName(<span class="source_int">38</span>)=<span class="source_string">"[T2]Chaouky Garam  [Iron]"</span>
+<a name="203"></a>     CreditsName(<span class="source_int">39</span>)=<span class="source_string">"[T2]Hugo Allaire"</span>
+<a name="204"></a>     CreditsName(<span class="source_int">40</span>)=<span class="source_string">"[T2]Julien Bouvrais  [Coyote]"</span>
+<a name="205"></a>     CreditsName(<span class="source_int">41</span>)=<span class="source_string">"[20]"</span>
+<a name="206"></a>     CreditsName(<span class="source_int">42</span>)=<span class="source_string">"[T1]Intern Programmers"</span>
+<a name="207"></a>     CreditsName(<span class="source_int">43</span>)=<span class="source_string">"[T2]Cyrille Lauzon"</span>
+<a name="208"></a>     CreditsName(<span class="source_int">44</span>)=<span class="source_string">"[T2]Lysanne Martin"</span>
+<a name="209"></a>     CreditsName(<span class="source_int">45</span>)=<span class="source_string">"[T2]Sébastien Lussier"</span>
+<a name="210"></a>     CreditsName(<span class="source_int">46</span>)=<span class="source_string">"[20]"</span>
+<a name="211"></a>     CreditsName(<span class="source_int">47</span>)=<span class="source_string">"[T1]Lead Artist / Art Director"</span>
+<a name="212"></a>     CreditsName(<span class="source_int">48</span>)=<span class="source_string">"[T2]Carol Bertrand  [-=Insane=-v0.7]"</span>
+<a name="213"></a>     CreditsName(<span class="source_int">49</span>)=<span class="source_string">"[20]"</span>
+<a name="214"></a>     CreditsName(<span class="source_int">50</span>)=<span class="source_string">"[T1]Artists"</span>
+<a name="215"></a>     CreditsName(<span class="source_int">51</span>)=<span class="source_string">"[T2]Adrian Cheung  [7]"</span>
+<a name="216"></a>     CreditsName(<span class="source_int">52</span>)=<span class="source_string">"[T2]Annie Richer"</span>
+<a name="217"></a>     CreditsName(<span class="source_int">53</span>)=<span class="source_string">"[T2]Audran Guerard  [Trigga]"</span>
+<a name="218"></a>     CreditsName(<span class="source_int">54</span>)=<span class="source_string">"[T2]Catherine Nolin"</span>
+<a name="219"></a>     CreditsName(<span class="source_int">55</span>)=<span class="source_string">"[T2]Christian Sirois  [Shnookums]"</span>
+<a name="220"></a>     CreditsName(<span class="source_int">56</span>)=<span class="source_string">"[T2]Danny Deslongchamps  [Dr.Terreur]"</span>
+<a name="221"></a>     CreditsName(<span class="source_int">57</span>)=<span class="source_string">"[T2]Dany Marcoux  [DShadow]"</span>
+<a name="222"></a>     CreditsName(<span class="source_int">58</span>)=<span class="source_string">"[T2]David Blazetich  [Cowboy]"</span>
+<a name="223"></a>     CreditsName(<span class="source_int">59</span>)=<span class="source_string">"[T2]David Massicotte  [ArGh]"</span>
+<a name="224"></a>     CreditsName(<span class="source_int">60</span>)=<span class="source_string">"[T2]Guillaume Blais  [Gizmo]"</span>
+<a name="225"></a>     CreditsName(<span class="source_int">61</span>)=<span class="source_string">"[T2]Gwenael Heliou  [Biohazard]"</span>
+<a name="226"></a>     CreditsName(<span class="source_int">62</span>)=<span class="source_string">"[T2]Hugo Desmeules  [Pointblank]"</span>
+<a name="227"></a>     CreditsName(<span class="source_int">63</span>)=<span class="source_string">"[T2]Jean-Philippe Rajotte  [PAPAPIMP]"</span>
+<a name="228"></a>     CreditsName(<span class="source_int">64</span>)=<span class="source_string">"[T2]John Bigorgne  [VipeRockInDaHouse]"</span>
+<a name="229"></a>     CreditsName(<span class="source_int">65</span>)=<span class="source_string">"[T2]Karine Fortin"</span>
+<a name="230"></a>     CreditsName(<span class="source_int">66</span>)=<span class="source_string">"[T2]Natasha Bouchard"</span>
+<a name="231"></a>     CreditsName(<span class="source_int">67</span>)=<span class="source_string">"[T2]Patrick Daigle  [Kata]"</span>
+<a name="232"></a>     CreditsName(<span class="source_int">68</span>)=<span class="source_string">"[T2]Sebastien Laporte  [GrosseBiere]"</span>
+<a name="233"></a>     CreditsName(<span class="source_int">69</span>)=<span class="source_string">"[T2]Simon Marinof"</span>
+<a name="234"></a>     CreditsName(<span class="source_int">70</span>)=<span class="source_string">"[T2]Wafaa BenHammou  [Xena]"</span>
+<a name="235"></a>     CreditsName(<span class="source_int">71</span>)=<span class="source_string">"[20]"</span>
+<a name="236"></a>     CreditsName(<span class="source_int">72</span>)=<span class="source_string">"[T1]Character Artist / Character Concept Artist"</span>
+<a name="237"></a>     CreditsName(<span class="source_int">73</span>)=<span class="source_string">"[T2]Arman Akopian  [Guyjin]"</span>
+<a name="238"></a>     CreditsName(<span class="source_int">74</span>)=<span class="source_string">"[20]"</span>
+<a name="239"></a>     CreditsName(<span class="source_int">75</span>)=<span class="source_string">"[T1]Lead Animator"</span>
+<a name="240"></a>     CreditsName(<span class="source_int">76</span>)=<span class="source_string">"[T2]Josef Sy  [Cujo]"</span>
+<a name="241"></a>     CreditsName(<span class="source_int">77</span>)=<span class="source_string">"[20]"</span>
+<a name="242"></a>     CreditsName(<span class="source_int">78</span>)=<span class="source_string">"[T1]Animators"</span>
+<a name="243"></a>     CreditsName(<span class="source_int">79</span>)=<span class="source_string">"[T2]Alexandre Vinet  [Piral]"</span>
+<a name="244"></a>     CreditsName(<span class="source_int">80</span>)=<span class="source_string">"[T2]Joseph Nasrallah [Max]"</span>
+<a name="245"></a>     CreditsName(<span class="source_int">81</span>)=<span class="source_string">"[T2]Mathieu Huet  [Dogmeat]"</span>
+<a name="246"></a>     CreditsName(<span class="source_int">82</span>)=<span class="source_string">"[T2]Thomas J Anderson  [Origamiboy_X]"</span>
+<a name="247"></a>     CreditsName(<span class="source_int">83</span>)=<span class="source_string">"[20]"</span>
+<a name="248"></a>     CreditsName(<span class="source_int">84</span>)=<span class="source_string">"[T1]Collaborating Animators"</span>
+<a name="249"></a>     CreditsName(<span class="source_int">85</span>)=<span class="source_string">"[T2]Allan Treitz"</span>
+<a name="250"></a>     CreditsName(<span class="source_int">86</span>)=<span class="source_string">"[T2]Patrick Pelletier"</span>
+<a name="251"></a>     CreditsName(<span class="source_int">87</span>)=<span class="source_string">"[T2]Pierre-Sebastien Pouliot"</span>
+<a name="252"></a>     CreditsName(<span class="source_int">88</span>)=<span class="source_string">"[T2]Sonia Pronovost"</span>
+<a name="253"></a>     CreditsName(<span class="source_int">89</span>)=<span class="source_string">"[T2]Stephen Greenberg"</span>
+<a name="254"></a>     CreditsName(<span class="source_int">90</span>)=<span class="source_string">"[T2]Veronique Lacombe"</span>
+<a name="255"></a>     CreditsName(<span class="source_int">91</span>)=<span class="source_string">"[20]"</span>
+<a name="256"></a>     CreditsName(<span class="source_int">92</span>)=<span class="source_string">"[T1]Lead Level Designer"</span>
+<a name="257"></a>     CreditsName(<span class="source_int">93</span>)=<span class="source_string">"[T2]Carl Lavoie  [SAddam]"</span>
+<a name="258"></a>     CreditsName(<span class="source_int">94</span>)=<span class="source_string">"[20]"</span>
+<a name="259"></a>     CreditsName(<span class="source_int">95</span>)=<span class="source_string">"[T1]Level Designers"</span>
+<a name="260"></a>     CreditsName(<span class="source_int">96</span>)=<span class="source_string">"[T2]Benoit Richer  [Amon]"</span>
+<a name="261"></a>     CreditsName(<span class="source_int">97</span>)=<span class="source_string">"[T2]Eric Poulin  [6-PacK]"</span>
+<a name="262"></a>     CreditsName(<span class="source_int">98</span>)=<span class="source_string">"[T2]François Laperrière"</span>
+<a name="263"></a>     CreditsName(<span class="source_int">99</span>)=<span class="source_string">"[T2]Jason Arsenault  [F.Kastle]"</span>
+<a name="264"></a>     CreditsName(<span class="source_int">100</span>)=<span class="source_string">"[T2]Jonathan Dumont  [Espinosa]"</span>
+<a name="265"></a>     CreditsName(<span class="source_int">101</span>)=<span class="source_string">"[T2]Martin Dufour  [Thrashing dOnut]"</span>
+<a name="266"></a>     CreditsName(<span class="source_int">102</span>)=<span class="source_string">"[T2]Philippe Lussier  [Cortez]"</span>
+<a name="267"></a>     CreditsName(<span class="source_int">103</span>)=<span class="source_string">"[T2]Rémi Lacoste  [Krimpof]"</span>
+<a name="268"></a>     CreditsName(<span class="source_int">104</span>)=<span class="source_string">"[T2]Yann Sylvestre  [Djedelyn]"</span>
+<a name="269"></a>     CreditsName(<span class="source_int">105</span>)=<span class="source_string">"[20]"</span>
+<a name="270"></a>     CreditsName(<span class="source_int">106</span>)=<span class="source_string">"[T1]Audio Designer"</span>
+<a name="271"></a>     CreditsName(<span class="source_int">107</span>)=<span class="source_string">"[T2]Nicholas Duveau"</span>
+<a name="272"></a>     CreditsName(<span class="source_int">108</span>)=<span class="source_string">"[20]"</span>
+<a name="273"></a>     CreditsName(<span class="source_int">109</span>)=<span class="source_string">"[T1]QA Lead Testers"</span>
+<a name="274"></a>     CreditsName(<span class="source_int">110</span>)=<span class="source_string">"[T2]Emmanuel-Yvan Ofoé  [Azazel1st]"</span>
+<a name="275"></a>     CreditsName(<span class="source_int">111</span>)=<span class="source_string">"[T2]François McCann  [Hellstrike]"</span>
+<a name="276"></a>     CreditsName(<span class="source_int">112</span>)=<span class="source_string">"[T2]Marc Brouillette  [ZeGoBlynz]"</span>
+<a name="277"></a>     CreditsName(<span class="source_int">113</span>)=<span class="source_string">"[20]"</span>
+<a name="278"></a>     CreditsName(<span class="source_int">114</span>)=<span class="source_string">"[T1]QA Testers"</span>
+<a name="279"></a>     CreditsName(<span class="source_int">115</span>)=<span class="source_string">"[T2]Alexandre Martel  [ZoltX]"</span>
+<a name="280"></a>     CreditsName(<span class="source_int">116</span>)=<span class="source_string">"[T2]Allen Tremblay  [Requin]"</span>
+<a name="281"></a>     CreditsName(<span class="source_int">117</span>)=<span class="source_string">"[T2]Antoine Thisdale  [Sykon]"</span>
+<a name="282"></a>     CreditsName(<span class="source_int">118</span>)=<span class="source_string">"[T2]Charles Drolet-Demers  [Chuck]"</span>
+<a name="283"></a>     CreditsName(<span class="source_int">119</span>)=<span class="source_string">"[T2]Christian Fortier [Hardcore]"</span>
+<a name="284"></a>     CreditsName(<span class="source_int">120</span>)=<span class="source_string">"[T2]Christian Norton  [D-Chris]"</span>
+<a name="285"></a>     CreditsName(<span class="source_int">121</span>)=<span class="source_string">"[T2]Daniel Sarrazin  [Dakiel]"</span>
+<a name="286"></a>     CreditsName(<span class="source_int">122</span>)=<span class="source_string">"[T2]Dominic Colabelli [Gospic]"</span>
+<a name="287"></a>     CreditsName(<span class="source_int">123</span>)=<span class="source_string">"[T2]Eric Laperrière  [Cpt Rico]"</span>
+<a name="288"></a>     CreditsName(<span class="source_int">124</span>)=<span class="source_string">"[T2]Eric St-Jean  [Elvis]"</span>
+<a name="289"></a>     CreditsName(<span class="source_int">125</span>)=<span class="source_string">"[T2]Frédéric Dufort  [Y@Z KaMiKaZe]"</span>
+<a name="290"></a>     CreditsName(<span class="source_int">126</span>)=<span class="source_string">"[T2]Frédéric Laporte  [Afrocon]"</span>
+<a name="291"></a>     CreditsName(<span class="source_int">127</span>)=<span class="source_string">"[T2]Hanz Tabora  [Ghostrider]"</span>
+<a name="292"></a>     CreditsName(<span class="source_int">128</span>)=<span class="source_string">"[T2]Jean-François Dupuis  [Jee]"</span>
+<a name="293"></a>     CreditsName(<span class="source_int">129</span>)=<span class="source_string">"[T2]Jimi Langlois  [GeXeNiZeR]"</span>
+<a name="294"></a>     CreditsName(<span class="source_int">130</span>)=<span class="source_string">"[T2]Luc Plante  [Zartan]"</span>
+<a name="295"></a>     CreditsName(<span class="source_int">131</span>)=<span class="source_string">"[T2]Marc-André Dessureault  [Mad Martigan]"</span>
+<a name="296"></a>     CreditsName(<span class="source_int">132</span>)=<span class="source_string">"[T2]Marc-André Fillion  [Badou]"</span>
+<a name="297"></a>     CreditsName(<span class="source_int">133</span>)=<span class="source_string">"[T2]Martin Langlois  [UstuR]"</span>
+<a name="298"></a>     CreditsName(<span class="source_int">134</span>)=<span class="source_string">"[T2]Martin Tavernier  [Fox]"</span>
+<a name="299"></a>     CreditsName(<span class="source_int">135</span>)=<span class="source_string">"[T2]Mathieu Fortin  [Myth]"</span>
+<a name="300"></a>     CreditsName(<span class="source_int">136</span>)=<span class="source_string">"[T2]Mathieu Lachance  [Mad Dog]"</span>
+<a name="301"></a>     CreditsName(<span class="source_int">137</span>)=<span class="source_string">"[T2]Nicholas Routhier  [Nyk]"</span>
+<a name="302"></a>     CreditsName(<span class="source_int">138</span>)=<span class="source_string">"[T2]Patrick Sauvageau  [Patafro]"</span>
+<a name="303"></a>     CreditsName(<span class="source_int">139</span>)=<span class="source_string">"[T2]Philippe Dion  [Eltaris]"</span>
+<a name="304"></a>     CreditsName(<span class="source_int">140</span>)=<span class="source_string">"[T2]Raymond Brunette  [D-Bill]"</span>
+<a name="305"></a>     CreditsName(<span class="source_int">141</span>)=<span class="source_string">"[T2]Robin Lee Gordon  [Bootyridah]"</span>
+<a name="306"></a>     CreditsName(<span class="source_int">142</span>)=<span class="source_string">"[T2]Sebastien Martel  [Seabass]"</span>
+<a name="307"></a>     CreditsName(<span class="source_int">143</span>)=<span class="source_string">"[T2]Stéphane Pinard  [Neutrinoide Fractolytt]"</span>
+<a name="308"></a>     CreditsName(<span class="source_int">144</span>)=<span class="source_string">"[T2]Sylvain Bordeleau  [Krasher]"</span>
+<a name="309"></a>     CreditsName(<span class="source_int">145</span>)=<span class="source_string">"[T2]Yan Charron  [Slate]"</span>
+<a name="310"></a>     CreditsName(<span class="source_int">146</span>)=<span class="source_string">"[T2]Yannick Francoeur  [Ya]"</span>
+<a name="311"></a>     CreditsName(<span class="source_int">147</span>)=<span class="source_string">"[20]"</span>
+<a name="312"></a>     CreditsName(<span class="source_int">148</span>)=<span class="source_string">"[T1]QA Config Testers"</span>
+<a name="313"></a>     CreditsName(<span class="source_int">149</span>)=<span class="source_string">"[T2]David Lévesque  [SgtGhost]"</span>
+<a name="314"></a>     CreditsName(<span class="source_int">150</span>)=<span class="source_string">"[T2]Jason Alleyne  [Fructose]"</span>
+<a name="315"></a>     CreditsName(<span class="source_int">151</span>)=<span class="source_string">"[20]"</span>
+<a name="316"></a>     CreditsName(<span class="source_int">152</span>)=<span class="source_string">"[T1]Data Manager"</span>
+<a name="317"></a>     CreditsName(<span class="source_int">153</span>)=<span class="source_string">"[T2]Bruno Bellavance  [Bat-duck]"</span>
+<a name="318"></a>     CreditsName(<span class="source_int">154</span>)=<span class="source_string">"[T2]Francis Tremblay  [chapter_9]"</span>
+<a name="319"></a>     CreditsName(<span class="source_int">155</span>)=<span class="source_string">"[20]"</span>
+<a name="320"></a>     CreditsName(<span class="source_int">156</span>)=<span class="source_string">"[T1]Lead Integrator / Localization"</span>
+<a name="321"></a>     CreditsName(<span class="source_int">157</span>)=<span class="source_string">"[T2]Alexandre St-Louis  [Tiegman]"</span>
+<a name="322"></a>     CreditsName(<span class="source_int">158</span>)=<span class="source_string">"[20]"</span>
+<a name="323"></a>     CreditsName(<span class="source_int">159</span>)=<span class="source_string">"[T1]Localization Project Manager"</span>
+<a name="324"></a>     CreditsName(<span class="source_int">160</span>)=<span class="source_string">"[T2]Jean-Sébastien Ferey  [LePiaf]"</span>
+<a name="325"></a>     CreditsName(<span class="source_int">161</span>)=<span class="source_string">"[20]"</span>
+<a name="326"></a>     CreditsName(<span class="source_int">162</span>)=<span class="source_string">"[T1]Technical Advisor"</span>
+<a name="327"></a>     CreditsName(<span class="source_int">163</span>)=<span class="source_string">"[T2]Mike Grasso"</span>
+<a name="328"></a>     CreditsName(<span class="source_int">164</span>)=<span class="source_string">"[20]"</span>
+<a name="329"></a>     CreditsName(<span class="source_int">165</span>)=<span class="source_string">"[T1]Planning Coordinator"</span>
+<a name="330"></a>     CreditsName(<span class="source_int">166</span>)=<span class="source_string">"[T2]Audrey Goyette  [Drexx]"</span>
+<a name="331"></a>     CreditsName(<span class="source_int">167</span>)=<span class="source_string">"[20]"</span>
+<a name="332"></a>     CreditsName(<span class="source_int">168</span>)=<span class="source_string">"[T1]Marketing Research Coordinator"</span>
+<a name="333"></a>     CreditsName(<span class="source_int">169</span>)=<span class="source_string">"[T2]Jean-François Poirier  [Boomer]"</span>
+<a name="334"></a>     CreditsName(<span class="source_int">170</span>)=<span class="source_string">"[20]"</span>
+<a name="335"></a>     CreditsName(<span class="source_int">171</span>)=<span class="source_string">"[T1]Storyboard"</span>
+<a name="336"></a>     CreditsName(<span class="source_int">172</span>)=<span class="source_string">"[T2]Wayne Murray  [Wam!]"</span>
+<a name="337"></a>     CreditsName(<span class="source_int">173</span>)=<span class="source_string">"[20]"</span>
+<a name="338"></a>     CreditsName(<span class="source_int">174</span>)=<span class="source_string">"[T1]Making Of Director / Editing"</span>
+<a name="339"></a>     CreditsName(<span class="source_int">175</span>)=<span class="source_string">"[T2]Miguel Angel Martin"</span>
+<a name="340"></a>     CreditsName(<span class="source_int">176</span>)=<span class="source_string">"[20]"</span>
+<a name="341"></a>     CreditsName(<span class="source_int">177</span>)=<span class="source_string">"[T1]Making Of Assistant"</span>
+<a name="342"></a>     CreditsName(<span class="source_int">178</span>)=<span class="source_string">"[T2]Annemarie Gabrielle"</span>
+<a name="343"></a>     CreditsName(<span class="source_int">179</span>)=<span class="source_string">"[80]"</span>
+<a name="344"></a>     CreditsName(<span class="source_int">180</span>)=<span class="source_string">"[T0]UBI SOFT MONTREAL"</span>
+<a name="345"></a>     CreditsName(<span class="source_int">181</span>)=<span class="source_string">"[30]"</span>
+<a name="346"></a>     CreditsName(<span class="source_int">182</span>)=<span class="source_string">"[T1]CEO Ubi Soft Montreal"</span>
+<a name="347"></a>     CreditsName(<span class="source_int">183</span>)=<span class="source_string">"[T2]Martin Tremblay"</span>
+<a name="348"></a>     CreditsName(<span class="source_int">184</span>)=<span class="source_string">"[20]"</span>
+<a name="349"></a>     CreditsName(<span class="source_int">185</span>)=<span class="source_string">"[T1]VP Studios"</span>
+<a name="350"></a>     CreditsName(<span class="source_int">186</span>)=<span class="source_string">"[T2]Michel Cartier"</span>
+<a name="351"></a>     CreditsName(<span class="source_int">187</span>)=<span class="source_string">"[20]"</span>
+<a name="352"></a>     CreditsName(<span class="source_int">188</span>)=<span class="source_string">"[T1]VP Content"</span>
+<a name="353"></a>     CreditsName(<span class="source_int">189</span>)=<span class="source_string">"[T2]Gregoire Gobbi "</span>
+<a name="354"></a>     CreditsName(<span class="source_int">190</span>)=<span class="source_string">"[20]"</span>
+<a name="355"></a>     CreditsName(<span class="source_int">191</span>)=<span class="source_string">"[T1]Director of Animation Studio"</span>
+<a name="356"></a>     CreditsName(<span class="source_int">192</span>)=<span class="source_string">"[T2]Gilles Monteil"</span>
+<a name="357"></a>     CreditsName(<span class="source_int">193</span>)=<span class="source_string">"[20]"</span>
+<a name="358"></a>     CreditsName(<span class="source_int">194</span>)=<span class="source_string">"[T1]Director of Game Design / Level Design Studio"</span>
+<a name="359"></a>     CreditsName(<span class="source_int">195</span>)=<span class="source_string">"[T2]Maxime Bélanger  [Sexy Chocolate]"</span>
+<a name="360"></a>     CreditsName(<span class="source_int">196</span>)=<span class="source_string">"[20]"</span>
+<a name="361"></a>     CreditsName(<span class="source_int">197</span>)=<span class="source_string">"[T1]Director of Graphic Studio"</span>
+<a name="362"></a>     CreditsName(<span class="source_int">198</span>)=<span class="source_string">"[T2]Jean-Sébastien Morin  [Postal]"</span>
+<a name="363"></a>     CreditsName(<span class="source_int">199</span>)=<span class="source_string">"[20]"</span>
+<a name="364"></a>     CreditsName(<span class="source_int">200</span>)=<span class="source_string">"[T1]Director of Programming Studio"</span>
+<a name="365"></a>     CreditsName(<span class="source_int">201</span>)=<span class="source_string">"[T2]Nicolas Rioux"</span>
+<a name="366"></a>     CreditsName(<span class="source_int">202</span>)=<span class="source_string">"[20]"</span>
+<a name="367"></a>     CreditsName(<span class="source_int">203</span>)=<span class="source_string">"[T1]Director of Sound Studio"</span>
+<a name="368"></a>     CreditsName(<span class="source_int">204</span>)=<span class="source_string">"[T2]Jérémi Valiquette"</span>
+<a name="369"></a>     CreditsName(<span class="source_int">205</span>)=<span class="source_string">"[20]"</span>
+<a name="370"></a>     CreditsName(<span class="source_int">206</span>)=<span class="source_string">"[T1]Director of Quality Assurance"</span>
+<a name="371"></a>     CreditsName(<span class="source_int">207</span>)=<span class="source_string">"[T2]Eric Tremblay"</span>
+<a name="372"></a>     CreditsName(<span class="source_int">208</span>)=<span class="source_string">"[20]"</span>
+<a name="373"></a>     CreditsName(<span class="source_int">209</span>)=<span class="source_string">"[T1]Director of Planning"</span>
+<a name="374"></a>     CreditsName(<span class="source_int">210</span>)=<span class="source_string">"[T2]Henri Laporte"</span>
+<a name="375"></a>     CreditsName(<span class="source_int">211</span>)=<span class="source_string">"[20]"</span>
+<a name="376"></a>     CreditsName(<span class="source_int">212</span>)=<span class="source_string">"[T1]Marketing Research Group Manager"</span>
+<a name="377"></a>     CreditsName(<span class="source_int">213</span>)=<span class="source_string">"[T2]Caroline Martin  [GUERIA]"</span>
+<a name="378"></a>     CreditsName(<span class="source_int">214</span>)=<span class="source_string">"[20]"</span>
+<a name="379"></a>     CreditsName(<span class="source_int">215</span>)=<span class="source_string">"[T1]Legal Affairs"</span>
+<a name="380"></a>     CreditsName(<span class="source_int">216</span>)=<span class="source_string">"[T2]Julie Lachance"</span>
+<a name="381"></a>     CreditsName(<span class="source_int">217</span>)=<span class="source_string">"[20]"</span>
+<a name="382"></a>     CreditsName(<span class="source_int">218</span>)=<span class="source_string">"[T1]Sound Engineer"</span>
+<a name="383"></a>     CreditsName(<span class="source_int">219</span>)=<span class="source_string">"[T2]Simon Pressey"</span>
+<a name="384"></a>     CreditsName(<span class="source_int">220</span>)=<span class="source_string">"[20]"</span>
+<a name="385"></a>     CreditsName(<span class="source_int">221</span>)=<span class="source_string">"[T1]Sound Integrator"</span>
+<a name="386"></a>     CreditsName(<span class="source_int">222</span>)=<span class="source_string">"[T2]Sylvain Côté  [skalve]"</span>
+<a name="387"></a>     CreditsName(<span class="source_int">223</span>)=<span class="source_string">"[20]"</span>
+<a name="388"></a>     CreditsName(<span class="source_int">224</span>)=<span class="source_string">"[T1]Sound Engineer"</span>
+<a name="389"></a>     CreditsName(<span class="source_int">225</span>)=<span class="source_string">"[T2]Olivier Germain"</span>
+<a name="390"></a>     CreditsName(<span class="source_int">226</span>)=<span class="source_string">"[20]"</span>
+<a name="391"></a>     CreditsName(<span class="source_int">227</span>)=<span class="source_string">"[T1]Foley Artist"</span>
+<a name="392"></a>     CreditsName(<span class="source_int">228</span>)=<span class="source_string">"[T2]Tchae Maesroch"</span>
+<a name="393"></a>     CreditsName(<span class="source_int">229</span>)=<span class="source_string">"[20]"</span>
+<a name="394"></a>     CreditsName(<span class="source_int">230</span>)=<span class="source_string">"[T1]Sound Engine Team (DARE)"</span>
+<a name="395"></a>     CreditsName(<span class="source_int">231</span>)=<span class="source_string">"[T2]Alexandre Carlotti "</span>
+<a name="396"></a>     CreditsName(<span class="source_int">232</span>)=<span class="source_string">"[T2]Jean-François Guay  [Djef]"</span>
+<a name="397"></a>     CreditsName(<span class="source_int">233</span>)=<span class="source_string">"[T2]Richard Malo"</span>
+<a name="398"></a>     CreditsName(<span class="source_int">234</span>)=<span class="source_string">"[T2]Christian Lachance [Kaizer_Soze]"</span>
+<a name="399"></a>     CreditsName(<span class="source_int">235</span>)=<span class="source_string">"[T2]Stéphane Ronse"</span>
+<a name="400"></a>     CreditsName(<span class="source_int">236</span>)=<span class="source_string">"[50]"</span>
+<a name="401"></a>     CreditsName(<span class="source_int">237</span>)=<span class="source_string">"[T1]Music by Soundelux Design Music Goup"</span>
+<a name="402"></a>     CreditsName(<span class="source_int">238</span>)=<span class="source_string">"[20]"</span>
+<a name="403"></a>     CreditsName(<span class="source_int">239</span>)=<span class="source_string">"[T1]Music Composed by"</span>
+<a name="404"></a>     CreditsName(<span class="source_int">240</span>)=<span class="source_string">"[T2]Bill Brown, Soundelux Design Music Goup"</span>
+<a name="405"></a>     CreditsName(<span class="source_int">241</span>)=<span class="source_string">"[50]"</span>
+<a name="406"></a>     CreditsName(<span class="source_int">242</span>)=<span class="source_string">"[T1]Ave Maria performed by"</span>
+<a name="407"></a>     CreditsName(<span class="source_int">243</span>)=<span class="source_string">"[T2]Noëlla Huet"</span>
+<a name="408"></a>     CreditsName(<span class="source_int">244</span>)=<span class="source_string">"[20]"</span>
+<a name="409"></a>     CreditsName(<span class="source_int">245</span>)=<span class="source_string">"[T1]Piano"</span>
+<a name="410"></a>     CreditsName(<span class="source_int">246</span>)=<span class="source_string">"[T2]Jacques Drouin"</span>
+<a name="411"></a>     CreditsName(<span class="source_int">247</span>)=<span class="source_string">"[50]"</span>
+<a name="412"></a>     CreditsName(<span class="source_int">248</span>)=<span class="source_string">"[T1]Weapon Sound Design and Effects By"</span>
+<a name="413"></a>     CreditsName(<span class="source_int">249</span>)=<span class="source_string">"[T1]DaneTracks inc."</span>
+<a name="414"></a>     CreditsName(<span class="source_int">250</span>)=<span class="source_string">"[20]"</span>
+<a name="415"></a>     CreditsName(<span class="source_int">251</span>)=<span class="source_string">"[T1]Supervising Sound Designer"</span>
+<a name="416"></a>     CreditsName(<span class="source_int">252</span>)=<span class="source_string">"[T2]Richard Adrian, DaneTracks inc."</span>
+<a name="417"></a>     CreditsName(<span class="source_int">253</span>)=<span class="source_string">"[20]"</span>
+<a name="418"></a>     CreditsName(<span class="source_int">254</span>)=<span class="source_string">"[T1]Sound Designers"</span>
+<a name="419"></a>     CreditsName(<span class="source_int">255</span>)=<span class="source_string">"[T2]Andrew Lackey"</span>
+<a name="420"></a>     CreditsName(<span class="source_int">256</span>)=<span class="source_string">"[T2]Christopher Alba"</span>
+<a name="421"></a>     CreditsName(<span class="source_int">257</span>)=<span class="source_string">"[T2]Eddie Kim"</span>
+<a name="422"></a>     CreditsName(<span class="source_int">258</span>)=<span class="source_string">"[50]"</span>
+<a name="423"></a>     CreditsName(<span class="source_int">259</span>)=<span class="source_string">"[T1]Ambiences & SFX Editor"</span>
+<a name="424"></a>     CreditsName(<span class="source_int">260</span>)=<span class="source_string">"[T2]André Chaput"</span>
+<a name="425"></a>     CreditsName(<span class="source_int">261</span>)=<span class="source_string">"[20]"</span>
+<a name="426"></a>     CreditsName(<span class="source_int">262</span>)=<span class="source_string">"[T1]Audio Post-Production"</span>
+<a name="427"></a>     CreditsName(<span class="source_int">263</span>)=<span class="source_string">"[T2]Daran Nadra"</span>
+<a name="428"></a>     CreditsName(<span class="source_int">264</span>)=<span class="source_string">"[T2]Nicholas Grimwood"</span>
+<a name="429"></a>     CreditsName(<span class="source_int">265</span>)=<span class="source_string">"[20]"</span>
+<a name="430"></a>     CreditsName(<span class="source_int">266</span>)=<span class="source_string">"[T1]Internal Technical Support"</span>
+<a name="431"></a>     CreditsName(<span class="source_int">267</span>)=<span class="source_string">"[T2]Patrick Filion  [YtseJammer]"</span>
+<a name="432"></a>     CreditsName(<span class="source_int">268</span>)=<span class="source_string">"[T2]Nicolas Davidts  [NickMaster]"</span>
+<a name="433"></a>     CreditsName(<span class="source_int">269</span>)=<span class="source_string">"[T2]Steve Castonguay  [Acathla]"</span>
+<a name="434"></a>     CreditsName(<span class="source_int">270</span>)=<span class="source_string">"[T2]Yanick Vezina  [GooSe]"</span>
+<a name="435"></a>     CreditsName(<span class="source_int">271</span>)=<span class="source_string">"[80]"</span>
+<a name="436"></a>     CreditsName(<span class="source_int">272</span>)=<span class="source_string">"[T0]RED STORM ENTERTAINMENT"</span>
+<a name="437"></a>     CreditsName(<span class="source_int">273</span>)=<span class="source_string">"[30]"</span>
+<a name="438"></a>     CreditsName(<span class="source_int">274</span>)=<span class="source_string">"[T1]Script Writer"</span>
+<a name="439"></a>     CreditsName(<span class="source_int">275</span>)=<span class="source_string">"[T2]Richard Dansky"</span>
+<a name="440"></a>     CreditsName(<span class="source_int">276</span>)=<span class="source_string">"[20]"</span>
+<a name="441"></a>     CreditsName(<span class="source_int">277</span>)=<span class="source_string">"[T1]Producer (Game Cinematics)"</span>
+<a name="442"></a>     CreditsName(<span class="source_int">278</span>)=<span class="source_string">"[T2]Heather Maxwell"</span>
+<a name="443"></a>     CreditsName(<span class="source_int">279</span>)=<span class="source_string">"[20]"</span>
+<a name="444"></a>     CreditsName(<span class="source_int">280</span>)=<span class="source_string">"[T1]Lead Artist (Intro & Outro)"</span>
+<a name="445"></a>     CreditsName(<span class="source_int">281</span>)=<span class="source_string">"[T2]Demond Rogers"</span>
+<a name="446"></a>     CreditsName(<span class="source_int">282</span>)=<span class="source_string">"[20]"</span>
+<a name="447"></a>     CreditsName(<span class="source_int">283</span>)=<span class="source_string">"[T1]Animators / Modelers (Intro & Outro)"</span>
+<a name="448"></a>     CreditsName(<span class="source_int">284</span>)=<span class="source_string">"[T2]Jeremy Brown"</span>
+<a name="449"></a>     CreditsName(<span class="source_int">285</span>)=<span class="source_string">"[T2]Thomas DeVries"</span>
+<a name="450"></a>     CreditsName(<span class="source_int">286</span>)=<span class="source_string">"[T2]Joseph Drust"</span>
+<a name="451"></a>     CreditsName(<span class="source_int">287</span>)=<span class="source_string">"[T2]Jeff McFayden"</span>
+<a name="452"></a>     CreditsName(<span class="source_int">288</span>)=<span class="source_string">"[T2]Pete Sekula"</span>
+<a name="453"></a>     CreditsName(<span class="source_int">289</span>)=<span class="source_string">"[T2]Steve Wasaff"</span>
+<a name="454"></a>     CreditsName(<span class="source_int">290</span>)=<span class="source_string">"[20]"</span>
+<a name="455"></a>     CreditsName(<span class="source_int">291</span>)=<span class="source_string">"[T1]Artists (Cut Scenes)"</span>
+<a name="456"></a>     CreditsName(<span class="source_int">292</span>)=<span class="source_string">"[T2]Kristian Hawkinson"</span>
+<a name="457"></a>     CreditsName(<span class="source_int">293</span>)=<span class="source_string">"[T2]Dion Rogers"</span>
+<a name="458"></a>     CreditsName(<span class="source_int">294</span>)=<span class="source_string">"[T2]Mikey Spano"</span>
+<a name="459"></a>     CreditsName(<span class="source_int">295</span>)=<span class="source_string">"[T2]Michael Cosner"</span>
+<a name="460"></a>     CreditsName(<span class="source_int">296</span>)=<span class="source_string">"[T2]Ray Tylak"</span>
+<a name="461"></a>     CreditsName(<span class="source_int">297</span>)=<span class="source_string">"[20]"</span>
+<a name="462"></a>     CreditsName(<span class="source_int">298</span>)=<span class="source_string">"[T1]Collaborations (Cut Scenes)"</span>
+<a name="463"></a>     CreditsName(<span class="source_int">299</span>)=<span class="source_string">"[T2]Tim Alexander"</span>
+<a name="464"></a>     CreditsName(<span class="source_int">300</span>)=<span class="source_string">"[T2]Yongha Hwang"</span>
+<a name="465"></a>     CreditsName(<span class="source_int">301</span>)=<span class="source_string">"[T2]Kim McLean"</span>
+<a name="466"></a>     CreditsName(<span class="source_int">302</span>)=<span class="source_string">"[T2]Suzanne Meiler"</span>
+<a name="467"></a>     CreditsName(<span class="source_int">303</span>)=<span class="source_string">"[T2]John Michel"</span>
+<a name="468"></a>     CreditsName(<span class="source_int">304</span>)=<span class="source_string">"[T2]Lucas Smith"</span>
+<a name="469"></a>     CreditsName(<span class="source_int">305</span>)=<span class="source_string">"[T2]Eric Terry"</span>
+<a name="470"></a>     CreditsName(<span class="source_int">306</span>)=<span class="source_string">"[20]"</span>
+<a name="471"></a>     CreditsName(<span class="source_int">307</span>)=<span class="source_string">"[T2]Special Thanks to Red Storm Entertainment"</span>
+<a name="472"></a>     CreditsName(<span class="source_int">308</span>)=<span class="source_string">"[T2]All the staff who participated in creating this wonderful series,"</span>
+<a name="473"></a>     CreditsName(<span class="source_int">309</span>)=<span class="source_string">"[T2]for those who helped us in achieving this new title"</span>
+<a name="474"></a>     CreditsName(<span class="source_int">310</span>)=<span class="source_string">"[T2]and to the RSE Testing Department for play-testing the game!"</span>
+<a name="475"></a>     CreditsName(<span class="source_int">311</span>)=<span class="source_string">"[80]"</span>
+<a name="476"></a>     CreditsName(<span class="source_int">312</span>)=<span class="source_string">"[T0]UBI SOFT INTERNATIONAL"</span>
+<a name="477"></a>     CreditsName(<span class="source_int">313</span>)=<span class="source_string">"[30]"</span>
+<a name="478"></a>     CreditsName(<span class="source_int">314</span>)=<span class="source_string">"[T1]President & CEO Ubi Soft"</span>
+<a name="479"></a>     CreditsName(<span class="source_int">315</span>)=<span class="source_string">"[T2]Yves Guillemot"</span>
+<a name="480"></a>     CreditsName(<span class="source_int">316</span>)=<span class="source_string">"[20]"</span>
+<a name="481"></a>     CreditsName(<span class="source_int">317</span>)=<span class="source_string">"[T1]International Production Director"</span>
+<a name="482"></a>     CreditsName(<span class="source_int">318</span>)=<span class="source_string">"[T2]Christine Burgess-Quemard"</span>
+<a name="483"></a>     CreditsName(<span class="source_int">319</span>)=<span class="source_string">"[20]"</span>
+<a name="484"></a>     CreditsName(<span class="source_int">320</span>)=<span class="source_string">"[T1]Editor-in-Chief"</span>
+<a name="485"></a>     CreditsName(<span class="source_int">321</span>)=<span class="source_string">"[T2]Serge Hascoet"</span>
+<a name="486"></a>     CreditsName(<span class="source_int">322</span>)=<span class="source_string">"[20]"</span>
+<a name="487"></a>     CreditsName(<span class="source_int">323</span>)=<span class="source_string">"[T1]Editorial Content Manager"</span>
+<a name="488"></a>     CreditsName(<span class="source_int">324</span>)=<span class="source_string">"[T2]Travis Getz"</span>
+<a name="489"></a>     CreditsName(<span class="source_int">325</span>)=<span class="source_string">"[20]"</span>
+<a name="490"></a>     CreditsName(<span class="source_int">326</span>)=<span class="source_string">"[T1]Editorial Coordination"</span>
+<a name="491"></a>     CreditsName(<span class="source_int">327</span>)=<span class="source_string">"[T2]Didier Lord"</span>
+<a name="492"></a>     CreditsName(<span class="source_int">328</span>)=<span class="source_string">"[T2]Lionel Raynaud"</span>
+<a name="493"></a>     CreditsName(<span class="source_int">329</span>)=<span class="source_string">"[T2]Michel Pierfitte"</span>
+<a name="494"></a>     CreditsName(<span class="source_int">330</span>)=<span class="source_string">"[T2]Sophie Pendariès"</span>
+<a name="495"></a>     CreditsName(<span class="source_int">331</span>)=<span class="source_string">"[20]"</span>
+<a name="496"></a>     CreditsName(<span class="source_int">332</span>)=<span class="source_string">"[T1]Story Editor"</span>
+<a name="497"></a>     CreditsName(<span class="source_int">333</span>)=<span class="source_string">"[T2]Alexis Nolent"</span>
+<a name="498"></a>     CreditsName(<span class="source_int">334</span>)=<span class="source_string">"[50]"</span>
+<a name="499"></a>     CreditsName(<span class="source_int">335</span>)=<span class="source_string">"[T0]Marketing Canada"</span>
+<a name="500"></a>     CreditsName(<span class="source_int">336</span>)=<span class="source_string">"[20]"</span>
+<a name="501"></a>     CreditsName(<span class="source_int">337</span>)=<span class="source_string">"[T1]Brand Manager"</span>
+<a name="502"></a>     CreditsName(<span class="source_int">338</span>)=<span class="source_string">"[T2]Steve Gagné"</span>
+<a name="503"></a>     CreditsName(<span class="source_int">339</span>)=<span class="source_string">"[20]"</span>
+<a name="504"></a>     CreditsName(<span class="source_int">340</span>)=<span class="source_string">"[T1]Trade Marketing Coordinator"</span>
+<a name="505"></a>     CreditsName(<span class="source_int">341</span>)=<span class="source_string">"[T2]Danielle Lajoie"</span>
+<a name="506"></a>     CreditsName(<span class="source_int">342</span>)=<span class="source_string">"[50]"</span>
+<a name="507"></a>     CreditsName(<span class="source_int">343</span>)=<span class="source_string">"[T0]Marketing EMEA"</span>
+<a name="508"></a>     CreditsName(<span class="source_int">344</span>)=<span class="source_string">"[20]"</span>
+<a name="509"></a>     CreditsName(<span class="source_int">345</span>)=<span class="source_string">"[T1]EMEA Marketing Director"</span>
+<a name="510"></a>     CreditsName(<span class="source_int">346</span>)=<span class="source_string">"[T2]Laurence Buisson-Nollent"</span>
+<a name="511"></a>     CreditsName(<span class="source_int">347</span>)=<span class="source_string">"[20]"</span>
+<a name="512"></a>     CreditsName(<span class="source_int">348</span>)=<span class="source_string">"[T1]EMEA Senior Marketing Group Manager"</span>
+<a name="513"></a>     CreditsName(<span class="source_int">349</span>)=<span class="source_string">"[T2]Laura Hatton"</span>
+<a name="514"></a>     CreditsName(<span class="source_int">350</span>)=<span class="source_string">"[20]"</span>
+<a name="515"></a>     CreditsName(<span class="source_int">351</span>)=<span class="source_string">"[T1]EMEA Senior Brand Manager"</span>
+<a name="516"></a>     CreditsName(<span class="source_int">352</span>)=<span class="source_string">"[T2]Cedrick Delmas"</span>
+<a name="517"></a>     CreditsName(<span class="source_int">353</span>)=<span class="source_string">"[20]"</span>
+<a name="518"></a>     CreditsName(<span class="source_int">354</span>)=<span class="source_string">"[T1]EMEA Brand Manager"</span>
+<a name="519"></a>     CreditsName(<span class="source_int">355</span>)=<span class="source_string">"[T2]Alexis Bodard"</span>
+<a name="520"></a>     CreditsName(<span class="source_int">356</span>)=<span class="source_string">"[20]"</span>
+<a name="521"></a>     CreditsName(<span class="source_int">357</span>)=<span class="source_string">"[T1]Local Brand Managers"</span>
+<a name="522"></a>     CreditsName(<span class="source_int">358</span>)=<span class="source_string">"[T2]Christian Born"</span>
+<a name="523"></a>     CreditsName(<span class="source_int">359</span>)=<span class="source_string">"[T2]Evelyn de Vooght"</span>
+<a name="524"></a>     CreditsName(<span class="source_int">360</span>)=<span class="source_string">"[T2]Javier Montoro"</span>
+<a name="525"></a>     CreditsName(<span class="source_int">361</span>)=<span class="source_string">"[T2]Jim Hill"</span>
+<a name="526"></a>     CreditsName(<span class="source_int">362</span>)=<span class="source_string">"[T2]Marcel Keij"</span>
+<a name="527"></a>     CreditsName(<span class="source_int">363</span>)=<span class="source_string">"[T2]Michael Thielmann"</span>
+<a name="528"></a>     CreditsName(<span class="source_int">364</span>)=<span class="source_string">"[T2]Soren Lass"</span>
+<a name="529"></a>     CreditsName(<span class="source_int">365</span>)=<span class="source_string">"[T2]Stephane Catherine"</span>
+<a name="530"></a>     CreditsName(<span class="source_int">366</span>)=<span class="source_string">"[T2]Valeria lodeserto"</span>
+<a name="531"></a>     CreditsName(<span class="source_int">367</span>)=<span class="source_string">"[T2]Vanessa Leclercq"</span>
+<a name="532"></a>     CreditsName(<span class="source_int">368</span>)=<span class="source_string">"[T2]Vera Shah"</span>
+<a name="533"></a>     CreditsName(<span class="source_int">369</span>)=<span class="source_string">"[20]"</span>
+<a name="534"></a>     CreditsName(<span class="source_int">370</span>)=<span class="source_string">"[T1]Manufacturing Department"</span>
+<a name="535"></a>     CreditsName(<span class="source_int">371</span>)=<span class="source_string">"[T2]Alexandre Bolchert"</span>
+<a name="536"></a>     CreditsName(<span class="source_int">372</span>)=<span class="source_string">"[T2]Laurent Lugbull"</span>
+<a name="537"></a>     CreditsName(<span class="source_int">373</span>)=<span class="source_string">"[T2]Pierre Escaich"</span>
+<a name="538"></a>     CreditsName(<span class="source_int">374</span>)=<span class="source_string">"[50]"</span>
+<a name="539"></a>     CreditsName(<span class="source_int">375</span>)=<span class="source_string">"[T0]Marketing US"</span>
+<a name="540"></a>     CreditsName(<span class="source_int">376</span>)=<span class="source_string">"[20]"</span>
+<a name="541"></a>     CreditsName(<span class="source_int">377</span>)=<span class="source_string">"[T1]U.S. Vice-President of Marketing"</span>
+<a name="542"></a>     CreditsName(<span class="source_int">378</span>)=<span class="source_string">"[T2]Tony Kee"</span>
+<a name="543"></a>     CreditsName(<span class="source_int">379</span>)=<span class="source_string">"[20]"</span>
+<a name="544"></a>     CreditsName(<span class="source_int">380</span>)=<span class="source_string">"[T1]U.S. Group Brand Manager"</span>
+<a name="545"></a>     CreditsName(<span class="source_int">381</span>)=<span class="source_string">"[T2]Helene Juguet"</span>
+<a name="546"></a>     CreditsName(<span class="source_int">382</span>)=<span class="source_string">"[20]"</span>
+<a name="547"></a>     CreditsName(<span class="source_int">383</span>)=<span class="source_string">"[T1]U.S. Brand Managers"</span>
+<a name="548"></a>     CreditsName(<span class="source_int">384</span>)=<span class="source_string">"[T2]Derek Chan"</span>
+<a name="549"></a>     CreditsName(<span class="source_int">385</span>)=<span class="source_string">"[T2]Michael Jeffress"</span>
+<a name="550"></a>     CreditsName(<span class="source_int">386</span>)=<span class="source_string">"[T2]Sean McCann"</span>
+<a name="551"></a>     CreditsName(<span class="source_int">387</span>)=<span class="source_string">"[20]"</span>
+<a name="552"></a>     CreditsName(<span class="source_int">388</span>)=<span class="source_string">"[T1]Public Relations"</span>
+<a name="553"></a>     CreditsName(<span class="source_int">389</span>)=<span class="source_string">"[T2]Cassie Vogel"</span>
+<a name="554"></a>     CreditsName(<span class="source_int">390</span>)=<span class="source_string">"[T2]Tiffany Spencer"</span>
+<a name="555"></a>     CreditsName(<span class="source_int">391</span>)=<span class="source_string">"[T2]Tyrone Miller"</span>
+<a name="556"></a>     CreditsName(<span class="source_int">392</span>)=<span class="source_string">"[20]"</span>
+<a name="557"></a>     CreditsName(<span class="source_int">393</span>)=<span class="source_string">"[T1]Creative Services"</span>
+<a name="558"></a>     CreditsName(<span class="source_int">394</span>)=<span class="source_string">"[T2]Allen Adler"</span>
+<a name="559"></a>     CreditsName(<span class="source_int">395</span>)=<span class="source_string">"[T2]David Gene Oh"</span>
+<a name="560"></a>     CreditsName(<span class="source_int">396</span>)=<span class="source_string">"[T2]Marc Fortier"</span>
+<a name="561"></a>     CreditsName(<span class="source_int">397</span>)=<span class="source_string">"[T2]Melissa Wilks"</span>
+<a name="562"></a>     CreditsName(<span class="source_int">398</span>)=<span class="source_string">"[80]"</span>
+<a name="563"></a>     CreditsName(<span class="source_int">399</span>)=<span class="source_string">"[T0]UBI.COM"</span>
+<a name="564"></a>     CreditsName(<span class="source_int">400</span>)=<span class="source_string">"[30]"</span>
+<a name="565"></a>     CreditsName(<span class="source_int">401</span>)=<span class="source_string">"[T1]Canada"</span>
+<a name="566"></a>     CreditsName(<span class="source_int">402</span>)=<span class="source_string">"[10]"</span>
+<a name="567"></a>     CreditsName(<span class="source_int">403</span>)=<span class="source_string">"[T2]Alexis Rendon  [Neveish]"</span>
+<a name="568"></a>     CreditsName(<span class="source_int">404</span>)=<span class="source_string">"[T2]Dominic Laroche"</span>
+<a name="569"></a>     CreditsName(<span class="source_int">405</span>)=<span class="source_string">"[T2]Franc Hauselmann  [Terminator]"</span>
+<a name="570"></a>     CreditsName(<span class="source_int">406</span>)=<span class="source_string">"[T2]Guillaume Plante  [shellghost]"</span>
+<a name="571"></a>     CreditsName(<span class="source_int">407</span>)=<span class="source_string">"[T2]Karine Martel  [Karamba!]"</span>
+<a name="572"></a>     CreditsName(<span class="source_int">408</span>)=<span class="source_string">"[T2]Luc Bouchard [walrus]"</span>
+<a name="573"></a>     CreditsName(<span class="source_int">409</span>)=<span class="source_string">"[T2]Pierre-Luc Rigaux"</span>
+<a name="574"></a>     CreditsName(<span class="source_int">410</span>)=<span class="source_string">"[T2]Philippe Lalande  [TheQ]"</span>
+<a name="575"></a>     CreditsName(<span class="source_int">411</span>)=<span class="source_string">"[T2]Scott Schmeisser"</span>
+<a name="576"></a>     CreditsName(<span class="source_int">412</span>)=<span class="source_string">"[20]"</span>
+<a name="577"></a>     CreditsName(<span class="source_int">413</span>)=<span class="source_string">"[T1]Europe"</span>
+<a name="578"></a>     CreditsName(<span class="source_int">414</span>)=<span class="source_string">"[10]"</span>
+<a name="579"></a>     CreditsName(<span class="source_int">415</span>)=<span class="source_string">"[T2]Diane Peyredieu"</span>
+<a name="580"></a>     CreditsName(<span class="source_int">416</span>)=<span class="source_string">"[T2]Marc Homayounpour"</span>
+<a name="581"></a>     CreditsName(<span class="source_int">417</span>)=<span class="source_string">"[T2]Sebastien Puel"</span>
+<a name="582"></a>     CreditsName(<span class="source_int">418</span>)=<span class="source_string">"[T2]Tanguy Imbert"</span>
+<a name="583"></a>     CreditsName(<span class="source_int">419</span>)=<span class="source_string">"[20]"</span>
+<a name="584"></a>     CreditsName(<span class="source_int">420</span>)=<span class="source_string">"[T1]US"</span>
+<a name="585"></a>     CreditsName(<span class="source_int">421</span>)=<span class="source_string">"[10]"</span>
+<a name="586"></a>     CreditsName(<span class="source_int">422</span>)=<span class="source_string">"[T2]David Macachor"</span>
+<a name="587"></a>     CreditsName(<span class="source_int">423</span>)=<span class="source_string">"[T2]Joe Toledo"</span>
+<a name="588"></a>     CreditsName(<span class="source_int">424</span>)=<span class="source_string">"[T2]John Billington"</span>
+<a name="589"></a>     CreditsName(<span class="source_int">425</span>)=<span class="source_string">"[T2]Kurtis Buckmaster"</span>
+<a name="590"></a>     CreditsName(<span class="source_int">426</span>)=<span class="source_string">"[T2]Sam Copur"</span>
+<a name="591"></a>     CreditsName(<span class="source_int">427</span>)=<span class="source_string">"[80]"</span>
+<a name="592"></a>     CreditsName(<span class="source_int">428</span>)=<span class="source_string">"[T0]TECHNICAL SUPPORT"</span>
+<a name="593"></a>     CreditsName(<span class="source_int">429</span>)=<span class="source_string">"[30]"</span>
+<a name="594"></a>     CreditsName(<span class="source_int">430</span>)=<span class="source_string">"[T1]North American Technical Support Manager"</span>
+<a name="595"></a>     CreditsName(<span class="source_int">431</span>)=<span class="source_string">"[T2]Brent Wilkinson"</span>
+<a name="596"></a>     CreditsName(<span class="source_int">432</span>)=<span class="source_string">"[20]"</span>
+<a name="597"></a>     CreditsName(<span class="source_int">433</span>)=<span class="source_string">"[T1]Lead Technical Support Representative"</span>
+<a name="598"></a>     CreditsName(<span class="source_int">434</span>)=<span class="source_string">"[T2]Trent Giardino"</span>
+<a name="599"></a>     CreditsName(<span class="source_int">435</span>)=<span class="source_string">"[20]"</span>
+<a name="600"></a>     CreditsName(<span class="source_int">436</span>)=<span class="source_string">"[T1]Technical Support Representative"</span>
+<a name="601"></a>     CreditsName(<span class="source_int">437</span>)=<span class="source_string">"[T2]Bryan Marshall"</span>
+<a name="602"></a>     CreditsName(<span class="source_int">438</span>)=<span class="source_string">"[T2]Chris Curtis"</span>
+<a name="603"></a>     CreditsName(<span class="source_int">439</span>)=<span class="source_string">"[T2]Greg Bonifacio"</span>
+<a name="604"></a>     CreditsName(<span class="source_int">440</span>)=<span class="source_string">"[T2]Harden Viers"</span>
+<a name="605"></a>     CreditsName(<span class="source_int">441</span>)=<span class="source_string">"[T2]Jason Jennings"</span>
+<a name="606"></a>     CreditsName(<span class="source_int">442</span>)=<span class="source_string">"[T2]Jean-Francis Tétreault"</span>
+<a name="607"></a>     CreditsName(<span class="source_int">443</span>)=<span class="source_string">"[T2]Jesse Haff"</span>
+<a name="608"></a>     CreditsName(<span class="source_int">444</span>)=<span class="source_string">"[T2]Kirk Sanford"</span>
+<a name="609"></a>     CreditsName(<span class="source_int">445</span>)=<span class="source_string">"[T2]Moye Daniel"</span>
+<a name="610"></a>     CreditsName(<span class="source_int">446</span>)=<span class="source_string">"[80]"</span>
+<a name="611"></a>     CreditsName(<span class="source_int">447</span>)=<span class="source_string">"[T0]SPECIAL THANKS"</span>
+<a name="612"></a>     CreditsName(<span class="source_int">448</span>)=<span class="source_string">"[20]"</span>
+<a name="613"></a>     CreditsName(<span class="source_int">449</span>)=<span class="source_string">"[T1]We gratefully acknowledge the assistance of"</span>
+<a name="614"></a>     CreditsName(<span class="source_int">450</span>)=<span class="source_string">"[10]"</span>
+<a name="615"></a>     CreditsName(<span class="source_int">451</span>)=<span class="source_string">"[T2]Andy Markel"</span>
+<a name="616"></a>     CreditsName(<span class="source_int">452</span>)=<span class="source_string">"[T2]Axelle Verny"</span>
+<a name="617"></a>     CreditsName(<span class="source_int">453</span>)=<span class="source_string">"[T2]Benoit Fouillet"</span>
+<a name="618"></a>     CreditsName(<span class="source_int">454</span>)=<span class="source_string">"[T2]Chantal Cloutier"</span>
+<a name="619"></a>     CreditsName(<span class="source_int">455</span>)=<span class="source_string">"[T2]Jenifer Groeling"</span>
+<a name="620"></a>     CreditsName(<span class="source_int">456</span>)=<span class="source_string">"[T2]Katrina Medema"</span>
+<a name="621"></a>     CreditsName(<span class="source_int">457</span>)=<span class="source_string">"[T2]Martin Carrier"</span>
+<a name="622"></a>     CreditsName(<span class="source_int">458</span>)=<span class="source_string">"[T2]Mike Plotts"</span>
+<a name="623"></a>     CreditsName(<span class="source_int">459</span>)=<span class="source_string">"[T2]Rich Kubiszewski"</span>
+<a name="624"></a>     CreditsName(<span class="source_int">460</span>)=<span class="source_string">"[T2]Tom Moser - Navy SEAL consultant"</span>
+<a name="625"></a>     CreditsName(<span class="source_int">461</span>)=<span class="source_string">"[T2]Tony Burke"</span>
+<a name="626"></a>     CreditsName(<span class="source_int">462</span>)=<span class="source_string">"[T2]Vincent Paquet"</span>
+<a name="627"></a>     CreditsName(<span class="source_int">463</span>)=<span class="source_string">"[T2]Xavier Neal"</span>
+<a name="628"></a>     CreditsName(<span class="source_int">464</span>)=<span class="source_string">"[T2]Partnertrans (Germany)"</span>
+<a name="629"></a>     CreditsName(<span class="source_int">465</span>)=<span class="source_string">"[T2]Orange Studio Di Vegetti Gabriele (Italy)"</span>
+<a name="630"></a>     CreditsName(<span class="source_int">466</span>)=<span class="source_string">"[T2]DL Multimedia (Spain)"</span>
+<a name="631"></a>     CreditsName(<span class="source_int">467</span>)=<span class="source_string">"[T2]Xavier Kemmlein (France)"</span>
+<a name="632"></a>     CreditsName(<span class="source_int">468</span>)=<span class="source_string">"[T2]Eric Holweck (France)"</span>
+<a name="633"></a>     CreditsName(<span class="source_int">469</span>)=<span class="source_string">"[T2]Bug Tracker (France)"</span>
+<a name="634"></a>     CreditsName(<span class="source_int">470</span>)=<span class="source_string">"[30]"</span>
+<a name="635"></a>     CreditsName(<span class="source_int">471</span>)=<span class="source_string">"[T2]Music featured in the cinematics"</span>
+<a name="636"></a>     CreditsName(<span class="source_int">472</span>)=<span class="source_string">"[T2]performed by the Montreal Session Orchestra"</span>
+<a name="637"></a>     CreditsName(<span class="source_int">473</span>)=<span class="source_string">"[T2]Conducted by Simon Leclerc"</span>
+<a name="638"></a>     CreditsName(<span class="source_int">474</span>)=<span class="source_string">"[T2]Coordinated by John Stafford"</span>
+<a name="639"></a>     CreditsName(<span class="source_int">475</span>)=<span class="source_string">"[30]"</span>
+<a name="640"></a>     CreditsName(<span class="source_int">476</span>)=<span class="source_string">"[T2]Additional texture artwork by shaderlab.com"</span>
+<a name="641"></a>     CreditsName(<span class="source_int">477</span>)=<span class="source_string">"[T2]Copyright © 2003 Randy 'ydnar' Reddig"</span>
+<a name="642"></a>     CreditsName(<span class="source_int">478</span>)=<span class="source_string">"[30]"</span>
+<a name="643"></a>     CreditsName(<span class="source_int">479</span>)=<span class="source_string">"[T2]Featured paintings courtesy of"</span>
+<a name="644"></a>     CreditsName(<span class="source_int">480</span>)=<span class="source_string">"[T2]Olga's Gallery - Online Art Museum"</span>
+<a name="645"></a>     CreditsName(<span class="source_int">481</span>)=<span class="source_string">"[T2]http://www.abcgallery.com/"</span>
+<a name="646"></a>     CreditsName(<span class="source_int">482</span>)=<span class="source_string">"[30]"</span>
+<a name="647"></a>     CreditsName(<span class="source_int">483</span>)=<span class="source_string">"[T2]Uses Bink Video Technology."</span>
+<a name="648"></a>     CreditsName(<span class="source_int">484</span>)=<span class="source_string">"[T2]Copyright © 1991-2003 RAD Game Tools, Inc"</span>
+<a name="649"></a>     CreditsName(<span class="source_int">485</span>)=<span class="source_string">"[40]"</span>
+<a name="650"></a>     CreditsName(<span class="source_int">486</span>)=<span class="source_string">"[T2]Copyright © 2003 Red Storm Entertainment"</span>
+<a name="651"></a>     CreditsName(<span class="source_int">487</span>)=<span class="source_string">"[T2]All Rights Reserved"</span>
+<a name="652"></a>     CreditsName(<span class="source_int">488</span>)=<span class="source_string">"[20]"</span>
+<a name="653"></a>     CreditsName(<span class="source_int">489</span>)=<span class="source_string">"[T2]The character models used in this game were in no way mistreated"</span>
+<a name="654"></a>     CreditsName(<span class="source_int">490</span>)=<span class="source_string">"[T2]and all scenes in which they appeared were rendered under strict"</span>
+<a name="655"></a>     CreditsName(<span class="source_int">491</span>)=<span class="source_string">"[T2]supervision with the utmost concern for their handling."</span>
+<a name="656"></a>     CreditsName(<span class="source_int">492</span>)=<span class="source_string">"[10]"</span>
+<a name="657"></a>     CreditsName(<span class="source_int">493</span>)=<span class="source_string">"[T2]The characters and incidents portrayed and the names herein are"</span>
+<a name="658"></a>     CreditsName(<span class="source_int">494</span>)=<span class="source_string">"[T2]fictitious, and any similarity to the name, character or history"</span>
+<a name="659"></a>     CreditsName(<span class="source_int">495</span>)=<span class="source_string">"[T2]of any person is entirely coincidental and unintentional."</span>
+<a name="660"></a>     CreditsName(<span class="source_int">496</span>)=<span class="source_string">"[10]"</span>
+<a name="661"></a>     CreditsName(<span class="source_int">497</span>)=<span class="source_string">"[T2]This game is protected pursuant to the provisions of the laws of"</span>
+<a name="662"></a>     CreditsName(<span class="source_int">498</span>)=<span class="source_string">"[T2]the United States of America and other countries. Any"</span>
+<a name="663"></a>     CreditsName(<span class="source_int">499</span>)=<span class="source_string">"[T2]unauthorized duplication and/or distribution of this game may"</span>
+<a name="664"></a>     CreditsName(<span class="source_int">500</span>)=<span class="source_string">"[T2]result in civil liability and criminal prosecution."</span>
+<a name="665"></a>     CreditsName(<span class="source_int">501</span>)=<span class="source_string">"[T2]Rated "</span>M<span class="source_string">" for Mature."</span>
+<a name="666"></a>     CreditsName(<span class="source_int">502</span>)=<span class="source_string">"[40]"</span>
+<a name="667"></a>     CreditsName(<span class="source_int">503</span>)=<span class="source_string">"[T2]The whole team would like to express their sincere gratitude to"</span>
+<a name="668"></a>     CreditsName(<span class="source_int">504</span>)=<span class="source_string">"[T2]their friends and families for understanting the sacrifice this"</span>
+<a name="669"></a>     CreditsName(<span class="source_int">505</span>)=<span class="source_string">"[T2]project demanded. Undertaking a two and a half year journey cannot"</span>
+<a name="670"></a>     CreditsName(<span class="source_int">506</span>)=<span class="source_string">"[T2]be done without support from loved ones. For being there in the"</span>
+<a name="671"></a>     CreditsName(<span class="source_int">507</span>)=<span class="source_string">"[T2]best and worst times, for accepting our capricious temper after"</span>
+<a name="672"></a>     CreditsName(<span class="source_int">508</span>)=<span class="source_string">"[T2]a 36 hour work day, we thank you all."</span>
+<a name="673"></a>     CreditsName(<span class="source_int">509</span>)=<span class="source_string">"[20]"</span>
+<a name="674"></a>     CreditsName(<span class="source_int">510</span>)=<span class="source_string">"[T2]Last but not least..."</span>
+<a name="675"></a>     CreditsName(<span class="source_int">511</span>)=<span class="source_string">"[T2]Many Thanks to all the fans of the Rainbow Six series."</span>
+<a name="676"></a>     CreditsName(<span class="source_int">512</span>)=<span class="source_string">"[T2]To all the webmasters, members of the community and anyone who"</span>
+<a name="677"></a>     CreditsName(<span class="source_int">513</span>)=<span class="source_string">"[T2]ever played the game we thank you for you support. If you ever"</span>
+<a name="678"></a>     CreditsName(<span class="source_int">514</span>)=<span class="source_string">"[T2]posted a comment about the game, good or bad, you somehow helped"</span>
+<a name="679"></a>     CreditsName(<span class="source_int">515</span>)=<span class="source_string">"[T2]us making it a better, greater and more exciting experience."</span>
+<a name="680"></a>     CreditsName(<span class="source_int">516</span>)=<span class="source_string">"[20]"</span>
+<a name="681"></a>     CreditsName(<span class="source_int">517</span>)=<span class="source_string">"[T2]Created in the studios of Ubi Soft Entertainment"</span>
+<a name="682"></a>     CreditsName(<span class="source_int">518</span>)=<span class="source_string">"[T2]Montréal, Québec, Canada from November 2000 to February 2003"</span>
+<a name="683"></a>     CreditsName(<span class="source_int">519</span>)=<span class="source_string">"[20]"</span>
+<a name="684"></a>     CreditsName(<span class="source_int">520</span>)=<span class="source_string">"[T2]Visit us at http://www.raven-shield.com"</span>
+<a name="685"></a>     CreditsName(<span class="source_int">521</span>)=<span class="source_string">"[100]"</span>
+<a name="686"></a>     CreditsName(<span class="source_int">522</span>)=<span class="source_string">"[T0]PERSONAL THANKS"</span>
+<a name="687"></a>     CreditsName(<span class="source_int">523</span>)=<span class="source_string">"[30]"</span>
+<a name="688"></a>     CreditsName(<span class="source_int">524</span>)=<span class="source_string">"[T2]NOTE: You may pause by pressing * on the numeric keypad"</span>
+<a name="689"></a>     CreditsName(<span class="source_int">525</span>)=<span class="source_string">"[30]"</span>
+<a name="690"></a>     CreditsName(<span class="source_int">526</span>)=<span class="source_string">"[T2]Jason A. thanks:"</span>
+<a name="691"></a>     CreditsName(<span class="source_int">527</span>)=<span class="source_string">"[T2]Mom & Dad for supporting me and my bad habits at such an early age"</span>
+<a name="692"></a>     CreditsName(<span class="source_int">528</span>)=<span class="source_string">"[T2]...Atari 2600. Michel for taking me to The Black Hole and Shawn to"</span>
+<a name="693"></a>     CreditsName(<span class="source_int">529</span>)=<span class="source_string">"[T2]Star Wars when I was just 5 years old... you traumatized me for life."</span>
+<a name="694"></a>     CreditsName(<span class="source_int">530</span>)=<span class="source_string">"[T2]Wafaa for her loving support in my bad habits...51' HDTV. "</span>
+<a name="695"></a>     CreditsName(<span class="source_int">531</span>)=<span class="source_string">"[T2]Imagination... you never stop amazing me."</span>
+<a name="696"></a>     CreditsName(<span class="source_int">532</span>)=<span class="source_string">"[30]"</span>
+<a name="697"></a>     CreditsName(<span class="source_int">533</span>)=<span class="source_string">"[T2]Frank McCann would like to give a big THANKS to his Single Player"</span>
+<a name="698"></a>     CreditsName(<span class="source_int">534</span>)=<span class="source_string">"[T2]team for their hard work, patience and professionalism. Also, on a"</span>
+<a name="699"></a>     CreditsName(<span class="source_int">535</span>)=<span class="source_string">"[T2]more personal note, he would like to especially thank his beautiful"</span>
+<a name="700"></a>     CreditsName(<span class="source_int">536</span>)=<span class="source_string">"[T2]Julie for standing by his side."</span>
+<a name="701"></a>     CreditsName(<span class="source_int">537</span>)=<span class="source_string">"[30]"</span>
+<a name="702"></a>     CreditsName(<span class="source_int">538</span>)=<span class="source_string">"[T2]Patrick Garon:"</span>
+<a name="703"></a>     CreditsName(<span class="source_int">539</span>)=<span class="source_string">"[T2]... merci à ma famille et aux amis présents et éloignés (Caro, Lisa,"</span>
+<a name="704"></a>     CreditsName(<span class="source_int">540</span>)=<span class="source_string">"[T2]Marianne, Nico, Phil, Tom). Je vous aime. Salut à Vancouver (Falko P,"</span>
+<a name="705"></a>     CreditsName(<span class="source_int">541</span>)=<span class="source_string">"[T2]Marty R, Ian T, Luke M, Adam B). Et aussi à Dieu (peu importe qui"</span>
+<a name="706"></a>     CreditsName(<span class="source_int">542</span>)=<span class="source_string">"[T2]elle est) et Jimbo (toujours présent en nous) ..."</span>
+<a name="707"></a>     CreditsName(<span class="source_int">543</span>)=<span class="source_string">"[30]"</span>
+<a name="708"></a>     CreditsName(<span class="source_int">544</span>)=<span class="source_string">"[T2]Mike McCoy:"</span>
+<a name="709"></a>     CreditsName(<span class="source_int">545</span>)=<span class="source_string">"[T2]I want to thank my family, Lynn, Olivia, and Clay, who supported me"</span>
+<a name="710"></a>     CreditsName(<span class="source_int">546</span>)=<span class="source_string">"[T2]and sacrificed a lot during this project. Secondly, I want to thank"</span>
+<a name="711"></a>     CreditsName(<span class="source_int">547</span>)=<span class="source_string">"[T2]Daniel and Maxime, who performed above and beyond the call of duty."</span>
+<a name="712"></a>     CreditsName(<span class="source_int">548</span>)=<span class="source_string">"[T2]Finally, I want to thank UbiSoft and Red Storm for giving me this"</span>
+<a name="713"></a>     CreditsName(<span class="source_int">549</span>)=<span class="source_string">"[T2]incredible opportunity. And tomorrow I'm making waffles!"</span>
+<a name="714"></a>     CreditsName(<span class="source_int">550</span>)=<span class="source_string">"[30]"</span>
+<a name="715"></a>     CreditsName(<span class="source_int">551</span>)=<span class="source_string">"[T2]Pat Naud:"</span>
+<a name="716"></a>     CreditsName(<span class="source_int">552</span>)=<span class="source_string">"[T2]I'd like to thank my lovely girlfriend Stephanie for being so"</span>
+<a name="717"></a>     CreditsName(<span class="source_int">553</span>)=<span class="source_string">"[T2]understanding, my parent for supporting me and buying that NES"</span>
+<a name="718"></a>     CreditsName(<span class="source_int">554</span>)=<span class="source_string">"[T2]back in the 80's and Max for those lovely cafeine mints!"</span>
+<a name="719"></a>     CreditsName(<span class="source_int">555</span>)=<span class="source_string">"[30]"</span>
+<a name="720"></a>     CreditsName(<span class="source_int">556</span>)=<span class="source_string">"[T2]Gwigre remercie ses collègues de travaille pour l'avoir supporté"</span>
+<a name="721"></a>     CreditsName(<span class="source_int">557</span>)=<span class="source_string">"[T2]durant toute la durée du projet et s'excuse auprès de Merlin, de"</span>
+<a name="722"></a>     CreditsName(<span class="source_int">558</span>)=<span class="source_string">"[T2]Biscuit et surtout de Marie pour s'être absenté trop souvent durant"</span>
+<a name="723"></a>     CreditsName(<span class="source_int">559</span>)=<span class="source_string">"[T2]les deux dernières années."</span>
+<a name="724"></a>     CreditsName(<span class="source_int">560</span>)=<span class="source_string">"[30]"</span>
+<a name="725"></a>     CreditsName(<span class="source_int">561</span>)=<span class="source_string">"[T2]Chadi:"</span>
+<a name="726"></a>     CreditsName(<span class="source_int">562</span>)=<span class="source_string">"[T2]Thanks to my beautiful wife Marie-Elène, who's love, patience and"</span>
+<a name="727"></a>     CreditsName(<span class="source_int">563</span>)=<span class="source_string">"[T2]support kept me going. Bhibik ktir habibté!"</span>
+<a name="728"></a>     CreditsName(<span class="source_int">564</span>)=<span class="source_string">"[30]"</span>
+<a name="729"></a>     CreditsName(<span class="source_int">565</span>)=<span class="source_string">"[T2]Ben Richer:"</span>
+<a name="730"></a>     CreditsName(<span class="source_int">566</span>)=<span class="source_string">"[T2]Merci à mes parents qui m'ont donné la vie (donc la chance de"</span>
+<a name="731"></a>     CreditsName(<span class="source_int">567</span>)=<span class="source_string">"[T2]faire ces maps), et à ma conjointe qui a réussi à me supporter"</span>
+<a name="732"></a>     CreditsName(<span class="source_int">568</span>)=<span class="source_string">"[T2]tout ce temps. By the way, I'm the terrorist in the bank intro :)"</span>
+<a name="733"></a>     CreditsName(<span class="source_int">569</span>)=<span class="source_string">"[30]"</span>
+<a name="734"></a>     CreditsName(<span class="source_int">570</span>)=<span class="source_string">"[T2]Aristo:"</span>
+<a name="735"></a>     CreditsName(<span class="source_int">571</span>)=<span class="source_string">"[T2]I would like to thank Penelope, my soon to be wife, for putting"</span>
+<a name="736"></a>     CreditsName(<span class="source_int">572</span>)=<span class="source_string">"[T2]up with my crazy hours on this project. I also have not forgotten"</span>
+<a name="737"></a>     CreditsName(<span class="source_int">573</span>)=<span class="source_string">"[T2]my friends William, Vince, Gina, Irene and Jerry. Kosta, Joanna,"</span>
+<a name="738"></a>     CreditsName(<span class="source_int">574</span>)=<span class="source_string">"[T2]and Artemis your not loosing a sister, you're gaining a brother :)"</span>
+<a name="739"></a>     CreditsName(<span class="source_int">575</span>)=<span class="source_string">"[T2]To Mom, Dad, and Maria, I love you guys."</span>
+<a name="740"></a>     CreditsName(<span class="source_int">576</span>)=<span class="source_string">"[30]"</span>
+<a name="741"></a>     CreditsName(<span class="source_int">577</span>)=<span class="source_string">"[T2]JF Dubé:"</span>
+<a name="742"></a>     CreditsName(<span class="source_int">578</span>)=<span class="source_string">"[T2]Je voudrais remercier ma future femme Emilie pour son support"</span>
+<a name="743"></a>     CreditsName(<span class="source_int">579</span>)=<span class="source_string">"[T2]moral, sa compréhension et sa patience. Je voudrais aussi"</span>
+<a name="744"></a>     CreditsName(<span class="source_int">580</span>)=<span class="source_string">"[T2]remercier mon chat Spoutnik, qui me reconnait malgré le fait que"</span>
+<a name="745"></a>     CreditsName(<span class="source_int">581</span>)=<span class="source_string">"[T2]je ne l'ai pas vu depuis plus de 6 mois :). Salut aussi à"</span>
+<a name="746"></a>     CreditsName(<span class="source_int">582</span>)=<span class="source_string">"[T2]Louise, Rémy, Julien, Marilou, Félix, Caro, Martin, Pierre, je"</span>
+<a name="747"></a>     CreditsName(<span class="source_int">583</span>)=<span class="source_string">"[T2]vous aime!"</span>
+<a name="748"></a>     CreditsName(<span class="source_int">584</span>)=<span class="source_string">"[30]"</span>
+<a name="749"></a>     CreditsName(<span class="source_int">585</span>)=<span class="source_string">"[T2]Max:"</span>
+<a name="750"></a>     CreditsName(<span class="source_int">586</span>)=<span class="source_string">"[T2]I would like to thank my parents for supporting us during this"</span>
+<a name="751"></a>     CreditsName(<span class="source_int">587</span>)=<span class="source_string">"[T2]awesome journey. I love you guys. Big hugs to my two Mikes, McCoy"</span>
+<a name="752"></a>     CreditsName(<span class="source_int">588</span>)=<span class="source_string">"[T2]and Grasso, for teaching me so many things, about making games"</span>
+<a name="753"></a>     CreditsName(<span class="source_int">589</span>)=<span class="source_string">"[T2]and even more importantly, about life. Thanks to Chad, for giving"</span>
+<a name="754"></a>     CreditsName(<span class="source_int">590</span>)=<span class="source_string">"[T2]me the opportunity to work on this amazing game. Thumbs up to"</span>
+<a name="755"></a>     CreditsName(<span class="source_int">591</span>)=<span class="source_string">"[T2]thinkgeek.com for dressing me, and for feeding some of us with their"</span>
+<a name="756"></a>     CreditsName(<span class="source_int">592</span>)=<span class="source_string">"[T2]amazing caffeinated products. Rima, thanks for always being there"</span>
+<a name="757"></a>     CreditsName(<span class="source_int">593</span>)=<span class="source_string">"[T2]for me. And pack your bags, we're going to D1sn3yl4nd!"</span>
+<a name="758"></a>     CreditsName(<span class="source_int">594</span>)=<span class="source_string">"[T2]Editor's note: Max is the drunk dude with the green shirt"</span>
+<a name="759"></a>     CreditsName(<span class="source_int">595</span>)=<span class="source_string">"[T2]at the beginning of the outro"</span>
+<a name="760"></a>     CreditsName(<span class="source_int">596</span>)=<span class="source_string">"[30]"</span>
+<a name="761"></a>     CreditsName(<span class="source_int">597</span>)=<span class="source_string">"[T2]Rima:"</span>
+<a name="762"></a>     CreditsName(<span class="source_int">598</span>)=<span class="source_string">"[T2]First of all, thanks to RSE for creating this great license and"</span>
+<a name="763"></a>     CreditsName(<span class="source_int">599</span>)=<span class="source_string">"[T2]to Ubi Soft for giving us the opportunity to develop Raven Shield."</span>
+<a name="764"></a>     CreditsName(<span class="source_int">600</span>)=<span class="source_string">"[T2]Thanks to the whole team for all their dedication and countless"</span>
+<a name="765"></a>     CreditsName(<span class="source_int">601</span>)=<span class="source_string">"[T2]efforts. Thanks to my family for being so understanding, and"</span>
+<a name="766"></a>     CreditsName(<span class="source_int">602</span>)=<span class="source_string">"[T2]hopefully they will still remember what I look like when this is"</span>
+<a name="767"></a>     CreditsName(<span class="source_int">603</span>)=<span class="source_string">"[T2]all over :) And finally, special thanks to Max, for all the"</span>
+<a name="768"></a>     CreditsName(<span class="source_int">604</span>)=<span class="source_string">"[T2]incredible support and patience, you are the best."</span>
+<a name="769"></a>     CreditsName(<span class="source_int">605</span>)=<span class="source_string">"[30]"</span>
+<a name="770"></a>     CreditsName(<span class="source_int">606</span>)=<span class="source_string">"[T2]Simon wishes to thank his dudes, Jennifer, Martin, Melo,"</span>
+<a name="771"></a>     CreditsName(<span class="source_int">607</span>)=<span class="source_string">"[T2]Pat and all the others."</span>
+<a name="772"></a>     CreditsName(<span class="source_int">608</span>)=<span class="source_string">"[30]"</span>
+<a name="773"></a>     CreditsName(<span class="source_int">609</span>)=<span class="source_string">"[T2]Thrashing dOnut:"</span>
+<a name="774"></a>     CreditsName(<span class="source_int">610</span>)=<span class="source_string">"[T2]Je voudrais remercier tous ceux qui m'ont appuyés pendant le projet:"</span>
+<a name="775"></a>     CreditsName(<span class="source_int">611</span>)=<span class="source_string">"[T2]Christine, Flip, Leìa, mes parents, mes ami(e)s et sans oublier tout"</span>
+<a name="776"></a>     CreditsName(<span class="source_int">612</span>)=<span class="source_string">"[T2]ceux qui ont pas cru en moi. I have to thanks my co-worker for being"</span>
+<a name="777"></a>     CreditsName(<span class="source_int">613</span>)=<span class="source_string">"[T2]insane. Sanity would have ruined this project :)"</span>
+<a name="778"></a>     CreditsName(<span class="source_int">614</span>)=<span class="source_string">"[30]"</span>
+<a name="779"></a>     CreditsName(<span class="source_int">615</span>)=<span class="source_string">"[T2]Daniel "</span>Berlu<span class="source_string">" Berube:"</span>
+<a name="780"></a>     CreditsName(<span class="source_int">616</span>)=<span class="source_string">"[T2]I would like to thank my beautiful wife Lucie, my family, my friends,"</span>
+<a name="781"></a>     CreditsName(<span class="source_int">617</span>)=<span class="source_string">"[T2]without forgetting Mini-Pouitte and Theodore. I also thank the great"</span>
+<a name="782"></a>     CreditsName(<span class="source_int">618</span>)=<span class="source_string">"[T2]team for all its work, Red Storm and Ubi Soft which gave me the"</span>
+<a name="783"></a>     CreditsName(<span class="source_int">619</span>)=<span class="source_string">"[T2]possibility to work on a challenging game from day one."</span>
+<a name="784"></a>     CreditsName(<span class="source_int">620</span>)=<span class="source_string">"[30]"</span>
+<a name="785"></a>     CreditsName(<span class="source_int">621</span>)=<span class="source_string">"[T2]David Massicotte:"</span>
+<a name="786"></a>     CreditsName(<span class="source_int">622</span>)=<span class="source_string">"[T2]Thanks to K"</span>
+<a name="787"></a>     CreditsName(<span class="source_int">623</span>)=<span class="source_string">"[30]"</span>
+<a name="788"></a>     CreditsName(<span class="source_int">624</span>)=<span class="source_string">"[T2]Arsenic wants first to thanks his familly that he would like to see"</span>
+<a name="789"></a>     CreditsName(<span class="source_int">625</span>)=<span class="source_string">"[T2]more often.  His best friends: Vince, Fred, Dub. His friends from"</span>
+<a name="790"></a>     CreditsName(<span class="source_int">626</span>)=<span class="source_string">"[T2]university that he did put aside: Vigny, Bob, Jo, Marc, Isa, Caro,"</span>
+<a name="791"></a>     CreditsName(<span class="source_int">627</span>)=<span class="source_string">"[T2]...and of course all the fans of the series.  I'm really sorry,"</span>
+<a name="792"></a>     CreditsName(<span class="source_int">628</span>)=<span class="source_string">"[T2]but now, you'll be the one who won't sleep :) Have Fun!"</span>
+<a name="793"></a>     CreditsName(<span class="source_int">629</span>)=<span class="source_string">"[30]"</span>
+<a name="794"></a>     CreditsName(<span class="source_int">630</span>)=<span class="source_string">"[T2]Danny Deslongchamps:"</span>
+<a name="795"></a>     CreditsName(<span class="source_int">631</span>)=<span class="source_string">"[T2]I would like to thank my Family and my Friend for there support,"</span>
+<a name="796"></a>     CreditsName(<span class="source_int">632</span>)=<span class="source_string">"[T2]patience and love throughout this project,"</span>
+<a name="797"></a>     CreditsName(<span class="source_int">633</span>)=<span class="source_string">"[T2]and God for is love and grace."</span>
+<a name="798"></a>     CreditsName(<span class="source_int">634</span>)=<span class="source_string">"[30]"</span>
+<a name="799"></a>     CreditsName(<span class="source_int">635</span>)=<span class="source_string">"[T2]Francis:"</span>
+<a name="800"></a>     CreditsName(<span class="source_int">636</span>)=<span class="source_string">"[T2]People on this project are damn good!  Special thx to Midnight,"</span>
+<a name="801"></a>     CreditsName(<span class="source_int">637</span>)=<span class="source_string">"[T2]M4X1M3, Mike McCoy, Rima and the all the programmers, u rule guys!"</span>
+<a name="802"></a>     CreditsName(<span class="source_int">638</span>)=<span class="source_string">"[T2]Thx to Karine, François (francky21), Carl, my parents."</span>
+<a name="803"></a>     CreditsName(<span class="source_int">639</span>)=<span class="source_string">"[T2]I had to go far to live my dreams..."</span>
+<a name="804"></a>     CreditsName(<span class="source_int">640</span>)=<span class="source_string">"[30]"</span>
+<a name="805"></a>     CreditsName(<span class="source_int">641</span>)=<span class="source_string">"[T2]Alex Dionne:"</span>
+<a name="806"></a>     CreditsName(<span class="source_int">642</span>)=<span class="source_string">"[T2]Un gros merci à Geneviève pour sa compréhension et son amour "</span>
+<a name="807"></a>     CreditsName(<span class="source_int">643</span>)=<span class="source_string">"[T2]tout au long de ce projet. Merci au NDG crew pour leur "</span>
+<a name="808"></a>     CreditsName(<span class="source_int">644</span>)=<span class="source_string">"[T2]soutient et leurs encouragements."</span>
+<a name="809"></a>     CreditsName(<span class="source_int">645</span>)=<span class="source_string">"[30]"</span>
+<a name="810"></a>     CreditsName(<span class="source_int">646</span>)=<span class="source_string">"[T2]Yannick aimerait remercier en plus de sa famille, Valérie"</span>
+<a name="811"></a>     CreditsName(<span class="source_int">647</span>)=<span class="source_string">"[T2]et Jonas pour leur support, leur sourire et leur compréhension"</span>
+<a name="812"></a>     CreditsName(<span class="source_int">648</span>)=<span class="source_string">"[T2]tout au long du projet!"</span>
+<a name="813"></a>     CreditsName(<span class="source_int">649</span>)=<span class="source_string">"[30]"</span>
+<a name="814"></a>     CreditsName(<span class="source_int">650</span>)=<span class="source_string">"[T2]Christian Sirois is grateful for all the games that make our"</span>
+<a name="815"></a>     CreditsName(<span class="source_int">651</span>)=<span class="source_string">"[T2]lunchtime go by faster. I also want to thank photography,"</span>
+<a name="816"></a>     CreditsName(<span class="source_int">652</span>)=<span class="source_string">"[T2]mini skirts in hot summer days and Evelyne for her wonderful"</span>
+<a name="817"></a>     CreditsName(<span class="source_int">653</span>)=<span class="source_string">"[T2]smile. Without forgetting to thank Arman's humor and the rest"</span>
+<a name="818"></a>     CreditsName(<span class="source_int">654</span>)=<span class="source_string">"[T2]of the team. I hope we have the chance to work together again."</span>
+<a name="819"></a>     CreditsName(<span class="source_int">655</span>)=<span class="source_string">"[T2]To all my family, including you NiNiE, many thanks for your support."</span>
+<a name="820"></a>     CreditsName(<span class="source_int">656</span>)=<span class="source_string">"[30]"</span>
+<a name="821"></a>     CreditsName(<span class="source_int">657</span>)=<span class="source_string">"[T2]Joel "</span>Alkoliq<span class="source_string">" Tremblay:"</span>
+<a name="822"></a>     CreditsName(<span class="source_int">658</span>)=<span class="source_string">"[T2]It's Over. I can't believe it!"</span>
+<a name="823"></a>     CreditsName(<span class="source_int">659</span>)=<span class="source_string">"[T2]To the Rainbow Six team, you're the best!"</span>
+<a name="824"></a>     CreditsName(<span class="source_int">660</span>)=<span class="source_string">"[T2]To my girlfriend, next time I say "</span><span class="source_type">I</span><span class="source_name">'ll meet you at 6"..."</span>
+<a name="825"></a>     CreditsName(<span class="source_int">661</span>)=<span class="source_string">"[T2]I will actually be there!"</span>
+<a name="826"></a>     CreditsName(<span class="source_int">662</span>)=<span class="source_string">"[T2]To my parents, next time I say "</span><span class="source_type">I</span><span class="source_name">'ll be there for supper"..."</span>
+<a name="827"></a>     CreditsName(<span class="source_int">663</span>)=<span class="source_string">"[T2]I will actually make it."</span>
+<a name="828"></a>     CreditsName(<span class="source_int">664</span>)=<span class="source_string">"[T2]To my judo partners, next time I say "</span>See you wednesday<span class="source_string">"..."</span>
+<a name="829"></a>     CreditsName(<span class="source_int">665</span>)=<span class="source_string">"[T2]I will be there!"</span>
+<a name="830"></a>     CreditsName(<span class="source_int">666</span>)=<span class="source_string">"[T2]To my cat, next time I say "</span>Did <span class="source_type">I</span> give her food today?<span class="source_string">"..."</span>
+<a name="831"></a>     CreditsName(<span class="source_int">667</span>)=<span class="source_string">"[T2]I Will give you food."</span>
+<a name="832"></a>     CreditsName(<span class="source_int">668</span>)=<span class="source_string">"[T2]To my childern, next time I say ..."</span>
+<a name="833"></a>     CreditsName(<span class="source_int">669</span>)=<span class="source_string">"[T2]Wait I don't have any childern yet!"</span>
+<a name="834"></a>     CreditsName(<span class="source_int">670</span>)=<span class="source_string">"[T2]Max, thanks for the caffeinated peppermints,"</span>
+<a name="835"></a>     CreditsName(<span class="source_int">671</span>)=<span class="source_string">"[T2]Helped a lot during those long nights."</span>
+<a name="836"></a>     CreditsName(<span class="source_int">672</span>)=<span class="source_string">"[T2](I kept the Alkoliq name from university, not the habit)"</span>
+<a name="837"></a>     m_RVideo=(X=<span class="source_int">70</span>,<span class="source_type">Y</span>=<span class="source_int">55</span>,W=<span class="source_int">500</span>,<span class="source_type">H</span>=<span class="source_int">370</span>)
+<a name="838"></a>}
+<a name="839"></a></pre></td></tr></table></div>
+<hr />
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../r6menu/r6menu-overview.html">Package</a></td>
+	<td class="header"><a href="../r6menu/r6menucreditswidget.html">Class</a></td>
+	<td class="header_hilight">Source</td>
+	<td class="header"><a class="header" href="../classtree.html#R6MenuCreditsWidget">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../Source_r6menu/r6menucredits.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../Source_r6menu/r6menucustommissionnbterroselect.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+
+<div class="stats">Class file time: sam. 18/9/2004 14:39:54.000 - Creation time: mar. 26/5/2026 18:33:20.274 - Created with <a href="http://wiki.beyondunreal.com/wiki/UnCodeX" target="_blank">UnCodeX</a></div>
+
+</body>
+</html>

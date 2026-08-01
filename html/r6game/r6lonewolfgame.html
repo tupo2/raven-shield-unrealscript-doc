@@ -1,0 +1,233 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+	<title>UnCodeX - R6Game.R6LoneWolfGame</title>
+	<meta name="Generator" content="UnCodeX 241" />
+	<link rel="stylesheet" href="../DocStyle2.css" type="text/css" title="Original Purple" />
+	<link rel="alternative stylesheet" href="../DocStyle2-blue.css" type="text/css" title="Blue" />
+	<link rel="alternative stylesheet" href="../DocStyle2-red.css" type="text/css" title="Red" />
+	<!--[if IE]>
+	<link rel="stylesheet" href="../DocStyle2-msie.css" type="text/css" />
+	<![endif]-->
+	<script src="../styleswitcher.js" type="text/javascript"></script>
+</head>
+<body>
+
+<div class="header">
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../r6game/r6game-overview.html">Package</a></td>
+	<td class="header_hilight">Class</td>
+	<td class="header"><a href="../Source_r6game/r6lonewolfgame.html">Source</a></td>
+	<td class="header"><a class="header" href="../classtree.html#R6LoneWolfGame">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../r6game/r6instructionsoundvolume.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../r6game/r6missiongame.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html#r6game/r6lonewolfgame.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+</div>
+<div class="spacer"></div>
+
+<h1><a href="../r6game/r6game-overview.html">R6Game</a>.R6LoneWolfGame</h1>
+
+<dl>
+<dt>Extends</dt><dd><a href="../r6game/r6gameinfo.html">R6GameInfo</a></dd>
+
+</dl>
+
+<p></p>
+
+<pre class="tree"><a href="../core/core-overview.html">core</a>.<a href="../core/object.html">Object</a>
+|   
++-- <a href="../engine/engine-overview.html">engine</a>.<a href="../engine/actor.html">Actor</a>
+   |   
+   +-- <a href="../engine/engine-overview.html">engine</a>.<a href="../engine/info.html">Info</a>
+      |   
+      +-- <a href="../engine/engine-overview.html">engine</a>.<a href="../engine/gameinfo.html">GameInfo</a>
+         |   
+         +-- <a href="../r6abstract/r6abstract-overview.html">R6Abstract</a>.<a href="../r6abstract/r6abstractgameinfo.html">R6AbstractGameInfo</a>
+            |   
+            +-- <a href="../r6game/r6game-overview.html">R6Game</a>.<a href="../r6game/r6gameinfo.html">R6GameInfo</a>
+               |   
+               +-- <a href="../r6game/r6game-overview.html">R6Game</a>.<a href="../r6game/r6lonewolfgame.html">R6LoneWolfGame</a>
+</pre>
+
+
+
+<hr />
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Constants Summary</th>
+</tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Contants from <a href="../r6game/r6game-overview.html">R6Game</a>.<a href="../r6game/r6gameinfo.html">R6GameInfo</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../r6game/r6gameinfo.html#CMaxPlayers">CMaxPlayers</a>, <a href="../r6game/r6gameinfo.html#CMaxRainbowAI">CMaxRainbowAI</a></td>
+</tr>
+</table>
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th colspan="2" class="title">Variables Summary</th>
+</tr>
+<tr><td nowrap="nowrap" width="33%">Sound</td><td width="66%"><a href="#_m_sndTeamWipedOut" name="m_sndTeamWipedOut" title="go to the details">m_sndTeamWipedOut</a></td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Variables from <a href="../r6game/r6game-overview.html">R6Game</a>.<a href="../r6game/r6gameinfo.html">R6GameInfo</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../r6game/r6gameinfo.html#bNoRestart">bNoRestart</a>, <a href="../r6game/r6gameinfo.html#bShowLog">bShowLog</a>, <a href="../r6game/r6gameinfo.html#DefaultFaceCoords">DefaultFaceCoords</a>, <a href="../r6game/r6gameinfo.html#DefaultFaceTexture">DefaultFaceTexture</a>, <a href="../r6game/r6gameinfo.html#LastStartSpot">LastStartSpot</a>, <a href="../r6game/r6gameinfo.html#m_bAdminPasswordReq">m_bAdminPasswordReq</a>, <a href="../r6game/r6gameinfo.html#m_bAIBkp">m_bAIBkp</a>, <a href="../r6game/r6gameinfo.html#m_bAutoBalance">m_bAutoBalance</a>, <a href="../r6game/r6gameinfo.html#m_bCurrentFemaleId">m_bCurrentFemaleId</a>, <a href="../r6game/r6gameinfo.html#m_bCurrentMaleId">m_bCurrentMaleId</a>, <a href="../r6game/r6gameinfo.html#m_bFadeStarted">m_bFadeStarted</a>, <a href="../r6game/r6gameinfo.html#m_bFeedbackHostageExtracted">m_bFeedbackHostageExtracted</a>, <a href="../r6game/r6gameinfo.html#m_bFeedbackHostageKilled">m_bFeedbackHostageKilled</a>, <a href="../r6game/r6gameinfo.html#m_bFFPWeapon">m_bFFPWeapon</a>, <a href="../r6game/r6gameinfo.html#m_bGadgMiscRes">m_bGadgMiscRes</a>, <a href="../r6game/r6gameinfo.html#m_bGadgPrimaryRes">m_bGadgPrimaryRes</a>, <a href="../r6game/r6gameinfo.html#m_bGadgSecondayRes">m_bGadgSecondayRes</a>, <a href="../r6game/r6gameinfo.html#m_bIsRadarAllowed">m_bIsRadarAllowed</a>, <a href="../r6game/r6gameinfo.html#m_bIsWritableMapAllowed">m_bIsWritableMapAllowed</a>, <a href="../r6game/r6gameinfo.html#m_bJumpingMaps">m_bJumpingMaps</a>, <a href="../r6game/r6gameinfo.html#m_bPWAssRifleRes">m_bPWAssRifleRes</a>, <a href="../r6game/r6gameinfo.html#m_bPWMachGunRes">m_bPWMachGunRes</a>, <a href="../r6game/r6gameinfo.html#m_bPWShotGunRes">m_bPWShotGunRes</a>, <a href="../r6game/r6gameinfo.html#m_bPWSnipRifleRes">m_bPWSnipRifleRes</a>, <a href="../r6game/r6gameinfo.html#m_bPWSubMachGunRes">m_bPWSubMachGunRes</a>, <a href="../r6game/r6gameinfo.html#m_bRainbowFaces[30]">m_bRainbowFaces[30]</a>, <a href="../r6game/r6gameinfo.html#m_bRepAllowRadarOption">m_bRepAllowRadarOption</a>, <a href="../r6game/r6gameinfo.html#m_bRotateMap">m_bRotateMap</a>, <a href="../r6game/r6gameinfo.html#m_bServerAllowRadarRep">m_bServerAllowRadarRep</a>, <a href="../r6game/r6gameinfo.html#m_bShowNames">m_bShowNames</a>, <a href="../r6game/r6gameinfo.html#m_bSWMachPistolRes">m_bSWMachPistolRes</a>, <a href="../r6game/r6gameinfo.html#m_bSWPistolRes">m_bSWPistolRes</a>, <a href="../r6game/r6gameinfo.html#m_bTKPenalty">m_bTKPenalty</a>, <a href="../r6game/r6gameinfo.html#m_bUnlockAllDoors">m_bUnlockAllDoors</a>, <a href="../r6game/r6gameinfo.html#m_bUsingCampaignBriefing">m_bUsingCampaignBriefing</a>, <a href="../r6game/r6gameinfo.html#m_bUsingPlayerCampaign">m_bUsingPlayerCampaign</a>, <a href="../r6game/r6gameinfo.html#m_CommonRainbowMemberVoicesMgr">m_CommonRainbowMemberVoicesMgr</a>, <a href="../r6game/r6gameinfo.html#m_CommonRainbowPlayerVoicesMgr">m_CommonRainbowPlayerVoicesMgr</a>, <a href="../r6game/r6gameinfo.html#m_eEndGameWidgetID">m_eEndGameWidgetID</a>, <a href="../r6game/r6gameinfo.html#m_fBombTime">m_fBombTime</a>, <a href="../r6game/r6gameinfo.html#m_fPausedAtTime">m_fPausedAtTime</a>, <a href="../r6game/r6gameinfo.html#m_fRoundEndTime">m_fRoundEndTime</a>, <a href="../r6game/r6gameinfo.html#m_fRoundStartTime">m_fRoundStartTime</a>, <a href="../r6game/r6gameinfo.html#m_gameModeList">m_gameModeList</a>, <a href="../r6game/r6gameinfo.html#m_GameService">m_GameService</a>, <a href="../r6game/r6gameinfo.html#m_HostageVoicesFemaleMgr">m_HostageVoicesFemaleMgr</a>, <a href="../r6game/r6gameinfo.html#m_HostageVoicesMaleMgr">m_HostageVoicesMaleMgr</a>, <a href="../r6game/r6gameinfo.html#m_iAssRifleResMask">m_iAssRifleResMask</a>, <a href="../r6game/r6gameinfo.html#m_iCurrentID">m_iCurrentID</a>, <a href="../r6game/r6gameinfo.html#m_iDeathCameraMode">m_iDeathCameraMode</a>, <a href="../r6game/r6gameinfo.html#m_iGadgMiscResMask">m_iGadgMiscResMask</a>, <a href="../r6game/r6gameinfo.html#m_iGadgPrimaryResMask">m_iGadgPrimaryResMask</a>, <a href="../r6game/r6gameinfo.html#m_iGadgSecondaryResMask">m_iGadgSecondaryResMask</a>, <a href="../r6game/r6gameinfo.html#m_iIDVoicesMgr">m_iIDVoicesMgr</a>, <a href="../r6game/r6gameinfo.html#m_iJumpMapIndex">m_iJumpMapIndex</a>, <a href="../r6game/r6gameinfo.html#m_iMachGunResMask">m_iMachGunResMask</a>, <a href="../r6game/r6gameinfo.html#m_iMachPistolResMask">m_iMachPistolResMask</a>, <a href="../r6game/r6gameinfo.html#m_iMaxOperatives">m_iMaxOperatives</a>, <a href="../r6game/r6gameinfo.html#m_iNbOfRestart">m_iNbOfRestart</a>, <a href="../r6game/r6gameinfo.html#m_iPistolResMask">m_iPistolResMask</a>, <a href="../r6game/r6gameinfo.html#m_iRoundsPerMatch">m_iRoundsPerMatch</a>, <a href="../r6game/r6gameinfo.html#m_iShotGunResMask">m_iShotGunResMask</a>, <a href="../r6game/r6gameinfo.html#m_iSnipRifleResMask">m_iSnipRifleResMask</a>, <a href="../r6game/r6gameinfo.html#m_iSubMachineGunsResMask">m_iSubMachineGunsResMask</a>, <a href="../r6game/r6gameinfo.html#m_listAllTerrorists">m_listAllTerrorists</a>, <a href="../r6game/r6gameinfo.html#m_mapList">m_mapList</a>, <a href="../r6game/r6gameinfo.html#m_MultiCommonVoicesMgr">m_MultiCommonVoicesMgr</a>, <a href="../r6game/r6gameinfo.html#m_MultiCoopMemberVoicesMgr">m_MultiCoopMemberVoicesMgr</a>, <a href="../r6game/r6gameinfo.html#m_MultiCoopPlayerVoicesMgr">m_MultiCoopPlayerVoicesMgr</a>, <a href="../r6game/r6gameinfo.html#m_PersistantGameService">m_PersistantGameService</a>, <a href="../r6game/r6gameinfo.html#m_PreRecordedMsgVoicesMgr">m_PreRecordedMsgVoicesMgr</a>, <a href="../r6game/r6gameinfo.html#m_RainbowAIBackup">m_RainbowAIBackup</a>, <a href="../r6game/r6gameinfo.html#m_RainbowMemberVoicesMgr">m_RainbowMemberVoicesMgr</a>, <a href="../r6game/r6gameinfo.html#m_RainbowOtherTeamVoicesMgr">m_RainbowOtherTeamVoicesMgr</a>, <a href="../r6game/r6gameinfo.html#m_RainbowPlayerVoicesMgr">m_RainbowPlayerVoicesMgr</a>, <a href="../r6game/r6gameinfo.html#m_szMessageOfDay">m_szMessageOfDay</a>, <a href="../r6game/r6gameinfo.html#m_szSvrName">m_szSvrName</a>, <a href="../r6game/r6gameinfo.html#m_TerroristVoicesMgr">m_TerroristVoicesMgr</a>, <a href="../r6game/r6gameinfo.html#R6DefaultWeaponInput">R6DefaultWeaponInput</a></td>
+</tr>
+</table>
+<table>
+<tr>
+	<th class="inherittitle">Inherited Variables from <a href="../r6abstract/r6abstract-overview.html">R6Abstract</a>.<a href="../r6abstract/r6abstractgameinfo.html">R6AbstractGameInfo</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../r6abstract/r6abstractgameinfo.html#m_bEndGameIgnoreGamePlayCheck">m_bEndGameIgnoreGamePlayCheck</a>, <a href="../r6abstract/r6abstractgameinfo.html#m_bFriendlyFire">m_bFriendlyFire</a>, <a href="../r6abstract/r6abstractgameinfo.html#m_bGameOverButAllowDeath">m_bGameOverButAllowDeath</a>, <a href="../r6abstract/r6abstractgameinfo.html#m_bInternetSvr">m_bInternetSvr</a>, <a href="../r6abstract/r6abstractgameinfo.html#m_bTimerStarted">m_bTimerStarted</a>, <a href="../r6abstract/r6abstractgameinfo.html#m_fEndingTime">m_fEndingTime</a>, <a href="../r6abstract/r6abstractgameinfo.html#m_fEndKickVoteTime">m_fEndKickVoteTime</a>, <a href="../r6abstract/r6abstractgameinfo.html#m_fTimeBetRounds">m_fTimeBetRounds</a>, <a href="../r6abstract/r6abstractgameinfo.html#m_fTimerStartTime">m_fTimerStartTime</a>, <a href="../r6abstract/r6abstractgameinfo.html#m_iDiffLevel">m_iDiffLevel</a>, <a href="../r6abstract/r6abstractgameinfo.html#m_iNbOfRainbowAIToSpawn">m_iNbOfRainbowAIToSpawn</a>, <a href="../r6abstract/r6abstractgameinfo.html#m_iNbOfTerroristToSpawn">m_iNbOfTerroristToSpawn</a>, <a href="../r6abstract/r6abstractgameinfo.html#m_KickersName">m_KickersName</a>, <a href="../r6abstract/r6abstractgameinfo.html#m_missionMgr">m_missionMgr</a>, <a href="../r6abstract/r6abstractgameinfo.html#m_noiseMgr">m_noiseMgr</a>, <a href="../r6abstract/r6abstractgameinfo.html#m_pCurPlayerCtrlMdfSrvInfo">m_pCurPlayerCtrlMdfSrvInfo</a>, <a href="../r6abstract/r6abstractgameinfo.html#m_Player">m_Player</a>, <a href="../r6abstract/r6abstractgameinfo.html#m_PlayerKick">m_PlayerKick</a>, <a href="../r6abstract/r6abstractgameinfo.html#m_szDefaultActionPlan">m_szDefaultActionPlan</a>, <a href="../r6abstract/r6abstractgameinfo.html#m_UdpBeacon">m_UdpBeacon</a></td>
+</tr>
+</table>
+
+
+<br />
+
+
+
+
+
+
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Functions Summary</th>
+</tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_EndGame-" name="EndGame" title="go to the details">EndGame</a> (<a href="../engine/playerreplicationinfo.html">PlayerReplicationInfo</a> Winner, string Reason ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_InitObjectives-" name="InitObjectives" title="go to the details">InitObjectives</a> ()))<br /><span class="function_state"></span></td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Functions from <a href="../r6game/r6game-overview.html">R6Game</a>.<a href="../r6game/r6gameinfo.html">R6GameInfo</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../r6game/r6gameinfo.html#AbortScoreSubmission">AbortScoreSubmission</a>, <a href="../r6game/r6gameinfo.html#AcceptInventory">AcceptInventory</a>, <a href="../r6game/r6gameinfo.html#AdminResetRound">AdminResetRound</a>, <a href="../r6game/r6gameinfo.html#ApplyTeamKillerPenalty">ApplyTeamKillerPenalty</a>, <a href="../r6game/r6gameinfo.html#BaseEndGame">BaseEndGame</a>, <a href="../r6game/r6gameinfo.html#BroadcastGameMsg">BroadcastGameMsg</a>, <a href="../r6game/r6gameinfo.html#BroadcastGameTypeDescription">BroadcastGameTypeDescription</a>, <a href="../r6game/r6gameinfo.html#BroadcastMissionObjMsg">BroadcastMissionObjMsg</a>, <a href="../r6game/r6gameinfo.html#CanPlayIntroVideo">CanPlayIntroVideo</a>, <a href="../r6game/r6gameinfo.html#CanPlayOutroVideo">CanPlayOutroVideo</a>, <a href="../r6game/r6gameinfo.html#ChangeName">ChangeName</a>, <a href="../r6game/r6gameinfo.html#ChangeOperatives">ChangeOperatives</a>, <a href="../r6game/r6gameinfo.html#ChangeTeams">ChangeTeams</a>, <a href="../r6game/r6gameinfo.html#CheckEndGame">CheckEndGame</a>, <a href="../r6game/r6gameinfo.html#CheckForExtractionZone">CheckForExtractionZone</a>, <a href="../r6game/r6gameinfo.html#CheckForHostage">CheckForHostage</a>, <a href="../r6game/r6gameinfo.html#CheckForTerrorist">CheckForTerrorist</a>, <a href="../r6game/r6gameinfo.html#CreateBackupRainbowAI">CreateBackupRainbowAI</a>, <a href="../r6game/r6gameinfo.html#CreateRainbowTeam">CreateRainbowTeam</a>, <a href="../r6game/r6gameinfo.html#DeployCharacters">DeployCharacters</a>, <a href="../r6game/r6gameinfo.html#DeployRainbowTeam">DeployRainbowTeam</a>, <a href="../r6game/r6gameinfo.html#DestroyBeacon">DestroyBeacon</a>, <a href="../r6game/r6gameinfo.html#EndGame">EndGame</a>, <a href="../r6game/r6gameinfo.html#EnteredExtractionZone">EnteredExtractionZone</a>, <a href="../r6game/r6gameinfo.html#Find2DTexture">Find2DTexture</a>, <a href="../r6game/r6gameinfo.html#FindPlayerStart">FindPlayerStart</a>, <a href="../r6game/r6gameinfo.html#FindTeamInsertionZone">FindTeamInsertionZone</a>, <a href="../r6game/r6gameinfo.html#FirstPassReset">FirstPassReset</a>, <a href="../r6game/r6gameinfo.html#GetAStartSpot">GetAStartSpot</a>, <a href="../r6game/r6gameinfo.html#GetCommonRainbowMemberVoicesMgr">GetCommonRainbowMemberVoicesMgr</a>, <a href="../r6game/r6gameinfo.html#GetCommonRainbowPlayerVoicesMgr">GetCommonRainbowPlayerVoicesMgr</a>, <a href="../r6game/r6gameinfo.html#GetHostageVoicesMgr">GetHostageVoicesMgr</a>, <a href="../r6game/r6gameinfo.html#GetMultiCommonVoicesMgr">GetMultiCommonVoicesMgr</a>, <a href="../r6game/r6gameinfo.html#GetMultiCoopMemberVoicesMgr">GetMultiCoopMemberVoicesMgr</a>, <a href="../r6game/r6gameinfo.html#GetMultiCoopPlayerVoicesMgr">GetMultiCoopPlayerVoicesMgr</a>, <a href="../r6game/r6gameinfo.html#GetNbHumanPlayerInTeam">GetNbHumanPlayerInTeam</a>, <a href="../r6game/r6gameinfo.html#GetNbTerroNeutralized">GetNbTerroNeutralized</a>, <a href="../r6game/r6gameinfo.html#GetNewTeam">GetNewTeam</a>, <a href="../r6game/r6gameinfo.html#GetNoiseMgr">GetNoiseMgr</a>, <a href="../r6game/r6gameinfo.html#GetPreRecordedMsgVoicesMgr">GetPreRecordedMsgVoicesMgr</a>, <a href="../r6game/r6gameinfo.html#GetRainbowAIFromTable">GetRainbowAIFromTable</a>, <a href="../r6game/r6gameinfo.html#GetRainbowMemberVoicesMgr">GetRainbowMemberVoicesMgr</a>, <a href="../r6game/r6gameinfo.html#GetRainbowOtherTeamVoicesMgr">GetRainbowOtherTeamVoicesMgr</a>, <a href="../r6game/r6gameinfo.html#GetRainbowPlayerVoicesMgr">GetRainbowPlayerVoicesMgr</a>, <a href="../r6game/r6gameinfo.html#GetRainbowTeam">GetRainbowTeam</a>, <a href="../r6game/r6gameinfo.html#GetSystemUserName">GetSystemUserName</a>, <a href="../r6game/r6gameinfo.html#GetTeamNumBit">GetTeamNumBit</a>, <a href="../r6game/r6gameinfo.html#GetTerroristVoicesMgr">GetTerroristVoicesMgr</a>, <a href="../r6game/r6gameinfo.html#GetTrainingMgr">GetTrainingMgr</a>, <a href="../r6game/r6gameinfo.html#IncrementRoundsFired">IncrementRoundsFired</a>, <a href="../r6game/r6gameinfo.html#InitGame">InitGame</a>, <a href="../r6game/r6gameinfo.html#InitGameReplicationInfo">InitGameReplicationInfo</a>, <a href="../r6game/r6gameinfo.html#InitObjectives">InitObjectives</a>, <a href="../r6game/r6gameinfo.html#InitObjectivesOfStoryMode">InitObjectivesOfStoryMode</a>, <a href="../r6game/r6gameinfo.html#InstructAllTeamsToFollowPlanning">InstructAllTeamsToFollowPlanning</a>, <a href="../r6game/r6gameinfo.html#InstructAllTeamsToHoldPosition">InstructAllTeamsToHoldPosition</a>, <a href="../r6game/r6gameinfo.html#IsARainbowAlive">IsARainbowAlive</a>, <a href="../r6game/r6gameinfo.html#IsInResArray">IsInResArray</a>, <a href="../r6game/r6gameinfo.html#IsLastRoundOfTheMatch">IsLastRoundOfTheMatch</a>, <a href="../r6game/r6gameinfo.html#IsPrimaryGadgetRestricted">IsPrimaryGadgetRestricted</a>, <a href="../r6game/r6gameinfo.html#IsPrimaryWeaponRestricted">IsPrimaryWeaponRestricted</a>, <a href="../r6game/r6gameinfo.html#IsPrimaryWeaponRestrictedToPawn">IsPrimaryWeaponRestrictedToPawn</a>, <a href="../r6game/r6gameinfo.html#IsSecondaryGadgetRestricted">IsSecondaryGadgetRestricted</a>, <a href="../r6game/r6gameinfo.html#IsSecondaryWeaponRestricted">IsSecondaryWeaponRestricted</a>, <a href="../r6game/r6gameinfo.html#IsSecondaryWeaponRestrictedToPawn">IsSecondaryWeaponRestrictedToPawn</a>, <a href="../r6game/r6gameinfo.html#IsTertiaryWeaponRestricted">IsTertiaryWeaponRestricted</a>, <a href="../r6game/r6gameinfo.html#IsTertiaryWeaponRestrictedForGamePlay">IsTertiaryWeaponRestrictedForGamePlay</a>, <a href="../r6game/r6gameinfo.html#IsTertiaryWeaponRestrictedToPawn">IsTertiaryWeaponRestrictedToPawn</a>, <a href="../r6game/r6gameinfo.html#IsUnlimitedPractice">IsUnlimitedPractice</a>, <a href="../r6game/r6gameinfo.html#LoadPlanningInTraining">LoadPlanningInTraining</a>, <a href="../r6game/r6gameinfo.html#Login">Login</a>, <a href="../r6game/r6gameinfo.html#Logout">Logout</a>, <a href="../r6game/r6gameinfo.html#MPSelectOperativeFace">MPSelectOperativeFace</a>, <a href="../r6game/r6gameinfo.html#PawnKilled">PawnKilled</a>, <a href="../r6game/r6gameinfo.html#PlayerReadySelected">PlayerReadySelected</a>, <a href="../r6game/r6gameinfo.html#PlayTeleportEffect">PlayTeleportEffect</a>, <a href="../r6game/r6gameinfo.html#PostBeginPlay">PostBeginPlay</a>, <a href="../r6game/r6gameinfo.html#PostLogin">PostLogin</a>, <a href="../r6game/r6gameinfo.html#PreLogOut">PreLogOut</a>, <a href="../r6game/r6gameinfo.html#ProcessChangeLevelSystem">ProcessChangeLevelSystem</a>, <a href="../r6game/r6gameinfo.html#ProcessPlayerReadyStatus">ProcessPlayerReadyStatus</a>, <a href="../r6game/r6gameinfo.html#R6FindPlayerStart">R6FindPlayerStart</a>, <a href="../r6game/r6gameinfo.html#R6GameInfoMakeNoise">R6GameInfoMakeNoise</a>, <a href="../r6game/r6gameinfo.html#R6SetPawnClassInMultiPlayer">R6SetPawnClassInMultiPlayer</a>, <a href="../r6game/r6gameinfo.html#RainbowOperativesStillAlive">RainbowOperativesStillAlive</a>, <a href="../r6game/r6gameinfo.html#RatePlayerStart">RatePlayerStart</a>, <a href="../r6game/r6gameinfo.html#RemoveAIBackup">RemoveAIBackup</a>, <a href="../r6game/r6gameinfo.html#RemoveTerroFromList">RemoveTerroFromList</a>, <a href="../r6game/r6gameinfo.html#ResetBroadcastGameMsg">ResetBroadcastGameMsg</a>, <a href="../r6game/r6gameinfo.html#ResetMatchStat">ResetMatchStat</a>, <a href="../r6game/r6gameinfo.html#ResetOriginalData">ResetOriginalData</a>, <a href="../r6game/r6gameinfo.html#ResetPenalty">ResetPenalty</a>, <a href="../r6game/r6gameinfo.html#ResetPlayerBlur">ResetPlayerBlur</a>, <a href="../r6game/r6gameinfo.html#ResetRepMissionObjectives">ResetRepMissionObjectives</a>, <a href="../r6game/r6gameinfo.html#ResetRound">ResetRound</a>, <a href="../r6game/r6gameinfo.html#RestartGame">RestartGame</a>, <a href="../r6game/r6gameinfo.html#RestartGameMgr">RestartGameMgr</a>, <a href="../r6game/r6gameinfo.html#RestartPlayer">RestartPlayer</a>, <a href="../r6game/r6gameinfo.html#SaveTrainingPlanning">SaveTrainingPlanning</a>, <a href="../r6game/r6gameinfo.html#SearchOperativesArray">SearchOperativesArray</a>, <a href="../r6game/r6gameinfo.html#SetController">SetController</a>, <a href="../r6game/r6gameinfo.html#SetDefaultTeamFriendlies">SetDefaultTeamFriendlies</a>, <a href="../r6game/r6gameinfo.html#SetGamePassword">SetGamePassword</a>, <a href="../r6game/r6gameinfo.html#SetGameTypeInLocal">SetGameTypeInLocal</a>, <a href="../r6game/r6gameinfo.html#SetJumpingMaps">SetJumpingMaps</a>, <a href="../r6game/r6gameinfo.html#SetPawnTeamFriendlies">SetPawnTeamFriendlies</a>, <a href="../r6game/r6gameinfo.html#SetPlayerInPenaltyBox">SetPlayerInPenaltyBox</a>, <a href="../r6game/r6gameinfo.html#SetRainbowTeam">SetRainbowTeam</a>, <a href="../r6game/r6gameinfo.html#SetTeamKillerPenalty">SetTeamKillerPenalty</a>, <a href="../r6game/r6gameinfo.html#SetUdpBeacon">SetUdpBeacon</a>, <a href="../r6game/r6gameinfo.html#SetUnlimitedPractice">SetUnlimitedPractice</a>, <a href="../r6game/r6gameinfo.html#SpawnAI">SpawnAI</a>, <a href="../r6game/r6gameinfo.html#SpawnAIandInitGoInGame">SpawnAIandInitGoInGame</a>, <a href="../r6game/r6gameinfo.html#SpawnNumberToNavPoint">SpawnNumberToNavPoint</a>, <a href="../r6game/r6gameinfo.html#Stats_getPlayerInfo">Stats_getPlayerInfo</a>, <a href="../r6game/r6gameinfo.html#Tick">Tick</a>, <a href="../r6game/r6gameinfo.html#ToggleRestart">ToggleRestart</a>, <a href="../r6game/r6gameinfo.html#UpdateRepMissionObjectives">UpdateRepMissionObjectives</a>, <a href="../r6game/r6gameinfo.html#UpdateRepMissionObjectivesStatus">UpdateRepMissionObjectivesStatus</a>, <a href="../r6game/r6gameinfo.html#UpdateRepResArrays">UpdateRepResArrays</a>, <a href="../r6game/r6gameinfo.html#UpdateServer">UpdateServer</a></td>
+</tr>
+</table>
+<table>
+<tr>
+	<th class="inherittitle">Inherited Functions from <a href="../r6abstract/r6abstract-overview.html">R6Abstract</a>.<a href="../r6abstract/r6abstractgameinfo.html">R6AbstractGameInfo</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../r6abstract/r6abstractgameinfo.html#AbortMission">AbortMission</a>, <a href="../r6abstract/r6abstractgameinfo.html#AdminResetRound">AdminResetRound</a>, <a href="../r6abstract/r6abstractgameinfo.html#ApplyTeamKillerPenalty">ApplyTeamKillerPenalty</a>, <a href="../r6abstract/r6abstractgameinfo.html#BaseEndGame">BaseEndGame</a>, <a href="../r6abstract/r6abstractgameinfo.html#BroadcastGameMsg">BroadcastGameMsg</a>, <a href="../r6abstract/r6abstractgameinfo.html#BroadcastMissionObjMsg">BroadcastMissionObjMsg</a>, <a href="../r6abstract/r6abstractgameinfo.html#CanSwitchTeamMember">CanSwitchTeamMember</a>, <a href="../r6abstract/r6abstractgameinfo.html#ChangeOperatives">ChangeOperatives</a>, <a href="../r6abstract/r6abstractgameinfo.html#ChangeTeams">ChangeTeams</a>, <a href="../r6abstract/r6abstractgameinfo.html#CheckEndGame">CheckEndGame</a>, <a href="../r6abstract/r6abstractgameinfo.html#CompleteMission">CompleteMission</a>, <a href="../r6abstract/r6abstractgameinfo.html#CreateMissionObjectiveMgr">CreateMissionObjectiveMgr</a>, <a href="../r6abstract/r6abstractgameinfo.html#EndGameAndJumpToMapID">EndGameAndJumpToMapID</a>, <a href="../r6abstract/r6abstractgameinfo.html#EnteredExtractionZone">EnteredExtractionZone</a>, <a href="../r6abstract/r6abstractgameinfo.html#Find2DTexture">Find2DTexture</a>, <a href="../r6abstract/r6abstractgameinfo.html#GetCommonRainbowMemberVoicesMgr">GetCommonRainbowMemberVoicesMgr</a>, <a href="../r6abstract/r6abstractgameinfo.html#GetCommonRainbowPlayerVoicesMgr">GetCommonRainbowPlayerVoicesMgr</a>, <a href="../r6abstract/r6abstractgameinfo.html#GetEndGamePauseTime">GetEndGamePauseTime</a>, <a href="../r6abstract/r6abstractgameinfo.html#GetGameMsgLifeTime">GetGameMsgLifeTime</a>, <a href="../r6abstract/r6abstractgameinfo.html#GetHostageVoicesMgr">GetHostageVoicesMgr</a>, <a href="../r6abstract/r6abstractgameinfo.html#GetIntelVideoName">GetIntelVideoName</a>, <a href="../r6abstract/r6abstractgameinfo.html#GetMultiCommonVoicesMgr">GetMultiCommonVoicesMgr</a>, <a href="../r6abstract/r6abstractgameinfo.html#GetMultiCoopMemberVoicesMgr">GetMultiCoopMemberVoicesMgr</a>, <a href="../r6abstract/r6abstractgameinfo.html#GetMultiCoopPlayerVoicesMgr">GetMultiCoopPlayerVoicesMgr</a>, <a href="../r6abstract/r6abstractgameinfo.html#GetNbOfRainbowAIToSpawn">GetNbOfRainbowAIToSpawn</a>, <a href="../r6abstract/r6abstractgameinfo.html#GetNewTeam">GetNewTeam</a>, <a href="../r6abstract/r6abstractgameinfo.html#GetNoiseMgr">GetNoiseMgr</a>, <a href="../r6abstract/r6abstractgameinfo.html#GetPreRecordedMsgVoicesMgr">GetPreRecordedMsgVoicesMgr</a>, <a href="../r6abstract/r6abstractgameinfo.html#GetRainbowAIFromTable">GetRainbowAIFromTable</a>, <a href="../r6abstract/r6abstractgameinfo.html#GetRainbowMemberVoicesMgr">GetRainbowMemberVoicesMgr</a>, <a href="../r6abstract/r6abstractgameinfo.html#GetRainbowOtherTeamVoicesMgr">GetRainbowOtherTeamVoicesMgr</a>, <a href="../r6abstract/r6abstractgameinfo.html#GetRainbowPlayerVoicesMgr">GetRainbowPlayerVoicesMgr</a>, <a href="../r6abstract/r6abstractgameinfo.html#GetRainbowTeam">GetRainbowTeam</a>, <a href="../r6abstract/r6abstractgameinfo.html#GetTerroristVoicesMgr">GetTerroristVoicesMgr</a>, <a href="../r6abstract/r6abstractgameinfo.html#IncrementRoundsFired">IncrementRoundsFired</a>, <a href="../r6abstract/r6abstractgameinfo.html#InitObjectives">InitObjectives</a>, <a href="../r6abstract/r6abstractgameinfo.html#InstructAllTeamsToFollowPlanning">InstructAllTeamsToFollowPlanning</a>, <a href="../r6abstract/r6abstractgameinfo.html#InstructAllTeamsToHoldPosition">InstructAllTeamsToHoldPosition</a>, <a href="../r6abstract/r6abstractgameinfo.html#IObjectDestroyed">IObjectDestroyed</a>, <a href="../r6abstract/r6abstractgameinfo.html#IObjectInteract">IObjectInteract</a>, <a href="../r6abstract/r6abstractgameinfo.html#IsLastRoundOfTheMatch">IsLastRoundOfTheMatch</a>, <a href="../r6abstract/r6abstractgameinfo.html#IsTeamSelectionLocked">IsTeamSelectionLocked</a>, <a href="../r6abstract/r6abstractgameinfo.html#IsUnlimitedPractice">IsUnlimitedPractice</a>, <a href="../r6abstract/r6abstractgameinfo.html#LeftExtractionZone">LeftExtractionZone</a>, <a href="../r6abstract/r6abstractgameinfo.html#LogVoteInfo">LogVoteInfo</a>, <a href="../r6abstract/r6abstractgameinfo.html#NotifyMatchStart">NotifyMatchStart</a>, <a href="../r6abstract/r6abstractgameinfo.html#PauseCountDown">PauseCountDown</a>, <a href="../r6abstract/r6abstractgameinfo.html#PawnHeard">PawnHeard</a>, <a href="../r6abstract/r6abstractgameinfo.html#PawnKilled">PawnKilled</a>, <a href="../r6abstract/r6abstractgameinfo.html#PawnSecure">PawnSecure</a>, <a href="../r6abstract/r6abstractgameinfo.html#PawnSeen">PawnSeen</a>, <a href="../r6abstract/r6abstractgameinfo.html#PlayerReadySelected">PlayerReadySelected</a>, <a href="../r6abstract/r6abstractgameinfo.html#PostBeginPlay">PostBeginPlay</a>, <a href="../r6abstract/r6abstractgameinfo.html#ProcessKickVote">ProcessKickVote</a>, <a href="../r6abstract/r6abstractgameinfo.html#ProcessPlayerReadyStatus">ProcessPlayerReadyStatus</a>, <a href="../r6abstract/r6abstractgameinfo.html#RainbowOperativesStillAlive">RainbowOperativesStillAlive</a>, <a href="../r6abstract/r6abstractgameinfo.html#RemoveController">RemoveController</a>, <a href="../r6abstract/r6abstractgameinfo.html#RemoveObjectives">RemoveObjectives</a>, <a href="../r6abstract/r6abstractgameinfo.html#RemoveTerroFromList">RemoveTerroFromList</a>, <a href="../r6abstract/r6abstractgameinfo.html#ResetPenalty">ResetPenalty</a>, <a href="../r6abstract/r6abstractgameinfo.html#ResetPlayerTeam">ResetPlayerTeam</a>, <a href="../r6abstract/r6abstractgameinfo.html#ResetRepMissionObjectives">ResetRepMissionObjectives</a>, <a href="../r6abstract/r6abstractgameinfo.html#ResetRound">ResetRound</a>, <a href="../r6abstract/r6abstractgameinfo.html#SetDefaultTeamFriendlies">SetDefaultTeamFriendlies</a>, <a href="../r6abstract/r6abstractgameinfo.html#SetJumpingMaps">SetJumpingMaps</a>, <a href="../r6abstract/r6abstractgameinfo.html#SetPawnTeamFriendlies">SetPawnTeamFriendlies</a>, <a href="../r6abstract/r6abstractgameinfo.html#SetTeamKillerPenalty">SetTeamKillerPenalty</a>, <a href="../r6abstract/r6abstractgameinfo.html#SetUnlimitedPractice">SetUnlimitedPractice</a>, <a href="../r6abstract/r6abstractgameinfo.html#SpawnAIandInitGoInGame">SpawnAIandInitGoInGame</a>, <a href="../r6abstract/r6abstractgameinfo.html#StartTimer">StartTimer</a>, <a href="../r6abstract/r6abstractgameinfo.html#TimerCountdown">TimerCountdown</a>, <a href="../r6abstract/r6abstractgameinfo.html#UnPauseCountDown">UnPauseCountDown</a>, <a href="../r6abstract/r6abstractgameinfo.html#UpdateRepMissionObjectives">UpdateRepMissionObjectives</a>, <a href="../r6abstract/r6abstractgameinfo.html#UpdateRepMissionObjectivesStatus">UpdateRepMissionObjectivesStatus</a>, <a href="../r6abstract/r6abstractgameinfo.html#UpdateRepResArrays">UpdateRepResArrays</a></td>
+</tr>
+</table>
+
+
+<br />
+
+
+
+<hr />
+
+
+
+<table class="title">
+<tr>
+	<th class="title">Variables Detail</th>
+</tr>
+</table>
+
+<h4><a name="_m_sndTeamWipedOut" class="hidden"></a>m_sndTeamWipedOut <a href="../Source_r6game/r6lonewolfgame.html#11" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">Sound</span> m_sndTeamWipedOut;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+
+
+<br />
+
+
+
+
+
+
+
+<table class="title">
+<tr>
+	<th class="title">Functions Detail</th>
+</tr>
+</table>
+
+<h4><a name="_EndGame-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> EndGame <span class="function_state"></span> <a href="../Source_r6game/r6lonewolfgame.html#60" class="small">Source code</a></h4>
+<div class="declaration"> function  EndGame ( <span class="source_type"><a href="../engine/playerreplicationinfo.html" class="source">PlayerReplicationInfo</a></span> Winner, <span class="source_type">string</span> <span class="source_type">Reason</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_InitObjectives-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> InitObjectives <span class="function_state"></span> <a href="../Source_r6game/r6lonewolfgame.html#13" class="small">Source code</a></h4>
+<div class="declaration"> function  InitObjectives ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+
+
+<br />
+
+
+<table class="title">
+<tr>
+	<th class="title">Defaultproperties</th>
+</tr>
+</table>
+<br />
+<div class="source"><table class="source"><tr><td class="source"><pre class="source">defaultproperties
+{
+     m_sndTeamWipedOut=<span class="source_type">Sound</span><span class="source_name">'Voices_Control_MissionFailed.Play_TeamWipedOut'</span>
+     m_iMaxOperatives=<span class="source_int">1</span>
+     m_szDefaultActionPlan=<span class="source_string">"_LONE_ACTION"</span>
+     m_szGameTypeFlag=<span class="source_string">"RGM_LoneWolfMode"</span>
+}
+</pre></td></tr></table></div>
+
+
+
+<hr />
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../r6game/r6game-overview.html">Package</a></td>
+	<td class="header_hilight">Class</td>
+	<td class="header"><a href="../Source_r6game/r6lonewolfgame.html">Source</a></td>
+	<td class="header"><a class="header" href="../classtree.html#R6LoneWolfGame">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../r6game/r6instructionsoundvolume.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../r6game/r6missiongame.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+
+<div class="stats">Creation time: mar. 26/5/2026 18:33:11.710 - Created with <a href="http://wiki.beyondunreal.com/wiki/UnCodeX" target="_blank">UnCodeX</a></div>
+
+</body>
+</html>

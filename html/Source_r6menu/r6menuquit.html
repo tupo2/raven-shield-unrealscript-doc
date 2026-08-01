@@ -1,0 +1,296 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+	<title>UnCodeX - Source: R6Menu.R6MenuQuit</title>
+	<meta name="Generator" content="UnCodeX 241" />
+	<link rel="stylesheet" href="../DocStyle2.css" type="text/css" title="Original Purple" />
+	<link rel="alternative stylesheet" href="../DocStyle2-blue.css" type="text/css" title="Blue" />
+	<link rel="alternative stylesheet" href="../DocStyle2-red.css" type="text/css" title="Red" />
+	<!--[if IE]>
+	<link rel="stylesheet" href="../DocStyle2-msie.css" type="text/css" />
+	<![endif]-->
+	<script src="../styleswitcher.js" type="text/javascript"></script>
+</head>
+<body>
+
+<div class="header">
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../r6menu/r6menu-overview.html">Package</a></td>
+	<td class="header"><a href="../r6menu/r6menuquit.html">Class</a></td>
+	<td class="header_hilight">Source</td>
+	<td class="header"><a class="header" href="../classtree.html#R6MenuQuit">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../Source_r6menu/r6menupopupstaydownbutton.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../Source_r6menu/r6menurootwindow.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html#Source_r6menu/r6menuquit.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+</div>
+<div class="spacer"></div>
+
+<h1><a href="../r6menu/r6menu-overview.html">R6Menu</a>.<a href="../r6menu/r6menuquit.html">R6MenuQuit</a></h1>
+<br />
+<div class="source"><table class="source"><tr><td class="source_lineno"><span class="source_lineno">00001<br />00002<br />00003<br />00004<br />00005<br />00006<br />00007<br />00008<br />00009<br />00010<br />00011<br />00012<br />00013<br />00014<br />00015<br />00016<br />00017<br />00018<br />00019<br />00020<br />
+00021<br />00022<br />00023<br />00024<br />00025<br />00026<br />00027<br />00028<br />00029<br />00030<br />00031<br />00032<br />00033<br />00034<br />00035<br />00036<br />00037<br />00038<br />00039<br />00040<br />
+00041<br />00042<br />00043<br />00044<br />00045<br />00046<br />00047<br />00048<br />00049<br />00050<br />00051<br />00052<br />00053<br />00054<br />00055<br />00056<br />00057<br />00058<br />00059<br />00060<br />
+00061<br />00062<br />00063<br />00064<br />00065<br />00066<br />00067<br />00068<br />00069<br />00070<br />00071<br />00072<br />00073<br />00074<br />00075<br />00076<br />00077<br />00078<br />00079<br />00080<br />
+00081<br />00082<br />00083<br />00084<br />00085<br />00086<br />00087<br />00088<br />00089<br />00090<br />00091<br />00092<br />00093<br />00094<br />00095<br />00096<br />00097<br />00098<br />00099<br />00100<br />
+00101<br />00102<br />00103<br />00104<br />00105<br />00106<br />00107<br />00108<br />00109<br />00110<br />00111<br />00112<br />00113<br />00114<br />00115<br />00116<br />00117<br />00118<br />00119<br />00120<br />
+00121<br />00122<br />00123<br />00124<br />00125<br />00126<br />00127<br />00128<br />00129<br />00130<br />00131<br />00132<br />00133<br />00134<br />00135<br />00136<br />00137<br />00138<br />00139<br />00140<br />
+00141<br />00142<br />00143<br />00144<br />00145<br />00146<br />00147<br />00148<br />00149<br />00150<br />00151<br />00152<br />00153<br />00154<br />00155<br />00156<br />00157<br />00158<br />00159<br />00160<br />
+00161<br />00162<br />00163<br />00164<br />00165<br />00166<br />00167<br />00168<br />00169<br />00170<br />00171<br />00172<br />00173<br />00174<br />00175<br />00176<br />00177<br />00178<br />00179<br />00180<br />
+00181<br />00182<br />00183<br />00184<br />00185<br />00186<br />00187<br />00188<br />00189<br />00190<br />00191<br />00192<br />00193<br />00194<br />00195<br />00196<br />00197<br />00198<br />00199<br />00200<br />
+00201<br />00202<br />00203<br />00204<br />00205<br />00206<br />00207<br />00208<br />00209<br />00210<br />00211<br />00212<br />00213<br />00214<br />00215<br />00216<br />00217<br />00218<br />00219<br />00220<br />
+00221<br />00222<br />00223<br />00224<br />00225<br />00226<br />00227</span></td>
+<td class="source"><pre class="source"><a name="1"></a><span class="source_comment">//=============================================================================
+</span><a name="2"></a><span class="source_comment">//  R6MenuQuit.uc : (add small description)
+</span><a name="3"></a><span class="source_comment">//  Copyright 2002 Ubi Soft, Inc. All Rights Reserved.
+</span><a name="4"></a><span class="source_comment">//
+</span><a name="5"></a><span class="source_comment">//  Revision history:
+</span><a name="6"></a><span class="source_comment">//    2002/08/12 * Created by Alexandre Dionne
+</span><a name="7"></a><span class="source_comment">//=============================================================================
+</span><a name="8"></a>
+<a name="9"></a>
+<a name="10"></a><span class="source_type">class</span> <span class="source_type"><a href="../r6menu/r6menuquit.html" class="source">R6MenuQuit</a></span> extends <span class="source_type"><a href="../r6menu/r6menuwidget.html" class="source">R6MenuWidget</a></span>;
+<a name="11"></a>
+<a name="12"></a>var <span class="source_type"><a href="../r6window/r6windowbutton.html" class="source">R6WindowButton</a></span>	        m_ButtonMainMenu;
+<a name="13"></a>var <span class="source_type"><a href="../r6window/r6windowbutton.html" class="source">R6WindowButton</a></span>	        m_ButtonQuit;
+<a name="14"></a>
+<a name="15"></a>var <span class="source_type"><a href="../r6menu/r6menuvideo.html" class="source">R6MenuVideo</a></span>             m_QuitVideo;
+<a name="16"></a>
+<a name="17"></a><span class="source_macro">#ifdefSPDEMO
+</span><a name="18"></a>var <span class="source_type"><a href="../r6window/r6windowbitmap.html" class="source">R6WindowBitMap</a></span>          m_UbiShop;
+<a name="19"></a>var <span class="source_type"><a href="../r6window/r6windowbutton.html" class="source">R6WindowButton</a></span>	        m_BUbiShopUS;
+<a name="20"></a>var <span class="source_type"><a href="../r6window/r6windowbutton.html" class="source">R6WindowButton</a></span>	        m_BUbiShopFR;
+<a name="21"></a>var <span class="source_type"><a href="../r6window/r6windowbutton.html" class="source">R6WindowButton</a></span>	        m_BUbiShopUK;
+<a name="22"></a>var <span class="source_type"><a href="../r6window/r6windowbutton.html" class="source">R6WindowButton</a></span>	        m_BUbiShopGR;
+<a name="23"></a>
+<a name="24"></a>var <span class="source_type">String</span>                  szUbiShopUSAddress;
+<a name="25"></a>var <span class="source_type">String</span>                  szUbiShopFRAddress;
+<a name="26"></a>var <span class="source_type">String</span>                  szUbiShopUKAddress;
+<a name="27"></a>var <span class="source_type">String</span>                  szUbiShopGRAddress;
+<a name="28"></a>
+<a name="29"></a>var <span class="source_type"><a href="../core/object.html#Region" class="source">Region</a></span>                  m_RUSFlag;
+<a name="30"></a>var <span class="source_type"><a href="../core/object.html#Region" class="source">Region</a></span>                  m_RFRFlag;
+<a name="31"></a>var <span class="source_type"><a href="../core/object.html#Region" class="source">Region</a></span>                  m_RUKFlag;
+<a name="32"></a>var <span class="source_type"><a href="../core/object.html#Region" class="source">Region</a></span>                  m_RGRFlag;
+<a name="33"></a>
+<a name="34"></a>var <span class="source_type">INT</span>                     m_IButWidth, m_IButHeight;
+<a name="35"></a>var <span class="source_type">INT</span>                     m_IYButPos;
+<a name="36"></a>var <span class="source_type">INT</span>                     m_IXFirstButPos, m_IXButOffset;
+<a name="37"></a>
+<a name="38"></a><span class="source_macro">#endif
+</span><a name="39"></a>
+<a name="40"></a>function Created()
+<a name="41"></a>{
+<a name="42"></a>    local   <span class="source_type">Font</span>    buttonFont;
+<a name="43"></a>
+<a name="44"></a>    buttonFont		= Root.Fonts[F_PrincipalButton];
+<a name="45"></a>
+<a name="46"></a><span class="source_macro">#ifdefMPDEMO
+</span><a name="47"></a>    m_QuitVideo= <span class="source_type"><a href="../r6menu/r6menuvideo.html" class="source">R6MenuVideo</a></span>(CreateWindow(<span class="source_type">class</span><span class="source_name">'R6MenuVideo'</span>, 
+<a name="48"></a>                                             <span class="source_int">0</span>,
+<a name="49"></a>                                             <span class="source_int">0</span>,
+<a name="50"></a>                                             <span class="source_int">640</span>,
+<a name="51"></a>                                             <span class="source_int">480</span>, self));
+<a name="52"></a>    m_QuitVideo.bAlwaysBehind = true;   
+<a name="53"></a><span class="source_macro">#endif
+</span><a name="54"></a>
+<a name="55"></a>
+<a name="56"></a><span class="source_macro">#ifdefSPDEMO
+</span><a name="57"></a>    szUbiShopUSAddress=<span class="source_string">"http://shopping.ubi.com/gameinfo.php?id=459"</span>;
+<a name="58"></a>    szUbiShopFRAddress=<span class="source_string">"http://www.digitalriver.com/dr/v2/ec_MAIN.Entry10?V1=482329&PN=1&SP=10023&xid=42207&DSP=&CUR=978&PGRP=0&CACHE_ID=0"</span>;
+<a name="59"></a>    szUbiShopUKAddress=<span class="source_string">"http://www.digitalriver.com/dr/v2/ec_MAIN.Entry10?V1=487027&PN=1&SP=10023&xid=42206&DSP=&CUR=826&PGRP=0&CACHE_ID=0"</span>;
+<a name="60"></a>    szUbiShopGRAddress=<span class="source_string">"http://www.digitalriver.com/dr/v2/ec_MAIN.Entry10?V1=489069&PN=1&SP=10023&xid=44205&DSP=&CUR=978&PGRP=0&CACHE_ID=0"</span>;
+<a name="61"></a>
+<a name="62"></a>    m_RUSFlag.X=<span class="source_int">0</span>;   m_RUSFlag.<span class="source_type">Y</span>=<span class="source_int">0</span>;   m_RUSFlag.W=<span class="source_int">250</span>; m_RUSFlag.<span class="source_type">H</span>=<span class="source_int">134</span>;
+<a name="63"></a>    m_RFRFlag.X=<span class="source_int">260</span>; m_RFRFlag.<span class="source_type">Y</span>=<span class="source_int">146</span>; m_RFRFlag.W=<span class="source_int">250</span>; m_RFRFlag.<span class="source_type">H</span>=<span class="source_int">134</span>;
+<a name="64"></a>    m_RUKFlag.X=<span class="source_int">0</span>;   m_RUKFlag.<span class="source_type">Y</span>=<span class="source_int">146</span>; m_RUKFlag.W=<span class="source_int">250</span>; m_RUKFlag.<span class="source_type">H</span>=<span class="source_int">134</span>;
+<a name="65"></a>    m_RGRFlag.X=<span class="source_int">260</span>; m_RGRFlag.<span class="source_type">Y</span>=<span class="source_int">0</span>;   m_RGRFlag.W=<span class="source_int">250</span>; m_RGRFlag.<span class="source_type">H</span>=<span class="source_int">134</span>;
+<a name="66"></a>
+<a name="67"></a>    m_IYButPos=<span class="source_int">291</span>;
+<a name="68"></a>    m_IXFirstButPos=<span class="source_int">170</span>;
+<a name="69"></a>    m_IXButOffset=<span class="source_int">77</span>;
+<a name="70"></a>    m_IButWidth=<span class="source_int">72</span>;
+<a name="71"></a>    m_IButHeight=<span class="source_int">45</span>;
+<a name="72"></a>
+<a name="73"></a>    m_UbiShop                           = <span class="source_type"><a href="../r6window/r6windowbitmap.html" class="source">R6WindowBitMap</a></span>(CreateWindow( <span class="source_type">class</span><span class="source_name">'R6WindowBitMap'</span>, <span class="source_int">170</span>, <span class="source_int">62</span>, <span class="source_int">299</span>, <span class="source_int">224</span>, self));	    
+<a name="74"></a>	m_UbiShop.<span class="source_type">T</span>                         =<span class="source_type"><a href="../engine/texture.html" class="source">Texture</a></span><span class="source_name">'R6menuBG.rainbowsix3_Pre_order'</span>;
+<a name="75"></a>	m_UbiShop.<span class="source_type">R</span>.x                       = <span class="source_int">106</span>;
+<a name="76"></a>    m_UbiShop.<span class="source_type">R</span>.<span class="source_type">Y</span>                       = <span class="source_int">287</span>;
+<a name="77"></a>    m_UbiShop.<span class="source_type">R</span>.W                       = <span class="source_int">299</span>;
+<a name="78"></a>    m_UbiShop.<span class="source_type">R</span>.<span class="source_type">H</span>                       = <span class="source_int">224</span>;	
+<a name="79"></a>	m_UbiShop.m_iDrawStyle              = <span class="source_int">5</span>;
+<a name="80"></a>
+<a name="81"></a>
+<a name="82"></a>    m_BUbiShopUS                           = <span class="source_type"><a href="../r6window/r6windowbutton.html" class="source">R6WindowButton</a></span>(CreateControl( <span class="source_type">class</span><span class="source_name">'R6WindowButton'</span>, m_IXFirstButPos, m_IYButPos, m_IButWidth, m_IButHeight, self));
+<a name="83"></a>	m_BUbiShopUS.m_bDrawBorders            = true;
+<a name="84"></a>    m_BUbiShopUS.m_bDrawSimpleBorder       = true;
+<a name="85"></a>	m_BUbiShopUS.bUseRegion                = true;
+<a name="86"></a>    m_BUbiShopUS.bStretched                = true;
+<a name="87"></a>	m_BUbiShopUS.DisabledTexture           = <span class="source_type"><a href="../engine/texture.html" class="source">Texture</a></span><span class="source_name">'R6menuBG.rainbowsix3_Pre_order'</span>	;
+<a name="88"></a>	m_BUbiShopUS.DisabledRegion            = m_RUSFlag;    
+<a name="89"></a>	m_BUbiShopUS.DownTexture               = <span class="source_type"><a href="../engine/texture.html" class="source">Texture</a></span><span class="source_name">'R6menuBG.rainbowsix3_Pre_order'</span>;
+<a name="90"></a>    m_BUbiShopUS.DownRegion                = m_RUSFlag;    
+<a name="91"></a>    m_BUbiShopUS.OverTexture               = <span class="source_type"><a href="../engine/texture.html" class="source">Texture</a></span><span class="source_name">'R6menuBG.rainbowsix3_Pre_order'</span>;
+<a name="92"></a>    m_BUbiShopUS.OverRegion                = m_RUSFlag;    
+<a name="93"></a>	m_BUbiShopUS.UpTexture                 = <span class="source_type"><a href="../engine/texture.html" class="source">Texture</a></span><span class="source_name">'R6menuBG.rainbowsix3_Pre_order'</span>;
+<a name="94"></a>    m_BUbiShopUS.UpRegion                  = m_RUSFlag;
+<a name="95"></a>    m_BUbiShopUS.m_BorderColor             = Root.Colors.White;
+<a name="96"></a>    
+<a name="97"></a>    m_BUbiShopFR                           = <span class="source_type"><a href="../r6window/r6windowbutton.html" class="source">R6WindowButton</a></span>(CreateControl( <span class="source_type">class</span><span class="source_name">'R6WindowButton'</span>, m_BUbiShopUS.WinLeft + m_IXButOffset, m_IYButPos, m_IButWidth, m_IButHeight, self));
+<a name="98"></a>	m_BUbiShopFR.m_bDrawBorders            = true;
+<a name="99"></a>    m_BUbiShopFR.m_bDrawSimpleBorder       = true;
+<a name="100"></a>	m_BUbiShopFR.bUseRegion                = true;
+<a name="101"></a>    m_BUbiShopFR.bStretched                = true;
+<a name="102"></a>	m_BUbiShopFR.DisabledTexture           = <span class="source_type"><a href="../engine/texture.html" class="source">Texture</a></span><span class="source_name">'R6menuBG.rainbowsix3_Pre_order'</span>	;
+<a name="103"></a>	m_BUbiShopFR.DisabledRegion            = m_RFRFlag;    
+<a name="104"></a>	m_BUbiShopFR.DownTexture               = <span class="source_type"><a href="../engine/texture.html" class="source">Texture</a></span><span class="source_name">'R6menuBG.rainbowsix3_Pre_order'</span>;
+<a name="105"></a>    m_BUbiShopFR.DownRegion                = m_RFRFlag;    
+<a name="106"></a>    m_BUbiShopFR.OverTexture               = <span class="source_type"><a href="../engine/texture.html" class="source">Texture</a></span><span class="source_name">'R6menuBG.rainbowsix3_Pre_order'</span>;
+<a name="107"></a>    m_BUbiShopFR.OverRegion                = m_RFRFlag;    
+<a name="108"></a>	m_BUbiShopFR.UpTexture                 = <span class="source_type"><a href="../engine/texture.html" class="source">Texture</a></span><span class="source_name">'R6menuBG.rainbowsix3_Pre_order'</span>;
+<a name="109"></a>    m_BUbiShopFR.UpRegion                  = m_RFRFlag;
+<a name="110"></a>    m_BUbiShopFR.m_BorderColor             = Root.Colors.White;
+<a name="111"></a>
+<a name="112"></a>    m_BUbiShopUK                           = <span class="source_type"><a href="../r6window/r6windowbutton.html" class="source">R6WindowButton</a></span>(CreateControl( <span class="source_type">class</span><span class="source_name">'R6WindowButton'</span>, m_BUbiShopFR.WinLeft + m_IXButOffset, m_IYButPos, m_IButWidth, m_IButHeight, self));
+<a name="113"></a>	m_BUbiShopUK.m_bDrawBorders            = true;
+<a name="114"></a>    m_BUbiShopUK.m_bDrawSimpleBorder       = true;
+<a name="115"></a>	m_BUbiShopUK.bUseRegion                = true;
+<a name="116"></a>    m_BUbiShopUK.bStretched                = true;
+<a name="117"></a>	m_BUbiShopUK.DisabledTexture           = <span class="source_type"><a href="../engine/texture.html" class="source">Texture</a></span><span class="source_name">'R6menuBG.rainbowsix3_Pre_order'</span>	;
+<a name="118"></a>	m_BUbiShopUK.DisabledRegion            = m_RUKFlag;    
+<a name="119"></a>	m_BUbiShopUK.DownTexture               = <span class="source_type"><a href="../engine/texture.html" class="source">Texture</a></span><span class="source_name">'R6menuBG.rainbowsix3_Pre_order'</span>;
+<a name="120"></a>    m_BUbiShopUK.DownRegion                = m_RUKFlag;    
+<a name="121"></a>    m_BUbiShopUK.OverTexture               = <span class="source_type"><a href="../engine/texture.html" class="source">Texture</a></span><span class="source_name">'R6menuBG.rainbowsix3_Pre_order'</span>;
+<a name="122"></a>    m_BUbiShopUK.OverRegion                = m_RUKFlag;    
+<a name="123"></a>	m_BUbiShopUK.UpTexture                 = <span class="source_type"><a href="../engine/texture.html" class="source">Texture</a></span><span class="source_name">'R6menuBG.rainbowsix3_Pre_order'</span>;
+<a name="124"></a>    m_BUbiShopUK.UpRegion                  = m_RUKFlag;
+<a name="125"></a>    m_BUbiShopUK.m_BorderColor             = Root.Colors.White;
+<a name="126"></a>
+<a name="127"></a>
+<a name="128"></a>    m_BUbiShopGR                           = <span class="source_type"><a href="../r6window/r6windowbutton.html" class="source">R6WindowButton</a></span>(CreateControl( <span class="source_type">class</span><span class="source_name">'R6WindowButton'</span>, m_BUbiShopUK.WinLeft + m_IXButOffset, m_IYButPos, m_IButWidth, m_IButHeight, self));
+<a name="129"></a>	m_BUbiShopGR.m_bDrawBorders            = true;
+<a name="130"></a>    m_BUbiShopGR.m_bDrawSimpleBorder       = true;
+<a name="131"></a>	m_BUbiShopGR.bUseRegion                = true;
+<a name="132"></a>    m_BUbiShopGR.bStretched                = true;
+<a name="133"></a>	m_BUbiShopGR.DisabledTexture           = <span class="source_type"><a href="../engine/texture.html" class="source">Texture</a></span><span class="source_name">'R6menuBG.rainbowsix3_Pre_order'</span>	;
+<a name="134"></a>	m_BUbiShopGR.DisabledRegion            = m_RGRFlag;    
+<a name="135"></a>	m_BUbiShopGR.DownTexture               = <span class="source_type"><a href="../engine/texture.html" class="source">Texture</a></span><span class="source_name">'R6menuBG.rainbowsix3_Pre_order'</span>;
+<a name="136"></a>    m_BUbiShopGR.DownRegion                = m_RGRFlag;    
+<a name="137"></a>    m_BUbiShopGR.OverTexture               = <span class="source_type"><a href="../engine/texture.html" class="source">Texture</a></span><span class="source_name">'R6menuBG.rainbowsix3_Pre_order'</span>;
+<a name="138"></a>    m_BUbiShopGR.OverRegion                = m_RGRFlag;    
+<a name="139"></a>	m_BUbiShopGR.UpTexture                 = <span class="source_type"><a href="../engine/texture.html" class="source">Texture</a></span><span class="source_name">'R6menuBG.rainbowsix3_Pre_order'</span>;
+<a name="140"></a>    m_BUbiShopGR.UpRegion                  = m_RGRFlag;
+<a name="141"></a>    m_BUbiShopGR.m_BorderColor             = Root.Colors.White;
+<a name="142"></a>
+<a name="143"></a>
+<a name="144"></a>
+<a name="145"></a>
+<a name="146"></a>
+<a name="147"></a><span class="source_macro">#endif
+</span><a name="148"></a>
+<a name="149"></a>
+<a name="150"></a>    m_ButtonMainMenu                    = <span class="source_type"><a href="../r6window/r6windowbutton.html" class="source">R6WindowButton</a></span>(CreateControl( <span class="source_type">class</span><span class="source_name">'R6WindowButton'</span>, <span class="source_int">10</span>, <span class="source_int">425</span>, <span class="source_int">250</span>, <span class="source_int">25</span>, self));
+<a name="151"></a>    m_ButtonMainMenu.ToolTipString      = Localize(<span class="source_string">"Tip"</span>,<span class="source_string">"ButtonMainMenu"</span>,<span class="source_string">"R6Menu"</span>);
+<a name="152"></a>	m_ButtonMainMenu.<span class="source_type">Text</span>               = Localize(<span class="source_string">"SinglePlayer"</span>,<span class="source_string">"ButtonMainMenu"</span>,<span class="source_string">"R6Menu"</span>);	
+<a name="153"></a>	m_ButtonMainMenu.Align              = TA_LEFT;	
+<a name="154"></a>	m_ButtonMainMenu.m_buttonFont       = buttonFont;
+<a name="155"></a>	m_ButtonMainMenu.ResizeToText();
+<a name="156"></a>    <span class="source_comment">// If the game was started by the ubi.com client, we cannot allow the player to return to the 
+</span><a name="157"></a>    <span class="source_comment">// main menu since the in game browsers will not work, therefore disable the button.
+</span><a name="158"></a>    if (Root.<span class="source_type"><a href="../engine/console.html" class="source">Console</a></span>.m_bStartedByGSClient || Root.<span class="source_type"><a href="../engine/console.html" class="source">Console</a></span>.m_bNonUbiMatchMakingHost)
+<a name="159"></a>        m_ButtonMainMenu.bDisabled=TRUE;
+<a name="160"></a>
+<a name="161"></a>	m_ButtonQuit = <span class="source_type"><a href="../r6window/r6windowbutton.html" class="source">R6WindowButton</a></span>(CreateControl( <span class="source_type">class</span><span class="source_name">'R6WindowButton'</span>, <span class="source_int">10</span>, <span class="source_int">450</span>, <span class="source_int">250</span>, <span class="source_int">25</span>, self));
+<a name="162"></a>    m_ButtonQuit.ToolTipString       = Localize(<span class="source_string">"MainMenu"</span>,<span class="source_string">"ButtonQuit"</span>,<span class="source_string">"R6Menu"</span>);
+<a name="163"></a>	m_ButtonQuit.<span class="source_type">Text</span>                = Localize(<span class="source_string">"MainMenu"</span>,<span class="source_string">"ButtonQuit"</span>,<span class="source_string">"R6Menu"</span>);	
+<a name="164"></a>	m_ButtonQuit.Align               = TA_LEFT;	
+<a name="165"></a>	m_ButtonQuit.m_buttonFont        = buttonFont;
+<a name="166"></a>	m_ButtonQuit.ResizeToText();    
+<a name="167"></a>
+<a name="168"></a>    
+<a name="169"></a>    
+<a name="170"></a>
+<a name="171"></a>}
+<a name="172"></a>
+<a name="173"></a>function HideWindow()
+<a name="174"></a>{
+<a name="175"></a>    Super.HideWindow();
+<a name="176"></a>
+<a name="177"></a><span class="source_macro">#ifdefMPDEMO    
+</span><a name="178"></a>    m_QuitVideo.StopVideo();   
+<a name="179"></a><span class="source_macro">#endif
+</span><a name="180"></a>    
+<a name="181"></a>}
+<a name="182"></a>
+<a name="183"></a>function ShowWindow()
+<a name="184"></a>{
+<a name="185"></a>    Super.ShowWindow();
+<a name="186"></a><span class="source_macro">#ifdefMPDEMO
+</span><a name="187"></a>    m_QuitVideo.PlayVideo( <span class="source_int">0</span>,
+<a name="188"></a>                           <span class="source_int">0</span>,
+<a name="189"></a>                           <span class="source_string">"Thx.bik"</span>); 
+<a name="190"></a><span class="source_macro">#endif
+</span><a name="191"></a>}
+<a name="192"></a>
+<a name="193"></a>	
+<a name="194"></a>function Notify(<span class="source_type"><a href="../uwindow/uwindowdialogcontrol.html" class="source">UWindowDialogControl</a></span> <span class="source_type">C</span>, <span class="source_type">byte</span> E)
+<a name="195"></a>{ 
+<a name="196"></a>    if( E == DE_Click )
+<a name="197"></a>    {
+<a name="198"></a>        switch(<span class="source_type">C</span>)
+<a name="199"></a>        {
+<a name="200"></a>        case m_ButtonMainMenu:
+<a name="201"></a>            Root.ChangeCurrentWidget(MainMenuWidgetID);
+<a name="202"></a>            break;
+<a name="203"></a>        case m_ButtonQuit:            
+<a name="204"></a>            Root.DoQuitGame();
+<a name="205"></a>            break;        
+<a name="206"></a><span class="source_macro">#ifdefSPDEMO
+</span><a name="207"></a>        case m_BUbiShopUS:
+<a name="208"></a>            Root.<span class="source_type"><a href="../engine/console.html" class="source">Console</a></span>.ConsoleCommand(<span class="source_string">"startminimized "</span> @ szUbiShopUSAddress);
+<a name="209"></a>            break;
+<a name="210"></a>        case m_BUbiShopFR:
+<a name="211"></a>            Root.<span class="source_type"><a href="../engine/console.html" class="source">Console</a></span>.ConsoleCommand(<span class="source_string">"startminimized "</span> @ szUbiShopFRAddress);
+<a name="212"></a>            break;
+<a name="213"></a>        case m_BUbiShopUK:
+<a name="214"></a>            Root.<span class="source_type"><a href="../engine/console.html" class="source">Console</a></span>.ConsoleCommand(<span class="source_string">"startminimized "</span> @ szUbiShopUKAddress);
+<a name="215"></a>            break;
+<a name="216"></a>        case m_BUbiShopGR:
+<a name="217"></a>            Root.<span class="source_type"><a href="../engine/console.html" class="source">Console</a></span>.ConsoleCommand(<span class="source_string">"startminimized "</span> @ szUbiShopGRAddress);
+<a name="218"></a>            break;
+<a name="219"></a><span class="source_macro">#endif
+</span><a name="220"></a>        }
+<a name="221"></a>    }    
+<a name="222"></a>}
+<a name="223"></a>
+<a name="224"></a>defaultproperties
+<a name="225"></a>{
+<a name="226"></a>}
+<a name="227"></a></pre></td></tr></table></div>
+<hr />
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../r6menu/r6menu-overview.html">Package</a></td>
+	<td class="header"><a href="../r6menu/r6menuquit.html">Class</a></td>
+	<td class="header_hilight">Source</td>
+	<td class="header"><a class="header" href="../classtree.html#R6MenuQuit">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../Source_r6menu/r6menupopupstaydownbutton.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../Source_r6menu/r6menurootwindow.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+
+<div class="stats">Class file time: sam. 18/9/2004 14:39:54.000 - Creation time: mar. 26/5/2026 18:33:20.638 - Created with <a href="http://wiki.beyondunreal.com/wiki/UnCodeX" target="_blank">UnCodeX</a></div>
+
+</body>
+</html>

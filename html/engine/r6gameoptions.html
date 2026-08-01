@@ -1,0 +1,778 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+	<title>UnCodeX - engine.R6GameOptions</title>
+	<meta name="Generator" content="UnCodeX 241" />
+	<link rel="stylesheet" href="../DocStyle2.css" type="text/css" title="Original Purple" />
+	<link rel="alternative stylesheet" href="../DocStyle2-blue.css" type="text/css" title="Blue" />
+	<link rel="alternative stylesheet" href="../DocStyle2-red.css" type="text/css" title="Red" />
+	<!--[if IE]>
+	<link rel="stylesheet" href="../DocStyle2-msie.css" type="text/css" />
+	<![endif]-->
+	<script src="../styleswitcher.js" type="text/javascript"></script>
+</head>
+<body>
+
+<div class="header">
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../engine/engine-overview.html">Package</a></td>
+	<td class="header_hilight">Class</td>
+	<td class="header"><a href="../Source_engine/r6gameoptions.html">Source</a></td>
+	<td class="header"><a class="header" href="../classtree.html#R6GameOptions">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../engine/r6gamemenucom.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../engine/r6glowlight.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html#engine/r6gameoptions.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+</div>
+<div class="spacer"></div>
+
+<h1><a href="../engine/engine-overview.html">engine</a>.R6GameOptions</h1>
+
+<dl>
+<dt>Extends</dt><dd><a href="../core/object.html">Object</a></dd>
+<dt>Modifiers</dt><dd>config ( USER ) native </dd>
+</dl>
+
+<p></p>
+
+<pre class="tree"><a href="../core/core-overview.html">core</a>.<a href="../core/object.html">Object</a>
+|   
++-- <a href="../engine/engine-overview.html">engine</a>.<a href="../engine/r6gameoptions.html">R6GameOptions</a>
+</pre>
+
+
+
+<hr />
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Constants Summary</th>
+</tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Contants from <a href="../core/core-overview.html">core</a>.<a href="../core/object.html">Object</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../core/object.html#MaxInt">MaxInt</a>, <a href="../core/object.html#Pi">Pi</a>, <a href="../core/object.html#RF_NotForClient">RF_NotForClient</a>, <a href="../core/object.html#RF_NotForEdit">RF_NotForEdit</a>, <a href="../core/object.html#RF_NotForServer">RF_NotForServer</a>, <a href="../core/object.html#RF_Public">RF_Public</a>, <a href="../core/object.html#RF_Transactional">RF_Transactional</a>, <a href="../core/object.html#RF_Transient">RF_Transient</a></td>
+</tr>
+</table>
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th colspan="2" class="title">Variables Summary</th>
+</tr>
+<tr><td nowrap="nowrap" width="33%">BOOL</td><td width="66%"><a href="#_ActivePunkBuster" name="ActivePunkBuster" title="go to the details">ActivePunkBuster</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">BOOL</td><td width="66%"><a href="#_AllowChangeResInGame" name="AllowChangeResInGame" title="go to the details">AllowChangeResInGame</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_AlwaysRun" name="AlwaysRun" title="go to the details">AlwaysRun</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">INT</td><td width="66%"><a href="#_AmbientVolume" name="AmbientVolume" title="go to the details">AmbientVolume</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">BOOL</td><td width="66%"><a href="#_AnimatedGeometry" name="AnimatedGeometry" title="go to the details">AnimatedGeometry</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_ArmPatchTexture" name="ArmPatchTexture" title="go to the details">ArmPatchTexture</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../engine/r6gameoptions.html#EGameOptionsAudioVirtual">EGameOptionsAudioVirtual</a></td><td width="66%"><a href="#_AudioVirtual" name="AudioVirtual" title="go to the details">AudioVirtual</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_AutoPatchDownload" name="AutoPatchDownload" title="go to the details">AutoPatchDownload</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">INT</td><td width="66%"><a href="#_AutoTargetSlider" name="AutoTargetSlider" title="go to the details">AutoTargetSlider</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">INT</td><td width="66%"><a href="#_ChangeNameTime" name="ChangeNameTime" title="go to the details">ChangeNameTime</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_CharacterName" name="CharacterName" title="go to the details">CharacterName</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">FLOAT</td><td width="66%"><a href="#_CountDownDelayTime" name="CountDownDelayTime" title="go to the details">CountDownDelayTime</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../engine/r6gameoptions.html#EGameOptionsEffectLevel">EGameOptionsEffectLevel</a></td><td width="66%"><a href="#_DecalsDetail" name="DecalsDetail" title="go to the details">DecalsDetail</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">BOOL</td><td width="66%"><a href="#_EAX" name="EAX" title="go to the details">EAX</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">BOOL</td><td width="66%"><a href="#_EAXCompatible" name="EAXCompatible" title="go to the details">EAXCompatible</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">INT</td><td width="66%"><a href="#_Gender" name="Gender" title="go to the details">Gender</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../engine/r6gameoptions.html#EGameOptionsEffectLevel">EGameOptionsEffectLevel</a></td><td width="66%"><a href="#_GoreLevel" name="GoreLevel" title="go to the details">GoreLevel</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_Hide3DView" name="Hide3DView" title="go to the details">Hide3DView</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">BOOL</td><td width="66%"><a href="#_HideDeadBodies" name="HideDeadBodies" title="go to the details">HideDeadBodies</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../engine/r6gameoptions.html#EGameOptionsGraphicLevel">EGameOptionsGraphicLevel</a></td><td width="66%"><a href="#_HostagesDetail" name="HostagesDetail" title="go to the details">HostagesDetail</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../engine/r6gameoptions.html#EGameOptionsEffectLevel">EGameOptionsEffectLevel</a></td><td width="66%"><a href="#_HostagesShadowLevel" name="HostagesShadowLevel" title="go to the details">HostagesShadowLevel</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../core/object.html#Color">color</a></td><td width="66%"><a href="#_HUDMPColor" name="HUDMPColor" title="go to the details">HUDMPColor</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../core/object.html#Color">color</a></td><td width="66%"><a href="#_HUDMPDarkColor" name="HUDMPDarkColor" title="go to the details">HUDMPDarkColor</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_HUDShowActionIcon" name="HUDShowActionIcon" title="go to the details">HUDShowActionIcon</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_HUDShowCharacterInfo" name="HUDShowCharacterInfo" title="go to the details">HUDShowCharacterInfo</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_HUDShowCurrentTeamInfo" name="HUDShowCurrentTeamInfo" title="go to the details">HUDShowCurrentTeamInfo</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_HUDShowFPWeapon" name="HUDShowFPWeapon" title="go to the details">HUDShowFPWeapon</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_HUDShowOtherTeamInfo" name="HUDShowOtherTeamInfo" title="go to the details">HUDShowOtherTeamInfo</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">BOOL</td><td width="66%"><a href="#_HUDShowPlayersName" name="HUDShowPlayersName" title="go to the details">HUDShowPlayersName</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_HUDShowReticule" name="HUDShowReticule" title="go to the details">HUDShowReticule</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_HUDShowWaypointInfo" name="HUDShowWaypointInfo" title="go to the details">HUDShowWaypointInfo</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_HUDShowWeaponInfo" name="HUDShowWeaponInfo" title="go to the details">HUDShowWeaponInfo</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_InvertMouse" name="InvertMouse" title="go to the details">InvertMouse</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../engine/r6gameoptions.html#EGameOptionsGraphicLevel">EGameOptionsGraphicLevel</a></td><td width="66%"><a href="#_LightmapDetail" name="LightmapDetail" title="go to the details">LightmapDetail</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">BOOL</td><td width="66%"><a href="#_LowDetailSmoke" name="LowDetailSmoke" title="go to the details">LowDetailSmoke</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">FLOAT</td><td width="66%"><a href="#_MouseSensitivity" name="MouseSensitivity" title="go to the details">MouseSensitivity</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_MPAutoSelection" name="MPAutoSelection" title="go to the details">MPAutoSelection</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">INT</td><td width="66%"><a href="#_MusicVolume" name="MusicVolume" title="go to the details">MusicVolume</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">BOOL</td><td width="66%"><a href="#_m_bChangeResolution" name="m_bChangeResolution" title="go to the details">m_bChangeResolution</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">BOOL</td><td width="66%"><a href="#_m_bPBInstalled" name="m_bPBInstalled" title="go to the details">m_bPBInstalled</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../core/object.html#Color">color</a></td><td width="66%"><a href="#_m_reticuleFriendColour" name="m_reticuleFriendColour" title="go to the details">m_reticuleFriendColour</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../engine/r6gameoptions.html#EGameOptionsNetSpeed">EGameOptionsNetSpeed</a></td><td width="66%"><a href="#_NetSpeed" name="NetSpeed" title="go to the details">NetSpeed</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">BOOL</td><td width="66%"><a href="#_PopUpLoadPlan" name="PopUpLoadPlan" title="go to the details">PopUpLoadPlan</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">BOOL</td><td width="66%"><a href="#_PopUpQuickPlay" name="PopUpQuickPlay" title="go to the details">PopUpQuickPlay</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">INT</td><td width="66%"><a href="#_R6ScreenRefreshRate" name="R6ScreenRefreshRate" title="go to the details">R6ScreenRefreshRate</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">INT</td><td width="66%"><a href="#_R6ScreenSizeX" name="R6ScreenSizeX" title="go to the details">R6ScreenSizeX</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">INT</td><td width="66%"><a href="#_R6ScreenSizeY" name="R6ScreenSizeY" title="go to the details">R6ScreenSizeY</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../engine/r6gameoptions.html#EGameOptionsGraphicLevel">EGameOptionsGraphicLevel</a></td><td width="66%"><a href="#_RainbowsDetail" name="RainbowsDetail" title="go to the details">RainbowsDetail</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../engine/r6gameoptions.html#EGameOptionsEffectLevel">EGameOptionsEffectLevel</a></td><td width="66%"><a href="#_RainbowsShadowLevel" name="RainbowsShadowLevel" title="go to the details">RainbowsShadowLevel</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_ShowRadar" name="ShowRadar" title="go to the details">ShowRadar</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">BOOL</td><td width="66%"><a href="#_ShowRefreshRates" name="ShowRefreshRates" title="go to the details">ShowRefreshRates</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">BOOL</td><td width="66%"><a href="#_SndHardware" name="SndHardware" title="go to the details">SndHardware</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">INT</td><td width="66%"><a href="#_SndQuality" name="SndQuality" title="go to the details">SndQuality</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">BOOL</td><td width="66%"><a href="#_SplashScreen" name="SplashScreen" title="go to the details">SplashScreen</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../engine/r6gameoptions.html#EGameOptionsGraphicLevel">EGameOptionsGraphicLevel</a></td><td width="66%"><a href="#_TerrosDetail" name="TerrosDetail" title="go to the details">TerrosDetail</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../engine/r6gameoptions.html#EGameOptionsEffectLevel">EGameOptionsEffectLevel</a></td><td width="66%"><a href="#_TerrosShadowLevel" name="TerrosShadowLevel" title="go to the details">TerrosShadowLevel</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../engine/r6gameoptions.html#EGameOptionsGraphicLevel">EGameOptionsGraphicLevel</a></td><td width="66%"><a href="#_TextureDetail" name="TextureDetail" title="go to the details">TextureDetail</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_UnlimitedPractice" name="UnlimitedPractice" title="go to the details">UnlimitedPractice</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">INT</td><td width="66%"><a href="#_VoicesVolume" name="VoicesVolume" title="go to the details">VoicesVolume</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">BOOL</td><td width="66%"><a href="#_WantTriggerLag" name="WantTriggerLag" title="go to the details">WantTriggerLag</a></td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Variables from <a href="../core/core-overview.html">core</a>.<a href="../core/object.html">Object</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../core/object.html#Class">Class</a>, <a href="../core/object.html#DName">DName</a>, <a href="../core/object.html#Name">Name</a>, <a href="../core/object.html#ObjectFlags">ObjectFlags</a>, <a href="../core/object.html#ObjectInternal[6]">ObjectInternal[6]</a>, <a href="../core/object.html#Outer">Outer</a></td>
+</tr>
+</table>
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Enumerations Summary</th>
+</tr>
+<tr><td><a href="#_EGameOptionsAudioVirtual" name="EGameOptionsAudioVirtual" title="go to the details">EGameOptionsAudioVirtual</a><br /><span class="small">eAV_High,
+eAV_Low,
+eAV_None</span></td></tr>
+<tr><td><a href="#_EGameOptionsEffectLevel" name="EGameOptionsEffectLevel" title="go to the details">EGameOptionsEffectLevel</a><br /><span class="small">eEL_None,
+eEL_Low,
+eEL_Medium,
+eEL_High</span></td></tr>
+<tr><td><a href="#_EGameOptionsGraphicLevel" name="EGameOptionsGraphicLevel" title="go to the details">EGameOptionsGraphicLevel</a><br /><span class="small">eGL_Low,
+eGL_Medium,
+eGL_High</span></td></tr>
+<tr><td><a href="#_EGameOptionsNetSpeed" name="EGameOptionsNetSpeed" title="go to the details">EGameOptionsNetSpeed</a><br /><span class="small">eNS_T1,
+eNS_T3,
+eNS_Cable,
+eNS_ADSL,
+eNS_Modem</span></td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Enumerations from <a href="../core/core-overview.html">core</a>.<a href="../core/object.html">Object</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../core/object.html#ECamOrientation">ECamOrientation</a>, <a href="../core/object.html#EGoCode">EGoCode</a>, <a href="../core/object.html#EMovementMode">EMovementMode</a>, <a href="../core/object.html#EMovementSpeed">EMovementSpeed</a>, <a href="../core/object.html#ENodeNotify">ENodeNotify</a>, <a href="../core/object.html#EPlanAction">EPlanAction</a>, <a href="../core/object.html#EPlanActionType">EPlanActionType</a>, <a href="../core/object.html#ePlayerTeamSelection">ePlayerTeamSelection</a>, <a href="../core/object.html#ESheerAxis">ESheerAxis</a></td>
+</tr>
+</table>
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Structures Summary</th>
+</tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Structures from <a href="../core/core-overview.html">core</a>.<a href="../core/object.html">Object</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../core/object.html#BoundingVolume">BoundingVolume</a>, <a href="../core/object.html#Box">Box</a>, <a href="../core/object.html#Color">Color</a>, <a href="../core/object.html#CompressedPosition">CompressedPosition</a>, <a href="../core/object.html#Coords">Coords</a>, <a href="../core/object.html#Guid">Guid</a>, <a href="../core/object.html#InterpCurve">InterpCurve</a>, <a href="../core/object.html#InterpCurvePoint">InterpCurvePoint</a>, <a href="../core/object.html#Matrix">Matrix</a>, <a href="../core/object.html#Plane">Plane</a>, <a href="../core/object.html#Range">Range</a>, <a href="../core/object.html#RangeVector">RangeVector</a>, <a href="../core/object.html#Region">Region</a>, <a href="../core/object.html#Rotator">Rotator</a>, <a href="../core/object.html#Scale">Scale</a>, <a href="../core/object.html#Vector">Vector</a></td>
+</tr>
+</table>
+
+
+<br />
+
+
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Functions Summary</th>
+</tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_ResetGameToDefault-" name="ResetGameToDefault" title="go to the details">ResetGameToDefault</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_ResetGraphicsToDefault-" name="ResetGraphicsToDefault" title="go to the details">ResetGraphicsToDefault</a> (BOOL _bInGame))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_ResetHudToDefault-" name="ResetHudToDefault" title="go to the details">ResetHudToDefault</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_ResetMultiToDefault-" name="ResetMultiToDefault" title="go to the details">ResetMultiToDefault</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_ResetPatchServiceToDefault-" name="ResetPatchServiceToDefault" title="go to the details">ResetPatchServiceToDefault</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_ResetSoundToDefault-" name="ResetSoundToDefault" title="go to the details">ResetSoundToDefault</a> (BOOL _bInGame))<br /><span class="function_state"></span></td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Functions from <a href="../core/core-overview.html">core</a>.<a href="../core/object.html">Object</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../core/object.html#!">!</a>, <a href="../core/object.html#!=">!=</a>, <a href="../core/object.html#$">$</a>, <a href="../core/object.html#%">%</a>, <a href="../core/object.html#&">&</a>, <a href="../core/object.html#&&">&&</a>, <a href="../core/object.html#*">*</a>, <a href="../core/object.html#**">**</a>, <a href="../core/object.html#*=">*=</a>, <a href="../core/object.html#+">+</a>, <a href="../core/object.html#++">++</a>, <a href="../core/object.html#+=">+=</a>, <a href="../core/object.html#-">-</a>, <a href="../core/object.html#--">--</a>, <a href="../core/object.html#-=">-=</a>, <a href="../core/object.html#/ ">/ </a>, <a href="../core/object.html#/=">/=</a>, <a href="../core/object.html#&lt;">&lt;</a>, <a href="../core/object.html#&lt;&lt;">&lt;&lt;</a>, <a href="../core/object.html#&lt;=">&lt;=</a>, <a href="../core/object.html#==">==</a>, <a href="../core/object.html#&gt;">&gt;</a>, <a href="../core/object.html#&gt;=">&gt;=</a>, <a href="../core/object.html#&gt;&gt;">&gt;&gt;</a>, <a href="../core/object.html#&gt;&gt;&gt;">&gt;&gt;&gt;</a>, <a href="../core/object.html#@">@</a>, <a href="../core/object.html#Abs">Abs</a>, <a href="../core/object.html#Acos">Acos</a>, <a href="../core/object.html#Asc">Asc</a>, <a href="../core/object.html#Asin">Asin</a>, <a href="../core/object.html#Atan">Atan</a>, <a href="../core/object.html#Atoi">Atoi</a>, <a href="../core/object.html#BeginState">BeginState</a>, <a href="../core/object.html#Caps">Caps</a>, <a href="../core/object.html#Chr">Chr</a>, <a href="../core/object.html#Clamp">Clamp</a>, <a href="../core/object.html#ClassIsChildOf">ClassIsChildOf</a>, <a href="../core/object.html#ClearOuter">ClearOuter</a>, <a href="../core/object.html#Clock">Clock</a>, <a href="../core/object.html#ClockwiseFrom">ClockwiseFrom</a>, <a href="../core/object.html#Cos">Cos</a>, <a href="../core/object.html#Cross">Cross</a>, <a href="../core/object.html#Disable">Disable</a>, <a href="../core/object.html#Dot">Dot</a>, <a href="../core/object.html#DynamicLoadObject">DynamicLoadObject</a>, <a href="../core/object.html#Enable">Enable</a>, <a href="../core/object.html#EndState">EndState</a>, <a href="../core/object.html#Exp">Exp</a>, <a href="../core/object.html#FClamp">FClamp</a>, <a href="../core/object.html#FindObject">FindObject</a>, <a href="../core/object.html#FMax">FMax</a>, <a href="../core/object.html#FMin">FMin</a>, <a href="../core/object.html#FRand">FRand</a>, <a href="../core/object.html#FreePackageObjects">FreePackageObjects</a>, <a href="../core/object.html#GetAxes">GetAxes</a>, <a href="../core/object.html#GetEnum">GetEnum</a>, <a href="../core/object.html#GetFirstPackageClass">GetFirstPackageClass</a>, <a href="../core/object.html#GetNextClass">GetNextClass</a>, <a href="../core/object.html#GetPropertyText">GetPropertyText</a>, <a href="../core/object.html#GetRegistryKey">GetRegistryKey</a>, <a href="../core/object.html#GetStateName">GetStateName</a>, <a href="../core/object.html#GetUnAxes">GetUnAxes</a>, <a href="../core/object.html#GotoState">GotoState</a>, <a href="../core/object.html#InitMod">InitMod</a>, <a href="../core/object.html#InStr">InStr</a>, <a href="../core/object.html#InterpCurveEval">InterpCurveEval</a>, <a href="../core/object.html#Invert">Invert</a>, <a href="../core/object.html#IsA">IsA</a>, <a href="../core/object.html#IsInState">IsInState</a>, <a href="../core/object.html#Itoa">Itoa</a>, <a href="../core/object.html#Left">Left</a>, <a href="../core/object.html#Len">Len</a>, <a href="../core/object.html#Lerp">Lerp</a>, <a href="../core/object.html#LoadConfig">LoadConfig</a>, <a href="../core/object.html#Localize">Localize</a>, <a href="../core/object.html#Log">Log</a>, <a href="../core/object.html#Loge">Loge</a>, <a href="../core/object.html#LogSnd">LogSnd</a>, <a href="../core/object.html#Max">Max</a>, <a href="../core/object.html#Mid">Mid</a>, <a href="../core/object.html#Min">Min</a>, <a href="../core/object.html#MirrorVectorByNormal">MirrorVectorByNormal</a>, <a href="../core/object.html#Normal">Normal</a>, <a href="../core/object.html#Normalize">Normalize</a>, <a href="../core/object.html#OrthoRotation">OrthoRotation</a>, <a href="../core/object.html#Rand">Rand</a>, <a href="../core/object.html#RandRange">RandRange</a>, <a href="../core/object.html#RemoveInvalidChars">RemoveInvalidChars</a>, <a href="../core/object.html#ResetConfig">ResetConfig</a>, <a href="../core/object.html#RewindToFirstClass">RewindToFirstClass</a>, <a href="../core/object.html#Right">Right</a>, <a href="../core/object.html#RotRand">RotRand</a>, <a href="../core/object.html#SaveConfig">SaveConfig</a>, <a href="../core/object.html#SetPropertyText">SetPropertyText</a>, <a href="../core/object.html#SetRegistryKey">SetRegistryKey</a>, <a href="../core/object.html#ShortestAngle2D">ShortestAngle2D</a>, <a href="../core/object.html#Sin">Sin</a>, <a href="../core/object.html#Smerp">Smerp</a>, <a href="../core/object.html#Sqrt">Sqrt</a>, <a href="../core/object.html#Square">Square</a>, <a href="../core/object.html#StaticSaveConfig">StaticSaveConfig</a>, <a href="../core/object.html#Strnicmp">Strnicmp</a>, <a href="../core/object.html#Tan">Tan</a>, <a href="../core/object.html#Unclock">Unclock</a>, <a href="../core/object.html#VRand">VRand</a>, <a href="../core/object.html#VSize">VSize</a>, <a href="../core/object.html#Warn">Warn</a>, <a href="../core/object.html#^">^</a>, <a href="../core/object.html#^^">^^</a>, <a href="../core/object.html#|">|</a>, <a href="../core/object.html#||">||</a>, <a href="../core/object.html#~">~</a>, <a href="../core/object.html#~=">~=</a></td>
+</tr>
+</table>
+
+
+<br />
+
+
+
+<hr />
+
+
+
+<table class="title">
+<tr>
+	<th class="title">Variables Detail</th>
+</tr>
+</table>
+
+<h4><a name="_ActivePunkBuster" class="hidden"></a>ActivePunkBuster <a href="../Source_engine/r6gameoptions.html#81" class="small">Source code</a></h4>
+<div class="declaration">var config <span class="source_type">BOOL</span> ActivePunkBuster;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_AllowChangeResInGame" class="hidden"></a>AllowChangeResInGame <a href="../Source_engine/r6gameoptions.html#142" class="small">Source code</a></h4>
+<div class="declaration">var config <span class="source_type">BOOL</span> AllowChangeResInGame;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_AlwaysRun" class="hidden"></a>AlwaysRun <a href="../Source_engine/r6gameoptions.html#38" class="small">Source code</a></h4>
+<div class="declaration">var config <span class="source_type">bool</span> AlwaysRun;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_AmbientVolume" class="hidden"></a>AmbientVolume <a href="../Source_engine/r6gameoptions.html#56" class="small">Source code</a></h4>
+<div class="declaration">var config <span class="source_type">INT</span> AmbientVolume;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_AnimatedGeometry" class="hidden"></a>AnimatedGeometry <a href="../Source_engine/r6gameoptions.html#136" class="small">Source code</a></h4>
+<div class="declaration">var config <span class="source_type">BOOL</span> AnimatedGeometry;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ArmPatchTexture" class="hidden"></a>ArmPatchTexture <a href="../Source_engine/r6gameoptions.html#79" class="small">Source code</a></h4>
+<div class="declaration">var config <span class="source_type">string</span> ArmPatchTexture;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_AudioVirtual" class="hidden"></a>AudioVirtual <a href="../Source_engine/r6gameoptions.html#62" class="small">Source code</a></h4>
+<div class="declaration">var config <span class="source_type"><a href="../engine/r6gameoptions.html#EGameOptionsAudioVirtual" class="source">EGameOptionsAudioVirtual</a></span> AudioVirtual;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_AutoPatchDownload" class="hidden"></a>AutoPatchDownload <a href="../Source_engine/r6gameoptions.html#148" class="small">Source code</a></h4>
+<div class="declaration">var config <span class="source_type">bool</span> AutoPatchDownload;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_AutoTargetSlider" class="hidden"></a>AutoTargetSlider <a href="../Source_engine/r6gameoptions.html#44" class="small">Source code</a></h4>
+<div class="declaration">var config <span class="source_type">INT</span> AutoTargetSlider;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ChangeNameTime" class="hidden"></a>ChangeNameTime <a href="../Source_engine/r6gameoptions.html#80" class="small">Source code</a></h4>
+<div class="declaration">var config <span class="source_type">INT</span> ChangeNameTime;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_CharacterName" class="hidden"></a>CharacterName <a href="../Source_engine/r6gameoptions.html#77" class="small">Source code</a></h4>
+<div class="declaration">var config <span class="source_type">string</span> CharacterName;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_CountDownDelayTime" class="hidden"></a>CountDownDelayTime <a href="../Source_engine/r6gameoptions.html#32" class="small">Source code</a></h4>
+<div class="declaration">var config <span class="source_type">FLOAT</span> CountDownDelayTime;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_DecalsDetail" class="hidden"></a>DecalsDetail <a href="../Source_engine/r6gameoptions.html#139" class="small">Source code</a></h4>
+<div class="declaration">var config <span class="source_type"><a href="../engine/r6gameoptions.html#EGameOptionsEffectLevel" class="source">EGameOptionsEffectLevel</a></span> DecalsDetail;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_EAX" class="hidden"></a>EAX <a href="../Source_engine/r6gameoptions.html#61" class="small">Source code</a></h4>
+<div class="declaration">var config <span class="source_type">BOOL</span> EAX;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_EAXCompatible" class="hidden"></a>EAXCompatible <a href="../Source_engine/r6gameoptions.html#17" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">BOOL</span> EAXCompatible;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_Gender" class="hidden"></a>Gender <a href="../Source_engine/r6gameoptions.html#78" class="small">Source code</a></h4>
+<div class="declaration">var config <span class="source_type">INT</span> Gender;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GoreLevel" class="hidden"></a>GoreLevel <a href="../Source_engine/r6gameoptions.html#138" class="small">Source code</a></h4>
+<div class="declaration">var config <span class="source_type"><a href="../engine/r6gameoptions.html#EGameOptionsEffectLevel" class="source">EGameOptionsEffectLevel</a></span> GoreLevel;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_Hide3DView" class="hidden"></a>Hide3DView <a href="../Source_engine/r6gameoptions.html#40" class="small">Source code</a></h4>
+<div class="declaration">var config <span class="source_type">bool</span> Hide3DView;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_HideDeadBodies" class="hidden"></a>HideDeadBodies <a href="../Source_engine/r6gameoptions.html#137" class="small">Source code</a></h4>
+<div class="declaration">var config <span class="source_type">BOOL</span> HideDeadBodies;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_HostagesDetail" class="hidden"></a>HostagesDetail <a href="../Source_engine/r6gameoptions.html#124" class="small">Source code</a></h4>
+<div class="declaration">var config <span class="source_type"><a href="../engine/r6gameoptions.html#EGameOptionsGraphicLevel" class="source">EGameOptionsGraphicLevel</a></span> HostagesDetail;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_HostagesShadowLevel" class="hidden"></a>HostagesShadowLevel <a href="../Source_engine/r6gameoptions.html#129" class="small">Source code</a></h4>
+<div class="declaration">var config <span class="source_type"><a href="../engine/r6gameoptions.html#EGameOptionsEffectLevel" class="source">EGameOptionsEffectLevel</a></span> HostagesShadowLevel;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_HUDMPColor" class="hidden"></a>HUDMPColor <a href="../Source_engine/r6gameoptions.html#115" class="small">Source code</a></h4>
+<div class="declaration">var config <span class="source_type"><a href="../core/object.html#Color" class="source">color</a></span> HUDMPColor;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_HUDMPDarkColor" class="hidden"></a>HUDMPDarkColor <a href="../Source_engine/r6gameoptions.html#116" class="small">Source code</a></h4>
+<div class="declaration">var config <span class="source_type"><a href="../core/object.html#Color" class="source">color</a></span> HUDMPDarkColor;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_HUDShowActionIcon" class="hidden"></a>HUDShowActionIcon <a href="../Source_engine/r6gameoptions.html#112" class="small">Source code</a></h4>
+<div class="declaration">var config <span class="source_type">bool</span> HUDShowActionIcon;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_HUDShowCharacterInfo" class="hidden"></a>HUDShowCharacterInfo <a href="../Source_engine/r6gameoptions.html#105" class="small">Source code</a></h4>
+<div class="declaration">var config <span class="source_type">bool</span> HUDShowCharacterInfo;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_HUDShowCurrentTeamInfo" class="hidden"></a>HUDShowCurrentTeamInfo <a href="../Source_engine/r6gameoptions.html#106" class="small">Source code</a></h4>
+<div class="declaration">var config <span class="source_type">bool</span> HUDShowCurrentTeamInfo;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_HUDShowFPWeapon" class="hidden"></a>HUDShowFPWeapon <a href="../Source_engine/r6gameoptions.html#109" class="small">Source code</a></h4>
+<div class="declaration">var config <span class="source_type">bool</span> HUDShowFPWeapon;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_HUDShowOtherTeamInfo" class="hidden"></a>HUDShowOtherTeamInfo <a href="../Source_engine/r6gameoptions.html#107" class="small">Source code</a></h4>
+<div class="declaration">var config <span class="source_type">bool</span> HUDShowOtherTeamInfo;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_HUDShowPlayersName" class="hidden"></a>HUDShowPlayersName <a href="../Source_engine/r6gameoptions.html#113" class="small">Source code</a></h4>
+<div class="declaration">var config <span class="source_type">BOOL</span> HUDShowPlayersName;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_HUDShowReticule" class="hidden"></a>HUDShowReticule <a href="../Source_engine/r6gameoptions.html#110" class="small">Source code</a></h4>
+<div class="declaration">var config <span class="source_type">bool</span> HUDShowReticule;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_HUDShowWaypointInfo" class="hidden"></a>HUDShowWaypointInfo <a href="../Source_engine/r6gameoptions.html#111" class="small">Source code</a></h4>
+<div class="declaration">var config <span class="source_type">bool</span> HUDShowWaypointInfo;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_HUDShowWeaponInfo" class="hidden"></a>HUDShowWeaponInfo <a href="../Source_engine/r6gameoptions.html#108" class="small">Source code</a></h4>
+<div class="declaration">var config <span class="source_type">bool</span> HUDShowWeaponInfo;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_InvertMouse" class="hidden"></a>InvertMouse <a href="../Source_engine/r6gameoptions.html#39" class="small">Source code</a></h4>
+<div class="declaration">var config <span class="source_type">bool</span> InvertMouse;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_LightmapDetail" class="hidden"></a>LightmapDetail <a href="../Source_engine/r6gameoptions.html#120" class="small">Source code</a></h4>
+<div class="declaration">var config <span class="source_type"><a href="../engine/r6gameoptions.html#EGameOptionsGraphicLevel" class="source">EGameOptionsGraphicLevel</a></span> LightmapDetail;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_LowDetailSmoke" class="hidden"></a>LowDetailSmoke <a href="../Source_engine/r6gameoptions.html#141" class="small">Source code</a></h4>
+<div class="declaration">var config <span class="source_type">BOOL</span> LowDetailSmoke;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_MouseSensitivity" class="hidden"></a>MouseSensitivity <a href="../Source_engine/r6gameoptions.html#43" class="small">Source code</a></h4>
+<div class="declaration">var config <span class="source_type">FLOAT</span> MouseSensitivity;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_MPAutoSelection" class="hidden"></a>MPAutoSelection <a href="../Source_engine/r6gameoptions.html#30" class="small">Source code</a></h4>
+<div class="declaration">var config <span class="source_type">string</span> MPAutoSelection;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_MusicVolume" class="hidden"></a>MusicVolume <a href="../Source_engine/r6gameoptions.html#58" class="small">Source code</a></h4>
+<div class="declaration">var config <span class="source_type">INT</span> MusicVolume;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_bChangeResolution" class="hidden"></a>m_bChangeResolution <a href="../Source_engine/r6gameoptions.html#18" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">BOOL</span> m_bChangeResolution;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_bPBInstalled" class="hidden"></a>m_bPBInstalled <a href="../Source_engine/r6gameoptions.html#20" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">BOOL</span> m_bPBInstalled;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_reticuleFriendColour" class="hidden"></a>m_reticuleFriendColour <a href="../Source_engine/r6gameoptions.html#29" class="small">Source code</a></h4>
+<div class="declaration">var config <span class="source_type"><a href="../core/object.html#Color" class="source">color</a></span> m_reticuleFriendColour;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_NetSpeed" class="hidden"></a>NetSpeed <a href="../Source_engine/r6gameoptions.html#76" class="small">Source code</a></h4>
+<div class="declaration">var config <span class="source_type"><a href="../engine/r6gameoptions.html#EGameOptionsNetSpeed" class="source">EGameOptionsNetSpeed</a></span> NetSpeed;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_PopUpLoadPlan" class="hidden"></a>PopUpLoadPlan <a href="../Source_engine/r6gameoptions.html#41" class="small">Source code</a></h4>
+<div class="declaration">var config <span class="source_type">BOOL</span> PopUpLoadPlan;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_PopUpQuickPlay" class="hidden"></a>PopUpQuickPlay <a href="../Source_engine/r6gameoptions.html#42" class="small">Source code</a></h4>
+<div class="declaration">var config <span class="source_type">BOOL</span> PopUpQuickPlay;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_R6ScreenRefreshRate" class="hidden"></a>R6ScreenRefreshRate <a href="../Source_engine/r6gameoptions.html#135" class="small">Source code</a></h4>
+<div class="declaration">var config <span class="source_type">INT</span> R6ScreenRefreshRate;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_R6ScreenSizeX" class="hidden"></a>R6ScreenSizeX <a href="../Source_engine/r6gameoptions.html#133" class="small">Source code</a></h4>
+<div class="declaration">var config <span class="source_type">INT</span> R6ScreenSizeX;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_R6ScreenSizeY" class="hidden"></a>R6ScreenSizeY <a href="../Source_engine/r6gameoptions.html#134" class="small">Source code</a></h4>
+<div class="declaration">var config <span class="source_type">INT</span> R6ScreenSizeY;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_RainbowsDetail" class="hidden"></a>RainbowsDetail <a href="../Source_engine/r6gameoptions.html#123" class="small">Source code</a></h4>
+<div class="declaration">var config <span class="source_type"><a href="../engine/r6gameoptions.html#EGameOptionsGraphicLevel" class="source">EGameOptionsGraphicLevel</a></span> RainbowsDetail;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_RainbowsShadowLevel" class="hidden"></a>RainbowsShadowLevel <a href="../Source_engine/r6gameoptions.html#128" class="small">Source code</a></h4>
+<div class="declaration">var config <span class="source_type"><a href="../engine/r6gameoptions.html#EGameOptionsEffectLevel" class="source">EGameOptionsEffectLevel</a></span> RainbowsShadowLevel;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ShowRadar" class="hidden"></a>ShowRadar <a href="../Source_engine/r6gameoptions.html#114" class="small">Source code</a></h4>
+<div class="declaration">var config <span class="source_type">bool</span> ShowRadar;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ShowRefreshRates" class="hidden"></a>ShowRefreshRates <a href="../Source_engine/r6gameoptions.html#140" class="small">Source code</a></h4>
+<div class="declaration">var config <span class="source_type">BOOL</span> ShowRefreshRates;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_SndHardware" class="hidden"></a>SndHardware <a href="../Source_engine/r6gameoptions.html#60" class="small">Source code</a></h4>
+<div class="declaration">var config <span class="source_type">BOOL</span> SndHardware;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_SndQuality" class="hidden"></a>SndQuality <a href="../Source_engine/r6gameoptions.html#59" class="small">Source code</a></h4>
+<div class="declaration">var config <span class="source_type">INT</span> SndQuality;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_SplashScreen" class="hidden"></a>SplashScreen <a href="../Source_engine/r6gameoptions.html#31" class="small">Source code</a></h4>
+<div class="declaration">var config <span class="source_type">BOOL</span> SplashScreen;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_TerrosDetail" class="hidden"></a>TerrosDetail <a href="../Source_engine/r6gameoptions.html#125" class="small">Source code</a></h4>
+<div class="declaration">var config <span class="source_type"><a href="../engine/r6gameoptions.html#EGameOptionsGraphicLevel" class="source">EGameOptionsGraphicLevel</a></span> TerrosDetail;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_TerrosShadowLevel" class="hidden"></a>TerrosShadowLevel <a href="../Source_engine/r6gameoptions.html#130" class="small">Source code</a></h4>
+<div class="declaration">var config <span class="source_type"><a href="../engine/r6gameoptions.html#EGameOptionsEffectLevel" class="source">EGameOptionsEffectLevel</a></span> TerrosShadowLevel;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_TextureDetail" class="hidden"></a>TextureDetail <a href="../Source_engine/r6gameoptions.html#119" class="small">Source code</a></h4>
+<div class="declaration">var config <span class="source_type"><a href="../engine/r6gameoptions.html#EGameOptionsGraphicLevel" class="source">EGameOptionsGraphicLevel</a></span> TextureDetail;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_UnlimitedPractice" class="hidden"></a>UnlimitedPractice <a href="../Source_engine/r6gameoptions.html#37" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">bool</span> UnlimitedPractice;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_VoicesVolume" class="hidden"></a>VoicesVolume <a href="../Source_engine/r6gameoptions.html#57" class="small">Source code</a></h4>
+<div class="declaration">var config <span class="source_type">INT</span> VoicesVolume;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_WantTriggerLag" class="hidden"></a>WantTriggerLag <a href="../Source_engine/r6gameoptions.html#82" class="small">Source code</a></h4>
+<div class="declaration">var config <span class="source_type">BOOL</span> WantTriggerLag;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th class="title">Enumerations Detail</th>
+</tr>
+</table>
+
+<h4><a name="_EGameOptionsAudioVirtual" class="hidden"></a>EGameOptionsAudioVirtual <a href="../Source_engine/r6gameoptions.html#49" class="small">Source code</a></h4>
+<div class="declaration">enum <span class="source_type"><a href="../engine/r6gameoptions.html#EGameOptionsAudioVirtual" class="source">EGameOptionsAudioVirtual</a></span><br />
+{<blockquote>eAV_High,
+eAV_Low,
+eAV_None</blockquote>};
+</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_EGameOptionsEffectLevel" class="hidden"></a>EGameOptionsEffectLevel <a href="../Source_engine/r6gameoptions.html#94" class="small">Source code</a></h4>
+<div class="declaration">enum <span class="source_type"><a href="../engine/r6gameoptions.html#EGameOptionsEffectLevel" class="source">EGameOptionsEffectLevel</a></span><br />
+{<blockquote>eEL_None,
+eEL_Low,
+eEL_Medium,
+eEL_High</blockquote>};
+</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_EGameOptionsGraphicLevel" class="hidden"></a>EGameOptionsGraphicLevel <a href="../Source_engine/r6gameoptions.html#87" class="small">Source code</a></h4>
+<div class="declaration">enum <span class="source_type"><a href="../engine/r6gameoptions.html#EGameOptionsGraphicLevel" class="source">EGameOptionsGraphicLevel</a></span><br />
+{<blockquote>eGL_Low,
+eGL_Medium,
+eGL_High</blockquote>};
+</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_EGameOptionsNetSpeed" class="hidden"></a>EGameOptionsNetSpeed <a href="../Source_engine/r6gameoptions.html#67" class="small">Source code</a></h4>
+<div class="declaration">enum <span class="source_type"><a href="../engine/r6gameoptions.html#EGameOptionsNetSpeed" class="source">EGameOptionsNetSpeed</a></span><br />
+{<blockquote>eNS_T1,
+eNS_T3,
+eNS_Cable,
+eNS_ADSL,
+eNS_Modem</blockquote>};
+</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+
+
+<br />
+
+
+
+
+
+<table class="title">
+<tr>
+	<th class="title">Functions Detail</th>
+</tr>
+</table>
+
+<h4><a name="_ResetGameToDefault-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> ResetGameToDefault <span class="function_state"></span> <a href="../Source_engine/r6gameoptions.html#154" class="small">Source code</a></h4>
+<div class="declaration"> function  ResetGameToDefault ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ResetGraphicsToDefault-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> ResetGraphicsToDefault <span class="function_state"></span> <a href="../Source_engine/r6gameoptions.html#187" class="small">Source code</a></h4>
+<div class="declaration"> function  ResetGraphicsToDefault ( <span class="source_type">BOOL</span> _bInGame) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ResetHudToDefault-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> ResetHudToDefault <span class="function_state"></span> <a href="../Source_engine/r6gameoptions.html#227" class="small">Source code</a></h4>
+<div class="declaration"> function  ResetHudToDefault ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ResetMultiToDefault-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> ResetMultiToDefault <span class="function_state"></span> <a href="../Source_engine/r6gameoptions.html#215" class="small">Source code</a></h4>
+<div class="declaration"> function  ResetMultiToDefault ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ResetPatchServiceToDefault-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> ResetPatchServiceToDefault <span class="function_state"></span> <a href="../Source_engine/r6gameoptions.html#244" class="small">Source code</a></h4>
+<div class="declaration"> function  ResetPatchServiceToDefault ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ResetSoundToDefault-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> ResetSoundToDefault <span class="function_state"></span> <a href="../Source_engine/r6gameoptions.html#168" class="small">Source code</a></h4>
+<div class="declaration"> function  ResetSoundToDefault ( <span class="source_type">BOOL</span> _bInGame) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+
+
+<br />
+
+
+<table class="title">
+<tr>
+	<th class="title">Defaultproperties</th>
+</tr>
+</table>
+<br />
+<div class="source"><table class="source"><tr><td class="source"><pre class="source">defaultproperties
+{
+     AudioVirtual=eAV_None
+     TextureDetail=eGL_High
+     LightmapDetail=eGL_High
+     GoreLevel=eEL_High
+     DecalsDetail=eEL_Medium
+     AmbientVolume=<span class="source_int">100</span>
+     VoicesVolume=<span class="source_int">100</span>
+     MusicVolume=<span class="source_int">100</span>
+     SndQuality=<span class="source_int">1</span>
+     Gender=<span class="source_int">1</span>
+     ChangeNameTime=<span class="source_int">60</span>
+     R6ScreenSizeX=<span class="source_int">1024</span>
+     R6ScreenSizeY=<span class="source_int">768</span>
+     R6ScreenRefreshRate=<span class="source_int">100</span>
+     AlwaysRun=True
+     PopUpLoadPlan=True
+     PopUpQuickPlay=True
+     ActivePunkBuster=True
+     HUDShowCharacterInfo=True
+     HUDShowCurrentTeamInfo=True
+     HUDShowOtherTeamInfo=True
+     HUDShowWeaponInfo=True
+     HUDShowFPWeapon=True
+     HUDShowReticule=True
+     HUDShowWaypointInfo=True
+     HUDShowActionIcon=True
+     HUDShowPlayersName=True
+     ShowRadar=True
+     ShowRefreshRates=True
+     LowDetailSmoke=True
+     MouseSensitivity=<span class="source_int">60.000004</span>
+     m_reticuleFriendColour=(G=<span class="source_int">255</span>)
+     HUDMPColor=(<span class="source_type">B</span>=<span class="source_int">239</span>,G=<span class="source_int">209</span>,<span class="source_type">R</span>=<span class="source_int">129</span>,<span class="source_type">A</span>=<span class="source_int">75</span>)
+     characterName=<span class="source_string">"UBu"</span>
+}
+</pre></td></tr></table></div>
+
+
+
+<hr />
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../engine/engine-overview.html">Package</a></td>
+	<td class="header_hilight">Class</td>
+	<td class="header"><a href="../Source_engine/r6gameoptions.html">Source</a></td>
+	<td class="header"><a class="header" href="../classtree.html#R6GameOptions">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../engine/r6gamemenucom.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../engine/r6glowlight.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+
+<div class="stats">Creation time: mar. 26/5/2026 18:33:11.081 - Created with <a href="http://wiki.beyondunreal.com/wiki/UnCodeX" target="_blank">UnCodeX</a></div>
+
+</body>
+</html>

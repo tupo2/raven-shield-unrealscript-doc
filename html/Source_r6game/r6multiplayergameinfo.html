@@ -1,0 +1,1356 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+	<title>UnCodeX - Source: R6Game.R6MultiPlayerGameInfo</title>
+	<meta name="Generator" content="UnCodeX 241" />
+	<link rel="stylesheet" href="../DocStyle2.css" type="text/css" title="Original Purple" />
+	<link rel="alternative stylesheet" href="../DocStyle2-blue.css" type="text/css" title="Blue" />
+	<link rel="alternative stylesheet" href="../DocStyle2-red.css" type="text/css" title="Red" />
+	<!--[if IE]>
+	<link rel="stylesheet" href="../DocStyle2-msie.css" type="text/css" />
+	<![endif]-->
+	<script src="../styleswitcher.js" type="text/javascript"></script>
+</head>
+<body>
+
+<div class="header">
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../r6game/r6game-overview.html">Package</a></td>
+	<td class="header"><a href="../r6game/r6multiplayergameinfo.html">Class</a></td>
+	<td class="header_hilight">Source</td>
+	<td class="header"><a class="header" href="../classtree.html#R6MultiPlayerGameInfo">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../Source_r6game/r6mobjtimer.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../Source_r6game/r6noisemgr.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html#Source_r6game/r6multiplayergameinfo.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+</div>
+<div class="spacer"></div>
+
+<h1><a href="../r6game/r6game-overview.html">R6Game</a>.<a href="../r6game/r6multiplayergameinfo.html">R6MultiPlayerGameInfo</a></h1>
+<br />
+<div class="source"><table class="source"><tr><td class="source_lineno"><span class="source_lineno">00001<br />00002<br />00003<br />00004<br />00005<br />00006<br />00007<br />00008<br />00009<br />00010<br />00011<br />00012<br />00013<br />00014<br />00015<br />00016<br />00017<br />00018<br />00019<br />00020<br />
+00021<br />00022<br />00023<br />00024<br />00025<br />00026<br />00027<br />00028<br />00029<br />00030<br />00031<br />00032<br />00033<br />00034<br />00035<br />00036<br />00037<br />00038<br />00039<br />00040<br />
+00041<br />00042<br />00043<br />00044<br />00045<br />00046<br />00047<br />00048<br />00049<br />00050<br />00051<br />00052<br />00053<br />00054<br />00055<br />00056<br />00057<br />00058<br />00059<br />00060<br />
+00061<br />00062<br />00063<br />00064<br />00065<br />00066<br />00067<br />00068<br />00069<br />00070<br />00071<br />00072<br />00073<br />00074<br />00075<br />00076<br />00077<br />00078<br />00079<br />00080<br />
+00081<br />00082<br />00083<br />00084<br />00085<br />00086<br />00087<br />00088<br />00089<br />00090<br />00091<br />00092<br />00093<br />00094<br />00095<br />00096<br />00097<br />00098<br />00099<br />00100<br />
+00101<br />00102<br />00103<br />00104<br />00105<br />00106<br />00107<br />00108<br />00109<br />00110<br />00111<br />00112<br />00113<br />00114<br />00115<br />00116<br />00117<br />00118<br />00119<br />00120<br />
+00121<br />00122<br />00123<br />00124<br />00125<br />00126<br />00127<br />00128<br />00129<br />00130<br />00131<br />00132<br />00133<br />00134<br />00135<br />00136<br />00137<br />00138<br />00139<br />00140<br />
+00141<br />00142<br />00143<br />00144<br />00145<br />00146<br />00147<br />00148<br />00149<br />00150<br />00151<br />00152<br />00153<br />00154<br />00155<br />00156<br />00157<br />00158<br />00159<br />00160<br />
+00161<br />00162<br />00163<br />00164<br />00165<br />00166<br />00167<br />00168<br />00169<br />00170<br />00171<br />00172<br />00173<br />00174<br />00175<br />00176<br />00177<br />00178<br />00179<br />00180<br />
+00181<br />00182<br />00183<br />00184<br />00185<br />00186<br />00187<br />00188<br />00189<br />00190<br />00191<br />00192<br />00193<br />00194<br />00195<br />00196<br />00197<br />00198<br />00199<br />00200<br />
+00201<br />00202<br />00203<br />00204<br />00205<br />00206<br />00207<br />00208<br />00209<br />00210<br />00211<br />00212<br />00213<br />00214<br />00215<br />00216<br />00217<br />00218<br />00219<br />00220<br />
+00221<br />00222<br />00223<br />00224<br />00225<br />00226<br />00227<br />00228<br />00229<br />00230<br />00231<br />00232<br />00233<br />00234<br />00235<br />00236<br />00237<br />00238<br />00239<br />00240<br />
+00241<br />00242<br />00243<br />00244<br />00245<br />00246<br />00247<br />00248<br />00249<br />00250<br />00251<br />00252<br />00253<br />00254<br />00255<br />00256<br />00257<br />00258<br />00259<br />00260<br />
+00261<br />00262<br />00263<br />00264<br />00265<br />00266<br />00267<br />00268<br />00269<br />00270<br />00271<br />00272<br />00273<br />00274<br />00275<br />00276<br />00277<br />00278<br />00279<br />00280<br />
+00281<br />00282<br />00283<br />00284<br />00285<br />00286<br />00287<br />00288<br />00289<br />00290<br />00291<br />00292<br />00293<br />00294<br />00295<br />00296<br />00297<br />00298<br />00299<br />00300<br />
+00301<br />00302<br />00303<br />00304<br />00305<br />00306<br />00307<br />00308<br />00309<br />00310<br />00311<br />00312<br />00313<br />00314<br />00315<br />00316<br />00317<br />00318<br />00319<br />00320<br />
+00321<br />00322<br />00323<br />00324<br />00325<br />00326<br />00327<br />00328<br />00329<br />00330<br />00331<br />00332<br />00333<br />00334<br />00335<br />00336<br />00337<br />00338<br />00339<br />00340<br />
+00341<br />00342<br />00343<br />00344<br />00345<br />00346<br />00347<br />00348<br />00349<br />00350<br />00351<br />00352<br />00353<br />00354<br />00355<br />00356<br />00357<br />00358<br />00359<br />00360<br />
+00361<br />00362<br />00363<br />00364<br />00365<br />00366<br />00367<br />00368<br />00369<br />00370<br />00371<br />00372<br />00373<br />00374<br />00375<br />00376<br />00377<br />00378<br />00379<br />00380<br />
+00381<br />00382<br />00383<br />00384<br />00385<br />00386<br />00387<br />00388<br />00389<br />00390<br />00391<br />00392<br />00393<br />00394<br />00395<br />00396<br />00397<br />00398<br />00399<br />00400<br />
+00401<br />00402<br />00403<br />00404<br />00405<br />00406<br />00407<br />00408<br />00409<br />00410<br />00411<br />00412<br />00413<br />00414<br />00415<br />00416<br />00417<br />00418<br />00419<br />00420<br />
+00421<br />00422<br />00423<br />00424<br />00425<br />00426<br />00427<br />00428<br />00429<br />00430<br />00431<br />00432<br />00433<br />00434<br />00435<br />00436<br />00437<br />00438<br />00439<br />00440<br />
+00441<br />00442<br />00443<br />00444<br />00445<br />00446<br />00447<br />00448<br />00449<br />00450<br />00451<br />00452<br />00453<br />00454<br />00455<br />00456<br />00457<br />00458<br />00459<br />00460<br />
+00461<br />00462<br />00463<br />00464<br />00465<br />00466<br />00467<br />00468<br />00469<br />00470<br />00471<br />00472<br />00473<br />00474<br />00475<br />00476<br />00477<br />00478<br />00479<br />00480<br />
+00481<br />00482<br />00483<br />00484<br />00485<br />00486<br />00487<br />00488<br />00489<br />00490<br />00491<br />00492<br />00493<br />00494<br />00495<br />00496<br />00497<br />00498<br />00499<br />00500<br />
+00501<br />00502<br />00503<br />00504<br />00505<br />00506<br />00507<br />00508<br />00509<br />00510<br />00511<br />00512<br />00513<br />00514<br />00515<br />00516<br />00517<br />00518<br />00519<br />00520<br />
+00521<br />00522<br />00523<br />00524<br />00525<br />00526<br />00527<br />00528<br />00529<br />00530<br />00531<br />00532<br />00533<br />00534<br />00535<br />00536<br />00537<br />00538<br />00539<br />00540<br />
+00541<br />00542<br />00543<br />00544<br />00545<br />00546<br />00547<br />00548<br />00549<br />00550<br />00551<br />00552<br />00553<br />00554<br />00555<br />00556<br />00557<br />00558<br />00559<br />00560<br />
+00561<br />00562<br />00563<br />00564<br />00565<br />00566<br />00567<br />00568<br />00569<br />00570<br />00571<br />00572<br />00573<br />00574<br />00575<br />00576<br />00577<br />00578<br />00579<br />00580<br />
+00581<br />00582<br />00583<br />00584<br />00585<br />00586<br />00587<br />00588<br />00589<br />00590<br />00591<br />00592<br />00593<br />00594<br />00595<br />00596<br />00597<br />00598<br />00599<br />00600<br />
+00601<br />00602<br />00603<br />00604<br />00605<br />00606<br />00607<br />00608<br />00609<br />00610<br />00611<br />00612<br />00613<br />00614<br />00615<br />00616<br />00617<br />00618<br />00619<br />00620<br />
+00621<br />00622<br />00623<br />00624<br />00625<br />00626<br />00627<br />00628<br />00629<br />00630<br />00631<br />00632<br />00633<br />00634<br />00635<br />00636<br />00637<br />00638<br />00639<br />00640<br />
+00641<br />00642<br />00643<br />00644<br />00645<br />00646<br />00647<br />00648<br />00649<br />00650<br />00651<br />00652<br />00653<br />00654<br />00655<br />00656<br />00657<br />00658<br />00659<br />00660<br />
+00661<br />00662<br />00663<br />00664<br />00665<br />00666<br />00667<br />00668<br />00669<br />00670<br />00671<br />00672<br />00673<br />00674<br />00675<br />00676<br />00677<br />00678<br />00679<br />00680<br />
+00681<br />00682<br />00683<br />00684<br />00685<br />00686<br />00687<br />00688<br />00689<br />00690<br />00691<br />00692<br />00693<br />00694<br />00695<br />00696<br />00697<br />00698<br />00699<br />00700<br />
+00701<br />00702<br />00703<br />00704<br />00705<br />00706<br />00707<br />00708<br />00709<br />00710<br />00711<br />00712<br />00713<br />00714<br />00715<br />00716<br />00717<br />00718<br />00719<br />00720<br />
+00721<br />00722<br />00723<br />00724<br />00725<br />00726<br />00727<br />00728<br />00729<br />00730<br />00731<br />00732<br />00733<br />00734<br />00735<br />00736<br />00737<br />00738<br />00739<br />00740<br />
+00741<br />00742<br />00743<br />00744<br />00745<br />00746<br />00747<br />00748<br />00749<br />00750<br />00751<br />00752<br />00753<br />00754<br />00755<br />00756<br />00757<br />00758<br />00759<br />00760<br />
+00761<br />00762<br />00763<br />00764<br />00765<br />00766<br />00767<br />00768<br />00769<br />00770<br />00771<br />00772<br />00773<br />00774<br />00775<br />00776<br />00777<br />00778<br />00779<br />00780<br />
+00781<br />00782<br />00783<br />00784<br />00785<br />00786<br />00787<br />00788<br />00789<br />00790<br />00791<br />00792<br />00793<br />00794<br />00795<br />00796<br />00797<br />00798<br />00799<br />00800<br />
+00801<br />00802<br />00803<br />00804<br />00805<br />00806<br />00807<br />00808<br />00809<br />00810<br />00811<br />00812<br />00813<br />00814<br />00815<br />00816<br />00817<br />00818<br />00819<br />00820<br />
+00821<br />00822<br />00823<br />00824<br />00825<br />00826<br />00827<br />00828<br />00829<br />00830<br />00831<br />00832<br />00833<br />00834<br />00835<br />00836<br />00837<br />00838<br />00839<br />00840<br />
+00841<br />00842<br />00843<br />00844<br />00845<br />00846<br />00847<br />00848<br />00849<br />00850<br />00851<br />00852<br />00853<br />00854<br />00855<br />00856<br />00857<br />00858<br />00859<br />00860<br />
+00861<br />00862<br />00863<br />00864<br />00865<br />00866<br />00867<br />00868<br />00869<br />00870<br />00871<br />00872<br />00873<br />00874<br />00875<br />00876<br />00877<br />00878<br />00879<br />00880<br />
+00881<br />00882<br />00883<br />00884<br />00885<br />00886<br />00887<br />00888<br />00889<br />00890<br />00891<br />00892<br />00893<br />00894<br />00895<br />00896<br />00897<br />00898<br />00899<br />00900<br />
+00901<br />00902<br />00903<br />00904<br />00905<br />00906<br />00907<br />00908<br />00909<br />00910<br />00911<br />00912<br />00913<br />00914<br />00915<br />00916<br />00917<br />00918<br />00919<br />00920<br />
+00921<br />00922<br />00923<br />00924<br />00925<br />00926<br />00927<br />00928<br />00929<br />00930<br />00931<br />00932<br />00933<br />00934<br />00935<br />00936<br />00937<br />00938<br />00939<br />00940<br />
+00941<br />00942<br />00943<br />00944<br />00945<br />00946<br />00947<br />00948<br />00949<br />00950<br />00951<br />00952<br />00953<br />00954<br />00955<br />00956<br />00957<br />00958<br />00959<br />00960<br />
+00961<br />00962<br />00963<br />00964<br />00965<br />00966<br />00967<br />00968<br />00969<br />00970<br />00971<br />00972<br />00973<br />00974<br />00975<br />00976<br />00977<br />00978<br />00979<br />00980<br />
+00981<br />00982<br />00983<br />00984<br />00985<br />00986<br />00987<br />00988<br />00989<br />00990<br />00991<br />00992<br />00993<br />00994<br />00995<br />00996<br />00997<br />00998<br />00999<br />01000<br />
+01001<br />01002<br />01003<br />01004<br />01005<br />01006<br />01007<br />01008<br />01009<br />01010<br />01011<br />01012<br />01013<br />01014<br />01015<br />01016<br />01017<br />01018<br />01019<br />01020<br />
+01021<br />01022<br />01023<br />01024<br />01025<br />01026<br />01027<br />01028<br />01029<br />01030<br />01031<br />01032<br />01033<br />01034<br />01035<br />01036<br />01037<br />01038<br />01039<br />01040<br />
+01041<br />01042<br />01043<br />01044<br />01045<br />01046<br />01047<br />01048<br />01049<br />01050<br />01051<br />01052<br />01053<br />01054<br />01055<br />01056<br />01057<br />01058<br />01059<br />01060<br />
+01061<br />01062<br />01063<br />01064<br />01065<br />01066<br />01067<br />01068<br />01069<br />01070<br />01071<br />01072<br />01073<br />01074<br />01075<br />01076<br />01077<br />01078<br />01079<br />01080<br />
+01081<br />01082<br />01083<br />01084<br />01085<br />01086<br />01087<br />01088<br />01089<br />01090<br />01091<br />01092<br />01093<br />01094<br />01095<br />01096<br />01097<br />01098<br />01099<br />01100<br />
+01101<br />01102<br />01103<br />01104<br />01105<br />01106<br />01107<br />01108<br />01109<br />01110<br />01111<br />01112<br />01113<br />01114<br />01115<br />01116<br />01117<br />01118<br />01119<br />01120<br />
+01121<br />01122<br />01123<br />01124<br />01125<br />01126<br />01127<br />01128<br />01129<br />01130<br />01131<br />01132<br />01133<br />01134<br />01135<br />01136<br />01137<br />01138<br />01139<br />01140<br />
+01141<br />01142<br />01143<br />01144<br />01145<br />01146<br />01147<br />01148<br />01149<br />01150<br />01151<br />01152<br />01153<br />01154<br />01155<br />01156<br />01157<br />01158<br />01159<br />01160<br />
+01161<br />01162<br />01163<br />01164<br />01165<br />01166<br />01167<br />01168<br />01169<br />01170<br />01171<br />01172<br />01173<br />01174<br />01175<br />01176<br />01177<br />01178<br />01179<br />01180<br />
+01181<br />01182<br />01183<br />01184<br />01185<br />01186<br />01187<br />01188<br />01189<br />01190<br />01191<br />01192<br />01193<br />01194<br />01195<br />01196<br />01197<br />01198<br />01199<br />01200<br />
+01201<br />01202<br />01203<br />01204<br />01205<br />01206<br />01207<br />01208<br />01209<br />01210<br />01211<br />01212<br />01213<br />01214<br />01215<br />01216<br />01217<br />01218<br />01219<br />01220<br />
+01221<br />01222<br />01223<br />01224<br />01225<br />01226<br />01227<br />01228<br />01229<br />01230<br />01231<br />01232<br />01233<br />01234<br />01235<br />01236<br />01237</span></td>
+<td class="source"><pre class="source"><a name="1"></a><span class="source_comment">//=============================================================================
+</span><a name="2"></a><span class="source_comment">//  R6MultiPlayerGameInfo.uc : (add small description)
+</span><a name="3"></a><span class="source_comment">//  Copyright 2001 Ubi Soft, Inc. All Rights Reserved.
+</span><a name="4"></a><span class="source_comment">//
+</span><a name="5"></a><span class="source_comment">//  Revision history:
+</span><a name="6"></a><span class="source_comment">//    2002/05/21 * Created by Aristomenis Kolokathis 
+</span><a name="7"></a><span class="source_comment">//                      Base GameInfo class for MP Games
+</span><a name="8"></a><span class="source_comment">//=============================================================================
+</span><a name="9"></a>
+<a name="10"></a>
+<a name="11"></a><span class="source_type">class</span> <span class="source_type"><a href="../r6game/r6multiplayergameinfo.html" class="source">R6MultiPlayerGameInfo</a></span> extends <span class="source_type"><a href="../r6game/r6gameinfo.html" class="source">R6GameInfo</a></span>
+<a name="12"></a>    native;
+<a name="13"></a>
+<a name="14"></a><span class="source_comment">//============================================================================
+</span><a name="15"></a><span class="source_comment">// BEGIN Vars and consts used in kicking
+</span><a name="16"></a><span class="source_comment">//============================================================================
+</span><a name="17"></a>const   K_KickVoteTime      = <span class="source_int">90</span>;  <span class="source_comment">// time interval for kick votes
+</span><a name="18"></a>
+<a name="19"></a><span class="source_comment">//============================================================================
+</span><a name="20"></a><span class="source_comment">// END Vars and consts used in kicking
+</span><a name="21"></a><span class="source_comment">//============================================================================
+</span><a name="22"></a>
+<a name="23"></a>const    K_UpdateUbiDotCom   = <span class="source_int">30.0</span>; <span class="source_comment">// Time interval for updating ubi.com
+</span><a name="24"></a>
+<a name="25"></a>const    K_RefreshCheckPlayerReadyFreq = <span class="source_int">1</span>;   <span class="source_comment">// frequency with wich we check to see if everybody is ready
+</span><a name="26"></a>var <span class="source_type">FLOAT</span> m_fNextCheckPlayerReadyTime;    <span class="source_comment">// place holder for time of next CheckPlayerReady
+</span><a name="27"></a>
+<a name="28"></a>var <span class="source_type">FLOAT</span> m_fLastUpdateTime;        <span class="source_comment">// Time of lat update sent to ubi.com
+</span><a name="29"></a>
+<a name="30"></a>var <span class="source_type"><a href="../r6game/r6mobjtimer.html" class="source">R6MObjTimer</a></span> m_missionObjTimer;  <span class="source_comment">// mission objective timer
+</span><a name="31"></a>
+<a name="32"></a>const   K_InGamePauseTime   = <span class="source_int">5</span>;    <span class="source_comment">// how long do we want to pause for loading the pawns
+</span><a name="33"></a>var <span class="source_type">FLOAT</span> m_fInGameStartTime;
+<a name="34"></a>
+<a name="35"></a>var <span class="source_type">BOOL</span> m_bMSCLientActive;         <span class="source_comment">// Actively using the MSCLient SDK
+</span><a name="36"></a>
+<a name="37"></a><span class="source_comment">// the mapping between Ubi.com and our game modes are not the same
+</span><a name="38"></a>var <span class="source_type">int</span> m_iUbiComGameMode;
+<a name="39"></a>var <span class="source_type">BOOL</span> m_bDoLadderInit;
+<a name="40"></a>var <span class="source_type">BOOL</span> m_TeamSelectionLocked;
+<a name="41"></a>
+<a name="42"></a>var <span class="source_type">Sound</span> m_sndSoundTimeFailure;
+<a name="43"></a>
+<a name="44"></a>
+<a name="45"></a>event PostBeginPlay()
+<a name="46"></a>{
+<a name="47"></a>    Super.PostBeginPlay();
+<a name="48"></a>    if ( (m_GameService.NativeGetGroupID()!=<span class="source_int">0</span>) && 
+<a name="49"></a>         (m_GameService.NativeGetLobbyID()!=<span class="source_int">0</span>) )
+<a name="50"></a>    {
+<a name="51"></a>        m_GameService.m_eMenuLoginRegServer = EMENU_REQ_SUCCESS;
+<a name="52"></a>        m_GameService.m_eRegServerLoginRequest = EGSREQ_NONE;
+<a name="53"></a>    }        
+<a name="54"></a>}
+<a name="55"></a><span class="source_comment">//============================================================================
+</span><a name="56"></a><span class="source_comment">// PlayerController Login
+</span><a name="57"></a><span class="source_comment">//============================================================================
+</span><a name="58"></a>function <span class="source_type">int</span> GetSpawnPointNum(<span class="source_type">string</span> options);
+<a name="59"></a>function <span class="source_type">INT</span> GetRainbowTeamColourIndex(<span class="source_type">INT</span> eTeamName);
+<a name="60"></a>
+<a name="61"></a>
+<a name="62"></a><span class="source_comment">//------------------------------------------------------------------
+</span><a name="63"></a><span class="source_comment">// InitObjectives
+</span><a name="64"></a><span class="source_comment">//	
+</span><a name="65"></a><span class="source_comment">//------------------------------------------------------------------
+</span><a name="66"></a>function InitObjectives()
+<a name="67"></a>{
+<a name="68"></a>    local <span class="source_type">int</span> <span class="source_type">index</span>;
+<a name="69"></a>
+<a name="70"></a>    <span class="source_comment">// need a timer
+</span><a name="71"></a>    if ( <span class="source_type">Level</span>.NetMode != NM_Standalone )
+<a name="72"></a>    {
+<a name="73"></a>        <span class="source_comment">// create it and add it 
+</span><a name="74"></a>        <span class="source_type">index</span> = m_missionMgr.m_aMissionObjectives.Length;    
+<a name="75"></a>        m_missionObjTimer = new(none) <span class="source_type">class</span><span class="source_name">'R6Game.R6MObjTimer'</span>;
+<a name="76"></a>        m_missionObjTimer.m_bVisibleInMenu = false;
+<a name="77"></a>        <span class="source_comment">// set to a morality so the mission mode use the same data has in story mode
+</span><a name="78"></a>        m_missionObjTimer.m_bMoralityObjective = true; 
+<a name="79"></a>        m_missionMgr.m_aMissionObjectives[<span class="source_type">index</span>] = m_missionObjTimer;
+<a name="80"></a>    }
+<a name="81"></a>
+<a name="82"></a>    Super.InitObjectives();
+<a name="83"></a>}
+<a name="84"></a>
+<a name="85"></a>
+<a name="86"></a>
+<a name="87"></a>function <span class="source_type">bool</span> AtCapacity(<span class="source_type">bool</span> bSpectator)
+<a name="88"></a>{
+<a name="89"></a>    if ( <span class="source_type">Level</span>.NetMode == NM_Standalone )
+<a name="90"></a>        return false;
+<a name="91"></a>
+<a name="92"></a>    return (NumPlayers&gt;=MaxPlayers);
+<a name="93"></a>}
+<a name="94"></a>
+<a name="95"></a>
+<a name="96"></a>event <span class="source_type"><a href="../engine/playercontroller.html" class="source">PlayerController</a></span> Login
+<a name="97"></a>(
+<a name="98"></a>	<span class="source_type">string</span> Portal,
+<a name="99"></a>	<span class="source_type">string</span> Options,
+<a name="100"></a>	out <span class="source_type">string</span> <span class="source_type">Error</span>
+<a name="101"></a>)
+<a name="102"></a>{
+<a name="103"></a>	local <span class="source_type"><a href="../r6abstract/r6abstractinsertionzone.html" class="source">R6AbstractInsertionZone</a></span> StartSpot;
+<a name="104"></a>	local <span class="source_type"><a href="../engine/actor.html" class="source">actor</a></span> CamSpot;
+<a name="105"></a>    local <span class="source_type"><a href="../core/object.html#Vector" class="source">vector</a></span> CamLoc;
+<a name="106"></a>    local <span class="source_type"><a href="../core/object.html#Rotator" class="source">rotator</a></span> CamRot;
+<a name="107"></a>
+<a name="108"></a>	local <span class="source_type"><a href="../engine/playercontroller.html" class="source">PlayerController</a></span> <span class="source_type">NewPlayer</span>;
+<a name="109"></a>    local <span class="source_type"><a href="../r6engine/r6playercontroller.html" class="source">R6PlayerController</a></span> <span class="source_type">P</span>;
+<a name="110"></a>	local <span class="source_type">string</span>          InClass,<span class="source_type">InName</span>, InPassword, InChecksum;
+<a name="111"></a>	local <span class="source_type">byte</span>            InTeam;
+<a name="112"></a>	local <span class="source_type">INT</span> iSpawnPointNum;
+<a name="113"></a>    local <span class="source_type">string</span> szJoinMessage;
+<a name="114"></a>	local <span class="source_type"><a href="../engine/r6modmgr.html" class="source">R6ModMgr</a></span> pModManager;
+<a name="115"></a>
+<a name="116"></a><span class="source_comment">//#ifdef R6PUNKBUSTER
+</span><a name="117"></a>	local <span class="source_type">INT</span> _iPBEnabled;
+<a name="118"></a><span class="source_comment">//#endif R6PUNKBUSTER	
+</span><a name="119"></a>
+<a name="120"></a>    if (<span class="source_type">Level</span>.NetMode==NM_Standalone)
+<a name="121"></a>    {
+<a name="122"></a>        return Super.Login( Portal, Options, <span class="source_type">Error</span> );
+<a name="123"></a>    }
+<a name="124"></a>
+<a name="125"></a>    log(<span class="source_string">"Login: received string: "</span>$Options);
+<a name="126"></a>
+<a name="127"></a>
+<a name="128"></a>    <span class="source_comment">// Make sure there is capacity. (This might have changed since the PreLogin call).
+</span><a name="129"></a>    if ( AtCapacity(false) )
+<a name="130"></a>    {
+<a name="131"></a>        <span class="source_type">Error</span>=Localize(<span class="source_string">"MPMiscMessages"</span>, <span class="source_string">"ServerIsFull"</span>, <span class="source_string">"R6GameInfo"</span>);
+<a name="132"></a>
+<a name="133"></a>        return None;
+<a name="134"></a>    } 
+<a name="135"></a>
+<a name="136"></a>    m_GameService.m_bUpdateServer = TRUE;
+<a name="137"></a>
+<a name="138"></a>	<span class="source_comment">// Get URL options.
+</span><a name="139"></a>	<span class="source_type">InName</span>     = Left(ParseOption ( Options, <span class="source_string">"Name"</span>), <span class="source_int">20</span>);
+<a name="140"></a>
+<a name="141"></a>    ReplaceText(<span class="source_type">InName</span>, <span class="source_string">" "</span>, <span class="source_string">"_"</span>);
+<a name="142"></a>    ReplaceText(<span class="source_type">InName</span>, <span class="source_string">"~"</span>, <span class="source_string">"_"</span>);
+<a name="143"></a>    ReplaceText(<span class="source_type">InName</span>, <span class="source_string">"?"</span>, <span class="source_string">"_"</span>);
+<a name="144"></a>    ReplaceText(<span class="source_type">InName</span>, <span class="source_string">","</span>, <span class="source_string">"_"</span>);
+<a name="145"></a>    ReplaceText(<span class="source_type">InName</span>, <span class="source_string">"#"</span>, <span class="source_string">"_"</span>);
+<a name="146"></a>    ReplaceText(<span class="source_type">InName</span>, <span class="source_string">"/"</span>, <span class="source_string">"_"</span>);
+<a name="147"></a>    <span class="source_type">InName</span> = RemoveInvalidChars(<span class="source_type">InName</span>);
+<a name="148"></a>
+<a name="149"></a>    <span class="source_comment">// if default name, get the system user name
+</span><a name="150"></a>    if ( <span class="source_type">InName</span> == <span class="source_string">"UbiPlayer"</span> ) 
+<a name="151"></a>        <span class="source_type">InName</span>     = Left(ParseOption ( Options, <span class="source_string">"UserName"</span>), <span class="source_int">20</span>);
+<a name="152"></a>
+<a name="153"></a>
+<a name="154"></a>    foreach DynamicActors(<span class="source_type">class</span><span class="source_name">'R6PlayerController'</span>, <span class="source_type">P</span>)
+<a name="155"></a>        <span class="source_type">P</span>.ClientMPMiscMessage( <span class="source_string">"PlayerJoinedServer"</span> , <span class="source_type">InName</span>);
+<a name="156"></a>
+<a name="157"></a>	InTeam     = GetIntOption( Options, <span class="source_string">"Team"</span>, <span class="source_int">255</span> ); <span class="source_comment">// default to "no team"
+</span><a name="158"></a>	InPassword = ParseOption ( Options, <span class="source_string">"Password"</span> );
+<a name="159"></a>	InChecksum = ParseOption ( Options, <span class="source_string">"Checksum"</span> );
+<a name="160"></a><span class="source_comment">//#ifdef R6PUNKBUSTER
+</span><a name="161"></a>	_iPBEnabled = GetIntOption( Options, <span class="source_string">"iPB"</span>, <span class="source_int">0</span> ); <span class="source_comment">// default to PB off;
+</span><a name="162"></a><span class="source_comment">//#endif R6PUNKBUSTER	
+</span><a name="163"></a>	
+<a name="164"></a>	iSpawnPointNum = GetSpawnPointNum(options);
+<a name="165"></a>
+<a name="166"></a>	log( <span class="source_string">"Login:"</span> @ <span class="source_type">InName</span> );
+<a name="167"></a>
+<a name="168"></a>    <span class="source_comment">//find a place to put the PlayerController
+</span><a name="169"></a>    CamSpot = <span class="source_type">Level</span>.GetCamSpot( m_szGameTypeFlag );
+<a name="170"></a>    if (CamSpot==none)
+<a name="171"></a>    {
+<a name="172"></a>        StartSpot = GetAStartSpot();
+<a name="173"></a>        if( StartSpot == None )
+<a name="174"></a>        {
+<a name="175"></a>            <span class="source_type">Error</span>=Localize(<span class="source_string">"MPMiscMessages"</span>, <span class="source_string">"FailedPlaceMessage"</span>, <span class="source_string">"R6GameInfo"</span>);
+<a name="176"></a>            return None;
+<a name="177"></a>        }
+<a name="178"></a>        else
+<a name="179"></a>        {
+<a name="180"></a>            CamLoc = StartSpot.Location;
+<a name="181"></a>            CamRot = StartSpot.Rotation;
+<a name="182"></a>            CamRot.Roll = <span class="source_int">0</span>;
+<a name="183"></a>        }
+<a name="184"></a>    }
+<a name="185"></a>    else
+<a name="186"></a>    {
+<a name="187"></a>        CamLoc = CamSpot.Location;
+<a name="188"></a>        CamRot = CamSpot.Rotation;
+<a name="189"></a>    }
+<a name="190"></a>
+<a name="191"></a>	pModManager = <span class="source_type">class</span><span class="source_name">'Actor'</span>.static.GetModMgr();
+<a name="192"></a>    bDelayedStart=true;
+<a name="193"></a>	if(pModManager.m_pCurrentMod.m_PlayerCtrlToSpawn != <span class="source_string">""</span>)
+<a name="194"></a>		PlayerControllerClass = <span class="source_type">class</span>&lt;<span class="source_type"><a href="../engine/playercontroller.html" class="source">PlayerController</a></span>&gt;(DynamicLoadObject(pModManager.m_pCurrentMod.m_PlayerCtrlToSpawn, <span class="source_type">class</span><span class="source_name">'Class'</span>));
+<a name="195"></a>	else
+<a name="196"></a>		PlayerControllerClass = <span class="source_type">class</span>&lt;<span class="source_type"><a href="../engine/playercontroller.html" class="source">PlayerController</a></span>&gt;(DynamicLoadObject(<span class="source_string">"R6Engine.R6PlayerController"</span>, <span class="source_type">class</span><span class="source_name">'Class'</span>));
+<a name="197"></a>
+<a name="198"></a>    if (PlayerControllerClass!=none)
+<a name="199"></a>    {
+<a name="200"></a>        <span class="source_type">NewPlayer</span> = spawn(PlayerControllerClass,,,CamLoc,CamRot);
+<a name="201"></a>        <span class="source_type">NewPlayer</span>.ClientSetLocation(CamLoc, CamRot);
+<a name="202"></a>        <span class="source_type">NewPlayer</span>.StartSpot = StartSpot;
+<a name="203"></a>        <span class="source_type">NewPlayer</span>.m_fLoginTime = <span class="source_type">Level</span>.TimeSeconds;		
+<a name="204"></a>    }
+<a name="205"></a>
+<a name="206"></a>    <span class="source_comment">// Handle spawn failure.
+</span><a name="207"></a>	if( <span class="source_type">NewPlayer</span> == None )
+<a name="208"></a>	{
+<a name="209"></a>		log(<span class="source_string">"Couldn't spawn player controller of class "</span>$PlayerControllerClass);
+<a name="210"></a>        <span class="source_type">Error</span>=Localize(<span class="source_string">"MPMiscMessages"</span>, <span class="source_string">"FailedSpawnMessage"</span>, <span class="source_string">"R6GameInfo"</span>);
+<a name="211"></a>		return None;
+<a name="212"></a>	}
+<a name="213"></a>
+<a name="214"></a>	<span class="source_comment">// Init player's name
+</span><a name="215"></a>	if( <span class="source_type">InName</span>==<span class="source_string">""</span> )
+<a name="216"></a>		<span class="source_type">InName</span>=DefaultPlayerName;
+<a name="217"></a>	if( <span class="source_type">Level</span>.NetMode!=NM_Standalone || 
+<a name="218"></a>        ((<span class="source_type">NewPlayer</span>.<span class="source_type"><a href="../engine/playerreplicationinfo.html" class="source">PlayerReplicationInfo</a></span> != none) && (<span class="source_type">NewPlayer</span>.<span class="source_type"><a href="../engine/playerreplicationinfo.html" class="source">PlayerReplicationInfo</a></span>.PlayerName==DefaultPlayerName)))
+<a name="219"></a>		ChangeName( <span class="source_type">NewPlayer</span>, <span class="source_type">InName</span>, false, true );
+<a name="220"></a>
+<a name="221"></a>	<span class="source_comment">// Init player's replication info
+</span><a name="222"></a>	<span class="source_type">NewPlayer</span>.<span class="source_type"><a href="../engine/gamereplicationinfo.html" class="source">GameReplicationInfo</a></span> = <span class="source_type"><a href="../engine/gamereplicationinfo.html" class="source">GameReplicationInfo</a></span>;
+<a name="223"></a>    
+<a name="224"></a>    <span class="source_comment">// Player controller goes to spectating mode on server
+</span><a name="225"></a><span class="source_comment">//	NewPlayer.GotoState('BaseSpectating');
+</span><a name="226"></a>    if (IsBetweenRoundTimeOver() && (m_szGameTypeFlag!=<span class="source_string">"RGM_NoRulesMode"</span>))
+<a name="227"></a>    {
+<a name="228"></a>        if (bShowLog)
+<a name="229"></a>        {
+<a name="230"></a>            log(<span class="source_string">"In login for "</span>$<span class="source_type">NewPlayer</span>$<span class="source_string">" m_bGameStarted==true sending it to dead state"</span>);
+<a name="231"></a>            <span class="source_type"><a href="../r6engine/r6playercontroller.html" class="source">R6PlayerController</a></span>(<span class="source_type">NewPlayer</span>).LogSpecialValues();
+<a name="232"></a>        }
+<a name="233"></a>        <span class="source_type">NewPlayer</span>.GotoState(<span class="source_name">'Dead'</span>);
+<a name="234"></a>    }
+<a name="235"></a>
+<a name="236"></a>	<span class="source_comment">// Set the player's ID.  If the player has a Replication Info
+</span><a name="237"></a>
+<a name="238"></a>	<span class="source_comment">// Log it.
+</span><a name="239"></a>	if ( <span class="source_type"><a href="../engine/statlog.html" class="source">StatLog</a></span> != None )
+<a name="240"></a>		<span class="source_type"><a href="../engine/statlog.html" class="source">StatLog</a></span>.LogPlayerConnect(<span class="source_type">NewPlayer</span>);
+<a name="241"></a>	<span class="source_type">NewPlayer</span>.ReceivedSecretChecksum = !(InChecksum ~= <span class="source_string">"NoChecksum"</span>);
+<a name="242"></a>
+<a name="243"></a><span class="source_comment">//#ifdef R6PUNKBUSTER
+</span><a name="244"></a>    <span class="source_comment">// set this player's PB setting
+</span><a name="245"></a>    if (<span class="source_type">Viewport</span>(<span class="source_type">NewPlayer</span>.<span class="source_type"><a href="../engine/player.html" class="source">Player</a></span>) != None)
+<a name="246"></a>    {
+<a name="247"></a>        if (<span class="source_type">NewPlayer</span>.IsPBClientEnabled())
+<a name="248"></a>            <span class="source_type">NewPlayer</span>.iPBEnabled = <span class="source_int">1</span>;
+<a name="249"></a>        else
+<a name="250"></a>            <span class="source_type">NewPlayer</span>.iPBEnabled = <span class="source_int">0</span>;
+<a name="251"></a>    }
+<a name="252"></a>	else
+<a name="253"></a>	    <span class="source_type">NewPlayer</span>.iPBEnabled = _iPBEnabled;
+<a name="254"></a><span class="source_comment">//#endif R6PUNKBUSTER
+</span><a name="255"></a>
+<a name="256"></a>	NumPlayers++;
+<a name="257"></a>
+<a name="258"></a>	<span class="source_comment">// If we are a server, broadcast a welcome message.
+</span><a name="259"></a>	if( <span class="source_type">Level</span>.NetMode==NM_DedicatedServer || <span class="source_type">Level</span>.NetMode==NM_ListenServer )
+<a name="260"></a>		BroadcastLocalizedMessage(GameMessageClass, <span class="source_int">1</span>, <span class="source_type">NewPlayer</span>.<span class="source_type"><a href="../engine/playerreplicationinfo.html" class="source">PlayerReplicationInfo</a></span>);
+<a name="261"></a>
+<a name="262"></a>
+<a name="263"></a>
+<a name="264"></a><span class="source_comment">//    InClass = R6GetPawnType();
+</span><a name="265"></a>
+<a name="266"></a>    if ((<span class="source_type">Level</span>.NetMode!=NM_Standalone)&&(InClass == <span class="source_string">""</span>))
+<a name="267"></a>    {
+<a name="268"></a>        InClass = ParseOption( Options, <span class="source_string">"Class"</span> );
+<a name="269"></a>    }
+<a name="270"></a>   
+<a name="271"></a>    if ( InClass != <span class="source_string">""</span> )
+<a name="272"></a>    {
+<a name="273"></a>		<span class="source_type">NewPlayer</span>.PawnClass = <span class="source_type">class</span>&lt;<span class="source_type"><a href="../engine/pawn.html" class="source">Pawn</a></span>&gt;(DynamicLoadObject(InClass, <span class="source_type">class</span><span class="source_name">'Class'</span>));
+<a name="274"></a>    }
+<a name="275"></a>
+<a name="276"></a><span class="source_macro">#ifdefDEBUG
+</span><a name="277"></a>    log(<span class="source_string">"ServerInfo: "</span>$<span class="source_type">InName</span>$<span class="source_string">" Logged in at time "</span>$<span class="source_type">Level</span>.TimeSeconds);
+<a name="278"></a><span class="source_macro">#endif
+</span><a name="279"></a>
+<a name="280"></a>    return <span class="source_type">NewPlayer</span>;
+<a name="281"></a>}
+<a name="282"></a>
+<a name="283"></a>function <span class="source_type">BOOL</span> IsBetweenRoundTimeOver()
+<a name="284"></a>{
+<a name="285"></a>    return (m_bGameStarted==true || IsInState(<span class="source_name">'PostBetweenRoundTime'</span>));
+<a name="286"></a>}
+<a name="287"></a>
+<a name="288"></a>event PostLogin( <span class="source_type"><a href="../engine/playercontroller.html" class="source">PlayerController</a></span> <span class="source_type">NewPlayer</span> )
+<a name="289"></a>{
+<a name="290"></a>    local <span class="source_type"><a href="../r6engine/r6playercontroller.html" class="source">R6PlayerController</a></span> _NewPlayer;
+<a name="291"></a>    Super.PostLogin( <span class="source_type">NewPlayer</span> );
+<a name="292"></a>     if (<span class="source_type">Level</span>.NetMode==NM_Standalone)
+<a name="293"></a>         return;
+<a name="294"></a>
+<a name="295"></a>     _NewPlayer = <span class="source_type"><a href="../r6engine/r6playercontroller.html" class="source">R6PlayerController</a></span>(<span class="source_type">NewPlayer</span>);
+<a name="296"></a>     if (_NewPlayer==none)
+<a name="297"></a>         return;
+<a name="298"></a>
+<a name="299"></a>    if ((<span class="source_type">Viewport</span>(_NewPlayer.<span class="source_type"><a href="../engine/player.html" class="source">Player</a></span>)!=none) && (_NewPlayer.<span class="source_type"><a href="../engine/player.html" class="source">Player</a></span>.<span class="source_type"><a href="../engine/console.html" class="source">Console</a></span>!=none) && (_NewPlayer.m_GameService == none))
+<a name="300"></a>    {
+<a name="301"></a>        _NewPlayer.m_GameService = <span class="source_type"><a href="../r6gameservice/r6gsservers.html" class="source">R6GSServers</a></span>(_NewPlayer.<span class="source_type"><a href="../engine/player.html" class="source">Player</a></span>.<span class="source_type"><a href="../engine/console.html" class="source">Console</a></span>.SetGameServiceLinks(<span class="source_type">NewPlayer</span>));
+<a name="302"></a>        _NewPlayer.ServerSetUbiID(_NewPlayer.m_GameService.m_szUserID);
+<a name="303"></a>    }
+<a name="304"></a>
+<a name="305"></a>    <span class="source_comment">// if game is in the middle of a vote session then inform player of this
+</span><a name="306"></a>    if (m_PlayerKick!=none)
+<a name="307"></a>    {
+<a name="308"></a>        _NewPlayer.m_iVoteResult = _NewPlayer.K_EmptyBallot;
+<a name="309"></a>        _NewPlayer.ClientKickVoteMessage(m_PlayerKick.<span class="source_type"><a href="../engine/playerreplicationinfo.html" class="source">PlayerReplicationInfo</a></span>, m_KickersName);
+<a name="310"></a>    }
+<a name="311"></a>    
+<a name="312"></a>}
+<a name="313"></a>
+<a name="314"></a>
+<a name="315"></a>function ResetPlayerTeam( <span class="source_type"><a href="../engine/controller.html" class="source">Controller</a></span> <span class="source_type">aPlayer</span> )	<span class="source_comment">// set pawn's m_iTeam
+</span><a name="316"></a>{
+<a name="317"></a>    if (<span class="source_type"><a href="../r6engine/r6pawn.html" class="source">R6Pawn</a></span>(<span class="source_type">aPlayer</span>.<span class="source_type"><a href="../engine/pawn.html" class="source">pawn</a></span>) == none)
+<a name="318"></a>    {
+<a name="319"></a>        RestartPlayer(<span class="source_type">APlayer</span>);
+<a name="320"></a>        <span class="source_type">aPlayer</span>.<span class="source_type"><a href="../engine/pawn.html" class="source">pawn</a></span>.<span class="source_type"><a href="../engine/playerreplicationinfo.html" class="source">PlayerReplicationInfo</a></span> = <span class="source_type">aPlayer</span>.<span class="source_type"><a href="../engine/playerreplicationinfo.html" class="source">PlayerReplicationInfo</a></span>;
+<a name="321"></a>    }
+<a name="322"></a>    
+<a name="323"></a>    if ( <span class="source_type"><a href="../engine/playercontroller.html" class="source">PlayerController</a></span>( <span class="source_type">aPlayer</span> ) != none )
+<a name="324"></a>        DeployRainbowTeam( <span class="source_type"><a href="../engine/playercontroller.html" class="source">PlayerController</a></span>(<span class="source_type">aPlayer</span>) );
+<a name="325"></a>
+<a name="326"></a>    AcceptInventory(<span class="source_type">APlayer</span>.<span class="source_type"><a href="../engine/pawn.html" class="source">Pawn</a></span>);
+<a name="327"></a>}
+<a name="328"></a>
+<a name="329"></a>function <span class="source_type">bool</span> CanAutoBalancePlayer( <span class="source_type"><a href="../r6engine/r6playercontroller.html" class="source">R6PlayerController</a></span> <span class="source_type">pCtrl</span> )
+<a name="330"></a>{
+<a name="331"></a>    return true;
+<a name="332"></a>}
+<a name="333"></a>
+<a name="334"></a><span class="source_comment">//------------------------------------------------------------------
+</span><a name="335"></a><span class="source_comment">// ProcessAutoBalanceTeam
+</span><a name="336"></a><span class="source_comment">//	
+</span><a name="337"></a><span class="source_comment">//------------------------------------------------------------------
+</span><a name="338"></a>function ProcessAutoBalanceTeam()
+<a name="339"></a>{
+<a name="340"></a>    local <span class="source_type">int</span>  iAlphaNb, <span class="source_type">iBravoNb</span>;
+<a name="341"></a>    local <span class="source_type">bool</span> _gameTypeTeamAdversarial;
+<a name="342"></a>    local <span class="source_type"><a href="../engine/controller.html" class="source">Controller</a></span> <span class="source_type">P</span>;
+<a name="343"></a>    
+<a name="344"></a>    _gameTypeTeamAdversarial = <span class="source_type">Level</span>.IsGameTypeTeamAdversarial( m_szGameTypeFlag );
+<a name="345"></a>
+<a name="346"></a>    if (m_bAutoBalance && _gameTypeTeamAdversarial)
+<a name="347"></a>    {
+<a name="348"></a>        
+<a name="349"></a>        GetNbHumanPlayerInTeam(iAlphaNb, <span class="source_type">iBravoNb</span>);
+<a name="350"></a>
+<a name="351"></a>        if (iAlphaNb &gt; <span class="source_type">iBravoNb</span>+<span class="source_int">1</span>)  <span class="source_comment">// move some players from alpha to bravo team
+</span><a name="352"></a>        {
+<a name="353"></a>            if (bShowLog) log( <span class="source_string">"AutoBalance: Green to Red Team"</span> );
+<a name="354"></a>            
+<a name="355"></a>            for (<span class="source_type">P</span>=<span class="source_type">Level</span>.ControllerList; <span class="source_type">P</span>!=None && iAlphaNb &gt; <span class="source_type">iBravoNb</span>+<span class="source_int">1</span> ; <span class="source_type">P</span>=<span class="source_type">P</span>.NextController )
+<a name="356"></a>            {
+<a name="357"></a>                if (<span class="source_type">P</span>.IsA(<span class="source_name">'R6PlayerController'</span>) &&  (<span class="source_type"><a href="../r6engine/r6playercontroller.html" class="source">R6PlayerController</a></span>(<span class="source_type">P</span>).m_TeamSelection == PTS_Alpha) &&
+<a name="358"></a>                    CanAutoBalancePlayer( <span class="source_type"><a href="../r6engine/r6playercontroller.html" class="source">R6PlayerController</a></span>(<span class="source_type">P</span>) )  ) 
+<a name="359"></a>                {
+<a name="360"></a>                    if (bShowLog) log( <span class="source_string">"AutoBalance: "</span> $<span class="source_type">P</span>.<span class="source_type"><a href="../engine/playerreplicationinfo.html" class="source">PlayerReplicationInfo</a></span>.playerName$ <span class="source_string">" to Red Team"</span> );
+<a name="361"></a>                    iAlphaNb--;
+<a name="362"></a>                    <span class="source_type">iBravoNb</span>++;
+<a name="363"></a>                    <span class="source_type"><a href="../r6engine/r6playercontroller.html" class="source">R6PlayerController</a></span>(<span class="source_type">P</span>).ServerTeamRequested(PTS_Bravo, true);
+<a name="364"></a>                }
+<a name="365"></a>            }
+<a name="366"></a>        }
+<a name="367"></a>        else if (<span class="source_type">iBravoNb</span> &gt; iAlphaNb+<span class="source_int">1</span>) <span class="source_comment">// move some players from bravo to alpha team
+</span><a name="368"></a>        {
+<a name="369"></a>            if (bShowLog) log( <span class="source_string">"AutoBalance: Red to Green Team"</span> );
+<a name="370"></a>
+<a name="371"></a>            for (<span class="source_type">P</span>=<span class="source_type">Level</span>.ControllerList; <span class="source_type">P</span>!=None && <span class="source_type">iBravoNb</span> &gt; iAlphaNb+<span class="source_int">1</span>; <span class="source_type">P</span>=<span class="source_type">P</span>.NextController )
+<a name="372"></a>            {
+<a name="373"></a>                if (<span class="source_type">P</span>.IsA(<span class="source_name">'R6PlayerController'</span>) &&  (<span class="source_type"><a href="../r6engine/r6playercontroller.html" class="source">R6PlayerController</a></span>(<span class="source_type">P</span>).m_TeamSelection == PTS_Bravo) )
+<a name="374"></a>                {
+<a name="375"></a>                    if (bShowLog) log( <span class="source_string">"AutoBalance: "</span> $<span class="source_type">P</span>.<span class="source_type"><a href="../engine/playerreplicationinfo.html" class="source">PlayerReplicationInfo</a></span>.playerName$ <span class="source_string">" to Green Team"</span> );
+<a name="376"></a>                    iAlphaNb++;
+<a name="377"></a>                    <span class="source_type">iBravoNb</span>--;
+<a name="378"></a>                    <span class="source_type"><a href="../r6engine/r6playercontroller.html" class="source">R6PlayerController</a></span>(<span class="source_type">P</span>).ServerTeamRequested(PTS_Alpha, true);
+<a name="379"></a>                }
+<a name="380"></a>            }
+<a name="381"></a>        }
+<a name="382"></a>    }
+<a name="383"></a>}
+<a name="384"></a>
+<a name="385"></a>function SetLockOnTeamSelection(<span class="source_type">BOOL</span> _bLocked)
+<a name="386"></a>{
+<a name="387"></a>    m_TeamSelectionLocked=_bLocked;
+<a name="388"></a>}
+<a name="389"></a>function <span class="source_type">BOOL</span> IsTeamSelectionLocked()
+<a name="390"></a>{
+<a name="391"></a>    return m_TeamSelectionLocked;
+<a name="392"></a>}
+<a name="393"></a>
+<a name="394"></a>auto state InBetweenRoundMenu
+<a name="395"></a>{
+<a name="396"></a>    function BeginState()
+<a name="397"></a>    {
+<a name="398"></a>        local <span class="source_type"><a href="../engine/controller.html" class="source">Controller</a></span> <span class="source_type">P</span>;
+<a name="399"></a>        local <span class="source_type"><a href="../engine/actor.html" class="source">actor</a></span> CamSpot;
+<a name="400"></a>        local <span class="source_type"><a href="../r6engine/r6playercontroller.html" class="source">R6PlayerController</a></span> PC;
+<a name="401"></a>
+<a name="402"></a>        local <span class="source_type"><a href="../r6engine/r6ioselfdetonatingbomb.html" class="source">R6IOSelfDetonatingBomb</a></span> AIt;
+<a name="403"></a>
+<a name="404"></a>	   	foreach AllActors( <span class="source_type">class</span> <span class="source_name">'R6IOSelfDetonatingBomb'</span>, AIt )
+<a name="405"></a>		{
+<a name="406"></a>			AIt.m_bIsActivated = false;
+<a name="407"></a>		}        
+<a name="408"></a>
+<a name="409"></a><span class="source_macro">#ifdefDEBUG
+</span><a name="410"></a>        log(<span class="source_string">"ServerInfo: Server in state InBetweenRoundMenu time = "</span>$<span class="source_type">Level</span>.TimeSeconds);
+<a name="411"></a><span class="source_macro">#endif
+</span><a name="412"></a>        m_bGameStarted=false;
+<a name="413"></a>        <span class="source_comment">// needed for all the coop game mode played in single player
+</span><a name="414"></a>        if ( <span class="source_type">Level</span>.NetMode == NM_Standalone )
+<a name="415"></a>            GotoState(<span class="source_name">''</span>);
+<a name="416"></a>        else
+<a name="417"></a>        {
+<a name="418"></a><span class="source_comment">//#ifdef R6PUNKBUSTER
+</span><a name="419"></a>            <span class="source_type">Level</span>.PBNotifyServerTravel();
+<a name="420"></a><span class="source_comment">//#endif //R6PUNKBUSTER
+</span><a name="421"></a>			<span class="source_comment">//////////////////////////////////////
+</span><a name="422"></a>			if(m_bAIBkp && <span class="source_type">Level</span>.IsGameTypeCooperative(m_szGameTypeFlag))
+<a name="423"></a>				CreateBackupRainbowAI();
+<a name="424"></a>			<span class="source_comment">//////////////////////////////////////
+</span><a name="425"></a>            <span class="source_type"><a href="../engine/gamereplicationinfo.html" class="source">GameReplicationInfo</a></span>.SetServerState(<span class="source_type"><a href="../engine/gamereplicationinfo.html" class="source">GameReplicationInfo</a></span>.RSS_PlayersConnectingStage);
+<a name="426"></a>            SpawnAIandInitGoInGame();
+<a name="427"></a>        }
+<a name="428"></a>        MasterServerManager();
+<a name="429"></a>        HandleKickVotesTick();
+<a name="430"></a>        if (m_fTimeBetRounds&gt;<span class="source_int">0</span>)
+<a name="431"></a>        {
+<a name="432"></a>            m_fRoundStartTime = <span class="source_type">Level</span>.TimeSeconds + m_fTimeBetRounds;
+<a name="433"></a>            <span class="source_type"><a href="../r6engine/r6gamereplicationinfo.html" class="source">R6GameReplicationInfo</a></span>(<span class="source_type"><a href="../engine/gamereplicationinfo.html" class="source">GameReplicationInfo</a></span>).m_iMenuCountDownTime = m_fRoundStartTime - <span class="source_type">Level</span>.TimeSeconds;
+<a name="434"></a>            <span class="source_type"><a href="../r6engine/r6gamereplicationinfo.html" class="source">R6GameReplicationInfo</a></span>(<span class="source_type"><a href="../engine/gamereplicationinfo.html" class="source">GameReplicationInfo</a></span>).m_fRepMenuCountDownTime = <span class="source_type"><a href="../r6engine/r6gamereplicationinfo.html" class="source">R6GameReplicationInfo</a></span>(<span class="source_type"><a href="../engine/gamereplicationinfo.html" class="source">GameReplicationInfo</a></span>).m_iMenuCountDownTime;
+<a name="435"></a>        }
+<a name="436"></a>        else
+<a name="437"></a>        {
+<a name="438"></a>            m_fRoundStartTime = <span class="source_int">0</span>;
+<a name="439"></a>            <span class="source_type"><a href="../r6engine/r6gamereplicationinfo.html" class="source">R6GameReplicationInfo</a></span>(<span class="source_type"><a href="../engine/gamereplicationinfo.html" class="source">GameReplicationInfo</a></span>).m_bRepMenuCountDownTimeUnlimited = true;
+<a name="440"></a>            <span class="source_type"><a href="../r6engine/r6gamereplicationinfo.html" class="source">R6GameReplicationInfo</a></span>(<span class="source_type"><a href="../engine/gamereplicationinfo.html" class="source">GameReplicationInfo</a></span>).m_iMenuCountDownTime = <span class="source_int">0</span>;
+<a name="441"></a>            <span class="source_type"><a href="../r6engine/r6gamereplicationinfo.html" class="source">R6GameReplicationInfo</a></span>(<span class="source_type"><a href="../engine/gamereplicationinfo.html" class="source">GameReplicationInfo</a></span>).m_fRepMenuCountDownTime = <span class="source_int">0</span>;
+<a name="442"></a>        }
+<a name="443"></a>
+<a name="444"></a>        m_fNextCheckPlayerReadyTime = <span class="source_type">Level</span>.TimeSeconds + K_RefreshCheckPlayerReadyFreq;
+<a name="445"></a>        if ( bShowLog ) log( <span class="source_string">"GameInfo: begin InBetweenRoundMenu"</span> );
+<a name="446"></a>
+<a name="447"></a>        CamSpot = <span class="source_type">Level</span>.GetCamSpot(m_szGameTypeFlag);
+<a name="448"></a>        if(CamSpot != none)
+<a name="449"></a>        {
+<a name="450"></a>            for(<span class="source_type">P</span>=<span class="source_type">Level</span>.ControllerList; <span class="source_type">P</span>!=None; <span class="source_type">P</span>=<span class="source_type">P</span>.NextController)
+<a name="451"></a>            {
+<a name="452"></a>                PC = <span class="source_type"><a href="../r6engine/r6playercontroller.html" class="source">R6PlayerController</a></span>(<span class="source_type">P</span>);
+<a name="453"></a>                if(PC != none)
+<a name="454"></a>                {
+<a name="455"></a>                    PC.SetLocation(CamSpot.Location);
+<a name="456"></a>                    PC.ClientSetLocation(CamSpot.Location, CamSpot.Rotation);
+<a name="457"></a>                    PC.ClientStopFadeToBlack();
+<a name="458"></a>                }
+<a name="459"></a>            }
+<a name="460"></a>        }
+<a name="461"></a>    }
+<a name="462"></a>
+<a name="463"></a>    <span class="source_comment">// Precondition: We are in the time between rounds stage
+</span><a name="464"></a>    <span class="source_comment">// Postcondition: Returns true if we are no longer waiting because of unlimited time between round
+</span><a name="465"></a>    <span class="source_comment">//                Returns true if we do not have time between round
+</span><a name="466"></a>    <span class="source_comment">// Modifies: nothing
+</span><a name="467"></a>    <span class="source_comment">// depends on begin state of InBetweenRoundMenu
+</span><a name="468"></a>    function <span class="source_type">BOOL</span> UnlimitedTBRPassed()
+<a name="469"></a>    {
+<a name="470"></a>        return (m_fRoundStartTime!=<span class="source_int">0</span>);
+<a name="471"></a>    }
+<a name="472"></a>
+<a name="473"></a>
+<a name="474"></a>    function Tick(<span class="source_type">float</span> <span class="source_type">DeltaTime</span>)
+<a name="475"></a>    {
+<a name="476"></a>        local <span class="source_type">BOOL</span> _bAllActivePlayersReady;
+<a name="477"></a>        local <span class="source_type"><a href="../engine/controller.html" class="source">Controller</a></span> _PlayerController;
+<a name="478"></a>        MasterServerManager();
+<a name="479"></a>        HandleKickVotesTick();
+<a name="480"></a>
+<a name="481"></a>
+<a name="482"></a>        _bAllActivePlayersReady = false;
+<a name="483"></a>
+<a name="484"></a>        if ( (m_fNextCheckPlayerReadyTime &lt; <span class="source_type">Level</span>.TimeSeconds) && 
+<a name="485"></a>             ((<span class="source_type">Level</span>.TimeSeconds &lt; m_fRoundStartTime) ||  !UnlimitedTBRPassed()) )
+<a name="486"></a>        {
+<a name="487"></a>            _bAllActivePlayersReady = ProcessPlayerReadyStatus();
+<a name="488"></a>            m_fNextCheckPlayerReadyTime = <span class="source_type">Level</span>.TimeSeconds + K_RefreshCheckPlayerReadyFreq;
+<a name="489"></a>            if (_bAllActivePlayersReady)
+<a name="490"></a>            {
+<a name="491"></a>                SetLockOnTeamSelection(true);
+<a name="492"></a>                m_fRoundStartTime = <span class="source_type">Level</span>.TimeSeconds;
+<a name="493"></a>            }
+<a name="494"></a>        }
+<a name="495"></a>        
+<a name="496"></a>        
+<a name="497"></a>        <span class="source_comment">// see if it's time to check if everybody is ready
+</span><a name="498"></a>        if (!<span class="source_type"><a href="../r6engine/r6gamereplicationinfo.html" class="source">R6GameReplicationInfo</a></span>(<span class="source_type"><a href="../engine/gamereplicationinfo.html" class="source">GameReplicationInfo</a></span>).m_bRepMenuCountDownTimePaused && 
+<a name="499"></a>            (!<span class="source_type"><a href="../r6engine/r6gamereplicationinfo.html" class="source">R6GameReplicationInfo</a></span>(<span class="source_type"><a href="../engine/gamereplicationinfo.html" class="source">GameReplicationInfo</a></span>).m_bRepMenuCountDownTimeUnlimited || _bAllActivePlayersReady ||
+<a name="500"></a>            (m_fRoundStartTime&gt;<span class="source_int">0</span>)))
+<a name="501"></a>        {
+<a name="502"></a>            <span class="source_type"><a href="../r6engine/r6gamereplicationinfo.html" class="source">R6GameReplicationInfo</a></span>(<span class="source_type"><a href="../engine/gamereplicationinfo.html" class="source">GameReplicationInfo</a></span>).m_iMenuCountDownTime = m_fRoundStartTime - <span class="source_type">Level</span>.TimeSeconds;
+<a name="503"></a>            <span class="source_type"><a href="../r6engine/r6gamereplicationinfo.html" class="source">R6GameReplicationInfo</a></span>(<span class="source_type"><a href="../engine/gamereplicationinfo.html" class="source">GameReplicationInfo</a></span>).m_fRepMenuCountDownTime = <span class="source_type"><a href="../r6engine/r6gamereplicationinfo.html" class="source">R6GameReplicationInfo</a></span>(<span class="source_type"><a href="../engine/gamereplicationinfo.html" class="source">GameReplicationInfo</a></span>).m_iMenuCountDownTime;
+<a name="504"></a>            if (<span class="source_type">Level</span>.TimeSeconds &lt; m_fRoundStartTime)
+<a name="505"></a>            {
+<a name="506"></a>                <span class="source_type"><a href="../engine/gamereplicationinfo.html" class="source">GameReplicationInfo</a></span>.SetServerState(<span class="source_type"><a href="../engine/gamereplicationinfo.html" class="source">GameReplicationInfo</a></span>.RSS_CountDownStage);
+<a name="507"></a>            }
+<a name="508"></a>            else if (<span class="source_type">Level</span>.TimeSeconds &lt; m_fRoundStartTime+<span class="source_int">1</span>)
+<a name="509"></a>            {
+<a name="510"></a>                <span class="source_type"><a href="../engine/gamereplicationinfo.html" class="source">GameReplicationInfo</a></span>.SetServerState(<span class="source_type"><a href="../engine/gamereplicationinfo.html" class="source">GameReplicationInfo</a></span>.RSS_InPreGameState);  <span class="source_comment">// force the closure of pop ups
+</span><a name="511"></a>            }
+<a name="512"></a>            else
+<a name="513"></a>            {
+<a name="514"></a>                GotoState(<span class="source_name">'PostBetweenRoundTime'</span>);
+<a name="515"></a>                for (_PlayerController=<span class="source_type">Level</span>.ControllerList; _PlayerController!=None; _PlayerController=_PlayerController.NextController )
+<a name="516"></a>                {
+<a name="517"></a>                    if (_PlayerController.IsA(<span class="source_name">'R6PlayerController'</span>) &&
+<a name="518"></a>                        !<span class="source_type"><a href="../r6engine/r6playercontroller.html" class="source">R6PlayerController</a></span>(_PlayerController).IsPlayerPassiveSpectator())
+<a name="519"></a>                    {
+<a name="520"></a>                        <span class="source_type"><a href="../r6engine/r6playercontroller.html" class="source">R6PlayerController</a></span>(_PlayerController).GotoState(<span class="source_name">'PauseController'</span>);
+<a name="521"></a>                        <span class="source_type"><a href="../r6engine/r6playercontroller.html" class="source">R6PlayerController</a></span>(_PlayerController).ClientGotoState( <span class="source_name">'PauseController'</span>, <span class="source_name">''</span> );
+<a name="522"></a>                    }
+<a name="523"></a>                }
+<a name="524"></a>
+<a name="525"></a>            }
+<a name="526"></a>        }
+<a name="527"></a>        else
+<a name="528"></a>        {
+<a name="529"></a>            <span class="source_type"><a href="../engine/gamereplicationinfo.html" class="source">GameReplicationInfo</a></span>.SetServerState(<span class="source_type"><a href="../engine/gamereplicationinfo.html" class="source">GameReplicationInfo</a></span>.RSS_CountDownStage);
+<a name="530"></a>        }
+<a name="531"></a>    }
+<a name="532"></a>
+<a name="533"></a>    function PauseCountDown()
+<a name="534"></a>    {
+<a name="535"></a>        if (<span class="source_type"><a href="../r6engine/r6gamereplicationinfo.html" class="source">R6GameReplicationInfo</a></span>(<span class="source_type"><a href="../engine/gamereplicationinfo.html" class="source">GameReplicationInfo</a></span>).m_bRepMenuCountDownTimePaused == true)
+<a name="536"></a>            return;
+<a name="537"></a>
+<a name="538"></a>        m_fPausedAtTime = <span class="source_type">Level</span>.TimeSeconds;
+<a name="539"></a>        <span class="source_type"><a href="../r6engine/r6gamereplicationinfo.html" class="source">R6GameReplicationInfo</a></span>(<span class="source_type"><a href="../engine/gamereplicationinfo.html" class="source">GameReplicationInfo</a></span>).m_bRepMenuCountDownTimePaused = true;
+<a name="540"></a>    }
+<a name="541"></a>
+<a name="542"></a>    function UnPauseCountDown()
+<a name="543"></a>    {
+<a name="544"></a>        local <span class="source_type"><a href="../engine/controller.html" class="source">Controller</a></span> _Player;
+<a name="545"></a>        
+<a name="546"></a>        if (<span class="source_type"><a href="../r6engine/r6gamereplicationinfo.html" class="source">R6GameReplicationInfo</a></span>(<span class="source_type"><a href="../engine/gamereplicationinfo.html" class="source">GameReplicationInfo</a></span>).m_bRepMenuCountDownTimePaused == false)
+<a name="547"></a>            return;
+<a name="548"></a>
+<a name="549"></a>        for (_Player=<span class="source_type">Level</span>.ControllerList; _Player!=None; _Player=_Player.NextController )
+<a name="550"></a>        {
+<a name="551"></a>            if ( _Player.IsA(<span class="source_name">'R6PlayerController'</span>) && (<span class="source_type"><a href="../r6engine/r6playercontroller.html" class="source">R6PlayerController</a></span>(_Player).m_bInAnOptionsPage==true) )
+<a name="552"></a>                return;
+<a name="553"></a>        }
+<a name="554"></a>
+<a name="555"></a>        if (!<span class="source_type"><a href="../r6engine/r6gamereplicationinfo.html" class="source">R6GameReplicationInfo</a></span>(<span class="source_type"><a href="../engine/gamereplicationinfo.html" class="source">GameReplicationInfo</a></span>).m_bRepMenuCountDownTimeUnlimited)
+<a name="556"></a>        {
+<a name="557"></a>            m_fRoundStartTime = <span class="source_type"><a href="../r6engine/r6gamereplicationinfo.html" class="source">R6GameReplicationInfo</a></span>(<span class="source_type"><a href="../engine/gamereplicationinfo.html" class="source">GameReplicationInfo</a></span>).m_iMenuCountDownTime + <span class="source_type">Level</span>.TimeSeconds;
+<a name="558"></a>            <span class="source_type"><a href="../r6engine/r6gamereplicationinfo.html" class="source">R6GameReplicationInfo</a></span>(<span class="source_type"><a href="../engine/gamereplicationinfo.html" class="source">GameReplicationInfo</a></span>).m_fRepMenuCountDownTime = <span class="source_type"><a href="../r6engine/r6gamereplicationinfo.html" class="source">R6GameReplicationInfo</a></span>(<span class="source_type"><a href="../engine/gamereplicationinfo.html" class="source">GameReplicationInfo</a></span>).m_iMenuCountDownTime;
+<a name="559"></a>        }
+<a name="560"></a>
+<a name="561"></a>        <span class="source_type"><a href="../r6engine/r6gamereplicationinfo.html" class="source">R6GameReplicationInfo</a></span>(<span class="source_type"><a href="../engine/gamereplicationinfo.html" class="source">GameReplicationInfo</a></span>).m_bRepMenuCountDownTimePaused = false;
+<a name="562"></a>        m_fPausedAtTime = <span class="source_int">0</span>;
+<a name="563"></a>    }
+<a name="564"></a>    
+<a name="565"></a>    function EndState()
+<a name="566"></a>    {
+<a name="567"></a>        local <span class="source_type">int</span> iAlphaNb, <span class="source_type">iBravoNb</span>, <span class="source_type">i</span>, j;
+<a name="568"></a>        local <span class="source_type"><a href="../engine/controller.html" class="source">Controller</a></span> <span class="source_type">P</span>;
+<a name="569"></a>        local <span class="source_type">BOOL</span> _gameTypeTeamAdversarial;
+<a name="570"></a>        local Array&lt;<span class="source_type"><a href="../r6engine/r6playercontroller.html" class="source">R6PlayerController</a></span>&gt; R6PlayerControllerList;
+<a name="571"></a>        local Array&lt;<span class="source_type"><a href="../r6engine/r6terroristai.html" class="source">R6TerroristAI</a></span>&gt; R6TerroristAIList;
+<a name="572"></a>        local Array&lt;<span class="source_type"><a href="../r6engine/r6rainbowai.html" class="source">R6RainbowAI</a></span>&gt; R6RainbowAIList;
+<a name="573"></a>        local <span class="source_type"><a href="../r6engine/r6rainbow.html" class="source">R6Rainbow</a></span> aRainbow;
+<a name="574"></a>        local <span class="source_type"><a href="../r6engine/r6terrorist.html" class="source">R6Terrorist</a></span> aTerrorist;
+<a name="575"></a>        local <span class="source_type"><a href="../engine/zoneinfo.html" class="source">ZoneInfo</a></span> aZoneInfo;
+<a name="576"></a>
+<a name="577"></a>        _gameTypeTeamAdversarial = <span class="source_type">Level</span>.IsGameTypeTeamAdversarial( m_szGameTypeFlag );
+<a name="578"></a>
+<a name="579"></a>        
+<a name="580"></a>        if (bShowLog) log( <span class="source_string">"GameInfo: EndState InBetweenRoundMenu m_GameService = "</span>$m_GameService$<span class="source_string">" m_iUbiComGameMode = "</span>$m_iUbiComGameMode );
+<a name="581"></a>
+<a name="582"></a>        <span class="source_type"><a href="../r6engine/r6gamereplicationinfo.html" class="source">R6GameReplicationInfo</a></span>(<span class="source_type"><a href="../engine/gamereplicationinfo.html" class="source">GameReplicationInfo</a></span>).m_bRepMenuCountDownTimeUnlimited = false;
+<a name="583"></a>
+<a name="584"></a>        <span class="source_comment">// this is the mapping for the game modes between us and Ubi.com
+</span><a name="585"></a>
+<a name="586"></a>        <span class="source_comment">// if server autobalance team option is turned on and we have team adversarial type game
+</span><a name="587"></a>        ProcessAutoBalanceTeam();
+<a name="588"></a>        
+<a name="589"></a>        for (<span class="source_type">P</span>=<span class="source_type">Level</span>.ControllerList; <span class="source_type">P</span>!=None; <span class="source_type">P</span>=<span class="source_type">P</span>.NextController )
+<a name="590"></a>		{
+<a name="591"></a>			if (<span class="source_type">P</span>.IsA(<span class="source_name">'R6PlayerController'</span>))
+<a name="592"></a>			{
+<a name="593"></a>                if ( !<span class="source_type"><a href="../r6engine/r6playercontroller.html" class="source">R6PlayerController</a></span>(<span class="source_type">P</span>).IsPlayerPassiveSpectator())
+<a name="594"></a>                {
+<a name="595"></a>                    <span class="source_type"><a href="../r6engine/r6playercontroller.html" class="source">R6PlayerController</a></span>(<span class="source_type">P</span>).bOnlySpectator = false;
+<a name="596"></a>                    ResetPlayerTeam(<span class="source_type">P</span>);
+<a name="597"></a>                    <span class="source_type"><a href="../r6engine/r6playercontroller.html" class="source">R6PlayerController</a></span>(<span class="source_type">P</span>).m_TeamManager.SetTeamColor(
+<a name="598"></a>                        GetRainbowTeamColourIndex(<span class="source_type"><a href="../r6engine/r6pawn.html" class="source">R6Pawn</a></span>(<span class="source_type">P</span>.<span class="source_type"><a href="../engine/pawn.html" class="source">pawn</a></span>).m_iTeam));
+<a name="599"></a>                    
+<a name="600"></a>                    if ( <span class="source_type"><a href="../r6engine/r6playercontroller.html" class="source">R6PlayerController</a></span>(<span class="source_type">P</span>).m_TeamManager != none )
+<a name="601"></a>                    {
+<a name="602"></a><span class="source_macro">#ifdefDebug    
+</span><a name="603"></a>                        log(<span class="source_string">"State InBetweenRoundMenu calling SetMemberTeamID of "</span>$<span class="source_type">P</span>.<span class="source_type"><a href="../engine/playerreplicationinfo.html" class="source">PlayerReplicationInfo</a></span>.PlayerName$
+<a name="604"></a>                            <span class="source_string">" new TeamID="</span> $<span class="source_type"><a href="../r6engine/r6pawn.html" class="source">R6Pawn</a></span>(<span class="source_type">P</span>.<span class="source_type"><a href="../engine/pawn.html" class="source">Pawn</a></span>).m_iTeam$
+<a name="605"></a>                            <span class="source_string">" current is "</span>$<span class="source_type">P</span>.<span class="source_type"><a href="../engine/playerreplicationinfo.html" class="source">PlayerReplicationInfo</a></span>.TeamID );
+<a name="606"></a><span class="source_macro">#endif
+</span><a name="607"></a>                        <span class="source_type"><a href="../r6engine/r6playercontroller.html" class="source">R6PlayerController</a></span>(<span class="source_type">P</span>).m_TeamManager.SetMemberTeamID( <span class="source_type"><a href="../r6engine/r6pawn.html" class="source">R6Pawn</a></span>(<span class="source_type">P</span>.<span class="source_type"><a href="../engine/pawn.html" class="source">Pawn</a></span>).m_iTeam );
+<a name="608"></a>                    }
+<a name="609"></a>                    else
+<a name="610"></a>                        <span class="source_type"><a href="../r6abstract/r6abstractgameinfo.html" class="source">R6AbstractGameInfo</a></span>(<span class="source_type">Level</span>.Game).SetPawnTeamFriendlies(<span class="source_type">P</span>.<span class="source_type"><a href="../engine/pawn.html" class="source">pawn</a></span>);
+<a name="611"></a>                    
+<a name="612"></a>        			<span class="source_type">P</span>.<span class="source_type"><a href="../engine/playerreplicationinfo.html" class="source">PlayerReplicationInfo</a></span>.SetWaitingPlayer(false);
+<a name="613"></a><span class="source_macro">#ifdefDebug
+</span><a name="614"></a>                    <span class="source_type"><a href="../r6engine/r6playercontroller.html" class="source">R6PlayerController</a></span>(<span class="source_type">P</span>).LogPlayerInfo();
+<a name="615"></a><span class="source_macro">#endif
+</span><a name="616"></a>                }
+<a name="617"></a>                else
+<a name="618"></a>                {
+<a name="619"></a>                    if (bShowLog)
+<a name="620"></a>                    {
+<a name="621"></a>	                    log(<span class="source_string">"In InBetweenRoundMenu::EndState() sending PlayerController "</span>$<span class="source_type">P</span>$<span class="source_string">" to dead state"</span>);
+<a name="622"></a>		                <span class="source_type"><a href="../r6engine/r6playercontroller.html" class="source">R6PlayerController</a></span>(<span class="source_type">P</span>).LogSpecialValues();
+<a name="623"></a>			        }
+<a name="624"></a>				    <span class="source_type">P</span>.GotoState(<span class="source_name">'Dead'</span>);
+<a name="625"></a>                }
+<a name="626"></a>                
+<a name="627"></a>                if (<span class="source_type">P</span>.<span class="source_type"><a href="../engine/pawn.html" class="source">Pawn</a></span> != none)
+<a name="628"></a>                {
+<a name="629"></a>                    <span class="source_type">P</span>.m_PawnRepInfo.m_PawnType = <span class="source_type">P</span>.<span class="source_type"><a href="../engine/pawn.html" class="source">Pawn</a></span>.m_ePawnType;
+<a name="630"></a>                    <span class="source_type">P</span>.m_PawnRepInfo.m_bSex = <span class="source_type">P</span>.<span class="source_type"><a href="../engine/pawn.html" class="source">Pawn</a></span>.bIsFemale;
+<a name="631"></a>                }
+<a name="632"></a>				<span class="source_type">P</span>.<span class="source_type"><a href="../engine/playerreplicationinfo.html" class="source">PlayerReplicationInfo</a></span>.m_szKillersName = <span class="source_string">""</span>;        <span class="source_comment">// name of the player that killed me
+</span><a name="633"></a>                <span class="source_type">P</span>.<span class="source_type"><a href="../engine/playerreplicationinfo.html" class="source">PlayerReplicationInfo</a></span>.m_bJoinedTeamLate=false;
+<a name="634"></a>            }
+<a name="635"></a>        }
+<a name="636"></a>        
+<a name="637"></a>        for (<span class="source_type">P</span>=<span class="source_type">Level</span>.ControllerList; <span class="source_type">P</span>!=None; <span class="source_type">P</span>=<span class="source_type">P</span>.NextController )
+<a name="638"></a>        {
+<a name="639"></a>            if (<span class="source_type">P</span>.IsA(<span class="source_name">'R6PlayerController'</span>))
+<a name="640"></a>                R6PlayerControllerList[R6PlayerControllerList.Length] = <span class="source_type"><a href="../r6engine/r6playercontroller.html" class="source">R6PlayerController</a></span>(<span class="source_type">P</span>);
+<a name="641"></a>            else if (<span class="source_type">P</span>.IsA(<span class="source_name">'R6RainbowAI'</span>))
+<a name="642"></a>                R6RainbowAIList[R6RainbowAIList.Length] = <span class="source_type"><a href="../r6engine/r6rainbowai.html" class="source">R6RainbowAI</a></span>(<span class="source_type">P</span>);
+<a name="643"></a>            else if (<span class="source_type">P</span>.IsA(<span class="source_name">'R6TerroristAI'</span>))
+<a name="644"></a>                R6TerroristAIList[R6TerroristAIList.Length] = <span class="source_type"><a href="../r6engine/r6terroristai.html" class="source">R6TerroristAI</a></span>(<span class="source_type">P</span>);
+<a name="645"></a>        }
+<a name="646"></a>
+<a name="647"></a>        for (<span class="source_type">i</span>=<span class="source_int">0</span>; <span class="source_type">i</span>&lt;R6PlayerControllerList.Length; <span class="source_type">i</span>++)
+<a name="648"></a>        {
+<a name="649"></a>            if ( bShowLog ) log(<span class="source_string">"Nb Terrorist ="</span> @ R6TerroristAIList.Length @ <span class="source_string">"Nb RainbowAI ="</span> @ R6RainbowAIList.Length @ <span class="source_string">"Nb R6PlayerController ="</span> @ R6PlayerControllerList.Length);
+<a name="650"></a>            for (j=<span class="source_int">0</span>; j&lt;R6TerroristAIList.Length; j++)
+<a name="651"></a>            {
+<a name="652"></a>                aTerrorist = <span class="source_type"><a href="../r6engine/r6terrorist.html" class="source">R6Terrorist</a></span>(R6TerroristAIList[j].<span class="source_type"><a href="../engine/pawn.html" class="source">Pawn</a></span>);
+<a name="653"></a>                if (aTerrorist != none)
+<a name="654"></a>                {
+<a name="655"></a>                    R6PlayerControllerList[<span class="source_type">i</span>].SetWeaponSound(R6TerroristAIList[j].m_PawnRepInfo, aTerrorist.m_szPrimaryWeapon, <span class="source_int">0</span>);
+<a name="656"></a>                    R6PlayerControllerList[<span class="source_type">i</span>].SetWeaponSound(R6TerroristAIList[j].m_PawnRepInfo, aTerrorist.m_szGrenadeWeapon, <span class="source_int">2</span>);
+<a name="657"></a>                }
+<a name="658"></a>            }
+<a name="659"></a>            for (j=<span class="source_int">0</span>; j&lt;R6RainbowAIList.Length; j++)
+<a name="660"></a>            {
+<a name="661"></a>                aRainbow = <span class="source_type"><a href="../r6engine/r6rainbow.html" class="source">R6Rainbow</a></span>(R6RainbowAIList[j].<span class="source_type"><a href="../engine/pawn.html" class="source">Pawn</a></span>);
+<a name="662"></a>                if (aRainbow != none)
+<a name="663"></a>                {
+<a name="664"></a>                    R6PlayerControllerList[<span class="source_type">i</span>].SetWeaponSound(R6RainbowAIList[j].m_PawnRepInfo, aRainbow.m_szPrimaryWeapon, <span class="source_int">0</span>);
+<a name="665"></a>                    R6PlayerControllerList[<span class="source_type">i</span>].SetWeaponSound(R6RainbowAIList[j].m_PawnRepInfo, aRainbow.m_szSecondaryWeapon, <span class="source_int">1</span>);
+<a name="666"></a>                    R6PlayerControllerList[<span class="source_type">i</span>].SetWeaponSound(R6RainbowAIList[j].m_PawnRepInfo, aRainbow.m_szPrimaryItem, <span class="source_int">2</span>);
+<a name="667"></a>                    R6PlayerControllerList[<span class="source_type">i</span>].SetWeaponSound(R6RainbowAIList[j].m_PawnRepInfo, aRainbow.m_szSecondaryItem, <span class="source_int">3</span>);
+<a name="668"></a>                }
+<a name="669"></a>            }
+<a name="670"></a>            for (j=<span class="source_int">0</span>; j&lt;R6PlayerControllerList.Length; j++)
+<a name="671"></a>            {
+<a name="672"></a>                aRainbow = <span class="source_type"><a href="../r6engine/r6rainbow.html" class="source">R6Rainbow</a></span>(R6PlayerControllerList[j].<span class="source_type"><a href="../engine/pawn.html" class="source">Pawn</a></span>);
+<a name="673"></a>                if (aRainbow != none)
+<a name="674"></a>                {
+<a name="675"></a>                    R6PlayerControllerList[<span class="source_type">i</span>].SetWeaponSound(R6PlayerControllerList[j].m_PawnRepInfo, aRainbow.m_szPrimaryWeapon, <span class="source_int">0</span>);
+<a name="676"></a>                    R6PlayerControllerList[<span class="source_type">i</span>].SetWeaponSound(R6PlayerControllerList[j].m_PawnRepInfo, aRainbow.m_szSecondaryWeapon, <span class="source_int">1</span>);
+<a name="677"></a>                    R6PlayerControllerList[<span class="source_type">i</span>].SetWeaponSound(R6PlayerControllerList[j].m_PawnRepInfo, aRainbow.m_szPrimaryItem, <span class="source_int">2</span>);
+<a name="678"></a>                    R6PlayerControllerList[<span class="source_type">i</span>].SetWeaponSound(R6PlayerControllerList[j].m_PawnRepInfo, aRainbow.m_szSecondaryItem, <span class="source_int">3</span>);
+<a name="679"></a>                }
+<a name="680"></a>            }
+<a name="681"></a>            if (R6PlayerControllerList[<span class="source_type">i</span>].<span class="source_type"><a href="../engine/pawn.html" class="source">Pawn</a></span> != none)
+<a name="682"></a>                aZoneInfo = R6PlayerControllerList[<span class="source_type">i</span>].<span class="source_type"><a href="../engine/pawn.html" class="source">Pawn</a></span>.<span class="source_type"><a href="../core/object.html#Region" class="source">Region</a></span>.<span class="source_type">Zone</span>;
+<a name="683"></a>            else
+<a name="684"></a>                aZoneInfo = R6PlayerControllerList[<span class="source_type">i</span>].<span class="source_type"><a href="../core/object.html#Region" class="source">Region</a></span>.<span class="source_type">Zone</span>;
+<a name="685"></a>
+<a name="686"></a>            R6PlayerControllerList[<span class="source_type">i</span>].ClientFinalizeLoading(aZoneInfo);
+<a name="687"></a>        }
+<a name="688"></a>
+<a name="689"></a>        NotifyMatchStart();
+<a name="690"></a>        <span class="source_type">Level</span>.NotifyMatchStart();
+<a name="691"></a>
+<a name="692"></a>        <span class="source_comment">// enable/disable stats
+</span><a name="693"></a>        GetNbHumanPlayerInTeam( iAlphaNb, <span class="source_type">iBravoNb</span> );        
+<a name="694"></a>        if ( <span class="source_type">Level</span>.IsGameTypeCooperative( m_szGameTypeFlag ) )
+<a name="695"></a>        {
+<a name="696"></a>            SetCompilingStats( iAlphaNb &gt; <span class="source_int">0</span> );
+<a name="697"></a>            SetRoundRestartedByJoinFlag(iAlphaNb &lt; <span class="source_int">1</span>);
+<a name="698"></a>        }
+<a name="699"></a>        else if ( _gameTypeTeamAdversarial )
+<a name="700"></a>        {
+<a name="701"></a>            <span class="source_comment">// compile stats if there's at least a player in each team
+</span><a name="702"></a>            SetCompilingStats(  (iAlphaNb &gt; <span class="source_int">0</span> && <span class="source_type">iBravoNb</span> &gt; <span class="source_int">0</span>) );
+<a name="703"></a>            SetRoundRestartedByJoinFlag((iAlphaNb == <span class="source_int">0</span>) || (<span class="source_type">iBravoNb</span> == <span class="source_int">0</span>));
+<a name="704"></a>        }
+<a name="705"></a>        else
+<a name="706"></a>        {
+<a name="707"></a>            SetCompilingStats(  (iAlphaNb &gt; <span class="source_int">1</span>) );
+<a name="708"></a>            SetRoundRestartedByJoinFlag((iAlphaNb &lt; <span class="source_int">2</span>));
+<a name="709"></a>        }
+<a name="710"></a>
+<a name="711"></a>        if ( m_bDoLadderInit && 
+<a name="712"></a>             (NativeStartedByGSClient() || m_PersistantGameService.NativeGetServerRegistered()) && 
+<a name="713"></a>             m_bCompilingStats)
+<a name="714"></a>        {
+<a name="715"></a>            m_PersistantGameService.NativeServerRoundStart(m_iUbiComGameMode);
+<a name="716"></a>            if (bShowLog) log(self$<span class="source_string">" We need to wait for score submission synchro, going to state GSClientWaitForRoundStart"</span>);
+<a name="717"></a>        }
+<a name="718"></a>
+<a name="719"></a>        IncrementRoundsPlayed();
+<a name="720"></a>        SetGameTypeInLocal();
+<a name="721"></a>        BroadcastGameTypeDescription();
+<a name="722"></a><span class="source_macro">#ifdefDEBUG
+</span><a name="723"></a>        log(<span class="source_string">"ServerInfo: ROUND STARTING Server leaving state InBetweenRoundMenu time = "</span>$<span class="source_type">Level</span>.TimeSeconds);
+<a name="724"></a><span class="source_macro">#endif
+</span><a name="725"></a>    }
+<a name="726"></a>}
+<a name="727"></a>
+<a name="728"></a><span class="source_comment">// this pause occurs just after the InBetweenRound time, we can spawn all our pawns in this time frame
+</span><a name="729"></a>state PostBetweenRoundTime
+<a name="730"></a>{
+<a name="731"></a>    function BeginState()
+<a name="732"></a>    {
+<a name="733"></a>        local <span class="source_type"><a href="../engine/controller.html" class="source">Controller</a></span> <span class="source_type">P</span>;
+<a name="734"></a>        
+<a name="735"></a>        SetLockOnTeamSelection(false);
+<a name="736"></a>        if (<span class="source_type">Level</span>.IsGameTypeCooperative(m_szGameTypeFlag))
+<a name="737"></a>        {
+<a name="738"></a>            ResetMatchStat();
+<a name="739"></a>        }
+<a name="740"></a>        m_fInGameStartTime = <span class="source_type">Level</span>.TimeSeconds + K_InGamePauseTime;
+<a name="741"></a>
+<a name="742"></a><span class="source_comment">//        if (class'Actor'.static.GetGameOptions().CountDownDelayTime != 0)
+</span><a name="743"></a><span class="source_comment">//            m_fInGameStartTime += class'Actor'.static.GetGameOptions().CountDownDelayTime;
+</span><a name="744"></a><span class="source_comment">//        else
+</span><a name="745"></a><span class="source_comment">//        {
+</span><a name="746"></a><span class="source_comment">//            if (Level.NetMode == NM_ListenServer)
+</span><a name="747"></a><span class="source_comment">//                m_fInGameStartTime += 10;
+</span><a name="748"></a><span class="source_comment">//        }
+</span><a name="749"></a>
+<a name="750"></a>
+<a name="751"></a>        for (<span class="source_type">P</span>=<span class="source_type">Level</span>.ControllerList; <span class="source_type">P</span>!=None; <span class="source_type">P</span>=<span class="source_type">P</span>.NextController )
+<a name="752"></a>        {
+<a name="753"></a>            if ( <span class="source_type">P</span>.IsA(<span class="source_name">'R6PlayerController'</span>))
+<a name="754"></a>            {
+<a name="755"></a>                <span class="source_type"><a href="../r6engine/r6playercontroller.html" class="source">R6PlayerController</a></span>(<span class="source_type">P</span>).CountDownPopUpBox();
+<a name="756"></a>            }
+<a name="757"></a>        }
+<a name="758"></a>        <span class="source_type"><a href="../r6engine/r6gamereplicationinfo.html" class="source">R6GameReplicationInfo</a></span>(<span class="source_type"><a href="../engine/gamereplicationinfo.html" class="source">GameReplicationInfo</a></span>).m_iMenuCountDownTime = K_InGamePauseTime;
+<a name="759"></a>        <span class="source_type"><a href="../r6engine/r6gamereplicationinfo.html" class="source">R6GameReplicationInfo</a></span>(<span class="source_type"><a href="../engine/gamereplicationinfo.html" class="source">GameReplicationInfo</a></span>).m_fRepMenuCountDownTime = K_InGamePauseTime;
+<a name="760"></a>        <span class="source_type"><a href="../engine/gamereplicationinfo.html" class="source">GameReplicationInfo</a></span>.m_bInPostBetweenRoundTime = true;
+<a name="761"></a>    }
+<a name="762"></a>
+<a name="763"></a>    function Tick(<span class="source_type">float</span> <span class="source_type">DeltaTime</span>)
+<a name="764"></a>    {
+<a name="765"></a>        local <span class="source_type"><a href="../engine/controller.html" class="source">Controller</a></span> <span class="source_type">P</span>;
+<a name="766"></a>        MasterServerManager();
+<a name="767"></a>        HandleKickVotesTick();
+<a name="768"></a>
+<a name="769"></a>        <span class="source_type"><a href="../r6engine/r6gamereplicationinfo.html" class="source">R6GameReplicationInfo</a></span>(<span class="source_type"><a href="../engine/gamereplicationinfo.html" class="source">GameReplicationInfo</a></span>).m_iMenuCountDownTime = m_fInGameStartTime - <span class="source_type">Level</span>.TimeSeconds;
+<a name="770"></a>
+<a name="771"></a>        <span class="source_type"><a href="../r6engine/r6gamereplicationinfo.html" class="source">R6GameReplicationInfo</a></span>(<span class="source_type"><a href="../engine/gamereplicationinfo.html" class="source">GameReplicationInfo</a></span>).m_fRepMenuCountDownTime = <span class="source_type"><a href="../r6engine/r6gamereplicationinfo.html" class="source">R6GameReplicationInfo</a></span>(<span class="source_type"><a href="../engine/gamereplicationinfo.html" class="source">GameReplicationInfo</a></span>).m_iMenuCountDownTime;
+<a name="772"></a>        
+<a name="773"></a>        if ( m_bDoLadderInit && 
+<a name="774"></a>            (NativeStartedByGSClient() || m_PersistantGameService.NativeGetServerRegistered()) && 
+<a name="775"></a>            m_bCompilingStats)
+<a name="776"></a>        {
+<a name="777"></a>            if (m_PersistantGameService.m_bServerWaitMatchStartReply == false)
+<a name="778"></a>            {
+<a name="779"></a>                m_bLadderStats = true;
+<a name="780"></a>                m_bDoLadderInit=false;
+<a name="781"></a>                for (<span class="source_type">P</span>=<span class="source_type">Level</span>.ControllerList; <span class="source_type">P</span>!=None; <span class="source_type">P</span>=<span class="source_type">P</span>.NextController )
+<a name="782"></a>                {
+<a name="783"></a>                    if ( <span class="source_type">P</span>.IsA(<span class="source_name">'R6PlayerController'</span>) &&
+<a name="784"></a>                        !<span class="source_type"><a href="../r6engine/r6playercontroller.html" class="source">R6PlayerController</a></span>(<span class="source_type">P</span>).IsPlayerPassiveSpectator() )
+<a name="785"></a>                    {
+<a name="786"></a>                        <span class="source_type"><a href="../r6engine/r6playercontroller.html" class="source">R6PlayerController</a></span>(<span class="source_type">P</span>).<span class="source_type"><a href="../engine/playerreplicationinfo.html" class="source">PlayerReplicationInfo</a></span>.m_bClientWillSubmitResult = true;
+<a name="787"></a>                        <span class="source_type"><a href="../r6engine/r6playercontroller.html" class="source">R6PlayerController</a></span>(<span class="source_type">P</span>).ClientNotifySendStartMatch();
+<a name="788"></a>                    }
+<a name="789"></a>                }
+<a name="790"></a>            }
+<a name="791"></a>            else if (<span class="source_type">Level</span>.TimeSeconds &lt; m_fInGameStartTime + K_InGamePauseTime) <span class="source_comment">// allow an extra grace period for ubi.com
+</span><a name="792"></a>            {
+<a name="793"></a>                return;
+<a name="794"></a>            }
+<a name="795"></a>        }
+<a name="796"></a>        
+<a name="797"></a>        if (<span class="source_type">Level</span>.TimeSeconds &gt;= m_fInGameStartTime-<span class="source_int">1</span>)
+<a name="798"></a>        {
+<a name="799"></a>            PostBetweenRoundTimeDone();
+<a name="800"></a>        }
+<a name="801"></a>    }
+<a name="802"></a>
+<a name="803"></a>    function PostBetweenRoundTimeDone()
+<a name="804"></a>    {
+<a name="805"></a>        local <span class="source_type"><a href="../engine/controller.html" class="source">Controller</a></span> <span class="source_type">P</span>;
+<a name="806"></a>
+<a name="807"></a>		<span class="source_comment">// removed MPF_Milan_15_09_2003 - local R6IOSelfDetonatingBomb AIt; // MPF_MIlan_8_4_2003 - see below
+</span><a name="808"></a>		
+<a name="809"></a>        m_bGameStarted=true;
+<a name="810"></a>        <span class="source_type"><a href="../engine/gamereplicationinfo.html" class="source">GameReplicationInfo</a></span>.SetServerState(<span class="source_type"><a href="../engine/gamereplicationinfo.html" class="source">GameReplicationInfo</a></span>.RSS_InGameState);
+<a name="811"></a>        for (<span class="source_type">P</span>=<span class="source_type">Level</span>.ControllerList; <span class="source_type">P</span>!=None; <span class="source_type">P</span>=<span class="source_type">P</span>.NextController )
+<a name="812"></a>        {
+<a name="813"></a>            if ( <span class="source_type">P</span>.IsA(<span class="source_name">'R6PlayerController'</span>) && !<span class="source_type"><a href="../engine/playercontroller.html" class="source">PlayerController</a></span>(<span class="source_type">P</span>).bOnlySpectator && 
+<a name="814"></a>                !<span class="source_type"><a href="../r6engine/r6playercontroller.html" class="source">R6PlayerController</a></span>(<span class="source_type">P</span>).IsPlayerPassiveSpectator())
+<a name="815"></a>            {
+<a name="816"></a>                if ( <span class="source_type"><a href="../r6engine/r6playercontroller.html" class="source">R6PlayerController</a></span>(<span class="source_type">P</span>).m_bPenaltyBox ) <span class="source_comment">// only accessible by the server
+</span><a name="817"></a>                {
+<a name="818"></a>                    <span class="source_type"><a href="../r6engine/r6playercontroller.html" class="source">R6PlayerController</a></span>(<span class="source_type">P</span>).GotoState( <span class="source_name">'PenaltyBox'</span> );
+<a name="819"></a>                    <span class="source_type"><a href="../r6engine/r6playercontroller.html" class="source">R6PlayerController</a></span>(<span class="source_type">P</span>).ClientGotoState( <span class="source_name">'PenaltyBox'</span>, <span class="source_name">''</span> );
+<a name="820"></a>                }
+<a name="821"></a>                else
+<a name="822"></a>                {
+<a name="823"></a>                    <span class="source_type"><a href="../r6engine/r6playercontroller.html" class="source">R6PlayerController</a></span>(<span class="source_type">P</span>).GotoState(<span class="source_name">'PlayerWalking'</span>);
+<a name="824"></a>                    <span class="source_type"><a href="../r6engine/r6playercontroller.html" class="source">R6PlayerController</a></span>(<span class="source_type">P</span>).ClientGotoState(<span class="source_name">'PlayerWalking'</span>, <span class="source_name">''</span>);
+<a name="825"></a>                }
+<a name="826"></a>            }
+<a name="827"></a>        }
+<a name="828"></a>        
+<a name="829"></a>        <span class="source_comment">/////////////////////////////////////////////////
+</span><a name="830"></a>        <span class="source_comment">// remove any unused RainbowAI backup controllers
+</span><a name="831"></a>        if(m_RainbowAIBackup.Length &gt; <span class="source_int">0</span>)
+<a name="832"></a>            m_RainbowAIBackup.Remove( <span class="source_int">0</span>, m_RainbowAIBackup.Length ); 
+<a name="833"></a>        <span class="source_comment">/////////////////////////////////////////////////
+</span><a name="834"></a>        GotoState(<span class="source_name">''</span>);
+<a name="835"></a>    }
+<a name="836"></a>    
+<a name="837"></a>    function EndState()
+<a name="838"></a>    {
+<a name="839"></a>        local <span class="source_type"><a href="../engine/controller.html" class="source">Controller</a></span> <span class="source_type">P</span>;
+<a name="840"></a>        <span class="source_comment">//MPF_8_4_2003 - if there is a self detonating bomb, override their time limit with the server time limit
+</span><a name="841"></a>		local <span class="source_type"><a href="../r6engine/r6ioselfdetonatingbomb.html" class="source">R6IOSelfDetonatingBomb</a></span> AIt;
+<a name="842"></a>		
+<a name="843"></a>	<span class="source_comment">/* MPF_MIlan_2003_9_15 - Moved below
+<a name="844"></a>        // MPF_Milan_8_4_2003 - activate self detonating bombs
+<a name="845"></a>   		if(Level.NetMode != NM_Client)
+<a name="846"></a>		   	foreach AllActors( class 'R6IOSelfDetonatingBomb', AIt )
+<a name="847"></a>			{
+<a name="848"></a>				AIt.m_fSelfDetonationTime = Level.m_fTimeLimit;
+<a name="849"></a>				AIt.StartTimer();
+<a name="850"></a>			}
+<a name="851"></a>		// end MPF_8_4_2003
+<a name="852"></a>	 End MPF_MIlan_2003_9_15 */</span>
+<a name="853"></a>		
+<a name="854"></a>        <span class="source_type"><a href="../engine/gamereplicationinfo.html" class="source">GameReplicationInfo</a></span>.m_bInPostBetweenRoundTime = false;
+<a name="855"></a>        m_fEndingTime = <span class="source_type">Level</span>.TimeSeconds+<span class="source_type">Level</span>.m_fTimeLimit;
+<a name="856"></a>        <span class="source_type"><a href="../r6engine/r6gamereplicationinfo.html" class="source">R6GameReplicationInfo</a></span>(<span class="source_type"><a href="../engine/gamereplicationinfo.html" class="source">GameReplicationInfo</a></span>).m_iMenuCountDownTime = <span class="source_type">Level</span>.m_fTimeLimit;
+<a name="857"></a>        <span class="source_type"><a href="../r6engine/r6gamereplicationinfo.html" class="source">R6GameReplicationInfo</a></span>(<span class="source_type"><a href="../engine/gamereplicationinfo.html" class="source">GameReplicationInfo</a></span>).m_fRepMenuCountDownTime = <span class="source_type">Level</span>.m_fTimeLimit;
+<a name="858"></a>
+<a name="859"></a>        for (<span class="source_type">P</span>=<span class="source_type">Level</span>.ControllerList; <span class="source_type">P</span>!=None; <span class="source_type">P</span>=<span class="source_type">P</span>.NextController )
+<a name="860"></a>        {
+<a name="861"></a>            if ( <span class="source_type">P</span>.IsA(<span class="source_name">'R6PlayerController'</span>))
+<a name="862"></a>            {
+<a name="863"></a>                <span class="source_type"><a href="../r6engine/r6playercontroller.html" class="source">R6PlayerController</a></span>(<span class="source_type">P</span>).CountDownPopUpBoxDone();
+<a name="864"></a>            }
+<a name="865"></a>        }
+<a name="866"></a>        
+<a name="867"></a>        <span class="source_comment">// MPF_MIlan_2003_9_15 - activate self detonating bombs
+</span><a name="868"></a>  		if(<span class="source_type">Level</span>.NetMode != NM_Client)
+<a name="869"></a>		{
+<a name="870"></a>		   	foreach AllActors( <span class="source_type">class</span> <span class="source_name">'R6IOSelfDetonatingBomb'</span>, AIt )
+<a name="871"></a>			{
+<a name="872"></a>				AIt.m_fSelfDetonationTime = <span class="source_type">Level</span>.m_fTimeLimit;
+<a name="873"></a>				<span class="source_comment">//log("netmode="$Level.NetMode$" start timer"); //MP1DEBUG
+</span><a name="874"></a>				AIt.StartTimer();
+<a name="875"></a>        	}
+<a name="876"></a>		}
+<a name="877"></a>    }
+<a name="878"></a>}
+<a name="879"></a>
+<a name="880"></a>
+<a name="881"></a>function SetCompilingStats(<span class="source_type">BOOL</span> bStatsSetting)
+<a name="882"></a>{
+<a name="883"></a>    Super.SetCompilingStats(bStatsSetting);
+<a name="884"></a>    if (<span class="source_type">Level</span>.NetMode!=NM_Standalone && m_bInternetSvr && bStatsSetting 
+<a name="885"></a>        && (<span class="source_type">Level</span>.IsGameTypeAdversarial(m_szGameTypeFlag) || <span class="source_type">Level</span>.IsGameTypeTeamAdversarial(m_szGameTypeFlag)))
+<a name="886"></a>    {
+<a name="887"></a>        <span class="source_comment">// send MatchStarted for GameService
+</span><a name="888"></a>        m_bDoLadderInit=true;
+<a name="889"></a>    }
+<a name="890"></a>}
+<a name="891"></a>
+<a name="892"></a>function Logout( <span class="source_type"><a href="../engine/controller.html" class="source">Controller</a></span> <span class="source_type">Exiting</span> )
+<a name="893"></a>{
+<a name="894"></a>    local <span class="source_type">INT</span> iIdx;
+<a name="895"></a>
+<a name="896"></a>    if ( <span class="source_type">Level</span>.NetMode != NM_Standalone )
+<a name="897"></a>    {
+<a name="898"></a>        UnPauseCountDown();
+<a name="899"></a>
+<a name="900"></a>    <span class="source_macro">#ifdefDEBUG
+</span><a name="901"></a>        if (<span class="source_type"><a href="../engine/playercontroller.html" class="source">PlayerController</a></span>(<span class="source_type">Exiting</span>)!=none)
+<a name="902"></a>            log(<span class="source_string">"ServerInfo: "</span>$<span class="source_type">Exiting</span>.<span class="source_type"><a href="../engine/playerreplicationinfo.html" class="source">PlayerReplicationInfo</a></span>.PlayerName$<span class="source_string">" Logging out at time "</span>$<span class="source_type">Level</span>.TimeSeconds);
+<a name="903"></a>    <span class="source_macro">#endif
+</span><a name="904"></a>		if(<span class="source_type">Level</span>.IsGameTypeCooperative(m_szGameTypeFlag) && (m_RainbowAIBackup.Length &gt; <span class="source_int">0</span>))
+<a name="905"></a>		{
+<a name="906"></a>			if( !(<span class="source_type">Level</span>.NetMode == NM_Standalone || <span class="source_type">Level</span>.NetMode == NM_Client) )
+<a name="907"></a>			{
+<a name="908"></a>				m_RainbowAIBackup.Remove( <span class="source_int">0</span>, m_RainbowAIBackup.Length ); 
+<a name="909"></a>			}
+<a name="910"></a>		}
+<a name="911"></a> 
+<a name="912"></a>        if ( (<span class="source_type"><a href="../engine/playercontroller.html" class="source">PlayerController</a></span>(<span class="source_type">Exiting</span>)!=none) && (!m_bPendingLevelExists) )
+<a name="913"></a>        {
+<a name="914"></a>            m_GameService.NativeCDKeyDisconnecUser( <span class="source_type"><a href="../engine/playercontroller.html" class="source">PlayerController</a></span>(<span class="source_type">Exiting</span>).m_stPlayerVerCDKeyStatus.m_szAuthorizationID );
+<a name="915"></a>        }
+<a name="916"></a>    }
+<a name="917"></a>
+<a name="918"></a>    Super.Logout( <span class="source_type">Exiting</span> );
+<a name="919"></a>
+<a name="920"></a>}
+<a name="921"></a>
+<a name="922"></a>
+<a name="923"></a>function Tick(<span class="source_type">float</span> <span class="source_type">Delta</span>)
+<a name="924"></a>{
+<a name="925"></a>    local <span class="source_type"><a href="../r6engine/r6playercontroller.html" class="source">R6PlayerController</a></span> <span class="source_type"><a href="../engine/playercontroller.html" class="source">playerController</a></span>;
+<a name="926"></a>    local <span class="source_type"><a href="../engine/controller.html" class="source">Controller</a></span> <span class="source_type">C</span>;
+<a name="927"></a>
+<a name="928"></a>    Super.Tick(<span class="source_type">Delta</span>);
+<a name="929"></a>
+<a name="930"></a>    if (IsInState(<span class="source_name">'InBetweenRoundMenu'</span>))
+<a name="931"></a>        return;
+<a name="932"></a>
+<a name="933"></a>    if(<span class="source_type">Level</span>.NetMode != NM_Standalone)
+<a name="934"></a>    {
+<a name="935"></a>        MasterServerManager();
+<a name="936"></a>        HandleKickVotesTick();
+<a name="937"></a>
+<a name="938"></a>        <span class="source_type"><a href="../r6engine/r6gamereplicationinfo.html" class="source">R6GameReplicationInfo</a></span>(<span class="source_type"><a href="../engine/gamereplicationinfo.html" class="source">GameReplicationInfo</a></span>).m_iMenuCountDownTime = <span class="source_type"><a href="../r6game/r6gameinfo.html" class="source">R6GameInfo</a></span>(<span class="source_type">Level</span>.Game).m_fEndingTime - <span class="source_type">Level</span>.TimeSeconds;
+<a name="939"></a>
+<a name="940"></a>        <span class="source_type"><a href="../r6engine/r6gamereplicationinfo.html" class="source">R6GameReplicationInfo</a></span>(<span class="source_type"><a href="../engine/gamereplicationinfo.html" class="source">GameReplicationInfo</a></span>).m_fRepMenuCountDownTimeLastUpdate += <span class="source_type">Delta</span>;
+<a name="941"></a>        if(<span class="source_type"><a href="../r6engine/r6gamereplicationinfo.html" class="source">R6GameReplicationInfo</a></span>(<span class="source_type"><a href="../engine/gamereplicationinfo.html" class="source">GameReplicationInfo</a></span>).m_fRepMenuCountDownTimeLastUpdate &gt;= <span class="source_int">10</span>)
+<a name="942"></a>        {
+<a name="943"></a>            <span class="source_type"><a href="../r6engine/r6gamereplicationinfo.html" class="source">R6GameReplicationInfo</a></span>(<span class="source_type"><a href="../engine/gamereplicationinfo.html" class="source">GameReplicationInfo</a></span>).m_fRepMenuCountDownTimeLastUpdate = <span class="source_int">0</span>;
+<a name="944"></a>            <span class="source_type"><a href="../r6engine/r6gamereplicationinfo.html" class="source">R6GameReplicationInfo</a></span>(<span class="source_type"><a href="../engine/gamereplicationinfo.html" class="source">GameReplicationInfo</a></span>).m_fRepMenuCountDownTime = <span class="source_type"><a href="../r6engine/r6gamereplicationinfo.html" class="source">R6GameReplicationInfo</a></span>(<span class="source_type"><a href="../engine/gamereplicationinfo.html" class="source">GameReplicationInfo</a></span>).m_iMenuCountDownTime;
+<a name="945"></a>        }
+<a name="946"></a>    }
+<a name="947"></a>
+<a name="948"></a>    <span class="source_comment">// check for the timer countdown
+</span><a name="949"></a>    if (   m_missionObjTimer != none &&
+<a name="950"></a>         ( m_fEndingTime &gt; <span class="source_int">0</span>)   && 
+<a name="951"></a>         ( <span class="source_type">Level</span>.m_fTimeLimit&gt;<span class="source_int">0</span> )                       && 
+<a name="952"></a>         ( <span class="source_type">Level</span>.TimeSeconds &gt; m_fEndingTime ) )
+<a name="953"></a>    {
+<a name="954"></a>        if ( !m_missionObjTimer.m_bFailed )
+<a name="955"></a>        {
+<a name="956"></a>            for (<span class="source_type">C</span>=<span class="source_type">Level</span>.ControllerList; <span class="source_type">C</span>!=None; <span class="source_type">C</span>=<span class="source_type">C</span>.NextController )
+<a name="957"></a>            {
+<a name="958"></a>                <span class="source_type"><a href="../engine/playercontroller.html" class="source">playerController</a></span> = <span class="source_type"><a href="../r6engine/r6playercontroller.html" class="source">R6PlayerController</a></span>(<span class="source_type">C</span>);
+<a name="959"></a>                if (<span class="source_type"><a href="../engine/playercontroller.html" class="source">playerController</a></span> != none)
+<a name="960"></a>                {
+<a name="961"></a>                    <span class="source_type"><a href="../engine/playercontroller.html" class="source">playerController</a></span>.ClientPlayVoices(none, m_sndSoundTimeFailure, SLOT_Speak, <span class="source_int">5</span>, true, <span class="source_int">1</span>);
+<a name="962"></a>                }
+<a name="963"></a>            }
+<a name="964"></a>            m_missionObjTimer.timerCallback( <span class="source_int">0</span> );
+<a name="965"></a>            TimerCountdown();
+<a name="966"></a>        }
+<a name="967"></a>    }
+<a name="968"></a>}
+<a name="969"></a>
+<a name="970"></a>event InitGame( <span class="source_type">string</span> Options, out <span class="source_type">string</span> <span class="source_type">Error</span> )
+<a name="971"></a>{
+<a name="972"></a>    local <span class="source_type">INT</span> iPort;
+<a name="973"></a>
+<a name="974"></a>    Super.InitGame(  Options, <span class="source_type">Error</span> );
+<a name="975"></a>
+<a name="976"></a>    if ( !m_GameService.NativeGetRegServerIntialized() )
+<a name="977"></a>    {
+<a name="978"></a>        m_GameService.SetGameServiceRequestState(ERSREQ_INIT);
+<a name="979"></a>    }
+<a name="980"></a>
+<a name="981"></a>    <span class="source_comment">// Set this flag to true each time game is restarted, used in
+</span><a name="982"></a>    <span class="source_comment">// the MasterServerManager() to make sure lobby server ID and room ID
+</span><a name="983"></a>    <span class="source_comment">// are current.
+</span><a name="984"></a>    m_GameService.m_bInitGame = TRUE;
+<a name="985"></a>
+<a name="986"></a>    iPort = <span class="source_type">INT</span>( Mid(<span class="source_type">Level</span>.GetAddressURL(),InStr(<span class="source_type">Level</span>.GetAddressURL(),<span class="source_string">":"</span>)+<span class="source_int">1</span>) );
+<a name="987"></a>    m_GameService.NativeSetOwnSvrPort( iPort );
+<a name="988"></a>}
+<a name="989"></a>
+<a name="990"></a>function EndGame( <span class="source_type"><a href="../engine/playerreplicationinfo.html" class="source">PlayerReplicationInfo</a></span> Winner, <span class="source_type">string</span> <span class="source_type">Reason</span> ) 
+<a name="991"></a>{
+<a name="992"></a><span class="source_comment">//log("EndGame cleaning out PlayerIDList");
+</span><a name="993"></a><span class="source_comment">//    m_GameService.CleanPlayerIDList(Level.ControllerList);
+</span><a name="994"></a>    ResetPlayerReady();
+<a name="995"></a>    Super.EndGame( Winner, <span class="source_type">Reason</span> );
+<a name="996"></a>}
+<a name="997"></a>
+<a name="998"></a>function ResetPlayerReady()
+<a name="999"></a>{
+<a name="1000"></a>    local <span class="source_type"><a href="../engine/controller.html" class="source">Controller</a></span> <span class="source_type">P</span>;
+<a name="1001"></a>
+<a name="1002"></a>    for (<span class="source_type">P</span>=<span class="source_type">Level</span>.ControllerList; <span class="source_type">P</span>!=None; <span class="source_type">P</span>=<span class="source_type">P</span>.NextController )
+<a name="1003"></a>    {
+<a name="1004"></a>        if (<span class="source_type"><a href="../r6engine/r6playercontroller.html" class="source">R6PlayerController</a></span>(<span class="source_type">P</span>)!=none)
+<a name="1005"></a>             <span class="source_type"><a href="../r6engine/r6playercontroller.html" class="source">R6PlayerController</a></span>(<span class="source_type">P</span>).<span class="source_type"><a href="../engine/playerreplicationinfo.html" class="source">PlayerReplicationInfo</a></span>.m_bPlayerReady = false;
+<a name="1006"></a>    }
+<a name="1007"></a>}
+<a name="1008"></a>
+<a name="1009"></a>
+<a name="1010"></a><span class="source_comment">//======================================================================
+</span><a name="1011"></a><span class="source_comment">// MasterServerManager - This function handles all of the interfacing
+</span><a name="1012"></a><span class="source_comment">// with the master server (ubi.com) this includes registering the 
+</span><a name="1013"></a><span class="source_comment">// server with ubi.com, informing ubi.com as players join/leave
+</span><a name="1014"></a><span class="source_comment">//======================================================================
+</span><a name="1015"></a>function MasterServerManager()
+<a name="1016"></a>{
+<a name="1017"></a>    if (<span class="source_type">Level</span>.NetMode!=NM_Standalone)
+<a name="1018"></a>    {
+<a name="1019"></a>        m_GameService.MasterServerManager(self, <span class="source_type">Level</span>);
+<a name="1020"></a>    }
+<a name="1021"></a>}
+<a name="1022"></a>
+<a name="1023"></a><span class="source_comment">//------------------------------------------------------------------
+</span><a name="1024"></a><span class="source_comment">// GetNbHumanPlayerInTeam
+</span><a name="1025"></a><span class="source_comment">//	
+</span><a name="1026"></a><span class="source_comment">//------------------------------------------------------------------
+</span><a name="1027"></a>function GetNbHumanPlayerInTeam( OUT <span class="source_type">int</span> iAlphaNb, OUT <span class="source_type">int</span> <span class="source_type">iBravoNb</span> )
+<a name="1028"></a>{
+<a name="1029"></a>    local <span class="source_type"><a href="../engine/controller.html" class="source">Controller</a></span> <span class="source_type">P</span>;
+<a name="1030"></a>    iAlphaNb = <span class="source_int">0</span>;
+<a name="1031"></a>    <span class="source_type">iBravoNb</span> = <span class="source_int">0</span>;
+<a name="1032"></a>
+<a name="1033"></a>    for (<span class="source_type">P</span>=<span class="source_type">Level</span>.ControllerList; <span class="source_type">P</span>!=None; <span class="source_type">P</span>=<span class="source_type">P</span>.NextController )
+<a name="1034"></a>    {
+<a name="1035"></a>        if (   <span class="source_type"><a href="../r6engine/r6playercontroller.html" class="source">R6PlayerController</a></span>( <span class="source_type">P</span> ) != None )
+<a name="1036"></a>        {
+<a name="1037"></a>            if ( <span class="source_type"><a href="../r6engine/r6playercontroller.html" class="source">R6PlayerController</a></span>(<span class="source_type">P</span>).m_TeamSelection == PTS_Alpha )
+<a name="1038"></a>                ++iAlphaNb;
+<a name="1039"></a>
+<a name="1040"></a>            if ( <span class="source_type"><a href="../r6engine/r6playercontroller.html" class="source">R6PlayerController</a></span>(<span class="source_type">P</span>).m_TeamSelection == PTS_Bravo )
+<a name="1041"></a>                ++<span class="source_type">iBravoNb</span>;
+<a name="1042"></a>        }
+<a name="1043"></a>    }
+<a name="1044"></a>}
+<a name="1045"></a>
+<a name="1046"></a>function IncrementRoundsPlayed()
+<a name="1047"></a>{
+<a name="1048"></a>    local <span class="source_type"><a href="../engine/controller.html" class="source">Controller</a></span> <span class="source_type">P</span>;
+<a name="1049"></a>    local <span class="source_type"><a href="../r6engine/r6playercontroller.html" class="source">R6PlayerController</a></span> _aPlayerController;
+<a name="1050"></a>
+<a name="1051"></a>    for (<span class="source_type">P</span>=<span class="source_type">Level</span>.ControllerList; <span class="source_type">P</span>!=None; <span class="source_type">P</span>=<span class="source_type">P</span>.NextController )
+<a name="1052"></a>    {
+<a name="1053"></a>        _aPlayerController = <span class="source_type"><a href="../r6engine/r6playercontroller.html" class="source">R6PlayerController</a></span>(<span class="source_type">P</span>);
+<a name="1054"></a>        if ( (_aPlayerController != none) &&
+<a name="1055"></a>             ((_aPlayerController.m_TeamSelection == PTS_Alpha ) ||
+<a name="1056"></a>              (_aPlayerController.m_TeamSelection == PTS_Bravo )))
+<a name="1057"></a>        {
+<a name="1058"></a>            if (m_bCompilingStats)
+<a name="1059"></a>            {
+<a name="1060"></a>                _aPlayerController.<span class="source_type"><a href="../engine/playerreplicationinfo.html" class="source">PlayerReplicationInfo</a></span>.m_iRoundsPlayed++;
+<a name="1061"></a>            }
+<a name="1062"></a>            _aPlayerController.ServerSetPlayerReadyStatus(true);   <span class="source_comment">// force all active players to ready
+</span><a name="1063"></a>            _aPlayerController.<span class="source_type"><a href="../engine/playerreplicationinfo.html" class="source">PlayerReplicationInfo</a></span>.bIsSpectator = false;
+<a name="1064"></a>        }
+<a name="1065"></a>    }
+<a name="1066"></a>}
+<a name="1067"></a>
+<a name="1068"></a>function <span class="source_type">BOOL</span> ProcessKickVote(<span class="source_type"><a href="../engine/playercontroller.html" class="source">PlayerController</a></span> _KickPlayer, <span class="source_type">string</span> KickersName)
+<a name="1069"></a>{
+<a name="1070"></a>    local <span class="source_type"><a href="../engine/controller.html" class="source">Controller</a></span> _itController;
+<a name="1071"></a>    local <span class="source_type"><a href="../r6engine/r6playercontroller.html" class="source">R6PlayerController</a></span> _playerController;
+<a name="1072"></a>    <span class="source_comment">// 1st make sure that a vote is not in progress
+</span><a name="1073"></a>
+<a name="1074"></a>    if (m_fEndKickVoteTime!=<span class="source_int">0</span>)
+<a name="1075"></a>    {
+<a name="1076"></a>        return false; <span class="source_comment">// a vote is already in progress
+</span><a name="1077"></a>    }
+<a name="1078"></a>    <span class="source_comment">// empty all ballots
+</span><a name="1079"></a>    m_PlayerKick = _KickPlayer;
+<a name="1080"></a>    m_KickersName = KickersName;
+<a name="1081"></a>    for (_itController=<span class="source_type">Level</span>.ControllerList; _itController!=None; _itController=_itController.NextController )
+<a name="1082"></a>    {
+<a name="1083"></a>        _playerController = <span class="source_type"><a href="../r6engine/r6playercontroller.html" class="source">R6PlayerController</a></span>(_itController);
+<a name="1084"></a>        if (_playerController!=none)
+<a name="1085"></a>        {
+<a name="1086"></a>            _playerController.m_iVoteResult = <span class="source_type"><a href="../r6engine/r6playercontroller.html" class="source">R6PlayerController</a></span>(_itController).K_EmptyBallot;
+<a name="1087"></a>            _playerController.ClientKickVoteMessage(m_PlayerKick.<span class="source_type"><a href="../engine/playerreplicationinfo.html" class="source">PlayerReplicationInfo</a></span>, KickersName);
+<a name="1088"></a>        }
+<a name="1089"></a>    }
+<a name="1090"></a>    m_fEndKickVoteTime = <span class="source_type">Level</span>.TimeSeconds + K_KickVoteTime;    <span class="source_comment">// voting open until
+</span><a name="1091"></a>    return true;
+<a name="1092"></a>}
+<a name="1093"></a>
+<a name="1094"></a>function HandleKickVotesTick()
+<a name="1095"></a>{
+<a name="1096"></a>    local <span class="source_type">int</span> _iForKickVotes;
+<a name="1097"></a>    local <span class="source_type">int</span> _iAgainstKickVotes;
+<a name="1098"></a>    local <span class="source_type"><a href="../engine/controller.html" class="source">Controller</a></span> _itController;
+<a name="1099"></a>    local <span class="source_type"><a href="../r6engine/r6playercontroller.html" class="source">R6PlayerController</a></span> _playerController;
+<a name="1100"></a>    local <span class="source_type">string</span> szResultString;
+<a name="1101"></a>    local <span class="source_type">string</span> <span class="source_type">szPlayerName</span>;
+<a name="1102"></a>    local <span class="source_type">bool</span> _bResult;
+<a name="1103"></a>    
+<a name="1104"></a>
+<a name="1105"></a>    <span class="source_comment">// if no vote in progress or vote still in progress, then exit
+</span><a name="1106"></a>    if ((m_fEndKickVoteTime == <span class="source_int">0</span>) || (m_fEndKickVoteTime &gt; <span class="source_type">Level</span>.TimeSeconds) || (NumPlayers == <span class="source_int">0</span>))
+<a name="1107"></a>      return;
+<a name="1108"></a>
+<a name="1109"></a>    <span class="source_comment">// this is the end of vote period
+</span><a name="1110"></a>    m_fEndKickVoteTime = <span class="source_int">0</span>; <span class="source_comment">// reset timer.
+</span><a name="1111"></a>    _iForKickVotes = <span class="source_int">0</span>;
+<a name="1112"></a>    _iAgainstKickVotes = <span class="source_int">0</span>;
+<a name="1113"></a>
+<a name="1114"></a>    for (_itController=<span class="source_type">Level</span>.ControllerList; _itController!=None; _itController=_itController.NextController )
+<a name="1115"></a>    {
+<a name="1116"></a>        _playerController = <span class="source_type"><a href="../r6engine/r6playercontroller.html" class="source">R6PlayerController</a></span>(_itController);
+<a name="1117"></a>        if (_playerController != none)
+<a name="1118"></a>        {
+<a name="1119"></a>            switch(_playerController.m_iVoteResult)
+<a name="1120"></a>            {
+<a name="1121"></a>            case _playerController.K_VotedYes:
+<a name="1122"></a>                _iForKickVotes++;
+<a name="1123"></a>                break;
+<a name="1124"></a>            case _playerController.K_EmptyBallot:
+<a name="1125"></a>            case _playerController.K_VotedNo:
+<a name="1126"></a>                _iAgainstKickVotes++;
+<a name="1127"></a>                break;
+<a name="1128"></a>            default:
+<a name="1129"></a>                return;
+<a name="1130"></a>            }
+<a name="1131"></a>        }
+<a name="1132"></a>        <span class="source_comment">// reset this player's vote settings
+</span><a name="1133"></a>    }
+<a name="1134"></a>
+<a name="1135"></a>    
+<a name="1136"></a>    <span class="source_comment">// do we have enough votes to kick player?
+</span><a name="1137"></a>    if (_iForKickVotes &gt; (_iForKickVotes+_iAgainstKickVotes)/<span class="source_int">2</span> )
+<a name="1138"></a>    {
+<a name="1139"></a>        _bResult = true;
+<a name="1140"></a>        if (bShowLog) log(<span class="source_string">"&lt;&lt;KICK&gt;&gt; HandleKickVotesTick "</span>$_iForKickVotes$<span class="source_string">" voted yes "</span>$_iAgainstKickVotes$
+<a name="1141"></a>            <span class="source_string">" considered as voted no -- VOTE PASSES"</span>);
+<a name="1142"></a>        <span class="source_comment">// vote passes, kick player
+</span><a name="1143"></a>
+<a name="1144"></a>        <span class="source_type"><a href="../r6engine/r6playercontroller.html" class="source">R6PlayerController</a></span>(m_PlayerKick).ClientKickedOut();
+<a name="1145"></a>        m_PlayerKick.SpecialDestroy();
+<a name="1146"></a>    }
+<a name="1147"></a>    else
+<a name="1148"></a>    {
+<a name="1149"></a>        _bResult = false;
+<a name="1150"></a>        if (bShowLog) log(<span class="source_string">"&lt;&lt;KICK&gt;&gt; HandleKickVotesTick "</span>$_iForKickVotes$<span class="source_string">" voted yes "</span>$_iAgainstKickVotes$
+<a name="1151"></a>            <span class="source_string">" considered as voted no -- VOTE FAILS"</span>);
+<a name="1152"></a>        <span class="source_comment">// vote failed, player stays
+</span><a name="1153"></a>    }
+<a name="1154"></a>
+<a name="1155"></a>    <span class="source_type">szPlayerName</span> = m_PlayerKick.<span class="source_type"><a href="../engine/playerreplicationinfo.html" class="source">PlayerReplicationInfo</a></span>.PlayerName;
+<a name="1156"></a>    for (_itController=<span class="source_type">Level</span>.ControllerList; _itController!=None; _itController=_itController.NextController )
+<a name="1157"></a>    {
+<a name="1158"></a>        if (_itController.IsA(<span class="source_name">'R6PlayerController'</span>))
+<a name="1159"></a>            <span class="source_type"><a href="../r6engine/r6playercontroller.html" class="source">R6PlayerController</a></span>(_itController).ClientVoteResult(_bResult, <span class="source_type">szPlayerName</span>);
+<a name="1160"></a>    }
+<a name="1161"></a>    m_PlayerKick=none;
+<a name="1162"></a>    m_KickersName=<span class="source_string">""</span>;
+<a name="1163"></a>    
+<a name="1164"></a>}
+<a name="1165"></a>
+<a name="1166"></a>function LogVoteInfo()
+<a name="1167"></a>{
+<a name="1168"></a><span class="source_macro">#ifdefDebug
+</span><a name="1169"></a>    local <span class="source_type">int</span> _iForKickVotes;
+<a name="1170"></a>    local <span class="source_type">int</span> _iAgainstKickVotes;
+<a name="1171"></a>    local <span class="source_type">int</span> _VoteNotReceived;
+<a name="1172"></a>    local <span class="source_type"><a href="../engine/controller.html" class="source">Controller</a></span> _itController;
+<a name="1173"></a>    local <span class="source_type"><a href="../r6engine/r6playercontroller.html" class="source">R6PlayerController</a></span> _playerController;
+<a name="1174"></a>
+<a name="1175"></a>    log(<span class="source_string">"---   Vote Info Start   ---"</span>);
+<a name="1176"></a>    log(<span class="source_string">"Current time is "</span>$<span class="source_type">Level</span>.TimeSeconds);
+<a name="1177"></a>    if (m_fEndKickVoteTime == <span class="source_int">0</span>)
+<a name="1178"></a>    {
+<a name="1179"></a>        log(<span class="source_string">"No vote in progress"</span>);
+<a name="1180"></a>        for (_itController=<span class="source_type">Level</span>.ControllerList; _itController!=None; _itController=_itController.NextController )
+<a name="1181"></a>        {
+<a name="1182"></a>            _playerController = <span class="source_type"><a href="../r6engine/r6playercontroller.html" class="source">R6PlayerController</a></span>(_itController);
+<a name="1183"></a>            if (_playerController != none)
+<a name="1184"></a>            {
+<a name="1185"></a>                if ((_playerController.m_fLastVoteKickTime&gt;<span class="source_int">0</span>) && (<span class="source_type">Level</span>.TimeSeconds &lt; _playerController.m_fLastVoteKickTime + _playerController.K_KickFreqTime))
+<a name="1186"></a>                    log(_playerController.<span class="source_type"><a href="../engine/playerreplicationinfo.html" class="source">PlayerReplicationInfo</a></span>.PlayerName$<span class="source_string">" can't issue a vote request until time "</span>$(_playerController.m_fLastVoteKickTime + _playerController.K_KickFreqTime));
+<a name="1187"></a>                else
+<a name="1188"></a>                    log(_playerController.<span class="source_type"><a href="../engine/playerreplicationinfo.html" class="source">PlayerReplicationInfo</a></span>.PlayerName$<span class="source_string">" can issue a vote request"</span>);
+<a name="1189"></a>            }
+<a name="1190"></a>        }
+<a name="1191"></a>    }
+<a name="1192"></a>    else
+<a name="1193"></a>    {
+<a name="1194"></a>        log(<span class="source_string">"Vote in progress, no other votes allowed"</span>);
+<a name="1195"></a>        log(<span class="source_string">"Voting to kick "</span>$m_PlayerKick.<span class="source_type"><a href="../engine/playerreplicationinfo.html" class="source">PlayerReplicationInfo</a></span>.PlayerName$<span class="source_string">" voting may go on until time "</span>$m_fEndKickVoteTime);
+<a name="1196"></a>        log(<span class="source_string">"Current results are: "</span>);
+<a name="1197"></a>
+<a name="1198"></a>
+<a name="1199"></a>        for (_itController=<span class="source_type">Level</span>.ControllerList; _itController!=None; _itController=_itController.NextController )
+<a name="1200"></a>        {
+<a name="1201"></a>            _playerController = <span class="source_type"><a href="../r6engine/r6playercontroller.html" class="source">R6PlayerController</a></span>(_itController);
+<a name="1202"></a>            if (_playerController != none)
+<a name="1203"></a>            {
+<a name="1204"></a>                switch(_playerController.m_iVoteResult)
+<a name="1205"></a>                {
+<a name="1206"></a>                case _playerController.K_VotedYes:
+<a name="1207"></a>                    _iForKickVotes++;
+<a name="1208"></a>                    log(_playerController.<span class="source_type"><a href="../engine/playerreplicationinfo.html" class="source">PlayerReplicationInfo</a></span>.PlayerName$<span class="source_string">" voted YES"</span>);
+<a name="1209"></a>                    break;
+<a name="1210"></a>                case _playerController.K_EmptyBallot:
+<a name="1211"></a>                    log(_playerController.<span class="source_type"><a href="../engine/playerreplicationinfo.html" class="source">PlayerReplicationInfo</a></span>.PlayerName$<span class="source_string">" has not voted, counts as a NO"</span>);
+<a name="1212"></a>                    _VoteNotReceived++;
+<a name="1213"></a>                    break;
+<a name="1214"></a>
+<a name="1215"></a>                case _playerController.K_VotedNo:
+<a name="1216"></a>                    log(_playerController.<span class="source_type"><a href="../engine/playerreplicationinfo.html" class="source">PlayerReplicationInfo</a></span>.PlayerName$<span class="source_string">" voted NO"</span>);
+<a name="1217"></a>                    _iAgainstKickVotes++;
+<a name="1218"></a>                    break;
+<a name="1219"></a>                default:
+<a name="1220"></a>                    return;
+<a name="1221"></a>                }
+<a name="1222"></a>            }
+<a name="1223"></a>        }
+<a name="1224"></a>        log(_iForKickVotes$<span class="source_string">" votes for YES"</span>);
+<a name="1225"></a>        log(_iAgainstKickVotes$<span class="source_string">" votes for NO"</span>);
+<a name="1226"></a>        log(_VoteNotReceived$<span class="source_string">" players not voted yet, counts as NO"</span>);
+<a name="1227"></a>    }
+<a name="1228"></a>    
+<a name="1229"></a>    log(<span class="source_string">"---   Vote Info End   ---"</span>);
+<a name="1230"></a><span class="source_macro">#endif
+</span><a name="1231"></a>}
+<a name="1232"></a>
+<a name="1233"></a>defaultproperties
+<a name="1234"></a>{
+<a name="1235"></a>     m_bCompilingStats=False
+<a name="1236"></a>}
+<a name="1237"></a></pre></td></tr></table></div>
+<hr />
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../r6game/r6game-overview.html">Package</a></td>
+	<td class="header"><a href="../r6game/r6multiplayergameinfo.html">Class</a></td>
+	<td class="header_hilight">Source</td>
+	<td class="header"><a class="header" href="../classtree.html#R6MultiPlayerGameInfo">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../Source_r6game/r6mobjtimer.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../Source_r6game/r6noisemgr.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+
+<div class="stats">Class file time: sam. 18/9/2004 14:39:28.000 - Creation time: mar. 26/5/2026 18:33:20.821 - Created with <a href="http://wiki.beyondunreal.com/wiki/UnCodeX" target="_blank">UnCodeX</a></div>
+
+</body>
+</html>

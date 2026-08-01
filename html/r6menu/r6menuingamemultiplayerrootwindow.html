@@ -1,0 +1,697 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+	<title>UnCodeX - R6Menu.R6MenuInGameMultiPlayerRootWindow</title>
+	<meta name="Generator" content="UnCodeX 241" />
+	<link rel="stylesheet" href="../DocStyle2.css" type="text/css" title="Original Purple" />
+	<link rel="alternative stylesheet" href="../DocStyle2-blue.css" type="text/css" title="Blue" />
+	<link rel="alternative stylesheet" href="../DocStyle2-red.css" type="text/css" title="Red" />
+	<!--[if IE]>
+	<link rel="stylesheet" href="../DocStyle2-msie.css" type="text/css" />
+	<![endif]-->
+	<script src="../styleswitcher.js" type="text/javascript"></script>
+</head>
+<body>
+
+<div class="header">
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../r6menu/r6menu-overview.html">Package</a></td>
+	<td class="header_hilight">Class</td>
+	<td class="header"><a href="../Source_r6menu/r6menuingamemultiplayerrootwindow.html">Source</a></td>
+	<td class="header"><a class="header" href="../classtree.html#R6MenuInGameMultiPlayerRootWindow">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../r6menu/r6menuingameinstructionwidget.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../r6menu/r6menuingameoperativeselectorwidget.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html#r6menu/r6menuingamemultiplayerrootwindow.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+</div>
+<div class="spacer"></div>
+
+<h1><a href="../r6menu/r6menu-overview.html">R6Menu</a>.R6MenuInGameMultiPlayerRootWindow</h1>
+
+<dl>
+<dt>Extends</dt><dd><a href="../r6window/r6windowrootwindow.html">R6WindowRootWindow</a></dd>
+
+</dl>
+
+<p></p>
+
+<pre class="tree"><a href="../core/core-overview.html">core</a>.<a href="../core/object.html">Object</a>
+|   
++-- <a href="../uwindow/uwindow-overview.html">UWindow</a>.<a href="../uwindow/uwindowbase.html">UWindowBase</a>
+   |   
+   +-- <a href="../uwindow/uwindow-overview.html">UWindow</a>.<a href="../uwindow/uwindowwindow.html">UWindowWindow</a>
+      |   
+      +-- <a href="../uwindow/uwindow-overview.html">UWindow</a>.<a href="../uwindow/uwindowrootwindow.html">UWindowRootWindow</a>
+         |   
+         +-- <a href="../r6window/r6window-overview.html">R6Window</a>.<a href="../r6window/r6windowrootwindow.html">R6WindowRootWindow</a>
+            |   
+            +-- <a href="../r6menu/r6menu-overview.html">R6Menu</a>.<a href="../r6menu/r6menuingamemultiplayerrootwindow.html">R6MenuInGameMultiPlayerRootWindow</a>
+</pre>
+
+
+
+<hr />
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Constants Summary</th>
+</tr>
+<tr><td width="40%"><a href="#_C_iESC_POP_UP_HEIGHT" name="C_iESC_POP_UP_HEIGHT" title="go to the details">C_iESC_POP_UP_HEIGHT</a></td><td width="10%">=</td><td width="50%">30</td></tr>
+<tr><td width="40%"><a href="#_C_iWKA_ALL" name="C_iWKA_ALL" title="go to the details">C_iWKA_ALL</a></td><td width="10%">=</td><td width="50%">0x3F</td></tr>
+<tr><td width="40%"><a href="#_C_iWKA_DRAWINGTOOL" name="C_iWKA_DRAWINGTOOL" title="go to the details">C_iWKA_DRAWINGTOOL</a></td><td width="10%">=</td><td width="50%">0x04</td></tr>
+<tr><td width="40%"><a href="#_C_iWKA_ESC" name="C_iWKA_ESC" title="go to the details">C_iWKA_ESC</a></td><td width="10%">=</td><td width="50%">0x20</td></tr>
+<tr><td width="40%"><a href="#_C_iWKA_INBETROUND" name="C_iWKA_INBETROUND" title="go to the details">C_iWKA_INBETROUND</a></td><td width="10%">=</td><td width="50%">0x01</td></tr>
+<tr><td width="40%"><a href="#_C_iWKA_INGAME" name="C_iWKA_INGAME" title="go to the details">C_iWKA_INGAME</a></td><td width="10%">=</td><td width="50%">0x1F</td></tr>
+<tr><td width="40%"><a href="#_C_iWKA_MENUCOUNTDOWN" name="C_iWKA_MENUCOUNTDOWN" title="go to the details">C_iWKA_MENUCOUNTDOWN</a></td><td width="10%">=</td><td width="50%">0x10</td></tr>
+<tr><td width="40%"><a href="#_C_iWKA_NONE" name="C_iWKA_NONE" title="go to the details">C_iWKA_NONE</a></td><td width="10%">=</td><td width="50%">0x00</td></tr>
+<tr><td width="40%"><a href="#_C_iWKA_PRERECMESSAGES" name="C_iWKA_PRERECMESSAGES" title="go to the details">C_iWKA_PRERECMESSAGES</a></td><td width="10%">=</td><td width="50%">0x02</td></tr>
+<tr><td width="40%"><a href="#_C_iWKA_TOGGLE_STATS" name="C_iWKA_TOGGLE_STATS" title="go to the details">C_iWKA_TOGGLE_STATS</a></td><td width="10%">=</td><td width="50%">0x08</td></tr>
+
+</table>
+
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th colspan="2" class="title">Variables Summary</th>
+</tr>
+<tr><td nowrap="nowrap" width="33%">BOOL</td><td width="66%"><a href="#_bShowLog" name="bShowLog" title="go to the details">bShowLog</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">BOOL</td><td width="66%"><a href="#_m_bActiveBar" name="m_bActiveBar" title="go to the details">m_bActiveBar</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">BOOL</td><td width="66%"><a href="#_m_bActiveVoteMenu" name="m_bActiveVoteMenu" title="go to the details">m_bActiveVoteMenu</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">BOOL</td><td width="66%"><a href="#_m_bCanDisplayOperativeSelector" name="m_bCanDisplayOperativeSelector" title="go to the details">m_bCanDisplayOperativeSelector</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">BOOL</td><td width="66%"><a href="#_m_bJoinTeamWidget" name="m_bJoinTeamWidget" title="go to the details">m_bJoinTeamWidget</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">BOOL</td><td width="66%"><a href="#_m_bMenuInvalid" name="m_bMenuInvalid" title="go to the details">m_bMenuInvalid</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">BOOL</td><td width="66%"><a href="#_m_bPlayerDidASelection" name="m_bPlayerDidASelection" title="go to the details">m_bPlayerDidASelection</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">BOOL</td><td width="66%"><a href="#_m_bPreventMenuSwitch" name="m_bPreventMenuSwitch" title="go to the details">m_bPreventMenuSwitch</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">BOOL</td><td width="66%"><a href="#_m_bTrapKey" name="m_bTrapKey" title="go to the details">m_bTrapKey</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">Actor.EGameModeInfo</td><td width="66%"><a href="#_m_eCurrentGameMode" name="m_eCurrentGameMode" title="go to the details">m_eCurrentGameMode</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../r6menu/r6menuingameoperativeselectorwidget.html">R6MenuInGameOperativeSelectorWidget</a></td><td width="66%"><a href="#_m_InGameOperativeSelectorWidget" name="m_InGameOperativeSelectorWidget" title="go to the details">m_InGameOperativeSelectorWidget</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../r6menu/r6menuingamewritablemapwidget.html">R6MenuInGameWritableMapWidget</a></td><td width="66%"><a href="#_m_InGameWritableMapWidget" name="m_InGameWritableMapWidget" title="go to the details">m_InGameWritableMapWidget</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../r6menu/r6menumpcountdown.html">R6MenuMPCountDown</a></td><td width="66%"><a href="#_m_pCountDownWidget" name="m_pCountDownWidget" title="go to the details">m_pCountDownWidget</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../r6menu/r6menumpingamemsgdefensive.html">R6MenuMPInGameMsgDefensive</a></td><td width="66%"><a href="#_m_pDefensiveMenuWidget" name="m_pDefensiveMenuWidget" title="go to the details">m_pDefensiveMenuWidget</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../r6menu/r6menumpingameesc.html">R6MenuMPInGameEsc</a></td><td width="66%"><a href="#_m_pInGameEscMenu" name="m_pInGameEscMenu" title="go to the details">m_pInGameEscMenu</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../r6menu/r6menumpinterwidget.html">R6MenuMPInterWidget</a></td><td width="66%"><a href="#_m_pIntermissionMenuWidget" name="m_pIntermissionMenuWidget" title="go to the details">m_pIntermissionMenuWidget</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../r6menu/r6menumpjointeamwidget.html">R6MenuMPJoinTeamWidget</a></td><td width="66%"><a href="#_m_pJoinTeamWidget" name="m_pJoinTeamWidget" title="go to the details">m_pJoinTeamWidget</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../r6menu/r6menumpingamemsgoffensive.html">R6MenuMPInGameMsgOffensive</a></td><td width="66%"><a href="#_m_pOffensiveMenuWidget" name="m_pOffensiveMenuWidget" title="go to the details">m_pOffensiveMenuWidget</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../r6menu/r6menuoptionswidget.html">R6MenuOptionsWidget</a></td><td width="66%"><a href="#_m_pOptionsWidget" name="m_pOptionsWidget" title="go to the details">m_pOptionsWidget</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../r6menu/r6menumpingamerecmessages.html">R6MenuMPInGameRecMessages</a></td><td width="66%"><a href="#_m_pRecMessagesMenuWidget" name="m_pRecMessagesMenuWidget" title="go to the details">m_pRecMessagesMenuWidget</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../r6menu/r6menumpingamemsgreply.html">R6MenuMPInGameMsgReply</a></td><td width="66%"><a href="#_m_pReplyMenuWidget" name="m_pReplyMenuWidget" title="go to the details">m_pReplyMenuWidget</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../r6menu/r6menumpingamemsgstatus.html">R6MenuMPInGameMsgStatus</a></td><td width="66%"><a href="#_m_pStatusMenuWidget" name="m_pStatusMenuWidget" title="go to the details">m_pStatusMenuWidget</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../r6menu/r6menumpingamevote.html">R6MenuMPInGameVote</a></td><td width="66%"><a href="#_m_pVoteWidget" name="m_pVoteWidget" title="go to the details">m_pVoteWidget</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../r6menu/r6mpgamemenucom.html">R6MPGameMenuCom</a></td><td width="66%"><a href="#_m_R6GameMenuCom" name="m_R6GameMenuCom" title="go to the details">m_R6GameMenuCom</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../core/object.html#Region">Region</a></td><td width="66%"><a href="#_m_REscPopUp" name="m_REscPopUp" title="go to the details">m_REscPopUp</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../core/object.html#Region">Region</a></td><td width="66%"><a href="#_m_RInterWidget" name="m_RInterWidget" title="go to the details">m_RInterWidget</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../core/object.html#Region">Region</a></td><td width="66%"><a href="#_m_RJoinWidget" name="m_RJoinWidget" title="go to the details">m_RJoinWidget</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">Sound</td><td width="66%"><a href="#_m_sndCloseDrawingTool" name="m_sndCloseDrawingTool" title="go to the details">m_sndCloseDrawingTool</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">Sound</td><td width="66%"><a href="#_m_sndOpenDrawingTool" name="m_sndOpenDrawingTool" title="go to the details">m_sndOpenDrawingTool</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_m_szCurrentGameModeLoc" name="m_szCurrentGameModeLoc" title="go to the details">m_szCurrentGameModeLoc</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_m_szCurrentGameType" name="m_szCurrentGameType" title="go to the details">m_szCurrentGameType</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_m_szGameModeLoc[2]" name="m_szGameModeLoc[2]" title="go to the details">m_szGameModeLoc[2]</a></td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Variables from <a href="../r6window/r6window-overview.html">R6Window</a>.<a href="../r6window/r6windowrootwindow.html">R6WindowRootWindow</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../r6window/r6windowrootwindow.html#m_BGTexture[2]">m_BGTexture[2]</a>, <a href="../r6window/r6windowrootwindow.html#m_iLastKeyDown">m_iLastKeyDown</a>, <a href="../r6window/r6windowrootwindow.html#m_iWidgetKA">m_iWidgetKA</a>, <a href="../r6window/r6windowrootwindow.html#m_pListOfActiveWidget">m_pListOfActiveWidget</a>, <a href="../r6window/r6windowrootwindow.html#m_pListOfFramePopUp">m_pListOfFramePopUp</a>, <a href="../r6window/r6windowrootwindow.html#m_pListOfKeyAvailability">m_pListOfKeyAvailability</a>, <a href="../r6window/r6windowrootwindow.html#m_pSimplePopUp">m_pSimplePopUp</a>, <a href="../r6window/r6windowrootwindow.html#m_RAddDlgSimplePopUp">m_RAddDlgSimplePopUp</a>, <a href="../r6window/r6windowrootwindow.html#m_RSimplePopUp">m_RSimplePopUp</a>, <a href="../r6window/r6windowrootwindow.html#m_szCurrentBackgroundSubDirectory">m_szCurrentBackgroundSubDirectory</a></td>
+</tr>
+</table>
+<table>
+<tr>
+	<th class="inherittitle">Inherited Variables from <a href="../uwindow/uwindow-overview.html">UWindow</a>.<a href="../uwindow/uwindowrootwindow.html">UWindowRootWindow</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../uwindow/uwindowrootwindow.html#AimCursor">AimCursor</a>, <a href="../uwindow/uwindowrootwindow.html#bAllowConsole">bAllowConsole</a>, <a href="../uwindow/uwindowrootwindow.html#bMouseCapture">bMouseCapture</a>, <a href="../uwindow/uwindowrootwindow.html#bRequestQuit">bRequestQuit</a>, <a href="../uwindow/uwindowrootwindow.html#Colors">Colors</a>, <a href="../uwindow/uwindowrootwindow.html#Console">Console</a>, <a href="../uwindow/uwindowrootwindow.html#DiagCursor1">DiagCursor1</a>, <a href="../uwindow/uwindowrootwindow.html#DiagCursor2">DiagCursor2</a>, <a href="../uwindow/uwindowrootwindow.html#DragCursor">DragCursor</a>, <a href="../uwindow/uwindowrootwindow.html#FocusedWindow">FocusedWindow</a>, <a href="../uwindow/uwindowrootwindow.html#Fonts[30]">Fonts[30]</a>, <a href="../uwindow/uwindowrootwindow.html#GUIScale">GUIScale</a>, <a href="../uwindow/uwindowrootwindow.html#HandCursor">HandCursor</a>, <a href="../uwindow/uwindowrootwindow.html#HotkeyWindows">HotkeyWindows</a>, <a href="../uwindow/uwindowrootwindow.html#HSplitCursor">HSplitCursor</a>, <a href="../uwindow/uwindowrootwindow.html#KeyFocusWindow">KeyFocusWindow</a>, <a href="../uwindow/uwindowrootwindow.html#LookAndFeelClass">LookAndFeelClass</a>, <a href="../uwindow/uwindowrootwindow.html#LooksAndFeels[20]">LooksAndFeels[20]</a>, <a href="../uwindow/uwindowrootwindow.html#MenuClassDefines">MenuClassDefines</a>, <a href="../uwindow/uwindowrootwindow.html#MouseWindow">MouseWindow</a>, <a href="../uwindow/uwindowrootwindow.html#MouseX">MouseX</a>, <a href="../uwindow/uwindowrootwindow.html#MouseY">MouseY</a>, <a href="../uwindow/uwindowrootwindow.html#MoveCursor">MoveCursor</a>, <a href="../uwindow/uwindowrootwindow.html#m_bScaleWindowToRoot">m_bScaleWindowToRoot</a>, <a href="../uwindow/uwindowrootwindow.html#m_bUseAimIcon">m_bUseAimIcon</a>, <a href="../uwindow/uwindowrootwindow.html#m_bUseDragIcon">m_bUseDragIcon</a>, <a href="../uwindow/uwindowrootwindow.html#m_bWidgetResolutionFix">m_bWidgetResolutionFix</a>, <a href="../uwindow/uwindowrootwindow.html#m_eCurWidgetInUse">m_eCurWidgetInUse</a>, <a href="../uwindow/uwindowrootwindow.html#m_ePrevWidgetInUse">m_ePrevWidgetInUse</a>, <a href="../uwindow/uwindowrootwindow.html#m_eRootId">m_eRootId</a>, <a href="../uwindow/uwindowrootwindow.html#m_fWindowScaleX">m_fWindowScaleX</a>, <a href="../uwindow/uwindowrootwindow.html#m_fWindowScaleY">m_fWindowScaleY</a>, <a href="../uwindow/uwindowrootwindow.html#NormalCursor">NormalCursor</a>, <a href="../uwindow/uwindowrootwindow.html#NSCursor">NSCursor</a>, <a href="../uwindow/uwindowrootwindow.html#OldMouseX">OldMouseX</a>, <a href="../uwindow/uwindowrootwindow.html#OldMouseY">OldMouseY</a>, <a href="../uwindow/uwindowrootwindow.html#QuitTime">QuitTime</a>, <a href="../uwindow/uwindowrootwindow.html#RealHeight">RealHeight</a>, <a href="../uwindow/uwindowrootwindow.html#RealWidth">RealWidth</a>, <a href="../uwindow/uwindowrootwindow.html#VSplitCursor">VSplitCursor</a>, <a href="../uwindow/uwindowrootwindow.html#WaitCursor">WaitCursor</a>, <a href="../uwindow/uwindowrootwindow.html#WECursor">WECursor</a></td>
+</tr>
+</table>
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Enumerations Summary</th>
+</tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Enumerations from <a href="../uwindow/uwindow-overview.html">UWindow</a>.<a href="../uwindow/uwindowrootwindow.html">UWindowRootWindow</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../uwindow/uwindowrootwindow.html#eGameWidgetID">eGameWidgetID</a>, <a href="../uwindow/uwindowrootwindow.html#eRootID">eRootID</a></td>
+</tr>
+</table>
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Structures Summary</th>
+</tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Structures from <a href="../r6window/r6window-overview.html">R6Window</a>.<a href="../r6window/r6windowrootwindow.html">R6WindowRootWindow</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../r6window/r6windowrootwindow.html#stKeyAvailability">stKeyAvailability</a>, <a href="../r6window/r6windowrootwindow.html#StWidget">StWidget</a></td>
+</tr>
+</table>
+
+
+<br />
+
+
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Functions Summary</th>
+</tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_ChangeCurrentWidget-" name="ChangeCurrentWidget" title="go to the details">ChangeCurrentWidget</a> (eGameWidgetID widgetID ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_ChangeWidget-" name="ChangeWidget" title="go to the details">ChangeWidget</a> (<a href="../uwindow/uwindowrootwindow.html#eGameWidgetID">eGameWidgetID</a> widgetID, BOOL _bClearPrevWInHistory, BOOL _bCloseAll))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_CloseSimplePopUpBox-" name="CloseSimplePopUpBox" title="go to the details">CloseSimplePopUpBox</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_Created-" name="Created" title="go to the details">Created</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_DrawMouse-" name="DrawMouse" title="go to the details">DrawMouse</a> (<a href="../engine/canvas.html">Canvas</a> C))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_FillListOfKeyAvailability-" name="FillListOfKeyAvailability" title="go to the details">FillListOfKeyAvailability</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>BOOL&nbsp;</td><td><a href="#_IsGameMenuComInitialized-" name="IsGameMenuComInitialized" title="go to the details">IsGameMenuComInitialized</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_MenuLoadProfile-" name="MenuLoadProfile" title="go to the details">MenuLoadProfile</a> (BOOL _bServerProfile))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_MoveMouse-" name="MoveMouse" title="go to the details">MoveMouse</a> (float X, float Y))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_NotifyAfterLevelChange-" name="NotifyAfterLevelChange" title="go to the details">NotifyAfterLevelChange</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_NotifyBeforeLevelChange-" name="NotifyBeforeLevelChange" title="go to the details">NotifyBeforeLevelChange</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_Paint-" name="Paint" title="go to the details">Paint</a> (<a href="../engine/canvas.html">Canvas</a> C, float X, float Y))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_PopUpBoxDone-" name="PopUpBoxDone" title="go to the details">PopUpBoxDone</a> (<a href="../uwindow/uwindowbase.html#MessageBoxResult">MessageBoxResult</a> Result, <a href="../uwindow/uwindowbase.html#EPopUpID">ePopUpID</a> _ePopUpID))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>BOOL&nbsp;</td><td><a href="#_ProcessKeyDown-" name="ProcessKeyDown" title="go to the details">ProcessKeyDown</a> (int Key))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>BOOL&nbsp;</td><td><a href="#_ProcessKeyUp-" name="ProcessKeyUp" title="go to the details">ProcessKeyUp</a> (int Key))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_SimplePopUp-" name="SimplePopUp" title="go to the details">SimplePopUp</a> (string _szTitle, string _szText, <a href="../uwindow/uwindowbase.html#EPopUpID">ePopUpID</a> _ePopUpID, optional INT _iButtonsType, OPTIONAL BOOL bAddDisableDlg, optional <a href="../uwindow/uwindowwindow.html">UWindowWindow</a> OwnerWindow))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_Tick-" name="Tick" title="go to the details">Tick</a> (float Delta))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>BOOL&nbsp;</td><td><a href="#_TrapKey-" name="TrapKey" title="go to the details">TrapKey</a> (BOOL _bIncludeMouseMove))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_UpdateCurrentGameMode-" name="UpdateCurrentGameMode" title="go to the details">UpdateCurrentGameMode</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_UpdateTimeInBetRound-" name="UpdateTimeInBetRound" title="go to the details">UpdateTimeInBetRound</a> (INT _iNewTime, OPTIONAL string _StringInstead))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_VoteMenu-" name="VoteMenu" title="go to the details">VoteMenu</a> (string _szPlayerNameToKick, bool _ActiveMenu))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_WindowEvent-" name="WindowEvent" title="go to the details">WindowEvent</a> (<a href="../uwindow/uwindowwindow.html#WinMessage">WinMessage</a> Msg, <a href="../engine/canvas.html">Canvas</a> C, float X, float Y, int Key))<br /><span class="function_state"></span></td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Functions from <a href="../r6window/r6window-overview.html">R6Window</a>.<a href="../r6window/r6windowrootwindow.html">R6WindowRootWindow</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../r6window/r6windowrootwindow.html#AddKeyInList">AddKeyInList</a>, <a href="../r6window/r6windowrootwindow.html#CheckConsoleTypingState">CheckConsoleTypingState</a>, <a href="../r6window/r6windowrootwindow.html#CloseAllWindow">CloseAllWindow</a>, <a href="../r6window/r6windowrootwindow.html#FillListOfKeyAvailability">FillListOfKeyAvailability</a>, <a href="../r6window/r6windowrootwindow.html#GetMapNameLocalisation">GetMapNameLocalisation</a>, <a href="../r6window/r6windowrootwindow.html#GetPopUpFrame">GetPopUpFrame</a>, <a href="../r6window/r6windowrootwindow.html#GetSimplePopUpID">GetSimplePopUpID</a>, <a href="../r6window/r6windowrootwindow.html#IsWidgetIsInHistory">IsWidgetIsInHistory</a>, <a href="../r6window/r6windowrootwindow.html#ManagePrevWInHistory">ManagePrevWInHistory</a>, <a href="../r6window/r6windowrootwindow.html#ModifyPopUpInsideText">ModifyPopUpInsideText</a>, <a href="../r6window/r6windowrootwindow.html#PaintBackground">PaintBackground</a>, <a href="../r6window/r6windowrootwindow.html#PopUpBoxDone">PopUpBoxDone</a>, <a href="../r6window/r6windowrootwindow.html#SetLoadRandomBackgroundImage">SetLoadRandomBackgroundImage</a>, <a href="../r6window/r6windowrootwindow.html#SimplePopUp">SimplePopUp</a>, <a href="../r6window/r6windowrootwindow.html#SimpleTextPopUp">SimpleTextPopUp</a></td>
+</tr>
+</table>
+<table>
+<tr>
+	<th class="inherittitle">Inherited Functions from <a href="../uwindow/uwindow-overview.html">UWindow</a>.<a href="../uwindow/uwindowrootwindow.html">UWindowRootWindow</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../uwindow/uwindowrootwindow.html#AddHotkeyWindow">AddHotkeyWindow</a>, <a href="../uwindow/uwindowrootwindow.html#BeginPlay">BeginPlay</a>, <a href="../uwindow/uwindowrootwindow.html#CancelCapture">CancelCapture</a>, <a href="../uwindow/uwindowrootwindow.html#CaptureMouse">CaptureMouse</a>, <a href="../uwindow/uwindowrootwindow.html#ChangeCurrentWidget">ChangeCurrentWidget</a>, <a href="../uwindow/uwindowrootwindow.html#ChangeInstructionWidget">ChangeInstructionWidget</a>, <a href="../uwindow/uwindowrootwindow.html#ChangeLookAndFeel">ChangeLookAndFeel</a>, <a href="../uwindow/uwindowrootwindow.html#CheckCaptureMouseDown">CheckCaptureMouseDown</a>, <a href="../uwindow/uwindowrootwindow.html#CheckCaptureMouseUp">CheckCaptureMouseUp</a>, <a href="../uwindow/uwindowrootwindow.html#CloseActiveWindow">CloseActiveWindow</a>, <a href="../uwindow/uwindowrootwindow.html#Created">Created</a>, <a href="../uwindow/uwindowrootwindow.html#DoQuitGame">DoQuitGame</a>, <a href="../uwindow/uwindowrootwindow.html#DrawBackGroundEffect">DrawBackGroundEffect</a>, <a href="../uwindow/uwindowrootwindow.html#DrawMouse">DrawMouse</a>, <a href="../uwindow/uwindowrootwindow.html#GetGameWidgetID">GetGameWidgetID</a>, <a href="../uwindow/uwindowrootwindow.html#GetLookAndFeel">GetLookAndFeel</a>, <a href="../uwindow/uwindowrootwindow.html#GetLookAndFeelTexture">GetLookAndFeelTexture</a>, <a href="../uwindow/uwindowrootwindow.html#GetMapNameLocalisation">GetMapNameLocalisation</a>, <a href="../uwindow/uwindowrootwindow.html#GetSimplePopUpID">GetSimplePopUpID</a>, <a href="../uwindow/uwindowrootwindow.html#HideWindow">HideWindow</a>, <a href="../uwindow/uwindowrootwindow.html#HotKeyDown">HotKeyDown</a>, <a href="../uwindow/uwindowrootwindow.html#HotKeyUp">HotKeyUp</a>, <a href="../uwindow/uwindowrootwindow.html#IsActive">IsActive</a>, <a href="../uwindow/uwindowrootwindow.html#IsAHotKeyWindow">IsAHotKeyWindow</a>, <a href="../uwindow/uwindowrootwindow.html#ModifyPopUpInsideText">ModifyPopUpInsideText</a>, <a href="../uwindow/uwindowrootwindow.html#MouseUpDown">MouseUpDown</a>, <a href="../uwindow/uwindowrootwindow.html#MoveMouse">MoveMouse</a>, <a href="../uwindow/uwindowrootwindow.html#PaintBackground">PaintBackground</a>, <a href="../uwindow/uwindowrootwindow.html#PlanningShouldDrawPath">PlanningShouldDrawPath</a>, <a href="../uwindow/uwindowrootwindow.html#PlanningShouldProcessKey">PlanningShouldProcessKey</a>, <a href="../uwindow/uwindowrootwindow.html#QuitGame">QuitGame</a>, <a href="../uwindow/uwindowrootwindow.html#RemoveHotkeyWindow">RemoveHotkeyWindow</a>, <a href="../uwindow/uwindowrootwindow.html#ResetMenus">ResetMenus</a>, <a href="../uwindow/uwindowrootwindow.html#Resized">Resized</a>, <a href="../uwindow/uwindowrootwindow.html#SaveTrainingPlanning">SaveTrainingPlanning</a>, <a href="../uwindow/uwindowrootwindow.html#SetLoadRandomBackgroundImage">SetLoadRandomBackgroundImage</a>, <a href="../uwindow/uwindowrootwindow.html#SetMousePos">SetMousePos</a>, <a href="../uwindow/uwindowrootwindow.html#SetNewMODS">SetNewMODS</a>, <a href="../uwindow/uwindowrootwindow.html#SetResolution">SetResolution</a>, <a href="../uwindow/uwindowrootwindow.html#SetScale">SetScale</a>, <a href="../uwindow/uwindowrootwindow.html#SetupFonts">SetupFonts</a>, <a href="../uwindow/uwindowrootwindow.html#SimplePopUp">SimplePopUp</a>, <a href="../uwindow/uwindowrootwindow.html#StopPlayMode">StopPlayMode</a>, <a href="../uwindow/uwindowrootwindow.html#Tick">Tick</a>, <a href="../uwindow/uwindowrootwindow.html#TrapKey">TrapKey</a>, <a href="../uwindow/uwindowrootwindow.html#UpdateMenus">UpdateMenus</a>, <a href="../uwindow/uwindowrootwindow.html#WindowEvent">WindowEvent</a></td>
+</tr>
+</table>
+
+
+<br />
+
+
+
+<hr />
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Constants Detail</th>
+</tr>
+</table>
+
+<h4><a name="_C_iESC_POP_UP_HEIGHT" class="hidden"></a>C_iESC_POP_UP_HEIGHT <a href="../Source_r6menu/r6menuingamemultiplayerrootwindow.html#12" class="small">Source code</a></h4>
+<div class="declaration">const C_iESC_POP_UP_HEIGHT = <span class="source_int">30</span>;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_C_iWKA_ALL" class="hidden"></a>C_iWKA_ALL <a href="../Source_r6menu/r6menuingamemultiplayerrootwindow.html#24" class="small">Source code</a></h4>
+<div class="declaration">const C_iWKA_ALL = <span class="source_int">0x3F</span>;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_C_iWKA_DRAWINGTOOL" class="hidden"></a>C_iWKA_DRAWINGTOOL <a href="../Source_r6menu/r6menuingamemultiplayerrootwindow.html#18" class="small">Source code</a></h4>
+<div class="declaration">const C_iWKA_DRAWINGTOOL = <span class="source_int">0x04</span>;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_C_iWKA_ESC" class="hidden"></a>C_iWKA_ESC <a href="../Source_r6menu/r6menuingamemultiplayerrootwindow.html#21" class="small">Source code</a></h4>
+<div class="declaration">const C_iWKA_ESC = <span class="source_int">0x20</span>;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_C_iWKA_INBETROUND" class="hidden"></a>C_iWKA_INBETROUND <a href="../Source_r6menu/r6menuingamemultiplayerrootwindow.html#16" class="small">Source code</a></h4>
+<div class="declaration">const C_iWKA_INBETROUND = <span class="source_int">0x01</span>;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_C_iWKA_INGAME" class="hidden"></a>C_iWKA_INGAME <a href="../Source_r6menu/r6menuingamemultiplayerrootwindow.html#23" class="small">Source code</a></h4>
+<div class="declaration">const C_iWKA_INGAME = <span class="source_int">0x1F</span>;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_C_iWKA_MENUCOUNTDOWN" class="hidden"></a>C_iWKA_MENUCOUNTDOWN <a href="../Source_r6menu/r6menuingamemultiplayerrootwindow.html#20" class="small">Source code</a></h4>
+<div class="declaration">const C_iWKA_MENUCOUNTDOWN = <span class="source_int">0x10</span>;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_C_iWKA_NONE" class="hidden"></a>C_iWKA_NONE <a href="../Source_r6menu/r6menuingamemultiplayerrootwindow.html#15" class="small">Source code</a></h4>
+<div class="declaration">const C_iWKA_NONE = <span class="source_int">0x00</span>;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_C_iWKA_PRERECMESSAGES" class="hidden"></a>C_iWKA_PRERECMESSAGES <a href="../Source_r6menu/r6menuingamemultiplayerrootwindow.html#17" class="small">Source code</a></h4>
+<div class="declaration">const C_iWKA_PRERECMESSAGES = <span class="source_int">0x02</span>;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_C_iWKA_TOGGLE_STATS" class="hidden"></a>C_iWKA_TOGGLE_STATS <a href="../Source_r6menu/r6menuingamemultiplayerrootwindow.html#19" class="small">Source code</a></h4>
+<div class="declaration">const C_iWKA_TOGGLE_STATS = <span class="source_int">0x08</span>;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th class="title">Variables Detail</th>
+</tr>
+</table>
+
+<h4><a name="_bShowLog" class="hidden"></a>bShowLog <a href="../Source_r6menu/r6menuingamemultiplayerrootwindow.html#45" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">BOOL</span> bShowLog;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_bActiveBar" class="hidden"></a>m_bActiveBar <a href="../Source_r6menu/r6menuingamemultiplayerrootwindow.html#46" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">BOOL</span> m_bActiveBar;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_bActiveVoteMenu" class="hidden"></a>m_bActiveVoteMenu <a href="../Source_r6menu/r6menuingamemultiplayerrootwindow.html#47" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">BOOL</span> m_bActiveVoteMenu;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_bCanDisplayOperativeSelector" class="hidden"></a>m_bCanDisplayOperativeSelector <a href="../Source_r6menu/r6menuingamemultiplayerrootwindow.html#48" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">BOOL</span> m_bCanDisplayOperativeSelector;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_bJoinTeamWidget" class="hidden"></a>m_bJoinTeamWidget <a href="../Source_r6menu/r6menuingamemultiplayerrootwindow.html#62" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">BOOL</span> m_bJoinTeamWidget;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_bMenuInvalid" class="hidden"></a>m_bMenuInvalid <a href="../Source_r6menu/r6menuingamemultiplayerrootwindow.html#60" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">BOOL</span> m_bMenuInvalid;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_bPlayerDidASelection" class="hidden"></a>m_bPlayerDidASelection <a href="../Source_r6menu/r6menuingamemultiplayerrootwindow.html#61" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">BOOL</span> m_bPlayerDidASelection;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_bPreventMenuSwitch" class="hidden"></a>m_bPreventMenuSwitch <a href="../Source_r6menu/r6menuingamemultiplayerrootwindow.html#56" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">BOOL</span> m_bPreventMenuSwitch;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_bTrapKey" class="hidden"></a>m_bTrapKey <a href="../Source_r6menu/r6menuingamemultiplayerrootwindow.html#63" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">BOOL</span> m_bTrapKey;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_eCurrentGameMode" class="hidden"></a>m_eCurrentGameMode <a href="../Source_r6menu/r6menuingamemultiplayerrootwindow.html#50" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../engine/actor.html" class="source">Actor</a></span>.<span class="source_type"><a href="../engine/actor.html#EGameModeInfo" class="source">EGameModeInfo</a></span> m_eCurrentGameMode;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_InGameOperativeSelectorWidget" class="hidden"></a>m_InGameOperativeSelectorWidget <a href="../Source_r6menu/r6menuingamemultiplayerrootwindow.html#39" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../r6menu/r6menuingameoperativeselectorwidget.html" class="source">R6MenuInGameOperativeSelectorWidget</a></span> m_InGameOperativeSelectorWidget;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_InGameWritableMapWidget" class="hidden"></a>m_InGameWritableMapWidget <a href="../Source_r6menu/r6menuingamemultiplayerrootwindow.html#26" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../r6menu/r6menuingamewritablemapwidget.html" class="source">R6MenuInGameWritableMapWidget</a></span> m_InGameWritableMapWidget;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_pCountDownWidget" class="hidden"></a>m_pCountDownWidget <a href="../Source_r6menu/r6menuingamemultiplayerrootwindow.html#38" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../r6menu/r6menumpcountdown.html" class="source">R6MenuMPCountDown</a></span> m_pCountDownWidget;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_pDefensiveMenuWidget" class="hidden"></a>m_pDefensiveMenuWidget <a href="../Source_r6menu/r6menuingamemultiplayerrootwindow.html#32" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../r6menu/r6menumpingamemsgdefensive.html" class="source">R6MenuMPInGameMsgDefensive</a></span> m_pDefensiveMenuWidget;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_pInGameEscMenu" class="hidden"></a>m_pInGameEscMenu <a href="../Source_r6menu/r6menuingamemultiplayerrootwindow.html#29" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../r6menu/r6menumpingameesc.html" class="source">R6MenuMPInGameEsc</a></span> m_pInGameEscMenu;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_pIntermissionMenuWidget" class="hidden"></a>m_pIntermissionMenuWidget <a href="../Source_r6menu/r6menuingamemultiplayerrootwindow.html#28" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../r6menu/r6menumpinterwidget.html" class="source">R6MenuMPInterWidget</a></span> m_pIntermissionMenuWidget;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_pJoinTeamWidget" class="hidden"></a>m_pJoinTeamWidget <a href="../Source_r6menu/r6menuingamemultiplayerrootwindow.html#27" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../r6menu/r6menumpjointeamwidget.html" class="source">R6MenuMPJoinTeamWidget</a></span> m_pJoinTeamWidget;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_pOffensiveMenuWidget" class="hidden"></a>m_pOffensiveMenuWidget <a href="../Source_r6menu/r6menuingamemultiplayerrootwindow.html#31" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../r6menu/r6menumpingamemsgoffensive.html" class="source">R6MenuMPInGameMsgOffensive</a></span> m_pOffensiveMenuWidget;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_pOptionsWidget" class="hidden"></a>m_pOptionsWidget <a href="../Source_r6menu/r6menuingamemultiplayerrootwindow.html#37" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../r6menu/r6menuoptionswidget.html" class="source">R6MenuOptionsWidget</a></span> m_pOptionsWidget;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_pRecMessagesMenuWidget" class="hidden"></a>m_pRecMessagesMenuWidget <a href="../Source_r6menu/r6menuingamemultiplayerrootwindow.html#30" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../r6menu/r6menumpingamerecmessages.html" class="source">R6MenuMPInGameRecMessages</a></span> m_pRecMessagesMenuWidget;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_pReplyMenuWidget" class="hidden"></a>m_pReplyMenuWidget <a href="../Source_r6menu/r6menuingamemultiplayerrootwindow.html#33" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../r6menu/r6menumpingamemsgreply.html" class="source">R6MenuMPInGameMsgReply</a></span> m_pReplyMenuWidget;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_pStatusMenuWidget" class="hidden"></a>m_pStatusMenuWidget <a href="../Source_r6menu/r6menuingamemultiplayerrootwindow.html#34" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../r6menu/r6menumpingamemsgstatus.html" class="source">R6MenuMPInGameMsgStatus</a></span> m_pStatusMenuWidget;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_pVoteWidget" class="hidden"></a>m_pVoteWidget <a href="../Source_r6menu/r6menuingamemultiplayerrootwindow.html#35" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../r6menu/r6menumpingamevote.html" class="source">R6MenuMPInGameVote</a></span> m_pVoteWidget;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_R6GameMenuCom" class="hidden"></a>m_R6GameMenuCom <a href="../Source_r6menu/r6menuingamemultiplayerrootwindow.html#36" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../r6menu/r6mpgamemenucom.html" class="source">R6MPGameMenuCom</a></span> m_R6GameMenuCom;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_REscPopUp" class="hidden"></a>m_REscPopUp <a href="../Source_r6menu/r6menuingamemultiplayerrootwindow.html#43" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../core/object.html#Region" class="source">Region</a></span> m_REscPopUp;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_RInterWidget" class="hidden"></a>m_RInterWidget <a href="../Source_r6menu/r6menuingamemultiplayerrootwindow.html#42" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../core/object.html#Region" class="source">Region</a></span> m_RInterWidget;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_RJoinWidget" class="hidden"></a>m_RJoinWidget <a href="../Source_r6menu/r6menuingamemultiplayerrootwindow.html#41" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../core/object.html#Region" class="source">Region</a></span> m_RJoinWidget;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_sndCloseDrawingTool" class="hidden"></a>m_sndCloseDrawingTool <a href="../Source_r6menu/r6menuingamemultiplayerrootwindow.html#58" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">Sound</span> m_sndCloseDrawingTool;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_sndOpenDrawingTool" class="hidden"></a>m_sndOpenDrawingTool <a href="../Source_r6menu/r6menuingamemultiplayerrootwindow.html#57" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">Sound</span> m_sndOpenDrawingTool;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_szCurrentGameModeLoc" class="hidden"></a>m_szCurrentGameModeLoc <a href="../Source_r6menu/r6menuingamemultiplayerrootwindow.html#54" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">string</span> m_szCurrentGameModeLoc;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_szCurrentGameType" class="hidden"></a>m_szCurrentGameType <a href="../Source_r6menu/r6menuingamemultiplayerrootwindow.html#51" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">string</span> m_szCurrentGameType;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_szGameModeLoc[2]" class="hidden"></a>m_szGameModeLoc[2] <a href="../Source_r6menu/r6menuingamemultiplayerrootwindow.html#53" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">string</span> m_szGameModeLoc[<span class="source_int">2</span>];</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+
+
+<br />
+
+
+
+
+
+
+
+<table class="title">
+<tr>
+	<th class="title">Functions Detail</th>
+</tr>
+</table>
+
+<h4><a name="_ChangeCurrentWidget-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> ChangeCurrentWidget <span class="function_state"></span> <a href="../Source_r6menu/r6menuingamemultiplayerrootwindow.html#152" class="small">Source code</a></h4>
+<div class="declaration"> function  ChangeCurrentWidget ( <span class="source_type"><a href="../uwindow/uwindowrootwindow.html#eGameWidgetID" class="source">eGameWidgetID</a></span> <span class="source_type">widgetID</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ChangeWidget-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> ChangeWidget <span class="function_state"></span> <a href="../Source_r6menu/r6menuingamemultiplayerrootwindow.html#203" class="small">Source code</a></h4>
+<div class="declaration"> function  ChangeWidget ( <span class="source_type"><a href="../uwindow/uwindowrootwindow.html#eGameWidgetID" class="source">eGameWidgetID</a></span> <span class="source_type">widgetID</span>, <span class="source_type">BOOL</span> _bClearPrevWInHistory, <span class="source_type">BOOL</span> _bCloseAll) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_CloseSimplePopUpBox-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> CloseSimplePopUpBox <span class="function_state"></span> <a href="../Source_r6menu/r6menuingamemultiplayerrootwindow.html#492" class="small">Source code</a></h4>
+<div class="declaration"> function  CloseSimplePopUpBox ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_Created-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> Created <span class="function_state"></span> <a href="../Source_r6menu/r6menuingamemultiplayerrootwindow.html#65" class="small">Source code</a></h4>
+<div class="declaration"> function  Created ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_DrawMouse-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> DrawMouse <span class="function_state"></span> <a href="../Source_r6menu/r6menuingamemultiplayerrootwindow.html#578" class="small">Source code</a></h4>
+<div class="declaration"> function  DrawMouse ( <span class="source_type"><a href="../engine/canvas.html" class="source">Canvas</a></span> <span class="source_type">C</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_FillListOfKeyAvailability-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> FillListOfKeyAvailability <span class="function_state"></span> <a href="../Source_r6menu/r6menuingamemultiplayerrootwindow.html#129" class="small">Source code</a></h4>
+<div class="declaration"> function  FillListOfKeyAvailability ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_IsGameMenuComInitialized-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> IsGameMenuComInitialized <span class="function_state"></span> <a href="../Source_r6menu/r6menuingamemultiplayerrootwindow.html#648" class="small">Source code</a></h4>
+<div class="declaration"> function <span class="source_type">BOOL</span> IsGameMenuComInitialized ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_MenuLoadProfile-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> MenuLoadProfile <span class="function_state"></span> <a href="../Source_r6menu/r6menuingamemultiplayerrootwindow.html#981" class="small">Source code</a></h4>
+<div class="declaration"> function  MenuLoadProfile ( <span class="source_type">BOOL</span> _bServerProfile) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_MoveMouse-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> MoveMouse <span class="function_state"></span> <a href="../Source_r6menu/r6menuingamemultiplayerrootwindow.html#547" class="small">Source code</a></h4>
+<div class="declaration"> function  MoveMouse ( <span class="source_type">float</span> X, <span class="source_type">float</span> Y) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_NotifyAfterLevelChange-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> NotifyAfterLevelChange <span class="function_state"></span> <a href="../Source_r6menu/r6menuingamemultiplayerrootwindow.html#527" class="small">Source code</a></h4>
+<div class="declaration"> function  NotifyAfterLevelChange ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_NotifyBeforeLevelChange-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> NotifyBeforeLevelChange <span class="function_state"></span> <a href="../Source_r6menu/r6menuingamemultiplayerrootwindow.html#509" class="small">Source code</a></h4>
+<div class="declaration"> function  NotifyBeforeLevelChange ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_Paint-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> Paint <span class="function_state"></span> <a href="../Source_r6menu/r6menuingamemultiplayerrootwindow.html#619" class="small">Source code</a></h4>
+<div class="declaration"> function  Paint ( <span class="source_type"><a href="../engine/canvas.html" class="source">Canvas</a></span> <span class="source_type">C</span>, <span class="source_type">float</span> X, <span class="source_type">float</span> Y) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_PopUpBoxDone-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> PopUpBoxDone <span class="function_state"></span> <a href="../Source_r6menu/r6menuingamemultiplayerrootwindow.html#435" class="small">Source code</a></h4>
+<div class="declaration"> function  PopUpBoxDone ( <span class="source_type"><a href="../uwindow/uwindowbase.html#MessageBoxResult" class="source">MessageBoxResult</a></span> <span class="source_type">Result</span>, <span class="source_type"><a href="../uwindow/uwindowbase.html#EPopUpID" class="source">ePopUpID</a></span> _ePopUpID) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ProcessKeyDown-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> ProcessKeyDown <span class="function_state"></span> <a href="../Source_r6menu/r6menuingamemultiplayerrootwindow.html#743" class="small">Source code</a></h4>
+<div class="declaration"> function <span class="source_type">BOOL</span> ProcessKeyDown ( <span class="source_type">int</span> <span class="source_type">Key</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ProcessKeyUp-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> ProcessKeyUp <span class="function_state"></span> <a href="../Source_r6menu/r6menuingamemultiplayerrootwindow.html#920" class="small">Source code</a></h4>
+<div class="declaration"> function <span class="source_type">BOOL</span> ProcessKeyUp ( <span class="source_type">int</span> <span class="source_type">Key</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_SimplePopUp-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> SimplePopUp <span class="function_state"></span> <a href="../Source_r6menu/r6menuingamemultiplayerrootwindow.html#419" class="small">Source code</a></h4>
+<div class="declaration"> function  SimplePopUp ( <span class="source_type">string</span> _szTitle, <span class="source_type">string</span> _szText, <span class="source_type"><a href="../uwindow/uwindowbase.html#EPopUpID" class="source">ePopUpID</a></span> _ePopUpID, optional <span class="source_type">INT</span> _iButtonsType, OPTIONAL <span class="source_type">BOOL</span> bAddDisableDlg, optional <span class="source_type"><a href="../uwindow/uwindowwindow.html" class="source">UWindowWindow</a></span> OwnerWindow) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_Tick-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> Tick <span class="function_state"></span> <a href="../Source_r6menu/r6menuingamemultiplayerrootwindow.html#607" class="small">Source code</a></h4>
+<div class="declaration"> function  Tick ( <span class="source_type">float</span> <span class="source_type">Delta</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_TrapKey-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> TrapKey <span class="function_state"></span> <a href="../Source_r6menu/r6menuingamemultiplayerrootwindow.html#945" class="small">Source code</a></h4>
+<div class="declaration"> function <span class="source_type">BOOL</span> TrapKey ( <span class="source_type">BOOL</span> _bIncludeMouseMove) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_UpdateCurrentGameMode-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> UpdateCurrentGameMode <span class="function_state"></span> <a href="../Source_r6menu/r6menuingamemultiplayerrootwindow.html#399" class="small">Source code</a></h4>
+<div class="declaration"> function  UpdateCurrentGameMode ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_UpdateTimeInBetRound-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> UpdateTimeInBetRound <span class="function_state"></span> <a href="../Source_r6menu/r6menuingamemultiplayerrootwindow.html#961" class="small">Source code</a></h4>
+<div class="declaration"> function  UpdateTimeInBetRound ( <span class="source_type">INT</span> _iNewTime, OPTIONAL <span class="source_type">string</span> _StringInstead) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_VoteMenu-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> VoteMenu <span class="function_state"></span> <a href="../Source_r6menu/r6menuingamemultiplayerrootwindow.html#501" class="small">Source code</a></h4>
+<div class="declaration"> function  VoteMenu ( <span class="source_type">string</span> _szPlayerNameToKick, <span class="source_type">bool</span> _ActiveMenu) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_WindowEvent-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> WindowEvent <span class="function_state"></span> <a href="../Source_r6menu/r6menuingamemultiplayerrootwindow.html#656" class="small">Source code</a></h4>
+<div class="declaration"> function  WindowEvent ( <span class="source_type"><a href="../uwindow/uwindowwindow.html#WinMessage" class="source">WinMessage</a></span> <span class="source_type">Msg</span>, <span class="source_type"><a href="../engine/canvas.html" class="source">Canvas</a></span> <span class="source_type">C</span>, <span class="source_type">float</span> X, <span class="source_type">float</span> Y, <span class="source_type">int</span> <span class="source_type">Key</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+
+
+<br />
+
+
+<table class="title">
+<tr>
+	<th class="title">Defaultproperties</th>
+</tr>
+</table>
+<br />
+<div class="source"><table class="source"><tr><td class="source"><pre class="source">defaultproperties
+{
+     m_bCanDisplayOperativeSelector=True
+     m_bJoinTeamWidget=True
+     m_bTrapKey=True
+     m_sndOpenDrawingTool=<span class="source_type">Sound</span><span class="source_name">'Common_Multiplayer.Play_DrawingTool_Open'</span>
+     m_sndCloseDrawingTool=<span class="source_type">Sound</span><span class="source_name">'Common_Multiplayer.Play_DrawingTool_Close'</span>
+     m_RJoinWidget=(X=<span class="source_int">25</span>,Y=<span class="source_int">40</span>,W=<span class="source_int">590</span>,<span class="source_type">H</span>=<span class="source_int">370</span>)
+     m_RInterWidget=(X=<span class="source_int">25</span>,Y=<span class="source_int">80</span>,W=<span class="source_int">590</span>,<span class="source_type">H</span>=<span class="source_int">370</span>)
+     m_REscPopUp=(X=<span class="source_int">115</span>,Y=<span class="source_int">200</span>,W=<span class="source_int">410</span>,<span class="source_type">H</span>=<span class="source_int">170</span>)
+     LookAndFeelClass=<span class="source_string">"R6Menu.R6MenuRSLookAndFeel"</span>
+}
+</pre></td></tr></table></div>
+
+
+
+<hr />
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../r6menu/r6menu-overview.html">Package</a></td>
+	<td class="header_hilight">Class</td>
+	<td class="header"><a href="../Source_r6menu/r6menuingamemultiplayerrootwindow.html">Source</a></td>
+	<td class="header"><a class="header" href="../classtree.html#R6MenuInGameMultiPlayerRootWindow">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../r6menu/r6menuingameinstructionwidget.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../r6menu/r6menuingameoperativeselectorwidget.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+
+<div class="stats">Creation time: mar. 26/5/2026 18:33:12.083 - Created with <a href="http://wiki.beyondunreal.com/wiki/UnCodeX" target="_blank">UnCodeX</a></div>
+
+</body>
+</html>

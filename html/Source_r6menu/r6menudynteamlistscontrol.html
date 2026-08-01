@@ -1,0 +1,944 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+	<title>UnCodeX - Source: R6Menu.R6MenuDynTeamListsControl</title>
+	<meta name="Generator" content="UnCodeX 241" />
+	<link rel="stylesheet" href="../DocStyle2.css" type="text/css" title="Original Purple" />
+	<link rel="alternative stylesheet" href="../DocStyle2-blue.css" type="text/css" title="Blue" />
+	<link rel="alternative stylesheet" href="../DocStyle2-red.css" type="text/css" title="Red" />
+	<!--[if IE]>
+	<link rel="stylesheet" href="../DocStyle2-msie.css" type="text/css" />
+	<![endif]-->
+	<script src="../styleswitcher.js" type="text/javascript"></script>
+</head>
+<body>
+
+<div class="header">
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../r6menu/r6menu-overview.html">Package</a></td>
+	<td class="header"><a href="../r6menu/r6menudynteamlistscontrol.html">Class</a></td>
+	<td class="header_hilight">Source</td>
+	<td class="header"><a class="header" href="../classtree.html#R6MenuDynTeamListsControl">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../Source_r6menu/r6menudiffcustommissionselect.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../Source_r6menu/r6menuequipmentanchorbuttons.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html#Source_r6menu/r6menudynteamlistscontrol.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+</div>
+<div class="spacer"></div>
+
+<h1><a href="../r6menu/r6menu-overview.html">R6Menu</a>.<a href="../r6menu/r6menudynteamlistscontrol.html">R6MenuDynTeamListsControl</a></h1>
+<br />
+<div class="source"><table class="source"><tr><td class="source_lineno"><span class="source_lineno">00001<br />00002<br />00003<br />00004<br />00005<br />00006<br />00007<br />00008<br />00009<br />00010<br />00011<br />00012<br />00013<br />00014<br />00015<br />00016<br />00017<br />00018<br />00019<br />00020<br />
+00021<br />00022<br />00023<br />00024<br />00025<br />00026<br />00027<br />00028<br />00029<br />00030<br />00031<br />00032<br />00033<br />00034<br />00035<br />00036<br />00037<br />00038<br />00039<br />00040<br />
+00041<br />00042<br />00043<br />00044<br />00045<br />00046<br />00047<br />00048<br />00049<br />00050<br />00051<br />00052<br />00053<br />00054<br />00055<br />00056<br />00057<br />00058<br />00059<br />00060<br />
+00061<br />00062<br />00063<br />00064<br />00065<br />00066<br />00067<br />00068<br />00069<br />00070<br />00071<br />00072<br />00073<br />00074<br />00075<br />00076<br />00077<br />00078<br />00079<br />00080<br />
+00081<br />00082<br />00083<br />00084<br />00085<br />00086<br />00087<br />00088<br />00089<br />00090<br />00091<br />00092<br />00093<br />00094<br />00095<br />00096<br />00097<br />00098<br />00099<br />00100<br />
+00101<br />00102<br />00103<br />00104<br />00105<br />00106<br />00107<br />00108<br />00109<br />00110<br />00111<br />00112<br />00113<br />00114<br />00115<br />00116<br />00117<br />00118<br />00119<br />00120<br />
+00121<br />00122<br />00123<br />00124<br />00125<br />00126<br />00127<br />00128<br />00129<br />00130<br />00131<br />00132<br />00133<br />00134<br />00135<br />00136<br />00137<br />00138<br />00139<br />00140<br />
+00141<br />00142<br />00143<br />00144<br />00145<br />00146<br />00147<br />00148<br />00149<br />00150<br />00151<br />00152<br />00153<br />00154<br />00155<br />00156<br />00157<br />00158<br />00159<br />00160<br />
+00161<br />00162<br />00163<br />00164<br />00165<br />00166<br />00167<br />00168<br />00169<br />00170<br />00171<br />00172<br />00173<br />00174<br />00175<br />00176<br />00177<br />00178<br />00179<br />00180<br />
+00181<br />00182<br />00183<br />00184<br />00185<br />00186<br />00187<br />00188<br />00189<br />00190<br />00191<br />00192<br />00193<br />00194<br />00195<br />00196<br />00197<br />00198<br />00199<br />00200<br />
+00201<br />00202<br />00203<br />00204<br />00205<br />00206<br />00207<br />00208<br />00209<br />00210<br />00211<br />00212<br />00213<br />00214<br />00215<br />00216<br />00217<br />00218<br />00219<br />00220<br />
+00221<br />00222<br />00223<br />00224<br />00225<br />00226<br />00227<br />00228<br />00229<br />00230<br />00231<br />00232<br />00233<br />00234<br />00235<br />00236<br />00237<br />00238<br />00239<br />00240<br />
+00241<br />00242<br />00243<br />00244<br />00245<br />00246<br />00247<br />00248<br />00249<br />00250<br />00251<br />00252<br />00253<br />00254<br />00255<br />00256<br />00257<br />00258<br />00259<br />00260<br />
+00261<br />00262<br />00263<br />00264<br />00265<br />00266<br />00267<br />00268<br />00269<br />00270<br />00271<br />00272<br />00273<br />00274<br />00275<br />00276<br />00277<br />00278<br />00279<br />00280<br />
+00281<br />00282<br />00283<br />00284<br />00285<br />00286<br />00287<br />00288<br />00289<br />00290<br />00291<br />00292<br />00293<br />00294<br />00295<br />00296<br />00297<br />00298<br />00299<br />00300<br />
+00301<br />00302<br />00303<br />00304<br />00305<br />00306<br />00307<br />00308<br />00309<br />00310<br />00311<br />00312<br />00313<br />00314<br />00315<br />00316<br />00317<br />00318<br />00319<br />00320<br />
+00321<br />00322<br />00323<br />00324<br />00325<br />00326<br />00327<br />00328<br />00329<br />00330<br />00331<br />00332<br />00333<br />00334<br />00335<br />00336<br />00337<br />00338<br />00339<br />00340<br />
+00341<br />00342<br />00343<br />00344<br />00345<br />00346<br />00347<br />00348<br />00349<br />00350<br />00351<br />00352<br />00353<br />00354<br />00355<br />00356<br />00357<br />00358<br />00359<br />00360<br />
+00361<br />00362<br />00363<br />00364<br />00365<br />00366<br />00367<br />00368<br />00369<br />00370<br />00371<br />00372<br />00373<br />00374<br />00375<br />00376<br />00377<br />00378<br />00379<br />00380<br />
+00381<br />00382<br />00383<br />00384<br />00385<br />00386<br />00387<br />00388<br />00389<br />00390<br />00391<br />00392<br />00393<br />00394<br />00395<br />00396<br />00397<br />00398<br />00399<br />00400<br />
+00401<br />00402<br />00403<br />00404<br />00405<br />00406<br />00407<br />00408<br />00409<br />00410<br />00411<br />00412<br />00413<br />00414<br />00415<br />00416<br />00417<br />00418<br />00419<br />00420<br />
+00421<br />00422<br />00423<br />00424<br />00425<br />00426<br />00427<br />00428<br />00429<br />00430<br />00431<br />00432<br />00433<br />00434<br />00435<br />00436<br />00437<br />00438<br />00439<br />00440<br />
+00441<br />00442<br />00443<br />00444<br />00445<br />00446<br />00447<br />00448<br />00449<br />00450<br />00451<br />00452<br />00453<br />00454<br />00455<br />00456<br />00457<br />00458<br />00459<br />00460<br />
+00461<br />00462<br />00463<br />00464<br />00465<br />00466<br />00467<br />00468<br />00469<br />00470<br />00471<br />00472<br />00473<br />00474<br />00475<br />00476<br />00477<br />00478<br />00479<br />00480<br />
+00481<br />00482<br />00483<br />00484<br />00485<br />00486<br />00487<br />00488<br />00489<br />00490<br />00491<br />00492<br />00493<br />00494<br />00495<br />00496<br />00497<br />00498<br />00499<br />00500<br />
+00501<br />00502<br />00503<br />00504<br />00505<br />00506<br />00507<br />00508<br />00509<br />00510<br />00511<br />00512<br />00513<br />00514<br />00515<br />00516<br />00517<br />00518<br />00519<br />00520<br />
+00521<br />00522<br />00523<br />00524<br />00525<br />00526<br />00527<br />00528<br />00529<br />00530<br />00531<br />00532<br />00533<br />00534<br />00535<br />00536<br />00537<br />00538<br />00539<br />00540<br />
+00541<br />00542<br />00543<br />00544<br />00545<br />00546<br />00547<br />00548<br />00549<br />00550<br />00551<br />00552<br />00553<br />00554<br />00555<br />00556<br />00557<br />00558<br />00559<br />00560<br />
+00561<br />00562<br />00563<br />00564<br />00565<br />00566<br />00567<br />00568<br />00569<br />00570<br />00571<br />00572<br />00573<br />00574<br />00575<br />00576<br />00577<br />00578<br />00579<br />00580<br />
+00581<br />00582<br />00583<br />00584<br />00585<br />00586<br />00587<br />00588<br />00589<br />00590<br />00591<br />00592<br />00593<br />00594<br />00595<br />00596<br />00597<br />00598<br />00599<br />00600<br />
+00601<br />00602<br />00603<br />00604<br />00605<br />00606<br />00607<br />00608<br />00609<br />00610<br />00611<br />00612<br />00613<br />00614<br />00615<br />00616<br />00617<br />00618<br />00619<br />00620<br />
+00621<br />00622<br />00623<br />00624<br />00625<br />00626<br />00627<br />00628<br />00629<br />00630<br />00631<br />00632<br />00633<br />00634<br />00635<br />00636<br />00637<br />00638<br />00639<br />00640<br />
+00641<br />00642<br />00643<br />00644<br />00645<br />00646<br />00647<br />00648<br />00649<br />00650<br />00651<br />00652<br />00653<br />00654<br />00655<br />00656<br />00657<br />00658<br />00659<br />00660<br />
+00661<br />00662<br />00663<br />00664<br />00665<br />00666<br />00667<br />00668<br />00669<br />00670<br />00671<br />00672<br />00673<br />00674<br />00675<br />00676<br />00677<br />00678<br />00679<br />00680<br />
+00681<br />00682<br />00683<br />00684<br />00685<br />00686<br />00687<br />00688<br />00689<br />00690<br />00691<br />00692<br />00693<br />00694<br />00695<br />00696<br />00697<br />00698<br />00699<br />00700<br />
+00701<br />00702<br />00703<br />00704<br />00705<br />00706<br />00707<br />00708<br />00709<br />00710<br />00711<br />00712<br />00713<br />00714<br />00715<br />00716<br />00717<br />00718<br />00719<br />00720<br />
+00721<br />00722<br />00723<br />00724<br />00725<br />00726<br />00727<br />00728<br />00729<br />00730<br />00731<br />00732<br />00733<br />00734<br />00735<br />00736<br />00737<br />00738<br />00739<br />00740<br />
+00741<br />00742<br />00743<br />00744<br />00745<br />00746<br />00747<br />00748<br />00749<br />00750<br />00751<br />00752<br />00753<br />00754<br />00755<br />00756<br />00757<br />00758<br />00759<br />00760<br />
+00761<br />00762<br />00763<br />00764<br />00765<br />00766<br />00767<br />00768<br />00769<br />00770<br />00771<br />00772<br />00773<br />00774<br />00775<br />00776<br />00777<br />00778<br />00779<br />00780<br />
+00781<br />00782<br />00783<br />00784<br />00785<br />00786<br />00787<br />00788<br />00789<br />00790<br />00791<br />00792<br />00793<br />00794<br />00795<br />00796<br />00797<br />00798<br />00799<br />00800<br />
+00801<br />00802<br />00803<br />00804<br />00805<br />00806<br />00807<br />00808<br />00809<br />00810<br />00811<br />00812<br />00813<br />00814<br />00815<br />00816<br />00817<br />00818<br />00819<br />00820<br />
+00821<br />00822<br />00823<br />00824<br />00825<br />00826<br />00827<br />00828<br />00829<br />00830<br />00831<br />00832<br />00833<br />00834<br />00835<br />00836<br />00837<br />00838<br />00839<br />00840<br />
+00841<br />00842<br />00843<br />00844</span></td>
+<td class="source"><pre class="source"><a name="1"></a><span class="source_comment">//=============================================================================
+</span><a name="2"></a><span class="source_comment">//  R6MenuDynTeamListsControl.uc : Control that will allow
+</span><a name="3"></a><span class="source_comment">//                                  Dynamic Selections of Team Rosters
+</span><a name="4"></a><span class="source_comment">//  Copyright 2002 Ubi Soft, Inc. All Rights Reserved.
+</span><a name="5"></a><span class="source_comment">//
+</span><a name="6"></a><span class="source_comment">//  Revision history:
+</span><a name="7"></a><span class="source_comment">//    2002/02/21 * Created by Alexandre Dionne
+</span><a name="8"></a><span class="source_comment">//=============================================================================
+</span><a name="9"></a>
+<a name="10"></a><span class="source_comment">///////////////////////////////////////////////////////////////////////////////
+</span><a name="11"></a><span class="source_comment">// Please take note that this control can not display right 
+</span><a name="12"></a><span class="source_comment">// If not initalized with th right size
+</span><a name="13"></a><span class="source_comment">///////////////////////////////////////////////////////////////////////////////
+</span><a name="14"></a>
+<a name="15"></a><span class="source_type">class</span> <span class="source_type"><a href="../r6menu/r6menudynteamlistscontrol.html" class="source">R6MenuDynTeamListsControl</a></span> extends <span class="source_type"><a href="../uwindow/uwindowdialogclientwindow.html" class="source">UWindowDialogClientWindow</a></span>;
+<a name="16"></a>
+<a name="17"></a>var     <span class="source_type"><a href="../r6window/r6windowlistboxanchorbutton.html" class="source">R6WindowListBoxAnchorButton</a></span>   m_AssaultButton;
+<a name="18"></a>var     <span class="source_type"><a href="../r6window/r6windowlistboxanchorbutton.html" class="source">R6WindowListBoxAnchorButton</a></span>   m_ReconButton;
+<a name="19"></a>var     <span class="source_type"><a href="../r6window/r6windowlistboxanchorbutton.html" class="source">R6WindowListBoxAnchorButton</a></span>   m_SniperButton;
+<a name="20"></a>var     <span class="source_type"><a href="../r6window/r6windowlistboxanchorbutton.html" class="source">R6WindowListBoxAnchorButton</a></span>   m_DemolitionButton;
+<a name="21"></a>var     <span class="source_type"><a href="../r6window/r6windowlistboxanchorbutton.html" class="source">R6WindowListBoxAnchorButton</a></span>   m_ElectronicButton;
+<a name="22"></a>
+<a name="23"></a>var     <span class="source_type"><a href="../engine/texture.html" class="source">Texture</a></span>                         m_TButtonTexture;
+<a name="24"></a>
+<a name="25"></a>var     <span class="source_type"><a href="../core/object.html#Region" class="source">Region</a></span>                          m_RAssaultUp,    
+<a name="26"></a>                                        m_RAssaultOver,
+<a name="27"></a>                                        m_RAssaultDown,
+<a name="28"></a>                                        m_RAssaultDisabled,
+<a name="29"></a>
+<a name="30"></a>                                        m_RReconUp,
+<a name="31"></a>                                        m_RReconOver,
+<a name="32"></a>                                        m_RReconDown,
+<a name="33"></a>                                        m_RReconDisabled,
+<a name="34"></a>
+<a name="35"></a>                                        m_RSniperUp,
+<a name="36"></a>                                        m_RSniperOver,
+<a name="37"></a>                                        m_RSniperDown,
+<a name="38"></a>                                        m_RSniperDisabled,
+<a name="39"></a>
+<a name="40"></a>                                        m_RDemolitionUp,
+<a name="41"></a>                                        m_RDemolitionOver,
+<a name="42"></a>                                        m_RDemolitionDown,
+<a name="43"></a>                                        m_RDemolitionDisabled,
+<a name="44"></a>
+<a name="45"></a>                                        m_RElectronicUp,
+<a name="46"></a>                                        m_RElectronicOver,
+<a name="47"></a>                                        m_RElectronicDown,
+<a name="48"></a>                                        m_RElectronicDisabled;
+<a name="49"></a>var <span class="source_type">FLOAT</span>                               m_fButtonTabWidth, m_fButtonTabHeight;
+<a name="50"></a>
+<a name="51"></a><span class="source_comment">//Small icons in the list
+</span><a name="52"></a>var   <span class="source_type"><a href="../core/object.html#Region" class="source">Region</a></span>                      RAssault, RRecon, RSniper, RDemo, RElectro;
+<a name="53"></a>var   <span class="source_type"><a href="../core/object.html#Region" class="source">Region</a></span>                      RSAssault, RSRecon, RSSniper, RSDemo, RSElectro;
+<a name="54"></a>
+<a name="55"></a>
+<a name="56"></a>
+<a name="57"></a>var     <span class="source_type"><a href="../r6window/r6windowtexticonslistbox.html" class="source">R6WindowTextIconsListBox</a></span>		m_ListBox;
+<a name="58"></a>var     <span class="source_type"><a href="../r6window/r6windowtexticonssublistbox.html" class="source">R6WindowTextIconsSubListBox</a></span>		m_RedListBox,m_GreenListBox,m_GoldListBox;
+<a name="59"></a>
+<a name="60"></a>var     <span class="source_type">int</span>								m_SubListTopHeight;  <span class="source_comment">//For size calculations == Top label and offset
+</span><a name="61"></a>
+<a name="62"></a>var     <span class="source_type"><a href="../engine/texture.html" class="source">Texture</a></span>							m_BorderTexture;   
+<a name="63"></a>var     <span class="source_type"><a href="../core/object.html#Region" class="source">Region</a></span>							m_BorderRegion;
+<a name="64"></a>var     <span class="source_type">float</span>							m_MinSubListHeight, m_SubListByItemHeight, TotalSublistsHeight;
+<a name="65"></a>
+<a name="66"></a>
+<a name="67"></a>var     <span class="source_type">float</span>							m_fVPadding;   <span class="source_comment">//Vertical Padding Between Controls 
+</span><a name="68"></a>var     <span class="source_type">float</span>							m_fFirsButtonOffset, m_fHButtonPadding, m_fHButtonOffset;
+<a name="69"></a>
+<a name="70"></a>var     <span class="source_type">int</span>								m_iMaxOperativeCount;
+<a name="71"></a>
+<a name="72"></a><span class="source_comment">//Debug
+</span><a name="73"></a>var     <span class="source_type">bool</span>                          bshowlog;
+<a name="74"></a>
+<a name="75"></a>function Created()
+<a name="76"></a>{
+<a name="77"></a>  
+<a name="78"></a>    m_BorderTexture	= <span class="source_type"><a href="../engine/texture.html" class="source">Texture</a></span>(DynamicLoadObject(<span class="source_string">"R6MenuTextures.Gui_BoxScroll"</span>, <span class="source_type">class</span><span class="source_name">'Texture'</span>));
+<a name="79"></a>    
+<a name="80"></a>    CreateAnchoredButtons();
+<a name="81"></a>    CreateRosterListBox();   
+<a name="82"></a>}
+<a name="83"></a>
+<a name="84"></a>
+<a name="85"></a>function Notify(<span class="source_type"><a href="../uwindow/uwindowdialogcontrol.html" class="source">UWindowDialogControl</a></span> <span class="source_type">C</span>, <span class="source_type">byte</span> E)
+<a name="86"></a>{
+<a name="87"></a>    local <span class="source_type">int</span>                           itemPos;
+<a name="88"></a>    local <span class="source_type"><a href="../r6window/r6windowlistboxitem.html" class="source">R6WindowListBoxItem</a></span>           SelectedItem, ListItem;
+<a name="89"></a>    local <span class="source_type"><a href="../uwindow/uwindowlist.html" class="source">UWindowList</a></span>                   UListItem;
+<a name="90"></a>    local <span class="source_type"><a href="../r6menu/r6menugearwidget.html" class="source">R6MenuGearWidget</a></span>              gearWidget;
+<a name="91"></a>    local <span class="source_type"><a href="../r6game/r6operative.html" class="source">R6Operative</a></span>                   selectedOperative;
+<a name="92"></a>    local <span class="source_type"><a href="../r6window/r6windowtexticonssublistbox.html" class="source">R6WindowTextIconsSubListBox</a></span>   tmpSubListBox;
+<a name="93"></a>
+<a name="94"></a>
+<a name="95"></a>    gearWidget = <span class="source_type"><a href="../r6menu/r6menugearwidget.html" class="source">R6MenuGearWidget</a></span>(OwnerWindow);
+<a name="96"></a>
+<a name="97"></a>    if(E == DE_DoubleClick)
+<a name="98"></a>    {
+<a name="99"></a>        switch(<span class="source_type">C</span>)		
+<a name="100"></a>        {
+<a name="101"></a>            <span class="source_comment">//Operatives returns to th main List               
+</span><a name="102"></a>        case m_RedListBox.m_listBox:
+<a name="103"></a>        case m_GreenListBox.m_listBox:
+<a name="104"></a>        case m_GoldListBox.m_listBox:      
+<a name="105"></a>            
+<a name="106"></a>                tmpSubListBox = <span class="source_type"><a href="../r6window/r6windowtexticonssublistbox.html" class="source">R6WindowTextIconsSubListBox</a></span>(<span class="source_type">C</span>.OwnerWindow);
+<a name="107"></a>
+<a name="108"></a>                SelectedItem = <span class="source_type"><a href="../r6window/r6windowlistboxitem.html" class="source">R6WindowListBoxItem</a></span>(tmpSubListBox.m_listBox.m_SelectedItem);
+<a name="109"></a>                
+<a name="110"></a>				if (SelectedItem != None) <span class="source_comment">// in case of a empty list
+</span><a name="111"></a>				{
+<a name="112"></a>					<span class="source_comment">//This is to select the next operative in the team we are remove the current selected operative
+</span><a name="113"></a>					if( SelectedItem.Next != none)
+<a name="114"></a>						ListItem = <span class="source_type"><a href="../r6window/r6windowlistboxitem.html" class="source">R6WindowListBoxItem</a></span>(SelectedItem.Next);
+<a name="115"></a>					else if( SelectedItem.Prev != tmpSubListBox.m_listBox.Items ) <span class="source_comment">//make sure there is an element
+</span><a name="116"></a>					{
+<a name="117"></a>						ListItem = <span class="source_type"><a href="../r6window/r6windowlistboxitem.html" class="source">R6WindowListBoxItem</a></span>(SelectedItem.Prev);
+<a name="118"></a>					}
+<a name="119"></a>                    
+<a name="120"></a>
+<a name="121"></a>					RemoveOperativeInSubList(tmpSubListBox);
+<a name="122"></a>					if(ListItem != none)
+<a name="123"></a>						tmpSubListBox.m_listBox.SetSelectedItem(ListItem);
+<a name="124"></a>					RefreshButtons();
+<a name="125"></a>					ResizeSubLists();
+<a name="126"></a>				}
+<a name="127"></a>            break;        
+<a name="128"></a>
+<a name="129"></a>        case m_ListBox  :                                
+<a name="130"></a>            <span class="source_comment">//AddOperativeToSubList will make sure we don't add to many operative
+</span><a name="131"></a>            if( m_RedListBox.m_listBox.Items.Count() &lt; m_RedListBox.m_maxItemsCount )
+<a name="132"></a>                AddOperativeToSubList(m_RedListBox);
+<a name="133"></a>            else if ( m_GreenListBox.m_listBox.Items.Count() &lt; m_GreenListBox.m_maxItemsCount )
+<a name="134"></a>                AddOperativeToSubList(m_GreenListBox);
+<a name="135"></a>            else
+<a name="136"></a>                AddOperativeToSubList(m_GoldListBox);
+<a name="137"></a>
+<a name="138"></a>            RefreshButtons();
+<a name="139"></a>            ResizeSubLists();
+<a name="140"></a>            break;
+<a name="141"></a>        }
+<a name="142"></a>    }
+<a name="143"></a>	else if(E == DE_Click)
+<a name="144"></a>	{
+<a name="145"></a>        if(bShowLog)log(<span class="source_string">"R6MenuDynTeamListsControl Notify DE_Click"</span>);
+<a name="146"></a>		switch(<span class="source_type">C</span>)
+<a name="147"></a>		{
+<a name="148"></a>            <span class="source_comment">//Cases for the link buttons
+</span><a name="149"></a>		case m_AssaultButton:
+<a name="150"></a>        case m_ReconButton:
+<a name="151"></a>        case m_SniperButton:						
+<a name="152"></a>        case m_DemolitionButton:
+<a name="153"></a>        case m_ElectronicButton:
+<a name="154"></a>
+<a name="155"></a>            itemPos =  <span class="source_type"><a href="../r6window/r6windowlistboxitem.html" class="source">R6WindowListBoxItem</a></span>(m_ListBox.Items).FindItemIndex(<span class="source_type"><a href="../r6window/r6windowlistboxanchorbutton.html" class="source">R6WindowListBoxAnchorButton</a></span>(<span class="source_type">C</span>).AnchoredElement);
+<a name="156"></a>            if(itemPos &gt;= <span class="source_int">0</span>)
+<a name="157"></a>            {
+<a name="158"></a>                m_ListBox.m_VertSB.Pos = <span class="source_int">0</span>;         
+<a name="159"></a>                
+<a name="160"></a>                <span class="source_comment">//Position the scroll bar on the element desired
+</span><a name="161"></a>                m_ListBox.m_VertSB.Scroll(itemPos);
+<a name="162"></a>
+<a name="163"></a>                <span class="source_comment">//Select The first Operative after
+</span><a name="164"></a>                m_ListBox.SetSelectedItem(<span class="source_type"><a href="../uwindow/uwindowlistboxitem.html" class="source">UWindowListBoxItem</a></span>(<span class="source_type"><a href="../r6window/r6windowlistboxitem.html" class="source">R6WindowListBoxItem</a></span>(m_ListBox.Items).FindEntry(itemPos+<span class="source_int">1</span>)));   
+<a name="165"></a>
+<a name="166"></a>            }
+<a name="167"></a>        
+<a name="168"></a>		break;
+<a name="169"></a>        <span class="source_comment">//Making a list selection
+</span><a name="170"></a>        case m_RedListBox.m_listBox:        
+<a name="171"></a>                
+<a name="172"></a>                selectedOperative = <span class="source_type"><a href="../r6game/r6operative.html" class="source">R6Operative</a></span>(<span class="source_type"><a href="../r6window/r6windowlistboxitem.html" class="source">R6WindowListBoxItem</a></span>(m_RedListBox.m_listbox.m_SelectedItem).m_Object);
+<a name="173"></a>                if((gearWidget != None) && (selectedOperative != None))                     
+<a name="174"></a>                    gearWidget.OperativeSelected(selectedOperative, Red_Team, m_RedListBox.m_listBox);
+<a name="175"></a>
+<a name="176"></a>                m_GreenListBox.m_listBox.DropSelection();                
+<a name="177"></a>                m_GoldListBox.m_listBox.DropSelection();                
+<a name="178"></a>                m_listBox.DropSelection();
+<a name="179"></a>                RefreshButtons();
+<a name="180"></a>            break;
+<a name="181"></a>
+<a name="182"></a>        case m_GreenListBox.m_listBox:
+<a name="183"></a>
+<a name="184"></a>                selectedOperative = <span class="source_type"><a href="../r6game/r6operative.html" class="source">R6Operative</a></span>(<span class="source_type"><a href="../r6window/r6windowlistboxitem.html" class="source">R6WindowListBoxItem</a></span>(m_GreenListBox.m_listbox.m_SelectedItem).m_Object);
+<a name="185"></a>                if((gearWidget != None) && (selectedOperative != None))                     
+<a name="186"></a>                    gearWidget.OperativeSelected(selectedOperative, Green_Team, m_GreenListBox.m_listBox);
+<a name="187"></a>
+<a name="188"></a>                m_RedListBox.m_listBox.DropSelection();                
+<a name="189"></a>                m_GoldListBox.m_listBox.DropSelection();                
+<a name="190"></a>                m_listBox.DropSelection();
+<a name="191"></a>                RefreshButtons();
+<a name="192"></a>            break;        
+<a name="193"></a>
+<a name="194"></a>        case m_GoldListBox.m_listBox:                
+<a name="195"></a>                
+<a name="196"></a>                selectedOperative = <span class="source_type"><a href="../r6game/r6operative.html" class="source">R6Operative</a></span>(<span class="source_type"><a href="../r6window/r6windowlistboxitem.html" class="source">R6WindowListBoxItem</a></span>(m_GoldListBox.m_listbox.m_SelectedItem).m_Object);
+<a name="197"></a>                if((gearWidget != None) && (selectedOperative != None))                     
+<a name="198"></a>                    gearWidget.OperativeSelected(selectedOperative, Gold_Team, m_GoldListBox.m_listBox);
+<a name="199"></a>
+<a name="200"></a>                m_GreenListBox.m_listBox.DropSelection();                
+<a name="201"></a>                m_RedListBox.m_listBox.DropSelection();                
+<a name="202"></a>                m_listBox.DropSelection();
+<a name="203"></a>                RefreshButtons();
+<a name="204"></a>            break;        
+<a name="205"></a>
+<a name="206"></a>        case m_ListBox  :                
+<a name="207"></a>                selectedOperative = <span class="source_type"><a href="../r6game/r6operative.html" class="source">R6Operative</a></span>(<span class="source_type"><a href="../r6window/r6windowlistboxitem.html" class="source">R6WindowListBoxItem</a></span>(m_listbox.m_SelectedItem).m_Object);
+<a name="208"></a>                if((gearWidget != None) && (selectedOperative != None))                     
+<a name="209"></a>                    gearWidget.OperativeSelected(selectedOperative, No_Team, m_ListBox);
+<a name="210"></a>
+<a name="211"></a>                m_RedListBox.m_listBox.DropSelection();                
+<a name="212"></a>                m_GreenListBox.m_listBox.DropSelection();                
+<a name="213"></a>                m_GoldListBox.m_listBox.DropSelection();                
+<a name="214"></a>                RefreshButtons();
+<a name="215"></a>
+<a name="216"></a>            break;
+<a name="217"></a>
+<a name="218"></a>        case m_RedListBox.m_AddButton:                                          
+<a name="219"></a>        case m_GreenListBox.m_AddButton:        
+<a name="220"></a>        case m_GoldListBox.m_AddButton:                                          
+<a name="221"></a>                AddOperativeToSubList(<span class="source_type"><a href="../r6window/r6windowtexticonssublistbox.html" class="source">R6WindowTextIconsSubListBox</a></span>(<span class="source_type">C</span>.OwnerWindow));                
+<a name="222"></a>                RefreshButtons();
+<a name="223"></a>                ResizeSubLists();
+<a name="224"></a>            break;
+<a name="225"></a>        case m_RedListBox.m_RemoveButton:                  
+<a name="226"></a>        case m_GreenListBox.m_RemoveButton:                                
+<a name="227"></a>        case m_GoldListBox.m_RemoveButton:  
+<a name="228"></a>
+<a name="229"></a>                tmpSubListBox = <span class="source_type"><a href="../r6window/r6windowtexticonssublistbox.html" class="source">R6WindowTextIconsSubListBox</a></span>(<span class="source_type">C</span>.OwnerWindow);
+<a name="230"></a>                SelectedItem = <span class="source_type"><a href="../r6window/r6windowlistboxitem.html" class="source">R6WindowListBoxItem</a></span>(tmpSubListBox.m_listBox.m_SelectedItem);
+<a name="231"></a>                
+<a name="232"></a>                <span class="source_comment">//This is to select the next operative in the team we are remove the current selected operative
+</span><a name="233"></a>                if( SelectedItem.Next != none)
+<a name="234"></a>                    ListItem = <span class="source_type"><a href="../r6window/r6windowlistboxitem.html" class="source">R6WindowListBoxItem</a></span>(SelectedItem.Next);
+<a name="235"></a>                else if( SelectedItem.Prev != tmpSubListBox.m_listBox.Items ) <span class="source_comment">//make sure there is an element
+</span><a name="236"></a>                {
+<a name="237"></a>                    ListItem = <span class="source_type"><a href="../r6window/r6windowlistboxitem.html" class="source">R6WindowListBoxItem</a></span>(SelectedItem.Prev);
+<a name="238"></a>                }
+<a name="239"></a>                    
+<a name="240"></a>
+<a name="241"></a>                RemoveOperativeInSubList(tmpSubListBox);
+<a name="242"></a>                if(ListItem != none)
+<a name="243"></a>                    tmpSubListBox.m_listBox.SetSelectedItem(ListItem);
+<a name="244"></a>                RefreshButtons();
+<a name="245"></a>                ResizeSubLists();
+<a name="246"></a>            break;
+<a name="247"></a>            
+<a name="248"></a>        case m_RedListBox.m_UpButton:                          
+<a name="249"></a>        case m_GreenListBox.m_UpButton:                
+<a name="250"></a>        case m_GoldListBox.m_UpButton:
+<a name="251"></a>            SelectedItem = <span class="source_type"><a href="../r6window/r6windowlistboxitem.html" class="source">R6WindowListBoxItem</a></span>(<span class="source_type"><a href="../r6window/r6windowtexticonssublistbox.html" class="source">R6WindowTextIconsSubListBox</a></span>(<span class="source_type">C</span>.OwnerWindow).m_listBox.m_SelectedItem);
+<a name="252"></a>            UListItem = SelectedItem.Prev;
+<a name="253"></a>            SelectedItem.Remove();
+<a name="254"></a>            UListItem.InsertItemBefore(SelectedItem);
+<a name="255"></a>            RefreshButtons();
+<a name="256"></a>            break;
+<a name="257"></a>
+<a name="258"></a>        case m_RedListBox.m_DownButton:                          
+<a name="259"></a>        case m_GreenListBox.m_DownButton:                
+<a name="260"></a>        case m_GoldListBox.m_DownButton:
+<a name="261"></a>            SelectedItem = <span class="source_type"><a href="../r6window/r6windowlistboxitem.html" class="source">R6WindowListBoxItem</a></span>(<span class="source_type"><a href="../r6window/r6windowtexticonssublistbox.html" class="source">R6WindowTextIconsSubListBox</a></span>(<span class="source_type">C</span>.OwnerWindow).m_listBox.m_SelectedItem);
+<a name="262"></a>            UListItem = SelectedItem.Next;
+<a name="263"></a>            SelectedItem.Remove();
+<a name="264"></a>            UListItem.InsertItemAfter(SelectedItem);
+<a name="265"></a>            RefreshButtons();
+<a name="266"></a>            break;
+<a name="267"></a>
+<a name="268"></a>		}
+<a name="269"></a>	}
+<a name="270"></a>}
+<a name="271"></a>
+<a name="272"></a><span class="source_comment">//Remove an Item from a SubList
+</span><a name="273"></a>function RemoveOperativeInSubList(<span class="source_type"><a href="../r6window/r6windowtexticonssublistbox.html" class="source">R6WindowTextIconsSubListBox</a></span> _SubListBox)
+<a name="274"></a>{
+<a name="275"></a>    local <span class="source_type"><a href="../r6window/r6windowlistboxitem.html" class="source">R6WindowListBoxItem</a></span>           SelectedItem;
+<a name="276"></a>    local <span class="source_type"><a href="../r6game/r6operative.html" class="source">R6Operative</a></span>                   selectedOperative;
+<a name="277"></a>    local <span class="source_type"><a href="../r6menu/r6menugearwidget.html" class="source">R6MenuGearWidget</a></span>              gearWidget;
+<a name="278"></a>
+<a name="279"></a>    gearWidget = <span class="source_type"><a href="../r6menu/r6menugearwidget.html" class="source">R6MenuGearWidget</a></span>(OwnerWindow);
+<a name="280"></a>    
+<a name="281"></a>    SelectedItem = <span class="source_type"><a href="../r6window/r6windowlistboxitem.html" class="source">R6WindowListBoxItem</a></span>(_SubListBox.m_listBox.m_SelectedItem);
+<a name="282"></a>    if((SelectedItem != None) && (SelectedItem.m_ParentListItem != None))
+<a name="283"></a>    {
+<a name="284"></a>        _SubListBox.m_listBox.DropSelection();
+<a name="285"></a>        SelectedItem.m_ParentListItem.m_addedToSubList   = false;
+<a name="286"></a>        SelectedItem.Remove();                            
+<a name="287"></a>        m_ListBox.SetSelectedItem(SelectedItem.m_ParentListItem);
+<a name="288"></a>        selectedOperative = <span class="source_type"><a href="../r6game/r6operative.html" class="source">R6Operative</a></span>(SelectedItem.m_Object);
+<a name="289"></a>        gearWidget.OperativeSelected(selectedOperative, No_Team);
+<a name="290"></a>
+<a name="291"></a>    }       
+<a name="292"></a>}
+<a name="293"></a>
+<a name="294"></a><span class="source_comment">//Adding an item to a sub list
+</span><a name="295"></a>function AddOperativeToSubList(<span class="source_type"><a href="../r6window/r6windowtexticonssublistbox.html" class="source">R6WindowTextIconsSubListBox</a></span> _SubListBox)
+<a name="296"></a>{
+<a name="297"></a>    local <span class="source_type">int</span>                           totalCount;
+<a name="298"></a>    local <span class="source_type"><a href="../r6window/r6windowlistboxitem.html" class="source">R6WindowListBoxItem</a></span>           TempItem , SelectedItem;
+<a name="299"></a>    local <span class="source_type"><a href="../r6game/r6operative.html" class="source">R6Operative</a></span>                   selectedOperative;
+<a name="300"></a>    local <span class="source_type"><a href="../r6menu/r6menugearwidget.html" class="source">R6MenuGearWidget</a></span>              gearWidget;
+<a name="301"></a>    local <span class="source_type">bool</span>                          bfound;
+<a name="302"></a>
+<a name="303"></a>    <span class="source_comment">//Let's try adding an operative to a sub List
+</span><a name="304"></a>    gearWidget = <span class="source_type"><a href="../r6menu/r6menugearwidget.html" class="source">R6MenuGearWidget</a></span>(OwnerWindow);
+<a name="305"></a>
+<a name="306"></a>    <span class="source_comment">//Before adding An op to a sub list make sur he's not in another sub list
+</span><a name="307"></a>    <span class="source_comment">// if so remove him from there
+</span><a name="308"></a>    if( gearWidget.m_currentOperativeTeam == Red_Team)
+<a name="309"></a>            RemoveOperativeInSubList(m_RedListBox);
+<a name="310"></a>
+<a name="311"></a>    else if( gearWidget.m_currentOperativeTeam == Green_Team)
+<a name="312"></a>            RemoveOperativeInSubList(m_GreenListBox);
+<a name="313"></a>
+<a name="314"></a>    else if( gearWidget.m_currentOperativeTeam == Gold_Team)
+<a name="315"></a>            RemoveOperativeInSubList(m_GoldListBox);
+<a name="316"></a>
+<a name="317"></a>    
+<a name="318"></a>    totalCount =  m_RedListBox.m_listBox.Items.Count() + 
+<a name="319"></a>        m_GreenListBox.m_listBox.Items.Count() + 
+<a name="320"></a>        m_GoldListBox.m_listBox.Items.Count();
+<a name="321"></a>    
+<a name="322"></a>    if(bshowlog) <span class="source_comment">//Debug
+</span><a name="323"></a>    {
+<a name="324"></a>        log(<span class="source_string">"m_RedListBox count :"</span>@m_RedListBox.m_listBox.Items.Count());
+<a name="325"></a>        log(<span class="source_string">"m_GreenListBox count :"</span>@m_GreenListBox.m_listBox.Items.Count());
+<a name="326"></a>        log(<span class="source_string">"m_GoldListBox count :"</span>@m_GoldListBox.m_listBox.Items.Count());
+<a name="327"></a>        if(_SubListBox == m_RedListBox)
+<a name="328"></a>            log(<span class="source_string">"m_RedListBox Adding operative"</span>);
+<a name="329"></a>        if(_SubListBox == m_GreenListBox)
+<a name="330"></a>            log(<span class="source_string">"m_GreenListBox Adding operative"</span>);
+<a name="331"></a>        if(_SubListBox == m_GoldListBox)
+<a name="332"></a>            log(<span class="source_string">"m_GoldListBox Adding Operative"</span>);
+<a name="333"></a>    }            
+<a name="334"></a>    
+<a name="335"></a>    SelectedItem = <span class="source_type"><a href="../r6window/r6windowlistboxitem.html" class="source">R6WindowListBoxItem</a></span>(m_listbox.m_SelectedItem);
+<a name="336"></a>    if( (totalCount &lt; m_iMaxOperativeCount) && (SelectedItem != None) 
+<a name="337"></a>        && ( SelectedItem.m_addedToSubList == false ) 
+<a name="338"></a>        && (_SubListBox.m_listBox.Items.Count() &lt; _SubListBox.m_maxItemsCount) )
+<a name="339"></a>    {
+<a name="340"></a>       TempItem = <span class="source_type"><a href="../r6window/r6windowlistboxitem.html" class="source">R6WindowListBoxItem</a></span>(_SubListBox.m_listBox.Items.Append( <span class="source_type">class</span><span class="source_name">'R6WindowListBoxItem'</span>));
+<a name="341"></a>       if( (TempItem != None))
+<a name="342"></a>        {
+<a name="343"></a>            TempItem.m_Icon                 = SelectedItem.m_Icon;
+<a name="344"></a>            TempItem.m_IconRegion           = SelectedItem.m_IconRegion;
+<a name="345"></a>            TempItem.m_IconSelectedRegion   = SelectedItem.m_IconSelectedRegion;
+<a name="346"></a>            TempItem.HelpText               = SelectedItem.HelpText;
+<a name="347"></a>            TempItem.m_ParentListItem       = SelectedItem;
+<a name="348"></a>            TempItem.m_Object               = SelectedItem.m_Object;
+<a name="349"></a>            SelectedItem.m_addedToSubList   = true;
+<a name="350"></a>            m_listBox.DropSelection();
+<a name="351"></a>            _SubListBox.m_ListBox.SetSelectedItem(TempItem);
+<a name="352"></a>
+<a name="353"></a>            selectedOperative = <span class="source_type"><a href="../r6game/r6operative.html" class="source">R6Operative</a></span>(SelectedItem.m_Object);
+<a name="354"></a>            if(_SubListBox == m_RedListBox)
+<a name="355"></a>                gearWidget.OperativeSelected(selectedOperative, Red_Team);
+<a name="356"></a>            else if(_SubListBox == m_GreenListBox)
+<a name="357"></a>                gearWidget.OperativeSelected(selectedOperative, Green_Team);
+<a name="358"></a>            else <span class="source_comment">//(C == m_GoldListBox.m_AddButton)
+</span><a name="359"></a>                gearWidget.OperativeSelected(selectedOperative, Gold_Team);
+<a name="360"></a>        }
+<a name="361"></a>    }
+<a name="362"></a>    else if(bshowlog)
+<a name="363"></a>        log(totalCount@<span class="source_string">"&lt;"</span>@m_iMaxOperativeCount);
+<a name="364"></a>
+<a name="365"></a>    <span class="source_comment">//Let's try to select the next availlable operative in the main list
+</span><a name="366"></a>
+<a name="367"></a>    TempItem = SelectedItem;
+<a name="368"></a>    while(TempItem != none && bfound == false)
+<a name="369"></a>    {
+<a name="370"></a>        if( (TempItem.m_isSeparator == false) && (TempItem.m_addedToSubList == false) )
+<a name="371"></a>        {
+<a name="372"></a>            m_ListBox.SetSelectedItem(TempItem);
+<a name="373"></a>            m_ListBox.MakeSelectedVisible();
+<a name="374"></a>            bfound = true;
+<a name="375"></a>        }
+<a name="376"></a>        else
+<a name="377"></a>            TempItem = <span class="source_type"><a href="../r6window/r6windowlistboxitem.html" class="source">R6WindowListBoxItem</a></span>(TempItem.next);
+<a name="378"></a>    }
+<a name="379"></a>}
+<a name="380"></a>
+<a name="381"></a>
+<a name="382"></a>function RefreshButtons()
+<a name="383"></a>{
+<a name="384"></a>        local   <span class="source_type">int</span>                         iShowAdd, totalCount;
+<a name="385"></a>        local   <span class="source_type"><a href="../r6window/r6windowlistboxitem.html" class="source">R6WindowListBoxItem</a></span>         SelectedItem;
+<a name="386"></a>        local <span class="source_type"><a href="../r6menu/r6menugearwidget.html" class="source">R6MenuGearWidget</a></span>              gearWidget;
+<a name="387"></a>
+<a name="388"></a>        
+<a name="389"></a>        gearWidget = <span class="source_type"><a href="../r6menu/r6menugearwidget.html" class="source">R6MenuGearWidget</a></span>(OwnerWindow);
+<a name="390"></a>        
+<a name="391"></a>        <span class="source_comment">//Let's update the buttons with the right states
+</span><a name="392"></a>    
+<a name="393"></a>        totalCount =  m_RedListBox.m_listBox.Items.Count() + 
+<a name="394"></a>                    m_GreenListBox.m_listBox.Items.Count() + 
+<a name="395"></a>                    m_GoldListBox.m_listBox.Items.Count();
+<a name="396"></a>
+<a name="397"></a>        switch(gearWidget.m_currentOperativeTeam)
+<a name="398"></a>        {
+<a name="399"></a>        case No_Team: <span class="source_comment">//The selected operative is in the main list
+</span><a name="400"></a>            
+<a name="401"></a>                if(totalCount &lt; m_iMaxOperativeCount)
+<a name="402"></a>                    iShowAdd =<span class="source_int">1</span>; <span class="source_comment">//Display Add Buttom
+</span><a name="403"></a>                else    
+<a name="404"></a>                    iShowAdd =<span class="source_int">0</span>; <span class="source_comment">//don't display Add Buttom
+</span><a name="405"></a>                
+<a name="406"></a>                m_RedListBox.UpdateButtons(iShowAdd);      
+<a name="407"></a>                m_GreenListBox.UpdateButtons(iShowAdd);    
+<a name="408"></a>                m_GoldListBox.UpdateButtons(iShowAdd);     
+<a name="409"></a>            break;
+<a name="410"></a>        case Red_Team:
+<a name="411"></a>                m_RedListBox.UpdateButtons(<span class="source_int">0</span>);      
+<a name="412"></a>                m_GreenListBox.UpdateButtons(<span class="source_int">1</span>);    
+<a name="413"></a>                m_GoldListBox.UpdateButtons(<span class="source_int">1</span>);     
+<a name="414"></a>            break;
+<a name="415"></a>        case Green_Team:
+<a name="416"></a>                m_RedListBox.UpdateButtons(<span class="source_int">1</span>);      
+<a name="417"></a>                m_GreenListBox.UpdateButtons(<span class="source_int">0</span>);    
+<a name="418"></a>                m_GoldListBox.UpdateButtons(<span class="source_int">1</span>);     
+<a name="419"></a>            break;
+<a name="420"></a>        case Gold_Team:
+<a name="421"></a>                m_RedListBox.UpdateButtons(<span class="source_int">1</span>);      
+<a name="422"></a>                m_GreenListBox.UpdateButtons(<span class="source_int">1</span>);    
+<a name="423"></a>                m_GoldListBox.UpdateButtons(<span class="source_int">0</span>);     
+<a name="424"></a>            break;
+<a name="425"></a>        }
+<a name="426"></a>
+<a name="427"></a>
+<a name="428"></a>
+<a name="429"></a>
+<a name="430"></a>}
+<a name="431"></a>
+<a name="432"></a>function CreateRosterListBox()
+<a name="433"></a>{
+<a name="434"></a>    local   <span class="source_type"><a href="../core/object.html#Color" class="source">color</a></span>                       co;    
+<a name="435"></a>    local   <span class="source_type">font</span>                        listBoxTitleFont;
+<a name="436"></a>    
+<a name="437"></a>   
+<a name="438"></a>    listBoxTitleFont = Root.Fonts[F_ListItemBig]; 
+<a name="439"></a>
+<a name="440"></a>    m_ListBox           = <span class="source_type"><a href="../r6window/r6windowtexticonslistbox.html" class="source">R6WindowTextIconsListBox</a></span>(CreateControl(<span class="source_type">class</span><span class="source_name">'R6WindowTextIconsListBox'</span>, <span class="source_int">0</span>, m_ElectronicButton.Wintop + m_ElectronicButton.WinHeight, WinWidth, <span class="source_int">143</span>, self));
+<a name="441"></a>	m_ListBox.ToolTipString			   = Localize(<span class="source_string">"Tip"</span>,<span class="source_string">"GearRoomOpListBox"</span>,<span class="source_string">"R6Menu"</span>);
+<a name="442"></a>	m_ListBox.m_SeparatorTextColor	   = Root.Colors.BlueLight;
+<a name="443"></a>	m_ListBox.m_BorderColor			   = Root.Colors.GrayLight;
+<a name="444"></a>    m_listBox.m_IgnoreAllreadySelected = false;
+<a name="445"></a>    m_listBox.m_VertSB.SetEffect(true);
+<a name="446"></a>    
+<a name="447"></a>    m_RedListBox        = <span class="source_type"><a href="../r6window/r6windowtexticonssublistbox.html" class="source">R6WindowTextIconsSubListBox</a></span>(CreateControl(<span class="source_type">class</span><span class="source_name">'R6WindowTextIconsSubListBox'</span>, <span class="source_int">0</span>, m_ListBox.Wintop + m_ListBox.WinHeight + m_fVPadding, WinWidth, <span class="source_int">47</span>, self));
+<a name="448"></a>    m_GreenListBox      = <span class="source_type"><a href="../r6window/r6windowtexticonssublistbox.html" class="source">R6WindowTextIconsSubListBox</a></span>(CreateControl(<span class="source_type">class</span><span class="source_name">'R6WindowTextIconsSubListBox'</span>, <span class="source_int">0</span>, m_RedListBox.Wintop + m_RedListBox.WinHeight + m_fVPadding, WinWidth, <span class="source_int">47</span>, self));
+<a name="449"></a>    m_GoldListBox       = <span class="source_type"><a href="../r6window/r6windowtexticonssublistbox.html" class="source">R6WindowTextIconsSubListBox</a></span>(CreateControl(<span class="source_type">class</span><span class="source_name">'R6WindowTextIconsSubListBox'</span>, <span class="source_int">0</span>, m_GreenListBox.Wintop + m_GreenListBox.WinHeight + m_fVPadding, WinWidth, <span class="source_int">73</span>, self));
+<a name="450"></a>   
+<a name="451"></a>      
+<a name="452"></a>    m_RedListBox.m_ListBox.SetScrollable(false);
+<a name="453"></a>    m_GreenListBox.m_ListBox.SetScrollable(false);
+<a name="454"></a>    m_GoldListBox.m_ListBox.SetScrollable(false);
+<a name="455"></a>    
+<a name="456"></a>    
+<a name="457"></a>    
+<a name="458"></a>    m_RedListBox.SetColor(Root.Colors.TeamColor[<span class="source_int">0</span>]); <span class="source_comment">//Root.Colors.Red;
+</span><a name="459"></a>    m_GreenListBox.SetColor(Root.Colors.TeamColor[<span class="source_int">1</span>]); <span class="source_comment">//Root.Colors.Green;    
+</span><a name="460"></a>    m_GoldListBox.SetColor(Root.Colors.TeamColor[<span class="source_int">2</span>]); <span class="source_comment">//Root.Colors.Gold;
+</span><a name="461"></a>
+<a name="462"></a>        		
+<a name="463"></a>    Co = Root.Colors.White;
+<a name="464"></a>
+<a name="465"></a>    
+<a name="466"></a>	m_RedListBox.m_Title.Align = TA_Center;
+<a name="467"></a>	m_RedListBox.m_Title.m_Font = listBoxTitleFont;
+<a name="468"></a>	m_RedListBox.m_Title.TextColor = Co;
+<a name="469"></a>    m_RedListBox.m_Title.SetNewText(Localize(<span class="source_string">"GearRoom"</span>,<span class="source_string">"team1"</span>,<span class="source_string">"R6Menu"</span>), true);
+<a name="470"></a>
+<a name="471"></a>    
+<a name="472"></a>	m_GreenListBox.m_Title.Align = TA_Center;
+<a name="473"></a>	m_GreenListBox.m_Title.m_Font = listBoxTitleFont;
+<a name="474"></a>	m_GreenListBox.m_Title.TextColor = Co;
+<a name="475"></a>    m_GreenListBox.m_Title.SetNewText(Localize(<span class="source_string">"GearRoom"</span>,<span class="source_string">"team2"</span>,<span class="source_string">"R6Menu"</span>), true);
+<a name="476"></a>
+<a name="477"></a>	m_GoldListBox.m_Title.Align = TA_Center;
+<a name="478"></a>	m_GoldListBox.m_Title.m_Font = listBoxTitleFont;
+<a name="479"></a>	m_GoldListBox.m_Title.TextColor = Co;
+<a name="480"></a>    m_GoldListBox.m_Title.SetNewText(Localize(<span class="source_string">"GearRoom"</span>,<span class="source_string">"team3"</span>,<span class="source_string">"R6Menu"</span>), true);
+<a name="481"></a>    
+<a name="482"></a>    m_RedListBox.SetTip(Localize(<span class="source_string">"Tip"</span>,<span class="source_string">"GearRoomRedListBox"</span>,<span class="source_string">"R6Menu"</span>));
+<a name="483"></a>    m_GreenListBox.SetTip(Localize(<span class="source_string">"Tip"</span>,<span class="source_string">"GearRoomGreenListBox"</span>,<span class="source_string">"R6Menu"</span>));     
+<a name="484"></a>    m_GoldListBox.SetTip(Localize(<span class="source_string">"Tip"</span>,<span class="source_string">"GearRoomGoldListBox"</span>,<span class="source_string">"R6Menu"</span>));
+<a name="485"></a>}
+<a name="486"></a>
+<a name="487"></a>function CreateAnchoredButtons()
+<a name="488"></a>{    
+<a name="489"></a>    
+<a name="490"></a>    m_AssaultButton     = <span class="source_type"><a href="../r6window/r6windowlistboxanchorbutton.html" class="source">R6WindowListBoxAnchorButton</a></span>(CreateControl(<span class="source_type">class</span><span class="source_name">'R6WindowListBoxAnchorButton'</span>, m_fFirsButtonOffset, m_fHButtonOffset, m_fButtonTabWidth, m_fButtonTabHeight));    
+<a name="491"></a>	m_AssaultButton.ToolTipString   = Localize(<span class="source_string">"Tip"</span>,<span class="source_string">"GearRoomButAssault"</span>,<span class="source_string">"R6Menu"</span>);
+<a name="492"></a>    m_AssaultButton.UpRegion        = m_RAssaultUp;    
+<a name="493"></a>    m_AssaultButton.OverRegion      = m_RAssaultOver;    
+<a name="494"></a>    m_AssaultButton.DownRegion      = m_RAssaultDown;
+<a name="495"></a>    m_AssaultButton.DisabledRegion  = m_RAssaultDisabled;
+<a name="496"></a>    m_AssaultButton.m_iDrawStyle    =<span class="source_int">5</span>; <span class="source_comment">//STY_Alpha  
+</span><a name="497"></a>   
+<a name="498"></a>    m_ReconButton       = <span class="source_type"><a href="../r6window/r6windowlistboxanchorbutton.html" class="source">R6WindowListBoxAnchorButton</a></span>(CreateControl(<span class="source_type">class</span><span class="source_name">'R6WindowListBoxAnchorButton'</span>, m_AssaultButton.WinLeft + m_AssaultButton.WinWidth + m_fHButtonPadding, m_AssaultButton.WinTop, m_AssaultButton.WinWidth, m_AssaultButton.WinHeight));    
+<a name="499"></a>	m_ReconButton.ToolTipString   = Localize(<span class="source_string">"Tip"</span>,<span class="source_string">"GearRoomButRecon"</span>,<span class="source_string">"R6Menu"</span>);
+<a name="500"></a>    m_ReconButton.UpRegion        = m_RReconUp;    
+<a name="501"></a>    m_ReconButton.OverRegion      = m_RReconOver;    
+<a name="502"></a>    m_ReconButton.DownRegion      = m_RReconDown;
+<a name="503"></a>    m_ReconButton.DisabledRegion  = m_RReconDisabled;
+<a name="504"></a>    m_ReconButton.m_iDrawStyle    =<span class="source_int">5</span>; <span class="source_comment">//STY_Alpha
+</span><a name="505"></a>
+<a name="506"></a>    m_SniperButton      = <span class="source_type"><a href="../r6window/r6windowlistboxanchorbutton.html" class="source">R6WindowListBoxAnchorButton</a></span>(CreateControl(<span class="source_type">class</span><span class="source_name">'R6WindowListBoxAnchorButton'</span>, m_ReconButton.WinLeft + m_ReconButton.WinWidth + m_fHButtonPadding, m_AssaultButton.WinTop,  m_AssaultButton.WinWidth, m_AssaultButton.WinHeight));    
+<a name="507"></a>	m_SniperButton.ToolTipString   = Localize(<span class="source_string">"Tip"</span>,<span class="source_string">"GearRoomButSniper"</span>,<span class="source_string">"R6Menu"</span>);
+<a name="508"></a>    m_SniperButton.UpRegion        = m_RSniperUp;    
+<a name="509"></a>    m_SniperButton.OverRegion      = m_RSniperOver;    
+<a name="510"></a>    m_SniperButton.DownRegion      = m_RSniperDown;
+<a name="511"></a>    m_SniperButton.DisabledRegion  = m_RSniperDisabled;
+<a name="512"></a>    m_SniperButton.m_iDrawStyle    =<span class="source_int">5</span>; <span class="source_comment">//STY_Alpha
+</span><a name="513"></a>
+<a name="514"></a>    m_DemolitionButton  = <span class="source_type"><a href="../r6window/r6windowlistboxanchorbutton.html" class="source">R6WindowListBoxAnchorButton</a></span>(CreateControl(<span class="source_type">class</span><span class="source_name">'R6WindowListBoxAnchorButton'</span>, m_SniperButton.WinLeft + m_SniperButton.WinWidth + m_fHButtonPadding, m_AssaultButton.WinTop,  m_AssaultButton.WinWidth, m_AssaultButton.WinHeight));    
+<a name="515"></a>	m_DemolitionButton.ToolTipString   = Localize(<span class="source_string">"Tip"</span>,<span class="source_string">"GearRoomButDemol"</span>,<span class="source_string">"R6Menu"</span>);
+<a name="516"></a>    m_DemolitionButton.UpRegion        = m_RDemolitionUp;    
+<a name="517"></a>    m_DemolitionButton.OverRegion      = m_RDemolitionOver;    
+<a name="518"></a>    m_DemolitionButton.DownRegion      = m_RDemolitionDown;
+<a name="519"></a>    m_DemolitionButton.DisabledRegion  = m_RDemolitionDisabled;
+<a name="520"></a>    m_DemolitionButton.m_iDrawStyle    =<span class="source_int">5</span>; <span class="source_comment">//STY_Alpha
+</span><a name="521"></a>
+<a name="522"></a>    m_ElectronicButton  = <span class="source_type"><a href="../r6window/r6windowlistboxanchorbutton.html" class="source">R6WindowListBoxAnchorButton</a></span>(CreateControl(<span class="source_type">class</span><span class="source_name">'R6WindowListBoxAnchorButton'</span>, m_DemolitionButton.WinLeft + m_DemolitionButton.WinWidth + m_fHButtonPadding, m_AssaultButton.WinTop,  m_AssaultButton.WinWidth, m_AssaultButton.WinHeight));    
+<a name="523"></a>	m_ElectronicButton.ToolTipString   = Localize(<span class="source_string">"Tip"</span>,<span class="source_string">"GearRoomButElec"</span>,<span class="source_string">"R6Menu"</span>);
+<a name="524"></a>    m_ElectronicButton.UpRegion        = m_RElectronicUp;    
+<a name="525"></a>    m_ElectronicButton.OverRegion      = m_RElectronicOver;    
+<a name="526"></a>    m_ElectronicButton.DownRegion      = m_RElectronicDown;
+<a name="527"></a>    m_ElectronicButton.DisabledRegion  = m_RElectronicDisabled;
+<a name="528"></a>    m_ElectronicButton.m_iDrawStyle    =<span class="source_int">5</span>; <span class="source_comment">//STY_Alpha
+</span><a name="529"></a>
+<a name="530"></a>}
+<a name="531"></a>
+<a name="532"></a>function FillRosterList()
+<a name="533"></a>{
+<a name="534"></a>
+<a name="535"></a>    local   <span class="source_type"><a href="../r6window/r6windowlistboxitem.html" class="source">R6WindowListBoxItem</a></span>         TempItem;
+<a name="536"></a>    local   <span class="source_type"><a href="../engine/texture.html" class="source">texture</a></span>                     ButtonTexture;
+<a name="537"></a>    local   <span class="source_type"><a href="../core/object.html#Region" class="source">region</a></span>                      <span class="source_type">R</span>, RS;   
+<a name="538"></a>
+<a name="539"></a>    local   <span class="source_type">int</span>                         <span class="source_type">i</span>, SeparatorID, iUniqueID;
+<a name="540"></a>
+<a name="541"></a>    local <span class="source_type"><a href="../r6menu/r6menurootwindow.html" class="source">R6MenuRootWindow</a></span>              R6Root;
+<a name="542"></a>    local <span class="source_type"><a href="../r6game/r6operative.html" class="source">R6Operative</a></span>                   tmpOperative;
+<a name="543"></a>    local <span class="source_type"><a href="../r6menu/r6menugearwidget.html" class="source">R6MenuGearWidget</a></span>              gearWidget;
+<a name="544"></a>        
+<a name="545"></a>
+<a name="546"></a>    local <span class="source_type">bool</span>                          found;
+<a name="547"></a>
+<a name="548"></a>    
+<a name="549"></a>    ButtonTexture = <span class="source_type"><a href="../engine/texture.html" class="source">Texture</a></span>(DynamicLoadObject(<span class="source_string">"R6MenuTextures.Tab_Icon00"</span>, <span class="source_type">class</span><span class="source_name">'Texture'</span>));
+<a name="550"></a>    R6Root = <span class="source_type"><a href="../r6menu/r6menurootwindow.html" class="source">R6MenuRootWindow</a></span>(Root);
+<a name="551"></a>    gearWidget = <span class="source_type"><a href="../r6menu/r6menugearwidget.html" class="source">R6MenuGearWidget</a></span>(OwnerWindow);
+<a name="552"></a>
+<a name="553"></a>	m_iMaxOperativeCount = 	<span class="source_type"><a href="../r6game/r6gameinfo.html" class="source">R6GameInfo</a></span>(GetLevel().Game).m_iMaxOperatives;
+<a name="554"></a>
+<a name="555"></a>    <span class="source_comment">//Make sure everything is empty first
+</span><a name="556"></a>    EmptyRosterList();
+<a name="557"></a>
+<a name="558"></a>     <span class="source_comment">//Filling the separators first
+</span><a name="559"></a>        
+<a name="560"></a>    TempItem                = <span class="source_type"><a href="../r6window/r6windowlistboxitem.html" class="source">R6WindowListBoxItem</a></span>( m_ListBox.Items.Append( <span class="source_type">class</span><span class="source_name">'R6WindowListBoxItem'</span>));
+<a name="561"></a>    TempItem.HelpText       = Localize(<span class="source_string">"GearRoom"</span>,<span class="source_string">"ButtonAssault"</span>,<span class="source_string">"R6Menu"</span>);
+<a name="562"></a>    TempItem.m_IsSeparator  = true;
+<a name="563"></a>    TempItem.m_iSeparatorID =<span class="source_int">1</span>;
+<a name="564"></a>    m_AssaultButton.AnchoredElement     = TempItem;
+<a name="565"></a>
+<a name="566"></a>    TempItem                = <span class="source_type"><a href="../r6window/r6windowlistboxitem.html" class="source">R6WindowListBoxItem</a></span>( m_ListBox.Items.Append( <span class="source_type">class</span><span class="source_name">'R6WindowListBoxItem'</span>));
+<a name="567"></a>    TempItem.HelpText       = Localize(<span class="source_string">"GearRoom"</span>,<span class="source_string">"ButtonSniper"</span>,<span class="source_string">"R6Menu"</span>);
+<a name="568"></a>    TempItem.m_IsSeparator  = true;
+<a name="569"></a>    TempItem.m_iSeparatorID =<span class="source_int">2</span>;
+<a name="570"></a>    m_SniperButton.AnchoredElement      = TempItem;
+<a name="571"></a>
+<a name="572"></a>    TempItem                = <span class="source_type"><a href="../r6window/r6windowlistboxitem.html" class="source">R6WindowListBoxItem</a></span>( m_ListBox.Items.Append( <span class="source_type">class</span><span class="source_name">'R6WindowListBoxItem'</span>));
+<a name="573"></a>    TempItem.HelpText       = Localize(<span class="source_string">"GearRoom"</span>,<span class="source_string">"ButtonDemolition"</span>,<span class="source_string">"R6Menu"</span>);
+<a name="574"></a>    TempItem.m_IsSeparator  = true;
+<a name="575"></a>    TempItem.m_iSeparatorID =<span class="source_int">3</span>;
+<a name="576"></a>    m_DemolitionButton.AnchoredElement  = TempItem;
+<a name="577"></a>
+<a name="578"></a>        TempItem                = <span class="source_type"><a href="../r6window/r6windowlistboxitem.html" class="source">R6WindowListBoxItem</a></span>( m_ListBox.Items.Append( <span class="source_type">class</span><span class="source_name">'R6WindowListBoxItem'</span>));
+<a name="579"></a>    TempItem.HelpText       = Localize(<span class="source_string">"GearRoom"</span>,<span class="source_string">"ButtonElectronic"</span>,<span class="source_string">"R6Menu"</span>);
+<a name="580"></a>    TempItem.m_IsSeparator  = true;
+<a name="581"></a>    TempItem.m_iSeparatorID =<span class="source_int">4</span>;
+<a name="582"></a>    m_ElectronicButton.AnchoredElement  = TempItem;
+<a name="583"></a>
+<a name="584"></a>    TempItem                = <span class="source_type"><a href="../r6window/r6windowlistboxitem.html" class="source">R6WindowListBoxItem</a></span>( m_ListBox.Items.Append( <span class="source_type">class</span><span class="source_name">'R6WindowListBoxItem'</span>));
+<a name="585"></a>    TempItem.HelpText       = Localize(<span class="source_string">"GearRoom"</span>,<span class="source_string">"ButtonRecon"</span>,<span class="source_string">"R6Menu"</span>);
+<a name="586"></a>    TempItem.m_IsSeparator  = true;
+<a name="587"></a>    TempItem.m_iSeparatorID =<span class="source_int">5</span>;
+<a name="588"></a>    m_ReconButton.AnchoredElement       = TempItem;   
+<a name="589"></a>
+<a name="590"></a>    
+<a name="591"></a>
+<a name="592"></a>
+<a name="593"></a>
+<a name="594"></a>
+<a name="595"></a>    if(bshowlog)
+<a name="596"></a>    {
+<a name="597"></a>        log(<span class="source_string">"R6MenuDynTeamListsControl:FillRosterListBox"</span>);
+<a name="598"></a>        log(<span class="source_string">"m_ListBox.Items.Count()"</span>@m_ListBox.Items.Count());
+<a name="599"></a>        log(<span class="source_string">"R6Root.m_GameOperatives.Length"</span>@R6Root.m_GameOperatives.Length);
+<a name="600"></a>    }
+<a name="601"></a>    
+<a name="602"></a>	iUniqueID = -<span class="source_int">1</span>;
+<a name="603"></a>    for(<span class="source_type">i</span>=<span class="source_int">0</span>; <span class="source_type">i</span>&lt; R6Root.m_GameOperatives.Length; <span class="source_type">i</span>++)
+<a name="604"></a>    {
+<a name="605"></a>        tmpOperative  = R6Root.m_GameOperatives[<span class="source_type">i</span>];
+<a name="606"></a>        if(bshowlog)
+<a name="607"></a>        log(<span class="source_string">"tmpOperative"</span>@tmpOperative);
+<a name="608"></a>        if(tmpOperative != None)
+<a name="609"></a>        {
+<a name="610"></a>			iUniqueID+=<span class="source_int">1</span>;
+<a name="611"></a>			if (tmpOperative.m_iUniqueID == -<span class="source_int">1</span>)
+<a name="612"></a>			{
+<a name="613"></a>				<span class="source_comment">// it's a rookie, the UniqueID is not save in campaign file, only in planning (.pln)!
+</span><a name="614"></a>				tmpOperative.m_iUniqueID = iUniqueID; <span class="source_comment">// the array is sequential, so just add iUniqueID
+</span><a name="615"></a>			}
+<a name="616"></a>
+<a name="617"></a>           <span class="source_comment">//This makes me thinks maybe this Id should be a numeric value
+</span><a name="618"></a>            if(tmpOperative.m_szSpecialityID == <span class="source_string">"ID_ASSAULT"</span>)
+<a name="619"></a>            {
+<a name="620"></a>                <span class="source_type">R</span>=RAssault;
+<a name="621"></a>                RS=RSAssault;
+<a name="622"></a>                SeparatorID=<span class="source_int">1</span>;
+<a name="623"></a>            }
+<a name="624"></a>               else if(tmpOperative.m_szSpecialityID == <span class="source_string">"ID_SNIPER"</span>)
+<a name="625"></a>            {
+<a name="626"></a>                <span class="source_type">R</span>=RSniper;
+<a name="627"></a>                RS=RSSniper;
+<a name="628"></a>                SeparatorID=<span class="source_int">2</span>;
+<a name="629"></a>
+<a name="630"></a>            }
+<a name="631"></a>            else if(tmpOperative.m_szSpecialityID == <span class="source_string">"ID_DEMOLITIONS"</span>)
+<a name="632"></a>            {
+<a name="633"></a>                <span class="source_type">R</span>=RDemo;
+<a name="634"></a>                RS=RSDemo;
+<a name="635"></a>                SeparatorID=<span class="source_int">3</span>;
+<a name="636"></a>
+<a name="637"></a>            }
+<a name="638"></a>            else if(tmpOperative.m_szSpecialityID == <span class="source_string">"ID_ELECTRONICS"</span>)
+<a name="639"></a>            {
+<a name="640"></a>                <span class="source_type">R</span>=RElectro;
+<a name="641"></a>                RS=RSElectro;
+<a name="642"></a>                SeparatorID=<span class="source_int">4</span>;
+<a name="643"></a>
+<a name="644"></a>            }
+<a name="645"></a>            else if(tmpOperative.m_szSpecialityID == <span class="source_string">"ID_RECON"</span>)
+<a name="646"></a>            {
+<a name="647"></a>                <span class="source_type">R</span>=RRecon;
+<a name="648"></a>                RS=RSRecon;
+<a name="649"></a>                SeparatorID=<span class="source_int">5</span>;
+<a name="650"></a>
+<a name="651"></a>            }                 
+<a name="652"></a>          
+<a name="653"></a>
+<a name="654"></a>            TempItem = <span class="source_type"><a href="../r6window/r6windowlistboxitem.html" class="source">R6WindowListBoxItem</a></span>(m_ListBox.Items).InsertLastAfterSeparator( <span class="source_type">class</span><span class="source_name">'R6WindowListBoxItem'</span>, SeparatorID);
+<a name="655"></a>            if(TempItem != None)
+<a name="656"></a>            {
+<a name="657"></a>                TempItem.m_Icon = ButtonTexture;        
+<a name="658"></a>                TempItem.m_IconRegion           = <span class="source_type">R</span>;
+<a name="659"></a>                TempItem.m_IconSelectedRegion   = RS; 
+<a name="660"></a>                TempItem.HelpText = tmpOperative.GetName();
+<a name="661"></a>                <span class="source_comment">//Check Health Status
+</span><a name="662"></a>                if(tmpOperative.m_iHealth &gt; <span class="source_int">1</span>)
+<a name="663"></a>                    TempItem.m_addedToSubList = true;
+<a name="664"></a>                TempItem.m_Object = tmpOperative; 
+<a name="665"></a>                gearWidget.SetupOperative(tmpOperative);
+<a name="666"></a>                
+<a name="667"></a>            }        
+<a name="668"></a>        }
+<a name="669"></a>    }   
+<a name="670"></a>    
+<a name="671"></a>    <span class="source_comment">//Set First Operative in list selected
+</span><a name="672"></a>    TempItem = <span class="source_type"><a href="../r6window/r6windowlistboxitem.html" class="source">R6WindowListBoxItem</a></span>(m_ListBox.Items.Next);
+<a name="673"></a>    while(TempItem != None && found == false)
+<a name="674"></a>    {
+<a name="675"></a>        if(TempItem.m_IsSeparator  == false)
+<a name="676"></a>        {              
+<a name="677"></a>           <span class="source_comment">//Select The first Operative after           
+</span><a name="678"></a>           m_ListBox.SetSelectedItem(TempItem);
+<a name="679"></a>           m_ListBox.MakeSelectedVisible();
+<a name="680"></a>           
+<a name="681"></a>           found = true;
+<a name="682"></a>        }
+<a name="683"></a>        else
+<a name="684"></a>        {           
+<a name="685"></a>            TempItem = <span class="source_type"><a href="../r6window/r6windowlistboxitem.html" class="source">R6WindowListBoxItem</a></span>(TempItem.Next);
+<a name="686"></a>    
+<a name="687"></a>        }
+<a name="688"></a>    }   
+<a name="689"></a>
+<a name="690"></a>}
+<a name="691"></a>
+<a name="692"></a>function EmptyRosterList()
+<a name="693"></a>{
+<a name="694"></a>    
+<a name="695"></a>    m_ListBox.Items.Clear();
+<a name="696"></a>    m_RedListBox.m_ListBox.Items.Clear();
+<a name="697"></a>    m_GreenListBox.m_ListBox.Items.Clear();
+<a name="698"></a>    m_GoldListBox.m_ListBox.Items.Clear();
+<a name="699"></a>
+<a name="700"></a>}
+<a name="701"></a>
+<a name="702"></a>function Paint(<span class="source_type"><a href="../engine/canvas.html" class="source">Canvas</a></span> <span class="source_type">C</span>, <span class="source_type">FLOAT</span> X, <span class="source_type">FLOAT</span> <span class="source_type">Y</span>)
+<a name="703"></a>{
+<a name="704"></a>
+<a name="705"></a>    <span class="source_type"><a href="../r6window/r6windowlookandfeel.html" class="source">R6WindowLookAndFeel</a></span>(LookAndFeel).DrawBGShading(Self, <span class="source_type">C</span>, m_ListBox.WinLeft,m_ListBox.Wintop, m_ListBox.WinWidth, m_ListBox.WinHeight);
+<a name="706"></a>
+<a name="707"></a>    <span class="source_type">C</span>.Style = <span class="source_type"><a href="../uwindow/uwindowbase.html#ERenderStyle" class="source">ERenderStyle</a></span>.STY_Alpha;    
+<a name="708"></a>	<span class="source_type">C</span>.SetDrawColor( Root.Colors.GrayLight.<span class="source_type">R</span>, Root.Colors.GrayLight.G, Root.Colors.GrayLight.<span class="source_type">B</span>);
+<a name="709"></a>
+<a name="710"></a>    <span class="source_comment">//Top
+</span><a name="711"></a>    DrawStretchedTextureSegment(<span class="source_type">C</span>, <span class="source_int">0</span>, <span class="source_int">0</span>, WinWidth, m_BorderRegion.<span class="source_type">H</span> , m_BorderRegion.X, m_BorderRegion.<span class="source_type">Y</span>, m_BorderRegion.W, m_BorderRegion.<span class="source_type">H</span>, m_BorderTexture);
+<a name="712"></a>    <span class="source_comment">//Bottom
+</span><a name="713"></a>    DrawStretchedTextureSegment(<span class="source_type">C</span>, <span class="source_int">0</span>, m_AssaultButton.WinHeight + m_AssaultButton.WinTop, WinWidth, m_BorderRegion.<span class="source_type">H</span> , m_BorderRegion.X, m_BorderRegion.<span class="source_type">Y</span>, m_BorderRegion.W, m_BorderRegion.<span class="source_type">H</span>, m_BorderTexture);
+<a name="714"></a>    <span class="source_comment">//Left
+</span><a name="715"></a>    DrawStretchedTextureSegment(<span class="source_type">C</span>, <span class="source_int">0</span>, <span class="source_int">0</span>, m_BorderRegion.W, m_AssaultButton.WinHeight + m_fHButtonOffset, m_BorderRegion.X, m_BorderRegion.<span class="source_type">Y</span>, m_BorderRegion.W, m_BorderRegion.<span class="source_type">H</span>, m_BorderTexture);
+<a name="716"></a>    <span class="source_comment">//Right
+</span><a name="717"></a>    DrawStretchedTextureSegment(<span class="source_type">C</span>, WinWidth-m_BorderRegion.W, <span class="source_int">0</span>, m_BorderRegion.W, m_AssaultButton.WinHeight +m_fHButtonOffset, m_BorderRegion.X, m_BorderRegion.<span class="source_type">Y</span>, m_BorderRegion.W, m_BorderRegion.<span class="source_type">H</span>, m_BorderTexture);
+<a name="718"></a>
+<a name="719"></a>
+<a name="720"></a>}
+<a name="721"></a>
+<a name="722"></a>function ResizeSubLists()
+<a name="723"></a>{
+<a name="724"></a>	local <span class="source_type">INT</span> iRedListBoxH, iGreenListBoxH, iGoldListBoxH;
+<a name="725"></a>	local <span class="source_type">INT</span> iAddSpace, iMaxListHeigth, iAvailableSpace;
+<a name="726"></a>
+<a name="727"></a>	<span class="source_comment">// max size of a list
+</span><a name="728"></a>	iMaxListHeigth = (<span class="source_int">4</span> * m_SubListByItemHeight) + m_SubListTopHeight;
+<a name="729"></a>
+<a name="730"></a>	<span class="source_comment">// current size of each list
+</span><a name="731"></a>	iRedListBoxH   = (m_RedListBox.m_listBox.Items.Count()   * m_SubListByItemHeight) + m_SubListTopHeight;
+<a name="732"></a>	iGreenListBoxH = (m_GreenListBox.m_listBox.Items.Count() * m_SubListByItemHeight) + m_SubListTopHeight;
+<a name="733"></a>	iGoldListBoxH  = (m_GoldListBox.m_listBox.Items.Count()  * m_SubListByItemHeight) + m_SubListTopHeight;
+<a name="734"></a>
+<a name="735"></a>	<span class="source_comment">// calculate the space available to add item
+</span><a name="736"></a>	iAvailableSpace = TotalSublistsHeight - Min( iRedListBoxH + iGreenListBoxH + iGoldListBoxH, TotalSublistsHeight);
+<a name="737"></a>
+<a name="738"></a>	<span class="source_comment">// distribute the space between each list
+</span><a name="739"></a>	while( iAvailableSpace != <span class="source_int">0</span>)
+<a name="740"></a>	{
+<a name="741"></a>		<span class="source_comment">// add available space equally between the 3 list
+</span><a name="742"></a>		iAddSpace = (iAvailableSpace/<span class="source_int">3</span>);
+<a name="743"></a>		iAvailableSpace = iAvailableSpace - (<span class="source_int">3</span> * iAddSpace);
+<a name="744"></a>
+<a name="745"></a>		if (iAddSpace == <span class="source_int">0</span>)
+<a name="746"></a>		{
+<a name="747"></a>			iAddSpace = iAvailableSpace; <span class="source_comment">// less than 3 spaces
+</span><a name="748"></a>			iAvailableSpace = <span class="source_int">0</span>;
+<a name="749"></a>
+<a name="750"></a>			iAddSpace = DistributeSpaces( iAddSpace, iRedListBoxH, iMaxListHeigth);
+<a name="751"></a>			iAddSpace = DistributeSpaces( iAddSpace, iGreenListBoxH, iMaxListHeigth);
+<a name="752"></a>			iAddSpace = DistributeSpaces( iAddSpace, iGoldListBoxH, iMaxListHeigth);
+<a name="753"></a>		}
+<a name="754"></a>		else
+<a name="755"></a>		{
+<a name="756"></a>			iAvailableSpace += DistributeSpaces( iAddSpace, iRedListBoxH, iMaxListHeigth);
+<a name="757"></a>			iAvailableSpace += DistributeSpaces( iAddSpace, iGreenListBoxH, iMaxListHeigth);
+<a name="758"></a>			iAvailableSpace += DistributeSpaces( iAddSpace, iGoldListBoxH, iMaxListHeigth);
+<a name="759"></a>		}
+<a name="760"></a>	}
+<a name="761"></a>
+<a name="762"></a>    m_RedListBox.SetSize(m_RedListBox.Winwidth, iRedListBoxH);
+<a name="763"></a>    
+<a name="764"></a>    m_GreenListBox.Wintop = m_RedListBox.Wintop + m_RedListBox.WinHeight + m_fVPadding;
+<a name="765"></a>    m_GreenListBox.SetSize(m_GreenListBox.Winwidth, iGreenListBoxH);
+<a name="766"></a>    
+<a name="767"></a>    m_GoldListBox.Wintop = m_GreenListBox.Wintop + m_GreenListBox.WinHeight + m_fVPadding;
+<a name="768"></a>    m_GoldListBox.SetSize(m_GoldListBox.Winwidth, iGoldListBoxH);
+<a name="769"></a>
+<a name="770"></a>    if(bshowlog)
+<a name="771"></a>    {
+<a name="772"></a>        log(<span class="source_string">"//////////////////////////////////////////////////////"</span>);
+<a name="773"></a>        log(<span class="source_string">"// R6MenuDynTeamListsControl.ResizeSubLists()"</span>);
+<a name="774"></a>        log(<span class="source_string">"//m_RedListBox.WinHeight"</span>@m_RedListBox.WinHeight);
+<a name="775"></a>        log(<span class="source_string">"//m_GoldListBox.WinHeight"</span>@m_GoldListBox.WinHeight);
+<a name="776"></a>        log(<span class="source_string">"//m_GreenListBox.WinHeight"</span>@m_GreenListBox.WinHeight);
+<a name="777"></a>        log(<span class="source_string">"//yo "</span>@WinHeight - TotalSublistsHeight - m_AssaultButton.WinHeight + m_fHButtonOffset - m_ListBox.WinHeight);
+<a name="778"></a>        log(<span class="source_string">"//////////////////////////////////////////////////////"</span>);
+<a name="779"></a>    }
+<a name="780"></a>}
+<a name="781"></a>
+<a name="782"></a>function <span class="source_type">INT</span> DistributeSpaces( <span class="source_type">INT</span> _iSpaceToAdd, out <span class="source_type">INT</span> _iHList, <span class="source_type">INT</span> _iMaxListHeigth)
+<a name="783"></a>{
+<a name="784"></a>	local <span class="source_type">INT</span> iSpaceLeft;
+<a name="785"></a>
+<a name="786"></a>	if ( _iHList + _iSpaceToAdd &gt; _iMaxListHeigth)
+<a name="787"></a>	{
+<a name="788"></a>		iSpaceLeft = _iSpaceToAdd - (_iMaxListHeigth - _iHList);
+<a name="789"></a>		_iHList = _iMaxListHeigth;
+<a name="790"></a>	}
+<a name="791"></a>	else
+<a name="792"></a>	{
+<a name="793"></a>		_iHList += _iSpaceToAdd;
+<a name="794"></a>	}
+<a name="795"></a>
+<a name="796"></a>	return iSpaceLeft;
+<a name="797"></a>}
+<a name="798"></a>
+<a name="799"></a>defaultproperties
+<a name="800"></a>{
+<a name="801"></a>     m_SubListTopHeight=<span class="source_int">20</span>
+<a name="802"></a>     m_iMaxOperativeCount=<span class="source_int">8</span>
+<a name="803"></a>     m_fButtonTabWidth=<span class="source_int">37.000000</span>
+<a name="804"></a>     m_fButtonTabHeight=<span class="source_int">20.000000</span>
+<a name="805"></a>     m_MinSubListHeight=<span class="source_int">47.000000</span>
+<a name="806"></a>     m_SubListByItemHeight=<span class="source_int">13.000000</span>
+<a name="807"></a>     TotalSublistsHeight=<span class="source_int">167.000000</span>
+<a name="808"></a>     m_fVPadding=<span class="source_int">2.000000</span>
+<a name="809"></a>     m_fFirsButtonOffset=<span class="source_int">3.000000</span>
+<a name="810"></a>     m_fHButtonPadding=<span class="source_int">2.000000</span>
+<a name="811"></a>     m_fHButtonOffset=<span class="source_int">3.000000</span>
+<a name="812"></a>     m_RASSAULTUp=(W=<span class="source_int">37</span>,<span class="source_type">H</span>=<span class="source_int">20</span>)
+<a name="813"></a>     m_RASSAULTOver=(<span class="source_type">Y</span>=<span class="source_int">21</span>,W=<span class="source_int">37</span>,<span class="source_type">H</span>=<span class="source_int">20</span>)
+<a name="814"></a>     m_RASSAULTDown=(<span class="source_type">Y</span>=<span class="source_int">42</span>,W=<span class="source_int">37</span>,<span class="source_type">H</span>=<span class="source_int">20</span>)
+<a name="815"></a>     m_RAssaultDisabled=(<span class="source_type">Y</span>=<span class="source_int">42</span>,W=<span class="source_int">37</span>,<span class="source_type">H</span>=<span class="source_int">20</span>)
+<a name="816"></a>     m_RReconUp=(X=<span class="source_int">114</span>,W=<span class="source_int">37</span>,<span class="source_type">H</span>=<span class="source_int">20</span>)
+<a name="817"></a>     m_RReconOver=(X=<span class="source_int">114</span>,<span class="source_type">Y</span>=<span class="source_int">21</span>,W=<span class="source_int">37</span>,<span class="source_type">H</span>=<span class="source_int">20</span>)
+<a name="818"></a>     m_RReconDown=(X=<span class="source_int">114</span>,<span class="source_type">Y</span>=<span class="source_int">42</span>,W=<span class="source_int">37</span>,<span class="source_type">H</span>=<span class="source_int">20</span>)
+<a name="819"></a>     m_RReconDisabled=(X=<span class="source_int">114</span>,<span class="source_type">Y</span>=<span class="source_int">42</span>,W=<span class="source_int">37</span>,<span class="source_type">H</span>=<span class="source_int">20</span>)
+<a name="820"></a>     m_RSNIPERUp=(X=<span class="source_int">152</span>,W=<span class="source_int">37</span>,<span class="source_type">H</span>=<span class="source_int">20</span>)
+<a name="821"></a>     m_RSNIPEROver=(X=<span class="source_int">152</span>,<span class="source_type">Y</span>=<span class="source_int">21</span>,W=<span class="source_int">37</span>,<span class="source_type">H</span>=<span class="source_int">20</span>)
+<a name="822"></a>     m_RSNIPERDown=(X=<span class="source_int">152</span>,<span class="source_type">Y</span>=<span class="source_int">42</span>,W=<span class="source_int">37</span>,<span class="source_type">H</span>=<span class="source_int">20</span>)
+<a name="823"></a>     m_RSniperDisabled=(X=<span class="source_int">152</span>,<span class="source_type">Y</span>=<span class="source_int">42</span>,W=<span class="source_int">37</span>,<span class="source_type">H</span>=<span class="source_int">20</span>)
+<a name="824"></a>     m_RDemolitionUp=(X=<span class="source_int">38</span>,W=<span class="source_int">37</span>,<span class="source_type">H</span>=<span class="source_int">20</span>)
+<a name="825"></a>     m_RDemolitionOver=(X=<span class="source_int">38</span>,<span class="source_type">Y</span>=<span class="source_int">21</span>,W=<span class="source_int">37</span>,<span class="source_type">H</span>=<span class="source_int">20</span>)
+<a name="826"></a>     m_RDemolitionDown=(X=<span class="source_int">38</span>,<span class="source_type">Y</span>=<span class="source_int">42</span>,W=<span class="source_int">37</span>,<span class="source_type">H</span>=<span class="source_int">20</span>)
+<a name="827"></a>     m_RDemolitionDisabled=(X=<span class="source_int">38</span>,<span class="source_type">Y</span>=<span class="source_int">42</span>,W=<span class="source_int">37</span>,<span class="source_type">H</span>=<span class="source_int">20</span>)
+<a name="828"></a>     m_RElectronicUp=(X=<span class="source_int">76</span>,W=<span class="source_int">37</span>,<span class="source_type">H</span>=<span class="source_int">20</span>)
+<a name="829"></a>     m_RElectronicOver=(X=<span class="source_int">76</span>,<span class="source_type">Y</span>=<span class="source_int">21</span>,W=<span class="source_int">37</span>,<span class="source_type">H</span>=<span class="source_int">20</span>)
+<a name="830"></a>     m_RElectronicDown=(X=<span class="source_int">76</span>,<span class="source_type">Y</span>=<span class="source_int">42</span>,W=<span class="source_int">37</span>,<span class="source_type">H</span>=<span class="source_int">20</span>)
+<a name="831"></a>     m_RElectronicDisabled=(X=<span class="source_int">76</span>,<span class="source_type">Y</span>=<span class="source_int">42</span>,W=<span class="source_int">37</span>,<span class="source_type">H</span>=<span class="source_int">20</span>)
+<a name="832"></a>     RAssault=(X=<span class="source_int">229</span>,W=<span class="source_int">9</span>,<span class="source_type">H</span>=<span class="source_int">9</span>)
+<a name="833"></a>     RRecon=(X=<span class="source_int">239</span>,<span class="source_type">Y</span>=<span class="source_int">20</span>,W=<span class="source_int">9</span>,<span class="source_type">H</span>=<span class="source_int">9</span>)
+<a name="834"></a>     RSniper=(X=<span class="source_int">229</span>,<span class="source_type">Y</span>=<span class="source_int">40</span>,W=<span class="source_int">9</span>,<span class="source_type">H</span>=<span class="source_int">9</span>)
+<a name="835"></a>     RDemo=(X=<span class="source_int">239</span>,W=<span class="source_int">9</span>,<span class="source_type">H</span>=<span class="source_int">9</span>)
+<a name="836"></a>     RElectro=(X=<span class="source_int">229</span>,<span class="source_type">Y</span>=<span class="source_int">20</span>,W=<span class="source_int">9</span>,<span class="source_type">H</span>=<span class="source_int">9</span>)
+<a name="837"></a>     RSAssault=(X=<span class="source_int">229</span>,<span class="source_type">Y</span>=<span class="source_int">10</span>,W=<span class="source_int">9</span>,<span class="source_type">H</span>=<span class="source_int">9</span>)
+<a name="838"></a>     RSRecon=(X=<span class="source_int">239</span>,<span class="source_type">Y</span>=<span class="source_int">30</span>,W=<span class="source_int">9</span>,<span class="source_type">H</span>=<span class="source_int">9</span>)
+<a name="839"></a>     RSSniper=(X=<span class="source_int">229</span>,<span class="source_type">Y</span>=<span class="source_int">50</span>,W=<span class="source_int">9</span>,<span class="source_type">H</span>=<span class="source_int">9</span>)
+<a name="840"></a>     RSDemo=(X=<span class="source_int">239</span>,<span class="source_type">Y</span>=<span class="source_int">10</span>,W=<span class="source_int">9</span>,<span class="source_type">H</span>=<span class="source_int">9</span>)
+<a name="841"></a>     RSElectro=(X=<span class="source_int">229</span>,<span class="source_type">Y</span>=<span class="source_int">30</span>,W=<span class="source_int">9</span>,<span class="source_type">H</span>=<span class="source_int">9</span>)
+<a name="842"></a>     m_BorderRegion=(X=<span class="source_int">64</span>,<span class="source_type">Y</span>=<span class="source_int">56</span>,W=<span class="source_int">1</span>,<span class="source_type">H</span>=<span class="source_int">1</span>)
+<a name="843"></a>}
+<a name="844"></a></pre></td></tr></table></div>
+<hr />
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../r6menu/r6menu-overview.html">Package</a></td>
+	<td class="header"><a href="../r6menu/r6menudynteamlistscontrol.html">Class</a></td>
+	<td class="header_hilight">Source</td>
+	<td class="header"><a class="header" href="../classtree.html#R6MenuDynTeamListsControl">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../Source_r6menu/r6menudiffcustommissionselect.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../Source_r6menu/r6menuequipmentanchorbuttons.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+
+<div class="stats">Class file time: sam. 18/9/2004 14:39:54.000 - Creation time: mar. 26/5/2026 18:33:20.301 - Created with <a href="http://wiki.beyondunreal.com/wiki/UnCodeX" target="_blank">UnCodeX</a></div>
+
+</body>
+</html>

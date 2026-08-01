@@ -1,0 +1,888 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+	<title>UnCodeX - Source: R6Menu.R6MenuButtonsDefines</title>
+	<meta name="Generator" content="UnCodeX 241" />
+	<link rel="stylesheet" href="../DocStyle2.css" type="text/css" title="Original Purple" />
+	<link rel="alternative stylesheet" href="../DocStyle2-blue.css" type="text/css" title="Blue" />
+	<link rel="alternative stylesheet" href="../DocStyle2-red.css" type="text/css" title="Red" />
+	<!--[if IE]>
+	<link rel="stylesheet" href="../DocStyle2-msie.css" type="text/css" />
+	<![endif]-->
+	<script src="../styleswitcher.js" type="text/javascript"></script>
+</head>
+<body>
+
+<div class="header">
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../r6menu/r6menu-overview.html">Package</a></td>
+	<td class="header"><a href="../r6menu/r6menubuttonsdefines.html">Class</a></td>
+	<td class="header_hilight">Source</td>
+	<td class="header"><a class="header" href="../classtree.html#R6MenuButtonsDefines">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../Source_r6menu/r6menubriefingspeakerwidget.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../Source_r6menu/r6menucamfloordownbutton.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html#Source_r6menu/r6menubuttonsdefines.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+</div>
+<div class="spacer"></div>
+
+<h1><a href="../r6menu/r6menu-overview.html">R6Menu</a>.<a href="../r6menu/r6menubuttonsdefines.html">R6MenuButtonsDefines</a></h1>
+<br />
+<div class="source"><table class="source"><tr><td class="source_lineno"><span class="source_lineno">00001<br />00002<br />00003<br />00004<br />00005<br />00006<br />00007<br />00008<br />00009<br />00010<br />00011<br />00012<br />00013<br />00014<br />00015<br />00016<br />00017<br />00018<br />00019<br />00020<br />
+00021<br />00022<br />00023<br />00024<br />00025<br />00026<br />00027<br />00028<br />00029<br />00030<br />00031<br />00032<br />00033<br />00034<br />00035<br />00036<br />00037<br />00038<br />00039<br />00040<br />
+00041<br />00042<br />00043<br />00044<br />00045<br />00046<br />00047<br />00048<br />00049<br />00050<br />00051<br />00052<br />00053<br />00054<br />00055<br />00056<br />00057<br />00058<br />00059<br />00060<br />
+00061<br />00062<br />00063<br />00064<br />00065<br />00066<br />00067<br />00068<br />00069<br />00070<br />00071<br />00072<br />00073<br />00074<br />00075<br />00076<br />00077<br />00078<br />00079<br />00080<br />
+00081<br />00082<br />00083<br />00084<br />00085<br />00086<br />00087<br />00088<br />00089<br />00090<br />00091<br />00092<br />00093<br />00094<br />00095<br />00096<br />00097<br />00098<br />00099<br />00100<br />
+00101<br />00102<br />00103<br />00104<br />00105<br />00106<br />00107<br />00108<br />00109<br />00110<br />00111<br />00112<br />00113<br />00114<br />00115<br />00116<br />00117<br />00118<br />00119<br />00120<br />
+00121<br />00122<br />00123<br />00124<br />00125<br />00126<br />00127<br />00128<br />00129<br />00130<br />00131<br />00132<br />00133<br />00134<br />00135<br />00136<br />00137<br />00138<br />00139<br />00140<br />
+00141<br />00142<br />00143<br />00144<br />00145<br />00146<br />00147<br />00148<br />00149<br />00150<br />00151<br />00152<br />00153<br />00154<br />00155<br />00156<br />00157<br />00158<br />00159<br />00160<br />
+00161<br />00162<br />00163<br />00164<br />00165<br />00166<br />00167<br />00168<br />00169<br />00170<br />00171<br />00172<br />00173<br />00174<br />00175<br />00176<br />00177<br />00178<br />00179<br />00180<br />
+00181<br />00182<br />00183<br />00184<br />00185<br />00186<br />00187<br />00188<br />00189<br />00190<br />00191<br />00192<br />00193<br />00194<br />00195<br />00196<br />00197<br />00198<br />00199<br />00200<br />
+00201<br />00202<br />00203<br />00204<br />00205<br />00206<br />00207<br />00208<br />00209<br />00210<br />00211<br />00212<br />00213<br />00214<br />00215<br />00216<br />00217<br />00218<br />00219<br />00220<br />
+00221<br />00222<br />00223<br />00224<br />00225<br />00226<br />00227<br />00228<br />00229<br />00230<br />00231<br />00232<br />00233<br />00234<br />00235<br />00236<br />00237<br />00238<br />00239<br />00240<br />
+00241<br />00242<br />00243<br />00244<br />00245<br />00246<br />00247<br />00248<br />00249<br />00250<br />00251<br />00252<br />00253<br />00254<br />00255<br />00256<br />00257<br />00258<br />00259<br />00260<br />
+00261<br />00262<br />00263<br />00264<br />00265<br />00266<br />00267<br />00268<br />00269<br />00270<br />00271<br />00272<br />00273<br />00274<br />00275<br />00276<br />00277<br />00278<br />00279<br />00280<br />
+00281<br />00282<br />00283<br />00284<br />00285<br />00286<br />00287<br />00288<br />00289<br />00290<br />00291<br />00292<br />00293<br />00294<br />00295<br />00296<br />00297<br />00298<br />00299<br />00300<br />
+00301<br />00302<br />00303<br />00304<br />00305<br />00306<br />00307<br />00308<br />00309<br />00310<br />00311<br />00312<br />00313<br />00314<br />00315<br />00316<br />00317<br />00318<br />00319<br />00320<br />
+00321<br />00322<br />00323<br />00324<br />00325<br />00326<br />00327<br />00328<br />00329<br />00330<br />00331<br />00332<br />00333<br />00334<br />00335<br />00336<br />00337<br />00338<br />00339<br />00340<br />
+00341<br />00342<br />00343<br />00344<br />00345<br />00346<br />00347<br />00348<br />00349<br />00350<br />00351<br />00352<br />00353<br />00354<br />00355<br />00356<br />00357<br />00358<br />00359<br />00360<br />
+00361<br />00362<br />00363<br />00364<br />00365<br />00366<br />00367<br />00368<br />00369<br />00370<br />00371<br />00372<br />00373<br />00374<br />00375<br />00376<br />00377<br />00378<br />00379<br />00380<br />
+00381<br />00382<br />00383<br />00384<br />00385<br />00386<br />00387<br />00388<br />00389<br />00390<br />00391<br />00392<br />00393<br />00394<br />00395<br />00396<br />00397<br />00398<br />00399<br />00400<br />
+00401<br />00402<br />00403<br />00404<br />00405<br />00406<br />00407<br />00408<br />00409<br />00410<br />00411<br />00412<br />00413<br />00414<br />00415<br />00416<br />00417<br />00418<br />00419<br />00420<br />
+00421<br />00422<br />00423<br />00424<br />00425<br />00426<br />00427<br />00428<br />00429<br />00430<br />00431<br />00432<br />00433<br />00434<br />00435<br />00436<br />00437<br />00438<br />00439<br />00440<br />
+00441<br />00442<br />00443<br />00444<br />00445<br />00446<br />00447<br />00448<br />00449<br />00450<br />00451<br />00452<br />00453<br />00454<br />00455<br />00456<br />00457<br />00458<br />00459<br />00460<br />
+00461<br />00462<br />00463<br />00464<br />00465<br />00466<br />00467<br />00468<br />00469<br />00470<br />00471<br />00472<br />00473<br />00474<br />00475<br />00476<br />00477<br />00478<br />00479<br />00480<br />
+00481<br />00482<br />00483<br />00484<br />00485<br />00486<br />00487<br />00488<br />00489<br />00490<br />00491<br />00492<br />00493<br />00494<br />00495<br />00496<br />00497<br />00498<br />00499<br />00500<br />
+00501<br />00502<br />00503<br />00504<br />00505<br />00506<br />00507<br />00508<br />00509<br />00510<br />00511<br />00512<br />00513<br />00514<br />00515<br />00516<br />00517<br />00518<br />00519<br />00520<br />
+00521<br />00522<br />00523<br />00524<br />00525<br />00526<br />00527<br />00528<br />00529<br />00530<br />00531<br />00532<br />00533<br />00534<br />00535<br />00536<br />00537<br />00538<br />00539<br />00540<br />
+00541<br />00542<br />00543<br />00544<br />00545<br />00546<br />00547<br />00548<br />00549<br />00550<br />00551<br />00552<br />00553<br />00554<br />00555<br />00556<br />00557<br />00558<br />00559<br />00560<br />
+00561<br />00562<br />00563<br />00564<br />00565<br />00566<br />00567<br />00568<br />00569<br />00570<br />00571<br />00572<br />00573<br />00574<br />00575<br />00576<br />00577<br />00578<br />00579<br />00580<br />
+00581<br />00582<br />00583<br />00584<br />00585<br />00586<br />00587<br />00588<br />00589<br />00590<br />00591<br />00592<br />00593<br />00594<br />00595<br />00596<br />00597<br />00598<br />00599<br />00600<br />
+00601<br />00602<br />00603<br />00604<br />00605<br />00606<br />00607<br />00608<br />00609<br />00610<br />00611<br />00612<br />00613<br />00614<br />00615<br />00616<br />00617<br />00618<br />00619<br />00620<br />
+00621<br />00622<br />00623<br />00624<br />00625<br />00626<br />00627<br />00628<br />00629<br />00630<br />00631<br />00632<br />00633<br />00634<br />00635<br />00636<br />00637<br />00638<br />00639<br />00640<br />
+00641<br />00642<br />00643<br />00644<br />00645<br />00646<br />00647<br />00648<br />00649<br />00650<br />00651<br />00652<br />00653<br />00654<br />00655<br />00656<br />00657<br />00658<br />00659<br />00660<br />
+00661<br />00662<br />00663<br />00664<br />00665<br />00666<br />00667<br />00668<br />00669<br />00670<br />00671<br />00672<br />00673<br />00674<br />00675<br />00676<br />00677<br />00678<br />00679<br />00680<br />
+00681<br />00682<br />00683<br />00684<br />00685<br />00686<br />00687<br />00688<br />00689<br />00690<br />00691<br />00692<br />00693<br />00694<br />00695<br />00696<br />00697<br />00698<br />00699<br />00700<br />
+00701<br />00702<br />00703<br />00704<br />00705<br />00706<br />00707<br />00708<br />00709<br />00710<br />00711<br />00712<br />00713<br />00714<br />00715<br />00716<br />00717<br />00718<br />00719<br />00720<br />
+00721<br />00722<br />00723<br />00724<br />00725<br />00726<br />00727<br />00728<br />00729<br />00730<br />00731<br />00732<br />00733<br />00734<br />00735<br />00736<br />00737<br />00738<br />00739<br />00740<br />
+00741<br />00742<br />00743<br />00744<br />00745<br />00746<br />00747<br />00748<br />00749<br />00750<br />00751<br />00752<br />00753<br />00754<br />00755<br />00756<br />00757<br />00758<br />00759<br />00760<br />
+00761<br />00762<br />00763<br />00764<br />00765<br />00766<br />00767<br />00768<br />00769<br />00770<br />00771<br />00772<br />00773<br />00774<br />00775<br />00776<br />00777<br />00778<br />00779<br />00780<br />
+00781<br />00782<br />00783<br />00784<br />00785<br />00786<br />00787<br />00788<br />00789<br />00790<br />00791</span></td>
+<td class="source"><pre class="source"><a name="1"></a><span class="source_comment">//=============================================================================
+</span><a name="2"></a><span class="source_comment">//  R6MenuButtonsDefines.uc : This is the definiton of all the buttons and some function to create it
+</span><a name="3"></a><span class="source_comment">//  Copyright 2001 Ubi Soft, Inc. All Rights Reserved.
+</span><a name="4"></a><span class="source_comment">//
+</span><a name="5"></a><span class="source_comment">//  Revision history:
+</span><a name="6"></a><span class="source_comment">//    2002/05/09  * Create by Yannick Joly
+</span><a name="7"></a><span class="source_comment">//=============================================================================
+</span><a name="8"></a><span class="source_type">class</span> <span class="source_type"><a href="../r6menu/r6menubuttonsdefines.html" class="source">R6MenuButtonsDefines</a></span> extends <span class="source_type"><a href="../uwindow/uwindowwindow.html" class="source">UWindowWindow</a></span>;
+<a name="9"></a>
+<a name="10"></a><span class="source_comment">// buttons localisation extension
+</span><a name="11"></a>enum <span class="source_type"><a href="../r6menu/r6menubuttonsdefines.html#eButLocalizationExt" class="source">eButLocalizationExt</a></span>
+<a name="12"></a>{
+<a name="13"></a>	eBLE_None,
+<a name="14"></a>	eBLE_DisableToolTip
+<a name="15"></a>};
+<a name="16"></a>
+<a name="17"></a>struct <span class="source_type"><a href="../r6menu/r6menubuttonsdefines.html#STButton" class="source">STButton</a></span>
+<a name="18"></a>{
+<a name="19"></a>	var <span class="source_type">string</span>		szButtonName;
+<a name="20"></a>	var <span class="source_type">string</span>		szTip;
+<a name="21"></a>	var <span class="source_type">FLOAT</span>		<span class="source_type">fWidth</span>;
+<a name="22"></a>	var <span class="source_type">FLOAT</span>		<span class="source_type">fHeight</span>;
+<a name="23"></a>	var <span class="source_type">INT</span>			iButtonID;
+<a name="24"></a>};
+<a name="25"></a>
+<a name="26"></a><span class="source_comment">// buttons parameters
+</span><a name="27"></a>var <span class="source_type">FLOAT</span>												m_fWidth;
+<a name="28"></a>var <span class="source_type">FLOAT</span>												m_fHeight;
+<a name="29"></a>
+<a name="30"></a>function SetButtonsSizes( <span class="source_type">FLOAT</span> _fWidth, <span class="source_type">FLOAT</span> <span class="source_type">_fHeight</span>)
+<a name="31"></a>{
+<a name="32"></a>	m_fWidth  = _fWidth;
+<a name="33"></a>	m_fHeight = <span class="source_type">_fHeight</span>;
+<a name="34"></a>}
+<a name="35"></a>
+<a name="36"></a>function <span class="source_type">string</span> GetButtonLoc( <span class="source_type">INT</span> _iButtonID, optional <span class="source_type">BOOL</span> _bTip, optional <span class="source_type"><a href="../r6menu/r6menubuttonsdefines.html#eButLocalizationExt" class="source">eButLocalizationExt</a></span> _eBLE)
+<a name="37"></a>{
+<a name="38"></a>	local <span class="source_type">string</span> <span class="source_type">szName</span>;
+<a name="39"></a>	local <span class="source_type">string</span> szTip;
+<a name="40"></a>	local <span class="source_type">string</span> szExt;
+<a name="41"></a>
+<a name="42"></a>	switch( _iButtonID)
+<a name="43"></a>	{
+<a name="44"></a>		<span class="source_comment">// TIME MAP
+</span><a name="45"></a>		case <span class="source_type"><a href="../uwindow/uwindowbase.html#EButtonName" class="source">EButtonName</a></span>.EBN_RoundPerMatch:
+<a name="46"></a>			<span class="source_type">szName</span> = Localize(<span class="source_string">"MPCreateGame"</span>,<span class="source_string">"Options_RoundMatch"</span>,<span class="source_string">"R6Menu"</span>);
+<a name="47"></a><span class="source_comment">//			szTip  = Localize("Tip","Options_RoundMatch","R6Menu");
+</span><a name="48"></a>			break;
+<a name="49"></a>
+<a name="50"></a>		<span class="source_comment">// ROUND TIME 
+</span><a name="51"></a>		case <span class="source_type"><a href="../uwindow/uwindowbase.html#EButtonName" class="source">EButtonName</a></span>.EBN_RoundTime:
+<a name="52"></a>			<span class="source_type">szName</span> = Localize(<span class="source_string">"MPCreateGame"</span>,<span class="source_string">"Options_Round"</span>,<span class="source_string">"R6Menu"</span>);
+<a name="53"></a><span class="source_comment">//			szTip  = Localize("Tip","Options_Round","R6Menu");
+</span><a name="54"></a>			break;
+<a name="55"></a>
+<a name="56"></a>	    <span class="source_comment">// NUMBER OF PLAYERS
+</span><a name="57"></a>		case <span class="source_type"><a href="../uwindow/uwindowbase.html#EButtonName" class="source">EButtonName</a></span>.EBN_NB_Players:
+<a name="58"></a>			<span class="source_type">szName</span> = Localize(<span class="source_string">"MPCreateGame"</span>,<span class="source_string">"Options_NbOfPlayers"</span>,<span class="source_string">"R6Menu"</span>);
+<a name="59"></a><span class="source_comment">//			szTip  = Localize("Tip","Options_NbOfPlayers","R6Menu");
+</span><a name="60"></a>			break;
+<a name="61"></a>
+<a name="62"></a>	    <span class="source_comment">// BOMB TIMER
+</span><a name="63"></a>		case <span class="source_type"><a href="../uwindow/uwindowbase.html#EButtonName" class="source">EButtonName</a></span>.EBN_BombTimer:
+<a name="64"></a>			<span class="source_type">szName</span> = Localize(<span class="source_string">"MPCreateGame"</span>,<span class="source_string">"Options_BombTimer"</span>,<span class="source_string">"R6Menu"</span>);
+<a name="65"></a><span class="source_comment">//			szTip  = Localize("Tip","Options_BombTimer","R6Menu");
+</span><a name="66"></a>			break;
+<a name="67"></a>
+<a name="68"></a>	    <span class="source_comment">// SPECTATOR
+</span><a name="69"></a>		case <span class="source_type"><a href="../uwindow/uwindowbase.html#EButtonName" class="source">EButtonName</a></span>.EBN_Spectator:
+<a name="70"></a>			<span class="source_type">szName</span> = Localize(<span class="source_string">"MPCreateGame"</span>,<span class="source_string">"Options_Spectator"</span>,<span class="source_string">"R6Menu"</span>);
+<a name="71"></a><span class="source_comment">//			szTip  = Localize("Tip","Options_Spectator","R6Menu");
+</span><a name="72"></a>			break;
+<a name="73"></a>
+<a name="74"></a>	    <span class="source_comment">// ROUND PER MISSION
+</span><a name="75"></a>		case <span class="source_type"><a href="../uwindow/uwindowbase.html#EButtonName" class="source">EButtonName</a></span>.EBN_RoundPerMission:
+<a name="76"></a>			<span class="source_type">szName</span> = Localize(<span class="source_string">"MPCreateGame"</span>,<span class="source_string">"Options_RoundMission"</span>,<span class="source_string">"R6Menu"</span>);
+<a name="77"></a><span class="source_comment">//			szTip  = Localize("Tip","Options_RoundMission","R6Menu");
+</span><a name="78"></a>			break;
+<a name="79"></a>
+<a name="80"></a>	    <span class="source_comment">// TIME BETWEEN ROUND
+</span><a name="81"></a>		case <span class="source_type"><a href="../uwindow/uwindowbase.html#EButtonName" class="source">EButtonName</a></span>.EBN_TimeBetRound:
+<a name="82"></a>			<span class="source_type">szName</span> = Localize(<span class="source_string">"MPCreateGame"</span>,<span class="source_string">"Options_BetRound"</span>,<span class="source_string">"R6Menu"</span>);
+<a name="83"></a><span class="source_comment">//			szTip  = Localize("Tip","Options_BetRound","R6Menu");
+</span><a name="84"></a>			break;
+<a name="85"></a>
+<a name="86"></a>	    <span class="source_comment">// NUMBER OF TERRORIST
+</span><a name="87"></a>		case <span class="source_type"><a href="../uwindow/uwindowbase.html#EButtonName" class="source">EButtonName</a></span>.EBN_NB_of_Terro: 
+<a name="88"></a>			<span class="source_type">szName</span> = Localize(<span class="source_string">"MPCreateGame"</span>,<span class="source_string">"Options_NbOfTerro"</span>,<span class="source_string">"R6Menu"</span>);
+<a name="89"></a><span class="source_comment">//			szTip  = Localize("Tip","Options_NbOfTerro","R6Menu");
+</span><a name="90"></a>			break;
+<a name="91"></a>
+<a name="92"></a>	    <span class="source_comment">// PUBLIC SERVER
+</span><a name="93"></a>		case <span class="source_type"><a href="../uwindow/uwindowbase.html#EButtonName" class="source">EButtonName</a></span>.EBN_InternetServer:
+<a name="94"></a>			<span class="source_type">szName</span> = Localize(<span class="source_string">"MPCreateGame"</span>,<span class="source_string">"Options_ServerLocation"</span>,<span class="source_string">"R6Menu"</span>);
+<a name="95"></a>			szTip  = Localize(<span class="source_string">"Tip"</span>,<span class="source_string">"Options_ServerLocation"</span>,<span class="source_string">"R6Menu"</span>);
+<a name="96"></a>			break;
+<a name="97"></a>
+<a name="98"></a>	    <span class="source_comment">// DEDICATED SERVER
+</span><a name="99"></a>		case <span class="source_type"><a href="../uwindow/uwindowbase.html#EButtonName" class="source">EButtonName</a></span>.EBN_DedicatedServer:
+<a name="100"></a>			<span class="source_type">szName</span> = Localize(<span class="source_string">"MPCreateGame"</span>,<span class="source_string">"Options_Dedicated"</span>,<span class="source_string">"R6Menu"</span>);
+<a name="101"></a>			szTip  = Localize(<span class="source_string">"Tip"</span>,<span class="source_string">"Options_Dedicated"</span>,<span class="source_string">"R6Menu"</span>);
+<a name="102"></a>			break;
+<a name="103"></a>
+<a name="104"></a>	    <span class="source_comment">// FRIENDLY SERVER
+</span><a name="105"></a>		case <span class="source_type"><a href="../uwindow/uwindowbase.html#EButtonName" class="source">EButtonName</a></span>.EBN_FriendlyFire:
+<a name="106"></a>			<span class="source_type">szName</span> = Localize(<span class="source_string">"MPCreateGame"</span>,<span class="source_string">"Options_Friendly"</span>,<span class="source_string">"R6Menu"</span>);
+<a name="107"></a>			szTip  = Localize(<span class="source_string">"Tip"</span>,<span class="source_string">"Options_Friendly"</span>,<span class="source_string">"R6Menu"</span>);
+<a name="108"></a>			break;
+<a name="109"></a>
+<a name="110"></a>	    <span class="source_comment">// SHOW ENNEMY NAMES
+</span><a name="111"></a>		case <span class="source_type"><a href="../uwindow/uwindowbase.html#EButtonName" class="source">EButtonName</a></span>.EBN_AllowTeamNames:
+<a name="112"></a>			<span class="source_type">szName</span> = Localize(<span class="source_string">"MPCreateGame"</span>,<span class="source_string">"Options_AllowTeamNames"</span>,<span class="source_string">"R6Menu"</span>);
+<a name="113"></a>			szTip  = Localize(<span class="source_string">"Tip"</span>,<span class="source_string">"Options_AllowTeamNames"</span>,<span class="source_string">"R6Menu"</span>);
+<a name="114"></a>			break;
+<a name="115"></a>
+<a name="116"></a>	    <span class="source_comment">// AUTO BALANCE TEAM
+</span><a name="117"></a>		case <span class="source_type"><a href="../uwindow/uwindowbase.html#EButtonName" class="source">EButtonName</a></span>.EBN_AutoBalTeam:
+<a name="118"></a>			<span class="source_type">szName</span> = Localize(<span class="source_string">"MPCreateGame"</span>,<span class="source_string">"Options_Auto"</span>,<span class="source_string">"R6Menu"</span>);
+<a name="119"></a>			szTip  = Localize(<span class="source_string">"Tip"</span>,<span class="source_string">"Options_Auto"</span>,<span class="source_string">"R6Menu"</span>);
+<a name="120"></a>			break;
+<a name="121"></a>
+<a name="122"></a>	    <span class="source_comment">// TK PENALTY
+</span><a name="123"></a>		case <span class="source_type"><a href="../uwindow/uwindowbase.html#EButtonName" class="source">EButtonName</a></span>.EBN_TKPenalty:
+<a name="124"></a>			<span class="source_type">szName</span> = Localize(<span class="source_string">"MPCreateGame"</span>,<span class="source_string">"Options_TK"</span>,<span class="source_string">"R6Menu"</span>);
+<a name="125"></a>			szTip  = Localize(<span class="source_string">"Tip"</span>,<span class="source_string">"Options_TK"</span>,<span class="source_string">"R6Menu"</span>);
+<a name="126"></a>			break;
+<a name="127"></a>
+<a name="128"></a>	    <span class="source_comment">// SHOW RADAR
+</span><a name="129"></a>		case <span class="source_type"><a href="../uwindow/uwindowbase.html#EButtonName" class="source">EButtonName</a></span>.EBN_AllowRadar:
+<a name="130"></a>			<span class="source_type">szName</span> = Localize(<span class="source_string">"MPCreateGame"</span>,<span class="source_string">"Options_AllowRadar"</span>,<span class="source_string">"R6Menu"</span>);
+<a name="131"></a>			szTip  = Localize(<span class="source_string">"Tip"</span>,<span class="source_string">"Options_AllowRadar"</span>,<span class="source_string">"R6Menu"</span>);
+<a name="132"></a>			break;
+<a name="133"></a>
+<a name="134"></a>	    <span class="source_comment">// ROTATE MAP WHEN SUCCEED
+</span><a name="135"></a>		case <span class="source_type"><a href="../uwindow/uwindowbase.html#EButtonName" class="source">EButtonName</a></span>.EBN_RotateMap:
+<a name="136"></a>			<span class="source_type">szName</span> = Localize(<span class="source_string">"MPCreateGame"</span>,<span class="source_string">"Options_RotateMap"</span>,<span class="source_string">"R6Menu"</span>);
+<a name="137"></a>			szTip  = Localize(<span class="source_string">"Tip"</span>,<span class="source_string">"Options_RotateMap"</span>,<span class="source_string">"R6Menu"</span>);
+<a name="138"></a>			break;
+<a name="139"></a>
+<a name="140"></a>	    <span class="source_comment">// AI BACKUP
+</span><a name="141"></a>		case <span class="source_type"><a href="../uwindow/uwindowbase.html#EButtonName" class="source">EButtonName</a></span>.EBN_AIBkp:
+<a name="142"></a>			<span class="source_type">szName</span> = Localize(<span class="source_string">"MPCreateGame"</span>,<span class="source_string">"Options_AIBackup"</span>,<span class="source_string">"R6Menu"</span>);
+<a name="143"></a>			szTip  = Localize(<span class="source_string">"Tip"</span>,<span class="source_string">"Options_AIBackup"</span>,<span class="source_string">"R6Menu"</span>);
+<a name="144"></a>			break;
+<a name="145"></a>
+<a name="146"></a>	    <span class="source_comment">// SHOW FIRST PERSON WEAPON
+</span><a name="147"></a>		case <span class="source_type"><a href="../uwindow/uwindowbase.html#EButtonName" class="source">EButtonName</a></span>.EBN_ForceFPersonWp:
+<a name="148"></a>			<span class="source_type">szName</span> = Localize(<span class="source_string">"MPCreateGame"</span>,<span class="source_string">"Options_ForceFPersonWp"</span>,<span class="source_string">"R6Menu"</span>);
+<a name="149"></a>			szTip  = Localize(<span class="source_string">"Tip"</span>,<span class="source_string">"Options_ForceFPersonWp"</span>,<span class="source_string">"R6Menu"</span>);
+<a name="150"></a>			break;
+<a name="151"></a>
+<a name="152"></a>	    <span class="source_comment">// FIRST PERSON
+</span><a name="153"></a>		case <span class="source_type"><a href="../uwindow/uwindowbase.html#EButtonName" class="source">EButtonName</a></span>.EBN_CamFirstPerson:
+<a name="154"></a>			<span class="source_type">szName</span> = Localize(<span class="source_string">"MPCreateGame"</span>,<span class="source_string">"Options_FirstP"</span>,<span class="source_string">"R6Menu"</span>);
+<a name="155"></a>			szTip  = Localize(<span class="source_string">"Tip"</span>,<span class="source_string">"Options_FirstP"</span>,<span class="source_string">"R6Menu"</span>);
+<a name="156"></a>			break;
+<a name="157"></a>
+<a name="158"></a>	    <span class="source_comment">// THIRD PERSON
+</span><a name="159"></a>		case <span class="source_type"><a href="../uwindow/uwindowbase.html#EButtonName" class="source">EButtonName</a></span>.EBN_CamThirdPerson:
+<a name="160"></a>			<span class="source_type">szName</span> = Localize(<span class="source_string">"MPCreateGame"</span>,<span class="source_string">"Options_ThirdP"</span>,<span class="source_string">"R6Menu"</span>);
+<a name="161"></a>			szTip  = Localize(<span class="source_string">"Tip"</span>,<span class="source_string">"Options_ThirdP"</span>,<span class="source_string">"R6Menu"</span>);
+<a name="162"></a>			break;
+<a name="163"></a>
+<a name="164"></a>	    <span class="source_comment">// FREE THIRD PERSON
+</span><a name="165"></a>		case <span class="source_type"><a href="../uwindow/uwindowbase.html#EButtonName" class="source">EButtonName</a></span>.EBN_CamFreeThirdP:
+<a name="166"></a>			<span class="source_type">szName</span> = Localize(<span class="source_string">"MPCreateGame"</span>,<span class="source_string">"Options_FreeThirdP"</span>,<span class="source_string">"R6Menu"</span>);
+<a name="167"></a>			szTip  = Localize(<span class="source_string">"Tip"</span>,<span class="source_string">"Options_FreeThirdP"</span>,<span class="source_string">"R6Menu"</span>);
+<a name="168"></a>			break;
+<a name="169"></a>
+<a name="170"></a>	    <span class="source_comment">// GHOST CAMERA
+</span><a name="171"></a>		case <span class="source_type"><a href="../uwindow/uwindowbase.html#EButtonName" class="source">EButtonName</a></span>.EBN_CamGhost:
+<a name="172"></a>			<span class="source_type">szName</span> = Localize(<span class="source_string">"MPCreateGame"</span>,<span class="source_string">"Options_Ghost"</span>,<span class="source_string">"R6Menu"</span>);
+<a name="173"></a>			szTip  = Localize(<span class="source_string">"Tip"</span>,<span class="source_string">"Options_Ghost"</span>,<span class="source_string">"R6Menu"</span>);
+<a name="174"></a>			break;
+<a name="175"></a>
+<a name="176"></a>	    <span class="source_comment">// FADE TO BLACK
+</span><a name="177"></a>		case <span class="source_type"><a href="../uwindow/uwindowbase.html#EButtonName" class="source">EButtonName</a></span>.EBN_CamFadeToBk:
+<a name="178"></a>			<span class="source_type">szName</span> = Localize(<span class="source_string">"MPCreateGame"</span>,<span class="source_string">"Options_Fade"</span>,<span class="source_string">"R6Menu"</span>);
+<a name="179"></a>			szTip  = Localize(<span class="source_string">"Tip"</span>,<span class="source_string">"Options_Fade"</span>,<span class="source_string">"R6Menu"</span>);
+<a name="180"></a>			break;
+<a name="181"></a>
+<a name="182"></a>	    <span class="source_comment">// TEAM ONLY
+</span><a name="183"></a>		case <span class="source_type"><a href="../uwindow/uwindowbase.html#EButtonName" class="source">EButtonName</a></span>.EBN_CamTeamOnly:
+<a name="184"></a>			<span class="source_type">szName</span> = Localize(<span class="source_string">"MPCreateGame"</span>,<span class="source_string">"Options_TeamOnly"</span>,<span class="source_string">"R6Menu"</span>);
+<a name="185"></a>			szTip  = Localize(<span class="source_string">"Tip"</span>,<span class="source_string">"Options_TeamOnly"</span>,<span class="source_string">"R6Menu"</span>);
+<a name="186"></a>			break;
+<a name="187"></a>
+<a name="188"></a><span class="source_comment">//#ifdefR6PUNKBUSTER
+</span><a name="189"></a>		<span class="source_comment">// PUNKBUSTER
+</span><a name="190"></a>		case <span class="source_type"><a href="../uwindow/uwindowbase.html#EButtonName" class="source">EButtonName</a></span>.EBN_PunkBuster:
+<a name="191"></a>			<span class="source_type">szName</span> = Localize(<span class="source_string">"MPCreateGame"</span>,<span class="source_string">"Options_PunkBuster"</span>,<span class="source_string">"R6Menu"</span>);
+<a name="192"></a>			szTip  = Localize(<span class="source_string">"Tip"</span>,<span class="source_string">"Options_PunkBuster"</span>,<span class="source_string">"R6Menu"</span>);
+<a name="193"></a>			if (_eBLE == eBLE_DisableToolTip)
+<a name="194"></a>				szExt = Localize(<span class="source_string">"MPCreateGame"</span>,<span class="source_string">"Options_PunkBuster"</span>,<span class="source_string">"R6Menu"</span>);
+<a name="195"></a>			break;
+<a name="196"></a><span class="source_comment">//#endif
+</span><a name="197"></a>
+<a name="198"></a>		<span class="source_comment">// LOG IN
+</span><a name="199"></a>		case <span class="source_type"><a href="../uwindow/uwindowbase.html#EButtonName" class="source">EButtonName</a></span>.EBN_LogIn:
+<a name="200"></a>			<span class="source_type">szName</span> = Localize(<span class="source_string">"MultiPlayer"</span>,<span class="source_string">"ButtonLogIn"</span>,<span class="source_string">"R6Menu"</span>);
+<a name="201"></a>			szTip  = Localize(<span class="source_string">"Tip"</span>,<span class="source_string">"ButtonLogIn"</span>,<span class="source_string">"R6Menu"</span>);
+<a name="202"></a>			break;
+<a name="203"></a>
+<a name="204"></a>		<span class="source_comment">// LOG OUT
+</span><a name="205"></a>		case <span class="source_type"><a href="../uwindow/uwindowbase.html#EButtonName" class="source">EButtonName</a></span>.EBN_LogOut:
+<a name="206"></a>			<span class="source_type">szName</span> = Localize(<span class="source_string">"MultiPlayer"</span>,<span class="source_string">"ButtonLogOut"</span>,<span class="source_string">"R6Menu"</span>);
+<a name="207"></a>			szTip  = Localize(<span class="source_string">"Tip"</span>,<span class="source_string">"ButtonLogOut"</span>,<span class="source_string">"R6Menu"</span>);
+<a name="208"></a>			break;
+<a name="209"></a>
+<a name="210"></a>		<span class="source_comment">// JOIN
+</span><a name="211"></a>		case <span class="source_type"><a href="../uwindow/uwindowbase.html#EButtonName" class="source">EButtonName</a></span>.EBN_Join:
+<a name="212"></a>			<span class="source_type">szName</span> = Localize(<span class="source_string">"MultiPlayer"</span>,<span class="source_string">"ButtonJoin"</span>,<span class="source_string">"R6Menu"</span>);
+<a name="213"></a>			szTip  = Localize(<span class="source_string">"Tip"</span>,<span class="source_string">"ButtonJoin"</span>,<span class="source_string">"R6Menu"</span>);
+<a name="214"></a>			break;
+<a name="215"></a>
+<a name="216"></a>		<span class="source_comment">// JOIN IP
+</span><a name="217"></a>		case <span class="source_type"><a href="../uwindow/uwindowbase.html#EButtonName" class="source">EButtonName</a></span>.EBN_JoinIP:
+<a name="218"></a>			<span class="source_type">szName</span> = Localize(<span class="source_string">"MultiPlayer"</span>,<span class="source_string">"ButtonJoinIP"</span>,<span class="source_string">"R6Menu"</span>);
+<a name="219"></a>			szTip  = Localize(<span class="source_string">"Tip"</span>,<span class="source_string">"ButtonJoinIP"</span>,<span class="source_string">"R6Menu"</span>);
+<a name="220"></a>			break;
+<a name="221"></a>
+<a name="222"></a>		<span class="source_comment">// REFRESH
+</span><a name="223"></a>		case <span class="source_type"><a href="../uwindow/uwindowbase.html#EButtonName" class="source">EButtonName</a></span>.EBN_Refresh:
+<a name="224"></a>			<span class="source_type">szName</span> = Localize(<span class="source_string">"MultiPlayer"</span>,<span class="source_string">"ButtonRefresh"</span>,<span class="source_string">"R6Menu"</span>);
+<a name="225"></a>			szTip  = Localize(<span class="source_string">"Tip"</span>,<span class="source_string">"ButtonRefresh"</span>,<span class="source_string">"R6Menu"</span>);
+<a name="226"></a>			break;
+<a name="227"></a>
+<a name="228"></a>		<span class="source_comment">// CREATE
+</span><a name="229"></a>		case <span class="source_type"><a href="../uwindow/uwindowbase.html#EButtonName" class="source">EButtonName</a></span>.EBN_Create:
+<a name="230"></a>			<span class="source_type">szName</span> = Localize(<span class="source_string">"MultiPlayer"</span>,<span class="source_string">"ButtonCreate"</span>,<span class="source_string">"R6Menu"</span>);
+<a name="231"></a>			szTip  = Localize(<span class="source_string">"Tip"</span>,<span class="source_string">"ButtonCreate"</span>,<span class="source_string">"R6Menu"</span>);
+<a name="232"></a>			break;
+<a name="233"></a>
+<a name="234"></a>		<span class="source_comment">// DIFFICULTY LEVEL
+</span><a name="235"></a>		case <span class="source_type"><a href="../uwindow/uwindowbase.html#EButtonName" class="source">EButtonName</a></span>.EBN_DiffLevel:
+<a name="236"></a>			<span class="source_type">szName</span> = Localize(<span class="source_string">"MPCreateGame"</span>,<span class="source_string">"Options_DiffLev"</span>,<span class="source_string">"R6Menu"</span>);
+<a name="237"></a>			szTip  = Localize(<span class="source_string">"Tip"</span>,<span class="source_string">"Options_DiffLev"</span>,<span class="source_string">"R6Menu"</span>);
+<a name="238"></a>			break;
+<a name="239"></a>
+<a name="240"></a>		<span class="source_comment">// RECRUIT LEVEL
+</span><a name="241"></a>		case <span class="source_type"><a href="../uwindow/uwindowbase.html#EButtonName" class="source">EButtonName</a></span>.EBN_Recruit:
+<a name="242"></a>			<span class="source_type">szName</span> = Localize(<span class="source_string">"SinglePlayer"</span>,<span class="source_string">"Difficulty1"</span>,<span class="source_string">"R6Menu"</span>);
+<a name="243"></a>			szTip  = Localize(<span class="source_string">"Tip"</span>,<span class="source_string">"Diff_Recruit"</span>,<span class="source_string">"R6Menu"</span>);
+<a name="244"></a>			break;
+<a name="245"></a>
+<a name="246"></a>		<span class="source_comment">// VETERAN LEVEL
+</span><a name="247"></a>		case <span class="source_type"><a href="../uwindow/uwindowbase.html#EButtonName" class="source">EButtonName</a></span>.EBN_Veteran:
+<a name="248"></a>			<span class="source_type">szName</span> = Localize(<span class="source_string">"SinglePlayer"</span>,<span class="source_string">"Difficulty2"</span>,<span class="source_string">"R6Menu"</span>);
+<a name="249"></a>			szTip  = Localize(<span class="source_string">"Tip"</span>,<span class="source_string">"Diff_Veteran"</span>,<span class="source_string">"R6Menu"</span>);
+<a name="250"></a>			break;
+<a name="251"></a>
+<a name="252"></a>		<span class="source_comment">// ELITE LEVEL
+</span><a name="253"></a>		case <span class="source_type"><a href="../uwindow/uwindowbase.html#EButtonName" class="source">EButtonName</a></span>.EBN_Elite:
+<a name="254"></a>			<span class="source_type">szName</span> = Localize(<span class="source_string">"SinglePlayer"</span>,<span class="source_string">"Difficulty3"</span>,<span class="source_string">"R6Menu"</span>);
+<a name="255"></a>			szTip  = Localize(<span class="source_string">"Tip"</span>,<span class="source_string">"Diff_Elite"</span>,<span class="source_string">"R6Menu"</span>);
+<a name="256"></a>			break;
+<a name="257"></a>
+<a name="258"></a>		case <span class="source_type"><a href="../uwindow/uwindowbase.html#EButtonName" class="source">EButtonName</a></span>.EBN_None:
+<a name="259"></a>			<span class="source_type">szName</span> = <span class="source_string">""</span>;
+<a name="260"></a>			break;
+<a name="261"></a>
+<a name="262"></a>		default: log(<span class="source_string">"Button not supported"</span>);
+<a name="263"></a>			break;
+<a name="264"></a>	}
+<a name="265"></a>
+<a name="266"></a>	if (_eBLE != eBLE_None)
+<a name="267"></a>	{
+<a name="268"></a>		return szExt;
+<a name="269"></a>	}
+<a name="270"></a>	else if ( _bTip)
+<a name="271"></a>	{
+<a name="272"></a>		return szTip;
+<a name="273"></a>	}
+<a name="274"></a>	else
+<a name="275"></a>	{
+<a name="276"></a>		return <span class="source_type">szName</span>;
+<a name="277"></a>	}
+<a name="278"></a>}
+<a name="279"></a>
+<a name="280"></a>function GetCounterTipLoc( <span class="source_type">INT</span> _iButtonID, out <span class="source_type">string</span> _szLeftTip, out <span class="source_type">string</span> _szRightTip)
+<a name="281"></a>{
+<a name="282"></a>	switch( _iButtonID)
+<a name="283"></a>	{
+<a name="284"></a>		<span class="source_comment">// TIME MAP
+</span><a name="285"></a>		case <span class="source_type"><a href="../uwindow/uwindowbase.html#EButtonName" class="source">EButtonName</a></span>.EBN_RoundPerMatch:
+<a name="286"></a>			_szLeftTip  = Localize(<span class="source_string">"Tip"</span>,<span class="source_string">"Options_RoundMatch"</span>,<span class="source_string">"R6Menu"</span>);
+<a name="287"></a>			_szRightTip = Localize(<span class="source_string">"Tip"</span>,<span class="source_string">"Options_RoundMatch"</span>,<span class="source_string">"R6Menu"</span>);
+<a name="288"></a>			break;
+<a name="289"></a>
+<a name="290"></a>		<span class="source_comment">// ROUND TIME 
+</span><a name="291"></a>		case <span class="source_type"><a href="../uwindow/uwindowbase.html#EButtonName" class="source">EButtonName</a></span>.EBN_RoundTime:
+<a name="292"></a>			_szLeftTip  = Localize(<span class="source_string">"Tip"</span>,<span class="source_string">"Options_RoundMin"</span>,<span class="source_string">"R6Menu"</span>);
+<a name="293"></a>			_szRightTip = Localize(<span class="source_string">"Tip"</span>,<span class="source_string">"Options_RoundMax"</span>,<span class="source_string">"R6Menu"</span>);
+<a name="294"></a>			break;
+<a name="295"></a>
+<a name="296"></a>	    <span class="source_comment">// NUMBER OF PLAYERS
+</span><a name="297"></a>		case <span class="source_type"><a href="../uwindow/uwindowbase.html#EButtonName" class="source">EButtonName</a></span>.EBN_NB_Players:
+<a name="298"></a>			_szLeftTip  = Localize(<span class="source_string">"Tip"</span>,<span class="source_string">"Options_NbOfPlayersMin"</span>,<span class="source_string">"R6Menu"</span>);
+<a name="299"></a>			_szRightTip = Localize(<span class="source_string">"Tip"</span>,<span class="source_string">"Options_NbOfPlayersMax"</span>,<span class="source_string">"R6Menu"</span>);
+<a name="300"></a>			break;
+<a name="301"></a>
+<a name="302"></a>	    <span class="source_comment">// BOMB TIMER
+</span><a name="303"></a>		case <span class="source_type"><a href="../uwindow/uwindowbase.html#EButtonName" class="source">EButtonName</a></span>.EBN_BombTimer:
+<a name="304"></a>			_szLeftTip  = Localize(<span class="source_string">"Tip"</span>,<span class="source_string">"Options_BombTimer"</span>,<span class="source_string">"R6Menu"</span>);
+<a name="305"></a>			_szRightTip = Localize(<span class="source_string">"Tip"</span>,<span class="source_string">"Options_BombTimer"</span>,<span class="source_string">"R6Menu"</span>);
+<a name="306"></a>			break;
+<a name="307"></a>
+<a name="308"></a>	    <span class="source_comment">// SPECTATOR
+</span><a name="309"></a>		case <span class="source_type"><a href="../uwindow/uwindowbase.html#EButtonName" class="source">EButtonName</a></span>.EBN_Spectator:
+<a name="310"></a>			_szLeftTip  = Localize(<span class="source_string">"Tip"</span>,<span class="source_string">"Options_Spectator"</span>,<span class="source_string">"R6Menu"</span>);
+<a name="311"></a>			_szRightTip = Localize(<span class="source_string">"Tip"</span>,<span class="source_string">"Options_Spectator"</span>,<span class="source_string">"R6Menu"</span>);
+<a name="312"></a>			break;
+<a name="313"></a>
+<a name="314"></a>	    <span class="source_comment">// TIME PER MISSION
+</span><a name="315"></a>		case <span class="source_type"><a href="../uwindow/uwindowbase.html#EButtonName" class="source">EButtonName</a></span>.EBN_RoundPerMission:
+<a name="316"></a>			_szLeftTip  = Localize(<span class="source_string">"Tip"</span>,<span class="source_string">"Options_RoundMission"</span>,<span class="source_string">"R6Menu"</span>);
+<a name="317"></a>			_szRightTip = Localize(<span class="source_string">"Tip"</span>,<span class="source_string">"Options_RoundMission"</span>,<span class="source_string">"R6Menu"</span>);
+<a name="318"></a>			break;
+<a name="319"></a>
+<a name="320"></a>	    <span class="source_comment">// TIME BETWEEN ROUND
+</span><a name="321"></a>		case <span class="source_type"><a href="../uwindow/uwindowbase.html#EButtonName" class="source">EButtonName</a></span>.EBN_TimeBetRound:
+<a name="322"></a>			_szLeftTip  = Localize(<span class="source_string">"Tip"</span>,<span class="source_string">"Options_BetRound"</span>,<span class="source_string">"R6Menu"</span>);
+<a name="323"></a>			_szRightTip = Localize(<span class="source_string">"Tip"</span>,<span class="source_string">"Options_BetRound"</span>,<span class="source_string">"R6Menu"</span>);
+<a name="324"></a>			break;
+<a name="325"></a>
+<a name="326"></a>	    <span class="source_comment">// NUMBER OF TERRORIST
+</span><a name="327"></a>		case <span class="source_type"><a href="../uwindow/uwindowbase.html#EButtonName" class="source">EButtonName</a></span>.EBN_NB_of_Terro: 
+<a name="328"></a>			_szLeftTip  = Localize(<span class="source_string">"Tip"</span>,<span class="source_string">"Options_NbOfTerro"</span>,<span class="source_string">"R6Menu"</span>);
+<a name="329"></a>			_szRightTip = Localize(<span class="source_string">"Tip"</span>,<span class="source_string">"Options_NbOfTerro"</span>,<span class="source_string">"R6Menu"</span>);
+<a name="330"></a>			break;
+<a name="331"></a>		default: log(<span class="source_string">"Button not supported"</span>);
+<a name="332"></a>			break;
+<a name="333"></a>	}
+<a name="334"></a>}
+<a name="335"></a>
+<a name="336"></a><span class="source_comment">//===================================================================================
+</span><a name="337"></a><span class="source_comment">//===================================================================================
+</span><a name="338"></a><span class="source_comment">//===================================================================================
+</span><a name="339"></a><span class="source_comment">// THE SECTION ABOVE IS FOR BUTTON THAT WE HAVE IN A LIST
+</span><a name="340"></a>
+<a name="341"></a><span class="source_comment">//===============================================================
+</span><a name="342"></a><span class="source_comment">// AddButtonCombo: Add a buttoncombo with item values in a list
+</span><a name="343"></a><span class="source_comment">//===============================================================
+</span><a name="344"></a>function AddButtonCombo( <span class="source_type">INT</span> _iButtonID, <span class="source_type"><a href="../r6window/r6windowlistgeneral.html" class="source">R6WindowListGeneral</a></span> _R6WindowListGeneral, optional <span class="source_type"><a href="../uwindow/uwindowwindow.html" class="source">UWindowWindow</a></span> _OwnerWindow)
+<a name="345"></a>{
+<a name="346"></a>	local <span class="source_type"><a href="../r6menu/r6menubuttonsdefines.html#STButton" class="source">STButton</a></span> stButtonTemp;
+<a name="347"></a>
+<a name="348"></a>	if (m_fWidth == <span class="source_int">0</span>)
+<a name="349"></a>		m_fWidth = _R6WindowListGeneral.WinWidth;
+<a name="350"></a>
+<a name="351"></a>	if (m_fHeight == <span class="source_int">0</span>)
+<a name="352"></a>		m_fHeight = _R6WindowListGeneral.WinHeight;
+<a name="353"></a>
+<a name="354"></a>	stButtonTemp.szButtonName   = GetButtonLoc(_iButtonID); 
+<a name="355"></a>	stButtonTemp.szTip			= GetButtonLoc(_iButtonID, true);
+<a name="356"></a>	stButtonTemp.<span class="source_type">fWidth</span>			= m_fWidth;
+<a name="357"></a>	stButtonTemp.<span class="source_type">fHeight</span>		= m_fHeight;
+<a name="358"></a>	stButtonTemp.iButtonID		= _iButtonID;
+<a name="359"></a>
+<a name="360"></a>	AddCombo( stButtonTemp, _R6WindowListGeneral, <span class="source_type"><a href="../uwindow/uwindowdialogclientwindow.html" class="source">UWindowDialogClientWindow</a></span>(_OwnerWindow));
+<a name="361"></a>}
+<a name="362"></a>
+<a name="363"></a><span class="source_comment">//===============================================================================================================
+</span><a name="364"></a><span class="source_comment">// 
+</span><a name="365"></a><span class="source_comment">//===============================================================================================================
+</span><a name="366"></a>function AddCombo( <span class="source_type"><a href="../r6menu/r6menubuttonsdefines.html#STButton" class="source">STButton</a></span> _stButton, <span class="source_type"><a href="../r6window/r6windowlistgeneral.html" class="source">R6WindowListGeneral</a></span> _R6WindowListGeneral, <span class="source_type"><a href="../uwindow/uwindowdialogclientwindow.html" class="source">UWindowDialogClientWindow</a></span> _pParentWindow)
+<a name="367"></a>{
+<a name="368"></a>	local <span class="source_type"><a href="../r6window/r6windowcombocontrol.html" class="source">R6WindowComboControl</a></span> pR6WindowComboControl;
+<a name="369"></a>	local <span class="source_type"><a href="../r6window/r6windowlistgeneralitem.html" class="source">R6WindowListGeneralItem</a></span> GeneralItem;
+<a name="370"></a>
+<a name="371"></a>	GeneralItem = <span class="source_type"><a href="../r6window/r6windowlistgeneralitem.html" class="source">R6WindowListGeneralItem</a></span>(_R6WindowListGeneral.Items.Append(_R6WindowListGeneral.ListClass));
+<a name="372"></a>	pR6WindowComboControl = <span class="source_type"><a href="../r6window/r6windowcombocontrol.html" class="source">R6WindowComboControl</a></span>(_pParentWindow.CreateControl(<span class="source_type">class</span><span class="source_name">'R6WindowComboControl'</span>, <span class="source_int">0</span>, <span class="source_int">0</span>, _stButton.<span class="source_type">fWidth</span>, LookAndFeel.Size_ComboHeight, _R6WindowListGeneral));
+<a name="373"></a>	pR6WindowComboControl.AdjustTextW( _stButton.szButtonName, <span class="source_int">0</span>, <span class="source_int">0</span>, _stButton.<span class="source_type">fWidth</span> * <span class="source_int">0.5</span> , LookAndFeel.Size_ComboHeight);
+<a name="374"></a>	pR6WindowComboControl.AdjustEditBoxW( <span class="source_int">0</span>, <span class="source_int">120</span>, LookAndFeel.Size_ComboHeight);
+<a name="375"></a>	pR6WindowComboControl.SetEditBoxTip( _stButton.szTip);
+<a name="376"></a>	pR6WindowComboControl.SetValue( <span class="source_string">""</span>, <span class="source_string">""</span>);
+<a name="377"></a>	pR6WindowComboControl.SetFont( F_VerySmallTitle); <span class="source_comment">// overwrite the default font in AdjustTextW
+</span><a name="378"></a>	pR6WindowComboControl.m_iButtonID = _stButton.iButtonID;
+<a name="379"></a>
+<a name="380"></a>	GeneralItem.m_pR6WindowComboControl = pR6WindowComboControl;
+<a name="381"></a>	GeneralItem.m_iItemID				= _stButton.iButtonID;
+<a name="382"></a>}
+<a name="383"></a>
+<a name="384"></a><span class="source_comment">//===============================================================================================================
+</span><a name="385"></a><span class="source_comment">// 
+</span><a name="386"></a><span class="source_comment">//===============================================================================================================
+</span><a name="387"></a>function AddItemInComboButton(<span class="source_type">INT</span> _iButtonID, <span class="source_type">string</span> _NewItem, <span class="source_type">string</span> _SecondValue, <span class="source_type"><a href="../r6window/r6windowlistgeneral.html" class="source">R6WindowListGeneral</a></span> _pListToUse)
+<a name="388"></a>{
+<a name="389"></a>    local <span class="source_type"><a href="../r6window/r6windowlistgeneralitem.html" class="source">R6WindowListGeneralItem</a></span> TempItem;
+<a name="390"></a>
+<a name="391"></a>	TempItem = <span class="source_type"><a href="../r6window/r6windowlistgeneralitem.html" class="source">R6WindowListGeneralItem</a></span>(FindButtonItem( _iButtonID, _pListToUse));
+<a name="392"></a>
+<a name="393"></a>	if (TempItem.m_pR6WindowComboControl != None)
+<a name="394"></a>	{
+<a name="395"></a>		if (TempItem.m_pR6WindowComboControl.m_iButtonID == _iButtonID)
+<a name="396"></a>		{
+<a name="397"></a>			TempItem.m_pR6WindowComboControl.AddItem( _NewItem, _SecondValue);
+<a name="398"></a>		}
+<a name="399"></a>	}
+<a name="400"></a><span class="source_macro">#ifdefDEBUG
+</span><a name="401"></a>	else
+<a name="402"></a>	{
+<a name="403"></a>		log(<span class="source_string">"AddItemInComboButton --&gt; This button "</span>@GetButtonLoc(_iButtonID)@<span class="source_string">"is not in the list"</span>);
+<a name="404"></a>	}
+<a name="405"></a><span class="source_macro">#endif
+</span><a name="406"></a>}
+<a name="407"></a>
+<a name="408"></a><span class="source_comment">//===============================================================================================================
+</span><a name="409"></a><span class="source_comment">// 
+</span><a name="410"></a><span class="source_comment">//===============================================================================================================
+</span><a name="411"></a>function ChangeButtonComboValue( <span class="source_type">INT</span> _iButtonID, <span class="source_type">string</span> _szNewValue, <span class="source_type"><a href="../r6window/r6windowlistgeneral.html" class="source">R6WindowListGeneral</a></span> _pListToUse, optional <span class="source_type">BOOL</span> _bDisabled)
+<a name="412"></a>{
+<a name="413"></a>	local <span class="source_type">INT</span> iTemFind;
+<a name="414"></a>    local <span class="source_type"><a href="../r6window/r6windowlistgeneralitem.html" class="source">R6WindowListGeneralItem</a></span> TempItem;
+<a name="415"></a>
+<a name="416"></a>	TempItem = <span class="source_type"><a href="../r6window/r6windowlistgeneralitem.html" class="source">R6WindowListGeneralItem</a></span>(FindButtonItem( _iButtonID, _pListToUse));
+<a name="417"></a>
+<a name="418"></a>	if ((TempItem != None) && (TempItem.m_pR6WindowComboControl != None))
+<a name="419"></a>	{
+<a name="420"></a>		if (TempItem.m_pR6WindowComboControl.m_iButtonID == _iButtonID)
+<a name="421"></a>		{
+<a name="422"></a>			<span class="source_comment">//change the value if this value exist?
+</span><a name="423"></a>			iTemFind = TempItem.m_pR6WindowComboControl.FindItemIndex2( _szNewValue, true);
+<a name="424"></a>			if (iTemFind != -<span class="source_int">1</span>)
+<a name="425"></a>			{
+<a name="426"></a>				TempItem.m_pR6WindowComboControl.SetSelectedIndex( iTemFind);
+<a name="427"></a>			}
+<a name="428"></a>
+<a name="429"></a>			TempItem.m_pR6WindowComboControl.SetDisableButton( _bDisabled);
+<a name="430"></a>		}
+<a name="431"></a>	}
+<a name="432"></a><span class="source_macro">#ifdefDEBUG
+</span><a name="433"></a>	else
+<a name="434"></a>	{
+<a name="435"></a>		log(<span class="source_string">"ChangeButtonComboValue --&gt; This button "</span>@GetButtonLoc(_iButtonID)@<span class="source_string">"is not in the list"</span>);
+<a name="436"></a>	}
+<a name="437"></a><span class="source_macro">#endif
+</span><a name="438"></a>}
+<a name="439"></a>
+<a name="440"></a><span class="source_comment">//===============================================================================================================
+</span><a name="441"></a><span class="source_comment">// GetButtonComboValue: get the value of the combo
+</span><a name="442"></a><span class="source_comment">//===============================================================================================================
+</span><a name="443"></a>function <span class="source_type">string</span> GetButtonComboValue( <span class="source_type">INT</span> _iButtonID, <span class="source_type"><a href="../r6window/r6windowlistgeneral.html" class="source">R6WindowListGeneral</a></span> _pListToUse)
+<a name="444"></a>{
+<a name="445"></a>    local <span class="source_type"><a href="../r6window/r6windowlistgeneralitem.html" class="source">R6WindowListGeneralItem</a></span> TempItem;
+<a name="446"></a>
+<a name="447"></a>	TempItem = <span class="source_type"><a href="../r6window/r6windowlistgeneralitem.html" class="source">R6WindowListGeneralItem</a></span>(FindButtonItem( _iButtonID, _pListToUse));
+<a name="448"></a>
+<a name="449"></a>	if ((TempItem != None) && (TempItem.m_pR6WindowComboControl != None))
+<a name="450"></a>	{
+<a name="451"></a>		if (TempItem.m_pR6WindowComboControl.m_iButtonID == _iButtonID)
+<a name="452"></a>		{
+<a name="453"></a>			return TempItem.m_pR6WindowComboControl.GetValue2();
+<a name="454"></a>		}
+<a name="455"></a>	}
+<a name="456"></a>
+<a name="457"></a><span class="source_macro">#ifdefDEBUG
+</span><a name="458"></a>	log(<span class="source_string">"GetButtonComboValue --&gt; This button "</span>@GetButtonLoc(_iButtonID)@<span class="source_string">"is not in the list"</span>);
+<a name="459"></a><span class="source_macro">#endif
+</span><a name="460"></a>
+<a name="461"></a>	return <span class="source_string">""</span>;
+<a name="462"></a>}
+<a name="463"></a>
+<a name="464"></a>
+<a name="465"></a>
+<a name="466"></a>
+<a name="467"></a><span class="source_comment">//===================================================================================
+</span><a name="468"></a><span class="source_comment">//====================== BUTTON COUNTER SECTION =====================================
+</span><a name="469"></a><span class="source_comment">//===================================================================================
+</span><a name="470"></a>
+<a name="471"></a><span class="source_comment">//===============================================================
+</span><a name="472"></a><span class="source_comment">// AddButtonInt: Add a button with int values in a list
+</span><a name="473"></a><span class="source_comment">//===============================================================
+</span><a name="474"></a>function AddButtonInt( <span class="source_type">INT</span> _iButtonID, <span class="source_type">INT</span> _iMin, <span class="source_type">INT</span> _iMax, <span class="source_type">INT</span> _iInitialValue, <span class="source_type"><a href="../r6window/r6windowlistgeneral.html" class="source">R6WindowListGeneral</a></span> _R6WindowListGeneral, optional <span class="source_type"><a href="../uwindow/uwindowwindow.html" class="source">UWindowWindow</a></span> _OwnerWindow)
+<a name="475"></a>{
+<a name="476"></a>	local <span class="source_type"><a href="../r6menu/r6menubuttonsdefines.html#STButton" class="source">STButton</a></span> stButtonTemp;
+<a name="477"></a>
+<a name="478"></a>	if (m_fWidth == <span class="source_int">0</span>)
+<a name="479"></a>		m_fWidth = _R6WindowListGeneral.WinWidth;
+<a name="480"></a>
+<a name="481"></a>	if (m_fHeight == <span class="source_int">0</span>)
+<a name="482"></a>		m_fHeight = _R6WindowListGeneral.WinHeight;
+<a name="483"></a>
+<a name="484"></a>	stButtonTemp.szButtonName   = GetButtonLoc(_iButtonID); 
+<a name="485"></a>	stButtonTemp.szTip			= GetButtonLoc(_iButtonID, true);
+<a name="486"></a>	stButtonTemp.<span class="source_type">fWidth</span>			= m_fWidth;
+<a name="487"></a>	stButtonTemp.<span class="source_type">fHeight</span>		= m_fHeight;
+<a name="488"></a>	stButtonTemp.iButtonID		= _iButtonID;
+<a name="489"></a>
+<a name="490"></a>	AddCounterButton( stButtonTemp, _iMin, _iMax, _iInitialValue, _R6WindowListGeneral, _OwnerWindow);
+<a name="491"></a>}
+<a name="492"></a>
+<a name="493"></a><span class="source_comment">//===============================================================================================================
+</span><a name="494"></a><span class="source_comment">//
+</span><a name="495"></a><span class="source_comment">//===============================================================================================================
+</span><a name="496"></a>function AddCounterButton( <span class="source_type"><a href="../r6menu/r6menubuttonsdefines.html#STButton" class="source">STButton</a></span> _stButton, <span class="source_type">INT</span> _iMinValue, <span class="source_type">INT</span> _iMaxValue, <span class="source_type">INT</span> _iDefaultValue, <span class="source_type"><a href="../r6window/r6windowlistgeneral.html" class="source">R6WindowListGeneral</a></span> _R6WindowListGeneral, <span class="source_type"><a href="../uwindow/uwindowwindow.html" class="source">UWindowWindow</a></span> _pParentWindow)
+<a name="497"></a>{
+<a name="498"></a>	local <span class="source_type"><a href="../r6window/r6windowcounter.html" class="source">R6WindowCounter</a></span> pR6WindowCounter;
+<a name="499"></a>	local <span class="source_type"><a href="../r6window/r6windowlistgeneralitem.html" class="source">R6WindowListGeneralItem</a></span> GeneralItem;
+<a name="500"></a>	local <span class="source_type">string</span> szLeftTip, szRightTip;
+<a name="501"></a>
+<a name="502"></a>	GeneralItem = <span class="source_type"><a href="../r6window/r6windowlistgeneralitem.html" class="source">R6WindowListGeneralItem</a></span>(_R6WindowListGeneral.Items.Append(_R6WindowListGeneral.ListClass));
+<a name="503"></a>	pR6WindowCounter = <span class="source_type"><a href="../r6window/r6windowcounter.html" class="source">R6WindowCounter</a></span>(_pParentWindow.CreateWindow( <span class="source_type">class</span><span class="source_name">'R6WindowCounter'</span>, <span class="source_int">0</span>, <span class="source_int">0</span>, _stButton.<span class="source_type">fWidth</span>, _stButton.<span class="source_type">fHeight</span>, _R6WindowListGeneral)); 
+<a name="504"></a>    pR6WindowCounter.bAlwaysBehind = true;
+<a name="505"></a>    pR6WindowCounter.ToolTipString = _stButton.szTip; <span class="source_comment">// all the buttons tooltip
+</span><a name="506"></a>    pR6WindowCounter.m_iButtonID   = _stButton.iButtonID;
+<a name="507"></a>    pR6WindowCounter.SetAdviceParent(true);
+<a name="508"></a>    pR6WindowCounter.CreateLabelText( <span class="source_int">0</span>, <span class="source_int">0</span>, _stButton.<span class="source_type">fWidth</span>, _stButton.<span class="source_type">fHeight</span>);
+<a name="509"></a>    pR6WindowCounter.SetLabelText( _stButton.szButtonName, Root.Fonts[F_SmallTitle], Root.Colors.White);
+<a name="510"></a>    pR6WindowCounter.CreateButtons( _stButton.<span class="source_type">fWidth</span> - <span class="source_int">53</span>, <span class="source_int">0</span>, <span class="source_int">53</span>);
+<a name="511"></a>    pR6WindowCounter.SetDefaultValues( _iMinValue, _iMaxValue, _iDefaultValue);
+<a name="512"></a>	<span class="source_comment">// tip of each button
+</span><a name="513"></a>	GetCounterTipLoc( _stButton.iButtonID, szLeftTip, szRightTip);
+<a name="514"></a>	pR6WindowCounter.SetButtonToolTip( szLeftTip, szRightTip);
+<a name="515"></a>
+<a name="516"></a>	GeneralItem.m_pR6WindowCounter = pR6WindowCounter;
+<a name="517"></a>	GeneralItem.m_iItemID		   = _stButton.iButtonID;
+<a name="518"></a>}
+<a name="519"></a>
+<a name="520"></a><span class="source_comment">//===============================================================================================================
+</span><a name="521"></a><span class="source_comment">// 
+</span><a name="522"></a><span class="source_comment">//===============================================================================================================
+</span><a name="523"></a>function ChangeButtonCounterValue( <span class="source_type">INT</span> _iButtonID, <span class="source_type">INT</span> _iNewValue, <span class="source_type"><a href="../r6window/r6windowlistgeneral.html" class="source">R6WindowListGeneral</a></span> _pListToUse, optional <span class="source_type">BOOL</span> _bNotAcceptClick)
+<a name="524"></a>{
+<a name="525"></a>    local <span class="source_type"><a href="../r6window/r6windowlistgeneralitem.html" class="source">R6WindowListGeneralItem</a></span> TempItem;
+<a name="526"></a>
+<a name="527"></a>	TempItem = <span class="source_type"><a href="../r6window/r6windowlistgeneralitem.html" class="source">R6WindowListGeneralItem</a></span>(FindButtonItem( _iButtonID, _pListToUse));
+<a name="528"></a>
+<a name="529"></a>	if ((TempItem != None) && (TempItem.m_pR6WindowCounter != None))
+<a name="530"></a>		{
+<a name="531"></a>			if (TempItem.m_pR6WindowCounter.m_iButtonID == _iButtonID)
+<a name="532"></a>			{
+<a name="533"></a>				TempItem.m_pR6WindowCounter.SetCounterValue( _iNewValue);
+<a name="534"></a>				TempItem.m_pR6WindowCounter.m_bNotAcceptClick= _bNotAcceptClick;
+<a name="535"></a>			}
+<a name="536"></a>		}
+<a name="537"></a><span class="source_macro">#ifdefDEBUG
+</span><a name="538"></a>	else
+<a name="539"></a>	{
+<a name="540"></a>		log(<span class="source_string">"ChangeButtonCounterValue --&gt; This button "</span>@GetButtonLoc(_iButtonID)@<span class="source_string">"is not in the list"</span>);
+<a name="541"></a>	}
+<a name="542"></a><span class="source_macro">#endif
+</span><a name="543"></a>}
+<a name="544"></a>
+<a name="545"></a><span class="source_comment">//===============================================================================================================
+</span><a name="546"></a><span class="source_comment">// 
+</span><a name="547"></a><span class="source_comment">//===============================================================================================================
+</span><a name="548"></a>function <span class="source_type">INT</span> GetButtonCounterValue( <span class="source_type">INT</span> _iButtonID, <span class="source_type"><a href="../r6window/r6windowlistgeneral.html" class="source">R6WindowListGeneral</a></span> _pListToUse)
+<a name="549"></a>{
+<a name="550"></a>    local <span class="source_type"><a href="../r6window/r6windowlistgeneralitem.html" class="source">R6WindowListGeneralItem</a></span> TempItem;
+<a name="551"></a>
+<a name="552"></a>	TempItem = <span class="source_type"><a href="../r6window/r6windowlistgeneralitem.html" class="source">R6WindowListGeneralItem</a></span>(FindButtonItem( _iButtonID, _pListToUse));
+<a name="553"></a>
+<a name="554"></a>	if ((TempItem != None) && (TempItem.m_pR6WindowCounter != None))
+<a name="555"></a>	{
+<a name="556"></a>		if (TempItem.m_pR6WindowCounter.m_iButtonID == _iButtonID)
+<a name="557"></a>		{
+<a name="558"></a><span class="source_comment">//			log("CounterValue: "$R6WindowListGeneralItem(ListItem).m_pR6WindowCounter.m_iCounter);
+</span><a name="559"></a>			return TempItem.m_pR6WindowCounter.m_iCounter;
+<a name="560"></a>		}
+<a name="561"></a>	}
+<a name="562"></a>
+<a name="563"></a><span class="source_macro">#ifdefDEBUG
+</span><a name="564"></a>	log(<span class="source_string">"GetButtonCounterValue --&gt; This button "</span>@GetButtonLoc(_iButtonID)@<span class="source_string">"is not in the list"</span>);
+<a name="565"></a><span class="source_macro">#endif
+</span><a name="566"></a>
+<a name="567"></a>	return -<span class="source_int">1</span>;
+<a name="568"></a>}
+<a name="569"></a>
+<a name="570"></a><span class="source_comment">//===============================================================================================================
+</span><a name="571"></a><span class="source_comment">// SetButtonCounterUnlimited: set a counter button to use unlimited value
+</span><a name="572"></a><span class="source_comment">//===============================================================================================================
+</span><a name="573"></a>function SetButtonCounterUnlimited( <span class="source_type">INT</span> _iButtonID, <span class="source_type">BOOL</span> _bUnlimitedCounterOnZero, <span class="source_type"><a href="../r6window/r6windowlistgeneral.html" class="source">R6WindowListGeneral</a></span> _pListToUse)
+<a name="574"></a>{
+<a name="575"></a>    local <span class="source_type"><a href="../r6window/r6windowlistgeneralitem.html" class="source">R6WindowListGeneralItem</a></span> TempItem;
+<a name="576"></a>
+<a name="577"></a>	TempItem = <span class="source_type"><a href="../r6window/r6windowlistgeneralitem.html" class="source">R6WindowListGeneralItem</a></span>(FindButtonItem( _iButtonID, _pListToUse));
+<a name="578"></a>
+<a name="579"></a>	if ((TempItem != None) && (TempItem.m_pR6WindowCounter != None))
+<a name="580"></a>	{
+<a name="581"></a>		if (TempItem.m_pR6WindowCounter.m_iButtonID == _iButtonID)
+<a name="582"></a>		{
+<a name="583"></a>			TempItem.m_pR6WindowCounter.m_bUnlimitedCounterOnZero = _bUnlimitedCounterOnZero;
+<a name="584"></a>		}
+<a name="585"></a>	}
+<a name="586"></a><span class="source_macro">#ifdefDEBUG
+</span><a name="587"></a>	else
+<a name="588"></a>	{
+<a name="589"></a>		log(<span class="source_string">"SetButtonCounterUnlimited --&gt; This button "</span>@GetButtonLoc(_iButtonID)@<span class="source_string">"is not in the list"</span>);
+<a name="590"></a>	}
+<a name="591"></a><span class="source_macro">#endif
+</span><a name="592"></a>}
+<a name="593"></a>
+<a name="594"></a>
+<a name="595"></a><span class="source_comment">//===================================================================================
+</span><a name="596"></a><span class="source_comment">//========================BUTTON BOX SECTION ========================================
+</span><a name="597"></a><span class="source_comment">//===================================================================================
+</span><a name="598"></a>
+<a name="599"></a><span class="source_comment">//===============================================================
+</span><a name="600"></a><span class="source_comment">// AddButtonInt: Add a button with int values in a list
+</span><a name="601"></a><span class="source_comment">//===============================================================
+</span><a name="602"></a>function AddButtonBool( <span class="source_type">INT</span> _iButtonID, <span class="source_type">BOOL</span> _bInitialValue, <span class="source_type"><a href="../r6window/r6windowlistgeneral.html" class="source">R6WindowListGeneral</a></span> _R6WindowListGeneral, optional <span class="source_type"><a href="../uwindow/uwindowwindow.html" class="source">UWindowWindow</a></span> _OwnerWindow)
+<a name="603"></a>{
+<a name="604"></a>	local <span class="source_type"><a href="../r6menu/r6menubuttonsdefines.html#STButton" class="source">STButton</a></span> stButtonTemp;
+<a name="605"></a>	local <span class="source_type">INT</span>	   iInitialValue;
+<a name="606"></a>
+<a name="607"></a>	if (m_fWidth == <span class="source_int">0</span>)
+<a name="608"></a>		m_fWidth = _R6WindowListGeneral.WinWidth;
+<a name="609"></a>
+<a name="610"></a>	if (m_fHeight == <span class="source_int">0</span>)
+<a name="611"></a>		m_fHeight = _R6WindowListGeneral.WinHeight;
+<a name="612"></a>
+<a name="613"></a>	stButtonTemp.szButtonName   = GetButtonLoc(_iButtonID); 
+<a name="614"></a>	stButtonTemp.szTip			= GetButtonLoc(_iButtonID, true);
+<a name="615"></a>	stButtonTemp.<span class="source_type">fWidth</span>			= m_fWidth;
+<a name="616"></a>	stButtonTemp.<span class="source_type">fHeight</span>		= m_fHeight;
+<a name="617"></a>	stButtonTemp.iButtonID		= _iButtonID;
+<a name="618"></a>
+<a name="619"></a>	AddButtonBox( stButtonTemp, _bInitialValue, _R6WindowListGeneral, <span class="source_type"><a href="../uwindow/uwindowdialogclientwindow.html" class="source">UWindowDialogClientWindow</a></span>(_OwnerWindow));
+<a name="620"></a>}
+<a name="621"></a>
+<a name="622"></a><span class="source_comment">//===============================================================================================================
+</span><a name="623"></a><span class="source_comment">// 
+</span><a name="624"></a><span class="source_comment">//===============================================================================================================
+</span><a name="625"></a>function AddButtonBox( <span class="source_type"><a href="../r6menu/r6menubuttonsdefines.html#STButton" class="source">STButton</a></span> _stButton, <span class="source_type">bool</span> _bSelected, <span class="source_type"><a href="../r6window/r6windowlistgeneral.html" class="source">R6WindowListGeneral</a></span> _R6WindowListGeneral, <span class="source_type"><a href="../uwindow/uwindowdialogclientwindow.html" class="source">UWindowDialogClientWindow</a></span> _pParentWindow)
+<a name="626"></a>{
+<a name="627"></a>	local <span class="source_type"><a href="../r6window/r6windowbuttonbox.html" class="source">R6WindowButtonBox</a></span> pR6WindowButtonBox;
+<a name="628"></a>	local <span class="source_type"><a href="../r6window/r6windowlistgeneralitem.html" class="source">R6WindowListGeneralItem</a></span> GeneralItem;
+<a name="629"></a>
+<a name="630"></a>	GeneralItem = <span class="source_type"><a href="../r6window/r6windowlistgeneralitem.html" class="source">R6WindowListGeneralItem</a></span>(_R6WindowListGeneral.Items.Append(_R6WindowListGeneral.ListClass));
+<a name="631"></a>	pR6WindowButtonBox = <span class="source_type"><a href="../r6window/r6windowbuttonbox.html" class="source">R6WindowButtonBox</a></span>(_pParentWindow.CreateControl( <span class="source_type">class</span><span class="source_name">'R6WindowButtonBox'</span>, <span class="source_int">0</span>, <span class="source_int">0</span>, _stButton.<span class="source_type">fWidth</span>, _stButton.<span class="source_type">fHeight</span>, _R6WindowListGeneral)); 
+<a name="632"></a>    pR6WindowButtonBox.m_TextFont = Root.Fonts[F_SmallTitle];
+<a name="633"></a>    pR6WindowButtonBox.m_vTextColor = Root.Colors.White;
+<a name="634"></a>    pR6WindowButtonBox.m_vBorder = Root.Colors.White;
+<a name="635"></a>    pR6WindowButtonBox.m_bSelected = _bSelected;
+<a name="636"></a>    pR6WindowButtonBox.CreateTextAndBox( _stButton.szButtonName, _stButton.szTip, <span class="source_int">0</span>, _stButton.iButtonID);
+<a name="637"></a>
+<a name="638"></a>	GeneralItem.m_pR6WindowButtonBox = pR6WindowButtonBox;
+<a name="639"></a>	GeneralItem.m_iItemID		     = _stButton.iButtonID;
+<a name="640"></a>}
+<a name="641"></a>
+<a name="642"></a><span class="source_comment">//===============================================================================================================
+</span><a name="643"></a><span class="source_comment">// ChangeButtonBoxValue: Change the value of the button box
+</span><a name="644"></a><span class="source_comment">//===============================================================================================================
+</span><a name="645"></a>function ChangeButtonBoxValue( <span class="source_type">INT</span> _iButtonID, <span class="source_type">BOOL</span> _bNewValue, <span class="source_type"><a href="../r6window/r6windowlistgeneral.html" class="source">R6WindowListGeneral</a></span> _pListToUse, optional <span class="source_type">BOOL</span> _bDisabled)
+<a name="646"></a>{
+<a name="647"></a>	local <span class="source_type"><a href="../r6window/r6windowlistgeneralitem.html" class="source">R6WindowListGeneralItem</a></span> TempItem;
+<a name="648"></a>
+<a name="649"></a>	TempItem = <span class="source_type"><a href="../r6window/r6windowlistgeneralitem.html" class="source">R6WindowListGeneralItem</a></span>(FindButtonItem( _iButtonID, _pListToUse));
+<a name="650"></a>
+<a name="651"></a>	if ((TempItem != None) && (TempItem.m_pR6WindowButtonBox != None))
+<a name="652"></a>    {
+<a name="653"></a>		TempItem.m_pR6WindowButtonBox.m_bSelected = _bNewValue;
+<a name="654"></a>		TempItem.m_pR6WindowButtonBox.bDisabled   = _bDisabled;
+<a name="655"></a>
+<a name="656"></a>		if (_bDisabled)
+<a name="657"></a>			TempItem.m_pR6WindowButtonBox.m_szToolTipWhenDisable = GetButtonLoc(_iButtonID, false, eBLE_DisableToolTip);
+<a name="658"></a>    }
+<a name="659"></a><span class="source_macro">#ifdefDEBUG
+</span><a name="660"></a>	else
+<a name="661"></a>	{
+<a name="662"></a>		log(<span class="source_string">"ChangeButtonBoxValue --&gt; This button "</span>@GetButtonLoc(_iButtonID)@<span class="source_string">"is not in the list"</span>);
+<a name="663"></a>	}
+<a name="664"></a><span class="source_macro">#endif
+</span><a name="665"></a>}
+<a name="666"></a>
+<a name="667"></a><span class="source_comment">//===============================================================================================================
+</span><a name="668"></a><span class="source_comment">// GetButtonBoxValue: Get the value of a button box
+</span><a name="669"></a><span class="source_comment">//===============================================================================================================
+</span><a name="670"></a>function <span class="source_type">bool</span> GetButtonBoxValue( <span class="source_type">INT</span> _iButtonID, <span class="source_type"><a href="../r6window/r6windowlistgeneral.html" class="source">R6WindowListGeneral</a></span> _pListToUse)
+<a name="671"></a>{
+<a name="672"></a>	local <span class="source_type"><a href="../r6window/r6windowlistgeneralitem.html" class="source">R6WindowListGeneralItem</a></span> TempItem;
+<a name="673"></a>
+<a name="674"></a>	TempItem = <span class="source_type"><a href="../r6window/r6windowlistgeneralitem.html" class="source">R6WindowListGeneralItem</a></span>(FindButtonItem( _iButtonID, _pListToUse));
+<a name="675"></a>
+<a name="676"></a>	if ((TempItem != None) && (TempItem.m_pR6WindowButtonBox != None))
+<a name="677"></a>	{
+<a name="678"></a>		return TempItem.m_pR6WindowButtonBox.m_bSelected;
+<a name="679"></a>	}
+<a name="680"></a>
+<a name="681"></a><span class="source_macro">#ifdefDEBUG
+</span><a name="682"></a>	log(<span class="source_string">"GetButtonBoxValue --&gt; This button "</span>@GetButtonLoc(_iButtonID)@<span class="source_string">"is not in the list"</span>);
+<a name="683"></a><span class="source_macro">#endif
+</span><a name="684"></a>
+<a name="685"></a>	return false;
+<a name="686"></a>}
+<a name="687"></a>
+<a name="688"></a><span class="source_comment">//===============================================================================================================
+</span><a name="689"></a><span class="source_comment">// IsButtonBoxDisabled: The button is disable?
+</span><a name="690"></a><span class="source_comment">//===============================================================================================================
+</span><a name="691"></a>function <span class="source_type">BOOL</span> IsButtonBoxDisabled( <span class="source_type">INT</span> _iButtonID, <span class="source_type"><a href="../r6window/r6windowlistgeneral.html" class="source">R6WindowListGeneral</a></span> _pListToUse)
+<a name="692"></a>{
+<a name="693"></a>	local <span class="source_type"><a href="../r6window/r6windowlistgeneralitem.html" class="source">R6WindowListGeneralItem</a></span> TempItem;
+<a name="694"></a>
+<a name="695"></a>	TempItem = <span class="source_type"><a href="../r6window/r6windowlistgeneralitem.html" class="source">R6WindowListGeneralItem</a></span>(FindButtonItem( _iButtonID, _pListToUse));
+<a name="696"></a>
+<a name="697"></a>	if ((TempItem != None) && (TempItem.m_pR6WindowButtonBox != None))
+<a name="698"></a>    {
+<a name="699"></a>		return TempItem.m_pR6WindowButtonBox.bDisabled;
+<a name="700"></a>    }
+<a name="701"></a><span class="source_macro">#ifdefDEBUG
+</span><a name="702"></a>	else
+<a name="703"></a>	{
+<a name="704"></a>		log(<span class="source_string">"IsButtonBoxDisabled --&gt; This button "</span>@GetButtonLoc(_iButtonID)@<span class="source_string">"is not in the list"</span>);
+<a name="705"></a>    }
+<a name="706"></a><span class="source_macro">#endif
+</span><a name="707"></a>
+<a name="708"></a>	return false;
+<a name="709"></a>}
+<a name="710"></a>
+<a name="711"></a>
+<a name="712"></a>
+<a name="713"></a>
+<a name="714"></a>
+<a name="715"></a>
+<a name="716"></a>
+<a name="717"></a>
+<a name="718"></a>function <span class="source_type"><a href="../uwindow/uwindowlist.html" class="source">UWindowList</a></span> FindButtonItem( <span class="source_type">INT</span> _iButtonID, <span class="source_type"><a href="../r6window/r6windowlistgeneral.html" class="source">R6WindowListGeneral</a></span> _pListToUse)
+<a name="719"></a>{
+<a name="720"></a>	local <span class="source_type"><a href="../uwindow/uwindowlist.html" class="source">UWindowList</a></span> ListItem;
+<a name="721"></a>    local <span class="source_type"><a href="../r6window/r6windowlistgeneralitem.html" class="source">R6WindowListGeneralItem</a></span> TempItem;
+<a name="722"></a>
+<a name="723"></a>    if ( _pListToUse != None)
+<a name="724"></a>    {
+<a name="725"></a>	    for ( ListItem = _pListToUse.Items.Next; ListItem != None ; ListItem = ListItem.Next)
+<a name="726"></a>	    {
+<a name="727"></a>            TempItem = <span class="source_type"><a href="../r6window/r6windowlistgeneralitem.html" class="source">R6WindowListGeneralItem</a></span>(ListItem);
+<a name="728"></a>			if (TempItem.m_iItemID == _iButtonID)
+<a name="729"></a>		    {
+<a name="730"></a>			    break;
+<a name="731"></a>		    }
+<a name="732"></a>	    }
+<a name="733"></a>    }
+<a name="734"></a>
+<a name="735"></a>	return ListItem;
+<a name="736"></a>}
+<a name="737"></a>
+<a name="738"></a>
+<a name="739"></a>
+<a name="740"></a>
+<a name="741"></a>
+<a name="742"></a>
+<a name="743"></a><span class="source_comment">//===============================================================================================================
+</span><a name="744"></a><span class="source_comment">// 
+</span><a name="745"></a><span class="source_comment">//===============================================================================================================
+</span><a name="746"></a>function AssociateButtons( <span class="source_type">INT</span> _iButtonID1, <span class="source_type">INT</span> _iButtonID2, <span class="source_type">INT</span> _iAssociateButCase, <span class="source_type"><a href="../r6window/r6windowlistgeneral.html" class="source">R6WindowListGeneral</a></span> _R6WindowListGeneral)
+<a name="747"></a>{
+<a name="748"></a>	<span class="source_comment">// find the second button and associate it the first one 
+</span><a name="749"></a>	local <span class="source_type"><a href="../uwindow/uwindowlist.html" class="source">UWindowList</a></span> ListItem;
+<a name="750"></a>	local <span class="source_type"><a href="../r6window/r6windowlistgeneralitem.html" class="source">R6WindowListGeneralItem</a></span> pItem1, pItem2;
+<a name="751"></a>    local <span class="source_type"><a href="../r6window/r6windowlistgeneralitem.html" class="source">R6WindowListGeneralItem</a></span> TempItem;
+<a name="752"></a>
+<a name="753"></a>	for ( ListItem = _R6WindowListGeneral.Items.Next; ListItem != None ; ListItem = ListItem.Next)
+<a name="754"></a>	{
+<a name="755"></a>        TempItem = <span class="source_type"><a href="../r6window/r6windowlistgeneralitem.html" class="source">R6WindowListGeneralItem</a></span>(ListItem);
+<a name="756"></a>
+<a name="757"></a>		if (TempItem.m_pR6WindowCounter != None)
+<a name="758"></a>		{
+<a name="759"></a>			if (TempItem.m_pR6WindowCounter.m_iButtonID == _iButtonID1)
+<a name="760"></a>			{
+<a name="761"></a>				pItem1 = TempItem;
+<a name="762"></a>
+<a name="763"></a>				if ( pItem2 != None)
+<a name="764"></a>				{
+<a name="765"></a>					break;
+<a name="766"></a>				}
+<a name="767"></a>			}
+<a name="768"></a>
+<a name="769"></a>			if (TempItem.m_pR6WindowCounter.m_iButtonID == _iButtonID2)
+<a name="770"></a>			{
+<a name="771"></a>				pItem2 = TempItem;
+<a name="772"></a>
+<a name="773"></a>				if ( pItem1 != None)
+<a name="774"></a>				{
+<a name="775"></a>					break;
+<a name="776"></a>				}
+<a name="777"></a>			}
+<a name="778"></a>		}
+<a name="779"></a>	}
+<a name="780"></a>
+<a name="781"></a>	if ( (pItem1 != None) && (pItem2 != None) )
+<a name="782"></a>	{
+<a name="783"></a>		pItem1.m_pR6WindowCounter.m_pAssociateButton  = pItem2.m_pR6WindowCounter;
+<a name="784"></a>		pItem1.m_pR6WindowCounter.m_iAssociateButCase = _iAssociateButCase;
+<a name="785"></a>	}
+<a name="786"></a>}
+<a name="787"></a>
+<a name="788"></a>defaultproperties
+<a name="789"></a>{
+<a name="790"></a>}
+<a name="791"></a></pre></td></tr></table></div>
+<hr />
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../r6menu/r6menu-overview.html">Package</a></td>
+	<td class="header"><a href="../r6menu/r6menubuttonsdefines.html">Class</a></td>
+	<td class="header_hilight">Source</td>
+	<td class="header"><a class="header" href="../classtree.html#R6MenuButtonsDefines">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../Source_r6menu/r6menubriefingspeakerwidget.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../Source_r6menu/r6menucamfloordownbutton.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+
+<div class="stats">Class file time: sam. 18/9/2004 14:39:52.000 - Creation time: mar. 26/5/2026 18:33:20.244 - Created with <a href="http://wiki.beyondunreal.com/wiki/UnCodeX" target="_blank">UnCodeX</a></div>
+
+</body>
+</html>

@@ -1,0 +1,660 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+	<title>UnCodeX - R6Window.R6WindowListBox</title>
+	<meta name="Generator" content="UnCodeX 241" />
+	<link rel="stylesheet" href="../DocStyle2.css" type="text/css" title="Original Purple" />
+	<link rel="alternative stylesheet" href="../DocStyle2-blue.css" type="text/css" title="Blue" />
+	<link rel="alternative stylesheet" href="../DocStyle2-red.css" type="text/css" title="Red" />
+	<!--[if IE]>
+	<link rel="stylesheet" href="../DocStyle2-msie.css" type="text/css" />
+	<![endif]-->
+	<script src="../styleswitcher.js" type="text/javascript"></script>
+</head>
+<body>
+
+<div class="header">
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../r6window/r6window-overview.html">Package</a></td>
+	<td class="header_hilight">Class</td>
+	<td class="header"><a href="../Source_r6window/r6windowlistbox.html">Source</a></td>
+	<td class="header"><a class="header" href="../classtree.html#R6WindowListBox">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../r6window/r6windowlistareaitem.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../r6window/r6windowlistboxanchorbutton.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html#r6window/r6windowlistbox.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+</div>
+<div class="spacer"></div>
+
+<h1><a href="../r6window/r6window-overview.html">R6Window</a>.R6WindowListBox</h1>
+
+<dl>
+<dt>Extends</dt><dd><a href="../uwindow/uwindowlistcontrol.html">UWindowListControl</a></dd>
+
+</dl>
+
+<p></p>
+
+<pre class="tree"><a href="../core/core-overview.html">core</a>.<a href="../core/object.html">Object</a>
+|   
++-- <a href="../uwindow/uwindow-overview.html">UWindow</a>.<a href="../uwindow/uwindowbase.html">UWindowBase</a>
+   |   
+   +-- <a href="../uwindow/uwindow-overview.html">UWindow</a>.<a href="../uwindow/uwindowwindow.html">UWindowWindow</a>
+      |   
+      +-- <a href="../uwindow/uwindow-overview.html">UWindow</a>.<a href="../uwindow/uwindowdialogcontrol.html">UWindowDialogControl</a>
+         |   
+         +-- <a href="../uwindow/uwindow-overview.html">UWindow</a>.<a href="../uwindow/uwindowlistcontrol.html">UWindowListControl</a>
+            |   
+            +-- <a href="../r6window/r6window-overview.html">R6Window</a>.<a href="../r6window/r6windowlistbox.html">R6WindowListBox</a>
+</pre>
+
+<h4>Direct Known Subclasses:</h4>
+<blockquote>
+	<a href="../r6window/r6windowigplayerinfolistbox.html">R6WindowIGPlayerInfoListBox</a>, <a href="../r6window/r6windowserverinfomapbox.html">R6WindowServerInfoMapBox</a>, <a href="../r6window/r6windowserverinfooptionsbox.html">R6WindowServerInfoOptionsBox</a>, <a href="../r6window/r6windowserverinfoplayerbox.html">R6WindowServerInfoPlayerBox</a>, <a href="../r6window/r6windowserverlistbox.html">R6WindowServerListBox</a>, <a href="../r6window/r6windowtexticonslistbox.html">R6WindowTextIconsListBox</a>, <a href="../r6window/r6windowtextlistbox.html">R6WindowTextListBox</a>
+</blockquote>
+
+<hr />
+
+
+
+<table class="title">
+<tr>
+	<th colspan="2" class="title">Variables Summary</th>
+</tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_m_bActiveOverEffect" name="m_bActiveOverEffect" title="go to the details">m_bActiveOverEffect</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_m_bCanDrag" name="m_bCanDrag" title="go to the details">m_bCanDrag</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_m_bCanDragExternal" name="m_bCanDragExternal" title="go to the details">m_bCanDragExternal</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_m_bDragging" name="m_bDragging" title="go to the details">m_bDragging</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">BOOL</td><td width="66%"><a href="#_m_bForceCaps" name="m_bForceCaps" title="go to the details">m_bForceCaps</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_m_bIgnoreUserClicks" name="m_bIgnoreUserClicks" title="go to the details">m_bIgnoreUserClicks</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">BOOL</td><td width="66%"><a href="#_m_bSkipDrawBorders" name="m_bSkipDrawBorders" title="go to the details">m_bSkipDrawBorders</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../uwindow/uwindowwindow.html">UWindowWindow</a></td><td width="66%"><a href="#_m_DoubleClickClient" name="m_DoubleClickClient" title="go to the details">m_DoubleClickClient</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../r6window/r6windowlistbox.html">R6WindowListBox</a></td><td width="66%"><a href="#_m_DoubleClickList" name="m_DoubleClickList" title="go to the details">m_DoubleClickList</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../r6window/r6windowlistbox.html#eCornerType">eCornerType</a></td><td width="66%"><a href="#_m_eCornerType" name="m_eCornerType" title="go to the details">m_eCornerType</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">FLOAT</td><td width="66%"><a href="#_m_fDragY" name="m_fDragY" title="go to the details">m_fDragY</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">FLOAT</td><td width="66%"><a href="#_m_fItemHeight" name="m_fItemHeight" title="go to the details">m_fItemHeight</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">FLOAT</td><td width="66%"><a href="#_m_fSpaceBetItem" name="m_fSpaceBetItem" title="go to the details">m_fSpaceBetItem</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">FLOAT</td><td width="66%"><a href="#_m_fXItemOffset" name="m_fXItemOffset" title="go to the details">m_fXItemOffset</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">FLOAT</td><td width="66%"><a href="#_m_fXItemRightPadding" name="m_fXItemRightPadding" title="go to the details">m_fXItemRightPadding</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">INT</td><td width="66%"><a href="#_m_iTotItemsDisplayed" name="m_iTotItemsDisplayed" title="go to the details">m_iTotItemsDisplayed</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">class&lt;<a href="../r6window/r6windowvscrollbar.html">R6WindowVScrollBar</a>&gt;</td><td width="66%"><a href="#_m_SBClass" name="m_SBClass" title="go to the details">m_SBClass</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../uwindow/uwindowlistboxitem.html">UWindowListBoxItem</a></td><td width="66%"><a href="#_m_SelectedItem" name="m_SelectedItem" title="go to the details">m_SelectedItem</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_m_szDefaultHelpText" name="m_szDefaultHelpText" title="go to the details">m_szDefaultHelpText</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../engine/texture.html">Texture</a></td><td width="66%"><a href="#_m_TIcon" name="m_TIcon" title="go to the details">m_TIcon</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../r6window/r6windowvscrollbar.html">R6WindowVScrollbar</a></td><td width="66%"><a href="#_m_VertSB" name="m_VertSB" title="go to the details">m_VertSB</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../core/object.html#Color">Color</a></td><td width="66%"><a href="#_m_vInitBorderColor" name="m_vInitBorderColor" title="go to the details">m_vInitBorderColor</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../core/object.html#Color">Color</a></td><td width="66%"><a href="#_m_vMouseOverWindow" name="m_vMouseOverWindow" title="go to the details">m_vMouseOverWindow</a></td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Variables from <a href="../uwindow/uwindow-overview.html">UWindow</a>.<a href="../uwindow/uwindowlistcontrol.html">UWindowListControl</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../uwindow/uwindowlistcontrol.html#Items">Items</a>, <a href="../uwindow/uwindowlistcontrol.html#ListClass">ListClass</a></td>
+</tr>
+</table>
+<table>
+<tr>
+	<th class="inherittitle">Inherited Variables from <a href="../uwindow/uwindow-overview.html">UWindow</a>.<a href="../uwindow/uwindowdialogcontrol.html">UWindowDialogControl</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../uwindow/uwindowdialogcontrol.html#Align">Align</a>, <a href="../uwindow/uwindowdialogcontrol.html#bAcceptExternalDragDrop">bAcceptExternalDragDrop</a>, <a href="../uwindow/uwindowdialogcontrol.html#bHasKeyboardFocus">bHasKeyboardFocus</a>, <a href="../uwindow/uwindowdialogcontrol.html#bNoKeyboard">bNoKeyboard</a>, <a href="../uwindow/uwindowdialogcontrol.html#Font">Font</a>, <a href="../uwindow/uwindowdialogcontrol.html#HelpText">HelpText</a>, <a href="../uwindow/uwindowdialogcontrol.html#MinHeight">MinHeight</a>, <a href="../uwindow/uwindowdialogcontrol.html#MinWidth">MinWidth</a>, <a href="../uwindow/uwindowdialogcontrol.html#NotifyWindow">NotifyWindow</a>, <a href="../uwindow/uwindowdialogcontrol.html#TabNext">TabNext</a>, <a href="../uwindow/uwindowdialogcontrol.html#TabPrev">TabPrev</a>, <a href="../uwindow/uwindowdialogcontrol.html#Text">Text</a>, <a href="../uwindow/uwindowdialogcontrol.html#TextColor">TextColor</a>, <a href="../uwindow/uwindowdialogcontrol.html#TextX">TextX</a>, <a href="../uwindow/uwindowdialogcontrol.html#TextY">TextY</a></td>
+</tr>
+</table>
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Enumerations Summary</th>
+</tr>
+<tr><td><a href="#_eCornerType" name="eCornerType" title="go to the details">eCornerType</a><br /><span class="small">No_Corners,
+No_Borders,
+Top_Corners,
+Bottom_Corners,
+All_Corners</span></td></tr>
+
+</table>
+
+
+
+<br />
+
+
+
+
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Functions Summary</th>
+</tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td><a href="../core/object.html#Region">Region</a>&nbsp;</td><td><a href="#_CenterIconInBox-" name="CenterIconInBox" title="go to the details">CenterIconInBox</a> (FLOAT _fX, FLOAT _fY, FLOAT _fWidth, FLOAT _fHeight, <a href="../core/object.html#Region">Region</a> _RIconRegion))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td><a href="../uwindow/uwindowlistboxitem.html">UWindowListBoxItem</a>&nbsp;</td><td><a href="#_CheckForLastItem-" name="CheckForLastItem" title="go to the details">CheckForLastItem</a> (<a href="../uwindow/uwindowlistboxitem.html">UWindowListBoxItem</a> _LastItem))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td><a href="../uwindow/uwindowlistboxitem.html">UWindowListBoxItem</a>&nbsp;</td><td><a href="#_CheckForNextItem-" name="CheckForNextItem" title="go to the details">CheckForNextItem</a> (<a href="../uwindow/uwindowlistboxitem.html">UWindowListBoxItem</a> _StartItem))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td><a href="../uwindow/uwindowlistboxitem.html">UWindowListBoxItem</a>&nbsp;</td><td><a href="#_CheckForPageDown-" name="CheckForPageDown" title="go to the details">CheckForPageDown</a> (<a href="../uwindow/uwindowlistboxitem.html">UWindowListBoxItem</a> _StartItem))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td><a href="../uwindow/uwindowlistboxitem.html">UWindowListBoxItem</a>&nbsp;</td><td><a href="#_CheckForPageUp-" name="CheckForPageUp" title="go to the details">CheckForPageUp</a> (<a href="../uwindow/uwindowlistboxitem.html">UWindowListBoxItem</a> _StartItem))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td><a href="../uwindow/uwindowlistboxitem.html">UWindowListBoxItem</a>&nbsp;</td><td><a href="#_CheckForPrevItem-" name="CheckForPrevItem" title="go to the details">CheckForPrevItem</a> (<a href="../uwindow/uwindowlistboxitem.html">UWindowListBoxItem</a> _StartItem))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_Clear-" name="Clear" title="go to the details">Clear</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_Created-" name="Created" title="go to the details">Created</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_DoubleClick-" name="DoubleClick" title="go to the details">DoubleClick</a> (FLOAT X, FLOAT Y))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_DoubleClickItem-" name="DoubleClickItem" title="go to the details">DoubleClickItem</a> (<a href="../uwindow/uwindowlistboxitem.html">UWindowListBoxItem</a> I))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_DropSelection-" name="DropSelection" title="go to the details">DropSelection</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>bool&nbsp;</td><td><a href="#_ExternalDragOver-" name="ExternalDragOver" title="go to the details">ExternalDragOver</a> (<a href="../uwindow/uwindowdialogcontrol.html">UWindowDialogControl</a> ExternalControl, FLOAT X, FLOAT Y))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>INT&nbsp;</td><td><a href="#_GetCenterXPos-" name="GetCenterXPos" title="go to the details">GetCenterXPos</a> (FLOAT _fTagWidth, FLOAT _fTextWidth))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td><a href="../uwindow/uwindowlistboxitem.html">UWindowListBoxItem</a>&nbsp;</td><td><a href="#_GetItemAt-" name="GetItemAt" title="go to the details">GetItemAt</a> (FLOAT fMouseX, FLOAT fMouseY))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td><a href="../uwindow/uwindowlistboxitem.html">UWindowListBoxItem</a>&nbsp;</td><td><a href="#_GetSelectedItem-" name="GetSelectedItem" title="go to the details">GetSelectedItem</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>FLOAT&nbsp;</td><td><a href="#_GetSizeOfAnItem-" name="GetSizeOfAnItem" title="go to the details">GetSizeOfAnItem</a> (<a href="../uwindow/uwindowlist.html">UWindowList</a> _pItem))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>FLOAT&nbsp;</td><td><a href="#_GetSizeOfList-" name="GetSizeOfList" title="go to the details">GetSizeOfList</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>BOOL&nbsp;</td><td><a href="#_IsASeparatorItem-" name="IsASeparatorItem" title="go to the details">IsASeparatorItem</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_KeyDown-" name="KeyDown" title="go to the details">KeyDown</a> (int Key, float X, float Y))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_KeyFocusEnter-" name="KeyFocusEnter" title="go to the details">KeyFocusEnter</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_KeyFocusExit-" name="KeyFocusExit" title="go to the details">KeyFocusExit</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_LMouseDown-" name="LMouseDown" title="go to the details">LMouseDown</a> (FLOAT X, FLOAT Y))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_MakeSelectedVisible-" name="MakeSelectedVisible" title="go to the details">MakeSelectedVisible</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_MouseEnter-" name="MouseEnter" title="go to the details">MouseEnter</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_MouseLeave-" name="MouseLeave" title="go to the details">MouseLeave</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_MouseMove-" name="MouseMove" title="go to the details">MouseMove</a> (FLOAT X, FLOAT Y))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_MouseWheelDown-" name="MouseWheelDown" title="go to the details">MouseWheelDown</a> (FLOAT X, FLOAT Y))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_MouseWheelUp-" name="MouseWheelUp" title="go to the details">MouseWheelUp</a> (FLOAT X, FLOAT Y))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_Paint-" name="Paint" title="go to the details">Paint</a> (<a href="../engine/canvas.html">Canvas</a> C, FLOAT fMouseX, FLOAT fMouseY))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_ReceiveDoubleClickItem-" name="ReceiveDoubleClickItem" title="go to the details">ReceiveDoubleClickItem</a> (<a href="../r6window/r6windowlistbox.html">R6WindowListBox</a> L, <a href="../uwindow/uwindowlistboxitem.html">UWindowListBoxItem</a> I))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_Resized-" name="Resized" title="go to the details">Resized</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_SetCornerType-" name="SetCornerType" title="go to the details">SetCornerType</a> (<a href="../r6window/r6windowlistbox.html#eCornerType">eCornerType</a> _NewCornerType))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_SetHelpText-" name="SetHelpText" title="go to the details">SetHelpText</a> (string T))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_SetOverBorderColorEffect-" name="SetOverBorderColorEffect" title="go to the details">SetOverBorderColorEffect</a> (<a href="../core/object.html#Color">Color</a> _vBorderColor))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_SetSelected-" name="SetSelected" title="go to the details">SetSelected</a> (FLOAT X, FLOAT Y))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_SetSelectedItem-" name="SetSelectedItem" title="go to the details">SetSelectedItem</a> (<a href="../uwindow/uwindowlistboxitem.html">UWindowListBoxItem</a> NewSelected))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_Sort-" name="Sort" title="go to the details">Sort</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>BOOL&nbsp;</td><td><a href="#_SwapItem-" name="SwapItem" title="go to the details">SwapItem</a> (<a href="../uwindow/uwindowlistboxitem.html">UWindowListBoxItem</a> _pItem, BOOL _bUp))<br /><span class="function_state"></span></td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Functions from <a href="../uwindow/uwindow-overview.html">UWindow</a>.<a href="../uwindow/uwindowlistcontrol.html">UWindowListControl</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../uwindow/uwindowlistcontrol.html#ClearListOfItems">ClearListOfItems</a>, <a href="../uwindow/uwindowlistcontrol.html#Created">Created</a>, <a href="../uwindow/uwindowlistcontrol.html#DrawItem">DrawItem</a>, <a href="../uwindow/uwindowlistcontrol.html#GetItemAtIndex">GetItemAtIndex</a>, <a href="../uwindow/uwindowlistcontrol.html#GetNextItem">GetNextItem</a></td>
+</tr>
+</table>
+<table>
+<tr>
+	<th class="inherittitle">Inherited Functions from <a href="../uwindow/uwindow-overview.html">UWindow</a>.<a href="../uwindow/uwindowdialogcontrol.html">UWindowDialogControl</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../uwindow/uwindowdialogcontrol.html#BeforePaint">BeforePaint</a>, <a href="../uwindow/uwindowdialogcontrol.html#CheckExternalDrag">CheckExternalDrag</a>, <a href="../uwindow/uwindowdialogcontrol.html#Created">Created</a>, <a href="../uwindow/uwindowdialogcontrol.html#ExternalDragOver">ExternalDragOver</a>, <a href="../uwindow/uwindowdialogcontrol.html#KeyDown">KeyDown</a>, <a href="../uwindow/uwindowdialogcontrol.html#KeyFocusEnter">KeyFocusEnter</a>, <a href="../uwindow/uwindowdialogcontrol.html#KeyFocusExit">KeyFocusExit</a>, <a href="../uwindow/uwindowdialogcontrol.html#MouseEnter">MouseEnter</a>, <a href="../uwindow/uwindowdialogcontrol.html#MouseLeave">MouseLeave</a>, <a href="../uwindow/uwindowdialogcontrol.html#MouseMove">MouseMove</a>, <a href="../uwindow/uwindowdialogcontrol.html#Notify">Notify</a>, <a href="../uwindow/uwindowdialogcontrol.html#Register">Register</a>, <a href="../uwindow/uwindowdialogcontrol.html#SetFont">SetFont</a>, <a href="../uwindow/uwindowdialogcontrol.html#SetHelpText">SetHelpText</a>, <a href="../uwindow/uwindowdialogcontrol.html#SetText">SetText</a>, <a href="../uwindow/uwindowdialogcontrol.html#SetTextColor">SetTextColor</a></td>
+</tr>
+</table>
+
+
+<br />
+
+
+
+<hr />
+
+
+
+<table class="title">
+<tr>
+	<th class="title">Variables Detail</th>
+</tr>
+</table>
+
+<h4><a name="_m_bActiveOverEffect" class="hidden"></a>m_bActiveOverEffect <a href="../Source_r6window/r6windowlistbox.html#36" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">bool</span> m_bActiveOverEffect;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_bCanDrag" class="hidden"></a>m_bCanDrag <a href="../Source_r6window/r6windowlistbox.html#34" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">bool</span> m_bCanDrag;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_bCanDragExternal" class="hidden"></a>m_bCanDragExternal <a href="../Source_r6window/r6windowlistbox.html#35" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">bool</span> m_bCanDragExternal;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_bDragging" class="hidden"></a>m_bDragging <a href="../Source_r6window/r6windowlistbox.html#33" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">bool</span> m_bDragging;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_bForceCaps" class="hidden"></a>m_bForceCaps <a href="../Source_r6window/r6windowlistbox.html#39" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">BOOL</span> m_bForceCaps;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_bIgnoreUserClicks" class="hidden"></a>m_bIgnoreUserClicks <a href="../Source_r6window/r6windowlistbox.html#38" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">bool</span> m_bIgnoreUserClicks;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_bSkipDrawBorders" class="hidden"></a>m_bSkipDrawBorders <a href="../Source_r6window/r6windowlistbox.html#41" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">BOOL</span> m_bSkipDrawBorders;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_DoubleClickClient" class="hidden"></a>m_DoubleClickClient <a href="../Source_r6window/r6windowlistbox.html#24" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../uwindow/uwindowwindow.html" class="source">UWindowWindow</a></span> m_DoubleClickClient;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_DoubleClickList" class="hidden"></a>m_DoubleClickList <a href="../Source_r6window/r6windowlistbox.html#23" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../r6window/r6windowlistbox.html" class="source">R6WindowListBox</a></span> m_DoubleClickList;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_eCornerType" class="hidden"></a>m_eCornerType <a href="../Source_r6window/r6windowlistbox.html#43" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../r6window/r6windowlistbox.html#eCornerType" class="source">eCornerType</a></span> m_eCornerType;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_fDragY" class="hidden"></a>m_fDragY <a href="../Source_r6window/r6windowlistbox.html#19" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">FLOAT</span> m_fDragY;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_fItemHeight" class="hidden"></a>m_fItemHeight <a href="../Source_r6window/r6windowlistbox.html#17" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">FLOAT</span> m_fItemHeight;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_fSpaceBetItem" class="hidden"></a>m_fSpaceBetItem <a href="../Source_r6window/r6windowlistbox.html#18" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">FLOAT</span> m_fSpaceBetItem;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_fXItemOffset" class="hidden"></a>m_fXItemOffset <a href="../Source_r6window/r6windowlistbox.html#20" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">FLOAT</span> m_fXItemOffset;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_fXItemRightPadding" class="hidden"></a>m_fXItemRightPadding <a href="../Source_r6window/r6windowlistbox.html#21" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">FLOAT</span> m_fXItemRightPadding;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_iTotItemsDisplayed" class="hidden"></a>m_iTotItemsDisplayed <a href="../Source_r6window/r6windowlistbox.html#31" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">INT</span> m_iTotItemsDisplayed;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_SBClass" class="hidden"></a>m_SBClass <a href="../Source_r6window/r6windowlistbox.html#12" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">class</span>&lt;<span class="source_type"><a href="../r6window/r6windowvscrollbar.html" class="source">R6WindowVScrollBar</a></span>&gt; m_SBClass;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_SelectedItem" class="hidden"></a>m_SelectedItem <a href="../Source_r6window/r6windowlistbox.html#13" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../uwindow/uwindowlistboxitem.html" class="source">UWindowListBoxItem</a></span> m_SelectedItem;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_szDefaultHelpText" class="hidden"></a>m_szDefaultHelpText <a href="../Source_r6window/r6windowlistbox.html#29" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">string</span> m_szDefaultHelpText;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_TIcon" class="hidden"></a>m_TIcon <a href="../Source_r6window/r6windowlistbox.html#15" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../engine/texture.html" class="source">Texture</a></span> m_TIcon;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_VertSB" class="hidden"></a>m_VertSB <a href="../Source_r6window/r6windowlistbox.html#11" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../r6window/r6windowvscrollbar.html" class="source">R6WindowVScrollbar</a></span> m_VertSB;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_vInitBorderColor" class="hidden"></a>m_vInitBorderColor <a href="../Source_r6window/r6windowlistbox.html#27" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../core/object.html#Color" class="source">Color</a></span> m_vInitBorderColor;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_vMouseOverWindow" class="hidden"></a>m_vMouseOverWindow <a href="../Source_r6window/r6windowlistbox.html#26" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../core/object.html#Color" class="source">Color</a></span> m_vMouseOverWindow;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th class="title">Enumerations Detail</th>
+</tr>
+</table>
+
+<h4><a name="_eCornerType" class="hidden"></a>eCornerType <a href="../Source_r6window/r6windowlistbox.html#43" class="small">Source code</a></h4>
+<div class="declaration">enum <span class="source_type"><a href="../r6window/r6windowlistbox.html#eCornerType" class="source">eCornerType</a></span><br />
+{<blockquote>No_Corners,
+No_Borders,
+Top_Corners,
+Bottom_Corners,
+All_Corners</blockquote>};
+</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+
+
+<br />
+
+
+
+
+
+<table class="title">
+<tr>
+	<th class="title">Functions Detail</th>
+</tr>
+</table>
+
+<h4><a name="_CenterIconInBox-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> CenterIconInBox <span class="function_state"></span> <a href="../Source_r6window/r6windowlistbox.html#513" class="small">Source code</a></h4>
+<div class="declaration"> function <span class="source_type"><a href="../core/object.html#Region" class="source">Region</a></span> CenterIconInBox ( <span class="source_type">FLOAT</span> _fX, <span class="source_type">FLOAT</span> _fY, <span class="source_type">FLOAT</span> _fWidth, <span class="source_type">FLOAT</span> <span class="source_type">_fHeight</span>, <span class="source_type"><a href="../core/object.html#Region" class="source">Region</a></span> _RIconRegion) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_CheckForLastItem-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> CheckForLastItem <span class="function_state"></span> <a href="../Source_r6window/r6windowlistbox.html#685" class="small">Source code</a></h4>
+<div class="declaration"> function <span class="source_type"><a href="../uwindow/uwindowlistboxitem.html" class="source">UWindowListBoxItem</a></span> CheckForLastItem ( <span class="source_type"><a href="../uwindow/uwindowlistboxitem.html" class="source">UWindowListBoxItem</a></span> _LastItem) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_CheckForNextItem-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> CheckForNextItem <span class="function_state"></span> <a href="../Source_r6window/r6windowlistbox.html#621" class="small">Source code</a></h4>
+<div class="declaration"> function <span class="source_type"><a href="../uwindow/uwindowlistboxitem.html" class="source">UWindowListBoxItem</a></span> CheckForNextItem ( <span class="source_type"><a href="../uwindow/uwindowlistboxitem.html" class="source">UWindowListBoxItem</a></span> _StartItem) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_CheckForPageDown-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> CheckForPageDown <span class="function_state"></span> <a href="../Source_r6window/r6windowlistbox.html#706" class="small">Source code</a></h4>
+<div class="declaration"> function <span class="source_type"><a href="../uwindow/uwindowlistboxitem.html" class="source">UWindowListBoxItem</a></span> CheckForPageDown ( <span class="source_type"><a href="../uwindow/uwindowlistboxitem.html" class="source">UWindowListBoxItem</a></span> _StartItem) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_CheckForPageUp-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> CheckForPageUp <span class="function_state"></span> <a href="../Source_r6window/r6windowlistbox.html#742" class="small">Source code</a></h4>
+<div class="declaration"> function <span class="source_type"><a href="../uwindow/uwindowlistboxitem.html" class="source">UWindowListBoxItem</a></span> CheckForPageUp ( <span class="source_type"><a href="../uwindow/uwindowlistboxitem.html" class="source">UWindowListBoxItem</a></span> _StartItem) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_CheckForPrevItem-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> CheckForPrevItem <span class="function_state"></span> <a href="../Source_r6window/r6windowlistbox.html#653" class="small">Source code</a></h4>
+<div class="declaration"> function <span class="source_type"><a href="../uwindow/uwindowlistboxitem.html" class="source">UWindowListBoxItem</a></span> CheckForPrevItem ( <span class="source_type"><a href="../uwindow/uwindowlistboxitem.html" class="source">UWindowListBoxItem</a></span> _StartItem) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_Clear-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> Clear <span class="function_state"></span> <a href="../Source_r6window/r6windowlistbox.html#537" class="small">Source code</a></h4>
+<div class="declaration"> function  Clear ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_Created-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> Created <span class="function_state"></span> <a href="../Source_r6window/r6windowlistbox.html#52" class="small">Source code</a></h4>
+<div class="declaration"> function  Created ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_DoubleClick-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> DoubleClick <span class="function_state"></span> <a href="../Source_r6window/r6windowlistbox.html#314" class="small">Source code</a></h4>
+<div class="declaration"> function  DoubleClick ( <span class="source_type">FLOAT</span> X, <span class="source_type">FLOAT</span> Y) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_DoubleClickItem-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> DoubleClickItem <span class="function_state"></span> <a href="../Source_r6window/r6windowlistbox.html#337" class="small">Source code</a></h4>
+<div class="declaration"> function  DoubleClickItem ( <span class="source_type"><a href="../uwindow/uwindowlistboxitem.html" class="source">UWindowListBoxItem</a></span> <span class="source_type">I</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_DropSelection-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> DropSelection <span class="function_state"></span> <a href="../Source_r6window/r6windowlistbox.html#477" class="small">Source code</a></h4>
+<div class="declaration"> function  DropSelection ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ExternalDragOver-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> ExternalDragOver <span class="function_state"></span> <a href="../Source_r6window/r6windowlistbox.html#434" class="small">Source code</a></h4>
+<div class="declaration"> function <span class="source_type">bool</span> ExternalDragOver ( <span class="source_type"><a href="../uwindow/uwindowdialogcontrol.html" class="source">UWindowDialogControl</a></span> ExternalControl, <span class="source_type">FLOAT</span> X, <span class="source_type">FLOAT</span> Y) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GetCenterXPos-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> GetCenterXPos <span class="function_state"></span> <a href="../Source_r6window/r6windowlistbox.html#531" class="small">Source code</a></h4>
+<div class="declaration"> function <span class="source_type">INT</span> GetCenterXPos ( <span class="source_type">FLOAT</span> _fTagWidth, <span class="source_type">FLOAT</span> _fTextWidth) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GetItemAt-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> GetItemAt <span class="function_state"></span> <a href="../Source_r6window/r6windowlistbox.html#180" class="small">Source code</a></h4>
+<div class="declaration"> function <span class="source_type"><a href="../uwindow/uwindowlistboxitem.html" class="source">UWindowListBoxItem</a></span> GetItemAt ( <span class="source_type">FLOAT</span> fMouseX, <span class="source_type">FLOAT</span> fMouseY) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GetSelectedItem-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> GetSelectedItem <span class="function_state"></span> <a href="../Source_r6window/r6windowlistbox.html#492" class="small">Source code</a></h4>
+<div class="declaration"> function <span class="source_type"><a href="../uwindow/uwindowlistboxitem.html" class="source">UWindowListBoxItem</a></span> GetSelectedItem ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GetSizeOfAnItem-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> GetSizeOfAnItem <span class="function_state"></span> <a href="../Source_r6window/r6windowlistbox.html#122" class="small">Source code</a></h4>
+<div class="declaration"> function <span class="source_type">FLOAT</span> GetSizeOfAnItem ( <span class="source_type"><a href="../uwindow/uwindowlist.html" class="source">UWindowList</a></span> _pItem) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GetSizeOfList-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> GetSizeOfList <span class="function_state"></span> <a href="../Source_r6window/r6windowlistbox.html#136" class="small">Source code</a></h4>
+<div class="declaration"> function <span class="source_type">FLOAT</span> GetSizeOfList ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_IsASeparatorItem-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> IsASeparatorItem <span class="function_state"></span> <a href="../Source_r6window/r6windowlistbox.html#822" class="small">Source code</a></h4>
+<div class="declaration"> function <span class="source_type">BOOL</span> IsASeparatorItem ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_KeyDown-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> KeyDown <span class="function_state"></span> <a href="../Source_r6window/r6windowlistbox.html#548" class="small">Source code</a></h4>
+<div class="declaration"> function  KeyDown ( <span class="source_type">int</span> <span class="source_type">Key</span>, <span class="source_type">float</span> X, <span class="source_type">float</span> Y) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_KeyFocusEnter-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> KeyFocusEnter <span class="function_state"></span> <a href="../Source_r6window/r6windowlistbox.html#827" class="small">Source code</a></h4>
+<div class="declaration"> function  KeyFocusEnter ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_KeyFocusExit-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> KeyFocusExit <span class="function_state"></span> <a href="../Source_r6window/r6windowlistbox.html#832" class="small">Source code</a></h4>
+<div class="declaration"> function  KeyFocusExit ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_LMouseDown-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> LMouseDown <span class="function_state"></span> <a href="../Source_r6window/r6windowlistbox.html#295" class="small">Source code</a></h4>
+<div class="declaration"> function  LMouseDown ( <span class="source_type">FLOAT</span> X, <span class="source_type">FLOAT</span> Y) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_MakeSelectedVisible-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> MakeSelectedVisible <span class="function_state"></span> <a href="../Source_r6window/r6windowlistbox.html#233" class="small">Source code</a></h4>
+<div class="declaration"> function  MakeSelectedVisible ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_MouseEnter-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> MouseEnter <span class="function_state"></span> <a href="../Source_r6window/r6windowlistbox.html#359" class="small">Source code</a></h4>
+<div class="declaration"> function  MouseEnter ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_MouseLeave-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> MouseLeave <span class="function_state"></span> <a href="../Source_r6window/r6windowlistbox.html#370" class="small">Source code</a></h4>
+<div class="declaration"> function  MouseLeave ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_MouseMove-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> MouseMove <span class="function_state"></span> <a href="../Source_r6window/r6windowlistbox.html#380" class="small">Source code</a></h4>
+<div class="declaration"> function  MouseMove ( <span class="source_type">FLOAT</span> X, <span class="source_type">FLOAT</span> Y) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_MouseWheelDown-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> MouseWheelDown <span class="function_state"></span> <a href="../Source_r6window/r6windowlistbox.html#418" class="small">Source code</a></h4>
+<div class="declaration"> function  MouseWheelDown ( <span class="source_type">FLOAT</span> X, <span class="source_type">FLOAT</span> Y) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_MouseWheelUp-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> MouseWheelUp <span class="function_state"></span> <a href="../Source_r6window/r6windowlistbox.html#426" class="small">Source code</a></h4>
+<div class="declaration"> function  MouseWheelUp ( <span class="source_type">FLOAT</span> X, <span class="source_type">FLOAT</span> Y) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_Paint-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> Paint <span class="function_state"></span> <a href="../Source_r6window/r6windowlistbox.html#69" class="small">Source code</a></h4>
+<div class="declaration"> function  Paint ( <span class="source_type"><a href="../engine/canvas.html" class="source">Canvas</a></span> <span class="source_type">C</span>, <span class="source_type">FLOAT</span> fMouseX, <span class="source_type">FLOAT</span> fMouseY) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ReceiveDoubleClickItem-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> ReceiveDoubleClickItem <span class="function_state"></span> <a href="../Source_r6window/r6windowlistbox.html#327" class="small">Source code</a></h4>
+<div class="declaration"> function  ReceiveDoubleClickItem ( <span class="source_type"><a href="../r6window/r6windowlistbox.html" class="source">R6WindowListBox</a></span> L, <span class="source_type"><a href="../uwindow/uwindowlistboxitem.html" class="source">UWindowListBoxItem</a></span> <span class="source_type">I</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_Resized-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> Resized <span class="function_state"></span> <a href="../Source_r6window/r6windowlistbox.html#149" class="small">Source code</a></h4>
+<div class="declaration"> function  Resized ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_SetCornerType-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> SetCornerType <span class="function_state"></span> <a href="../Source_r6window/r6windowlistbox.html#173" class="small">Source code</a></h4>
+<div class="declaration"> function  SetCornerType ( <span class="source_type"><a href="../r6window/r6windowlistbox.html#eCornerType" class="source">eCornerType</a></span> _NewCornerType) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_SetHelpText-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> SetHelpText <span class="function_state"></span> <a href="../Source_r6window/r6windowlistbox.html#58" class="small">Source code</a></h4>
+<div class="declaration"> function  SetHelpText ( <span class="source_type">string</span> <span class="source_type">T</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_SetOverBorderColorEffect-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> SetOverBorderColorEffect <span class="function_state"></span> <a href="../Source_r6window/r6windowlistbox.html#502" class="small">Source code</a></h4>
+<div class="declaration"> function  SetOverBorderColorEffect ( <span class="source_type"><a href="../core/object.html#Color" class="source">Color</a></span> _vBorderColor) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_SetSelected-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> SetSelected <span class="function_state"></span> <a href="../Source_r6window/r6windowlistbox.html#282" class="small">Source code</a></h4>
+<div class="declaration"> function  SetSelected ( <span class="source_type">FLOAT</span> X, <span class="source_type">FLOAT</span> Y) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_SetSelectedItem-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> SetSelectedItem <span class="function_state"></span> <a href="../Source_r6window/r6windowlistbox.html#261" class="small">Source code</a></h4>
+<div class="declaration"> function  SetSelectedItem ( <span class="source_type"><a href="../uwindow/uwindowlistboxitem.html" class="source">UWindowListBoxItem</a></span> NewSelected) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_Sort-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> Sort <span class="function_state"></span> <a href="../Source_r6window/r6windowlistbox.html#64" class="small">Source code</a></h4>
+<div class="declaration"> function  Sort ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_SwapItem-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> SwapItem <span class="function_state"></span> <a href="../Source_r6window/r6windowlistbox.html#780" class="small">Source code</a></h4>
+<div class="declaration"> function <span class="source_type">BOOL</span> SwapItem ( <span class="source_type"><a href="../uwindow/uwindowlistboxitem.html" class="source">UWindowListBoxItem</a></span> _pItem, <span class="source_type">BOOL</span> _bUp) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+
+
+<br />
+
+
+<table class="title">
+<tr>
+	<th class="title">Defaultproperties</th>
+</tr>
+</table>
+<br />
+<div class="source"><table class="source"><tr><td class="source"><pre class="source">defaultproperties
+{
+     m_fItemHeight=<span class="source_int">10.000000</span>
+     m_fSpaceBetItem=<span class="source_int">4.000000</span>
+     m_fXItemOffset=<span class="source_int">2.000000</span>
+     m_TIcon=<span class="source_type"><a href="../engine/texture.html" class="source">Texture</a></span><span class="source_name">'R6MenuTextures.Credits.TeamBarIcon'</span>
+     m_SBClass=<span class="source_type">Class</span><span class="source_name">'R6Window.R6WindowVScrollbar'</span>
+     m_vMouseOverWindow=(<span class="source_type">B</span>=<span class="source_int">239</span>,G=<span class="source_int">209</span>,<span class="source_type">R</span>=<span class="source_int">129</span>)
+     ListClass=<span class="source_type">Class</span><span class="source_name">'UWindow.UWindowListBoxItem'</span>
+}
+</pre></td></tr></table></div>
+
+
+
+<hr />
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../r6window/r6window-overview.html">Package</a></td>
+	<td class="header_hilight">Class</td>
+	<td class="header"><a href="../Source_r6window/r6windowlistbox.html">Source</a></td>
+	<td class="header"><a class="header" href="../classtree.html#R6WindowListBox">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../r6window/r6windowlistareaitem.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../r6window/r6windowlistboxanchorbutton.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+
+<div class="stats">Creation time: mar. 26/5/2026 18:33:15.077 - Created with <a href="http://wiki.beyondunreal.com/wiki/UnCodeX" target="_blank">UnCodeX</a></div>
+
+</body>
+</html>

@@ -1,0 +1,129 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+	<title>UnCodeX - Source: R6Abstract.R6AbstractPawn</title>
+	<meta name="Generator" content="UnCodeX 241" />
+	<link rel="stylesheet" href="../DocStyle2.css" type="text/css" title="Original Purple" />
+	<link rel="alternative stylesheet" href="../DocStyle2-blue.css" type="text/css" title="Blue" />
+	<link rel="alternative stylesheet" href="../DocStyle2-red.css" type="text/css" title="Red" />
+	<!--[if IE]>
+	<link rel="stylesheet" href="../DocStyle2-msie.css" type="text/css" />
+	<![endif]-->
+	<script src="../styleswitcher.js" type="text/javascript"></script>
+</head>
+<body>
+
+<div class="header">
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../r6abstract/r6abstract-overview.html">Package</a></td>
+	<td class="header"><a href="../r6abstract/r6abstractpawn.html">Class</a></td>
+	<td class="header_hilight">Source</td>
+	<td class="header"><a class="header" href="../classtree.html#R6AbstractPawn">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../Source_r6abstract/r6abstractnoisemgr.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../Source_r6abstract/r6abstractweapon.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html#Source_r6abstract/r6abstractpawn.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+</div>
+<div class="spacer"></div>
+
+<h1><a href="../r6abstract/r6abstract-overview.html">R6Abstract</a>.<a href="../r6abstract/r6abstractpawn.html">R6AbstractPawn</a></h1>
+<br />
+<div class="source"><table class="source"><tr><td class="source_lineno"><span class="source_lineno">00001<br />00002<br />00003<br />00004<br />00005<br />00006<br />00007<br />00008<br />00009<br />00010<br />00011<br />00012<br />00013<br />00014<br />00015<br />00016<br />00017<br />00018<br />00019<br />00020<br />
+00021<br />00022<br />00023<br />00024<br />00025<br />00026<br />00027<br />00028<br />00029<br />00030<br />00031<br />00032<br />00033<br />00034<br />00035<br />00036<br />00037<br />00038<br />00039<br />00040<br />
+00041<br />00042<br />00043<br />00044<br />00045<br />00046<br />00047<br />00048<br />00049<br />00050<br />00051<br />00052<br />00053<br />00054<br />00055<br />00056<br />00057<br />00058<br />00059<br />00060<br />
+00061<br />00062<br />00063<br />00064<br />00065<br />00066<br />00067<br />00068</span></td>
+<td class="source"><pre class="source"><a name="1"></a><span class="source_comment">//=============================================================================
+</span><a name="2"></a><span class="source_comment">//  R6AbstractPawn.uc : This is the abstract class for the r6pawn class.  We
+</span><a name="3"></a><span class="source_comment">//                      use an abstract class without any declared function.  
+</span><a name="4"></a><span class="source_comment">//                      This is useful to avoid circular references
+</span><a name="5"></a><span class="source_comment">//  Copyright 2001 Ubi Soft, Inc. All Rights Reserved.
+</span><a name="6"></a><span class="source_comment">//
+</span><a name="7"></a><span class="source_comment">//  Revision history:
+</span><a name="8"></a><span class="source_comment">//    July 18th, 2001 * Created by Eric Begin
+</span><a name="9"></a><span class="source_comment">//=============================================================================
+</span><a name="10"></a><span class="source_type">class</span> <span class="source_type"><a href="../r6abstract/r6abstractpawn.html" class="source">R6AbstractPawn</a></span> extends <span class="source_type"><a href="../engine/pawn.html" class="source">Pawn</a></span>
+<a name="11"></a>    native
+<a name="12"></a>    abstract;
+<a name="13"></a>
+<a name="14"></a>enum <span class="source_type"><a href="../r6abstract/r6abstractpawn.html#ESkills" class="source">ESkills</a></span>
+<a name="15"></a>{
+<a name="16"></a>    SKILL_Assault,
+<a name="17"></a>    SKILL_Demolitions,
+<a name="18"></a>    SKILL_Electronics,
+<a name="19"></a>    SKILL_Sniper,
+<a name="20"></a>    SKILL_Stealth,
+<a name="21"></a>    SKILL_SelfControl,
+<a name="22"></a>    SKILL_Leadership,
+<a name="23"></a>    SKILL_Observation
+<a name="24"></a>};
+<a name="25"></a>
+<a name="26"></a>var(Debug) <span class="source_type">BOOL</span> bShowLog;
+<a name="27"></a>
+<a name="28"></a>replication
+<a name="29"></a>{
+<a name="30"></a>    <span class="source_comment">// we want to replicate this function to the server
+</span><a name="31"></a><span class="source_comment">//    unreliable if (Role&lt;ROLE_Authority)
+</span><a name="32"></a><span class="source_comment">//        ServerGetWeapon;
+</span><a name="33"></a>    <span class="source_comment">// we want to replicate this function to the client
+</span><a name="34"></a>    unreliable if (Role==ROLE_Authority)
+<a name="35"></a>        ClientGetWeapon;
+<a name="36"></a>    
+<a name="37"></a>    <span class="source_comment">//unreliable if (Role == ROLE_Authority)
+</span><a name="38"></a>    <span class="source_comment">//    ClientSetDoor;
+</span><a name="39"></a>}
+<a name="40"></a>
+<a name="41"></a>event <span class="source_type">FLOAT</span> GetSkill( <span class="source_type"><a href="../r6abstract/r6abstractpawn.html#ESkills" class="source">ESkills</a></span> <span class="source_type">eSkillName</span> );
+<a name="42"></a>
+<a name="43"></a>function GetWeapon(<span class="source_type"><a href="../r6abstract/r6abstractweapon.html" class="source">R6AbstractWeapon</a></span> NewWeapon)
+<a name="44"></a>{
+<a name="45"></a>    if(bShowLog) log(<span class="source_string">"ak: GetWeapon "</span>$NEWWEapon);
+<a name="46"></a>}
+<a name="47"></a>
+<a name="48"></a>function ClientGetWeapon(<span class="source_type"><a href="../engine/r6engineweapon.html" class="source">R6EngineWeapon</a></span> NewWeapon)
+<a name="49"></a>{
+<a name="50"></a>    if ((<span class="source_type">Level</span>.NetMode == NM_Standalone) || (<span class="source_type">Level</span>.NetMode == NM_ListenServer))
+<a name="51"></a>        return;
+<a name="52"></a>    
+<a name="53"></a>    if(bShowLog) log(<span class="source_string">"IN: ClientGetWeapon() "</span>$NEWWEapon);
+<a name="54"></a>    GetWeapon(<span class="source_type"><a href="../r6abstract/r6abstractweapon.html" class="source">R6AbstractWeapon</a></span>(NewWeapon));
+<a name="55"></a>    if(bShowLog) log(<span class="source_string">"OUT: ClientGetWeapon() "</span>$NEWWEapon);
+<a name="56"></a>}
+<a name="57"></a>
+<a name="58"></a><span class="source_comment">//simulated function ServerGetWeapon(R6AbstractWeapon NewWeapon)
+</span><a name="59"></a><span class="source_comment">//{
+</span><a name="60"></a><span class="source_comment">//    log("ak: ServerGetWeapon "$NEWWEapon);
+</span><a name="61"></a><span class="source_comment">//    ClientGetWeapon(NewWeapon);
+</span><a name="62"></a><span class="source_comment">//    GetWeapon(NewWeapon);
+</span><a name="63"></a><span class="source_comment">//}
+</span><a name="64"></a>
+<a name="65"></a>defaultproperties
+<a name="66"></a>{
+<a name="67"></a>}
+<a name="68"></a></pre></td></tr></table></div>
+<hr />
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../r6abstract/r6abstract-overview.html">Package</a></td>
+	<td class="header"><a href="../r6abstract/r6abstractpawn.html">Class</a></td>
+	<td class="header_hilight">Source</td>
+	<td class="header"><a class="header" href="../classtree.html#R6AbstractPawn">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../Source_r6abstract/r6abstractnoisemgr.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../Source_r6abstract/r6abstractweapon.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+
+<div class="stats">Class file time: sam. 18/9/2004 14:39:28.000 - Creation time: mar. 26/5/2026 18:33:19.189 - Created with <a href="http://wiki.beyondunreal.com/wiki/UnCodeX" target="_blank">UnCodeX</a></div>
+
+</body>
+</html>

@@ -1,0 +1,1318 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+	<title>UnCodeX - Source: R6Menu.R6MenuMPCreateGameTabOptions</title>
+	<meta name="Generator" content="UnCodeX 241" />
+	<link rel="stylesheet" href="../DocStyle2.css" type="text/css" title="Original Purple" />
+	<link rel="alternative stylesheet" href="../DocStyle2-blue.css" type="text/css" title="Blue" />
+	<link rel="alternative stylesheet" href="../DocStyle2-red.css" type="text/css" title="Red" />
+	<!--[if IE]>
+	<link rel="stylesheet" href="../DocStyle2-msie.css" type="text/css" />
+	<![endif]-->
+	<script src="../styleswitcher.js" type="text/javascript"></script>
+</head>
+<body>
+
+<div class="header">
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../r6menu/r6menu-overview.html">Package</a></td>
+	<td class="header"><a href="../r6menu/r6menumpcreategametaboptions.html">Class</a></td>
+	<td class="header_hilight">Source</td>
+	<td class="header"><a class="header" href="../classtree.html#R6MenuMPCreateGameTabOptions">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../Source_r6menu/r6menumpcreategametabkitrest.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../Source_r6menu/r6menumpcreategamewidget.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html#Source_r6menu/r6menumpcreategametaboptions.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+</div>
+<div class="spacer"></div>
+
+<h1><a href="../r6menu/r6menu-overview.html">R6Menu</a>.<a href="../r6menu/r6menumpcreategametaboptions.html">R6MenuMPCreateGameTabOptions</a></h1>
+<br />
+<div class="source"><table class="source"><tr><td class="source_lineno"><span class="source_lineno">00001<br />00002<br />00003<br />00004<br />00005<br />00006<br />00007<br />00008<br />00009<br />00010<br />00011<br />00012<br />00013<br />00014<br />00015<br />00016<br />00017<br />00018<br />00019<br />00020<br />
+00021<br />00022<br />00023<br />00024<br />00025<br />00026<br />00027<br />00028<br />00029<br />00030<br />00031<br />00032<br />00033<br />00034<br />00035<br />00036<br />00037<br />00038<br />00039<br />00040<br />
+00041<br />00042<br />00043<br />00044<br />00045<br />00046<br />00047<br />00048<br />00049<br />00050<br />00051<br />00052<br />00053<br />00054<br />00055<br />00056<br />00057<br />00058<br />00059<br />00060<br />
+00061<br />00062<br />00063<br />00064<br />00065<br />00066<br />00067<br />00068<br />00069<br />00070<br />00071<br />00072<br />00073<br />00074<br />00075<br />00076<br />00077<br />00078<br />00079<br />00080<br />
+00081<br />00082<br />00083<br />00084<br />00085<br />00086<br />00087<br />00088<br />00089<br />00090<br />00091<br />00092<br />00093<br />00094<br />00095<br />00096<br />00097<br />00098<br />00099<br />00100<br />
+00101<br />00102<br />00103<br />00104<br />00105<br />00106<br />00107<br />00108<br />00109<br />00110<br />00111<br />00112<br />00113<br />00114<br />00115<br />00116<br />00117<br />00118<br />00119<br />00120<br />
+00121<br />00122<br />00123<br />00124<br />00125<br />00126<br />00127<br />00128<br />00129<br />00130<br />00131<br />00132<br />00133<br />00134<br />00135<br />00136<br />00137<br />00138<br />00139<br />00140<br />
+00141<br />00142<br />00143<br />00144<br />00145<br />00146<br />00147<br />00148<br />00149<br />00150<br />00151<br />00152<br />00153<br />00154<br />00155<br />00156<br />00157<br />00158<br />00159<br />00160<br />
+00161<br />00162<br />00163<br />00164<br />00165<br />00166<br />00167<br />00168<br />00169<br />00170<br />00171<br />00172<br />00173<br />00174<br />00175<br />00176<br />00177<br />00178<br />00179<br />00180<br />
+00181<br />00182<br />00183<br />00184<br />00185<br />00186<br />00187<br />00188<br />00189<br />00190<br />00191<br />00192<br />00193<br />00194<br />00195<br />00196<br />00197<br />00198<br />00199<br />00200<br />
+00201<br />00202<br />00203<br />00204<br />00205<br />00206<br />00207<br />00208<br />00209<br />00210<br />00211<br />00212<br />00213<br />00214<br />00215<br />00216<br />00217<br />00218<br />00219<br />00220<br />
+00221<br />00222<br />00223<br />00224<br />00225<br />00226<br />00227<br />00228<br />00229<br />00230<br />00231<br />00232<br />00233<br />00234<br />00235<br />00236<br />00237<br />00238<br />00239<br />00240<br />
+00241<br />00242<br />00243<br />00244<br />00245<br />00246<br />00247<br />00248<br />00249<br />00250<br />00251<br />00252<br />00253<br />00254<br />00255<br />00256<br />00257<br />00258<br />00259<br />00260<br />
+00261<br />00262<br />00263<br />00264<br />00265<br />00266<br />00267<br />00268<br />00269<br />00270<br />00271<br />00272<br />00273<br />00274<br />00275<br />00276<br />00277<br />00278<br />00279<br />00280<br />
+00281<br />00282<br />00283<br />00284<br />00285<br />00286<br />00287<br />00288<br />00289<br />00290<br />00291<br />00292<br />00293<br />00294<br />00295<br />00296<br />00297<br />00298<br />00299<br />00300<br />
+00301<br />00302<br />00303<br />00304<br />00305<br />00306<br />00307<br />00308<br />00309<br />00310<br />00311<br />00312<br />00313<br />00314<br />00315<br />00316<br />00317<br />00318<br />00319<br />00320<br />
+00321<br />00322<br />00323<br />00324<br />00325<br />00326<br />00327<br />00328<br />00329<br />00330<br />00331<br />00332<br />00333<br />00334<br />00335<br />00336<br />00337<br />00338<br />00339<br />00340<br />
+00341<br />00342<br />00343<br />00344<br />00345<br />00346<br />00347<br />00348<br />00349<br />00350<br />00351<br />00352<br />00353<br />00354<br />00355<br />00356<br />00357<br />00358<br />00359<br />00360<br />
+00361<br />00362<br />00363<br />00364<br />00365<br />00366<br />00367<br />00368<br />00369<br />00370<br />00371<br />00372<br />00373<br />00374<br />00375<br />00376<br />00377<br />00378<br />00379<br />00380<br />
+00381<br />00382<br />00383<br />00384<br />00385<br />00386<br />00387<br />00388<br />00389<br />00390<br />00391<br />00392<br />00393<br />00394<br />00395<br />00396<br />00397<br />00398<br />00399<br />00400<br />
+00401<br />00402<br />00403<br />00404<br />00405<br />00406<br />00407<br />00408<br />00409<br />00410<br />00411<br />00412<br />00413<br />00414<br />00415<br />00416<br />00417<br />00418<br />00419<br />00420<br />
+00421<br />00422<br />00423<br />00424<br />00425<br />00426<br />00427<br />00428<br />00429<br />00430<br />00431<br />00432<br />00433<br />00434<br />00435<br />00436<br />00437<br />00438<br />00439<br />00440<br />
+00441<br />00442<br />00443<br />00444<br />00445<br />00446<br />00447<br />00448<br />00449<br />00450<br />00451<br />00452<br />00453<br />00454<br />00455<br />00456<br />00457<br />00458<br />00459<br />00460<br />
+00461<br />00462<br />00463<br />00464<br />00465<br />00466<br />00467<br />00468<br />00469<br />00470<br />00471<br />00472<br />00473<br />00474<br />00475<br />00476<br />00477<br />00478<br />00479<br />00480<br />
+00481<br />00482<br />00483<br />00484<br />00485<br />00486<br />00487<br />00488<br />00489<br />00490<br />00491<br />00492<br />00493<br />00494<br />00495<br />00496<br />00497<br />00498<br />00499<br />00500<br />
+00501<br />00502<br />00503<br />00504<br />00505<br />00506<br />00507<br />00508<br />00509<br />00510<br />00511<br />00512<br />00513<br />00514<br />00515<br />00516<br />00517<br />00518<br />00519<br />00520<br />
+00521<br />00522<br />00523<br />00524<br />00525<br />00526<br />00527<br />00528<br />00529<br />00530<br />00531<br />00532<br />00533<br />00534<br />00535<br />00536<br />00537<br />00538<br />00539<br />00540<br />
+00541<br />00542<br />00543<br />00544<br />00545<br />00546<br />00547<br />00548<br />00549<br />00550<br />00551<br />00552<br />00553<br />00554<br />00555<br />00556<br />00557<br />00558<br />00559<br />00560<br />
+00561<br />00562<br />00563<br />00564<br />00565<br />00566<br />00567<br />00568<br />00569<br />00570<br />00571<br />00572<br />00573<br />00574<br />00575<br />00576<br />00577<br />00578<br />00579<br />00580<br />
+00581<br />00582<br />00583<br />00584<br />00585<br />00586<br />00587<br />00588<br />00589<br />00590<br />00591<br />00592<br />00593<br />00594<br />00595<br />00596<br />00597<br />00598<br />00599<br />00600<br />
+00601<br />00602<br />00603<br />00604<br />00605<br />00606<br />00607<br />00608<br />00609<br />00610<br />00611<br />00612<br />00613<br />00614<br />00615<br />00616<br />00617<br />00618<br />00619<br />00620<br />
+00621<br />00622<br />00623<br />00624<br />00625<br />00626<br />00627<br />00628<br />00629<br />00630<br />00631<br />00632<br />00633<br />00634<br />00635<br />00636<br />00637<br />00638<br />00639<br />00640<br />
+00641<br />00642<br />00643<br />00644<br />00645<br />00646<br />00647<br />00648<br />00649<br />00650<br />00651<br />00652<br />00653<br />00654<br />00655<br />00656<br />00657<br />00658<br />00659<br />00660<br />
+00661<br />00662<br />00663<br />00664<br />00665<br />00666<br />00667<br />00668<br />00669<br />00670<br />00671<br />00672<br />00673<br />00674<br />00675<br />00676<br />00677<br />00678<br />00679<br />00680<br />
+00681<br />00682<br />00683<br />00684<br />00685<br />00686<br />00687<br />00688<br />00689<br />00690<br />00691<br />00692<br />00693<br />00694<br />00695<br />00696<br />00697<br />00698<br />00699<br />00700<br />
+00701<br />00702<br />00703<br />00704<br />00705<br />00706<br />00707<br />00708<br />00709<br />00710<br />00711<br />00712<br />00713<br />00714<br />00715<br />00716<br />00717<br />00718<br />00719<br />00720<br />
+00721<br />00722<br />00723<br />00724<br />00725<br />00726<br />00727<br />00728<br />00729<br />00730<br />00731<br />00732<br />00733<br />00734<br />00735<br />00736<br />00737<br />00738<br />00739<br />00740<br />
+00741<br />00742<br />00743<br />00744<br />00745<br />00746<br />00747<br />00748<br />00749<br />00750<br />00751<br />00752<br />00753<br />00754<br />00755<br />00756<br />00757<br />00758<br />00759<br />00760<br />
+00761<br />00762<br />00763<br />00764<br />00765<br />00766<br />00767<br />00768<br />00769<br />00770<br />00771<br />00772<br />00773<br />00774<br />00775<br />00776<br />00777<br />00778<br />00779<br />00780<br />
+00781<br />00782<br />00783<br />00784<br />00785<br />00786<br />00787<br />00788<br />00789<br />00790<br />00791<br />00792<br />00793<br />00794<br />00795<br />00796<br />00797<br />00798<br />00799<br />00800<br />
+00801<br />00802<br />00803<br />00804<br />00805<br />00806<br />00807<br />00808<br />00809<br />00810<br />00811<br />00812<br />00813<br />00814<br />00815<br />00816<br />00817<br />00818<br />00819<br />00820<br />
+00821<br />00822<br />00823<br />00824<br />00825<br />00826<br />00827<br />00828<br />00829<br />00830<br />00831<br />00832<br />00833<br />00834<br />00835<br />00836<br />00837<br />00838<br />00839<br />00840<br />
+00841<br />00842<br />00843<br />00844<br />00845<br />00846<br />00847<br />00848<br />00849<br />00850<br />00851<br />00852<br />00853<br />00854<br />00855<br />00856<br />00857<br />00858<br />00859<br />00860<br />
+00861<br />00862<br />00863<br />00864<br />00865<br />00866<br />00867<br />00868<br />00869<br />00870<br />00871<br />00872<br />00873<br />00874<br />00875<br />00876<br />00877<br />00878<br />00879<br />00880<br />
+00881<br />00882<br />00883<br />00884<br />00885<br />00886<br />00887<br />00888<br />00889<br />00890<br />00891<br />00892<br />00893<br />00894<br />00895<br />00896<br />00897<br />00898<br />00899<br />00900<br />
+00901<br />00902<br />00903<br />00904<br />00905<br />00906<br />00907<br />00908<br />00909<br />00910<br />00911<br />00912<br />00913<br />00914<br />00915<br />00916<br />00917<br />00918<br />00919<br />00920<br />
+00921<br />00922<br />00923<br />00924<br />00925<br />00926<br />00927<br />00928<br />00929<br />00930<br />00931<br />00932<br />00933<br />00934<br />00935<br />00936<br />00937<br />00938<br />00939<br />00940<br />
+00941<br />00942<br />00943<br />00944<br />00945<br />00946<br />00947<br />00948<br />00949<br />00950<br />00951<br />00952<br />00953<br />00954<br />00955<br />00956<br />00957<br />00958<br />00959<br />00960<br />
+00961<br />00962<br />00963<br />00964<br />00965<br />00966<br />00967<br />00968<br />00969<br />00970<br />00971<br />00972<br />00973<br />00974<br />00975<br />00976<br />00977<br />00978<br />00979<br />00980<br />
+00981<br />00982<br />00983<br />00984<br />00985<br />00986<br />00987<br />00988<br />00989<br />00990<br />00991<br />00992<br />00993<br />00994<br />00995<br />00996<br />00997<br />00998<br />00999<br />01000<br />
+01001<br />01002<br />01003<br />01004<br />01005<br />01006<br />01007<br />01008<br />01009<br />01010<br />01011<br />01012<br />01013<br />01014<br />01015<br />01016<br />01017<br />01018<br />01019<br />01020<br />
+01021<br />01022<br />01023<br />01024<br />01025<br />01026<br />01027<br />01028<br />01029<br />01030<br />01031<br />01032<br />01033<br />01034<br />01035<br />01036<br />01037<br />01038<br />01039<br />01040<br />
+01041<br />01042<br />01043<br />01044<br />01045<br />01046<br />01047<br />01048<br />01049<br />01050<br />01051<br />01052<br />01053<br />01054<br />01055<br />01056<br />01057<br />01058<br />01059<br />01060<br />
+01061<br />01062<br />01063<br />01064<br />01065<br />01066<br />01067<br />01068<br />01069<br />01070<br />01071<br />01072<br />01073<br />01074<br />01075<br />01076<br />01077<br />01078<br />01079<br />01080<br />
+01081<br />01082<br />01083<br />01084<br />01085<br />01086<br />01087<br />01088<br />01089<br />01090<br />01091<br />01092<br />01093<br />01094<br />01095<br />01096<br />01097<br />01098<br />01099<br />01100<br />
+01101<br />01102<br />01103<br />01104<br />01105<br />01106<br />01107<br />01108<br />01109<br />01110<br />01111<br />01112<br />01113<br />01114<br />01115<br />01116<br />01117<br />01118<br />01119<br />01120<br />
+01121<br />01122<br />01123<br />01124<br />01125<br />01126<br />01127<br />01128<br />01129<br />01130<br />01131<br />01132<br />01133<br />01134<br />01135<br />01136<br />01137<br />01138<br />01139<br />01140<br />
+01141<br />01142<br />01143<br />01144<br />01145<br />01146<br />01147<br />01148<br />01149<br />01150<br />01151<br />01152<br />01153<br />01154<br />01155<br />01156<br />01157<br />01158<br />01159<br />01160<br />
+01161<br />01162<br />01163<br />01164<br />01165<br />01166<br />01167<br />01168<br />01169<br />01170<br />01171<br />01172<br />01173<br />01174<br />01175<br />01176<br />01177<br />01178<br />01179<br />01180<br />
+01181<br />01182<br />01183<br />01184<br />01185<br />01186<br />01187<br />01188<br />01189<br />01190<br />01191<br />01192<br />01193<br />01194<br />01195<br />01196<br />01197<br />01198<br />01199<br />01200
+</span></td>
+<td class="source"><pre class="source"><a name="1"></a><span class="source_comment">//=============================================================================
+</span><a name="2"></a><span class="source_comment">//  R6MenuMPCreateGameTabOptions.uc : 
+</span><a name="3"></a><span class="source_comment">//  Copyright 2001 Ubi Soft, Inc. All Rights Reserved.
+</span><a name="4"></a><span class="source_comment">//
+</span><a name="5"></a><span class="source_comment">//  Revision history:
+</span><a name="6"></a><span class="source_comment">//    2003/07/11  * Create by Yannick Joly
+</span><a name="7"></a><span class="source_comment">//=============================================================================
+</span><a name="8"></a><span class="source_type">class</span> <span class="source_type"><a href="../r6menu/r6menumpcreategametaboptions.html" class="source">R6MenuMPCreateGameTabOptions</a></span> extends <span class="source_type"><a href="../r6menu/r6menumpcreategametab.html" class="source">R6MenuMPCreateGameTab</a></span>;
+<a name="9"></a>
+<a name="10"></a><span class="source_comment">// OPTIONS TAB
+</span><a name="11"></a>var <span class="source_type"><a href="../r6window/r6windowtextlabelext.html" class="source">R6WindowTextLabelExt</a></span>                m_pOptionsText;  
+<a name="12"></a>
+<a name="13"></a>var <span class="source_type"><a href="../r6window/r6windowcombocontrol.html" class="source">R6WindowComboControl</a></span>                m_pOptionsGameMode;			<span class="source_comment">// the current game mode selection
+</span><a name="14"></a>
+<a name="15"></a>var <span class="source_type"><a href="../r6window/r6windoweditcontrol.html" class="source">R6WindowEditControl</a></span>                 m_pServerNameEdit;
+<a name="16"></a>
+<a name="17"></a>var <span class="source_type"><a href="../r6window/r6windowbutton.html" class="source">R6WindowButton</a></span>						m_pOptionsWelcomeMsg;
+<a name="18"></a>
+<a name="19"></a>var <span class="source_type"><a href="../r6window/r6windowpopupbox.html" class="source">R6WindowPopUpBox</a></span>                    m_pMsgOfTheDayPopUp;        <span class="source_comment">// The msg of the day pop-up
+</span><a name="20"></a>
+<a name="21"></a>var array&lt;<span class="source_type">string</span>&gt;                       m_SelectedMapList;			<span class="source_comment">// List of maps selected by the user
+</span><a name="22"></a>var array&lt;<span class="source_type">string</span>&gt;			            m_SelectedModeList;			<span class="source_comment">// List of game modes selected by the user
+</span><a name="23"></a>
+<a name="24"></a>var <span class="source_type">string</span>								m_szMsgOfTheDay;
+<a name="25"></a>
+<a name="26"></a>var <span class="source_type">BOOL</span>								m_bBkpCamFadeToBk;
+<a name="27"></a>var <span class="source_type">BOOL</span>								m_bBkpCamFirstPerson;
+<a name="28"></a>var <span class="source_type">BOOL</span>								m_bBkpCamThirdPerson;
+<a name="29"></a>var <span class="source_type">BOOL</span>								m_bBkpCamFreeThirdP;
+<a name="30"></a>var <span class="source_type">BOOL</span>								m_bBkpCamGhost;
+<a name="31"></a>var <span class="source_type">BOOL</span>								m_bBkpCamTeamOnly;
+<a name="32"></a>var <span class="source_type">BOOL</span>								m_bBkpTKPenalty;
+<a name="33"></a>
+<a name="34"></a><span class="source_comment">//*******************************************************************************************
+</span><a name="35"></a><span class="source_comment">// INIT
+</span><a name="36"></a><span class="source_comment">//*******************************************************************************************
+</span><a name="37"></a>function Created()
+<a name="38"></a>{
+<a name="39"></a>	Super.Created();
+<a name="40"></a>}
+<a name="41"></a>
+<a name="42"></a>function InitOptionsTab( optional <span class="source_type">BOOL</span> _bInGame)
+<a name="43"></a>{
+<a name="44"></a>	local <span class="source_type"><a href="../r6menu/r6menumpcreategametab.html#stServerGameOpt" class="source">stServerGameOpt</a></span> stNewSGOItem;
+<a name="45"></a>    local <span class="source_type">FLOAT</span> fXOffset, fYOffset, fYStep, <span class="source_type">fWidth</span>, <span class="source_type">fHeight</span>, fSizeOfCounter;
+<a name="46"></a>	local <span class="source_type">INT</span> <span class="source_type">i</span>;
+<a name="47"></a>
+<a name="48"></a>	m_bInGame = _bInGame;
+<a name="49"></a>
+<a name="50"></a>	<span class="source_comment">// =======================================================================================================
+</span><a name="51"></a>	<span class="source_comment">// TEXT PART
+</span><a name="52"></a>    <span class="source_comment">// it's a text label ext because you want to draw the line in the middle (small hack)
+</span><a name="53"></a>    m_pOptionsText = <span class="source_type"><a href="../r6window/r6windowtextlabelext.html" class="source">R6WindowTextLabelExt</a></span>( CreateWindow(<span class="source_type">class</span><span class="source_name">'R6WindowTextLabelExt'</span>, <span class="source_int">0</span>, <span class="source_int">0</span>, <span class="source_int">2</span>*K_HALFWINDOWWIDTH, WinHeight, self));
+<a name="54"></a>    m_pOptionsText.bAlwaysBehind = true;
+<a name="55"></a>    <span class="source_comment">// draw middle line
+</span><a name="56"></a>    m_pOptionsText.ActiveBorder( <span class="source_int">0</span>, false);                                         <span class="source_comment">// Top border
+</span><a name="57"></a>    m_pOptionsText.ActiveBorder( <span class="source_int">1</span>, false);                                         <span class="source_comment">// Bottom border
+</span><a name="58"></a>    m_pOptionsText.SetBorderParam( <span class="source_int">2</span>, K_HALFWINDOWWIDTH, <span class="source_int">1</span>, <span class="source_int">1</span>, Root.Colors.White);  <span class="source_comment">// Left border
+</span><a name="59"></a>    m_pOptionsText.ActiveBorder( <span class="source_int">3</span>, false);                                         <span class="source_comment">// Rigth border
+</span><a name="60"></a>
+<a name="61"></a>    m_pOptionsText.m_Font = Root.Fonts[F_SmallTitle]; 
+<a name="62"></a>    m_pOptionsText.m_vTextColor = Root.Colors.White;
+<a name="63"></a>
+<a name="64"></a>    fXOffset = <span class="source_int">5</span>;
+<a name="65"></a>    fYOffset = <span class="source_int">5</span>;
+<a name="66"></a>    <span class="source_type">fWidth</span> = K_HALFWINDOWWIDTH;
+<a name="67"></a>    fYStep = <span class="source_int">17</span>;
+<a name="68"></a>
+<a name="69"></a>    m_pOptionsText.AddTextLabel( Localize(<span class="source_string">"MPCreateGame"</span>,<span class="source_string">"Options_GameMode"</span>,<span class="source_string">"R6Menu"</span>), fXOffset, fYOffset, <span class="source_type">fWidth</span>, TA_Left, false);
+<a name="70"></a>
+<a name="71"></a>    fXOffset = K_HALFWINDOWWIDTH + <span class="source_int">5</span>;
+<a name="72"></a>    fYOffset = <span class="source_int">165</span>;
+<a name="73"></a>    m_pOptionsText.AddTextLabel( Localize(<span class="source_string">"MPCreateGame"</span>,<span class="source_string">"Options_DeathCam"</span>,<span class="source_string">"R6Menu"</span>), fXOffset, fYOffset, <span class="source_type">fWidth</span>, TA_Left, false);
+<a name="74"></a>
+<a name="75"></a>	<span class="source_comment">// =======================================================================================================
+</span><a name="76"></a>	<span class="source_comment">// GAME MODE
+</span><a name="77"></a>    fXOffset = (K_HALFWINDOWWIDTH * <span class="source_int">0.5</span>) + <span class="source_int">10</span>;
+<a name="78"></a>    fYOffset = <span class="source_int">5</span>;
+<a name="79"></a>    <span class="source_type">fWidth</span> = (K_HALFWINDOWWIDTH * <span class="source_int">0.5</span>) - <span class="source_int">20</span>;<span class="source_comment">//10 + 10(fXOffSet) substract small value to distance the check box from middle line
+</span><a name="80"></a>    
+<a name="81"></a>    m_pOptionsGameMode = <span class="source_type"><a href="../r6window/r6windowcombocontrol.html" class="source">R6WindowComboControl</a></span>(CreateControl( <span class="source_type">class</span><span class="source_name">'R6WindowComboControl'</span>, fXOffset, fYOffset, <span class="source_type">fWidth</span>, LookAndFeel.Size_ComboHeight));
+<a name="82"></a>    m_pOptionsGameMode.SetEditBoxTip(Localize(<span class="source_string">"Tip"</span>,<span class="source_string">"Options_GameMode"</span>,<span class="source_string">"R6Menu"</span>));
+<a name="83"></a>    m_pOptionsGameMode.EditBoxWidth = m_pOptionsGameMode.WinWidth - m_pOptionsGameMode.Button.WinWidth;
+<a name="84"></a>    m_pOptionsGameMode.SetFont( F_VerySmallTitle);
+<a name="85"></a>	m_pOptionsGameMode.AddItem( Caps(m_ALocGameMode[<span class="source_int">0</span>]), <span class="source_type">string</span>(m_ANbOfGameMode[<span class="source_int">0</span>]));
+<a name="86"></a><span class="source_macro">#ifndefMPDEMO
+</span><a name="87"></a>	m_pOptionsGameMode.AddItem( Caps(m_ALocGameMode[<span class="source_int">1</span>]), <span class="source_type">string</span>(m_ANbOfGameMode[<span class="source_int">1</span>]));
+<a name="88"></a><span class="source_macro">#endif
+</span><a name="89"></a>
+<a name="90"></a>	<span class="source_comment">// =======================================================================================================
+</span><a name="91"></a>    <span class="source_comment">// create edit box for server name, and password
+</span><a name="92"></a>
+<a name="93"></a>    <span class="source_comment">// If the server was launched by the ubi.com client application,
+</span><a name="94"></a>    <span class="source_comment">// the server name and game password have already been set in the ubi.com client, no need
+</span><a name="95"></a>    <span class="source_comment">// for the user to enter a name or a password.
+</span><a name="96"></a>
+<a name="97"></a>    fXOffset = <span class="source_int">5</span>;
+<a name="98"></a>    <span class="source_type">fWidth</span> = K_HALFWINDOWWIDTH - fXOffset - <span class="source_int">10</span>; <span class="source_comment">//10 substract small value to distance the check box from middle line
+</span><a name="99"></a>    <span class="source_type">fHeight</span> = <span class="source_int">15</span>;
+<a name="100"></a>
+<a name="101"></a>    if ( !<span class="source_type"><a href="../r6game/r6console.html" class="source">R6Console</a></span>(Root.<span class="source_type"><a href="../engine/console.html" class="source">console</a></span>).m_bStartedByGSClient )
+<a name="102"></a>    {
+<a name="103"></a>        fYOffset += fYStep;
+<a name="104"></a>        <span class="source_comment">// SERVER NAME
+</span><a name="105"></a>	    m_pServerNameEdit = <span class="source_type"><a href="../r6window/r6windoweditcontrol.html" class="source">R6WindowEditControl</a></span>(CreateControl(<span class="source_type">class</span><span class="source_name">'R6WindowEditControl'</span>, fXOffset, fYOffset, <span class="source_type">fWidth</span>, <span class="source_type">fHeight</span>, self));
+<a name="106"></a>	    m_pServerNameEdit.SetValue( <span class="source_string">""</span>);
+<a name="107"></a>	    m_pServerNameEdit.CreateTextLabel( Localize(<span class="source_string">"MPCreateGame"</span>,<span class="source_string">"Options_ServerName"</span>,<span class="source_string">"R6Menu"</span>),
+<a name="108"></a>									       <span class="source_int">0</span>, <span class="source_int">0</span>, <span class="source_type">fWidth</span> * <span class="source_int">0.5</span>, <span class="source_type">fHeight</span>);
+<a name="109"></a>	    m_pServerNameEdit.SetEditBoxTip( Localize(<span class="source_string">"Tip"</span>,<span class="source_string">"Options_ServerName"</span>,<span class="source_string">"R6Menu"</span>));
+<a name="110"></a>	    m_pServerNameEdit.ModifyEditBoxW( <span class="source_int">160</span>, <span class="source_int">0</span>, <span class="source_int">135</span>, <span class="source_type">fHeight</span>);
+<a name="111"></a>	    m_pServerNameEdit.EditBox.MaxLength = <span class="source_type"><a href="../r6game/r6console.html" class="source">R6Console</a></span>(Root.<span class="source_type"><a href="../engine/console.html" class="source">console</a></span>).m_GameService.GetMaxUbiServerNameSize();
+<a name="112"></a>		m_pServerNameEdit.SetEditControlStatus( _bInGame);
+<a name="113"></a>
+<a name="114"></a>        fYOffset += fYStep;
+<a name="115"></a>		<span class="source_comment">// PASSWORD
+</span><a name="116"></a>		InitPassword( fXOffset, fYOffset, <span class="source_type">fWidth</span>, <span class="source_type">fHeight</span>);
+<a name="117"></a>    }
+<a name="118"></a>
+<a name="119"></a>	fYOffset += fYStep;
+<a name="120"></a>    <span class="source_comment">// ADMIN PASSWORD
+</span><a name="121"></a>	InitAdminPassword( fXOffset, fYOffset, <span class="source_type">fWidth</span>, <span class="source_type">fHeight</span>);
+<a name="122"></a>
+<a name="123"></a>	<span class="source_comment">// =======================================================================================================
+</span><a name="124"></a>	<span class="source_comment">// buttons list
+</span><a name="125"></a>	fYOffset += fYStep;
+<a name="126"></a>	<span class="source_type">fWidth</span> = K_HALFWINDOWWIDTH - fXOffset - <span class="source_int">10</span>;
+<a name="127"></a>	<span class="source_type">fHeight</span> = <span class="source_int">227</span>;
+<a name="128"></a>
+<a name="129"></a>	for (<span class="source_type">i</span> =<span class="source_int">0</span>; <span class="source_type">i</span> &lt; m_ANbOfGameMode.Length; <span class="source_type">i</span>++)
+<a name="130"></a>		CreateListOfButtons( fXOffset, fYOffset, <span class="source_type">fWidth</span>, <span class="source_type">fHeight</span>, m_ANbOfGameMode[<span class="source_type">i</span>], eCGW_Opt);
+<a name="131"></a>
+<a name="132"></a>	<span class="source_comment">// =======================================================================================================
+</span><a name="133"></a>	<span class="source_comment">// camera list
+</span><a name="134"></a>    fXOffset = <span class="source_int">5</span> + K_HALFWINDOWWIDTH;
+<a name="135"></a>	fYOffset = <span class="source_int">180</span>;
+<a name="136"></a>	<span class="source_type">fHeight</span> = <span class="source_int">100</span>;
+<a name="137"></a>
+<a name="138"></a>	for (<span class="source_type">i</span> =<span class="source_int">0</span>; <span class="source_type">i</span> &lt; m_ANbOfGameMode.Length; <span class="source_type">i</span>++)
+<a name="139"></a>		CreateListOfButtons( fXOffset, fYOffset, <span class="source_type">fWidth</span>, <span class="source_type">fHeight</span>, m_ANbOfGameMode[<span class="source_type">i</span>], eCGW_Camera);
+<a name="140"></a>
+<a name="141"></a>	<span class="source_comment">// =======================================================================================================
+</span><a name="142"></a>	<span class="source_comment">// map list
+</span><a name="143"></a>	InitAllMapList();
+<a name="144"></a>
+<a name="145"></a>	if (!_bInGame)
+<a name="146"></a>		InitEditMsgButton();
+<a name="147"></a>
+<a name="148"></a>	SetCurrentGameMode(m_ANbOfGameMode[<span class="source_int">0</span>]); <span class="source_comment">// set adversarial by default
+</span><a name="149"></a>	RefreshServerOpt();
+<a name="150"></a>
+<a name="151"></a>	m_bInitComplete = true;
+<a name="152"></a>}
+<a name="153"></a>
+<a name="154"></a>function InitPassword( <span class="source_type">FLOAT</span> _fX, <span class="source_type">FLOAT</span> _fY, <span class="source_type">FLOAT</span> _fW, <span class="source_type">FLOAT</span> _fH)
+<a name="155"></a>{
+<a name="156"></a>	local <span class="source_type"><a href="../r6window/r6windowbuttonandeditbox.html" class="source">R6WindowButtonAndEditBox</a></span> pButton;
+<a name="157"></a>	local <span class="source_type"><a href="../r6menu/r6menumpcreategametab.html#stServerGameOpt" class="source">stServerGameOpt</a></span> stNewSGOItem;
+<a name="158"></a>	local <span class="source_type">INT</span> <span class="source_type">i</span>;
+<a name="159"></a>
+<a name="160"></a>	for (<span class="source_type">i</span> =<span class="source_int">0</span>; <span class="source_type">i</span> &lt; m_ANbOfGameMode.Length; <span class="source_type">i</span>++)
+<a name="161"></a>	{
+<a name="162"></a>		pButton = CreateButAndEditBox( _fX, _fY, _fW, _fH, 
+<a name="163"></a>										Localize(<span class="source_string">"MPCreateGame"</span>,<span class="source_string">"Options_Password"</span>,<span class="source_string">"R6Menu"</span>), 
+<a name="164"></a>										Localize(<span class="source_string">"Tip"</span>,<span class="source_string">"Options_UsePass"</span>,<span class="source_string">"R6Menu"</span>),	
+<a name="165"></a>										Localize(<span class="source_string">"Tip"</span>,<span class="source_string">"Options_UsePassEdit"</span>,<span class="source_string">"R6Menu"</span>));
+<a name="166"></a>
+<a name="167"></a>		stNewSGOItem.pGameOptList = pButton;
+<a name="168"></a>		stNewSGOItem.eGameMode	  = m_ANbOfGameMode[<span class="source_type">i</span>];
+<a name="169"></a>		stNewSGOItem.eCGWindowID  = eCGW_Password;
+<a name="170"></a>
+<a name="171"></a>		AddWindowInCreateGameArray( stNewSGOItem);
+<a name="172"></a>	}
+<a name="173"></a>}
+<a name="174"></a>
+<a name="175"></a>function InitAdminPassword( <span class="source_type">FLOAT</span> _fX, <span class="source_type">FLOAT</span> _fY, <span class="source_type">FLOAT</span> _fW, <span class="source_type">FLOAT</span> _fH)
+<a name="176"></a>	{
+<a name="177"></a>	local <span class="source_type"><a href="../r6window/r6windowbuttonandeditbox.html" class="source">R6WindowButtonAndEditBox</a></span> pButton;
+<a name="178"></a>	local <span class="source_type"><a href="../r6menu/r6menumpcreategametab.html#stServerGameOpt" class="source">stServerGameOpt</a></span> stNewSGOItem;
+<a name="179"></a>	local <span class="source_type">INT</span> <span class="source_type">i</span>;
+<a name="180"></a>
+<a name="181"></a>	for (<span class="source_type">i</span> =<span class="source_int">0</span>; <span class="source_type">i</span> &lt; m_ANbOfGameMode.Length; <span class="source_type">i</span>++)
+<a name="182"></a>	{
+<a name="183"></a>		pButton = CreateButAndEditBox( _fX, _fY, _fW, _fH, 
+<a name="184"></a>										Localize(<span class="source_string">"MPCreateGame"</span>,<span class="source_string">"Options_AdminPwd"</span>,<span class="source_string">"R6Menu"</span>), 
+<a name="185"></a>										Localize(<span class="source_string">"Tip"</span>,<span class="source_string">"Options_AdminPwd"</span>,<span class="source_string">"R6Menu"</span>),
+<a name="186"></a>										Localize(<span class="source_string">"Tip"</span>,<span class="source_string">"Options_AdminPwdEdit"</span>,<span class="source_string">"R6Menu"</span>));
+<a name="187"></a>
+<a name="188"></a>		stNewSGOItem.pGameOptList = pButton;
+<a name="189"></a>		stNewSGOItem.eGameMode	  = m_ANbOfGameMode[<span class="source_type">i</span>];
+<a name="190"></a>		stNewSGOItem.eCGWindowID  = eCGW_AdminPassword;
+<a name="191"></a>
+<a name="192"></a>		AddWindowInCreateGameArray( stNewSGOItem);
+<a name="193"></a>	}
+<a name="194"></a>}
+<a name="195"></a>
+<a name="196"></a>function InitAllMapList()
+<a name="197"></a>    {
+<a name="198"></a>	local <span class="source_type"><a href="../r6menu/r6menumaplist.html" class="source">R6MenuMapList</a></span> pMapList;
+<a name="199"></a>	local <span class="source_type"><a href="../r6menu/r6menumpcreategametab.html#stServerGameOpt" class="source">stServerGameOpt</a></span> stNewSGOItem;
+<a name="200"></a>	local <span class="source_type">FLOAT</span> fXOffset, fYOffset, fYStep, <span class="source_type">fWidth</span>, <span class="source_type">fHeight</span>;	
+<a name="201"></a>	local <span class="source_type">INT</span> <span class="source_type">i</span>;
+<a name="202"></a>	
+<a name="203"></a>	fXOffset = K_HALFWINDOWWIDTH;
+<a name="204"></a>	fYOffset = <span class="source_int">5</span>;
+<a name="205"></a>	<span class="source_type">fWidth</span> = K_HALFWINDOWWIDTH; 
+<a name="206"></a>	<span class="source_type">fHeight</span> = <span class="source_int">155</span>;
+<a name="207"></a>
+<a name="208"></a>	for (<span class="source_type">i</span> =<span class="source_int">0</span>; <span class="source_type">i</span> &lt; m_ANbOfGameMode.Length; <span class="source_type">i</span>++)
+<a name="209"></a>    {
+<a name="210"></a>		pMapList = <span class="source_type"><a href="../r6menu/r6menumaplist.html" class="source">R6MenuMapList</a></span>(CreateWindow( <span class="source_type">class</span><span class="source_name">'R6MenuMapList'</span>, fXOffset, fYOffset, <span class="source_type">fWidth</span>, <span class="source_type">fHeight</span>, self));
+<a name="211"></a>		pMapList.m_bInGame		 = m_bInGame;
+<a name="212"></a>		pMapList.m_szLocGameMode = Caps(m_ALocGameMode[<span class="source_type">i</span>]);
+<a name="213"></a>		pMapList.m_eMyGameMode	 = m_ANbOfGameMode[<span class="source_type">i</span>];
+<a name="214"></a>
+<a name="215"></a>		stNewSGOItem.pGameOptList = pMapList;
+<a name="216"></a>		stNewSGOItem.eGameMode	  = m_ANbOfGameMode[<span class="source_type">i</span>];
+<a name="217"></a>		stNewSGOItem.eCGWindowID  = eCGW_MapList;
+<a name="218"></a>
+<a name="219"></a>		AddWindowInCreateGameArray( stNewSGOItem);
+<a name="220"></a>	}
+<a name="221"></a>}
+<a name="222"></a>
+<a name="223"></a><span class="source_comment">//===============================================================
+</span><a name="224"></a><span class="source_comment">// UpdateButtons: do the init of the buttons you need
+</span><a name="225"></a><span class="source_comment">//===============================================================
+</span><a name="226"></a>function UpdateButtons( <span class="source_type"><a href="../engine/actor.html" class="source">Actor</a></span>.<span class="source_type"><a href="../engine/actor.html#EGameModeInfo" class="source">EGameModeInfo</a></span> _eGameMode, <span class="source_type"><a href="../r6menu/r6menumpcreategametab.html#eCreateGameWindow_ID" class="source">eCreateGameWindow_ID</a></span> _eCGWindowID, optional <span class="source_type">BOOL</span> _bUpdateValue)
+<a name="227"></a>{
+<a name="228"></a>	local <span class="source_type"><a href="../r6window/r6windowlistgeneral.html" class="source">R6WindowListGeneral</a></span> pTempList; 
+<a name="229"></a>	local <span class="source_type"><a href="../engine/r6serverinfo.html" class="source">R6ServerInfo</a></span> pServerInfo;
+<a name="230"></a>
+<a name="231"></a>	pTempList = <span class="source_type"><a href="../r6window/r6windowlistgeneral.html" class="source">R6WindowListGeneral</a></span>(GetList( _eGameMode, _eCGWindowID));
+<a name="232"></a>
+<a name="233"></a><span class="source_macro">#ifdefDEBUG
+</span><a name="234"></a>	if (m_bShowLog)
+<a name="235"></a>		log(<span class="source_string">"UpdateButtons pTempList"</span>@pTempList@<span class="source_string">"for _eCGWindowID"</span>@_eCGWindowID);
+<a name="236"></a><span class="source_macro">#endif
+</span><a name="237"></a>
+<a name="238"></a>	if (pTempList == None)
+<a name="239"></a>		return;
+<a name="240"></a>
+<a name="241"></a>	if (_bUpdateValue)
+<a name="242"></a>		pServerInfo = <span class="source_type">class</span><span class="source_name">'Actor'</span>.static.GetServerOptions();
+<a name="243"></a>
+<a name="244"></a>	switch(_eGameMode)
+<a name="245"></a>	{
+<a name="246"></a>		<span class="source_comment">//===============================================================================================================
+</span><a name="247"></a>		<span class="source_comment">//===============================================================================================================
+</span><a name="248"></a>		<span class="source_comment">//=============================== ADVERSARIAL ===================================================================
+</span><a name="249"></a>		<span class="source_comment">//===============================================================================================================
+</span><a name="250"></a>		<span class="source_comment">//===============================================================================================================
+</span><a name="251"></a>		case m_ANbOfGameMode[<span class="source_int">0</span>]: 
+<a name="252"></a>			switch(_eCGWindowID)
+<a name="253"></a>			{
+<a name="254"></a>				case eCGW_Opt:
+<a name="255"></a>					if (_bUpdateValue)
+<a name="256"></a>					{
+<a name="257"></a>						m_pButtonsDef.ChangeButtonComboValue(<span class="source_type"><a href="../uwindow/uwindowbase.html#EButtonName" class="source">EButtonName</a></span>.EBN_InternetServer,  <span class="source_type">string</span>(pServerInfo.InternetServer), pTempList);
+<a name="258"></a>						m_pButtonsDef.ChangeButtonCounterValue( <span class="source_type"><a href="../uwindow/uwindowbase.html#EButtonName" class="source">EButtonName</a></span>.EBN_RoundPerMatch,pServerInfo.RoundsPerMatch,	 pTempList);
+<a name="259"></a>						m_pButtonsDef.ChangeButtonCounterValue( <span class="source_type"><a href="../uwindow/uwindowbase.html#EButtonName" class="source">EButtonName</a></span>.EBN_RoundTime,	  pServerInfo.RoundTime / <span class="source_int">60</span>,	 pTempList);
+<a name="260"></a>						m_pButtonsDef.ChangeButtonCounterValue( <span class="source_type"><a href="../uwindow/uwindowbase.html#EButtonName" class="source">EButtonName</a></span>.EBN_TimeBetRound, pServerInfo.BetweenRoundTime,	 pTempList);
+<a name="261"></a>						m_pButtonsDef.ChangeButtonCounterValue( <span class="source_type"><a href="../uwindow/uwindowbase.html#EButtonName" class="source">EButtonName</a></span>.EBN_NB_Players,	  pServerInfo.MaxPlayers,		 pTempList);
+<a name="262"></a>	<span class="source_macro">#ifndefMPDEMO
+</span><a name="263"></a>						m_pButtonsDef.ChangeButtonCounterValue( <span class="source_type"><a href="../uwindow/uwindowbase.html#EButtonName" class="source">EButtonName</a></span>.EBN_BombTimer,	  pServerInfo.BombTime,			 pTempList);
+<a name="264"></a>	<span class="source_macro">#endif
+</span><a name="265"></a>						m_pButtonsDef.ChangeButtonBoxValue( <span class="source_type"><a href="../uwindow/uwindowbase.html#EButtonName" class="source">EButtonName</a></span>.EBN_DedicatedServer,  pServerInfo.DedicatedServer,	 pTempList);
+<a name="266"></a>						m_pButtonsDef.ChangeButtonBoxValue( <span class="source_type"><a href="../uwindow/uwindowbase.html#EButtonName" class="source">EButtonName</a></span>.EBN_FriendlyFire,	  pServerInfo.FriendlyFire,		 pTempList);
+<a name="267"></a>						m_pButtonsDef.ChangeButtonBoxValue( <span class="source_type"><a href="../uwindow/uwindowbase.html#EButtonName" class="source">EButtonName</a></span>.EBN_TKPenalty,		  pServerInfo.TeamKillerPenalty, pTempList);
+<a name="268"></a>						m_pButtonsDef.ChangeButtonBoxValue( <span class="source_type"><a href="../uwindow/uwindowbase.html#EButtonName" class="source">EButtonName</a></span>.EBN_AutoBalTeam,      pServerInfo.Autobalance,		 pTempList);
+<a name="269"></a>
+<a name="270"></a>						m_pButtonsDef.ChangeButtonBoxValue( <span class="source_type"><a href="../uwindow/uwindowbase.html#EButtonName" class="source">EButtonName</a></span>.EBN_AllowRadar,		  pServerInfo.AllowRadar,		 pTempList);
+<a name="271"></a>						m_pButtonsDef.ChangeButtonBoxValue( <span class="source_type"><a href="../uwindow/uwindowbase.html#EButtonName" class="source">EButtonName</a></span>.EBN_AllowTeamNames,   pServerInfo.ShowNames,		 pTempList);
+<a name="272"></a>						m_pButtonsDef.ChangeButtonBoxValue( <span class="source_type"><a href="../uwindow/uwindowbase.html#EButtonName" class="source">EButtonName</a></span>.EBN_ForceFPersonWp,   pServerInfo.ForceFPersonWeapon,pTempList);
+<a name="273"></a>
+<a name="274"></a>						UpdateMenuOptions( <span class="source_type"><a href="../uwindow/uwindowbase.html#EButtonName" class="source">EButtonName</a></span>.EBN_FriendlyFire, pServerInfo.FriendlyFire, pTempList);
+<a name="275"></a>					}
+<a name="276"></a>					else
+<a name="277"></a>					{
+<a name="278"></a>						if (!<span class="source_type"><a href="../r6game/r6console.html" class="source">R6Console</a></span>(Root.<span class="source_type"><a href="../engine/console.html" class="source">console</a></span>).m_bStartedByGSClient && !<span class="source_type"><a href="../r6game/r6console.html" class="source">R6Console</a></span>(Root.<span class="source_type"><a href="../engine/console.html" class="source">console</a></span>).m_bNonUbiMatchMakingHost)
+<a name="279"></a>						{
+<a name="280"></a>							m_pButtonsDef.AddButtonCombo( <span class="source_type"><a href="../uwindow/uwindowbase.html#EButtonName" class="source">EButtonName</a></span>.EBN_InternetServer, pTempList, self);
+<a name="281"></a>							m_pButtonsDef.AddItemInComboButton( <span class="source_type"><a href="../uwindow/uwindowbase.html#EButtonName" class="source">EButtonName</a></span>.EBN_InternetServer, Localize(<span class="source_string">"MPCreateGame"</span>, <span class="source_string">"Options_ServerLocationINT"</span>, <span class="source_string">"R6Menu"</span>), <span class="source_type">string</span>(true), pTempList);
+<a name="282"></a>							m_pButtonsDef.AddItemInComboButton( <span class="source_type"><a href="../uwindow/uwindowbase.html#EButtonName" class="source">EButtonName</a></span>.EBN_InternetServer, Localize(<span class="source_string">"MPCreateGame"</span>, <span class="source_string">"Options_ServerLocationLAN"</span>, <span class="source_string">"R6Menu"</span>), <span class="source_type">string</span>(false), pTempList);
+<a name="283"></a>						}
+<a name="284"></a>
+<a name="285"></a>						m_pButtonsDef.AddButtonInt( <span class="source_type"><a href="../uwindow/uwindowbase.html#EButtonName" class="source">EButtonName</a></span>.EBN_RoundPerMatch,	  <span class="source_int">1</span>, <span class="source_int">20</span>, <span class="source_int">10</span>,	 pTempList, self);
+<a name="286"></a>						m_pButtonsDef.AddButtonInt( <span class="source_type"><a href="../uwindow/uwindowbase.html#EButtonName" class="source">EButtonName</a></span>.EBN_RoundTime,		  <span class="source_int">1</span>, <span class="source_int">15</span>, <span class="source_int">3</span>,		 pTempList, self);
+<a name="287"></a>						m_pButtonsDef.AddButtonInt( <span class="source_type"><a href="../uwindow/uwindowbase.html#EButtonName" class="source">EButtonName</a></span>.EBN_TimeBetRound,	  <span class="source_int">10</span>, <span class="source_int">99</span>, <span class="source_int">15</span>,	 pTempList, self);
+<a name="288"></a>						m_pButtonsDef.SetButtonCounterUnlimited( <span class="source_type"><a href="../uwindow/uwindowbase.html#EButtonName" class="source">EButtonName</a></span>.EBN_TimeBetRound, true, pTempList);
+<a name="289"></a>			<span class="source_macro">#ifndefMPDEMO
+</span><a name="290"></a>						m_pButtonsDef.AddButtonInt( <span class="source_type"><a href="../uwindow/uwindowbase.html#EButtonName" class="source">EButtonName</a></span>.EBN_BombTimer,		  <span class="source_int">30</span>,<span class="source_int">60</span>, <span class="source_int">35</span>,	 pTempList, self);
+<a name="291"></a>			<span class="source_macro">#endif
+</span><a name="292"></a>						if (!<span class="source_type"><a href="../r6game/r6console.html" class="source">R6Console</a></span>(Root.<span class="source_type"><a href="../engine/console.html" class="source">console</a></span>).m_bStartedByGSClient )
+<a name="293"></a>						{
+<a name="294"></a>							m_pButtonsDef.AddButtonInt ( <span class="source_type"><a href="../uwindow/uwindowbase.html#EButtonName" class="source">EButtonName</a></span>.EBN_NB_Players,		  <span class="source_int">1</span>, <span class="source_int">16</span>, <span class="source_int">16</span>,	 pTempList, self);
+<a name="295"></a>							if (!<span class="source_type"><a href="../r6game/r6console.html" class="source">R6Console</a></span>(Root.<span class="source_type"><a href="../engine/console.html" class="source">console</a></span>).m_bNonUbiMatchMakingHost)
+<a name="296"></a>								m_pButtonsDef.AddButtonBool( <span class="source_type"><a href="../uwindow/uwindowbase.html#EButtonName" class="source">EButtonName</a></span>.EBN_DedicatedServer, false, pTempList, self);
+<a name="297"></a>						}
+<a name="298"></a>						m_pButtonsDef.AddButtonBool( <span class="source_type"><a href="../uwindow/uwindowbase.html#EButtonName" class="source">EButtonName</a></span>.EBN_FriendlyFire,	  true,	 pTempList, self);
+<a name="299"></a>						m_pButtonsDef.AddButtonBool( <span class="source_type"><a href="../uwindow/uwindowbase.html#EButtonName" class="source">EButtonName</a></span>.EBN_TKPenalty,		  true,	 pTempList, self);
+<a name="300"></a>						m_pButtonsDef.AddButtonBool( <span class="source_type"><a href="../uwindow/uwindowbase.html#EButtonName" class="source">EButtonName</a></span>.EBN_AutoBalTeam,     true,	 pTempList, self);
+<a name="301"></a>						m_pButtonsDef.AddButtonBool( <span class="source_type"><a href="../uwindow/uwindowbase.html#EButtonName" class="source">EButtonName</a></span>.EBN_AllowRadar,	  true,	 pTempList, self);
+<a name="302"></a>						m_pButtonsDef.AddButtonBool( <span class="source_type"><a href="../uwindow/uwindowbase.html#EButtonName" class="source">EButtonName</a></span>.EBN_AllowTeamNames,  true,	 pTempList, self);
+<a name="303"></a>						m_pButtonsDef.AddButtonBool( <span class="source_type"><a href="../uwindow/uwindowbase.html#EButtonName" class="source">EButtonName</a></span>.EBN_ForceFPersonWp,  true,  pTempList, self);
+<a name="304"></a>					}
+<a name="305"></a>					break;
+<a name="306"></a>				case eCGW_Camera:
+<a name="307"></a>					if (_bUpdateValue)
+<a name="308"></a>	{
+<a name="309"></a>						UpdateCamera( <span class="source_type"><a href="../uwindow/uwindowbase.html#EButtonName" class="source">EButtonName</a></span>.EBN_CamFadeToBk	, pServerInfo.CamFadeToBlack, false, pTempList);
+<a name="310"></a>						UpdateCamera( <span class="source_type"><a href="../uwindow/uwindowbase.html#EButtonName" class="source">EButtonName</a></span>.EBN_CamFirstPerson, pServerInfo.CamFirstPerson, false, pTempList, true);
+<a name="311"></a>						UpdateCamera( <span class="source_type"><a href="../uwindow/uwindowbase.html#EButtonName" class="source">EButtonName</a></span>.EBN_CamThirdPerson, pServerInfo.CamThirdPerson, false, pTempList, true);
+<a name="312"></a>						UpdateCamera( <span class="source_type"><a href="../uwindow/uwindowbase.html#EButtonName" class="source">EButtonName</a></span>.EBN_CamFreeThirdP	, pServerInfo.CamFreeThirdP	, false, pTempList, true);
+<a name="313"></a>						UpdateCamera( <span class="source_type"><a href="../uwindow/uwindowbase.html#EButtonName" class="source">EButtonName</a></span>.EBN_CamGhost		, pServerInfo.CamGhost		, false, pTempList, true);
+<a name="314"></a>						UpdateCamera( <span class="source_type"><a href="../uwindow/uwindowbase.html#EButtonName" class="source">EButtonName</a></span>.EBN_CamTeamOnly	, pServerInfo.CamTeamOnly	, false, pTempList, true);
+<a name="315"></a>
+<a name="316"></a>						UpdateCamSpecialCase( pServerInfo.CamTeamOnly, false);
+<a name="317"></a>						UpdateCamSpecialCase( pServerInfo.CamFadeToBlack, true);
+<a name="318"></a>	}
+<a name="319"></a>	else
+<a name="320"></a>	{
+<a name="321"></a>						m_pButtonsDef.AddButtonBool( <span class="source_type"><a href="../uwindow/uwindowbase.html#EButtonName" class="source">EButtonName</a></span>.EBN_CamFadeToBk,	  false, pTempList, self);
+<a name="322"></a>						m_pButtonsDef.AddButtonBool( <span class="source_type"><a href="../uwindow/uwindowbase.html#EButtonName" class="source">EButtonName</a></span>.EBN_CamFirstPerson,  true,	 pTempList, self);
+<a name="323"></a>						m_pButtonsDef.AddButtonBool( <span class="source_type"><a href="../uwindow/uwindowbase.html#EButtonName" class="source">EButtonName</a></span>.EBN_CamThirdPerson,  true, pTempList, self);
+<a name="324"></a>						m_pButtonsDef.AddButtonBool( <span class="source_type"><a href="../uwindow/uwindowbase.html#EButtonName" class="source">EButtonName</a></span>.EBN_CamFreeThirdP,   true, pTempList, self);
+<a name="325"></a>						m_pButtonsDef.AddButtonBool( <span class="source_type"><a href="../uwindow/uwindowbase.html#EButtonName" class="source">EButtonName</a></span>.EBN_CamGhost,		  true, pTempList, self);
+<a name="326"></a>						m_pButtonsDef.AddButtonBool( <span class="source_type"><a href="../uwindow/uwindowbase.html#EButtonName" class="source">EButtonName</a></span>.EBN_CamTeamOnly,	  true, pTempList, self);
+<a name="327"></a>	}
+<a name="328"></a>					break;
+<a name="329"></a>				default:
+<a name="330"></a>					break;
+<a name="331"></a>}
+<a name="332"></a>			break;
+<a name="333"></a>		<span class="source_comment">//===============================================================================================================
+</span><a name="334"></a>		<span class="source_comment">//===============================================================================================================
+</span><a name="335"></a>		<span class="source_comment">//=============================== COOPERATIVE ===================================================================
+</span><a name="336"></a>		<span class="source_comment">//===============================================================================================================
+</span><a name="337"></a>		<span class="source_comment">//===============================================================================================================
+</span><a name="338"></a>		case m_ANbOfGameMode[<span class="source_int">1</span>]:
+<a name="339"></a>			switch(_eCGWindowID)
+<a name="340"></a>			{
+<a name="341"></a>				case eCGW_Opt:
+<a name="342"></a>					if (_bUpdateValue)
+<a name="343"></a>					{
+<a name="344"></a>						m_pButtonsDef.ChangeButtonComboValue(<span class="source_type"><a href="../uwindow/uwindowbase.html#EButtonName" class="source">EButtonName</a></span>.EBN_InternetServer,     <span class="source_type">string</span>(pServerInfo.InternetServer), pTempList);
+<a name="345"></a>						m_pButtonsDef.ChangeButtonComboValue(<span class="source_type"><a href="../uwindow/uwindowbase.html#EButtonName" class="source">EButtonName</a></span>.EBN_DiffLevel,			 <span class="source_type">string</span>(pServerInfo.DiffLevel),	pTempList);
+<a name="346"></a>						m_pButtonsDef.ChangeButtonCounterValue( <span class="source_type"><a href="../uwindow/uwindowbase.html#EButtonName" class="source">EButtonName</a></span>.EBN_RoundPerMission, pServerInfo.RoundsPerMatch,    pTempList);
+<a name="347"></a>						m_pButtonsDef.ChangeButtonCounterValue( <span class="source_type"><a href="../uwindow/uwindowbase.html#EButtonName" class="source">EButtonName</a></span>.EBN_RoundTime,       pServerInfo.RoundTime / <span class="source_int">60</span>,    pTempList);
+<a name="348"></a>						m_pButtonsDef.ChangeButtonCounterValue( <span class="source_type"><a href="../uwindow/uwindowbase.html#EButtonName" class="source">EButtonName</a></span>.EBN_TimeBetRound,	 pServerInfo.BetweenRoundTime,  pTempList);
+<a name="349"></a>						m_pButtonsDef.ChangeButtonCounterValue( <span class="source_type"><a href="../uwindow/uwindowbase.html#EButtonName" class="source">EButtonName</a></span>.EBN_NB_Players,		 pServerInfo.MaxPlayers,	    pTempList);
+<a name="350"></a>						m_pButtonsDef.ChangeButtonCounterValue( <span class="source_type"><a href="../uwindow/uwindowbase.html#EButtonName" class="source">EButtonName</a></span>.EBN_NB_of_Terro,	 pServerInfo.NbTerro,			pTempList);
+<a name="351"></a>						m_pButtonsDef.ChangeButtonBoxValue( <span class="source_type"><a href="../uwindow/uwindowbase.html#EButtonName" class="source">EButtonName</a></span>.EBN_DedicatedServer,     pServerInfo.DedicatedServer,	pTempList);
+<a name="352"></a>						m_pButtonsDef.ChangeButtonBoxValue( <span class="source_type"><a href="../uwindow/uwindowbase.html#EButtonName" class="source">EButtonName</a></span>.EBN_AIBkp,				 pServerInfo.AIBkp,				pTempList);
+<a name="353"></a>						m_pButtonsDef.ChangeButtonBoxValue( <span class="source_type"><a href="../uwindow/uwindowbase.html#EButtonName" class="source">EButtonName</a></span>.EBN_RotateMap,			 pServerInfo.RotateMap,			pTempList);
+<a name="354"></a>						m_pButtonsDef.ChangeButtonBoxValue( <span class="source_type"><a href="../uwindow/uwindowbase.html#EButtonName" class="source">EButtonName</a></span>.EBN_FriendlyFire,		 pServerInfo.FriendlyFire,	    pTempList);
+<a name="355"></a>
+<a name="356"></a>						m_pButtonsDef.ChangeButtonBoxValue( <span class="source_type"><a href="../uwindow/uwindowbase.html#EButtonName" class="source">EButtonName</a></span>.EBN_AllowRadar,		  pServerInfo.AllowRadar,		 pTempList);
+<a name="357"></a>						m_pButtonsDef.ChangeButtonBoxValue( <span class="source_type"><a href="../uwindow/uwindowbase.html#EButtonName" class="source">EButtonName</a></span>.EBN_AllowTeamNames,   pServerInfo.ShowNames,		 pTempList);
+<a name="358"></a>						m_pButtonsDef.ChangeButtonBoxValue( <span class="source_type"><a href="../uwindow/uwindowbase.html#EButtonName" class="source">EButtonName</a></span>.EBN_ForceFPersonWp,   pServerInfo.ForceFPersonWeapon,pTempList);
+<a name="359"></a>					}
+<a name="360"></a>					else
+<a name="361"></a>					{
+<a name="362"></a>	 	   				if (!<span class="source_type"><a href="../r6game/r6console.html" class="source">R6Console</a></span>(Root.<span class="source_type"><a href="../engine/console.html" class="source">console</a></span>).m_bStartedByGSClient  && !<span class="source_type"><a href="../r6game/r6console.html" class="source">R6Console</a></span>(Root.<span class="source_type"><a href="../engine/console.html" class="source">console</a></span>).m_bNonUbiMatchMakingHost)
+<a name="363"></a>    					{
+<a name="364"></a>							m_pButtonsDef.AddButtonCombo( <span class="source_type"><a href="../uwindow/uwindowbase.html#EButtonName" class="source">EButtonName</a></span>.EBN_InternetServer, pTempList, self);
+<a name="365"></a>							m_pButtonsDef.AddItemInComboButton( <span class="source_type"><a href="../uwindow/uwindowbase.html#EButtonName" class="source">EButtonName</a></span>.EBN_InternetServer, Localize(<span class="source_string">"MPCreateGame"</span>, <span class="source_string">"Options_ServerLocationINT"</span>, <span class="source_string">"R6Menu"</span>), <span class="source_type">string</span>(true), pTempList);
+<a name="366"></a>							m_pButtonsDef.AddItemInComboButton( <span class="source_type"><a href="../uwindow/uwindowbase.html#EButtonName" class="source">EButtonName</a></span>.EBN_InternetServer, Localize(<span class="source_string">"MPCreateGame"</span>, <span class="source_string">"Options_ServerLocationLAN"</span>, <span class="source_string">"R6Menu"</span>), <span class="source_type">string</span>(false), pTempList);
+<a name="367"></a>						}
+<a name="368"></a>						m_pButtonsDef.AddButtonCombo( <span class="source_type"><a href="../uwindow/uwindowbase.html#EButtonName" class="source">EButtonName</a></span>.EBN_DiffLevel, pTempList, self);
+<a name="369"></a>						m_pButtonsDef.AddItemInComboButton( <span class="source_type"><a href="../uwindow/uwindowbase.html#EButtonName" class="source">EButtonName</a></span>.EBN_DiffLevel, Localize(<span class="source_string">"SinglePlayer"</span>, <span class="source_string">"Difficulty1"</span>, <span class="source_string">"R6Menu"</span>), <span class="source_type">string</span>(<span class="source_int">1</span>), pTempList);
+<a name="370"></a>						m_pButtonsDef.AddItemInComboButton( <span class="source_type"><a href="../uwindow/uwindowbase.html#EButtonName" class="source">EButtonName</a></span>.EBN_DiffLevel, Localize(<span class="source_string">"SinglePlayer"</span>, <span class="source_string">"Difficulty2"</span>, <span class="source_string">"R6Menu"</span>), <span class="source_type">string</span>(<span class="source_int">2</span>), pTempList);
+<a name="371"></a>						m_pButtonsDef.AddItemInComboButton( <span class="source_type"><a href="../uwindow/uwindowbase.html#EButtonName" class="source">EButtonName</a></span>.EBN_DiffLevel, Localize(<span class="source_string">"SinglePlayer"</span>, <span class="source_string">"Difficulty3"</span>, <span class="source_string">"R6Menu"</span>), <span class="source_type">string</span>(<span class="source_int">3</span>), pTempList);
+<a name="372"></a>						m_pButtonsDef.ChangeButtonComboValue(<span class="source_type"><a href="../uwindow/uwindowbase.html#EButtonName" class="source">EButtonName</a></span>.EBN_DiffLevel, <span class="source_string">"1"</span>,	     pTempList);
+<a name="373"></a>						m_pButtonsDef.AddButtonInt( <span class="source_type"><a href="../uwindow/uwindowbase.html#EButtonName" class="source">EButtonName</a></span>.EBN_RoundPerMission,  <span class="source_int">1</span>, <span class="source_int">20</span>, <span class="source_int">10</span>,	 pTempList, self);
+<a name="374"></a>						m_pButtonsDef.AddButtonInt( <span class="source_type"><a href="../uwindow/uwindowbase.html#EButtonName" class="source">EButtonName</a></span>.EBN_RoundTime,		  <span class="source_int">1</span>, <span class="source_int">60</span>, <span class="source_int">3</span>,		 pTempList, self);
+<a name="375"></a>						m_pButtonsDef.AddButtonInt( <span class="source_type"><a href="../uwindow/uwindowbase.html#EButtonName" class="source">EButtonName</a></span>.EBN_TimeBetRound,	  <span class="source_int">10</span>, <span class="source_int">99</span>, <span class="source_int">15</span>,	 pTempList, self);
+<a name="376"></a>						m_pButtonsDef.SetButtonCounterUnlimited( <span class="source_type"><a href="../uwindow/uwindowbase.html#EButtonName" class="source">EButtonName</a></span>.EBN_TimeBetRound, true, pTempList);
+<a name="377"></a>						m_pButtonsDef.AddButtonInt( <span class="source_type"><a href="../uwindow/uwindowbase.html#EButtonName" class="source">EButtonName</a></span>.EBN_NB_of_Terro,	  <span class="source_int">5</span>, <span class="source_int">40</span>, <span class="source_int">32</span>,	 pTempList, self);
+<a name="378"></a>				    	if (!<span class="source_type"><a href="../r6game/r6console.html" class="source">R6Console</a></span>(Root.<span class="source_type"><a href="../engine/console.html" class="source">console</a></span>).m_bStartedByGSClient )
+<a name="379"></a>    					{
+<a name="380"></a>							m_pButtonsDef.AddButtonInt( <span class="source_type"><a href="../uwindow/uwindowbase.html#EButtonName" class="source">EButtonName</a></span>.EBN_NB_Players,		  <span class="source_int">1</span>, <span class="source_int">8</span>,	 <span class="source_int">8</span>,		 pTempList, self);
+<a name="381"></a>        					if (!<span class="source_type"><a href="../r6game/r6console.html" class="source">R6Console</a></span>(Root.<span class="source_type"><a href="../engine/console.html" class="source">console</a></span>).m_bNonUbiMatchMakingHost)
+<a name="382"></a>								m_pButtonsDef.AddButtonBool( <span class="source_type"><a href="../uwindow/uwindowbase.html#EButtonName" class="source">EButtonName</a></span>.EBN_DedicatedServer, false, pTempList, self);
+<a name="383"></a>						}
+<a name="384"></a>						m_pButtonsDef.AddButtonBool( <span class="source_type"><a href="../uwindow/uwindowbase.html#EButtonName" class="source">EButtonName</a></span>.EBN_AIBkp,			  true,  pTempList, self);
+<a name="385"></a>						m_pButtonsDef.AddButtonBool( <span class="source_type"><a href="../uwindow/uwindowbase.html#EButtonName" class="source">EButtonName</a></span>.EBN_RotateMap,		  true,  pTempList, self);
+<a name="386"></a>						m_pButtonsDef.AddButtonBool( <span class="source_type"><a href="../uwindow/uwindowbase.html#EButtonName" class="source">EButtonName</a></span>.EBN_FriendlyFire,	  true,  pTempList, self);
+<a name="387"></a>
+<a name="388"></a>						m_pButtonsDef.AddButtonBool( <span class="source_type"><a href="../uwindow/uwindowbase.html#EButtonName" class="source">EButtonName</a></span>.EBN_AllowRadar,	  false,	 pTempList, self);
+<a name="389"></a>						m_pButtonsDef.AddButtonBool( <span class="source_type"><a href="../uwindow/uwindowbase.html#EButtonName" class="source">EButtonName</a></span>.EBN_AllowTeamNames,  false,	 pTempList, self);
+<a name="390"></a>						m_pButtonsDef.AddButtonBool( <span class="source_type"><a href="../uwindow/uwindowbase.html#EButtonName" class="source">EButtonName</a></span>.EBN_ForceFPersonWp,  false,	 pTempList, self);
+<a name="391"></a>					}
+<a name="392"></a>					break;
+<a name="393"></a>				case eCGW_Camera:
+<a name="394"></a>					if (_bUpdateValue)
+<a name="395"></a>					{
+<a name="396"></a>						UpdateCamera( <span class="source_type"><a href="../uwindow/uwindowbase.html#EButtonName" class="source">EButtonName</a></span>.EBN_CamFirstPerson, pServerInfo.CamFirstPerson, false, pTempList);
+<a name="397"></a>						UpdateCamera( <span class="source_type"><a href="../uwindow/uwindowbase.html#EButtonName" class="source">EButtonName</a></span>.EBN_CamThirdPerson, pServerInfo.CamThirdPerson, false, pTempList);
+<a name="398"></a>						UpdateCamera( <span class="source_type"><a href="../uwindow/uwindowbase.html#EButtonName" class="source">EButtonName</a></span>.EBN_CamFreeThirdP	, pServerInfo.CamFreeThirdP	, false, pTempList);
+<a name="399"></a>						UpdateCamera( <span class="source_type"><a href="../uwindow/uwindowbase.html#EButtonName" class="source">EButtonName</a></span>.EBN_CamGhost		, pServerInfo.CamGhost		, false, pTempList);
+<a name="400"></a>					}
+<a name="401"></a>					else
+<a name="402"></a>					{
+<a name="403"></a>						m_pButtonsDef.AddButtonBool( <span class="source_type"><a href="../uwindow/uwindowbase.html#EButtonName" class="source">EButtonName</a></span>.EBN_CamFirstPerson,  true,	pTempList, self);
+<a name="404"></a>						m_pButtonsDef.AddButtonBool( <span class="source_type"><a href="../uwindow/uwindowbase.html#EButtonName" class="source">EButtonName</a></span>.EBN_CamThirdPerson,  true, pTempList, self);
+<a name="405"></a>						m_pButtonsDef.AddButtonBool( <span class="source_type"><a href="../uwindow/uwindowbase.html#EButtonName" class="source">EButtonName</a></span>.EBN_CamFreeThirdP,   true, pTempList, self);
+<a name="406"></a>						m_pButtonsDef.AddButtonBool( <span class="source_type"><a href="../uwindow/uwindowbase.html#EButtonName" class="source">EButtonName</a></span>.EBN_CamGhost,		  true, pTempList, self);
+<a name="407"></a>					}
+<a name="408"></a>					break;
+<a name="409"></a>				default:
+<a name="410"></a>					break;
+<a name="411"></a>			}
+<a name="412"></a>			break;
+<a name="413"></a>		default:
+<a name="414"></a>			log(<span class="source_string">"UpdateButtons not a valid game mode"</span>);
+<a name="415"></a>			break;
+<a name="416"></a>    }
+<a name="417"></a>}
+<a name="418"></a>
+<a name="419"></a>function InitEditMsgButton()
+<a name="420"></a>{
+<a name="421"></a>    local <span class="source_type">FLOAT</span>                         fXOffset, fYOffset, <span class="source_type">fWidth</span>, <span class="source_type">fHeight</span>;
+<a name="422"></a>
+<a name="423"></a>    <span class="source_comment">//create buttons
+</span><a name="424"></a>    fXOffset = K_HALFWINDOWWIDTH + <span class="source_int">10</span>;
+<a name="425"></a>    fYOffset = WinHeight - <span class="source_int">20</span>;
+<a name="426"></a>    <span class="source_type">fWidth</span>   = K_HALFWINDOWWIDTH - <span class="source_int">20</span>;
+<a name="427"></a>    <span class="source_type">fHeight</span>  = <span class="source_int">15</span>;
+<a name="428"></a>
+<a name="429"></a>    m_pOptionsWelcomeMsg = <span class="source_type"><a href="../r6window/r6windowbutton.html" class="source">R6WindowButton</a></span>(CreateControl(<span class="source_type">class</span><span class="source_name">'R6WindowButton'</span>, fXOffset, fYOffset, <span class="source_type">fWidth</span>, <span class="source_type">fHeight</span>, self));
+<a name="430"></a>    m_pOptionsWelcomeMsg.SetButtonBorderColor(Root.Colors.White);
+<a name="431"></a>	m_pOptionsWelcomeMsg.m_bDrawBorders      = TRUE;
+<a name="432"></a>    m_pOptionsWelcomeMsg.m_bDrawSimpleBorder = TRUE;
+<a name="433"></a>	m_pOptionsWelcomeMsg.TextColor = Root.Colors.White;
+<a name="434"></a>    m_pOptionsWelcomeMsg.Align	   = TA_Center;
+<a name="435"></a>    m_pOptionsWelcomeMsg.SetFont(F_VerySmallTitle);
+<a name="436"></a>    m_pOptionsWelcomeMsg.SetText( Localize(<span class="source_string">"MPCreateGame"</span>,<span class="source_string">"EditWelcomeMsg"</span>,<span class="source_string">"R6Menu"</span>));
+<a name="437"></a>    m_pOptionsWelcomeMsg.ToolTipString = Localize(<span class="source_string">"Tip"</span>,<span class="source_string">"EditWelcomeMsg"</span>,<span class="source_string">"R6Menu"</span>);
+<a name="438"></a>	m_pOptionsWelcomeMsg.m_iButtonID = m_pButtonsDef.<span class="source_type"><a href="../uwindow/uwindowbase.html#EButtonName" class="source">EButtonName</a></span>.EBN_EditMsg;
+<a name="439"></a>}
+<a name="440"></a>
+<a name="441"></a><span class="source_comment">//*******************************************************************************************
+</span><a name="442"></a><span class="source_comment">// UTILITIES FUNCTIONS
+</span><a name="443"></a><span class="source_comment">//*******************************************************************************************
+</span><a name="444"></a><span class="source_comment">//==============================================================
+</span><a name="445"></a><span class="source_comment">// Create a list of strings containing the list of maps that the
+</span><a name="446"></a><span class="source_comment">// user has selected
+</span><a name="447"></a><span class="source_comment">//==============================================================
+</span><a name="448"></a>function <span class="source_type">BYTE</span> FillSelectedMapList()
+<a name="449"></a>{
+<a name="450"></a>   	local <span class="source_type"><a href="../uwindow/uwindowlistboxitem.html" class="source">UWindowListBoxItem</a></span> CurItem;
+<a name="451"></a>	local <span class="source_type"><a href="../r6menu/r6menumaplist.html" class="source">R6MenuMapList</a></span> pCurrentMapList;
+<a name="452"></a>	local <span class="source_type">INT</span>                <span class="source_type">i</span>;
+<a name="453"></a>
+<a name="454"></a>    <span class="source_comment">// Clear old list
+</span><a name="455"></a>
+<a name="456"></a>    m_SelectedMapList.Remove( <span class="source_int">0</span>, m_SelectedMapList.length );
+<a name="457"></a>
+<a name="458"></a>	pCurrentMapList = <span class="source_type"><a href="../r6menu/r6menumaplist.html" class="source">R6MenuMapList</a></span>(GetList( GetCurrentGameMode(), eCGW_MapList));
+<a name="459"></a>
+<a name="460"></a>	if ( pCurrentMapList.m_pFinalMapList.Items.Next == None )
+<a name="461"></a>    {
+<a name="462"></a><span class="source_macro">#ifdefDEBUG
+</span><a name="463"></a>		log(<span class="source_string">"MapList Empty!!!!"</span>); 
+<a name="464"></a><span class="source_macro">#endif
+</span><a name="465"></a>        return <span class="source_int">0</span>;
+<a name="466"></a>    }
+<a name="467"></a>    
+<a name="468"></a>	CurItem = <span class="source_type"><a href="../uwindow/uwindowlistboxitem.html" class="source">UWindowListBoxItem</a></span>(pCurrentMapList.m_pFinalMapList.Items.Next);<span class="source_comment">//Items.Next;
+</span><a name="469"></a>
+<a name="470"></a>    <span class="source_comment">// Go through list of maps and build a list holding the map names (m_SelectedMapList)
+</span><a name="471"></a>
+<a name="472"></a>    <span class="source_type">i</span> = <span class="source_int">0</span>;
+<a name="473"></a>	while ( CurItem != None ) 
+<a name="474"></a>	{
+<a name="475"></a>        m_SelectedMapList[<span class="source_type">i</span>] = <span class="source_type"><a href="../r6window/r6windowlistboxitem.html" class="source">R6WindowListBoxItem</a></span>(CurItem).m_szMisc;
+<a name="476"></a>        m_SelectedModeList[<span class="source_type">i</span>] = GetLevel().GetGameTypeFromLocName(CurItem.m_stSubText.szGameTypeSelect, true);
+<a name="477"></a>        CurItem = <span class="source_type"><a href="../uwindow/uwindowlistboxitem.html" class="source">UWindowListBoxItem</a></span>(CurItem.Next);
+<a name="478"></a>        <span class="source_type">i</span>++;
+<a name="479"></a>	}
+<a name="480"></a>
+<a name="481"></a>    return <span class="source_type">i</span>;
+<a name="482"></a>}
+<a name="483"></a>
+<a name="484"></a><span class="source_comment">//==============================================================
+</span><a name="485"></a><span class="source_comment">// PopUpMOTDEditionBox: PopUp for the message of the day
+</span><a name="486"></a><span class="source_comment">//==============================================================
+</span><a name="487"></a>function PopUpMOTDEditionBox()
+<a name="488"></a>{
+<a name="489"></a>    local <span class="source_type"><a href="../r6window/r6windoweditbox.html" class="source">R6WindowEditBox</a></span> pR6EditBoxTemp;
+<a name="490"></a>
+<a name="491"></a>    if (m_pMsgOfTheDayPopUp == None)
+<a name="492"></a>    {
+<a name="493"></a>        <span class="source_comment">// Create PopUp frame
+</span><a name="494"></a>        m_pMsgOfTheDayPopUp = <span class="source_type"><a href="../r6window/r6windowpopupbox.html" class="source">R6WindowPopUpBox</a></span>(<span class="source_type"><a href="../r6menu/r6menumpcreategamewidget.html" class="source">R6MenuMPCreateGameWidget</a></span>(OwnerWindow).CreateWindow( <span class="source_type">class</span><span class="source_name">'R6WindowPopUpBox'</span>, <span class="source_int">0</span>, <span class="source_int">0</span>, <span class="source_int">640</span>, <span class="source_int">480</span>, self));
+<a name="495"></a>        m_pMsgOfTheDayPopUp.CreateStdPopUpWindow( Localize(<span class="source_string">"MPCreateGame"</span>,<span class="source_string">"WelcomeMsg"</span>,<span class="source_string">"R6Menu"</span>), <span class="source_int">30</span>, <span class="source_int">75</span>, <span class="source_int">150</span>, <span class="source_int">490</span>, <span class="source_int">70</span>);
+<a name="496"></a>        m_pMsgOfTheDayPopUp.CreateClientWindow( <span class="source_type">class</span><span class="source_name">'R6WindowEditBox'</span>);
+<a name="497"></a>		m_pMsgOfTheDayPopUp.m_ePopUpID = EPopUpID_MsgOfTheDay;
+<a name="498"></a>        pR6EditBoxTemp = <span class="source_type"><a href="../r6window/r6windoweditbox.html" class="source">R6WindowEditBox</a></span>(m_pMsgOfTheDayPopUp.m_ClientArea);
+<a name="499"></a>		pR6EditBoxTemp.SetValue( m_szMsgOfTheDay);
+<a name="500"></a>        pR6EditBoxTemp.TextColor = Root.Colors.BlueLight;
+<a name="501"></a>        pR6EditBoxTemp.SetFont(F_PopUpTitle);
+<a name="502"></a>		pR6EditBoxTemp.MaxLength = <span class="source_int">60</span>;
+<a name="503"></a>    }
+<a name="504"></a>    else
+<a name="505"></a>	{
+<a name="506"></a>		pR6EditBoxTemp = <span class="source_type"><a href="../r6window/r6windoweditbox.html" class="source">R6WindowEditBox</a></span>(m_pMsgOfTheDayPopUp.m_ClientArea);
+<a name="507"></a>		pR6EditBoxTemp.SetValue( m_szMsgOfTheDay); <span class="source_comment">// set the new msg of the day -- in case of a loadserver
+</span><a name="508"></a>
+<a name="509"></a>        m_pMsgOfTheDayPopUp.ShowWindow(); 
+<a name="510"></a>	}	
+<a name="511"></a>}
+<a name="512"></a>
+<a name="513"></a><span class="source_comment">//==============================================================
+</span><a name="514"></a><span class="source_comment">// PopUpBoxDone: For now, we just receive the result of the message of the day pop-up
+</span><a name="515"></a><span class="source_comment">//==============================================================
+</span><a name="516"></a>function PopUpBoxDone( <span class="source_type"><a href="../uwindow/uwindowbase.html#MessageBoxResult" class="source">MessageBoxResult</a></span> <span class="source_type">Result</span>, <span class="source_type"><a href="../uwindow/uwindowbase.html#EPopUpID" class="source">ePopUpID</a></span> <span class="source_type">_ePopUpID</span>)
+<a name="517"></a>{
+<a name="518"></a>	if (<span class="source_type">Result</span> == MR_OK)
+<a name="519"></a>	{
+<a name="520"></a>		if ( <span class="source_type">_ePopUpID</span> == EPopUpID_MsgOfTheDay)
+<a name="521"></a>		{
+<a name="522"></a>			m_szMsgOfTheDay = <span class="source_type"><a href="../r6window/r6windoweditbox.html" class="source">R6WindowEditBox</a></span>(m_pMsgOfTheDayPopUp.m_ClientArea).GetValue();
+<a name="523"></a>			SetServerOptions();
+<a name="524"></a>		}
+<a name="525"></a>	}
+<a name="526"></a>}
+<a name="527"></a>
+<a name="528"></a><span class="source_comment">//==============================================================
+</span><a name="529"></a><span class="source_comment">// IsAdminPasswordValid: Verify if you check the box and if your password is different of nothing
+</span><a name="530"></a><span class="source_comment">//==============================================================
+</span><a name="531"></a>function <span class="source_type">BOOL</span> IsAdminPasswordValid()
+<a name="532"></a>{
+<a name="533"></a>	local <span class="source_type"><a href="../r6window/r6windowbuttonandeditbox.html" class="source">R6WindowButtonAndEditBox</a></span> pAdminPassword;
+<a name="534"></a>
+<a name="535"></a>	pAdminPassword = <span class="source_type"><a href="../r6window/r6windowbuttonandeditbox.html" class="source">R6WindowButtonAndEditBox</a></span>(GetList(GetCurrentGameMode(), eCGW_AdminPassword));
+<a name="536"></a>
+<a name="537"></a>	if (pAdminPassword.m_bSelected)
+<a name="538"></a>	{
+<a name="539"></a>		if (pAdminPassword.m_pEditBox.GetValue() == <span class="source_string">""</span>)
+<a name="540"></a>		{
+<a name="541"></a>			return false;
+<a name="542"></a>		}
+<a name="543"></a>	}
+<a name="544"></a>
+<a name="545"></a>	return true;
+<a name="546"></a>}
+<a name="547"></a>
+<a name="548"></a><span class="source_comment">//==============================================================
+</span><a name="549"></a><span class="source_comment">// GetCreateGamePassword: get the create game password 
+</span><a name="550"></a><span class="source_comment">//==============================================================
+</span><a name="551"></a>function <span class="source_type">string</span> GetCreateGamePassword()
+<a name="552"></a>{
+<a name="553"></a>	return <span class="source_type"><a href="../r6window/r6windowbuttonandeditbox.html" class="source">R6WindowButtonAndEditBox</a></span>(GetList(GetCurrentGameMode(), eCGW_Password)).m_pEditBox.GetValue();
+<a name="554"></a>}
+<a name="555"></a>
+<a name="556"></a>function UpdateCamera( <span class="source_type">INT</span> _iButtonID, <span class="source_type">BOOL</span> _bValue, <span class="source_type">BOOL</span> _bDisable, <span class="source_type"><a href="../r6window/r6windowlistgeneral.html" class="source">R6WindowListGeneral</a></span> _pCamList, optional <span class="source_type">BOOL</span> _bBackupValue)
+<a name="557"></a>{
+<a name="558"></a>	switch(_iButtonID)
+<a name="559"></a>	{
+<a name="560"></a>		case <span class="source_type"><a href="../uwindow/uwindowbase.html#EButtonName" class="source">EButtonName</a></span>.EBN_CamFadeToBk:
+<a name="561"></a>			m_pButtonsDef.ChangeButtonBoxValue( _iButtonID, _bValue, _pCamList);
+<a name="562"></a>			break;
+<a name="563"></a>		case <span class="source_type"><a href="../uwindow/uwindowbase.html#EButtonName" class="source">EButtonName</a></span>.EBN_CamFirstPerson:
+<a name="564"></a>			m_pButtonsDef.ChangeButtonBoxValue( _iButtonID, _bValue, _pCamList, _bDisable);
+<a name="565"></a>			if (_bBackupValue)
+<a name="566"></a>				m_bBkpCamFirstPerson = _bValue;
+<a name="567"></a>			break;
+<a name="568"></a>		case <span class="source_type"><a href="../uwindow/uwindowbase.html#EButtonName" class="source">EButtonName</a></span>.EBN_CamThirdPerson:
+<a name="569"></a>			m_pButtonsDef.ChangeButtonBoxValue( _iButtonID, _bValue, _pCamList, _bDisable);
+<a name="570"></a>			if (_bBackupValue)
+<a name="571"></a>				m_bBkpCamThirdPerson = _bValue;
+<a name="572"></a>			break;
+<a name="573"></a>		case <span class="source_type"><a href="../uwindow/uwindowbase.html#EButtonName" class="source">EButtonName</a></span>.EBN_CamFreeThirdP:
+<a name="574"></a>			m_pButtonsDef.ChangeButtonBoxValue( _iButtonID, _bValue, _pCamList, _bDisable);
+<a name="575"></a>			if (_bBackupValue)
+<a name="576"></a>				m_bBkpCamFreeThirdP = _bValue;
+<a name="577"></a>			break;
+<a name="578"></a>		case <span class="source_type"><a href="../uwindow/uwindowbase.html#EButtonName" class="source">EButtonName</a></span>.EBN_CamGhost:
+<a name="579"></a>			m_pButtonsDef.ChangeButtonBoxValue( _iButtonID, _bValue, _pCamList, _bDisable);
+<a name="580"></a>			if (_bBackupValue)
+<a name="581"></a>				m_bBkpCamGhost = _bValue;
+<a name="582"></a>			break;
+<a name="583"></a>		case <span class="source_type"><a href="../uwindow/uwindowbase.html#EButtonName" class="source">EButtonName</a></span>.EBN_CamTeamOnly:
+<a name="584"></a>			m_pButtonsDef.ChangeButtonBoxValue( _iButtonID, _bValue, _pCamList, _bDisable);
+<a name="585"></a>			if (_bBackupValue)
+<a name="586"></a>				m_bBkpCamTeamOnly = _bValue;
+<a name="587"></a>			break;
+<a name="588"></a>	}
+<a name="589"></a>}
+<a name="590"></a>
+<a name="591"></a><span class="source_comment">//=====================================================================================
+</span><a name="592"></a><span class="source_comment">// GetCameraSelection: return the current selection of the button. This function exist because when the button
+</span><a name="593"></a><span class="source_comment">//						is disable the selection is store in the bkp version
+</span><a name="594"></a><span class="source_comment">//=====================================================================================
+</span><a name="595"></a>function <span class="source_type">BOOL</span> GetCameraSelection( <span class="source_type">INT</span> _iButtonID, <span class="source_type"><a href="../r6window/r6windowlistgeneral.html" class="source">R6WindowListGeneral</a></span> _pCameraList)
+<a name="596"></a>{
+<a name="597"></a>	local <span class="source_type">BOOL</span> bSelection;
+<a name="598"></a>
+<a name="599"></a>	if (m_pButtonsDef.IsButtonBoxDisabled( _iButtonID, _pCameraList))
+<a name="600"></a>	{
+<a name="601"></a>		switch( _iButtonID)
+<a name="602"></a>		{
+<a name="603"></a>			case <span class="source_type"><a href="../uwindow/uwindowbase.html#EButtonName" class="source">EButtonName</a></span>.EBN_CamFirstPerson:
+<a name="604"></a>				bSelection = m_bBkpCamFirstPerson;
+<a name="605"></a>				break;
+<a name="606"></a>			case <span class="source_type"><a href="../uwindow/uwindowbase.html#EButtonName" class="source">EButtonName</a></span>.EBN_CamThirdPerson:
+<a name="607"></a>				bSelection = m_bBkpCamThirdPerson;
+<a name="608"></a>				break;
+<a name="609"></a>			case <span class="source_type"><a href="../uwindow/uwindowbase.html#EButtonName" class="source">EButtonName</a></span>.EBN_CamFreeThirdP:
+<a name="610"></a>				bSelection = m_bBkpCamFreeThirdP;
+<a name="611"></a>				break;
+<a name="612"></a>			case <span class="source_type"><a href="../uwindow/uwindowbase.html#EButtonName" class="source">EButtonName</a></span>.EBN_CamGhost:
+<a name="613"></a>				bSelection = m_bBkpCamGhost;
+<a name="614"></a>				break;
+<a name="615"></a>			case <span class="source_type"><a href="../uwindow/uwindowbase.html#EButtonName" class="source">EButtonName</a></span>.EBN_CamTeamOnly:
+<a name="616"></a>				bSelection = m_bBkpCamTeamOnly;
+<a name="617"></a>				break;
+<a name="618"></a>		}
+<a name="619"></a>	}
+<a name="620"></a>	else
+<a name="621"></a>	{
+<a name="622"></a>		bSelection = m_pButtonsDef.GetButtonBoxValue( _iButtonID, _pCameraList);
+<a name="623"></a>	}
+<a name="624"></a>
+<a name="625"></a>	return bSelection;
+<a name="626"></a>}
+<a name="627"></a>
+<a name="628"></a><span class="source_comment">//==========================================================================
+</span><a name="629"></a><span class="source_comment">// UpdateCamSpecialCase:  For death cam and cam teamonly only
+</span><a name="630"></a><span class="source_comment">//==========================================================================
+</span><a name="631"></a>function UpdateCamSpecialCase( <span class="source_type">BOOL</span> _bButtonSel, <span class="source_type">BOOL</span> _bUpdateDeathCam)
+<a name="632"></a>{
+<a name="633"></a>	local <span class="source_type">BOOL</span> bCamState, bCamFirstPerson, bCamThirdPerson, bCamFreeThPerson, bCamGhost, bCanTeamOnly;
+<a name="634"></a>	local <span class="source_type">BOOL</span> bCamGhostDis; <span class="source_comment">// cam ghost disable
+</span><a name="635"></a>	local <span class="source_type"><a href="../r6window/r6windowlistgeneral.html" class="source">R6WindowListGeneral</a></span> pCamList;
+<a name="636"></a>
+<a name="637"></a>	pCamList = <span class="source_type"><a href="../r6window/r6windowlistgeneral.html" class="source">R6WindowListGeneral</a></span>(GetList(GetCurrentGameMode(), eCGW_Camera));
+<a name="638"></a>
+<a name="639"></a>	if ( _bUpdateDeathCam)
+<a name="640"></a>	{
+<a name="641"></a>		bCamState		 = _bButtonSel;
+<a name="642"></a>
+<a name="643"></a>		bCamFirstPerson  = false;
+<a name="644"></a>		bCamThirdPerson  = false;
+<a name="645"></a>		bCamFreeThPerson = false;
+<a name="646"></a>		bCamGhost		 = false;
+<a name="647"></a>		bCanTeamOnly	 = false;
+<a name="648"></a>
+<a name="649"></a>		if (bCamState)
+<a name="650"></a>		{
+<a name="651"></a>			m_bBkpCamFirstPerson = m_pButtonsDef.GetButtonBoxValue( <span class="source_type"><a href="../uwindow/uwindowbase.html#EButtonName" class="source">EButtonName</a></span>.EBN_CamFirstPerson, pCamList);
+<a name="652"></a>			m_bBkpCamThirdPerson = m_pButtonsDef.GetButtonBoxValue( <span class="source_type"><a href="../uwindow/uwindowbase.html#EButtonName" class="source">EButtonName</a></span>.EBN_CamThirdPerson, pCamList);
+<a name="653"></a>			m_bBkpCamFreeThirdP  = m_pButtonsDef.GetButtonBoxValue( <span class="source_type"><a href="../uwindow/uwindowbase.html#EButtonName" class="source">EButtonName</a></span>.EBN_CamFreeThirdP, pCamList);
+<a name="654"></a>
+<a name="655"></a>			bCamGhostDis		 = m_pButtonsDef.IsButtonBoxDisabled( <span class="source_type"><a href="../uwindow/uwindowbase.html#EButtonName" class="source">EButtonName</a></span>.EBN_CamGhost, pCamList);
+<a name="656"></a>			if (!bCamGhostDis) <span class="source_comment">// if the cam ghost is not already disable -- that we already have the backup value
+</span><a name="657"></a>				m_bBkpCamGhost	 = m_pButtonsDef.GetButtonBoxValue( <span class="source_type"><a href="../uwindow/uwindowbase.html#EButtonName" class="source">EButtonName</a></span>.EBN_CamGhost, pCamList);
+<a name="658"></a>
+<a name="659"></a>			if (GetCurrentGameMode() == m_ANbOfGameMode[<span class="source_int">0</span>])
+<a name="660"></a>			{
+<a name="661"></a>				m_bBkpCamTeamOnly	 = m_pButtonsDef.GetButtonBoxValue( <span class="source_type"><a href="../uwindow/uwindowbase.html#EButtonName" class="source">EButtonName</a></span>.EBN_CamTeamOnly, pCamList);
+<a name="662"></a>			}
+<a name="663"></a>		}
+<a name="664"></a>		else
+<a name="665"></a>		{
+<a name="666"></a>			bCamFirstPerson  = m_bBkpCamFirstPerson;
+<a name="667"></a>			bCamThirdPerson  = m_bBkpCamThirdPerson;
+<a name="668"></a>			bCamFreeThPerson = m_bBkpCamFreeThirdP;
+<a name="669"></a>			bCamGhost		 = m_bBkpCamGhost;
+<a name="670"></a>
+<a name="671"></a>			if (GetCurrentGameMode() == m_ANbOfGameMode[<span class="source_int">0</span>])
+<a name="672"></a>				bCamGhostDis = m_bBkpCamTeamOnly;
+<a name="673"></a>			else
+<a name="674"></a>				bCamGhostDis = false;
+<a name="675"></a>
+<a name="676"></a>			bCanTeamOnly	 = m_bBkpCamTeamOnly;
+<a name="677"></a>		}
+<a name="678"></a>
+<a name="679"></a>		UpdateCamera( <span class="source_type"><a href="../uwindow/uwindowbase.html#EButtonName" class="source">EButtonName</a></span>.EBN_CamFadeToBk	, bCamState, false, pCamList);
+<a name="680"></a>		UpdateCamera( <span class="source_type"><a href="../uwindow/uwindowbase.html#EButtonName" class="source">EButtonName</a></span>.EBN_CamFirstPerson, bCamFirstPerson,  bCamState, pCamList);
+<a name="681"></a>		UpdateCamera( <span class="source_type"><a href="../uwindow/uwindowbase.html#EButtonName" class="source">EButtonName</a></span>.EBN_CamThirdPerson, bCamThirdPerson,  bCamState, pCamList);
+<a name="682"></a>		UpdateCamera( <span class="source_type"><a href="../uwindow/uwindowbase.html#EButtonName" class="source">EButtonName</a></span>.EBN_CamFreeThirdP	, bCamFreeThPerson, bCamState, pCamList);
+<a name="683"></a>		
+<a name="684"></a>		if (!bCamGhostDis) <span class="source_comment">//if the cam ghost is not already disable -- in the case of team only
+</span><a name="685"></a>			UpdateCamera( <span class="source_type"><a href="../uwindow/uwindowbase.html#EButtonName" class="source">EButtonName</a></span>.EBN_CamGhost, bCamGhost, bCamState, pCamList);
+<a name="686"></a>
+<a name="687"></a>		if (GetCurrentGameMode() == m_ANbOfGameMode[<span class="source_int">0</span>])
+<a name="688"></a>			UpdateCamera( <span class="source_type"><a href="../uwindow/uwindowbase.html#EButtonName" class="source">EButtonName</a></span>.EBN_CamTeamOnly, bCanTeamOnly, bCamState, pCamList);
+<a name="689"></a>    }
+<a name="690"></a>	else <span class="source_comment">// cam team only
+</span><a name="691"></a>	{
+<a name="692"></a>		bCamState = _bButtonSel;
+<a name="693"></a>		bCamGhost = false;
+<a name="694"></a>
+<a name="695"></a>		if (bCamState)
+<a name="696"></a>		{
+<a name="697"></a>			m_bBkpCamGhost = m_pButtonsDef.GetButtonBoxValue( <span class="source_type"><a href="../uwindow/uwindowbase.html#EButtonName" class="source">EButtonName</a></span>.EBN_CamGhost, pCamList);
+<a name="698"></a>		}
+<a name="699"></a>		else
+<a name="700"></a>		{
+<a name="701"></a>			bCamGhost = m_bBkpCamGhost;
+<a name="702"></a>		}
+<a name="703"></a>
+<a name="704"></a>		UpdateCamera( <span class="source_type"><a href="../uwindow/uwindowbase.html#EButtonName" class="source">EButtonName</a></span>.EBN_CamGhost, bCamGhost, bCamState, pCamList);
+<a name="705"></a>	}
+<a name="706"></a>}
+<a name="707"></a>
+<a name="708"></a>function UpdateMenuOptions( <span class="source_type">INT</span> _iButID, <span class="source_type">BOOL</span> _bNewValue, <span class="source_type"><a href="../r6window/r6windowlistgeneral.html" class="source">R6WindowListGeneral</a></span> _pOptionsList, optional <span class="source_type">BOOL</span> _bChangeByUserClick)
+<a name="709"></a>{
+<a name="710"></a>	local <span class="source_type">BOOL</span> bButState;
+<a name="711"></a>
+<a name="712"></a>	switch( _iButID)
+<a name="713"></a>	{
+<a name="714"></a>		case <span class="source_type"><a href="../uwindow/uwindowbase.html#EButtonName" class="source">EButtonName</a></span>.EBN_CamFadeToBk:
+<a name="715"></a>			UpdateCamSpecialCase( _bNewValue, true);
+<a name="716"></a>			break;
+<a name="717"></a>		case <span class="source_type"><a href="../uwindow/uwindowbase.html#EButtonName" class="source">EButtonName</a></span>.EBN_CamTeamOnly:
+<a name="718"></a>			UpdateCamSpecialCase( _bNewValue, false);
+<a name="719"></a>			break;
+<a name="720"></a>		case <span class="source_type"><a href="../uwindow/uwindowbase.html#EButtonName" class="source">EButtonName</a></span>.EBN_FriendlyFire:
+<a name="721"></a>
+<a name="722"></a>			bButState = false;
+<a name="723"></a>
+<a name="724"></a>			if (!m_bInitComplete)
+<a name="725"></a>			{
+<a name="726"></a>				m_bBkpTKPenalty = m_pButtonsDef.GetButtonBoxValue( <span class="source_type"><a href="../uwindow/uwindowbase.html#EButtonName" class="source">EButtonName</a></span>.EBN_TKPenalty, _pOptionsList);
+<a name="727"></a>			}
+<a name="728"></a>
+<a name="729"></a>			if (_bNewValue) <span class="source_comment">// enable teammates fire option
+</span><a name="730"></a>			{
+<a name="731"></a>				bButState = m_bBkpTKPenalty;
+<a name="732"></a>			}
+<a name="733"></a>			else if (_bChangeByUserClick)<span class="source_comment">// disable teammates fire options
+</span><a name="734"></a>			{
+<a name="735"></a>				<span class="source_comment">// get the tkpenalty value
+</span><a name="736"></a>				m_bBkpTKPenalty = m_pButtonsDef.GetButtonBoxValue( <span class="source_type"><a href="../uwindow/uwindowbase.html#EButtonName" class="source">EButtonName</a></span>.EBN_TKPenalty, _pOptionsList);
+<a name="737"></a>			}
+<a name="738"></a>
+<a name="739"></a>			m_pButtonsDef.ChangeButtonBoxValue( <span class="source_type"><a href="../uwindow/uwindowbase.html#EButtonName" class="source">EButtonName</a></span>.EBN_TKPenalty, bButState, _pOptionsList, !_bNewValue);
+<a name="740"></a>			break;
+<a name="741"></a>		default:
+<a name="742"></a>			break;
+<a name="743"></a>	}
+<a name="744"></a>}
+<a name="745"></a>
+<a name="746"></a><span class="source_comment">//=======================================================================
+</span><a name="747"></a><span class="source_comment">// UpdateAllMapList: 
+</span><a name="748"></a><span class="source_comment">//=======================================================================
+</span><a name="749"></a>function UpdateAllMapList()
+<a name="750"></a>{
+<a name="751"></a>	local <span class="source_type"><a href="../r6menu/r6menumaplist.html" class="source">R6MenuMapList</a></span> pTempList; 
+<a name="752"></a>	local <span class="source_type">INT</span> <span class="source_type">i</span>;
+<a name="753"></a>
+<a name="754"></a>	for (<span class="source_type">i</span> =<span class="source_int">0</span>; <span class="source_type">i</span> &lt; m_ANbOfGameMode.Length; <span class="source_type">i</span>++)
+<a name="755"></a>	{
+<a name="756"></a>		pTempList = <span class="source_type"><a href="../r6menu/r6menumaplist.html" class="source">R6MenuMapList</a></span>(GetList( m_ANbOfGameMode[<span class="source_type">i</span>], eCGW_MapList));
+<a name="757"></a>
+<a name="758"></a>		if (pTempList != None)
+<a name="759"></a>		{
+<a name="760"></a>			pTempList.FillMapListItem();  <span class="source_comment">// get the available maps -- from r6missiondescription
+</span><a name="761"></a>		}
+<a name="762"></a>	}
+<a name="763"></a>}
+<a name="764"></a>
+<a name="765"></a><span class="source_comment">//*******************************************************************************************
+</span><a name="766"></a><span class="source_comment">// SERVER OPTIONS FUNCTIONS
+</span><a name="767"></a><span class="source_comment">//*******************************************************************************************
+</span><a name="768"></a><span class="source_comment">//=======================================================================
+</span><a name="769"></a><span class="source_comment">// RefreshServerOpt: Refresh the creategame options according the value find in class R6ServerInfo (init from server.ini)
+</span><a name="770"></a><span class="source_comment">//=======================================================================
+</span><a name="771"></a>function RefreshServerOpt( optional <span class="source_type">BOOL</span> _bNewServerProfile)
+<a name="772"></a>{
+<a name="773"></a>	local <span class="source_type">INT</span> <span class="source_type">iIndex</span>;
+<a name="774"></a>	local <span class="source_type"><a href="../engine/r6serverinfo.html" class="source">R6ServerInfo</a></span> pServerOpt;
+<a name="775"></a>	local <span class="source_type"><a href="../r6menu/r6menumaplist.html" class="source">R6MenuMapList</a></span> pCurrentMapList;
+<a name="776"></a>
+<a name="777"></a><span class="source_macro">#ifdefDEBUG
+</span><a name="778"></a>	local <span class="source_type">BOOL</span> bShowLog;
+<a name="779"></a>
+<a name="780"></a>	if (bShowLog)
+<a name="781"></a>	{
+<a name="782"></a>		log(<span class="source_string">"TabOptions RefreshServerOpt!!!"</span>);
+<a name="783"></a>	}
+<a name="784"></a><span class="source_macro">#endif
+</span><a name="785"></a>
+<a name="786"></a>	pServerOpt = <span class="source_type">class</span><span class="source_name">'Actor'</span>.static.GetServerOptions();
+<a name="787"></a>
+<a name="788"></a>	m_bNewServerProfile = _bNewServerProfile;
+<a name="789"></a>
+<a name="790"></a>	if(m_bInitComplete)
+<a name="791"></a>	{
+<a name="792"></a>		UpdateAllMapList();
+<a name="793"></a>	}
+<a name="794"></a>
+<a name="795"></a>	if (_bNewServerProfile)
+<a name="796"></a>	{
+<a name="797"></a>		<span class="source_comment">// if we load a server profile, get the new type and force the maplist to change (1 map list / per mode)
+</span><a name="798"></a>		<span class="source_comment">// before fill the map list
+</span><a name="799"></a>		pCurrentMapList = <span class="source_type"><a href="../r6menu/r6menumaplist.html" class="source">R6MenuMapList</a></span>( GetList( GetCurrentGameMode(), eCGW_MapList));
+<a name="800"></a>		m_pOptionsGameMode.SetValue( m_pOptionsGameMode.GetValue(), pCurrentMapList.GetNewServerProfileGameMode());
+<a name="801"></a><span class="source_macro">#ifdefDEBUG
+</span><a name="802"></a>		if (bShowLog)
+<a name="803"></a>		{
+<a name="804"></a>			log(<span class="source_string">"Refresh server opt: pCurrentMapList.GetNewServerProfileGameMode() :"</span>@pCurrentMapList.GetNewServerProfileGameMode());
+<a name="805"></a>			log(<span class="source_string">"m_pOptionsGameMode.GetValue(): "</span>@m_pOptionsGameMode.GetValue());
+<a name="806"></a>		}
+<a name="807"></a><span class="source_macro">#endif
+</span><a name="808"></a>		ManageComboControlNotify(m_pOptionsGameMode);
+<a name="809"></a>	}
+<a name="810"></a>
+<a name="811"></a>	pCurrentMapList = <span class="source_type"><a href="../r6menu/r6menumaplist.html" class="source">R6MenuMapList</a></span>( GetList( GetCurrentGameMode(), eCGW_MapList));
+<a name="812"></a>	<span class="source_type">iIndex</span> = m_pOptionsGameMode.FindItemIndex2( pCurrentMapList.FillFinalMapList()); <span class="source_comment">// refresh final map list
+</span><a name="813"></a>	m_pOptionsGameMode.SetSelectedIndex( <span class="source_type">iIndex</span>);
+<a name="814"></a>
+<a name="815"></a>    <span class="source_comment">// If the server was launched by the ubi.com client application,
+</span><a name="816"></a>    <span class="source_comment">// use the server name passed to the game by the ubi.com client.
+</span><a name="817"></a>
+<a name="818"></a>	if ( !<span class="source_type"><a href="../r6game/r6console.html" class="source">R6Console</a></span>(Root.<span class="source_type"><a href="../engine/console.html" class="source">console</a></span>).m_bStartedByGSClient )
+<a name="819"></a>    {
+<a name="820"></a> 		m_pServerNameEdit.SetValue( pServerOpt.ServerName);
+<a name="821"></a>		SetButtonAndEditBox( eCGW_Password, pServerOpt.GamePassword, pServerOpt.UsePassword);
+<a name="822"></a>    }
+<a name="823"></a>
+<a name="824"></a>	SetButtonAndEditBox( eCGW_AdminPassword, pServerOpt.AdminPassword, pServerOpt.UseAdminPassword);
+<a name="825"></a>
+<a name="826"></a>	m_szMsgOfTheDay = Localize(<span class="source_string">"MPCreateGame"</span>, <span class="source_string">"Default_MsgOfTheDay"</span>, <span class="source_string">"R6Menu"</span>);
+<a name="827"></a>	if (pServerOpt.MOTD != <span class="source_string">""</span>)
+<a name="828"></a>		m_szMsgOfTheDay = pServerOpt.MOTD;
+<a name="829"></a>
+<a name="830"></a>	Super.RefreshServerOpt(); <span class="source_comment">// update all the buttons
+</span><a name="831"></a>
+<a name="832"></a>	m_bNewServerProfile = false;
+<a name="833"></a>}
+<a name="834"></a>
+<a name="835"></a>function SetServerOptions()
+<a name="836"></a>{
+<a name="837"></a>	local <span class="source_type"><a href="../uwindow/uwindowwindow.html" class="source">UWindowWindow</a></span> pCGWWindow;
+<a name="838"></a>	local <span class="source_type"><a href="../r6window/r6windowlistgeneral.html" class="source">R6WindowListGeneral</a></span> pListGen;
+<a name="839"></a>    local <span class="source_type">INT</span> iCounter;
+<a name="840"></a>    local <span class="source_type"><a href="../engine/r6startgameinfo.html" class="source">R6StartGameInfo</a></span>  StartGameInfo;
+<a name="841"></a>    local <span class="source_type">string</span> szSvrName;             <span class="source_comment">// String to hold server name
+</span><a name="842"></a>    local <span class="source_type">string</span> <span class="source_type">szGameType</span>;
+<a name="843"></a>    local <span class="source_type"><a href="../engine/r6serverinfo.html" class="source">R6ServerInfo</a></span> _ServerSettings;
+<a name="844"></a>    local <span class="source_type"><a href="../engine/r6maplist.html" class="source">R6MapList</a></span>        myList;        <span class="source_comment">// Map list to cycle through
+</span><a name="845"></a>    local <span class="source_type">INT</span>    iButtonValue;			<span class="source_comment">// 
+</span><a name="846"></a>
+<a name="847"></a><span class="source_macro">#ifdefDEBUG
+</span><a name="848"></a>	local <span class="source_type">BOOL</span> bShowLog;
+<a name="849"></a>
+<a name="850"></a>	if (bShowLog)
+<a name="851"></a>	{
+<a name="852"></a>		log(<span class="source_string">"SetServerOptions!!!!!!!!!!!!!!!!"</span>);
+<a name="853"></a>	}
+<a name="854"></a><span class="source_macro">#endif    
+</span><a name="855"></a>
+<a name="856"></a>    _ServerSettings = <span class="source_type">class</span><span class="source_name">'Actor'</span>.static.GetServerOptions();
+<a name="857"></a>    if (_ServerSettings.m_ServerMapList==none)
+<a name="858"></a>    {
+<a name="859"></a>        _ServerSettings.m_ServerMapList = GetLevel().spawn(<span class="source_type">class</span><span class="source_name">'Engine.R6MapList'</span>);
+<a name="860"></a>    }
+<a name="861"></a>    
+<a name="862"></a>	<span class="source_comment">// ========================================================================================================================================
+</span><a name="863"></a>	<span class="source_comment">// Set the server name
+</span><a name="864"></a>    <span class="source_comment">// If the server was launched by the ubi.com client application,
+</span><a name="865"></a>    <span class="source_comment">// use the server name passed to the game by the ubi.com client.
+</span><a name="866"></a>
+<a name="867"></a>    if ( <span class="source_type"><a href="../r6game/r6console.html" class="source">R6Console</a></span>(Root.<span class="source_type"><a href="../engine/console.html" class="source">console</a></span>).m_bStartedByGSClient )
+<a name="868"></a>        szSvrName = <span class="source_type"><a href="../r6game/r6console.html" class="source">R6Console</a></span>(Root.<span class="source_type"><a href="../engine/console.html" class="source">console</a></span>).m_GameService.m_szGSServerName;
+<a name="869"></a>    else
+<a name="870"></a>        szSvrName = m_pServerNameEdit.GetValue();
+<a name="871"></a>
+<a name="872"></a>    _ServerSettings.ServerName = szSvrName;
+<a name="873"></a>    
+<a name="874"></a>	<span class="source_comment">// ========================================================================================================================================
+</span><a name="875"></a>	<span class="source_comment">// Set the password and the admin password
+</span><a name="876"></a>
+<a name="877"></a>	if ( <span class="source_type"><a href="../r6game/r6console.html" class="source">R6Console</a></span>(Root.<span class="source_type"><a href="../engine/console.html" class="source">console</a></span>).m_bStartedByGSClient )
+<a name="878"></a>	{
+<a name="879"></a>		_ServerSettings.UsePassword = ( <span class="source_type"><a href="../r6game/r6console.html" class="source">R6Console</a></span>(Root.<span class="source_type"><a href="../engine/console.html" class="source">console</a></span>).m_GameService.m_szGSPassword != <span class="source_string">""</span> );
+<a name="880"></a>		if ( _ServerSettings.UsePassword )
+<a name="881"></a>			_ServerSettings.GamePassword = <span class="source_type"><a href="../r6game/r6console.html" class="source">R6Console</a></span>(Root.<span class="source_type"><a href="../engine/console.html" class="source">console</a></span>).m_GameService.m_szGSPassword;
+<a name="882"></a>	}
+<a name="883"></a>	else
+<a name="884"></a>	{
+<a name="885"></a>		pCGWWindow = GetList(GetCurrentGameMode(), eCGW_Password);
+<a name="886"></a>
+<a name="887"></a>		_ServerSettings.UsePassword = <span class="source_type"><a href="../r6window/r6windowbuttonandeditbox.html" class="source">R6WindowButtonAndEditBox</a></span>(pCGWWindow).m_bSelected;
+<a name="888"></a>		_ServerSettings.GamePassword = <span class="source_type"><a href="../r6window/r6windowbuttonandeditbox.html" class="source">R6WindowButtonAndEditBox</a></span>(pCGWWindow).m_pEditBox.GetValue();
+<a name="889"></a>	}
+<a name="890"></a>
+<a name="891"></a>	<span class="source_comment">// Admin Password
+</span><a name="892"></a>	pCGWWindow = GetList(GetCurrentGameMode(), eCGW_AdminPassword);
+<a name="893"></a>	_ServerSettings.UseAdminPassword = <span class="source_type"><a href="../r6window/r6windowbuttonandeditbox.html" class="source">R6WindowButtonAndEditBox</a></span>(pCGWWindow).m_bSelected;
+<a name="894"></a>	_ServerSettings.AdminPassword	 = <span class="source_type"><a href="../r6window/r6windowbuttonandeditbox.html" class="source">R6WindowButtonAndEditBox</a></span>(pCGWWindow).m_pEditBox.GetValue();
+<a name="895"></a>
+<a name="896"></a>	<span class="source_comment">// ========================================================================================================================================
+</span><a name="897"></a>	<span class="source_comment">// Set all the camera options
+</span><a name="898"></a>
+<a name="899"></a>	pListGen = <span class="source_type"><a href="../r6window/r6windowlistgeneral.html" class="source">R6WindowListGeneral</a></span>(GetList(GetCurrentGameMode(), eCGW_Camera));
+<a name="900"></a>
+<a name="901"></a>	_ServerSettings.CamFirstPerson =  GetCameraSelection( <span class="source_type"><a href="../uwindow/uwindowbase.html#EButtonName" class="source">EButtonName</a></span>.EBN_CamFirstPerson, pListGen);
+<a name="902"></a>    
+<a name="903"></a>	_ServerSettings.CamThirdPerson = GetCameraSelection( <span class="source_type"><a href="../uwindow/uwindowbase.html#EButtonName" class="source">EButtonName</a></span>.EBN_CamThirdPerson, pListGen);
+<a name="904"></a>    
+<a name="905"></a>	_ServerSettings.CamFreeThirdP = GetCameraSelection( <span class="source_type"><a href="../uwindow/uwindowbase.html#EButtonName" class="source">EButtonName</a></span>.EBN_CamFreeThirdP, pListGen);
+<a name="906"></a>    
+<a name="907"></a>	_ServerSettings.CamGhost = GetCameraSelection( <span class="source_type"><a href="../uwindow/uwindowbase.html#EButtonName" class="source">EButtonName</a></span>.EBN_CamGhost, pListGen);
+<a name="908"></a>    
+<a name="909"></a>	if (m_pButtonsDef.FindButtonItem( <span class="source_type"><a href="../uwindow/uwindowbase.html#EButtonName" class="source">EButtonName</a></span>.EBN_CamFadeToBk, pListGen) == None)
+<a name="910"></a>		_ServerSettings.CamFadeToBlack = false;
+<a name="911"></a>	else
+<a name="912"></a>	_ServerSettings.CamFadeToBlack = GetCameraSelection( <span class="source_type"><a href="../uwindow/uwindowbase.html#EButtonName" class="source">EButtonName</a></span>.EBN_CamFadeToBk, pListGen);
+<a name="913"></a>    
+<a name="914"></a>	if (m_pButtonsDef.FindButtonItem( <span class="source_type"><a href="../uwindow/uwindowbase.html#EButtonName" class="source">EButtonName</a></span>.EBN_CamTeamOnly, pListGen) == None)
+<a name="915"></a>		_ServerSettings.CamTeamOnly = false;
+<a name="916"></a>	else
+<a name="917"></a>	_ServerSettings.CamTeamOnly = GetCameraSelection( <span class="source_type"><a href="../uwindow/uwindowbase.html#EButtonName" class="source">EButtonName</a></span>.EBN_CamTeamOnly, pListGen);
+<a name="918"></a>
+<a name="919"></a>	<span class="source_comment">// ========================================================================================================================================
+</span><a name="920"></a>	<span class="source_comment">// Set all the options
+</span><a name="921"></a>    
+<a name="922"></a>	pListGen = <span class="source_type"><a href="../r6window/r6windowlistgeneral.html" class="source">R6WindowListGeneral</a></span>(GetList(GetCurrentGameMode(), eCGW_Opt));
+<a name="923"></a>    
+<a name="924"></a>    <span class="source_comment">// Max Number of Players
+</span><a name="925"></a>    <span class="source_comment">// If the server was launched by the ubi.com client application,
+</span><a name="926"></a>    <span class="source_comment">// use the max number of players passed to the game by the ubi.com client.
+</span><a name="927"></a>
+<a name="928"></a>    if ( <span class="source_type"><a href="../r6game/r6console.html" class="source">R6Console</a></span>(Root.<span class="source_type"><a href="../engine/console.html" class="source">console</a></span>).m_bStartedByGSClient )
+<a name="929"></a>        iButtonValue = <span class="source_type"><a href="../r6game/r6console.html" class="source">R6Console</a></span>(Root.<span class="source_type"><a href="../engine/console.html" class="source">console</a></span>).m_GameService.m_iGSNumPlayers;
+<a name="930"></a>    else
+<a name="931"></a>		iButtonValue = m_pButtonsDef.GetButtonCounterValue( <span class="source_type"><a href="../uwindow/uwindowbase.html#EButtonName" class="source">EButtonName</a></span>.EBN_NB_Players, pListGen);
+<a name="932"></a>
+<a name="933"></a>    if ( iButtonValue &gt; <span class="source_int">0</span>)
+<a name="934"></a>    {
+<a name="935"></a>        _ServerSettings.MaxPlayers = iButtonValue;
+<a name="936"></a>    }
+<a name="937"></a>    else
+<a name="938"></a>    {
+<a name="939"></a>        _ServerSettings.MaxPlayers = <span class="source_int">1</span>;
+<a name="940"></a>    }
+<a name="941"></a>    
+<a name="942"></a>    <span class="source_comment">// Number of terrorists to spawn
+</span><a name="943"></a>	if (m_pButtonsDef.FindButtonItem( <span class="source_type"><a href="../uwindow/uwindowbase.html#EButtonName" class="source">EButtonName</a></span>.EBN_NB_of_Terro, pListGen) != None)
+<a name="944"></a>	_ServerSettings.NbTerro = m_pButtonsDef.GetButtonCounterValue( <span class="source_type"><a href="../uwindow/uwindowbase.html#EButtonName" class="source">EButtonName</a></span>.EBN_NB_of_Terro, pListGen);
+<a name="945"></a>    
+<a name="946"></a>    <span class="source_comment">// Message of the day
+</span><a name="947"></a>    _ServerSettings.MOTD = m_szMsgOfTheDay;
+<a name="948"></a>    
+<a name="949"></a>    <span class="source_comment">// Round time.  The time is entered in minutes and needs to be converted into
+</span><a name="950"></a>    <span class="source_comment">// seconds (that is why we multipy by 60).
+</span><a name="951"></a>	_ServerSettings.RoundTime = (m_pButtonsDef.GetButtonCounterValue( <span class="source_type"><a href="../uwindow/uwindowbase.html#EButtonName" class="source">EButtonName</a></span>.EBN_RoundTime, pListGen)) * <span class="source_int">60</span>;
+<a name="952"></a>    
+<a name="953"></a>    <span class="source_comment">// Map time.  The time is entered in minutes and needs to be converted into
+</span><a name="954"></a>    <span class="source_comment">// seconds (that is why we multipy by 60).
+</span><a name="955"></a>	if (GetCurrentGameMode() == m_ANbOfGameMode[<span class="source_int">0</span>])
+<a name="956"></a>    {
+<a name="957"></a>		_ServerSettings.RoundsPerMatch = m_pButtonsDef.GetButtonCounterValue( <span class="source_type"><a href="../uwindow/uwindowbase.html#EButtonName" class="source">EButtonName</a></span>.EBN_RoundPerMatch, pListGen);
+<a name="958"></a>    }
+<a name="959"></a>    else
+<a name="960"></a>    {
+<a name="961"></a>		_ServerSettings.RoundsPerMatch = m_pButtonsDef.GetButtonCounterValue( <span class="source_type"><a href="../uwindow/uwindowbase.html#EButtonName" class="source">EButtonName</a></span>.EBN_RoundPerMission, pListGen);
+<a name="962"></a>    }
+<a name="963"></a>
+<a name="964"></a>    <span class="source_comment">// Between round time.  The time is entered in seconds.
+</span><a name="965"></a>	_ServerSettings.BetweenRoundTime = m_pButtonsDef.GetButtonCounterValue( <span class="source_type"><a href="../uwindow/uwindowbase.html#EButtonName" class="source">EButtonName</a></span>.EBN_TimeBetRound, pListGen);
+<a name="966"></a>    
+<a name="967"></a>	<span class="source_comment">// Bomb time
+</span><a name="968"></a>	if (m_pButtonsDef.FindButtonItem( <span class="source_type"><a href="../uwindow/uwindowbase.html#EButtonName" class="source">EButtonName</a></span>.EBN_BombTimer, pListGen) != None)
+<a name="969"></a>	_ServerSettings.BombTime = m_pButtonsDef.GetButtonCounterValue( <span class="source_type"><a href="../uwindow/uwindowbase.html#EButtonName" class="source">EButtonName</a></span>.EBN_BombTimer, pListGen);
+<a name="970"></a>
+<a name="971"></a>	<span class="source_comment">// Internet server
+</span><a name="972"></a>	if ( <span class="source_type"><a href="../r6game/r6console.html" class="source">R6Console</a></span>(Root.<span class="source_type"><a href="../engine/console.html" class="source">console</a></span>).m_bStartedByGSClient || <span class="source_type"><a href="../r6game/r6console.html" class="source">R6Console</a></span>(Root.<span class="source_type"><a href="../engine/console.html" class="source">console</a></span>).m_bNonUbiMatchMakingHost)
+<a name="973"></a>		_ServerSettings.InternetServer = true;
+<a name="974"></a>	else
+<a name="975"></a>		_ServerSettings.InternetServer = <span class="source_type">BOOL</span>(m_pButtonsDef.GetButtonComboValue( <span class="source_type"><a href="../uwindow/uwindowbase.html#EButtonName" class="source">EButtonName</a></span>.EBN_InternetServer, pListGen));
+<a name="976"></a>
+<a name="977"></a>	<span class="source_comment">// Dedicated server
+</span><a name="978"></a>	_ServerSettings.DedicatedServer = m_pButtonsDef.GetButtonBoxValue( <span class="source_type"><a href="../uwindow/uwindowbase.html#EButtonName" class="source">EButtonName</a></span>.EBN_DedicatedServer, pListGen);
+<a name="979"></a>
+<a name="980"></a>	<span class="source_comment">// Friendly fire
+</span><a name="981"></a>	_ServerSettings.FriendlyFire = m_pButtonsDef.GetButtonBoxValue( <span class="source_type"><a href="../uwindow/uwindowbase.html#EButtonName" class="source">EButtonName</a></span>.EBN_FriendlyFire, pListGen);
+<a name="982"></a>
+<a name="983"></a>	<span class="source_comment">// T.K. Penalty
+</span><a name="984"></a>	if (m_pButtonsDef.FindButtonItem( <span class="source_type"><a href="../uwindow/uwindowbase.html#EButtonName" class="source">EButtonName</a></span>.EBN_TKPenalty, pListGen) != None)
+<a name="985"></a>	_ServerSettings.TeamKillerPenalty = m_pButtonsDef.GetButtonBoxValue( <span class="source_type"><a href="../uwindow/uwindowbase.html#EButtonName" class="source">EButtonName</a></span>.EBN_TKPenalty, pListGen);
+<a name="986"></a>
+<a name="987"></a>	<span class="source_comment">// AIBkp
+</span><a name="988"></a>	if (m_pButtonsDef.FindButtonItem( <span class="source_type"><a href="../uwindow/uwindowbase.html#EButtonName" class="source">EButtonName</a></span>.EBN_AIBkp, pListGen) != None)
+<a name="989"></a>	_ServerSettings.AIBkp = m_pButtonsDef.GetButtonBoxValue( <span class="source_type"><a href="../uwindow/uwindowbase.html#EButtonName" class="source">EButtonName</a></span>.EBN_AIBkp, pListGen);
+<a name="990"></a>
+<a name="991"></a>	<span class="source_comment">// RotateMap
+</span><a name="992"></a>	if (m_pButtonsDef.FindButtonItem( <span class="source_type"><a href="../uwindow/uwindowbase.html#EButtonName" class="source">EButtonName</a></span>.EBN_RotateMap, pListGen) != None)
+<a name="993"></a>	_ServerSettings.RotateMap = m_pButtonsDef.GetButtonBoxValue( <span class="source_type"><a href="../uwindow/uwindowbase.html#EButtonName" class="source">EButtonName</a></span>.EBN_RotateMap, pListGen);
+<a name="994"></a>
+<a name="995"></a>	<span class="source_comment">// Auto Balance
+</span><a name="996"></a>	if (m_pButtonsDef.FindButtonItem( <span class="source_type"><a href="../uwindow/uwindowbase.html#EButtonName" class="source">EButtonName</a></span>.EBN_AutoBalTeam, pListGen) != None)
+<a name="997"></a>	_ServerSettings.Autobalance = m_pButtonsDef.GetButtonBoxValue( <span class="source_type"><a href="../uwindow/uwindowbase.html#EButtonName" class="source">EButtonName</a></span>.EBN_AutoBalTeam, pListGen);
+<a name="998"></a>
+<a name="999"></a>	<span class="source_comment">// Allow Team Names
+</span><a name="1000"></a>	_ServerSettings.ShowNames = m_pButtonsDef.GetButtonBoxValue( <span class="source_type"><a href="../uwindow/uwindowbase.html#EButtonName" class="source">EButtonName</a></span>.EBN_AllowTeamNames, pListGen);
+<a name="1001"></a>
+<a name="1002"></a>	<span class="source_comment">// Force F Person Weapon
+</span><a name="1003"></a>	_ServerSettings.ForceFPersonWeapon = m_pButtonsDef.GetButtonBoxValue( <span class="source_type"><a href="../uwindow/uwindowbase.html#EButtonName" class="source">EButtonName</a></span>.EBN_ForceFPersonWp, pListGen);
+<a name="1004"></a>
+<a name="1005"></a>	<span class="source_comment">// Radar
+</span><a name="1006"></a>	_ServerSettings.AllowRadar = m_pButtonsDef.GetButtonBoxValue(<span class="source_type"><a href="../uwindow/uwindowbase.html#EButtonName" class="source">EButtonName</a></span>.EBN_AllowRadar, pListGen);
+<a name="1007"></a>
+<a name="1008"></a>	<span class="source_comment">// Difficulty Level
+</span><a name="1009"></a>	if (m_pButtonsDef.FindButtonItem( <span class="source_type"><a href="../uwindow/uwindowbase.html#EButtonName" class="source">EButtonName</a></span>.EBN_DiffLevel, pListGen) != None)
+<a name="1010"></a>	_ServerSettings.DiffLevel = <span class="source_type">INT</span>(m_pButtonsDef.GetButtonComboValue( <span class="source_type"><a href="../uwindow/uwindowbase.html#EButtonName" class="source">EButtonName</a></span>.EBN_DiffLevel, pListGen));
+<a name="1011"></a>
+<a name="1012"></a>
+<a name="1013"></a>	<span class="source_comment">// ========================================================================================================================================
+</span><a name="1014"></a>    <span class="source_comment">// Set the map List
+</span><a name="1015"></a>    FillSelectedMapList();   <span class="source_comment">// Create list of selected maps
+</span><a name="1016"></a>    
+<a name="1017"></a>    <span class="source_comment">// Check that user has at least selected 1 map
+</span><a name="1018"></a>    if ( m_SelectedMapList.length != <span class="source_int">0</span> )
+<a name="1019"></a>    {
+<a name="1020"></a>		<span class="source_type">szGameType</span> = m_SelectedModeList[<span class="source_int">0</span>];
+<a name="1021"></a>    
+<a name="1022"></a><span class="source_macro">#ifdefDEBUG
+</span><a name="1023"></a>		if ( <span class="source_type">szGameType</span> == <span class="source_string">"RGM_AllMode"</span> )
+<a name="1024"></a>		{
+<a name="1025"></a>			log( <span class="source_string">"ERROR: no game type found for "</span> $m_SelectedModeList[<span class="source_int">0</span>] );
+<a name="1026"></a>		}
+<a name="1027"></a><span class="source_macro">#endif
+</span><a name="1028"></a>    
+<a name="1029"></a>		<span class="source_comment">// Set the game mode for a non-dedicated server
+</span><a name="1030"></a>		StartGameInfo = <span class="source_type"><a href="../r6game/r6console.html" class="source">R6Console</a></span>(Root.<span class="source_type"><a href="../engine/console.html" class="source">console</a></span>).master.m_StartGameInfo;
+<a name="1031"></a>		StartGameInfo.m_GameMode = GetLevel().GetGameTypeClassName(<span class="source_type">szGameType</span>);<span class="source_comment">//GetModeFromMenuName( m_szMenuGameName );
+</span><a name="1032"></a>
+<a name="1033"></a>		myList = _ServerSettings.m_ServerMapList;    <span class="source_comment">// GetLevel().spawn(ML);
+</span><a name="1034"></a>    
+<a name="1035"></a>		<span class="source_comment">// Go though list of selecter maps and add to the command line (map0=, map1=, ...)
+</span><a name="1036"></a>		for (iCounter = <span class="source_int">0</span>; iCounter &lt; arraycount(myList.Maps); iCounter++)
+<a name="1037"></a>		{
+<a name="1038"></a>			myList.Maps[iCounter] = <span class="source_string">""</span>;
+<a name="1039"></a>			myList.GameType[iCounter] = <span class="source_string">""</span>;
+<a name="1040"></a>		}
+<a name="1041"></a>
+<a name="1042"></a>		for ( iCounter = <span class="source_int">0</span>; iCounter &lt; m_SelectedMapList.length; iCounter++ )
+<a name="1043"></a>		{
+<a name="1044"></a>			myList.Maps[iCounter] = m_SelectedMapList[iCounter];
+<a name="1045"></a>        
+<a name="1046"></a>			<span class="source_comment">// Game mode (mode=,mode1=,...)
+</span><a name="1047"></a>        
+<a name="1048"></a>			<span class="source_comment">// TODO: Read enum of game type from menus directly.
+</span><a name="1049"></a>			myList.GameType[iCounter] = GetLevel().GetGameTypeClassName(m_SelectedModeList[iCounter]);
+<a name="1050"></a>
+<a name="1051"></a><span class="source_macro">#ifdefDEBUG
+</span><a name="1052"></a>			if ( m_SelectedModeList[iCounter] == <span class="source_string">"RGM_AllMode"</span> )
+<a name="1053"></a>			{
+<a name="1054"></a>				log( <span class="source_string">"ERROR: no game type found for "</span> $m_SelectedModeList[<span class="source_int">0</span>] );
+<a name="1055"></a>			}
+<a name="1056"></a><span class="source_macro">#endif
+</span><a name="1057"></a>		}
+<a name="1058"></a>    }
+<a name="1059"></a>}
+<a name="1060"></a>
+<a name="1061"></a><span class="source_comment">//*******************************************************************************************
+</span><a name="1062"></a><span class="source_comment">// NOTIFY FUNCTIONS
+</span><a name="1063"></a><span class="source_comment">//*******************************************************************************************
+</span><a name="1064"></a><span class="source_comment">//=================================================================
+</span><a name="1065"></a><span class="source_comment">// notify the parent window by using the appropriate parent function
+</span><a name="1066"></a><span class="source_comment">//=================================================================
+</span><a name="1067"></a>function Notify(<span class="source_type"><a href="../uwindow/uwindowdialogcontrol.html" class="source">UWindowDialogControl</a></span> <span class="source_type">C</span>, <span class="source_type">byte</span> E)
+<a name="1068"></a>{
+<a name="1069"></a>    local <span class="source_type">BOOL</span> bProcessNotify;
+<a name="1070"></a>
+<a name="1071"></a><span class="source_macro">#ifdefDEBUG
+</span><a name="1072"></a>	if (m_bShowLog)
+<a name="1073"></a>	{
+<a name="1074"></a>		log(<span class="source_string">"Notify: C --&gt;"</span>@<span class="source_type">C</span>@<span class="source_string">"E--&gt;"</span>@GetNotifyMsg(E));
+<a name="1075"></a>	}
+<a name="1076"></a><span class="source_macro">#endif
+</span><a name="1077"></a>
+<a name="1078"></a>	if (<span class="source_type">C</span>.IsA(<span class="source_name">'R6WindowButton'</span>))
+<a name="1079"></a>    {
+<a name="1080"></a>        ManageR6ButtonNotify(<span class="source_type">C</span>, E);
+<a name="1081"></a>    }
+<a name="1082"></a>	else if(E == DE_Click)
+<a name="1083"></a>	{
+<a name="1084"></a>        <span class="source_comment">// Change Current Selected Button
+</span><a name="1085"></a>        if ( <span class="source_type">C</span>.IsA(<span class="source_name">'R6WindowButtonBox'</span>))
+<a name="1086"></a>        {
+<a name="1087"></a>            ManageR6ButtonBoxNotify(<span class="source_type">C</span>);
+<a name="1088"></a>            bProcessNotify = true;
+<a name="1089"></a>        }
+<a name="1090"></a>        else if (<span class="source_type">C</span>.IsA(<span class="source_name">'R6WindowButtonAndEditBox'</span>))
+<a name="1091"></a>        {
+<a name="1092"></a>            ManageR6ButtonAndEditBoxNotify(<span class="source_type">C</span>);
+<a name="1093"></a>            bProcessNotify = true;
+<a name="1094"></a>        }
+<a name="1095"></a>    }
+<a name="1096"></a>    else if (E == DE_Change)
+<a name="1097"></a>    {
+<a name="1098"></a>        if (<span class="source_type">C</span>.IsA(<span class="source_name">'UWindowComboControl'</span>))
+<a name="1099"></a>        {
+<a name="1100"></a>			if (!m_bNewServerProfile)
+<a name="1101"></a>			{
+<a name="1102"></a>				ManageComboControlNotify(<span class="source_type">C</span>); 
+<a name="1103"></a>				bProcessNotify = true;
+<a name="1104"></a>			}
+<a name="1105"></a>        }
+<a name="1106"></a>        else if (<span class="source_type">C</span>.IsA(<span class="source_name">'R6WindowButtonAndEditBox'</span>) ||  <span class="source_type">C</span>.IsA(<span class="source_name">'R6WindowEditControl'</span>)) <span class="source_comment">// when you setvalue for this 2 class, we receive a notify(DE_Change)
+</span><a name="1107"></a>        {
+<a name="1108"></a>            bProcessNotify = true;
+<a name="1109"></a>        }
+<a name="1110"></a>    }
+<a name="1111"></a>
+<a name="1112"></a>    if ((bProcessNotify) && (m_bInitComplete) && (!m_bNewServerProfile))
+<a name="1113"></a>    {
+<a name="1114"></a>        SetServerOptions();
+<a name="1115"></a>    }
+<a name="1116"></a>}
+<a name="1117"></a>
+<a name="1118"></a>
+<a name="1119"></a><span class="source_comment">//=================================================================
+</span><a name="1120"></a><span class="source_comment">// manage the R6WindowButton notify message
+</span><a name="1121"></a><span class="source_comment">//=================================================================
+</span><a name="1122"></a>function ManageR6ButtonNotify( <span class="source_type"><a href="../uwindow/uwindowdialogcontrol.html" class="source">UWindowDialogControl</a></span> <span class="source_type">C</span>, <span class="source_type">byte</span> E)
+<a name="1123"></a>{
+<a name="1124"></a>	Super.ManageR6ButtonNotify( <span class="source_type">C</span>, E);
+<a name="1125"></a>
+<a name="1126"></a>	if (E == DE_Click)
+<a name="1127"></a>	{
+<a name="1128"></a>		if ( <span class="source_type"><a href="../r6window/r6windowbutton.html" class="source">R6WindowButton</a></span>(<span class="source_type">C</span>).m_iButtonID == m_pButtonsDef.<span class="source_type"><a href="../uwindow/uwindowbase.html#EButtonName" class="source">EButtonName</a></span>.EBN_EditMsg)
+<a name="1129"></a>		{
+<a name="1130"></a>			<span class="source_comment">// Pop the edit welcome edit box pop-up
+</span><a name="1131"></a>			PopUpMOTDEditionBox();
+<a name="1132"></a>		}
+<a name="1133"></a>	}
+<a name="1134"></a>}
+<a name="1135"></a>
+<a name="1136"></a>
+<a name="1137"></a><span class="source_comment">/////////////////////////////////////////////////////////////////
+</span><a name="1138"></a><span class="source_comment">// manage the ComboControl notify message
+</span><a name="1139"></a><span class="source_comment">/////////////////////////////////////////////////////////////////
+</span><a name="1140"></a>function ManageComboControlNotify( <span class="source_type"><a href="../uwindow/uwindowdialogcontrol.html" class="source">UWindowDialogControl</a></span> <span class="source_type">C</span>)
+<a name="1141"></a>{
+<a name="1142"></a>	local <span class="source_type">string</span> szTemp;
+<a name="1143"></a>	local <span class="source_type"><a href="../r6menu/r6menumaplist.html" class="source">R6MenuMapList</a></span> pCurrentMapList;
+<a name="1144"></a><span class="source_macro">#ifdefDEBUG
+</span><a name="1145"></a>	local <span class="source_type">BOOL</span> bShowLog;
+<a name="1146"></a><span class="source_macro">#endif
+</span><a name="1147"></a>
+<a name="1148"></a>    if (<span class="source_type"><a href="../r6window/r6windowcombocontrol.html" class="source">R6WindowComboControl</a></span>(<span class="source_type">C</span>) == m_pOptionsGameMode)
+<a name="1149"></a>    {
+<a name="1150"></a><span class="source_comment">//		if (pCurrentMapList != None)
+</span><a name="1151"></a><span class="source_comment">//		{
+</span><a name="1152"></a>			szTemp = m_pOptionsGameMode.GetValue2();
+<a name="1153"></a>
+<a name="1154"></a><span class="source_macro">#ifdefDEBUG
+</span><a name="1155"></a>			if (bShowLog)
+<a name="1156"></a>			{
+<a name="1157"></a>				log(<span class="source_string">"========================="</span>);
+<a name="1158"></a>				log(<span class="source_string">"ManageComboControlNotify -- &gt; CurrentMapList: "</span>@pCurrentMapList);
+<a name="1159"></a>				log(<span class="source_string">"ManageComboControlNotify -- &gt; GameMode"</span>@szTemp);
+<a name="1160"></a>			}
+<a name="1161"></a><span class="source_macro">#endif			
+</span><a name="1162"></a>
+<a name="1163"></a>			switch( szTemp)
+<a name="1164"></a>			{
+<a name="1165"></a>				case <span class="source_type">string</span>(m_ANbOfGameMode[<span class="source_int">0</span>]):
+<a name="1166"></a>					pCurrentMapList = <span class="source_type"><a href="../r6menu/r6menumaplist.html" class="source">R6MenuMapList</a></span>(GetList( m_ANbOfGameMode[<span class="source_int">0</span>], eCGW_MapList));
+<a name="1167"></a><span class="source_comment">//					if (m_bInGame)
+</span><a name="1168"></a><span class="source_comment">//						CreateAdversarialButtons();
+</span><a name="1169"></a><span class="source_comment">//					else
+</span><a name="1170"></a>						SetCurrentGameMode( m_ANbOfGameMode[<span class="source_int">0</span>], true);
+<a name="1171"></a>					break;
+<a name="1172"></a>				case <span class="source_type">string</span>(m_ANbOfGameMode[<span class="source_int">1</span>]):
+<a name="1173"></a>					pCurrentMapList = <span class="source_type"><a href="../r6menu/r6menumaplist.html" class="source">R6MenuMapList</a></span>(GetList( m_ANbOfGameMode[<span class="source_int">1</span>], eCGW_MapList));
+<a name="1174"></a><span class="source_comment">//					if (m_bInGame)
+</span><a name="1175"></a><span class="source_comment">//						CreateCooperativeButtons();
+</span><a name="1176"></a><span class="source_comment">//					else
+</span><a name="1177"></a>						SetCurrentGameMode( m_ANbOfGameMode[<span class="source_int">1</span>], true);
+<a name="1178"></a>					break;
+<a name="1179"></a>				default:
+<a name="1180"></a><span class="source_macro">#ifdefDEBUG
+</span><a name="1181"></a>				if (bShowLog) log(<span class="source_string">"NOT DEFINED"</span>);
+<a name="1182"></a><span class="source_macro">#endif
+</span><a name="1183"></a>					break;
+<a name="1184"></a>			}
+<a name="1185"></a>
+<a name="1186"></a><span class="source_macro">#ifdefDEBUG
+</span><a name="1187"></a>			if (bShowLog)
+<a name="1188"></a>			{
+<a name="1189"></a>				log(<span class="source_string">"ManageComboControlNotify ---- &gt; NewCurrentMapList: "</span>@pCurrentMapList);
+<a name="1190"></a>			}
+<a name="1191"></a><span class="source_macro">#endif			
+</span><a name="1192"></a>			pCurrentMapList.SetGameModeToDisplay( m_pOptionsGameMode.GetValue2());
+<a name="1193"></a><span class="source_comment">//		}
+</span><a name="1194"></a>    }
+<a name="1195"></a>}
+<a name="1196"></a>
+<a name="1197"></a>defaultproperties
+<a name="1198"></a>{
+<a name="1199"></a>}
+<a name="1200"></a></pre></td></tr></table></div>
+<hr />
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../r6menu/r6menu-overview.html">Package</a></td>
+	<td class="header"><a href="../r6menu/r6menumpcreategametaboptions.html">Class</a></td>
+	<td class="header_hilight">Source</td>
+	<td class="header"><a class="header" href="../classtree.html#R6MenuMPCreateGameTabOptions">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../Source_r6menu/r6menumpcreategametabkitrest.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../Source_r6menu/r6menumpcreategamewidget.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+
+<div class="stats">Class file time: sam. 18/9/2004 14:39:52.000 - Creation time: mar. 26/5/2026 18:33:20.482 - Created with <a href="http://wiki.beyondunreal.com/wiki/UnCodeX" target="_blank">UnCodeX</a></div>
+
+</body>
+</html>

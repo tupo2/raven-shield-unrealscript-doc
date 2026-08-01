@@ -1,0 +1,623 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+	<title>UnCodeX - engine.GameReplicationInfo</title>
+	<meta name="Generator" content="UnCodeX 241" />
+	<link rel="stylesheet" href="../DocStyle2.css" type="text/css" title="Original Purple" />
+	<link rel="alternative stylesheet" href="../DocStyle2-blue.css" type="text/css" title="Blue" />
+	<link rel="alternative stylesheet" href="../DocStyle2-red.css" type="text/css" title="Red" />
+	<!--[if IE]>
+	<link rel="stylesheet" href="../DocStyle2-msie.css" type="text/css" />
+	<![endif]-->
+	<script src="../styleswitcher.js" type="text/javascript"></script>
+</head>
+<body>
+
+<div class="header">
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../engine/engine-overview.html">Package</a></td>
+	<td class="header_hilight">Class</td>
+	<td class="header"><a href="../Source_engine/gamereplicationinfo.html">Source</a></td>
+	<td class="header"><a class="header" href="../classtree.html#GameReplicationInfo">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../engine/gamemessage.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../engine/gamerules.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html#engine/gamereplicationinfo.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+</div>
+<div class="spacer"></div>
+
+<h1><a href="../engine/engine-overview.html">engine</a>.GameReplicationInfo</h1>
+
+<dl>
+<dt>Extends</dt><dd><a href="../engine/replicationinfo.html">ReplicationInfo</a></dd>
+<dt>Modifiers</dt><dd>native nativereplication </dd>
+</dl>
+
+<p></p>
+
+<pre class="tree"><a href="../core/core-overview.html">core</a>.<a href="../core/object.html">Object</a>
+|   
++-- <a href="../engine/engine-overview.html">engine</a>.<a href="../engine/actor.html">Actor</a>
+   |   
+   +-- <a href="../engine/engine-overview.html">engine</a>.<a href="../engine/info.html">Info</a>
+      |   
+      +-- <a href="../engine/engine-overview.html">engine</a>.<a href="../engine/replicationinfo.html">ReplicationInfo</a>
+         |   
+         +-- <a href="../engine/engine-overview.html">engine</a>.<a href="../engine/gamereplicationinfo.html">GameReplicationInfo</a>
+</pre>
+
+<h4>Direct Known Subclasses:</h4>
+<blockquote>
+	<a href="../r6engine/r6gamereplicationinfo.html">R6GameReplicationInfo</a>
+</blockquote>
+
+<hr />
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Constants Summary</th>
+</tr>
+<tr><td width="40%"><a href="#_RSS_CountDownStage" name="RSS_CountDownStage" title="go to the details">RSS_CountDownStage</a></td><td width="10%">=</td><td width="50%">1</td></tr>
+<tr><td width="40%"><a href="#_RSS_EndOfMatch" name="RSS_EndOfMatch" title="go to the details">RSS_EndOfMatch</a></td><td width="10%">=</td><td width="50%">4</td></tr>
+<tr><td width="40%"><a href="#_RSS_InGameState" name="RSS_InGameState" title="go to the details">RSS_InGameState</a></td><td width="10%">=</td><td width="50%">3</td></tr>
+<tr><td width="40%"><a href="#_RSS_InPreGameState" name="RSS_InPreGameState" title="go to the details">RSS_InPreGameState</a></td><td width="10%">=</td><td width="50%">2</td></tr>
+<tr><td width="40%"><a href="#_RSS_PlayersConnectingStage" name="RSS_PlayersConnectingStage" title="go to the details">RSS_PlayersConnectingStage</a></td><td width="10%">=</td><td width="50%">0</td></tr>
+
+</table>
+
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th colspan="2" class="title">Variables Summary</th>
+</tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bTeamGame" name="bTeamGame" title="go to the details">bTeamGame</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_GameClass" name="GameClass" title="go to the details">GameClass</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_GameName" name="GameName" title="go to the details">GameName</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_GoalScore" name="GoalScore" title="go to the details">GoalScore</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">BYTE</td><td width="66%"><a href="#_m_aRepMObjCompleted[16]" name="m_aRepMObjCompleted[16]" title="go to the details">m_aRepMObjCompleted[16]</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_m_aRepMObjDescriptionLocFile[16]" name="m_aRepMObjDescriptionLocFile[16]" title="go to the details">m_aRepMObjDescriptionLocFile[16]</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_m_aRepMObjDescription[16]" name="m_aRepMObjDescription[16]" title="go to the details">m_aRepMObjDescription[16]</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">BYTE</td><td width="66%"><a href="#_m_aRepMObjFailed[16]" name="m_aRepMObjFailed[16]" title="go to the details">m_aRepMObjFailed[16]</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">BOOL</td><td width="66%"><a href="#_m_bGameOverRep" name="m_bGameOverRep" title="go to the details">m_bGameOverRep</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">BOOL</td><td width="66%"><a href="#_m_bInPostBetweenRoundTime" name="m_bInPostBetweenRoundTime" title="go to the details">m_bInPostBetweenRoundTime</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">BOOL</td><td width="66%"><a href="#_m_bPunkBuster" name="m_bPunkBuster" title="go to the details">m_bPunkBuster</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">byte</td><td width="66%"><a href="#_m_bReceivedGameType" name="m_bReceivedGameType" title="go to the details">m_bReceivedGameType</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">BOOL</td><td width="66%"><a href="#_m_bRepAllowRadarOption" name="m_bRepAllowRadarOption" title="go to the details">m_bRepAllowRadarOption</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">BYTE</td><td width="66%"><a href="#_m_bRepLastRoundSuccess" name="m_bRepLastRoundSuccess" title="go to the details">m_bRepLastRoundSuccess</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">BYTE</td><td width="66%"><a href="#_m_bRepMObjInProgress" name="m_bRepMObjInProgress" title="go to the details">m_bRepMObjInProgress</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">BYTE</td><td width="66%"><a href="#_m_bRepMObjSuccess" name="m_bRepMObjSuccess" title="go to the details">m_bRepMObjSuccess</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">BOOL</td><td width="66%"><a href="#_m_bRestartableByJoin" name="m_bRestartableByJoin" title="go to the details">m_bRestartableByJoin</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">BOOL</td><td width="66%"><a href="#_m_bServerAllowRadar" name="m_bServerAllowRadar" title="go to the details">m_bServerAllowRadar</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_m_bShowPlayerStates" name="m_bShowPlayerStates" title="go to the details">m_bShowPlayerStates</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">byte</td><td width="66%"><a href="#_m_eCurrectServerState" name="m_eCurrectServerState" title="go to the details">m_eCurrectServerState</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">byte</td><td width="66%"><a href="#_m_eOldServerState" name="m_eOldServerState" title="go to the details">m_eOldServerState</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">INT</td><td width="66%"><a href="#_m_iGameSvrGroupID" name="m_iGameSvrGroupID" title="go to the details">m_iGameSvrGroupID</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">INT</td><td width="66%"><a href="#_m_iGameSvrLobbyID" name="m_iGameSvrLobbyID" title="go to the details">m_iGameSvrLobbyID</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_m_iMapIndex" name="m_iMapIndex" title="go to the details">m_iMapIndex</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">BYTE</td><td width="66%"><a href="#_m_iNbWeaponsTerro" name="m_iNbWeaponsTerro" title="go to the details">m_iNbWeaponsTerro</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_m_szGameTypeFlagRep" name="m_szGameTypeFlagRep" title="go to the details">m_szGameTypeFlagRep</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../engine/teaminfo.html">TeamInfo</a></td><td width="66%"><a href="#_Teams[2]" name="Teams[2]" title="go to the details">Teams[2]</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_TimeLimit" name="TimeLimit" title="go to the details">TimeLimit</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../engine/actor.html">Actor</a></td><td width="66%"><a href="#_Winner" name="Winner" title="go to the details">Winner</a></td></tr>
+<tr><th colspan="2" class="small">GameReplicationInfo</th></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_AdminEmail" name="AdminEmail" title="go to the details">AdminEmail</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_AdminName" name="AdminName" title="go to the details">AdminName</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_MOTDLine1" name="MOTDLine1" title="go to the details">MOTDLine1</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_MOTDLine2" name="MOTDLine2" title="go to the details">MOTDLine2</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_MOTDLine3" name="MOTDLine3" title="go to the details">MOTDLine3</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_MOTDLine4" name="MOTDLine4" title="go to the details">MOTDLine4</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_ServerName" name="ServerName" title="go to the details">ServerName</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_ServerRegion" name="ServerRegion" title="go to the details">ServerRegion</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_ShortName" name="ShortName" title="go to the details">ShortName</a></td></tr>
+
+</table>
+
+
+
+<br />
+
+
+
+
+
+
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Functions Summary</th>
+</tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_ControllerStarted-" name="ControllerStarted" title="go to the details">ControllerStarted</a> (<a href="../engine/r6gamemenucom.html">R6GameMenuCom</a> NewMenuCom)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>int&nbsp;</td><td><a href="#_GetRepMObjInfoArraySize-" name="GetRepMObjInfoArraySize" title="go to the details">GetRepMObjInfoArraySize</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>string&nbsp;</td><td><a href="#_GetRepMObjString-" name="GetRepMObjString" title="go to the details">GetRepMObjString</a> (int index ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>string&nbsp;</td><td><a href="#_GetRepMObjStringLocFile-" name="GetRepMObjStringLocFile" title="go to the details">GetRepMObjStringLocFile</a> (int index ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>bool&nbsp;</td><td><a href="#_IsInAGameState-" name="IsInAGameState" title="go to the details">IsInAGameState</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>bool&nbsp;</td><td><a href="#_IsRepMObjCompleted-" name="IsRepMObjCompleted" title="go to the details">IsRepMObjCompleted</a> (int index ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>bool&nbsp;</td><td><a href="#_IsRepMObjFailed-" name="IsRepMObjFailed" title="go to the details">IsRepMObjFailed</a> (int index ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_event.gif" alt="event" title="event" /></td><td>&nbsp;</td><td><a href="#_NewServerState-" name="NewServerState" title="go to the details">NewServerState</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_PostBeginPlay-" name="PostBeginPlay" title="go to the details">PostBeginPlay</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_RefreshMPlayerInfo-" name="RefreshMPlayerInfo" title="go to the details">RefreshMPlayerInfo</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_Reset-" name="Reset" title="go to the details">Reset</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_ResetOriginalData-" name="ResetOriginalData" title="go to the details">ResetOriginalData</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_ResetRepMObjInfo-" name="ResetRepMObjInfo" title="go to the details">ResetRepMObjInfo</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_event.gif" alt="event" title="event" /></td><td>&nbsp;</td><td><a href="#_SaveRemoteServerSettings-" name="SaveRemoteServerSettings" title="go to the details">SaveRemoteServerSettings</a> (string NewServerFile)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_SetRepLastRoundSuccess-" name="SetRepLastRoundSuccess" title="go to the details">SetRepLastRoundSuccess</a> (BYTE bLastRoundSuccess ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_SetRepMObjInfo-" name="SetRepMObjInfo" title="go to the details">SetRepMObjInfo</a> (int index, bool bFailed, bool bCompleted ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_SetRepMObjInProgress-" name="SetRepMObjInProgress" title="go to the details">SetRepMObjInProgress</a> (bool bInProgress ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_SetRepMObjString-" name="SetRepMObjString" title="go to the details">SetRepMObjString</a> (int index, string szDesc, string szLocFile ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_SetRepMObjSuccess-" name="SetRepMObjSuccess" title="go to the details">SetRepMObjSuccess</a> (bool bSuccess ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_SetServerState-" name="SetServerState" title="go to the details">SetServerState</a> (byte newState))<br /><span class="function_state"></span></td></tr>
+
+</table>
+
+
+
+<br />
+
+
+
+<hr />
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Constants Detail</th>
+</tr>
+</table>
+
+<h4><a name="_RSS_CountDownStage" class="hidden"></a>RSS_CountDownStage <a href="../Source_engine/gamereplicationinfo.html#48" class="small">Source code</a></h4>
+<div class="declaration">const RSS_CountDownStage = <span class="source_int">1</span>;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_RSS_EndOfMatch" class="hidden"></a>RSS_EndOfMatch <a href="../Source_engine/gamereplicationinfo.html#51" class="small">Source code</a></h4>
+<div class="declaration">const RSS_EndOfMatch = <span class="source_int">4</span>;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_RSS_InGameState" class="hidden"></a>RSS_InGameState <a href="../Source_engine/gamereplicationinfo.html#50" class="small">Source code</a></h4>
+<div class="declaration">const RSS_InGameState = <span class="source_int">3</span>;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_RSS_InPreGameState" class="hidden"></a>RSS_InPreGameState <a href="../Source_engine/gamereplicationinfo.html#49" class="small">Source code</a></h4>
+<div class="declaration">const RSS_InPreGameState = <span class="source_int">2</span>;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_RSS_PlayersConnectingStage" class="hidden"></a>RSS_PlayersConnectingStage <a href="../Source_engine/gamereplicationinfo.html#47" class="small">Source code</a></h4>
+<div class="declaration">const RSS_PlayersConnectingStage = <span class="source_int">0</span>;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th class="title">Variables Detail</th>
+</tr>
+</table>
+
+<h4><a name="_bTeamGame" class="hidden"></a>bTeamGame <a href="../Source_engine/gamereplicationinfo.html#9" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">bool</span> bTeamGame;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GameClass" class="hidden"></a>GameClass <a href="../Source_engine/gamereplicationinfo.html#8" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">string</span> GameClass;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GameName" class="hidden"></a>GameName <a href="../Source_engine/gamereplicationinfo.html#7" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">string</span> GameName;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GoalScore" class="hidden"></a>GoalScore <a href="../Source_engine/gamereplicationinfo.html#16" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">int</span> GoalScore;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_aRepMObjCompleted[16]" class="hidden"></a>m_aRepMObjCompleted[16] <a href="../Source_engine/gamereplicationinfo.html#67" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">BYTE</span> m_aRepMObjCompleted[<span class="source_int">16</span>];</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_aRepMObjDescriptionLocFile[16]" class="hidden"></a>m_aRepMObjDescriptionLocFile[16] <a href="../Source_engine/gamereplicationinfo.html#66" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">string</span> m_aRepMObjDescriptionLocFile[<span class="source_int">16</span>];</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_aRepMObjDescription[16]" class="hidden"></a>m_aRepMObjDescription[16] <a href="../Source_engine/gamereplicationinfo.html#65" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">string</span> m_aRepMObjDescription[<span class="source_int">16</span>];</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_aRepMObjFailed[16]" class="hidden"></a>m_aRepMObjFailed[16] <a href="../Source_engine/gamereplicationinfo.html#68" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">BYTE</span> m_aRepMObjFailed[<span class="source_int">16</span>];</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_bGameOverRep" class="hidden"></a>m_bGameOverRep <a href="../Source_engine/gamereplicationinfo.html#62" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">BOOL</span> m_bGameOverRep;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_bInPostBetweenRoundTime" class="hidden"></a>m_bInPostBetweenRoundTime <a href="../Source_engine/gamereplicationinfo.html#57" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">BOOL</span> m_bInPostBetweenRoundTime;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_bPunkBuster" class="hidden"></a>m_bPunkBuster <a href="../Source_engine/gamereplicationinfo.html#77" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">BOOL</span> m_bPunkBuster;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_bReceivedGameType" class="hidden"></a>m_bReceivedGameType <a href="../Source_engine/gamereplicationinfo.html#35" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">byte</span> m_bReceivedGameType;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_bRepAllowRadarOption" class="hidden"></a>m_bRepAllowRadarOption <a href="../Source_engine/gamereplicationinfo.html#61" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">BOOL</span> m_bRepAllowRadarOption;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_bRepLastRoundSuccess" class="hidden"></a>m_bRepLastRoundSuccess <a href="../Source_engine/gamereplicationinfo.html#71" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">BYTE</span> m_bRepLastRoundSuccess;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_bRepMObjInProgress" class="hidden"></a>m_bRepMObjInProgress <a href="../Source_engine/gamereplicationinfo.html#69" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">BYTE</span> m_bRepMObjInProgress;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_bRepMObjSuccess" class="hidden"></a>m_bRepMObjSuccess <a href="../Source_engine/gamereplicationinfo.html#70" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">BYTE</span> m_bRepMObjSuccess;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_bRestartableByJoin" class="hidden"></a>m_bRestartableByJoin <a href="../Source_engine/gamereplicationinfo.html#63" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">BOOL</span> m_bRestartableByJoin;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_bServerAllowRadar" class="hidden"></a>m_bServerAllowRadar <a href="../Source_engine/gamereplicationinfo.html#60" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">BOOL</span> m_bServerAllowRadar;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_bShowPlayerStates" class="hidden"></a>m_bShowPlayerStates <a href="../Source_engine/gamereplicationinfo.html#37" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">bool</span> m_bShowPlayerStates;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_eCurrectServerState" class="hidden"></a>m_eCurrectServerState <a href="../Source_engine/gamereplicationinfo.html#54" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">byte</span> m_eCurrectServerState;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_eOldServerState" class="hidden"></a>m_eOldServerState <a href="../Source_engine/gamereplicationinfo.html#53" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">byte</span> m_eOldServerState;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_iGameSvrGroupID" class="hidden"></a>m_iGameSvrGroupID <a href="../Source_engine/gamereplicationinfo.html#74" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">INT</span> m_iGameSvrGroupID;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_iGameSvrLobbyID" class="hidden"></a>m_iGameSvrLobbyID <a href="../Source_engine/gamereplicationinfo.html#75" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">INT</span> m_iGameSvrLobbyID;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_iMapIndex" class="hidden"></a>m_iMapIndex <a href="../Source_engine/gamereplicationinfo.html#36" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">int</span> m_iMapIndex;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_iNbWeaponsTerro" class="hidden"></a>m_iNbWeaponsTerro <a href="../Source_engine/gamereplicationinfo.html#59" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">BYTE</span> m_iNbWeaponsTerro;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_szGameTypeFlagRep" class="hidden"></a>m_szGameTypeFlagRep <a href="../Source_engine/gamereplicationinfo.html#34" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">string</span> m_szGameTypeFlagRep;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_Teams[2]" class="hidden"></a>Teams[2] <a href="../Source_engine/gamereplicationinfo.html#19" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../engine/teaminfo.html" class="source">TeamInfo</a></span> Teams[<span class="source_int">2</span>];</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_TimeLimit" class="hidden"></a>TimeLimit <a href="../Source_engine/gamereplicationinfo.html#17" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">int</span> TimeLimit;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_Winner" class="hidden"></a>Winner <a href="../Source_engine/gamereplicationinfo.html#32" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../engine/actor.html" class="source">Actor</a></span> Winner;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h3 class="vartag">GameReplicationInfo</h3>
+<h4><a name="_AdminEmail" class="hidden"></a>AdminEmail <a href="../Source_engine/gamereplicationinfo.html#24" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../engine/gamereplicationinfo.html" class="source">GameReplicationInfo</a></span>) globalconfig <span class="source_type">string</span> AdminEmail;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_AdminName" class="hidden"></a>AdminName <a href="../Source_engine/gamereplicationinfo.html#23" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../engine/gamereplicationinfo.html" class="source">GameReplicationInfo</a></span>) globalconfig <span class="source_type">string</span> AdminName;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_MOTDLine1" class="hidden"></a>MOTDLine1 <a href="../Source_engine/gamereplicationinfo.html#27" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../engine/gamereplicationinfo.html" class="source">GameReplicationInfo</a></span>) globalconfig <span class="source_type">string</span> MOTDLine1;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_MOTDLine2" class="hidden"></a>MOTDLine2 <a href="../Source_engine/gamereplicationinfo.html#28" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../engine/gamereplicationinfo.html" class="source">GameReplicationInfo</a></span>) globalconfig <span class="source_type">string</span> MOTDLine2;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_MOTDLine3" class="hidden"></a>MOTDLine3 <a href="../Source_engine/gamereplicationinfo.html#29" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../engine/gamereplicationinfo.html" class="source">GameReplicationInfo</a></span>) globalconfig <span class="source_type">string</span> MOTDLine3;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_MOTDLine4" class="hidden"></a>MOTDLine4 <a href="../Source_engine/gamereplicationinfo.html#30" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../engine/gamereplicationinfo.html" class="source">GameReplicationInfo</a></span>) globalconfig <span class="source_type">string</span> MOTDLine4;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ServerName" class="hidden"></a>ServerName <a href="../Source_engine/gamereplicationinfo.html#21" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../engine/gamereplicationinfo.html" class="source">GameReplicationInfo</a></span>) globalconfig <span class="source_type">string</span> ServerName;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ServerRegion" class="hidden"></a>ServerRegion <a href="../Source_engine/gamereplicationinfo.html#25" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../engine/gamereplicationinfo.html" class="source">GameReplicationInfo</a></span>) globalconfig <span class="source_type">int</span> ServerRegion;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ShortName" class="hidden"></a>ShortName <a href="../Source_engine/gamereplicationinfo.html#22" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../engine/gamereplicationinfo.html" class="source">GameReplicationInfo</a></span>) globalconfig <span class="source_type">string</span> ShortName;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+
+
+<br />
+
+
+
+
+
+
+
+<table class="title">
+<tr>
+	<th class="title">Functions Detail</th>
+</tr>
+</table>
+
+<h4><a name="_ControllerStarted-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> ControllerStarted <span class="function_state"></span> <a href="../Source_engine/gamereplicationinfo.html#113" class="small">Source code</a></h4>
+<div class="declaration">simulated function  ControllerStarted ( <span class="source_type"><a href="../engine/r6gamemenucom.html" class="source">R6GameMenuCom</a></span> NewMenuCom )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GetRepMObjInfoArraySize-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> GetRepMObjInfoArraySize <span class="function_state"></span> <a href="../Source_engine/gamereplicationinfo.html#247" class="small">Source code</a></h4>
+<div class="declaration">simulated function <span class="source_type">int</span> GetRepMObjInfoArraySize ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GetRepMObjString-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> GetRepMObjString <span class="function_state"></span> <a href="../Source_engine/gamereplicationinfo.html#217" class="small">Source code</a></h4>
+<div class="declaration">simulated function <span class="source_type">string</span> GetRepMObjString ( <span class="source_type">int</span> <span class="source_type">index</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GetRepMObjStringLocFile-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> GetRepMObjStringLocFile <span class="function_state"></span> <a href="../Source_engine/gamereplicationinfo.html#212" class="small">Source code</a></h4>
+<div class="declaration">simulated function <span class="source_type">string</span> GetRepMObjStringLocFile ( <span class="source_type">int</span> <span class="source_type">index</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_IsInAGameState-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> IsInAGameState <span class="function_state"></span> <a href="../Source_engine/gamereplicationinfo.html#275" class="small">Source code</a></h4>
+<div class="declaration">simulated function <span class="source_type">bool</span> IsInAGameState ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_IsRepMObjCompleted-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> IsRepMObjCompleted <span class="function_state"></span> <a href="../Source_engine/gamereplicationinfo.html#222" class="small">Source code</a></h4>
+<div class="declaration">simulated function <span class="source_type">bool</span> IsRepMObjCompleted ( <span class="source_type">int</span> <span class="source_type">index</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_IsRepMObjFailed-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> IsRepMObjFailed <span class="function_state"></span> <a href="../Source_engine/gamereplicationinfo.html#227" class="small">Source code</a></h4>
+<div class="declaration">simulated function <span class="source_type">bool</span> IsRepMObjFailed ( <span class="source_type">int</span> <span class="source_type">index</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_NewServerState-" class="hidden"></a><img src="../img_event.gif" alt="" title="event" /> NewServerState <span class="function_state"></span> <a href="../Source_engine/gamereplicationinfo.html#114" class="small">Source code</a></h4>
+<div class="declaration">simulated event  NewServerState (  )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_PostBeginPlay-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> PostBeginPlay <span class="function_state"></span> <a href="../Source_engine/gamereplicationinfo.html#130" class="small">Source code</a></h4>
+<div class="declaration">simulated function  PostBeginPlay ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_RefreshMPlayerInfo-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> RefreshMPlayerInfo <span class="function_state"></span> <a href="../Source_engine/gamereplicationinfo.html#190" class="small">Source code</a></h4>
+<div class="declaration"> function  RefreshMPlayerInfo (  )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_Reset-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> Reset <span class="function_state"></span> <a href="../Source_engine/gamereplicationinfo.html#153" class="small">Source code</a></h4>
+<div class="declaration"> function  Reset ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ResetOriginalData-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> ResetOriginalData <span class="function_state"></span> <a href="../Source_engine/gamereplicationinfo.html#160" class="small">Source code</a></h4>
+<div class="declaration">simulated function  ResetOriginalData ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ResetRepMObjInfo-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> ResetRepMObjInfo <span class="function_state"></span> <a href="../Source_engine/gamereplicationinfo.html#232" class="small">Source code</a></h4>
+<div class="declaration">simulated function  ResetRepMObjInfo ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_SaveRemoteServerSettings-" class="hidden"></a><img src="../img_event.gif" alt="" title="event" /> SaveRemoteServerSettings <span class="function_state"></span> <a href="../Source_engine/gamereplicationinfo.html#115" class="small">Source code</a></h4>
+<div class="declaration">simulated event  SaveRemoteServerSettings ( <span class="source_type">string</span> NewServerFile )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_SetRepLastRoundSuccess-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> SetRepLastRoundSuccess <span class="function_state"></span> <a href="../Source_engine/gamereplicationinfo.html#269" class="small">Source code</a></h4>
+<div class="declaration">simulated function  SetRepLastRoundSuccess ( <span class="source_type">BYTE</span> <span class="source_type">bLastRoundSuccess</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_SetRepMObjInfo-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> SetRepMObjInfo <span class="function_state"></span> <a href="../Source_engine/gamereplicationinfo.html#192" class="small">Source code</a></h4>
+<div class="declaration"> function  SetRepMObjInfo ( <span class="source_type">int</span> <span class="source_type">index</span>, <span class="source_type">bool</span> bFailed, <span class="source_type">bool</span> <span class="source_type">bCompleted</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_SetRepMObjInProgress-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> SetRepMObjInProgress <span class="function_state"></span> <a href="../Source_engine/gamereplicationinfo.html#252" class="small">Source code</a></h4>
+<div class="declaration">simulated function  SetRepMObjInProgress ( <span class="source_type">bool</span> <span class="source_type">bInProgress</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_SetRepMObjString-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> SetRepMObjString <span class="function_state"></span> <a href="../Source_engine/gamereplicationinfo.html#205" class="small">Source code</a></h4>
+<div class="declaration"> function  SetRepMObjString ( <span class="source_type">int</span> <span class="source_type">index</span>, <span class="source_type">string</span> szDesc, <span class="source_type">string</span> <span class="source_type">szLocFile</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_SetRepMObjSuccess-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> SetRepMObjSuccess <span class="function_state"></span> <a href="../Source_engine/gamereplicationinfo.html#260" class="small">Source code</a></h4>
+<div class="declaration">simulated function  SetRepMObjSuccess ( <span class="source_type">bool</span> <span class="source_type">bSuccess</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_SetServerState-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> SetServerState <span class="function_state"></span> <a href="../Source_engine/gamereplicationinfo.html#118" class="small">Source code</a></h4>
+<div class="declaration"> function  SetServerState ( <span class="source_type">byte</span> newState) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+
+
+<br />
+
+
+<table class="title">
+<tr>
+	<th class="title">Defaultproperties</th>
+</tr>
+</table>
+<br />
+<div class="source"><table class="source"><tr><td class="source"><pre class="source">defaultproperties
+{
+     m_bRestartableByJoin=True
+     ServerName=<span class="source_string">"Another Server"</span>
+     ShortName=<span class="source_string">"Server"</span>
+     m_szGameTypeFlagRep=<span class="source_string">"RGM_AllMode"</span>
+     RemoteRole=ROLE_SimulatedProxy
+}
+</pre></td></tr></table></div>
+
+
+
+<hr />
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../engine/engine-overview.html">Package</a></td>
+	<td class="header_hilight">Class</td>
+	<td class="header"><a href="../Source_engine/gamereplicationinfo.html">Source</a></td>
+	<td class="header"><a class="header" href="../classtree.html#GameReplicationInfo">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../engine/gamemessage.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../engine/gamerules.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+
+<div class="stats">Creation time: mar. 26/5/2026 18:33:07.476 - Created with <a href="http://wiki.beyondunreal.com/wiki/UnCodeX" target="_blank">UnCodeX</a></div>
+
+</body>
+</html>

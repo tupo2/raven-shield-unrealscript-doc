@@ -1,0 +1,829 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+	<title>UnCodeX - R6Engine.R6IORotatingDoor</title>
+	<meta name="Generator" content="UnCodeX 241" />
+	<link rel="stylesheet" href="../DocStyle2.css" type="text/css" title="Original Purple" />
+	<link rel="alternative stylesheet" href="../DocStyle2-blue.css" type="text/css" title="Blue" />
+	<link rel="alternative stylesheet" href="../DocStyle2-red.css" type="text/css" title="Red" />
+	<!--[if IE]>
+	<link rel="stylesheet" href="../DocStyle2-msie.css" type="text/css" />
+	<![endif]-->
+	<script src="../styleswitcher.js" type="text/javascript"></script>
+</head>
+<body>
+
+<div class="header">
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../r6engine/r6engine-overview.html">Package</a></td>
+	<td class="header_hilight">Class</td>
+	<td class="header"><a href="../Source_r6engine/r6iorotatingdoor.html">Source</a></td>
+	<td class="header"><a class="header" href="../classtree.html#R6IORotatingDoor">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../r6engine/r6ioobject.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../r6engine/r6ioselfdetonatingbomb.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html#r6engine/r6iorotatingdoor.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+</div>
+<div class="spacer"></div>
+
+<h1><a href="../r6engine/r6engine-overview.html">R6Engine</a>.R6IORotatingDoor</h1>
+
+<dl>
+<dt>Extends</dt><dd><a href="../r6engine/r6iactionobject.html">R6IActionObject</a></dd>
+<dt>Modifiers</dt><dd>native placeable </dd>
+</dl>
+
+<p></p>
+
+<pre class="tree"><a href="../core/core-overview.html">core</a>.<a href="../core/object.html">Object</a>
+|   
++-- <a href="../engine/engine-overview.html">engine</a>.<a href="../engine/actor.html">Actor</a>
+   |   
+   +-- <a href="../r6engine/r6engine-overview.html">R6Engine</a>.<a href="../r6engine/r6interactiveobject.html">R6InteractiveObject</a>
+      |   
+      +-- <a href="../r6engine/r6engine-overview.html">R6Engine</a>.<a href="../r6engine/r6iactionobject.html">R6IActionObject</a>
+         |   
+         +-- <a href="../r6engine/r6engine-overview.html">R6Engine</a>.<a href="../r6engine/r6iorotatingdoor.html">R6IORotatingDoor</a>
+</pre>
+
+
+
+<hr />
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Constants Summary</th>
+</tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Contants from <a href="../r6engine/r6engine-overview.html">R6Engine</a>.<a href="../r6engine/r6interactiveobject.html">R6InteractiveObject</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../r6engine/r6interactiveobject.html#c_iIObjectSkinMax">c_iIObjectSkinMax</a></td>
+</tr>
+</table>
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th colspan="2" class="title">Variables Summary</th>
+</tr>
+<tr><td nowrap="nowrap" width="33%">BOOL</td><td width="66%"><a href="#_m_bInProcessOfClosing" name="m_bInProcessOfClosing" title="go to the details">m_bInProcessOfClosing</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">BOOL</td><td width="66%"><a href="#_m_bInProcessOfOpening" name="m_bInProcessOfOpening" title="go to the details">m_bInProcessOfOpening</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">BOOL</td><td width="66%"><a href="#_m_bIsDoorClosed" name="m_bIsDoorClosed" title="go to the details">m_bIsDoorClosed</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">array&lt;<a href="../r6abstract/r6abstractbullet.html">R6AbstractBullet</a>&gt;</td><td width="66%"><a href="#_m_BreachAttached" name="m_BreachAttached" title="go to the details">m_BreachAttached</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">BOOL</td><td width="66%"><a href="#_m_bUseWheel" name="m_bUseWheel" title="go to the details">m_bUseWheel</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">INT</td><td width="66%"><a href="#_m_iCurrentLockHP" name="m_iCurrentLockHP" title="go to the details">m_iCurrentLockHP</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">INT</td><td width="66%"><a href="#_m_iCurrentOpening" name="m_iCurrentOpening" title="go to the details">m_iCurrentOpening</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">INT</td><td width="66%"><a href="#_m_iInitialOpening" name="m_iInitialOpening" title="go to the details">m_iInitialOpening</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">INT</td><td width="66%"><a href="#_m_iMaxOpening" name="m_iMaxOpening" title="go to the details">m_iMaxOpening</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">INT</td><td width="66%"><a href="#_m_iYawInit" name="m_iYawInit" title="go to the details">m_iYawInit</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">INT</td><td width="66%"><a href="#_m_iYawMax" name="m_iYawMax" title="go to the details">m_iYawMax</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../core/object.html#Vector">vector</a></td><td width="66%"><a href="#_m_vCenterOfDoor" name="m_vCenterOfDoor" title="go to the details">m_vCenterOfDoor</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../core/object.html#Vector">vector</a></td><td width="66%"><a href="#_m_vDoorADir2D" name="m_vDoorADir2D" title="go to the details">m_vDoorADir2D</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../core/object.html#Vector">vector</a></td><td width="66%"><a href="#_m_vNormal" name="m_vNormal" title="go to the details">m_vNormal</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">BOOL</td><td width="66%"><a href="#_sm_bIsDoorLocked" name="sm_bIsDoorLocked" title="go to the details">sm_bIsDoorLocked</a></td></tr>
+<tr><th colspan="2" class="small">Debug</th></tr>
+<tr><td nowrap="nowrap" width="33%">BOOL</td><td width="66%"><a href="#_bShowLog" name="bShowLog" title="go to the details">bShowLog</a></td></tr>
+<tr><th colspan="2" class="small">R6Damage</th></tr>
+<tr><td nowrap="nowrap" width="33%">INT</td><td width="66%"><a href="#_m_iLockHP" name="m_iLockHP" title="go to the details">m_iLockHP</a></td></tr>
+<tr><th colspan="2" class="small">R6DoorProperties</th></tr>
+<tr><td nowrap="nowrap" width="33%">BOOL</td><td width="66%"><a href="#_m_bIsDoorLocked" name="m_bIsDoorLocked" title="go to the details">m_bIsDoorLocked</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">BOOL</td><td width="66%"><a href="#_m_bIsOpeningClockWise" name="m_bIsOpeningClockWise" title="go to the details">m_bIsOpeningClockWise</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">FLOAT</td><td width="66%"><a href="#_m_fUnlockBaseTime" name="m_fUnlockBaseTime" title="go to the details">m_fUnlockBaseTime</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">INT</td><td width="66%"><a href="#_m_iInitialOpeningDeg" name="m_iInitialOpeningDeg" title="go to the details">m_iInitialOpeningDeg</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">INT</td><td width="66%"><a href="#_m_iMaxOpeningDeg" name="m_iMaxOpeningDeg" title="go to the details">m_iMaxOpeningDeg</a></td></tr>
+<tr><th colspan="2" class="small">R6DoorSounds</th></tr>
+<tr><td nowrap="nowrap" width="33%">sound</td><td width="66%"><a href="#_m_ClosingSound" name="m_ClosingSound" title="go to the details">m_ClosingSound</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">sound</td><td width="66%"><a href="#_m_ClosingWheelSound" name="m_ClosingWheelSound" title="go to the details">m_ClosingWheelSound</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">sound</td><td width="66%"><a href="#_m_ExplosionSound" name="m_ExplosionSound" title="go to the details">m_ExplosionSound</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">sound</td><td width="66%"><a href="#_m_LockPickSound" name="m_LockPickSound" title="go to the details">m_LockPickSound</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">sound</td><td width="66%"><a href="#_m_LockPickSoundStop" name="m_LockPickSoundStop" title="go to the details">m_LockPickSoundStop</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">sound</td><td width="66%"><a href="#_m_LockSound" name="m_LockSound" title="go to the details">m_LockSound</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">sound</td><td width="66%"><a href="#_m_MoveAmbientSound" name="m_MoveAmbientSound" title="go to the details">m_MoveAmbientSound</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">sound</td><td width="66%"><a href="#_m_MoveAmbientSoundStop" name="m_MoveAmbientSoundStop" title="go to the details">m_MoveAmbientSoundStop</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">sound</td><td width="66%"><a href="#_m_OpeningSound" name="m_OpeningSound" title="go to the details">m_OpeningSound</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">sound</td><td width="66%"><a href="#_m_OpeningWheelSound" name="m_OpeningWheelSound" title="go to the details">m_OpeningWheelSound</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">sound</td><td width="66%"><a href="#_m_UnlockSound" name="m_UnlockSound" title="go to the details">m_UnlockSound</a></td></tr>
+<tr><th colspan="2" class="small">R6IORotatingDoor</th></tr>
+<tr><td nowrap="nowrap" width="33%">BOOL</td><td width="66%"><a href="#_m_bForceNoFormation" name="m_bForceNoFormation" title="go to the details">m_bForceNoFormation</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">BOOL</td><td width="66%"><a href="#_m_bTreatDoorAsWindow" name="m_bTreatDoorAsWindow" title="go to the details">m_bTreatDoorAsWindow</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../r6engine/r6door.html">R6Door</a></td><td width="66%"><a href="#_m_DoorActorA" name="m_DoorActorA" title="go to the details">m_DoorActorA</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../r6engine/r6door.html">R6Door</a></td><td width="66%"><a href="#_m_DoorActorB" name="m_DoorActorB" title="go to the details">m_DoorActorB</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">FLOAT</td><td width="66%"><a href="#_m_fWindowWidth" name="m_fWindowWidth" title="go to the details">m_fWindowWidth</a></td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Variables from <a href="../r6engine/r6engine-overview.html">R6Engine</a>.<a href="../r6engine/r6iactionobject.html">R6IActionObject</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../r6engine/r6iactionobject.html#m_ActionInstigator">m_ActionInstigator</a>, <a href="../r6engine/r6iactionobject.html#m_fMaxMouseMove">m_fMaxMouseMove</a>, <a href="../r6engine/r6iactionobject.html#m_fMinMouseMove">m_fMinMouseMove</a></td>
+</tr>
+</table>
+<table>
+<tr>
+	<th class="inherittitle">Inherited Variables from <a href="../r6engine/r6engine-overview.html">R6Engine</a>.<a href="../r6engine/r6interactiveobject.html">R6InteractiveObject</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../r6engine/r6interactiveobject.html#bShowLog">bShowLog</a>, <a href="../r6engine/r6interactiveobject.html#m_ActionList">m_ActionList</a>, <a href="../r6engine/r6interactiveobject.html#m_Anchor">m_Anchor</a>, <a href="../r6engine/r6interactiveobject.html#m_aOldSkins[c_iIObjectSkinMax]">m_aOldSkins[c_iIObjectSkinMax]</a>, <a href="../r6engine/r6interactiveobject.html#m_aRepSkins[c_iIObjectSkinMax]">m_aRepSkins[c_iIObjectSkinMax]</a>, <a href="../r6engine/r6interactiveobject.html#m_AttachedActors">m_AttachedActors</a>, <a href="../r6engine/r6interactiveobject.html#m_bBlockCoronas">m_bBlockCoronas</a>, <a href="../r6engine/r6interactiveobject.html#m_bBreakableByFlashBang">m_bBreakableByFlashBang</a>, <a href="../r6engine/r6interactiveobject.html#m_bBroken">m_bBroken</a>, <a href="../r6engine/r6interactiveobject.html#m_bCollisionRemovedFromActor">m_bCollisionRemovedFromActor</a>, <a href="../r6engine/r6interactiveobject.html#m_bEndAction">m_bEndAction</a>, <a href="../r6engine/r6interactiveobject.html#m_bOriginalBlockActors">m_bOriginalBlockActors</a>, <a href="../r6engine/r6interactiveobject.html#m_bOriginalBlockPlayers">m_bOriginalBlockPlayers</a>, <a href="../r6engine/r6interactiveobject.html#m_bOriginalCollideActors">m_bOriginalCollideActors</a>, <a href="../r6engine/r6interactiveobject.html#m_bPawnDied">m_bPawnDied</a>, <a href="../r6engine/r6interactiveobject.html#m_bRainbowCanInteract">m_bRainbowCanInteract</a>, <a href="../r6engine/r6interactiveobject.html#m_CurrentInteractiveObject">m_CurrentInteractiveObject</a>, <a href="../r6engine/r6interactiveobject.html#m_fActionInterval">m_fActionInterval</a>, <a href="../r6engine/r6interactiveobject.html#m_fAIBreakNoiseRadius">m_fAIBreakNoiseRadius</a>, <a href="../r6engine/r6interactiveobject.html#m_fNetDamagePercentage">m_fNetDamagePercentage</a>, <a href="../r6engine/r6interactiveobject.html#m_fPlayerCAStartTime">m_fPlayerCAStartTime</a>, <a href="../r6engine/r6interactiveobject.html#m_fProbability">m_fProbability</a>, <a href="../r6engine/r6interactiveobject.html#m_fRadius">m_fRadius</a>, <a href="../r6engine/r6interactiveobject.html#m_fTimeForNextSound">m_fTimeForNextSound</a>, <a href="../r6engine/r6interactiveobject.html#m_fTimerInterval">m_fTimerInterval</a>, <a href="../r6engine/r6interactiveobject.html#m_fTimeSinceAction">m_fTimeSinceAction</a>, <a href="../r6engine/r6interactiveobject.html#m_HearNoiseLoudness">m_HearNoiseLoudness</a>, <a href="../r6engine/r6interactiveobject.html#m_HearNoiseNoiseMaker">m_HearNoiseNoiseMaker</a>, <a href="../r6engine/r6interactiveobject.html#m_HearNoiseType">m_HearNoiseType</a>, <a href="../r6engine/r6interactiveobject.html#m_iActionIndex">m_iActionIndex</a>, <a href="../r6engine/r6interactiveobject.html#m_iActionNumber">m_iActionNumber</a>, <a href="../r6engine/r6interactiveobject.html#m_iCurrentHitPoints">m_iCurrentHitPoints</a>, <a href="../r6engine/r6interactiveobject.html#m_iCurrentState">m_iCurrentState</a>, <a href="../r6engine/r6interactiveobject.html#m_iHitPoints">m_iHitPoints</a>, <a href="../r6engine/r6interactiveobject.html#m_InteractionOwner">m_InteractionOwner</a>, <a href="../r6engine/r6interactiveobject.html#m_RemoveCollisionFromActor">m_RemoveCollisionFromActor</a>, <a href="../r6engine/r6interactiveobject.html#m_SeePlayerPawn">m_SeePlayerPawn</a>, <a href="../r6engine/r6interactiveobject.html#m_StateList">m_StateList</a>, <a href="../r6engine/r6interactiveobject.html#m_User">m_User</a>, <a href="../r6engine/r6interactiveobject.html#m_vEndActionAnimName">m_vEndActionAnimName</a>, <a href="../r6engine/r6interactiveobject.html#m_vEndActionGoto">m_vEndActionGoto</a>, <a href="../r6engine/r6interactiveobject.html#sm_AmbientSound">sm_AmbientSound</a>, <a href="../r6engine/r6interactiveobject.html#sm_AmbientSoundStop">sm_AmbientSoundStop</a>, <a href="../r6engine/r6interactiveobject.html#sm_aSkins">sm_aSkins</a>, <a href="../r6engine/r6interactiveobject.html#sm_staticMesh">sm_staticMesh</a></td>
+</tr>
+</table>
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Enumerations Summary</th>
+</tr>
+<tr><td><a href="#_eDoorCircumstantialAction" name="eDoorCircumstantialAction" title="go to the details">eDoorCircumstantialAction</a><br /><span class="small">CA_None,
+CA_Open,
+CA_OpenAndClear,
+CA_OpenAndGrenade,
+CA_OpenGrenadeAndClear,
+CA_Close,
+CA_Clear,
+CA_Grenade,
+CA_GrenadeAndClear,
+CA_GrenadeFrag,
+CA_GrenadeGas,
+CA_GrenadeFlash,
+CA_GrenadeSmoke,
+CA_Unlock,
+CA_Lock,
+CA_LockPickStop</span></td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Enumerations from <a href="../r6engine/r6engine-overview.html">R6Engine</a>.<a href="../r6engine/r6interactiveobject.html">R6InteractiveObject</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../r6engine/r6interactiveobject.html#EInteractiveAction">EInteractiveAction</a></td>
+</tr>
+</table>
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Structures Summary</th>
+</tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Structures from <a href="../r6engine/r6engine-overview.html">R6Engine</a>.<a href="../r6engine/r6interactiveobject.html">R6InteractiveObject</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../r6engine/r6interactiveobject.html#stDamageState">stDamageState</a>, <a href="../r6engine/r6interactiveobject.html#stRandomMesh">stRandomMesh</a>, <a href="../r6engine/r6interactiveobject.html#stRandomSkin">stRandomSkin</a>, <a href="../r6engine/r6interactiveobject.html#stSpawnedActor">stSpawnedActor</a></td>
+</tr>
+</table>
+
+
+<br />
+
+
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Functions Summary</th>
+</tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>bool&nbsp;</td><td><a href="#_ActorIsOnSideA-" name="ActorIsOnSideA" title="go to the details">ActorIsOnSideA</a> (Actor aActor ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_AddBreach-" name="AddBreach" title="go to the details">AddBreach</a> (<a href="../r6abstract/r6abstractbullet.html">R6AbstractBullet</a> BreachAttached)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_event.gif" alt="event" title="event" /></td><td>&nbsp;</td><td><a href="#_Bump-" name="Bump" title="go to the details">Bump</a> (Actor other ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_ClientSetDoor-" name="ClientSetDoor" title="go to the details">ClientSetDoor</a> (<a href="../core/object.html#Rotator">rotator</a> rNewRotation, optional bool bForce))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_closeDoor-" name="closeDoor" title="go to the details">closeDoor</a> (<a href="../r6engine/r6pawn.html">r6pawn</a> pawn, OPTIONAL INT iRotationRate))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_dbgLogActor-" name="dbgLogActor" title="go to the details">dbgLogActor</a> (bool bVerbose ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>bool&nbsp;</td><td><a href="#_DoorOpenTowardsActor-" name="DoorOpenTowardsActor" title="go to the details">DoorOpenTowardsActor</a> (<a href="../engine/actor.html">actor</a> aActor))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_event.gif" alt="event" title="event" /></td><td>bool&nbsp;</td><td><a href="#_EncroachingOn-" name="EncroachingOn" title="go to the details">EncroachingOn</a> (actor Other ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_event.gif" alt="event" title="event" /></td><td>&nbsp;</td><td><a href="#_EndedRotation-" name="EndedRotation" title="go to the details">EndedRotation</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td><a href="../core/object.html#Vector">vector</a>&nbsp;</td><td><a href="#_GetTarget-" name="GetTarget" title="go to the details">GetTarget</a> (<a href="../engine/actor.html">Actor</a> aActor, float fDistanceFromDoor, OPTIONAL bool bBackup ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>BOOL&nbsp;</td><td><a href="#_HitLock-" name="HitLock" title="go to the details">HitLock</a> (<a href="../core/object.html#Vector">vector</a> vHitVector))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_openDoor-" name="openDoor" title="go to the details">openDoor</a> (<a href="../engine/pawn.html">Pawn</a> opener, OPTIONAL INT iRotationRate ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_OpenDoorWhenHit-" name="OpenDoorWhenHit" title="go to the details">OpenDoorWhenHit</a> (<a href="../core/object.html#Vector">vector</a> vHitLocation, <a href="../core/object.html#Vector">vector</a> vBulletDirection, INT YawVariation, BOOL bExplosion))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_performDoorAction-" name="performDoorAction" title="go to the details">performDoorAction</a> (INT iActionID))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_PlayLockPickSound-" name="PlayLockPickSound" title="go to the details">PlayLockPickSound</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_PostBeginPlay-" name="PostBeginPlay" title="go to the details">PostBeginPlay</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>BOOL&nbsp;</td><td><a href="#_R6ActionCanBeExecuted-" name="R6ActionCanBeExecuted" title="go to the details">R6ActionCanBeExecuted</a> (INT iAction ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_R6CircumstantialActionCancel-" name="R6CircumstantialActionCancel" title="go to the details">R6CircumstantialActionCancel</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_R6CircumstantialActionProgressStart-" name="R6CircumstantialActionProgressStart" title="go to the details">R6CircumstantialActionProgressStart</a> (R6AbstractCircumstantialActionQuery Query ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_R6FillGrenadeSubAction-" name="R6FillGrenadeSubAction" title="go to the details">R6FillGrenadeSubAction</a> (Out <a href="../engine/r6abstractcircumstantialactionquery.html">R6AbstractCircumstantialActionQuery</a> Query, INT iSubMenu ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>INT&nbsp;</td><td><a href="#_R6GetCircumstantialActionProgress-" name="R6GetCircumstantialActionProgress" title="go to the details">R6GetCircumstantialActionProgress</a> (<a href="../engine/r6abstractcircumstantialactionquery.html">R6AbstractCircumstantialActionQuery</a> Query, Pawn actingPawn ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>string&nbsp;</td><td><a href="#_R6GetCircumstantialActionString-" name="R6GetCircumstantialActionString" title="go to the details">R6GetCircumstantialActionString</a> (INT iAction ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_event.gif" alt="event" title="event" /></td><td>&nbsp;</td><td><a href="#_R6QueryCircumstantialAction-" name="R6QueryCircumstantialAction" title="go to the details">R6QueryCircumstantialAction</a> (FLOAT fDistance, Out <a href="../engine/r6abstractcircumstantialactionquery.html">R6AbstractCircumstantialActionQuery</a> Query, PlayerController <a href="../engine/playercontroller.html">playerController</a> ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>INT&nbsp;</td><td><a href="#_R6TakeDamage-" name="R6TakeDamage" title="go to the details">R6TakeDamage</a> (INT iKillValue, INT iStunValue, <a href="../engine/pawn.html">Pawn</a> instigatedBy, <a href="../core/object.html#Vector">vector</a> vHitLocation, <a href="../core/object.html#Vector">vector</a> vMomentum, INT iPenetrationFactor, optional int iBulletGroup))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_RemoveBreach-" name="RemoveBreach" title="go to the details">RemoveBreach</a> (<a href="../r6abstract/r6abstractbullet.html">R6AbstractBullet</a> BreachAttached)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_ResetOriginalData-" name="ResetOriginalData" title="go to the details">ResetOriginalData</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_SaveOriginalData-" name="SaveOriginalData" title="go to the details">SaveOriginalData</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_SetBroken-" name="SetBroken" title="go to the details">SetBroken</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_SetDoorProcessStates-" name="SetDoorProcessStates" title="go to the details">SetDoorProcessStates</a> (bool bOpening, bool bClosing))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_SetDoorState-" name="SetDoorState" title="go to the details">SetDoorState</a> (bool bIsClosed ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>bool&nbsp;</td><td><a href="#_ShouldBeBreached-" name="ShouldBeBreached" title="go to the details">ShouldBeBreached</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>bool&nbsp;</td><td><a href="#_startAction-" name="startAction" title="go to the details">startAction</a> (FLOAT fDeltaMouse, <a href="../engine/actor.html">Actor</a> actionInstigator))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_event.gif" alt="event" title="event" /></td><td>&nbsp;</td><td><a href="#_Tick-" name="Tick" title="go to the details">Tick</a> (FLOAT FDelta))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_UnLockDoor-" name="UnLockDoor" title="go to the details">UnLockDoor</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>bool&nbsp;</td><td><a href="#_updateAction-" name="updateAction" title="go to the details">updateAction</a> (FLOAT fDeltaMouse, <a href="../engine/actor.html">Actor</a> actionInstigator))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>bool&nbsp;</td><td><a href="#_WillOpenOnTouch-" name="WillOpenOnTouch" title="go to the details">WillOpenOnTouch</a> (<a href="../r6engine/r6pawn.html">R6Pawn</a> r6pawn)<br /><span class="function_state"></span></td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Functions from <a href="../r6engine/r6engine-overview.html">R6Engine</a>.<a href="../r6engine/r6iactionobject.html">R6IActionObject</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../r6engine/r6iactionobject.html#endAction">endAction</a>, <a href="../r6engine/r6iactionobject.html#startAction">startAction</a>, <a href="../r6engine/r6iactionobject.html#updateAction">updateAction</a></td>
+</tr>
+</table>
+<table>
+<tr>
+	<th class="inherittitle">Inherited Functions from <a href="../r6engine/r6engine-overview.html">R6Engine</a>.<a href="../r6engine/r6interactiveobject.html">R6InteractiveObject</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../r6engine/r6interactiveobject.html#ActionDetonateAllBombs">ActionDetonateAllBombs</a>, <a href="../r6engine/r6interactiveobject.html#ActionToggleDevice">ActionToggleDevice</a>, <a href="../r6engine/r6interactiveobject.html#ChangeStaticMesh">ChangeStaticMesh</a>, <a href="../r6engine/r6interactiveobject.html#FinishAction">FinishAction</a>, <a href="../r6engine/r6interactiveobject.html#FirstPassReset">FirstPassReset</a>, <a href="../r6engine/r6interactiveobject.html#PerformAction">PerformAction</a>, <a href="../r6engine/r6interactiveobject.html#PlayInteractiveObjectSound">PlayInteractiveObjectSound</a>, <a href="../r6engine/r6interactiveobject.html#PostBeginPlay">PostBeginPlay</a>, <a href="../r6engine/r6interactiveobject.html#R6TakeDamage">R6TakeDamage</a>, <a href="../r6engine/r6interactiveobject.html#ResetOriginalData">ResetOriginalData</a>, <a href="../r6engine/r6interactiveobject.html#SaveOriginalData">SaveOriginalData</a>, <a href="../r6engine/r6interactiveobject.html#SetBroken">SetBroken</a>, <a href="../r6engine/r6interactiveobject.html#SetNewDamageState">SetNewDamageState</a>, <a href="../r6engine/r6interactiveobject.html#SetSkin">SetSkin</a>, <a href="../r6engine/r6interactiveobject.html#StopInteraction">StopInteraction</a>, <a href="../r6engine/r6interactiveobject.html#StopInteractionWithEndingActions">StopInteractionWithEndingActions</a>, <a href="../r6engine/r6interactiveobject.html#SwitchToNextAction">SwitchToNextAction</a>, <a href="../r6engine/r6interactiveobject.html#Timer">Timer</a></td>
+</tr>
+</table>
+
+
+<br />
+
+
+
+<hr />
+
+
+
+<table class="title">
+<tr>
+	<th class="title">Variables Detail</th>
+</tr>
+</table>
+
+<h4><a name="_m_bInProcessOfClosing" class="hidden"></a>m_bInProcessOfClosing <a href="../Source_r6engine/r6iorotatingdoor.html#27" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">BOOL</span> m_bInProcessOfClosing;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_bInProcessOfOpening" class="hidden"></a>m_bInProcessOfOpening <a href="../Source_r6engine/r6iorotatingdoor.html#28" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">BOOL</span> m_bInProcessOfOpening;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_bIsDoorClosed" class="hidden"></a>m_bIsDoorClosed <a href="../Source_r6engine/r6iorotatingdoor.html#96" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">BOOL</span> m_bIsDoorClosed;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_BreachAttached" class="hidden"></a>m_BreachAttached <a href="../Source_r6engine/r6iorotatingdoor.html#22" class="small">Source code</a></h4>
+<div class="declaration">var array&lt;<span class="source_type"><a href="../r6abstract/r6abstractbullet.html" class="source">R6AbstractBullet</a></span>&gt; m_BreachAttached;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_bUseWheel" class="hidden"></a>m_bUseWheel <a href="../Source_r6engine/r6iorotatingdoor.html#29" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">BOOL</span> m_bUseWheel;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_iCurrentLockHP" class="hidden"></a>m_iCurrentLockHP <a href="../Source_r6engine/r6iorotatingdoor.html#34" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">INT</span> m_iCurrentLockHP;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_iCurrentOpening" class="hidden"></a>m_iCurrentOpening <a href="../Source_r6engine/r6iorotatingdoor.html#99" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">INT</span> m_iCurrentOpening;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_iInitialOpening" class="hidden"></a>m_iInitialOpening <a href="../Source_r6engine/r6iorotatingdoor.html#98" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">INT</span> m_iInitialOpening;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_iMaxOpening" class="hidden"></a>m_iMaxOpening <a href="../Source_r6engine/r6iorotatingdoor.html#97" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">INT</span> m_iMaxOpening;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_iYawInit" class="hidden"></a>m_iYawInit <a href="../Source_r6engine/r6iorotatingdoor.html#91" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">INT</span> m_iYawInit;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_iYawMax" class="hidden"></a>m_iYawMax <a href="../Source_r6engine/r6iorotatingdoor.html#92" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">INT</span> m_iYawMax;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_vCenterOfDoor" class="hidden"></a>m_vCenterOfDoor <a href="../Source_r6engine/r6iorotatingdoor.html#94" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../core/object.html#Vector" class="source">vector</a></span> m_vCenterOfDoor;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_vDoorADir2D" class="hidden"></a>m_vDoorADir2D <a href="../Source_r6engine/r6iorotatingdoor.html#95" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../core/object.html#Vector" class="source">vector</a></span> m_vDoorADir2D;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_vNormal" class="hidden"></a>m_vNormal <a href="../Source_r6engine/r6iorotatingdoor.html#93" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../core/object.html#Vector" class="source">vector</a></span> m_vNormal;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_sm_bIsDoorLocked" class="hidden"></a>sm_bIsDoorLocked <a href="../Source_r6engine/r6iorotatingdoor.html#85" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">BOOL</span> sm_bIsDoorLocked;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h3 class="vartag">Debug</h3>
+<h4><a name="_bShowLog" class="hidden"></a>bShowLog <a href="../Source_r6engine/r6iorotatingdoor.html#26" class="small">Source code</a></h4>
+<div class="declaration">var(Debug) <span class="source_type">BOOL</span> bShowLog;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h3 class="vartag">R6Damage</h3>
+<h4><a name="_m_iLockHP" class="hidden"></a>m_iLockHP <a href="../Source_r6engine/r6iorotatingdoor.html#33" class="small">Source code</a></h4>
+<div class="declaration">var(R6Damage) <span class="source_type">INT</span> m_iLockHP;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h3 class="vartag">R6DoorProperties</h3>
+<h4><a name="_m_bIsDoorLocked" class="hidden"></a>m_bIsDoorLocked <a href="../Source_r6engine/r6iorotatingdoor.html#84" class="small">Source code</a></h4>
+<div class="declaration">var(R6DoorProperties) <span class="source_type">BOOL</span> m_bIsDoorLocked;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_bIsOpeningClockWise" class="hidden"></a>m_bIsOpeningClockWise <a href="../Source_r6engine/r6iorotatingdoor.html#82" class="small">Source code</a></h4>
+<div class="declaration">var(R6DoorProperties) <span class="source_type">BOOL</span> m_bIsOpeningClockWise;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_fUnlockBaseTime" class="hidden"></a>m_fUnlockBaseTime <a href="../Source_r6engine/r6iorotatingdoor.html#87" class="small">Source code</a></h4>
+<div class="declaration">var(R6DoorProperties) <span class="source_type">FLOAT</span> m_fUnlockBaseTime;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_iInitialOpeningDeg" class="hidden"></a>m_iInitialOpeningDeg <a href="../Source_r6engine/r6iorotatingdoor.html#86" class="small">Source code</a></h4>
+<div class="declaration">var(R6DoorProperties) <span class="source_type">INT</span> m_iInitialOpeningDeg;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_iMaxOpeningDeg" class="hidden"></a>m_iMaxOpeningDeg <a href="../Source_r6engine/r6iorotatingdoor.html#83" class="small">Source code</a></h4>
+<div class="declaration">var(R6DoorProperties) <span class="source_type">INT</span> m_iMaxOpeningDeg;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h3 class="vartag">R6DoorSounds</h3>
+<h4><a name="_m_ClosingSound" class="hidden"></a>m_ClosingSound <a href="../Source_r6engine/r6iorotatingdoor.html#70" class="small">Source code</a></h4>
+<div class="declaration">var(R6DoorSounds) <span class="source_type">sound</span> m_ClosingSound;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_ClosingWheelSound" class="hidden"></a>m_ClosingWheelSound <a href="../Source_r6engine/r6iorotatingdoor.html#71" class="small">Source code</a></h4>
+<div class="declaration">var(R6DoorSounds) <span class="source_type">sound</span> m_ClosingWheelSound;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_ExplosionSound" class="hidden"></a>m_ExplosionSound <a href="../Source_r6engine/r6iorotatingdoor.html#78" class="small">Source code</a></h4>
+<div class="declaration">var(R6DoorSounds) <span class="source_type">sound</span> m_ExplosionSound;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_LockPickSound" class="hidden"></a>m_LockPickSound <a href="../Source_r6engine/r6iorotatingdoor.html#76" class="small">Source code</a></h4>
+<div class="declaration">var(R6DoorSounds) <span class="source_type">sound</span> m_LockPickSound;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_LockPickSoundStop" class="hidden"></a>m_LockPickSoundStop <a href="../Source_r6engine/r6iorotatingdoor.html#77" class="small">Source code</a></h4>
+<div class="declaration">var(R6DoorSounds) <span class="source_type">sound</span> m_LockPickSoundStop;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_LockSound" class="hidden"></a>m_LockSound <a href="../Source_r6engine/r6iorotatingdoor.html#72" class="small">Source code</a></h4>
+<div class="declaration">var(R6DoorSounds) <span class="source_type">sound</span> m_LockSound;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_MoveAmbientSound" class="hidden"></a>m_MoveAmbientSound <a href="../Source_r6engine/r6iorotatingdoor.html#74" class="small">Source code</a></h4>
+<div class="declaration">var(R6DoorSounds) <span class="source_type">sound</span> m_MoveAmbientSound;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_MoveAmbientSoundStop" class="hidden"></a>m_MoveAmbientSoundStop <a href="../Source_r6engine/r6iorotatingdoor.html#75" class="small">Source code</a></h4>
+<div class="declaration">var(R6DoorSounds) <span class="source_type">sound</span> m_MoveAmbientSoundStop;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_OpeningSound" class="hidden"></a>m_OpeningSound <a href="../Source_r6engine/r6iorotatingdoor.html#68" class="small">Source code</a></h4>
+<div class="declaration">var(R6DoorSounds) <span class="source_type">sound</span> m_OpeningSound;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_OpeningWheelSound" class="hidden"></a>m_OpeningWheelSound <a href="../Source_r6engine/r6iorotatingdoor.html#69" class="small">Source code</a></h4>
+<div class="declaration">var(R6DoorSounds) <span class="source_type">sound</span> m_OpeningWheelSound;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_UnlockSound" class="hidden"></a>m_UnlockSound <a href="../Source_r6engine/r6iorotatingdoor.html#73" class="small">Source code</a></h4>
+<div class="declaration">var(R6DoorSounds) <span class="source_type">sound</span> m_UnlockSound;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h3 class="vartag">R6IORotatingDoor</h3>
+<h4><a name="_m_bForceNoFormation" class="hidden"></a>m_bForceNoFormation <a href="../Source_r6engine/r6iorotatingdoor.html#31" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../r6engine/r6iorotatingdoor.html" class="source">R6IORotatingDoor</a></span>) <span class="source_type">BOOL</span> m_bForceNoFormation;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_bTreatDoorAsWindow" class="hidden"></a>m_bTreatDoorAsWindow <a href="../Source_r6engine/r6iorotatingdoor.html#24" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../r6engine/r6iorotatingdoor.html" class="source">R6IORotatingDoor</a></span>) <span class="source_type">BOOL</span> m_bTreatDoorAsWindow;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_DoorActorA" class="hidden"></a>m_DoorActorA <a href="../Source_r6engine/r6iorotatingdoor.html#19" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../r6engine/r6iorotatingdoor.html" class="source">R6IORotatingDoor</a></span>) <span class="source_type"><a href="../r6engine/r6door.html" class="source">R6Door</a></span> m_DoorActorA;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_DoorActorB" class="hidden"></a>m_DoorActorB <a href="../Source_r6engine/r6iorotatingdoor.html#20" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../r6engine/r6iorotatingdoor.html" class="source">R6IORotatingDoor</a></span>) <span class="source_type"><a href="../r6engine/r6door.html" class="source">R6Door</a></span> m_DoorActorB;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_fWindowWidth" class="hidden"></a>m_fWindowWidth <a href="../Source_r6engine/r6iorotatingdoor.html#25" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../r6engine/r6iorotatingdoor.html" class="source">R6IORotatingDoor</a></span>) <span class="source_type">FLOAT</span> m_fWindowWidth;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th class="title">Enumerations Detail</th>
+</tr>
+</table>
+
+<h4><a name="_eDoorCircumstantialAction" class="hidden"></a>eDoorCircumstantialAction <a href="../Source_r6engine/r6iorotatingdoor.html#36" class="small">Source code</a></h4>
+<div class="declaration">enum <span class="source_type"><a href="../r6engine/r6iorotatingdoor.html#eDoorCircumstantialAction" class="source">eDoorCircumstantialAction</a></span><br />
+{<blockquote>CA_None,
+CA_Open,
+CA_OpenAndClear,
+CA_OpenAndGrenade,
+CA_OpenGrenadeAndClear,
+CA_Close,
+CA_Clear,
+CA_Grenade,
+CA_GrenadeAndClear,
+CA_GrenadeFrag,
+CA_GrenadeGas,
+CA_GrenadeFlash,
+CA_GrenadeSmoke,
+CA_Unlock,
+CA_Lock,
+CA_LockPickStop</blockquote>};
+</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+
+
+<br />
+
+
+
+
+
+<table class="title">
+<tr>
+	<th class="title">Functions Detail</th>
+</tr>
+</table>
+
+<h4><a name="_ActorIsOnSideA-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> ActorIsOnSideA <span class="function_state"></span> <a href="../Source_r6engine/r6iorotatingdoor.html#1304" class="small">Source code</a></h4>
+<div class="declaration"> function <span class="source_type">bool</span> ActorIsOnSideA ( <span class="source_type"><a href="../engine/actor.html" class="source">Actor</a></span> <span class="source_type">aActor</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_AddBreach-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> AddBreach <span class="function_state"></span> <a href="../Source_r6engine/r6iorotatingdoor.html#102" class="small">Source code</a></h4>
+<div class="declaration">native(<span class="source_int">2018</span>) final function  AddBreach ( <span class="source_type"><a href="../r6abstract/r6abstractbullet.html" class="source">R6AbstractBullet</a></span> BreachAttached )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_Bump-" class="hidden"></a><img src="../img_event.gif" alt="" title="event" /> Bump <span class="function_state"></span> <a href="../Source_r6engine/r6iorotatingdoor.html#1280" class="small">Source code</a></h4>
+<div class="declaration"> event  Bump ( <span class="source_type"><a href="../engine/actor.html" class="source">Actor</a></span> <span class="source_type">other</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ClientSetDoor-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> ClientSetDoor <span class="function_state"></span> <a href="../Source_r6engine/r6iorotatingdoor.html#378" class="small">Source code</a></h4>
+<div class="declaration"> function  ClientSetDoor ( <span class="source_type"><a href="../core/object.html#Rotator" class="source">rotator</a></span> rNewRotation, optional <span class="source_type">bool</span> bForce) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_closeDoor-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> closeDoor <span class="function_state"></span> <a href="../Source_r6engine/r6iorotatingdoor.html#462" class="small">Source code</a></h4>
+<div class="declaration">simulated function  closeDoor ( <span class="source_type"><a href="../r6engine/r6pawn.html" class="source">r6pawn</a></span> <span class="source_type"><a href="../engine/pawn.html" class="source">pawn</a></span> , OPTIONAL <span class="source_type">INT</span> <span class="source_type">iRotationRate</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_dbgLogActor-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> dbgLogActor <span class="function_state"></span> <a href="../Source_r6engine/r6iorotatingdoor.html#229" class="small">Source code</a></h4>
+<div class="declaration">simulated function  dbgLogActor ( <span class="source_type">bool</span> <span class="source_type">bVerbose</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_DoorOpenTowardsActor-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> DoorOpenTowardsActor <span class="function_state"></span> <a href="../Source_r6engine/r6iorotatingdoor.html#486" class="small">Source code</a></h4>
+<div class="declaration"> function <span class="source_type">bool</span> DoorOpenTowardsActor ( <span class="source_type"><a href="../engine/actor.html" class="source">actor</a></span> <span class="source_type">aActor</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_EncroachingOn-" class="hidden"></a><img src="../img_event.gif" alt="" title="event" /> EncroachingOn <span class="function_state"></span> <a href="../Source_r6engine/r6iorotatingdoor.html#390" class="small">Source code</a></h4>
+<div class="declaration">simulated event <span class="source_type">bool</span> EncroachingOn ( <span class="source_type"><a href="../engine/actor.html" class="source">actor</a></span> <span class="source_type">Other</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_EndedRotation-" class="hidden"></a><img src="../img_event.gif" alt="" title="event" /> EndedRotation <span class="function_state"></span> <a href="../Source_r6engine/r6iorotatingdoor.html#1073" class="small">Source code</a></h4>
+<div class="declaration"> event  EndedRotation ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GetTarget-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> GetTarget <span class="function_state"></span> <a href="../Source_r6engine/r6iorotatingdoor.html#1315" class="small">Source code</a></h4>
+<div class="declaration"> function <span class="source_type"><a href="../core/object.html#Vector" class="source">vector</a></span> GetTarget ( <span class="source_type"><a href="../engine/actor.html" class="source">Actor</a></span> <span class="source_type">aActor</span>, <span class="source_type">float</span> fDistanceFromDoor, OPTIONAL <span class="source_type">bool</span> <span class="source_type">bBackup</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_HitLock-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> HitLock <span class="function_state"></span> <a href="../Source_r6engine/r6iorotatingdoor.html#595" class="small">Source code</a></h4>
+<div class="declaration"> function <span class="source_type">BOOL</span> HitLock ( <span class="source_type"><a href="../core/object.html#Vector" class="source">vector</a></span> vHitVector) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_openDoor-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> openDoor <span class="function_state"></span> <a href="../Source_r6engine/r6iorotatingdoor.html#411" class="small">Source code</a></h4>
+<div class="declaration"> function  openDoor ( <span class="source_type"><a href="../engine/pawn.html" class="source">Pawn</a></span> opener, OPTIONAL <span class="source_type">INT</span> <span class="source_type">iRotationRate</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_OpenDoorWhenHit-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> OpenDoorWhenHit <span class="function_state"></span> <a href="../Source_r6engine/r6iorotatingdoor.html#618" class="small">Source code</a></h4>
+<div class="declaration"> function  OpenDoorWhenHit ( <span class="source_type"><a href="../core/object.html#Vector" class="source">vector</a></span> vHitLocation, <span class="source_type"><a href="../core/object.html#Vector" class="source">vector</a></span> vBulletDirection, <span class="source_type">INT</span> YawVariation, <span class="source_type">BOOL</span> bExplosion) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_performDoorAction-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> performDoorAction <span class="function_state"></span> <a href="../Source_r6engine/r6iorotatingdoor.html#353" class="small">Source code</a></h4>
+<div class="declaration"> function  performDoorAction ( <span class="source_type">INT</span> iActionID) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_PlayLockPickSound-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> PlayLockPickSound <span class="function_state"></span> <a href="../Source_r6engine/r6iorotatingdoor.html#1214" class="small">Source code</a></h4>
+<div class="declaration"> function  PlayLockPickSound ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_PostBeginPlay-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> PostBeginPlay <span class="function_state"></span> <a href="../Source_r6engine/r6iorotatingdoor.html#259" class="small">Source code</a></h4>
+<div class="declaration"> function  PostBeginPlay ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_R6ActionCanBeExecuted-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> R6ActionCanBeExecuted <span class="function_state"></span> <a href="../Source_r6engine/r6iorotatingdoor.html#1242" class="small">Source code</a></h4>
+<div class="declaration">simulated function <span class="source_type">BOOL</span> R6ActionCanBeExecuted ( <span class="source_type">INT</span> <span class="source_type">iAction</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_R6CircumstantialActionCancel-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> R6CircumstantialActionCancel <span class="function_state"></span> <a href="../Source_r6engine/r6iorotatingdoor.html#342" class="small">Source code</a></h4>
+<div class="declaration">simulated function  R6CircumstantialActionCancel ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_R6CircumstantialActionProgressStart-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> R6CircumstantialActionProgressStart <span class="function_state"></span> <a href="../Source_r6engine/r6iorotatingdoor.html#1207" class="small">Source code</a></h4>
+<div class="declaration"> function  R6CircumstantialActionProgressStart ( <span class="source_type"><a href="../engine/r6abstractcircumstantialactionquery.html" class="source">R6AbstractCircumstantialActionQuery</a></span> <span class="source_type">Query</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_R6FillGrenadeSubAction-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> R6FillGrenadeSubAction <span class="function_state"></span> <a href="../Source_r6engine/r6iorotatingdoor.html#1011" class="small">Source code</a></h4>
+<div class="declaration"> function  R6FillGrenadeSubAction ( Out <span class="source_type"><a href="../engine/r6abstractcircumstantialactionquery.html" class="source">R6AbstractCircumstantialActionQuery</a></span> <span class="source_type">Query</span>, <span class="source_type">INT</span> <span class="source_type">iSubMenu</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_R6GetCircumstantialActionProgress-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> R6GetCircumstantialActionProgress <span class="function_state"></span> <a href="../Source_r6engine/r6iorotatingdoor.html#1224" class="small">Source code</a></h4>
+<div class="declaration"> function <span class="source_type">INT</span> R6GetCircumstantialActionProgress ( <span class="source_type"><a href="../engine/r6abstractcircumstantialactionquery.html" class="source">R6AbstractCircumstantialActionQuery</a></span> <span class="source_type">Query</span>, <span class="source_type"><a href="../engine/pawn.html" class="source">Pawn</a></span> <span class="source_type">actingPawn</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_R6GetCircumstantialActionString-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> R6GetCircumstantialActionString <span class="function_state"></span> <a href="../Source_r6engine/r6iorotatingdoor.html#1182" class="small">Source code</a></h4>
+<div class="declaration">simulated function <span class="source_type">string</span> R6GetCircumstantialActionString ( <span class="source_type">INT</span> <span class="source_type">iAction</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_R6QueryCircumstantialAction-" class="hidden"></a><img src="../img_event.gif" alt="" title="event" /> R6QueryCircumstantialAction <span class="function_state"></span> <a href="../Source_r6engine/r6iorotatingdoor.html#860" class="small">Source code</a></h4>
+<div class="declaration">simulated event  R6QueryCircumstantialAction ( <span class="source_type">FLOAT</span> <span class="source_type">fDistance</span>, Out <span class="source_type"><a href="../engine/r6abstractcircumstantialactionquery.html" class="source">R6AbstractCircumstantialActionQuery</a></span> <span class="source_type">Query</span>, <span class="source_type"><a href="../engine/playercontroller.html" class="source">PlayerController</a></span> <span class="source_type"><a href="../engine/playercontroller.html" class="source">playerController</a></span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_R6TakeDamage-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> R6TakeDamage <span class="function_state"></span> <a href="../Source_r6engine/r6iorotatingdoor.html#507" class="small">Source code</a></h4>
+<div class="declaration"> function <span class="source_type">INT</span> R6TakeDamage ( <span class="source_type">INT</span> iKillValue, <span class="source_type">INT</span> iStunValue, <span class="source_type"><a href="../engine/pawn.html" class="source">Pawn</a></span> instigatedBy, <span class="source_type"><a href="../core/object.html#Vector" class="source">vector</a></span> vHitLocation, 
+                           <span class="source_type"><a href="../core/object.html#Vector" class="source">vector</a></span> vMomentum, <span class="source_type">INT</span> iPenetrationFactor, optional <span class="source_type">int</span> iBulletGroup) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_RemoveBreach-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> RemoveBreach <span class="function_state"></span> <a href="../Source_r6engine/r6iorotatingdoor.html#103" class="small">Source code</a></h4>
+<div class="declaration">native(<span class="source_int">2019</span>) final function  RemoveBreach ( <span class="source_type"><a href="../r6abstract/r6abstractbullet.html" class="source">R6AbstractBullet</a></span> BreachAttached )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ResetOriginalData-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> ResetOriginalData <span class="function_state"></span> <a href="../Source_r6engine/r6iorotatingdoor.html#132" class="small">Source code</a></h4>
+<div class="declaration">simulated function  ResetOriginalData ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_SaveOriginalData-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> SaveOriginalData <span class="function_state"></span> <a href="../Source_r6engine/r6iorotatingdoor.html#119" class="small">Source code</a></h4>
+<div class="declaration">simulated function  SaveOriginalData ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_SetBroken-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> SetBroken <span class="function_state"></span> <a href="../Source_r6engine/r6iorotatingdoor.html#1050" class="small">Source code</a></h4>
+<div class="declaration"> function  SetBroken ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_SetDoorProcessStates-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> SetDoorProcessStates <span class="function_state"></span> <a href="../Source_r6engine/r6iorotatingdoor.html#272" class="small">Source code</a></h4>
+<div class="declaration"> function  SetDoorProcessStates ( <span class="source_type">bool</span> bOpening, <span class="source_type">bool</span> bClosing) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_SetDoorState-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> SetDoorState <span class="function_state"></span> <a href="../Source_r6engine/r6iorotatingdoor.html#1152" class="small">Source code</a></h4>
+<div class="declaration">simulated function  SetDoorState ( <span class="source_type">bool</span> <span class="source_type">bIsClosed</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ShouldBeBreached-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> ShouldBeBreached <span class="function_state"></span> <a href="../Source_r6engine/r6iorotatingdoor.html#1058" class="small">Source code</a></h4>
+<div class="declaration"> function <span class="source_type">bool</span> ShouldBeBreached ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_startAction-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> startAction <span class="function_state"></span> <a href="../Source_r6engine/r6iorotatingdoor.html#267" class="small">Source code</a></h4>
+<div class="declaration"> function <span class="source_type">bool</span> startAction ( <span class="source_type">FLOAT</span> fDeltaMouse, <span class="source_type"><a href="../engine/actor.html" class="source">Actor</a></span> actionInstigator) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_Tick-" class="hidden"></a><img src="../img_event.gif" alt="" title="event" /> Tick <span class="function_state"></span> <a href="../Source_r6engine/r6iorotatingdoor.html#1078" class="small">Source code</a></h4>
+<div class="declaration"> event  Tick ( <span class="source_type">FLOAT</span> <span class="source_type">FDelta</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_UnLockDoor-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> UnLockDoor <span class="function_state"></span> <a href="../Source_r6engine/r6iorotatingdoor.html#1142" class="small">Source code</a></h4>
+<div class="declaration">simulated function  UnLockDoor ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_updateAction-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> updateAction <span class="function_state"></span> <a href="../Source_r6engine/r6iorotatingdoor.html#281" class="small">Source code</a></h4>
+<div class="declaration"> function <span class="source_type">bool</span> updateAction ( <span class="source_type">FLOAT</span> fDeltaMouse, <span class="source_type"><a href="../engine/actor.html" class="source">Actor</a></span> actionInstigator) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_WillOpenOnTouch-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> WillOpenOnTouch <span class="function_state"></span> <a href="../Source_r6engine/r6iorotatingdoor.html#101" class="small">Source code</a></h4>
+<div class="declaration">native(<span class="source_int">1511</span>) final function <span class="source_type">bool</span> WillOpenOnTouch ( <span class="source_type"><a href="../r6engine/r6pawn.html" class="source">R6Pawn</a></span> <span class="source_type"><a href="../r6engine/r6pawn.html" class="source">r6pawn</a></span> )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+
+
+<br />
+
+
+<table class="title">
+<tr>
+	<th class="title">Defaultproperties</th>
+</tr>
+</table>
+<br />
+<div class="source"><table class="source"><tr><td class="source"><pre class="source">defaultproperties
+{
+     m_iLockHP=<span class="source_int">1000</span>
+     m_iMaxOpeningDeg=<span class="source_int">90</span>
+     m_fUnlockBaseTime=<span class="source_int">5.000000</span>
+     m_iHitPoints=<span class="source_int">2000</span>
+     Physics=PHYS_MovingBrush
+     m_eDisplayFlag=DF_ShowOnlyIn3DView
+     m_bUseR6Availability=False
+     m_bSkipHitDetection=True
+     m_bUseDifferentVisibleCollide=True
+     m_bUseOriginalRotationInPlanning=True
+     m_bSpriteShowFlatInPlanning=True
+     m_bOutlinedInPlanning=False
+     m_fCircumstantialActionRange=<span class="source_int">132.000000</span>
+     NetPriority=<span class="source_int">2.700000</span>
+     RotationRate=(Yaw=<span class="source_int">20000</span>)
+}
+</pre></td></tr></table></div>
+
+
+
+<hr />
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../r6engine/r6engine-overview.html">Package</a></td>
+	<td class="header_hilight">Class</td>
+	<td class="header"><a href="../Source_r6engine/r6iorotatingdoor.html">Source</a></td>
+	<td class="header"><a class="header" href="../classtree.html#R6IORotatingDoor">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../r6engine/r6ioobject.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../r6engine/r6ioselfdetonatingbomb.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+
+<div class="stats">Creation time: mar. 26/5/2026 18:33:11.633 - Created with <a href="http://wiki.beyondunreal.com/wiki/UnCodeX" target="_blank">UnCodeX</a></div>
+
+</body>
+</html>

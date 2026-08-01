@@ -1,0 +1,783 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+	<title>UnCodeX - Source: UWindow.UWindowRootWindow</title>
+	<meta name="Generator" content="UnCodeX 241" />
+	<link rel="stylesheet" href="../DocStyle2.css" type="text/css" title="Original Purple" />
+	<link rel="alternative stylesheet" href="../DocStyle2-blue.css" type="text/css" title="Blue" />
+	<link rel="alternative stylesheet" href="../DocStyle2-red.css" type="text/css" title="Red" />
+	<!--[if IE]>
+	<link rel="stylesheet" href="../DocStyle2-msie.css" type="text/css" />
+	<![endif]-->
+	<script src="../styleswitcher.js" type="text/javascript"></script>
+</head>
+<body>
+
+<div class="header">
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../uwindow/uwindow-overview.html">Package</a></td>
+	<td class="header"><a href="../uwindow/uwindowrootwindow.html">Class</a></td>
+	<td class="header_hilight">Source</td>
+	<td class="header"><a class="header" href="../classtree.html#UWindowRootWindow">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../Source_uwindow/uwindowrightclickmenu.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../Source_uwindow/uwindowsbdownbutton.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html#Source_uwindow/uwindowrootwindow.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+</div>
+<div class="spacer"></div>
+
+<h1><a href="../uwindow/uwindow-overview.html">UWindow</a>.<a href="../uwindow/uwindowrootwindow.html">UWindowRootWindow</a></h1>
+<br />
+<div class="source"><table class="source"><tr><td class="source_lineno"><span class="source_lineno">00001<br />00002<br />00003<br />00004<br />00005<br />00006<br />00007<br />00008<br />00009<br />00010<br />00011<br />00012<br />00013<br />00014<br />00015<br />00016<br />00017<br />00018<br />00019<br />00020<br />
+00021<br />00022<br />00023<br />00024<br />00025<br />00026<br />00027<br />00028<br />00029<br />00030<br />00031<br />00032<br />00033<br />00034<br />00035<br />00036<br />00037<br />00038<br />00039<br />00040<br />
+00041<br />00042<br />00043<br />00044<br />00045<br />00046<br />00047<br />00048<br />00049<br />00050<br />00051<br />00052<br />00053<br />00054<br />00055<br />00056<br />00057<br />00058<br />00059<br />00060<br />
+00061<br />00062<br />00063<br />00064<br />00065<br />00066<br />00067<br />00068<br />00069<br />00070<br />00071<br />00072<br />00073<br />00074<br />00075<br />00076<br />00077<br />00078<br />00079<br />00080<br />
+00081<br />00082<br />00083<br />00084<br />00085<br />00086<br />00087<br />00088<br />00089<br />00090<br />00091<br />00092<br />00093<br />00094<br />00095<br />00096<br />00097<br />00098<br />00099<br />00100<br />
+00101<br />00102<br />00103<br />00104<br />00105<br />00106<br />00107<br />00108<br />00109<br />00110<br />00111<br />00112<br />00113<br />00114<br />00115<br />00116<br />00117<br />00118<br />00119<br />00120<br />
+00121<br />00122<br />00123<br />00124<br />00125<br />00126<br />00127<br />00128<br />00129<br />00130<br />00131<br />00132<br />00133<br />00134<br />00135<br />00136<br />00137<br />00138<br />00139<br />00140<br />
+00141<br />00142<br />00143<br />00144<br />00145<br />00146<br />00147<br />00148<br />00149<br />00150<br />00151<br />00152<br />00153<br />00154<br />00155<br />00156<br />00157<br />00158<br />00159<br />00160<br />
+00161<br />00162<br />00163<br />00164<br />00165<br />00166<br />00167<br />00168<br />00169<br />00170<br />00171<br />00172<br />00173<br />00174<br />00175<br />00176<br />00177<br />00178<br />00179<br />00180<br />
+00181<br />00182<br />00183<br />00184<br />00185<br />00186<br />00187<br />00188<br />00189<br />00190<br />00191<br />00192<br />00193<br />00194<br />00195<br />00196<br />00197<br />00198<br />00199<br />00200<br />
+00201<br />00202<br />00203<br />00204<br />00205<br />00206<br />00207<br />00208<br />00209<br />00210<br />00211<br />00212<br />00213<br />00214<br />00215<br />00216<br />00217<br />00218<br />00219<br />00220<br />
+00221<br />00222<br />00223<br />00224<br />00225<br />00226<br />00227<br />00228<br />00229<br />00230<br />00231<br />00232<br />00233<br />00234<br />00235<br />00236<br />00237<br />00238<br />00239<br />00240<br />
+00241<br />00242<br />00243<br />00244<br />00245<br />00246<br />00247<br />00248<br />00249<br />00250<br />00251<br />00252<br />00253<br />00254<br />00255<br />00256<br />00257<br />00258<br />00259<br />00260<br />
+00261<br />00262<br />00263<br />00264<br />00265<br />00266<br />00267<br />00268<br />00269<br />00270<br />00271<br />00272<br />00273<br />00274<br />00275<br />00276<br />00277<br />00278<br />00279<br />00280<br />
+00281<br />00282<br />00283<br />00284<br />00285<br />00286<br />00287<br />00288<br />00289<br />00290<br />00291<br />00292<br />00293<br />00294<br />00295<br />00296<br />00297<br />00298<br />00299<br />00300<br />
+00301<br />00302<br />00303<br />00304<br />00305<br />00306<br />00307<br />00308<br />00309<br />00310<br />00311<br />00312<br />00313<br />00314<br />00315<br />00316<br />00317<br />00318<br />00319<br />00320<br />
+00321<br />00322<br />00323<br />00324<br />00325<br />00326<br />00327<br />00328<br />00329<br />00330<br />00331<br />00332<br />00333<br />00334<br />00335<br />00336<br />00337<br />00338<br />00339<br />00340<br />
+00341<br />00342<br />00343<br />00344<br />00345<br />00346<br />00347<br />00348<br />00349<br />00350<br />00351<br />00352<br />00353<br />00354<br />00355<br />00356<br />00357<br />00358<br />00359<br />00360<br />
+00361<br />00362<br />00363<br />00364<br />00365<br />00366<br />00367<br />00368<br />00369<br />00370<br />00371<br />00372<br />00373<br />00374<br />00375<br />00376<br />00377<br />00378<br />00379<br />00380<br />
+00381<br />00382<br />00383<br />00384<br />00385<br />00386<br />00387<br />00388<br />00389<br />00390<br />00391<br />00392<br />00393<br />00394<br />00395<br />00396<br />00397<br />00398<br />00399<br />00400<br />
+00401<br />00402<br />00403<br />00404<br />00405<br />00406<br />00407<br />00408<br />00409<br />00410<br />00411<br />00412<br />00413<br />00414<br />00415<br />00416<br />00417<br />00418<br />00419<br />00420<br />
+00421<br />00422<br />00423<br />00424<br />00425<br />00426<br />00427<br />00428<br />00429<br />00430<br />00431<br />00432<br />00433<br />00434<br />00435<br />00436<br />00437<br />00438<br />00439<br />00440<br />
+00441<br />00442<br />00443<br />00444<br />00445<br />00446<br />00447<br />00448<br />00449<br />00450<br />00451<br />00452<br />00453<br />00454<br />00455<br />00456<br />00457<br />00458<br />00459<br />00460<br />
+00461<br />00462<br />00463<br />00464<br />00465<br />00466<br />00467<br />00468<br />00469<br />00470<br />00471<br />00472<br />00473<br />00474<br />00475<br />00476<br />00477<br />00478<br />00479<br />00480<br />
+00481<br />00482<br />00483<br />00484<br />00485<br />00486<br />00487<br />00488<br />00489<br />00490<br />00491<br />00492<br />00493<br />00494<br />00495<br />00496<br />00497<br />00498<br />00499<br />00500<br />
+00501<br />00502<br />00503<br />00504<br />00505<br />00506<br />00507<br />00508<br />00509<br />00510<br />00511<br />00512<br />00513<br />00514<br />00515<br />00516<br />00517<br />00518<br />00519<br />00520<br />
+00521<br />00522<br />00523<br />00524<br />00525<br />00526<br />00527<br />00528<br />00529<br />00530<br />00531<br />00532<br />00533<br />00534<br />00535<br />00536<br />00537<br />00538<br />00539<br />00540<br />
+00541<br />00542<br />00543<br />00544<br />00545<br />00546<br />00547<br />00548<br />00549<br />00550<br />00551<br />00552<br />00553<br />00554<br />00555<br />00556<br />00557<br />00558<br />00559<br />00560<br />
+00561<br />00562<br />00563<br />00564<br />00565<br />00566<br />00567<br />00568<br />00569<br />00570<br />00571<br />00572<br />00573<br />00574<br />00575<br />00576<br />00577<br />00578<br />00579<br />00580<br />
+00581<br />00582<br />00583<br />00584<br />00585<br />00586<br />00587<br />00588<br />00589<br />00590<br />00591<br />00592<br />00593<br />00594<br />00595<br />00596<br />00597<br />00598<br />00599<br />00600<br />
+00601<br />00602<br />00603<br />00604<br />00605<br />00606<br />00607<br />00608<br />00609<br />00610<br />00611<br />00612<br />00613<br />00614<br />00615<br />00616<br />00617<br />00618<br />00619<br />00620<br />
+00621<br />00622<br />00623<br />00624<br />00625<br />00626<br />00627<br />00628<br />00629<br />00630<br />00631<br />00632<br />00633<br />00634<br />00635<br />00636<br />00637<br />00638<br />00639<br />00640<br />
+00641<br />00642<br />00643<br />00644<br />00645<br />00646<br />00647<br />00648<br />00649<br />00650<br />00651<br />00652<br />00653<br />00654<br />00655<br />00656<br />00657<br />00658<br />00659<br />00660<br />
+00661<br />00662<br />00663<br />00664<br />00665<br />00666<br />00667<br />00668<br />00669<br />00670<br />00671<br />00672<br />00673<br />00674<br />00675<br />00676<br />00677<br />00678<br />00679<br />00680<br />
+00681<br />00682<br />00683<br />00684<br />00685<br />00686<br />00687<br />00688<br />00689<br />00690<br />00691</span></td>
+<td class="source"><pre class="source"><a name="1"></a><span class="source_comment">//=============================================================================
+</span><a name="2"></a><span class="source_comment">// UWindowRootWindow - the root window.
+</span><a name="3"></a><span class="source_comment">//=============================================================================
+</span><a name="4"></a><span class="source_type">class</span> <span class="source_type"><a href="../uwindow/uwindowrootwindow.html" class="source">UWindowRootWindow</a></span> extends <span class="source_type"><a href="../uwindow/uwindowwindow.html" class="source">UWindowWindow</a></span>;
+<a name="5"></a>
+<a name="6"></a><span class="source_comment">//#exec TEXTURE IMPORT NAME=MouseCursor FILE=Textures\MouseCursor.dds GROUP="Icons" MIPS=OFF ALPHA=1 MASKED=1
+</span><a name="7"></a><span class="source_macro">#exec TEXTURE IMPORT NAME=MouseMove FILE=Textures\MouseMove.bmp GROUP="Icons" ALPHA=1 MASKED=1 MIPS=OFF
+</span><a name="8"></a><span class="source_macro">#exec TEXTURE IMPORT NAME=MouseDiag1 FILE=Textures\MouseDiag1.dds GROUP="Icons" ALPHA=1 MASKED=1 MIPS=OFF
+</span><a name="9"></a><span class="source_macro">#exec TEXTURE IMPORT NAME=MouseDiag2 FILE=Textures\MouseDiag2.dds GROUP="Icons" ALPHA=1 MASKED=1 MIPS=OFF
+</span><a name="10"></a><span class="source_macro">#exec TEXTURE IMPORT NAME=MouseNS FILE=Textures\MouseNS.dds GROUP="Icons" ALPHA=1 MASKED=1 MIPS=OFF
+</span><a name="11"></a><span class="source_macro">#exec TEXTURE IMPORT NAME=MouseWE FILE=Textures\MouseWE.dds GROUP="Icons" ALPHA=1 MASKED=1 MIPS=OFF
+</span><a name="12"></a><span class="source_macro">#exec TEXTURE IMPORT NAME=MouseHand FILE=Textures\MouseHand.dds GROUP="Icons" ALPHA=1 MASKED=1 MIPS=OFF
+</span><a name="13"></a><span class="source_macro">#exec TEXTURE IMPORT NAME=MouseHSplit FILE=Textures\MouseHSplit.dds GROUP="Icons" ALPHA=1 MASKED=1 MIPS=OFF
+</span><a name="14"></a><span class="source_macro">#exec TEXTURE IMPORT NAME=MouseVSplit FILE=Textures\MouseVSplit.dds GROUP="Icons" ALPHA=1 MASKED=1 MIPS=OFF
+</span><a name="15"></a><span class="source_comment">//#exec TEXTURE IMPORT NAME=MouseWait FILE=Textures\MouseWait.dds GROUP="Icons" ALPHA=1 MASKED=1 MIPS=OFF
+</span><a name="16"></a><span class="source_comment">//R6Code
+</span><a name="17"></a><span class="source_macro">#exec OBJ LOAD FILE=..\Textures\R6MenuTextures.utx PACKAGE=R6MenuTextures
+</span><a name="18"></a><span class="source_macro">#exec OBJ LOAD FILE=..\Textures\R6Planning.utx PACKAGE=R6Planning
+</span><a name="19"></a><span class="source_macro">#exec OBJ LOAD FILE=..\Textures\R6Font.utx PACKAGE=R6Font
+</span><a name="20"></a><span class="source_comment">//End R6Code
+</span><a name="21"></a>
+<a name="22"></a><span class="source_comment">//!! Japanese text (experimental).
+</span><a name="23"></a><span class="source_comment">//#exec OBJ LOAD FILE=..\Textures\Japanese.utx
+</span><a name="24"></a>
+<a name="25"></a>var <span class="source_type"><a href="../uwindow/uwindowwindow.html" class="source">UWindowWindow</a></span>		MouseWindow;		<span class="source_comment">// The window the mouse is over
+</span><a name="26"></a>var <span class="source_type">bool</span>				bMouseCapture;
+<a name="27"></a>var <span class="source_type">float</span>				MouseX, <span class="source_type">MouseY</span>;
+<a name="28"></a>var <span class="source_type">float</span>				OldMouseX, OldMouseY;
+<a name="29"></a>var <span class="source_type"><a href="../uwindow/windowconsole.html" class="source">WindowConsole</a></span>		<span class="source_type"><a href="../engine/console.html" class="source">Console</a></span>;
+<a name="30"></a>var <span class="source_type"><a href="../uwindow/uwindowwindow.html" class="source">UWindowWindow</a></span>		FocusedWindow;
+<a name="31"></a>var <span class="source_type"><a href="../uwindow/uwindowwindow.html" class="source">UWindowWindow</a></span>		KeyFocusWindow;		<span class="source_comment">// window with keyboard focus
+</span><a name="32"></a>var <span class="source_type"><a href="../uwindow/uwindowwindow.html#MouseCursor" class="source">MouseCursor</a></span>			NormalCursor, MoveCursor, DiagCursor1, HandCursor, HSplitCursor, VSplitCursor, DiagCursor2, NSCursor, WECursor, WaitCursor;
+<a name="33"></a>var <span class="source_type"><a href="../uwindow/uwindowhotkeywindowlist.html" class="source">UWindowHotkeyWindowList</a></span>	HotkeyWindows;
+<a name="34"></a>
+<a name="35"></a><span class="source_comment">//var config float		GUIScale;
+</span><a name="36"></a>var  <span class="source_type">FLOAT</span>		        GUIScale; <span class="source_comment">//Alex- This is to prevent set res call to ovewrite this value in config file
+</span><a name="37"></a>
+<a name="38"></a>
+<a name="39"></a>var <span class="source_type">float</span>				RealWidth, RealHeight;
+<a name="40"></a>var <span class="source_type">Font</span>				Fonts[<span class="source_int">30</span>];
+<a name="41"></a>var <span class="source_type"><a href="../uwindow/uwindowlookandfeel.html" class="source">UWindowLookAndFeel</a></span>	LooksAndFeels[<span class="source_int">20</span>];
+<a name="42"></a>var config <span class="source_type">string</span>		LookAndFeelClass;
+<a name="43"></a>var <span class="source_type">bool</span>				bRequestQuit;
+<a name="44"></a>var <span class="source_type">float</span>				QuitTime;
+<a name="45"></a>var <span class="source_type">bool</span>				bAllowConsole;
+<a name="46"></a><span class="source_comment">//R6Code
+</span><a name="47"></a>var <span class="source_type">BOOL</span>                m_bUseAimIcon;
+<a name="48"></a>var <span class="source_type">BOOL</span>                m_bUseDragIcon;
+<a name="49"></a>var <span class="source_type"><a href="../uwindow/uwindowwindow.html#MouseCursor" class="source">MouseCursor</a></span>			AimCursor;
+<a name="50"></a>var <span class="source_type"><a href="../uwindow/uwindowwindow.html#MouseCursor" class="source">MouseCursor</a></span>			DragCursor;
+<a name="51"></a>var <span class="source_type"><a href="../engine/r6gamecolors.html" class="source">R6GameColors</a></span>        Colors;
+<a name="52"></a>var <span class="source_type"><a href="../uwindow/uwindowmenuclassdefines.html" class="source">UWindowMenuClassDefines</a></span>  MenuClassDefines;
+<a name="53"></a>
+<a name="54"></a>var <span class="source_type">FLOAT</span>				m_fWindowScaleX,
+<a name="55"></a>						m_fWindowScaleY;
+<a name="56"></a>var <span class="source_type">BOOL</span>				m_bScaleWindowToRoot;
+<a name="57"></a>
+<a name="58"></a><span class="source_comment">//End R6Code
+</span><a name="59"></a>
+<a name="60"></a>var enum <span class="source_type"><a href="../uwindow/uwindowrootwindow.html#eRootID" class="source">eRootID</a></span>
+<a name="61"></a>{
+<a name="62"></a>    RootID_UWindow,
+<a name="63"></a>    RootID_R6Menu,
+<a name="64"></a>    RootID_R6MenuInGame,
+<a name="65"></a>    RootID_R6MenuInGameMulti
+<a name="66"></a>} m_eRootId;
+<a name="67"></a>
+<a name="68"></a><span class="source_comment">//Mainly to provide the R6Console the ability to change the current Widget
+</span><a name="69"></a>enum <span class="source_type"><a href="../uwindow/uwindowrootwindow.html#eGameWidgetID" class="source">eGameWidgetID</a></span>
+<a name="70"></a>{
+<a name="71"></a>    WidgetID_None,    
+<a name="72"></a>    InGameID_EscMenu,
+<a name="73"></a>    InGameID_Debriefing,
+<a name="74"></a>	InGameID_TrainingInstruction,
+<a name="75"></a>    TrainingWidgetID,
+<a name="76"></a>    SinglePlayerWidgetID,
+<a name="77"></a>    CampaignPlanningID,
+<a name="78"></a>	MainMenuWidgetID,       
+<a name="79"></a>	IntelWidgetID,    
+<a name="80"></a>	PlanningWidgetID,
+<a name="81"></a>    RetryCampaignPlanningID,
+<a name="82"></a>    RetryCustomMissionPlanningID,
+<a name="83"></a>	GearRoomWidgetID,
+<a name="84"></a>    ExecuteWidgetID,
+<a name="85"></a>	CustomMissionWidgetID,
+<a name="86"></a>	MultiPlayerWidgetID,
+<a name="87"></a>	OptionsWidgetID,
+<a name="88"></a>    PreviousWidgetID,	
+<a name="89"></a>	CreditsWidgetID,
+<a name="90"></a>    MPCreateGameWidgetID,    
+<a name="91"></a>    UbiComWidgetID,
+<a name="92"></a>    NonUbiWidgetID,
+<a name="93"></a>	InGameMPWID_Writable,
+<a name="94"></a>    InGameMPWID_TeamJoin,
+<a name="95"></a>    InGameMPWID_Intermission,
+<a name="96"></a>    InGameMPWID_InterEndRound,
+<a name="97"></a>    InGameMPWID_EscMenu,
+<a name="98"></a>    InGameMpWID_RecMessages,
+<a name="99"></a>    InGameMpWID_MsgOffensive,
+<a name="100"></a>    InGameMpWID_MsgDefensive,
+<a name="101"></a>    InGameMpWID_MsgReply,
+<a name="102"></a>    InGameMpWID_MsgStatus,
+<a name="103"></a>	InGameMPWID_Vote,
+<a name="104"></a>    InGameMPWID_CountDown,
+<a name="105"></a>    InGameID_OperativeSelector,
+<a name="106"></a>    MultiPlayerError,
+<a name="107"></a>    MultiPlayerErrorUbiCom,
+<a name="108"></a>    MenuQuitID    
+<a name="109"></a>};
+<a name="110"></a>
+<a name="111"></a>
+<a name="112"></a>var <span class="source_type"><a href="../uwindow/uwindowrootwindow.html#eGameWidgetID" class="source">eGameWidgetID</a></span>       m_eCurWidgetInUse;           <span class="source_comment">// Current widget ID display on screen
+</span><a name="113"></a>var <span class="source_type"><a href="../uwindow/uwindowrootwindow.html#eGameWidgetID" class="source">eGameWidgetID</a></span>       m_ePrevWidgetInUse;          <span class="source_comment">// Previous widget ID display on screen
+</span><a name="114"></a>
+<a name="115"></a>var <span class="source_type">BOOL</span>				m_bWidgetResolutionFix;		 <span class="source_comment">// this is set in root by a widget to tell to the options if resolution is fix or not
+</span><a name="116"></a>
+<a name="117"></a>function ChangeCurrentWidget( <span class="source_type"><a href="../uwindow/uwindowrootwindow.html#eGameWidgetID" class="source">eGameWidgetID</a></span> <span class="source_type">widgetID</span> ); 
+<a name="118"></a>function ResetMenus( optional <span class="source_type">BOOL</span> _bConnectionFailed);
+<a name="119"></a>function UpdateMenus(<span class="source_type">INT</span> iWhatToUpdate);
+<a name="120"></a>function ChangeInstructionWidget( <span class="source_type"><a href="../engine/actor.html" class="source">Actor</a></span> pISV, <span class="source_type">BOOL</span> <span class="source_type">bShow</span>, <span class="source_type">INT</span> iBox, <span class="source_type">INT</span> iParagraph );
+<a name="121"></a>function StopPlayMode();
+<a name="122"></a>function <span class="source_type">BOOL</span> PlanningShouldProcessKey();
+<a name="123"></a>function <span class="source_type">BOOL</span> PlanningShouldDrawPath();
+<a name="124"></a><span class="source_macro">#ifdefDEBUG
+</span><a name="125"></a>exec function SaveTrainingPlanning();
+<a name="126"></a><span class="source_macro">#endif
+</span><a name="127"></a>
+<a name="128"></a><span class="source_comment">// SimplePopUp fct
+</span><a name="129"></a>function <span class="source_type"><a href="../uwindow/uwindowbase.html#EPopUpID" class="source">ePopUpID</a></span> GetSimplePopUpID();
+<a name="130"></a>function SimplePopUp( <span class="source_type">string</span> _szTitle, <span class="source_type">string</span> _szText, <span class="source_type"><a href="../uwindow/uwindowbase.html#EPopUpID" class="source">ePopUpID</a></span> <span class="source_type">_ePopUpID</span>, optional <span class="source_type">INT</span> _iButtonsType, OPTIONAL <span class="source_type">BOOL</span> bAddDisableDlg, optional <span class="source_type"><a href="../uwindow/uwindowwindow.html" class="source">UWindowWindow</a></span> OwnerWindow);
+<a name="131"></a>function ModifyPopUpInsideText( array&lt;<span class="source_type">string</span>&gt; _ANewText);
+<a name="132"></a>
+<a name="133"></a>function <span class="source_type">BOOL</span> GetMapNameLocalisation( <span class="source_type">string</span> _szMapName, OUT <span class="source_type">string</span> _szMapNameLoc, optional <span class="source_type">BOOL</span> _bReturnInitName);
+<a name="134"></a>
+<a name="135"></a>function BeginPlay() 
+<a name="136"></a>{
+<a name="137"></a>	Root = Self;
+<a name="138"></a>	MouseWindow = Self;
+<a name="139"></a>	KeyFocusWindow = Self;
+<a name="140"></a>}
+<a name="141"></a>
+<a name="142"></a>function <span class="source_type"><a href="../uwindow/uwindowlookandfeel.html" class="source">UWindowLookAndFeel</a></span> GetLookAndFeel(<span class="source_type">String</span> LFClassName)
+<a name="143"></a>{
+<a name="144"></a>	local <span class="source_type">int</span> <span class="source_type">i</span>;
+<a name="145"></a>	local <span class="source_type">class</span>&lt;<span class="source_type"><a href="../uwindow/uwindowlookandfeel.html" class="source">UWindowLookAndFeel</a></span>&gt; LFClass;
+<a name="146"></a>
+<a name="147"></a>	LFClass = <span class="source_type">class</span>&lt;<span class="source_type"><a href="../uwindow/uwindowlookandfeel.html" class="source">UWindowLookAndFeel</a></span>&gt;(DynamicLoadObject(LFClassName, <span class="source_type">class</span><span class="source_name">'Class'</span>));
+<a name="148"></a>
+<a name="149"></a>	for(<span class="source_type">i</span>=<span class="source_int">0</span>;<span class="source_type">i</span>&lt;<span class="source_int">20</span>;<span class="source_type">i</span>++)
+<a name="150"></a>	{
+<a name="151"></a>		if(LooksAndFeels[<span class="source_type">i</span>] == None)
+<a name="152"></a>		{
+<a name="153"></a>			LooksAndFeels[<span class="source_type">i</span>] = new LFClass;
+<a name="154"></a>			LooksAndFeels[<span class="source_type">i</span>].Setup();
+<a name="155"></a>			return LooksAndFeels[<span class="source_type">i</span>];
+<a name="156"></a>		}
+<a name="157"></a>
+<a name="158"></a>		if(LooksAndFeels[<span class="source_type">i</span>].<span class="source_type">Class</span> == LFClass)
+<a name="159"></a>			return LooksAndFeels[<span class="source_type">i</span>];
+<a name="160"></a>	}
+<a name="161"></a>	Log(<span class="source_string">"Out of LookAndFeel array space!!"</span>);
+<a name="162"></a>	return None;
+<a name="163"></a>}
+<a name="164"></a>
+<a name="165"></a>
+<a name="166"></a>function Created() 
+<a name="167"></a>{
+<a name="168"></a>    m_eRootId = RootID_UWindow;
+<a name="169"></a>
+<a name="170"></a>	LookAndFeel = GetLookAndFeel(LookAndFeelClass);
+<a name="171"></a>	SetupFonts();
+<a name="172"></a>
+<a name="173"></a>	NormalCursor.<span class="source_type">tex</span> = <span class="source_type"><a href="../engine/texture.html" class="source">Texture</a></span><span class="source_name">'R6MenuTextures.MouseCursor'</span>;
+<a name="174"></a>	NormalCursor.HotX = <span class="source_int">0</span>;
+<a name="175"></a>	NormalCursor.HotY = <span class="source_int">0</span>;
+<a name="176"></a>	NormalCursor.WindowsCursor = <span class="source_type"><a href="../engine/console.html" class="source">Console</a></span>.ViewportOwner.IDC_ARROW;
+<a name="177"></a>
+<a name="178"></a>	MoveCursor.<span class="source_type">tex</span> = <span class="source_type"><a href="../engine/texture.html" class="source">Texture</a></span><span class="source_name">'MouseMove'</span>;
+<a name="179"></a>	MoveCursor.HotX = <span class="source_int">8</span>;
+<a name="180"></a>	MoveCursor.HotY = <span class="source_int">8</span>;
+<a name="181"></a>	MoveCursor.WindowsCursor = <span class="source_type"><a href="../engine/console.html" class="source">Console</a></span>.ViewportOwner.IDC_SIZEALL;
+<a name="182"></a>	
+<a name="183"></a>	DiagCursor1.<span class="source_type">tex</span> = <span class="source_type"><a href="../engine/texture.html" class="source">Texture</a></span><span class="source_name">'MouseDiag1'</span>;
+<a name="184"></a>	DiagCursor1.HotX = <span class="source_int">8</span>;
+<a name="185"></a>	DiagCursor1.HotY = <span class="source_int">8</span>;
+<a name="186"></a>	DiagCursor1.WindowsCursor = <span class="source_type"><a href="../engine/console.html" class="source">Console</a></span>.ViewportOwner.IDC_SIZENWSE;
+<a name="187"></a>	
+<a name="188"></a>	HandCursor.<span class="source_type">tex</span> = <span class="source_type"><a href="../engine/texture.html" class="source">Texture</a></span><span class="source_name">'MouseHand'</span>;
+<a name="189"></a>	HandCursor.HotX = <span class="source_int">11</span>;
+<a name="190"></a>	HandCursor.HotY = <span class="source_int">1</span>;
+<a name="191"></a>	HandCursor.WindowsCursor = <span class="source_type"><a href="../engine/console.html" class="source">Console</a></span>.ViewportOwner.IDC_ARROW;
+<a name="192"></a>
+<a name="193"></a>	HSplitCursor.<span class="source_type">tex</span> = <span class="source_type"><a href="../engine/texture.html" class="source">Texture</a></span><span class="source_name">'MouseHSplit'</span>;
+<a name="194"></a>	HSplitCursor.HotX = <span class="source_int">9</span>;
+<a name="195"></a>	HSplitCursor.HotY = <span class="source_int">9</span>;
+<a name="196"></a>	HSplitCursor.WindowsCursor = <span class="source_type"><a href="../engine/console.html" class="source">Console</a></span>.ViewportOwner.IDC_SIZEWE;
+<a name="197"></a>
+<a name="198"></a>	VSplitCursor.<span class="source_type">tex</span> = <span class="source_type"><a href="../engine/texture.html" class="source">Texture</a></span><span class="source_name">'MouseVSplit'</span>;
+<a name="199"></a>	VSplitCursor.HotX = <span class="source_int">9</span>;
+<a name="200"></a>	VSplitCursor.HotY = <span class="source_int">9</span>;
+<a name="201"></a>	VSplitCursor.WindowsCursor = <span class="source_type"><a href="../engine/console.html" class="source">Console</a></span>.ViewportOwner.IDC_SIZENS;
+<a name="202"></a>
+<a name="203"></a>	DiagCursor2.<span class="source_type">tex</span> = <span class="source_type"><a href="../engine/texture.html" class="source">Texture</a></span><span class="source_name">'MouseDiag2'</span>;
+<a name="204"></a>	DiagCursor2.HotX = <span class="source_int">7</span>;
+<a name="205"></a>	DiagCursor2.HotY = <span class="source_int">7</span>;
+<a name="206"></a>	DiagCursor2.WindowsCursor = <span class="source_type"><a href="../engine/console.html" class="source">Console</a></span>.ViewportOwner.IDC_SIZENESW;
+<a name="207"></a>
+<a name="208"></a>	NSCursor.<span class="source_type">tex</span> = <span class="source_type"><a href="../engine/texture.html" class="source">Texture</a></span><span class="source_name">'MouseNS'</span>;
+<a name="209"></a>	NSCursor.HotX = <span class="source_int">3</span>;
+<a name="210"></a>	NSCursor.HotY = <span class="source_int">7</span>;
+<a name="211"></a>	NSCursor.WindowsCursor = <span class="source_type"><a href="../engine/console.html" class="source">Console</a></span>.ViewportOwner.IDC_SIZENS;
+<a name="212"></a>
+<a name="213"></a>	WECursor.<span class="source_type">tex</span> = <span class="source_type"><a href="../engine/texture.html" class="source">Texture</a></span><span class="source_name">'MouseWE'</span>;
+<a name="214"></a>	WECursor.HotX = <span class="source_int">7</span>;
+<a name="215"></a>	WECursor.HotY = <span class="source_int">3</span>;
+<a name="216"></a>	WECursor.WindowsCursor = <span class="source_type"><a href="../engine/console.html" class="source">Console</a></span>.ViewportOwner.IDC_SIZEWE;
+<a name="217"></a>
+<a name="218"></a>	WaitCursor.<span class="source_type">tex</span> = <span class="source_type"><a href="../engine/texture.html" class="source">Texture</a></span><span class="source_name">'R6MenuTextures.MouseWait'</span>;
+<a name="219"></a>	WECursor.HotX = <span class="source_int">6</span>;
+<a name="220"></a>	WECursor.HotY = <span class="source_int">9</span>;
+<a name="221"></a>	WECursor.WindowsCursor = <span class="source_type"><a href="../engine/console.html" class="source">Console</a></span>.ViewportOwner.IDC_WAIT;     
+<a name="222"></a>
+<a name="223"></a><span class="source_comment">//R6Code
+</span><a name="224"></a>    AimCursor.<span class="source_type">Tex</span>=<span class="source_type"><a href="../engine/texture.html" class="source">Texture</a></span><span class="source_name">'R6Planning.Cursors.PlanCursor_Aim'</span>;
+<a name="225"></a>    AimCursor.HotX=<span class="source_int">16</span>;
+<a name="226"></a>    AimCursor.HotY=<span class="source_int">16</span>;
+<a name="227"></a>
+<a name="228"></a>    DragCursor.<span class="source_type">Tex</span>=<span class="source_type"><a href="../engine/texture.html" class="source">Texture</a></span><span class="source_name">'R6Planning.Cursors.PlanCursor_Drag'</span>;
+<a name="229"></a>    DragCursor.HotX=<span class="source_int">5</span>;
+<a name="230"></a>    DragCursor.HotY=<span class="source_int">5</span>;
+<a name="231"></a>
+<a name="232"></a>    Colors = new(None) <span class="source_type">class</span><span class="source_name">'R6GameColors'</span>;
+<a name="233"></a>	MenuClassDefines = new(None) <span class="source_type">class</span><span class="source_name">'UWindowMenuClassDefines'</span>; 
+<a name="234"></a>	MenuClassDefines.Created();
+<a name="235"></a><span class="source_comment">//End R6Code
+</span><a name="236"></a>
+<a name="237"></a>	HotkeyWindows = New <span class="source_type">class</span><span class="source_name">'UWindowHotkeyWindowList'</span>;
+<a name="238"></a>	HotkeyWindows.Last = HotkeyWindows;
+<a name="239"></a>	HotkeyWindows.Next = None;
+<a name="240"></a>	HotkeyWindows.Sentinel = HotkeyWindows;
+<a name="241"></a>
+<a name="242"></a>	Cursor = NormalCursor;
+<a name="243"></a>}
+<a name="244"></a>
+<a name="245"></a>function MoveMouse(<span class="source_type">float</span> X, <span class="source_type">float</span> <span class="source_type">Y</span>)
+<a name="246"></a>{
+<a name="247"></a>	local <span class="source_type"><a href="../uwindow/uwindowwindow.html" class="source">UWindowWindow</a></span> NewMouseWindow;
+<a name="248"></a>	local <span class="source_type">float</span> tx, ty;
+<a name="249"></a>
+<a name="250"></a>	MouseX = X;
+<a name="251"></a>	<span class="source_type">MouseY</span> = <span class="source_type">Y</span>;
+<a name="252"></a>
+<a name="253"></a>	if(!bMouseCapture)
+<a name="254"></a>		NewMouseWindow = FindWindowUnder(X, <span class="source_type">Y</span>);
+<a name="255"></a>	else
+<a name="256"></a>		NewMouseWindow = MouseWindow;
+<a name="257"></a>
+<a name="258"></a>	if(NewMouseWindow != MouseWindow)
+<a name="259"></a>	{
+<a name="260"></a>		MouseWindow.MouseLeave();
+<a name="261"></a>		NewMouseWindow.MouseEnter();
+<a name="262"></a>		MouseWindow = NewMouseWindow;
+<a name="263"></a>	}
+<a name="264"></a>
+<a name="265"></a>	if(MouseX != OldMouseX || <span class="source_type">MouseY</span> != OldMouseY)
+<a name="266"></a>	{
+<a name="267"></a>		OldMouseX = MouseX;
+<a name="268"></a>		OldMouseY = <span class="source_type">MouseY</span>;
+<a name="269"></a>
+<a name="270"></a>		MouseWindow.GetMouseXY(tx, ty);
+<a name="271"></a>		MouseWindow.MouseMove(tx, ty);
+<a name="272"></a>	}
+<a name="273"></a>}
+<a name="274"></a>
+<a name="275"></a>function DrawMouse(<span class="source_type"><a href="../engine/canvas.html" class="source">Canvas</a></span> <span class="source_type">C</span>) 
+<a name="276"></a>{
+<a name="277"></a>	local <span class="source_type">float</span> X, <span class="source_type">Y</span>;
+<a name="278"></a>
+<a name="279"></a>	if(<span class="source_type"><a href="../engine/console.html" class="source">Console</a></span>.ViewportOwner.bWindowsMouseAvailable)
+<a name="280"></a>	{
+<a name="281"></a>		<span class="source_comment">// Set the windows cursor...
+</span><a name="282"></a>		<span class="source_type"><a href="../engine/console.html" class="source">Console</a></span>.ViewportOwner.SelectedCursor = MouseWindow.Cursor.WindowsCursor;
+<a name="283"></a>	}
+<a name="284"></a>	else
+<a name="285"></a>	{
+<a name="286"></a>		<span class="source_type">C</span>.SetDrawColor(<span class="source_int">255</span>,<span class="source_int">255</span>,<span class="source_int">255</span>);
+<a name="287"></a>
+<a name="288"></a>		<span class="source_type">C</span>.SetPos(MouseX * GUIScale - MouseWindow.Cursor.HotX, <span class="source_type">MouseY</span> * GUIScale - MouseWindow.Cursor.HotY);
+<a name="289"></a>		<span class="source_type">C</span>.DrawIcon(MouseWindow.Cursor.<span class="source_type">tex</span>, <span class="source_int">1.0</span>);
+<a name="290"></a>	}
+<a name="291"></a>
+<a name="292"></a>
+<a name="293"></a>
+<a name="294"></a>	<span class="source_comment">/* DEBUG - show which window mouse is over
+<a name="295"></a>
+<a name="296"></a>	MouseWindow.GetMouseXY(X, Y);
+<a name="297"></a>	C.Font = Fonts[F_Normal];
+<a name="298"></a>
+<a name="299"></a>	C.DrawColor.R = 0;
+<a name="300"></a>	C.DrawColor.G = 0;
+<a name="301"></a>	C.DrawColor.B = 0;
+<a name="302"></a>	C.SetPos(MouseX * GUIScale - MouseWindow.Cursor.HotX, MouseY * GUIScale - MouseWindow.Cursor.HotY);
+<a name="303"></a>	C.DrawText( GetPlayerOwner().GetItemName(string(MouseWindow))$" "$int(MouseX * GUIScale)$", "$int(MouseY * GUIScale)$" ("$int(X)$", "$int(Y)$")");
+<a name="304"></a>
+<a name="305"></a>	C.DrawColor.R = 255;
+<a name="306"></a>	C.DrawColor.G = 255;
+<a name="307"></a>	C.DrawColor.B = 0;
+<a name="308"></a>	C.SetPos(-1 + MouseX * GUIScale - MouseWindow.Cursor.HotX, -1 + MouseY * GUIScale - MouseWindow.Cursor.HotY);
+<a name="309"></a>	C.DrawText( GetPlayerOwner().GetItemName(string(MouseWindow))$" "$int(MouseX * GUIScale)$", "$int(MouseY * GUIScale)$" ("$int(X)$", "$int(Y)$")");
+<a name="310"></a>
+<a name="311"></a>	*/</span>
+<a name="312"></a>}
+<a name="313"></a>
+<a name="314"></a>function <span class="source_type">bool</span> CheckCaptureMouseUp()
+<a name="315"></a>{
+<a name="316"></a>	local <span class="source_type">float</span> X, <span class="source_type">Y</span>;
+<a name="317"></a>
+<a name="318"></a>	if(bMouseCapture) {
+<a name="319"></a>		MouseWindow.GetMouseXY(X, <span class="source_type">Y</span>);
+<a name="320"></a>		MouseWindow.LMouseUp(X, <span class="source_type">Y</span>);
+<a name="321"></a>		bMouseCapture = False;
+<a name="322"></a>		return True;
+<a name="323"></a>	}
+<a name="324"></a>	return False;
+<a name="325"></a>}
+<a name="326"></a>
+<a name="327"></a>function <span class="source_type">bool</span> CheckCaptureMouseDown()
+<a name="328"></a>{
+<a name="329"></a>	local <span class="source_type">float</span> X, <span class="source_type">Y</span>;
+<a name="330"></a>
+<a name="331"></a>	if(bMouseCapture) {
+<a name="332"></a>		MouseWindow.GetMouseXY(X, <span class="source_type">Y</span>);
+<a name="333"></a>		MouseWindow.LMouseDown(X, <span class="source_type">Y</span>);
+<a name="334"></a>		bMouseCapture = False;
+<a name="335"></a>		return True;
+<a name="336"></a>	}
+<a name="337"></a>	return False;
+<a name="338"></a>}
+<a name="339"></a>
+<a name="340"></a>
+<a name="341"></a>function CancelCapture()
+<a name="342"></a>{
+<a name="343"></a>	bMouseCapture = False;
+<a name="344"></a>}
+<a name="345"></a>
+<a name="346"></a>
+<a name="347"></a>function CaptureMouse(optional <span class="source_type"><a href="../uwindow/uwindowwindow.html" class="source">UWindowWindow</a></span> W)
+<a name="348"></a>{
+<a name="349"></a>	bMouseCapture = True;
+<a name="350"></a>	if(W != None)
+<a name="351"></a>		MouseWindow = W;
+<a name="352"></a>	<span class="source_comment">//Log(MouseWindow.Class$": Captured Mouse");
+</span><a name="353"></a>}
+<a name="354"></a>
+<a name="355"></a>function <span class="source_type"><a href="../engine/texture.html" class="source">Texture</a></span> GetLookAndFeelTexture()
+<a name="356"></a>{
+<a name="357"></a>	Return LookAndFeel.Active;
+<a name="358"></a>}
+<a name="359"></a>
+<a name="360"></a>function <span class="source_type">bool</span> IsActive()
+<a name="361"></a>{
+<a name="362"></a>	Return True;
+<a name="363"></a>}
+<a name="364"></a>
+<a name="365"></a>function AddHotkeyWindow(<span class="source_type"><a href="../uwindow/uwindowwindow.html" class="source">UWindowWindow</a></span> W)
+<a name="366"></a>{
+<a name="367"></a>	<span class="source_type"><a href="../uwindow/uwindowhotkeywindowlist.html" class="source">UWindowHotkeyWindowList</a></span>(HotkeyWindows.Insert(<span class="source_type">class</span><span class="source_name">'UWindowHotkeyWindowList'</span>)).Window = W;
+<a name="368"></a>}
+<a name="369"></a>
+<a name="370"></a>function RemoveHotkeyWindow(<span class="source_type"><a href="../uwindow/uwindowwindow.html" class="source">UWindowWindow</a></span> W)
+<a name="371"></a>{
+<a name="372"></a>	local <span class="source_type"><a href="../uwindow/uwindowhotkeywindowlist.html" class="source">UWindowHotkeyWindowList</a></span> L;
+<a name="373"></a>
+<a name="374"></a>	L = HotkeyWindows.FindWindow(W);
+<a name="375"></a>	if(L != None)
+<a name="376"></a>	{
+<a name="377"></a>		L.Remove();
+<a name="378"></a>	}
+<a name="379"></a>}
+<a name="380"></a>
+<a name="381"></a>function <span class="source_type">BOOL</span> IsAHotKeyWindow(<span class="source_type"><a href="../uwindow/uwindowwindow.html" class="source">UWindowWindow</a></span> W)
+<a name="382"></a>{
+<a name="383"></a>	local <span class="source_type"><a href="../uwindow/uwindowhotkeywindowlist.html" class="source">UWindowHotkeyWindowList</a></span> L;
+<a name="384"></a>
+<a name="385"></a>	L = HotkeyWindows.FindWindow(W);
+<a name="386"></a>
+<a name="387"></a>	if (L != None)
+<a name="388"></a>		return true;
+<a name="389"></a>
+<a name="390"></a>	return false;
+<a name="391"></a>}
+<a name="392"></a>
+<a name="393"></a>function WindowEvent(<span class="source_type"><a href="../uwindow/uwindowwindow.html#WinMessage" class="source">WinMessage</a></span> <span class="source_type">Msg</span>, <span class="source_type"><a href="../engine/canvas.html" class="source">Canvas</a></span> <span class="source_type">C</span>, <span class="source_type">float</span> X, <span class="source_type">float</span> <span class="source_type">Y</span>, <span class="source_type">int</span> <span class="source_type">Key</span>) 
+<a name="394"></a>{
+<a name="395"></a>	switch(<span class="source_type">Msg</span>) {
+<a name="396"></a>	case WM_KeyDown:
+<a name="397"></a>		if(HotKeyDown(<span class="source_type">Key</span>, X, <span class="source_type">Y</span>))
+<a name="398"></a>			return;
+<a name="399"></a>		break;
+<a name="400"></a>	case WM_KeyUp:
+<a name="401"></a>		if(HotKeyUp(<span class="source_type">Key</span>, X, <span class="source_type">Y</span>))
+<a name="402"></a>			return;
+<a name="403"></a>		break;
+<a name="404"></a>    case WM_LMouseDown:
+<a name="405"></a><span class="source_comment">//    case WM_LMouseUp:
+</span><a name="406"></a>    case WM_MMouseDown:
+<a name="407"></a><span class="source_comment">//    case WM_MMouseUp:
+</span><a name="408"></a>    case WM_RMouseDown:
+<a name="409"></a><span class="source_comment">//    case WM_RMouseUp:
+</span><a name="410"></a>		if (MouseUpDown(<span class="source_type">Key</span>, X, <span class="source_type">Y</span>))
+<a name="411"></a>			return;
+<a name="412"></a>		break;
+<a name="413"></a>	}
+<a name="414"></a>
+<a name="415"></a>	Super.WindowEvent(<span class="source_type">Msg</span>, <span class="source_type">C</span>, X, <span class="source_type">Y</span>, <span class="source_type">Key</span>);
+<a name="416"></a>}
+<a name="417"></a>
+<a name="418"></a>
+<a name="419"></a>function <span class="source_type">bool</span> HotKeyDown(<span class="source_type">int</span> <span class="source_type">Key</span>, <span class="source_type">float</span> X, <span class="source_type">float</span> <span class="source_type">Y</span>)
+<a name="420"></a>{
+<a name="421"></a>	local <span class="source_type"><a href="../uwindow/uwindowhotkeywindowlist.html" class="source">UWindowHotkeyWindowList</a></span> l;
+<a name="422"></a>
+<a name="423"></a>	l = <span class="source_type"><a href="../uwindow/uwindowhotkeywindowlist.html" class="source">UWindowHotkeyWindowList</a></span>(HotkeyWindows.Next);
+<a name="424"></a>	while(l != None) 
+<a name="425"></a>	{
+<a name="426"></a>		if(l.Window != Self && l.Window.HotKeyDown(<span class="source_type">Key</span>, X, <span class="source_type">Y</span>)) return True;
+<a name="427"></a>		l = <span class="source_type"><a href="../uwindow/uwindowhotkeywindowlist.html" class="source">UWindowHotkeyWindowList</a></span>(l.Next);
+<a name="428"></a>	}
+<a name="429"></a>
+<a name="430"></a>	return False;
+<a name="431"></a>}
+<a name="432"></a>
+<a name="433"></a>function <span class="source_type">bool</span> HotKeyUp(<span class="source_type">int</span> <span class="source_type">Key</span>, <span class="source_type">float</span> X, <span class="source_type">float</span> <span class="source_type">Y</span>)
+<a name="434"></a>{
+<a name="435"></a>	local <span class="source_type"><a href="../uwindow/uwindowhotkeywindowlist.html" class="source">UWindowHotkeyWindowList</a></span> l;
+<a name="436"></a>
+<a name="437"></a>	l = <span class="source_type"><a href="../uwindow/uwindowhotkeywindowlist.html" class="source">UWindowHotkeyWindowList</a></span>(HotkeyWindows.Next);
+<a name="438"></a>	while(l != None) 
+<a name="439"></a>	{
+<a name="440"></a>		if(l.Window != Self && l.Window.HotKeyUp(<span class="source_type">Key</span>, X, <span class="source_type">Y</span>)) return True;
+<a name="441"></a>		l = <span class="source_type"><a href="../uwindow/uwindowhotkeywindowlist.html" class="source">UWindowHotkeyWindowList</a></span>(l.Next);
+<a name="442"></a>	}
+<a name="443"></a>
+<a name="444"></a>	return False;
+<a name="445"></a>}
+<a name="446"></a>
+<a name="447"></a>function <span class="source_type">bool</span> MouseUpDown(<span class="source_type">int</span> <span class="source_type">Key</span>, <span class="source_type">float</span> X, <span class="source_type">float</span> <span class="source_type">Y</span>)
+<a name="448"></a>{
+<a name="449"></a>	local <span class="source_type"><a href="../uwindow/uwindowhotkeywindowlist.html" class="source">UWindowHotkeyWindowList</a></span> l;
+<a name="450"></a>
+<a name="451"></a>	l = <span class="source_type"><a href="../uwindow/uwindowhotkeywindowlist.html" class="source">UWindowHotkeyWindowList</a></span>(HotkeyWindows.Next);
+<a name="452"></a>	while(l != None) 
+<a name="453"></a>	{
+<a name="454"></a>		if(l.Window != Self && l.Window.MouseUpDown(<span class="source_type">Key</span>, X, <span class="source_type">Y</span>)) return True;
+<a name="455"></a>		l = <span class="source_type"><a href="../uwindow/uwindowhotkeywindowlist.html" class="source">UWindowHotkeyWindowList</a></span>(l.Next);
+<a name="456"></a>	}
+<a name="457"></a>
+<a name="458"></a>	return False;
+<a name="459"></a>}
+<a name="460"></a>
+<a name="461"></a>function CloseActiveWindow()
+<a name="462"></a>{
+<a name="463"></a>	if(ActiveWindow != None)
+<a name="464"></a>		ActiveWindow.EscClose();
+<a name="465"></a>	else
+<a name="466"></a>		<span class="source_type"><a href="../engine/console.html" class="source">Console</a></span>.CloseUWindow();
+<a name="467"></a>}
+<a name="468"></a>
+<a name="469"></a>function Resized()
+<a name="470"></a>{
+<a name="471"></a>	ResolutionChanged(WinWidth, WinHeight);
+<a name="472"></a>}
+<a name="473"></a>
+<a name="474"></a>function SetScale(<span class="source_type">float</span> NewScale)
+<a name="475"></a>{
+<a name="476"></a>	WinWidth = RealWidth / NewScale;
+<a name="477"></a>	WinHeight = RealHeight / NewScale;
+<a name="478"></a>
+<a name="479"></a>	GUIScale = NewScale;
+<a name="480"></a>
+<a name="481"></a>	ClippingRegion.X = <span class="source_int">0</span>;
+<a name="482"></a>	ClippingRegion.<span class="source_type">Y</span> = <span class="source_int">0</span>;
+<a name="483"></a>	ClippingRegion.W = WinWidth;
+<a name="484"></a>	ClippingRegion.<span class="source_type">H</span> = WinHeight;
+<a name="485"></a>
+<a name="486"></a>	SetupFonts();
+<a name="487"></a>
+<a name="488"></a>	Resized();
+<a name="489"></a>}
+<a name="490"></a>
+<a name="491"></a>function SetResolution( <span class="source_type">FLOAT</span> _NewWidth, <span class="source_type">FLOAT</span> _NewHeight)
+<a name="492"></a>{
+<a name="493"></a>	WinWidth = _NewWidth;
+<a name="494"></a>	WinHeight = _NewHeight;
+<a name="495"></a>
+<a name="496"></a>	ClippingRegion.X = <span class="source_int">0</span>;
+<a name="497"></a>	ClippingRegion.<span class="source_type">Y</span> = <span class="source_int">0</span>;
+<a name="498"></a>	ClippingRegion.W = WinWidth;
+<a name="499"></a>	ClippingRegion.<span class="source_type">H</span> = WinHeight;
+<a name="500"></a>
+<a name="501"></a>	Resized();
+<a name="502"></a>}
+<a name="503"></a>
+<a name="504"></a>function SetupFonts()
+<a name="505"></a>{
+<a name="506"></a>	<span class="source_comment">//!! Japanese text (experimental).
+</span><a name="507"></a>	<span class="source_comment">/*if( true )
+<a name="508"></a>	{
+<a name="509"></a>		Fonts[F_Normal]    = Font(DynamicLoadObject("Japanese.Japanese", class'Font'));
+<a name="510"></a>		Fonts[F_Bold]      = Font(DynamicLoadObject("Japanese.Japanese", class'Font'));
+<a name="511"></a>		Fonts[F_Large]     = Font(DynamicLoadObject("Japanese.Japanese", class'Font'));
+<a name="512"></a>		Fonts[F_LargeBold] = Font(DynamicLoadObject("Japanese.Japanese", class'Font'));
+<a name="513"></a>		return;
+<a name="514"></a>	}*/</span>    
+<a name="515"></a>
+<a name="516"></a>    <span class="source_comment">// News fonts system
+</span><a name="517"></a>    Fonts[F_MenuMainTitle]   = <span class="source_type">font</span><span class="source_name">'R6Font.Rainbow6_36pt'</span>;
+<a name="518"></a>    Fonts[F_SmallTitle]      = <span class="source_type">font</span><span class="source_name">'R6Font.Rainbow6_14pt'</span>;
+<a name="519"></a>    Fonts[F_VerySmallTitle]  = <span class="source_type">font</span><span class="source_name">'R6Font.Rainbow6_12pt'</span>;
+<a name="520"></a>    Fonts[F_TabMainTitle]    = <span class="source_type">font</span><span class="source_name">'R6Font.Rainbow6_15pt'</span>;
+<a name="521"></a>    Fonts[F_PopUpTitle]      = <span class="source_type">font</span><span class="source_name">'R6Font.Rainbow6_15pt'</span>;
+<a name="522"></a>    Fonts[F_IntelTitle]      = <span class="source_type">font</span><span class="source_name">'R6Font.OcraExt_14pt'</span>;
+<a name="523"></a>
+<a name="524"></a>    Fonts[F_ListItemSmall]   = <span class="source_type">font</span><span class="source_name">'R6Font.Arial_10pt'</span>;
+<a name="525"></a>    Fonts[F_ListItemBig]     = <span class="source_type">font</span><span class="source_name">'R6Font.Rainbow6_14pt'</span>;
+<a name="526"></a>    Fonts[F_HelpWindow]      = <span class="source_type">font</span><span class="source_name">'R6Font.Rainbow6_12pt'</span>;
+<a name="527"></a>
+<a name="528"></a>    Fonts[F_FirstMenuButton] = <span class="source_type">font</span><span class="source_name">'R6Font.Rainbow6_36pt'</span>;
+<a name="529"></a>    Fonts[F_MainButton]      = <span class="source_type">font</span><span class="source_name">'R6Font.Rainbow6_17pt'</span>;
+<a name="530"></a>    Fonts[F_PrincipalButton] = <span class="source_type">font</span><span class="source_name">'R6Font.Rainbow6_17pt'</span>;
+<a name="531"></a><span class="source_comment">//    Fonts[F_SmallButton]     = font'R6Font.Rainbow6_14pt';
+</span><a name="532"></a>    Fonts[F_CheckBoxButton]  = <span class="source_type">font</span><span class="source_name">'R6Font.Rainbow6_12pt'</span>;
+<a name="533"></a>
+<a name="534"></a><span class="source_comment">// to remove 
+</span><a name="535"></a>
+<a name="536"></a>    Fonts[F_Normal]      = <span class="source_type">font</span><span class="source_name">'R6Font.Rainbow6_12pt'</span>; <span class="source_comment">// this one prevent access none everywhere take care to remove that for the moment YJ
+</span><a name="537"></a>
+<a name="538"></a>}
+<a name="539"></a>
+<a name="540"></a>function ChangeLookAndFeel(<span class="source_type">string</span> NewLookAndFeel)
+<a name="541"></a>{
+<a name="542"></a>	LookAndFeelClass = NewLookAndFeel;
+<a name="543"></a>	SaveConfig();
+<a name="544"></a>
+<a name="545"></a>	<span class="source_comment">// Completely restart UWindow system on the next paint
+</span><a name="546"></a>	<span class="source_type"><a href="../engine/console.html" class="source">Console</a></span>.ResetUWindow();
+<a name="547"></a>}
+<a name="548"></a>
+<a name="549"></a>function HideWindow()
+<a name="550"></a>{
+<a name="551"></a>}
+<a name="552"></a>
+<a name="553"></a>function SetMousePos(<span class="source_type">float</span> X, <span class="source_type">float</span> <span class="source_type">Y</span>)
+<a name="554"></a>{
+<a name="555"></a>	<span class="source_type"><a href="../engine/console.html" class="source">Console</a></span>.MouseX = X;
+<a name="556"></a>	<span class="source_type"><a href="../engine/console.html" class="source">Console</a></span>.<span class="source_type">MouseY</span> = <span class="source_type">Y</span>;
+<a name="557"></a>}
+<a name="558"></a>
+<a name="559"></a>function QuitGame()
+<a name="560"></a>{
+<a name="561"></a>	bRequestQuit = True;
+<a name="562"></a>	QuitTime = <span class="source_int">0</span>;
+<a name="563"></a>	NotifyQuitUnreal();
+<a name="564"></a>}
+<a name="565"></a>
+<a name="566"></a>function DoQuitGame()
+<a name="567"></a>{
+<a name="568"></a>	SaveConfig();
+<a name="569"></a>	<span class="source_comment">//Console.SaveConfig();
+</span><a name="570"></a>	<span class="source_comment">//Console.ViewportOwner.Actor.SaveConfig();
+</span><a name="571"></a>	Close();
+<a name="572"></a>	<span class="source_type"><a href="../engine/console.html" class="source">Console</a></span>.ViewportOwner.<span class="source_type"><a href="../engine/actor.html" class="source">Actor</a></span>.ConsoleCommand(<span class="source_string">"exit"</span>);
+<a name="573"></a>}
+<a name="574"></a>
+<a name="575"></a>function Tick(<span class="source_type">float</span> <span class="source_type">Delta</span>)
+<a name="576"></a>{
+<a name="577"></a>	if(bRequestQuit)
+<a name="578"></a>	{
+<a name="579"></a>		<span class="source_comment">// Give everything time to close itself down (ie sockets).
+</span><a name="580"></a>		if(QuitTime &gt; <span class="source_int">0.25</span>)
+<a name="581"></a>			DoQuitGame();
+<a name="582"></a>		QuitTime += <span class="source_type">Delta</span>;
+<a name="583"></a>	}
+<a name="584"></a>
+<a name="585"></a>	Super.Tick(<span class="source_type">Delta</span>);
+<a name="586"></a>}
+<a name="587"></a>
+<a name="588"></a><span class="source_comment">//ifdef R6CODE
+</span><a name="589"></a><span class="source_comment">// MPF Yannick
+</span><a name="590"></a>function SetNewMODS( <span class="source_type">string</span> _szNewBkgFolder, optional <span class="source_type">BOOL</span> _bForceRefresh) {}
+<a name="591"></a>function SetLoadRandomBackgroundImage( <span class="source_type">string</span> _szFolder) {}
+<a name="592"></a>
+<a name="593"></a>function PaintBackground( <span class="source_type"><a href="../engine/canvas.html" class="source">Canvas</a></span> <span class="source_type">C</span>, <span class="source_type"><a href="../uwindow/uwindowwindow.html" class="source">UWindowWindow</a></span> _WidgetWindow) {}
+<a name="594"></a>
+<a name="595"></a><span class="source_comment">//===================================================================
+</span><a name="596"></a><span class="source_comment">// DrawBackGroundEffect: draw a background fullscreen -- need for pop-up 
+</span><a name="597"></a><span class="source_comment">//===================================================================
+</span><a name="598"></a>function DrawBackGroundEffect( <span class="source_type"><a href="../engine/canvas.html" class="source">Canvas</a></span> <span class="source_type">C</span>, <span class="source_type"><a href="../core/object.html#Color" class="source">Color</a></span> _BGColor)
+<a name="599"></a>{
+<a name="600"></a>	local <span class="source_type">float</span> OrgX, OrgY, ClipX, <span class="source_type">ClipY</span>;
+<a name="601"></a>
+<a name="602"></a>	OrgX = <span class="source_type">C</span>.OrgX;
+<a name="603"></a>	OrgY = <span class="source_type">C</span>.OrgY;
+<a name="604"></a>	ClipX = <span class="source_type">C</span>.ClipX;
+<a name="605"></a>	<span class="source_type">ClipY</span> = <span class="source_type">C</span>.<span class="source_type">ClipY</span>;
+<a name="606"></a>
+<a name="607"></a>	<span class="source_comment">// bypass current window origin and clipping by parameters of the root
+</span><a name="608"></a>	<span class="source_type">C</span>.SetOrigin( <span class="source_int">0</span>, <span class="source_int">0</span>);
+<a name="609"></a>	<span class="source_type">C</span>.SetClip( <span class="source_type">C</span>.SizeX, <span class="source_type">C</span>.SizeY);
+<a name="610"></a>
+<a name="611"></a>    <span class="source_type">C</span>.SetDrawColor( _BGColor.<span class="source_type">R</span>, _BGColor.G, _BGColor.<span class="source_type">B</span>, _BGColor.<span class="source_type">A</span>);
+<a name="612"></a>
+<a name="613"></a>	<span class="source_type">C</span>.SetPos( <span class="source_int">0</span>, <span class="source_int">0</span>);
+<a name="614"></a>	<span class="source_type">C</span>.DrawTile( <span class="source_type"><a href="../engine/texture.html" class="source">Texture</a></span><span class="source_name">'UWindow.WhiteTexture'</span>, <span class="source_type">C</span>.SizeX, <span class="source_type">C</span>.SizeY, <span class="source_int">0</span>, <span class="source_int">0</span>, <span class="source_int">10</span>, <span class="source_int">10</span>);
+<a name="615"></a>
+<a name="616"></a>	<span class="source_comment">// restore current window parameters
+</span><a name="617"></a>	<span class="source_type">C</span>.SetClip(ClipX, <span class="source_type">ClipY</span>);
+<a name="618"></a>	<span class="source_type">C</span>.SetOrigin(OrgX, OrgY);
+<a name="619"></a>}
+<a name="620"></a><span class="source_comment">//endif
+</span><a name="621"></a>
+<a name="622"></a><span class="source_comment">//===================================================================
+</span><a name="623"></a><span class="source_comment">// TrapKey: Menu trap the key
+</span><a name="624"></a><span class="source_comment">//===================================================================
+</span><a name="625"></a>function <span class="source_type">BOOL</span> TrapKey( <span class="source_type">BOOL</span> _bIncludeMouseMove)
+<a name="626"></a>{
+<a name="627"></a>	return true;
+<a name="628"></a>}
+<a name="629"></a>
+<a name="630"></a><span class="source_macro">#ifdefDEBUG
+</span><a name="631"></a>function <span class="source_type">string</span> GetGameWidgetID( <span class="source_type"><a href="../uwindow/uwindowrootwindow.html#eGameWidgetID" class="source">eGameWidgetID</a></span> _eGameWidgetID)
+<a name="632"></a>{
+<a name="633"></a>	local <span class="source_type">string</span> szResult;
+<a name="634"></a>
+<a name="635"></a>	switch(_eGameWidgetID)
+<a name="636"></a>	{
+<a name="637"></a>		case WidgetID_None:							szResult = <span class="source_string">"WidgetID_None"</span>; break;
+<a name="638"></a>		case InGameID_EscMenu:						szResult = <span class="source_string">"InGameID_EscMenu"</span>; break;
+<a name="639"></a>		case InGameID_Debriefing:					szResult = <span class="source_string">"InGameID_Debriefing"</span>; break;
+<a name="640"></a>		case InGameID_TrainingInstruction:			szResult = <span class="source_string">"InGameID_TrainingInstruction"</span>;	break;
+<a name="641"></a>		case SinglePlayerWidgetID:					szResult = <span class="source_string">"SinglePlayerWidgetID"</span>;	break;
+<a name="642"></a>        case TrainingWidgetID:                      szResult = <span class="source_string">"TrainingWidgetID"</span>;	break;
+<a name="643"></a>		case CampaignPlanningID:					szResult = <span class="source_string">"CampaignPlanningID"</span>; break;
+<a name="644"></a>		case MainMenuWidgetID:						szResult = <span class="source_string">"MainMenuWidgetID"</span>; break;
+<a name="645"></a>		case IntelWidgetID:							szResult = <span class="source_string">"IntelWidgetID"</span>;	break;
+<a name="646"></a>		case PlanningWidgetID:						szResult = <span class="source_string">"PlanningWidgetID"</span>;	break;
+<a name="647"></a>		case RetryCampaignPlanningID:				szResult = <span class="source_string">"RetryCampaignPlanningID"</span>; break;
+<a name="648"></a>		case RetryCustomMissionPlanningID:			szResult = <span class="source_string">"RetryCustomMissionPlanningID"</span>;	break;
+<a name="649"></a>		case GearRoomWidgetID:						szResult = <span class="source_string">"GearRoomWidgetID"</span>;	break;
+<a name="650"></a>		case ExecuteWidgetID:						szResult = <span class="source_string">"ExecuteWidgetID"</span>; break;
+<a name="651"></a>		case CustomMissionWidgetID:					szResult = <span class="source_string">"CustomMissionWidgetID"</span>;	break;
+<a name="652"></a>		case MultiPlayerWidgetID:					szResult = <span class="source_string">"MultiPlayerWidgetID"</span>; break;
+<a name="653"></a>		case OptionsWidgetID:						szResult = <span class="source_string">"OptionsWidgetID"</span>; break;
+<a name="654"></a>		case PreviousWidgetID:						szResult = <span class="source_string">"PreviousWidgetID"</span>; break;
+<a name="655"></a>		case CreditsWidgetID:						szResult = <span class="source_string">"CreditsWidgetID"</span>; break;
+<a name="656"></a>		case MPCreateGameWidgetID:					szResult = <span class="source_string">"MPCreateGameWidgetID"</span>; break;
+<a name="657"></a>		case UbiComWidgetID:						szResult = <span class="source_string">"UbiComWidgetID"</span>; break;
+<a name="658"></a>		case NonUbiWidgetID:						szResult = <span class="source_string">"UbiComWidgetID"</span>; break;
+<a name="659"></a>		case InGameMPWID_Writable:					szResult = <span class="source_string">"InGameMPWID_Writable"</span>;	break;
+<a name="660"></a>		case InGameMPWID_TeamJoin:					szResult = <span class="source_string">"InGameMPWID_TeamJoin"</span>;	break;
+<a name="661"></a>		case InGameMPWID_Intermission:				szResult = <span class="source_string">"InGameMPWID_Intermission"</span>; break;
+<a name="662"></a>		case InGameMPWID_InterEndRound:				szResult = <span class="source_string">"InGameMPWID_InterEndRound"</span>;	break;
+<a name="663"></a>		case InGameMPWID_EscMenu:					szResult = <span class="source_string">"InGameMPWID_EscMenu"</span>; break;
+<a name="664"></a>		case InGameMpWID_RecMessages:				szResult = <span class="source_string">"InGameMpWID_RecMessages"</span>; break;
+<a name="665"></a>		case InGameMpWID_MsgOffensive:				szResult = <span class="source_string">"InGameMpWID_MsgOffensive"</span>; break;
+<a name="666"></a>		case InGameMpWID_MsgDefensive:				szResult = <span class="source_string">"InGameMpWID_MsgDefensive"</span>; break;
+<a name="667"></a>		case InGameMpWID_MsgReply:					szResult = <span class="source_string">"InGameMpWID_MsgReply"</span>; break;
+<a name="668"></a>		case InGameMpWID_MsgStatus:					szResult = <span class="source_string">"InGameMpWID_MsgStatus"</span>;	break;
+<a name="669"></a>		case InGameMPWID_Vote:						szResult = <span class="source_string">"InGameMPWID_Vote"</span>; break;
+<a name="670"></a>		case InGameMPWID_CountDown:					szResult = <span class="source_string">"InGameMPWID_CountDown"</span>; break;
+<a name="671"></a>		case InGameID_OperativeSelector:			szResult = <span class="source_string">"InGameID_OperativeSelector"</span>; break;
+<a name="672"></a>		case MultiPlayerError:						szResult = <span class="source_string">"MultiPlayerError"</span>; break;
+<a name="673"></a>		case MultiPlayerErrorUbiCom:				szResult = <span class="source_string">"MultiPlayerErrorUbiCom"</span>; break;
+<a name="674"></a>		case MenuQuitID:							szResult = <span class="source_string">"MenuQuitID"</span>; break;
+<a name="675"></a>		default:
+<a name="676"></a>			szResult = <span class="source_string">"WIDGET ID NOT DEFINE IN GetGameWidgetID()"</span>;
+<a name="677"></a>			break;
+<a name="678"></a>	}
+<a name="679"></a>
+<a name="680"></a>	return szResult;
+<a name="681"></a>}
+<a name="682"></a><span class="source_macro">#endif
+</span><a name="683"></a>
+<a name="684"></a>defaultproperties
+<a name="685"></a>{
+<a name="686"></a>     bAllowConsole=True
+<a name="687"></a>     GUIScale=<span class="source_int">1.000000</span>
+<a name="688"></a>     m_fWindowScaleX=<span class="source_int">1.000000</span>
+<a name="689"></a>     m_fWindowScaleY=<span class="source_int">1.000000</span>
+<a name="690"></a>}
+<a name="691"></a></pre></td></tr></table></div>
+<hr />
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../uwindow/uwindow-overview.html">Package</a></td>
+	<td class="header"><a href="../uwindow/uwindowrootwindow.html">Class</a></td>
+	<td class="header_hilight">Source</td>
+	<td class="header"><a class="header" href="../classtree.html#UWindowRootWindow">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../Source_uwindow/uwindowrightclickmenu.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../Source_uwindow/uwindowsbdownbutton.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+
+<div class="stats">Class file time: sam. 18/9/2004 14:39:30.000 - Creation time: mar. 26/5/2026 18:33:22.231 - Created with <a href="http://wiki.beyondunreal.com/wiki/UnCodeX" target="_blank">UnCodeX</a></div>
+
+</body>
+</html>

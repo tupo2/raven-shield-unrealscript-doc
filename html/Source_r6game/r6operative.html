@@ -1,0 +1,528 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+	<title>UnCodeX - Source: R6Game.R6Operative</title>
+	<meta name="Generator" content="UnCodeX 241" />
+	<link rel="stylesheet" href="../DocStyle2.css" type="text/css" title="Original Purple" />
+	<link rel="alternative stylesheet" href="../DocStyle2-blue.css" type="text/css" title="Blue" />
+	<link rel="alternative stylesheet" href="../DocStyle2-red.css" type="text/css" title="Red" />
+	<!--[if IE]>
+	<link rel="stylesheet" href="../DocStyle2-msie.css" type="text/css" />
+	<![endif]-->
+	<script src="../styleswitcher.js" type="text/javascript"></script>
+</head>
+<body>
+
+<div class="header">
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../r6game/r6game-overview.html">Package</a></td>
+	<td class="header"><a href="../r6game/r6operative.html">Class</a></td>
+	<td class="header_hilight">Source</td>
+	<td class="header"><a class="header" href="../classtree.html#R6Operative">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../Source_r6game/r6norules.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../Source_r6game/r6operative1.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html#Source_r6game/r6operative.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+</div>
+<div class="spacer"></div>
+
+<h1><a href="../r6game/r6game-overview.html">R6Game</a>.<a href="../r6game/r6operative.html">R6Operative</a></h1>
+<br />
+<div class="source"><table class="source"><tr><td class="source_lineno"><span class="source_lineno">00001<br />00002<br />00003<br />00004<br />00005<br />00006<br />00007<br />00008<br />00009<br />00010<br />00011<br />00012<br />00013<br />00014<br />00015<br />00016<br />00017<br />00018<br />00019<br />00020<br />
+00021<br />00022<br />00023<br />00024<br />00025<br />00026<br />00027<br />00028<br />00029<br />00030<br />00031<br />00032<br />00033<br />00034<br />00035<br />00036<br />00037<br />00038<br />00039<br />00040<br />
+00041<br />00042<br />00043<br />00044<br />00045<br />00046<br />00047<br />00048<br />00049<br />00050<br />00051<br />00052<br />00053<br />00054<br />00055<br />00056<br />00057<br />00058<br />00059<br />00060<br />
+00061<br />00062<br />00063<br />00064<br />00065<br />00066<br />00067<br />00068<br />00069<br />00070<br />00071<br />00072<br />00073<br />00074<br />00075<br />00076<br />00077<br />00078<br />00079<br />00080<br />
+00081<br />00082<br />00083<br />00084<br />00085<br />00086<br />00087<br />00088<br />00089<br />00090<br />00091<br />00092<br />00093<br />00094<br />00095<br />00096<br />00097<br />00098<br />00099<br />00100<br />
+00101<br />00102<br />00103<br />00104<br />00105<br />00106<br />00107<br />00108<br />00109<br />00110<br />00111<br />00112<br />00113<br />00114<br />00115<br />00116<br />00117<br />00118<br />00119<br />00120<br />
+00121<br />00122<br />00123<br />00124<br />00125<br />00126<br />00127<br />00128<br />00129<br />00130<br />00131<br />00132<br />00133<br />00134<br />00135<br />00136<br />00137<br />00138<br />00139<br />00140<br />
+00141<br />00142<br />00143<br />00144<br />00145<br />00146<br />00147<br />00148<br />00149<br />00150<br />00151<br />00152<br />00153<br />00154<br />00155<br />00156<br />00157<br />00158<br />00159<br />00160<br />
+00161<br />00162<br />00163<br />00164<br />00165<br />00166<br />00167<br />00168<br />00169<br />00170<br />00171<br />00172<br />00173<br />00174<br />00175<br />00176<br />00177<br />00178<br />00179<br />00180<br />
+00181<br />00182<br />00183<br />00184<br />00185<br />00186<br />00187<br />00188<br />00189<br />00190<br />00191<br />00192<br />00193<br />00194<br />00195<br />00196<br />00197<br />00198<br />00199<br />00200<br />
+00201<br />00202<br />00203<br />00204<br />00205<br />00206<br />00207<br />00208<br />00209<br />00210<br />00211<br />00212<br />00213<br />00214<br />00215<br />00216<br />00217<br />00218<br />00219<br />00220<br />
+00221<br />00222<br />00223<br />00224<br />00225<br />00226<br />00227<br />00228<br />00229<br />00230<br />00231<br />00232<br />00233<br />00234<br />00235<br />00236<br />00237<br />00238<br />00239<br />00240<br />
+00241<br />00242<br />00243<br />00244<br />00245<br />00246<br />00247<br />00248<br />00249<br />00250<br />00251<br />00252<br />00253<br />00254<br />00255<br />00256<br />00257<br />00258<br />00259<br />00260<br />
+00261<br />00262<br />00263<br />00264<br />00265<br />00266<br />00267<br />00268<br />00269<br />00270<br />00271<br />00272<br />00273<br />00274<br />00275<br />00276<br />00277<br />00278<br />00279<br />00280<br />
+00281<br />00282<br />00283<br />00284<br />00285<br />00286<br />00287<br />00288<br />00289<br />00290<br />00291<br />00292<br />00293<br />00294<br />00295<br />00296<br />00297<br />00298<br />00299<br />00300<br />
+00301<br />00302<br />00303<br />00304<br />00305<br />00306<br />00307<br />00308<br />00309<br />00310<br />00311<br />00312<br />00313<br />00314<br />00315<br />00316<br />00317<br />00318<br />00319<br />00320<br />
+00321<br />00322<br />00323<br />00324<br />00325<br />00326<br />00327<br />00328<br />00329<br />00330<br />00331<br />00332<br />00333<br />00334<br />00335<br />00336<br />00337<br />00338<br />00339<br />00340<br />
+00341<br />00342<br />00343<br />00344<br />00345<br />00346<br />00347<br />00348<br />00349<br />00350<br />00351<br />00352<br />00353<br />00354<br />00355<br />00356<br />00357<br />00358<br />00359<br />00360<br />
+00361<br />00362<br />00363<br />00364<br />00365<br />00366<br />00367<br />00368<br />00369<br />00370<br />00371<br />00372<br />00373<br />00374<br />00375<br />00376<br />00377<br />00378<br />00379<br />00380<br />
+00381<br />00382<br />00383<br />00384<br />00385<br />00386<br />00387<br />00388<br />00389<br />00390<br />00391<br />00392<br />00393<br />00394<br />00395<br />00396<br />00397<br />00398<br />00399<br />00400<br />
+00401<br />00402<br />00403<br />00404<br />00405<br />00406<br />00407<br />00408<br />00409<br />00410<br />00411<br />00412<br />00413<br />00414<br />00415<br />00416<br />00417<br />00418<br />00419<br />00420<br />
+00421<br />00422<br />00423<br />00424<br />00425<br />00426<br />00427<br />00428<br />00429<br />00430<br />00431<br />00432<br />00433<br />00434<br />00435<br />00436<br />00437<br />00438<br />00439<br />00440<br />
+00441<br />00442<br />00443<br />00444<br />00445<br />00446<br />00447<br />00448</span></td>
+<td class="source"><pre class="source"><a name="1"></a><span class="source_comment">//=============================================================================
+</span><a name="2"></a><span class="source_comment">//  R6Operative.uc : This class describes a rainbow officer
+</span><a name="3"></a><span class="source_comment">//  Copyright 2002 Ubi Soft, Inc. All Rights Reserved.
+</span><a name="4"></a><span class="source_comment">//
+</span><a name="5"></a><span class="source_comment">//  Revision history:
+</span><a name="6"></a><span class="source_comment">//    2002/02/18 * Created by Alexandre Dionne
+</span><a name="7"></a><span class="source_comment">//=============================================================================
+</span><a name="8"></a>
+<a name="9"></a>
+<a name="10"></a><span class="source_type">class</span> <span class="source_type"><a href="../r6game/r6operative.html" class="source">R6Operative</a></span> extends <span class="source_type"><a href="../core/object.html" class="source">Object</a></span> native;
+<a name="11"></a>
+<a name="12"></a>var <span class="source_type">string</span>          m_szOperativeClass;  <span class="source_comment">//Used to get operative Localized info
+</span><a name="13"></a>var <span class="source_type">int</span>             m_iUniqueID;         <span class="source_comment">//According to the index of the operative in the operative collection
+</span><a name="14"></a>var <span class="source_type">int</span>				m_iRookieID;		 <span class="source_comment">//According to the index of the rockie operative
+</span><a name="15"></a>
+<a name="16"></a>var <span class="source_type">string</span>          m_szCountryID;
+<a name="17"></a>var <span class="source_type">string</span>          m_szCityID;
+<a name="18"></a>var <span class="source_type">string</span>          m_szStateID;
+<a name="19"></a>var <span class="source_type">string</span>          m_szSpecialityID;
+<a name="20"></a>var <span class="source_type">string</span>          m_szHairColorID;
+<a name="21"></a>var <span class="source_type">string</span>          m_szEyesColorID;
+<a name="22"></a>var <span class="source_type">string</span>          m_szGenderID;
+<a name="23"></a>
+<a name="24"></a>var <span class="source_type"><a href="../engine/texture.html" class="source">Texture</a></span>         m_TMenuFace;
+<a name="25"></a>var <span class="source_type">INT</span>             m_RMenuFaceX, m_RMenuFaceY, m_RMenuFaceW, m_RMenuFaceH; <span class="source_comment">//God this is ugly, hack cuz Region is Uwindowbase
+</span><a name="26"></a>
+<a name="27"></a>var <span class="source_type"><a href="../engine/texture.html" class="source">Texture</a></span>         m_TMenuFaceSmall;
+<a name="28"></a>var <span class="source_type">INT</span>             m_RMenuFaceSmallX, m_RMenuFaceSmallY, m_RMenuFaceSmallW, m_RMenuFaceSmallH; 
+<a name="29"></a>
+<a name="30"></a>var Array&lt;<span class="source_type"><a href="../engine/texture.html" class="source">Texture</a></span>&gt;  m_OperativeFaces;
+<a name="31"></a>var <span class="source_type">string</span> 			m_szGender; 
+<a name="32"></a>
+<a name="33"></a><span class="source_comment">//Skills
+</span><a name="34"></a>var <span class="source_type">FLOAT</span>  m_fAssault;
+<a name="35"></a>var <span class="source_type">FLOAT</span>  m_fDemolitions;
+<a name="36"></a>var <span class="source_type">FLOAT</span>  m_fElectronics;
+<a name="37"></a>var <span class="source_type">FLOAT</span>  m_fSniper;
+<a name="38"></a>var <span class="source_type">FLOAT</span>  m_fStealth;
+<a name="39"></a>var <span class="source_type">FLOAT</span>  m_fSelfControl;
+<a name="40"></a>var <span class="source_type">FLOAT</span>  m_fLeadership;
+<a name="41"></a>var <span class="source_type">FLOAT</span>  m_fObservation;
+<a name="42"></a>
+<a name="43"></a><span class="source_comment">//Status
+</span><a name="44"></a>var <span class="source_type">int</span>		m_iHealth; <span class="source_comment">//0= Ready, 1=Wounded, 2=Incapacitated, 3=Dead
+</span><a name="45"></a>
+<a name="46"></a><span class="source_comment">//Stats  
+</span><a name="47"></a>
+<a name="48"></a>var <span class="source_type">int</span>		m_iNbMissionPlayed;
+<a name="49"></a>var <span class="source_type">int</span>		m_iTerrokilled;
+<a name="50"></a>var <span class="source_type">int</span>		m_iRoundsfired;
+<a name="51"></a>var <span class="source_type">int</span>		m_iRoundsOntarget;
+<a name="52"></a>
+<a name="53"></a><span class="source_comment">//Weapons
+</span><a name="54"></a>var <span class="source_type">string</span>      m_szPrimaryWeapon;            <span class="source_comment">//R6PrimaryWeaponDescription class name
+</span><a name="55"></a>var <span class="source_type">string</span>      m_szPrimaryWeaponGadget;      <span class="source_comment">//Token representing type of weapon gadget
+</span><a name="56"></a>var <span class="source_type">string</span>      m_szPrimaryWeaponBullet;      <span class="source_comment">//Token representing type of bullets
+</span><a name="57"></a>var <span class="source_type">string</span>      m_szPrimaryGadget;            <span class="source_comment">//R6GadgetDescription class name
+</span><a name="58"></a>var <span class="source_type">string</span>      m_szSecondaryWeapon;          <span class="source_comment">//R6SecondaryWeaponDescription class name
+</span><a name="59"></a>var <span class="source_type">string</span>      m_szSecondaryWeaponGadget;    <span class="source_comment">//Token representing type of weapon gadget
+</span><a name="60"></a>var <span class="source_type">string</span>      m_szSecondaryWeaponBullet;    <span class="source_comment">///Token representing type of bullets
+</span><a name="61"></a>var <span class="source_type">string</span>      m_szSecondaryGadget;          <span class="source_comment">//R6GadgetDescription class name
+</span><a name="62"></a>var <span class="source_type">string</span>      m_szArmor;                    <span class="source_comment">//R6ArmorDescription class name
+</span><a name="63"></a>
+<a name="64"></a>var <span class="source_type">name</span>        m_CanUseArmorType;			  <span class="source_comment">//If the operative is limited to use specific armors
+</span><a name="65"></a>
+<a name="66"></a>function <span class="source_type">string</span> GetName()
+<a name="67"></a>{	
+<a name="68"></a>	if (m_iRookieID != -<span class="source_int">1</span>)
+<a name="69"></a>	    return (Localize(m_szOperativeClass,<span class="source_string">"ID_NAME"</span>,<span class="source_string">"R6Operatives"</span>,true,true) $ m_iRookieID);
+<a name="70"></a>	else
+<a name="71"></a>	    return Localize(m_szOperativeClass,<span class="source_string">"ID_NAME"</span>,<span class="source_string">"R6Operatives"</span>,true,true);
+<a name="72"></a>}
+<a name="73"></a>
+<a name="74"></a>function <span class="source_type">string</span> GetShortName()
+<a name="75"></a>{	
+<a name="76"></a>	if (m_iRookieID != -<span class="source_int">1</span>)
+<a name="77"></a>	    return (Localize(m_szOperativeClass,<span class="source_string">"ID_SHORTNAME"</span>,<span class="source_string">"R6Operatives"</span>,true,true) $ m_iRookieID);
+<a name="78"></a>	else
+<a name="79"></a>	    return Localize(m_szOperativeClass,<span class="source_string">"ID_SHORTNAME"</span>,<span class="source_string">"R6Operatives"</span>,true,true);
+<a name="80"></a>}
+<a name="81"></a>
+<a name="82"></a>function <span class="source_type">string</span> GetSpeciality() 
+<a name="83"></a>{
+<a name="84"></a>	return Localize(<span class="source_string">"Speciality"</span>, m_szSpecialityID, <span class="source_string">"R6Operatives"</span>);
+<a name="85"></a>}
+<a name="86"></a>
+<a name="87"></a>function <span class="source_type">string</span> GetHistory()
+<a name="88"></a>{
+<a name="89"></a>	return Localize(m_szOperativeClass,<span class="source_string">"ID_HISTORY"</span>,<span class="source_string">"R6Operatives"</span>, false, true);
+<a name="90"></a>}
+<a name="91"></a>
+<a name="92"></a>function <span class="source_type">string</span> GetGender()
+<a name="93"></a>{
+<a name="94"></a>    return Localize(<span class="source_string">"Gender"</span>, m_szGenderID,<span class="source_string">"R6Common"</span>);
+<a name="95"></a>}
+<a name="96"></a>
+<a name="97"></a>function <span class="source_type">string</span> GetCountry()
+<a name="98"></a>{
+<a name="99"></a>    return Localize(<span class="source_string">"Country"</span>, m_szCountryID ,<span class="source_string">"R6Common"</span>);
+<a name="100"></a>}
+<a name="101"></a>
+<a name="102"></a>function <span class="source_type">string</span> GetCity()
+<a name="103"></a>{
+<a name="104"></a>    return Localize(<span class="source_string">"City"</span>, m_szCityID,<span class="source_string">"R6Common"</span>);
+<a name="105"></a>}
+<a name="106"></a>
+<a name="107"></a>function <span class="source_type">string</span> GetState()
+<a name="108"></a>{
+<a name="109"></a>    return Localize(<span class="source_string">"State"</span>, m_szStateID, <span class="source_string">"R6Common"</span>);
+<a name="110"></a>}
+<a name="111"></a>
+<a name="112"></a>function <span class="source_type">string</span> GetHairColor()
+<a name="113"></a>{
+<a name="114"></a>    return Localize(<span class="source_string">"Color"</span>, m_szHairColorID, <span class="source_string">"R6Common"</span>);
+<a name="115"></a>}
+<a name="116"></a>
+<a name="117"></a>function <span class="source_type">string</span> GetEyesColor()
+<a name="118"></a>{
+<a name="119"></a>    return Localize(<span class="source_string">"Color"</span>, m_szEyesColorID, <span class="source_string">"R6Common"</span>);
+<a name="120"></a>}
+<a name="121"></a>
+<a name="122"></a>function <span class="source_type">string</span> GetIDNumber()
+<a name="123"></a>{	
+<a name="124"></a>	return Localize(m_szOperativeClass, <span class="source_string">"ID_IDNUMBER"</span>, <span class="source_string">"R6Operatives"</span>);
+<a name="125"></a>}
+<a name="126"></a>
+<a name="127"></a>function <span class="source_type">string</span> GetBirthDate()
+<a name="128"></a>{	
+<a name="129"></a>	return Localize(GetRealOperativeClass(), <span class="source_string">"ID_BIRTHDATE"</span>, <span class="source_string">"R6Operatives"</span>);
+<a name="130"></a>}
+<a name="131"></a>
+<a name="132"></a>function <span class="source_type">string</span> GetHeight()
+<a name="133"></a>{	
+<a name="134"></a>	return Localize(GetRealOperativeClass(), <span class="source_string">"ID_HEIGHT"</span>, <span class="source_string">"R6Operatives"</span>);
+<a name="135"></a>}
+<a name="136"></a>
+<a name="137"></a>function <span class="source_type">string</span> GetWeight()
+<a name="138"></a>{	
+<a name="139"></a>	return Localize(GetRealOperativeClass(), <span class="source_string">"ID_WEIGHT"</span>, <span class="source_string">"R6Operatives"</span>);
+<a name="140"></a>}
+<a name="141"></a>
+<a name="142"></a>function <span class="source_type">string</span> GetNbMissionPlayed()
+<a name="143"></a>{
+<a name="144"></a>    return <span class="source_type">string</span>(m_iNbMissionPlayed);
+<a name="145"></a>}
+<a name="146"></a>
+<a name="147"></a>function <span class="source_type">string</span> GetNbTerrokilled()
+<a name="148"></a>{
+<a name="149"></a>    return <span class="source_type">string</span>(m_iTerrokilled);
+<a name="150"></a>}
+<a name="151"></a>
+<a name="152"></a>function <span class="source_type">string</span> GetNbRoundsfired()
+<a name="153"></a>{
+<a name="154"></a>    return <span class="source_type">string</span>(m_iRoundsfired);
+<a name="155"></a>}
+<a name="156"></a>
+<a name="157"></a>function <span class="source_type">string</span> GetNbRoundsOnTarget()
+<a name="158"></a>{
+<a name="159"></a>    return <span class="source_type">string</span>(m_iRoundsOntarget);
+<a name="160"></a>}
+<a name="161"></a>
+<a name="162"></a>function <span class="source_type">string</span> GetShootPercent()
+<a name="163"></a>{
+<a name="164"></a>    if(m_iRoundsfired &gt; <span class="source_int">0</span>)
+<a name="165"></a>        return <span class="source_type">string</span>( <span class="source_type">INT</span>(m_iRoundsOntarget / <span class="source_type">FLOAT</span>(m_iRoundsfired) * <span class="source_int">100</span>));
+<a name="166"></a>    else return <span class="source_string">"0"</span>;
+<a name="167"></a>}
+<a name="168"></a>
+<a name="169"></a>function <span class="source_type">string</span> GetTextDescription()
+<a name="170"></a>{
+<a name="171"></a>    local <span class="source_type">string</span> <span class="source_type">szDescription</span>;
+<a name="172"></a>    local <span class="source_type">string</span> szTemp;
+<a name="173"></a>
+<a name="174"></a>    <span class="source_type">szDescription</span> = Localize(<span class="source_string">"IdentificationField"</span>,<span class="source_string">"ID_IDNUMBER"</span>,<span class="source_string">"R6Operatives"</span>) $ <span class="source_string">" "</span> $ GetIDNumber() $ Chr(<span class="source_int">13</span>);
+<a name="175"></a>    <span class="source_type">szDescription</span> = <span class="source_type">szDescription</span> $ Localize(<span class="source_string">"IdentificationField"</span>, <span class="source_string">"ID_BIRTHPLACE"</span>,<span class="source_string">"R6Operatives"</span>) $ <span class="source_string">" "</span> $ GetCountry();
+<a name="176"></a>	
+<a name="177"></a>    szTemp = GetCountry();
+<a name="178"></a>    if (szTemp != <span class="source_string">""</span>) 
+<a name="179"></a>        <span class="source_type">szDescription</span> = <span class="source_type">szDescription</span> $ szTemp;
+<a name="180"></a>    szTemp = GetCity();
+<a name="181"></a>    if (szTemp != <span class="source_string">""</span>) 
+<a name="182"></a>        <span class="source_type">szDescription</span> = <span class="source_type">szDescription</span> $ <span class="source_string">", "</span> $ szTemp;
+<a name="183"></a>    szTemp = GetState();
+<a name="184"></a>    if (szTemp != <span class="source_string">""</span>) 
+<a name="185"></a>        <span class="source_type">szDescription</span> = <span class="source_type">szDescription</span> $ <span class="source_string">", "</span> $ szTemp;
+<a name="186"></a>    
+<a name="187"></a>    <span class="source_type">szDescription</span> = <span class="source_type">szDescription</span> $ Chr(<span class="source_int">13</span>);
+<a name="188"></a>
+<a name="189"></a>    <span class="source_type">szDescription</span> = <span class="source_type">szDescription</span> $ Localize(<span class="source_string">"IdentificationField"</span>, <span class="source_string">"ID_SPECIALITY"</span>, <span class="source_string">"R6Operatives"</span>) $ <span class="source_string">" "</span> $ GetSpeciality() $ Chr(<span class="source_int">13</span>);
+<a name="190"></a>    <span class="source_type">szDescription</span> = <span class="source_type">szDescription</span> $ Localize(<span class="source_string">"IdentificationField"</span>, <span class="source_string">"ID_BIRTHDATE"</span>, <span class="source_string">"R6Operatives"</span>) $ <span class="source_string">" "</span> $ GetBirthDate() $ Chr(<span class="source_int">13</span>);
+<a name="191"></a>    <span class="source_type">szDescription</span> = <span class="source_type">szDescription</span> $ Localize(<span class="source_string">"IdentificationField"</span>, <span class="source_string">"ID_HEIGHT"</span>, <span class="source_string">"R6Operatives"</span>) $ <span class="source_string">" "</span> $ GetHeight() $ Chr(<span class="source_int">13</span>);
+<a name="192"></a>    <span class="source_type">szDescription</span> = <span class="source_type">szDescription</span> $ Localize(<span class="source_string">"IdentificationField"</span>, <span class="source_string">"ID_WEIGHT"</span>, <span class="source_string">"R6Operatives"</span>) $ <span class="source_string">" "</span> $ GetWeight() $ Chr(<span class="source_int">13</span>);
+<a name="193"></a>    <span class="source_type">szDescription</span> = <span class="source_type">szDescription</span> $ Localize(<span class="source_string">"IdentificationField"</span>, <span class="source_string">"ID_HAIR"</span>, <span class="source_string">"R6Operatives"</span>) $ <span class="source_string">" "</span> $ GetHairColor() $ Chr(<span class="source_int">13</span>);
+<a name="194"></a>    <span class="source_type">szDescription</span> = <span class="source_type">szDescription</span> $ Localize(<span class="source_string">"IdentificationField"</span>, <span class="source_string">"ID_EYES"</span>,<span class="source_string">"R6Operatives"</span>) $ <span class="source_string">" "</span> $ GetEyesColor() $ Chr(<span class="source_int">13</span>);
+<a name="195"></a>    <span class="source_type">szDescription</span> = <span class="source_type">szDescription</span> $ Localize(<span class="source_string">"IdentificationField"</span>, <span class="source_string">"ID_GENDER"</span>,<span class="source_string">"R6Operatives"</span>) $ <span class="source_string">" "</span> $ GetGender();
+<a name="196"></a>
+<a name="197"></a>    return <span class="source_type">szDescription</span>;
+<a name="198"></a>}
+<a name="199"></a>
+<a name="200"></a>function <span class="source_type">string</span> GetHealthStatus()
+<a name="201"></a>{
+<a name="202"></a>    local <span class="source_type">string</span> <span class="source_type">result</span>;
+<a name="203"></a>
+<a name="204"></a>    switch(m_iHealth)
+<a name="205"></a>    {
+<a name="206"></a>        case <span class="source_int">0</span>:
+<a name="207"></a>            <span class="source_type">result</span> = Localize(<span class="source_string">"Health"</span>,<span class="source_string">"ID_READY"</span>,<span class="source_string">"R6Common"</span>);
+<a name="208"></a>            break;
+<a name="209"></a>        case <span class="source_int">1</span>:
+<a name="210"></a>            <span class="source_type">result</span> = Localize(<span class="source_string">"Health"</span>,<span class="source_string">"ID_WOUNDED"</span>,<span class="source_string">"R6Common"</span>);
+<a name="211"></a>            break;
+<a name="212"></a>        case <span class="source_int">2</span>:
+<a name="213"></a>            <span class="source_type">result</span> = Localize(<span class="source_string">"Health"</span>,<span class="source_string">"ID_INCAPACITATED"</span>,<span class="source_string">"R6Common"</span>);
+<a name="214"></a>            break;
+<a name="215"></a>        case <span class="source_int">3</span>:
+<a name="216"></a>            <span class="source_type">result</span> = Localize(<span class="source_string">"Health"</span>,<span class="source_string">"ID_DEAD"</span>,<span class="source_string">"R6Common"</span>);
+<a name="217"></a>            break;
+<a name="218"></a>        default :
+<a name="219"></a>            <span class="source_type">result</span> = <span class="source_string">"UNKNOWN"</span>; 
+<a name="220"></a>            break;            
+<a name="221"></a>    }    
+<a name="222"></a>    return  <span class="source_type">result</span>;
+<a name="223"></a>}
+<a name="224"></a>
+<a name="225"></a><span class="source_comment">//=============================================================
+</span><a name="226"></a><span class="source_comment">// IsOperativeReady: return true if operative health status is ready (0)
+</span><a name="227"></a><span class="source_comment">//=============================================================
+</span><a name="228"></a>function <span class="source_type">BOOL</span> IsOperativeReady()
+<a name="229"></a>{
+<a name="230"></a>	return ( m_iHealth == <span class="source_int">0</span>);
+<a name="231"></a>}
+<a name="232"></a>
+<a name="233"></a>function <span class="source_type">string</span> GetRealOperativeClass()
+<a name="234"></a>{
+<a name="235"></a>	local <span class="source_type">INT</span> iTemp;
+<a name="236"></a>
+<a name="237"></a>	if (m_iRookieID == -<span class="source_int">1</span>)
+<a name="238"></a>	{
+<a name="239"></a>		return m_szOperativeClass;
+<a name="240"></a>	}
+<a name="241"></a>
+<a name="242"></a>	<span class="source_comment">// 29 is the number of real operatives, backup op follow
+</span><a name="243"></a>	if ( m_iRookieID &lt; <span class="source_int">30</span>)
+<a name="244"></a>	{
+<a name="245"></a>		iTemp = <span class="source_int">29</span> - m_iRookieID;
+<a name="246"></a>	}
+<a name="247"></a>	else
+<a name="248"></a>	{
+<a name="249"></a>		iTemp = ( m_iRookieID / <span class="source_int">30</span>) - <span class="source_int">1</span>;
+<a name="250"></a>		iTemp = m_iRookieID - ( <span class="source_int">29</span> + (iTemp * <span class="source_int">30</span>));
+<a name="251"></a>	}
+<a name="252"></a>
+<a name="253"></a>	return (<span class="source_string">"R6Operative"</span> $ iTemp);
+<a name="254"></a>}
+<a name="255"></a>
+<a name="256"></a>function UpdateSkills()
+<a name="257"></a>{
+<a name="258"></a>    local <span class="source_type">INT</span> iD5;
+<a name="259"></a>    local <span class="source_type">INT</span> iD2;
+<a name="260"></a>    local <span class="source_type">FLOAT</span> fDecision;
+<a name="261"></a>    local <span class="source_type">FLOAT</span> fIncreaseSkill;  <span class="source_comment">// The members that don't make part of the mission increase their skill with restriction
+</span><a name="262"></a>
+<a name="263"></a>    fIncreaseSkill = <span class="source_int">0.5</span>;
+<a name="264"></a>    
+<a name="265"></a>    iD5 = rand(<span class="source_int">5</span>) + <span class="source_int">1</span>; 
+<a name="266"></a>    iD2 = rand(<span class="source_int">2</span>) + <span class="source_int">1</span>;
+<a name="267"></a>    fDecision = FRand();    <span class="source_comment">// as soon as fDecision is used once, generate a new rand value...
+</span><a name="268"></a>
+<a name="269"></a>    <span class="source_comment">// -- Health --//
+</span><a name="270"></a>
+<a name="271"></a>    if(m_iHealth == <span class="source_int">1</span>)  <span class="source_comment">//Let's heal up this guy
+</span><a name="272"></a>        m_iHealth = <span class="source_int">0</span>;
+<a name="273"></a>    else if(m_iHealth &gt; <span class="source_int">1</span>)
+<a name="274"></a>        return;         <span class="source_comment">//Dead people don't improve :(
+</span><a name="275"></a>
+<a name="276"></a>    <span class="source_comment">// -- assault skill -- //
+</span><a name="277"></a>    if(m_szSpecialityID == <span class="source_string">"ID_ASSAULT"</span>)
+<a name="278"></a>    {
+<a name="279"></a>        m_fAssault += (fIncreaseSkill * (<span class="source_type">FLOAT</span>(iD5+<span class="source_int">5</span>)/<span class="source_int">100.f</span>)*(<span class="source_int">100</span>-m_fAssault));
+<a name="280"></a>    }
+<a name="281"></a>    else
+<a name="282"></a>    {
+<a name="283"></a>        m_fAssault += (fIncreaseSkill * (<span class="source_type">FLOAT</span>(iD2+<span class="source_int">2</span>)/<span class="source_int">100.f</span>)*(<span class="source_int">100</span>-m_fAssault));
+<a name="284"></a>    }
+<a name="285"></a>
+<a name="286"></a>    <span class="source_comment">// -- demolitions skill -- //
+</span><a name="287"></a>    if(m_szSpecialityID == <span class="source_string">"ID_DEMOLITIONS"</span>)
+<a name="288"></a>    {
+<a name="289"></a>        m_fDemolitions += (fIncreaseSkill * (<span class="source_type">FLOAT</span>(iD5+<span class="source_int">5</span>)/<span class="source_int">100.f</span>)*(<span class="source_int">100</span>-m_fDemolitions));
+<a name="290"></a>    }
+<a name="291"></a>    else 
+<a name="292"></a>    {
+<a name="293"></a>        if(fDecision &lt;= <span class="source_int">0.2</span>)
+<a name="294"></a>        {
+<a name="295"></a>            m_fDemolitions += (fIncreaseSkill * (<span class="source_int">0.02</span>*(<span class="source_int">100</span>-m_fDemolitions)));
+<a name="296"></a>        }
+<a name="297"></a>        fDecision = FRand();
+<a name="298"></a>    }
+<a name="299"></a>
+<a name="300"></a>    <span class="source_comment">// -- electronics skill -- //
+</span><a name="301"></a>    if(m_szSpecialityID == <span class="source_string">"ID_ELECTRONICS"</span>)
+<a name="302"></a>    { 
+<a name="303"></a>        m_fElectronics += (fIncreaseSkill * (<span class="source_type">FLOAT</span>(iD5+<span class="source_int">5</span>)/<span class="source_int">100.f</span>)*(<span class="source_int">100</span>-m_fElectronics));
+<a name="304"></a>    }
+<a name="305"></a>    else 
+<a name="306"></a>    {
+<a name="307"></a>        if(fDecision &lt;= <span class="source_int">0.2</span>)
+<a name="308"></a>        {
+<a name="309"></a>            m_fElectronics += (fIncreaseSkill * (<span class="source_int">0.02</span>*(<span class="source_int">100</span>-m_fElectronics)));
+<a name="310"></a>        }
+<a name="311"></a>        fDecision = FRand();
+<a name="312"></a>    }
+<a name="313"></a>
+<a name="314"></a>    <span class="source_comment">// -- stealth skill -- //
+</span><a name="315"></a>    if(m_szSpecialityID == <span class="source_string">"ID_STEALTH"</span>)
+<a name="316"></a>    {
+<a name="317"></a>        m_fStealth += (fIncreaseSkill * (<span class="source_type">FLOAT</span>(iD5+<span class="source_int">5</span>)/<span class="source_int">100.f</span>)*(<span class="source_int">100</span>-m_fStealth));
+<a name="318"></a>    }
+<a name="319"></a>    else
+<a name="320"></a>    {
+<a name="321"></a>        if(fDecision &lt;= <span class="source_int">0.2</span>)
+<a name="322"></a>        {
+<a name="323"></a>            m_fStealth += (fIncreaseSkill * (<span class="source_int">0.02</span>*(<span class="source_int">100</span>-m_fStealth)));
+<a name="324"></a>        }
+<a name="325"></a>        fDecision = FRand();
+<a name="326"></a>    }
+<a name="327"></a>
+<a name="328"></a>    <span class="source_comment">// -- sniper skill -- //
+</span><a name="329"></a>    if(m_szSpecialityID == <span class="source_string">"ID_SNIPER"</span>)
+<a name="330"></a>    {
+<a name="331"></a>        m_fSniper += (fIncreaseSkill * (<span class="source_type">FLOAT</span>(iD5+<span class="source_int">5</span>)/<span class="source_int">100.f</span>)*(<span class="source_int">100</span>-m_fSniper));
+<a name="332"></a>    }
+<a name="333"></a>    else
+<a name="334"></a>    {
+<a name="335"></a>        if(fDecision &lt;= <span class="source_int">0.2</span>)
+<a name="336"></a>        {
+<a name="337"></a>            m_fSniper += (fIncreaseSkill * (<span class="source_int">0.02</span>*(<span class="source_int">100</span>-m_fSniper)));    
+<a name="338"></a>        }
+<a name="339"></a>        fDecision = FRand();
+<a name="340"></a>    }
+<a name="341"></a>
+<a name="342"></a>    <span class="source_comment">// -- self control -- //
+</span><a name="343"></a>    if(fDecision &lt;= <span class="source_int">0.2</span>)
+<a name="344"></a>    {
+<a name="345"></a>        m_fSelfControl += (fIncreaseSkill * (<span class="source_int">0.02</span>*(<span class="source_int">100</span>-m_fSelfControl)));
+<a name="346"></a>	}
+<a name="347"></a>    fDecision = FRand();
+<a name="348"></a>    
+<a name="349"></a>    <span class="source_comment">// -- leadership -- //
+</span><a name="350"></a>    if(fDecision &lt;= <span class="source_int">0.2</span>)
+<a name="351"></a>    {
+<a name="352"></a>        m_fLeadership += (fIncreaseSkill * (<span class="source_int">0.02</span>*(<span class="source_int">100</span>-m_fLeadership)));
+<a name="353"></a>    }
+<a name="354"></a>    fDecision = FRand();
+<a name="355"></a>
+<a name="356"></a>    <span class="source_comment">// -- observation -- //
+</span><a name="357"></a>    if(fDecision &lt;= <span class="source_int">0.2</span>)
+<a name="358"></a>    {
+<a name="359"></a>        m_fObservation += (fIncreaseSkill * (<span class="source_int">0.02</span>*(<span class="source_int">100</span>-m_fObservation)));
+<a name="360"></a>    }
+<a name="361"></a>    fDecision = FRand();
+<a name="362"></a>}
+<a name="363"></a>
+<a name="364"></a>function DisplayStats()
+<a name="365"></a>{
+<a name="366"></a>    log(<span class="source_string">"------------------------"</span>);
+<a name="367"></a>    log(GetName());
+<a name="368"></a>    log(<span class="source_string">"m_fAssault     ="</span>@m_fAssault);
+<a name="369"></a>    log(<span class="source_string">"m_fElectronics ="</span>@m_fElectronics);
+<a name="370"></a>    log(<span class="source_string">"m_fSniper      ="</span>@m_fSniper);
+<a name="371"></a>    log(<span class="source_string">"m_fStealth     ="</span>@m_fStealth);
+<a name="372"></a>    log(<span class="source_string">"m_fSelfControl ="</span>@m_fSelfControl);
+<a name="373"></a>    log(<span class="source_string">"m_fLeadership  ="</span>@m_fLeadership);
+<a name="374"></a>    log(<span class="source_string">"m_fObservation ="</span>@m_fObservation);
+<a name="375"></a>    log(<span class="source_string">"========================"</span>);
+<a name="376"></a>}
+<a name="377"></a>
+<a name="378"></a>function CopyOperative(<span class="source_type"><a href="../r6game/r6operative.html" class="source">R6Operative</a></span> aOperative)
+<a name="379"></a>{
+<a name="380"></a>    local <span class="source_type">INT</span> <span class="source_type">i</span>;
+<a name="381"></a>
+<a name="382"></a>    aOperative.m_szOperativeClass = m_szOperativeClass;
+<a name="383"></a>    aOperative.m_szCountryID = m_szCountryID;
+<a name="384"></a>    aOperative.m_szCityID = m_szCityID;
+<a name="385"></a>    aOperative.m_szStateID = m_szStateID;
+<a name="386"></a>    aOperative.m_szSpecialityID = m_szSpecialityID;
+<a name="387"></a>    aOperative.m_szHairColorID = m_szHairColorID;
+<a name="388"></a>    aOperative.m_szEyesColorID = m_szEyesColorID;
+<a name="389"></a>    aOperative.m_szGenderID = m_szGenderID;
+<a name="390"></a>
+<a name="391"></a>    aOperative.m_TMenuFace = m_TMenuFace;
+<a name="392"></a>    
+<a name="393"></a>    
+<a name="394"></a>    for (<span class="source_type">i</span>=<span class="source_int">0</span>;<span class="source_type">i</span>&lt;m_OperativeFaces.Length; <span class="source_type">i</span>++)
+<a name="395"></a>    {
+<a name="396"></a>        aOperative.m_OperativeFaces[aOperative.m_OperativeFaces.Length] = m_OperativeFaces[<span class="source_type">i</span>];
+<a name="397"></a>    }
+<a name="398"></a>    
+<a name="399"></a>    aOperative.m_szGender = m_szGender; 
+<a name="400"></a>
+<a name="401"></a>
+<a name="402"></a>
+<a name="403"></a>    <span class="source_comment">//Skills
+</span><a name="404"></a>    aOperative.m_fAssault = m_fAssault;
+<a name="405"></a>    aOperative.m_fDemolitions = m_fDemolitions;
+<a name="406"></a>    aOperative.m_fElectronics = m_fElectronics;
+<a name="407"></a>    aOperative.m_fSniper = m_fSniper;
+<a name="408"></a>    aOperative.m_fStealth = m_fStealth;
+<a name="409"></a>    aOperative.m_fSelfControl = m_fSelfControl;
+<a name="410"></a>    aOperative.m_fLeadership = m_fLeadership;
+<a name="411"></a>    aOperative.m_fObservation = m_fObservation;
+<a name="412"></a>
+<a name="413"></a>    <span class="source_comment">//Status
+</span><a name="414"></a>    aOperative.m_iHealth = m_iHealth;
+<a name="415"></a>
+<a name="416"></a>    <span class="source_comment">//Stats  
+</span><a name="417"></a>
+<a name="418"></a>    aOperative.m_iNbMissionPlayed = m_iNbMissionPlayed;
+<a name="419"></a>    aOperative.m_iTerrokilled = m_iTerrokilled;
+<a name="420"></a>    aOperative.m_iRoundsfired = m_iRoundsfired;
+<a name="421"></a>    aOperative.m_iRoundsOntarget = m_iRoundsOntarget;
+<a name="422"></a>
+<a name="423"></a>}
+<a name="424"></a>
+<a name="425"></a>defaultproperties
+<a name="426"></a>{
+<a name="427"></a>     m_iUniqueID=-<span class="source_int">1</span>
+<a name="428"></a>     m_iRookieID=-<span class="source_int">1</span>
+<a name="429"></a>     m_RMenuFaceY=<span class="source_int">420</span>
+<a name="430"></a>     m_RMenuFaceW=<span class="source_int">175</span>
+<a name="431"></a>     m_RMenuFaceH=<span class="source_int">81</span>
+<a name="432"></a>     m_RMenuFaceSmallX=<span class="source_int">456</span>
+<a name="433"></a>     m_RMenuFaceSmallY=<span class="source_int">132</span>
+<a name="434"></a>     m_RMenuFaceSmallW=<span class="source_int">38</span>
+<a name="435"></a>     m_RMenuFaceSmallH=<span class="source_int">42</span>
+<a name="436"></a>     m_TMenuFace=<span class="source_type"><a href="../engine/texture.html" class="source">Texture</a></span><span class="source_name">'R6MenuOperative.RS6_Memeber_03'</span>
+<a name="437"></a>     m_TMenuFaceSmall=<span class="source_type"><a href="../engine/texture.html" class="source">Texture</a></span><span class="source_name">'R6MenuOperative.RS6_Memeber_01'</span>
+<a name="438"></a>     m_CanUseArmorType=<span class="source_string">"R6ArmorDescription"</span>
+<a name="439"></a>     m_szOperativeClass=<span class="source_string">"R6Operative"</span>
+<a name="440"></a>     m_szCountryID=<span class="source_string">"ID_SPAIN"</span>
+<a name="441"></a>     m_szCityID=<span class="source_string">"ID_MALAGA"</span>
+<a name="442"></a>     m_szSpecialityID=<span class="source_string">"ID_ASSAULT"</span>
+<a name="443"></a>     m_szHairColorID=<span class="source_string">"ID_BROWN"</span>
+<a name="444"></a>     m_szEyesColorID=<span class="source_string">"ID_BLUE"</span>
+<a name="445"></a>     m_szGenderID=<span class="source_string">"ID_MALE"</span>
+<a name="446"></a>     m_szGender=<span class="source_string">"M"</span>
+<a name="447"></a>}
+<a name="448"></a></pre></td></tr></table></div>
+<hr />
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../r6game/r6game-overview.html">Package</a></td>
+	<td class="header"><a href="../r6game/r6operative.html">Class</a></td>
+	<td class="header_hilight">Source</td>
+	<td class="header"><a class="header" href="../classtree.html#R6Operative">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../Source_r6game/r6norules.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../Source_r6game/r6operative1.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+
+<div class="stats">Class file time: sam. 18/9/2004 14:39:28.000 - Creation time: mar. 26/5/2026 18:33:20.857 - Created with <a href="http://wiki.beyondunreal.com/wiki/UnCodeX" target="_blank">UnCodeX</a></div>
+
+</body>
+</html>

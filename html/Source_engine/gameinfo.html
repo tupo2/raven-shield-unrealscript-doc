@@ -1,0 +1,1798 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+	<title>UnCodeX - Source: engine.GameInfo</title>
+	<meta name="Generator" content="UnCodeX 241" />
+	<link rel="stylesheet" href="../DocStyle2.css" type="text/css" title="Original Purple" />
+	<link rel="alternative stylesheet" href="../DocStyle2-blue.css" type="text/css" title="Blue" />
+	<link rel="alternative stylesheet" href="../DocStyle2-red.css" type="text/css" title="Red" />
+	<!--[if IE]>
+	<link rel="stylesheet" href="../DocStyle2-msie.css" type="text/css" />
+	<![endif]-->
+	<script src="../styleswitcher.js" type="text/javascript"></script>
+</head>
+<body>
+
+<div class="header">
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../engine/engine-overview.html">Package</a></td>
+	<td class="header"><a href="../engine/gameinfo.html">Class</a></td>
+	<td class="header_hilight">Source</td>
+	<td class="header"><a class="header" href="../classtree.html#GameInfo">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../Source_engine/gameengine.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../Source_engine/gamemessage.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html#Source_engine/gameinfo.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+</div>
+<div class="spacer"></div>
+
+<h1><a href="../engine/engine-overview.html">engine</a>.<a href="../engine/gameinfo.html">GameInfo</a></h1>
+<br />
+<div class="source"><table class="source"><tr><td class="source_lineno"><span class="source_lineno">00001<br />00002<br />00003<br />00004<br />00005<br />00006<br />00007<br />00008<br />00009<br />00010<br />00011<br />00012<br />00013<br />00014<br />00015<br />00016<br />00017<br />00018<br />00019<br />00020<br />
+00021<br />00022<br />00023<br />00024<br />00025<br />00026<br />00027<br />00028<br />00029<br />00030<br />00031<br />00032<br />00033<br />00034<br />00035<br />00036<br />00037<br />00038<br />00039<br />00040<br />
+00041<br />00042<br />00043<br />00044<br />00045<br />00046<br />00047<br />00048<br />00049<br />00050<br />00051<br />00052<br />00053<br />00054<br />00055<br />00056<br />00057<br />00058<br />00059<br />00060<br />
+00061<br />00062<br />00063<br />00064<br />00065<br />00066<br />00067<br />00068<br />00069<br />00070<br />00071<br />00072<br />00073<br />00074<br />00075<br />00076<br />00077<br />00078<br />00079<br />00080<br />
+00081<br />00082<br />00083<br />00084<br />00085<br />00086<br />00087<br />00088<br />00089<br />00090<br />00091<br />00092<br />00093<br />00094<br />00095<br />00096<br />00097<br />00098<br />00099<br />00100<br />
+00101<br />00102<br />00103<br />00104<br />00105<br />00106<br />00107<br />00108<br />00109<br />00110<br />00111<br />00112<br />00113<br />00114<br />00115<br />00116<br />00117<br />00118<br />00119<br />00120<br />
+00121<br />00122<br />00123<br />00124<br />00125<br />00126<br />00127<br />00128<br />00129<br />00130<br />00131<br />00132<br />00133<br />00134<br />00135<br />00136<br />00137<br />00138<br />00139<br />00140<br />
+00141<br />00142<br />00143<br />00144<br />00145<br />00146<br />00147<br />00148<br />00149<br />00150<br />00151<br />00152<br />00153<br />00154<br />00155<br />00156<br />00157<br />00158<br />00159<br />00160<br />
+00161<br />00162<br />00163<br />00164<br />00165<br />00166<br />00167<br />00168<br />00169<br />00170<br />00171<br />00172<br />00173<br />00174<br />00175<br />00176<br />00177<br />00178<br />00179<br />00180<br />
+00181<br />00182<br />00183<br />00184<br />00185<br />00186<br />00187<br />00188<br />00189<br />00190<br />00191<br />00192<br />00193<br />00194<br />00195<br />00196<br />00197<br />00198<br />00199<br />00200<br />
+00201<br />00202<br />00203<br />00204<br />00205<br />00206<br />00207<br />00208<br />00209<br />00210<br />00211<br />00212<br />00213<br />00214<br />00215<br />00216<br />00217<br />00218<br />00219<br />00220<br />
+00221<br />00222<br />00223<br />00224<br />00225<br />00226<br />00227<br />00228<br />00229<br />00230<br />00231<br />00232<br />00233<br />00234<br />00235<br />00236<br />00237<br />00238<br />00239<br />00240<br />
+00241<br />00242<br />00243<br />00244<br />00245<br />00246<br />00247<br />00248<br />00249<br />00250<br />00251<br />00252<br />00253<br />00254<br />00255<br />00256<br />00257<br />00258<br />00259<br />00260<br />
+00261<br />00262<br />00263<br />00264<br />00265<br />00266<br />00267<br />00268<br />00269<br />00270<br />00271<br />00272<br />00273<br />00274<br />00275<br />00276<br />00277<br />00278<br />00279<br />00280<br />
+00281<br />00282<br />00283<br />00284<br />00285<br />00286<br />00287<br />00288<br />00289<br />00290<br />00291<br />00292<br />00293<br />00294<br />00295<br />00296<br />00297<br />00298<br />00299<br />00300<br />
+00301<br />00302<br />00303<br />00304<br />00305<br />00306<br />00307<br />00308<br />00309<br />00310<br />00311<br />00312<br />00313<br />00314<br />00315<br />00316<br />00317<br />00318<br />00319<br />00320<br />
+00321<br />00322<br />00323<br />00324<br />00325<br />00326<br />00327<br />00328<br />00329<br />00330<br />00331<br />00332<br />00333<br />00334<br />00335<br />00336<br />00337<br />00338<br />00339<br />00340<br />
+00341<br />00342<br />00343<br />00344<br />00345<br />00346<br />00347<br />00348<br />00349<br />00350<br />00351<br />00352<br />00353<br />00354<br />00355<br />00356<br />00357<br />00358<br />00359<br />00360<br />
+00361<br />00362<br />00363<br />00364<br />00365<br />00366<br />00367<br />00368<br />00369<br />00370<br />00371<br />00372<br />00373<br />00374<br />00375<br />00376<br />00377<br />00378<br />00379<br />00380<br />
+00381<br />00382<br />00383<br />00384<br />00385<br />00386<br />00387<br />00388<br />00389<br />00390<br />00391<br />00392<br />00393<br />00394<br />00395<br />00396<br />00397<br />00398<br />00399<br />00400<br />
+00401<br />00402<br />00403<br />00404<br />00405<br />00406<br />00407<br />00408<br />00409<br />00410<br />00411<br />00412<br />00413<br />00414<br />00415<br />00416<br />00417<br />00418<br />00419<br />00420<br />
+00421<br />00422<br />00423<br />00424<br />00425<br />00426<br />00427<br />00428<br />00429<br />00430<br />00431<br />00432<br />00433<br />00434<br />00435<br />00436<br />00437<br />00438<br />00439<br />00440<br />
+00441<br />00442<br />00443<br />00444<br />00445<br />00446<br />00447<br />00448<br />00449<br />00450<br />00451<br />00452<br />00453<br />00454<br />00455<br />00456<br />00457<br />00458<br />00459<br />00460<br />
+00461<br />00462<br />00463<br />00464<br />00465<br />00466<br />00467<br />00468<br />00469<br />00470<br />00471<br />00472<br />00473<br />00474<br />00475<br />00476<br />00477<br />00478<br />00479<br />00480<br />
+00481<br />00482<br />00483<br />00484<br />00485<br />00486<br />00487<br />00488<br />00489<br />00490<br />00491<br />00492<br />00493<br />00494<br />00495<br />00496<br />00497<br />00498<br />00499<br />00500<br />
+00501<br />00502<br />00503<br />00504<br />00505<br />00506<br />00507<br />00508<br />00509<br />00510<br />00511<br />00512<br />00513<br />00514<br />00515<br />00516<br />00517<br />00518<br />00519<br />00520<br />
+00521<br />00522<br />00523<br />00524<br />00525<br />00526<br />00527<br />00528<br />00529<br />00530<br />00531<br />00532<br />00533<br />00534<br />00535<br />00536<br />00537<br />00538<br />00539<br />00540<br />
+00541<br />00542<br />00543<br />00544<br />00545<br />00546<br />00547<br />00548<br />00549<br />00550<br />00551<br />00552<br />00553<br />00554<br />00555<br />00556<br />00557<br />00558<br />00559<br />00560<br />
+00561<br />00562<br />00563<br />00564<br />00565<br />00566<br />00567<br />00568<br />00569<br />00570<br />00571<br />00572<br />00573<br />00574<br />00575<br />00576<br />00577<br />00578<br />00579<br />00580<br />
+00581<br />00582<br />00583<br />00584<br />00585<br />00586<br />00587<br />00588<br />00589<br />00590<br />00591<br />00592<br />00593<br />00594<br />00595<br />00596<br />00597<br />00598<br />00599<br />00600<br />
+00601<br />00602<br />00603<br />00604<br />00605<br />00606<br />00607<br />00608<br />00609<br />00610<br />00611<br />00612<br />00613<br />00614<br />00615<br />00616<br />00617<br />00618<br />00619<br />00620<br />
+00621<br />00622<br />00623<br />00624<br />00625<br />00626<br />00627<br />00628<br />00629<br />00630<br />00631<br />00632<br />00633<br />00634<br />00635<br />00636<br />00637<br />00638<br />00639<br />00640<br />
+00641<br />00642<br />00643<br />00644<br />00645<br />00646<br />00647<br />00648<br />00649<br />00650<br />00651<br />00652<br />00653<br />00654<br />00655<br />00656<br />00657<br />00658<br />00659<br />00660<br />
+00661<br />00662<br />00663<br />00664<br />00665<br />00666<br />00667<br />00668<br />00669<br />00670<br />00671<br />00672<br />00673<br />00674<br />00675<br />00676<br />00677<br />00678<br />00679<br />00680<br />
+00681<br />00682<br />00683<br />00684<br />00685<br />00686<br />00687<br />00688<br />00689<br />00690<br />00691<br />00692<br />00693<br />00694<br />00695<br />00696<br />00697<br />00698<br />00699<br />00700<br />
+00701<br />00702<br />00703<br />00704<br />00705<br />00706<br />00707<br />00708<br />00709<br />00710<br />00711<br />00712<br />00713<br />00714<br />00715<br />00716<br />00717<br />00718<br />00719<br />00720<br />
+00721<br />00722<br />00723<br />00724<br />00725<br />00726<br />00727<br />00728<br />00729<br />00730<br />00731<br />00732<br />00733<br />00734<br />00735<br />00736<br />00737<br />00738<br />00739<br />00740<br />
+00741<br />00742<br />00743<br />00744<br />00745<br />00746<br />00747<br />00748<br />00749<br />00750<br />00751<br />00752<br />00753<br />00754<br />00755<br />00756<br />00757<br />00758<br />00759<br />00760<br />
+00761<br />00762<br />00763<br />00764<br />00765<br />00766<br />00767<br />00768<br />00769<br />00770<br />00771<br />00772<br />00773<br />00774<br />00775<br />00776<br />00777<br />00778<br />00779<br />00780<br />
+00781<br />00782<br />00783<br />00784<br />00785<br />00786<br />00787<br />00788<br />00789<br />00790<br />00791<br />00792<br />00793<br />00794<br />00795<br />00796<br />00797<br />00798<br />00799<br />00800<br />
+00801<br />00802<br />00803<br />00804<br />00805<br />00806<br />00807<br />00808<br />00809<br />00810<br />00811<br />00812<br />00813<br />00814<br />00815<br />00816<br />00817<br />00818<br />00819<br />00820<br />
+00821<br />00822<br />00823<br />00824<br />00825<br />00826<br />00827<br />00828<br />00829<br />00830<br />00831<br />00832<br />00833<br />00834<br />00835<br />00836<br />00837<br />00838<br />00839<br />00840<br />
+00841<br />00842<br />00843<br />00844<br />00845<br />00846<br />00847<br />00848<br />00849<br />00850<br />00851<br />00852<br />00853<br />00854<br />00855<br />00856<br />00857<br />00858<br />00859<br />00860<br />
+00861<br />00862<br />00863<br />00864<br />00865<br />00866<br />00867<br />00868<br />00869<br />00870<br />00871<br />00872<br />00873<br />00874<br />00875<br />00876<br />00877<br />00878<br />00879<br />00880<br />
+00881<br />00882<br />00883<br />00884<br />00885<br />00886<br />00887<br />00888<br />00889<br />00890<br />00891<br />00892<br />00893<br />00894<br />00895<br />00896<br />00897<br />00898<br />00899<br />00900<br />
+00901<br />00902<br />00903<br />00904<br />00905<br />00906<br />00907<br />00908<br />00909<br />00910<br />00911<br />00912<br />00913<br />00914<br />00915<br />00916<br />00917<br />00918<br />00919<br />00920<br />
+00921<br />00922<br />00923<br />00924<br />00925<br />00926<br />00927<br />00928<br />00929<br />00930<br />00931<br />00932<br />00933<br />00934<br />00935<br />00936<br />00937<br />00938<br />00939<br />00940<br />
+00941<br />00942<br />00943<br />00944<br />00945<br />00946<br />00947<br />00948<br />00949<br />00950<br />00951<br />00952<br />00953<br />00954<br />00955<br />00956<br />00957<br />00958<br />00959<br />00960<br />
+00961<br />00962<br />00963<br />00964<br />00965<br />00966<br />00967<br />00968<br />00969<br />00970<br />00971<br />00972<br />00973<br />00974<br />00975<br />00976<br />00977<br />00978<br />00979<br />00980<br />
+00981<br />00982<br />00983<br />00984<br />00985<br />00986<br />00987<br />00988<br />00989<br />00990<br />00991<br />00992<br />00993<br />00994<br />00995<br />00996<br />00997<br />00998<br />00999<br />01000<br />
+01001<br />01002<br />01003<br />01004<br />01005<br />01006<br />01007<br />01008<br />01009<br />01010<br />01011<br />01012<br />01013<br />01014<br />01015<br />01016<br />01017<br />01018<br />01019<br />01020<br />
+01021<br />01022<br />01023<br />01024<br />01025<br />01026<br />01027<br />01028<br />01029<br />01030<br />01031<br />01032<br />01033<br />01034<br />01035<br />01036<br />01037<br />01038<br />01039<br />01040<br />
+01041<br />01042<br />01043<br />01044<br />01045<br />01046<br />01047<br />01048<br />01049<br />01050<br />01051<br />01052<br />01053<br />01054<br />01055<br />01056<br />01057<br />01058<br />01059<br />01060<br />
+01061<br />01062<br />01063<br />01064<br />01065<br />01066<br />01067<br />01068<br />01069<br />01070<br />01071<br />01072<br />01073<br />01074<br />01075<br />01076<br />01077<br />01078<br />01079<br />01080<br />
+01081<br />01082<br />01083<br />01084<br />01085<br />01086<br />01087<br />01088<br />01089<br />01090<br />01091<br />01092<br />01093<br />01094<br />01095<br />01096<br />01097<br />01098<br />01099<br />01100<br />
+01101<br />01102<br />01103<br />01104<br />01105<br />01106<br />01107<br />01108<br />01109<br />01110<br />01111<br />01112<br />01113<br />01114<br />01115<br />01116<br />01117<br />01118<br />01119<br />01120<br />
+01121<br />01122<br />01123<br />01124<br />01125<br />01126<br />01127<br />01128<br />01129<br />01130<br />01131<br />01132<br />01133<br />01134<br />01135<br />01136<br />01137<br />01138<br />01139<br />01140<br />
+01141<br />01142<br />01143<br />01144<br />01145<br />01146<br />01147<br />01148<br />01149<br />01150<br />01151<br />01152<br />01153<br />01154<br />01155<br />01156<br />01157<br />01158<br />01159<br />01160<br />
+01161<br />01162<br />01163<br />01164<br />01165<br />01166<br />01167<br />01168<br />01169<br />01170<br />01171<br />01172<br />01173<br />01174<br />01175<br />01176<br />01177<br />01178<br />01179<br />01180<br />
+01181<br />01182<br />01183<br />01184<br />01185<br />01186<br />01187<br />01188<br />01189<br />01190<br />01191<br />01192<br />01193<br />01194<br />01195<br />01196<br />01197<br />01198<br />01199<br />01200<br />
+01201<br />01202<br />01203<br />01204<br />01205<br />01206<br />01207<br />01208<br />01209<br />01210<br />01211<br />01212<br />01213<br />01214<br />01215<br />01216<br />01217<br />01218<br />01219<br />01220<br />
+01221<br />01222<br />01223<br />01224<br />01225<br />01226<br />01227<br />01228<br />01229<br />01230<br />01231<br />01232<br />01233<br />01234<br />01235<br />01236<br />01237<br />01238<br />01239<br />01240<br />
+01241<br />01242<br />01243<br />01244<br />01245<br />01246<br />01247<br />01248<br />01249<br />01250<br />01251<br />01252<br />01253<br />01254<br />01255<br />01256<br />01257<br />01258<br />01259<br />01260<br />
+01261<br />01262<br />01263<br />01264<br />01265<br />01266<br />01267<br />01268<br />01269<br />01270<br />01271<br />01272<br />01273<br />01274<br />01275<br />01276<br />01277<br />01278<br />01279<br />01280<br />
+01281<br />01282<br />01283<br />01284<br />01285<br />01286<br />01287<br />01288<br />01289<br />01290<br />01291<br />01292<br />01293<br />01294<br />01295<br />01296<br />01297<br />01298<br />01299<br />01300<br />
+01301<br />01302<br />01303<br />01304<br />01305<br />01306<br />01307<br />01308<br />01309<br />01310<br />01311<br />01312<br />01313<br />01314<br />01315<br />01316<br />01317<br />01318<br />01319<br />01320<br />
+01321<br />01322<br />01323<br />01324<br />01325<br />01326<br />01327<br />01328<br />01329<br />01330<br />01331<br />01332<br />01333<br />01334<br />01335<br />01336<br />01337<br />01338<br />01339<br />01340<br />
+01341<br />01342<br />01343<br />01344<br />01345<br />01346<br />01347<br />01348<br />01349<br />01350<br />01351<br />01352<br />01353<br />01354<br />01355<br />01356<br />01357<br />01358<br />01359<br />01360<br />
+01361<br />01362<br />01363<br />01364<br />01365<br />01366<br />01367<br />01368<br />01369<br />01370<br />01371<br />01372<br />01373<br />01374<br />01375<br />01376<br />01377<br />01378<br />01379<br />01380<br />
+01381<br />01382<br />01383<br />01384<br />01385<br />01386<br />01387<br />01388<br />01389<br />01390<br />01391<br />01392<br />01393<br />01394<br />01395<br />01396<br />01397<br />01398<br />01399<br />01400<br />
+01401<br />01402<br />01403<br />01404<br />01405<br />01406<br />01407<br />01408<br />01409<br />01410<br />01411<br />01412<br />01413<br />01414<br />01415<br />01416<br />01417<br />01418<br />01419<br />01420<br />
+01421<br />01422<br />01423<br />01424<br />01425<br />01426<br />01427<br />01428<br />01429<br />01430<br />01431<br />01432<br />01433<br />01434<br />01435<br />01436<br />01437<br />01438<br />01439<br />01440<br />
+01441<br />01442<br />01443<br />01444<br />01445<br />01446<br />01447<br />01448<br />01449<br />01450<br />01451<br />01452<br />01453<br />01454<br />01455<br />01456<br />01457<br />01458<br />01459<br />01460<br />
+01461<br />01462<br />01463<br />01464<br />01465<br />01466<br />01467<br />01468<br />01469<br />01470<br />01471<br />01472<br />01473<br />01474<br />01475<br />01476<br />01477<br />01478<br />01479<br />01480<br />
+01481<br />01482<br />01483<br />01484<br />01485<br />01486<br />01487<br />01488<br />01489<br />01490<br />01491<br />01492<br />01493<br />01494<br />01495<br />01496<br />01497<br />01498<br />01499<br />01500<br />
+01501<br />01502<br />01503<br />01504<br />01505<br />01506<br />01507<br />01508<br />01509<br />01510<br />01511<br />01512<br />01513<br />01514<br />01515<br />01516<br />01517<br />01518<br />01519<br />01520<br />
+01521<br />01522<br />01523<br />01524<br />01525<br />01526<br />01527<br />01528<br />01529<br />01530<br />01531<br />01532<br />01533<br />01534<br />01535<br />01536<br />01537<br />01538<br />01539<br />01540<br />
+01541<br />01542<br />01543<br />01544<br />01545<br />01546<br />01547<br />01548<br />01549<br />01550<br />01551<br />01552<br />01553<br />01554<br />01555<br />01556<br />01557<br />01558<br />01559<br />01560<br />
+01561<br />01562<br />01563<br />01564<br />01565<br />01566<br />01567<br />01568<br />01569<br />01570<br />01571<br />01572<br />01573<br />01574<br />01575<br />01576<br />01577<br />01578<br />01579<br />01580<br />
+01581<br />01582<br />01583<br />01584<br />01585<br />01586<br />01587<br />01588<br />01589<br />01590<br />01591<br />01592<br />01593<br />01594<br />01595<br />01596<br />01597<br />01598<br />01599<br />01600<br />
+01601<br />01602<br />01603<br />01604<br />01605<br />01606<br />01607<br />01608<br />01609<br />01610<br />01611<br />01612<br />01613<br />01614<br />01615<br />01616<br />01617<br />01618<br />01619<br />01620<br />
+01621<br />01622<br />01623<br />01624<br />01625<br />01626<br />01627<br />01628<br />01629<br />01630<br />01631<br />01632<br />01633<br />01634<br />01635<br />01636<br />01637<br />01638<br />01639<br />01640<br />
+01641<br />01642<br />01643<br />01644<br />01645<br />01646<br />01647<br />01648<br />01649<br />01650<br />01651<br />01652<br />01653<br />01654<br />01655<br />01656<br />01657<br />01658</span></td>
+<td class="source"><pre class="source"><a name="1"></a><span class="source_comment">//=============================================================================
+</span><a name="2"></a><span class="source_comment">// GameInfo.
+</span><a name="3"></a><span class="source_comment">//
+</span><a name="4"></a><span class="source_comment">// The GameInfo defines the game being played: the game rules, scoring, what actors 
+</span><a name="5"></a><span class="source_comment">// are allowed to exist in this game type, and who may enter the game.  While the 
+</span><a name="6"></a><span class="source_comment">// GameInfo class is the public interface, much of this functionality is delegated 
+</span><a name="7"></a><span class="source_comment">// to several classes to allow easy modification of specific game components.  These 
+</span><a name="8"></a><span class="source_comment">// classes include GameInfo, AccessControl, Mutator, BroadcastHandler, and GameRules.  
+</span><a name="9"></a><span class="source_comment">// A GameInfo actor is instantiated when the level is initialized for gameplay (in 
+</span><a name="10"></a><span class="source_comment">// C++ UGameEngine::LoadMap() ).  The class of this GameInfo actor is determined by 
+</span><a name="11"></a><span class="source_comment">// (in order) either the DefaultGameType if specified in the LevelInfo, or the 
+</span><a name="12"></a><span class="source_comment">// DefaultGame entry in the game's .ini file (in the Engine.Engine section), unless 
+</span><a name="13"></a><span class="source_comment">// its a network game in which case the DefaultServerGame entry is used.  
+</span><a name="14"></a><span class="source_comment">//
+</span><a name="15"></a><span class="source_comment">//=============================================================================
+</span><a name="16"></a><span class="source_type">class</span> <span class="source_type"><a href="../engine/gameinfo.html" class="source">GameInfo</a></span> extends <span class="source_type"><a href="../engine/info.html" class="source">Info</a></span>
+<a name="17"></a>	native;
+<a name="18"></a>
+<a name="19"></a><span class="source_comment">//-----------------------------------------------------------------------------
+</span><a name="20"></a><span class="source_comment">// Variables.
+</span><a name="21"></a>
+<a name="22"></a>var	<span class="source_type">byte</span>					  Difficulty;
+<a name="23"></a>var <span class="source_type">bool</span>				      bRestartLevel;			<span class="source_comment">// Level should be restarted when player dies
+</span><a name="24"></a>var <span class="source_type">bool</span>				      bPauseable;				<span class="source_comment">// Whether the game is pauseable.
+</span><a name="25"></a><span class="source_comment">//#ifndef R6CODE
+</span><a name="26"></a><span class="source_comment">//var config bool				  bCoopWeaponMode;			// Whether or not weapons stay when picked up.
+</span><a name="27"></a><span class="source_comment">//#endif // #ifndef R6CODE
+</span><a name="28"></a>var	<span class="source_type">bool</span>				      bCanChangeSkin;			<span class="source_comment">// Allow player to change skins in game.
+</span><a name="29"></a>var <span class="source_type">bool</span>				      bTeamGame;				<span class="source_comment">// This is a team game.
+</span><a name="30"></a>var	<span class="source_type">bool</span>					  bGameEnded;				<span class="source_comment">// set when game ends
+</span><a name="31"></a>var	<span class="source_type">bool</span>					  bOverTime;
+<a name="32"></a>var localized <span class="source_type">bool</span>			  bAlternateMode;
+<a name="33"></a>var	<span class="source_type">bool</span>					  bCanViewOthers;
+<a name="34"></a>var <span class="source_type">bool</span>					  bDelayedStart;
+<a name="35"></a>var <span class="source_type">bool</span>					  bWaitingToStartMatch;
+<a name="36"></a>var globalconfig <span class="source_type">bool</span>		  bChangeLevels;
+<a name="37"></a><span class="source_comment">//#ifdef R6CODE
+</span><a name="38"></a>var <span class="source_type">bool</span>                      m_bChangedServerConfig;
+<a name="39"></a><span class="source_comment">//#endif
+</span><a name="40"></a>var		<span class="source_type">bool</span>				  bAlreadyChanged;
+<a name="41"></a>
+<a name="42"></a>var	  globalconfig <span class="source_type">int</span>		  GoreLevel;				<span class="source_comment">// 0=Normal, increasing values=less gore
+</span><a name="43"></a><span class="source_comment">//#ifndef R6CODE
+</span><a name="44"></a><span class="source_comment">//var   globalconfig float	  AutoAim;					// How much autoaiming to do (1 = none, 0 = always).
+</span><a name="45"></a><span class="source_comment">//#endif // #ifndef R6CODE
+</span><a name="46"></a>														<span class="source_comment">// (cosine of max error to correct)
+</span><a name="47"></a>var   globalconfig <span class="source_type">float</span>	  GameSpeed;				<span class="source_comment">// Scale applied to game rate.
+</span><a name="48"></a>var   <span class="source_type">float</span>                   StartTime;
+<a name="49"></a>
+<a name="50"></a>var   <span class="source_type">string</span>				  DefaultPlayerClassName;
+<a name="51"></a>
+<a name="52"></a><span class="source_comment">// user interface
+</span><a name="53"></a><span class="source_comment">//#ifndef R6CODE
+</span><a name="54"></a><span class="source_comment">//var	  string				  ScoreBoardType;
+</span><a name="55"></a><span class="source_comment">//#endif
+</span><a name="56"></a>var   <span class="source_type">string</span>			      BotMenuType;				<span class="source_comment">// Type of bot menu to display.
+</span><a name="57"></a>var   <span class="source_type">string</span>			      RulesMenuType;			<span class="source_comment">// Type of rules menu to display.
+</span><a name="58"></a>var   <span class="source_type">string</span>				  SettingsMenuType;			<span class="source_comment">// Type of settings menu to display.
+</span><a name="59"></a>var   <span class="source_type">string</span>				  GameUMenuType;			<span class="source_comment">// Type of Game dropdown to display.
+</span><a name="60"></a>var   <span class="source_type">string</span>				  MultiplayerUMenuType;		<span class="source_comment">// Type of Multiplayer dropdown to display.
+</span><a name="61"></a>var   <span class="source_type">string</span>				  GameOptionsMenuType;		<span class="source_comment">// Type of options dropdown to display.
+</span><a name="62"></a>var	  <span class="source_type">string</span>				  HUDType;					<span class="source_comment">// HUD class this game uses.
+</span><a name="63"></a>var   <span class="source_type">string</span>				  MapListType;				<span class="source_comment">// Maplist this game uses.
+</span><a name="64"></a>var   <span class="source_type">string</span>			      MapPrefix;				<span class="source_comment">// Prefix characters for names of maps for this game type.
+</span><a name="65"></a>var   <span class="source_type">string</span>			      BeaconName;				<span class="source_comment">// Identifying string used for finding LAN servers.
+</span><a name="66"></a>
+<a name="67"></a>var   <span class="source_type">int</span>	                  MaxSpectators;			<span class="source_comment">// Maximum number of spectators.
+</span><a name="68"></a>var	  <span class="source_type">int</span>					  NumSpectators;			<span class="source_comment">// Current number of spectators.
+</span><a name="69"></a>var   <span class="source_type">int</span>		              MaxPlayers; 
+<a name="70"></a>var   <span class="source_type">int</span>					  NumPlayers;				<span class="source_comment">// number of human players
+</span><a name="71"></a>var	  <span class="source_type">int</span>					  NumBots;					<span class="source_comment">// number of non-human players (AI controlled but participating as a player)
+</span><a name="72"></a>var   <span class="source_type">int</span>					  CurrentID;
+<a name="73"></a>var localized <span class="source_type">string</span>	      DefaultPlayerName;
+<a name="74"></a>var localized <span class="source_type">string</span>	      GameName;
+<a name="75"></a>
+<a name="76"></a><span class="source_comment">// Message classes.
+</span><a name="77"></a>var <span class="source_type">class</span>&lt;<span class="source_type"><a href="../engine/localmessage.html" class="source">LocalMessage</a></span>&gt;		  DeathMessageClass;
+<a name="78"></a>var <span class="source_type">class</span>&lt;<span class="source_type"><a href="../engine/gamemessage.html" class="source">GameMessage</a></span>&gt;		  GameMessageClass;
+<a name="79"></a>
+<a name="80"></a><span class="source_comment">//-------------------------------------
+</span><a name="81"></a><span class="source_comment">// GameInfo components
+</span><a name="82"></a>var <span class="source_type">string</span> MutatorClass;
+<a name="83"></a>var <span class="source_type"><a href="../engine/mutator.html" class="source">Mutator</a></span> BaseMutator;				<span class="source_comment">// linked list of Mutators (for modifying actors as they enter the game)
+</span><a name="84"></a>var <span class="source_type">string</span> AccessControlClass;
+<a name="85"></a>var <span class="source_type"><a href="../engine/accesscontrol.html" class="source">AccessControl</a></span> <span class="source_type"><a href="../engine/accesscontrol.html" class="source">AccessControl</a></span>;		<span class="source_comment">// AccessControl controls whether players can enter and/or become admins
+</span><a name="86"></a>var <span class="source_type"><a href="../engine/gamerules.html" class="source">GameRules</a></span> GameRulesModifiers;		<span class="source_comment">// linked list of modifier classes which affect game rules
+</span><a name="87"></a>var <span class="source_type">string</span> BroadcastHandlerClass;
+<a name="88"></a>var <span class="source_type"><a href="../engine/broadcasthandler.html" class="source">BroadcastHandler</a></span> <span class="source_type"><a href="../engine/broadcasthandler.html" class="source">BroadcastHandler</a></span>;	<span class="source_comment">// handles message (text and localized) broadcasts
+</span><a name="89"></a>
+<a name="90"></a>var <span class="source_type">class</span>&lt;<span class="source_type"><a href="../engine/playercontroller.html" class="source">PlayerController</a></span>&gt; PlayerControllerClass;	<span class="source_comment">// type of player controller to spawn for players logging in
+</span><a name="91"></a>var <span class="source_type">string</span> PlayerControllerClassName;
+<a name="92"></a>
+<a name="93"></a><span class="source_comment">// ReplicationInfo
+</span><a name="94"></a>var() <span class="source_type">class</span>&lt;<span class="source_type"><a href="../engine/gamereplicationinfo.html" class="source">GameReplicationInfo</a></span>&gt; GameReplicationInfoClass;
+<a name="95"></a>var <span class="source_type"><a href="../engine/gamereplicationinfo.html" class="source">GameReplicationInfo</a></span> <span class="source_type"><a href="../engine/gamereplicationinfo.html" class="source">GameReplicationInfo</a></span>;
+<a name="96"></a>
+<a name="97"></a><span class="source_comment">// Statistics Logging
+</span><a name="98"></a>var <span class="source_type"><a href="../engine/statlog.html" class="source">StatLog</a></span>						<span class="source_type"><a href="../engine/statlog.html" class="source">StatLog</a></span>;
+<a name="99"></a>var globalconfig <span class="source_type">bool</span>			bLocalLog;
+<a name="100"></a>var globalconfig <span class="source_type">bool</span>			bWorldLog;
+<a name="101"></a>var <span class="source_type">bool</span>						bLoggingGame;			<span class="source_comment">// Does this gametype log?
+</span><a name="102"></a>var <span class="source_type">class</span>&lt;<span class="source_type"><a href="../engine/statlog.html" class="source">StatLog</a></span>&gt;				StatLogClass;
+<a name="103"></a>
+<a name="104"></a><span class="source_comment">//#ifdef R6LOAD_IFGAMEMODE
+</span><a name="105"></a>var <span class="source_type">string</span> m_szGameTypeFlag;
+<a name="106"></a><span class="source_comment">//#endif R6LOAD_IFGAMEMODE
+</span><a name="107"></a>
+<a name="108"></a><span class="source_comment">//#ifdef R6CODE
+</span><a name="109"></a><span class="source_comment">// m_bGameStarted has the game started, usefull in MP in order to prevent other players from joining the game 
+</span><a name="110"></a><span class="source_comment">// exception needs to be made for spectating
+</span><a name="111"></a>var <span class="source_type">BOOL</span> m_bGameStarted;
+<a name="112"></a>var <span class="source_type">BOOL</span> m_bGameOver;
+<a name="113"></a>var <span class="source_type">BOOL</span> m_bCompilingStats; <span class="source_comment">// are we compiling statistics for GameMenuStats page
+</span><a name="114"></a>var <span class="source_type">BOOL</span> m_bLadderStats;    <span class="source_comment">// are we compiling statistics for Ladder page
+</span><a name="115"></a><span class="source_comment">//#endif R6CODE
+</span><a name="116"></a>
+<a name="117"></a><span class="source_comment">//#ifdef R6CODE // Added by John Bennett, April 2002
+</span><a name="118"></a>var <span class="source_type">string</span> m_szCurrGameType;     <span class="source_comment">// The current game type being played (Deathmatch, team death match, etc).
+</span><a name="119"></a>var <span class="source_type">string</span> m_szGameOptions;     <span class="source_comment">// List of command line options
+</span><a name="120"></a>var <span class="source_type">BOOL</span>   m_bUseClarkVoice;
+<a name="121"></a>var Array&lt;<span class="source_type">string</span>&gt; m_BankListToLoad;
+<a name="122"></a>var <span class="source_type">BOOL</span>   m_bPlayIntroVideo;
+<a name="123"></a>var <span class="source_type">BOOL</span>   m_bPlayOutroVideo;
+<a name="124"></a>var <span class="source_type">BOOL</span>   m_bPendingLevelExists;
+<a name="125"></a><span class="source_comment">//#endif R6CODE
+</span><a name="126"></a>
+<a name="127"></a><span class="source_comment">//#ifdef R6CODE
+</span><a name="128"></a>function SetJumpingMaps(<span class="source_type">bool</span> _flagSetting, <span class="source_type">int</span> iNextMapIndex);
+<a name="129"></a>function AbortScoreSubmission();
+<a name="130"></a>function RestartGameMgr();
+<a name="131"></a>event PreLogOut(<span class="source_type"><a href="../engine/playercontroller.html" class="source">PlayerController</a></span> ExitingPlayer);
+<a name="132"></a>event <span class="source_type">bool</span> CanPlayIntroVideo();
+<a name="133"></a>event <span class="source_type">bool</span> CanPlayOutroVideo();
+<a name="134"></a>event UpdateServer();
+<a name="135"></a><span class="source_comment">//#endif R6CODE
+</span><a name="136"></a>
+<a name="137"></a><span class="source_comment">// #ifdef R6NOISE
+</span><a name="138"></a>function R6GameInfoMakeNoise( <span class="source_type"><a href="../engine/actor.html" class="source">Actor</a></span>.<span class="source_type"><a href="../engine/actor.html#ESoundType" class="source">ESoundType</a></span> <span class="source_type">eType</span>, <span class="source_type"><a href="../engine/actor.html" class="source">Actor</a></span> <span class="source_type">soundsource</span> );
+<a name="139"></a><span class="source_comment">// #endif // #ifdef R6NOISE
+</span><a name="140"></a>
+<a name="141"></a><span class="source_macro">#ifdefDEBUG
+</span><a name="142"></a>exec function ToggleRestart();
+<a name="143"></a><span class="source_macro">#endif
+</span><a name="144"></a>
+<a name="145"></a><span class="source_comment">//------------------------------------------------------------------------------
+</span><a name="146"></a><span class="source_comment">// Engine notifications.    
+</span><a name="147"></a>
+<a name="148"></a>function PreBeginPlay()
+<a name="149"></a>{
+<a name="150"></a>	StartTime = <span class="source_int">0</span>;
+<a name="151"></a>	SetGameSpeed(GameSpeed);
+<a name="152"></a>	<span class="source_type"><a href="../engine/gamereplicationinfo.html" class="source">GameReplicationInfo</a></span> = Spawn(GameReplicationInfoClass);
+<a name="153"></a>	InitGameReplicationInfo();
+<a name="154"></a>}
+<a name="155"></a>
+<a name="156"></a>function PostBeginPlay()
+<a name="157"></a>{
+<a name="158"></a>	if ( bAlternateMode )
+<a name="159"></a>		GoreLevel = <span class="source_int">2</span>;
+<a name="160"></a>	InitLogging();
+<a name="161"></a>	Super.PostBeginPlay();
+<a name="162"></a>}
+<a name="163"></a>
+<a name="164"></a><span class="source_comment">/* Reset() 
+<a name="165"></a>reset actor to initial state - used when restarting level without reloading.
+<a name="166"></a>*/</span>
+<a name="167"></a>function Reset()
+<a name="168"></a>{
+<a name="169"></a>	Super.Reset();
+<a name="170"></a>	bGameEnded = false;
+<a name="171"></a>	bOverTime = false;
+<a name="172"></a>	bWaitingToStartMatch = true;
+<a name="173"></a>	InitGameReplicationInfo();
+<a name="174"></a>}
+<a name="175"></a>
+<a name="176"></a><span class="source_comment">/* InitLogging()
+<a name="177"></a>Set up statistics logging
+<a name="178"></a>*/</span>
+<a name="179"></a>function InitLogging()
+<a name="180"></a>{
+<a name="181"></a>	local <span class="source_type">bool</span> bLoggingWorld;
+<a name="182"></a>
+<a name="183"></a>	if ( !bLoggingGame )
+<a name="184"></a>		return;
+<a name="185"></a>
+<a name="186"></a>	bLoggingWorld = bWorldLog &&
+<a name="187"></a>		((<span class="source_type">Level</span>.NetMode == NM_DedicatedServer) || (<span class="source_type">Level</span>.NetMode == NM_ListenServer));
+<a name="188"></a>	if ( bLocalLog || bLoggingWorld )
+<a name="189"></a>	{
+<a name="190"></a>		<span class="source_type"><a href="../engine/statlog.html" class="source">StatLog</a></span> = spawn(StatLogClass);
+<a name="191"></a>		Log(<span class="source_string">"Initiating logging using "</span>$<span class="source_type"><a href="../engine/statlog.html" class="source">StatLog</a></span>$<span class="source_string">" class "</span>$Statlogclass);
+<a name="192"></a>		<span class="source_type"><a href="../engine/statlog.html" class="source">StatLog</a></span>.GenerateLogs(bLocalLog, bLoggingWorld);
+<a name="193"></a>		<span class="source_type"><a href="../engine/statlog.html" class="source">StatLog</a></span>.StartLog();
+<a name="194"></a>		LogGameParameters();
+<a name="195"></a>	}
+<a name="196"></a>}
+<a name="197"></a>
+<a name="198"></a>function Timer()
+<a name="199"></a>{
+<a name="200"></a>	<span class="source_type"><a href="../engine/broadcasthandler.html" class="source">BroadcastHandler</a></span>.UpdateSentText();
+<a name="201"></a>}
+<a name="202"></a>
+<a name="203"></a><span class="source_comment">// Called when game shutsdown.
+</span><a name="204"></a>event GameEnding()
+<a name="205"></a>{
+<a name="206"></a>	EndLogging(<span class="source_string">"serverquit"</span>);
+<a name="207"></a>}
+<a name="208"></a>
+<a name="209"></a><span class="source_comment">//------------------------------------------------------------------------------
+</span><a name="210"></a><span class="source_comment">// Replication
+</span><a name="211"></a>
+<a name="212"></a>function InitGameReplicationInfo()
+<a name="213"></a>{
+<a name="214"></a>	<span class="source_type"><a href="../engine/gamereplicationinfo.html" class="source">GameReplicationInfo</a></span>.bTeamGame = bTeamGame;
+<a name="215"></a>	<span class="source_type"><a href="../engine/gamereplicationinfo.html" class="source">GameReplicationInfo</a></span>.GameName = GameName;
+<a name="216"></a>	<span class="source_type"><a href="../engine/gamereplicationinfo.html" class="source">GameReplicationInfo</a></span>.GameClass = <span class="source_type">string</span>(<span class="source_type">Class</span>);
+<a name="217"></a>}
+<a name="218"></a>
+<a name="219"></a>native function <span class="source_type">string</span> GetNetworkNumber();
+<a name="220"></a><span class="source_comment">//#ifdef R6CODE
+</span><a name="221"></a>native(<span class="source_int">1514</span>) final function ProcessR6Availabilty( <span class="source_type">string</span> <span class="source_type">szGameType</span> );
+<a name="222"></a>native(<span class="source_int">1280</span>) final function <span class="source_type">INT</span> GetCurrentMapNum();
+<a name="223"></a>native(<span class="source_int">1281</span>) final function SetCurrentMapNum(<span class="source_type">INT</span> iMapNum);
+<a name="224"></a>function SetUdpBeacon(<span class="source_type"><a href="../engine/internetinfo.html" class="source">InternetInfo</a></span> _udpBeacon);
+<a name="225"></a><span class="source_comment">//#endif R6CODE
+</span><a name="226"></a>
+<a name="227"></a><span class="source_comment">//------------------------------------------------------------------------------
+</span><a name="228"></a><span class="source_comment">// Game Querying.
+</span><a name="229"></a>
+<a name="230"></a>function <span class="source_type">string</span> GetInfo()
+<a name="231"></a>{
+<a name="232"></a>	local <span class="source_type">string</span> ResultSet;
+<a name="233"></a>
+<a name="234"></a>	<span class="source_comment">// World logging enabled and working
+</span><a name="235"></a>	if ( <span class="source_type"><a href="../engine/statlog.html" class="source">StatLog</a></span>.bWorld && !<span class="source_type"><a href="../engine/statlog.html" class="source">StatLog</a></span>.bWorldBatcherError )
+<a name="236"></a>		ResultSet = <span class="source_string">"\\worldlog\\true"</span>;
+<a name="237"></a>	else
+<a name="238"></a>		ResultSet = <span class="source_string">"\\worldlog\\false"</span>;
+<a name="239"></a>
+<a name="240"></a>	<span class="source_comment">// World logging activated
+</span><a name="241"></a>	if ( <span class="source_type"><a href="../engine/statlog.html" class="source">StatLog</a></span>.bWorld )
+<a name="242"></a>		ResultSet = ResultSet$<span class="source_string">"\\wantworldlog\\true"</span>;
+<a name="243"></a>	else
+<a name="244"></a>		ResultSet = ResultSet$<span class="source_string">"\\wantworldlog\\false"</span>;
+<a name="245"></a>
+<a name="246"></a>	return ResultSet;
+<a name="247"></a>}
+<a name="248"></a>
+<a name="249"></a>function <span class="source_type">string</span> GetRules()
+<a name="250"></a>{
+<a name="251"></a>	local <span class="source_type">string</span> ResultSet;
+<a name="252"></a>	local <span class="source_type"><a href="../engine/mutator.html" class="source">Mutator</a></span> M;
+<a name="253"></a>	local <span class="source_type">string</span> NextMutator, NextDesc;
+<a name="254"></a>	local <span class="source_type">string</span> EnabledMutators;
+<a name="255"></a>	local <span class="source_type">int</span> <span class="source_type">Num</span>, <span class="source_type">i</span>;
+<a name="256"></a>
+<a name="257"></a>	ResultSet = <span class="source_string">""</span>;
+<a name="258"></a>
+<a name="259"></a>	EnabledMutators = <span class="source_string">""</span>;
+<a name="260"></a>	for (M = BaseMutator.NextMutator; M != None; M = M.NextMutator)
+<a name="261"></a>	{
+<a name="262"></a>		<span class="source_type">Num</span> = <span class="source_int">0</span>;
+<a name="263"></a>		NextMutator = <span class="source_string">""</span>;
+<a name="264"></a>		GetNextIntDesc(<span class="source_string">"Engine.Mutator"</span>, <span class="source_int">0</span>, NextMutator, NextDesc);
+<a name="265"></a>		while( (NextMutator != <span class="source_string">""</span>) && (<span class="source_type">Num</span> &lt; <span class="source_int">50</span>) )
+<a name="266"></a>		{
+<a name="267"></a>			if(NextMutator ~= <span class="source_type">string</span>(M.<span class="source_type">Class</span>))
+<a name="268"></a>			{
+<a name="269"></a>				<span class="source_type">i</span> = InStr(NextDesc, <span class="source_string">","</span>);
+<a name="270"></a>				if(<span class="source_type">i</span> != -<span class="source_int">1</span>)
+<a name="271"></a>					NextDesc = Left(NextDesc, <span class="source_type">i</span>);
+<a name="272"></a>
+<a name="273"></a>				if(EnabledMutators != <span class="source_string">""</span>)
+<a name="274"></a>					EnabledMutators = EnabledMutators $ <span class="source_string">", "</span>;
+<a name="275"></a>				 EnabledMutators = EnabledMutators $ NextDesc;
+<a name="276"></a>				 break;
+<a name="277"></a>			}
+<a name="278"></a>			
+<a name="279"></a>			<span class="source_type">Num</span>++;
+<a name="280"></a>			GetNextIntDesc(<span class="source_string">"Engine.Mutator"</span>, <span class="source_type">Num</span>, NextMutator, NextDesc);
+<a name="281"></a>		}
+<a name="282"></a>	}
+<a name="283"></a>	if(EnabledMutators != <span class="source_string">""</span>)
+<a name="284"></a>		ResultSet = ResultSet $ <span class="source_string">"\\mutators\\"</span>$EnabledMutators;
+<a name="285"></a>
+<a name="286"></a>	ResultSet = ResultSet $ <span class="source_string">"\\listenserver\\"</span>$<span class="source_type">string</span>(<span class="source_type">Level</span>.NetMode==NM_ListenServer);
+<a name="287"></a>	Resultset = ResultSet$<span class="source_string">"\\changelevels\\"</span>$bChangeLevels;
+<a name="288"></a>	if ( GameRulesModifiers != None )
+<a name="289"></a>		ResultSet = ResultSet$GameRulesModifiers.GetRules();
+<a name="290"></a>
+<a name="291"></a>	return ResultSet;
+<a name="292"></a>}
+<a name="293"></a>
+<a name="294"></a><span class="source_comment">// Return the server's port number.
+</span><a name="295"></a>function <span class="source_type">int</span> GetServerPort()
+<a name="296"></a>{
+<a name="297"></a>	local <span class="source_type">string</span> <span class="source_type">S</span>;
+<a name="298"></a>	local <span class="source_type">int</span> <span class="source_type">i</span>;
+<a name="299"></a>
+<a name="300"></a>	<span class="source_comment">// Figure out the server's port.
+</span><a name="301"></a>	<span class="source_type">S</span> = <span class="source_type">Level</span>.GetAddressURL();
+<a name="302"></a>	<span class="source_type">i</span> = InStr( <span class="source_type">S</span>, <span class="source_string">":"</span> );
+<a name="303"></a>	assert(<span class="source_type">i</span>&gt;=<span class="source_int">0</span>);
+<a name="304"></a>	return <span class="source_type">int</span>(Mid(<span class="source_type">S</span>,<span class="source_type">i</span>+<span class="source_int">1</span>));
+<a name="305"></a>}
+<a name="306"></a>
+<a name="307"></a>function <span class="source_type">bool</span> SetPause( <span class="source_type">BOOL</span> <span class="source_type">bPause</span>, <span class="source_type"><a href="../engine/playercontroller.html" class="source">PlayerController</a></span> <span class="source_type">P</span> )
+<a name="308"></a>{
+<a name="309"></a>	if( bPauseable || <span class="source_type">P</span>.IsA(<span class="source_name">'Admin'</span>) || <span class="source_type">Level</span>.Netmode==NM_Standalone )
+<a name="310"></a>	{
+<a name="311"></a>		if( <span class="source_type">bPause</span> )
+<a name="312"></a>			<span class="source_type">Level</span>.Pauser=<span class="source_type">P</span>.<span class="source_type"><a href="../engine/playerreplicationinfo.html" class="source">PlayerReplicationInfo</a></span>;
+<a name="313"></a>		else
+<a name="314"></a>			<span class="source_type">Level</span>.Pauser=None;
+<a name="315"></a>		return True;
+<a name="316"></a>	}
+<a name="317"></a>	else return False;
+<a name="318"></a>}
+<a name="319"></a>
+<a name="320"></a><span class="source_comment">//------------------------------------------------------------------------------
+</span><a name="321"></a><span class="source_comment">// Stat Logging.
+</span><a name="322"></a>
+<a name="323"></a>function LogGameParameters()
+<a name="324"></a>{
+<a name="325"></a>	local <span class="source_type"><a href="../engine/mutator.html" class="source">Mutator</a></span> M;
+<a name="326"></a>
+<a name="327"></a>	for (M = BaseMutator; M != None; M = M.NextMutator)
+<a name="328"></a>		<span class="source_type"><a href="../engine/statlog.html" class="source">StatLog</a></span>.LogMutator(M);
+<a name="329"></a>
+<a name="330"></a>	<span class="source_type"><a href="../engine/statlog.html" class="source">StatLog</a></span>.LogEventString(<span class="source_type"><a href="../engine/statlog.html" class="source">StatLog</a></span>.GetTimeStamp()$Chr(<span class="source_int">9</span>)$<span class="source_string">"game"</span>$Chr(<span class="source_int">9</span>)$<span class="source_string">"GameName"</span>$Chr(<span class="source_int">9</span>)$GameName);
+<a name="331"></a>	<span class="source_type"><a href="../engine/statlog.html" class="source">StatLog</a></span>.LogEventString(<span class="source_type"><a href="../engine/statlog.html" class="source">StatLog</a></span>.GetTimeStamp()$Chr(<span class="source_int">9</span>)$<span class="source_string">"game"</span>$Chr(<span class="source_int">9</span>)$<span class="source_string">"GameClass"</span>$Chr(<span class="source_int">9</span>)$<span class="source_type">Class</span>);<span class="source_comment">// &lt;-- Move to c++
+</span><a name="332"></a>	<span class="source_type"><a href="../engine/statlog.html" class="source">StatLog</a></span>.LogEventString(<span class="source_type"><a href="../engine/statlog.html" class="source">StatLog</a></span>.GetTimeStamp()$Chr(<span class="source_int">9</span>)$<span class="source_string">"game"</span>$Chr(<span class="source_int">9</span>)$<span class="source_string">"GameVersion"</span>$Chr(<span class="source_int">9</span>)$<span class="source_type">Level</span>.EngineVersion);
+<a name="333"></a>	<span class="source_type"><a href="../engine/statlog.html" class="source">StatLog</a></span>.LogEventString(<span class="source_type"><a href="../engine/statlog.html" class="source">StatLog</a></span>.GetTimeStamp()$Chr(<span class="source_int">9</span>)$<span class="source_string">"game"</span>$Chr(<span class="source_int">9</span>)$<span class="source_string">"MinNetVersion"</span>$Chr(<span class="source_int">9</span>)$<span class="source_type">Level</span>.MinNetVersion);
+<a name="334"></a><span class="source_comment">//#ifndef R6CODE
+</span><a name="335"></a><span class="source_comment">//	StatLog.LogEventString(StatLog.GetTimeStamp()$Chr(9)$"game"$Chr(9)$"WeaponsStay"$Chr(9)$bCoopWeaponMode);
+</span><a name="336"></a><span class="source_comment">//#endif // #ifndef R6CODE
+</span><a name="337"></a>	<span class="source_type"><a href="../engine/statlog.html" class="source">StatLog</a></span>.LogEventString(<span class="source_type"><a href="../engine/statlog.html" class="source">StatLog</a></span>.GetTimeStamp()$Chr(<span class="source_int">9</span>)$<span class="source_string">"game"</span>$Chr(<span class="source_int">9</span>)$<span class="source_string">"GoreLevel"</span>$Chr(<span class="source_int">9</span>)$GoreLevel);
+<a name="338"></a>	<span class="source_type"><a href="../engine/statlog.html" class="source">StatLog</a></span>.LogEventString(<span class="source_type"><a href="../engine/statlog.html" class="source">StatLog</a></span>.GetTimeStamp()$Chr(<span class="source_int">9</span>)$<span class="source_string">"game"</span>$Chr(<span class="source_int">9</span>)$<span class="source_string">"TeamGame"</span>$Chr(<span class="source_int">9</span>)$bTeamGame);
+<a name="339"></a>	<span class="source_type"><a href="../engine/statlog.html" class="source">StatLog</a></span>.LogEventString(<span class="source_type"><a href="../engine/statlog.html" class="source">StatLog</a></span>.GetTimeStamp()$Chr(<span class="source_int">9</span>)$<span class="source_string">"game"</span>$Chr(<span class="source_int">9</span>)$<span class="source_string">"GameSpeed"</span>$Chr(<span class="source_int">9</span>)$<span class="source_type">int</span>(GameSpeed*<span class="source_int">100</span>));
+<a name="340"></a>	<span class="source_type"><a href="../engine/statlog.html" class="source">StatLog</a></span>.LogEventString(<span class="source_type"><a href="../engine/statlog.html" class="source">StatLog</a></span>.GetTimeStamp()$Chr(<span class="source_int">9</span>)$<span class="source_string">"game"</span>$Chr(<span class="source_int">9</span>)$<span class="source_string">"MaxSpectators"</span>$Chr(<span class="source_int">9</span>)$MaxSpectators);
+<a name="341"></a>	<span class="source_type"><a href="../engine/statlog.html" class="source">StatLog</a></span>.LogEventString(<span class="source_type"><a href="../engine/statlog.html" class="source">StatLog</a></span>.GetTimeStamp()$Chr(<span class="source_int">9</span>)$<span class="source_string">"game"</span>$Chr(<span class="source_int">9</span>)$<span class="source_string">"MaxPlayers"</span>$Chr(<span class="source_int">9</span>)$MaxPlayers);
+<a name="342"></a>}
+<a name="343"></a>
+<a name="344"></a><span class="source_comment">//------------------------------------------------------------------------------
+</span><a name="345"></a><span class="source_comment">// Game parameters.
+</span><a name="346"></a>
+<a name="347"></a><span class="source_comment">//
+</span><a name="348"></a><span class="source_comment">// Set gameplay speed.
+</span><a name="349"></a><span class="source_comment">//
+</span><a name="350"></a>function SetGameSpeed( <span class="source_type">Float</span> <span class="source_type">T</span> )
+<a name="351"></a>{
+<a name="352"></a>	local <span class="source_type">float</span> OldSpeed;
+<a name="353"></a>
+<a name="354"></a><span class="source_macro">#ifdefMPDEMO
+</span><a name="355"></a>    <span class="source_type">T</span> = <span class="source_int">1</span>;
+<a name="356"></a><span class="source_macro">#endif
+</span><a name="357"></a>    
+<a name="358"></a>	OldSpeed = GameSpeed;
+<a name="359"></a>	GameSpeed = FMax(<span class="source_type">T</span>, <span class="source_int">0.1</span>);
+<a name="360"></a>	<span class="source_type">Level</span>.TimeDilation = GameSpeed;
+<a name="361"></a>	if ( GameSpeed != OldSpeed )
+<a name="362"></a>		SaveConfig();
+<a name="363"></a>	SetTimer(<span class="source_type">Level</span>.TimeDilation, true);
+<a name="364"></a>}
+<a name="365"></a>
+<a name="366"></a><span class="source_comment">//#ifdef R6CODE
+</span><a name="367"></a>function SetGamePassword(<span class="source_type">string</span> szPasswd)
+<a name="368"></a>{
+<a name="369"></a>    local <span class="source_type"><a href="../engine/r6serverinfo.html" class="source">R6ServerInfo</a></span>  pServerOptions;
+<a name="370"></a>
+<a name="371"></a>    pServerOptions = <span class="source_type">class</span><span class="source_name">'Actor'</span>.static.GetServerOptions();
+<a name="372"></a>
+<a name="373"></a>    <span class="source_type"><a href="../engine/accesscontrol.html" class="source">AccessControl</a></span>.SetGamePassword(szPasswd);
+<a name="374"></a>    pServerOptions.GamePassword = szPasswd;
+<a name="375"></a>    pServerOptions.UsePassword = !(szPasswd==<span class="source_string">""</span>);
+<a name="376"></a>    pServerOptions.SaveConfig();
+<a name="377"></a>}
+<a name="378"></a><span class="source_comment">//#endif R6CODE
+</span><a name="379"></a>
+<a name="380"></a><span class="source_comment">//
+</span><a name="381"></a><span class="source_comment">// Called after setting low or high detail mode.
+</span><a name="382"></a><span class="source_comment">//
+</span><a name="383"></a>event DetailChange()
+<a name="384"></a>{
+<a name="385"></a>	local <span class="source_type"><a href="../engine/actor.html" class="source">actor</a></span> <span class="source_type">A</span>;
+<a name="386"></a>	local <span class="source_type"><a href="../engine/zoneinfo.html" class="source">zoneinfo</a></span> <span class="source_type">Z</span>;
+<a name="387"></a>
+<a name="388"></a>	if( !<span class="source_type">Level</span>.bHighDetailMode )
+<a name="389"></a>	{
+<a name="390"></a>		foreach DynamicActors(<span class="source_type">class</span><span class="source_name">'Actor'</span>, <span class="source_type">A</span>)
+<a name="391"></a>		{
+<a name="392"></a>			if( <span class="source_type">A</span>.bHighDetail && !<span class="source_type">A</span>.bGameRelevant )
+<a name="393"></a>				<span class="source_type">A</span>.Destroy();
+<a name="394"></a>		}
+<a name="395"></a>	}
+<a name="396"></a>	foreach AllActors(<span class="source_type">class</span><span class="source_name">'ZoneInfo'</span>, <span class="source_type">Z</span>)
+<a name="397"></a>		<span class="source_type">Z</span>.LinkToSkybox();
+<a name="398"></a>}
+<a name="399"></a>
+<a name="400"></a><span class="source_comment">//------------------------------------------------------------------------------
+</span><a name="401"></a><span class="source_comment">// Player start functions
+</span><a name="402"></a>
+<a name="403"></a><span class="source_comment">//
+</span><a name="404"></a><span class="source_comment">// Grab the next option from a string.
+</span><a name="405"></a><span class="source_comment">//
+</span><a name="406"></a>function <span class="source_type">bool</span> GrabOption( out <span class="source_type">string</span> Options, out <span class="source_type">string</span> <span class="source_type">Result</span> )
+<a name="407"></a>{
+<a name="408"></a>	if( Left(Options,<span class="source_int">1</span>)==<span class="source_string">"?"</span> )
+<a name="409"></a>	{
+<a name="410"></a>		<span class="source_comment">// Get result.
+</span><a name="411"></a>		<span class="source_type">Result</span> = Mid(Options,<span class="source_int">1</span>);
+<a name="412"></a>		if( InStr(<span class="source_type">Result</span>,<span class="source_string">"?"</span>)&gt;=<span class="source_int">0</span> )
+<a name="413"></a>			<span class="source_type">Result</span> = Left( <span class="source_type">Result</span>, InStr(<span class="source_type">Result</span>,<span class="source_string">"?"</span>) );
+<a name="414"></a>
+<a name="415"></a>		<span class="source_comment">// Update options.
+</span><a name="416"></a>		Options = Mid(Options,<span class="source_int">1</span>);
+<a name="417"></a>		if( InStr(Options,<span class="source_string">"?"</span>)&gt;=<span class="source_int">0</span> )
+<a name="418"></a>			Options = Mid( Options, InStr(Options,<span class="source_string">"?"</span>) );
+<a name="419"></a>		else
+<a name="420"></a>			Options = <span class="source_string">""</span>;
+<a name="421"></a>
+<a name="422"></a>		return true;
+<a name="423"></a>	}
+<a name="424"></a>	else return false;
+<a name="425"></a>}
+<a name="426"></a>
+<a name="427"></a><span class="source_comment">//
+</span><a name="428"></a><span class="source_comment">// Break up a key=value pair into its key and value.
+</span><a name="429"></a><span class="source_comment">//
+</span><a name="430"></a>function GetKeyValue( <span class="source_type">string</span> Pair, out <span class="source_type">string</span> <span class="source_type">Key</span>, out <span class="source_type">string</span> <span class="source_type">Value</span> )
+<a name="431"></a>{
+<a name="432"></a>	if( InStr(Pair,<span class="source_string">"="</span>)&gt;=<span class="source_int">0</span> )
+<a name="433"></a>	{
+<a name="434"></a>		<span class="source_type">Key</span>   = Left(Pair,InStr(Pair,<span class="source_string">"="</span>));
+<a name="435"></a>		<span class="source_type">Value</span> = Mid(Pair,InStr(Pair,<span class="source_string">"="</span>)+<span class="source_int">1</span>);
+<a name="436"></a>	}
+<a name="437"></a>	else
+<a name="438"></a>	{
+<a name="439"></a>		<span class="source_type">Key</span>   = Pair;
+<a name="440"></a>		<span class="source_type">Value</span> = <span class="source_string">""</span>;
+<a name="441"></a>	}
+<a name="442"></a>}
+<a name="443"></a>
+<a name="444"></a><span class="source_comment">/* ParseOption()
+<a name="445"></a> Find an option in the options string and return it.
+<a name="446"></a>*/</span>
+<a name="447"></a>function <span class="source_type">string</span> ParseOption( <span class="source_type">string</span> Options, <span class="source_type">string</span> <span class="source_type">InKey</span> )
+<a name="448"></a>{
+<a name="449"></a>	local <span class="source_type">string</span> Pair, <span class="source_type">Key</span>, <span class="source_type">Value</span>;
+<a name="450"></a>	while( GrabOption( Options, Pair ) )
+<a name="451"></a>	{
+<a name="452"></a>		GetKeyValue( Pair, <span class="source_type">Key</span>, <span class="source_type">Value</span> );
+<a name="453"></a>		if( <span class="source_type">Key</span> ~= <span class="source_type">InKey</span> )
+<a name="454"></a>			return <span class="source_type">Value</span>;
+<a name="455"></a>	}
+<a name="456"></a>	return <span class="source_string">""</span>;
+<a name="457"></a>}
+<a name="458"></a>
+<a name="459"></a><span class="source_comment">/* Initialize the game.
+<a name="460"></a> The GameInfo's InitGame() function is called before any other scripts (including 
+<a name="461"></a> PreBeginPlay() ), and is used by the GameInfo to initialize parameters and spawn 
+<a name="462"></a> its helper classes.
+<a name="463"></a> Warning: this is called before actors' PreBeginPlay.
+<a name="464"></a>*/</span>
+<a name="465"></a>event InitGame( <span class="source_type">string</span> Options, out <span class="source_type">string</span> <span class="source_type">Error</span> )
+<a name="466"></a>{
+<a name="467"></a>	local <span class="source_type">string</span> InOpt, LeftOpt;
+<a name="468"></a>	local <span class="source_type">int</span> pos;
+<a name="469"></a>	local <span class="source_type">class</span>&lt;<span class="source_type"><a href="../engine/mutator.html" class="source">Mutator</a></span>&gt; MClass;
+<a name="470"></a>	local <span class="source_type">class</span>&lt;<span class="source_type"><a href="../engine/accesscontrol.html" class="source">AccessControl</a></span>&gt; ACClass;
+<a name="471"></a>	local <span class="source_type">class</span>&lt;<span class="source_type"><a href="../engine/gamerules.html" class="source">GameRules</a></span>&gt; GRClass;
+<a name="472"></a>	local <span class="source_type">class</span>&lt;<span class="source_type"><a href="../engine/broadcasthandler.html" class="source">BroadcastHandler</a></span>&gt; BHClass;
+<a name="473"></a>
+<a name="474"></a>	log( <span class="source_string">"InitGame:"</span> @ Options );
+<a name="475"></a>	MaxPlayers = Min( <span class="source_int">32</span>,GetIntOption( Options, <span class="source_string">"MaxPlayers"</span>, MaxPlayers ));
+<a name="476"></a>	Difficulty = GetIntOption(Options, <span class="source_string">"Difficulty"</span>, Difficulty);
+<a name="477"></a>
+<a name="478"></a>	InOpt = ParseOption( Options, <span class="source_string">"GameSpeed"</span>);
+<a name="479"></a>	if( InOpt != <span class="source_string">""</span> )
+<a name="480"></a>	{
+<a name="481"></a>		log(<span class="source_string">"GameSpeed"</span>@InOpt);
+<a name="482"></a>		SetGameSpeed(<span class="source_type">float</span>(InOpt));
+<a name="483"></a>	}
+<a name="484"></a>
+<a name="485"></a>	MClass = <span class="source_type">class</span>&lt;<span class="source_type"><a href="../engine/mutator.html" class="source">Mutator</a></span>&gt;(DynamicLoadObject(MutatorClass, <span class="source_type">class</span><span class="source_name">'Class'</span>));
+<a name="486"></a>	BaseMutator = spawn(MClass);
+<a name="487"></a>
+<a name="488"></a>	log(<span class="source_string">"### MutatorClass: "</span>$MutatorClass);
+<a name="489"></a>	
+<a name="490"></a>	BHClass = <span class="source_type">class</span>&lt;<span class="source_type"><a href="../engine/broadcasthandler.html" class="source">BroadcastHandler</a></span>&gt;(DynamicLoadObject(BroadcastHandlerClass,<span class="source_type">Class</span><span class="source_name">'Class'</span>));
+<a name="491"></a>	<span class="source_type"><a href="../engine/broadcasthandler.html" class="source">BroadcastHandler</a></span> = spawn(BHClass);
+<a name="492"></a>    
+<a name="493"></a>	InOpt = ParseOption( Options, <span class="source_string">"AccessControl"</span>);
+<a name="494"></a>	if( InOpt != <span class="source_string">""</span> )
+<a name="495"></a>		ACClass = <span class="source_type">class</span>&lt;<span class="source_type"><a href="../engine/accesscontrol.html" class="source">AccessControl</a></span>&gt;(DynamicLoadObject(InOpt, <span class="source_type">class</span><span class="source_name">'Class'</span>));
+<a name="496"></a>	if ( ACClass != None )
+<a name="497"></a>		<span class="source_type"><a href="../engine/accesscontrol.html" class="source">AccessControl</a></span> = Spawn(ACClass);
+<a name="498"></a>	else
+<a name="499"></a>	{
+<a name="500"></a>		ACClass = <span class="source_type">class</span>&lt;<span class="source_type"><a href="../engine/accesscontrol.html" class="source">AccessControl</a></span>&gt;(DynamicLoadObject(AccessControlClass, <span class="source_type">class</span><span class="source_name">'Class'</span>));
+<a name="501"></a>		<span class="source_type"><a href="../engine/accesscontrol.html" class="source">AccessControl</a></span> = Spawn(ACClass);
+<a name="502"></a>	}
+<a name="503"></a>
+<a name="504"></a>	InOpt = ParseOption( Options, <span class="source_string">"AdminPassword"</span>);
+<a name="505"></a>	if( InOpt!=<span class="source_string">""</span> )
+<a name="506"></a>		<span class="source_type"><a href="../engine/accesscontrol.html" class="source">AccessControl</a></span>.SetAdminPassword(InOpt);
+<a name="507"></a>
+<a name="508"></a>	InOpt = ParseOption( Options, <span class="source_string">"GameRules"</span>);
+<a name="509"></a>	if ( InOpt != <span class="source_string">""</span> )
+<a name="510"></a>	{
+<a name="511"></a>		log(<span class="source_string">"Game Rules"</span>@InOpt);
+<a name="512"></a>		while ( InOpt != <span class="source_string">""</span> )
+<a name="513"></a>		{
+<a name="514"></a>			pos = InStr(InOpt,<span class="source_string">","</span>);
+<a name="515"></a>			if ( pos &gt; <span class="source_int">0</span> )
+<a name="516"></a>			{
+<a name="517"></a>				LeftOpt = Left(InOpt, pos);
+<a name="518"></a>				InOpt = Right(InOpt, <span class="source_type">Len</span>(InOpt) - pos - <span class="source_int">1</span>);
+<a name="519"></a>			}
+<a name="520"></a>			else
+<a name="521"></a>			{
+<a name="522"></a>				LeftOpt = InOpt;
+<a name="523"></a>				InOpt = <span class="source_string">""</span>;
+<a name="524"></a>			}
+<a name="525"></a>			log(<span class="source_string">"Add game rules "</span>$LeftOpt);
+<a name="526"></a>			GRClass = <span class="source_type">class</span>&lt;<span class="source_type"><a href="../engine/gamerules.html" class="source">GameRules</a></span>&gt;(DynamicLoadObject(LeftOpt, <span class="source_type">class</span><span class="source_name">'Class'</span>));
+<a name="527"></a>			if ( GRClass != None )
+<a name="528"></a>			{
+<a name="529"></a>				if ( GameRulesModifiers == None )
+<a name="530"></a>					GameRulesModifiers = Spawn(GRClass);
+<a name="531"></a>				else	
+<a name="532"></a>					GameRulesModifiers.AddGameRules(Spawn(GRClass));
+<a name="533"></a>			}
+<a name="534"></a>		}
+<a name="535"></a>	}
+<a name="536"></a>
+<a name="537"></a>	log(<span class="source_string">"Base Mutator is "</span>$BaseMutator);
+<a name="538"></a>	InOpt = ParseOption( Options, <span class="source_string">"Mutator"</span>);
+<a name="539"></a>	if ( InOpt != <span class="source_string">""</span> )
+<a name="540"></a>	{
+<a name="541"></a>		log(<span class="source_string">"Mutators"</span>@InOpt);
+<a name="542"></a>		while ( InOpt != <span class="source_string">""</span> )
+<a name="543"></a>		{
+<a name="544"></a>			pos = InStr(InOpt,<span class="source_string">","</span>);
+<a name="545"></a>			if ( pos &gt; <span class="source_int">0</span> )
+<a name="546"></a>			{
+<a name="547"></a>				LeftOpt = Left(InOpt, pos);
+<a name="548"></a>				InOpt = Right(InOpt, <span class="source_type">Len</span>(InOpt) - pos - <span class="source_int">1</span>);
+<a name="549"></a>			}
+<a name="550"></a>			else
+<a name="551"></a>			{
+<a name="552"></a>				LeftOpt = InOpt;
+<a name="553"></a>				InOpt = <span class="source_string">""</span>;
+<a name="554"></a>			}
+<a name="555"></a>			log(<span class="source_string">"Add mutator "</span>$LeftOpt);
+<a name="556"></a>			MClass = <span class="source_type">class</span>&lt;<span class="source_type"><a href="../engine/mutator.html" class="source">Mutator</a></span>&gt;(DynamicLoadObject(LeftOpt, <span class="source_type">class</span><span class="source_name">'Class'</span>));
+<a name="557"></a>			if ( MClass != None )	
+<a name="558"></a>				BaseMutator.AddMutator(Spawn(MClass));
+<a name="559"></a>		}
+<a name="560"></a>	}
+<a name="561"></a>
+<a name="562"></a>	InOpt = ParseOption( Options, <span class="source_string">"GamePassword"</span>);
+<a name="563"></a>	if( InOpt != <span class="source_string">""</span> )
+<a name="564"></a>	{
+<a name="565"></a>		<span class="source_type"><a href="../engine/accesscontrol.html" class="source">AccessControl</a></span>.SetGamePassWord(InOpt);
+<a name="566"></a>		log( <span class="source_string">"GamePassword"</span> @ InOpt );
+<a name="567"></a>	}
+<a name="568"></a>
+<a name="569"></a>	InOpt = ParseOption( Options, <span class="source_string">"LocalLog"</span>);
+<a name="570"></a>	if( InOpt ~= <span class="source_string">"true"</span> )
+<a name="571"></a>		bLocalLog = True;
+<a name="572"></a>
+<a name="573"></a>	InOpt = ParseOption( Options, <span class="source_string">"WorldLog"</span>);
+<a name="574"></a>	if( InOpt ~= <span class="source_string">"true"</span> )
+<a name="575"></a>		bWorldLog = True;
+<a name="576"></a>
+<a name="577"></a>}
+<a name="578"></a>
+<a name="579"></a><span class="source_comment">// Deploy all characters in the map after all options were selected in the menus.
+</span><a name="580"></a><span class="source_comment">//#ifdef R6BUILDPLANNINGPHASE
+</span><a name="581"></a>function DeployCharacters(<span class="source_type"><a href="../engine/playercontroller.html" class="source">PlayerController</a></span> <span class="source_type">PController</span>)
+<a name="582"></a>{
+<a name="583"></a>    <span class="source_comment">//Defined in R6GameInfo
+</span><a name="584"></a>    log(<span class="source_string">"Wrong Deploy character"</span>);
+<a name="585"></a>}
+<a name="586"></a><span class="source_comment">//#ifdef R6BUILDPLANNINGPHASE
+</span><a name="587"></a>
+<a name="588"></a><span class="source_comment">//
+</span><a name="589"></a><span class="source_comment">// Return beacon text for serverbeacon.
+</span><a name="590"></a><span class="source_comment">//
+</span><a name="591"></a>event <span class="source_type">string</span> GetBeaconText()
+<a name="592"></a>{	
+<a name="593"></a>	return
+<a name="594"></a>		<span class="source_type">Level</span>.ComputerName
+<a name="595"></a>	@	Left(<span class="source_type">Level</span>.Title,<span class="source_int">24</span>) 
+<a name="596"></a>	@	BeaconName
+<a name="597"></a>	@	NumPlayers
+<a name="598"></a>	$	<span class="source_string">"/"</span>
+<a name="599"></a>	$	MaxPlayers;
+<a name="600"></a>}
+<a name="601"></a>
+<a name="602"></a><span class="source_comment">/* ProcessServerTravel()
+<a name="603"></a> Optional handling of ServerTravel for network games.
+<a name="604"></a>*/</span>
+<a name="605"></a>function ProcessServerTravel( <span class="source_type">string</span> <span class="source_type"><a href="../engine/gameengine.html#URL" class="source">URL</a></span>, <span class="source_type">bool</span> <span class="source_type">bItems</span> )
+<a name="606"></a>{
+<a name="607"></a>	local <span class="source_type"><a href="../engine/playercontroller.html" class="source">playercontroller</a></span> <span class="source_type">P</span>, LocalPlayer;
+<a name="608"></a>
+<a name="609"></a>	EndLogging(<span class="source_string">"mapchange"</span>);
+<a name="610"></a>
+<a name="611"></a>	<span class="source_comment">// Notify clients we're switching level and give them time to receive.
+</span><a name="612"></a>	<span class="source_comment">// We call PreClientTravel directly on any local PlayerPawns (ie listen server)
+</span><a name="613"></a><span class="source_comment">//#ifdef R6Code
+</span><a name="614"></a>    m_bPendingLevelExists=true;
+<a name="615"></a><span class="source_comment">//#endif
+</span><a name="616"></a>	foreach DynamicActors( <span class="source_type">class</span><span class="source_name">'PlayerController'</span>, <span class="source_type">P</span> )
+<a name="617"></a>		if( NetConnection( <span class="source_type">P</span>.<span class="source_type"><a href="../engine/player.html" class="source">Player</a></span>)!=None )
+<a name="618"></a><span class="source_comment">//#ifndef R6Code
+</span><a name="619"></a><span class="source_comment">//		if( NetConnection( P.Player)!=None )
+</span><a name="620"></a><span class="source_comment">//            P.ClientTravel( URL, TRAVEL_Relative, bItems );
+</span><a name="621"></a><span class="source_comment">//#else 
+</span><a name="622"></a>		if( NetConnection( <span class="source_type">P</span>.<span class="source_type"><a href="../engine/player.html" class="source">Player</a></span>)!=None )
+<a name="623"></a>			<span class="source_type">P</span>.ClientTravel( <span class="source_type"><a href="../engine/gameengine.html#URL" class="source">URL</a></span>$<span class="source_string">"?Password="</span>$<span class="source_type"><a href="../engine/accesscontrol.html" class="source">AccessControl</a></span>.GetGamePassword(), TRAVEL_Relative, <span class="source_type">bItems</span> );
+<a name="624"></a><span class="source_comment">//#endif
+</span><a name="625"></a>		else
+<a name="626"></a>		{	
+<a name="627"></a>			LocalPlayer = <span class="source_type">P</span>;
+<a name="628"></a>			<span class="source_type">P</span>.PreClientTravel();
+<a name="629"></a>		}
+<a name="630"></a><span class="source_comment">//#ifndef R6Code
+</span><a name="631"></a><span class="source_comment">//	if ( (Level.NetMode == NM_ListenServer) && (LocalPlayer != None) )
+</span><a name="632"></a><span class="source_comment">//		Level.NextURL = Level.NextURL$"?Skin="$LocalPlayer.GetDefaultURL("Skin")
+</span><a name="633"></a><span class="source_comment">//					 $"?Face="$LocalPlayer.GetDefaultURL("Face")
+</span><a name="634"></a><span class="source_comment">//					 $"?Team="$LocalPlayer.GetDefaultURL("Team")
+</span><a name="635"></a><span class="source_comment">//					 $"?Name="$LocalPlayer.GetDefaultURL("Name")
+</span><a name="636"></a><span class="source_comment">//					 $"?Class="$LocalPlayer.GetDefaultURL("Class");
+</span><a name="637"></a><span class="source_comment">//#else
+</span><a name="638"></a>
+<a name="639"></a>	if ( (<span class="source_type">Level</span>.NetMode == NM_ListenServer) && (LocalPlayer != None) )
+<a name="640"></a>		<span class="source_type">Level</span>.NextURL = <span class="source_type">Level</span>.NextURL$<span class="source_string">"?Skin="</span>$LocalPlayer.GetDefaultURL(<span class="source_string">"Skin"</span>)
+<a name="641"></a>					 $<span class="source_string">"?Face="</span>$LocalPlayer.GetDefaultURL(<span class="source_string">"Face"</span>)
+<a name="642"></a>					 $<span class="source_string">"?Team="</span>$LocalPlayer.GetDefaultURL(<span class="source_string">"Team"</span>)
+<a name="643"></a>					 $<span class="source_string">"?Name="</span>$LocalPlayer.GetDefaultURL(<span class="source_string">"Name"</span>)
+<a name="644"></a>					 $<span class="source_string">"?Class="</span>$LocalPlayer.GetDefaultURL(<span class="source_string">"Class"</span>)
+<a name="645"></a>                     $<span class="source_string">"?Password="</span>$<span class="source_type"><a href="../engine/accesscontrol.html" class="source">AccessControl</a></span>.GetGamePassword();
+<a name="646"></a><span class="source_comment">//#endif
+</span><a name="647"></a>	<span class="source_comment">// Switch immediately if not networking.
+</span><a name="648"></a>	if( <span class="source_type">Level</span>.NetMode!=NM_DedicatedServer && <span class="source_type">Level</span>.NetMode!=NM_ListenServer )
+<a name="649"></a>		<span class="source_type">Level</span>.NextSwitchCountdown = <span class="source_int">0.0</span>;
+<a name="650"></a>}
+<a name="651"></a>
+<a name="652"></a><span class="source_comment">//
+</span><a name="653"></a><span class="source_comment">// Accept or reject a player on the server.
+</span><a name="654"></a><span class="source_comment">// Fails login if you set the Error to a non-empty string.
+</span><a name="655"></a><span class="source_comment">//
+</span><a name="656"></a>event PreLogin
+<a name="657"></a>(
+<a name="658"></a>	<span class="source_type">string</span> Options,
+<a name="659"></a>	<span class="source_type">string</span> Address,
+<a name="660"></a>	out <span class="source_type">string</span> <span class="source_type">Error</span>,
+<a name="661"></a>	out <span class="source_type">string</span> FailCode
+<a name="662"></a>)
+<a name="663"></a>{
+<a name="664"></a>	local <span class="source_type">bool</span> bSpectator;
+<a name="665"></a>	local <span class="source_type">string</span> spec;
+<a name="666"></a>
+<a name="667"></a>	spec = ParseOption ( Options, <span class="source_string">"SpectatorOnly"</span> );	
+<a name="668"></a>	bSpectator = ( spec != <span class="source_string">""</span> );
+<a name="669"></a>
+<a name="670"></a>	<span class="source_type"><a href="../engine/accesscontrol.html" class="source">AccessControl</a></span>.PreLogin(Options, Address, <span class="source_type">Error</span>, FailCode, bSpectator);
+<a name="671"></a>}
+<a name="672"></a>
+<a name="673"></a>function <span class="source_type">int</span> GetIntOption( <span class="source_type">string</span> Options, <span class="source_type">string</span> ParseString, <span class="source_type">int</span> CurrentValue)
+<a name="674"></a>{
+<a name="675"></a>	local <span class="source_type">string</span> InOpt;
+<a name="676"></a>
+<a name="677"></a>	InOpt = ParseOption( Options, ParseString );
+<a name="678"></a>	if ( InOpt != <span class="source_string">""</span> )
+<a name="679"></a>	{
+<a name="680"></a>		log(ParseString@InOpt);
+<a name="681"></a>		return <span class="source_type">int</span>(InOpt);
+<a name="682"></a>	}	
+<a name="683"></a>	return CurrentValue;
+<a name="684"></a>}
+<a name="685"></a>
+<a name="686"></a>function <span class="source_type">bool</span> AtCapacity(<span class="source_type">bool</span> bSpectator)
+<a name="687"></a>{
+<a name="688"></a>	if ( <span class="source_type">Level</span>.NetMode == NM_Standalone )
+<a name="689"></a>		return false;
+<a name="690"></a>
+<a name="691"></a>	if ( bSpectator )
+<a name="692"></a>		return ( (NumSpectators &gt;= MaxSpectators)
+<a name="693"></a>			&& ((<span class="source_type">Level</span>.NetMode != NM_ListenServer) || (NumPlayers &gt; <span class="source_int">0</span>)) );
+<a name="694"></a>	else
+<a name="695"></a>		return ( (MaxPlayers&gt;<span class="source_int">0</span>) && (NumPlayers&gt;=MaxPlayers) );
+<a name="696"></a>}
+<a name="697"></a>
+<a name="698"></a><span class="source_comment">//
+</span><a name="699"></a><span class="source_comment">// Log a player in.
+</span><a name="700"></a><span class="source_comment">// Fails login if you set the Error string.
+</span><a name="701"></a><span class="source_comment">// PreLogin is called before Login, but significant game time may pass before
+</span><a name="702"></a><span class="source_comment">// Login is called, especially if content is downloaded.
+</span><a name="703"></a><span class="source_comment">//
+</span><a name="704"></a>event <span class="source_type"><a href="../engine/playercontroller.html" class="source">PlayerController</a></span> Login
+<a name="705"></a>(
+<a name="706"></a>	<span class="source_type">string</span> Portal,
+<a name="707"></a>	<span class="source_type">string</span> Options,
+<a name="708"></a>	out <span class="source_type">string</span> <span class="source_type">Error</span>
+<a name="709"></a>)
+<a name="710"></a>{
+<a name="711"></a>	local <span class="source_type"><a href="../engine/navigationpoint.html" class="source">NavigationPoint</a></span> StartSpot;
+<a name="712"></a>	local <span class="source_type"><a href="../engine/playercontroller.html" class="source">PlayerController</a></span> <span class="source_type">NewPlayer</span>;
+<a name="713"></a>	local <span class="source_type">class</span>&lt;<span class="source_type"><a href="../engine/pawn.html" class="source">Pawn</a></span>&gt; DesiredPawnClass;
+<a name="714"></a>	local <span class="source_type"><a href="../engine/pawn.html" class="source">Pawn</a></span>      TestPawn;
+<a name="715"></a>	local <span class="source_type">string</span>          <span class="source_type">InName</span>, InPassword, InChecksum, InClass;
+<a name="716"></a>	local <span class="source_type">byte</span>            InTeam;
+<a name="717"></a>	local <span class="source_type">bool</span> bSpectator;
+<a name="718"></a>
+<a name="719"></a>	bSpectator = ( ParseOption( Options, <span class="source_string">"SpectatorOnly"</span> ) != <span class="source_string">""</span> );
+<a name="720"></a>
+<a name="721"></a>	<span class="source_comment">// Make sure there is capacity. (This might have changed since the PreLogin call).
+</span><a name="722"></a>	if ( AtCapacity(bSpectator) )
+<a name="723"></a>	{
+<a name="724"></a>		<span class="source_type">Error</span>=GameMessageClass.Default.MaxedOutMessage;
+<a name="725"></a>		return None;
+<a name="726"></a>	}
+<a name="727"></a>
+<a name="728"></a>	BaseMutator.ModifyLogin(Portal, Options);
+<a name="729"></a>
+<a name="730"></a>	<span class="source_comment">// Get URL options.
+</span><a name="731"></a>	<span class="source_type">InName</span>     = Left(ParseOption ( Options, <span class="source_string">"Name"</span>), <span class="source_int">20</span>);
+<a name="732"></a>	InTeam     = GetIntOption( Options, <span class="source_string">"Team"</span>, <span class="source_int">255</span> ); <span class="source_comment">// default to "no team"
+</span><a name="733"></a>	InPassword = ParseOption ( Options, <span class="source_string">"Password"</span> );
+<a name="734"></a>	InChecksum = ParseOption ( Options, <span class="source_string">"Checksum"</span> );
+<a name="735"></a>
+<a name="736"></a>	log( <span class="source_string">"Login:"</span> @ <span class="source_type">InName</span> );
+<a name="737"></a>	if( InPassword != <span class="source_string">""</span> )
+<a name="738"></a>		log( <span class="source_string">"Password"</span>@InPassword );
+<a name="739"></a>	
+<a name="740"></a>	<span class="source_comment">// Pick a team (if need teams)
+</span><a name="741"></a>	InTeam = PickTeam(InTeam);
+<a name="742"></a>		 
+<a name="743"></a>	<span class="source_comment">// Find a start spot.
+</span><a name="744"></a>	StartSpot = FindPlayerStart( None, InTeam, Portal );
+<a name="745"></a>
+<a name="746"></a>	if( StartSpot == None )
+<a name="747"></a>	{
+<a name="748"></a>        <span class="source_type">Error</span>=Localize(<span class="source_string">"MPMiscMessages"</span>, <span class="source_string">"FailedPlaceMessage"</span>, <span class="source_string">"R6GameInfo"</span>);
+<a name="749"></a>		return None;
+<a name="750"></a>	}
+<a name="751"></a>
+<a name="752"></a>	<span class="source_comment">// Init player's administrative privileges
+</span><a name="753"></a><span class="source_comment">//	if ( AccessControl.AdminLogin(NewPlayer, InPassword) )
+</span><a name="754"></a><span class="source_comment">//	{
+</span><a name="755"></a><span class="source_comment">//		NewPlayer = spawn(AccessControl.AdminClass,,,StartSpot.Location,StartSpot.Rotation);
+</span><a name="756"></a><span class="source_comment">//		bSpectator = true;
+</span><a name="757"></a><span class="source_comment">//	}
+</span><a name="758"></a><span class="source_comment">//	else
+</span><a name="759"></a><span class="source_comment">//	{
+</span><a name="760"></a>		if ( PlayerControllerClass == None )
+<a name="761"></a>			PlayerControllerClass = <span class="source_type">class</span>&lt;<span class="source_type"><a href="../engine/playercontroller.html" class="source">PlayerController</a></span>&gt;(DynamicLoadObject(PlayerControllerClassName, <span class="source_type">class</span><span class="source_name">'Class'</span>));
+<a name="762"></a>		<span class="source_type">NewPlayer</span> = spawn(PlayerControllerClass,,,StartSpot.Location,StartSpot.Rotation);
+<a name="763"></a><span class="source_comment">//	}
+</span><a name="764"></a>
+<a name="765"></a>	<span class="source_comment">// Handle spawn failure.
+</span><a name="766"></a>	if( <span class="source_type">NewPlayer</span> == None )
+<a name="767"></a>	{
+<a name="768"></a>		log(<span class="source_string">"Couldn't spawn player controller of class "</span>$PlayerControllerClass);
+<a name="769"></a>		<span class="source_type">Error</span> = GameMessageClass.Default.FailedSpawnMessage;
+<a name="770"></a>		return None;
+<a name="771"></a>	}
+<a name="772"></a>
+<a name="773"></a>	<span class="source_type">NewPlayer</span>.StartSpot = StartSpot;
+<a name="774"></a>
+<a name="775"></a>	<span class="source_comment">// Init player's name
+</span><a name="776"></a>	if( <span class="source_type">InName</span>==<span class="source_string">""</span> )
+<a name="777"></a>		<span class="source_type">InName</span>=DefaultPlayerName;
+<a name="778"></a>	
+<a name="779"></a>	if(<span class="source_type">NewPlayer</span>.<span class="source_type"><a href="../engine/playerreplicationinfo.html" class="source">PlayerReplicationInfo</a></span> != none)		<span class="source_comment">// R6CODE
+</span><a name="780"></a>	{
+<a name="781"></a>		if( <span class="source_type">Level</span>.NetMode!=NM_Standalone || <span class="source_type">NewPlayer</span>.<span class="source_type"><a href="../engine/playerreplicationinfo.html" class="source">PlayerReplicationInfo</a></span>.PlayerName==DefaultPlayerName )
+<a name="782"></a>			ChangeName( <span class="source_type">NewPlayer</span>, <span class="source_type">InName</span>, false );
+<a name="783"></a>
+<a name="784"></a>		<span class="source_comment">// Init player's replication info
+</span><a name="785"></a>		<span class="source_type">NewPlayer</span>.<span class="source_type"><a href="../engine/gamereplicationinfo.html" class="source">GameReplicationInfo</a></span> = <span class="source_type"><a href="../engine/gamereplicationinfo.html" class="source">GameReplicationInfo</a></span>;
+<a name="786"></a>	}
+<a name="787"></a>
+<a name="788"></a>	<span class="source_type">NewPlayer</span>.GotoState(<span class="source_name">'Spectating'</span>);
+<a name="789"></a>
+<a name="790"></a>	if ( bSpectator )
+<a name="791"></a>	{
+<a name="792"></a>		<span class="source_type">NewPlayer</span>.bOnlySpectator = true;
+<a name="793"></a>		<span class="source_type">NewPlayer</span>.<span class="source_type"><a href="../engine/playerreplicationinfo.html" class="source">PlayerReplicationInfo</a></span>.bIsSpectator = true;
+<a name="794"></a>		NumSpectators++;
+<a name="795"></a>		return <span class="source_type">NewPlayer</span>;
+<a name="796"></a>	}
+<a name="797"></a>
+<a name="798"></a>	<span class="source_comment">// Change player's team.
+</span><a name="799"></a>	if ( !ChangeTeam(<span class="source_type">newPlayer</span>, InTeam) )
+<a name="800"></a>	{
+<a name="801"></a>		<span class="source_type">Error</span> = GameMessageClass.Default.FailedTeamMessage;
+<a name="802"></a>		return None;
+<a name="803"></a>	}
+<a name="804"></a>
+<a name="805"></a>	<span class="source_comment">// Set the player's ID.
+</span><a name="806"></a>	if(<span class="source_type">NewPlayer</span>.<span class="source_type"><a href="../engine/playerreplicationinfo.html" class="source">PlayerReplicationInfo</a></span> != none)		<span class="source_comment">// R6CODE
+</span><a name="807"></a>		<span class="source_type">NewPlayer</span>.<span class="source_type"><a href="../engine/playerreplicationinfo.html" class="source">PlayerReplicationInfo</a></span>.PlayerID = CurrentID++;
+<a name="808"></a>
+<a name="809"></a>	InClass = ParseOption( Options, <span class="source_string">"Class"</span> );
+<a name="810"></a>	if ( InClass != <span class="source_string">""</span> )
+<a name="811"></a>	{
+<a name="812"></a>		DesiredPawnClass = <span class="source_type">class</span>&lt;<span class="source_type"><a href="../engine/pawn.html" class="source">Pawn</a></span>&gt;(DynamicLoadObject(InClass, <span class="source_type">class</span><span class="source_name">'Class'</span>));
+<a name="813"></a>		if ( DesiredPawnClass != None )
+<a name="814"></a>			<span class="source_type">NewPlayer</span>.PawnClass = DesiredPawnClass;
+<a name="815"></a>	}
+<a name="816"></a>
+<a name="817"></a>	<span class="source_comment">// Log it.
+</span><a name="818"></a>	if ( <span class="source_type"><a href="../engine/statlog.html" class="source">StatLog</a></span> != None )
+<a name="819"></a>		<span class="source_type"><a href="../engine/statlog.html" class="source">StatLog</a></span>.LogPlayerConnect(<span class="source_type">NewPlayer</span>);
+<a name="820"></a>	<span class="source_type">NewPlayer</span>.ReceivedSecretChecksum = !(InChecksum ~= <span class="source_string">"NoChecksum"</span>);
+<a name="821"></a>
+<a name="822"></a>	NumPlayers++;
+<a name="823"></a>
+<a name="824"></a>	<span class="source_comment">// If we are a server, broadcast a welcome message.
+</span><a name="825"></a>	if( <span class="source_type">Level</span>.NetMode==NM_DedicatedServer || <span class="source_type">Level</span>.NetMode==NM_ListenServer )
+<a name="826"></a>		BroadcastLocalizedMessage(GameMessageClass, <span class="source_int">1</span>, <span class="source_type">NewPlayer</span>.<span class="source_type"><a href="../engine/playerreplicationinfo.html" class="source">PlayerReplicationInfo</a></span>);
+<a name="827"></a>
+<a name="828"></a>	<span class="source_comment">// if delayed start, don't give a pawn to the player yet
+</span><a name="829"></a>	<span class="source_comment">// Normal for multiplayer games
+</span><a name="830"></a>	if ( bDelayedStart )
+<a name="831"></a>	{
+<a name="832"></a>		<span class="source_type">NewPlayer</span>.GotoState(<span class="source_name">'BaseSpectating'</span>); <span class="source_comment">//		NewPlayer.GotoState('PlayerWaiting');
+</span><a name="833"></a>		return <span class="source_type">NewPlayer</span>;	
+<a name="834"></a>	}
+<a name="835"></a>
+<a name="836"></a>	<span class="source_comment">// Try to match up to existing unoccupied player in level,
+</span><a name="837"></a>	<span class="source_comment">// for savegames and coop level switching.
+</span><a name="838"></a>	ForEach DynamicActors(<span class="source_type">class</span><span class="source_name">'Pawn'</span>, TestPawn )
+<a name="839"></a>	{
+<a name="840"></a>		if ( (TestPawn!=None) && (<span class="source_type"><a href="../engine/playercontroller.html" class="source">PlayerController</a></span>(TestPawn.<span class="source_type"><a href="../engine/controller.html" class="source">Controller</a></span>)!=None) && (<span class="source_type"><a href="../engine/playercontroller.html" class="source">PlayerController</a></span>(TestPawn.<span class="source_type"><a href="../engine/controller.html" class="source">Controller</a></span>).<span class="source_type"><a href="../engine/player.html" class="source">Player</a></span>==None) && (TestPawn.Health &gt; <span class="source_int">0</span>)
+<a name="841"></a>			&&  (TestPawn.OwnerName~=<span class="source_type">InName</span>) )
+<a name="842"></a>		{
+<a name="843"></a>            <span class="source_type">NewPlayer</span>.Destroy();
+<a name="844"></a>            TestPawn.SetRotation(TestPawn.<span class="source_type"><a href="../engine/controller.html" class="source">Controller</a></span>.Rotation);
+<a name="845"></a>            TestPawn.bInitializeAnimation = false; <span class="source_comment">// FIXME - temporary workaround for lack of meshinstance serialization
+</span><a name="846"></a>            TestPawn.PlayWaiting();
+<a name="847"></a>            return <span class="source_type"><a href="../engine/playercontroller.html" class="source">PlayerController</a></span>(TestPawn.<span class="source_type"><a href="../engine/controller.html" class="source">Controller</a></span>);
+<a name="848"></a>		}
+<a name="849"></a>	}
+<a name="850"></a>
+<a name="851"></a>	return <span class="source_type">newPlayer</span>;
+<a name="852"></a>}	
+<a name="853"></a>
+<a name="854"></a><span class="source_comment">/* StartMatch()
+<a name="855"></a>Start the game - inform all actors that the match is starting, and spawn player pawns
+<a name="856"></a>*/</span>
+<a name="857"></a>function StartMatch()
+<a name="858"></a>{	
+<a name="859"></a>	local <span class="source_type"><a href="../engine/controller.html" class="source">Controller</a></span> <span class="source_type">P</span>;
+<a name="860"></a>	local <span class="source_type"><a href="../engine/actor.html" class="source">Actor</a></span> <span class="source_type">A</span>; 
+<a name="861"></a>
+<a name="862"></a>	if (<span class="source_type"><a href="../engine/statlog.html" class="source">StatLog</a></span> != None)
+<a name="863"></a>		<span class="source_type"><a href="../engine/statlog.html" class="source">StatLog</a></span>.LogGameStart();
+<a name="864"></a>
+<a name="865"></a>	<span class="source_comment">// tell all actors the game is starting
+</span><a name="866"></a>	ForEach AllActors(<span class="source_type">class</span><span class="source_name">'Actor'</span>, <span class="source_type">A</span>)
+<a name="867"></a>		<span class="source_type">A</span>.MatchStarting();
+<a name="868"></a>
+<a name="869"></a>	<span class="source_comment">// start human players first
+</span><a name="870"></a>	for ( <span class="source_type">P</span> = <span class="source_type">Level</span>.ControllerList; <span class="source_type">P</span>!=None; <span class="source_type">P</span>=<span class="source_type">P</span>.nextController )
+<a name="871"></a>		if ( <span class="source_type">P</span>.IsA(<span class="source_name">'PlayerController'</span>) && (<span class="source_type">P</span>.<span class="source_type"><a href="../engine/pawn.html" class="source">Pawn</a></span> == None) )
+<a name="872"></a>		{
+<a name="873"></a>			if ( bGameEnded ) return; <span class="source_comment">// telefrag ended the game with ridiculous frag limit
+</span><a name="874"></a>			else if ( !<span class="source_type"><a href="../engine/playercontroller.html" class="source">PlayerController</a></span>(<span class="source_type">P</span>).bOnlySpectator  )
+<a name="875"></a>                RestartPlayer(<span class="source_type">P</span>);
+<a name="876"></a>			SendStartMessage(<span class="source_type"><a href="../engine/playercontroller.html" class="source">PlayerController</a></span>(<span class="source_type">P</span>));
+<a name="877"></a>		}
+<a name="878"></a>
+<a name="879"></a>	<span class="source_comment">// start AI players
+</span><a name="880"></a><span class="source_comment">//#ifdef R6CODE
+</span><a name="881"></a><span class="source_comment">//	for ( P = Level.ControllerList; P!=None; P=P.nextController )
+</span><a name="882"></a><span class="source_comment">//		if ( P.bIsPlayer && !P.IsA('PlayerController') )
+</span><a name="883"></a><span class="source_comment">//			RestartPlayer(P);
+</span><a name="884"></a><span class="source_comment">//
+</span><a name="885"></a><span class="source_comment">//        bWaitingToStartMatch = false;
+</span><a name="886"></a><span class="source_comment">//#endif R6CODE
+</span><a name="887"></a>}
+<a name="888"></a>
+<a name="889"></a><span class="source_comment">//
+</span><a name="890"></a><span class="source_comment">// Restart a player.
+</span><a name="891"></a><span class="source_comment">//
+</span><a name="892"></a>function RestartPlayer( <span class="source_type"><a href="../engine/controller.html" class="source">Controller</a></span> <span class="source_type">aPlayer</span> )	
+<a name="893"></a>{
+<a name="894"></a>    <span class="source_comment">/* // r6code: not needed. it spawn a useless pawn in the entry level.
+<a name="895"></a>    
+<a name="896"></a>	local NavigationPoint startSpot;
+<a name="897"></a>	local int TeamNum;
+<a name="898"></a>	local class&lt;Pawn&gt; DefaultPlayerClass;
+<a name="899"></a>
+<a name="900"></a>	if( bRestartLevel && Level.NetMode!=NM_DedicatedServer && Level.NetMode!=NM_ListenServer )
+<a name="901"></a>        return;
+<a name="902"></a>//#ifndef R6CODE we don't need this
+<a name="903"></a>//	if ( (aPlayer.PlayerReplicationInfo == None) || (aPlayer.PlayerReplicationInfo.Team == None) )
+<a name="904"></a>//        TeamNum = 255;
+<a name="905"></a>//	else
+<a name="906"></a>//    {
+<a name="907"></a>//        TeamNum = aPlayer.PlayerReplicationInfo.Team.TeamIndex;
+<a name="908"></a>//    }
+<a name="909"></a>//#endif R6CODE
+<a name="910"></a>	startSpot = FindPlayerStart(aPlayer, TeamNum);
+<a name="911"></a>	if( startSpot == None )
+<a name="912"></a>	{
+<a name="913"></a>		log(" Player start not found!!!");
+<a name="914"></a>		return;
+<a name="915"></a>	}	
+<a name="916"></a>
+<a name="917"></a>//#ifndef R6CODE  we don't need this
+<a name="918"></a>//	if ( (aPlayer.PlayerReplicationInfo.Team != None)
+<a name="919"></a>//		&& ((aPlayer.PawnClass == None) || !aPlayer.PlayerReplicationInfo.Team.BelongsOnTeam(aPlayer.PawnClass)) )
+<a name="920"></a>//			aPlayer.PawnClass = aPlayer.PlayerReplicationInfo.Team.DefaultPlayerClass;
+<a name="921"></a>//    if (aPlayer.PreviousPawnClass!=None && aPlayer.PawnClass != aPlayer.PreviousPawnClass)
+<a name="922"></a>//		BaseMutator.PlayerChangedClass(aPlayer);			
+<a name="923"></a>//#endif R6CODE
+<a name="924"></a>	if ( aPlayer.PawnClass != None )
+<a name="925"></a>		aPlayer.Pawn = Spawn(aPlayer.PawnClass,,,StartSpot.Location,StartSpot.Rotation);
+<a name="926"></a>
+<a name="927"></a> 
+<a name="928"></a>	if( aPlayer.Pawn==None )
+<a name="929"></a>	{
+<a name="930"></a>		aPlayer.PawnClass = GetDefaultPlayerClass();
+<a name="931"></a>		aPlayer.Pawn = Spawn(aPlayer.PawnClass,,,StartSpot.Location,StartSpot.Rotation,true);
+<a name="932"></a>	}
+<a name="933"></a>	if ( aPlayer.Pawn == None )
+<a name="934"></a>	{
+<a name="935"></a>		log("Couldn't spawn player of type "$aPlayer.PawnClass$" at "$StartSpot);
+<a name="936"></a>		aPlayer.GotoState('Dead');
+<a name="937"></a>		return;
+<a name="938"></a>	}
+<a name="939"></a>
+<a name="940"></a>	aPlayer.PreviousPawnClass = aPlayer.Pawn.Class;
+<a name="941"></a>
+<a name="942"></a>	aPlayer.Possess(aPlayer.Pawn);
+<a name="943"></a>	aPlayer.PawnClass = aPlayer.Pawn.Class;
+<a name="944"></a>
+<a name="945"></a>	aPlayer.PlayTeleportEffect(true, true);
+<a name="946"></a>	aPlayer.ClientSetRotation(aPlayer.Pawn.Rotation);
+<a name="947"></a>
+<a name="948"></a>	AddDefaultInventory(aPlayer.Pawn);
+<a name="949"></a>	TriggerEvent( StartSpot.Event, StartSpot, aPlayer.Pawn);
+<a name="950"></a>    */</span>
+<a name="951"></a>}
+<a name="952"></a>
+<a name="953"></a>function <span class="source_type">class</span>&lt;<span class="source_type"><a href="../engine/pawn.html" class="source">Pawn</a></span>&gt; GetDefaultPlayerClass()
+<a name="954"></a>{
+<a name="955"></a>	return <span class="source_type">class</span>&lt;<span class="source_type"><a href="../engine/pawn.html" class="source">Pawn</a></span>&gt;(DynamicLoadObject(DefaultPlayerClassName,<span class="source_type">class</span><span class="source_name">'Class'</span>));
+<a name="956"></a>}
+<a name="957"></a>
+<a name="958"></a>function SendStartMessage(<span class="source_type"><a href="../engine/playercontroller.html" class="source">PlayerController</a></span> <span class="source_type">P</span>)
+<a name="959"></a>{
+<a name="960"></a>	<span class="source_type">P</span>.ClearProgressMessages();
+<a name="961"></a>}
+<a name="962"></a>
+<a name="963"></a><span class="source_comment">//
+</span><a name="964"></a><span class="source_comment">// Called after a successful login. This is the first place
+</span><a name="965"></a><span class="source_comment">// it is safe to call replicated functions on the PlayerPawn.
+</span><a name="966"></a><span class="source_comment">//
+</span><a name="967"></a>event PostLogin( <span class="source_type"><a href="../engine/playercontroller.html" class="source">PlayerController</a></span> <span class="source_type">NewPlayer</span> )
+<a name="968"></a>{
+<a name="969"></a>	local <span class="source_type"><a href="../engine/controller.html" class="source">Controller</a></span> <span class="source_type">P</span>;
+<a name="970"></a><span class="source_comment">//#ifndef R6CODE
+</span><a name="971"></a><span class="source_comment">//	local class&lt;Scoreboard&gt; S;
+</span><a name="972"></a><span class="source_comment">//#endif
+</span><a name="973"></a>	local <span class="source_type">class</span>&lt;<span class="source_type"><a href="../engine/hud.html" class="source">HUD</a></span>&gt; <span class="source_type">H</span>;
+<a name="974"></a>
+<a name="975"></a>	if ( !bDelayedStart )
+<a name="976"></a>	{
+<a name="977"></a>		<span class="source_comment">// start match, or let player enter, immediately
+</span><a name="978"></a>		bRestartLevel = false;	<span class="source_comment">// let player spawn once in levels that must be restarted after every death
+</span><a name="979"></a>		if ( bWaitingToStartMatch )
+<a name="980"></a>			StartMatch();
+<a name="981"></a>		else
+<a name="982"></a>            RestartPlayer(<span class="source_type">newPlayer</span>);
+<a name="983"></a>		bRestartLevel = Default.bRestartLevel;
+<a name="984"></a>	}
+<a name="985"></a>    
+<a name="986"></a>	<span class="source_comment">// Start player's music.
+</span><a name="987"></a>	<span class="source_type">NewPlayer</span>.ClientSetMusic( <span class="source_type">Level</span>.Song, MTRAN_Fade );
+<a name="988"></a>	
+<a name="989"></a>	<span class="source_comment">// tell client what hud and scoreboard to use
+</span><a name="990"></a>	<span class="source_type">H</span> = <span class="source_type">class</span>&lt;<span class="source_type"><a href="../engine/hud.html" class="source">HUD</a></span>&gt;(DynamicLoadObject(HUDType, <span class="source_type">class</span><span class="source_name">'Class'</span>));
+<a name="991"></a><span class="source_comment">//#ifndef R6Code
+</span><a name="992"></a><span class="source_comment">//	S = class&lt;Scoreboard&gt;(DynamicLoadObject(ScoreboardType, class'Class'));
+</span><a name="993"></a><span class="source_comment">//#end R6CODE
+</span><a name="994"></a>	<span class="source_type">NewPlayer</span>.ClientSetHUD(<span class="source_type">H</span>,none);
+<a name="995"></a>
+<a name="996"></a>	if ( <span class="source_type">NewPlayer</span>.<span class="source_type"><a href="../engine/pawn.html" class="source">Pawn</a></span> != None )
+<a name="997"></a>		<span class="source_type">NewPlayer</span>.<span class="source_type"><a href="../engine/pawn.html" class="source">Pawn</a></span>.ClientSetRotation(<span class="source_type">NewPlayer</span>.<span class="source_type"><a href="../engine/pawn.html" class="source">Pawn</a></span>.Rotation);
+<a name="998"></a>}
+<a name="999"></a>
+<a name="1000"></a><span class="source_comment">//
+</span><a name="1001"></a><span class="source_comment">// Player exits.
+</span><a name="1002"></a><span class="source_comment">//
+</span><a name="1003"></a>function Logout( <span class="source_type"><a href="../engine/controller.html" class="source">Controller</a></span> <span class="source_type">Exiting</span> )
+<a name="1004"></a>{
+<a name="1005"></a>	local <span class="source_type">bool</span> bMessage;
+<a name="1006"></a>
+<a name="1007"></a>	bMessage = true;
+<a name="1008"></a>	if ( <span class="source_type"><a href="../engine/playercontroller.html" class="source">PlayerController</a></span>(<span class="source_type">Exiting</span>) != None )
+<a name="1009"></a>	{
+<a name="1010"></a>		if ( <span class="source_type"><a href="../engine/playercontroller.html" class="source">PlayerController</a></span>(<span class="source_type">Exiting</span>).bOnlySpectator )
+<a name="1011"></a>		{
+<a name="1012"></a>			bMessage = false;
+<a name="1013"></a>			if ( <span class="source_type">Level</span>.NetMode == NM_DedicatedServer )
+<a name="1014"></a>				NumSpectators--;
+<a name="1015"></a>		}
+<a name="1016"></a>		else
+<a name="1017"></a>			NumPlayers--;
+<a name="1018"></a>	}
+<a name="1019"></a>	if( bMessage && (<span class="source_type">Level</span>.NetMode==NM_DedicatedServer || <span class="source_type">Level</span>.NetMode==NM_ListenServer) )
+<a name="1020"></a>		BroadcastLocalizedMessage(GameMessageClass, <span class="source_int">4</span>, <span class="source_type">Exiting</span>.<span class="source_type"><a href="../engine/playerreplicationinfo.html" class="source">PlayerReplicationInfo</a></span>);
+<a name="1021"></a>
+<a name="1022"></a>	if ( <span class="source_type"><a href="../engine/statlog.html" class="source">StatLog</a></span> != None )
+<a name="1023"></a>		<span class="source_type"><a href="../engine/statlog.html" class="source">StatLog</a></span>.LogPlayerDisconnect(<span class="source_type">Exiting</span>);
+<a name="1024"></a>}
+<a name="1025"></a>
+<a name="1026"></a><span class="source_comment">//
+</span><a name="1027"></a><span class="source_comment">// Examine the passed player's inventory, and accept or discard each item.
+</span><a name="1028"></a><span class="source_comment">// AcceptInventory needs to gracefully handle the case of some inventory
+</span><a name="1029"></a><span class="source_comment">// being accepted but other inventory not being accepted (such as the default
+</span><a name="1030"></a><span class="source_comment">// weapon).  There are several things that can go wrong: A weapon's
+</span><a name="1031"></a><span class="source_comment">// AmmoType not being accepted but the weapon being accepted -- the weapon
+</span><a name="1032"></a><span class="source_comment">// should be killed off. Or the player's selected inventory item, active
+</span><a name="1033"></a><span class="source_comment">// weapon, etc. not being accepted, leaving the player weaponless or leaving
+</span><a name="1034"></a><span class="source_comment">// the HUD inventory rendering messed up (AcceptInventory should pick another
+</span><a name="1035"></a><span class="source_comment">// applicable weapon/item as current).
+</span><a name="1036"></a><span class="source_comment">//
+</span><a name="1037"></a>event AcceptInventory(<span class="source_type"><a href="../engine/pawn.html" class="source">pawn</a></span> <span class="source_type">PlayerPawn</span>)
+<a name="1038"></a>{
+<a name="1039"></a>	<span class="source_comment">//default accept all inventory except default weapon (spawned explicitly)
+</span><a name="1040"></a>}
+<a name="1041"></a>
+<a name="1042"></a><span class="source_comment">//
+</span><a name="1043"></a><span class="source_comment">// Spawn any default inventory for the player.
+</span><a name="1044"></a><span class="source_comment">//
+</span><a name="1045"></a>function AddDefaultInventory( <span class="source_type"><a href="../engine/pawn.html" class="source">pawn</a></span> <span class="source_type">PlayerPawn</span> )
+<a name="1046"></a>{
+<a name="1047"></a><span class="source_comment">/*R6CHANGEWEAPONSYSTEM
+<a name="1048"></a>	local Weapon newWeapon;
+<a name="1049"></a>	local class&lt;Weapon&gt; WeapClass;
+<a name="1050"></a>
+<a name="1051"></a>	// Spawn default weapon.
+<a name="1052"></a>	WeapClass = BaseMutator.GetDefaultWeapon();
+<a name="1053"></a>	if( (WeapClass!=None) && (PlayerPawn.FindInventoryType(WeapClass)==None) )
+<a name="1054"></a>	{
+<a name="1055"></a>		newWeapon = Spawn(WeapClass,,,PlayerPawn.Location);
+<a name="1056"></a>		if( newWeapon != None )
+<a name="1057"></a>		{
+<a name="1058"></a>			newWeapon.GiveTo(PlayerPawn);
+<a name="1059"></a>			newWeapon.BringUp();
+<a name="1060"></a>			newWeapon.bCanThrow = false; // don't allow default weapon to be thrown out
+<a name="1061"></a>		}
+<a name="1062"></a>	}
+<a name="1063"></a>	SetPlayerDefaults(PlayerPawn);
+<a name="1064"></a>*/</span>
+<a name="1065"></a>}
+<a name="1066"></a>
+<a name="1067"></a><span class="source_comment">/* SetPlayerDefaults()
+<a name="1068"></a> first make sure pawn properties are back to default, then give mutators an opportunity
+<a name="1069"></a> to modify them
+<a name="1070"></a>*/</span>
+<a name="1071"></a>function SetPlayerDefaults(<span class="source_type"><a href="../engine/pawn.html" class="source">Pawn</a></span> <span class="source_type">PlayerPawn</span>)
+<a name="1072"></a>{
+<a name="1073"></a>	<span class="source_type">PlayerPawn</span>.JumpZ = <span class="source_type">PlayerPawn</span>.Default.JumpZ;
+<a name="1074"></a>	<span class="source_type">PlayerPawn</span>.AirControl = <span class="source_type">PlayerPawn</span>.Default.AirControl;
+<a name="1075"></a>	BaseMutator.ModifyPlayer(<span class="source_type">PlayerPawn</span>);
+<a name="1076"></a>}
+<a name="1077"></a>
+<a name="1078"></a>function NotifyKilled(<span class="source_type"><a href="../engine/controller.html" class="source">Controller</a></span> Killer, <span class="source_type"><a href="../engine/controller.html" class="source">Controller</a></span> <span class="source_type">Killed</span>, <span class="source_type"><a href="../engine/pawn.html" class="source">Pawn</a></span> <span class="source_type">KilledPawn</span> )
+<a name="1079"></a>{
+<a name="1080"></a>	local <span class="source_type"><a href="../engine/controller.html" class="source">Controller</a></span> <span class="source_type">C</span>;
+<a name="1081"></a>
+<a name="1082"></a>	for ( <span class="source_type">C</span>=<span class="source_type">Level</span>.ControllerList; <span class="source_type">C</span>!=None; <span class="source_type">C</span>=<span class="source_type">C</span>.nextController )
+<a name="1083"></a>		<span class="source_type">C</span>.NotifyKilled(Killer, <span class="source_type">Killed</span>, <span class="source_type">KilledPawn</span>);
+<a name="1084"></a>}
+<a name="1085"></a>
+<a name="1086"></a>function <span class="source_type">Killed</span>( <span class="source_type"><a href="../engine/controller.html" class="source">Controller</a></span> Killer, <span class="source_type"><a href="../engine/controller.html" class="source">Controller</a></span> <span class="source_type">Killed</span>, <span class="source_type"><a href="../engine/pawn.html" class="source">Pawn</a></span> <span class="source_type">KilledPawn</span>, <span class="source_type">class</span>&lt;<span class="source_type"><a href="../engine/damagetype.html" class="source">DamageType</a></span>&gt; <span class="source_type"><a href="../engine/damagetype.html" class="source">damageType</a></span> )
+<a name="1087"></a>{
+<a name="1088"></a>	local <span class="source_type">String</span> KillerWeapon, OtherWeapon;
+<a name="1089"></a>
+<a name="1090"></a>	NotifyKilled(Killer,<span class="source_type">Killed</span>,<span class="source_type">KilledPawn</span>);
+<a name="1091"></a>
+<a name="1092"></a>	if ( <span class="source_type">Killed</span>.bIsPlayer )
+<a name="1093"></a>	{
+<a name="1094"></a>		<span class="source_type">Killed</span>.<span class="source_type"><a href="../engine/playerreplicationinfo.html" class="source">PlayerReplicationInfo</a></span>.Deaths += <span class="source_int">1</span>;
+<a name="1095"></a>		BroadcastDeathMessage(Killer, <span class="source_type">Killed</span>, <span class="source_type"><a href="../engine/damagetype.html" class="source">damageType</a></span>);
+<a name="1096"></a>		if ( (<span class="source_type"><a href="../engine/statlog.html" class="source">StatLog</a></span> != None) && (Killer != None) && Killer.bIsPlayer )
+<a name="1097"></a>		{
+<a name="1098"></a>			if ( <span class="source_type"><a href="../engine/damagetype.html" class="source">DamageType</a></span>.Default.DamageWeaponName != <span class="source_string">""</span> )
+<a name="1099"></a>				KillerWeapon = <span class="source_type"><a href="../engine/damagetype.html" class="source">DamageType</a></span>.Default.DamageWeaponName;
+<a name="1100"></a>			else
+<a name="1101"></a>				KillerWeapon = <span class="source_string">"None"</span>;
+<a name="1102"></a>
+<a name="1103"></a><span class="source_comment">/*R6CHANGEWEAPONSYSTEM
+<a name="1104"></a>			if (KilledPawn.Weapon != None)
+<a name="1105"></a>				OtherWeapon = KilledPawn.Weapon.ItemName;
+<a name="1106"></a>			else
+<a name="1107"></a>*/</span>
+<a name="1108"></a>				OtherWeapon = <span class="source_string">"None"</span>;
+<a name="1109"></a>            <span class="source_type"><a href="../engine/statlog.html" class="source">StatLog</a></span>.LogKill(
+<a name="1110"></a>				Killer.<span class="source_type"><a href="../engine/playerreplicationinfo.html" class="source">PlayerReplicationInfo</a></span>,
+<a name="1111"></a>				<span class="source_type">Killed</span>.<span class="source_type"><a href="../engine/playerreplicationinfo.html" class="source">PlayerReplicationInfo</a></span>,
+<a name="1112"></a>				KillerWeapon,
+<a name="1113"></a>				OtherWeapon,
+<a name="1114"></a>				<span class="source_type"><a href="../engine/damagetype.html" class="source">damageType</a></span>
+<a name="1115"></a>			);
+<a name="1116"></a>		}
+<a name="1117"></a>	}
+<a name="1118"></a>	ScoreKill(Killer, <span class="source_type">Killed</span>);
+<a name="1119"></a><span class="source_comment">/*R6CHANGEWEAPONSYSTEM
+<a name="1120"></a>	DiscardInventory(KilledPawn);
+<a name="1121"></a>*/</span>
+<a name="1122"></a>}
+<a name="1123"></a>
+<a name="1124"></a>function <span class="source_type">bool</span> PreventDeath(<span class="source_type"><a href="../engine/pawn.html" class="source">Pawn</a></span> <span class="source_type">Killed</span>, <span class="source_type"><a href="../engine/controller.html" class="source">Controller</a></span> Killer, <span class="source_type">class</span>&lt;<span class="source_type"><a href="../engine/damagetype.html" class="source">DamageType</a></span>&gt; <span class="source_type"><a href="../engine/damagetype.html" class="source">damageType</a></span>, <span class="source_type"><a href="../core/object.html#Vector" class="source">vector</a></span> <span class="source_type">HitLocation</span>)
+<a name="1125"></a>{
+<a name="1126"></a>	if ( GameRulesModifiers == None )
+<a name="1127"></a>		return false;
+<a name="1128"></a>	return GameRulesModifiers.PreventDeath(<span class="source_type">Killed</span>,Killer, <span class="source_type"><a href="../engine/damagetype.html" class="source">damageType</a></span>,<span class="source_type">HitLocation</span>);
+<a name="1129"></a>}
+<a name="1130"></a>
+<a name="1131"></a>function BroadcastDeathMessage(<span class="source_type"><a href="../engine/controller.html" class="source">Controller</a></span> Killer, <span class="source_type"><a href="../engine/controller.html" class="source">Controller</a></span> <span class="source_type">Other</span>, <span class="source_type">class</span>&lt;<span class="source_type"><a href="../engine/damagetype.html" class="source">DamageType</a></span>&gt; <span class="source_type"><a href="../engine/damagetype.html" class="source">damageType</a></span>)
+<a name="1132"></a>{
+<a name="1133"></a>	if ( (Killer == <span class="source_type">Other</span>) || (Killer == None) )
+<a name="1134"></a>		BroadcastLocalizedMessage(DeathMessageClass, <span class="source_int">1</span>, None, <span class="source_type">Other</span>.<span class="source_type"><a href="../engine/playerreplicationinfo.html" class="source">PlayerReplicationInfo</a></span>, <span class="source_type"><a href="../engine/damagetype.html" class="source">damageType</a></span>);
+<a name="1135"></a>	else 
+<a name="1136"></a>		BroadcastLocalizedMessage(DeathMessageClass, <span class="source_int">0</span>, Killer.<span class="source_type"><a href="../engine/playerreplicationinfo.html" class="source">PlayerReplicationInfo</a></span>, <span class="source_type">Other</span>.<span class="source_type"><a href="../engine/playerreplicationinfo.html" class="source">PlayerReplicationInfo</a></span>, <span class="source_type"><a href="../engine/damagetype.html" class="source">damageType</a></span>);
+<a name="1137"></a>}
+<a name="1138"></a>
+<a name="1139"></a>
+<a name="1140"></a><span class="source_comment">// %k = Owner's PlayerName (Killer)
+</span><a name="1141"></a><span class="source_comment">// %o = Other's PlayerName (Victim)
+</span><a name="1142"></a><span class="source_comment">// %w = Owner's Weapon ItemName
+</span><a name="1143"></a>static native function <span class="source_type">string</span> ParseKillMessage( <span class="source_type">string</span> KillerName, <span class="source_type">string</span> VictimName, <span class="source_type">string</span> DeathMessage );
+<a name="1144"></a><span class="source_comment">/* R6CODE
+<a name="1145"></a>function Kick( string S )
+<a name="1146"></a>{
+<a name="1147"></a>	AccessControl.Kick(S);
+<a name="1148"></a>}*/</span>
+<a name="1149"></a>function KickBan( <span class="source_type">string</span> <span class="source_type">S</span> )
+<a name="1150"></a>{
+<a name="1151"></a>	<span class="source_type"><a href="../engine/accesscontrol.html" class="source">AccessControl</a></span>.KickBan(<span class="source_type">S</span>);
+<a name="1152"></a>}
+<a name="1153"></a>
+<a name="1154"></a>function <span class="source_type">bool</span> IsOnTeam(<span class="source_type"><a href="../engine/controller.html" class="source">Controller</a></span> <span class="source_type">Other</span>, <span class="source_type">int</span> TeamNum)
+<a name="1155"></a>{
+<a name="1156"></a>	if ( bTeamGame && (<span class="source_type">Other</span> != None) 
+<a name="1157"></a>		&& (<span class="source_type">Other</span>.<span class="source_type"><a href="../engine/playerreplicationinfo.html" class="source">PlayerReplicationInfo</a></span>.Team != None)
+<a name="1158"></a>		&& (<span class="source_type">Other</span>.<span class="source_type"><a href="../engine/playerreplicationinfo.html" class="source">PlayerReplicationInfo</a></span>.Team.TeamIndex == TeamNum) )
+<a name="1159"></a>		return true;
+<a name="1160"></a>	return false;
+<a name="1161"></a>}
+<a name="1162"></a>
+<a name="1163"></a><span class="source_comment">//-------------------------------------------------------------------------------------
+</span><a name="1164"></a><span class="source_comment">// Level gameplay modification.
+</span><a name="1165"></a>
+<a name="1166"></a><span class="source_comment">//
+</span><a name="1167"></a><span class="source_comment">// Return whether Viewer is allowed to spectate from the
+</span><a name="1168"></a><span class="source_comment">// point of view of ViewTarget.
+</span><a name="1169"></a><span class="source_comment">//
+</span><a name="1170"></a>function <span class="source_type">bool</span> CanSpectate( <span class="source_type"><a href="../engine/playercontroller.html" class="source">PlayerController</a></span> Viewer, <span class="source_type">bool</span> bOnlySpectator, <span class="source_type"><a href="../engine/actor.html" class="source">actor</a></span> <span class="source_type">ViewTarget</span> )
+<a name="1171"></a>{
+<a name="1172"></a>	return true;
+<a name="1173"></a>}
+<a name="1174"></a>
+<a name="1175"></a><span class="source_comment">/* Use reduce damage for teamplay modifications, etc.
+<a name="1176"></a>*/</span>
+<a name="1177"></a>function <span class="source_type">int</span> ReduceDamage( <span class="source_type">int</span> Damage, <span class="source_type"><a href="../engine/pawn.html" class="source">pawn</a></span> injured, <span class="source_type"><a href="../engine/pawn.html" class="source">pawn</a></span> instigatedBy, <span class="source_type"><a href="../core/object.html#Vector" class="source">vector</a></span> <span class="source_type">HitLocation</span>, <span class="source_type"><a href="../core/object.html#Vector" class="source">vector</a></span> Momentum, <span class="source_type">class</span>&lt;<span class="source_type"><a href="../engine/damagetype.html" class="source">DamageType</a></span>&gt; <span class="source_type"><a href="../engine/damagetype.html" class="source">DamageType</a></span> )
+<a name="1178"></a>{
+<a name="1179"></a>	local <span class="source_type">int</span> OriginalDamage;
+<a name="1180"></a><span class="source_comment">//	local armor FirstArmor;
+</span><a name="1181"></a>
+<a name="1182"></a>	OriginalDamage = Damage;
+<a name="1183"></a>
+<a name="1184"></a>	if( injured.<span class="source_type"><a href="../engine/physicsvolume.html" class="source">PhysicsVolume</a></span>.bNeutralZone )
+<a name="1185"></a>		Damage = <span class="source_int">0</span>;
+<a name="1186"></a>	else if ( injured.InGodMode() ) <span class="source_comment">// God mode
+</span><a name="1187"></a>		return <span class="source_int">0</span>;
+<a name="1188"></a><span class="source_comment">// R6CHANGEWEAPONSYSTEM
+</span><a name="1189"></a><span class="source_comment">//    else if ( (injured.Inventory != None) && (damage &gt; 0) ) //then check if carrying armor
+</span><a name="1190"></a><span class="source_comment">//	{
+</span><a name="1191"></a><span class="source_comment">//		FirstArmor = injured.inventory.PrioritizeArmor(Damage, DamageType, HitLocation);
+</span><a name="1192"></a><span class="source_comment">//		while( (FirstArmor != None) && (Damage &gt; 0) )
+</span><a name="1193"></a><span class="source_comment">//		{
+</span><a name="1194"></a><span class="source_comment">//			Damage = FirstArmor.ArmorAbsorbDamage(Damage, DamageType, HitLocation);
+</span><a name="1195"></a><span class="source_comment">//			FirstArmor = FirstArmor.nextArmor;
+</span><a name="1196"></a><span class="source_comment">//		} 
+</span><a name="1197"></a><span class="source_comment">//	}
+</span><a name="1198"></a>
+<a name="1199"></a>    if ( GameRulesModifiers != None )
+<a name="1200"></a>		return GameRulesModifiers.NetDamage( OriginalDamage, Damage,injured,instigatedBy,<span class="source_type">HitLocation</span>,Momentum,<span class="source_type"><a href="../engine/damagetype.html" class="source">DamageType</a></span> );
+<a name="1201"></a>
+<a name="1202"></a>	return Damage;
+<a name="1203"></a>}
+<a name="1204"></a>
+<a name="1205"></a><span class="source_comment">//#ifndef R6CODE
+</span><a name="1206"></a><span class="source_comment">// Return whether an item should respawn.
+</span><a name="1207"></a><span class="source_comment">//function bool ShouldRespawn( Pickup Other )
+</span><a name="1208"></a><span class="source_comment">//{
+</span><a name="1209"></a><span class="source_comment">//	if( Level.NetMode == NM_StandAlone )
+</span><a name="1210"></a><span class="source_comment">//		return false;
+</span><a name="1211"></a><span class="source_comment">//
+</span><a name="1212"></a><span class="source_comment">//	return Other.ReSpawnTime!=0.0;
+</span><a name="1213"></a><span class="source_comment">//}
+</span><a name="1214"></a>
+<a name="1215"></a><span class="source_comment">// Called when pawn has a chance to pick Item up (i.e. when 
+</span><a name="1216"></a><span class="source_comment">//  the pawn touches a weapon pickup). Should return true if 
+</span><a name="1217"></a><span class="source_comment">//  he wants to pick it up, false if he does not want it.
+</span><a name="1218"></a><span class="source_comment">//function bool PickupQuery( Pawn Other, Pickup item )
+</span><a name="1219"></a><span class="source_comment">//{
+</span><a name="1220"></a><span class="source_comment">//	local byte bAllowPickup;
+</span><a name="1221"></a><span class="source_comment">//
+</span><a name="1222"></a><span class="source_comment">//	if ( (GameRulesModifiers != None) && GameRulesModifiers.OverridePickupQuery(Other, item, bAllowPickup) )
+</span><a name="1223"></a><span class="source_comment">//		return (bAllowPickup == 1);
+</span><a name="1224"></a><span class="source_comment">//
+</span><a name="1225"></a><span class="source_comment">//    if ( Other.Inventory == None )
+</span><a name="1226"></a><span class="source_comment">//		return true;
+</span><a name="1227"></a><span class="source_comment">//	else
+</span><a name="1228"></a><span class="source_comment">//        return false;
+</span><a name="1229"></a><span class="source_comment">//}
+</span><a name="1230"></a>
+<a name="1231"></a><span class="source_comment">// Discard a player's inventory after he dies.
+</span><a name="1232"></a><span class="source_comment">//function DiscardInventory( Pawn Other )
+</span><a name="1233"></a><span class="source_comment">//{
+</span><a name="1234"></a><span class="source_comment">//	local inventory Inv,Next;
+</span><a name="1235"></a><span class="source_comment">//	local float speed;
+</span><a name="1236"></a><span class="source_comment">//
+</span><a name="1237"></a><span class="source_comment">//	if( (Other.Weapon!=None) && Other.Weapon.bCanThrow && Other.Weapon.HasAmmo() )
+</span><a name="1238"></a><span class="source_comment">//	{
+</span><a name="1239"></a><span class="source_comment">//		if ( Other.Weapon.PickupAmmoCount == 0 )
+</span><a name="1240"></a><span class="source_comment">//			Other.Weapon.PickupAmmoCount = 1;
+</span><a name="1241"></a><span class="source_comment">//		speed = VSize(Other.Velocity);
+</span><a name="1242"></a><span class="source_comment">//		if (speed != 0)
+</span><a name="1243"></a><span class="source_comment">//			Other.TossWeapon(Normal(Other.Velocity/speed + 0.5 * VRand()) * (speed + 280));
+</span><a name="1244"></a><span class="source_comment">//		else 
+</span><a name="1245"></a><span class="source_comment">//			Other.TossWeapon(vect(0,0,0));
+</span><a name="1246"></a><span class="source_comment">//	}
+</span><a name="1247"></a><span class="source_comment">//	Other.Weapon = None;
+</span><a name="1248"></a><span class="source_comment">//	Other.SelectedItem = None;
+</span><a name="1249"></a><span class="source_comment">//	Inv = Other.Inventory;
+</span><a name="1250"></a><span class="source_comment">//	while ( Inv != None )
+</span><a name="1251"></a><span class="source_comment">//	{
+</span><a name="1252"></a><span class="source_comment">//		Next = Inv.Inventory;
+</span><a name="1253"></a><span class="source_comment">//		Inv.Destroy();
+</span><a name="1254"></a><span class="source_comment">//		Inv = Next;
+</span><a name="1255"></a><span class="source_comment">//	}	
+</span><a name="1256"></a><span class="source_comment">//}
+</span><a name="1257"></a><span class="source_comment">//#endif // #ifndef R6CODE
+</span><a name="1258"></a>
+<a name="1259"></a><span class="source_comment">/* Try to change a player's name.
+<a name="1260"></a>*/</span>	
+<a name="1261"></a>function ChangeName( <span class="source_type"><a href="../engine/controller.html" class="source">Controller</a></span> <span class="source_type">Other</span>, coerce <span class="source_type">string</span> <span class="source_type">S</span>, <span class="source_type">bool</span> bNameChange, optional <span class="source_type">bool</span> <span class="source_type">bDontBroadcastNameChange</span> )
+<a name="1262"></a>{
+<a name="1263"></a>    local <span class="source_type">string</span> szNewNameMessage;
+<a name="1264"></a>    local <span class="source_type">string</span> _szNewName;
+<a name="1265"></a>
+<a name="1266"></a>    _szNewName = TransformName(<span class="source_type">Other</span>.<span class="source_type"><a href="../engine/playerreplicationinfo.html" class="source">PlayerReplicationInfo</a></span>, <span class="source_type">S</span>);
+<a name="1267"></a>
+<a name="1268"></a>	if( _szNewName == <span class="source_string">""</span> )
+<a name="1269"></a>		return;
+<a name="1270"></a>
+<a name="1271"></a>    if(Caps(<span class="source_type">Other</span>.<span class="source_type"><a href="../engine/playerreplicationinfo.html" class="source">PlayerReplicationInfo</a></span>.PlayerName) == Caps(_szNewName))
+<a name="1272"></a>        <span class="source_type">bDontBroadcastNameChange</span> = true;
+<a name="1273"></a>
+<a name="1274"></a>	if ( <span class="source_type"><a href="../engine/statlog.html" class="source">StatLog</a></span> != None)
+<a name="1275"></a>		<span class="source_type"><a href="../engine/statlog.html" class="source">StatLog</a></span>.LogNameChange(<span class="source_type">Other</span>);
+<a name="1276"></a>
+<a name="1277"></a>	<span class="source_type">Other</span>.<span class="source_type"><a href="../engine/playerreplicationinfo.html" class="source">PlayerReplicationInfo</a></span>.SetPlayerName(_szNewName);
+<a name="1278"></a>
+<a name="1279"></a>	if( bNameChange && (<span class="source_type"><a href="../engine/playercontroller.html" class="source">PlayerController</a></span>(<span class="source_type">Other</span>) != None) )
+<a name="1280"></a>		BroadcastLocalizedMessage( GameMessageClass, <span class="source_int">2</span>, <span class="source_type">Other</span>.<span class="source_type"><a href="../engine/playerreplicationinfo.html" class="source">PlayerReplicationInfo</a></span> );	
+<a name="1281"></a>
+<a name="1282"></a>    <span class="source_comment">/*  R6CODE
+<a name="1283"></a>    if(bDontBroadcastNameChange == false)
+<a name="1284"></a>        Broadcast( none, szNewNameMessage, 'ServerMessage');
+<a name="1285"></a>    */</span>
+<a name="1286"></a>}
+<a name="1287"></a>
+<a name="1288"></a><span class="source_comment">// this function will return a unique player name based on the one requested
+</span><a name="1289"></a>function <span class="source_type">string</span> TransformName(<span class="source_type"><a href="../engine/playerreplicationinfo.html" class="source">PlayerReplicationInfo</a></span> PRI, <span class="source_type">string</span> NameRequested)
+<a name="1290"></a>{
+<a name="1291"></a>    local <span class="source_type">int</span> _index;
+<a name="1292"></a>
+<a name="1293"></a>    if (!NameInUse(PRI, NameRequested))
+<a name="1294"></a>        return NameRequested;
+<a name="1295"></a>    else
+<a name="1296"></a>    {
+<a name="1297"></a>        _index = <span class="source_int">1</span>;
+<a name="1298"></a>        while (NameInUse(PRI, NameRequested $<span class="source_string">"("</span> $ _index $<span class="source_string">")"</span> ) )
+<a name="1299"></a>        {
+<a name="1300"></a>            _index++;
+<a name="1301"></a>        }
+<a name="1302"></a>        return NameRequested $<span class="source_string">"("</span> $ _index $<span class="source_string">")"</span>;
+<a name="1303"></a>    }
+<a name="1304"></a>}
+<a name="1305"></a>
+<a name="1306"></a><span class="source_comment">// returns true if name is currently being used
+</span><a name="1307"></a>function <span class="source_type">bool</span> NameInUse(<span class="source_type"><a href="../engine/playerreplicationinfo.html" class="source">PlayerReplicationInfo</a></span> PRI, <span class="source_type">string</span> NameRequested)
+<a name="1308"></a>{
+<a name="1309"></a>    local <span class="source_type"><a href="../engine/playerreplicationinfo.html" class="source">PlayerReplicationInfo</a></span> _PRI;
+<a name="1310"></a>    foreach DynamicActors(<span class="source_type">class</span><span class="source_name">'PlayerReplicationInfo'</span>, _PRI)
+<a name="1311"></a>    {
+<a name="1312"></a>        if((PRI != _PRI) && Caps(_PRI.PlayerName) == Caps(NameRequested))
+<a name="1313"></a>            return true;    <span class="source_comment">// yes this name is in use
+</span><a name="1314"></a>    }
+<a name="1315"></a>    return false;   <span class="source_comment">// this name is not in use
+</span><a name="1316"></a>}
+<a name="1317"></a>
+<a name="1318"></a><span class="source_comment">/* Return whether a team change is allowed.
+<a name="1319"></a>*/</span>
+<a name="1320"></a>function <span class="source_type">bool</span> ChangeTeam(<span class="source_type"><a href="../engine/controller.html" class="source">Controller</a></span> <span class="source_type">Other</span>, <span class="source_type">int</span> <span class="source_type">N</span>)
+<a name="1321"></a>{
+<a name="1322"></a>	return true;
+<a name="1323"></a>}
+<a name="1324"></a>
+<a name="1325"></a><span class="source_comment">/* Return a picked team number if none was specified
+<a name="1326"></a>*/</span>
+<a name="1327"></a>function <span class="source_type">byte</span> PickTeam(<span class="source_type">byte</span> Current)
+<a name="1328"></a>{
+<a name="1329"></a>	return Current;
+<a name="1330"></a>}
+<a name="1331"></a>
+<a name="1332"></a><span class="source_comment">/* Send a player to a URL.
+<a name="1333"></a>*/</span>
+<a name="1334"></a>function SendPlayer( <span class="source_type"><a href="../engine/playercontroller.html" class="source">PlayerController</a></span> <span class="source_type">aPlayer</span>, <span class="source_type">string</span> <span class="source_type"><a href="../engine/gameengine.html#URL" class="source">URL</a></span> )
+<a name="1335"></a>{
+<a name="1336"></a>	<span class="source_type">aPlayer</span>.ClientTravel( <span class="source_type"><a href="../engine/gameengine.html#URL" class="source">URL</a></span>, TRAVEL_Relative, false );
+<a name="1337"></a>}
+<a name="1338"></a>
+<a name="1339"></a><span class="source_comment">/* Restart the game.
+<a name="1340"></a>*/</span>
+<a name="1341"></a><span class="source_comment">// #ifndef R6CODE
+</span><a name="1342"></a><span class="source_comment">//function RestartGame()
+</span><a name="1343"></a><span class="source_comment">//{
+</span><a name="1344"></a><span class="source_comment">//	local string NextMap;
+</span><a name="1345"></a><span class="source_comment">//	local MapList myList;
+</span><a name="1346"></a><span class="source_comment">//	local class&lt;MapList&gt; ML;
+</span><a name="1347"></a><span class="source_comment">//    local R6ServerInfo  pServerOptions;
+</span><a name="1348"></a><span class="source_comment">//    
+</span><a name="1349"></a><span class="source_comment">//    pServerOptions = class'Actor'.static.GetServerOptions();
+</span><a name="1350"></a><span class="source_comment">//
+</span><a name="1351"></a><span class="source_comment">//	if ( (GameRulesModifiers != None) && GameRulesModifiers.HandleRestartGame() )
+</span><a name="1352"></a><span class="source_comment">//		return;
+</span><a name="1353"></a><span class="source_comment">//
+</span><a name="1354"></a><span class="source_comment">//	// these server travels should all be relative to the current URL
+</span><a name="1355"></a><span class="source_comment">//	if ( bChangeLevels && !bAlreadyChanged && (MapListType != "") )
+</span><a name="1356"></a><span class="source_comment">//	{
+</span><a name="1357"></a><span class="source_comment">//		// open a the nextmap actor for this game type and get the next map
+</span><a name="1358"></a><span class="source_comment">//		bAlreadyChanged = true;
+</span><a name="1359"></a><span class="source_comment">//		ML = class&lt;MapList&gt;(DynamicLoadObject(MapListType, class'Class'));
+</span><a name="1360"></a><span class="source_comment">//		myList = spawn(ML);
+</span><a name="1361"></a><span class="source_comment">//		NextMap = myList.GetNextMap();
+</span><a name="1362"></a><span class="source_comment">//        pServerOptions.SaveConfig();
+</span><a name="1363"></a><span class="source_comment">//		myList.Destroy();
+</span><a name="1364"></a><span class="source_comment">//		if ( NextMap == "" )
+</span><a name="1365"></a><span class="source_comment">//			NextMap = GetMapName(MapPrefix, NextMap,1);
+</span><a name="1366"></a><span class="source_comment">//
+</span><a name="1367"></a><span class="source_comment">//		if ( NextMap != "" )
+</span><a name="1368"></a><span class="source_comment">//		{
+</span><a name="1369"></a><span class="source_comment">//			Level.ServerTravel(NextMap, false);
+</span><a name="1370"></a><span class="source_comment">//			return;
+</span><a name="1371"></a><span class="source_comment">//		}
+</span><a name="1372"></a><span class="source_comment">//	}
+</span><a name="1373"></a><span class="source_comment">//
+</span><a name="1374"></a><span class="source_comment">//	Level.ServerTravel( "?Restart", true );
+</span><a name="1375"></a><span class="source_comment">//}
+</span><a name="1376"></a><span class="source_comment">// #else R6CODE
+</span><a name="1377"></a>function RestartGame()
+<a name="1378"></a>{
+<a name="1379"></a>	local <span class="source_type">string</span> NextMap;
+<a name="1380"></a>	local <span class="source_type"><a href="../engine/maplist.html" class="source">MapList</a></span> myList;
+<a name="1381"></a>    local <span class="source_type"><a href="../engine/r6serverinfo.html" class="source">R6ServerInfo</a></span>  pServerOptions;
+<a name="1382"></a>
+<a name="1383"></a>    pServerOptions = <span class="source_type">class</span><span class="source_name">'Actor'</span>.static.GetServerOptions();
+<a name="1384"></a>
+<a name="1385"></a>	if ( (GameRulesModifiers != None) && GameRulesModifiers.HandleRestartGame() )
+<a name="1386"></a>		return;
+<a name="1387"></a>
+<a name="1388"></a>	<span class="source_comment">// these server travels should all be relative to the current URL
+</span><a name="1389"></a>    if ( bChangeLevels && !bAlreadyChanged )
+<a name="1390"></a>	{
+<a name="1391"></a>		<span class="source_comment">// open a the nextmap actor for this game type and get the next map
+</span><a name="1392"></a>		bAlreadyChanged = true;
+<a name="1393"></a>        myList = pServerOptions.m_ServerMapList;
+<a name="1394"></a>        if (m_bChangedServerConfig==true)
+<a name="1395"></a>        {
+<a name="1396"></a>            NextMap = myList.GetNextMap(<span class="source_int">1</span>);
+<a name="1397"></a>        }
+<a name="1398"></a>        else
+<a name="1399"></a>        {
+<a name="1400"></a>            NextMap = myList.GetNextMap(myList.K_NextDefaultMap);
+<a name="1401"></a>        }
+<a name="1402"></a>		if ( NextMap == <span class="source_string">""</span> )
+<a name="1403"></a>			NextMap = GetMapName(MapPrefix, NextMap,<span class="source_int">1</span>);
+<a name="1404"></a>
+<a name="1405"></a>		if ( NextMap != <span class="source_string">""</span> )
+<a name="1406"></a>		{
+<a name="1407"></a>			<span class="source_type">Level</span>.ServerTravel(NextMap, false);
+<a name="1408"></a>			return;
+<a name="1409"></a>		}
+<a name="1410"></a>	}
+<a name="1411"></a>
+<a name="1412"></a>	<span class="source_type">Level</span>.ServerTravel( <span class="source_string">"?Restart"</span>, true );
+<a name="1413"></a>}
+<a name="1414"></a><span class="source_comment">//#endif R6CODE
+</span><a name="1415"></a>
+<a name="1416"></a><span class="source_comment">//==========================================================================
+</span><a name="1417"></a><span class="source_comment">// Message broadcasting functions (handled by the BroadCastHandler)
+</span><a name="1418"></a>
+<a name="1419"></a>event Broadcast( <span class="source_type"><a href="../engine/actor.html" class="source">Actor</a></span> Sender, coerce <span class="source_type">string</span> <span class="source_type">Msg</span>, optional <span class="source_type">name</span> <span class="source_type">Type</span> )
+<a name="1420"></a>{
+<a name="1421"></a>	<span class="source_type"><a href="../engine/broadcasthandler.html" class="source">BroadcastHandler</a></span>.Broadcast(Sender,<span class="source_type">Msg</span>,<span class="source_type">Type</span>);
+<a name="1422"></a>}
+<a name="1423"></a>
+<a name="1424"></a>function BroadcastTeam( <span class="source_type"><a href="../engine/actor.html" class="source">Actor</a></span> Sender, coerce <span class="source_type">string</span> <span class="source_type">Msg</span>, optional <span class="source_type">name</span> <span class="source_type">Type</span> )
+<a name="1425"></a>{
+<a name="1426"></a>	<span class="source_type"><a href="../engine/broadcasthandler.html" class="source">BroadcastHandler</a></span>.BroadcastTeam(Sender,<span class="source_type">Msg</span>,<span class="source_type">Type</span>);
+<a name="1427"></a>}
+<a name="1428"></a>
+<a name="1429"></a><span class="source_comment">/*
+<a name="1430"></a> Broadcast a localized message to all players.
+<a name="1431"></a> Most message deal with 0 to 2 related PRIs.
+<a name="1432"></a> The LocalMessage class defines how the PRI's and optional actor are used.
+<a name="1433"></a>*/</span>
+<a name="1434"></a>event BroadcastLocalized( <span class="source_type"><a href="../engine/actor.html" class="source">actor</a></span> Sender, <span class="source_type">class</span>&lt;<span class="source_type"><a href="../engine/localmessage.html" class="source">LocalMessage</a></span>&gt; Message, optional <span class="source_type">int</span> Switch, optional <span class="source_type"><a href="../engine/playerreplicationinfo.html" class="source">PlayerReplicationInfo</a></span> RelatedPRI_1, optional <span class="source_type"><a href="../engine/playerreplicationinfo.html" class="source">PlayerReplicationInfo</a></span> <span class="source_type">RelatedPRI_2</span>, optional <span class="source_type"><a href="../core/object.html" class="source">Object</a></span> <span class="source_type">OptionalObject</span> )
+<a name="1435"></a>{
+<a name="1436"></a>	<span class="source_type"><a href="../engine/broadcasthandler.html" class="source">BroadcastHandler</a></span>.AllowBroadcastLocalized(Sender,Message,Switch,RelatedPRI_1,<span class="source_type">RelatedPRI_2</span>,<span class="source_type">OptionalObject</span>);
+<a name="1437"></a>}
+<a name="1438"></a>
+<a name="1439"></a><span class="source_comment">//==========================================================================
+</span><a name="1440"></a>	
+<a name="1441"></a>function <span class="source_type">bool</span> CheckEndGame(<span class="source_type"><a href="../engine/playerreplicationinfo.html" class="source">PlayerReplicationInfo</a></span> Winner, <span class="source_type">string</span> <span class="source_type">Reason</span>)
+<a name="1442"></a>{
+<a name="1443"></a>	local <span class="source_type"><a href="../engine/controller.html" class="source">Controller</a></span> <span class="source_type">P</span>;
+<a name="1444"></a>
+<a name="1445"></a>	if ( (GameRulesModifiers != None) && !GameRulesModifiers.CheckEndGame(Winner, <span class="source_type">Reason</span>) )
+<a name="1446"></a>		return false;
+<a name="1447"></a>
+<a name="1448"></a>	<span class="source_comment">// all player cameras focus on winner or final scene (picked by gamerules)
+</span><a name="1449"></a>	for ( <span class="source_type">P</span>=<span class="source_type">Level</span>.ControllerList; <span class="source_type">P</span>!=None; <span class="source_type">P</span>=<span class="source_type">P</span>.NextController )
+<a name="1450"></a>	{
+<a name="1451"></a>		<span class="source_type">P</span>.ClientGameEnded();
+<a name="1452"></a>		<span class="source_type">P</span>.GotoState(<span class="source_name">'GameEnded'</span>);
+<a name="1453"></a>	}	
+<a name="1454"></a>	return true;
+<a name="1455"></a>}
+<a name="1456"></a>
+<a name="1457"></a><span class="source_comment">/* End of game.
+<a name="1458"></a>*/</span>
+<a name="1459"></a>function EndGame( <span class="source_type"><a href="../engine/playerreplicationinfo.html" class="source">PlayerReplicationInfo</a></span> Winner, <span class="source_type">string</span> <span class="source_type">Reason</span> )
+<a name="1460"></a>{
+<a name="1461"></a>	<span class="source_comment">// don't end game if not really ready
+</span><a name="1462"></a>	if ( !CheckEndGame(Winner, <span class="source_type">Reason</span>) )
+<a name="1463"></a>	{
+<a name="1464"></a>		bOverTime = true;
+<a name="1465"></a>		return;
+<a name="1466"></a>	}
+<a name="1467"></a>
+<a name="1468"></a>	bGameEnded = true;
+<a name="1469"></a>	TriggerEvent(<span class="source_name">'EndGame'</span>, self, None);
+<a name="1470"></a>	EndLogging(<span class="source_type">Reason</span>);
+<a name="1471"></a>}
+<a name="1472"></a>
+<a name="1473"></a>function EndLogging(<span class="source_type">string</span> <span class="source_type">Reason</span>)
+<a name="1474"></a>{
+<a name="1475"></a>	if ( <span class="source_type"><a href="../engine/statlog.html" class="source">StatLog</a></span> == None )
+<a name="1476"></a>		return;
+<a name="1477"></a>	<span class="source_type"><a href="../engine/statlog.html" class="source">StatLog</a></span>.LogGameEnd(<span class="source_type">Reason</span>);
+<a name="1478"></a>	<span class="source_type"><a href="../engine/statlog.html" class="source">StatLog</a></span>.StopLog();
+<a name="1479"></a>	<span class="source_type"><a href="../engine/statlog.html" class="source">StatLog</a></span>.Destroy();
+<a name="1480"></a>	<span class="source_type"><a href="../engine/statlog.html" class="source">StatLog</a></span> = None;
+<a name="1481"></a>}
+<a name="1482"></a>
+<a name="1483"></a><span class="source_comment">/* Return the 'best' player start for this player to start from.
+<a name="1484"></a> */</span>
+<a name="1485"></a>function <span class="source_type"><a href="../engine/navigationpoint.html" class="source">NavigationPoint</a></span> FindPlayerStart( <span class="source_type"><a href="../engine/controller.html" class="source">Controller</a></span> <span class="source_type"><a href="../engine/player.html" class="source">Player</a></span>, optional <span class="source_type">byte</span> InTeam, optional <span class="source_type">string</span> <span class="source_type">incomingName</span> )
+<a name="1486"></a>{
+<a name="1487"></a>	local <span class="source_type"><a href="../engine/navigationpoint.html" class="source">NavigationPoint</a></span> <span class="source_type">N</span>, BestStart;
+<a name="1488"></a>	local <span class="source_type"><a href="../engine/teleporter.html" class="source">Teleporter</a></span> Tel;
+<a name="1489"></a>	local <span class="source_type">float</span> BestRating, NewRating;
+<a name="1490"></a>	local <span class="source_type">byte</span> Team;
+<a name="1491"></a>
+<a name="1492"></a>	<span class="source_comment">// always pick StartSpot at start of match
+</span><a name="1493"></a>	if ( (<span class="source_type"><a href="../engine/player.html" class="source">Player</a></span> != None) && (<span class="source_type"><a href="../engine/player.html" class="source">Player</a></span>.StartSpot != None)
+<a name="1494"></a>		&& (bWaitingToStartMatch || ((<span class="source_type"><a href="../engine/player.html" class="source">Player</a></span>.<span class="source_type"><a href="../engine/playerreplicationinfo.html" class="source">PlayerReplicationInfo</a></span> != None) && <span class="source_type"><a href="../engine/player.html" class="source">Player</a></span>.<span class="source_type"><a href="../engine/playerreplicationinfo.html" class="source">PlayerReplicationInfo</a></span>.bWaitingPlayer))  )
+<a name="1495"></a>	{
+<a name="1496"></a>		return <span class="source_type"><a href="../engine/player.html" class="source">Player</a></span>.StartSpot;
+<a name="1497"></a>	}	
+<a name="1498"></a>
+<a name="1499"></a>	if ( GameRulesModifiers != None )
+<a name="1500"></a>	{
+<a name="1501"></a>		<span class="source_type">N</span> = GameRulesModifiers.FindPlayerStart(<span class="source_type"><a href="../engine/player.html" class="source">Player</a></span>,InTeam,<span class="source_type">incomingName</span>);
+<a name="1502"></a>		if ( <span class="source_type">N</span> != None )
+<a name="1503"></a>		    return <span class="source_type">N</span>;
+<a name="1504"></a>	}
+<a name="1505"></a>
+<a name="1506"></a>	<span class="source_comment">// if incoming start is specified, then just use it
+</span><a name="1507"></a>	if( <span class="source_type">incomingName</span>!=<span class="source_string">""</span> )
+<a name="1508"></a>		foreach AllActors( <span class="source_type">class</span> <span class="source_name">'Teleporter'</span>, Tel )
+<a name="1509"></a>			if( <span class="source_type">string</span>(Tel.Tag)~=<span class="source_type">incomingName</span> )
+<a name="1510"></a>				return Tel;
+<a name="1511"></a>
+<a name="1512"></a>	<span class="source_comment">// use InTeam if player doesn't have a team yet
+</span><a name="1513"></a>	if ( (<span class="source_type"><a href="../engine/player.html" class="source">Player</a></span> != None) && (<span class="source_type"><a href="../engine/player.html" class="source">Player</a></span>.<span class="source_type"><a href="../engine/playerreplicationinfo.html" class="source">PlayerReplicationInfo</a></span> != None) )
+<a name="1514"></a>	{
+<a name="1515"></a>		if ( <span class="source_type"><a href="../engine/player.html" class="source">Player</a></span>.<span class="source_type"><a href="../engine/playerreplicationinfo.html" class="source">PlayerReplicationInfo</a></span>.Team != None )
+<a name="1516"></a>			Team = <span class="source_type"><a href="../engine/player.html" class="source">Player</a></span>.<span class="source_type"><a href="../engine/playerreplicationinfo.html" class="source">PlayerReplicationInfo</a></span>.Team.TeamIndex;
+<a name="1517"></a>		else
+<a name="1518"></a>			Team = <span class="source_int">0</span>;
+<a name="1519"></a>	}
+<a name="1520"></a>	else
+<a name="1521"></a>		Team = InTeam;
+<a name="1522"></a>
+<a name="1523"></a>	for ( <span class="source_type">N</span>=<span class="source_type">Level</span>.NavigationPointList; <span class="source_type">N</span>!=None; <span class="source_type">N</span>=<span class="source_type">N</span>.NextNavigationPoint )
+<a name="1524"></a>	{
+<a name="1525"></a>		NewRating = RatePlayerStart(<span class="source_type">N</span>,InTeam,<span class="source_type"><a href="../engine/player.html" class="source">Player</a></span>);
+<a name="1526"></a>		if ( NewRating &gt; BestRating )
+<a name="1527"></a>		{
+<a name="1528"></a>			BestRating = NewRating;
+<a name="1529"></a>			BestStart = <span class="source_type">N</span>;
+<a name="1530"></a>		}
+<a name="1531"></a>	}
+<a name="1532"></a>	
+<a name="1533"></a>	if ( BestStart == None )
+<a name="1534"></a>	{
+<a name="1535"></a>		log(<span class="source_string">"Warning - PATHS NOT DEFINED or NO PLAYERSTART"</span>);			
+<a name="1536"></a>		foreach AllActors( <span class="source_type">class</span> <span class="source_name">'NavigationPoint'</span>, <span class="source_type">N</span> )
+<a name="1537"></a>		{
+<a name="1538"></a>			NewRating = RatePlayerStart(<span class="source_type">N</span>,<span class="source_int">0</span>,<span class="source_type"><a href="../engine/player.html" class="source">Player</a></span>);
+<a name="1539"></a>			if ( NewRating &gt; BestRating )
+<a name="1540"></a>			{
+<a name="1541"></a>				BestRating = NewRating;
+<a name="1542"></a>				BestStart = <span class="source_type">N</span>;	
+<a name="1543"></a>			}
+<a name="1544"></a>		}
+<a name="1545"></a>	}
+<a name="1546"></a>
+<a name="1547"></a>	return BestStart;
+<a name="1548"></a>}
+<a name="1549"></a>
+<a name="1550"></a><span class="source_comment">/* Rate whether player should choose this NavigationPoint as its start
+<a name="1551"></a>default implementation is for single player game
+<a name="1552"></a>*/</span>
+<a name="1553"></a>function <span class="source_type">float</span> RatePlayerStart(<span class="source_type"><a href="../engine/navigationpoint.html" class="source">NavigationPoint</a></span> <span class="source_type">N</span>, <span class="source_type">byte</span> Team, <span class="source_type"><a href="../engine/controller.html" class="source">Controller</a></span> <span class="source_type"><a href="../engine/player.html" class="source">Player</a></span>)
+<a name="1554"></a>{
+<a name="1555"></a>	local <span class="source_type"><a href="../engine/playerstart.html" class="source">PlayerStart</a></span> <span class="source_type">P</span>;
+<a name="1556"></a>
+<a name="1557"></a>	<span class="source_type">P</span> = <span class="source_type"><a href="../engine/playerstart.html" class="source">PlayerStart</a></span>(<span class="source_type">N</span>);
+<a name="1558"></a>	if ( <span class="source_type">P</span> != None )
+<a name="1559"></a>	{
+<a name="1560"></a>		if ( <span class="source_type">P</span>.bSinglePlayerStart )
+<a name="1561"></a>		{
+<a name="1562"></a>			if ( <span class="source_type">P</span>.bEnabled )
+<a name="1563"></a>				return <span class="source_int">1000</span>;
+<a name="1564"></a>			return <span class="source_int">20</span>;
+<a name="1565"></a>		}
+<a name="1566"></a>		return <span class="source_int">10</span>;
+<a name="1567"></a>	}
+<a name="1568"></a>	return <span class="source_int">0</span>;
+<a name="1569"></a>}
+<a name="1570"></a>
+<a name="1571"></a>function ScoreObjective(<span class="source_type"><a href="../engine/playerreplicationinfo.html" class="source">PlayerReplicationInfo</a></span> Scorer, <span class="source_type">Int</span> Score)
+<a name="1572"></a>{
+<a name="1573"></a>	if ( Scorer != None )
+<a name="1574"></a>	{
+<a name="1575"></a>		Scorer.Score += Score;
+<a name="1576"></a>		if ( Scorer.Team != None )
+<a name="1577"></a>			Scorer.Team.Score += Score;
+<a name="1578"></a>	}
+<a name="1579"></a>	if ( GameRulesModifiers != None )
+<a name="1580"></a>		GameRulesModifiers.ScoreObjective(Scorer,Score);
+<a name="1581"></a>
+<a name="1582"></a>	CheckScore(Scorer);
+<a name="1583"></a>}
+<a name="1584"></a>
+<a name="1585"></a><span class="source_comment">/* CheckScore()
+<a name="1586"></a>see if this score means the game ends
+<a name="1587"></a>*/</span>
+<a name="1588"></a>function CheckScore(<span class="source_type"><a href="../engine/playerreplicationinfo.html" class="source">PlayerReplicationInfo</a></span> Scorer)
+<a name="1589"></a>{
+<a name="1590"></a>	if ( (GameRulesModifiers != None) && GameRulesModifiers.CheckScore(Scorer) )
+<a name="1591"></a>		return;
+<a name="1592"></a>} 
+<a name="1593"></a>	
+<a name="1594"></a>function ScoreKill(<span class="source_type"><a href="../engine/controller.html" class="source">Controller</a></span> Killer, <span class="source_type"><a href="../engine/controller.html" class="source">Controller</a></span> <span class="source_type">Other</span>)
+<a name="1595"></a>{
+<a name="1596"></a>	if( (killer == <span class="source_type">Other</span>) || (killer == None) )
+<a name="1597"></a>		<span class="source_type">Other</span>.<span class="source_type"><a href="../engine/playerreplicationinfo.html" class="source">PlayerReplicationInfo</a></span>.Score -= <span class="source_int">1</span>;
+<a name="1598"></a>	else if ( killer.<span class="source_type"><a href="../engine/playerreplicationinfo.html" class="source">PlayerReplicationInfo</a></span> != None )
+<a name="1599"></a>		killer.<span class="source_type"><a href="../engine/playerreplicationinfo.html" class="source">PlayerReplicationInfo</a></span>.Score += <span class="source_int">1</span>;
+<a name="1600"></a>
+<a name="1601"></a>	if ( GameRulesModifiers != None )
+<a name="1602"></a>		GameRulesModifiers.ScoreKill(Killer, <span class="source_type">Other</span>);
+<a name="1603"></a>
+<a name="1604"></a>	CheckScore(Killer.<span class="source_type"><a href="../engine/playerreplicationinfo.html" class="source">PlayerReplicationInfo</a></span>);
+<a name="1605"></a>}
+<a name="1606"></a>
+<a name="1607"></a>function <span class="source_type">bool</span> TooManyBots()
+<a name="1608"></a>{
+<a name="1609"></a>	return false;
+<a name="1610"></a>}
+<a name="1611"></a>
+<a name="1612"></a>function <span class="source_type">INT</span> MPSelectOperativeFace(<span class="source_type">bool</span> bIsFemale)
+<a name="1613"></a>{
+<a name="1614"></a>	return -<span class="source_int">1</span>;
+<a name="1615"></a>}
+<a name="1616"></a>
+<a name="1617"></a><span class="source_comment">// weather we should be compiling the stats for in game stats page
+</span><a name="1618"></a>function SetCompilingStats(<span class="source_type">BOOL</span> bStatsSetting)
+<a name="1619"></a>{
+<a name="1620"></a>    m_bCompilingStats = bStatsSetting;
+<a name="1621"></a>}
+<a name="1622"></a>
+<a name="1623"></a>function SetRoundRestartedByJoinFlag(<span class="source_type">BOOL</span> bRestartableByJoin)
+<a name="1624"></a>{
+<a name="1625"></a>    <span class="source_type"><a href="../engine/gamereplicationinfo.html" class="source">GameReplicationInfo</a></span>.m_bRestartableByJoin = bRestartableByJoin;
+<a name="1626"></a>}
+<a name="1627"></a>
+<a name="1628"></a><span class="source_comment">//R6CODE+
+</span><a name="1629"></a><span class="source_comment">//R6CODE-
+</span><a name="1630"></a>
+<a name="1631"></a>defaultproperties
+<a name="1632"></a>{
+<a name="1633"></a>     Difficulty=<span class="source_int">3</span>
+<a name="1634"></a>     MaxSpectators=<span class="source_int">2</span>
+<a name="1635"></a>     MaxPlayers=<span class="source_int">16</span>
+<a name="1636"></a>     bRestartLevel=True
+<a name="1637"></a>     bPauseable=True
+<a name="1638"></a>     bCanChangeSkin=True
+<a name="1639"></a>     bCanViewOthers=True
+<a name="1640"></a>     bWaitingToStartMatch=True
+<a name="1641"></a>     bLocalLog=True
+<a name="1642"></a>     bWorldLog=True
+<a name="1643"></a>     m_bCompilingStats=True
+<a name="1644"></a>     GameSpeed=<span class="source_int">1.000000</span>
+<a name="1645"></a>     DeathMessageClass=<span class="source_type">Class</span><span class="source_name">'Engine.LocalMessage'</span>
+<a name="1646"></a>     GameMessageClass=<span class="source_type">Class</span><span class="source_name">'Engine.GameMessage'</span>
+<a name="1647"></a>     GameReplicationInfoClass=<span class="source_type">Class</span><span class="source_name">'Engine.GameReplicationInfo'</span>
+<a name="1648"></a>     StatLogClass=<span class="source_type">Class</span><span class="source_name">'Engine.StatLogFile'</span>
+<a name="1649"></a>     HUDType=<span class="source_string">"Engine.HUD"</span>
+<a name="1650"></a>     DefaultPlayerName=<span class="source_string">"Player"</span>
+<a name="1651"></a>     GameName=<span class="source_string">"Game"</span>
+<a name="1652"></a>     MutatorClass=<span class="source_string">"Engine.Mutator"</span>
+<a name="1653"></a>     AccessControlClass=<span class="source_string">"Engine.AccessControl"</span>
+<a name="1654"></a>     BroadcastHandlerClass=<span class="source_string">"R6Game.R6BroadcastHandler"</span>
+<a name="1655"></a>     PlayerControllerClassName=<span class="source_string">"Engine.PlayerController"</span>
+<a name="1656"></a>     m_szGameTypeFlag=<span class="source_string">"RGM_AllMode"</span>
+<a name="1657"></a>}
+<a name="1658"></a></pre></td></tr></table></div>
+<hr />
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../engine/engine-overview.html">Package</a></td>
+	<td class="header"><a href="../engine/gameinfo.html">Class</a></td>
+	<td class="header_hilight">Source</td>
+	<td class="header"><a class="header" href="../classtree.html#GameInfo">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../Source_engine/gameengine.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../Source_engine/gamemessage.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+
+<div class="stats">Class file time: sam. 18/9/2004 14:39:26.000 - Creation time: mar. 26/5/2026 18:33:18.442 - Created with <a href="http://wiki.beyondunreal.com/wiki/UnCodeX" target="_blank">UnCodeX</a></div>
+
+</body>
+</html>

@@ -1,0 +1,171 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+	<title>UnCodeX - Source: engine.R6ModConfig</title>
+	<meta name="Generator" content="UnCodeX 241" />
+	<link rel="stylesheet" href="../DocStyle2.css" type="text/css" title="Original Purple" />
+	<link rel="alternative stylesheet" href="../DocStyle2-blue.css" type="text/css" title="Blue" />
+	<link rel="alternative stylesheet" href="../DocStyle2-red.css" type="text/css" title="Red" />
+	<!--[if IE]>
+	<link rel="stylesheet" href="../DocStyle2-msie.css" type="text/css" />
+	<![endif]-->
+	<script src="../styleswitcher.js" type="text/javascript"></script>
+</head>
+<body>
+
+<div class="header">
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../engine/engine-overview.html">Package</a></td>
+	<td class="header"><a href="../engine/r6modconfig.html">Class</a></td>
+	<td class="header_hilight">Source</td>
+	<td class="header"><a class="header" href="../classtree.html#R6ModConfig">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../Source_engine/r6mod.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../Source_engine/r6modmgr.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html#Source_engine/r6modconfig.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+</div>
+<div class="spacer"></div>
+
+<h1><a href="../engine/engine-overview.html">engine</a>.<a href="../engine/r6modconfig.html">R6ModConfig</a></h1>
+<br />
+<div class="source"><table class="source"><tr><td class="source_lineno"><span class="source_lineno">00001<br />00002<br />00003<br />00004<br />00005<br />00006<br />00007<br />00008<br />00009<br />00010<br />00011<br />00012<br />00013<br />00014<br />00015<br />00016<br />00017<br />00018<br />00019<br />00020<br />
+00021<br />00022<br />00023<br />00024<br />00025<br />00026<br />00027<br />00028<br />00029<br />00030<br />00031<br />00032<br />00033<br />00034<br />00035<br />00036<br />00037<br />00038<br />00039<br />00040<br />
+00041<br />00042<br />00043<br />00044<br />00045<br />00046<br />00047<br />00048<br />00049<br />00050<br />00051<br />00052<br />00053<br />00054<br />00055<br />00056<br />00057<br />00058<br />00059<br />00060<br />
+00061<br />00062<br />00063<br />00064<br />00065<br />00066<br />00067<br />00068<br />00069<br />00070<br />00071<br />00072<br />00073<br />00074<br />00075<br />00076<br />00077<br />00078<br />00079<br />00080<br />
+00081<br />00082<br />00083<br />00084<br />00085<br />00086<br />00087<br />00088<br />00089<br />00090<br />00091<br />00092<br />00093<br />00094<br />00095<br />00096<br />00097<br />00098<br />00099<br />00100<br />
+00101<br />00102<br />00103<br />00104<br />00105<br />00106<br />00107<br />00108</span></td>
+<td class="source"><pre class="source"><a name="1"></a><span class="source_comment">//=============================================================================
+</span><a name="2"></a><span class="source_comment">//  R6ModConfig.uc : 
+</span><a name="3"></a><span class="source_comment">//  Copyright 2001 Ubi Soft, Inc. All Rights Reserved.
+</span><a name="4"></a><span class="source_comment">//
+</span><a name="5"></a><span class="source_comment">//=============================================================================
+</span><a name="6"></a>
+<a name="7"></a><span class="source_comment">// mod configuration.  Spawned to configure the current mod
+</span><a name="8"></a><span class="source_type">class</span> <span class="source_type"><a href="../engine/r6modconfig.html" class="source">R6ModConfig</a></span> extends <span class="source_type"><a href="../core/object.html" class="source">Object</a></span>;
+<a name="9"></a>
+<a name="10"></a>function AddModSpecificGameModes(<span class="source_type"><a href="../engine/levelinfo.html" class="source">LevelInfo</a></span> pLevelInfo)
+<a name="11"></a>{
+<a name="12"></a>	pLevelInfo.GameTypeInfoAdd( <span class="source_string">"RGM_StoryMode"</span>, <span class="source_string">"RGM_StoryMode"</span>, GMI_SinglePlayer, false, false,  false, true, true,
+<a name="13"></a>		<span class="source_string">"R6GameMode"</span>, <span class="source_string">"R6Game.R6StoryModeGame"</span>, <span class="source_string">"loc story mode"</span>,
+<a name="14"></a>		<span class="source_string">""</span>, <span class="source_string">""</span>, 
+<a name="15"></a>		<span class="source_string">""</span>, <span class="source_string">""</span>, <span class="source_string">"RGM_StoryMode"</span>);
+<a name="16"></a>
+<a name="17"></a>	pLevelInfo.GameTypeSaveGameInfo( pLevelInfo.m_aGameTypeInfo.Length - <span class="source_int">1</span>, 
+<a name="18"></a>		Localize(<span class="source_string">"SaveGameDirectory"</span>,<span class="source_string">"SaveGameType_Mission"</span>,<span class="source_string">"R6Engine"</span>), 
+<a name="19"></a>		<span class="source_string">"Mission"</span>);
+<a name="20"></a>
+<a name="21"></a>	pLevelInfo.GameTypeInfoAdd( <span class="source_string">"RGM_PracticeMode"</span>, <span class="source_string">"RGM_PracticeMode"</span>, GMI_SinglePlayer, false, false,  false, true, true,
+<a name="22"></a>		<span class="source_string">"R6GameMode"</span>, <span class="source_string">"R6Game.R6PracticeModeGame"</span>, <span class="source_string">"loc practice mode"</span>,
+<a name="23"></a>		<span class="source_string">""</span>, <span class="source_string">""</span>, 
+<a name="24"></a>		<span class="source_string">""</span>, <span class="source_string">""</span>, <span class="source_string">"RGM_PracticeMode"</span>);
+<a name="25"></a>
+<a name="26"></a>	pLevelInfo.GameTypeSaveGameInfo( pLevelInfo.m_aGameTypeInfo.Length - <span class="source_int">1</span>, 
+<a name="27"></a>		Localize(<span class="source_string">"SaveGameDirectory"</span>,<span class="source_string">"SaveGameType_Mission"</span>,<span class="source_string">"R6Engine"</span>), 
+<a name="28"></a>		<span class="source_string">"Mission"</span>);
+<a name="29"></a>
+<a name="30"></a>	pLevelInfo.GameTypeInfoAdd( <span class="source_string">"RGM_MissionMode"</span>, <span class="source_string">"RGM_MissionMode"</span>, GMI_Cooperative,  false, true,  false, true, true,
+<a name="31"></a>		<span class="source_string">"R6GameMode"</span>, <span class="source_string">"R6Game.R6MissionGame"</span>, Localize(<span class="source_string">"MultiPlayer"</span>,<span class="source_string">"GameType_Mission"</span>,<span class="source_string">"R6Menu"</span>),
+<a name="32"></a>		<span class="source_string">"R6GameMode"</span>, <span class="source_string">""</span>, 
+<a name="33"></a>		<span class="source_string">"R6GameMode"</span>, <span class="source_string">""</span>, <span class="source_string">"RGM_MissionMode"</span>);
+<a name="34"></a>
+<a name="35"></a>	pLevelInfo.GameTypeInfoAdd( <span class="source_string">"RGM_TerroristHuntMode"</span>, <span class="source_string">"RGM_TerroristHuntMode"</span>, GMI_SinglePlayer, false, false,  true, true, true, 
+<a name="36"></a>		<span class="source_string">"R6GameMode"</span>, <span class="source_string">"R6Game.R6TerroristHuntGame"</span>, Localize(<span class="source_string">"MultiPlayer"</span>,<span class="source_string">"GameType_Terrorist"</span>,<span class="source_string">"R6Menu"</span>),
+<a name="37"></a>		<span class="source_string">""</span>,<span class="source_string">""</span>, 
+<a name="38"></a>		<span class="source_string">""</span>, <span class="source_string">""</span>, <span class="source_string">"RGM_TerroristHuntMode"</span>);
+<a name="39"></a>
+<a name="40"></a>	pLevelInfo.GameTypeSaveGameInfo( pLevelInfo.m_aGameTypeInfo.Length - <span class="source_int">1</span>, 
+<a name="41"></a>		Localize(<span class="source_string">"SaveGameDirectory"</span>,<span class="source_string">"SaveGameType_TerroristHunt"</span>,<span class="source_string">"R6Engine"</span>), 
+<a name="42"></a>		<span class="source_string">"Terrorist Hunt"</span>);
+<a name="43"></a>
+<a name="44"></a>	pLevelInfo.GameTypeInfoAdd( <span class="source_string">"RGM_TerroristHuntCoopMode"</span>, <span class="source_string">"RGM_TerroristHuntCoopMode"</span>, GMI_Cooperative,  false, true,  true, true, true,
+<a name="45"></a>		<span class="source_string">"R6GameMode"</span>, <span class="source_string">"R6Game.R6TerroristHuntCoopGame"</span>, Localize(<span class="source_string">"MultiPlayer"</span>,<span class="source_string">"GameType_Terrorist"</span>,<span class="source_string">"R6Menu"</span>),
+<a name="46"></a>		<span class="source_string">"R6GameMode"</span>, <span class="source_string">""</span>,
+<a name="47"></a>		<span class="source_string">"R6GameMode"</span>, <span class="source_string">""</span>, <span class="source_string">"RGM_TerroristHuntCoopMode"</span>);
+<a name="48"></a>
+<a name="49"></a>	pLevelInfo.GameTypeInfoAdd( <span class="source_string">"RGM_HostageRescueMode"</span>, <span class="source_string">"RGM_HostageRescueMode"</span>, GMI_SinglePlayer, false, false,  true, true, true, 
+<a name="50"></a>		<span class="source_string">"R6GameMode"</span>, <span class="source_string">"R6Game.R6HostageRescueGame"</span>, Localize(<span class="source_string">"MultiPlayer"</span>,<span class="source_string">"GameType_HostageAdv"</span>,<span class="source_string">"R6Menu"</span>),
+<a name="51"></a>		<span class="source_string">""</span>, <span class="source_string">""</span>, 
+<a name="52"></a>		<span class="source_string">""</span>, <span class="source_string">""</span>, <span class="source_string">"RGM_HostageRescueMode"</span>);
+<a name="53"></a>
+<a name="54"></a>	pLevelInfo.GameTypeSaveGameInfo( pLevelInfo.m_aGameTypeInfo.Length - <span class="source_int">1</span>, 
+<a name="55"></a>		Localize(<span class="source_string">"SaveGameDirectory"</span>,<span class="source_string">"SaveGameType_HostageRescue"</span>,<span class="source_string">"R6Engine"</span>), 
+<a name="56"></a>		<span class="source_string">"Hostage Rescue"</span>);
+<a name="57"></a>
+<a name="58"></a>	pLevelInfo.GameTypeInfoAdd( <span class="source_string">"RGM_HostageRescueCoopMode"</span>, <span class="source_string">"RGM_HostageRescueCoopMode"</span>, GMI_Cooperative,  false, true,  true, true, true, 
+<a name="59"></a>		<span class="source_string">"R6GameMode"</span>, <span class="source_string">"R6Game.R6HostageRescueCoopGame"</span>, Localize(<span class="source_string">"MultiPlayer"</span>,<span class="source_string">"GameType_HostageCoop"</span>,<span class="source_string">"R6Menu"</span>),
+<a name="60"></a>		<span class="source_string">"R6GameMode"</span>, <span class="source_string">""</span>, 
+<a name="61"></a>		<span class="source_string">"R6GameMode"</span>, <span class="source_string">""</span>, <span class="source_string">"RGM_HostageRescueCoopMode"</span>);
+<a name="62"></a>
+<a name="63"></a>	pLevelInfo.GameTypeInfoAdd( <span class="source_string">"RGM_HostageRescueAdvMode"</span>, <span class="source_string">"RGM_HostageRescueAdvMode"</span>, GMI_Adversarial,  true,  true,  true, true, true, 
+<a name="64"></a>		<span class="source_string">"R6GameMode"</span>, <span class="source_string">"R6Game.R6HostageRescueAdvGame"</span>, Localize(<span class="source_string">"MultiPlayer"</span>,<span class="source_string">"GameType_HostageAdv"</span>,<span class="source_string">"R6Menu"</span>),
+<a name="65"></a>		<span class="source_string">"R6GameMode"</span>, <span class="source_string">"R6GameMode"</span>,
+<a name="66"></a>		<span class="source_string">"R6GameMode"</span>, <span class="source_string">"R6GameMode"</span>, <span class="source_string">"RGM_HostageRescueAdvMode"</span>);
+<a name="67"></a>
+<a name="68"></a>	pLevelInfo.GameTypeInfoAdd( <span class="source_string">"RGM_DeathmatchMode"</span>, <span class="source_string">"RGM_DeathmatchMode"</span>, GMI_Adversarial,  false, false, false, false, false,
+<a name="69"></a>		<span class="source_string">"R6GameMode"</span>, <span class="source_string">"R6Game.R6DeathMatch"</span>, Localize(<span class="source_string">"MultiPlayer"</span>,<span class="source_string">"GameType_Death"</span>,<span class="source_string">"R6Menu"</span>),
+<a name="70"></a>		<span class="source_string">"R6GameMode"</span>, <span class="source_string">""</span>,
+<a name="71"></a>		<span class="source_string">"R6GameMode"</span>, <span class="source_string">""</span>, <span class="source_string">"RGM_DeathmatchMode"</span>);
+<a name="72"></a>
+<a name="73"></a>	pLevelInfo.GameTypeInfoAdd( <span class="source_string">"RGM_TeamDeathmatchMode"</span>, <span class="source_string">"RGM_TeamDeathmatchMode"</span>, GMI_Adversarial,  true,  true,  false, false, false,
+<a name="74"></a>		<span class="source_string">"R6GameMode"</span>, <span class="source_string">"R6Game.R6TeamDeathMatchGame"</span>, Localize(<span class="source_string">"MultiPlayer"</span>,<span class="source_string">"GameType_TeamDeath"</span>,<span class="source_string">"R6Menu"</span>),
+<a name="75"></a>		<span class="source_string">"R6GameMode"</span>, <span class="source_string">"R6GameMode"</span>,
+<a name="76"></a>		<span class="source_string">"R6GameMode"</span>, <span class="source_string">"R6GameMode"</span>, <span class="source_string">"RGM_TeamDeathmatchMode"</span>);
+<a name="77"></a>
+<a name="78"></a>	pLevelInfo.GameTypeInfoAdd( <span class="source_string">"RGM_BombAdvMode"</span>, <span class="source_string">"RGM_BombAdvMode"</span>, GMI_Adversarial,  true,  true,  false, false, false,
+<a name="79"></a>		<span class="source_string">"R6GameMode"</span>, <span class="source_string">"R6Game.R6TeamBomb"</span>, Localize(<span class="source_string">"MultiPlayer"</span>,<span class="source_string">"GameType_DisarmBomb"</span>,<span class="source_string">"R6Menu"</span>),
+<a name="80"></a>		<span class="source_string">"R6GameMode"</span>, <span class="source_string">"R6GameMode"</span>,
+<a name="81"></a>		<span class="source_string">"R6GameMode"</span>, <span class="source_string">"R6GameMode"</span>, <span class="source_string">"RGM_BombAdvMode"</span>);
+<a name="82"></a>
+<a name="83"></a>	pLevelInfo.SetGameTypeDisplayBombTimer( <span class="source_string">"RGM_BombAdvMode"</span> );
+<a name="84"></a>
+<a name="85"></a>	pLevelInfo.GameTypeInfoAdd( <span class="source_string">"RGM_EscortAdvMode"</span>, <span class="source_string">"RGM_EscortAdvMode"</span>, GMI_Adversarial,  true,  true,  false, false, false,
+<a name="86"></a>		<span class="source_string">"R6GameMode"</span>, <span class="source_string">"R6Game.R6EscortPilotGame"</span>, Localize(<span class="source_string">"MultiPlayer"</span>,<span class="source_string">"GameType_EscortGeneral"</span>,<span class="source_string">"R6Menu"</span>),
+<a name="87"></a>		<span class="source_string">"R6GameMode"</span>, <span class="source_string">"R6GameMode"</span>,
+<a name="88"></a>		<span class="source_string">"R6GameMode"</span>, <span class="source_string">"R6GameMode"</span>, <span class="source_string">"RGM_EscortAdvMode"</span>);
+<a name="89"></a>
+<a name="90"></a>	pLevelInfo.GameTypeInfoAdd( <span class="source_string">"RGM_LoneWolfMode"</span>, <span class="source_string">"RGM_LoneWolfMode"</span>, GMI_SinglePlayer, false, false,  true, true, false,
+<a name="91"></a>		<span class="source_string">"R6GameMode"</span>, <span class="source_string">"R6Game.R6LoneWolfGame"</span>, <span class="source_string">"loc LoneWolfMode"</span>,
+<a name="92"></a>		<span class="source_string">""</span>, <span class="source_string">""</span>, 
+<a name="93"></a>		<span class="source_string">""</span>, <span class="source_string">""</span>, <span class="source_string">"RGM_LoneWolfMode"</span>);
+<a name="94"></a>
+<a name="95"></a>	pLevelInfo.GameTypeSaveGameInfo( pLevelInfo.m_aGameTypeInfo.Length - <span class="source_int">1</span>, 
+<a name="96"></a>		Localize(<span class="source_string">"SaveGameDirectory"</span>,<span class="source_string">"SaveGameType_LoneWolf"</span>,<span class="source_string">"R6Engine"</span>), 
+<a name="97"></a>		<span class="source_string">"Lone Wolf"</span>);
+<a name="98"></a>
+<a name="99"></a>	pLevelInfo.GameTypeInfoAdd( <span class="source_string">"RGM_NoRulesMode"</span>, <span class="source_string">"RGM_NoRulesMode"</span>, GMI_None, true,  false, false, true, true,
+<a name="100"></a>		<span class="source_string">"No Rule"</span>, <span class="source_string">"R6Game.R6NoRules"</span>, <span class="source_string">"GameType_Debug"</span>,
+<a name="101"></a>		<span class="source_string">""</span>, <span class="source_string">""</span>, 
+<a name="102"></a>		<span class="source_string">""</span>, <span class="source_string">""</span>, <span class="source_string">"RGM_NoRulesMode"</span>);
+<a name="103"></a>}
+<a name="104"></a>
+<a name="105"></a>defaultproperties
+<a name="106"></a>{
+<a name="107"></a>}
+<a name="108"></a></pre></td></tr></table></div>
+<hr />
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../engine/engine-overview.html">Package</a></td>
+	<td class="header"><a href="../engine/r6modconfig.html">Class</a></td>
+	<td class="header_hilight">Source</td>
+	<td class="header"><a class="header" href="../classtree.html#R6ModConfig">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../Source_engine/r6mod.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../Source_engine/r6modmgr.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+
+<div class="stats">Class file time: sam. 18/9/2004 14:39:28.000 - Creation time: mar. 26/5/2026 18:33:20.788 - Created with <a href="http://wiki.beyondunreal.com/wiki/UnCodeX" target="_blank">UnCodeX</a></div>
+
+</body>
+</html>

@@ -1,0 +1,306 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+	<title>UnCodeX - Source: R6Menu.R6MenuOperativeSkills</title>
+	<meta name="Generator" content="UnCodeX 241" />
+	<link rel="stylesheet" href="../DocStyle2.css" type="text/css" title="Original Purple" />
+	<link rel="alternative stylesheet" href="../DocStyle2-blue.css" type="text/css" title="Blue" />
+	<link rel="alternative stylesheet" href="../DocStyle2-red.css" type="text/css" title="Red" />
+	<!--[if IE]>
+	<link rel="stylesheet" href="../DocStyle2-msie.css" type="text/css" />
+	<![endif]-->
+	<script src="../styleswitcher.js" type="text/javascript"></script>
+</head>
+<body>
+
+<div class="header">
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../r6menu/r6menu-overview.html">Package</a></td>
+	<td class="header"><a href="../r6menu/r6menuoperativeskills.html">Class</a></td>
+	<td class="header_hilight">Source</td>
+	<td class="header"><a class="header" href="../classtree.html#R6MenuOperativeSkills">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../Source_r6menu/r6menuoperativehistory.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../Source_r6menu/r6menuoperativeskillsbitmap.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html#Source_r6menu/r6menuoperativeskills.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+</div>
+<div class="spacer"></div>
+
+<h1><a href="../r6menu/r6menu-overview.html">R6Menu</a>.<a href="../r6menu/r6menuoperativeskills.html">R6MenuOperativeSkills</a></h1>
+<br />
+<div class="source"><table class="source"><tr><td class="source_lineno"><span class="source_lineno">00001<br />00002<br />00003<br />00004<br />00005<br />00006<br />00007<br />00008<br />00009<br />00010<br />00011<br />00012<br />00013<br />00014<br />00015<br />00016<br />00017<br />00018<br />00019<br />00020<br />
+00021<br />00022<br />00023<br />00024<br />00025<br />00026<br />00027<br />00028<br />00029<br />00030<br />00031<br />00032<br />00033<br />00034<br />00035<br />00036<br />00037<br />00038<br />00039<br />00040<br />
+00041<br />00042<br />00043<br />00044<br />00045<br />00046<br />00047<br />00048<br />00049<br />00050<br />00051<br />00052<br />00053<br />00054<br />00055<br />00056<br />00057<br />00058<br />00059<br />00060<br />
+00061<br />00062<br />00063<br />00064<br />00065<br />00066<br />00067<br />00068<br />00069<br />00070<br />00071<br />00072<br />00073<br />00074<br />00075<br />00076<br />00077<br />00078<br />00079<br />00080<br />
+00081<br />00082<br />00083<br />00084<br />00085<br />00086<br />00087<br />00088<br />00089<br />00090<br />00091<br />00092<br />00093<br />00094<br />00095<br />00096<br />00097<br />00098<br />00099<br />00100<br />
+00101<br />00102<br />00103<br />00104<br />00105<br />00106<br />00107<br />00108<br />00109<br />00110<br />00111<br />00112<br />00113<br />00114<br />00115<br />00116<br />00117<br />00118<br />00119<br />00120<br />
+00121<br />00122<br />00123<br />00124<br />00125<br />00126<br />00127<br />00128<br />00129<br />00130<br />00131<br />00132<br />00133<br />00134<br />00135<br />00136<br />00137<br />00138<br />00139<br />00140<br />
+00141<br />00142<br />00143<br />00144<br />00145<br />00146<br />00147<br />00148<br />00149<br />00150<br />00151<br />00152<br />00153<br />00154<br />00155<br />00156<br />00157<br />00158<br />00159<br />00160<br />
+00161<br />00162<br />00163<br />00164<br />00165<br />00166<br />00167<br />00168<br />00169<br />00170<br />00171<br />00172<br />00173<br />00174<br />00175<br />00176<br />00177<br />00178<br />00179<br />00180<br />
+00181<br />00182<br />00183<br />00184<br />00185<br />00186<br />00187<br />00188<br />00189<br />00190<br />00191<br />00192<br />00193<br />00194<br />00195<br />00196<br />00197<br />00198<br />00199<br />00200<br />
+00201<br />00202<br />00203<br />00204<br />00205<br />00206<br />00207<br />00208<br />00209<br />00210<br />00211<br />00212<br />00213<br />00214<br />00215<br />00216<br />00217<br />00218<br />00219<br />00220<br />
+00221<br />00222<br />00223<br />00224<br />00225<br />00226<br />00227<br />00228<br />00229<br />00230<br />00231<br />00232<br />00233<br />00234<br />00235<br />00236<br />00237</span></td>
+<td class="source"><pre class="source"><a name="1"></a><span class="source_comment">//=============================================================================
+</span><a name="2"></a><span class="source_comment">//  R6MenuOperativeSkills.uc : This Window Will display the skills of an operative
+</span><a name="3"></a><span class="source_comment">//                              and is created by R6MenuOperativeDetailControl
+</span><a name="4"></a><span class="source_comment">//  Copyright 2002 Ubi Soft, Inc. All Rights Reserved.
+</span><a name="5"></a><span class="source_comment">//
+</span><a name="6"></a><span class="source_comment">//  Revision history:
+</span><a name="7"></a><span class="source_comment">//    2002/03/19 * Created by Alexandre Dionne
+</span><a name="8"></a><span class="source_comment">//=============================================================================
+</span><a name="9"></a>
+<a name="10"></a>
+<a name="11"></a><span class="source_type">class</span> <span class="source_type"><a href="../r6menu/r6menuoperativeskills.html" class="source">R6MenuOperativeSkills</a></span> extends <span class="source_type"><a href="../uwindow/uwindowwindow.html" class="source">UWindowWindow</a></span>;
+<a name="12"></a>
+<a name="13"></a><span class="source_comment">//Skills
+</span><a name="14"></a>var <span class="source_type">FLOAT</span>  m_fAssault;
+<a name="15"></a>var <span class="source_type">FLOAT</span>  m_fDemolitions;
+<a name="16"></a>var <span class="source_type">FLOAT</span>  m_fElectronics;
+<a name="17"></a>var <span class="source_type">FLOAT</span>  m_fSniper;
+<a name="18"></a>var <span class="source_type">FLOAT</span>  m_fStealth;
+<a name="19"></a>var <span class="source_type">FLOAT</span>  m_fSelfControl;
+<a name="20"></a>var <span class="source_type">FLOAT</span>  m_fLeadership;
+<a name="21"></a>var <span class="source_type">FLOAT</span>  m_fObservation;
+<a name="22"></a>
+<a name="23"></a><span class="source_comment">//Titles
+</span><a name="24"></a>var <span class="source_type"><a href="../r6menu/r6menuoperativeskillslabel.html" class="source">R6MenuOperativeSkillsLabel</a></span>  m_TAssault;
+<a name="25"></a>var <span class="source_type"><a href="../r6menu/r6menuoperativeskillslabel.html" class="source">R6MenuOperativeSkillsLabel</a></span>  m_TDemolitions;
+<a name="26"></a>var <span class="source_type"><a href="../r6menu/r6menuoperativeskillslabel.html" class="source">R6MenuOperativeSkillsLabel</a></span>  m_TElectronics;
+<a name="27"></a>var <span class="source_type"><a href="../r6menu/r6menuoperativeskillslabel.html" class="source">R6MenuOperativeSkillsLabel</a></span>  m_TSniper;
+<a name="28"></a>var <span class="source_type"><a href="../r6menu/r6menuoperativeskillslabel.html" class="source">R6MenuOperativeSkillsLabel</a></span>  m_TStealth;
+<a name="29"></a>var <span class="source_type"><a href="../r6menu/r6menuoperativeskillslabel.html" class="source">R6MenuOperativeSkillsLabel</a></span>  m_TSelfControl;
+<a name="30"></a>var <span class="source_type"><a href="../r6menu/r6menuoperativeskillslabel.html" class="source">R6MenuOperativeSkillsLabel</a></span>  m_TLeadership;
+<a name="31"></a>var <span class="source_type"><a href="../r6menu/r6menuoperativeskillslabel.html" class="source">R6MenuOperativeSkillsLabel</a></span>  m_TObservation;
+<a name="32"></a>
+<a name="33"></a><span class="source_comment">//LineCharts
+</span><a name="34"></a>var <span class="source_type"><a href="../r6menu/r6menuoperativeskillsbitmap.html" class="source">R6MenuOperativeSkillsBitmap</a></span>  m_LCAssault;
+<a name="35"></a>var <span class="source_type"><a href="../r6menu/r6menuoperativeskillsbitmap.html" class="source">R6MenuOperativeSkillsBitmap</a></span>  m_LCDemolitions;
+<a name="36"></a>var <span class="source_type"><a href="../r6menu/r6menuoperativeskillsbitmap.html" class="source">R6MenuOperativeSkillsBitmap</a></span>  m_LCElectronics;
+<a name="37"></a>var <span class="source_type"><a href="../r6menu/r6menuoperativeskillsbitmap.html" class="source">R6MenuOperativeSkillsBitmap</a></span>  m_LCSniper;
+<a name="38"></a>var <span class="source_type"><a href="../r6menu/r6menuoperativeskillsbitmap.html" class="source">R6MenuOperativeSkillsBitmap</a></span>  m_LCStealth;
+<a name="39"></a>var <span class="source_type"><a href="../r6menu/r6menuoperativeskillsbitmap.html" class="source">R6MenuOperativeSkillsBitmap</a></span>  m_LCSelfControl;
+<a name="40"></a>var <span class="source_type"><a href="../r6menu/r6menuoperativeskillsbitmap.html" class="source">R6MenuOperativeSkillsBitmap</a></span>  m_LCLeadership;
+<a name="41"></a>var <span class="source_type"><a href="../r6menu/r6menuoperativeskillsbitmap.html" class="source">R6MenuOperativeSkillsBitmap</a></span>  m_LCObservation;
+<a name="42"></a>
+<a name="43"></a><span class="source_comment">//Maximum Width for line charts
+</span><a name="44"></a>var <span class="source_type">FLOAT</span>                        m_fMaxChartWidth;
+<a name="45"></a>
+<a name="46"></a><span class="source_comment">//Display settings
+</span><a name="47"></a>var <span class="source_type">FLOAT</span>                        m_fNLeftPadding;        <span class="source_comment">//Horizontal padding where we start drawing from left
+</span><a name="48"></a>var <span class="source_type">FLOAT</span>                        m_fBetweenLabelPadding; <span class="source_comment">//Horizontal Padding Between the numeric values and the charts
+</span><a name="49"></a>var <span class="source_type">FLOAT</span>                        m_fTopYPadding;         <span class="source_comment">//Vertical Padding from the top of the window
+</span><a name="50"></a>var <span class="source_type">FLOAT</span>                        m_fTitleHeight;         <span class="source_comment">//Titles Height
+</span><a name="51"></a>var <span class="source_type">FLOAT</span>                        m_fYPaddingBetweenElements;  <span class="source_comment">//Vertical Padding Between Lines
+</span><a name="52"></a>var <span class="source_type">FLOAT</span>                        m_fNumericLabelWidth;
+<a name="53"></a>
+<a name="54"></a><span class="source_comment">//Debug
+</span><a name="55"></a>var <span class="source_type">bool</span>                         bshowlog;
+<a name="56"></a>
+<a name="57"></a>
+<a name="58"></a>function Created()
+<a name="59"></a>{
+<a name="60"></a>    local <span class="source_type">FLOAT</span> X, <span class="source_type">Y</span>, W, <span class="source_type">H</span>, TotItemHeight, Offset;
+<a name="61"></a>    
+<a name="62"></a>	X = m_fNLeftPadding;
+<a name="63"></a>	<span class="source_type">Y</span> = m_fTopYPadding;
+<a name="64"></a>	W = WinWidth - (<span class="source_int">2</span>*m_fNLeftPadding);
+<a name="65"></a>	<span class="source_type">H</span> = m_fTitleHeight;
+<a name="66"></a>    TotItemHeight = m_fTitleHeight + <span class="source_type">class</span><span class="source_name">'R6MenuOperativeSkillsBitmap'</span>.Default.<span class="source_type">R</span>.<span class="source_type">H</span> + (<span class="source_int">2</span> * m_fYPaddingBetweenElements);
+<a name="67"></a>
+<a name="68"></a>    <span class="source_comment">//Titles
+</span><a name="69"></a>	m_TAssault      = CreateTitle( X, <span class="source_type">Y</span>, W, <span class="source_type">H</span>, <span class="source_string">"Assault"</span>);
+<a name="70"></a>	<span class="source_type">Y</span> += TotItemHeight;
+<a name="71"></a>	m_TDemolitions  = CreateTitle( X, <span class="source_type">Y</span>, W, <span class="source_type">H</span>, <span class="source_string">"Demolitions"</span>);
+<a name="72"></a>	<span class="source_type">Y</span> += TotItemHeight;
+<a name="73"></a>	m_TElectronics  = CreateTitle( X, <span class="source_type">Y</span>, W, <span class="source_type">H</span>, <span class="source_string">"Electronics"</span>);
+<a name="74"></a>	<span class="source_type">Y</span> += TotItemHeight;
+<a name="75"></a>	m_TSniper		= CreateTitle( X, <span class="source_type">Y</span>, W, <span class="source_type">H</span>, <span class="source_string">"Sniper"</span>); 
+<a name="76"></a>	<span class="source_type">Y</span> += TotItemHeight;
+<a name="77"></a>	m_TStealth		= CreateTitle( X, <span class="source_type">Y</span>, W, <span class="source_type">H</span>, <span class="source_string">"Stealth"</span>);
+<a name="78"></a>	<span class="source_type">Y</span> += TotItemHeight;
+<a name="79"></a>	m_TSelfControl	= CreateTitle( X, <span class="source_type">Y</span>, W, <span class="source_type">H</span>, <span class="source_string">"SelfControl"</span>);
+<a name="80"></a>	<span class="source_type">Y</span> += TotItemHeight;
+<a name="81"></a>	m_TLeadership	= CreateTitle( X, <span class="source_type">Y</span>, W, <span class="source_type">H</span>, <span class="source_string">"Leadership"</span>);
+<a name="82"></a>	<span class="source_type">Y</span> += TotItemHeight;
+<a name="83"></a>	m_TObservation	= CreateTitle( X, <span class="source_type">Y</span>, W, <span class="source_type">H</span>, <span class="source_string">"Observation"</span>);
+<a name="84"></a>
+<a name="85"></a>    <span class="source_comment">//Calculate Max size that a line chart take
+</span><a name="86"></a>    m_fMaxChartWidth = <span class="source_type">class</span><span class="source_name">'R6MenuOperativeSkillsBitmap'</span>.Default.<span class="source_type">R</span>.W; <span class="source_comment">//WinWidth - m_NAssault.WinWidth - m_fNLeftPadding - m_fBetweenLabelPadding; 
+</span><a name="87"></a>
+<a name="88"></a>	Offset = m_fTitleHeight + m_fYPaddingBetweenElements;
+<a name="89"></a>    <span class="source_type">Y</span> = m_TAssault.WinTop + Offset;
+<a name="90"></a>	<span class="source_type">H</span> = <span class="source_type">class</span><span class="source_name">'R6MenuOperativeSkillsBitmap'</span>.Default.<span class="source_type">R</span>.<span class="source_type">H</span>;
+<a name="91"></a>
+<a name="92"></a>    <span class="source_comment">//LineCharts
+</span><a name="93"></a>    m_LCAssault=<span class="source_type"><a href="../r6menu/r6menuoperativeskillsbitmap.html" class="source">R6MenuOperativeSkillsBitmap</a></span>(CreateWindow(<span class="source_type">class</span><span class="source_name">'R6MenuOperativeSkillsBitmap'</span>, X, <span class="source_type">Y</span>, W, <span class="source_type">H</span>, self));
+<a name="94"></a>    <span class="source_type">Y</span>= m_TDemolitions.WinTop + Offset;
+<a name="95"></a>    m_LCDemolitions=<span class="source_type"><a href="../r6menu/r6menuoperativeskillsbitmap.html" class="source">R6MenuOperativeSkillsBitmap</a></span>(CreateWindow(<span class="source_type">class</span><span class="source_name">'R6MenuOperativeSkillsBitmap'</span>,X, <span class="source_type">Y</span>, W, <span class="source_type">H</span>, self));
+<a name="96"></a>    <span class="source_type">Y</span>= m_TElectronics.WinTop + Offset;
+<a name="97"></a>    m_LCElectronics=<span class="source_type"><a href="../r6menu/r6menuoperativeskillsbitmap.html" class="source">R6MenuOperativeSkillsBitmap</a></span>(CreateWindow(<span class="source_type">class</span><span class="source_name">'R6MenuOperativeSkillsBitmap'</span>,X, <span class="source_type">Y</span>, W, <span class="source_type">H</span>, self));
+<a name="98"></a>    <span class="source_type">Y</span>= m_TSniper.WinTop + Offset;
+<a name="99"></a>    m_LCSniper=<span class="source_type"><a href="../r6menu/r6menuoperativeskillsbitmap.html" class="source">R6MenuOperativeSkillsBitmap</a></span>(CreateWindow(<span class="source_type">class</span><span class="source_name">'R6MenuOperativeSkillsBitmap'</span>,X, <span class="source_type">Y</span>, W, <span class="source_type">H</span>, self));
+<a name="100"></a>    <span class="source_type">Y</span>= m_TStealth.WinTop + Offset;
+<a name="101"></a>    m_LCStealth=<span class="source_type"><a href="../r6menu/r6menuoperativeskillsbitmap.html" class="source">R6MenuOperativeSkillsBitmap</a></span>(CreateWindow(<span class="source_type">class</span><span class="source_name">'R6MenuOperativeSkillsBitmap'</span>,X, <span class="source_type">Y</span>, W, <span class="source_type">H</span>, self));
+<a name="102"></a>    <span class="source_type">Y</span>= m_TSelfControl.WinTop + Offset;
+<a name="103"></a>    m_LCSelfControl=<span class="source_type"><a href="../r6menu/r6menuoperativeskillsbitmap.html" class="source">R6MenuOperativeSkillsBitmap</a></span>(CreateWindow(<span class="source_type">class</span><span class="source_name">'R6MenuOperativeSkillsBitmap'</span>,X, <span class="source_type">Y</span>, W, <span class="source_type">H</span>, self));
+<a name="104"></a>    <span class="source_type">Y</span>= m_TLeadership.WinTop + Offset;
+<a name="105"></a>    m_LCLeadership=<span class="source_type"><a href="../r6menu/r6menuoperativeskillsbitmap.html" class="source">R6MenuOperativeSkillsBitmap</a></span>(CreateWindow(<span class="source_type">class</span><span class="source_name">'R6MenuOperativeSkillsBitmap'</span>,X, <span class="source_type">Y</span>, W, <span class="source_type">H</span>, self));
+<a name="106"></a>    <span class="source_type">Y</span>= m_TObservation.WinTop + Offset;
+<a name="107"></a>    m_LCObservation=<span class="source_type"><a href="../r6menu/r6menuoperativeskillsbitmap.html" class="source">R6MenuOperativeSkillsBitmap</a></span>(CreateWindow(<span class="source_type">class</span><span class="source_name">'R6MenuOperativeSkillsBitmap'</span>,X, <span class="source_type">Y</span>, W, <span class="source_type">H</span>, self));
+<a name="108"></a>}
+<a name="109"></a>
+<a name="110"></a>function <span class="source_type"><a href="../r6menu/r6menuoperativeskillslabel.html" class="source">R6MenuOperativeSkillsLabel</a></span> CreateTitle( <span class="source_type">FLOAT</span> _fX, <span class="source_type">FLOAT</span> _fY, <span class="source_type">FLOAT</span> _fW, <span class="source_type">FLOAT</span> _fH, <span class="source_type">string</span> _szTitle)
+<a name="111"></a>{
+<a name="112"></a>	local <span class="source_type"><a href="../r6menu/r6menuoperativeskillslabel.html" class="source">R6MenuOperativeSkillsLabel</a></span> pWSkillLabel;
+<a name="113"></a>
+<a name="114"></a>	pWSkillLabel = <span class="source_type"><a href="../r6menu/r6menuoperativeskillslabel.html" class="source">R6MenuOperativeSkillsLabel</a></span>(CreateWindow(<span class="source_type">class</span><span class="source_name">'R6MenuOperativeSkillsLabel'</span>, _fX, _fY, _fW, _fH, self));
+<a name="115"></a>	pWSkillLabel.<span class="source_type">Text</span> = Localize(<span class="source_string">"R6Operative"</span>, _szTitle, <span class="source_string">"R6Menu"</span>);
+<a name="116"></a>	pWSkillLabel.m_fWidthOfFixArea = <span class="source_int">60</span>;
+<a name="117"></a>	pWSkillLabel.m_NumericValueColor = Root.Colors.BlueLight;
+<a name="118"></a>
+<a name="119"></a>	return pWSkillLabel;
+<a name="120"></a>}
+<a name="121"></a>
+<a name="122"></a>
+<a name="123"></a>function ResizeCharts( <span class="source_type"><a href="../r6game/r6operative.html" class="source">R6Operative</a></span> _CurrentOperative)
+<a name="124"></a>{
+<a name="125"></a>    <span class="source_comment">//Call this function after you have set the different skills
+</span><a name="126"></a>    <span class="source_comment">//values it will resize every line chart
+</span><a name="127"></a>
+<a name="128"></a><span class="source_macro">#ifdefDEBUG
+</span><a name="129"></a>    if(bshowlog)
+<a name="130"></a>    {
+<a name="131"></a>        log(<span class="source_string">"////////////////////////////////////////////"</span>);
+<a name="132"></a>        log(<span class="source_string">"///////  ResizeCharts() Before Fmin  ///////"</span>);
+<a name="133"></a>        log(<span class="source_string">"////////////////////////////////////////////"</span>);
+<a name="134"></a>        log(<span class="source_string">"m_fAssault"</span>@m_fAssault);
+<a name="135"></a>        log(<span class="source_string">"m_fDemolitions"</span>@m_fDemolitions);
+<a name="136"></a>        log(<span class="source_string">"m_fElectronics"</span>@m_fElectronics);
+<a name="137"></a>        log(<span class="source_string">"m_fSniper"</span>@m_fSniper);
+<a name="138"></a>        log(<span class="source_string">"m_fStealth"</span>@m_fStealth);
+<a name="139"></a>        log(<span class="source_string">"m_fSelfControl"</span>@m_fSelfControl);
+<a name="140"></a>        log(<span class="source_string">"m_fLeadership"</span>@m_fLeadership);
+<a name="141"></a>        log(<span class="source_string">"m_fObservation"</span>@m_fObservation);
+<a name="142"></a>        log(<span class="source_string">"////////////////////////////////////////////"</span>);
+<a name="143"></a>    }
+<a name="144"></a><span class="source_macro">#endif
+</span><a name="145"></a>
+<a name="146"></a>    <span class="source_comment">//First Veryfy that we have valide Values
+</span><a name="147"></a>    m_fAssault=     FMin( m_fAssault + <span class="source_int">0.5</span>,<span class="source_int">100.0</span>);
+<a name="148"></a>    m_fDemolitions= FMin( m_fDemolitions + <span class="source_int">0.5</span>,<span class="source_int">100.0</span>);
+<a name="149"></a>    m_fElectronics= FMin( m_fElectronics + <span class="source_int">0.5</span>,<span class="source_int">100.0</span>);
+<a name="150"></a>    m_fSniper=      FMin( m_fSniper + <span class="source_int">0.5</span>,<span class="source_int">100.0</span>);
+<a name="151"></a>    m_fStealth=     FMin( m_fStealth + <span class="source_int">0.5</span>,<span class="source_int">100.0</span>);
+<a name="152"></a>    m_fSelfControl= FMin( m_fSelfControl + <span class="source_int">0.5</span>,<span class="source_int">100.0</span>);
+<a name="153"></a>    m_fLeadership=  FMin( m_fLeadership + <span class="source_int">0.5</span>,<span class="source_int">100.0</span>);
+<a name="154"></a>    m_fObservation= FMin( m_fObservation + <span class="source_int">0.5</span>,<span class="source_int">100.0</span>);
+<a name="155"></a>
+<a name="156"></a>    <span class="source_comment">//Put the right text in the Labels
+</span><a name="157"></a><span class="source_macro">#ifdefDEBUG
+</span><a name="158"></a>    if(bshowlog)
+<a name="159"></a>    {
+<a name="160"></a>	log(<span class="source_string">"_CurrentOperative.Default.m_szOperativeClass "</span>@_CurrentOperative.Default.m_szOperativeClass);
+<a name="161"></a>	log(<span class="source_string">"_CurrentOperative.Default.m_fAssault"</span>@_CurrentOperative.Default.m_fAssault@m_fAssault);
+<a name="162"></a>	log(<span class="source_string">"_CurrentOperative.Default.m_fDemolitions"</span>@_CurrentOperative.Default.m_fDemolitions@m_fDemolitions);
+<a name="163"></a>	log(<span class="source_string">"_CurrentOperative.Default.m_fElectronics"</span>@_CurrentOperative.Default.m_fElectronics@m_fElectronics);
+<a name="164"></a>	log(<span class="source_string">"_CurrentOperative.Default.m_fSniper"</span>@_CurrentOperative.Default.m_fSniper@m_fSniper);
+<a name="165"></a>	log(<span class="source_string">"_CurrentOperative.Default.m_fStealth"</span>@_CurrentOperative.Default.m_fStealth@m_fStealth);
+<a name="166"></a>	log(<span class="source_string">"_CurrentOperative.Default.m_fSelfControl"</span>@_CurrentOperative.Default.m_fSelfControl@m_fSelfControl);
+<a name="167"></a>	log(<span class="source_string">"_CurrentOperative.Default.m_fLeadership"</span>@_CurrentOperative.Default.m_fLeadership@m_fLeadership);
+<a name="168"></a>	log(<span class="source_string">"_CurrentOperative.Default.m_fObservation"</span>@_CurrentOperative.Default.m_fObservation@m_fObservation);
+<a name="169"></a>	}
+<a name="170"></a><span class="source_macro">#endif
+</span><a name="171"></a>
+<a name="172"></a>	m_TAssault.SetNumericValue( <span class="source_type">INT</span>(_CurrentOperative.Default.m_fAssault + <span class="source_int">0.5</span>), <span class="source_type">INT</span>(m_fAssault));
+<a name="173"></a>	m_TDemolitions.SetNumericValue( <span class="source_type">INT</span>(_CurrentOperative.Default.m_fDemolitions + <span class="source_int">0.5</span>), <span class="source_type">INT</span>(m_fDemolitions));
+<a name="174"></a>	m_TElectronics.SetNumericValue( <span class="source_type">INT</span>(_CurrentOperative.Default.m_fElectronics + <span class="source_int">0.5</span>), <span class="source_type">INT</span>(m_fElectronics));
+<a name="175"></a>	m_TSniper.SetNumericValue( <span class="source_type">INT</span>(_CurrentOperative.Default.m_fSniper + <span class="source_int">0.5</span>), <span class="source_type">INT</span>(m_fSniper));
+<a name="176"></a>	m_TStealth.SetNumericValue( <span class="source_type">INT</span>(_CurrentOperative.Default.m_fStealth + <span class="source_int">0.5</span>), <span class="source_type">INT</span>(m_fStealth));
+<a name="177"></a>	m_TSelfControl.SetNumericValue( <span class="source_type">INT</span>(_CurrentOperative.Default.m_fSelfControl + <span class="source_int">0.5</span>), <span class="source_type">INT</span>(m_fSelfControl));
+<a name="178"></a>	m_TLeadership.SetNumericValue( <span class="source_type">INT</span>(_CurrentOperative.Default.m_fLeadership + <span class="source_int">0.5</span>), <span class="source_type">INT</span>(m_fLeadership));
+<a name="179"></a>	m_TObservation.SetNumericValue( <span class="source_type">INT</span>(_CurrentOperative.Default.m_fObservation + <span class="source_int">0.5</span>), <span class="source_type">INT</span>(m_fObservation));
+<a name="180"></a>
+<a name="181"></a>    <span class="source_comment">//Now we resize the window witch will strech
+</span><a name="182"></a>    <span class="source_comment">//the chart properly
+</span><a name="183"></a>
+<a name="184"></a>    m_LCAssault.WinWidth=       m_fAssault* m_fMaxChartWidth/<span class="source_int">100.00</span>;
+<a name="185"></a>    m_LCDemolitions.WinWidth=   m_fDemolitions* m_fMaxChartWidth/<span class="source_int">100.00</span>;
+<a name="186"></a>    m_LCElectronics.WinWidth=   m_fElectronics* m_fMaxChartWidth/<span class="source_int">100.00</span>;
+<a name="187"></a>    m_LCSniper.WinWidth=        m_fSniper* m_fMaxChartWidth/<span class="source_int">100.00</span>;
+<a name="188"></a>    m_LCStealth.WinWidth=       m_fStealth* m_fMaxChartWidth/<span class="source_int">100.00</span>;
+<a name="189"></a>    m_LCSelfControl.WinWidth=   m_fSelfControl* m_fMaxChartWidth/<span class="source_int">100.00</span>;
+<a name="190"></a>    m_LCLeadership.WinWidth=    m_fLeadership* m_fMaxChartWidth/<span class="source_int">100.00</span>;
+<a name="191"></a>    m_LCObservation.WinWidth=   m_fObservation* m_fMaxChartWidth/<span class="source_int">100.00</span>;
+<a name="192"></a>
+<a name="193"></a><span class="source_macro">#ifdefDEBUG
+</span><a name="194"></a>    if(bshowlog)
+<a name="195"></a>    {
+<a name="196"></a>        log(<span class="source_string">"////////////////////////////////////"</span>);
+<a name="197"></a>        log(<span class="source_string">"///////   ResizeCharts()     ///////"</span>);
+<a name="198"></a>        log(<span class="source_string">"////////////////////////////////////"</span>);
+<a name="199"></a>        log(<span class="source_string">"m_fMaxChartWidth"</span>@m_fMaxChartWidth);       
+<a name="200"></a>        
+<a name="201"></a>        log(<span class="source_string">"m_fAssault"</span>@m_fAssault);    
+<a name="202"></a>        log(<span class="source_string">"m_LCAssault.WinWidth"</span>@m_LCAssault.WinWidth);
+<a name="203"></a>        
+<a name="204"></a>        log(<span class="source_string">"m_fDemolitions"</span>@m_fDemolitions);    
+<a name="205"></a>        log(<span class="source_string">"m_LCDemolitions.WinWidth"</span>@m_LCDemolitions.WinWidth);
+<a name="206"></a>
+<a name="207"></a>        log(<span class="source_string">"m_fElectronics"</span>@m_fElectronics);    
+<a name="208"></a>        log(<span class="source_string">"m_LCElectronics.WinWidth"</span>@m_LCElectronics.WinWidth);
+<a name="209"></a>
+<a name="210"></a>        log(<span class="source_string">"////////////////////////////////////"</span>);
+<a name="211"></a>    }
+<a name="212"></a><span class="source_macro">#endif
+</span><a name="213"></a>}
+<a name="214"></a>
+<a name="215"></a>function Paint(<span class="source_type"><a href="../engine/canvas.html" class="source">Canvas</a></span> <span class="source_type">C</span>, <span class="source_type">FLOAT</span> X, <span class="source_type">FLOAT</span> <span class="source_type">Y</span>)
+<a name="216"></a>{    	
+<a name="217"></a>    <span class="source_type"><a href="../r6window/r6windowlookandfeel.html" class="source">R6WindowLookAndFeel</a></span>(LookAndFeel).DrawBGShading(Self, <span class="source_type">C</span>, <span class="source_int">0</span>, <span class="source_int">0</span>, WinWidth, WinHeight);    
+<a name="218"></a>}
+<a name="219"></a>
+<a name="220"></a>defaultproperties
+<a name="221"></a>{
+<a name="222"></a>     m_fAssault=<span class="source_int">100.000000</span>
+<a name="223"></a>     m_fDemolitions=<span class="source_int">100.000000</span>
+<a name="224"></a>     m_fElectronics=<span class="source_int">100.000000</span>
+<a name="225"></a>     m_fSniper=<span class="source_int">100.000000</span>
+<a name="226"></a>     m_fStealth=<span class="source_int">100.000000</span>
+<a name="227"></a>     m_fSelfControl=<span class="source_int">100.000000</span>
+<a name="228"></a>     m_fLeadership=<span class="source_int">100.000000</span>
+<a name="229"></a>     m_fObservation=<span class="source_int">100.000000</span>
+<a name="230"></a>     m_fNLeftPadding=<span class="source_int">7.000000</span>
+<a name="231"></a>     m_fBetweenLabelPadding=<span class="source_int">7.000000</span>
+<a name="232"></a>     m_fTopYPadding=<span class="source_int">7.000000</span>
+<a name="233"></a>     m_fTitleHeight=<span class="source_int">12.000000</span>
+<a name="234"></a>     m_fYPaddingBetweenElements=<span class="source_int">6.000000</span>
+<a name="235"></a>     m_fNumericLabelWidth=<span class="source_int">30.000000</span>
+<a name="236"></a>}
+<a name="237"></a></pre></td></tr></table></div>
+<hr />
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../r6menu/r6menu-overview.html">Package</a></td>
+	<td class="header"><a href="../r6menu/r6menuoperativeskills.html">Class</a></td>
+	<td class="header_hilight">Source</td>
+	<td class="header"><a class="header" href="../classtree.html#R6MenuOperativeSkills">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../Source_r6menu/r6menuoperativehistory.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../Source_r6menu/r6menuoperativeskillsbitmap.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+
+<div class="stats">Class file time: sam. 18/9/2004 14:39:54.000 - Creation time: mar. 26/5/2026 18:33:20.595 - Created with <a href="http://wiki.beyondunreal.com/wiki/UnCodeX" target="_blank">UnCodeX</a></div>
+
+</body>
+</html>

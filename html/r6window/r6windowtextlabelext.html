@@ -1,0 +1,516 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+	<title>UnCodeX - R6Window.R6WindowTextLabelExt</title>
+	<meta name="Generator" content="UnCodeX 241" />
+	<link rel="stylesheet" href="../DocStyle2.css" type="text/css" title="Original Purple" />
+	<link rel="alternative stylesheet" href="../DocStyle2-blue.css" type="text/css" title="Blue" />
+	<link rel="alternative stylesheet" href="../DocStyle2-red.css" type="text/css" title="Red" />
+	<!--[if IE]>
+	<link rel="stylesheet" href="../DocStyle2-msie.css" type="text/css" />
+	<![endif]-->
+	<script src="../styleswitcher.js" type="text/javascript"></script>
+</head>
+<body>
+
+<div class="header">
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../r6window/r6window-overview.html">Package</a></td>
+	<td class="header_hilight">Class</td>
+	<td class="header"><a href="../Source_r6window/r6windowtextlabelext.html">Source</a></td>
+	<td class="header"><a class="header" href="../classtree.html#R6WindowTextLabelExt">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../r6window/r6windowtextlabelcurved.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../r6window/r6windowtextlistbox.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html#r6window/r6windowtextlabelext.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+</div>
+<div class="spacer"></div>
+
+<h1><a href="../r6window/r6window-overview.html">R6Window</a>.R6WindowTextLabelExt</h1>
+
+<dl>
+<dt>Extends</dt><dd><a href="../r6window/r6windowsimpleframedwindowext.html">R6WindowSimpleFramedWindowExt</a></dd>
+
+</dl>
+
+<p></p>
+
+<pre class="tree"><a href="../core/core-overview.html">core</a>.<a href="../core/object.html">Object</a>
+|   
++-- <a href="../uwindow/uwindow-overview.html">UWindow</a>.<a href="../uwindow/uwindowbase.html">UWindowBase</a>
+   |   
+   +-- <a href="../uwindow/uwindow-overview.html">UWindow</a>.<a href="../uwindow/uwindowwindow.html">UWindowWindow</a>
+      |   
+      +-- <a href="../r6window/r6window-overview.html">R6Window</a>.<a href="../r6window/r6windowsimpleframedwindowext.html">R6WindowSimpleFramedWindowExt</a>
+         |   
+         +-- <a href="../r6window/r6window-overview.html">R6Window</a>.<a href="../r6window/r6windowtextlabelext.html">R6WindowTextLabelExt</a>
+</pre>
+
+
+
+<hr />
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Constants Summary</th>
+</tr>
+<tr><td width="40%"><a href="#_C_iMAX_SIZE_OF_TEXT_LABEL" name="C_iMAX_SIZE_OF_TEXT_LABEL" title="go to the details">C_iMAX_SIZE_OF_TEXT_LABEL</a></td><td width="10%">=</td><td width="50%">596</td></tr>
+<tr><td width="40%"><a href="#_iNumberOfLabelMax" name="iNumberOfLabelMax" title="go to the details">iNumberOfLabelMax</a></td><td width="10%">=</td><td width="50%">20</td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Contants from <a href="../uwindow/uwindow-overview.html">UWindow</a>.<a href="../uwindow/uwindowwindow.html">UWindowWindow</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../uwindow/uwindowwindow.html#DE_Change">DE_Change</a>, <a href="../uwindow/uwindowwindow.html#DE_Click">DE_Click</a>, <a href="../uwindow/uwindowwindow.html#DE_Created">DE_Created</a>, <a href="../uwindow/uwindowwindow.html#DE_DoubleClick">DE_DoubleClick</a>, <a href="../uwindow/uwindowwindow.html#DE_Enter">DE_Enter</a>, <a href="../uwindow/uwindowwindow.html#DE_EnterPressed">DE_EnterPressed</a>, <a href="../uwindow/uwindowwindow.html#DE_Exit">DE_Exit</a>, <a href="../uwindow/uwindowwindow.html#DE_HelpChanged">DE_HelpChanged</a>, <a href="../uwindow/uwindowwindow.html#DE_LMouseDown">DE_LMouseDown</a>, <a href="../uwindow/uwindowwindow.html#DE_MClick">DE_MClick</a>, <a href="../uwindow/uwindowwindow.html#DE_MouseEnter">DE_MouseEnter</a>, <a href="../uwindow/uwindowwindow.html#DE_MouseLeave">DE_MouseLeave</a>, <a href="../uwindow/uwindowwindow.html#DE_MouseMove">DE_MouseMove</a>, <a href="../uwindow/uwindowwindow.html#DE_RClick">DE_RClick</a>, <a href="../uwindow/uwindowwindow.html#DE_WheelDownPressed">DE_WheelDownPressed</a>, <a href="../uwindow/uwindowwindow.html#DE_WheelUpPressed">DE_WheelUpPressed</a></td>
+</tr>
+</table>
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th colspan="2" class="title">Variables Summary</th>
+</tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../uwindow/uwindowbase.html#TextAlign">TextAlign</a></td><td width="66%"><a href="#_Align" name="Align" title="go to the details">Align</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_m_bCheckToDrawLine" name="m_bCheckToDrawLine" title="go to the details">m_bCheckToDrawLine</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../engine/texture.html">Texture</a></td><td width="66%"><a href="#_m_BGTexture" name="m_BGTexture" title="go to the details">m_BGTexture</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_m_bRefresh" name="m_bRefresh" title="go to the details">m_bRefresh</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_m_bTextCenterToWindow" name="m_bTextCenterToWindow" title="go to the details">m_bTextCenterToWindow</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_m_bUpDownBG" name="m_bUpDownBG" title="go to the details">m_bUpDownBG</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">INT</td><td width="66%"><a href="#_m_Drawstyle" name="m_Drawstyle" title="go to the details">m_Drawstyle</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">FLOAT</td><td width="66%"><a href="#_m_fFontSpacing" name="m_fFontSpacing" title="go to the details">m_fFontSpacing</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">FLOAT</td><td width="66%"><a href="#_m_fLMarge" name="m_fLMarge" title="go to the details">m_fLMarge</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">font</td><td width="66%"><a href="#_m_Font" name="m_Font" title="go to the details">m_Font</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">FLOAT</td><td width="66%"><a href="#_m_fTextX" name="m_fTextX" title="go to the details">m_fTextX</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">FLOAT</td><td width="66%"><a href="#_m_fTextY" name="m_fTextY" title="go to the details">m_fTextY</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">FLOAT</td><td width="66%"><a href="#_m_fYLineOffset" name="m_fYLineOffset" title="go to the details">m_fYLineOffset</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">INT</td><td width="66%"><a href="#_m_iNumberOfLabel" name="m_iNumberOfLabel" title="go to the details">m_iNumberOfLabel</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../r6window/r6windowtextlabelext.html#TextLabel">TextLabel</a></td><td width="66%"><a href="#_m_sTextLabelArray[iNumberOfLabelMax]" name="m_sTextLabelArray[iNumberOfLabelMax]" title="go to the details">m_sTextLabelArray[iNumberOfLabelMax]</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">INT</td><td width="66%"><a href="#_m_TextDrawstyle" name="m_TextDrawstyle" title="go to the details">m_TextDrawstyle</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../core/object.html#Color">color</a></td><td width="66%"><a href="#_m_vLineColor" name="m_vLineColor" title="go to the details">m_vLineColor</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../core/object.html#Color">color</a></td><td width="66%"><a href="#_m_vTextColor" name="m_vTextColor" title="go to the details">m_vTextColor</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_Text" name="Text" title="go to the details">Text</a></td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Variables from <a href="../r6window/r6window-overview.html">R6Window</a>.<a href="../r6window/r6windowsimpleframedwindowext.html">R6WindowSimpleFramedWindowExt</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../r6window/r6windowsimpleframedwindowext.html#m_bDrawBackGround">m_bDrawBackGround</a>, <a href="../r6window/r6windowsimpleframedwindowext.html#m_BGTexture">m_BGTexture</a>, <a href="../r6window/r6windowsimpleframedwindowext.html#m_BGTextureRegion">m_BGTextureRegion</a>, <a href="../r6window/r6windowsimpleframedwindowext.html#m_bNoBorderToDraw">m_bNoBorderToDraw</a>, <a href="../r6window/r6windowsimpleframedwindowext.html#m_ClientArea">m_ClientArea</a>, <a href="../r6window/r6windowsimpleframedwindowext.html#m_ClientClass">m_ClientClass</a>, <a href="../r6window/r6windowsimpleframedwindowext.html#m_DrawStyle">m_DrawStyle</a>, <a href="../r6window/r6windowsimpleframedwindowext.html#m_eCornerColor[4]">m_eCornerColor[4]</a>, <a href="../r6window/r6windowsimpleframedwindowext.html#m_eCornerType">m_eCornerType</a>, <a href="../r6window/r6windowsimpleframedwindowext.html#m_fHBorderHeight">m_fHBorderHeight</a>, <a href="../r6window/r6windowsimpleframedwindowext.html#m_fHBorderOffset">m_fHBorderOffset</a>, <a href="../r6window/r6windowsimpleframedwindowext.html#m_fHBorderPadding">m_fHBorderPadding</a>, <a href="../r6window/r6windowsimpleframedwindowext.html#m_fVBorderOffset">m_fVBorderOffset</a>, <a href="../r6window/r6windowsimpleframedwindowext.html#m_fVBorderPadding">m_fVBorderPadding</a>, <a href="../r6window/r6windowsimpleframedwindowext.html#m_fVBorderWidth">m_fVBorderWidth</a>, <a href="../r6window/r6windowsimpleframedwindowext.html#m_HBorderTexture">m_HBorderTexture</a>, <a href="../r6window/r6windowsimpleframedwindowext.html#m_HBorderTextureRegion">m_HBorderTextureRegion</a>, <a href="../r6window/r6windowsimpleframedwindowext.html#m_sBorderForm[4]">m_sBorderForm[4]</a>, <a href="../r6window/r6windowsimpleframedwindowext.html#m_topLeftCornerR">m_topLeftCornerR</a>, <a href="../r6window/r6windowsimpleframedwindowext.html#m_topLeftCornerT">m_topLeftCornerT</a>, <a href="../r6window/r6windowsimpleframedwindowext.html#m_vBGColor">m_vBGColor</a>, <a href="../r6window/r6windowsimpleframedwindowext.html#m_VBorderTexture">m_VBorderTexture</a>, <a href="../r6window/r6windowsimpleframedwindowext.html#m_VBorderTextureRegion">m_VBorderTextureRegion</a></td>
+</tr>
+</table>
+<table>
+<tr>
+	<th class="inherittitle">Inherited Variables from <a href="../uwindow/uwindow-overview.html">UWindow</a>.<a href="../uwindow/uwindowwindow.html">UWindowWindow</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../uwindow/uwindowwindow.html#ActiveWindow">ActiveWindow</a>, <a href="../uwindow/uwindowwindow.html#bAcceptsFocus">bAcceptsFocus</a>, <a href="../uwindow/uwindowwindow.html#bAcceptsHotKeys">bAcceptsHotKeys</a>, <a href="../uwindow/uwindowwindow.html#bAlwaysAcceptsFocus">bAlwaysAcceptsFocus</a>, <a href="../uwindow/uwindowwindow.html#bAlwaysBehind">bAlwaysBehind</a>, <a href="../uwindow/uwindowwindow.html#bAlwaysOnTop">bAlwaysOnTop</a>, <a href="../uwindow/uwindowwindow.html#bIgnoreLDoubleClick">bIgnoreLDoubleClick</a>, <a href="../uwindow/uwindowwindow.html#bIgnoreMDoubleClick">bIgnoreMDoubleClick</a>, <a href="../uwindow/uwindowwindow.html#bIgnoreRDoubleClick">bIgnoreRDoubleClick</a>, <a href="../uwindow/uwindowwindow.html#bLeaveOnscreen">bLeaveOnscreen</a>, <a href="../uwindow/uwindowwindow.html#bMMouseDown">bMMouseDown</a>, <a href="../uwindow/uwindowwindow.html#bMouseDown">bMouseDown</a>, <a href="../uwindow/uwindowwindow.html#bNoClip">bNoClip</a>, <a href="../uwindow/uwindowwindow.html#bRMouseDown">bRMouseDown</a>, <a href="../uwindow/uwindowwindow.html#bTransient">bTransient</a>, <a href="../uwindow/uwindowwindow.html#bUWindowActive">bUWindowActive</a>, <a href="../uwindow/uwindowwindow.html#bWindowVisible">bWindowVisible</a>, <a href="../uwindow/uwindowwindow.html#ClickTime">ClickTime</a>, <a href="../uwindow/uwindowwindow.html#ClickX">ClickX</a>, <a href="../uwindow/uwindowwindow.html#ClickY">ClickY</a>, <a href="../uwindow/uwindowwindow.html#ClippingRegion">ClippingRegion</a>, <a href="../uwindow/uwindowwindow.html#Cursor">Cursor</a>, <a href="../uwindow/uwindowwindow.html#FirstChildWindow">FirstChildWindow</a>, <a href="../uwindow/uwindowwindow.html#LastChildWindow">LastChildWindow</a>, <a href="../uwindow/uwindowwindow.html#LookAndFeel">LookAndFeel</a>, <a href="../uwindow/uwindowwindow.html#MClickTime">MClickTime</a>, <a href="../uwindow/uwindowwindow.html#MClickX">MClickX</a>, <a href="../uwindow/uwindowwindow.html#MClickY">MClickY</a>, <a href="../uwindow/uwindowwindow.html#ModalWindow">ModalWindow</a>, <a href="../uwindow/uwindowwindow.html#m_bDisplayCheckKeyFocus">m_bDisplayCheckKeyFocus</a>, <a href="../uwindow/uwindowwindow.html#m_bNotDisplayBkg">m_bNotDisplayBkg</a>, <a href="../uwindow/uwindowwindow.html#m_BorderColor">m_BorderColor</a>, <a href="../uwindow/uwindowwindow.html#m_BorderStyle">m_BorderStyle</a>, <a href="../uwindow/uwindowwindow.html#m_BorderTexture">m_BorderTexture</a>, <a href="../uwindow/uwindowwindow.html#m_BorderTextureRegion">m_BorderTextureRegion</a>, <a href="../uwindow/uwindowwindow.html#m_bPreCalculatePos">m_bPreCalculatePos</a>, <a href="../uwindow/uwindowwindow.html#NextSiblingWindow">NextSiblingWindow</a>, <a href="../uwindow/uwindowwindow.html#OrgXOffset">OrgXOffset</a>, <a href="../uwindow/uwindowwindow.html#OrgYOffset">OrgYOffset</a>, <a href="../uwindow/uwindowwindow.html#OwnerWindow">OwnerWindow</a>, <a href="../uwindow/uwindowwindow.html#ParentWindow">ParentWindow</a>, <a href="../uwindow/uwindowwindow.html#PrevSiblingWindow">PrevSiblingWindow</a>, <a href="../uwindow/uwindowwindow.html#RClickTime">RClickTime</a>, <a href="../uwindow/uwindowwindow.html#RClickX">RClickX</a>, <a href="../uwindow/uwindowwindow.html#RClickY">RClickY</a>, <a href="../uwindow/uwindowwindow.html#Root">Root</a>, <a href="../uwindow/uwindowwindow.html#ToolTipString">ToolTipString</a>, <a href="../uwindow/uwindowwindow.html#WinHeight">WinHeight</a>, <a href="../uwindow/uwindowwindow.html#WinLeft">WinLeft</a>, <a href="../uwindow/uwindowwindow.html#WinTop">WinTop</a>, <a href="../uwindow/uwindowwindow.html#WinWidth">WinWidth</a></td>
+</tr>
+</table>
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Enumerations Summary</th>
+</tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Enumerations from <a href="../r6window/r6window-overview.html">R6Window</a>.<a href="../r6window/r6windowsimpleframedwindowext.html">R6WindowSimpleFramedWindowExt</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../r6window/r6windowsimpleframedwindowext.html#eBorderType">eBorderType</a>, <a href="../r6window/r6windowsimpleframedwindowext.html#eCornerType">eCornerType</a></td>
+</tr>
+</table>
+<table>
+<tr>
+	<th class="inherittitle">Inherited Enumerations from <a href="../uwindow/uwindow-overview.html">UWindow</a>.<a href="../uwindow/uwindowwindow.html">UWindowWindow</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../uwindow/uwindowwindow.html#eR6MenuWidgetMessage">eR6MenuWidgetMessage</a>, <a href="../uwindow/uwindowwindow.html#WinMessage">WinMessage</a></td>
+</tr>
+</table>
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Structures Summary</th>
+</tr>
+<tr><td><a href="#_TextLabel" name="TextLabel" title="go to the details">TextLabel</a><br /><span class="small">TextFont, TextColorFont, m_szTextLabel, X, XTextPos, Y, fWidth, fHeight, fXLine, Align, bDrawLineAtEnd, bUpDownBG, bResizeToText</span></td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Structures from <a href="../r6window/r6window-overview.html">R6Window</a>.<a href="../r6window/r6windowsimpleframedwindowext.html">R6WindowSimpleFramedWindowExt</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../r6window/r6windowsimpleframedwindowext.html#stBorderForm">stBorderForm</a></td>
+</tr>
+</table>
+<table>
+<tr>
+	<th class="inherittitle">Inherited Structures from <a href="../uwindow/uwindow-overview.html">UWindow</a>.<a href="../uwindow/uwindowwindow.html">UWindowWindow</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../uwindow/uwindowwindow.html#MouseCursor">MouseCursor</a></td>
+</tr>
+</table>
+
+
+<br />
+
+
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Functions Summary</th>
+</tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>INT&nbsp;</td><td><a href="#_AddTextLabel-" name="AddTextLabel" title="go to the details">AddTextLabel</a> (string _szTextToAdd, FLOAT _X, FLOAT _Y, FLOAT _fWidth, <a href="../uwindow/uwindowbase.html#TextAlign">TextAlign</a> _Align, BOOL _bDrawLineAtEnd, optional FLOAT _fHeight, optional BOOL _bResizeToText))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_BeforePaint-" name="BeforePaint" title="go to the details">BeforePaint</a> (<a href="../engine/canvas.html">Canvas</a> C, FLOAT X, FLOAT Y))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_ChangeColorLabel-" name="ChangeColorLabel" title="go to the details">ChangeColorLabel</a> (<a href="../core/object.html#Color">Color</a> _vNewColorText, INT _iIndex))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_ChangeTextLabel-" name="ChangeTextLabel" title="go to the details">ChangeTextLabel</a> (string _szNewStringLabel, INT _iIndex))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_Clear-" name="Clear" title="go to the details">Clear</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_Created-" name="Created" title="go to the details">Created</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_DrawUpDownBG-" name="DrawUpDownBG" title="go to the details">DrawUpDownBG</a> (<a href="../engine/canvas.html">Canvas</a> C, FLOAT _fX, FLOAT _fY, FLOAT _fW, FLOAT _fH))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td><a href="../core/object.html#Color">Color</a>&nbsp;</td><td><a href="#_GetTextColor-" name="GetTextColor" title="go to the details">GetTextColor</a> (INT _iIndex))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>string&nbsp;</td><td><a href="#_GetTextLabel-" name="GetTextLabel" title="go to the details">GetTextLabel</a> (INT _iIndex))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_Paint-" name="Paint" title="go to the details">Paint</a> (<a href="../engine/canvas.html">Canvas</a> C, float X, float Y))<br /><span class="function_state"></span></td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Functions from <a href="../r6window/r6window-overview.html">R6Window</a>.<a href="../r6window/r6windowsimpleframedwindowext.html">R6WindowSimpleFramedWindowExt</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../r6window/r6windowsimpleframedwindowext.html#ActiveBackGround">ActiveBackGround</a>, <a href="../r6window/r6windowsimpleframedwindowext.html#ActiveBorder">ActiveBorder</a>, <a href="../r6window/r6windowsimpleframedwindowext.html#AfterPaint">AfterPaint</a>, <a href="../r6window/r6windowsimpleframedwindowext.html#CreateClientWindow">CreateClientWindow</a>, <a href="../r6window/r6windowsimpleframedwindowext.html#Created">Created</a>, <a href="../r6window/r6windowsimpleframedwindowext.html#GetActivateBorder">GetActivateBorder</a>, <a href="../r6window/r6windowsimpleframedwindowext.html#Paint">Paint</a>, <a href="../r6window/r6windowsimpleframedwindowext.html#SetBorderParam">SetBorderParam</a>, <a href="../r6window/r6windowsimpleframedwindowext.html#SetCornerColor">SetCornerColor</a>, <a href="../r6window/r6windowsimpleframedwindowext.html#SetNoBorder">SetNoBorder</a></td>
+</tr>
+</table>
+<table>
+<tr>
+	<th class="inherittitle">Inherited Functions from <a href="../uwindow/uwindow-overview.html">UWindow</a>.<a href="../uwindow/uwindowwindow.html">UWindowWindow</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../uwindow/uwindowwindow.html#Activated">Activated</a>, <a href="../uwindow/uwindowwindow.html#ActivateWindow">ActivateWindow</a>, <a href="../uwindow/uwindowwindow.html#AfterPaint">AfterPaint</a>, <a href="../uwindow/uwindowwindow.html#ApplyResolutionOnWindowsPos">ApplyResolutionOnWindowsPos</a>, <a href="../uwindow/uwindowwindow.html#BeforePaint">BeforePaint</a>, <a href="../uwindow/uwindowwindow.html#BeginPlay">BeginPlay</a>, <a href="../uwindow/uwindowwindow.html#BringToFront">BringToFront</a>, <a href="../uwindow/uwindowwindow.html#CancelAcceptsFocus">CancelAcceptsFocus</a>, <a href="../uwindow/uwindowwindow.html#CheckKeyFocusWindow">CheckKeyFocusWindow</a>, <a href="../uwindow/uwindowwindow.html#CheckMousePassThrough">CheckMousePassThrough</a>, <a href="../uwindow/uwindowwindow.html#Click">Click</a>, <a href="../uwindow/uwindowwindow.html#ClipText">ClipText</a>, <a href="../uwindow/uwindowwindow.html#ClipTextWidth">ClipTextWidth</a>, <a href="../uwindow/uwindowwindow.html#Close">Close</a>, <a href="../uwindow/uwindowwindow.html#Created">Created</a>, <a href="../uwindow/uwindowwindow.html#CreateWindow">CreateWindow</a>, <a href="../uwindow/uwindowwindow.html#Deactivated">Deactivated</a>, <a href="../uwindow/uwindowwindow.html#DoTick">DoTick</a>, <a href="../uwindow/uwindowwindow.html#DoubleClick">DoubleClick</a>, <a href="../uwindow/uwindowwindow.html#DrawClippedTexture">DrawClippedTexture</a>, <a href="../uwindow/uwindowwindow.html#DrawHorizTiledPieces">DrawHorizTiledPieces</a>, <a href="../uwindow/uwindowwindow.html#DrawMiscBevel">DrawMiscBevel</a>, <a href="../uwindow/uwindowwindow.html#DrawSimpleBackGround">DrawSimpleBackGround</a>, <a href="../uwindow/uwindowwindow.html#DrawSimpleBorder">DrawSimpleBorder</a>, <a href="../uwindow/uwindowwindow.html#DrawStretchedTexture">DrawStretchedTexture</a>, <a href="../uwindow/uwindowwindow.html#DrawStretchedTextureSegment">DrawStretchedTextureSegment</a>, <a href="../uwindow/uwindowwindow.html#DrawStretchedTextureSegmentRot">DrawStretchedTextureSegmentRot</a>, <a href="../uwindow/uwindowwindow.html#DrawUpBevel">DrawUpBevel</a>, <a href="../uwindow/uwindowwindow.html#DrawVertTiledPieces">DrawVertTiledPieces</a>, <a href="../uwindow/uwindowwindow.html#EscClose">EscClose</a>, <a href="../uwindow/uwindowwindow.html#FindChildWindow">FindChildWindow</a>, <a href="../uwindow/uwindowwindow.html#FindWindowUnder">FindWindowUnder</a>, <a href="../uwindow/uwindowwindow.html#FocusOtherWindow">FocusOtherWindow</a>, <a href="../uwindow/uwindowwindow.html#FocusWindow">FocusWindow</a>, <a href="../uwindow/uwindowwindow.html#GetButtonsDefinesUnique">GetButtonsDefinesUnique</a>, <a href="../uwindow/uwindowwindow.html#GetDesiredDimensions">GetDesiredDimensions</a>, <a href="../uwindow/uwindowwindow.html#GetEntryLevel">GetEntryLevel</a>, <a href="../uwindow/uwindowwindow.html#GetLevel">GetLevel</a>, <a href="../uwindow/uwindowwindow.html#GetLookAndFeelTexture">GetLookAndFeelTexture</a>, <a href="../uwindow/uwindowwindow.html#GetMouseXY">GetMouseXY</a>, <a href="../uwindow/uwindowwindow.html#GetNotifyMsg">GetNotifyMsg</a>, <a href="../uwindow/uwindowwindow.html#GetParent">GetParent</a>, <a href="../uwindow/uwindowwindow.html#GetPlayerOwner">GetPlayerOwner</a>, <a href="../uwindow/uwindowwindow.html#GetTime">GetTime</a>, <a href="../uwindow/uwindowwindow.html#GlobalToWindow">GlobalToWindow</a>, <a href="../uwindow/uwindowwindow.html#HideChildWindow">HideChildWindow</a>, <a href="../uwindow/uwindowwindow.html#HideWindow">HideWindow</a>, <a href="../uwindow/uwindowwindow.html#HotKeyDown">HotKeyDown</a>, <a href="../uwindow/uwindowwindow.html#HotKeyUp">HotKeyUp</a>, <a href="../uwindow/uwindowwindow.html#IsActive">IsActive</a>, <a href="../uwindow/uwindowwindow.html#KeyDown">KeyDown</a>, <a href="../uwindow/uwindowwindow.html#KeyFocusEnter">KeyFocusEnter</a>, <a href="../uwindow/uwindowwindow.html#KeyFocusExit">KeyFocusExit</a>, <a href="../uwindow/uwindowwindow.html#KeyType">KeyType</a>, <a href="../uwindow/uwindowwindow.html#KeyUp">KeyUp</a>, <a href="../uwindow/uwindowwindow.html#LMouseDown">LMouseDown</a>, <a href="../uwindow/uwindowwindow.html#LMouseUp">LMouseUp</a>, <a href="../uwindow/uwindowwindow.html#MClick">MClick</a>, <a href="../uwindow/uwindowwindow.html#MDoubleClick">MDoubleClick</a>, <a href="../uwindow/uwindowwindow.html#MenuLoadProfile">MenuLoadProfile</a>, <a href="../uwindow/uwindowwindow.html#MessageBox">MessageBox</a>, <a href="../uwindow/uwindowwindow.html#MessageBoxDone">MessageBoxDone</a>, <a href="../uwindow/uwindowwindow.html#MessageClients">MessageClients</a>, <a href="../uwindow/uwindowwindow.html#MMouseDown">MMouseDown</a>, <a href="../uwindow/uwindowwindow.html#MMouseUp">MMouseUp</a>, <a href="../uwindow/uwindowwindow.html#MouseEnter">MouseEnter</a>, <a href="../uwindow/uwindowwindow.html#MouseIsOver">MouseIsOver</a>, <a href="../uwindow/uwindowwindow.html#MouseLeave">MouseLeave</a>, <a href="../uwindow/uwindowwindow.html#MouseMove">MouseMove</a>, <a href="../uwindow/uwindowwindow.html#MouseUpDown">MouseUpDown</a>, <a href="../uwindow/uwindowwindow.html#MouseWheelDown">MouseWheelDown</a>, <a href="../uwindow/uwindowwindow.html#MouseWheelUp">MouseWheelUp</a>, <a href="../uwindow/uwindowwindow.html#NotifyAfterLevelChange">NotifyAfterLevelChange</a>, <a href="../uwindow/uwindowwindow.html#NotifyBeforeLevelChange">NotifyBeforeLevelChange</a>, <a href="../uwindow/uwindowwindow.html#NotifyQuitUnreal">NotifyQuitUnreal</a>, <a href="../uwindow/uwindowwindow.html#NotifyWindow">NotifyWindow</a>, <a href="../uwindow/uwindowwindow.html#Paint">Paint</a>, <a href="../uwindow/uwindowwindow.html#PaintClients">PaintClients</a>, <a href="../uwindow/uwindowwindow.html#ParseAmpersand">ParseAmpersand</a>, <a href="../uwindow/uwindowwindow.html#PopUpBoxDone">PopUpBoxDone</a>, <a href="../uwindow/uwindowwindow.html#ProcessMenuKey">ProcessMenuKey</a>, <a href="../uwindow/uwindowwindow.html#PropagateKey">PropagateKey</a>, <a href="../uwindow/uwindowwindow.html#RClick">RClick</a>, <a href="../uwindow/uwindowwindow.html#RDoubleClick">RDoubleClick</a>, <a href="../uwindow/uwindowwindow.html#RemoveAmpersand">RemoveAmpersand</a>, <a href="../uwindow/uwindowwindow.html#ReplaceText">ReplaceText</a>, <a href="../uwindow/uwindowwindow.html#Resized">Resized</a>, <a href="../uwindow/uwindowwindow.html#ResolutionChanged">ResolutionChanged</a>, <a href="../uwindow/uwindowwindow.html#RMouseDown">RMouseDown</a>, <a href="../uwindow/uwindowwindow.html#RMouseUp">RMouseUp</a>, <a href="../uwindow/uwindowwindow.html#SaveConfigs">SaveConfigs</a>, <a href="../uwindow/uwindowwindow.html#SendMessage">SendMessage</a>, <a href="../uwindow/uwindowwindow.html#SendToBack">SendToBack</a>, <a href="../uwindow/uwindowwindow.html#SetAcceptsFocus">SetAcceptsFocus</a>, <a href="../uwindow/uwindowwindow.html#SetAcceptsHotKeys">SetAcceptsHotKeys</a>, <a href="../uwindow/uwindowwindow.html#SetBorderColor">SetBorderColor</a>, <a href="../uwindow/uwindowwindow.html#SetCursor">SetCursor</a>, <a href="../uwindow/uwindowwindow.html#SetMouseWindow">SetMouseWindow</a>, <a href="../uwindow/uwindowwindow.html#SetParent">SetParent</a>, <a href="../uwindow/uwindowwindow.html#SetServerOptions">SetServerOptions</a>, <a href="../uwindow/uwindowwindow.html#SetSize">SetSize</a>, <a href="../uwindow/uwindowwindow.html#ShowChildWindow">ShowChildWindow</a>, <a href="../uwindow/uwindowwindow.html#ShowModal">ShowModal</a>, <a href="../uwindow/uwindowwindow.html#ShowWindow">ShowWindow</a>, <a href="../uwindow/uwindowwindow.html#StripCRLF">StripCRLF</a>, <a href="../uwindow/uwindowwindow.html#TextSize">TextSize</a>, <a href="../uwindow/uwindowwindow.html#Tick">Tick</a>, <a href="../uwindow/uwindowwindow.html#ToolTip">ToolTip</a>, <a href="../uwindow/uwindowwindow.html#WaitModal">WaitModal</a>, <a href="../uwindow/uwindowwindow.html#WindowEvent">WindowEvent</a>, <a href="../uwindow/uwindowwindow.html#WindowHidden">WindowHidden</a>, <a href="../uwindow/uwindowwindow.html#WindowIsVisible">WindowIsVisible</a>, <a href="../uwindow/uwindowwindow.html#WindowShown">WindowShown</a>, <a href="../uwindow/uwindowwindow.html#WindowToGlobal">WindowToGlobal</a>, <a href="../uwindow/uwindowwindow.html#WrapClipText">WrapClipText</a></td>
+</tr>
+</table>
+
+
+<br />
+
+
+
+<hr />
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Constants Detail</th>
+</tr>
+</table>
+
+<h4><a name="_C_iMAX_SIZE_OF_TEXT_LABEL" class="hidden"></a>C_iMAX_SIZE_OF_TEXT_LABEL <a href="../Source_r6window/r6windowtextlabelext.html#12" class="small">Source code</a></h4>
+<div class="declaration">const C_iMAX_SIZE_OF_TEXT_LABEL = <span class="source_int">596</span>;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_iNumberOfLabelMax" class="hidden"></a>iNumberOfLabelMax <a href="../Source_r6window/r6windowtextlabelext.html#11" class="small">Source code</a></h4>
+<div class="declaration">const iNumberOfLabelMax = <span class="source_int">20</span>;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th class="title">Variables Detail</th>
+</tr>
+</table>
+
+<h4><a name="_Align" class="hidden"></a>Align <a href="../Source_r6window/r6windowtextlabelext.html#33" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../uwindow/uwindowbase.html#TextAlign" class="source">TextAlign</a></span> Align;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_bCheckToDrawLine" class="hidden"></a>m_bCheckToDrawLine <a href="../Source_r6window/r6windowtextlabelext.html#51" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">bool</span> m_bCheckToDrawLine;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_BGTexture" class="hidden"></a>m_BGTexture <a href="../Source_r6window/r6windowtextlabelext.html#41" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../engine/texture.html" class="source">Texture</a></span> m_BGTexture;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_bRefresh" class="hidden"></a>m_bRefresh <a href="../Source_r6window/r6windowtextlabelext.html#50" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">bool</span> m_bRefresh;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_bTextCenterToWindow" class="hidden"></a>m_bTextCenterToWindow <a href="../Source_r6window/r6windowtextlabelext.html#52" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">bool</span> m_bTextCenterToWindow;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_bUpDownBG" class="hidden"></a>m_bUpDownBG <a href="../Source_r6window/r6windowtextlabelext.html#53" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">bool</span> m_bUpDownBG;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_Drawstyle" class="hidden"></a>m_Drawstyle <a href="../Source_r6window/r6windowtextlabelext.html#47" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">INT</span> m_Drawstyle;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_fFontSpacing" class="hidden"></a>m_fFontSpacing <a href="../Source_r6window/r6windowtextlabelext.html#37" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">FLOAT</span> m_fFontSpacing;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_fLMarge" class="hidden"></a>m_fLMarge <a href="../Source_r6window/r6windowtextlabelext.html#38" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">FLOAT</span> m_fLMarge;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_Font" class="hidden"></a>m_Font <a href="../Source_r6window/r6windowtextlabelext.html#32" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">font</span> m_Font;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_fTextX" class="hidden"></a>m_fTextX <a href="../Source_r6window/r6windowtextlabelext.html#35" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">FLOAT</span> m_fTextX;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_fTextY" class="hidden"></a>m_fTextY <a href="../Source_r6window/r6windowtextlabelext.html#35" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">FLOAT</span> m_fTextY;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_fYLineOffset" class="hidden"></a>m_fYLineOffset <a href="../Source_r6window/r6windowtextlabelext.html#39" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">FLOAT</span> m_fYLineOffset;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_iNumberOfLabel" class="hidden"></a>m_iNumberOfLabel <a href="../Source_r6window/r6windowtextlabelext.html#48" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">INT</span> m_iNumberOfLabel;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_sTextLabelArray[iNumberOfLabelMax]" class="hidden"></a>m_sTextLabelArray[iNumberOfLabelMax] <a href="../Source_r6window/r6windowtextlabelext.html#55" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../r6window/r6windowtextlabelext.html#TextLabel" class="source">TextLabel</a></span> m_sTextLabelArray[iNumberOfLabelMax];</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_TextDrawstyle" class="hidden"></a>m_TextDrawstyle <a href="../Source_r6window/r6windowtextlabelext.html#46" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">INT</span> m_TextDrawstyle;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_vLineColor" class="hidden"></a>m_vLineColor <a href="../Source_r6window/r6windowtextlabelext.html#44" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../core/object.html#Color" class="source">color</a></span> m_vLineColor;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_vTextColor" class="hidden"></a>m_vTextColor <a href="../Source_r6window/r6windowtextlabelext.html#43" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../core/object.html#Color" class="source">color</a></span> m_vTextColor;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_Text" class="hidden"></a>Text <a href="../Source_r6window/r6windowtextlabelext.html#31" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">string</span> <span class="source_type">Text</span>;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+
+
+<br />
+
+
+
+<table class="title">
+<tr>
+	<th class="title">Structures Detail</th>
+</tr>
+</table>
+
+<h4><a name="_TextLabel" class="hidden"></a>TextLabel <a href="../Source_r6window/r6windowtextlabelext.html#14" class="small">Source code</a></h4>
+<div class="declaration">struct <span class="source_type"><a href="../r6window/r6windowtextlabelext.html#TextLabel" class="source">TextLabel</a></span><br />
+{<blockquote>var <span class="source_type"><a href="../uwindow/uwindowbase.html#TextAlign" class="source">TextAlign</a></span> Align;<br />
+var <span class="source_type">bool</span> bDrawLineAtEnd;<br />
+var <span class="source_type">BOOL</span> bResizeToText;<br />
+var <span class="source_type">bool</span> bUpDownBG;<br />
+var <span class="source_type">FLOAT</span> <span class="source_type">fHeight</span>;<br />
+var <span class="source_type">FLOAT</span> <span class="source_type">fWidth</span>;<br />
+var <span class="source_type">FLOAT</span> fXLine;<br />
+var <span class="source_type">string</span> m_szTextLabel;<br />
+var <span class="source_type"><a href="../core/object.html#Color" class="source">Color</a></span> TextColorFont;<br />
+var <span class="source_type">Font</span> TextFont;<br />
+var <span class="source_type">FLOAT</span> X;<br />
+var <span class="source_type">FLOAT</span> XTextPos;<br />
+var <span class="source_type">FLOAT</span> Y;<br />
+</blockquote>};
+</div>
+<blockquote class="comment">
+
+<br />
+
+</blockquote>
+<hr class="small" />
+
+
+<br />
+
+
+
+<table class="title">
+<tr>
+	<th class="title">Functions Detail</th>
+</tr>
+</table>
+
+<h4><a name="_AddTextLabel-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> AddTextLabel <span class="function_state"></span> <a href="../Source_r6window/r6windowtextlabelext.html#245" class="small">Source code</a></h4>
+<div class="declaration"> function <span class="source_type">INT</span> AddTextLabel ( <span class="source_type">string</span> _szTextToAdd, <span class="source_type">FLOAT</span> _X, <span class="source_type">FLOAT</span> _Y, <span class="source_type">FLOAT</span> _fWidth, <span class="source_type"><a href="../uwindow/uwindowbase.html#TextAlign" class="source">TextAlign</a></span> _Align, <span class="source_type">BOOL</span> _bDrawLineAtEnd, optional <span class="source_type">FLOAT</span> <span class="source_type">_fHeight</span>, optional <span class="source_type">BOOL</span> _bResizeToText) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_BeforePaint-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> BeforePaint <span class="function_state"></span> <a href="../Source_r6window/r6windowtextlabelext.html#63" class="small">Source code</a></h4>
+<div class="declaration"> function  BeforePaint ( <span class="source_type"><a href="../engine/canvas.html" class="source">Canvas</a></span> <span class="source_type">C</span>, <span class="source_type">FLOAT</span> X, <span class="source_type">FLOAT</span> Y) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ChangeColorLabel-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> ChangeColorLabel <span class="function_state"></span> <a href="../Source_r6window/r6windowtextlabelext.html#291" class="small">Source code</a></h4>
+<div class="declaration"> function  ChangeColorLabel ( <span class="source_type"><a href="../core/object.html#Color" class="source">Color</a></span> _vNewColorText, <span class="source_type">INT</span> _iIndex) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ChangeTextLabel-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> ChangeTextLabel <span class="function_state"></span> <a href="../Source_r6window/r6windowtextlabelext.html#282" class="small">Source code</a></h4>
+<div class="declaration"> function  ChangeTextLabel ( <span class="source_type">string</span> _szNewStringLabel, <span class="source_type">INT</span> _iIndex) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_Clear-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> Clear <span class="function_state"></span> <a href="../Source_r6window/r6windowtextlabelext.html#307" class="small">Source code</a></h4>
+<div class="declaration"> function  Clear ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_Created-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> Created <span class="function_state"></span> <a href="../Source_r6window/r6windowtextlabelext.html#58" class="small">Source code</a></h4>
+<div class="declaration"> function  Created ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_DrawUpDownBG-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> DrawUpDownBG <span class="function_state"></span> <a href="../Source_r6window/r6windowtextlabelext.html#224" class="small">Source code</a></h4>
+<div class="declaration"> function  DrawUpDownBG ( <span class="source_type"><a href="../engine/canvas.html" class="source">Canvas</a></span> <span class="source_type">C</span>, <span class="source_type">FLOAT</span> _fX, <span class="source_type">FLOAT</span> _fY, <span class="source_type">FLOAT</span> _fW, <span class="source_type">FLOAT</span> _fH) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GetTextColor-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> GetTextColor <span class="function_state"></span> <a href="../Source_r6window/r6windowtextlabelext.html#302" class="small">Source code</a></h4>
+<div class="declaration"> function <span class="source_type"><a href="../core/object.html#Color" class="source">Color</a></span> GetTextColor ( <span class="source_type">INT</span> _iIndex) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GetTextLabel-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> GetTextLabel <span class="function_state"></span> <a href="../Source_r6window/r6windowtextlabelext.html#297" class="small">Source code</a></h4>
+<div class="declaration"> function <span class="source_type">string</span> GetTextLabel ( <span class="source_type">INT</span> _iIndex) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_Paint-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> Paint <span class="function_state"></span> <a href="../Source_r6window/r6windowtextlabelext.html#154" class="small">Source code</a></h4>
+<div class="declaration"> function  Paint ( <span class="source_type"><a href="../engine/canvas.html" class="source">Canvas</a></span> <span class="source_type">C</span>, <span class="source_type">float</span> X, <span class="source_type">float</span> Y) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+
+
+<br />
+
+
+<table class="title">
+<tr>
+	<th class="title">Defaultproperties</th>
+</tr>
+</table>
+<br />
+<div class="source"><table class="source"><tr><td class="source"><pre class="source">defaultproperties
+{
+     m_TextDrawstyle=<span class="source_int">5</span>
+     m_DrawStyle=<span class="source_int">5</span>
+     m_bRefresh=True
+     m_fLMarge=<span class="source_int">2.000000</span>
+     m_fYLineOffset=<span class="source_int">1.000000</span>
+}
+</pre></td></tr></table></div>
+
+
+
+<hr />
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../r6window/r6window-overview.html">Package</a></td>
+	<td class="header_hilight">Class</td>
+	<td class="header"><a href="../Source_r6window/r6windowtextlabelext.html">Source</a></td>
+	<td class="header"><a class="header" href="../classtree.html#R6WindowTextLabelExt">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../r6window/r6windowtextlabelcurved.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../r6window/r6windowtextlistbox.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+
+<div class="stats">Creation time: mar. 26/5/2026 18:33:15.394 - Created with <a href="http://wiki.beyondunreal.com/wiki/UnCodeX" target="_blank">UnCodeX</a></div>
+
+</body>
+</html>

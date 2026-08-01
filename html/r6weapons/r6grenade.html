@@ -1,0 +1,604 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+	<title>UnCodeX - R6Weapons.R6Grenade</title>
+	<meta name="Generator" content="UnCodeX 241" />
+	<link rel="stylesheet" href="../DocStyle2.css" type="text/css" title="Original Purple" />
+	<link rel="alternative stylesheet" href="../DocStyle2-blue.css" type="text/css" title="Blue" />
+	<link rel="alternative stylesheet" href="../DocStyle2-red.css" type="text/css" title="Red" />
+	<!--[if IE]>
+	<link rel="stylesheet" href="../DocStyle2-msie.css" type="text/css" />
+	<![endif]-->
+	<script src="../styleswitcher.js" type="text/javascript"></script>
+</head>
+<body>
+
+<div class="header">
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../r6weapons/r6weapons-overview.html">Package</a></td>
+	<td class="header_hilight">Class</td>
+	<td class="header"><a href="../Source_r6weapons/r6grenade.html">Source</a></td>
+	<td class="header"><a class="header" href="../classtree.html#R6Grenade">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../r6weapons/r6gadget.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../r6weapons/r6grenadereticule.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html#r6weapons/r6grenade.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+</div>
+<div class="spacer"></div>
+
+<h1><a href="../r6weapons/r6weapons-overview.html">R6Weapons</a>.R6Grenade</h1>
+
+<dl>
+<dt>Extends</dt><dd><a href="../r6weapons/r6bullet.html">R6Bullet</a></dd>
+<dt>Modifiers</dt><dd>abstract native </dd>
+</dl>
+
+<p></p>
+
+<pre class="tree"><a href="../core/core-overview.html">core</a>.<a href="../core/object.html">Object</a>
+|   
++-- <a href="../engine/engine-overview.html">engine</a>.<a href="../engine/actor.html">Actor</a>
+   |   
+   +-- <a href="../r6abstract/r6abstract-overview.html">R6Abstract</a>.<a href="../r6abstract/r6abstractbullet.html">R6AbstractBullet</a>
+      |   
+      +-- <a href="../r6weapons/r6weapons-overview.html">R6Weapons</a>.<a href="../r6weapons/r6bullet.html">R6Bullet</a>
+         |   
+         +-- <a href="../r6weapons/r6weapons-overview.html">R6Weapons</a>.<a href="../r6weapons/r6grenade.html">R6Grenade</a>
+</pre>
+
+<h4>Direct Known Subclasses:</h4>
+<blockquote>
+	<a href="../r6weapons/r6demolitionsunit.html">R6DemolitionsUnit</a>, <a href="../r6weapons/r6flashbang.html">R6FlashBang</a>, <a href="../r6weapons/r6fraggrenade.html">R6FragGrenade</a>, <a href="../r6weapons/r6teargasgrenade.html">R6TearGasGrenade</a>
+</blockquote>
+
+<hr />
+
+
+
+<table class="title">
+<tr>
+	<th colspan="2" class="title">Variables Summary</th>
+</tr>
+<tr><td nowrap="nowrap" width="33%">BOOL</td><td width="66%"><a href="#_m_bDestroyedByImpact" name="m_bDestroyedByImpact" title="go to the details">m_bDestroyedByImpact</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">BOOL</td><td width="66%"><a href="#_m_bFirstImpact" name="m_bFirstImpact" title="go to the details">m_bFirstImpact</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../engine/actor.html#ESoundType">ESoundType</a></td><td width="66%"><a href="#_m_eExplosionSoundType" name="m_eExplosionSoundType" title="go to the details">m_eExplosionSoundType</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../engine/pawn.html#EGrenadeType">Pawn.EGrenadeType</a></td><td width="66%"><a href="#_m_eGrenadeType" name="m_eGrenadeType" title="go to the details">m_eGrenadeType</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../engine/actor.html#EPhysics">Actor.EPhysics</a></td><td width="66%"><a href="#_m_eOldPhysic" name="m_eOldPhysic" title="go to the details">m_eOldPhysic</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">FLOAT</td><td width="66%"><a href="#_m_fDuration" name="m_fDuration" title="go to the details">m_fDuration</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">FLOAT</td><td width="66%"><a href="#_m_fEffectiveOutsideKillRadius" name="m_fEffectiveOutsideKillRadius" title="go to the details">m_fEffectiveOutsideKillRadius</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">FLOAT</td><td width="66%"><a href="#_m_fShakeRadius" name="m_fShakeRadius" title="go to the details">m_fShakeRadius</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">class&lt;<a href="../r6engine/r6grenadedecal.html">R6GrenadeDecal</a>&gt;</td><td width="66%"><a href="#_m_GrenadeDecalClass" name="m_GrenadeDecalClass" title="go to the details">m_GrenadeDecalClass</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../r6weapons/r6demolitionsgadget.html">R6DemolitionsGadget</a></td><td width="66%"><a href="#_m_Weapon" name="m_Weapon" title="go to the details">m_Weapon</a></td></tr>
+<tr><th colspan="2" class="small">R6Grenade</th></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../r6weapons/r6grenade.html#sDamagePercentage">sDamagePercentage</a></td><td width="66%"><a href="#_m_DmgPercentCrouch" name="m_DmgPercentCrouch" title="go to the details">m_DmgPercentCrouch</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../r6weapons/r6grenade.html#sDamagePercentage">sDamagePercentage</a></td><td width="66%"><a href="#_m_DmgPercentProne" name="m_DmgPercentProne" title="go to the details">m_DmgPercentProne</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../r6weapons/r6grenade.html#sDamagePercentage">sDamagePercentage</a></td><td width="66%"><a href="#_m_DmgPercentStand" name="m_DmgPercentStand" title="go to the details">m_DmgPercentStand</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">INT</td><td width="66%"><a href="#_m_iNumberOfFragments" name="m_iNumberOfFragments" title="go to the details">m_iNumberOfFragments</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../engine/emitter.html">emitter</a></td><td width="66%"><a href="#_m_pEmmiter" name="m_pEmmiter" title="go to the details">m_pEmmiter</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">class&lt;<a href="../engine/light.html">light</a>&gt;</td><td width="66%"><a href="#_m_pExplosionLight" name="m_pExplosionLight" title="go to the details">m_pExplosionLight</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">class&lt;<a href="../engine/emitter.html">emitter</a>&gt;</td><td width="66%"><a href="#_m_pExplosionParticles" name="m_pExplosionParticles" title="go to the details">m_pExplosionParticles</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">class&lt;<a href="../engine/emitter.html">emitter</a>&gt;</td><td width="66%"><a href="#_m_pExplosionParticlesLOW" name="m_pExplosionParticlesLOW" title="go to the details">m_pExplosionParticlesLOW</a></td></tr>
+<tr><th colspan="2" class="small">R6GrenadeSound</th></tr>
+<tr><td nowrap="nowrap" width="33%">sound</td><td width="66%"><a href="#_m_ImpactGroundSound" name="m_ImpactGroundSound" title="go to the details">m_ImpactGroundSound</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">sound</td><td width="66%"><a href="#_m_ImpactSound" name="m_ImpactSound" title="go to the details">m_ImpactSound</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">sound</td><td width="66%"><a href="#_m_ImpactWaterSound" name="m_ImpactWaterSound" title="go to the details">m_ImpactWaterSound</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">Sound</td><td width="66%"><a href="#_m_sndEarthQuake" name="m_sndEarthQuake" title="go to the details">m_sndEarthQuake</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">sound</td><td width="66%"><a href="#_m_sndExplodeAir" name="m_sndExplodeAir" title="go to the details">m_sndExplodeAir</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">sound</td><td width="66%"><a href="#_m_sndExplodeDirt" name="m_sndExplodeDirt" title="go to the details">m_sndExplodeDirt</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">sound</td><td width="66%"><a href="#_m_sndExplodeMetal" name="m_sndExplodeMetal" title="go to the details">m_sndExplodeMetal</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">sound</td><td width="66%"><a href="#_m_sndExplodeWater" name="m_sndExplodeWater" title="go to the details">m_sndExplodeWater</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">sound</td><td width="66%"><a href="#_m_sndExplosionSound" name="m_sndExplosionSound" title="go to the details">m_sndExplosionSound</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">sound</td><td width="66%"><a href="#_m_sndExplosionSoundStop" name="m_sndExplosionSoundStop" title="go to the details">m_sndExplosionSoundStop</a></td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Variables from <a href="../r6weapons/r6weapons-overview.html">R6Weapons</a>.<a href="../r6weapons/r6bullet.html">R6Bullet</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../r6weapons/r6bullet.html#bShowLog">bShowLog</a>, <a href="../r6weapons/r6bullet.html#m_AffectedActor">m_AffectedActor</a>, <a href="../r6weapons/r6bullet.html#m_bBulletDeactivated">m_bBulletDeactivated</a>, <a href="../r6weapons/r6bullet.html#m_bBulletIsGone">m_bBulletIsGone</a>, <a href="../r6weapons/r6bullet.html#m_bIsGrenade">m_bIsGrenade</a>, <a href="../r6weapons/r6bullet.html#m_BulletManager">m_BulletManager</a>, <a href="../r6weapons/r6bullet.html#m_fExplosionDelay">m_fExplosionDelay</a>, <a href="../r6weapons/r6bullet.html#m_fExplosionRadius">m_fExplosionRadius</a>, <a href="../r6weapons/r6bullet.html#m_fKillBlastRadius">m_fKillBlastRadius</a>, <a href="../r6weapons/r6bullet.html#m_fKillStunTransfer">m_fKillStunTransfer</a>, <a href="../r6weapons/r6bullet.html#m_fRange">m_fRange</a>, <a href="../r6weapons/r6bullet.html#m_fRangeConversionConst">m_fRangeConversionConst</a>, <a href="../r6weapons/r6bullet.html#m_iBulletGroupID">m_iBulletGroupID</a>, <a href="../r6weapons/r6bullet.html#m_iEnergy">m_iEnergy</a>, <a href="../r6weapons/r6bullet.html#m_iNoArmorModifier">m_iNoArmorModifier</a>, <a href="../r6weapons/r6bullet.html#m_iPenetrationFactor">m_iPenetrationFactor</a>, <a href="../r6weapons/r6bullet.html#m_szAmmoName">m_szAmmoName</a>, <a href="../r6weapons/r6bullet.html#m_szAmmoType">m_szAmmoType</a>, <a href="../r6weapons/r6bullet.html#m_szBulletType">m_szBulletType</a>, <a href="../r6weapons/r6bullet.html#m_vSpawnedPosition">m_vSpawnedPosition</a></td>
+</tr>
+</table>
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Enumerations Summary</th>
+</tr>
+<tr><td><a href="#_eGrenadeBoneTarget" name="eGrenadeBoneTarget" title="go to the details">eGrenadeBoneTarget</a><br /><span class="small">GBT_Head,
+GBT_Body,
+GBT_LeftArm,
+GBT_RightArm,
+GBT_LeftLeg,
+GBT_RightLeg</span></td></tr>
+<tr><td><a href="#_eGrenadePawnPose" name="eGrenadePawnPose" title="go to the details">eGrenadePawnPose</a><br /><span class="small">GPP_Stand,
+GPP_Crouch,
+GPP_ProneFacing</span></td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Enumerations from <a href="../r6weapons/r6weapons-overview.html">R6Weapons</a>.<a href="../r6weapons/r6bullet.html">R6Bullet</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../r6weapons/r6bullet.html#eHitResult">eHitResult</a></td>
+</tr>
+</table>
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Structures Summary</th>
+</tr>
+<tr><td><a href="#_sDamagePercentage" name="sDamagePercentage" title="go to the details">sDamagePercentage</a><br /><span class="small">fHead, fBody, fArms, fLegs</span></td></tr>
+
+</table>
+
+
+
+<br />
+
+
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Functions Summary</th>
+</tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_Activate-" name="Activate" title="go to the details">Activate</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_event.gif" alt="event" title="event" /></td><td>&nbsp;</td><td><a href="#_Destroyed-" name="Destroyed" title="go to the details">Destroyed</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_Explode-" name="Explode" title="go to the details">Explode</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_FirstPassReset-" name="FirstPassReset" title="go to the details">FirstPassReset</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>class&lt;<a href="../engine/emitter.html">emitter</a>&gt;&nbsp;</td><td><a href="#_GetGrenadeEmitter-" name="GetGrenadeEmitter" title="go to the details">GetGrenadeEmitter</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>FLOAT&nbsp;</td><td><a href="#_GetLocalizedDamagePercentage-" name="GetLocalizedDamagePercentage" title="go to the details">GetLocalizedDamagePercentage</a> (<a href="../r6weapons/r6grenade.html#eGrenadePawnPose">eGrenadePawnPose</a> ePawnPose, eGrenadeBoneTarget eBoneTarget ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td><a href="../r6weapons/r6grenade.html#eGrenadePawnPose">eGrenadePawnPose</a>&nbsp;</td><td><a href="#_GetPawnPose-" name="GetPawnPose" title="go to the details">GetPawnPose</a> (R6Pawn aPawn ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td><a href="../r6weapons/r6grenade.html#eGrenadeBoneTarget">eGrenadeBoneTarget</a>&nbsp;</td><td><a href="#_HitRandomBodyPart-" name="HitRandomBodyPart" title="go to the details">HitRandomBodyPart</a> (eGrenadePawnPose ePawnPose ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_HitWall-" name="HitWall" title="go to the details">HitWall</a> (<a href="../core/object.html#Vector">vector</a> HitNormal, actor Wall ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_HurtPawns-" name="HurtPawns" title="go to the details">HurtPawns</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_Landed-" name="Landed" title="go to the details">Landed</a> (vector HitNormal ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_PostBeginPlay-" name="PostBeginPlay" title="go to the details">PostBeginPlay</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_ProcessTouch-" name="ProcessTouch" title="go to the details">ProcessTouch</a> (<a href="../engine/actor.html">Actor</a> Other, <a href="../core/object.html#Vector">vector</a> vHitLocation))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_SelfDestroy-" name="SelfDestroy" title="go to the details">SelfDestroy</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_event.gif" alt="event" title="event" /></td><td>&nbsp;</td><td><a href="#_Timer-" name="Timer" title="go to the details">Timer</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_Touch-" name="Touch" title="go to the details">Touch</a> (<a href="../engine/actor.html">Actor</a> Other))<br /><span class="function_state"></span></td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Functions from <a href="../r6weapons/r6weapons-overview.html">R6Weapons</a>.<a href="../r6weapons/r6bullet.html">R6Bullet</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../r6weapons/r6bullet.html#BulletGoesThroughSurface">BulletGoesThroughSurface</a>, <a href="../r6weapons/r6bullet.html#DeactivateBullet">DeactivateBullet</a>, <a href="../r6weapons/r6bullet.html#DestroyedByImpact">DestroyedByImpact</a>, <a href="../r6weapons/r6bullet.html#HitWall">HitWall</a>, <a href="../r6weapons/r6bullet.html#PostBeginPlay">PostBeginPlay</a>, <a href="../r6weapons/r6bullet.html#ProcessTouch">ProcessTouch</a>, <a href="../r6weapons/r6bullet.html#RangeConversion">RangeConversion</a>, <a href="../r6weapons/r6bullet.html#SetSpeed">SetSpeed</a>, <a href="../r6weapons/r6bullet.html#SpawnSFX">SpawnSFX</a>, <a href="../r6weapons/r6bullet.html#StunLoss">StunLoss</a>, <a href="../r6weapons/r6bullet.html#Touch">Touch</a></td>
+</tr>
+</table>
+<table>
+<tr>
+	<th class="inherittitle">Inherited Functions from <a href="../r6abstract/r6abstract-overview.html">R6Abstract</a>.<a href="../r6abstract/r6abstractbullet.html">R6AbstractBullet</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../r6abstract/r6abstractbullet.html#DoorExploded">DoorExploded</a></td>
+</tr>
+</table>
+
+
+<br />
+
+
+
+<hr />
+
+
+
+<table class="title">
+<tr>
+	<th class="title">Variables Detail</th>
+</tr>
+</table>
+
+<h4><a name="_m_bDestroyedByImpact" class="hidden"></a>m_bDestroyedByImpact <a href="../Source_r6weapons/r6grenade.html#33" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">BOOL</span> m_bDestroyedByImpact;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_bFirstImpact" class="hidden"></a>m_bFirstImpact <a href="../Source_r6weapons/r6grenade.html#29" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">BOOL</span> m_bFirstImpact;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_eExplosionSoundType" class="hidden"></a>m_eExplosionSoundType <a href="../Source_r6weapons/r6grenade.html#30" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../engine/actor.html#ESoundType" class="source">ESoundType</a></span> m_eExplosionSoundType;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_eGrenadeType" class="hidden"></a>m_eGrenadeType <a href="../Source_r6weapons/r6grenade.html#31" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../engine/pawn.html" class="source">Pawn</a></span>.<span class="source_type"><a href="../engine/pawn.html#EGrenadeType" class="source">EGrenadeType</a></span> m_eGrenadeType;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_eOldPhysic" class="hidden"></a>m_eOldPhysic <a href="../Source_r6weapons/r6grenade.html#25" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../engine/actor.html" class="source">Actor</a></span>.<span class="source_type"><a href="../engine/actor.html#EPhysics" class="source">EPhysics</a></span> m_eOldPhysic;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_fDuration" class="hidden"></a>m_fDuration <a href="../Source_r6weapons/r6grenade.html#34" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">FLOAT</span> m_fDuration;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_fEffectiveOutsideKillRadius" class="hidden"></a>m_fEffectiveOutsideKillRadius <a href="../Source_r6weapons/r6grenade.html#71" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">FLOAT</span> m_fEffectiveOutsideKillRadius;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_fShakeRadius" class="hidden"></a>m_fShakeRadius <a href="../Source_r6weapons/r6grenade.html#35" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">FLOAT</span> m_fShakeRadius;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_GrenadeDecalClass" class="hidden"></a>m_GrenadeDecalClass <a href="../Source_r6weapons/r6grenade.html#82" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">class</span>&lt;<span class="source_type"><a href="../r6engine/r6grenadedecal.html" class="source">R6GrenadeDecal</a></span>&gt; m_GrenadeDecalClass;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_Weapon" class="hidden"></a>m_Weapon <a href="../Source_r6weapons/r6grenade.html#26" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../r6weapons/r6demolitionsgadget.html" class="source">R6DemolitionsGadget</a></span> m_Weapon;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h3 class="vartag">R6Grenade</h3>
+<h4><a name="_m_DmgPercentCrouch" class="hidden"></a>m_DmgPercentCrouch <a href="../Source_r6weapons/r6grenade.html#65" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../r6weapons/r6grenade.html" class="source">R6Grenade</a></span>) <span class="source_type"><a href="../r6weapons/r6grenade.html#sDamagePercentage" class="source">sDamagePercentage</a></span> m_DmgPercentCrouch;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_DmgPercentProne" class="hidden"></a>m_DmgPercentProne <a href="../Source_r6weapons/r6grenade.html#66" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../r6weapons/r6grenade.html" class="source">R6Grenade</a></span>) <span class="source_type"><a href="../r6weapons/r6grenade.html#sDamagePercentage" class="source">sDamagePercentage</a></span> m_DmgPercentProne;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_DmgPercentStand" class="hidden"></a>m_DmgPercentStand <a href="../Source_r6weapons/r6grenade.html#64" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../r6weapons/r6grenade.html" class="source">R6Grenade</a></span>) <span class="source_type"><a href="../r6weapons/r6grenade.html#sDamagePercentage" class="source">sDamagePercentage</a></span> m_DmgPercentStand;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_iNumberOfFragments" class="hidden"></a>m_iNumberOfFragments <a href="../Source_r6weapons/r6grenade.html#73" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../r6weapons/r6grenade.html" class="source">R6Grenade</a></span>) <span class="source_type">INT</span> m_iNumberOfFragments;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_pEmmiter" class="hidden"></a>m_pEmmiter <a href="../Source_r6weapons/r6grenade.html#77" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../r6weapons/r6grenade.html" class="source">R6Grenade</a></span>) <span class="source_type"><a href="../engine/emitter.html" class="source">emitter</a></span> m_pEmmiter;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_pExplosionLight" class="hidden"></a>m_pExplosionLight <a href="../Source_r6weapons/r6grenade.html#78" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../r6weapons/r6grenade.html" class="source">R6Grenade</a></span>) <span class="source_type">class</span>&lt;<span class="source_type"><a href="../engine/light.html" class="source">light</a></span>&gt; m_pExplosionLight;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_pExplosionParticles" class="hidden"></a>m_pExplosionParticles <a href="../Source_r6weapons/r6grenade.html#75" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../r6weapons/r6grenade.html" class="source">R6Grenade</a></span>) <span class="source_type">class</span>&lt;<span class="source_type"><a href="../engine/emitter.html" class="source">emitter</a></span>&gt; m_pExplosionParticles;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_pExplosionParticlesLOW" class="hidden"></a>m_pExplosionParticlesLOW <a href="../Source_r6weapons/r6grenade.html#76" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../r6weapons/r6grenade.html" class="source">R6Grenade</a></span>) <span class="source_type">class</span>&lt;<span class="source_type"><a href="../engine/emitter.html" class="source">emitter</a></span>&gt; m_pExplosionParticlesLOW;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h3 class="vartag">R6GrenadeSound</h3>
+<h4><a name="_m_ImpactGroundSound" class="hidden"></a>m_ImpactGroundSound <a href="../Source_r6weapons/r6grenade.html#20" class="small">Source code</a></h4>
+<div class="declaration">var(R6GrenadeSound) <span class="source_type">sound</span> m_ImpactGroundSound;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_ImpactSound" class="hidden"></a>m_ImpactSound <a href="../Source_r6weapons/r6grenade.html#19" class="small">Source code</a></h4>
+<div class="declaration">var(R6GrenadeSound) <span class="source_type">sound</span> m_ImpactSound;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_ImpactWaterSound" class="hidden"></a>m_ImpactWaterSound <a href="../Source_r6weapons/r6grenade.html#21" class="small">Source code</a></h4>
+<div class="declaration">var(R6GrenadeSound) <span class="source_type">sound</span> m_ImpactWaterSound;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_sndEarthQuake" class="hidden"></a>m_sndEarthQuake <a href="../Source_r6weapons/r6grenade.html#22" class="small">Source code</a></h4>
+<div class="declaration">var(R6GrenadeSound) <span class="source_type">Sound</span> m_sndEarthQuake;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_sndExplodeAir" class="hidden"></a>m_sndExplodeAir <a href="../Source_r6weapons/r6grenade.html#17" class="small">Source code</a></h4>
+<div class="declaration">var(R6GrenadeSound) <span class="source_type">sound</span> m_sndExplodeAir;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_sndExplodeDirt" class="hidden"></a>m_sndExplodeDirt <a href="../Source_r6weapons/r6grenade.html#18" class="small">Source code</a></h4>
+<div class="declaration">var(R6GrenadeSound) <span class="source_type">sound</span> m_sndExplodeDirt;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_sndExplodeMetal" class="hidden"></a>m_sndExplodeMetal <a href="../Source_r6weapons/r6grenade.html#15" class="small">Source code</a></h4>
+<div class="declaration">var(R6GrenadeSound) <span class="source_type">sound</span> m_sndExplodeMetal;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_sndExplodeWater" class="hidden"></a>m_sndExplodeWater <a href="../Source_r6weapons/r6grenade.html#16" class="small">Source code</a></h4>
+<div class="declaration">var(R6GrenadeSound) <span class="source_type">sound</span> m_sndExplodeWater;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_sndExplosionSound" class="hidden"></a>m_sndExplosionSound <a href="../Source_r6weapons/r6grenade.html#13" class="small">Source code</a></h4>
+<div class="declaration">var(R6GrenadeSound) <span class="source_type">sound</span> m_sndExplosionSound;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_sndExplosionSoundStop" class="hidden"></a>m_sndExplosionSoundStop <a href="../Source_r6weapons/r6grenade.html#14" class="small">Source code</a></h4>
+<div class="declaration">var(R6GrenadeSound) <span class="source_type">sound</span> m_sndExplosionSoundStop;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th class="title">Enumerations Detail</th>
+</tr>
+</table>
+
+<h4><a name="_eGrenadeBoneTarget" class="hidden"></a>eGrenadeBoneTarget <a href="../Source_r6weapons/r6grenade.html#46" class="small">Source code</a></h4>
+<div class="declaration">enum <span class="source_type"><a href="../r6weapons/r6grenade.html#eGrenadeBoneTarget" class="source">eGrenadeBoneTarget</a></span><br />
+{<blockquote>GBT_Head,
+GBT_Body,
+GBT_LeftArm,
+GBT_RightArm,
+GBT_LeftLeg,
+GBT_RightLeg</blockquote>};
+</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_eGrenadePawnPose" class="hidden"></a>eGrenadePawnPose <a href="../Source_r6weapons/r6grenade.html#38" class="small">Source code</a></h4>
+<div class="declaration">enum <span class="source_type"><a href="../r6weapons/r6grenade.html#eGrenadePawnPose" class="source">eGrenadePawnPose</a></span><br />
+{<blockquote>GPP_Stand,
+GPP_Crouch,
+GPP_ProneFacing</blockquote>};
+</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th class="title">Structures Detail</th>
+</tr>
+</table>
+
+<h4><a name="_sDamagePercentage" class="hidden"></a>sDamagePercentage <a href="../Source_r6weapons/r6grenade.html#57" class="small">Source code</a></h4>
+<div class="declaration">struct <span class="source_type"><a href="../r6weapons/r6grenade.html#sDamagePercentage" class="source">sDamagePercentage</a></span><br />
+{<blockquote>var(<span class="source_type"><a href="../r6weapons/r6grenade.html" class="source">R6Grenade</a></span>) <span class="source_type">FLOAT</span> fArms;<br />
+var(<span class="source_type"><a href="../r6weapons/r6grenade.html" class="source">R6Grenade</a></span>) <span class="source_type">FLOAT</span> fBody;<br />
+var(<span class="source_type"><a href="../r6weapons/r6grenade.html" class="source">R6Grenade</a></span>) <span class="source_type">FLOAT</span> fHead;<br />
+var(<span class="source_type"><a href="../r6weapons/r6grenade.html" class="source">R6Grenade</a></span>) <span class="source_type">FLOAT</span> fLegs;<br />
+</blockquote>};
+</div>
+<blockquote class="comment">
+
+<br />
+
+</blockquote>
+<hr class="small" />
+
+
+<br />
+
+
+
+<table class="title">
+<tr>
+	<th class="title">Functions Detail</th>
+</tr>
+</table>
+
+<h4><a name="_Activate-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> Activate <span class="function_state"></span> <a href="../Source_r6weapons/r6grenade.html#111" class="small">Source code</a></h4>
+<div class="declaration"> function  Activate ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_Destroyed-" class="hidden"></a><img src="../img_event.gif" alt="" title="event" /> Destroyed <span class="function_state"></span> <a href="../Source_r6weapons/r6grenade.html#126" class="small">Source code</a></h4>
+<div class="declaration">simulated event  Destroyed ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_Explode-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> Explode <span class="function_state"></span> <a href="../Source_r6weapons/r6grenade.html#165" class="small">Source code</a></h4>
+<div class="declaration">simulated function  Explode ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_FirstPassReset-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> FirstPassReset <span class="function_state"></span> <a href="../Source_r6weapons/r6grenade.html#160" class="small">Source code</a></h4>
+<div class="declaration">simulated function  FirstPassReset ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GetGrenadeEmitter-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> GetGrenadeEmitter <span class="function_state"></span> <a href="../Source_r6weapons/r6grenade.html#84" class="small">Source code</a></h4>
+<div class="declaration">simulated function <span class="source_type">class</span>&lt;<span class="source_type"><a href="../engine/emitter.html" class="source">emitter</a></span>&gt; GetGrenadeEmitter ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GetLocalizedDamagePercentage-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> GetLocalizedDamagePercentage <span class="function_state"></span> <a href="../Source_r6weapons/r6grenade.html#358" class="small">Source code</a></h4>
+<div class="declaration"> function <span class="source_type">FLOAT</span> GetLocalizedDamagePercentage ( <span class="source_type"><a href="../r6weapons/r6grenade.html#eGrenadePawnPose" class="source">eGrenadePawnPose</a></span> <span class="source_type">ePawnPose</span>, <span class="source_type"><a href="../r6weapons/r6grenade.html#eGrenadeBoneTarget" class="source">eGrenadeBoneTarget</a></span> <span class="source_type">eBoneTarget</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GetPawnPose-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> GetPawnPose <span class="function_state"></span> <a href="../Source_r6weapons/r6grenade.html#446" class="small">Source code</a></h4>
+<div class="declaration"> function <span class="source_type"><a href="../r6weapons/r6grenade.html#eGrenadePawnPose" class="source">eGrenadePawnPose</a></span> GetPawnPose ( <span class="source_type"><a href="../r6engine/r6pawn.html" class="source">R6Pawn</a></span> <span class="source_type">aPawn</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_HitRandomBodyPart-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> HitRandomBodyPart <span class="function_state"></span> <a href="../Source_r6weapons/r6grenade.html#400" class="small">Source code</a></h4>
+<div class="declaration"> function <span class="source_type"><a href="../r6weapons/r6grenade.html#eGrenadeBoneTarget" class="source">eGrenadeBoneTarget</a></span> HitRandomBodyPart ( <span class="source_type"><a href="../r6weapons/r6grenade.html#eGrenadePawnPose" class="source">eGrenadePawnPose</a></span> <span class="source_type">ePawnPose</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_HitWall-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> HitWall <span class="function_state"></span> <a href="../Source_r6weapons/r6grenade.html#249" class="small">Source code</a></h4>
+<div class="declaration">simulated function  <span class="source_type">HitWall</span> ( <span class="source_type"><a href="../core/object.html#Vector" class="source">vector</a></span> <span class="source_type">HitNormal</span>, <span class="source_type"><a href="../engine/actor.html" class="source">actor</a></span> <span class="source_type">Wall</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_HurtPawns-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> HurtPawns <span class="function_state"></span> <a href="../Source_r6weapons/r6grenade.html#484" class="small">Source code</a></h4>
+<div class="declaration"> function  HurtPawns ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_Landed-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> Landed <span class="function_state"></span> <a href="../Source_r6weapons/r6grenade.html#344" class="small">Source code</a></h4>
+<div class="declaration">simulated function  Landed ( <span class="source_type"><a href="../core/object.html#Vector" class="source">vector</a></span> <span class="source_type">HitNormal</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_PostBeginPlay-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> PostBeginPlay <span class="function_state"></span> <a href="../Source_r6weapons/r6grenade.html#102" class="small">Source code</a></h4>
+<div class="declaration"> function  PostBeginPlay ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ProcessTouch-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> ProcessTouch <span class="function_state"></span> <a href="../Source_r6weapons/r6grenade.html#353" class="small">Source code</a></h4>
+<div class="declaration">simulated function  ProcessTouch ( <span class="source_type"><a href="../engine/actor.html" class="source">Actor</a></span> <span class="source_type">Other</span>, <span class="source_type"><a href="../core/object.html#Vector" class="source">vector</a></span> vHitLocation) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_SelfDestroy-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> SelfDestroy <span class="function_state"></span> <a href="../Source_r6weapons/r6grenade.html#96" class="small">Source code</a></h4>
+<div class="declaration"> function  SelfDestroy ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_Timer-" class="hidden"></a><img src="../img_event.gif" alt="" title="event" /> Timer <span class="function_state"></span> <a href="../Source_r6weapons/r6grenade.html#120" class="small">Source code</a></h4>
+<div class="declaration"> event  Timer ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_Touch-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> Touch <span class="function_state"></span> <a href="../Source_r6weapons/r6grenade.html#349" class="small">Source code</a></h4>
+<div class="declaration">simulated singular function  Touch ( <span class="source_type"><a href="../engine/actor.html" class="source">Actor</a></span> <span class="source_type">Other</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+
+
+<br />
+
+
+<table class="title">
+<tr>
+	<th class="title">Defaultproperties</th>
+</tr>
+</table>
+<br />
+<div class="source"><table class="source"><tr><td class="source"><pre class="source">defaultproperties
+{
+     m_eOldPhysic=PHYS_Falling
+     m_eExplosionSoundType=SNDTYPE_Explosion
+     m_iNumberOfFragments=<span class="source_int">4</span>
+     m_bFirstImpact=True
+     m_fShakeRadius=<span class="source_int">1000.000000</span>
+     m_ImpactGroundSound=<span class="source_type">Sound</span><span class="source_name">'Foley_CommonGrenade.Play_Grenades_GroundImpacts'</span>
+     m_sndEarthQuake=<span class="source_type">Sound</span><span class="source_name">'CommonWeapons.Play_GrenadeQuake'</span>
+     m_bIsGrenade=True
+     m_fExplosionDelay=<span class="source_int">3.000000</span>
+     Physics=PHYS_Falling
+     RemoteRole=ROLE_SimulatedProxy
+     DrawType=DT_StaticMesh
+     bHidden=False
+     bStasis=False
+     bNetTemporary=False
+     bAlwaysRelevant=True
+     m_bBypassAmbiant=True
+     m_bRenderOutOfWorld=True
+     m_bDoPerBoneTrace=False
+     bIgnoreOutOfWorld=True
+     bFixedRotationDir=True
+}
+</pre></td></tr></table></div>
+
+
+
+<hr />
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../r6weapons/r6weapons-overview.html">Package</a></td>
+	<td class="header_hilight">Class</td>
+	<td class="header"><a href="../Source_r6weapons/r6grenade.html">Source</a></td>
+	<td class="header"><a class="header" href="../classtree.html#R6Grenade">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../r6weapons/r6gadget.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../r6weapons/r6grenadereticule.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+
+<div class="stats">Creation time: mar. 26/5/2026 18:33:11.136 - Created with <a href="http://wiki.beyondunreal.com/wiki/UnCodeX" target="_blank">UnCodeX</a></div>
+
+</body>
+</html>

@@ -1,0 +1,208 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+	<title>UnCodeX - Source: R6Menu.R6MenuTeamBar</title>
+	<meta name="Generator" content="UnCodeX 241" />
+	<link rel="stylesheet" href="../DocStyle2.css" type="text/css" title="Original Purple" />
+	<link rel="alternative stylesheet" href="../DocStyle2-blue.css" type="text/css" title="Blue" />
+	<link rel="alternative stylesheet" href="../DocStyle2-red.css" type="text/css" title="Red" />
+	<!--[if IE]>
+	<link rel="stylesheet" href="../DocStyle2-msie.css" type="text/css" />
+	<![endif]-->
+	<script src="../styleswitcher.js" type="text/javascript"></script>
+</head>
+<body>
+
+<div class="header">
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../r6menu/r6menu-overview.html">Package</a></td>
+	<td class="header"><a href="../r6menu/r6menuteambar.html">Class</a></td>
+	<td class="header_hilight">Source</td>
+	<td class="header"><a class="header" href="../classtree.html#R6MenuTeamBar">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../Source_r6menu/r6menuspeedmenu.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../Source_r6menu/r6menuteambutton.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html#Source_r6menu/r6menuteambar.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+</div>
+<div class="spacer"></div>
+
+<h1><a href="../r6menu/r6menu-overview.html">R6Menu</a>.<a href="../r6menu/r6menuteambar.html">R6MenuTeamBar</a></h1>
+<br />
+<div class="source"><table class="source"><tr><td class="source_lineno"><span class="source_lineno">00001<br />00002<br />00003<br />00004<br />00005<br />00006<br />00007<br />00008<br />00009<br />00010<br />00011<br />00012<br />00013<br />00014<br />00015<br />00016<br />00017<br />00018<br />00019<br />00020<br />
+00021<br />00022<br />00023<br />00024<br />00025<br />00026<br />00027<br />00028<br />00029<br />00030<br />00031<br />00032<br />00033<br />00034<br />00035<br />00036<br />00037<br />00038<br />00039<br />00040<br />
+00041<br />00042<br />00043<br />00044<br />00045<br />00046<br />00047<br />00048<br />00049<br />00050<br />00051<br />00052<br />00053<br />00054<br />00055<br />00056<br />00057<br />00058<br />00059<br />00060<br />
+00061<br />00062<br />00063<br />00064<br />00065<br />00066<br />00067<br />00068<br />00069<br />00070<br />00071<br />00072<br />00073<br />00074<br />00075<br />00076<br />00077<br />00078<br />00079<br />00080<br />
+00081<br />00082<br />00083<br />00084<br />00085<br />00086<br />00087<br />00088<br />00089<br />00090<br />00091<br />00092<br />00093<br />00094<br />00095<br />00096<br />00097<br />00098<br />00099<br />00100<br />
+00101<br />00102<br />00103<br />00104<br />00105<br />00106<br />00107<br />00108<br />00109<br />00110<br />00111<br />00112<br />00113<br />00114<br />00115<br />00116<br />00117<br />00118<br />00119<br />00120<br />
+00121<br />00122<br />00123<br />00124<br />00125<br />00126<br />00127<br />00128<br />00129<br />00130<br />00131<br />00132<br />00133<br />00134<br />00135<br />00136<br />00137<br />00138<br />00139<br />00140<br />
+00141<br />00142<br />00143</span></td>
+<td class="source"><pre class="source"><a name="1"></a><span class="source_comment">//=============================================================================
+</span><a name="2"></a><span class="source_comment">//  R6MenuTeamBar.uc : (add small description)
+</span><a name="3"></a><span class="source_comment">//  Copyright 2001 Ubi Soft, Inc. All Rights Reserved.
+</span><a name="4"></a><span class="source_comment">//
+</span><a name="5"></a><span class="source_comment">//  Revision history:
+</span><a name="6"></a><span class="source_comment">//    2001/08/28 * Created by Chaouky Garram
+</span><a name="7"></a><span class="source_comment">//=============================================================================
+</span><a name="8"></a>
+<a name="9"></a><span class="source_type">class</span> <span class="source_type"><a href="../r6menu/r6menuteambar.html" class="source">R6MenuTeamBar</a></span> extends <span class="source_type"><a href="../uwindow/uwindowwindow.html" class="source">UWindowWindow</a></span>;
+<a name="10"></a>
+<a name="11"></a>var <span class="source_type"><a href="../r6menu/r6menuteamdisplaybutton.html" class="source">R6MenuTeamDisplayButton</a></span> m_DisplayList[<span class="source_int">3</span>];
+<a name="12"></a>var <span class="source_type"><a href="../r6menu/r6menuteambutton.html" class="source">R6MenuTeamButton</a></span>        m_ActiveList[<span class="source_int">3</span>];
+<a name="13"></a>
+<a name="14"></a>const PosX2=<span class="source_int">2</span>;
+<a name="15"></a>const ButtonWidth=<span class="source_int">28</span>;
+<a name="16"></a>const SmallWidth=<span class="source_int">14</span>;
+<a name="17"></a>
+<a name="18"></a>function Created()
+<a name="19"></a>{
+<a name="20"></a>    local <span class="source_type">INT</span> <span class="source_type">i</span>;
+<a name="21"></a>    local <span class="source_type">INT</span> xPosition;
+<a name="22"></a>
+<a name="23"></a>   
+<a name="24"></a>    xPosition=<span class="source_int">4</span>;
+<a name="25"></a>
+<a name="26"></a>    for(<span class="source_type">i</span>=<span class="source_int">0</span>;<span class="source_type">i</span>&lt;<span class="source_int">3</span>;<span class="source_type">i</span>++)
+<a name="27"></a>    {
+<a name="28"></a>        m_ActiveList[<span class="source_type">i</span>] = <span class="source_type"><a href="../r6menu/r6menuteambutton.html" class="source">R6MenuTeamButton</a></span>(CreateWindow( <span class="source_type">class</span><span class="source_name">'R6MenuTeamButton'</span> , xPosition, <span class="source_int">1</span>, <span class="source_type">class</span><span class="source_name">'R6MenuTeamButton'</span>.default.UpRegion.W, <span class="source_int">23</span>, self));
+<a name="29"></a>        m_ActiveList[<span class="source_type">i</span>].m_iTeamColor = <span class="source_type">i</span>;
+<a name="30"></a>        m_ActiveList[<span class="source_type">i</span>].ToolTipString = Localize(<span class="source_string">"PlanningMenu"</span>,<span class="source_string">"TeamActive"</span>,<span class="source_string">"R6Menu"</span>);
+<a name="31"></a>        m_ActiveList[<span class="source_type">i</span>].m_vButtonColor=Root.Colors.TeamColorLight[<span class="source_type">i</span>];
+<a name="32"></a>
+<a name="33"></a>        xPosition += SmallWidth;
+<a name="34"></a>    }
+<a name="35"></a>    
+<a name="36"></a>    for(<span class="source_type">i</span>=<span class="source_int">0</span>;<span class="source_type">i</span>&lt;<span class="source_int">3</span>;<span class="source_type">i</span>++)
+<a name="37"></a>    {
+<a name="38"></a>        m_DisplayList[<span class="source_type">i</span>] = <span class="source_type"><a href="../r6menu/r6menuteamdisplaybutton.html" class="source">R6MenuTeamDisplayButton</a></span>(CreateWindow( <span class="source_type">class</span><span class="source_name">'R6MenuTeamDisplayButton'</span>, xPosition, <span class="source_int">1</span>, <span class="source_type">class</span><span class="source_name">'R6MenuTeamDisplayButton'</span>.default.UpRegion.W, <span class="source_int">23</span>, self));
+<a name="39"></a>        m_DisplayList[<span class="source_type">i</span>].m_iTeamColor = <span class="source_type">i</span>;
+<a name="40"></a>        m_DisplayList[<span class="source_type">i</span>].m_vButtonColor=Root.Colors.TeamColorLight[<span class="source_type">i</span>];
+<a name="41"></a>        m_DisplayList[<span class="source_type">i</span>].ToolTipString = Localize(<span class="source_string">"PlanningMenu"</span>,<span class="source_string">"TeamDisplay"</span>,<span class="source_string">"R6Menu"</span>);
+<a name="42"></a>
+<a name="43"></a>        xPosition += ButtonWidth - PosX2;
+<a name="44"></a>    }
+<a name="45"></a>
+<a name="46"></a>	WinWidth = xPosition+<span class="source_int">4</span>;
+<a name="47"></a>    <span class="source_comment">// Init
+</span><a name="48"></a>    SetTeamActive(<span class="source_int">0</span>);
+<a name="49"></a>
+<a name="50"></a>     m_BorderColor=Root.Colors.GrayLight;
+<a name="51"></a>}
+<a name="52"></a>
+<a name="53"></a>function Reset()
+<a name="54"></a>{
+<a name="55"></a>    local <span class="source_type"><a href="../r6game/r6planningctrl.html" class="source">R6PlanningCtrl</a></span> OwnerCtrl;
+<a name="56"></a>    OwnerCtrl = <span class="source_type"><a href="../r6game/r6planningctrl.html" class="source">R6PlanningCtrl</a></span>(GetPlayerOwner());
+<a name="57"></a>
+<a name="58"></a>    <span class="source_comment">//Reset the active team.
+</span><a name="59"></a>    m_ActiveList[<span class="source_int">0</span>].m_bSelected = true;
+<a name="60"></a>    m_ActiveList[<span class="source_int">1</span>].m_bSelected = false;
+<a name="61"></a>    m_ActiveList[<span class="source_int">2</span>].m_bSelected = false;
+<a name="62"></a>
+<a name="63"></a>    <span class="source_comment">//Display All Team    
+</span><a name="64"></a>    m_DisplayList[<span class="source_int">0</span>].m_bSelected = true;
+<a name="65"></a>    m_DisplayList[<span class="source_int">1</span>].m_bSelected = true;
+<a name="66"></a>    m_DisplayList[<span class="source_int">2</span>].m_bSelected = true;
+<a name="67"></a>
+<a name="68"></a>    if(OwnerCtrl != none)
+<a name="69"></a>    {
+<a name="70"></a>        OwnerCtrl.m_pTeamInfo[<span class="source_int">0</span>].SetPathDisplay(true);
+<a name="71"></a>        OwnerCtrl.m_pTeamInfo[<span class="source_int">1</span>].SetPathDisplay(true);
+<a name="72"></a>        OwnerCtrl.m_pTeamInfo[<span class="source_int">2</span>].SetPathDisplay(true);
+<a name="73"></a>    }
+<a name="74"></a>}
+<a name="75"></a>
+<a name="76"></a>function Paint(<span class="source_type"><a href="../engine/canvas.html" class="source">Canvas</a></span> <span class="source_type">C</span>, <span class="source_type">FLOAT</span> X, <span class="source_type">FLOAT</span> <span class="source_type">Y</span>)
+<a name="77"></a>{
+<a name="78"></a>    DrawSimpleBorder(<span class="source_type">C</span>);
+<a name="79"></a>}
+<a name="80"></a>
+<a name="81"></a>function EscClose()
+<a name="82"></a>{
+<a name="83"></a>}
+<a name="84"></a>
+<a name="85"></a>function SetTeamActive(<span class="source_type">INT</span> iActive)
+<a name="86"></a>{
+<a name="87"></a>    local <span class="source_type"><a href="../r6game/r6planningctrl.html" class="source">R6PlanningCtrl</a></span> OwnerCtrl;
+<a name="88"></a>    OwnerCtrl = <span class="source_type"><a href="../r6game/r6planningctrl.html" class="source">R6PlanningCtrl</a></span>(GetPlayerOwner());
+<a name="89"></a>
+<a name="90"></a>    m_ActiveList[<span class="source_int">0</span>].m_bSelected = false;
+<a name="91"></a>    m_ActiveList[<span class="source_int">1</span>].m_bSelected = false;
+<a name="92"></a>    m_ActiveList[<span class="source_int">2</span>].m_bSelected = false;
+<a name="93"></a>    m_ActiveList[iActive].m_bSelected = true;
+<a name="94"></a>
+<a name="95"></a>    if(OwnerCtrl != none)
+<a name="96"></a>    {
+<a name="97"></a>        switch(iActive)
+<a name="98"></a>        {
+<a name="99"></a>        case <span class="source_int">0</span>:
+<a name="100"></a>            OwnerCtrl.SwitchToRedTeam(true);
+<a name="101"></a>            m_DisplayList[<span class="source_int">0</span>].m_bSelected = true;
+<a name="102"></a>            break;
+<a name="103"></a>        case <span class="source_int">1</span>:
+<a name="104"></a>            OwnerCtrl.SwitchToGreenTeam(true);
+<a name="105"></a>            m_DisplayList[<span class="source_int">1</span>].m_bSelected = true;
+<a name="106"></a>            break;
+<a name="107"></a>        case <span class="source_int">2</span>:
+<a name="108"></a>            OwnerCtrl.SwitchToGoldTeam(true);
+<a name="109"></a>            m_DisplayList[<span class="source_int">2</span>].m_bSelected = true;
+<a name="110"></a>            break;
+<a name="111"></a>        }
+<a name="112"></a>    }
+<a name="113"></a>}
+<a name="114"></a>
+<a name="115"></a>function ResetTeams(<span class="source_type">INT</span> iWhatToReset)
+<a name="116"></a>{
+<a name="117"></a>    <span class="source_comment">//Take the information from the planning controller to change the menu.
+</span><a name="118"></a>    local <span class="source_type"><a href="../r6game/r6planningctrl.html" class="source">R6PlanningCtrl</a></span> OwnerCtrl;
+<a name="119"></a>    OwnerCtrl = <span class="source_type"><a href="../r6game/r6planningctrl.html" class="source">R6PlanningCtrl</a></span>(GetPlayerOwner());
+<a name="120"></a>
+<a name="121"></a>    <span class="source_comment">//New team selected
+</span><a name="122"></a>    if((iWhatToReset &lt; <span class="source_int">3</span>) && (m_ActiveList[OwnerCtrl.m_iCurrentTeam].m_bSelected != true))
+<a name="123"></a>    {
+<a name="124"></a>        m_ActiveList[<span class="source_int">0</span>].m_bSelected = false;
+<a name="125"></a>        m_ActiveList[<span class="source_int">1</span>].m_bSelected = false;
+<a name="126"></a>        m_ActiveList[<span class="source_int">2</span>].m_bSelected = false;
+<a name="127"></a>        m_ActiveList[OwnerCtrl.m_iCurrentTeam].m_bSelected = true;
+<a name="128"></a>        if(!m_DisplayList[OwnerCtrl.m_iCurrentTeam].m_bSelected)
+<a name="129"></a>        {
+<a name="130"></a>            m_DisplayList[OwnerCtrl.m_iCurrentTeam].m_bSelected = true;
+<a name="131"></a>        }
+<a name="132"></a>    }
+<a name="133"></a>    else if( iWhatToReset &gt; <span class="source_int">2</span>)
+<a name="134"></a>    {
+<a name="135"></a>        m_DisplayList[iWhatToReset - <span class="source_int">3</span>].m_bSelected = !m_DisplayList[iWhatToReset - <span class="source_int">3</span>].m_bSelected;
+<a name="136"></a>    }
+<a name="137"></a>
+<a name="138"></a>}
+<a name="139"></a>
+<a name="140"></a>defaultproperties
+<a name="141"></a>{
+<a name="142"></a>}
+<a name="143"></a></pre></td></tr></table></div>
+<hr />
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../r6menu/r6menu-overview.html">Package</a></td>
+	<td class="header"><a href="../r6menu/r6menuteambar.html">Class</a></td>
+	<td class="header_hilight">Source</td>
+	<td class="header"><a class="header" href="../classtree.html#R6MenuTeamBar">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../Source_r6menu/r6menuspeedmenu.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../Source_r6menu/r6menuteambutton.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+
+<div class="stats">Class file time: sam. 18/9/2004 14:39:54.000 - Creation time: mar. 26/5/2026 18:33:20.686 - Created with <a href="http://wiki.beyondunreal.com/wiki/UnCodeX" target="_blank">UnCodeX</a></div>
+
+</body>
+</html>

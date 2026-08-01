@@ -1,0 +1,441 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+	<title>UnCodeX - engine.R6Mod</title>
+	<meta name="Generator" content="UnCodeX 241" />
+	<link rel="stylesheet" href="../DocStyle2.css" type="text/css" title="Original Purple" />
+	<link rel="alternative stylesheet" href="../DocStyle2-blue.css" type="text/css" title="Blue" />
+	<link rel="alternative stylesheet" href="../DocStyle2-red.css" type="text/css" title="Red" />
+	<!--[if IE]>
+	<link rel="stylesheet" href="../DocStyle2-msie.css" type="text/css" />
+	<![endif]-->
+	<script src="../styleswitcher.js" type="text/javascript"></script>
+</head>
+<body>
+
+<div class="header">
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../engine/engine-overview.html">Package</a></td>
+	<td class="header_hilight">Class</td>
+	<td class="header"><a href="../Source_engine/r6mod.html">Source</a></td>
+	<td class="header"><a class="header" href="../classtree.html#R6Mod">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../engine/r6missionobjectivebase.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../engine/r6modconfig.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html#engine/r6mod.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+</div>
+<div class="spacer"></div>
+
+<h1><a href="../engine/engine-overview.html">engine</a>.R6Mod</h1>
+
+<dl>
+<dt>Extends</dt><dd><a href="../core/object.html">Object</a></dd>
+<dt>Modifiers</dt><dd>config native </dd>
+</dl>
+
+<p></p>
+
+<pre class="tree"><a href="../core/core-overview.html">core</a>.<a href="../core/object.html">Object</a>
+|   
++-- <a href="../engine/engine-overview.html">engine</a>.<a href="../engine/r6mod.html">R6Mod</a>
+</pre>
+
+
+
+<hr />
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Constants Summary</th>
+</tr>
+<tr><td width="40%"><a href="#_C_iR6ModVersion" name="C_iR6ModVersion" title="go to the details">C_iR6ModVersion</a></td><td width="10%">=</td><td width="50%">1</td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Contants from <a href="../core/core-overview.html">core</a>.<a href="../core/object.html">Object</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../core/object.html#MaxInt">MaxInt</a>, <a href="../core/object.html#Pi">Pi</a>, <a href="../core/object.html#RF_NotForClient">RF_NotForClient</a>, <a href="../core/object.html#RF_NotForEdit">RF_NotForEdit</a>, <a href="../core/object.html#RF_NotForServer">RF_NotForServer</a>, <a href="../core/object.html#RF_Public">RF_Public</a>, <a href="../core/object.html#RF_Transactional">RF_Transactional</a>, <a href="../core/object.html#RF_Transient">RF_Transient</a></td>
+</tr>
+</table>
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th colspan="2" class="title">Variables Summary</th>
+</tr>
+<tr><td nowrap="nowrap" width="33%">Array&lt;string&gt;</td><td width="66%"><a href="#_m_aDescriptionPackage" name="m_aDescriptionPackage" title="go to the details">m_aDescriptionPackage</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">Array&lt;string&gt;</td><td width="66%"><a href="#_m_aExtraModMaps" name="m_aExtraModMaps" title="go to the details">m_aExtraModMaps</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">Array&lt;<a href="../engine/r6mod.html">R6Mod</a>&gt;</td><td width="66%"><a href="#_m_aExtraMods" name="m_aExtraMods" title="go to the details">m_aExtraMods</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">Array&lt;string&gt;</td><td width="66%"><a href="#_m_aExtraPaths" name="m_aExtraPaths" title="go to the details">m_aExtraPaths</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">Array&lt;string&gt;</td><td width="66%"><a href="#_m_ALocFile" name="m_ALocFile" title="go to the details">m_ALocFile</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_m_bInstalled" name="m_bInstalled" title="go to the details">m_bInstalled</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_m_bUseMyKarma" name="m_bUseMyKarma" title="go to the details">m_bUseMyKarma</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_m_ConfigClass" name="m_ConfigClass" title="go to the details">m_ConfigClass</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_m_fPriority" name="m_fPriority" title="go to the details">m_fPriority</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_m_PlayerCtrlToSpawn" name="m_PlayerCtrlToSpawn" title="go to the details">m_PlayerCtrlToSpawn</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_m_szBackgroundRootDir" name="m_szBackgroundRootDir" title="go to the details">m_szBackgroundRootDir</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_m_szCampaignDir" name="m_szCampaignDir" title="go to the details">m_szCampaignDir</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_m_szCampaignIniFile" name="m_szCampaignIniFile" title="go to the details">m_szCampaignIniFile</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_m_szCreditsFile" name="m_szCreditsFile" title="go to the details">m_szCreditsFile</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_m_szGameServiceGameName" name="m_szGameServiceGameName" title="go to the details">m_szGameServiceGameName</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">Array&lt;string&gt;</td><td width="66%"><a href="#_m_szGameTypes" name="m_szGameTypes" title="go to the details">m_szGameTypes</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_m_szIniFilesDir" name="m_szIniFilesDir" title="go to the details">m_szIniFilesDir</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_m_szKeyWord" name="m_szKeyWord" title="go to the details">m_szKeyWord</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_m_szMenuDefinesFile" name="m_szMenuDefinesFile" title="go to the details">m_szMenuDefinesFile</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_m_szModInfo" name="m_szModInfo" title="go to the details">m_szModInfo</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_m_szName" name="m_szName" title="go to the details">m_szName</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_m_szPlayerCustomMission" name="m_szPlayerCustomMission" title="go to the details">m_szPlayerCustomMission</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_m_szServerIni" name="m_szServerIni" title="go to the details">m_szServerIni</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_m_szVideosRootDir" name="m_szVideosRootDir" title="go to the details">m_szVideosRootDir</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_version" name="version" title="go to the details">version</a></td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Variables from <a href="../core/core-overview.html">core</a>.<a href="../core/object.html">Object</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../core/object.html#Class">Class</a>, <a href="../core/object.html#DName">DName</a>, <a href="../core/object.html#Name">Name</a>, <a href="../core/object.html#ObjectFlags">ObjectFlags</a>, <a href="../core/object.html#ObjectInternal[6]">ObjectInternal[6]</a>, <a href="../core/object.html#Outer">Outer</a></td>
+</tr>
+</table>
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Enumerations Summary</th>
+</tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Enumerations from <a href="../core/core-overview.html">core</a>.<a href="../core/object.html">Object</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../core/object.html#ECamOrientation">ECamOrientation</a>, <a href="../core/object.html#EGoCode">EGoCode</a>, <a href="../core/object.html#EMovementMode">EMovementMode</a>, <a href="../core/object.html#EMovementSpeed">EMovementSpeed</a>, <a href="../core/object.html#ENodeNotify">ENodeNotify</a>, <a href="../core/object.html#EPlanAction">EPlanAction</a>, <a href="../core/object.html#EPlanActionType">EPlanActionType</a>, <a href="../core/object.html#ePlayerTeamSelection">ePlayerTeamSelection</a>, <a href="../core/object.html#ESheerAxis">ESheerAxis</a></td>
+</tr>
+</table>
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Structures Summary</th>
+</tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Structures from <a href="../core/core-overview.html">core</a>.<a href="../core/object.html">Object</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../core/object.html#BoundingVolume">BoundingVolume</a>, <a href="../core/object.html#Box">Box</a>, <a href="../core/object.html#Color">Color</a>, <a href="../core/object.html#CompressedPosition">CompressedPosition</a>, <a href="../core/object.html#Coords">Coords</a>, <a href="../core/object.html#Guid">Guid</a>, <a href="../core/object.html#InterpCurve">InterpCurve</a>, <a href="../core/object.html#InterpCurvePoint">InterpCurvePoint</a>, <a href="../core/object.html#Matrix">Matrix</a>, <a href="../core/object.html#Plane">Plane</a>, <a href="../core/object.html#Range">Range</a>, <a href="../core/object.html#RangeVector">RangeVector</a>, <a href="../core/object.html#Region">Region</a>, <a href="../core/object.html#Rotator">Rotator</a>, <a href="../core/object.html#Scale">Scale</a>, <a href="../core/object.html#Vector">Vector</a></td>
+</tr>
+</table>
+
+
+<br />
+
+
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Functions Summary</th>
+</tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_AddGameTypesFromCurrentMod-" name="AddGameTypesFromCurrentMod" title="go to the details">AddGameTypesFromCurrentMod</a> (<a href="../engine/levelinfo.html">LevelInfo</a> pLevelInfo))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td><a href="../engine/r6mod.html">R6Mod</a>&nbsp;</td><td><a href="#_GetExtraMods-" name="GetExtraMods" title="go to the details">GetExtraMods</a> (INT index))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_Init-" name="Init" title="go to the details">Init</a> (string szFile ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_LogArray-" name="LogArray" title="go to the details">LogArray</a> (string s, Array<string> anArray ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_LogInfo-" name="LogInfo" title="go to the details">LogInfo</a> ()))<br /><span class="function_state"></span></td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Functions from <a href="../core/core-overview.html">core</a>.<a href="../core/object.html">Object</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../core/object.html#!">!</a>, <a href="../core/object.html#!=">!=</a>, <a href="../core/object.html#$">$</a>, <a href="../core/object.html#%">%</a>, <a href="../core/object.html#&">&</a>, <a href="../core/object.html#&&">&&</a>, <a href="../core/object.html#*">*</a>, <a href="../core/object.html#**">**</a>, <a href="../core/object.html#*=">*=</a>, <a href="../core/object.html#+">+</a>, <a href="../core/object.html#++">++</a>, <a href="../core/object.html#+=">+=</a>, <a href="../core/object.html#-">-</a>, <a href="../core/object.html#--">--</a>, <a href="../core/object.html#-=">-=</a>, <a href="../core/object.html#/ ">/ </a>, <a href="../core/object.html#/=">/=</a>, <a href="../core/object.html#&lt;">&lt;</a>, <a href="../core/object.html#&lt;&lt;">&lt;&lt;</a>, <a href="../core/object.html#&lt;=">&lt;=</a>, <a href="../core/object.html#==">==</a>, <a href="../core/object.html#&gt;">&gt;</a>, <a href="../core/object.html#&gt;=">&gt;=</a>, <a href="../core/object.html#&gt;&gt;">&gt;&gt;</a>, <a href="../core/object.html#&gt;&gt;&gt;">&gt;&gt;&gt;</a>, <a href="../core/object.html#@">@</a>, <a href="../core/object.html#Abs">Abs</a>, <a href="../core/object.html#Acos">Acos</a>, <a href="../core/object.html#Asc">Asc</a>, <a href="../core/object.html#Asin">Asin</a>, <a href="../core/object.html#Atan">Atan</a>, <a href="../core/object.html#Atoi">Atoi</a>, <a href="../core/object.html#BeginState">BeginState</a>, <a href="../core/object.html#Caps">Caps</a>, <a href="../core/object.html#Chr">Chr</a>, <a href="../core/object.html#Clamp">Clamp</a>, <a href="../core/object.html#ClassIsChildOf">ClassIsChildOf</a>, <a href="../core/object.html#ClearOuter">ClearOuter</a>, <a href="../core/object.html#Clock">Clock</a>, <a href="../core/object.html#ClockwiseFrom">ClockwiseFrom</a>, <a href="../core/object.html#Cos">Cos</a>, <a href="../core/object.html#Cross">Cross</a>, <a href="../core/object.html#Disable">Disable</a>, <a href="../core/object.html#Dot">Dot</a>, <a href="../core/object.html#DynamicLoadObject">DynamicLoadObject</a>, <a href="../core/object.html#Enable">Enable</a>, <a href="../core/object.html#EndState">EndState</a>, <a href="../core/object.html#Exp">Exp</a>, <a href="../core/object.html#FClamp">FClamp</a>, <a href="../core/object.html#FindObject">FindObject</a>, <a href="../core/object.html#FMax">FMax</a>, <a href="../core/object.html#FMin">FMin</a>, <a href="../core/object.html#FRand">FRand</a>, <a href="../core/object.html#FreePackageObjects">FreePackageObjects</a>, <a href="../core/object.html#GetAxes">GetAxes</a>, <a href="../core/object.html#GetEnum">GetEnum</a>, <a href="../core/object.html#GetFirstPackageClass">GetFirstPackageClass</a>, <a href="../core/object.html#GetNextClass">GetNextClass</a>, <a href="../core/object.html#GetPropertyText">GetPropertyText</a>, <a href="../core/object.html#GetRegistryKey">GetRegistryKey</a>, <a href="../core/object.html#GetStateName">GetStateName</a>, <a href="../core/object.html#GetUnAxes">GetUnAxes</a>, <a href="../core/object.html#GotoState">GotoState</a>, <a href="../core/object.html#InitMod">InitMod</a>, <a href="../core/object.html#InStr">InStr</a>, <a href="../core/object.html#InterpCurveEval">InterpCurveEval</a>, <a href="../core/object.html#Invert">Invert</a>, <a href="../core/object.html#IsA">IsA</a>, <a href="../core/object.html#IsInState">IsInState</a>, <a href="../core/object.html#Itoa">Itoa</a>, <a href="../core/object.html#Left">Left</a>, <a href="../core/object.html#Len">Len</a>, <a href="../core/object.html#Lerp">Lerp</a>, <a href="../core/object.html#LoadConfig">LoadConfig</a>, <a href="../core/object.html#Localize">Localize</a>, <a href="../core/object.html#Log">Log</a>, <a href="../core/object.html#Loge">Loge</a>, <a href="../core/object.html#LogSnd">LogSnd</a>, <a href="../core/object.html#Max">Max</a>, <a href="../core/object.html#Mid">Mid</a>, <a href="../core/object.html#Min">Min</a>, <a href="../core/object.html#MirrorVectorByNormal">MirrorVectorByNormal</a>, <a href="../core/object.html#Normal">Normal</a>, <a href="../core/object.html#Normalize">Normalize</a>, <a href="../core/object.html#OrthoRotation">OrthoRotation</a>, <a href="../core/object.html#Rand">Rand</a>, <a href="../core/object.html#RandRange">RandRange</a>, <a href="../core/object.html#RemoveInvalidChars">RemoveInvalidChars</a>, <a href="../core/object.html#ResetConfig">ResetConfig</a>, <a href="../core/object.html#RewindToFirstClass">RewindToFirstClass</a>, <a href="../core/object.html#Right">Right</a>, <a href="../core/object.html#RotRand">RotRand</a>, <a href="../core/object.html#SaveConfig">SaveConfig</a>, <a href="../core/object.html#SetPropertyText">SetPropertyText</a>, <a href="../core/object.html#SetRegistryKey">SetRegistryKey</a>, <a href="../core/object.html#ShortestAngle2D">ShortestAngle2D</a>, <a href="../core/object.html#Sin">Sin</a>, <a href="../core/object.html#Smerp">Smerp</a>, <a href="../core/object.html#Sqrt">Sqrt</a>, <a href="../core/object.html#Square">Square</a>, <a href="../core/object.html#StaticSaveConfig">StaticSaveConfig</a>, <a href="../core/object.html#Strnicmp">Strnicmp</a>, <a href="../core/object.html#Tan">Tan</a>, <a href="../core/object.html#Unclock">Unclock</a>, <a href="../core/object.html#VRand">VRand</a>, <a href="../core/object.html#VSize">VSize</a>, <a href="../core/object.html#Warn">Warn</a>, <a href="../core/object.html#^">^</a>, <a href="../core/object.html#^^">^^</a>, <a href="../core/object.html#|">|</a>, <a href="../core/object.html#||">||</a>, <a href="../core/object.html#~">~</a>, <a href="../core/object.html#~=">~=</a></td>
+</tr>
+</table>
+
+
+<br />
+
+
+
+<hr />
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Constants Detail</th>
+</tr>
+</table>
+
+<h4><a name="_C_iR6ModVersion" class="hidden"></a>C_iR6ModVersion <a href="../Source_engine/r6mod.html#11" class="small">Source code</a></h4>
+<div class="declaration">const C_iR6ModVersion = <span class="source_int">1</span>;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th class="title">Variables Detail</th>
+</tr>
+</table>
+
+<h4><a name="_m_aDescriptionPackage" class="hidden"></a>m_aDescriptionPackage <a href="../Source_engine/r6mod.html#34" class="small">Source code</a></h4>
+<div class="declaration">var config Array&lt;<span class="source_type">string</span>&gt; m_aDescriptionPackage;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_aExtraModMaps" class="hidden"></a>m_aExtraModMaps <a href="../Source_engine/r6mod.html#38" class="small">Source code</a></h4>
+<div class="declaration">var config Array&lt;<span class="source_type">string</span>&gt; m_aExtraModMaps;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_aExtraMods" class="hidden"></a>m_aExtraMods <a href="../Source_engine/r6mod.html#39" class="small">Source code</a></h4>
+<div class="declaration">var Array&lt;<span class="source_type"><a href="../engine/r6mod.html" class="source">R6Mod</a></span>&gt; m_aExtraMods;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_aExtraPaths" class="hidden"></a>m_aExtraPaths <a href="../Source_engine/r6mod.html#32" class="small">Source code</a></h4>
+<div class="declaration">var config Array&lt;<span class="source_type">string</span>&gt; m_aExtraPaths;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_ALocFile" class="hidden"></a>m_ALocFile <a href="../Source_engine/r6mod.html#30" class="small">Source code</a></h4>
+<div class="declaration">var config Array&lt;<span class="source_type">string</span>&gt; m_ALocFile;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_bInstalled" class="hidden"></a>m_bInstalled <a href="../Source_engine/r6mod.html#17" class="small">Source code</a></h4>
+<div class="declaration">var config <span class="source_type">bool</span> m_bInstalled;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_bUseMyKarma" class="hidden"></a>m_bUseMyKarma <a href="../Source_engine/r6mod.html#26" class="small">Source code</a></h4>
+<div class="declaration">var config <span class="source_type">bool</span> m_bUseMyKarma;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_ConfigClass" class="hidden"></a>m_ConfigClass <a href="../Source_engine/r6mod.html#24" class="small">Source code</a></h4>
+<div class="declaration">var config <span class="source_type">string</span> m_ConfigClass;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_fPriority" class="hidden"></a>m_fPriority <a href="../Source_engine/r6mod.html#18" class="small">Source code</a></h4>
+<div class="declaration">var config <span class="source_type">float</span> m_fPriority;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_PlayerCtrlToSpawn" class="hidden"></a>m_PlayerCtrlToSpawn <a href="../Source_engine/r6mod.html#36" class="small">Source code</a></h4>
+<div class="declaration">var config <span class="source_type">string</span> m_PlayerCtrlToSpawn;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_szBackgroundRootDir" class="hidden"></a>m_szBackgroundRootDir <a href="../Source_engine/r6mod.html#43" class="small">Source code</a></h4>
+<div class="declaration">var config <span class="source_type">string</span> m_szBackgroundRootDir;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_szCampaignDir" class="hidden"></a>m_szCampaignDir <a href="../Source_engine/r6mod.html#20" class="small">Source code</a></h4>
+<div class="declaration">var config <span class="source_type">string</span> m_szCampaignDir;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_szCampaignIniFile" class="hidden"></a>m_szCampaignIniFile <a href="../Source_engine/r6mod.html#28" class="small">Source code</a></h4>
+<div class="declaration">var config <span class="source_type">string</span> m_szCampaignIniFile;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_szCreditsFile" class="hidden"></a>m_szCreditsFile <a href="../Source_engine/r6mod.html#47" class="small">Source code</a></h4>
+<div class="declaration">var config <span class="source_type">string</span> m_szCreditsFile;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_szGameServiceGameName" class="hidden"></a>m_szGameServiceGameName <a href="../Source_engine/r6mod.html#19" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">string</span> m_szGameServiceGameName;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_szGameTypes" class="hidden"></a>m_szGameTypes <a href="../Source_engine/r6mod.html#41" class="small">Source code</a></h4>
+<div class="declaration">var config Array&lt;<span class="source_type">string</span>&gt; m_szGameTypes;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_szIniFilesDir" class="hidden"></a>m_szIniFilesDir <a href="../Source_engine/r6mod.html#45" class="small">Source code</a></h4>
+<div class="declaration">var config <span class="source_type">string</span> m_szIniFilesDir;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_szKeyWord" class="hidden"></a>m_szKeyWord <a href="../Source_engine/r6mod.html#13" class="small">Source code</a></h4>
+<div class="declaration">var config <span class="source_type">string</span> m_szKeyWord;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_szMenuDefinesFile" class="hidden"></a>m_szMenuDefinesFile <a href="../Source_engine/r6mod.html#48" class="small">Source code</a></h4>
+<div class="declaration">var config <span class="source_type">string</span> m_szMenuDefinesFile;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_szModInfo" class="hidden"></a>m_szModInfo <a href="../Source_engine/r6mod.html#16" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">string</span> m_szModInfo;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_szName" class="hidden"></a>m_szName <a href="../Source_engine/r6mod.html#15" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">string</span> m_szName;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_szPlayerCustomMission" class="hidden"></a>m_szPlayerCustomMission <a href="../Source_engine/r6mod.html#21" class="small">Source code</a></h4>
+<div class="declaration">var config <span class="source_type">string</span> m_szPlayerCustomMission;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_szServerIni" class="hidden"></a>m_szServerIni <a href="../Source_engine/r6mod.html#22" class="small">Source code</a></h4>
+<div class="declaration">var config <span class="source_type">string</span> m_szServerIni;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_szVideosRootDir" class="hidden"></a>m_szVideosRootDir <a href="../Source_engine/r6mod.html#44" class="small">Source code</a></h4>
+<div class="declaration">var config <span class="source_type">string</span> m_szVideosRootDir;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_version" class="hidden"></a>version <a href="../Source_engine/r6mod.html#14" class="small">Source code</a></h4>
+<div class="declaration">var config <span class="source_type">int</span> version;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+
+
+<br />
+
+
+
+
+
+
+
+<table class="title">
+<tr>
+	<th class="title">Functions Detail</th>
+</tr>
+</table>
+
+<h4><a name="_AddGameTypesFromCurrentMod-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> AddGameTypesFromCurrentMod <span class="function_state"></span> <a href="../Source_engine/r6mod.html#103" class="small">Source code</a></h4>
+<div class="declaration"> function  AddGameTypesFromCurrentMod ( <span class="source_type"><a href="../engine/levelinfo.html" class="source">LevelInfo</a></span> pLevelInfo) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GetExtraMods-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> GetExtraMods <span class="function_state"></span> <a href="../Source_engine/r6mod.html#95" class="small">Source code</a></h4>
+<div class="declaration"> function <span class="source_type"><a href="../engine/r6mod.html" class="source">R6Mod</a></span> GetExtraMods ( <span class="source_type">INT</span> <span class="source_type">index</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_Init-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> Init <span class="function_state"></span> <a href="../Source_engine/r6mod.html#50" class="small">Source code</a></h4>
+<div class="declaration"> function  Init ( <span class="source_type">string</span> <span class="source_type">szFile</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_LogArray-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> LogArray <span class="function_state"></span> <a href="../Source_engine/r6mod.html#86" class="small">Source code</a></h4>
+<div class="declaration"> function  LogArray ( <span class="source_type">string</span> <span class="source_type">s</span>, Array&lt;<span class="source_type">string</span>&gt; <span class="source_type">anArray</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_LogInfo-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> LogInfo <span class="function_state"></span> <a href="../Source_engine/r6mod.html#116" class="small">Source code</a></h4>
+<div class="declaration"> function  LogInfo ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+
+
+<br />
+
+
+<table class="title">
+<tr>
+	<th class="title">Defaultproperties</th>
+</tr>
+</table>
+<br />
+<div class="source"><table class="source"><tr><td class="source"><pre class="source">defaultproperties
+{
+}
+</pre></td></tr></table></div>
+
+
+
+<hr />
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../engine/engine-overview.html">Package</a></td>
+	<td class="header_hilight">Class</td>
+	<td class="header"><a href="../Source_engine/r6mod.html">Source</a></td>
+	<td class="header"><a class="header" href="../classtree.html#R6Mod">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../engine/r6missionobjectivebase.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../engine/r6modconfig.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+
+<div class="stats">Creation time: mar. 26/5/2026 18:33:13.018 - Created with <a href="http://wiki.beyondunreal.com/wiki/UnCodeX" target="_blank">UnCodeX</a></div>
+
+</body>
+</html>

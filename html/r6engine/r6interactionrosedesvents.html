@@ -1,0 +1,548 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+	<title>UnCodeX - R6Engine.R6InteractionRoseDesVents</title>
+	<meta name="Generator" content="UnCodeX 241" />
+	<link rel="stylesheet" href="../DocStyle2.css" type="text/css" title="Original Purple" />
+	<link rel="alternative stylesheet" href="../DocStyle2-blue.css" type="text/css" title="Blue" />
+	<link rel="alternative stylesheet" href="../DocStyle2-red.css" type="text/css" title="Red" />
+	<!--[if IE]>
+	<link rel="stylesheet" href="../DocStyle2-msie.css" type="text/css" />
+	<![endif]-->
+	<script src="../styleswitcher.js" type="text/javascript"></script>
+</head>
+<body>
+
+<div class="header">
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../r6engine/r6engine-overview.html">Package</a></td>
+	<td class="header_hilight">Class</td>
+	<td class="header"><a href="../Source_r6engine/r6interactionrosedesvents.html">Source</a></td>
+	<td class="header"><a class="header" href="../classtree.html#R6InteractionRoseDesVents">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../r6engine/r6interactioninventorymnu.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../r6engine/r6interactiveobject.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html#r6engine/r6interactionrosedesvents.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+</div>
+<div class="spacer"></div>
+
+<h1><a href="../r6engine/r6engine-overview.html">R6Engine</a>.R6InteractionRoseDesVents</h1>
+
+<dl>
+<dt>Extends</dt><dd><a href="../engine/interaction.html">Interaction</a></dd>
+<dt>Modifiers</dt><dd>abstract </dd>
+</dl>
+
+<p></p>
+
+<pre class="tree"><a href="../core/core-overview.html">core</a>.<a href="../core/object.html">Object</a>
+|   
++-- <a href="../engine/engine-overview.html">engine</a>.<a href="../engine/interactions.html">Interactions</a>
+   |   
+   +-- <a href="../engine/engine-overview.html">engine</a>.<a href="../engine/interaction.html">Interaction</a>
+      |   
+      +-- <a href="../r6engine/r6engine-overview.html">R6Engine</a>.<a href="../r6engine/r6interactionrosedesvents.html">R6InteractionRoseDesVents</a>
+</pre>
+
+<h4>Direct Known Subclasses:</h4>
+<blockquote>
+	<a href="../r6engine/r6interactioncircumstantialaction.html">R6InteractionCircumstantialAction</a>, <a href="../r6engine/r6interactioninventorymnu.html">R6InteractionInventoryMnu</a>
+</blockquote>
+
+<hr />
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Constants Summary</th>
+</tr>
+<tr><td width="40%"><a href="#_C_RoseDesVentSize" name="C_RoseDesVentSize" title="go to the details">C_RoseDesVentSize</a></td><td width="10%">=</td><td width="50%">150</td></tr>
+
+</table>
+
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th colspan="2" class="title">Variables Summary</th>
+</tr>
+<tr><td nowrap="nowrap" width="33%">BOOL</td><td width="66%"><a href="#_bShowLog" name="bShowLog" title="go to the details">bShowLog</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">INT</td><td width="66%"><a href="#_C_iMouseDelta" name="C_iMouseDelta" title="go to the details">C_iMouseDelta</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_m_ActionKey" name="m_ActionKey" title="go to the details">m_ActionKey</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">BOOL</td><td width="66%"><a href="#_m_bActionKeyDown" name="m_bActionKeyDown" title="go to the details">m_bActionKeyDown</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">BOOL</td><td width="66%"><a href="#_m_bIgnoreNextActionKeyRelease" name="m_bIgnoreNextActionKeyRelease" title="go to the details">m_bIgnoreNextActionKeyRelease</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../core/object.html#Color">Color</a></td><td width="66%"><a href="#_m_Color" name="m_Color" title="go to the details">m_Color</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">Font</td><td width="66%"><a href="#_m_Font" name="m_Font" title="go to the details">m_Font</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">INT</td><td width="66%"><a href="#_m_iCurrentMnuChoice" name="m_iCurrentMnuChoice" title="go to the details">m_iCurrentMnuChoice</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">INT</td><td width="66%"><a href="#_m_iCurrentSubMnuChoice" name="m_iCurrentSubMnuChoice" title="go to the details">m_iCurrentSubMnuChoice</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">FLOAT</td><td width="66%"><a href="#_m_iTextureHeight" name="m_iTextureHeight" title="go to the details">m_iTextureHeight</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">FLOAT</td><td width="66%"><a href="#_m_iTextureWidth" name="m_iTextureWidth" title="go to the details">m_iTextureWidth</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../r6engine/r6playercontroller.html">R6PlayerController</a></td><td width="66%"><a href="#_m_Player" name="m_Player" title="go to the details">m_Player</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">Sound</td><td width="66%"><a href="#_m_RoseOpenSnd" name="m_RoseOpenSnd" title="go to the details">m_RoseOpenSnd</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">Sound</td><td width="66%"><a href="#_m_RoseSelectSnd" name="m_RoseSelectSnd" title="go to the details">m_RoseSelectSnd</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../engine/texture.html">Texture</a></td><td width="66%"><a href="#_m_TexMNU" name="m_TexMNU" title="go to the details">m_TexMNU</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../engine/texture.html">Texture</a></td><td width="66%"><a href="#_m_TexMNUItemNormalLeft" name="m_TexMNUItemNormalLeft" title="go to the details">m_TexMNUItemNormalLeft</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../engine/texture.html">Texture</a></td><td width="66%"><a href="#_m_TexMNUItemNormalSubLeft" name="m_TexMNUItemNormalSubLeft" title="go to the details">m_TexMNUItemNormalSubLeft</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../engine/texture.html">Texture</a></td><td width="66%"><a href="#_m_TexMNUItemNormalSubTop" name="m_TexMNUItemNormalSubTop" title="go to the details">m_TexMNUItemNormalSubTop</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../engine/texture.html">Texture</a></td><td width="66%"><a href="#_m_TexMNUItemNormalTop" name="m_TexMNUItemNormalTop" title="go to the details">m_TexMNUItemNormalTop</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../engine/texture.html">Texture</a></td><td width="66%"><a href="#_m_TexMNUItemSelectedLeft" name="m_TexMNUItemSelectedLeft" title="go to the details">m_TexMNUItemSelectedLeft</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../engine/texture.html">Texture</a></td><td width="66%"><a href="#_m_TexMNUItemSelectedSubLeft" name="m_TexMNUItemSelectedSubLeft" title="go to the details">m_TexMNUItemSelectedSubLeft</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../engine/texture.html">Texture</a></td><td width="66%"><a href="#_m_TexMNUItemSelectedSubTop" name="m_TexMNUItemSelectedSubTop" title="go to the details">m_TexMNUItemSelectedSubTop</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../engine/texture.html">Texture</a></td><td width="66%"><a href="#_m_TexMNUItemSelectedTop" name="m_TexMNUItemSelectedTop" title="go to the details">m_TexMNUItemSelectedTop</a></td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Variables from <a href="../engine/engine-overview.html">engine</a>.<a href="../engine/interaction.html">Interaction</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../engine/interaction.html#bActive">bActive</a>, <a href="../engine/interaction.html#bRequiresTick">bRequiresTick</a>, <a href="../engine/interaction.html#bVisible">bVisible</a>, <a href="../engine/interaction.html#Master">Master</a>, <a href="../engine/interaction.html#ViewportOwner">ViewportOwner</a></td>
+</tr>
+</table>
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Enumerations Summary</th>
+</tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Enumerations from <a href="../engine/engine-overview.html">engine</a>.<a href="../engine/interactions.html">Interactions</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../engine/interactions.html#EInputAction">EInputAction</a>, <a href="../engine/interactions.html#EInputKey">EInputKey</a></td>
+</tr>
+</table>
+
+
+<br />
+
+
+
+
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Functions Summary</th>
+</tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_ActionKeyPressed-" name="ActionKeyPressed" title="go to the details">ActionKeyPressed</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_ActionKeyReleased-" name="ActionKeyReleased" title="go to the details">ActionKeyReleased</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>BOOL&nbsp;</td><td><a href="#_CurrentItemHasSubMenu-" name="CurrentItemHasSubMenu" title="go to the details">CurrentItemHasSubMenu</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_DisplayMenu-" name="DisplayMenu" title="go to the details">DisplayMenu</a> (BOOL bDisplay, optional BOOL bOpen ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_DrawRoseDesVents-" name="DrawRoseDesVents" title="go to the details">DrawRoseDesVents</a> (<a href="../engine/canvas.html">Canvas</a> C, INT iMnuChoice ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_DrawTextCenteredInBox-" name="DrawTextCenteredInBox" title="go to the details">DrawTextCenteredInBox</a> (<a href="../engine/canvas.html">Canvas</a> C, string strText, FLOAT fPosX, FLOAT fPosY, FLOAT fWidth, FLOAT fHeight ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>INT&nbsp;</td><td><a href="#_GetCurrentMenuChoice-" name="GetCurrentMenuChoice" title="go to the details">GetCurrentMenuChoice</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>INT&nbsp;</td><td><a href="#_GetCurrentSubMenuChoice-" name="GetCurrentSubMenuChoice" title="go to the details">GetCurrentSubMenuChoice</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_GotoSubMenu-" name="GotoSubMenu" title="go to the details">GotoSubMenu</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_event.gif" alt="event" title="event" /></td><td>&nbsp;</td><td><a href="#_Initialized-" name="Initialized" title="go to the details">Initialized</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>BOOL&nbsp;</td><td><a href="#_IsValidMenuChoice-" name="IsValidMenuChoice" title="go to the details">IsValidMenuChoice</a> (INT iChoice)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_ItemClicked-" name="ItemClicked" title="go to the details">ItemClicked</a> (INT iItem)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>BOOL&nbsp;</td><td><a href="#_ItemHasSubMenu-" name="ItemHasSubMenu" title="go to the details">ItemHasSubMenu</a> (INT iItem)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_ItemRightClicked-" name="ItemRightClicked" title="go to the details">ItemRightClicked</a> (INT iItem)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>BOOL&nbsp;</td><td><a href="#_KeyEvent-" name="KeyEvent" title="go to the details">KeyEvent</a> (<a href="../engine/interactions.html#EInputKey">EInputKey</a> eKey, <a href="../engine/interactions.html#EInputAction">EInputAction</a> eAction, FLOAT fDelta ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>bool&nbsp;</td><td><a href="#_KeyEvent-MenuDisplayed" name="KeyEvent" title="go to the details">KeyEvent</a> (<a href="../engine/interactions.html#EInputKey">EInputKey</a> eKey, <a href="../engine/interactions.html#EInputAction">EInputAction</a> eAction, FLOAT fDelta ))<br /><span class="function_state">MenuDisplayed</span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>BOOL&nbsp;</td><td><a href="#_MenuItemEnabled-" name="MenuItemEnabled" title="go to the details">MenuItemEnabled</a> (INT iItem ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_NoItemSelected-" name="NoItemSelected" title="go to the details">NoItemSelected</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_SetMenuChoice-" name="SetMenuChoice" title="go to the details">SetMenuChoice</a> (INT iChoice)<br /><span class="function_state"></span></td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Functions from <a href="../engine/engine-overview.html">engine</a>.<a href="../engine/interaction.html">Interaction</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../engine/interaction.html#ConnectionFailed">ConnectionFailed</a>, <a href="../engine/interaction.html#ConsoleCommand">ConsoleCommand</a>, <a href="../engine/interaction.html#ConvertKeyToLocalisation">ConvertKeyToLocalisation</a>, <a href="../engine/interaction.html#Initialize">Initialize</a>, <a href="../engine/interaction.html#Initialized">Initialized</a>, <a href="../engine/interaction.html#KeyEvent">KeyEvent</a>, <a href="../engine/interaction.html#KeyType">KeyType</a>, <a href="../engine/interaction.html#LaunchR6MainMenu">LaunchR6MainMenu</a>, <a href="../engine/interaction.html#MenuLoadProfile">MenuLoadProfile</a>, <a href="../engine/interaction.html#Message">Message</a>, <a href="../engine/interaction.html#NotifyAfterLevelChange">NotifyAfterLevelChange</a>, <a href="../engine/interaction.html#NotifyLevelChange">NotifyLevelChange</a>, <a href="../engine/interaction.html#PostRender">PostRender</a>, <a href="../engine/interaction.html#PreRender">PreRender</a>, <a href="../engine/interaction.html#R6ConnectionFailed">R6ConnectionFailed</a>, <a href="../engine/interaction.html#R6ConnectionInProgress">R6ConnectionInProgress</a>, <a href="../engine/interaction.html#R6ConnectionInterrupted">R6ConnectionInterrupted</a>, <a href="../engine/interaction.html#R6ConnectionSuccess">R6ConnectionSuccess</a>, <a href="../engine/interaction.html#R6ProgressMsg">R6ProgressMsg</a>, <a href="../engine/interaction.html#ScreenToWorld">ScreenToWorld</a>, <a href="../engine/interaction.html#SendGoCode">SendGoCode</a>, <a href="../engine/interaction.html#ServerDisconnected">ServerDisconnected</a>, <a href="../engine/interaction.html#SetFocus">SetFocus</a>, <a href="../engine/interaction.html#SetGameServiceLinks">SetGameServiceLinks</a>, <a href="../engine/interaction.html#Tick">Tick</a>, <a href="../engine/interaction.html#UserDisconnected">UserDisconnected</a>, <a href="../engine/interaction.html#WorldToScreen">WorldToScreen</a></td>
+</tr>
+</table>
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th class="title">States Summary</th>
+</tr>
+</table>
+
+<table>
+<tr>
+	<th>MenuDisplayed <a href="../Source_r6engine/r6interactionrosedesvents.html#166" class="small">Source code</a></th>
+</tr>
+<tr>
+	<td>
+	<span class="declaration"><span class="us_keyw"> state</span> MenuDisplayed <span class="us_keyw"></span> </span><br />
+	<blockquote class="comment">
+	
+	</blockquote>
+	</td>
+</tr>
+<tr>
+	<td><a href="#_KeyEvent+MenuDisplayed">KeyEvent</a></td>
+</tr>
+</table>
+
+
+<br />
+
+<hr />
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Constants Detail</th>
+</tr>
+</table>
+
+<h4><a name="_C_RoseDesVentSize" class="hidden"></a>C_RoseDesVentSize <a href="../Source_r6engine/r6interactionrosedesvents.html#41" class="small">Source code</a></h4>
+<div class="declaration">const C_RoseDesVentSize = <span class="source_int">150</span>;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th class="title">Variables Detail</th>
+</tr>
+</table>
+
+<h4><a name="_bShowLog" class="hidden"></a>bShowLog <a href="../Source_r6engine/r6interactionrosedesvents.html#19" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">BOOL</span> bShowLog;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_C_iMouseDelta" class="hidden"></a>C_iMouseDelta <a href="../Source_r6engine/r6interactionrosedesvents.html#40" class="small">Source code</a></h4>
+<div class="declaration">var const <span class="source_type">INT</span> C_iMouseDelta;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_ActionKey" class="hidden"></a>m_ActionKey <a href="../Source_r6engine/r6interactionrosedesvents.html#15" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">string</span> m_ActionKey;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_bActionKeyDown" class="hidden"></a>m_bActionKeyDown <a href="../Source_r6engine/r6interactionrosedesvents.html#17" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">BOOL</span> m_bActionKeyDown;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_bIgnoreNextActionKeyRelease" class="hidden"></a>m_bIgnoreNextActionKeyRelease <a href="../Source_r6engine/r6interactionrosedesvents.html#18" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">BOOL</span> m_bIgnoreNextActionKeyRelease;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_Color" class="hidden"></a>m_Color <a href="../Source_r6engine/r6interactionrosedesvents.html#38" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../core/object.html#Color" class="source">Color</a></span> m_Color;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_Font" class="hidden"></a>m_Font <a href="../Source_r6engine/r6interactionrosedesvents.html#37" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">Font</span> m_Font;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_iCurrentMnuChoice" class="hidden"></a>m_iCurrentMnuChoice <a href="../Source_r6engine/r6interactionrosedesvents.html#21" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">INT</span> m_iCurrentMnuChoice;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_iCurrentSubMnuChoice" class="hidden"></a>m_iCurrentSubMnuChoice <a href="../Source_r6engine/r6interactionrosedesvents.html#22" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">INT</span> m_iCurrentSubMnuChoice;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_iTextureHeight" class="hidden"></a>m_iTextureHeight <a href="../Source_r6engine/r6interactionrosedesvents.html#35" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">FLOAT</span> m_iTextureHeight;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_iTextureWidth" class="hidden"></a>m_iTextureWidth <a href="../Source_r6engine/r6interactionrosedesvents.html#34" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">FLOAT</span> m_iTextureWidth;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_Player" class="hidden"></a>m_Player <a href="../Source_r6engine/r6interactionrosedesvents.html#14" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../r6engine/r6playercontroller.html" class="source">R6PlayerController</a></span> m_Player;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_RoseOpenSnd" class="hidden"></a>m_RoseOpenSnd <a href="../Source_r6engine/r6interactionrosedesvents.html#43" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">Sound</span> m_RoseOpenSnd;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_RoseSelectSnd" class="hidden"></a>m_RoseSelectSnd <a href="../Source_r6engine/r6interactionrosedesvents.html#44" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">Sound</span> m_RoseSelectSnd;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_TexMNU" class="hidden"></a>m_TexMNU <a href="../Source_r6engine/r6interactionrosedesvents.html#24" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../engine/texture.html" class="source">Texture</a></span> m_TexMNU;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_TexMNUItemNormalLeft" class="hidden"></a>m_TexMNUItemNormalLeft <a href="../Source_r6engine/r6interactionrosedesvents.html#26" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../engine/texture.html" class="source">Texture</a></span> m_TexMNUItemNormalLeft;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_TexMNUItemNormalSubLeft" class="hidden"></a>m_TexMNUItemNormalSubLeft <a href="../Source_r6engine/r6interactionrosedesvents.html#28" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../engine/texture.html" class="source">Texture</a></span> m_TexMNUItemNormalSubLeft;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_TexMNUItemNormalSubTop" class="hidden"></a>m_TexMNUItemNormalSubTop <a href="../Source_r6engine/r6interactionrosedesvents.html#27" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../engine/texture.html" class="source">Texture</a></span> m_TexMNUItemNormalSubTop;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_TexMNUItemNormalTop" class="hidden"></a>m_TexMNUItemNormalTop <a href="../Source_r6engine/r6interactionrosedesvents.html#25" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../engine/texture.html" class="source">Texture</a></span> m_TexMNUItemNormalTop;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_TexMNUItemSelectedLeft" class="hidden"></a>m_TexMNUItemSelectedLeft <a href="../Source_r6engine/r6interactionrosedesvents.html#32" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../engine/texture.html" class="source">Texture</a></span> m_TexMNUItemSelectedLeft;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_TexMNUItemSelectedSubLeft" class="hidden"></a>m_TexMNUItemSelectedSubLeft <a href="../Source_r6engine/r6interactionrosedesvents.html#30" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../engine/texture.html" class="source">Texture</a></span> m_TexMNUItemSelectedSubLeft;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_TexMNUItemSelectedSubTop" class="hidden"></a>m_TexMNUItemSelectedSubTop <a href="../Source_r6engine/r6interactionrosedesvents.html#29" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../engine/texture.html" class="source">Texture</a></span> m_TexMNUItemSelectedSubTop;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_TexMNUItemSelectedTop" class="hidden"></a>m_TexMNUItemSelectedTop <a href="../Source_r6engine/r6interactionrosedesvents.html#31" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../engine/texture.html" class="source">Texture</a></span> m_TexMNUItemSelectedTop;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+
+
+<br />
+
+
+
+
+
+
+
+<table class="title">
+<tr>
+	<th class="title">Functions Detail</th>
+</tr>
+</table>
+
+<h4><a name="_ActionKeyPressed-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> ActionKeyPressed <span class="function_state"></span> <a href="../Source_r6engine/r6interactionrosedesvents.html#63" class="small">Source code</a></h4>
+<div class="declaration"> function  ActionKeyPressed (  )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ActionKeyReleased-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> ActionKeyReleased <span class="function_state"></span> <a href="../Source_r6engine/r6interactionrosedesvents.html#64" class="small">Source code</a></h4>
+<div class="declaration"> function  ActionKeyReleased (  )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_CurrentItemHasSubMenu-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> CurrentItemHasSubMenu <span class="function_state"></span> <a href="../Source_r6engine/r6interactionrosedesvents.html#80" class="small">Source code</a></h4>
+<div class="declaration"> function <span class="source_type">BOOL</span> CurrentItemHasSubMenu ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_DisplayMenu-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> DisplayMenu <span class="function_state"></span> <a href="../Source_r6engine/r6interactionrosedesvents.html#107" class="small">Source code</a></h4>
+<div class="declaration"> function  DisplayMenu ( <span class="source_type">BOOL</span> bDisplay, optional <span class="source_type">BOOL</span> <span class="source_type">bOpen</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_DrawRoseDesVents-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> DrawRoseDesVents <span class="function_state"></span> <a href="../Source_r6engine/r6interactionrosedesvents.html#302" class="small">Source code</a></h4>
+<div class="declaration"> function  DrawRoseDesVents ( <span class="source_type"><a href="../engine/canvas.html" class="source">Canvas</a></span> <span class="source_type">C</span>, <span class="source_type">INT</span> <span class="source_type">iMnuChoice</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_DrawTextCenteredInBox-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> DrawTextCenteredInBox <span class="function_state"></span> <a href="../Source_r6engine/r6interactionrosedesvents.html#476" class="small">Source code</a></h4>
+<div class="declaration"> function  DrawTextCenteredInBox ( <span class="source_type"><a href="../engine/canvas.html" class="source">Canvas</a></span> <span class="source_type">C</span>, <span class="source_type">string</span> strText, <span class="source_type">FLOAT</span> fPosX, <span class="source_type">FLOAT</span> fPosY, <span class="source_type">FLOAT</span> fWidth, <span class="source_type">FLOAT</span> <span class="source_type">fHeight</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GetCurrentMenuChoice-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> GetCurrentMenuChoice <span class="function_state"></span> <a href="../Source_r6engine/r6interactionrosedesvents.html#89" class="small">Source code</a></h4>
+<div class="declaration"> function <span class="source_type">INT</span> GetCurrentMenuChoice ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GetCurrentSubMenuChoice-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> GetCurrentSubMenuChoice <span class="function_state"></span> <a href="../Source_r6engine/r6interactionrosedesvents.html#98" class="small">Source code</a></h4>
+<div class="declaration"> function <span class="source_type">INT</span> GetCurrentSubMenuChoice ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GotoSubMenu-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> GotoSubMenu <span class="function_state"></span> <a href="../Source_r6engine/r6interactionrosedesvents.html#57" class="small">Source code</a></h4>
+<div class="declaration"> function  GotoSubMenu (  )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_Initialized-" class="hidden"></a><img src="../img_event.gif" alt="" title="event" /> Initialized <span class="function_state"></span> <a href="../Source_r6engine/r6interactionrosedesvents.html#49" class="small">Source code</a></h4>
+<div class="declaration"> event  Initialized ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_IsValidMenuChoice-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> IsValidMenuChoice <span class="function_state"></span> <a href="../Source_r6engine/r6interactionrosedesvents.html#58" class="small">Source code</a></h4>
+<div class="declaration"> function <span class="source_type">BOOL</span> IsValidMenuChoice ( <span class="source_type">INT</span> <span class="source_type">iChoice</span> )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ItemClicked-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> ItemClicked <span class="function_state"></span> <a href="../Source_r6engine/r6interactionrosedesvents.html#62" class="small">Source code</a></h4>
+<div class="declaration"> function  ItemClicked ( <span class="source_type">INT</span> <span class="source_type">iItem</span> )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ItemHasSubMenu-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> ItemHasSubMenu <span class="function_state"></span> <a href="../Source_r6engine/r6interactionrosedesvents.html#65" class="small">Source code</a></h4>
+<div class="declaration"> function <span class="source_type">BOOL</span> ItemHasSubMenu ( <span class="source_type">INT</span> <span class="source_type">iItem</span> )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ItemRightClicked-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> ItemRightClicked <span class="function_state"></span> <a href="../Source_r6engine/r6interactionrosedesvents.html#61" class="small">Source code</a></h4>
+<div class="declaration"> function  ItemRightClicked ( <span class="source_type">INT</span> <span class="source_type">iItem</span> )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_KeyEvent-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> KeyEvent <span class="function_state"></span> <a href="../Source_r6engine/r6interactionrosedesvents.html#132" class="small">Source code</a></h4>
+<div class="declaration"> function <span class="source_type">BOOL</span> KeyEvent ( <span class="source_type"><a href="../engine/interactions.html#EInputKey" class="source">EInputKey</a></span> eKey, <span class="source_type"><a href="../engine/interactions.html#EInputAction" class="source">EInputAction</a></span> <span class="source_type">eAction</span>, <span class="source_type">FLOAT</span> <span class="source_type">fDelta</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_KeyEvent-MenuDisplayed" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> KeyEvent <span class="function_state">MenuDisplayed</span> <a href="../Source_r6engine/r6interactionrosedesvents.html#168" class="small">Source code</a></h4>
+<div class="declaration"> function <span class="source_type">bool</span> KeyEvent ( <span class="source_type"><a href="../engine/interactions.html#EInputKey" class="source">EInputKey</a></span> eKey, <span class="source_type"><a href="../engine/interactions.html#EInputAction" class="source">EInputAction</a></span> <span class="source_type">eAction</span>, <span class="source_type">FLOAT</span> <span class="source_type">fDelta</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_MenuItemEnabled-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> MenuItemEnabled <span class="function_state"></span> <a href="../Source_r6engine/r6interactionrosedesvents.html#71" class="small">Source code</a></h4>
+<div class="declaration"> function <span class="source_type">BOOL</span> MenuItemEnabled ( <span class="source_type">INT</span> <span class="source_type">iItem</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_NoItemSelected-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> NoItemSelected <span class="function_state"></span> <a href="../Source_r6engine/r6interactionrosedesvents.html#60" class="small">Source code</a></h4>
+<div class="declaration"> function  NoItemSelected (  )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_SetMenuChoice-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> SetMenuChoice <span class="function_state"></span> <a href="../Source_r6engine/r6interactionrosedesvents.html#59" class="small">Source code</a></h4>
+<div class="declaration"> function  SetMenuChoice ( <span class="source_type">INT</span> <span class="source_type">iChoice</span> )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+
+
+<br />
+
+
+<table class="title">
+<tr>
+	<th class="title">Defaultproperties</th>
+</tr>
+</table>
+<br />
+<div class="source"><table class="source"><tr><td class="source"><pre class="source">defaultproperties
+{
+     m_iCurrentMnuChoice=-<span class="source_int">1</span>
+     m_iCurrentSubMnuChoice=-<span class="source_int">1</span>
+     C_iMouseDelta=<span class="source_int">5</span>
+     m_iTextureWidth=<span class="source_int">256.000000</span>
+     m_iTextureHeight=<span class="source_int">256.000000</span>
+     m_TexMNU=<span class="source_type"><a href="../engine/texture.html" class="source">Texture</a></span><span class="source_name">'R6HUD.QuadDisplay_back'</span>
+     m_TexMNUItemNormalTop=<span class="source_type"><a href="../engine/texture.html" class="source">Texture</a></span><span class="source_name">'R6HUD.QuadDisplay_01_Ver'</span>
+     m_TexMNUItemNormalLeft=<span class="source_type"><a href="../engine/texture.html" class="source">Texture</a></span><span class="source_name">'R6HUD.QuadDisplay_01_Hori'</span>
+     m_TexMNUItemNormalSubTop=<span class="source_type"><a href="../engine/texture.html" class="source">Texture</a></span><span class="source_name">'R6HUD.QuadDisplay_02_Ver'</span>
+     m_TexMNUItemNormalSubLeft=<span class="source_type"><a href="../engine/texture.html" class="source">Texture</a></span><span class="source_name">'R6HUD.QuadDisplay_02_Hori'</span>
+     m_TexMNUItemSelectedSubTop=<span class="source_type"><a href="../engine/texture.html" class="source">Texture</a></span><span class="source_name">'R6HUD.QuadDisplay_03_Ver'</span>
+     m_TexMNUItemSelectedSubLeft=<span class="source_type"><a href="../engine/texture.html" class="source">Texture</a></span><span class="source_name">'R6HUD.QuadDisplay_03_Hori'</span>
+     m_TexMNUItemSelectedTop=<span class="source_type"><a href="../engine/texture.html" class="source">Texture</a></span><span class="source_name">'R6HUD.QuadDisplay_04_Ver'</span>
+     m_TexMNUItemSelectedLeft=<span class="source_type"><a href="../engine/texture.html" class="source">Texture</a></span><span class="source_name">'R6HUD.QuadDisplay_04_Hori'</span>
+     m_Font=<span class="source_type">Font</span><span class="source_name">'R6Font.Rainbow6_14pt'</span>
+     m_RoseOpenSnd=<span class="source_type">Sound</span><span class="source_name">'SFX_Menus.Play_Rose_Open'</span>
+     m_RoseSelectSnd=<span class="source_type">Sound</span><span class="source_name">'SFX_Menus.Play_Rose_Select'</span>
+}
+</pre></td></tr></table></div>
+
+
+
+<hr />
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../r6engine/r6engine-overview.html">Package</a></td>
+	<td class="header_hilight">Class</td>
+	<td class="header"><a href="../Source_r6engine/r6interactionrosedesvents.html">Source</a></td>
+	<td class="header"><a class="header" href="../classtree.html#R6InteractionRoseDesVents">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../r6engine/r6interactioninventorymnu.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../r6engine/r6interactiveobject.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+
+<div class="stats">Creation time: mar. 26/5/2026 18:33:11.516 - Created with <a href="http://wiki.beyondunreal.com/wiki/UnCodeX" target="_blank">UnCodeX</a></div>
+
+</body>
+</html>

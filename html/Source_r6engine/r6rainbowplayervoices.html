@@ -1,0 +1,318 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+	<title>UnCodeX - Source: R6Engine.R6RainbowPlayerVoices</title>
+	<meta name="Generator" content="UnCodeX 241" />
+	<link rel="stylesheet" href="../DocStyle2.css" type="text/css" title="Original Purple" />
+	<link rel="alternative stylesheet" href="../DocStyle2-blue.css" type="text/css" title="Blue" />
+	<link rel="alternative stylesheet" href="../DocStyle2-red.css" type="text/css" title="Red" />
+	<!--[if IE]>
+	<link rel="stylesheet" href="../DocStyle2-msie.css" type="text/css" />
+	<![endif]-->
+	<script src="../styleswitcher.js" type="text/javascript"></script>
+</head>
+<body>
+
+<div class="header">
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../r6engine/r6engine-overview.html">Package</a></td>
+	<td class="header"><a href="../r6engine/r6rainbowplayervoices.html">Class</a></td>
+	<td class="header_hilight">Source</td>
+	<td class="header"><a class="header" href="../classtree.html#R6RainbowPlayerVoices">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../Source_r6engine/r6rainbowotherteamvoices2.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../Source_r6engine/r6rainbowteam.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html#Source_r6engine/r6rainbowplayervoices.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+</div>
+<div class="spacer"></div>
+
+<h1><a href="../r6engine/r6engine-overview.html">R6Engine</a>.<a href="../r6engine/r6rainbowplayervoices.html">R6RainbowPlayerVoices</a></h1>
+<br />
+<div class="source"><table class="source"><tr><td class="source_lineno"><span class="source_lineno">00001<br />00002<br />00003<br />00004<br />00005<br />00006<br />00007<br />00008<br />00009<br />00010<br />00011<br />00012<br />00013<br />00014<br />00015<br />00016<br />00017<br />00018<br />00019<br />00020<br />
+00021<br />00022<br />00023<br />00024<br />00025<br />00026<br />00027<br />00028<br />00029<br />00030<br />00031<br />00032<br />00033<br />00034<br />00035<br />00036<br />00037<br />00038<br />00039<br />00040<br />
+00041<br />00042<br />00043<br />00044<br />00045<br />00046<br />00047<br />00048<br />00049<br />00050<br />00051<br />00052<br />00053<br />00054<br />00055<br />00056<br />00057<br />00058<br />00059<br />00060<br />
+00061<br />00062<br />00063<br />00064<br />00065<br />00066<br />00067<br />00068<br />00069<br />00070<br />00071<br />00072<br />00073<br />00074<br />00075<br />00076<br />00077<br />00078<br />00079<br />00080<br />
+00081<br />00082<br />00083<br />00084<br />00085<br />00086<br />00087<br />00088<br />00089<br />00090<br />00091<br />00092<br />00093<br />00094<br />00095<br />00096<br />00097<br />00098<br />00099<br />00100<br />
+00101<br />00102<br />00103<br />00104<br />00105<br />00106<br />00107<br />00108<br />00109<br />00110<br />00111<br />00112<br />00113<br />00114<br />00115<br />00116<br />00117<br />00118<br />00119<br />00120<br />
+00121<br />00122<br />00123<br />00124<br />00125<br />00126<br />00127<br />00128<br />00129<br />00130<br />00131<br />00132<br />00133<br />00134<br />00135<br />00136<br />00137<br />00138<br />00139<br />00140<br />
+00141<br />00142<br />00143<br />00144<br />00145<br />00146<br />00147<br />00148<br />00149<br />00150<br />00151<br />00152<br />00153<br />00154<br />00155<br />00156<br />00157<br />00158<br />00159<br />00160<br />
+00161<br />00162<br />00163<br />00164<br />00165<br />00166<br />00167<br />00168<br />00169<br />00170<br />00171<br />00172<br />00173<br />00174<br />00175<br />00176<br />00177<br />00178<br />00179<br />00180<br />
+00181<br />00182<br />00183<br />00184<br />00185<br />00186<br />00187<br />00188<br />00189<br />00190<br />00191<br />00192<br />00193<br />00194<br />00195<br />00196<br />00197<br />00198<br />00199<br />00200<br />
+00201<br />00202<br />00203<br />00204<br />00205<br />00206<br />00207<br />00208<br />00209<br />00210<br />00211<br />00212<br />00213<br />00214<br />00215<br />00216<br />00217<br />00218<br />00219<br />00220<br />
+00221<br />00222<br />00223<br />00224<br />00225<br />00226<br />00227<br />00228<br />00229<br />00230<br />00231<br />00232<br />00233<br />00234<br />00235<br />00236<br />00237<br />00238<br />00239<br />00240<br />
+00241<br />00242<br />00243<br />00244<br />00245<br />00246<br />00247<br />00248</span></td>
+<td class="source"><pre class="source"><a name="0"></a><span class="source_type">class</span> <span class="source_type"><a href="../r6engine/r6rainbowplayervoices.html" class="source">R6RainbowPlayerVoices</a></span> extends <span class="source_type"><a href="../r6engine/r6voices.html" class="source">R6Voices</a></span>;
+<a name="2"></a>
+<a name="3"></a>var <span class="source_type">Sound</span> m_sndTeamRegroup;
+<a name="4"></a>var <span class="source_type">Sound</span> m_sndTeamMove;
+<a name="5"></a>var <span class="source_type">Sound</span> m_sndTeamHold;
+<a name="6"></a>var <span class="source_type">Sound</span> m_sndAllTeamsHold;
+<a name="7"></a>var <span class="source_type">Sound</span> m_sndAllTeamsMove;
+<a name="8"></a>var <span class="source_type">Sound</span> m_sndTeamMoveAndFrag;
+<a name="9"></a>var <span class="source_type">Sound</span> m_sndTeamMoveAndGas;
+<a name="10"></a>var <span class="source_type">Sound</span> m_sndTeamMoveAndSmoke;
+<a name="11"></a>var <span class="source_type">Sound</span> m_sndTeamMoveAndFlash;
+<a name="12"></a>var <span class="source_type">Sound</span> m_sndTeamOpenDoor;
+<a name="13"></a>var <span class="source_type">Sound</span> m_sndTeamCloseDoor;
+<a name="14"></a>var <span class="source_type">Sound</span> m_sndTeamOpenShudder;
+<a name="15"></a>var <span class="source_type">Sound</span> m_sndTeamCloseShudder;
+<a name="16"></a>var <span class="source_type">Sound</span> m_sndTeamOpenAndClear;
+<a name="17"></a>var <span class="source_type">Sound</span> m_sndTeamOpenAndFrag;
+<a name="18"></a>var <span class="source_type">Sound</span> m_sndTeamOpenAndGas;
+<a name="19"></a>var <span class="source_type">Sound</span> m_sndTeamOpenAndSmoke;
+<a name="20"></a>var <span class="source_type">Sound</span> m_sndTeamOpenAndFlash;
+<a name="21"></a>var <span class="source_type">Sound</span> m_sndTeamOpenFragAndClear;
+<a name="22"></a>var <span class="source_type">Sound</span> m_sndTeamOpenGasAndClear;
+<a name="23"></a>var <span class="source_type">Sound</span> m_sndTeamOpenSmokeAndClear;
+<a name="24"></a>var <span class="source_type">Sound</span> m_sndTeamOpenFlashAndClear;
+<a name="25"></a>var <span class="source_type">Sound</span> m_sndTeamFragAndClear;
+<a name="26"></a>var <span class="source_type">Sound</span> m_sndTeamGasAndClear;
+<a name="27"></a>var <span class="source_type">Sound</span> m_sndTeamSmokeAndClear;
+<a name="28"></a>var <span class="source_type">Sound</span> m_sndTeamFlashAndClear;
+<a name="29"></a>var <span class="source_type">Sound</span> m_sndTeamUseLadder;
+<a name="30"></a>var <span class="source_type">Sound</span> m_sndTeamSecureTerrorist;
+<a name="31"></a>var <span class="source_type">Sound</span> m_sndTeamGoGetHostage;
+<a name="32"></a>var <span class="source_type">Sound</span> m_sndTeamHostageStayPut;
+<a name="33"></a>var <span class="source_type">Sound</span> m_sndTeamStatusReport;
+<a name="34"></a>var <span class="source_type">Sound</span> m_sndTeamUseElectronic;
+<a name="35"></a>var <span class="source_type">Sound</span> m_sndTeamUseDemolition;
+<a name="36"></a>var <span class="source_type">Sound</span> m_sndAlphaGoCode;
+<a name="37"></a>var <span class="source_type">Sound</span> m_sndBravoGoCode;
+<a name="38"></a>var <span class="source_type">Sound</span> m_sndCharlieGoCode;
+<a name="39"></a>var <span class="source_type">Sound</span> m_sndZuluGoCode;
+<a name="40"></a>var <span class="source_type">Sound</span> m_sndOrderTeamWithGoCode;
+<a name="41"></a>var <span class="source_type">Sound</span> m_sndHostageFollow;
+<a name="42"></a>var <span class="source_type">Sound</span> m_sndHostageStay;
+<a name="43"></a>var <span class="source_type">Sound</span> m_sndHostageSafe;
+<a name="44"></a>var <span class="source_type">Sound</span> m_sndHostageSecured;
+<a name="45"></a>var <span class="source_type">Sound</span> m_sndMemberDown;
+<a name="46"></a>var <span class="source_type">Sound</span> m_sndSniperFree;
+<a name="47"></a>var <span class="source_type">Sound</span> m_sndSniperHold;
+<a name="48"></a>
+<a name="49"></a>
+<a name="50"></a>
+<a name="51"></a>function Init(<span class="source_type"><a href="../engine/actor.html" class="source">Actor</a></span> <span class="source_type">aActor</span>)
+<a name="52"></a>{
+<a name="53"></a>    Super.Init(<span class="source_type">aActor</span>);
+<a name="54"></a>
+<a name="55"></a>    <span class="source_type">AActor</span>.AddSoundBankName(<span class="source_string">"Voices_1rstPersonRainbow"</span>);
+<a name="56"></a>}
+<a name="57"></a>
+<a name="58"></a>function PlayRainbowPlayerVoices(<span class="source_type"><a href="../r6engine/r6pawn.html" class="source">R6Pawn</a></span> <span class="source_type">aPawn</span>, <span class="source_type"><a href="../engine/pawn.html" class="source">Pawn</a></span>.<span class="source_type"><a href="../engine/pawn.html#ERainbowPlayerVoices" class="source">ERainbowPlayerVoices</a></span> eRainbowVoices)
+<a name="59"></a>{
+<a name="60"></a>    switch(eRainbowVoices)
+<a name="61"></a>    {
+<a name="62"></a>        case RPV_TeamRegroup:
+<a name="63"></a>            <span class="source_type">aPawn</span>.PlayVoices(m_sndTeamRegroup, SLOT_HeadSet, <span class="source_int">10</span>);
+<a name="64"></a>                break;
+<a name="65"></a>        case RPV_TeamMove:
+<a name="66"></a>            <span class="source_type">aPawn</span>.PlayVoices(m_sndTeamMove, SLOT_HeadSet, <span class="source_int">10</span>);
+<a name="67"></a>            break;
+<a name="68"></a>        case RPV_TeamHold:
+<a name="69"></a>            <span class="source_type">aPawn</span>.PlayVoices(m_sndTeamHold, SLOT_HeadSet, <span class="source_int">10</span>);
+<a name="70"></a>            break;
+<a name="71"></a>        case RPV_AllTeamsHold:
+<a name="72"></a>            <span class="source_type">aPawn</span>.PlayVoices(m_sndAllTeamsHold, SLOT_HeadSet, <span class="source_int">10</span>);
+<a name="73"></a>            break;
+<a name="74"></a>        case RPV_AllTeamsMove:
+<a name="75"></a>            <span class="source_type">aPawn</span>.PlayVoices(m_sndAllTeamsMove, SLOT_HeadSet, <span class="source_int">10</span>);
+<a name="76"></a>            break;
+<a name="77"></a>        case RPV_TeamMoveAndFrag:
+<a name="78"></a>            <span class="source_type">aPawn</span>.PlayVoices(m_sndTeamMoveAndFrag, SLOT_HeadSet, <span class="source_int">10</span>);
+<a name="79"></a>            break;
+<a name="80"></a>        case RPV_TeamMoveAndGas:
+<a name="81"></a>            <span class="source_type">aPawn</span>.PlayVoices(m_sndTeamMoveAndGas, SLOT_HeadSet, <span class="source_int">10</span>);
+<a name="82"></a>            break;
+<a name="83"></a>        case RPV_TeamMoveAndSmoke:
+<a name="84"></a>            <span class="source_type">aPawn</span>.PlayVoices(m_sndTeamMoveAndSmoke, SLOT_HeadSet, <span class="source_int">10</span>);
+<a name="85"></a>            break;
+<a name="86"></a>        case RPV_TeamMoveAndFlash:
+<a name="87"></a>            <span class="source_type">aPawn</span>.PlayVoices(m_sndTeamMoveAndFlash, SLOT_HeadSet, <span class="source_int">10</span>);
+<a name="88"></a>            break;
+<a name="89"></a>        case RPV_TeamOpenDoor:
+<a name="90"></a>            <span class="source_type">aPawn</span>.PlayVoices(m_sndTeamOpenDoor, SLOT_HeadSet, <span class="source_int">10</span>);
+<a name="91"></a>            break;
+<a name="92"></a>        case RPV_TeamCloseDoor:
+<a name="93"></a>            <span class="source_type">aPawn</span>.PlayVoices(m_sndTeamCloseDoor, SLOT_HeadSet, <span class="source_int">10</span>);
+<a name="94"></a>            break;
+<a name="95"></a>		case RPV_TeamOpenShudder:
+<a name="96"></a>			<span class="source_type">aPawn</span>.PlayVoices(m_sndTeamOpenShudder, SLOT_HeadSet, <span class="source_int">10</span>);
+<a name="97"></a>			break;
+<a name="98"></a>		case RPV_TeamCloseShudder:
+<a name="99"></a>			<span class="source_type">aPawn</span>.PlayVoices(m_sndTeamCloseShudder, SLOT_HeadSet, <span class="source_int">10</span>);
+<a name="100"></a>			break;
+<a name="101"></a>        case RPV_TeamOpenAndClear:
+<a name="102"></a>            <span class="source_type">aPawn</span>.PlayVoices(m_sndTeamOpenAndClear, SLOT_HeadSet, <span class="source_int">10</span>);
+<a name="103"></a>            break;
+<a name="104"></a>        case RPV_TeamOpenAndFrag:
+<a name="105"></a>            <span class="source_type">aPawn</span>.PlayVoices(m_sndTeamOpenAndFrag, SLOT_HeadSet, <span class="source_int">10</span>);
+<a name="106"></a>            break;
+<a name="107"></a>        case RPV_TeamOpenAndGas:
+<a name="108"></a>            <span class="source_type">aPawn</span>.PlayVoices(m_sndTeamOpenAndGas, SLOT_HeadSet, <span class="source_int">10</span>);
+<a name="109"></a>            break;
+<a name="110"></a>        case RPV_TeamOpenAndSmoke:
+<a name="111"></a>            <span class="source_type">aPawn</span>.PlayVoices(m_sndTeamOpenAndSmoke, SLOT_HeadSet, <span class="source_int">10</span>);
+<a name="112"></a>            break;
+<a name="113"></a>        case RPV_TeamOpenAndFlash:
+<a name="114"></a>            <span class="source_type">aPawn</span>.PlayVoices(m_sndTeamOpenAndFlash, SLOT_HeadSet, <span class="source_int">10</span>);
+<a name="115"></a>            break;
+<a name="116"></a>        case RPV_TeamOpenFragAndClear:
+<a name="117"></a>            <span class="source_type">aPawn</span>.PlayVoices(m_sndTeamOpenFragAndClear, SLOT_HeadSet, <span class="source_int">10</span>);
+<a name="118"></a>            break;
+<a name="119"></a>        case RPV_TeamOpenGasAndClear:
+<a name="120"></a>            <span class="source_type">aPawn</span>.PlayVoices(m_sndTeamOpenGasAndClear, SLOT_HeadSet, <span class="source_int">10</span>);
+<a name="121"></a>            break;
+<a name="122"></a>        case RPV_TeamOpenSmokeAndClear:
+<a name="123"></a>            <span class="source_type">aPawn</span>.PlayVoices(m_sndTeamOpenSmokeAndClear, SLOT_HeadSet, <span class="source_int">10</span>);
+<a name="124"></a>            break;
+<a name="125"></a>        case RPV_TeamOpenFlashAndClear:
+<a name="126"></a>            <span class="source_type">aPawn</span>.PlayVoices(m_sndTeamOpenFlashAndClear, SLOT_HeadSet, <span class="source_int">10</span>);
+<a name="127"></a>            break;
+<a name="128"></a>        case RPV_TeamFragAndClear:
+<a name="129"></a>            <span class="source_type">aPawn</span>.PlayVoices(m_sndTeamFragAndClear, SLOT_HeadSet, <span class="source_int">10</span>);
+<a name="130"></a>            break;
+<a name="131"></a>        case RPV_TeamGasAndClear:
+<a name="132"></a>            <span class="source_type">aPawn</span>.PlayVoices(m_sndTeamGasAndClear, SLOT_HeadSet, <span class="source_int">10</span>);
+<a name="133"></a>            break;
+<a name="134"></a>        case RPV_TeamSmokeAndClear:
+<a name="135"></a>            <span class="source_type">aPawn</span>.PlayVoices(m_sndTeamSmokeAndClear, SLOT_HeadSet, <span class="source_int">10</span>);
+<a name="136"></a>            break;
+<a name="137"></a>        case RPV_TeamFlashAndClear:
+<a name="138"></a>            <span class="source_type">aPawn</span>.PlayVoices(m_sndTeamFlashAndClear, SLOT_HeadSet, <span class="source_int">10</span>);
+<a name="139"></a>            break;
+<a name="140"></a>        case RPV_TeamUseLadder:
+<a name="141"></a>            <span class="source_type">aPawn</span>.PlayVoices(m_sndTeamUseLadder, SLOT_HeadSet, <span class="source_int">10</span>);
+<a name="142"></a>            break;
+<a name="143"></a>        case RPV_TeamSecureTerrorist:
+<a name="144"></a>            <span class="source_type">aPawn</span>.PlayVoices(m_sndTeamSecureTerrorist, SLOT_HeadSet, <span class="source_int">10</span>);
+<a name="145"></a>            break;
+<a name="146"></a>        case RPV_TeamGoGetHostage:
+<a name="147"></a>            <span class="source_type">aPawn</span>.PlayVoices(m_sndTeamGoGetHostage, SLOT_HeadSet, <span class="source_int">10</span>);
+<a name="148"></a>            break;
+<a name="149"></a>        case RPV_TeamHostageStayPut:    
+<a name="150"></a>            <span class="source_type">aPawn</span>.PlayVoices(m_sndTeamHostageStayPut, SLOT_HeadSet, <span class="source_int">10</span>);
+<a name="151"></a>            break;
+<a name="152"></a>        case RPV_TeamStatusReport:
+<a name="153"></a>            <span class="source_type">aPawn</span>.PlayVoices(m_sndTeamStatusReport, SLOT_HeadSet, <span class="source_int">10</span>);
+<a name="154"></a>            break;
+<a name="155"></a>        case RPV_TeamUseDemolition:
+<a name="156"></a>            <span class="source_type">aPawn</span>.PlayVoices(m_sndTeamUseDemolition, SLOT_HeadSet, <span class="source_int">10</span>);
+<a name="157"></a>            break;
+<a name="158"></a>        case RPV_TeamUseElectronic:
+<a name="159"></a>            <span class="source_type">aPawn</span>.PlayVoices(m_sndTeamUseElectronic, SLOT_HeadSet, <span class="source_int">10</span>);
+<a name="160"></a>            break;
+<a name="161"></a>        case RPV_AlphaGoCode:
+<a name="162"></a>            <span class="source_type">aPawn</span>.PlayVoices(m_sndAlphaGoCode, SLOT_HeadSet, <span class="source_int">10</span>);
+<a name="163"></a>            break;
+<a name="164"></a>        case RPV_BravoGoCode:
+<a name="165"></a>            <span class="source_type">aPawn</span>.PlayVoices(m_sndBravoGoCode, SLOT_HeadSet, <span class="source_int">10</span>);
+<a name="166"></a>            break;
+<a name="167"></a>        case RPV_CharlieGoCode:
+<a name="168"></a>            <span class="source_type">aPawn</span>.PlayVoices(m_sndCharlieGoCode, SLOT_HeadSet, <span class="source_int">10</span>);
+<a name="169"></a>            break;
+<a name="170"></a>        case RPV_ZuluGoCode:
+<a name="171"></a>            <span class="source_type">aPawn</span>.PlayVoices(m_sndZuluGoCode, SLOT_HeadSet, <span class="source_int">10</span>);
+<a name="172"></a>            break;
+<a name="173"></a>        case RPV_OrderTeamWithGoCode:
+<a name="174"></a>            <span class="source_type">aPawn</span>.PlayVoices(m_sndOrderTeamWithGoCode, SLOT_HeadSet, <span class="source_int">15</span>, SSTATUS_SendToPlayer, true);
+<a name="175"></a>            break;
+<a name="176"></a>        case RPV_HostageFollow:
+<a name="177"></a>            <span class="source_type">aPawn</span>.PlayVoices(m_sndHostageFollow, SLOT_HeadSet, <span class="source_int">10</span>);
+<a name="178"></a>            break;
+<a name="179"></a>        case RPV_HostageStay:
+<a name="180"></a>            <span class="source_type">aPawn</span>.PlayVoices(m_sndHostageStay, SLOT_HeadSet, <span class="source_int">10</span>);
+<a name="181"></a>            break;
+<a name="182"></a>        case RPV_HostageSafe:
+<a name="183"></a>            <span class="source_type">aPawn</span>.PlayVoices(m_sndHostageSafe, SLOT_HeadSet, <span class="source_int">10</span>);
+<a name="184"></a>            break;
+<a name="185"></a>        case RPV_HostageSecured:
+<a name="186"></a>            <span class="source_type">aPawn</span>.PlayVoices(m_sndHostageSecured, SLOT_HeadSet, <span class="source_int">10</span>);
+<a name="187"></a>            break;
+<a name="188"></a>        case RPV_MemberDown:
+<a name="189"></a>            <span class="source_type">aPawn</span>.PlayVoices(m_sndMemberDown, SLOT_HeadSet, <span class="source_int">10</span>);
+<a name="190"></a>            break;
+<a name="191"></a>        case RPV_SniperFree:
+<a name="192"></a>            <span class="source_type">aPawn</span>.PlayVoices(m_sndSniperFree, SLOT_HeadSet, <span class="source_int">10</span>);
+<a name="193"></a>            break;
+<a name="194"></a>        case RPV_SniperHold:
+<a name="195"></a>            <span class="source_type">aPawn</span>.PlayVoices(m_sndSniperHold, SLOT_HeadSet, <span class="source_int">10</span>);
+<a name="196"></a>            break;
+<a name="197"></a>    }
+<a name="198"></a>}
+<a name="199"></a>
+<a name="200"></a>defaultproperties
+<a name="201"></a>{
+<a name="202"></a>     m_sndTeamRegroup=<span class="source_type">Sound</span><span class="source_name">'Voices_1rstPersonRainbow.Play_Team_Regroup_Order'</span>
+<a name="203"></a>     m_sndTeamMove=<span class="source_type">Sound</span><span class="source_name">'Voices_1rstPersonRainbow.Play_Team_Move_Order'</span>
+<a name="204"></a>     m_sndTeamHold=<span class="source_type">Sound</span><span class="source_name">'Voices_1rstPersonRainbow.Play_Team_Hold_Up'</span>
+<a name="205"></a>     m_sndAllTeamsHold=<span class="source_type">Sound</span><span class="source_name">'Voices_1rstPersonRainbow.Play_All_Team_Hold_Up'</span>
+<a name="206"></a>     m_sndAllTeamsMove=<span class="source_type">Sound</span><span class="source_name">'Voices_1rstPersonRainbow.Play_All_Team_Move_Out'</span>
+<a name="207"></a>     m_sndTeamMoveAndFrag=<span class="source_type">Sound</span><span class="source_name">'Voices_1rstPersonRainbow.Play_Move_Frag'</span>
+<a name="208"></a>     m_sndTeamMoveAndGas=<span class="source_type">Sound</span><span class="source_name">'Voices_1rstPersonRainbow.Play_Move_Gas'</span>
+<a name="209"></a>     m_sndTeamMoveAndSmoke=<span class="source_type">Sound</span><span class="source_name">'Voices_1rstPersonRainbow.Play_Move_Smoke'</span>
+<a name="210"></a>     m_sndTeamMoveAndFlash=<span class="source_type">Sound</span><span class="source_name">'Voices_1rstPersonRainbow.Play_Move_Flash'</span>
+<a name="211"></a>     m_sndTeamOpenDoor=<span class="source_type">Sound</span><span class="source_name">'Voices_1rstPersonRainbow.Play_Open_Door'</span>
+<a name="212"></a>     m_sndTeamCloseDoor=<span class="source_type">Sound</span><span class="source_name">'Voices_1rstPersonRainbow.Play_Close_Door'</span>
+<a name="213"></a>     m_sndTeamOpenShudder=<span class="source_type">Sound</span><span class="source_name">'Voices_1rstPersonRainbow.Play_Open_Window'</span>
+<a name="214"></a>     m_sndTeamCloseShudder=<span class="source_type">Sound</span><span class="source_name">'Voices_1rstPersonRainbow.Play_Close_Window'</span>
+<a name="215"></a>     m_sndTeamOpenAndClear=<span class="source_type">Sound</span><span class="source_name">'Voices_1rstPersonRainbow.Play_Open_Door_Clear'</span>
+<a name="216"></a>     m_sndTeamOpenAndFrag=<span class="source_type">Sound</span><span class="source_name">'Voices_1rstPersonRainbow.Play_Open_Door_Frag'</span>
+<a name="217"></a>     m_sndTeamOpenAndGas=<span class="source_type">Sound</span><span class="source_name">'Voices_1rstPersonRainbow.Play_Open_Door_Gas'</span>
+<a name="218"></a>     m_sndTeamOpenAndSmoke=<span class="source_type">Sound</span><span class="source_name">'Voices_1rstPersonRainbow.Play_Open_Door_Smoke'</span>
+<a name="219"></a>     m_sndTeamOpenAndFlash=<span class="source_type">Sound</span><span class="source_name">'Voices_1rstPersonRainbow.Play_Open_Door_Flash'</span>
+<a name="220"></a>     m_sndTeamOpenFragAndClear=<span class="source_type">Sound</span><span class="source_name">'Voices_1rstPersonRainbow.Play_Open_Door_Frag_Clear'</span>
+<a name="221"></a>     m_sndTeamOpenGasAndClear=<span class="source_type">Sound</span><span class="source_name">'Voices_1rstPersonRainbow.Play_Open_Door_Gas_Clear'</span>
+<a name="222"></a>     m_sndTeamOpenSmokeAndClear=<span class="source_type">Sound</span><span class="source_name">'Voices_1rstPersonRainbow.Play_Open_Door_Smoke_Clear'</span>
+<a name="223"></a>     m_sndTeamOpenFlashAndClear=<span class="source_type">Sound</span><span class="source_name">'Voices_1rstPersonRainbow.Play_Open_Door_Flash_Clear'</span>
+<a name="224"></a>     m_sndTeamFragAndClear=<span class="source_type">Sound</span><span class="source_name">'Voices_1rstPersonRainbow.Play_Team_Frag_Clear'</span>
+<a name="225"></a>     m_sndTeamGasAndClear=<span class="source_type">Sound</span><span class="source_name">'Voices_1rstPersonRainbow.Play_Team_Gas_Clear'</span>
+<a name="226"></a>     m_sndTeamSmokeAndClear=<span class="source_type">Sound</span><span class="source_name">'Voices_1rstPersonRainbow.Play_Team_Smoke_Clear'</span>
+<a name="227"></a>     m_sndTeamFlashAndClear=<span class="source_type">Sound</span><span class="source_name">'Voices_1rstPersonRainbow.Play_Team_Flash_Clear'</span>
+<a name="228"></a>     m_sndTeamUseLadder=<span class="source_type">Sound</span><span class="source_name">'Voices_1rstPersonRainbow.Play_Team_Ladder'</span>
+<a name="229"></a>     m_sndTeamSecureTerrorist=<span class="source_type">Sound</span><span class="source_name">'Voices_1rstPersonRainbow.Play_Team_Secure_Terro'</span>
+<a name="230"></a>     m_sndTeamGoGetHostage=<span class="source_type">Sound</span><span class="source_name">'Voices_1rstPersonRainbow.Play_Team_Get_Hostage'</span>
+<a name="231"></a>     m_sndTeamHostageStayPut=<span class="source_type">Sound</span><span class="source_name">'Voices_1rstPersonRainbow.Play_Team_Hostage_Order'</span>
+<a name="232"></a>     m_sndTeamStatusReport=<span class="source_type">Sound</span><span class="source_name">'Voices_1rstPersonRainbow.Play_Call_Team_Status'</span>
+<a name="233"></a>     m_sndTeamUseElectronic=<span class="source_type">Sound</span><span class="source_name">'Voices_1rstPersonRainbow.Play_Use_Electronic'</span>
+<a name="234"></a>     m_sndTeamUseDemolition=<span class="source_type">Sound</span><span class="source_name">'Voices_1rstPersonRainbow.Play_Use_Demolition'</span>
+<a name="235"></a>     m_sndAlphaGoCode=<span class="source_type">Sound</span><span class="source_name">'Voices_1rstPersonRainbow.Play_Give_AlphaGo'</span>
+<a name="236"></a>     m_sndBravoGoCode=<span class="source_type">Sound</span><span class="source_name">'Voices_1rstPersonRainbow.Play_Give_BravoGo'</span>
+<a name="237"></a>     m_sndCharlieGoCode=<span class="source_type">Sound</span><span class="source_name">'Voices_1rstPersonRainbow.Play_Give_CharlieGo'</span>
+<a name="238"></a>     m_sndZuluGoCode=<span class="source_type">Sound</span><span class="source_name">'Voices_1rstPersonRainbow.Play_Give_ZuluGo'</span>
+<a name="239"></a>     m_sndOrderTeamWithGoCode=<span class="source_type">Sound</span><span class="source_name">'Voices_1rstPersonRainbow.Play_Give_Order_TeamGo'</span>
+<a name="240"></a>     m_sndHostageFollow=<span class="source_type">Sound</span><span class="source_name">'Voices_1rstPersonRainbow.Play_Hostage_Follow'</span>
+<a name="241"></a>     m_sndHostageStay=<span class="source_type">Sound</span><span class="source_name">'Voices_1rstPersonRainbow.Play_Hostage_Stay'</span>
+<a name="242"></a>     m_sndHostageSafe=<span class="source_type">Sound</span><span class="source_name">'Voices_1rstPersonRainbow.Play_Player_HostageSafe'</span>
+<a name="243"></a>     m_sndHostageSecured=<span class="source_type">Sound</span><span class="source_name">'Voices_1rstPersonRainbow.Play_Player_HostageSecured'</span>
+<a name="244"></a>     m_sndMemberDown=<span class="source_type">Sound</span><span class="source_name">'Voices_1rstPersonRainbow.Play_RainbowDown'</span>
+<a name="245"></a>     m_sndSniperFree=<span class="source_type">Sound</span><span class="source_name">'Voices_1rstPersonRainbow.Play_Player_Sniper_Shoot'</span>
+<a name="246"></a>     m_sndSniperHold=<span class="source_type">Sound</span><span class="source_name">'Voices_1rstPersonRainbow.Play_Player_Sniper_NotShoot'</span>
+<a name="247"></a>}
+<a name="248"></a></pre></td></tr></table></div>
+<hr />
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../r6engine/r6engine-overview.html">Package</a></td>
+	<td class="header"><a href="../r6engine/r6rainbowplayervoices.html">Class</a></td>
+	<td class="header_hilight">Source</td>
+	<td class="header"><a class="header" href="../classtree.html#R6RainbowPlayerVoices">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../Source_r6engine/r6rainbowotherteamvoices2.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../Source_r6engine/r6rainbowteam.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+
+<div class="stats">Class file time: sam. 18/9/2004 14:39:36.000 - Creation time: mar. 26/5/2026 18:33:21.205 - Created with <a href="http://wiki.beyondunreal.com/wiki/UnCodeX" target="_blank">UnCodeX</a></div>
+
+</body>
+</html>

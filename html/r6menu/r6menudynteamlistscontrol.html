@@ -1,0 +1,685 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+	<title>UnCodeX - R6Menu.R6MenuDynTeamListsControl</title>
+	<meta name="Generator" content="UnCodeX 241" />
+	<link rel="stylesheet" href="../DocStyle2.css" type="text/css" title="Original Purple" />
+	<link rel="alternative stylesheet" href="../DocStyle2-blue.css" type="text/css" title="Blue" />
+	<link rel="alternative stylesheet" href="../DocStyle2-red.css" type="text/css" title="Red" />
+	<!--[if IE]>
+	<link rel="stylesheet" href="../DocStyle2-msie.css" type="text/css" />
+	<![endif]-->
+	<script src="../styleswitcher.js" type="text/javascript"></script>
+</head>
+<body>
+
+<div class="header">
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../r6menu/r6menu-overview.html">Package</a></td>
+	<td class="header_hilight">Class</td>
+	<td class="header"><a href="../Source_r6menu/r6menudynteamlistscontrol.html">Source</a></td>
+	<td class="header"><a class="header" href="../classtree.html#R6MenuDynTeamListsControl">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../r6menu/r6menudiffcustommissionselect.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../r6menu/r6menuequipmentanchorbuttons.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html#r6menu/r6menudynteamlistscontrol.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+</div>
+<div class="spacer"></div>
+
+<h1><a href="../r6menu/r6menu-overview.html">R6Menu</a>.R6MenuDynTeamListsControl</h1>
+
+<dl>
+<dt>Extends</dt><dd><a href="../uwindow/uwindowdialogclientwindow.html">UWindowDialogClientWindow</a></dd>
+
+</dl>
+
+<p></p>
+
+<pre class="tree"><a href="../core/core-overview.html">core</a>.<a href="../core/object.html">Object</a>
+|   
++-- <a href="../uwindow/uwindow-overview.html">UWindow</a>.<a href="../uwindow/uwindowbase.html">UWindowBase</a>
+   |   
+   +-- <a href="../uwindow/uwindow-overview.html">UWindow</a>.<a href="../uwindow/uwindowwindow.html">UWindowWindow</a>
+      |   
+      +-- <a href="../uwindow/uwindow-overview.html">UWindow</a>.<a href="../uwindow/uwindowclientwindow.html">UWindowClientWindow</a>
+         |   
+         +-- <a href="../uwindow/uwindow-overview.html">UWindow</a>.<a href="../uwindow/uwindowdialogclientwindow.html">UWindowDialogClientWindow</a>
+            |   
+            +-- <a href="../r6menu/r6menu-overview.html">R6Menu</a>.<a href="../r6menu/r6menudynteamlistscontrol.html">R6MenuDynTeamListsControl</a>
+</pre>
+
+
+
+<hr />
+
+
+
+<table class="title">
+<tr>
+	<th colspan="2" class="title">Variables Summary</th>
+</tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bshowlog" name="bshowlog" title="go to the details">bshowlog</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../r6window/r6windowlistboxanchorbutton.html">R6WindowListBoxAnchorButton</a></td><td width="66%"><a href="#_m_AssaultButton" name="m_AssaultButton" title="go to the details">m_AssaultButton</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../core/object.html#Region">Region</a></td><td width="66%"><a href="#_m_BorderRegion" name="m_BorderRegion" title="go to the details">m_BorderRegion</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../engine/texture.html">Texture</a></td><td width="66%"><a href="#_m_BorderTexture" name="m_BorderTexture" title="go to the details">m_BorderTexture</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../r6window/r6windowlistboxanchorbutton.html">R6WindowListBoxAnchorButton</a></td><td width="66%"><a href="#_m_DemolitionButton" name="m_DemolitionButton" title="go to the details">m_DemolitionButton</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../r6window/r6windowlistboxanchorbutton.html">R6WindowListBoxAnchorButton</a></td><td width="66%"><a href="#_m_ElectronicButton" name="m_ElectronicButton" title="go to the details">m_ElectronicButton</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">FLOAT</td><td width="66%"><a href="#_m_fButtonTabHeight" name="m_fButtonTabHeight" title="go to the details">m_fButtonTabHeight</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">FLOAT</td><td width="66%"><a href="#_m_fButtonTabWidth" name="m_fButtonTabWidth" title="go to the details">m_fButtonTabWidth</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_m_fFirsButtonOffset" name="m_fFirsButtonOffset" title="go to the details">m_fFirsButtonOffset</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_m_fHButtonOffset" name="m_fHButtonOffset" title="go to the details">m_fHButtonOffset</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_m_fHButtonPadding" name="m_fHButtonPadding" title="go to the details">m_fHButtonPadding</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_m_fVPadding" name="m_fVPadding" title="go to the details">m_fVPadding</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../r6window/r6windowtexticonssublistbox.html">R6WindowTextIconsSubListBox</a></td><td width="66%"><a href="#_m_GoldListBox" name="m_GoldListBox" title="go to the details">m_GoldListBox</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../r6window/r6windowtexticonssublistbox.html">R6WindowTextIconsSubListBox</a></td><td width="66%"><a href="#_m_GreenListBox" name="m_GreenListBox" title="go to the details">m_GreenListBox</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_m_iMaxOperativeCount" name="m_iMaxOperativeCount" title="go to the details">m_iMaxOperativeCount</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../r6window/r6windowtexticonslistbox.html">R6WindowTextIconsListBox</a></td><td width="66%"><a href="#_m_ListBox" name="m_ListBox" title="go to the details">m_ListBox</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_m_MinSubListHeight" name="m_MinSubListHeight" title="go to the details">m_MinSubListHeight</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../core/object.html#Region">Region</a></td><td width="66%"><a href="#_m_RAssaultDisabled" name="m_RAssaultDisabled" title="go to the details">m_RAssaultDisabled</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../core/object.html#Region">Region</a></td><td width="66%"><a href="#_m_RAssaultDown" name="m_RAssaultDown" title="go to the details">m_RAssaultDown</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../core/object.html#Region">Region</a></td><td width="66%"><a href="#_m_RAssaultOver" name="m_RAssaultOver" title="go to the details">m_RAssaultOver</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../core/object.html#Region">Region</a></td><td width="66%"><a href="#_m_RAssaultUp" name="m_RAssaultUp" title="go to the details">m_RAssaultUp</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../core/object.html#Region">Region</a></td><td width="66%"><a href="#_m_RDemolitionDisabled" name="m_RDemolitionDisabled" title="go to the details">m_RDemolitionDisabled</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../core/object.html#Region">Region</a></td><td width="66%"><a href="#_m_RDemolitionDown" name="m_RDemolitionDown" title="go to the details">m_RDemolitionDown</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../core/object.html#Region">Region</a></td><td width="66%"><a href="#_m_RDemolitionOver" name="m_RDemolitionOver" title="go to the details">m_RDemolitionOver</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../core/object.html#Region">Region</a></td><td width="66%"><a href="#_m_RDemolitionUp" name="m_RDemolitionUp" title="go to the details">m_RDemolitionUp</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../r6window/r6windowlistboxanchorbutton.html">R6WindowListBoxAnchorButton</a></td><td width="66%"><a href="#_m_ReconButton" name="m_ReconButton" title="go to the details">m_ReconButton</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../r6window/r6windowtexticonssublistbox.html">R6WindowTextIconsSubListBox</a></td><td width="66%"><a href="#_m_RedListBox" name="m_RedListBox" title="go to the details">m_RedListBox</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../core/object.html#Region">Region</a></td><td width="66%"><a href="#_m_RElectronicDisabled" name="m_RElectronicDisabled" title="go to the details">m_RElectronicDisabled</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../core/object.html#Region">Region</a></td><td width="66%"><a href="#_m_RElectronicDown" name="m_RElectronicDown" title="go to the details">m_RElectronicDown</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../core/object.html#Region">Region</a></td><td width="66%"><a href="#_m_RElectronicOver" name="m_RElectronicOver" title="go to the details">m_RElectronicOver</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../core/object.html#Region">Region</a></td><td width="66%"><a href="#_m_RElectronicUp" name="m_RElectronicUp" title="go to the details">m_RElectronicUp</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../core/object.html#Region">Region</a></td><td width="66%"><a href="#_m_RReconDisabled" name="m_RReconDisabled" title="go to the details">m_RReconDisabled</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../core/object.html#Region">Region</a></td><td width="66%"><a href="#_m_RReconDown" name="m_RReconDown" title="go to the details">m_RReconDown</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../core/object.html#Region">Region</a></td><td width="66%"><a href="#_m_RReconOver" name="m_RReconOver" title="go to the details">m_RReconOver</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../core/object.html#Region">Region</a></td><td width="66%"><a href="#_m_RReconUp" name="m_RReconUp" title="go to the details">m_RReconUp</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../core/object.html#Region">Region</a></td><td width="66%"><a href="#_m_RSniperDisabled" name="m_RSniperDisabled" title="go to the details">m_RSniperDisabled</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../core/object.html#Region">Region</a></td><td width="66%"><a href="#_m_RSniperDown" name="m_RSniperDown" title="go to the details">m_RSniperDown</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../core/object.html#Region">Region</a></td><td width="66%"><a href="#_m_RSniperOver" name="m_RSniperOver" title="go to the details">m_RSniperOver</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../core/object.html#Region">Region</a></td><td width="66%"><a href="#_m_RSniperUp" name="m_RSniperUp" title="go to the details">m_RSniperUp</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../r6window/r6windowlistboxanchorbutton.html">R6WindowListBoxAnchorButton</a></td><td width="66%"><a href="#_m_SniperButton" name="m_SniperButton" title="go to the details">m_SniperButton</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_m_SubListByItemHeight" name="m_SubListByItemHeight" title="go to the details">m_SubListByItemHeight</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_m_SubListTopHeight" name="m_SubListTopHeight" title="go to the details">m_SubListTopHeight</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../engine/texture.html">Texture</a></td><td width="66%"><a href="#_m_TButtonTexture" name="m_TButtonTexture" title="go to the details">m_TButtonTexture</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../core/object.html#Region">Region</a></td><td width="66%"><a href="#_RAssault" name="RAssault" title="go to the details">RAssault</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../core/object.html#Region">Region</a></td><td width="66%"><a href="#_RDemo" name="RDemo" title="go to the details">RDemo</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../core/object.html#Region">Region</a></td><td width="66%"><a href="#_RElectro" name="RElectro" title="go to the details">RElectro</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../core/object.html#Region">Region</a></td><td width="66%"><a href="#_RRecon" name="RRecon" title="go to the details">RRecon</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../core/object.html#Region">Region</a></td><td width="66%"><a href="#_RSAssault" name="RSAssault" title="go to the details">RSAssault</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../core/object.html#Region">Region</a></td><td width="66%"><a href="#_RSDemo" name="RSDemo" title="go to the details">RSDemo</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../core/object.html#Region">Region</a></td><td width="66%"><a href="#_RSElectro" name="RSElectro" title="go to the details">RSElectro</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../core/object.html#Region">Region</a></td><td width="66%"><a href="#_RSniper" name="RSniper" title="go to the details">RSniper</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../core/object.html#Region">Region</a></td><td width="66%"><a href="#_RSRecon" name="RSRecon" title="go to the details">RSRecon</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../core/object.html#Region">Region</a></td><td width="66%"><a href="#_RSSniper" name="RSSniper" title="go to the details">RSSniper</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">float</td><td width="66%"><a href="#_TotalSublistsHeight" name="TotalSublistsHeight" title="go to the details">TotalSublistsHeight</a></td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Variables from <a href="../uwindow/uwindow-overview.html">UWindow</a>.<a href="../uwindow/uwindowdialogclientwindow.html">UWindowDialogClientWindow</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../uwindow/uwindowdialogclientwindow.html#DesiredHeight">DesiredHeight</a>, <a href="../uwindow/uwindowdialogclientwindow.html#DesiredWidth">DesiredWidth</a>, <a href="../uwindow/uwindowdialogclientwindow.html#TabLast">TabLast</a></td>
+</tr>
+</table>
+
+
+<br />
+
+
+
+
+
+
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Functions Summary</th>
+</tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_AddOperativeToSubList-" name="AddOperativeToSubList" title="go to the details">AddOperativeToSubList</a> (<a href="../r6window/r6windowtexticonssublistbox.html">R6WindowTextIconsSubListBox</a> _SubListBox))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_CreateAnchoredButtons-" name="CreateAnchoredButtons" title="go to the details">CreateAnchoredButtons</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_Created-" name="Created" title="go to the details">Created</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_CreateRosterListBox-" name="CreateRosterListBox" title="go to the details">CreateRosterListBox</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>INT&nbsp;</td><td><a href="#_DistributeSpaces-" name="DistributeSpaces" title="go to the details">DistributeSpaces</a> (INT _iSpaceToAdd, out INT _iHList, INT _iMaxListHeigth))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_EmptyRosterList-" name="EmptyRosterList" title="go to the details">EmptyRosterList</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_FillRosterList-" name="FillRosterList" title="go to the details">FillRosterList</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_Notify-" name="Notify" title="go to the details">Notify</a> (<a href="../uwindow/uwindowdialogcontrol.html">UWindowDialogControl</a> C, byte E))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_Paint-" name="Paint" title="go to the details">Paint</a> (<a href="../engine/canvas.html">Canvas</a> C, FLOAT X, FLOAT Y))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_RefreshButtons-" name="RefreshButtons" title="go to the details">RefreshButtons</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_RemoveOperativeInSubList-" name="RemoveOperativeInSubList" title="go to the details">RemoveOperativeInSubList</a> (<a href="../r6window/r6windowtexticonssublistbox.html">R6WindowTextIconsSubListBox</a> _SubListBox))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_ResizeSubLists-" name="ResizeSubLists" title="go to the details">ResizeSubLists</a> ()))<br /><span class="function_state"></span></td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Functions from <a href="../uwindow/uwindow-overview.html">UWindow</a>.<a href="../uwindow/uwindowdialogclientwindow.html">UWindowDialogClientWindow</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../uwindow/uwindowdialogclientwindow.html#CreateControl">CreateControl</a>, <a href="../uwindow/uwindowdialogclientwindow.html#GetDesiredDimensions">GetDesiredDimensions</a>, <a href="../uwindow/uwindowdialogclientwindow.html#Notify">Notify</a>, <a href="../uwindow/uwindowdialogclientwindow.html#OKPressed">OKPressed</a></td>
+</tr>
+</table>
+<table>
+<tr>
+	<th class="inherittitle">Inherited Functions from <a href="../uwindow/uwindow-overview.html">UWindow</a>.<a href="../uwindow/uwindowclientwindow.html">UWindowClientWindow</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../uwindow/uwindowclientwindow.html#Close">Close</a></td>
+</tr>
+</table>
+
+
+<br />
+
+
+
+<hr />
+
+
+
+<table class="title">
+<tr>
+	<th class="title">Variables Detail</th>
+</tr>
+</table>
+
+<h4><a name="_bshowlog" class="hidden"></a>bshowlog <a href="../Source_r6menu/r6menudynteamlistscontrol.html#73" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">bool</span> bshowlog;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_AssaultButton" class="hidden"></a>m_AssaultButton <a href="../Source_r6menu/r6menudynteamlistscontrol.html#17" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../r6window/r6windowlistboxanchorbutton.html" class="source">R6WindowListBoxAnchorButton</a></span> m_AssaultButton;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_BorderRegion" class="hidden"></a>m_BorderRegion <a href="../Source_r6menu/r6menudynteamlistscontrol.html#63" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../core/object.html#Region" class="source">Region</a></span> m_BorderRegion;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_BorderTexture" class="hidden"></a>m_BorderTexture <a href="../Source_r6menu/r6menudynteamlistscontrol.html#62" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../engine/texture.html" class="source">Texture</a></span> m_BorderTexture;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_DemolitionButton" class="hidden"></a>m_DemolitionButton <a href="../Source_r6menu/r6menudynteamlistscontrol.html#20" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../r6window/r6windowlistboxanchorbutton.html" class="source">R6WindowListBoxAnchorButton</a></span> m_DemolitionButton;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_ElectronicButton" class="hidden"></a>m_ElectronicButton <a href="../Source_r6menu/r6menudynteamlistscontrol.html#21" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../r6window/r6windowlistboxanchorbutton.html" class="source">R6WindowListBoxAnchorButton</a></span> m_ElectronicButton;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_fButtonTabHeight" class="hidden"></a>m_fButtonTabHeight <a href="../Source_r6menu/r6menudynteamlistscontrol.html#49" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">FLOAT</span> m_fButtonTabHeight;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_fButtonTabWidth" class="hidden"></a>m_fButtonTabWidth <a href="../Source_r6menu/r6menudynteamlistscontrol.html#49" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">FLOAT</span> m_fButtonTabWidth;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_fFirsButtonOffset" class="hidden"></a>m_fFirsButtonOffset <a href="../Source_r6menu/r6menudynteamlistscontrol.html#68" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">float</span> m_fFirsButtonOffset;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_fHButtonOffset" class="hidden"></a>m_fHButtonOffset <a href="../Source_r6menu/r6menudynteamlistscontrol.html#68" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">float</span> m_fHButtonOffset;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_fHButtonPadding" class="hidden"></a>m_fHButtonPadding <a href="../Source_r6menu/r6menudynteamlistscontrol.html#68" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">float</span> m_fHButtonPadding;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_fVPadding" class="hidden"></a>m_fVPadding <a href="../Source_r6menu/r6menudynteamlistscontrol.html#67" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">float</span> m_fVPadding;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_GoldListBox" class="hidden"></a>m_GoldListBox <a href="../Source_r6menu/r6menudynteamlistscontrol.html#58" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../r6window/r6windowtexticonssublistbox.html" class="source">R6WindowTextIconsSubListBox</a></span> m_GoldListBox;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_GreenListBox" class="hidden"></a>m_GreenListBox <a href="../Source_r6menu/r6menudynteamlistscontrol.html#58" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../r6window/r6windowtexticonssublistbox.html" class="source">R6WindowTextIconsSubListBox</a></span> m_GreenListBox;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_iMaxOperativeCount" class="hidden"></a>m_iMaxOperativeCount <a href="../Source_r6menu/r6menudynteamlistscontrol.html#70" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">int</span> m_iMaxOperativeCount;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_ListBox" class="hidden"></a>m_ListBox <a href="../Source_r6menu/r6menudynteamlistscontrol.html#57" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../r6window/r6windowtexticonslistbox.html" class="source">R6WindowTextIconsListBox</a></span> m_ListBox;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_MinSubListHeight" class="hidden"></a>m_MinSubListHeight <a href="../Source_r6menu/r6menudynteamlistscontrol.html#64" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">float</span> m_MinSubListHeight;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_RAssaultDisabled" class="hidden"></a>m_RAssaultDisabled <a href="../Source_r6menu/r6menudynteamlistscontrol.html#25" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../core/object.html#Region" class="source">Region</a></span> m_RAssaultDisabled;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_RAssaultDown" class="hidden"></a>m_RAssaultDown <a href="../Source_r6menu/r6menudynteamlistscontrol.html#25" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../core/object.html#Region" class="source">Region</a></span> m_RAssaultDown;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_RAssaultOver" class="hidden"></a>m_RAssaultOver <a href="../Source_r6menu/r6menudynteamlistscontrol.html#25" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../core/object.html#Region" class="source">Region</a></span> m_RAssaultOver;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_RAssaultUp" class="hidden"></a>m_RAssaultUp <a href="../Source_r6menu/r6menudynteamlistscontrol.html#25" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../core/object.html#Region" class="source">Region</a></span> m_RAssaultUp;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_RDemolitionDisabled" class="hidden"></a>m_RDemolitionDisabled <a href="../Source_r6menu/r6menudynteamlistscontrol.html#25" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../core/object.html#Region" class="source">Region</a></span> m_RDemolitionDisabled;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_RDemolitionDown" class="hidden"></a>m_RDemolitionDown <a href="../Source_r6menu/r6menudynteamlistscontrol.html#25" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../core/object.html#Region" class="source">Region</a></span> m_RDemolitionDown;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_RDemolitionOver" class="hidden"></a>m_RDemolitionOver <a href="../Source_r6menu/r6menudynteamlistscontrol.html#25" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../core/object.html#Region" class="source">Region</a></span> m_RDemolitionOver;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_RDemolitionUp" class="hidden"></a>m_RDemolitionUp <a href="../Source_r6menu/r6menudynteamlistscontrol.html#25" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../core/object.html#Region" class="source">Region</a></span> m_RDemolitionUp;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_ReconButton" class="hidden"></a>m_ReconButton <a href="../Source_r6menu/r6menudynteamlistscontrol.html#18" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../r6window/r6windowlistboxanchorbutton.html" class="source">R6WindowListBoxAnchorButton</a></span> m_ReconButton;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_RedListBox" class="hidden"></a>m_RedListBox <a href="../Source_r6menu/r6menudynteamlistscontrol.html#58" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../r6window/r6windowtexticonssublistbox.html" class="source">R6WindowTextIconsSubListBox</a></span> m_RedListBox;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_RElectronicDisabled" class="hidden"></a>m_RElectronicDisabled <a href="../Source_r6menu/r6menudynteamlistscontrol.html#25" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../core/object.html#Region" class="source">Region</a></span> m_RElectronicDisabled;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_RElectronicDown" class="hidden"></a>m_RElectronicDown <a href="../Source_r6menu/r6menudynteamlistscontrol.html#25" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../core/object.html#Region" class="source">Region</a></span> m_RElectronicDown;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_RElectronicOver" class="hidden"></a>m_RElectronicOver <a href="../Source_r6menu/r6menudynteamlistscontrol.html#25" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../core/object.html#Region" class="source">Region</a></span> m_RElectronicOver;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_RElectronicUp" class="hidden"></a>m_RElectronicUp <a href="../Source_r6menu/r6menudynteamlistscontrol.html#25" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../core/object.html#Region" class="source">Region</a></span> m_RElectronicUp;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_RReconDisabled" class="hidden"></a>m_RReconDisabled <a href="../Source_r6menu/r6menudynteamlistscontrol.html#25" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../core/object.html#Region" class="source">Region</a></span> m_RReconDisabled;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_RReconDown" class="hidden"></a>m_RReconDown <a href="../Source_r6menu/r6menudynteamlistscontrol.html#25" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../core/object.html#Region" class="source">Region</a></span> m_RReconDown;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_RReconOver" class="hidden"></a>m_RReconOver <a href="../Source_r6menu/r6menudynteamlistscontrol.html#25" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../core/object.html#Region" class="source">Region</a></span> m_RReconOver;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_RReconUp" class="hidden"></a>m_RReconUp <a href="../Source_r6menu/r6menudynteamlistscontrol.html#25" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../core/object.html#Region" class="source">Region</a></span> m_RReconUp;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_RSniperDisabled" class="hidden"></a>m_RSniperDisabled <a href="../Source_r6menu/r6menudynteamlistscontrol.html#25" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../core/object.html#Region" class="source">Region</a></span> m_RSniperDisabled;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_RSniperDown" class="hidden"></a>m_RSniperDown <a href="../Source_r6menu/r6menudynteamlistscontrol.html#25" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../core/object.html#Region" class="source">Region</a></span> m_RSniperDown;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_RSniperOver" class="hidden"></a>m_RSniperOver <a href="../Source_r6menu/r6menudynteamlistscontrol.html#25" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../core/object.html#Region" class="source">Region</a></span> m_RSniperOver;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_RSniperUp" class="hidden"></a>m_RSniperUp <a href="../Source_r6menu/r6menudynteamlistscontrol.html#25" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../core/object.html#Region" class="source">Region</a></span> m_RSniperUp;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_SniperButton" class="hidden"></a>m_SniperButton <a href="../Source_r6menu/r6menudynteamlistscontrol.html#19" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../r6window/r6windowlistboxanchorbutton.html" class="source">R6WindowListBoxAnchorButton</a></span> m_SniperButton;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_SubListByItemHeight" class="hidden"></a>m_SubListByItemHeight <a href="../Source_r6menu/r6menudynteamlistscontrol.html#64" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">float</span> m_SubListByItemHeight;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_SubListTopHeight" class="hidden"></a>m_SubListTopHeight <a href="../Source_r6menu/r6menudynteamlistscontrol.html#60" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">int</span> m_SubListTopHeight;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_TButtonTexture" class="hidden"></a>m_TButtonTexture <a href="../Source_r6menu/r6menudynteamlistscontrol.html#23" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../engine/texture.html" class="source">Texture</a></span> m_TButtonTexture;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_RAssault" class="hidden"></a>RAssault <a href="../Source_r6menu/r6menudynteamlistscontrol.html#52" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../core/object.html#Region" class="source">Region</a></span> RAssault;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_RDemo" class="hidden"></a>RDemo <a href="../Source_r6menu/r6menudynteamlistscontrol.html#52" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../core/object.html#Region" class="source">Region</a></span> RDemo;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_RElectro" class="hidden"></a>RElectro <a href="../Source_r6menu/r6menudynteamlistscontrol.html#52" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../core/object.html#Region" class="source">Region</a></span> RElectro;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_RRecon" class="hidden"></a>RRecon <a href="../Source_r6menu/r6menudynteamlistscontrol.html#52" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../core/object.html#Region" class="source">Region</a></span> RRecon;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_RSAssault" class="hidden"></a>RSAssault <a href="../Source_r6menu/r6menudynteamlistscontrol.html#53" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../core/object.html#Region" class="source">Region</a></span> RSAssault;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_RSDemo" class="hidden"></a>RSDemo <a href="../Source_r6menu/r6menudynteamlistscontrol.html#53" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../core/object.html#Region" class="source">Region</a></span> RSDemo;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_RSElectro" class="hidden"></a>RSElectro <a href="../Source_r6menu/r6menudynteamlistscontrol.html#53" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../core/object.html#Region" class="source">Region</a></span> RSElectro;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_RSniper" class="hidden"></a>RSniper <a href="../Source_r6menu/r6menudynteamlistscontrol.html#52" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../core/object.html#Region" class="source">Region</a></span> RSniper;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_RSRecon" class="hidden"></a>RSRecon <a href="../Source_r6menu/r6menudynteamlistscontrol.html#53" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../core/object.html#Region" class="source">Region</a></span> RSRecon;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_RSSniper" class="hidden"></a>RSSniper <a href="../Source_r6menu/r6menudynteamlistscontrol.html#53" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../core/object.html#Region" class="source">Region</a></span> RSSniper;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_TotalSublistsHeight" class="hidden"></a>TotalSublistsHeight <a href="../Source_r6menu/r6menudynteamlistscontrol.html#64" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">float</span> TotalSublistsHeight;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+
+
+<br />
+
+
+
+
+
+
+
+<table class="title">
+<tr>
+	<th class="title">Functions Detail</th>
+</tr>
+</table>
+
+<h4><a name="_AddOperativeToSubList-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> AddOperativeToSubList <span class="function_state"></span> <a href="../Source_r6menu/r6menudynteamlistscontrol.html#295" class="small">Source code</a></h4>
+<div class="declaration"> function  AddOperativeToSubList ( <span class="source_type"><a href="../r6window/r6windowtexticonssublistbox.html" class="source">R6WindowTextIconsSubListBox</a></span> _SubListBox) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_CreateAnchoredButtons-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> CreateAnchoredButtons <span class="function_state"></span> <a href="../Source_r6menu/r6menudynteamlistscontrol.html#487" class="small">Source code</a></h4>
+<div class="declaration"> function  CreateAnchoredButtons ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_Created-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> Created <span class="function_state"></span> <a href="../Source_r6menu/r6menudynteamlistscontrol.html#75" class="small">Source code</a></h4>
+<div class="declaration"> function  Created ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_CreateRosterListBox-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> CreateRosterListBox <span class="function_state"></span> <a href="../Source_r6menu/r6menudynteamlistscontrol.html#432" class="small">Source code</a></h4>
+<div class="declaration"> function  CreateRosterListBox ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_DistributeSpaces-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> DistributeSpaces <span class="function_state"></span> <a href="../Source_r6menu/r6menudynteamlistscontrol.html#782" class="small">Source code</a></h4>
+<div class="declaration"> function <span class="source_type">INT</span> DistributeSpaces ( <span class="source_type">INT</span> _iSpaceToAdd, out <span class="source_type">INT</span> _iHList, <span class="source_type">INT</span> _iMaxListHeigth) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_EmptyRosterList-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> EmptyRosterList <span class="function_state"></span> <a href="../Source_r6menu/r6menudynteamlistscontrol.html#692" class="small">Source code</a></h4>
+<div class="declaration"> function  EmptyRosterList ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_FillRosterList-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> FillRosterList <span class="function_state"></span> <a href="../Source_r6menu/r6menudynteamlistscontrol.html#532" class="small">Source code</a></h4>
+<div class="declaration"> function  FillRosterList ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_Notify-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> Notify <span class="function_state"></span> <a href="../Source_r6menu/r6menudynteamlistscontrol.html#85" class="small">Source code</a></h4>
+<div class="declaration"> function  Notify ( <span class="source_type"><a href="../uwindow/uwindowdialogcontrol.html" class="source">UWindowDialogControl</a></span> <span class="source_type">C</span>, <span class="source_type">byte</span> E) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_Paint-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> Paint <span class="function_state"></span> <a href="../Source_r6menu/r6menudynteamlistscontrol.html#702" class="small">Source code</a></h4>
+<div class="declaration"> function  Paint ( <span class="source_type"><a href="../engine/canvas.html" class="source">Canvas</a></span> <span class="source_type">C</span>, <span class="source_type">FLOAT</span> X, <span class="source_type">FLOAT</span> Y) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_RefreshButtons-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> RefreshButtons <span class="function_state"></span> <a href="../Source_r6menu/r6menudynteamlistscontrol.html#382" class="small">Source code</a></h4>
+<div class="declaration"> function  RefreshButtons ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_RemoveOperativeInSubList-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> RemoveOperativeInSubList <span class="function_state"></span> <a href="../Source_r6menu/r6menudynteamlistscontrol.html#273" class="small">Source code</a></h4>
+<div class="declaration"> function  RemoveOperativeInSubList ( <span class="source_type"><a href="../r6window/r6windowtexticonssublistbox.html" class="source">R6WindowTextIconsSubListBox</a></span> _SubListBox) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ResizeSubLists-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> ResizeSubLists <span class="function_state"></span> <a href="../Source_r6menu/r6menudynteamlistscontrol.html#722" class="small">Source code</a></h4>
+<div class="declaration"> function  ResizeSubLists ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+
+
+<br />
+
+
+<table class="title">
+<tr>
+	<th class="title">Defaultproperties</th>
+</tr>
+</table>
+<br />
+<div class="source"><table class="source"><tr><td class="source"><pre class="source">defaultproperties
+{
+     m_SubListTopHeight=<span class="source_int">20</span>
+     m_iMaxOperativeCount=<span class="source_int">8</span>
+     m_fButtonTabWidth=<span class="source_int">37.000000</span>
+     m_fButtonTabHeight=<span class="source_int">20.000000</span>
+     m_MinSubListHeight=<span class="source_int">47.000000</span>
+     m_SubListByItemHeight=<span class="source_int">13.000000</span>
+     TotalSublistsHeight=<span class="source_int">167.000000</span>
+     m_fVPadding=<span class="source_int">2.000000</span>
+     m_fFirsButtonOffset=<span class="source_int">3.000000</span>
+     m_fHButtonPadding=<span class="source_int">2.000000</span>
+     m_fHButtonOffset=<span class="source_int">3.000000</span>
+     m_RASSAULTUp=(W=<span class="source_int">37</span>,<span class="source_type">H</span>=<span class="source_int">20</span>)
+     m_RASSAULTOver=(Y=<span class="source_int">21</span>,W=<span class="source_int">37</span>,<span class="source_type">H</span>=<span class="source_int">20</span>)
+     m_RASSAULTDown=(Y=<span class="source_int">42</span>,W=<span class="source_int">37</span>,<span class="source_type">H</span>=<span class="source_int">20</span>)
+     m_RAssaultDisabled=(Y=<span class="source_int">42</span>,W=<span class="source_int">37</span>,<span class="source_type">H</span>=<span class="source_int">20</span>)
+     m_RReconUp=(X=<span class="source_int">114</span>,W=<span class="source_int">37</span>,<span class="source_type">H</span>=<span class="source_int">20</span>)
+     m_RReconOver=(X=<span class="source_int">114</span>,Y=<span class="source_int">21</span>,W=<span class="source_int">37</span>,<span class="source_type">H</span>=<span class="source_int">20</span>)
+     m_RReconDown=(X=<span class="source_int">114</span>,Y=<span class="source_int">42</span>,W=<span class="source_int">37</span>,<span class="source_type">H</span>=<span class="source_int">20</span>)
+     m_RReconDisabled=(X=<span class="source_int">114</span>,Y=<span class="source_int">42</span>,W=<span class="source_int">37</span>,<span class="source_type">H</span>=<span class="source_int">20</span>)
+     m_RSNIPERUp=(X=<span class="source_int">152</span>,W=<span class="source_int">37</span>,<span class="source_type">H</span>=<span class="source_int">20</span>)
+     m_RSNIPEROver=(X=<span class="source_int">152</span>,Y=<span class="source_int">21</span>,W=<span class="source_int">37</span>,<span class="source_type">H</span>=<span class="source_int">20</span>)
+     m_RSNIPERDown=(X=<span class="source_int">152</span>,Y=<span class="source_int">42</span>,W=<span class="source_int">37</span>,<span class="source_type">H</span>=<span class="source_int">20</span>)
+     m_RSniperDisabled=(X=<span class="source_int">152</span>,Y=<span class="source_int">42</span>,W=<span class="source_int">37</span>,<span class="source_type">H</span>=<span class="source_int">20</span>)
+     m_RDemolitionUp=(X=<span class="source_int">38</span>,W=<span class="source_int">37</span>,<span class="source_type">H</span>=<span class="source_int">20</span>)
+     m_RDemolitionOver=(X=<span class="source_int">38</span>,Y=<span class="source_int">21</span>,W=<span class="source_int">37</span>,<span class="source_type">H</span>=<span class="source_int">20</span>)
+     m_RDemolitionDown=(X=<span class="source_int">38</span>,Y=<span class="source_int">42</span>,W=<span class="source_int">37</span>,<span class="source_type">H</span>=<span class="source_int">20</span>)
+     m_RDemolitionDisabled=(X=<span class="source_int">38</span>,Y=<span class="source_int">42</span>,W=<span class="source_int">37</span>,<span class="source_type">H</span>=<span class="source_int">20</span>)
+     m_RElectronicUp=(X=<span class="source_int">76</span>,W=<span class="source_int">37</span>,<span class="source_type">H</span>=<span class="source_int">20</span>)
+     m_RElectronicOver=(X=<span class="source_int">76</span>,Y=<span class="source_int">21</span>,W=<span class="source_int">37</span>,<span class="source_type">H</span>=<span class="source_int">20</span>)
+     m_RElectronicDown=(X=<span class="source_int">76</span>,Y=<span class="source_int">42</span>,W=<span class="source_int">37</span>,<span class="source_type">H</span>=<span class="source_int">20</span>)
+     m_RElectronicDisabled=(X=<span class="source_int">76</span>,Y=<span class="source_int">42</span>,W=<span class="source_int">37</span>,<span class="source_type">H</span>=<span class="source_int">20</span>)
+     RAssault=(X=<span class="source_int">229</span>,W=<span class="source_int">9</span>,<span class="source_type">H</span>=<span class="source_int">9</span>)
+     RRecon=(X=<span class="source_int">239</span>,Y=<span class="source_int">20</span>,W=<span class="source_int">9</span>,<span class="source_type">H</span>=<span class="source_int">9</span>)
+     RSniper=(X=<span class="source_int">229</span>,Y=<span class="source_int">40</span>,W=<span class="source_int">9</span>,<span class="source_type">H</span>=<span class="source_int">9</span>)
+     RDemo=(X=<span class="source_int">239</span>,W=<span class="source_int">9</span>,<span class="source_type">H</span>=<span class="source_int">9</span>)
+     RElectro=(X=<span class="source_int">229</span>,Y=<span class="source_int">20</span>,W=<span class="source_int">9</span>,<span class="source_type">H</span>=<span class="source_int">9</span>)
+     RSAssault=(X=<span class="source_int">229</span>,Y=<span class="source_int">10</span>,W=<span class="source_int">9</span>,<span class="source_type">H</span>=<span class="source_int">9</span>)
+     RSRecon=(X=<span class="source_int">239</span>,Y=<span class="source_int">30</span>,W=<span class="source_int">9</span>,<span class="source_type">H</span>=<span class="source_int">9</span>)
+     RSSniper=(X=<span class="source_int">229</span>,Y=<span class="source_int">50</span>,W=<span class="source_int">9</span>,<span class="source_type">H</span>=<span class="source_int">9</span>)
+     RSDemo=(X=<span class="source_int">239</span>,Y=<span class="source_int">10</span>,W=<span class="source_int">9</span>,<span class="source_type">H</span>=<span class="source_int">9</span>)
+     RSElectro=(X=<span class="source_int">229</span>,Y=<span class="source_int">30</span>,W=<span class="source_int">9</span>,<span class="source_type">H</span>=<span class="source_int">9</span>)
+     m_BorderRegion=(X=<span class="source_int">64</span>,Y=<span class="source_int">56</span>,W=<span class="source_int">1</span>,<span class="source_type">H</span>=<span class="source_int">1</span>)
+}
+</pre></td></tr></table></div>
+
+
+
+<hr />
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../r6menu/r6menu-overview.html">Package</a></td>
+	<td class="header_hilight">Class</td>
+	<td class="header"><a href="../Source_r6menu/r6menudynteamlistscontrol.html">Source</a></td>
+	<td class="header"><a class="header" href="../classtree.html#R6MenuDynTeamListsControl">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../r6menu/r6menudiffcustommissionselect.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../r6menu/r6menuequipmentanchorbuttons.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+
+<div class="stats">Creation time: mar. 26/5/2026 18:33:11.949 - Created with <a href="http://wiki.beyondunreal.com/wiki/UnCodeX" target="_blank">UnCodeX</a></div>
+
+</body>
+</html>

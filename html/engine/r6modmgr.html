@@ -1,0 +1,552 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+	<title>UnCodeX - engine.R6ModMgr</title>
+	<meta name="Generator" content="UnCodeX 241" />
+	<link rel="stylesheet" href="../DocStyle2.css" type="text/css" title="Original Purple" />
+	<link rel="alternative stylesheet" href="../DocStyle2-blue.css" type="text/css" title="Blue" />
+	<link rel="alternative stylesheet" href="../DocStyle2-red.css" type="text/css" title="Red" />
+	<!--[if IE]>
+	<link rel="stylesheet" href="../DocStyle2-msie.css" type="text/css" />
+	<![endif]-->
+	<script src="../styleswitcher.js" type="text/javascript"></script>
+</head>
+<body>
+
+<div class="header">
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../engine/engine-overview.html">Package</a></td>
+	<td class="header_hilight">Class</td>
+	<td class="header"><a href="../Source_engine/r6modmgr.html">Source</a></td>
+	<td class="header"><a class="header" href="../classtree.html#R6ModMgr">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../engine/r6modconfig.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../engine/r6pawnreplicationinfo.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html#engine/r6modmgr.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+</div>
+<div class="spacer"></div>
+
+<h1><a href="../engine/engine-overview.html">engine</a>.R6ModMgr</h1>
+
+<dl>
+<dt>Extends</dt><dd><a href="../core/object.html">Object</a></dd>
+<dt>Modifiers</dt><dd>native </dd>
+</dl>
+
+<p></p>
+
+<pre class="tree"><a href="../core/core-overview.html">core</a>.<a href="../core/object.html">Object</a>
+|   
++-- <a href="../engine/engine-overview.html">engine</a>.<a href="../engine/r6modmgr.html">R6ModMgr</a>
+</pre>
+
+
+
+<hr />
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Constants Summary</th>
+</tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Contants from <a href="../core/core-overview.html">core</a>.<a href="../core/object.html">Object</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../core/object.html#MaxInt">MaxInt</a>, <a href="../core/object.html#Pi">Pi</a>, <a href="../core/object.html#RF_NotForClient">RF_NotForClient</a>, <a href="../core/object.html#RF_NotForEdit">RF_NotForEdit</a>, <a href="../core/object.html#RF_NotForServer">RF_NotForServer</a>, <a href="../core/object.html#RF_Public">RF_Public</a>, <a href="../core/object.html#RF_Transactional">RF_Transactional</a>, <a href="../core/object.html#RF_Transient">RF_Transient</a></td>
+</tr>
+</table>
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th colspan="2" class="title">Variables Summary</th>
+</tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_bShowLog" name="bShowLog" title="go to the details">bShowLog</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">array&lt;string&gt;</td><td width="66%"><a href="#_m_aGameTypeCorrTable" name="m_aGameTypeCorrTable" title="go to the details">m_aGameTypeCorrTable</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">Array&lt;<a href="../engine/r6mod.html">R6Mod</a>&gt;</td><td width="66%"><a href="#_m_aMods" name="m_aMods" title="go to the details">m_aMods</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">Array&lt;<a href="../core/object.html">Object</a>&gt;</td><td width="66%"><a href="#_m_aObjects" name="m_aObjects" title="go to the details">m_aObjects</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../engine/r6mod.html">R6Mod</a></td><td width="66%"><a href="#_m_pCurrentMod" name="m_pCurrentMod" title="go to the details">m_pCurrentMod</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../engine/r6mod.html">R6Mod</a></td><td width="66%"><a href="#_m_pMP1" name="m_pMP1" title="go to the details">m_pMP1</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../engine/r6mod.html">R6Mod</a></td><td width="66%"><a href="#_m_pMP2" name="m_pMP2" title="go to the details">m_pMP2</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../engine/r6mod.html">R6Mod</a></td><td width="66%"><a href="#_m_pRVS" name="m_pRVS" title="go to the details">m_pRVS</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../engine/r6upackagemgr.html">R6UPackageMgr</a></td><td width="66%"><a href="#_m_pUPackageMgr" name="m_pUPackageMgr" title="go to the details">m_pUPackageMgr</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">String</td><td width="66%"><a href="#_m_szPendingModName" name="m_szPendingModName" title="go to the details">m_szPendingModName</a></td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Variables from <a href="../core/core-overview.html">core</a>.<a href="../core/object.html">Object</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../core/object.html#Class">Class</a>, <a href="../core/object.html#DName">DName</a>, <a href="../core/object.html#Name">Name</a>, <a href="../core/object.html#ObjectFlags">ObjectFlags</a>, <a href="../core/object.html#ObjectInternal[6]">ObjectInternal[6]</a>, <a href="../core/object.html#Outer">Outer</a></td>
+</tr>
+</table>
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Enumerations Summary</th>
+</tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Enumerations from <a href="../core/core-overview.html">core</a>.<a href="../core/object.html">Object</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../core/object.html#ECamOrientation">ECamOrientation</a>, <a href="../core/object.html#EGoCode">EGoCode</a>, <a href="../core/object.html#EMovementMode">EMovementMode</a>, <a href="../core/object.html#EMovementSpeed">EMovementSpeed</a>, <a href="../core/object.html#ENodeNotify">ENodeNotify</a>, <a href="../core/object.html#EPlanAction">EPlanAction</a>, <a href="../core/object.html#EPlanActionType">EPlanActionType</a>, <a href="../core/object.html#ePlayerTeamSelection">ePlayerTeamSelection</a>, <a href="../core/object.html#ESheerAxis">ESheerAxis</a></td>
+</tr>
+</table>
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Structures Summary</th>
+</tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Structures from <a href="../core/core-overview.html">core</a>.<a href="../core/object.html">Object</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../core/object.html#BoundingVolume">BoundingVolume</a>, <a href="../core/object.html#Box">Box</a>, <a href="../core/object.html#Color">Color</a>, <a href="../core/object.html#CompressedPosition">CompressedPosition</a>, <a href="../core/object.html#Coords">Coords</a>, <a href="../core/object.html#Guid">Guid</a>, <a href="../core/object.html#InterpCurve">InterpCurve</a>, <a href="../core/object.html#InterpCurvePoint">InterpCurvePoint</a>, <a href="../core/object.html#Matrix">Matrix</a>, <a href="../core/object.html#Plane">Plane</a>, <a href="../core/object.html#Range">Range</a>, <a href="../core/object.html#RangeVector">RangeVector</a>, <a href="../core/object.html#Region">Region</a>, <a href="../core/object.html#Rotator">Rotator</a>, <a href="../core/object.html#Scale">Scale</a>, <a href="../core/object.html#Vector">Vector</a></td>
+</tr>
+</table>
+
+
+<br />
+
+
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Functions Summary</th>
+</tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_AddGameTypes-" name="AddGameTypes" title="go to the details">AddGameTypes</a> (<a href="../engine/levelinfo.html">LevelInfo</a> pLevelInfo))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_AddNewModExtraPath-" name="AddNewModExtraPath" title="go to the details">AddNewModExtraPath</a> (<a href="../engine/r6mod.html">R6Mod</a> pMod, INT iResetPaths)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_CallSndEngineInit-" name="CallSndEngineInit" title="go to the details">CallSndEngineInit</a> (Level pLevel)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_DebugRegisterObject-" name="DebugRegisterObject" title="go to the details">DebugRegisterObject</a> (string sz ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_FillCorrepondanceTable-" name="FillCorrepondanceTable" title="go to the details">FillCorrepondanceTable</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_FindExtraMods-" name="FindExtraMods" title="go to the details">FindExtraMods</a> (<a href="../engine/r6mod.html">R6Mod</a> pCurrentMod))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_event.gif" alt="event" title="event" /></td><td>String&nbsp;</td><td><a href="#_GetBackgroundsRoot-" name="GetBackgroundsRoot" title="go to the details">GetBackgroundsRoot</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_event.gif" alt="event" title="event" /></td><td>string&nbsp;</td><td><a href="#_GetCampaignDir-" name="GetCampaignDir" title="go to the details">GetCampaignDir</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>string&nbsp;</td><td><a href="#_GetCampaignMapDir-" name="GetCampaignMapDir" title="go to the details">GetCampaignMapDir</a> (string szIniCampaignName))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>string&nbsp;</td><td><a href="#_GetCreditsFile-" name="GetCreditsFile" title="go to the details">GetCreditsFile</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_event.gif" alt="event" title="event" /></td><td>string&nbsp;</td><td><a href="#_GetGameServiceGameName-" name="GetGameServiceGameName" title="go to the details">GetGameServiceGameName</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_event.gif" alt="event" title="event" /></td><td>int&nbsp;</td><td><a href="#_GetGameTypeIndex-" name="GetGameTypeIndex" title="go to the details">GetGameTypeIndex</a> (string _szGameType))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_event.gif" alt="event" title="event" /></td><td>string&nbsp;</td><td><a href="#_GetGameTypeName-" name="GetGameTypeName" title="go to the details">GetGameTypeName</a> (int _iIndex))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_event.gif" alt="event" title="event" /></td><td>string&nbsp;</td><td><a href="#_GetIniFilesDir-" name="GetIniFilesDir" title="go to the details">GetIniFilesDir</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_event.gif" alt="event" title="event" /></td><td>string&nbsp;</td><td><a href="#_GetMapsDir-" name="GetMapsDir" title="go to the details">GetMapsDir</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>string&nbsp;</td><td><a href="#_GetMenuDefFile-" name="GetMenuDefFile" title="go to the details">GetMenuDefFile</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td><a href="../engine/r6mod.html">R6Mod</a>&nbsp;</td><td><a href="#_GetModInstance-" name="GetModInstance" title="go to the details">GetModInstance</a> (string szKeyWord))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_event.gif" alt="event" title="event" /></td><td>string&nbsp;</td><td><a href="#_GetModKeyword-" name="GetModKeyword" title="go to the details">GetModKeyword</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_event.gif" alt="event" title="event" /></td><td>String&nbsp;</td><td><a href="#_GetModName-" name="GetModName" title="go to the details">GetModName</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_event.gif" alt="event" title="event" /></td><td>int&nbsp;</td><td><a href="#_GetNbMods-" name="GetNbMods" title="go to the details">GetNbMods</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td><a href="../engine/r6upackagemgr.html">R6UPackageMgr</a>&nbsp;</td><td><a href="#_GetPackageMgr-" name="GetPackageMgr" title="go to the details">GetPackageMgr</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_event.gif" alt="event" title="event" /></td><td>string&nbsp;</td><td><a href="#_GetPlayerCustomMission-" name="GetPlayerCustomMission" title="go to the details">GetPlayerCustomMission</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_event.gif" alt="event" title="event" /></td><td>string&nbsp;</td><td><a href="#_GetServerIni-" name="GetServerIni" title="go to the details">GetServerIni</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>string&nbsp;</td><td><a href="#_GetUbiComClientVersion-" name="GetUbiComClientVersion" title="go to the details">GetUbiComClientVersion</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_event.gif" alt="event" title="event" /></td><td>String&nbsp;</td><td><a href="#_GetVideosRoot-" name="GetVideosRoot" title="go to the details">GetVideosRoot</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_InitAllModObjects-" name="InitAllModObjects" title="go to the details">InitAllModObjects</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_event.gif" alt="event" title="event" /></td><td>&nbsp;</td><td><a href="#_InitModMgr-" name="InitModMgr" title="go to the details">InitModMgr</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>bool&nbsp;</td><td><a href="#_IsGameTypeAvailable-" name="IsGameTypeAvailable" title="go to the details">IsGameTypeAvailable</a> (string szGametype ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_IsMapAvailable-" name="IsMapAvailable" title="go to the details">IsMapAvailable</a> (string szKeyWord, <a href="../engine/console.html">Console</a> pConsole))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_event.gif" alt="event" title="event" /></td><td>bool&nbsp;</td><td><a href="#_IsMissionPack-" name="IsMissionPack" title="go to the details">IsMissionPack</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_event.gif" alt="event" title="event" /></td><td>bool&nbsp;</td><td><a href="#_IsRavenShield-" name="IsRavenShield" title="go to the details">IsRavenShield</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>bool&nbsp;</td><td><a href="#_isRegistered-" name="isRegistered" title="go to the details">isRegistered</a> (Object obj ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_RegisterObject-" name="RegisterObject" title="go to the details">RegisterObject</a> (Object obj  ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_event.gif" alt="event" title="event" /></td><td>&nbsp;</td><td><a href="#_SetCurrentMod-" name="SetCurrentMod" title="go to the details">SetCurrentMod</a> (string szKeyWord, <a href="../engine/levelinfo.html">LevelInfo</a> pLevelInfo, optional bool bInitSystem, optional <a href="../engine/console.html">Console</a> pConsole, optional Level pLevel))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_event.gif" alt="event" title="event" /></td><td>&nbsp;</td><td><a href="#_SetPendingMODFromGSName-" name="SetPendingMODFromGSName" title="go to the details">SetPendingMODFromGSName</a> (string GSGameName))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_SetSystemMod-" name="SetSystemMod" title="go to the details">SetSystemMod</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_UnRegisterAllObject-" name="UnRegisterAllObject" title="go to the details">UnRegisterAllObject</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_UnRegisterObject-" name="UnRegisterObject" title="go to the details">UnRegisterObject</a> (Object obj  ))<br /><span class="function_state"></span></td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Functions from <a href="../core/core-overview.html">core</a>.<a href="../core/object.html">Object</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../core/object.html#!">!</a>, <a href="../core/object.html#!=">!=</a>, <a href="../core/object.html#$">$</a>, <a href="../core/object.html#%">%</a>, <a href="../core/object.html#&">&</a>, <a href="../core/object.html#&&">&&</a>, <a href="../core/object.html#*">*</a>, <a href="../core/object.html#**">**</a>, <a href="../core/object.html#*=">*=</a>, <a href="../core/object.html#+">+</a>, <a href="../core/object.html#++">++</a>, <a href="../core/object.html#+=">+=</a>, <a href="../core/object.html#-">-</a>, <a href="../core/object.html#--">--</a>, <a href="../core/object.html#-=">-=</a>, <a href="../core/object.html#/ ">/ </a>, <a href="../core/object.html#/=">/=</a>, <a href="../core/object.html#&lt;">&lt;</a>, <a href="../core/object.html#&lt;&lt;">&lt;&lt;</a>, <a href="../core/object.html#&lt;=">&lt;=</a>, <a href="../core/object.html#==">==</a>, <a href="../core/object.html#&gt;">&gt;</a>, <a href="../core/object.html#&gt;=">&gt;=</a>, <a href="../core/object.html#&gt;&gt;">&gt;&gt;</a>, <a href="../core/object.html#&gt;&gt;&gt;">&gt;&gt;&gt;</a>, <a href="../core/object.html#@">@</a>, <a href="../core/object.html#Abs">Abs</a>, <a href="../core/object.html#Acos">Acos</a>, <a href="../core/object.html#Asc">Asc</a>, <a href="../core/object.html#Asin">Asin</a>, <a href="../core/object.html#Atan">Atan</a>, <a href="../core/object.html#Atoi">Atoi</a>, <a href="../core/object.html#BeginState">BeginState</a>, <a href="../core/object.html#Caps">Caps</a>, <a href="../core/object.html#Chr">Chr</a>, <a href="../core/object.html#Clamp">Clamp</a>, <a href="../core/object.html#ClassIsChildOf">ClassIsChildOf</a>, <a href="../core/object.html#ClearOuter">ClearOuter</a>, <a href="../core/object.html#Clock">Clock</a>, <a href="../core/object.html#ClockwiseFrom">ClockwiseFrom</a>, <a href="../core/object.html#Cos">Cos</a>, <a href="../core/object.html#Cross">Cross</a>, <a href="../core/object.html#Disable">Disable</a>, <a href="../core/object.html#Dot">Dot</a>, <a href="../core/object.html#DynamicLoadObject">DynamicLoadObject</a>, <a href="../core/object.html#Enable">Enable</a>, <a href="../core/object.html#EndState">EndState</a>, <a href="../core/object.html#Exp">Exp</a>, <a href="../core/object.html#FClamp">FClamp</a>, <a href="../core/object.html#FindObject">FindObject</a>, <a href="../core/object.html#FMax">FMax</a>, <a href="../core/object.html#FMin">FMin</a>, <a href="../core/object.html#FRand">FRand</a>, <a href="../core/object.html#FreePackageObjects">FreePackageObjects</a>, <a href="../core/object.html#GetAxes">GetAxes</a>, <a href="../core/object.html#GetEnum">GetEnum</a>, <a href="../core/object.html#GetFirstPackageClass">GetFirstPackageClass</a>, <a href="../core/object.html#GetNextClass">GetNextClass</a>, <a href="../core/object.html#GetPropertyText">GetPropertyText</a>, <a href="../core/object.html#GetRegistryKey">GetRegistryKey</a>, <a href="../core/object.html#GetStateName">GetStateName</a>, <a href="../core/object.html#GetUnAxes">GetUnAxes</a>, <a href="../core/object.html#GotoState">GotoState</a>, <a href="../core/object.html#InitMod">InitMod</a>, <a href="../core/object.html#InStr">InStr</a>, <a href="../core/object.html#InterpCurveEval">InterpCurveEval</a>, <a href="../core/object.html#Invert">Invert</a>, <a href="../core/object.html#IsA">IsA</a>, <a href="../core/object.html#IsInState">IsInState</a>, <a href="../core/object.html#Itoa">Itoa</a>, <a href="../core/object.html#Left">Left</a>, <a href="../core/object.html#Len">Len</a>, <a href="../core/object.html#Lerp">Lerp</a>, <a href="../core/object.html#LoadConfig">LoadConfig</a>, <a href="../core/object.html#Localize">Localize</a>, <a href="../core/object.html#Log">Log</a>, <a href="../core/object.html#Loge">Loge</a>, <a href="../core/object.html#LogSnd">LogSnd</a>, <a href="../core/object.html#Max">Max</a>, <a href="../core/object.html#Mid">Mid</a>, <a href="../core/object.html#Min">Min</a>, <a href="../core/object.html#MirrorVectorByNormal">MirrorVectorByNormal</a>, <a href="../core/object.html#Normal">Normal</a>, <a href="../core/object.html#Normalize">Normalize</a>, <a href="../core/object.html#OrthoRotation">OrthoRotation</a>, <a href="../core/object.html#Rand">Rand</a>, <a href="../core/object.html#RandRange">RandRange</a>, <a href="../core/object.html#RemoveInvalidChars">RemoveInvalidChars</a>, <a href="../core/object.html#ResetConfig">ResetConfig</a>, <a href="../core/object.html#RewindToFirstClass">RewindToFirstClass</a>, <a href="../core/object.html#Right">Right</a>, <a href="../core/object.html#RotRand">RotRand</a>, <a href="../core/object.html#SaveConfig">SaveConfig</a>, <a href="../core/object.html#SetPropertyText">SetPropertyText</a>, <a href="../core/object.html#SetRegistryKey">SetRegistryKey</a>, <a href="../core/object.html#ShortestAngle2D">ShortestAngle2D</a>, <a href="../core/object.html#Sin">Sin</a>, <a href="../core/object.html#Smerp">Smerp</a>, <a href="../core/object.html#Sqrt">Sqrt</a>, <a href="../core/object.html#Square">Square</a>, <a href="../core/object.html#StaticSaveConfig">StaticSaveConfig</a>, <a href="../core/object.html#Strnicmp">Strnicmp</a>, <a href="../core/object.html#Tan">Tan</a>, <a href="../core/object.html#Unclock">Unclock</a>, <a href="../core/object.html#VRand">VRand</a>, <a href="../core/object.html#VSize">VSize</a>, <a href="../core/object.html#Warn">Warn</a>, <a href="../core/object.html#^">^</a>, <a href="../core/object.html#^^">^^</a>, <a href="../core/object.html#|">|</a>, <a href="../core/object.html#||">||</a>, <a href="../core/object.html#~">~</a>, <a href="../core/object.html#~=">~=</a></td>
+</tr>
+</table>
+
+
+<br />
+
+
+
+<hr />
+
+
+
+<table class="title">
+<tr>
+	<th class="title">Variables Detail</th>
+</tr>
+</table>
+
+<h4><a name="_bShowLog" class="hidden"></a>bShowLog <a href="../Source_engine/r6modmgr.html#17" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">bool</span> bShowLog;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_aGameTypeCorrTable" class="hidden"></a>m_aGameTypeCorrTable <a href="../Source_engine/r6modmgr.html#21" class="small">Source code</a></h4>
+<div class="declaration">var array&lt;<span class="source_type">string</span>&gt; m_aGameTypeCorrTable;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_aMods" class="hidden"></a>m_aMods <a href="../Source_engine/r6modmgr.html#12" class="small">Source code</a></h4>
+<div class="declaration">var Array&lt;<span class="source_type"><a href="../engine/r6mod.html" class="source">R6Mod</a></span>&gt; m_aMods;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_aObjects" class="hidden"></a>m_aObjects <a href="../Source_engine/r6modmgr.html#20" class="small">Source code</a></h4>
+<div class="declaration">var Array&lt;<span class="source_type"><a href="../core/object.html" class="source">Object</a></span>&gt; m_aObjects;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_pCurrentMod" class="hidden"></a>m_pCurrentMod <a href="../Source_engine/r6modmgr.html#13" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../engine/r6mod.html" class="source">R6Mod</a></span> m_pCurrentMod;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_pMP1" class="hidden"></a>m_pMP1 <a href="../Source_engine/r6modmgr.html#14" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../engine/r6mod.html" class="source">R6Mod</a></span> m_pMP1;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_pMP2" class="hidden"></a>m_pMP2 <a href="../Source_engine/r6modmgr.html#15" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../engine/r6mod.html" class="source">R6Mod</a></span> m_pMP2;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_pRVS" class="hidden"></a>m_pRVS <a href="../Source_engine/r6modmgr.html#16" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../engine/r6mod.html" class="source">R6Mod</a></span> m_pRVS;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_pUPackageMgr" class="hidden"></a>m_pUPackageMgr <a href="../Source_engine/r6modmgr.html#11" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../engine/r6upackagemgr.html" class="source">R6UPackageMgr</a></span> m_pUPackageMgr;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_szPendingModName" class="hidden"></a>m_szPendingModName <a href="../Source_engine/r6modmgr.html#18" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">String</span> m_szPendingModName;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+
+
+<br />
+
+
+
+
+
+
+
+<table class="title">
+<tr>
+	<th class="title">Functions Detail</th>
+</tr>
+</table>
+
+<h4><a name="_AddGameTypes-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> AddGameTypes <span class="function_state"></span> <a href="../Source_engine/r6modmgr.html#200" class="small">Source code</a></h4>
+<div class="declaration"> function  AddGameTypes ( <span class="source_type"><a href="../engine/levelinfo.html" class="source">LevelInfo</a></span> pLevelInfo) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_AddNewModExtraPath-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> AddNewModExtraPath <span class="function_state"></span> <a href="../Source_engine/r6modmgr.html#23" class="small">Source code</a></h4>
+<div class="declaration">native(<span class="source_int">2020</span>) final function  AddNewModExtraPath ( <span class="source_type"><a href="../engine/r6mod.html" class="source">R6Mod</a></span> pMod, <span class="source_type">INT</span> iResetPaths )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_CallSndEngineInit-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> CallSndEngineInit <span class="function_state"></span> <a href="../Source_engine/r6modmgr.html#25" class="small">Source code</a></h4>
+<div class="declaration">native(<span class="source_int">3003</span>) final function  CallSndEngineInit ( <span class="source_type">Level</span> <span class="source_type">pLevel</span> )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_DebugRegisterObject-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> DebugRegisterObject <span class="function_state"></span> <a href="../Source_engine/r6modmgr.html#365" class="small">Source code</a></h4>
+<div class="declaration"> function  DebugRegisterObject ( <span class="source_type">string</span> <span class="source_type">sz</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_FillCorrepondanceTable-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> FillCorrepondanceTable <span class="function_state"></span> <a href="../Source_engine/r6modmgr.html#425" class="small">Source code</a></h4>
+<div class="declaration"> function  FillCorrepondanceTable ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_FindExtraMods-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> FindExtraMods <span class="function_state"></span> <a href="../Source_engine/r6modmgr.html#103" class="small">Source code</a></h4>
+<div class="declaration"> function  FindExtraMods ( <span class="source_type"><a href="../engine/r6mod.html" class="source">R6Mod</a></span> pCurrentMod) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GetBackgroundsRoot-" class="hidden"></a><img src="../img_event.gif" alt="" title="event" /> GetBackgroundsRoot <span class="function_state"></span> <a href="../Source_engine/r6modmgr.html#266" class="small">Source code</a></h4>
+<div class="declaration"> event <span class="source_type">String</span> GetBackgroundsRoot ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GetCampaignDir-" class="hidden"></a><img src="../img_event.gif" alt="" title="event" /> GetCampaignDir <span class="function_state"></span> <a href="../Source_engine/r6modmgr.html#276" class="small">Source code</a></h4>
+<div class="declaration"> event <span class="source_type">string</span> GetCampaignDir ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GetCampaignMapDir-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> GetCampaignMapDir <span class="function_state"></span> <a href="../Source_engine/r6modmgr.html#286" class="small">Source code</a></h4>
+<div class="declaration"> function <span class="source_type">string</span> GetCampaignMapDir ( <span class="source_type">string</span> szIniCampaignName) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GetCreditsFile-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> GetCreditsFile <span class="function_state"></span> <a href="../Source_engine/r6modmgr.html#376" class="small">Source code</a></h4>
+<div class="declaration"> function <span class="source_type">string</span> GetCreditsFile ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GetGameServiceGameName-" class="hidden"></a><img src="../img_event.gif" alt="" title="event" /> GetGameServiceGameName <span class="function_state"></span> <a href="../Source_engine/r6modmgr.html#397" class="small">Source code</a></h4>
+<div class="declaration"> event <span class="source_type">string</span> GetGameServiceGameName ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GetGameTypeIndex-" class="hidden"></a><img src="../img_event.gif" alt="" title="event" /> GetGameTypeIndex <span class="function_state"></span> <a href="../Source_engine/r6modmgr.html#459" class="small">Source code</a></h4>
+<div class="declaration"> event <span class="source_type">int</span> GetGameTypeIndex ( <span class="source_type">string</span> _szGameType) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GetGameTypeName-" class="hidden"></a><img src="../img_event.gif" alt="" title="event" /> GetGameTypeName <span class="function_state"></span> <a href="../Source_engine/r6modmgr.html#472" class="small">Source code</a></h4>
+<div class="declaration"> event <span class="source_type">string</span> GetGameTypeName ( <span class="source_type">int</span> _iIndex) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GetIniFilesDir-" class="hidden"></a><img src="../img_event.gif" alt="" title="event" /> GetIniFilesDir <span class="function_state"></span> <a href="../Source_engine/r6modmgr.html#281" class="small">Source code</a></h4>
+<div class="declaration"> event <span class="source_type">string</span> GetIniFilesDir ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GetMapsDir-" class="hidden"></a><img src="../img_event.gif" alt="" title="event" /> GetMapsDir <span class="function_state"></span> <a href="../Source_engine/r6modmgr.html#308" class="small">Source code</a></h4>
+<div class="declaration"> event <span class="source_type">string</span> GetMapsDir ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GetMenuDefFile-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> GetMenuDefFile <span class="function_state"></span> <a href="../Source_engine/r6modmgr.html#381" class="small">Source code</a></h4>
+<div class="declaration"> function <span class="source_type">string</span> GetMenuDefFile ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GetModInstance-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> GetModInstance <span class="function_state"></span> <a href="../Source_engine/r6modmgr.html#145" class="small">Source code</a></h4>
+<div class="declaration"> function <span class="source_type"><a href="../engine/r6mod.html" class="source">R6Mod</a></span> GetModInstance ( <span class="source_type">string</span> szKeyWord) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GetModKeyword-" class="hidden"></a><img src="../img_event.gif" alt="" title="event" /> GetModKeyword <span class="function_state"></span> <a href="../Source_engine/r6modmgr.html#412" class="small">Source code</a></h4>
+<div class="declaration"> event <span class="source_type">string</span> GetModKeyword ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GetModName-" class="hidden"></a><img src="../img_event.gif" alt="" title="event" /> GetModName <span class="function_state"></span> <a href="../Source_engine/r6modmgr.html#417" class="small">Source code</a></h4>
+<div class="declaration"> event <span class="source_type">String</span> GetModName ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GetNbMods-" class="hidden"></a><img src="../img_event.gif" alt="" title="event" /> GetNbMods <span class="function_state"></span> <a href="../Source_engine/r6modmgr.html#27" class="small">Source code</a></h4>
+<div class="declaration"> event <span class="source_type">int</span> GetNbMods ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GetPackageMgr-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> GetPackageMgr <span class="function_state"></span> <a href="../Source_engine/r6modmgr.html#140" class="small">Source code</a></h4>
+<div class="declaration"> function <span class="source_type"><a href="../engine/r6upackagemgr.html" class="source">R6UPackageMgr</a></span> GetPackageMgr ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GetPlayerCustomMission-" class="hidden"></a><img src="../img_event.gif" alt="" title="event" /> GetPlayerCustomMission <span class="function_state"></span> <a href="../Source_engine/r6modmgr.html#316" class="small">Source code</a></h4>
+<div class="declaration"> event <span class="source_type">string</span> GetPlayerCustomMission ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GetServerIni-" class="hidden"></a><img src="../img_event.gif" alt="" title="event" /> GetServerIni <span class="function_state"></span> <a href="../Source_engine/r6modmgr.html#407" class="small">Source code</a></h4>
+<div class="declaration"> event <span class="source_type">string</span> GetServerIni ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GetUbiComClientVersion-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> GetUbiComClientVersion <span class="function_state"></span> <a href="../Source_engine/r6modmgr.html#390" class="small">Source code</a></h4>
+<div class="declaration"> function <span class="source_type">string</span> GetUbiComClientVersion ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GetVideosRoot-" class="hidden"></a><img src="../img_event.gif" alt="" title="event" /> GetVideosRoot <span class="function_state"></span> <a href="../Source_engine/r6modmgr.html#271" class="small">Source code</a></h4>
+<div class="declaration"> event <span class="source_type">String</span> GetVideosRoot ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_InitAllModObjects-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> InitAllModObjects <span class="function_state"></span> <a href="../Source_engine/r6modmgr.html#225" class="small">Source code</a></h4>
+<div class="declaration"> function  InitAllModObjects ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_InitModMgr-" class="hidden"></a><img src="../img_event.gif" alt="" title="event" /> InitModMgr <span class="function_state"></span> <a href="../Source_engine/r6modmgr.html#42" class="small">Source code</a></h4>
+<div class="declaration"> event  InitModMgr ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_IsGameTypeAvailable-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> IsGameTypeAvailable <span class="function_state"></span> <a href="../Source_engine/r6modmgr.html#251" class="small">Source code</a></h4>
+<div class="declaration"> function <span class="source_type">bool</span> IsGameTypeAvailable ( <span class="source_type">string</span> <span class="source_type">szGametype</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_IsMapAvailable-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> IsMapAvailable <span class="function_state"></span> <a href="../Source_engine/r6modmgr.html#118" class="small">Source code</a></h4>
+<div class="declaration"> function  IsMapAvailable ( <span class="source_type">string</span> szKeyWord, <span class="source_type"><a href="../engine/console.html" class="source">Console</a></span> pConsole) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_IsMissionPack-" class="hidden"></a><img src="../img_event.gif" alt="" title="event" /> IsMissionPack <span class="function_state"></span> <a href="../Source_engine/r6modmgr.html#29" class="small">Source code</a></h4>
+<div class="declaration"> event <span class="source_type">bool</span> IsMissionPack ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_IsRavenShield-" class="hidden"></a><img src="../img_event.gif" alt="" title="event" /> IsRavenShield <span class="function_state"></span> <a href="../Source_engine/r6modmgr.html#34" class="small">Source code</a></h4>
+<div class="declaration"> event <span class="source_type">bool</span> IsRavenShield ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_isRegistered-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> isRegistered <span class="function_state"></span> <a href="../Source_engine/r6modmgr.html#321" class="small">Source code</a></h4>
+<div class="declaration"> function <span class="source_type">bool</span> isRegistered ( <span class="source_type"><a href="../core/object.html" class="source">Object</a></span> <span class="source_type">obj</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_RegisterObject-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> RegisterObject <span class="function_state"></span> <a href="../Source_engine/r6modmgr.html#334" class="small">Source code</a></h4>
+<div class="declaration"> function  RegisterObject ( <span class="source_type"><a href="../core/object.html" class="source">Object</a></span> <span class="source_type">obj</span>  ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_SetCurrentMod-" class="hidden"></a><img src="../img_event.gif" alt="" title="event" /> SetCurrentMod <span class="function_state"></span> <a href="../Source_engine/r6modmgr.html#159" class="small">Source code</a></h4>
+<div class="declaration"> event  SetCurrentMod ( <span class="source_type">string</span> szKeyWord, <span class="source_type"><a href="../engine/levelinfo.html" class="source">LevelInfo</a></span> pLevelInfo, optional <span class="source_type">bool</span> bInitSystem, optional <span class="source_type"><a href="../engine/console.html" class="source">Console</a></span> pConsole, optional <span class="source_type">Level</span> <span class="source_type">pLevel</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_SetPendingMODFromGSName-" class="hidden"></a><img src="../img_event.gif" alt="" title="event" /> SetPendingMODFromGSName <span class="function_state"></span> <a href="../Source_engine/r6modmgr.html#238" class="small">Source code</a></h4>
+<div class="declaration"> event  SetPendingMODFromGSName ( <span class="source_type">string</span> GSGameName) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_SetSystemMod-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> SetSystemMod <span class="function_state"></span> <a href="../Source_engine/r6modmgr.html#24" class="small">Source code</a></h4>
+<div class="declaration">native(<span class="source_int">2021</span>) final function  SetSystemMod (  )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_UnRegisterAllObject-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> UnRegisterAllObject <span class="function_state"></span> <a href="../Source_engine/r6modmgr.html#343" class="small">Source code</a></h4>
+<div class="declaration"> function  UnRegisterAllObject ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_UnRegisterObject-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> UnRegisterObject <span class="function_state"></span> <a href="../Source_engine/r6modmgr.html#349" class="small">Source code</a></h4>
+<div class="declaration"> function  UnRegisterObject ( <span class="source_type"><a href="../core/object.html" class="source">Object</a></span> <span class="source_type">obj</span>  ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+
+
+<br />
+
+
+<table class="title">
+<tr>
+	<th class="title">Defaultproperties</th>
+</tr>
+</table>
+<br />
+<div class="source"><table class="source"><tr><td class="source"><pre class="source">defaultproperties
+{
+}
+</pre></td></tr></table></div>
+
+
+
+<hr />
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../engine/engine-overview.html">Package</a></td>
+	<td class="header_hilight">Class</td>
+	<td class="header"><a href="../Source_engine/r6modmgr.html">Source</a></td>
+	<td class="header"><a class="header" href="../classtree.html#R6ModMgr">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../engine/r6modconfig.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../engine/r6pawnreplicationinfo.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+
+<div class="stats">Creation time: mar. 26/5/2026 18:33:13.042 - Created with <a href="http://wiki.beyondunreal.com/wiki/UnCodeX" target="_blank">UnCodeX</a></div>
+
+</body>
+</html>

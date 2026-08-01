@@ -1,0 +1,1431 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+	<title>UnCodeX - R6Menu.R6MenuOptionsTab</title>
+	<meta name="Generator" content="UnCodeX 241" />
+	<link rel="stylesheet" href="../DocStyle2.css" type="text/css" title="Original Purple" />
+	<link rel="alternative stylesheet" href="../DocStyle2-blue.css" type="text/css" title="Blue" />
+	<link rel="alternative stylesheet" href="../DocStyle2-red.css" type="text/css" title="Red" />
+	<!--[if IE]>
+	<link rel="stylesheet" href="../DocStyle2-msie.css" type="text/css" />
+	<![endif]-->
+	<script src="../styleswitcher.js" type="text/javascript"></script>
+</head>
+<body>
+
+<div class="header">
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../r6menu/r6menu-overview.html">Package</a></td>
+	<td class="header_hilight">Class</td>
+	<td class="header"><a href="../Source_r6menu/r6menuoptionstab.html">Source</a></td>
+	<td class="header"><a class="header" href="../classtree.html#R6MenuOptionsTab">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../r6menu/r6menuoptionscontrols.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../r6menu/r6menuoptionswidget.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html#r6menu/r6menuoptionstab.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+</div>
+<div class="spacer"></div>
+
+<h1><a href="../r6menu/r6menu-overview.html">R6Menu</a>.R6MenuOptionsTab</h1>
+
+<dl>
+<dt>Extends</dt><dd><a href="../uwindow/uwindowdialogclientwindow.html">UWindowDialogClientWindow</a></dd>
+
+</dl>
+
+<p></p>
+
+<pre class="tree"><a href="../core/core-overview.html">core</a>.<a href="../core/object.html">Object</a>
+|   
++-- <a href="../uwindow/uwindow-overview.html">UWindow</a>.<a href="../uwindow/uwindowbase.html">UWindowBase</a>
+   |   
+   +-- <a href="../uwindow/uwindow-overview.html">UWindow</a>.<a href="../uwindow/uwindowwindow.html">UWindowWindow</a>
+      |   
+      +-- <a href="../uwindow/uwindow-overview.html">UWindow</a>.<a href="../uwindow/uwindowclientwindow.html">UWindowClientWindow</a>
+         |   
+         +-- <a href="../uwindow/uwindow-overview.html">UWindow</a>.<a href="../uwindow/uwindowdialogclientwindow.html">UWindowDialogClientWindow</a>
+            |   
+            +-- <a href="../r6menu/r6menu-overview.html">R6Menu</a>.<a href="../r6menu/r6menuoptionstab.html">R6MenuOptionsTab</a>
+</pre>
+
+
+
+<hr />
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Constants Summary</th>
+</tr>
+<tr><td width="40%"><a href="#_C_fSCROLLBAR_HEIGHT" name="C_fSCROLLBAR_HEIGHT" title="go to the details">C_fSCROLLBAR_HEIGHT</a></td><td width="10%">=</td><td width="50%">14</td></tr>
+<tr><td width="40%"><a href="#_C_fSCROLLBAR_WIDTH" name="C_fSCROLLBAR_WIDTH" title="go to the details">C_fSCROLLBAR_WIDTH</a></td><td width="10%">=</td><td width="50%">140</td></tr>
+<tr><td width="40%"><a href="#_C_fXPOS_COMBOCONTROL" name="C_fXPOS_COMBOCONTROL" title="go to the details">C_fXPOS_COMBOCONTROL</a></td><td width="10%">=</td><td width="50%">250</td></tr>
+<tr><td width="40%"><a href="#_C_fXPOS_SCROLLBAR" name="C_fXPOS_SCROLLBAR" title="go to the details">C_fXPOS_SCROLLBAR</a></td><td width="10%">=</td><td width="50%">250</td></tr>
+<tr><td width="40%"><a href="#_C_iALL_ITEMS" name="C_iALL_ITEMS" title="go to the details">C_iALL_ITEMS</a></td><td width="10%">=</td><td width="50%">0x0F</td></tr>
+<tr><td width="40%"><a href="#_C_ICOMBOCONTROL_WIDTH" name="C_ICOMBOCONTROL_WIDTH" title="go to the details">C_ICOMBOCONTROL_WIDTH</a></td><td width="10%">=</td><td width="50%">140</td></tr>
+<tr><td width="40%"><a href="#_C_iGORE_ITEMS" name="C_iGORE_ITEMS" title="go to the details">C_iGORE_ITEMS</a></td><td width="10%">=</td><td width="50%">0x0A</td></tr>
+<tr><td width="40%"><a href="#_C_iITEM_HIGH" name="C_iITEM_HIGH" title="go to the details">C_iITEM_HIGH</a></td><td width="10%">=</td><td width="50%">0x08</td></tr>
+<tr><td width="40%"><a href="#_C_iITEM_LOW" name="C_iITEM_LOW" title="go to the details">C_iITEM_LOW</a></td><td width="10%">=</td><td width="50%">0x02</td></tr>
+<tr><td width="40%"><a href="#_C_iITEM_MEDIUM" name="C_iITEM_MEDIUM" title="go to the details">C_iITEM_MEDIUM</a></td><td width="10%">=</td><td width="50%">0x04</td></tr>
+<tr><td width="40%"><a href="#_C_iITEM_NONE" name="C_iITEM_NONE" title="go to the details">C_iITEM_NONE</a></td><td width="10%">=</td><td width="50%">0x01</td></tr>
+<tr><td width="40%"><a href="#_C_iSHADOW_ITEMS" name="C_iSHADOW_ITEMS" title="go to the details">C_iSHADOW_ITEMS</a></td><td width="10%">=</td><td width="50%">0x0B</td></tr>
+<tr><td width="40%"><a href="#_C_szEGameOptionsEffectLevel" name="C_szEGameOptionsEffectLevel" title="go to the details">C_szEGameOptionsEffectLevel</a></td><td width="10%">=</td><td width="50%">"EGameOptionsEffectLevel"</td></tr>
+<tr><td width="40%"><a href="#_C_szEGameOptionsGraphicLevel" name="C_szEGameOptionsGraphicLevel" title="go to the details">C_szEGameOptionsGraphicLevel</a></td><td width="10%">=</td><td width="50%">"EGameOptionsGraphicLevel"</td></tr>
+
+</table>
+
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th colspan="2" class="title">Variables Summary</th>
+</tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_m_bDrawLineOverButton" name="m_bDrawLineOverButton" title="go to the details">m_bDrawLineOverButton</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">BOOL</td><td width="66%"><a href="#_m_bEAXNotSupported" name="m_bEAXNotSupported" title="go to the details">m_bEAXNotSupported</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">BOOL</td><td width="66%"><a href="#_m_bInitComplete" name="m_bInitComplete" title="go to the details">m_bInitComplete</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">BOOL</td><td width="66%"><a href="#_m_bPBNotInstalled" name="m_bPBNotInstalled" title="go to the details">m_bPBNotInstalled</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../r6window/r6windowbuttonbox.html">R6WindowButtonBox</a></td><td width="66%"><a href="#_m_bTriggerLagWanted" name="m_bTriggerLagWanted" title="go to the details">m_bTriggerLagWanted</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../r6window/r6windowbitmap.html">R6WindowBitMap</a></td><td width="66%"><a href="#_m_EaxLogo" name="m_EaxLogo" title="go to the details">m_EaxLogo</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../engine/texture.html">Texture</a></td><td width="66%"><a href="#_m_EaxTexture" name="m_EaxTexture" title="go to the details">m_EaxTexture</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../core/object.html#Region">Region</a></td><td width="66%"><a href="#_m_EaxTextureReg" name="m_EaxTextureReg" title="go to the details">m_EaxTextureReg</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../r6menu/r6menuoptionstab.html#ePageOptions">ePageOptions</a></td><td width="66%"><a href="#_m_ePageOptID" name="m_ePageOptID" title="go to the details">m_ePageOptID</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">INT</td><td width="66%"><a href="#_m_iKeyToAssign" name="m_iKeyToAssign" title="go to the details">m_iKeyToAssign</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">INT</td><td width="66%"><a href="#_m_iRefAmbientVolume" name="m_iRefAmbientVolume" title="go to the details">m_iRefAmbientVolume</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">INT</td><td width="66%"><a href="#_m_iRefMouseSens" name="m_iRefMouseSens" title="go to the details">m_iRefMouseSens</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">INT</td><td width="66%"><a href="#_m_iRefMusicVolume" name="m_iRefMusicVolume" title="go to the details">m_iRefMusicVolume</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">INT</td><td width="66%"><a href="#_m_iRefVoicesVolume" name="m_iRefVoicesVolume" title="go to the details">m_iRefVoicesVolume</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../r6window/r6windowhscrollbar.html">R6WindowHScrollBar</a></td><td width="66%"><a href="#_m_pAmbientVolume" name="m_pAmbientVolume" title="go to the details">m_pAmbientVolume</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../r6window/r6windowbuttonbox.html">R6WindowButtonBox</a></td><td width="66%"><a href="#_m_pAnimGeometry" name="m_pAnimGeometry" title="go to the details">m_pAnimGeometry</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../r6menu/r6menuarmpatchselect.html">R6MenuArmpatchSelect</a></td><td width="66%"><a href="#_m_pArmpatchChooser" name="m_pArmpatchChooser" title="go to the details">m_pArmpatchChooser</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../r6window/r6windowcombocontrol.html">R6WindowComboControl</a></td><td width="66%"><a href="#_m_pAudioVirtual" name="m_pAudioVirtual" title="go to the details">m_pAudioVirtual</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../r6window/r6windowtexturebrowser.html">R6WindowTextureBrowser</a></td><td width="66%"><a href="#_m_pAutoAim" name="m_pAutoAim" title="go to the details">m_pAutoAim</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../core/object.html#Region">Region</a></td><td width="66%"><a href="#_m_pAutoAimTextReg[4]" name="m_pAutoAimTextReg[4]" title="go to the details">m_pAutoAimTextReg[4]</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../engine/texture.html">Texture</a></td><td width="66%"><a href="#_m_pAutoAimTexture" name="m_pAutoAimTexture" title="go to the details">m_pAutoAimTexture</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_m_pComboLevel[4]" name="m_pComboLevel[4]" title="go to the details">m_pComboLevel[4]</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_m_pConnectionSpeed[5]" name="m_pConnectionSpeed[5]" title="go to the details">m_pConnectionSpeed[5]</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../uwindow/uwindowlistboxitem.html">UWindowListBoxItem</a></td><td width="66%"><a href="#_m_pCurItem" name="m_pCurItem" title="go to the details">m_pCurItem</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../r6window/r6windowcombocontrol.html">R6WindowComboControl</a></td><td width="66%"><a href="#_m_pDecalsDetail" name="m_pDecalsDetail" title="go to the details">m_pDecalsDetail</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../r6window/r6windowbuttonbox.html">R6WindowButtonBox</a></td><td width="66%"><a href="#_m_pEAX" name="m_pEAX" title="go to the details">m_pEAX</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../r6window/r6windowbutton.html">R6WindowButton</a></td><td width="66%"><a href="#_m_pGeneralButUse" name="m_pGeneralButUse" title="go to the details">m_pGeneralButUse</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../r6window/r6windowcombocontrol.html">R6WindowComboControl</a></td><td width="66%"><a href="#_m_pGoreLevel" name="m_pGoreLevel" title="go to the details">m_pGoreLevel</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../r6window/r6windowbuttonbox.html">R6WindowButtonBox</a></td><td width="66%"><a href="#_m_pHideDeadBodies" name="m_pHideDeadBodies" title="go to the details">m_pHideDeadBodies</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../r6window/r6windowcombocontrol.html">R6WindowComboControl</a></td><td width="66%"><a href="#_m_pHostagesDetail" name="m_pHostagesDetail" title="go to the details">m_pHostagesDetail</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../r6window/r6windowcombocontrol.html">R6WindowComboControl</a></td><td width="66%"><a href="#_m_pHostagesShadowLevel" name="m_pHostagesShadowLevel" title="go to the details">m_pHostagesShadowLevel</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../r6window/r6windowbitmap.html">R6WindowBitMap</a></td><td width="66%"><a href="#_m_pHudBGTex" name="m_pHudBGTex" title="go to the details">m_pHudBGTex</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../r6window/r6windowbuttonbox.html">R6WindowButtonBox</a></td><td width="66%"><a href="#_m_pHudCharInfo" name="m_pHudCharInfo" title="go to the details">m_pHudCharInfo</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../r6window/r6windowbitmap.html">R6WindowBitMap</a></td><td width="66%"><a href="#_m_pHudCharInfoTex" name="m_pHudCharInfoTex" title="go to the details">m_pHudCharInfoTex</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../r6window/r6windowbuttonbox.html">R6WindowButtonBox</a></td><td width="66%"><a href="#_m_pHudCircumIcon" name="m_pHudCircumIcon" title="go to the details">m_pHudCircumIcon</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../r6window/r6windowbitmap.html">R6WindowBitMap</a></td><td width="66%"><a href="#_m_pHudCircumIconTex" name="m_pHudCircumIconTex" title="go to the details">m_pHudCircumIconTex</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../r6window/r6windowbuttonbox.html">R6WindowButtonBox</a></td><td width="66%"><a href="#_m_pHudCurTInfo" name="m_pHudCurTInfo" title="go to the details">m_pHudCurTInfo</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../r6window/r6windowbitmap.html">R6WindowBitMap</a></td><td width="66%"><a href="#_m_pHudCurTInfoTex" name="m_pHudCurTInfoTex" title="go to the details">m_pHudCurTInfoTex</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../r6window/r6windowbuttonbox.html">R6WindowButtonBox</a></td><td width="66%"><a href="#_m_pHudOtherTInfo" name="m_pHudOtherTInfo" title="go to the details">m_pHudOtherTInfo</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../r6window/r6windowbitmap.html">R6WindowBitMap</a></td><td width="66%"><a href="#_m_pHudOtherTInfoTex" name="m_pHudOtherTInfoTex" title="go to the details">m_pHudOtherTInfoTex</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../r6window/r6windowbuttonbox.html">R6WindowButtonBox</a></td><td width="66%"><a href="#_m_pHudReticule" name="m_pHudReticule" title="go to the details">m_pHudReticule</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../r6window/r6windowbitmap.html">R6WindowBitMap</a></td><td width="66%"><a href="#_m_pHudReticuleTex" name="m_pHudReticuleTex" title="go to the details">m_pHudReticuleTex</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../r6window/r6windowbuttonbox.html">R6WindowButtonBox</a></td><td width="66%"><a href="#_m_pHudShowFPWeapon" name="m_pHudShowFPWeapon" title="go to the details">m_pHudShowFPWeapon</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../r6window/r6windowbitmap.html">R6WindowBitMap</a></td><td width="66%"><a href="#_m_pHudShowFPWeaponTex" name="m_pHudShowFPWeaponTex" title="go to the details">m_pHudShowFPWeaponTex</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../r6window/r6windowbuttonbox.html">R6WindowButtonBox</a></td><td width="66%"><a href="#_m_pHudShowRadar" name="m_pHudShowRadar" title="go to the details">m_pHudShowRadar</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../r6window/r6windowbitmap.html">R6WindowBitMap</a></td><td width="66%"><a href="#_m_pHudShowRadarTex" name="m_pHudShowRadarTex" title="go to the details">m_pHudShowRadarTex</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../r6window/r6windowbuttonbox.html">R6WindowButtonBox</a></td><td width="66%"><a href="#_m_pHudShowTNames" name="m_pHudShowTNames" title="go to the details">m_pHudShowTNames</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../r6window/r6windowbitmap.html">R6WindowBitMap</a></td><td width="66%"><a href="#_m_pHudShowTNamesTex" name="m_pHudShowTNamesTex" title="go to the details">m_pHudShowTNamesTex</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../r6window/r6windowbuttonbox.html">R6WindowButtonBox</a></td><td width="66%"><a href="#_m_pHudWeaponName" name="m_pHudWeaponName" title="go to the details">m_pHudWeaponName</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../r6window/r6windowbitmap.html">R6WindowBitMap</a></td><td width="66%"><a href="#_m_pHudWeaponNameTex" name="m_pHudWeaponNameTex" title="go to the details">m_pHudWeaponNameTex</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../r6window/r6windowbuttonbox.html">R6WindowButtonBox</a></td><td width="66%"><a href="#_m_pHudWpInfo" name="m_pHudWpInfo" title="go to the details">m_pHudWpInfo</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../r6window/r6windowbitmap.html">R6WindowBitMap</a></td><td width="66%"><a href="#_m_pHudWpInfoTex" name="m_pHudWpInfoTex" title="go to the details">m_pHudWpInfoTex</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../uwindow/uwindowinfo.html">UWindowInfo</a></td><td width="66%"><a href="#_m_pInfo" name="m_pInfo" title="go to the details">m_pInfo</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../r6window/r6windowpopupbox.html">R6WindowPopUpBox</a></td><td width="66%"><a href="#_m_pKeyMenuReAssignPopUp" name="m_pKeyMenuReAssignPopUp" title="go to the details">m_pKeyMenuReAssignPopUp</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../r6window/r6windowcombocontrol.html">R6WindowComboControl</a></td><td width="66%"><a href="#_m_pLightmapDetail" name="m_pLightmapDetail" title="go to the details">m_pLightmapDetail</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../r6window/r6windowlistcontrols.html">R6WindowListControls</a></td><td width="66%"><a href="#_m_pListControls" name="m_pListControls" title="go to the details">m_pListControls</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../r6window/r6windowlistmods.html">R6WindowListMODS</a></td><td width="66%"><a href="#_m_pListOfMODS" name="m_pListOfMODS" title="go to the details">m_pListOfMODS</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../r6window/r6windowbuttonbox.html">R6WindowButtonBox</a></td><td width="66%"><a href="#_m_pLowDetailSmoke" name="m_pLowDetailSmoke" title="go to the details">m_pLowDetailSmoke</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../r6window/r6windowhscrollbar.html">R6WindowHScrollBar</a></td><td width="66%"><a href="#_m_pMusicVolume" name="m_pMusicVolume" title="go to the details">m_pMusicVolume</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../r6menu/r6menuoptionscontrols.html">R6MenuOptionsControls</a></td><td width="66%"><a href="#_m_pOptControls" name="m_pOptControls" title="go to the details">m_pOptControls</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../r6window/r6windowbuttonbox.html">R6WindowButtonBox</a></td><td width="66%"><a href="#_m_pOptionAlwaysRun" name="m_pOptionAlwaysRun" title="go to the details">m_pOptionAlwaysRun</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../r6window/r6windowbuttonbox.html">R6WindowButtonBox</a></td><td width="66%"><a href="#_m_pOptionAutoPatchDownload" name="m_pOptionAutoPatchDownload" title="go to the details">m_pOptionAutoPatchDownload</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../r6window/r6windowbuttonext.html">R6WindowButtonExt</a></td><td width="66%"><a href="#_m_pOptionGender" name="m_pOptionGender" title="go to the details">m_pOptionGender</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../r6window/r6windowbuttonbox.html">R6WindowButtonBox</a></td><td width="66%"><a href="#_m_pOptionInvertMouse" name="m_pOptionInvertMouse" title="go to the details">m_pOptionInvertMouse</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../r6window/r6windowhscrollbar.html">R6WindowHScrollBar</a></td><td width="66%"><a href="#_m_pOptionMouseSens" name="m_pOptionMouseSens" title="go to the details">m_pOptionMouseSens</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../r6window/r6windoweditcontrol.html">R6WindowEditControl</a></td><td width="66%"><a href="#_m_pOptionPlayerName" name="m_pOptionPlayerName" title="go to the details">m_pOptionPlayerName</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../r6window/r6windowtextlabel.html">R6WindowTextLabel</a></td><td width="66%"><a href="#_m_pPatchStatus" name="m_pPatchStatus" title="go to the details">m_pPatchStatus</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../r6window/r6windowpopupbox.html">R6WindowPopUpBox</a></td><td width="66%"><a href="#_m_pPopUpKeyBG" name="m_pPopUpKeyBG" title="go to the details">m_pPopUpKeyBG</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../r6window/r6windowbuttonbox.html">R6WindowButtonBox</a></td><td width="66%"><a href="#_m_pPopUpLoadPlan" name="m_pPopUpLoadPlan" title="go to the details">m_pPopUpLoadPlan</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../r6window/r6windowbuttonbox.html">R6WindowButtonBox</a></td><td width="66%"><a href="#_m_pPopUpQuickPlay" name="m_pPopUpQuickPlay" title="go to the details">m_pPopUpQuickPlay</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../r6window/r6windowbuttonbox.html">R6WindowButtonBox</a></td><td width="66%"><a href="#_m_pPunkBusterOpt" name="m_pPunkBusterOpt" title="go to the details">m_pPunkBusterOpt</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../r6window/r6windowcombocontrol.html">R6WindowComboControl</a></td><td width="66%"><a href="#_m_pRainbowsDetail" name="m_pRainbowsDetail" title="go to the details">m_pRainbowsDetail</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../r6window/r6windowcombocontrol.html">R6WindowComboControl</a></td><td width="66%"><a href="#_m_pRainbowsShadowLevel" name="m_pRainbowsShadowLevel" title="go to the details">m_pRainbowsShadowLevel</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../r6window/r6windowbuttonbox.html">R6WindowButtonBox</a></td><td width="66%"><a href="#_m_pSndHardware" name="m_pSndHardware" title="go to the details">m_pSndHardware</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_m_pSndLocEnum[3]" name="m_pSndLocEnum[3]" title="go to the details">m_pSndLocEnum[3]</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../r6window/r6windowcombocontrol.html">R6WindowComboControl</a></td><td width="66%"><a href="#_m_pSndQuality" name="m_pSndQuality" title="go to the details">m_pSndQuality</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../r6window/r6windowcombocontrol.html">R6WindowComboControl</a></td><td width="66%"><a href="#_m_pSpeedConnection" name="m_pSpeedConnection" title="go to the details">m_pSpeedConnection</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../r6window/r6windowbutton.html">R6WindowButton</a></td><td width="66%"><a href="#_m_pStartDownloadButton" name="m_pStartDownloadButton" title="go to the details">m_pStartDownloadButton</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../r6window/r6windowcombocontrol.html">R6WindowComboControl</a></td><td width="66%"><a href="#_m_pTerrosDetail" name="m_pTerrosDetail" title="go to the details">m_pTerrosDetail</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../r6window/r6windowcombocontrol.html">R6WindowComboControl</a></td><td width="66%"><a href="#_m_pTerrosShadowLevel" name="m_pTerrosShadowLevel" title="go to the details">m_pTerrosShadowLevel</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../r6window/r6windowcombocontrol.html">R6WindowComboControl</a></td><td width="66%"><a href="#_m_pTextureDetail" name="m_pTextureDetail" title="go to the details">m_pTextureDetail</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../r6window/r6windowcombocontrol.html">R6WindowComboControl</a></td><td width="66%"><a href="#_m_pVideoRes" name="m_pVideoRes" title="go to the details">m_pVideoRes</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../r6window/r6windowhscrollbar.html">R6WindowHScrollBar</a></td><td width="66%"><a href="#_m_pVoicesVolume" name="m_pVoicesVolume" title="go to the details">m_pVoicesVolume</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../core/object.html#Region">Region</a></td><td width="66%"><a href="#_m_RArmpatchBitmapPos" name="m_RArmpatchBitmapPos" title="go to the details">m_RArmpatchBitmapPos</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../core/object.html#Region">Region</a></td><td width="66%"><a href="#_m_RArmpatchListPos" name="m_RArmpatchListPos" title="go to the details">m_RArmpatchListPos</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_m_szOldActionKey" name="m_szOldActionKey" title="go to the details">m_szOldActionKey</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../core/object.html#Region">Region</a></td><td width="66%"><a href="#_SimpleBorderRegion" name="SimpleBorderRegion" title="go to the details">SimpleBorderRegion</a></td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Variables from <a href="../uwindow/uwindow-overview.html">UWindow</a>.<a href="../uwindow/uwindowdialogclientwindow.html">UWindowDialogClientWindow</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../uwindow/uwindowdialogclientwindow.html#DesiredHeight">DesiredHeight</a>, <a href="../uwindow/uwindowdialogclientwindow.html#DesiredWidth">DesiredWidth</a>, <a href="../uwindow/uwindowdialogclientwindow.html#TabLast">TabLast</a></td>
+</tr>
+</table>
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Enumerations Summary</th>
+</tr>
+<tr><td><a href="#_eGeneralButUse" name="eGeneralButUse" title="go to the details">eGeneralButUse</a><br /><span class="small">eGBU_ResetToDefault,
+eGBU_Activate,
+eGBU_StartPatch</span></td></tr>
+<tr><td><a href="#_ePageOptions" name="ePageOptions" title="go to the details">ePageOptions</a><br /><span class="small">ePO_Game,
+ePO_Sound,
+ePO_Graphics,
+ePO_Hud,
+ePO_MP,
+ePO_Controls,
+ePO_MODS,
+ePO_PatchService</span></td></tr>
+
+</table>
+
+
+
+<br />
+
+
+
+
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Functions Summary</th>
+</tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_AddGraphComboControlItem-" name="AddGraphComboControlItem" title="go to the details">AddGraphComboControlItem</a> (INT _iAddItemMask, <a href="../r6window/r6windowcombocontrol.html">R6WindowComboControl</a> _pR6WindowComboControl, string _szGraphicsEnumName, optional BOOL _bCheckFor32MegVideoCard))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_AddKeyItem-" name="AddKeyItem" title="go to the details">AddKeyItem</a> (string _szTitle, string _szToolTip, string _szActionKey, <a href="../r6window/r6windowlistcontrols.html">R6WindowListControls</a> _pR6WindowListControls, optional BOOL _bPlanningInput))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_AddLineItem-" name="AddLineItem" title="go to the details">AddLineItem</a> (<a href="../r6window/r6windowlistcontrols.html">R6WindowListControls</a> _pR6WindowListControls))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_AddTitleItem-" name="AddTitleItem" title="go to the details">AddTitleItem</a> (string _szTitle, <a href="../r6window/r6windowlistcontrols.html">R6WindowListControls</a> _pR6WindowListControls))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_AddVideoResolution-" name="AddVideoResolution" title="go to the details">AddVideoResolution</a> (<a href="../r6window/r6windowcombocontrol.html">R6WindowComboControl</a> _pR6WindowComboControl))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_CloseAllKeyPopUp-" name="CloseAllKeyPopUp" title="go to the details">CloseAllKeyPopUp</a> (optional BOOL _bCloseKeyControlTo))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>string&nbsp;</td><td><a href="#_ConvertToAudioString-" name="ConvertToAudioString" title="go to the details">ConvertToAudioString</a> (INT _iValueToConvert))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>R6GameOptions.EGameOptionsAudioVirtual&nbsp;</td><td><a href="#_ConvertToAVEnum-" name="ConvertToAVEnum" title="go to the details">ConvertToAVEnum</a> (string _szValueToConvert))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>R6GameOptions.EGameOptionsEffectLevel&nbsp;</td><td><a href="#_ConvertToELEnum-" name="ConvertToELEnum" title="go to the details">ConvertToELEnum</a> (string _szValueToConvert))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>R6GameOptions.EGameOptionsGraphicLevel&nbsp;</td><td><a href="#_ConvertToGLEnum-" name="ConvertToGLEnum" title="go to the details">ConvertToGLEnum</a> (string _szValueToConvert))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>string&nbsp;</td><td><a href="#_ConvertToGraphicString-" name="ConvertToGraphicString" title="go to the details">ConvertToGraphicString</a> (INT _iAddItemMask, INT _iValueToConvert, string _szGraphicsEnumName, optional BOOL _bCheckFor32MegVideoCard))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>string&nbsp;</td><td><a href="#_ConvertToNetSpeedString-" name="ConvertToNetSpeedString" title="go to the details">ConvertToNetSpeedString</a> (INT _iValueToConvert))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>R6GameOptions.EGameOptionsNetSpeed&nbsp;</td><td><a href="#_ConvertToNSEnum-" name="ConvertToNSEnum" title="go to the details">ConvertToNSEnum</a> (string _szValueToConvert))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>INT&nbsp;</td><td><a href="#_ConvertToSndQuality-" name="ConvertToSndQuality" title="go to the details">ConvertToSndQuality</a> (string _szValue))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>string&nbsp;</td><td><a href="#_ConvertToSndQualityString-" name="ConvertToSndQualityString" title="go to the details">ConvertToSndQualityString</a> (INT _iValue))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_Created-" name="Created" title="go to the details">Created</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td><a href="../r6window/r6windowbitmap.html">R6WindowBitMap</a>&nbsp;</td><td><a href="#_CreateHudBitmapWindow-" name="CreateHudBitmapWindow" title="go to the details">CreateHudBitmapWindow</a> (<a href="../engine/texture.html">Texture</a> _Tex, optional BOOL _bDrawSimpleBorder))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_CreateHudOptionsTex-" name="CreateHudOptionsTex" title="go to the details">CreateHudOptionsTex</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_CreateKeyPopUp-" name="CreateKeyPopUp" title="go to the details">CreateKeyPopUp</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>string&nbsp;</td><td><a href="#_GetCurActionKey-" name="GetCurActionKey" title="go to the details">GetCurActionKey</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>INT&nbsp;</td><td><a href="#_GetCurKeyInputClass-" name="GetCurKeyInputClass" title="go to the details">GetCurKeyInputClass</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>string&nbsp;</td><td><a href="#_GetCurKeyName-" name="GetCurKeyName" title="go to the details">GetCurKeyName</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td><a href="../uwindow/uwindowlistboxitem.html">UWindowListBoxItem</a>&nbsp;</td><td><a href="#_GetCurrentKeyItem-" name="GetCurrentKeyItem" title="go to the details">GetCurrentKeyItem</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_GetDownloadMetric-" name="GetDownloadMetric" title="go to the details">GetDownloadMetric</a> (FLOAT totalBytes, out string metric, out FLOAT divider))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_GetDownloadPercentageStringValues-" name="GetDownloadPercentageStringValues" title="go to the details">GetDownloadPercentageStringValues</a> (FLOAT totalBytes, FLOAT recvdBytes, out string bytesProgress, out string percentProgress))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_GetDownloadString-" name="GetDownloadString" title="go to the details">GetDownloadString</a> (FLOAT totalBytes, FLOAT recvdBytes, out string str))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>string&nbsp;</td><td><a href="#_GetLocKeyNameByActionKey-" name="GetLocKeyNameByActionKey" title="go to the details">GetLocKeyNameByActionKey</a> (string _szActionKey, optional BOOL _bPlanningInput))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_GetResolutionXY-" name="GetResolutionXY" title="go to the details">GetResolutionXY</a> (OUT INT iSX, OUT INT iSY, OUT INT iRR))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_InitActivateButton-" name="InitActivateButton" title="go to the details">InitActivateButton</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_InitOptionControls-" name="InitOptionControls" title="go to the details">InitOptionControls</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_InitOptionGame-" name="InitOptionGame" title="go to the details">InitOptionGame</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_InitOptionGraphic-" name="InitOptionGraphic" title="go to the details">InitOptionGraphic</a> (BOOL _bInGameOptions))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_InitOptionHud-" name="InitOptionHud" title="go to the details">InitOptionHud</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_InitOptionMODS-" name="InitOptionMODS" title="go to the details">InitOptionMODS</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_InitOptionMulti-" name="InitOptionMulti" title="go to the details">InitOptionMulti</a> (BOOL _bInGameOptions))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_InitOptionPatchService-" name="InitOptionPatchService" title="go to the details">InitOptionPatchService</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_InitOptionSound-" name="InitOptionSound" title="go to the details">InitOptionSound</a> (BOOL _bInGameOptions))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_InitResetButton-" name="InitResetButton" title="go to the details">InitResetButton</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>BOOL&nbsp;</td><td><a href="#_IsKeyValid-" name="IsKeyValid" title="go to the details">IsKeyValid</a> (INT _Key))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_KeyPressed-" name="KeyPressed" title="go to the details">KeyPressed</a> (int Key))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_ManageNotifyForNetwork-" name="ManageNotifyForNetwork" title="go to the details">ManageNotifyForNetwork</a> (<a href="../uwindow/uwindowdialogcontrol.html">UWindowDialogControl</a> C, byte E))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_ManageNotifyForSound-" name="ManageNotifyForSound" title="go to the details">ManageNotifyForSound</a> (<a href="../uwindow/uwindowdialogcontrol.html">UWindowDialogControl</a> C, byte E))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_ManagePopUpKey-" name="ManagePopUpKey" title="go to the details">ManagePopUpKey</a> (<a href="../uwindow/uwindowdialogcontrol.html">UWindowDialogControl</a> C))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_Notify-" name="Notify" title="go to the details">Notify</a> (<a href="../uwindow/uwindowdialogcontrol.html">UWindowDialogControl</a> C, byte E))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_Paint-" name="Paint" title="go to the details">Paint</a> (<a href="../engine/canvas.html">Canvas</a> C, FLOAT X, FLOAT Y))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_RefreshKeyItem-" name="RefreshKeyItem" title="go to the details">RefreshKeyItem</a> (string _szNewKeyValue))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_RefreshKeyList-" name="RefreshKeyList" title="go to the details">RefreshKeyList</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_RestoreDefaultValue-" name="RestoreDefaultValue" title="go to the details">RestoreDefaultValue</a> (BOOL _bInGame))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td><a href="../r6window/r6windowcombocontrol.html">R6WindowComboControl</a>&nbsp;</td><td><a href="#_SetComboControlButton-" name="SetComboControlButton" title="go to the details">SetComboControlButton</a> (<a href="../core/object.html#Region">Region</a> _RDefaultW, string _szTitle, string _szTip))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_SetGameValues-" name="SetGameValues" title="go to the details">SetGameValues</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_SetGraphicValues-" name="SetGraphicValues" title="go to the details">SetGraphicValues</a> (optional BOOL _bUpdateFileOnly))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_SetHudValues-" name="SetHudValues" title="go to the details">SetHudValues</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_SetMenuGameValues-" name="SetMenuGameValues" title="go to the details">SetMenuGameValues</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_SetMenuGraphicValues-" name="SetMenuGraphicValues" title="go to the details">SetMenuGraphicValues</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_SetMenuHudValues-" name="SetMenuHudValues" title="go to the details">SetMenuHudValues</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_SetMenuMODS-" name="SetMenuMODS" title="go to the details">SetMenuMODS</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_SetMenuMultiValues-" name="SetMenuMultiValues" title="go to the details">SetMenuMultiValues</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_SetMenuPatchServiceValues-" name="SetMenuPatchServiceValues" title="go to the details">SetMenuPatchServiceValues</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_SetMenuSoundValues-" name="SetMenuSoundValues" title="go to the details">SetMenuSoundValues</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_SetMultiValues-" name="SetMultiValues" title="go to the details">SetMultiValues</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_SetPatchServiceValues-" name="SetPatchServiceValues" title="go to the details">SetPatchServiceValues</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_SetPBOptDisable-" name="SetPBOptDisable" title="go to the details">SetPBOptDisable</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_SetPBOptValue-" name="SetPBOptValue" title="go to the details">SetPBOptValue</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_SetSoundValues-" name="SetSoundValues" title="go to the details">SetSoundValues</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_UpdateHudOptionsTex-" name="UpdateHudOptionsTex" title="go to the details">UpdateHudOptionsTex</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_UpdatePatchStatus-" name="UpdatePatchStatus" title="go to the details">UpdatePatchStatus</a> ()))<br /><span class="function_state"></span></td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Functions from <a href="../uwindow/uwindow-overview.html">UWindow</a>.<a href="../uwindow/uwindowdialogclientwindow.html">UWindowDialogClientWindow</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../uwindow/uwindowdialogclientwindow.html#CreateControl">CreateControl</a>, <a href="../uwindow/uwindowdialogclientwindow.html#GetDesiredDimensions">GetDesiredDimensions</a>, <a href="../uwindow/uwindowdialogclientwindow.html#Notify">Notify</a>, <a href="../uwindow/uwindowdialogclientwindow.html#OKPressed">OKPressed</a></td>
+</tr>
+</table>
+<table>
+<tr>
+	<th class="inherittitle">Inherited Functions from <a href="../uwindow/uwindow-overview.html">UWindow</a>.<a href="../uwindow/uwindowclientwindow.html">UWindowClientWindow</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../uwindow/uwindowclientwindow.html#Close">Close</a></td>
+</tr>
+</table>
+
+
+<br />
+
+
+
+<hr />
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Constants Detail</th>
+</tr>
+</table>
+
+<h4><a name="_C_fSCROLLBAR_HEIGHT" class="hidden"></a>C_fSCROLLBAR_HEIGHT <a href="../Source_r6menu/r6menuoptionstab.html#31" class="small">Source code</a></h4>
+<div class="declaration">const C_fSCROLLBAR_HEIGHT = <span class="source_int">14</span>;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_C_fSCROLLBAR_WIDTH" class="hidden"></a>C_fSCROLLBAR_WIDTH <a href="../Source_r6menu/r6menuoptionstab.html#30" class="small">Source code</a></h4>
+<div class="declaration">const C_fSCROLLBAR_WIDTH = <span class="source_int">140</span>;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_C_fXPOS_COMBOCONTROL" class="hidden"></a>C_fXPOS_COMBOCONTROL <a href="../Source_r6menu/r6menuoptionstab.html#33" class="small">Source code</a></h4>
+<div class="declaration">const C_fXPOS_COMBOCONTROL = <span class="source_int">250</span>;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_C_fXPOS_SCROLLBAR" class="hidden"></a>C_fXPOS_SCROLLBAR <a href="../Source_r6menu/r6menuoptionstab.html#32" class="small">Source code</a></h4>
+<div class="declaration">const C_fXPOS_SCROLLBAR = <span class="source_int">250</span>;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_C_iALL_ITEMS" class="hidden"></a>C_iALL_ITEMS <a href="../Source_r6menu/r6menuoptionstab.html#45" class="small">Source code</a></h4>
+<div class="declaration">const C_iALL_ITEMS = <span class="source_int">0x0F</span>;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_C_ICOMBOCONTROL_WIDTH" class="hidden"></a>C_ICOMBOCONTROL_WIDTH <a href="../Source_r6menu/r6menuoptionstab.html#34" class="small">Source code</a></h4>
+<div class="declaration">const C_ICOMBOCONTROL_WIDTH = <span class="source_int">140</span>;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_C_iGORE_ITEMS" class="hidden"></a>C_iGORE_ITEMS <a href="../Source_r6menu/r6menuoptionstab.html#43" class="small">Source code</a></h4>
+<div class="declaration">const C_iGORE_ITEMS = <span class="source_int">0x0A</span>;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_C_iITEM_HIGH" class="hidden"></a>C_iITEM_HIGH <a href="../Source_r6menu/r6menuoptionstab.html#42" class="small">Source code</a></h4>
+<div class="declaration">const C_iITEM_HIGH = <span class="source_int">0x08</span>;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_C_iITEM_LOW" class="hidden"></a>C_iITEM_LOW <a href="../Source_r6menu/r6menuoptionstab.html#40" class="small">Source code</a></h4>
+<div class="declaration">const C_iITEM_LOW = <span class="source_int">0x02</span>;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_C_iITEM_MEDIUM" class="hidden"></a>C_iITEM_MEDIUM <a href="../Source_r6menu/r6menuoptionstab.html#41" class="small">Source code</a></h4>
+<div class="declaration">const C_iITEM_MEDIUM = <span class="source_int">0x04</span>;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_C_iITEM_NONE" class="hidden"></a>C_iITEM_NONE <a href="../Source_r6menu/r6menuoptionstab.html#39" class="small">Source code</a></h4>
+<div class="declaration">const C_iITEM_NONE = <span class="source_int">0x01</span>;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_C_iSHADOW_ITEMS" class="hidden"></a>C_iSHADOW_ITEMS <a href="../Source_r6menu/r6menuoptionstab.html#44" class="small">Source code</a></h4>
+<div class="declaration">const C_iSHADOW_ITEMS = <span class="source_int">0x0B</span>;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_C_szEGameOptionsEffectLevel" class="hidden"></a>C_szEGameOptionsEffectLevel <a href="../Source_r6menu/r6menuoptionstab.html#37" class="small">Source code</a></h4>
+<div class="declaration">const C_szEGameOptionsEffectLevel = <span class="source_string">"EGameOptionsEffectLevel"</span>;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_C_szEGameOptionsGraphicLevel" class="hidden"></a>C_szEGameOptionsGraphicLevel <a href="../Source_r6menu/r6menuoptionstab.html#36" class="small">Source code</a></h4>
+<div class="declaration">const C_szEGameOptionsGraphicLevel = <span class="source_string">"EGameOptionsGraphicLevel"</span>;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th class="title">Variables Detail</th>
+</tr>
+</table>
+
+<h4><a name="_m_bDrawLineOverButton" class="hidden"></a>m_bDrawLineOverButton <a href="../Source_r6menu/r6menuoptionstab.html#54" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">bool</span> m_bDrawLineOverButton;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_bEAXNotSupported" class="hidden"></a>m_bEAXNotSupported <a href="../Source_r6menu/r6menuoptionstab.html#82" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">BOOL</span> m_bEAXNotSupported;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_bInitComplete" class="hidden"></a>m_bInitComplete <a href="../Source_r6menu/r6menuoptionstab.html#55" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">BOOL</span> m_bInitComplete;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_bPBNotInstalled" class="hidden"></a>m_bPBNotInstalled <a href="../Source_r6menu/r6menuoptionstab.html#148" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">BOOL</span> m_bPBNotInstalled;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_bTriggerLagWanted" class="hidden"></a>m_bTriggerLagWanted <a href="../Source_r6menu/r6menuoptionstab.html#144" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../r6window/r6windowbuttonbox.html" class="source">R6WindowButtonBox</a></span> m_bTriggerLagWanted;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_EaxLogo" class="hidden"></a>m_EaxLogo <a href="../Source_r6menu/r6menuoptionstab.html#79" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../r6window/r6windowbitmap.html" class="source">R6WindowBitMap</a></span> m_EaxLogo;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_EaxTexture" class="hidden"></a>m_EaxTexture <a href="../Source_r6menu/r6menuoptionstab.html#80" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../engine/texture.html" class="source">Texture</a></span> m_EaxTexture;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_EaxTextureReg" class="hidden"></a>m_EaxTextureReg <a href="../Source_r6menu/r6menuoptionstab.html#81" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../core/object.html#Region" class="source">Region</a></span> m_EaxTextureReg;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_ePageOptID" class="hidden"></a>m_ePageOptID <a href="../Source_r6menu/r6menuoptionstab.html#53" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../r6menu/r6menuoptionstab.html#ePageOptions" class="source">ePageOptions</a></span> m_ePageOptID;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_iKeyToAssign" class="hidden"></a>m_iKeyToAssign <a href="../Source_r6menu/r6menuoptionstab.html#158" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">INT</span> m_iKeyToAssign;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_iRefAmbientVolume" class="hidden"></a>m_iRefAmbientVolume <a href="../Source_r6menu/r6menuoptionstab.html#83" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">INT</span> m_iRefAmbientVolume;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_iRefMouseSens" class="hidden"></a>m_iRefMouseSens <a href="../Source_r6menu/r6menuoptionstab.html#67" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">INT</span> m_iRefMouseSens;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_iRefMusicVolume" class="hidden"></a>m_iRefMusicVolume <a href="../Source_r6menu/r6menuoptionstab.html#85" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">INT</span> m_iRefMusicVolume;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_iRefVoicesVolume" class="hidden"></a>m_iRefVoicesVolume <a href="../Source_r6menu/r6menuoptionstab.html#84" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">INT</span> m_iRefVoicesVolume;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_pAmbientVolume" class="hidden"></a>m_pAmbientVolume <a href="../Source_r6menu/r6menuoptionstab.html#70" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../r6window/r6windowhscrollbar.html" class="source">R6WindowHScrollBar</a></span> m_pAmbientVolume;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_pAnimGeometry" class="hidden"></a>m_pAnimGeometry <a href="../Source_r6menu/r6menuoptionstab.html#100" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../r6window/r6windowbuttonbox.html" class="source">R6WindowButtonBox</a></span> m_pAnimGeometry;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_pArmpatchChooser" class="hidden"></a>m_pArmpatchChooser <a href="../Source_r6menu/r6menuoptionstab.html#135" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../r6menu/r6menuarmpatchselect.html" class="source">R6MenuArmpatchSelect</a></span> m_pArmpatchChooser;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_pAudioVirtual" class="hidden"></a>m_pAudioVirtual <a href="../Source_r6menu/r6menuoptionstab.html#75" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../r6window/r6windowcombocontrol.html" class="source">R6WindowComboControl</a></span> m_pAudioVirtual;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_pAutoAim" class="hidden"></a>m_pAutoAim <a href="../Source_r6menu/r6menuoptionstab.html#63" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../r6window/r6windowtexturebrowser.html" class="source">R6WindowTextureBrowser</a></span> m_pAutoAim;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_pAutoAimTextReg[4]" class="hidden"></a>m_pAutoAimTextReg[4] <a href="../Source_r6menu/r6menuoptionstab.html#65" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../core/object.html#Region" class="source">Region</a></span> m_pAutoAimTextReg[<span class="source_int">4</span>];</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_pAutoAimTexture" class="hidden"></a>m_pAutoAimTexture <a href="../Source_r6menu/r6menuoptionstab.html#64" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../engine/texture.html" class="source">Texture</a></span> m_pAutoAimTexture;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_pComboLevel[4]" class="hidden"></a>m_pComboLevel[4] <a href="../Source_r6menu/r6menuoptionstab.html#48" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">string</span> m_pComboLevel[<span class="source_int">4</span>];</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_pConnectionSpeed[5]" class="hidden"></a>m_pConnectionSpeed[5] <a href="../Source_r6menu/r6menuoptionstab.html#50" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">string</span> m_pConnectionSpeed[<span class="source_int">5</span>];</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_pCurItem" class="hidden"></a>m_pCurItem <a href="../Source_r6menu/r6menuoptionstab.html#153" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../uwindow/uwindowlistboxitem.html" class="source">UWindowListBoxItem</a></span> m_pCurItem;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_pDecalsDetail" class="hidden"></a>m_pDecalsDetail <a href="../Source_r6menu/r6menuoptionstab.html#98" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../r6window/r6windowcombocontrol.html" class="source">R6WindowComboControl</a></span> m_pDecalsDetail;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_pEAX" class="hidden"></a>m_pEAX <a href="../Source_r6menu/r6menuoptionstab.html#78" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../r6window/r6windowbuttonbox.html" class="source">R6WindowButtonBox</a></span> m_pEAX;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_pGeneralButUse" class="hidden"></a>m_pGeneralButUse <a href="../Source_r6menu/r6menuoptionstab.html#52" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../r6window/r6windowbutton.html" class="source">R6WindowButton</a></span> m_pGeneralButUse;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_pGoreLevel" class="hidden"></a>m_pGoreLevel <a href="../Source_r6menu/r6menuoptionstab.html#97" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../r6window/r6windowcombocontrol.html" class="source">R6WindowComboControl</a></span> m_pGoreLevel;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_pHideDeadBodies" class="hidden"></a>m_pHideDeadBodies <a href="../Source_r6menu/r6menuoptionstab.html#101" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../r6window/r6windowbuttonbox.html" class="source">R6WindowButtonBox</a></span> m_pHideDeadBodies;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_pHostagesDetail" class="hidden"></a>m_pHostagesDetail <a href="../Source_r6menu/r6menuoptionstab.html#92" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../r6window/r6windowcombocontrol.html" class="source">R6WindowComboControl</a></span> m_pHostagesDetail;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_pHostagesShadowLevel" class="hidden"></a>m_pHostagesShadowLevel <a href="../Source_r6menu/r6menuoptionstab.html#95" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../r6window/r6windowcombocontrol.html" class="source">R6WindowComboControl</a></span> m_pHostagesShadowLevel;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_pHudBGTex" class="hidden"></a>m_pHudBGTex <a href="../Source_r6menu/r6menuoptionstab.html#116" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../r6window/r6windowbitmap.html" class="source">R6WindowBitMap</a></span> m_pHudBGTex;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_pHudCharInfo" class="hidden"></a>m_pHudCharInfo <a href="../Source_r6menu/r6menuoptionstab.html#113" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../r6window/r6windowbuttonbox.html" class="source">R6WindowButtonBox</a></span> m_pHudCharInfo;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_pHudCharInfoTex" class="hidden"></a>m_pHudCharInfoTex <a href="../Source_r6menu/r6menuoptionstab.html#124" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../r6window/r6windowbitmap.html" class="source">R6WindowBitMap</a></span> m_pHudCharInfoTex;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_pHudCircumIcon" class="hidden"></a>m_pHudCircumIcon <a href="../Source_r6menu/r6menuoptionstab.html#109" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../r6window/r6windowbuttonbox.html" class="source">R6WindowButtonBox</a></span> m_pHudCircumIcon;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_pHudCircumIconTex" class="hidden"></a>m_pHudCircumIconTex <a href="../Source_r6menu/r6menuoptionstab.html#121" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../r6window/r6windowbitmap.html" class="source">R6WindowBitMap</a></span> m_pHudCircumIconTex;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_pHudCurTInfo" class="hidden"></a>m_pHudCurTInfo <a href="../Source_r6menu/r6menuoptionstab.html#108" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../r6window/r6windowbuttonbox.html" class="source">R6WindowButtonBox</a></span> m_pHudCurTInfo;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_pHudCurTInfoTex" class="hidden"></a>m_pHudCurTInfoTex <a href="../Source_r6menu/r6menuoptionstab.html#120" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../r6window/r6windowbitmap.html" class="source">R6WindowBitMap</a></span> m_pHudCurTInfoTex;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_pHudOtherTInfo" class="hidden"></a>m_pHudOtherTInfo <a href="../Source_r6menu/r6menuoptionstab.html#107" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../r6window/r6windowbuttonbox.html" class="source">R6WindowButtonBox</a></span> m_pHudOtherTInfo;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_pHudOtherTInfoTex" class="hidden"></a>m_pHudOtherTInfoTex <a href="../Source_r6menu/r6menuoptionstab.html#119" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../r6window/r6windowbitmap.html" class="source">R6WindowBitMap</a></span> m_pHudOtherTInfoTex;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_pHudReticule" class="hidden"></a>m_pHudReticule <a href="../Source_r6menu/r6menuoptionstab.html#111" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../r6window/r6windowbuttonbox.html" class="source">R6WindowButtonBox</a></span> m_pHudReticule;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_pHudReticuleTex" class="hidden"></a>m_pHudReticuleTex <a href="../Source_r6menu/r6menuoptionstab.html#123" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../r6window/r6windowbitmap.html" class="source">R6WindowBitMap</a></span> m_pHudReticuleTex;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_pHudShowFPWeapon" class="hidden"></a>m_pHudShowFPWeapon <a href="../Source_r6menu/r6menuoptionstab.html#106" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../r6window/r6windowbuttonbox.html" class="source">R6WindowButtonBox</a></span> m_pHudShowFPWeapon;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_pHudShowFPWeaponTex" class="hidden"></a>m_pHudShowFPWeaponTex <a href="../Source_r6menu/r6menuoptionstab.html#118" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../r6window/r6windowbitmap.html" class="source">R6WindowBitMap</a></span> m_pHudShowFPWeaponTex;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_pHudShowRadar" class="hidden"></a>m_pHudShowRadar <a href="../Source_r6menu/r6menuoptionstab.html#114" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../r6window/r6windowbuttonbox.html" class="source">R6WindowButtonBox</a></span> m_pHudShowRadar;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_pHudShowRadarTex" class="hidden"></a>m_pHudShowRadarTex <a href="../Source_r6menu/r6menuoptionstab.html#126" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../r6window/r6windowbitmap.html" class="source">R6WindowBitMap</a></span> m_pHudShowRadarTex;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_pHudShowTNames" class="hidden"></a>m_pHudShowTNames <a href="../Source_r6menu/r6menuoptionstab.html#112" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../r6window/r6windowbuttonbox.html" class="source">R6WindowButtonBox</a></span> m_pHudShowTNames;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_pHudShowTNamesTex" class="hidden"></a>m_pHudShowTNamesTex <a href="../Source_r6menu/r6menuoptionstab.html#125" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../r6window/r6windowbitmap.html" class="source">R6WindowBitMap</a></span> m_pHudShowTNamesTex;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_pHudWeaponName" class="hidden"></a>m_pHudWeaponName <a href="../Source_r6menu/r6menuoptionstab.html#105" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../r6window/r6windowbuttonbox.html" class="source">R6WindowButtonBox</a></span> m_pHudWeaponName;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_pHudWeaponNameTex" class="hidden"></a>m_pHudWeaponNameTex <a href="../Source_r6menu/r6menuoptionstab.html#117" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../r6window/r6windowbitmap.html" class="source">R6WindowBitMap</a></span> m_pHudWeaponNameTex;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_pHudWpInfo" class="hidden"></a>m_pHudWpInfo <a href="../Source_r6menu/r6menuoptionstab.html#110" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../r6window/r6windowbuttonbox.html" class="source">R6WindowButtonBox</a></span> m_pHudWpInfo;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_pHudWpInfoTex" class="hidden"></a>m_pHudWpInfoTex <a href="../Source_r6menu/r6menuoptionstab.html#122" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../r6window/r6windowbitmap.html" class="source">R6WindowBitMap</a></span> m_pHudWpInfoTex;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_pInfo" class="hidden"></a>m_pInfo <a href="../Source_r6menu/r6menuoptionstab.html#163" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../uwindow/uwindowinfo.html" class="source">UWindowInfo</a></span> m_pInfo;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_pKeyMenuReAssignPopUp" class="hidden"></a>m_pKeyMenuReAssignPopUp <a href="../Source_r6menu/r6menuoptionstab.html#156" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../r6window/r6windowpopupbox.html" class="source">R6WindowPopUpBox</a></span> m_pKeyMenuReAssignPopUp;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_pLightmapDetail" class="hidden"></a>m_pLightmapDetail <a href="../Source_r6menu/r6menuoptionstab.html#90" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../r6window/r6windowcombocontrol.html" class="source">R6WindowComboControl</a></span> m_pLightmapDetail;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_pListControls" class="hidden"></a>m_pListControls <a href="../Source_r6menu/r6menuoptionstab.html#152" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../r6window/r6windowlistcontrols.html" class="source">R6WindowListControls</a></span> m_pListControls;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_pListOfMODS" class="hidden"></a>m_pListOfMODS <a href="../Source_r6menu/r6menuoptionstab.html#162" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../r6window/r6windowlistmods.html" class="source">R6WindowListMODS</a></span> m_pListOfMODS;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_pLowDetailSmoke" class="hidden"></a>m_pLowDetailSmoke <a href="../Source_r6menu/r6menuoptionstab.html#102" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../r6window/r6windowbuttonbox.html" class="source">R6WindowButtonBox</a></span> m_pLowDetailSmoke;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_pMusicVolume" class="hidden"></a>m_pMusicVolume <a href="../Source_r6menu/r6menuoptionstab.html#72" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../r6window/r6windowhscrollbar.html" class="source">R6WindowHScrollBar</a></span> m_pMusicVolume;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_pOptControls" class="hidden"></a>m_pOptControls <a href="../Source_r6menu/r6menuoptionstab.html#154" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../r6menu/r6menuoptionscontrols.html" class="source">R6MenuOptionsControls</a></span> m_pOptControls;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_pOptionAlwaysRun" class="hidden"></a>m_pOptionAlwaysRun <a href="../Source_r6menu/r6menuoptionstab.html#59" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../r6window/r6windowbuttonbox.html" class="source">R6WindowButtonBox</a></span> m_pOptionAlwaysRun;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_pOptionAutoPatchDownload" class="hidden"></a>m_pOptionAutoPatchDownload <a href="../Source_r6menu/r6menuoptionstab.html#138" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../r6window/r6windowbuttonbox.html" class="source">R6WindowButtonBox</a></span> m_pOptionAutoPatchDownload;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_pOptionGender" class="hidden"></a>m_pOptionGender <a href="../Source_r6menu/r6menuoptionstab.html#133" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../r6window/r6windowbuttonext.html" class="source">R6WindowButtonExt</a></span> m_pOptionGender;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_pOptionInvertMouse" class="hidden"></a>m_pOptionInvertMouse <a href="../Source_r6menu/r6menuoptionstab.html#60" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../r6window/r6windowbuttonbox.html" class="source">R6WindowButtonBox</a></span> m_pOptionInvertMouse;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_pOptionMouseSens" class="hidden"></a>m_pOptionMouseSens <a href="../Source_r6menu/r6menuoptionstab.html#66" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../r6window/r6windowhscrollbar.html" class="source">R6WindowHScrollBar</a></span> m_pOptionMouseSens;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_pOptionPlayerName" class="hidden"></a>m_pOptionPlayerName <a href="../Source_r6menu/r6menuoptionstab.html#129" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../r6window/r6windoweditcontrol.html" class="source">R6WindowEditControl</a></span> m_pOptionPlayerName;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_pPatchStatus" class="hidden"></a>m_pPatchStatus <a href="../Source_r6menu/r6menuoptionstab.html#140" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../r6window/r6windowtextlabel.html" class="source">R6WindowTextLabel</a></span> m_pPatchStatus;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_pPopUpKeyBG" class="hidden"></a>m_pPopUpKeyBG <a href="../Source_r6menu/r6menuoptionstab.html#155" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../r6window/r6windowpopupbox.html" class="source">R6WindowPopUpBox</a></span> m_pPopUpKeyBG;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_pPopUpLoadPlan" class="hidden"></a>m_pPopUpLoadPlan <a href="../Source_r6menu/r6menuoptionstab.html#61" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../r6window/r6windowbuttonbox.html" class="source">R6WindowButtonBox</a></span> m_pPopUpLoadPlan;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_pPopUpQuickPlay" class="hidden"></a>m_pPopUpQuickPlay <a href="../Source_r6menu/r6menuoptionstab.html#62" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../r6window/r6windowbuttonbox.html" class="source">R6WindowButtonBox</a></span> m_pPopUpQuickPlay;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_pPunkBusterOpt" class="hidden"></a>m_pPunkBusterOpt <a href="../Source_r6menu/r6menuoptionstab.html#147" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../r6window/r6windowbuttonbox.html" class="source">R6WindowButtonBox</a></span> m_pPunkBusterOpt;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_pRainbowsDetail" class="hidden"></a>m_pRainbowsDetail <a href="../Source_r6menu/r6menuoptionstab.html#91" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../r6window/r6windowcombocontrol.html" class="source">R6WindowComboControl</a></span> m_pRainbowsDetail;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_pRainbowsShadowLevel" class="hidden"></a>m_pRainbowsShadowLevel <a href="../Source_r6menu/r6menuoptionstab.html#94" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../r6window/r6windowcombocontrol.html" class="source">R6WindowComboControl</a></span> m_pRainbowsShadowLevel;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_pSndHardware" class="hidden"></a>m_pSndHardware <a href="../Source_r6menu/r6menuoptionstab.html#77" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../r6window/r6windowbuttonbox.html" class="source">R6WindowButtonBox</a></span> m_pSndHardware;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_pSndLocEnum[3]" class="hidden"></a>m_pSndLocEnum[3] <a href="../Source_r6menu/r6menuoptionstab.html#49" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">string</span> m_pSndLocEnum[<span class="source_int">3</span>];</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_pSndQuality" class="hidden"></a>m_pSndQuality <a href="../Source_r6menu/r6menuoptionstab.html#74" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../r6window/r6windowcombocontrol.html" class="source">R6WindowComboControl</a></span> m_pSndQuality;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_pSpeedConnection" class="hidden"></a>m_pSpeedConnection <a href="../Source_r6menu/r6menuoptionstab.html#131" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../r6window/r6windowcombocontrol.html" class="source">R6WindowComboControl</a></span> m_pSpeedConnection;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_pStartDownloadButton" class="hidden"></a>m_pStartDownloadButton <a href="../Source_r6menu/r6menuoptionstab.html#139" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../r6window/r6windowbutton.html" class="source">R6WindowButton</a></span> m_pStartDownloadButton;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_pTerrosDetail" class="hidden"></a>m_pTerrosDetail <a href="../Source_r6menu/r6menuoptionstab.html#93" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../r6window/r6windowcombocontrol.html" class="source">R6WindowComboControl</a></span> m_pTerrosDetail;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_pTerrosShadowLevel" class="hidden"></a>m_pTerrosShadowLevel <a href="../Source_r6menu/r6menuoptionstab.html#96" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../r6window/r6windowcombocontrol.html" class="source">R6WindowComboControl</a></span> m_pTerrosShadowLevel;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_pTextureDetail" class="hidden"></a>m_pTextureDetail <a href="../Source_r6menu/r6menuoptionstab.html#89" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../r6window/r6windowcombocontrol.html" class="source">R6WindowComboControl</a></span> m_pTextureDetail;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_pVideoRes" class="hidden"></a>m_pVideoRes <a href="../Source_r6menu/r6menuoptionstab.html#88" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../r6window/r6windowcombocontrol.html" class="source">R6WindowComboControl</a></span> m_pVideoRes;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_pVoicesVolume" class="hidden"></a>m_pVoicesVolume <a href="../Source_r6menu/r6menuoptionstab.html#71" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../r6window/r6windowhscrollbar.html" class="source">R6WindowHScrollBar</a></span> m_pVoicesVolume;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_RArmpatchBitmapPos" class="hidden"></a>m_RArmpatchBitmapPos <a href="../Source_r6menu/r6menuoptionstab.html#142" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../core/object.html#Region" class="source">Region</a></span> m_RArmpatchBitmapPos;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_RArmpatchListPos" class="hidden"></a>m_RArmpatchListPos <a href="../Source_r6menu/r6menuoptionstab.html#143" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../core/object.html#Region" class="source">Region</a></span> m_RArmpatchListPos;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_szOldActionKey" class="hidden"></a>m_szOldActionKey <a href="../Source_r6menu/r6menuoptionstab.html#157" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">string</span> m_szOldActionKey;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_SimpleBorderRegion" class="hidden"></a>SimpleBorderRegion <a href="../Source_r6menu/r6menuoptionstab.html#51" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../core/object.html#Region" class="source">Region</a></span> SimpleBorderRegion;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th class="title">Enumerations Detail</th>
+</tr>
+</table>
+
+<h4><a name="_eGeneralButUse" class="hidden"></a>eGeneralButUse <a href="../Source_r6menu/r6menuoptionstab.html#23" class="small">Source code</a></h4>
+<div class="declaration">enum <span class="source_type"><a href="../r6menu/r6menuoptionstab.html#eGeneralButUse" class="source">eGeneralButUse</a></span><br />
+{<blockquote>eGBU_ResetToDefault,
+eGBU_Activate,
+eGBU_StartPatch</blockquote>};
+</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ePageOptions" class="hidden"></a>ePageOptions <a href="../Source_r6menu/r6menuoptionstab.html#10" class="small">Source code</a></h4>
+<div class="declaration">enum <span class="source_type"><a href="../r6menu/r6menuoptionstab.html#ePageOptions" class="source">ePageOptions</a></span><br />
+{<blockquote>ePO_Game,
+ePO_Sound,
+ePO_Graphics,
+ePO_Hud,
+ePO_MP,
+ePO_Controls,
+ePO_MODS,
+ePO_PatchService</blockquote>};
+</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+
+
+<br />
+
+
+
+
+
+<table class="title">
+<tr>
+	<th class="title">Functions Detail</th>
+</tr>
+</table>
+
+<h4><a name="_AddGraphComboControlItem-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> AddGraphComboControlItem <span class="function_state"></span> <a href="../Source_r6menu/r6menuoptionstab.html#943" class="small">Source code</a></h4>
+<div class="declaration"> function  AddGraphComboControlItem ( <span class="source_type">INT</span> _iAddItemMask, <span class="source_type"><a href="../r6window/r6windowcombocontrol.html" class="source">R6WindowComboControl</a></span> _pR6WindowComboControl, <span class="source_type">string</span> _szGraphicsEnumName, optional <span class="source_type">BOOL</span> _bCheckFor32MegVideoCard) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_AddKeyItem-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> AddKeyItem <span class="function_state"></span> <a href="../Source_r6menu/r6menuoptionstab.html#1727" class="small">Source code</a></h4>
+<div class="declaration"> function  AddKeyItem ( <span class="source_type">string</span> _szTitle, <span class="source_type">string</span> _szToolTip, <span class="source_type">string</span> _szActionKey, <span class="source_type"><a href="../r6window/r6windowlistcontrols.html" class="source">R6WindowListControls</a></span> _pR6WindowListControls, optional <span class="source_type">BOOL</span> _bPlanningInput) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_AddLineItem-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> AddLineItem <span class="function_state"></span> <a href="../Source_r6menu/r6menuoptionstab.html#1700" class="small">Source code</a></h4>
+<div class="declaration"> function  AddLineItem ( <span class="source_type"><a href="../r6window/r6windowlistcontrols.html" class="source">R6WindowListControls</a></span> _pR6WindowListControls) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_AddTitleItem-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> AddTitleItem <span class="function_state"></span> <a href="../Source_r6menu/r6menuoptionstab.html#1714" class="small">Source code</a></h4>
+<div class="declaration"> function  AddTitleItem ( <span class="source_type">string</span> _szTitle, <span class="source_type"><a href="../r6window/r6windowlistcontrols.html" class="source">R6WindowListControls</a></span> _pR6WindowListControls) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_AddVideoResolution-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> AddVideoResolution <span class="function_state"></span> <a href="../Source_r6menu/r6menuoptionstab.html#975" class="small">Source code</a></h4>
+<div class="declaration"> function  AddVideoResolution ( <span class="source_type"><a href="../r6window/r6windowcombocontrol.html" class="source">R6WindowComboControl</a></span> _pR6WindowComboControl) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_CloseAllKeyPopUp-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> CloseAllKeyPopUp <span class="function_state"></span> <a href="../Source_r6menu/r6menuoptionstab.html#1855" class="small">Source code</a></h4>
+<div class="declaration"> function  CloseAllKeyPopUp ( optional <span class="source_type">BOOL</span> _bCloseKeyControlTo) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ConvertToAudioString-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> ConvertToAudioString <span class="function_state"></span> <a href="../Source_r6menu/r6menuoptionstab.html#572" class="small">Source code</a></h4>
+<div class="declaration"> function <span class="source_type">string</span> ConvertToAudioString ( <span class="source_type">INT</span> _iValueToConvert) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ConvertToAVEnum-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> ConvertToAVEnum <span class="function_state"></span> <a href="../Source_r6menu/r6menuoptionstab.html#547" class="small">Source code</a></h4>
+<div class="declaration"> function <span class="source_type"><a href="../engine/r6gameoptions.html" class="source">R6GameOptions</a></span>.<span class="source_type"><a href="../engine/r6gameoptions.html#EGameOptionsAudioVirtual" class="source">EGameOptionsAudioVirtual</a></span> ConvertToAVEnum ( <span class="source_type">string</span> _szValueToConvert) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ConvertToELEnum-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> ConvertToELEnum <span class="function_state"></span> <a href="../Source_r6menu/r6menuoptionstab.html#830" class="small">Source code</a></h4>
+<div class="declaration"> function <span class="source_type"><a href="../engine/r6gameoptions.html" class="source">R6GameOptions</a></span>.<span class="source_type"><a href="../engine/r6gameoptions.html#EGameOptionsEffectLevel" class="source">EGameOptionsEffectLevel</a></span> ConvertToELEnum ( <span class="source_type">string</span> _szValueToConvert) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ConvertToGLEnum-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> ConvertToGLEnum <span class="function_state"></span> <a href="../Source_r6menu/r6menuoptionstab.html#805" class="small">Source code</a></h4>
+<div class="declaration"> function <span class="source_type"><a href="../engine/r6gameoptions.html" class="source">R6GameOptions</a></span>.<span class="source_type"><a href="../engine/r6gameoptions.html#EGameOptionsGraphicLevel" class="source">EGameOptionsGraphicLevel</a></span> ConvertToGLEnum ( <span class="source_type">string</span> _szValueToConvert) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ConvertToGraphicString-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> ConvertToGraphicString <span class="function_state"></span> <a href="../Source_r6menu/r6menuoptionstab.html#858" class="small">Source code</a></h4>
+<div class="declaration"> function <span class="source_type">string</span> ConvertToGraphicString ( <span class="source_type">INT</span> _iAddItemMask, <span class="source_type">INT</span> _iValueToConvert, <span class="source_type">string</span> _szGraphicsEnumName, optional <span class="source_type">BOOL</span> _bCheckFor32MegVideoCard) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ConvertToNetSpeedString-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> ConvertToNetSpeedString <span class="function_state"></span> <a href="../Source_r6menu/r6menuoptionstab.html#1496" class="small">Source code</a></h4>
+<div class="declaration"> function <span class="source_type">string</span> ConvertToNetSpeedString ( <span class="source_type">INT</span> _iValueToConvert) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ConvertToNSEnum-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> ConvertToNSEnum <span class="function_state"></span> <a href="../Source_r6menu/r6menuoptionstab.html#1464" class="small">Source code</a></h4>
+<div class="declaration"> function <span class="source_type"><a href="../engine/r6gameoptions.html" class="source">R6GameOptions</a></span>.<span class="source_type"><a href="../engine/r6gameoptions.html#EGameOptionsNetSpeed" class="source">EGameOptionsNetSpeed</a></span> ConvertToNSEnum ( <span class="source_type">string</span> _szValueToConvert) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ConvertToSndQuality-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> ConvertToSndQuality <span class="function_state"></span> <a href="../Source_r6menu/r6menuoptionstab.html#525" class="small">Source code</a></h4>
+<div class="declaration"> function <span class="source_type">INT</span> ConvertToSndQuality ( <span class="source_type">string</span> _szValue) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ConvertToSndQualityString-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> ConvertToSndQualityString <span class="function_state"></span> <a href="../Source_r6menu/r6menuoptionstab.html#536" class="small">Source code</a></h4>
+<div class="declaration"> function <span class="source_type">string</span> ConvertToSndQualityString ( <span class="source_type">INT</span> _iValue) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_Created-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> Created <span class="function_state"></span> <a href="../Source_r6menu/r6menuoptionstab.html#170" class="small">Source code</a></h4>
+<div class="declaration"> function  Created ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_CreateHudBitmapWindow-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> CreateHudBitmapWindow <span class="function_state"></span> <a href="../Source_r6menu/r6menuoptionstab.html#1184" class="small">Source code</a></h4>
+<div class="declaration"> function <span class="source_type"><a href="../r6window/r6windowbitmap.html" class="source">R6WindowBitMap</a></span> CreateHudBitmapWindow ( <span class="source_type"><a href="../engine/texture.html" class="source">Texture</a></span> _Tex, optional <span class="source_type">BOOL</span> _bDrawSimpleBorder) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_CreateHudOptionsTex-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> CreateHudOptionsTex <span class="function_state"></span> <a href="../Source_r6menu/r6menuoptionstab.html#1166" class="small">Source code</a></h4>
+<div class="declaration"> function  CreateHudOptionsTex ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_CreateKeyPopUp-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> CreateKeyPopUp <span class="function_state"></span> <a href="../Source_r6menu/r6menuoptionstab.html#1783" class="small">Source code</a></h4>
+<div class="declaration"> function  CreateKeyPopUp ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GetCurActionKey-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> GetCurActionKey <span class="function_state"></span> <a href="../Source_r6menu/r6menuoptionstab.html#1881" class="small">Source code</a></h4>
+<div class="declaration"> function <span class="source_type">string</span> GetCurActionKey ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GetCurKeyInputClass-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> GetCurKeyInputClass <span class="function_state"></span> <a href="../Source_r6menu/r6menuoptionstab.html#1891" class="small">Source code</a></h4>
+<div class="declaration"> function <span class="source_type">INT</span> GetCurKeyInputClass ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GetCurKeyName-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> GetCurKeyName <span class="function_state"></span> <a href="../Source_r6menu/r6menuoptionstab.html#1886" class="small">Source code</a></h4>
+<div class="declaration"> function <span class="source_type">string</span> GetCurKeyName ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GetCurrentKeyItem-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> GetCurrentKeyItem <span class="function_state"></span> <a href="../Source_r6menu/r6menuoptionstab.html#1876" class="small">Source code</a></h4>
+<div class="declaration"> function <span class="source_type"><a href="../uwindow/uwindowlistboxitem.html" class="source">UWindowListBoxItem</a></span> GetCurrentKeyItem ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GetDownloadMetric-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> GetDownloadMetric <span class="function_state"></span> <a href="../Source_r6menu/r6menuoptionstab.html#2270" class="small">Source code</a></h4>
+<div class="declaration"> function  GetDownloadMetric ( <span class="source_type">FLOAT</span> totalBytes, out <span class="source_type">string</span> metric, out <span class="source_type">FLOAT</span> divider) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GetDownloadPercentageStringValues-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> GetDownloadPercentageStringValues <span class="function_state"></span> <a href="../Source_r6menu/r6menuoptionstab.html#2284" class="small">Source code</a></h4>
+<div class="declaration"> function  GetDownloadPercentageStringValues ( <span class="source_type">FLOAT</span> totalBytes, <span class="source_type">FLOAT</span> recvdBytes, out <span class="source_type">string</span> bytesProgress, out <span class="source_type">string</span> percentProgress) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GetDownloadString-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> GetDownloadString <span class="function_state"></span> <a href="../Source_r6menu/r6menuoptionstab.html#2305" class="small">Source code</a></h4>
+<div class="declaration"> function  GetDownloadString ( <span class="source_type">FLOAT</span> totalBytes, <span class="source_type">FLOAT</span> recvdBytes, out <span class="source_type">string</span> str) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GetLocKeyNameByActionKey-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> GetLocKeyNameByActionKey <span class="function_state"></span> <a href="../Source_r6menu/r6menuoptionstab.html#1771" class="small">Source code</a></h4>
+<div class="declaration"> function <span class="source_type">string</span> GetLocKeyNameByActionKey ( <span class="source_type">string</span> _szActionKey, optional <span class="source_type">BOOL</span> _bPlanningInput) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GetResolutionXY-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> GetResolutionXY <span class="function_state"></span> <a href="../Source_r6menu/r6menuoptionstab.html#994" class="small">Source code</a></h4>
+<div class="declaration"> function  GetResolutionXY ( OUT <span class="source_type">INT</span> iSX, OUT <span class="source_type">INT</span> iSY, OUT <span class="source_type">INT</span> iRR) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_InitActivateButton-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> InitActivateButton <span class="function_state"></span> <a href="../Source_r6menu/r6menuoptionstab.html#215" class="small">Source code</a></h4>
+<div class="declaration"> function  InitActivateButton ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_InitOptionControls-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> InitOptionControls <span class="function_state"></span> <a href="../Source_r6menu/r6menuoptionstab.html#1528" class="small">Source code</a></h4>
+<div class="declaration"> function  InitOptionControls ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_InitOptionGame-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> InitOptionGame <span class="function_state"></span> <a href="../Source_r6menu/r6menuoptionstab.html#229" class="small">Source code</a></h4>
+<div class="declaration"> function  InitOptionGame ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_InitOptionGraphic-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> InitOptionGraphic <span class="function_state"></span> <a href="../Source_r6menu/r6menuoptionstab.html#597" class="small">Source code</a></h4>
+<div class="declaration"> function  InitOptionGraphic ( <span class="source_type">BOOL</span> _bInGameOptions) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_InitOptionHud-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> InitOptionHud <span class="function_state"></span> <a href="../Source_r6menu/r6menuoptionstab.html#1026" class="small">Source code</a></h4>
+<div class="declaration"> function  InitOptionHud ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_InitOptionMODS-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> InitOptionMODS <span class="function_state"></span> <a href="../Source_r6menu/r6menuoptionstab.html#2076" class="small">Source code</a></h4>
+<div class="declaration"> function  InitOptionMODS ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_InitOptionMulti-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> InitOptionMulti <span class="function_state"></span> <a href="../Source_r6menu/r6menuoptionstab.html#1247" class="small">Source code</a></h4>
+<div class="declaration"> function  InitOptionMulti ( <span class="source_type">BOOL</span> _bInGameOptions) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_InitOptionPatchService-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> InitOptionPatchService <span class="function_state"></span> <a href="../Source_r6menu/r6menuoptionstab.html#2208" class="small">Source code</a></h4>
+<div class="declaration"> function  InitOptionPatchService ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_InitOptionSound-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> InitOptionSound <span class="function_state"></span> <a href="../Source_r6menu/r6menuoptionstab.html#366" class="small">Source code</a></h4>
+<div class="declaration"> function  InitOptionSound ( <span class="source_type">BOOL</span> _bInGameOptions) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_InitResetButton-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> InitResetButton <span class="function_state"></span> <a href="../Source_r6menu/r6menuoptionstab.html#204" class="small">Source code</a></h4>
+<div class="declaration"> function  InitResetButton ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_IsKeyValid-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> IsKeyValid <span class="function_state"></span> <a href="../Source_r6menu/r6menuoptionstab.html#1994" class="small">Source code</a></h4>
+<div class="declaration"> function <span class="source_type">BOOL</span> IsKeyValid ( <span class="source_type">INT</span> _Key) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_KeyPressed-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> KeyPressed <span class="function_state"></span> <a href="../Source_r6menu/r6menuoptionstab.html#1910" class="small">Source code</a></h4>
+<div class="declaration"> function  KeyPressed ( <span class="source_type">int</span> <span class="source_type">Key</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ManageNotifyForNetwork-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> ManageNotifyForNetwork <span class="function_state"></span> <a href="../Source_r6menu/r6menuoptionstab.html#2690" class="small">Source code</a></h4>
+<div class="declaration"> function  ManageNotifyForNetwork ( <span class="source_type"><a href="../uwindow/uwindowdialogcontrol.html" class="source">UWindowDialogControl</a></span> <span class="source_type">C</span>, <span class="source_type">byte</span> E) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ManageNotifyForSound-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> ManageNotifyForSound <span class="function_state"></span> <a href="../Source_r6menu/r6menuoptionstab.html#2663" class="small">Source code</a></h4>
+<div class="declaration"> function  ManageNotifyForSound ( <span class="source_type"><a href="../uwindow/uwindowdialogcontrol.html" class="source">UWindowDialogControl</a></span> <span class="source_type">C</span>, <span class="source_type">byte</span> E) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ManagePopUpKey-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> ManagePopUpKey <span class="function_state"></span> <a href="../Source_r6menu/r6menuoptionstab.html#1825" class="small">Source code</a></h4>
+<div class="declaration"> function  ManagePopUpKey ( <span class="source_type"><a href="../uwindow/uwindowdialogcontrol.html" class="source">UWindowDialogControl</a></span> <span class="source_type">C</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_Notify-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> Notify <span class="function_state"></span> <a href="../Source_r6menu/r6menuoptionstab.html#2460" class="small">Source code</a></h4>
+<div class="declaration"> function  Notify ( <span class="source_type"><a href="../uwindow/uwindowdialogcontrol.html" class="source">UWindowDialogControl</a></span> <span class="source_type">C</span>, <span class="source_type">byte</span> E) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_Paint-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> Paint <span class="function_state"></span> <a href="../Source_r6menu/r6menuoptionstab.html#188" class="small">Source code</a></h4>
+<div class="declaration"> function  Paint ( <span class="source_type"><a href="../engine/canvas.html" class="source">Canvas</a></span> <span class="source_type">C</span>, <span class="source_type">FLOAT</span> X, <span class="source_type">FLOAT</span> Y) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_RefreshKeyItem-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> RefreshKeyItem <span class="function_state"></span> <a href="../Source_r6menu/r6menuoptionstab.html#1896" class="small">Source code</a></h4>
+<div class="declaration"> function  RefreshKeyItem ( <span class="source_type">string</span> _szNewKeyValue) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_RefreshKeyList-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> RefreshKeyList <span class="function_state"></span> <a href="../Source_r6menu/r6menuoptionstab.html#1751" class="small">Source code</a></h4>
+<div class="declaration"> function  RefreshKeyList ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_RestoreDefaultValue-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> RestoreDefaultValue <span class="function_state"></span> <a href="../Source_r6menu/r6menuoptionstab.html#2389" class="small">Source code</a></h4>
+<div class="declaration"> function  RestoreDefaultValue ( <span class="source_type">BOOL</span> _bInGame) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_SetComboControlButton-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> SetComboControlButton <span class="function_state"></span> <a href="../Source_r6menu/r6menuoptionstab.html#2712" class="small">Source code</a></h4>
+<div class="declaration"> function <span class="source_type"><a href="../r6window/r6windowcombocontrol.html" class="source">R6WindowComboControl</a></span> SetComboControlButton ( <span class="source_type"><a href="../core/object.html#Region" class="source">Region</a></span> _RDefaultW, <span class="source_type">string</span> _szTitle, <span class="source_type">string</span> _szTip) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_SetGameValues-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> SetGameValues <span class="function_state"></span> <a href="../Source_r6menu/r6menuoptionstab.html#331" class="small">Source code</a></h4>
+<div class="declaration"> function  SetGameValues ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_SetGraphicValues-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> SetGraphicValues <span class="function_state"></span> <a href="../Source_r6menu/r6menuoptionstab.html#729" class="small">Source code</a></h4>
+<div class="declaration"> function  SetGraphicValues ( optional <span class="source_type">BOOL</span> _bUpdateFileOnly) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_SetHudValues-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> SetHudValues <span class="function_state"></span> <a href="../Source_r6menu/r6menuoptionstab.html#1125" class="small">Source code</a></h4>
+<div class="declaration"> function  SetHudValues ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_SetMenuGameValues-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> SetMenuGameValues <span class="function_state"></span> <a href="../Source_r6menu/r6menuoptionstab.html#349" class="small">Source code</a></h4>
+<div class="declaration"> function  SetMenuGameValues ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_SetMenuGraphicValues-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> SetMenuGraphicValues <span class="function_state"></span> <a href="../Source_r6menu/r6menuoptionstab.html#770" class="small">Source code</a></h4>
+<div class="declaration"> function  SetMenuGraphicValues ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_SetMenuHudValues-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> SetMenuHudValues <span class="function_state"></span> <a href="../Source_r6menu/r6menuoptionstab.html#1147" class="small">Source code</a></h4>
+<div class="declaration"> function  SetMenuHudValues ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_SetMenuMODS-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> SetMenuMODS <span class="function_state"></span> <a href="../Source_r6menu/r6menuoptionstab.html#2102" class="small">Source code</a></h4>
+<div class="declaration"> function  SetMenuMODS ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_SetMenuMultiValues-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> SetMenuMultiValues <span class="function_state"></span> <a href="../Source_r6menu/r6menuoptionstab.html#1370" class="small">Source code</a></h4>
+<div class="declaration"> function  SetMenuMultiValues ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_SetMenuPatchServiceValues-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> SetMenuPatchServiceValues <span class="function_state"></span> <a href="../Source_r6menu/r6menuoptionstab.html#2262" class="small">Source code</a></h4>
+<div class="declaration"> function  SetMenuPatchServiceValues ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_SetMenuSoundValues-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> SetMenuSoundValues <span class="function_state"></span> <a href="../Source_r6menu/r6menuoptionstab.html#486" class="small">Source code</a></h4>
+<div class="declaration"> function  SetMenuSoundValues ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_SetMultiValues-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> SetMultiValues <span class="function_state"></span> <a href="../Source_r6menu/r6menuoptionstab.html#1336" class="small">Source code</a></h4>
+<div class="declaration"> function  SetMultiValues ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_SetPatchServiceValues-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> SetPatchServiceValues <span class="function_state"></span> <a href="../Source_r6menu/r6menuoptionstab.html#2251" class="small">Source code</a></h4>
+<div class="declaration"> function  SetPatchServiceValues ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_SetPBOptDisable-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> SetPBOptDisable <span class="function_state"></span> <a href="../Source_r6menu/r6menuoptionstab.html#1453" class="small">Source code</a></h4>
+<div class="declaration"> function  SetPBOptDisable ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_SetPBOptValue-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> SetPBOptValue <span class="function_state"></span> <a href="../Source_r6menu/r6menuoptionstab.html#1400" class="small">Source code</a></h4>
+<div class="declaration"> function  SetPBOptValue ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_SetSoundValues-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> SetSoundValues <span class="function_state"></span> <a href="../Source_r6menu/r6menuoptionstab.html#467" class="small">Source code</a></h4>
+<div class="declaration"> function  SetSoundValues ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_UpdateHudOptionsTex-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> UpdateHudOptionsTex <span class="function_state"></span> <a href="../Source_r6menu/r6menuoptionstab.html#1199" class="small">Source code</a></h4>
+<div class="declaration"> function  UpdateHudOptionsTex ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_UpdatePatchStatus-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> UpdatePatchStatus <span class="function_state"></span> <a href="../Source_r6menu/r6menuoptionstab.html#2317" class="small">Source code</a></h4>
+<div class="declaration"> function  UpdatePatchStatus ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+
+
+<br />
+
+
+<table class="title">
+<tr>
+	<th class="title">Defaultproperties</th>
+</tr>
+</table>
+<br />
+<div class="source"><table class="source"><tr><td class="source"><pre class="source">defaultproperties
+{
+     m_iKeyToAssign=-<span class="source_int">1</span>
+     m_pAutoAimTexture=<span class="source_type"><a href="../engine/texture.html" class="source">Texture</a></span><span class="source_name">'R6MenuTextures.Gui_BoxScroll'</span>
+     m_EaxTexture=<span class="source_type"><a href="../engine/texture.html" class="source">Texture</a></span><span class="source_name">'R6MenuTextures.Gui_BoxScroll'</span>
+     SimpleBorderRegion=(X=<span class="source_int">64</span>,Y=<span class="source_int">56</span>,W=<span class="source_int">1</span>,<span class="source_type">H</span>=<span class="source_int">1</span>)
+     m_pAutoAimTextReg(<span class="source_int">0</span>)=(Y=<span class="source_int">104</span>,W=<span class="source_int">111</span>,<span class="source_type">H</span>=<span class="source_int">73</span>)
+     m_pAutoAimTextReg(<span class="source_int">1</span>)=(Y=<span class="source_int">177</span>,W=<span class="source_int">111</span>,<span class="source_type">H</span>=<span class="source_int">73</span>)
+     m_pAutoAimTextReg(<span class="source_int">2</span>)=(Y=<span class="source_int">250</span>,W=<span class="source_int">111</span>,<span class="source_type">H</span>=<span class="source_int">73</span>)
+     m_pAutoAimTextReg(<span class="source_int">3</span>)=(Y=<span class="source_int">323</span>,W=<span class="source_int">111</span>,<span class="source_type">H</span>=<span class="source_int">73</span>)
+     m_EaxTextureReg=(Y=<span class="source_int">396</span>,W=<span class="source_int">188</span>,<span class="source_type">H</span>=<span class="source_int">84</span>)
+     m_RArmpatchBitmapPos=(X=<span class="source_int">55</span>,Y=<span class="source_int">38</span>,W=<span class="source_int">64</span>,<span class="source_type">H</span>=<span class="source_int">64</span>)
+     m_RArmpatchListPos=(X=<span class="source_int">230</span>,W=<span class="source_int">156</span>,<span class="source_type">H</span>=<span class="source_int">150</span>)
+}
+</pre></td></tr></table></div>
+
+
+
+<hr />
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../r6menu/r6menu-overview.html">Package</a></td>
+	<td class="header_hilight">Class</td>
+	<td class="header"><a href="../Source_r6menu/r6menuoptionstab.html">Source</a></td>
+	<td class="header"><a class="header" href="../classtree.html#R6MenuOptionsTab">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../r6menu/r6menuoptionscontrols.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../r6menu/r6menuoptionswidget.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+
+<div class="stats">Creation time: mar. 26/5/2026 18:33:12.590 - Created with <a href="http://wiki.beyondunreal.com/wiki/UnCodeX" target="_blank">UnCodeX</a></div>
+
+</body>
+</html>

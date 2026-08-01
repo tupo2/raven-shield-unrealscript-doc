@@ -1,0 +1,404 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+	<title>UnCodeX - R6Menu.R6MenuInGameRootWindow</title>
+	<meta name="Generator" content="UnCodeX 241" />
+	<link rel="stylesheet" href="../DocStyle2.css" type="text/css" title="Original Purple" />
+	<link rel="alternative stylesheet" href="../DocStyle2-blue.css" type="text/css" title="Blue" />
+	<link rel="alternative stylesheet" href="../DocStyle2-red.css" type="text/css" title="Red" />
+	<!--[if IE]>
+	<link rel="stylesheet" href="../DocStyle2-msie.css" type="text/css" />
+	<![endif]-->
+	<script src="../styleswitcher.js" type="text/javascript"></script>
+</head>
+<body>
+
+<div class="header">
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../r6menu/r6menu-overview.html">Package</a></td>
+	<td class="header_hilight">Class</td>
+	<td class="header"><a href="../Source_r6menu/r6menuingamerootwindow.html">Source</a></td>
+	<td class="header"><a class="header" href="../classtree.html#R6MenuInGameRootWindow">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../r6menu/r6menuingameoperativeselectorwidget.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../r6menu/r6menuingamewritablemapwidget.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html#r6menu/r6menuingamerootwindow.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+</div>
+<div class="spacer"></div>
+
+<h1><a href="../r6menu/r6menu-overview.html">R6Menu</a>.R6MenuInGameRootWindow</h1>
+
+<dl>
+<dt>Extends</dt><dd><a href="../r6window/r6windowrootwindow.html">R6WindowRootWindow</a></dd>
+
+</dl>
+
+<p></p>
+
+<pre class="tree"><a href="../core/core-overview.html">core</a>.<a href="../core/object.html">Object</a>
+|   
++-- <a href="../uwindow/uwindow-overview.html">UWindow</a>.<a href="../uwindow/uwindowbase.html">UWindowBase</a>
+   |   
+   +-- <a href="../uwindow/uwindow-overview.html">UWindow</a>.<a href="../uwindow/uwindowwindow.html">UWindowWindow</a>
+      |   
+      +-- <a href="../uwindow/uwindow-overview.html">UWindow</a>.<a href="../uwindow/uwindowrootwindow.html">UWindowRootWindow</a>
+         |   
+         +-- <a href="../r6window/r6window-overview.html">R6Window</a>.<a href="../r6window/r6windowrootwindow.html">R6WindowRootWindow</a>
+            |   
+            +-- <a href="../r6menu/r6menu-overview.html">R6Menu</a>.<a href="../r6menu/r6menuingamerootwindow.html">R6MenuInGameRootWindow</a>
+</pre>
+
+
+
+<hr />
+
+
+
+<table class="title">
+<tr>
+	<th colspan="2" class="title">Variables Summary</th>
+</tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_m_bCanDisplayOperativeSelector" name="m_bCanDisplayOperativeSelector" title="go to the details">m_bCanDisplayOperativeSelector</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">BOOL</td><td width="66%"><a href="#_m_bInEscMenu" name="m_bInEscMenu" title="go to the details">m_bInEscMenu</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">BOOL</td><td width="66%"><a href="#_m_bInPopUp" name="m_bInPopUp" title="go to the details">m_bInPopUp</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">BOOL</td><td width="66%"><a href="#_m_bInTraining" name="m_bInTraining" title="go to the details">m_bInTraining</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../r6menu/r6menudebriefingwidget.html">R6MenuDebriefingWidget</a></td><td width="66%"><a href="#_m_DebriefingWidget" name="m_DebriefingWidget" title="go to the details">m_DebriefingWidget</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">INT</td><td width="66%"><a href="#_m_ESCMenuKey" name="m_ESCMenuKey" title="go to the details">m_ESCMenuKey</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../r6menu/r6menuingameesc.html">R6MenuInGameEsc</a></td><td width="66%"><a href="#_m_EscMenuWidget" name="m_EscMenuWidget" title="go to the details">m_EscMenuWidget</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">FLOAT</td><td width="66%"><a href="#_m_fTopLabelHeight" name="m_fTopLabelHeight" title="go to the details">m_fTopLabelHeight</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../r6menu/r6menuingameoperativeselectorwidget.html">R6MenuInGameOperativeSelectorWidget</a></td><td width="66%"><a href="#_m_InGameOperativeSelectorWidget" name="m_InGameOperativeSelectorWidget" title="go to the details">m_InGameOperativeSelectorWidget</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../r6menu/r6menuoptionswidget.html">R6MenuOptionsWidget</a></td><td width="66%"><a href="#_m_OptionsWidget" name="m_OptionsWidget" title="go to the details">m_OptionsWidget</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../r6menu/r6menuingameinstructionwidget.html">R6MenuInGameInstructionWidget</a></td><td width="66%"><a href="#_m_pInstructionWidget" name="m_pInstructionWidget" title="go to the details">m_pInstructionWidget</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../core/object.html#Region">Region</a></td><td width="66%"><a href="#_m_REscMenuWidget" name="m_REscMenuWidget" title="go to the details">m_REscMenuWidget</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../core/object.html#Region">Region</a></td><td width="66%"><a href="#_m_REscTraining" name="m_REscTraining" title="go to the details">m_REscTraining</a></td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Variables from <a href="../r6window/r6window-overview.html">R6Window</a>.<a href="../r6window/r6windowrootwindow.html">R6WindowRootWindow</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../r6window/r6windowrootwindow.html#m_BGTexture[2]">m_BGTexture[2]</a>, <a href="../r6window/r6windowrootwindow.html#m_iLastKeyDown">m_iLastKeyDown</a>, <a href="../r6window/r6windowrootwindow.html#m_iWidgetKA">m_iWidgetKA</a>, <a href="../r6window/r6windowrootwindow.html#m_pListOfActiveWidget">m_pListOfActiveWidget</a>, <a href="../r6window/r6windowrootwindow.html#m_pListOfFramePopUp">m_pListOfFramePopUp</a>, <a href="../r6window/r6windowrootwindow.html#m_pListOfKeyAvailability">m_pListOfKeyAvailability</a>, <a href="../r6window/r6windowrootwindow.html#m_pSimplePopUp">m_pSimplePopUp</a>, <a href="../r6window/r6windowrootwindow.html#m_RAddDlgSimplePopUp">m_RAddDlgSimplePopUp</a>, <a href="../r6window/r6windowrootwindow.html#m_RSimplePopUp">m_RSimplePopUp</a>, <a href="../r6window/r6windowrootwindow.html#m_szCurrentBackgroundSubDirectory">m_szCurrentBackgroundSubDirectory</a></td>
+</tr>
+</table>
+<table>
+<tr>
+	<th class="inherittitle">Inherited Variables from <a href="../uwindow/uwindow-overview.html">UWindow</a>.<a href="../uwindow/uwindowrootwindow.html">UWindowRootWindow</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../uwindow/uwindowrootwindow.html#AimCursor">AimCursor</a>, <a href="../uwindow/uwindowrootwindow.html#bAllowConsole">bAllowConsole</a>, <a href="../uwindow/uwindowrootwindow.html#bMouseCapture">bMouseCapture</a>, <a href="../uwindow/uwindowrootwindow.html#bRequestQuit">bRequestQuit</a>, <a href="../uwindow/uwindowrootwindow.html#Colors">Colors</a>, <a href="../uwindow/uwindowrootwindow.html#Console">Console</a>, <a href="../uwindow/uwindowrootwindow.html#DiagCursor1">DiagCursor1</a>, <a href="../uwindow/uwindowrootwindow.html#DiagCursor2">DiagCursor2</a>, <a href="../uwindow/uwindowrootwindow.html#DragCursor">DragCursor</a>, <a href="../uwindow/uwindowrootwindow.html#FocusedWindow">FocusedWindow</a>, <a href="../uwindow/uwindowrootwindow.html#Fonts[30]">Fonts[30]</a>, <a href="../uwindow/uwindowrootwindow.html#GUIScale">GUIScale</a>, <a href="../uwindow/uwindowrootwindow.html#HandCursor">HandCursor</a>, <a href="../uwindow/uwindowrootwindow.html#HotkeyWindows">HotkeyWindows</a>, <a href="../uwindow/uwindowrootwindow.html#HSplitCursor">HSplitCursor</a>, <a href="../uwindow/uwindowrootwindow.html#KeyFocusWindow">KeyFocusWindow</a>, <a href="../uwindow/uwindowrootwindow.html#LookAndFeelClass">LookAndFeelClass</a>, <a href="../uwindow/uwindowrootwindow.html#LooksAndFeels[20]">LooksAndFeels[20]</a>, <a href="../uwindow/uwindowrootwindow.html#MenuClassDefines">MenuClassDefines</a>, <a href="../uwindow/uwindowrootwindow.html#MouseWindow">MouseWindow</a>, <a href="../uwindow/uwindowrootwindow.html#MouseX">MouseX</a>, <a href="../uwindow/uwindowrootwindow.html#MouseY">MouseY</a>, <a href="../uwindow/uwindowrootwindow.html#MoveCursor">MoveCursor</a>, <a href="../uwindow/uwindowrootwindow.html#m_bScaleWindowToRoot">m_bScaleWindowToRoot</a>, <a href="../uwindow/uwindowrootwindow.html#m_bUseAimIcon">m_bUseAimIcon</a>, <a href="../uwindow/uwindowrootwindow.html#m_bUseDragIcon">m_bUseDragIcon</a>, <a href="../uwindow/uwindowrootwindow.html#m_bWidgetResolutionFix">m_bWidgetResolutionFix</a>, <a href="../uwindow/uwindowrootwindow.html#m_eCurWidgetInUse">m_eCurWidgetInUse</a>, <a href="../uwindow/uwindowrootwindow.html#m_ePrevWidgetInUse">m_ePrevWidgetInUse</a>, <a href="../uwindow/uwindowrootwindow.html#m_eRootId">m_eRootId</a>, <a href="../uwindow/uwindowrootwindow.html#m_fWindowScaleX">m_fWindowScaleX</a>, <a href="../uwindow/uwindowrootwindow.html#m_fWindowScaleY">m_fWindowScaleY</a>, <a href="../uwindow/uwindowrootwindow.html#NormalCursor">NormalCursor</a>, <a href="../uwindow/uwindowrootwindow.html#NSCursor">NSCursor</a>, <a href="../uwindow/uwindowrootwindow.html#OldMouseX">OldMouseX</a>, <a href="../uwindow/uwindowrootwindow.html#OldMouseY">OldMouseY</a>, <a href="../uwindow/uwindowrootwindow.html#QuitTime">QuitTime</a>, <a href="../uwindow/uwindowrootwindow.html#RealHeight">RealHeight</a>, <a href="../uwindow/uwindowrootwindow.html#RealWidth">RealWidth</a>, <a href="../uwindow/uwindowrootwindow.html#VSplitCursor">VSplitCursor</a>, <a href="../uwindow/uwindowrootwindow.html#WaitCursor">WaitCursor</a>, <a href="../uwindow/uwindowrootwindow.html#WECursor">WECursor</a></td>
+</tr>
+</table>
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Enumerations Summary</th>
+</tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Enumerations from <a href="../uwindow/uwindow-overview.html">UWindow</a>.<a href="../uwindow/uwindowrootwindow.html">UWindowRootWindow</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../uwindow/uwindowrootwindow.html#eGameWidgetID">eGameWidgetID</a>, <a href="../uwindow/uwindowrootwindow.html#eRootID">eRootID</a></td>
+</tr>
+</table>
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Structures Summary</th>
+</tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Structures from <a href="../r6window/r6window-overview.html">R6Window</a>.<a href="../r6window/r6windowrootwindow.html">R6WindowRootWindow</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../r6window/r6windowrootwindow.html#stKeyAvailability">stKeyAvailability</a>, <a href="../r6window/r6windowrootwindow.html#StWidget">StWidget</a></td>
+</tr>
+</table>
+
+
+<br />
+
+
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Functions Summary</th>
+</tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_ChangeCurrentWidget-" name="ChangeCurrentWidget" title="go to the details">ChangeCurrentWidget</a> (eGameWidgetID widgetID ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_ChangeInstructionWidget-" name="ChangeInstructionWidget" title="go to the details">ChangeInstructionWidget</a> (<a href="../engine/actor.html">Actor</a> pISV, BOOL bShow, INT iBox, INT iParagraph))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_ChangeWidget-" name="ChangeWidget" title="go to the details">ChangeWidget</a> (<a href="../uwindow/uwindowrootwindow.html#eGameWidgetID">eGameWidgetID</a> widgetID, BOOL _bClearPrevWInHistory, BOOL _bCloseAll))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_Created-" name="Created" title="go to the details">Created</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_DrawMouse-" name="DrawMouse" title="go to the details">DrawMouse</a> (<a href="../engine/canvas.html">Canvas</a> C))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_MenuLoadProfile-" name="MenuLoadProfile" title="go to the details">MenuLoadProfile</a> (BOOL _bServerProfile))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_MoveMouse-" name="MoveMouse" title="go to the details">MoveMouse</a> (float X, float Y))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_PopUpBoxDone-" name="PopUpBoxDone" title="go to the details">PopUpBoxDone</a> (<a href="../uwindow/uwindowbase.html#MessageBoxResult">MessageBoxResult</a> Result, <a href="../uwindow/uwindowbase.html#EPopUpID">ePopUpID</a> _ePopUpID))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>BOOL&nbsp;</td><td><a href="#_ProcessKeyDown-" name="ProcessKeyDown" title="go to the details">ProcessKeyDown</a> (int Key))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>BOOL&nbsp;</td><td><a href="#_ProcessKeyUp-" name="ProcessKeyUp" title="go to the details">ProcessKeyUp</a> (int Key))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_SimplePopUp-" name="SimplePopUp" title="go to the details">SimplePopUp</a> (string _szTitle, string _szText, <a href="../uwindow/uwindowbase.html#EPopUpID">ePopUpID</a> _ePopUpID, optional INT _iButtonsType, OPTIONAL BOOL bAddDisableDlg, optional <a href="../uwindow/uwindowwindow.html">UWindowWindow</a> OwnerWindow))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_WindowEvent-" name="WindowEvent" title="go to the details">WindowEvent</a> (<a href="../uwindow/uwindowwindow.html#WinMessage">WinMessage</a> Msg, <a href="../engine/canvas.html">Canvas</a> C, float X, float Y, int Key))<br /><span class="function_state"></span></td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Functions from <a href="../r6window/r6window-overview.html">R6Window</a>.<a href="../r6window/r6windowrootwindow.html">R6WindowRootWindow</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../r6window/r6windowrootwindow.html#AddKeyInList">AddKeyInList</a>, <a href="../r6window/r6windowrootwindow.html#CheckConsoleTypingState">CheckConsoleTypingState</a>, <a href="../r6window/r6windowrootwindow.html#CloseAllWindow">CloseAllWindow</a>, <a href="../r6window/r6windowrootwindow.html#FillListOfKeyAvailability">FillListOfKeyAvailability</a>, <a href="../r6window/r6windowrootwindow.html#GetMapNameLocalisation">GetMapNameLocalisation</a>, <a href="../r6window/r6windowrootwindow.html#GetPopUpFrame">GetPopUpFrame</a>, <a href="../r6window/r6windowrootwindow.html#GetSimplePopUpID">GetSimplePopUpID</a>, <a href="../r6window/r6windowrootwindow.html#IsWidgetIsInHistory">IsWidgetIsInHistory</a>, <a href="../r6window/r6windowrootwindow.html#ManagePrevWInHistory">ManagePrevWInHistory</a>, <a href="../r6window/r6windowrootwindow.html#ModifyPopUpInsideText">ModifyPopUpInsideText</a>, <a href="../r6window/r6windowrootwindow.html#PaintBackground">PaintBackground</a>, <a href="../r6window/r6windowrootwindow.html#PopUpBoxDone">PopUpBoxDone</a>, <a href="../r6window/r6windowrootwindow.html#SetLoadRandomBackgroundImage">SetLoadRandomBackgroundImage</a>, <a href="../r6window/r6windowrootwindow.html#SimplePopUp">SimplePopUp</a>, <a href="../r6window/r6windowrootwindow.html#SimpleTextPopUp">SimpleTextPopUp</a></td>
+</tr>
+</table>
+<table>
+<tr>
+	<th class="inherittitle">Inherited Functions from <a href="../uwindow/uwindow-overview.html">UWindow</a>.<a href="../uwindow/uwindowrootwindow.html">UWindowRootWindow</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../uwindow/uwindowrootwindow.html#AddHotkeyWindow">AddHotkeyWindow</a>, <a href="../uwindow/uwindowrootwindow.html#BeginPlay">BeginPlay</a>, <a href="../uwindow/uwindowrootwindow.html#CancelCapture">CancelCapture</a>, <a href="../uwindow/uwindowrootwindow.html#CaptureMouse">CaptureMouse</a>, <a href="../uwindow/uwindowrootwindow.html#ChangeCurrentWidget">ChangeCurrentWidget</a>, <a href="../uwindow/uwindowrootwindow.html#ChangeInstructionWidget">ChangeInstructionWidget</a>, <a href="../uwindow/uwindowrootwindow.html#ChangeLookAndFeel">ChangeLookAndFeel</a>, <a href="../uwindow/uwindowrootwindow.html#CheckCaptureMouseDown">CheckCaptureMouseDown</a>, <a href="../uwindow/uwindowrootwindow.html#CheckCaptureMouseUp">CheckCaptureMouseUp</a>, <a href="../uwindow/uwindowrootwindow.html#CloseActiveWindow">CloseActiveWindow</a>, <a href="../uwindow/uwindowrootwindow.html#Created">Created</a>, <a href="../uwindow/uwindowrootwindow.html#DoQuitGame">DoQuitGame</a>, <a href="../uwindow/uwindowrootwindow.html#DrawBackGroundEffect">DrawBackGroundEffect</a>, <a href="../uwindow/uwindowrootwindow.html#DrawMouse">DrawMouse</a>, <a href="../uwindow/uwindowrootwindow.html#GetGameWidgetID">GetGameWidgetID</a>, <a href="../uwindow/uwindowrootwindow.html#GetLookAndFeel">GetLookAndFeel</a>, <a href="../uwindow/uwindowrootwindow.html#GetLookAndFeelTexture">GetLookAndFeelTexture</a>, <a href="../uwindow/uwindowrootwindow.html#GetMapNameLocalisation">GetMapNameLocalisation</a>, <a href="../uwindow/uwindowrootwindow.html#GetSimplePopUpID">GetSimplePopUpID</a>, <a href="../uwindow/uwindowrootwindow.html#HideWindow">HideWindow</a>, <a href="../uwindow/uwindowrootwindow.html#HotKeyDown">HotKeyDown</a>, <a href="../uwindow/uwindowrootwindow.html#HotKeyUp">HotKeyUp</a>, <a href="../uwindow/uwindowrootwindow.html#IsActive">IsActive</a>, <a href="../uwindow/uwindowrootwindow.html#IsAHotKeyWindow">IsAHotKeyWindow</a>, <a href="../uwindow/uwindowrootwindow.html#ModifyPopUpInsideText">ModifyPopUpInsideText</a>, <a href="../uwindow/uwindowrootwindow.html#MouseUpDown">MouseUpDown</a>, <a href="../uwindow/uwindowrootwindow.html#MoveMouse">MoveMouse</a>, <a href="../uwindow/uwindowrootwindow.html#PaintBackground">PaintBackground</a>, <a href="../uwindow/uwindowrootwindow.html#PlanningShouldDrawPath">PlanningShouldDrawPath</a>, <a href="../uwindow/uwindowrootwindow.html#PlanningShouldProcessKey">PlanningShouldProcessKey</a>, <a href="../uwindow/uwindowrootwindow.html#QuitGame">QuitGame</a>, <a href="../uwindow/uwindowrootwindow.html#RemoveHotkeyWindow">RemoveHotkeyWindow</a>, <a href="../uwindow/uwindowrootwindow.html#ResetMenus">ResetMenus</a>, <a href="../uwindow/uwindowrootwindow.html#Resized">Resized</a>, <a href="../uwindow/uwindowrootwindow.html#SaveTrainingPlanning">SaveTrainingPlanning</a>, <a href="../uwindow/uwindowrootwindow.html#SetLoadRandomBackgroundImage">SetLoadRandomBackgroundImage</a>, <a href="../uwindow/uwindowrootwindow.html#SetMousePos">SetMousePos</a>, <a href="../uwindow/uwindowrootwindow.html#SetNewMODS">SetNewMODS</a>, <a href="../uwindow/uwindowrootwindow.html#SetResolution">SetResolution</a>, <a href="../uwindow/uwindowrootwindow.html#SetScale">SetScale</a>, <a href="../uwindow/uwindowrootwindow.html#SetupFonts">SetupFonts</a>, <a href="../uwindow/uwindowrootwindow.html#SimplePopUp">SimplePopUp</a>, <a href="../uwindow/uwindowrootwindow.html#StopPlayMode">StopPlayMode</a>, <a href="../uwindow/uwindowrootwindow.html#Tick">Tick</a>, <a href="../uwindow/uwindowrootwindow.html#TrapKey">TrapKey</a>, <a href="../uwindow/uwindowrootwindow.html#UpdateMenus">UpdateMenus</a>, <a href="../uwindow/uwindowrootwindow.html#WindowEvent">WindowEvent</a></td>
+</tr>
+</table>
+
+
+<br />
+
+
+
+<hr />
+
+
+
+<table class="title">
+<tr>
+	<th class="title">Variables Detail</th>
+</tr>
+</table>
+
+<h4><a name="_m_bCanDisplayOperativeSelector" class="hidden"></a>m_bCanDisplayOperativeSelector <a href="../Source_r6menu/r6menuingamerootwindow.html#25" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">bool</span> m_bCanDisplayOperativeSelector;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_bInEscMenu" class="hidden"></a>m_bInEscMenu <a href="../Source_r6menu/r6menuingamerootwindow.html#26" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">BOOL</span> m_bInEscMenu;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_bInPopUp" class="hidden"></a>m_bInPopUp <a href="../Source_r6menu/r6menuingamerootwindow.html#28" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">BOOL</span> m_bInPopUp;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_bInTraining" class="hidden"></a>m_bInTraining <a href="../Source_r6menu/r6menuingamerootwindow.html#27" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">BOOL</span> m_bInTraining;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_DebriefingWidget" class="hidden"></a>m_DebriefingWidget <a href="../Source_r6menu/r6menuingamerootwindow.html#12" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../r6menu/r6menudebriefingwidget.html" class="source">R6MenuDebriefingWidget</a></span> m_DebriefingWidget;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_ESCMenuKey" class="hidden"></a>m_ESCMenuKey <a href="../Source_r6menu/r6menuingamerootwindow.html#23" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">INT</span> m_ESCMenuKey;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_EscMenuWidget" class="hidden"></a>m_EscMenuWidget <a href="../Source_r6menu/r6menuingamerootwindow.html#18" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../r6menu/r6menuingameesc.html" class="source">R6MenuInGameEsc</a></span> m_EscMenuWidget;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_fTopLabelHeight" class="hidden"></a>m_fTopLabelHeight <a href="../Source_r6menu/r6menuingamerootwindow.html#21" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">FLOAT</span> m_fTopLabelHeight;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_InGameOperativeSelectorWidget" class="hidden"></a>m_InGameOperativeSelectorWidget <a href="../Source_r6menu/r6menuingamerootwindow.html#15" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../r6menu/r6menuingameoperativeselectorwidget.html" class="source">R6MenuInGameOperativeSelectorWidget</a></span> m_InGameOperativeSelectorWidget;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_OptionsWidget" class="hidden"></a>m_OptionsWidget <a href="../Source_r6menu/r6menuingamerootwindow.html#14" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../r6menu/r6menuoptionswidget.html" class="source">R6MenuOptionsWidget</a></span> m_OptionsWidget;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_pInstructionWidget" class="hidden"></a>m_pInstructionWidget <a href="../Source_r6menu/r6menuingamerootwindow.html#13" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../r6menu/r6menuingameinstructionwidget.html" class="source">R6MenuInGameInstructionWidget</a></span> m_pInstructionWidget;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_REscMenuWidget" class="hidden"></a>m_REscMenuWidget <a href="../Source_r6menu/r6menuingamerootwindow.html#19" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../core/object.html#Region" class="source">Region</a></span> m_REscMenuWidget;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_REscTraining" class="hidden"></a>m_REscTraining <a href="../Source_r6menu/r6menuingamerootwindow.html#20" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../core/object.html#Region" class="source">Region</a></span> m_REscTraining;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+
+
+<br />
+
+
+
+
+
+
+
+<table class="title">
+<tr>
+	<th class="title">Functions Detail</th>
+</tr>
+</table>
+
+<h4><a name="_ChangeCurrentWidget-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> ChangeCurrentWidget <span class="function_state"></span> <a href="../Source_r6menu/r6menuingamerootwindow.html#89" class="small">Source code</a></h4>
+<div class="declaration"> function  ChangeCurrentWidget ( <span class="source_type"><a href="../uwindow/uwindowrootwindow.html#eGameWidgetID" class="source">eGameWidgetID</a></span> <span class="source_type">widgetID</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ChangeInstructionWidget-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> ChangeInstructionWidget <span class="function_state"></span> <a href="../Source_r6menu/r6menuingamerootwindow.html#60" class="small">Source code</a></h4>
+<div class="declaration"> function  ChangeInstructionWidget ( <span class="source_type"><a href="../engine/actor.html" class="source">Actor</a></span> pISV, <span class="source_type">BOOL</span> bShow, <span class="source_type">INT</span> iBox, <span class="source_type">INT</span> iParagraph) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ChangeWidget-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> ChangeWidget <span class="function_state"></span> <a href="../Source_r6menu/r6menuingamerootwindow.html#112" class="small">Source code</a></h4>
+<div class="declaration"> function  ChangeWidget ( <span class="source_type"><a href="../uwindow/uwindowrootwindow.html#eGameWidgetID" class="source">eGameWidgetID</a></span> <span class="source_type">widgetID</span>, <span class="source_type">BOOL</span> _bClearPrevWInHistory, <span class="source_type">BOOL</span> _bCloseAll) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_Created-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> Created <span class="function_state"></span> <a href="../Source_r6menu/r6menuingamerootwindow.html#31" class="small">Source code</a></h4>
+<div class="declaration"> function  Created ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_DrawMouse-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> DrawMouse <span class="function_state"></span> <a href="../Source_r6menu/r6menuingamerootwindow.html#267" class="small">Source code</a></h4>
+<div class="declaration"> function  DrawMouse ( <span class="source_type"><a href="../engine/canvas.html" class="source">Canvas</a></span> <span class="source_type">C</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_MenuLoadProfile-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> MenuLoadProfile <span class="function_state"></span> <a href="../Source_r6menu/r6menuingamerootwindow.html#478" class="small">Source code</a></h4>
+<div class="declaration"> function  MenuLoadProfile ( <span class="source_type">BOOL</span> _bServerProfile) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_MoveMouse-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> MoveMouse <span class="function_state"></span> <a href="../Source_r6menu/r6menuingamerootwindow.html#236" class="small">Source code</a></h4>
+<div class="declaration"> function  MoveMouse ( <span class="source_type">float</span> X, <span class="source_type">float</span> Y) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_PopUpBoxDone-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> PopUpBoxDone <span class="function_state"></span> <a href="../Source_r6menu/r6menuingamerootwindow.html#299" class="small">Source code</a></h4>
+<div class="declaration"> function  PopUpBoxDone ( <span class="source_type"><a href="../uwindow/uwindowbase.html#MessageBoxResult" class="source">MessageBoxResult</a></span> <span class="source_type">Result</span>, <span class="source_type"><a href="../uwindow/uwindowbase.html#EPopUpID" class="source">ePopUpID</a></span> _ePopUpID) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ProcessKeyDown-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> ProcessKeyDown <span class="function_state"></span> <a href="../Source_r6menu/r6menuingamerootwindow.html#407" class="small">Source code</a></h4>
+<div class="declaration"> function <span class="source_type">BOOL</span> ProcessKeyDown ( <span class="source_type">int</span> <span class="source_type">Key</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ProcessKeyUp-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> ProcessKeyUp <span class="function_state"></span> <a href="../Source_r6menu/r6menuingamerootwindow.html#459" class="small">Source code</a></h4>
+<div class="declaration"> function <span class="source_type">BOOL</span> ProcessKeyUp ( <span class="source_type">int</span> <span class="source_type">Key</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_SimplePopUp-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> SimplePopUp <span class="function_state"></span> <a href="../Source_r6menu/r6menuingamerootwindow.html#394" class="small">Source code</a></h4>
+<div class="declaration"> function  SimplePopUp ( <span class="source_type">string</span> _szTitle, <span class="source_type">string</span> _szText, <span class="source_type"><a href="../uwindow/uwindowbase.html#EPopUpID" class="source">ePopUpID</a></span> _ePopUpID, optional <span class="source_type">INT</span> _iButtonsType, OPTIONAL <span class="source_type">BOOL</span> bAddDisableDlg, optional <span class="source_type"><a href="../uwindow/uwindowwindow.html" class="source">UWindowWindow</a></span> OwnerWindow) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_WindowEvent-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> WindowEvent <span class="function_state"></span> <a href="../Source_r6menu/r6menuingamerootwindow.html#364" class="small">Source code</a></h4>
+<div class="declaration"> function  WindowEvent ( <span class="source_type"><a href="../uwindow/uwindowwindow.html#WinMessage" class="source">WinMessage</a></span> <span class="source_type">Msg</span>, <span class="source_type"><a href="../engine/canvas.html" class="source">Canvas</a></span> <span class="source_type">C</span>, <span class="source_type">float</span> X, <span class="source_type">float</span> Y, <span class="source_type">int</span> <span class="source_type">Key</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+
+
+<br />
+
+
+<table class="title">
+<tr>
+	<th class="title">Defaultproperties</th>
+</tr>
+</table>
+<br />
+<div class="source"><table class="source"><tr><td class="source"><pre class="source">defaultproperties
+{
+     m_ESCMenuKey=<span class="source_int">27</span>
+     m_bCanDisplayOperativeSelector=True
+     m_fTopLabelHeight=<span class="source_int">30.000000</span>
+     m_REscMenuWidget=(X=<span class="source_int">115</span>,Y=<span class="source_int">36</span>,W=<span class="source_int">410</span>,<span class="source_type">H</span>=<span class="source_int">380</span>)
+     m_REscTraining=(X=<span class="source_int">115</span>,Y=<span class="source_int">250</span>,W=<span class="source_int">410</span>,<span class="source_type">H</span>=<span class="source_int">55</span>)
+     LookAndFeelClass=<span class="source_string">"R6Menu.R6MenuRSLookAndFeel"</span>
+}
+</pre></td></tr></table></div>
+
+
+
+<hr />
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../r6menu/r6menu-overview.html">Package</a></td>
+	<td class="header_hilight">Class</td>
+	<td class="header"><a href="../Source_r6menu/r6menuingamerootwindow.html">Source</a></td>
+	<td class="header"><a class="header" href="../classtree.html#R6MenuInGameRootWindow">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../r6menu/r6menuingameoperativeselectorwidget.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../r6menu/r6menuingamewritablemapwidget.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+
+<div class="stats">Creation time: mar. 26/5/2026 18:33:12.096 - Created with <a href="http://wiki.beyondunreal.com/wiki/UnCodeX" target="_blank">UnCodeX</a></div>
+
+</body>
+</html>

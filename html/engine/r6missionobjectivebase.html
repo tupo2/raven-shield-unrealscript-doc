@@ -1,0 +1,544 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+	<title>UnCodeX - engine.R6MissionObjectiveBase</title>
+	<meta name="Generator" content="UnCodeX 241" />
+	<link rel="stylesheet" href="../DocStyle2.css" type="text/css" title="Original Purple" />
+	<link rel="alternative stylesheet" href="../DocStyle2-blue.css" type="text/css" title="Blue" />
+	<link rel="alternative stylesheet" href="../DocStyle2-red.css" type="text/css" title="Red" />
+	<!--[if IE]>
+	<link rel="stylesheet" href="../DocStyle2-msie.css" type="text/css" />
+	<![endif]-->
+	<script src="../styleswitcher.js" type="text/javascript"></script>
+</head>
+<body>
+
+<div class="header">
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../engine/engine-overview.html">Package</a></td>
+	<td class="header_hilight">Class</td>
+	<td class="header"><a href="../Source_engine/r6missionobjectivebase.html">Source</a></td>
+	<td class="header"><a class="header" href="../classtree.html#R6MissionObjectiveBase">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../engine/r6missiondescription.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../engine/r6mod.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html#engine/r6missionobjectivebase.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+</div>
+<div class="spacer"></div>
+
+<h1><a href="../engine/engine-overview.html">engine</a>.R6MissionObjectiveBase</h1>
+
+<dl>
+<dt>Extends</dt><dd><a href="../core/object.html">Object</a></dd>
+<dt>Modifiers</dt><dd>hidecategories ( Object ) editinlinenew abstract </dd>
+</dl>
+
+<p></p>
+
+<pre class="tree"><a href="../core/core-overview.html">core</a>.<a href="../core/object.html">Object</a>
+|   
++-- <a href="../engine/engine-overview.html">engine</a>.<a href="../engine/r6missionobjectivebase.html">R6MissionObjectiveBase</a>
+</pre>
+
+<h4>Direct Known Subclasses:</h4>
+<blockquote>
+	<a href="../r6game/r6mobjacceptablelosses.html">R6MObjAcceptableLosses</a>, <a href="../r6game/r6mobjcompleteallandgotoextraction.html">R6MObjCompleteAllAndGoToExtraction</a>, <a href="../r6game/r6mobjdeathmatch.html">R6MObjDeathmatch</a>, <a href="../r6game/r6mobjgotoextraction.html">R6MObjGoToExtraction</a>, <a href="../r6game/r6mobjgroupmission.html">R6MObjGroupMission</a>, <a href="../r6game/r6mobjneutralizeterrorist.html">R6MObjNeutralizeTerrorist</a>, <a href="../r6game/r6mobjobjectinteraction.html">R6MObjObjectInteraction</a>, <a href="../r6game/r6mobjpreventkillindepzone.html">R6MObjPreventKillInDepZone</a>, <a href="../r6game/r6mobjrecon.html">R6MObjRecon</a>, <a href="../r6game/r6mobjrescuehostage.html">R6MObjRescueHostage</a>, <a href="../r6game/r6mobjtimer.html">R6MObjTimer</a>
+</blockquote>
+
+<hr />
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Constants Summary</th>
+</tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Contants from <a href="../core/core-overview.html">core</a>.<a href="../core/object.html">Object</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../core/object.html#MaxInt">MaxInt</a>, <a href="../core/object.html#Pi">Pi</a>, <a href="../core/object.html#RF_NotForClient">RF_NotForClient</a>, <a href="../core/object.html#RF_NotForEdit">RF_NotForEdit</a>, <a href="../core/object.html#RF_NotForServer">RF_NotForServer</a>, <a href="../core/object.html#RF_Public">RF_Public</a>, <a href="../core/object.html#RF_Transactional">RF_Transactional</a>, <a href="../core/object.html#RF_Transient">RF_Transient</a></td>
+</tr>
+</table>
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th colspan="2" class="title">Variables Summary</th>
+</tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_m_bCompleted" name="m_bCompleted" title="go to the details">m_bCompleted</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_m_bEndOfListOfObjectives" name="m_bEndOfListOfObjectives" title="go to the details">m_bEndOfListOfObjectives</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_m_bFailed" name="m_bFailed" title="go to the details">m_bFailed</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_m_bFeedbackOnCompletionSend" name="m_bFeedbackOnCompletionSend" title="go to the details">m_bFeedbackOnCompletionSend</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_m_bFeedbackOnFailureSend" name="m_bFeedbackOnFailureSend" title="go to the details">m_bFeedbackOnFailureSend</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">int</td><td width="66%"><a href="#_m_iCountdown" name="m_iCountdown" title="go to the details">m_iCountdown</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../engine/actor.html">Actor</a></td><td width="66%"><a href="#_m_mgr" name="m_mgr" title="go to the details">m_mgr</a></td></tr>
+<tr><th colspan="2" class="small">R6MissionObjectiveBase</th></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_m_bIfCompletedMissionIsSuccessfull" name="m_bIfCompletedMissionIsSuccessfull" title="go to the details">m_bIfCompletedMissionIsSuccessfull</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_m_bIfFailedMissionIsAborted" name="m_bIfFailedMissionIsAborted" title="go to the details">m_bIfFailedMissionIsAborted</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_m_bMoralityObjective" name="m_bMoralityObjective" title="go to the details">m_bMoralityObjective</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_m_bShowLog" name="m_bShowLog" title="go to the details">m_bShowLog</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">bool</td><td width="66%"><a href="#_m_bVisibleInMenu" name="m_bVisibleInMenu" title="go to the details">m_bVisibleInMenu</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">Sound</td><td width="66%"><a href="#_m_sndSoundFailure" name="m_sndSoundFailure" title="go to the details">m_sndSoundFailure</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">Sound</td><td width="66%"><a href="#_m_sndSoundSuccess" name="m_sndSoundSuccess" title="go to the details">m_sndSoundSuccess</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_m_szDescription" name="m_szDescription" title="go to the details">m_szDescription</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_m_szDescriptionFailure" name="m_szDescriptionFailure" title="go to the details">m_szDescriptionFailure</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_m_szDescriptionInMenu" name="m_szDescriptionInMenu" title="go to the details">m_szDescriptionInMenu</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_m_szFeedbackOnCompletion" name="m_szFeedbackOnCompletion" title="go to the details">m_szFeedbackOnCompletion</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_m_szFeedbackOnFailure" name="m_szFeedbackOnFailure" title="go to the details">m_szFeedbackOnFailure</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">string</td><td width="66%"><a href="#_m_szMissionObjLocalization" name="m_szMissionObjLocalization" title="go to the details">m_szMissionObjLocalization</a></td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Variables from <a href="../core/core-overview.html">core</a>.<a href="../core/object.html">Object</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../core/object.html#Class">Class</a>, <a href="../core/object.html#DName">DName</a>, <a href="../core/object.html#Name">Name</a>, <a href="../core/object.html#ObjectFlags">ObjectFlags</a>, <a href="../core/object.html#ObjectInternal[6]">ObjectInternal[6]</a>, <a href="../core/object.html#Outer">Outer</a></td>
+</tr>
+</table>
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Enumerations Summary</th>
+</tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Enumerations from <a href="../core/core-overview.html">core</a>.<a href="../core/object.html">Object</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../core/object.html#ECamOrientation">ECamOrientation</a>, <a href="../core/object.html#EGoCode">EGoCode</a>, <a href="../core/object.html#EMovementMode">EMovementMode</a>, <a href="../core/object.html#EMovementSpeed">EMovementSpeed</a>, <a href="../core/object.html#ENodeNotify">ENodeNotify</a>, <a href="../core/object.html#EPlanAction">EPlanAction</a>, <a href="../core/object.html#EPlanActionType">EPlanActionType</a>, <a href="../core/object.html#ePlayerTeamSelection">ePlayerTeamSelection</a>, <a href="../core/object.html#ESheerAxis">ESheerAxis</a></td>
+</tr>
+</table>
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Structures Summary</th>
+</tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Structures from <a href="../core/core-overview.html">core</a>.<a href="../core/object.html">Object</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../core/object.html#BoundingVolume">BoundingVolume</a>, <a href="../core/object.html#Box">Box</a>, <a href="../core/object.html#Color">Color</a>, <a href="../core/object.html#CompressedPosition">CompressedPosition</a>, <a href="../core/object.html#Coords">Coords</a>, <a href="../core/object.html#Guid">Guid</a>, <a href="../core/object.html#InterpCurve">InterpCurve</a>, <a href="../core/object.html#InterpCurvePoint">InterpCurvePoint</a>, <a href="../core/object.html#Matrix">Matrix</a>, <a href="../core/object.html#Plane">Plane</a>, <a href="../core/object.html#Range">Range</a>, <a href="../core/object.html#RangeVector">RangeVector</a>, <a href="../core/object.html#Region">Region</a>, <a href="../core/object.html#Rotator">Rotator</a>, <a href="../core/object.html#Scale">Scale</a>, <a href="../core/object.html#Vector">Vector</a></td>
+</tr>
+</table>
+
+
+<br />
+
+
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Functions Summary</th>
+</tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_EnteredExtractionZone-" name="EnteredExtractionZone" title="go to the details">EnteredExtractionZone</a> (<a href="../engine/pawn.html">Pawn</a> pawn)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_ExitExtractionZone-" name="ExitExtractionZone" title="go to the details">ExitExtractionZone</a> (<a href="../engine/pawn.html">Pawn</a> pawn)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>string&nbsp;</td><td><a href="#_getDescription-" name="getDescription" title="go to the details">getDescription</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>string&nbsp;</td><td><a href="#_GetDescriptionFailure-" name="GetDescriptionFailure" title="go to the details">GetDescriptionFailure</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>int&nbsp;</td><td><a href="#_GetNumSubMission-" name="GetNumSubMission" title="go to the details">GetNumSubMission</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>Sound&nbsp;</td><td><a href="#_GetSoundFailure-" name="GetSoundFailure" title="go to the details">GetSoundFailure</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>Sound&nbsp;</td><td><a href="#_GetSoundSuccess-" name="GetSoundSuccess" title="go to the details">GetSoundSuccess</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td><a href="../engine/r6missionobjectivebase.html">R6MissionObjectiveBase</a>&nbsp;</td><td><a href="#_GetSubMissionObjective-" name="GetSubMissionObjective" title="go to the details">GetSubMissionObjective</a> (int index ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_Init-" name="Init" title="go to the details">Init</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_IObjectDestroyed-" name="IObjectDestroyed" title="go to the details">IObjectDestroyed</a> (<a href="../engine/pawn.html">Pawn</a> aPawn, <a href="../engine/actor.html">Actor</a> anInteractiveObject)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_IObjectInteract-" name="IObjectInteract" title="go to the details">IObjectInteract</a> (<a href="../engine/pawn.html">Pawn</a> aPawn, <a href="../engine/actor.html">Actor</a> anInteractiveObject)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>bool&nbsp;</td><td><a href="#_isCompleted-" name="isCompleted" title="go to the details">isCompleted</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>bool&nbsp;</td><td><a href="#_isFailed-" name="isFailed" title="go to the details">isFailed</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>bool&nbsp;</td><td><a href="#_isMissionAbortedOnFailure-" name="isMissionAbortedOnFailure" title="go to the details">isMissionAbortedOnFailure</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>bool&nbsp;</td><td><a href="#_isMissionCompletedOnSuccess-" name="isMissionCompletedOnSuccess" title="go to the details">isMissionCompletedOnSuccess</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>bool&nbsp;</td><td><a href="#_isVisibleInMenu-" name="isVisibleInMenu" title="go to the details">isVisibleInMenu</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_logMObj-" name="logMObj" title="go to the details">logMObj</a> (string szText ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_logX-" name="logX" title="go to the details">logX</a> (string szText ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_PawnHeard-" name="PawnHeard" title="go to the details">PawnHeard</a> (<a href="../engine/pawn.html">Pawn</a> seen, Pawn  witness)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_PawnKilled-" name="PawnKilled" title="go to the details">PawnKilled</a> (<a href="../engine/pawn.html">Pawn</a> killedPawn)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_PawnSecure-" name="PawnSecure" title="go to the details">PawnSecure</a> (<a href="../engine/pawn.html">Pawn</a> securedPawn)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_PawnSeen-" name="PawnSeen" title="go to the details">PawnSeen</a> (<a href="../engine/pawn.html">Pawn</a> seen, Pawn  witness)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_Reset-" name="Reset" title="go to the details">Reset</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_SetMObjMgr-" name="SetMObjMgr" title="go to the details">SetMObjMgr</a> (Actor aMObjMgr ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_TimerCallback-" name="TimerCallback" title="go to the details">TimerCallback</a> (float fTime)<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_ToggleLog-" name="ToggleLog" title="go to the details">ToggleLog</a> (bool bToggle ))<br /><span class="function_state"></span></td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Functions from <a href="../core/core-overview.html">core</a>.<a href="../core/object.html">Object</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../core/object.html#!">!</a>, <a href="../core/object.html#!=">!=</a>, <a href="../core/object.html#$">$</a>, <a href="../core/object.html#%">%</a>, <a href="../core/object.html#&">&</a>, <a href="../core/object.html#&&">&&</a>, <a href="../core/object.html#*">*</a>, <a href="../core/object.html#**">**</a>, <a href="../core/object.html#*=">*=</a>, <a href="../core/object.html#+">+</a>, <a href="../core/object.html#++">++</a>, <a href="../core/object.html#+=">+=</a>, <a href="../core/object.html#-">-</a>, <a href="../core/object.html#--">--</a>, <a href="../core/object.html#-=">-=</a>, <a href="../core/object.html#/ ">/ </a>, <a href="../core/object.html#/=">/=</a>, <a href="../core/object.html#&lt;">&lt;</a>, <a href="../core/object.html#&lt;&lt;">&lt;&lt;</a>, <a href="../core/object.html#&lt;=">&lt;=</a>, <a href="../core/object.html#==">==</a>, <a href="../core/object.html#&gt;">&gt;</a>, <a href="../core/object.html#&gt;=">&gt;=</a>, <a href="../core/object.html#&gt;&gt;">&gt;&gt;</a>, <a href="../core/object.html#&gt;&gt;&gt;">&gt;&gt;&gt;</a>, <a href="../core/object.html#@">@</a>, <a href="../core/object.html#Abs">Abs</a>, <a href="../core/object.html#Acos">Acos</a>, <a href="../core/object.html#Asc">Asc</a>, <a href="../core/object.html#Asin">Asin</a>, <a href="../core/object.html#Atan">Atan</a>, <a href="../core/object.html#Atoi">Atoi</a>, <a href="../core/object.html#BeginState">BeginState</a>, <a href="../core/object.html#Caps">Caps</a>, <a href="../core/object.html#Chr">Chr</a>, <a href="../core/object.html#Clamp">Clamp</a>, <a href="../core/object.html#ClassIsChildOf">ClassIsChildOf</a>, <a href="../core/object.html#ClearOuter">ClearOuter</a>, <a href="../core/object.html#Clock">Clock</a>, <a href="../core/object.html#ClockwiseFrom">ClockwiseFrom</a>, <a href="../core/object.html#Cos">Cos</a>, <a href="../core/object.html#Cross">Cross</a>, <a href="../core/object.html#Disable">Disable</a>, <a href="../core/object.html#Dot">Dot</a>, <a href="../core/object.html#DynamicLoadObject">DynamicLoadObject</a>, <a href="../core/object.html#Enable">Enable</a>, <a href="../core/object.html#EndState">EndState</a>, <a href="../core/object.html#Exp">Exp</a>, <a href="../core/object.html#FClamp">FClamp</a>, <a href="../core/object.html#FindObject">FindObject</a>, <a href="../core/object.html#FMax">FMax</a>, <a href="../core/object.html#FMin">FMin</a>, <a href="../core/object.html#FRand">FRand</a>, <a href="../core/object.html#FreePackageObjects">FreePackageObjects</a>, <a href="../core/object.html#GetAxes">GetAxes</a>, <a href="../core/object.html#GetEnum">GetEnum</a>, <a href="../core/object.html#GetFirstPackageClass">GetFirstPackageClass</a>, <a href="../core/object.html#GetNextClass">GetNextClass</a>, <a href="../core/object.html#GetPropertyText">GetPropertyText</a>, <a href="../core/object.html#GetRegistryKey">GetRegistryKey</a>, <a href="../core/object.html#GetStateName">GetStateName</a>, <a href="../core/object.html#GetUnAxes">GetUnAxes</a>, <a href="../core/object.html#GotoState">GotoState</a>, <a href="../core/object.html#InitMod">InitMod</a>, <a href="../core/object.html#InStr">InStr</a>, <a href="../core/object.html#InterpCurveEval">InterpCurveEval</a>, <a href="../core/object.html#Invert">Invert</a>, <a href="../core/object.html#IsA">IsA</a>, <a href="../core/object.html#IsInState">IsInState</a>, <a href="../core/object.html#Itoa">Itoa</a>, <a href="../core/object.html#Left">Left</a>, <a href="../core/object.html#Len">Len</a>, <a href="../core/object.html#Lerp">Lerp</a>, <a href="../core/object.html#LoadConfig">LoadConfig</a>, <a href="../core/object.html#Localize">Localize</a>, <a href="../core/object.html#Log">Log</a>, <a href="../core/object.html#Loge">Loge</a>, <a href="../core/object.html#LogSnd">LogSnd</a>, <a href="../core/object.html#Max">Max</a>, <a href="../core/object.html#Mid">Mid</a>, <a href="../core/object.html#Min">Min</a>, <a href="../core/object.html#MirrorVectorByNormal">MirrorVectorByNormal</a>, <a href="../core/object.html#Normal">Normal</a>, <a href="../core/object.html#Normalize">Normalize</a>, <a href="../core/object.html#OrthoRotation">OrthoRotation</a>, <a href="../core/object.html#Rand">Rand</a>, <a href="../core/object.html#RandRange">RandRange</a>, <a href="../core/object.html#RemoveInvalidChars">RemoveInvalidChars</a>, <a href="../core/object.html#ResetConfig">ResetConfig</a>, <a href="../core/object.html#RewindToFirstClass">RewindToFirstClass</a>, <a href="../core/object.html#Right">Right</a>, <a href="../core/object.html#RotRand">RotRand</a>, <a href="../core/object.html#SaveConfig">SaveConfig</a>, <a href="../core/object.html#SetPropertyText">SetPropertyText</a>, <a href="../core/object.html#SetRegistryKey">SetRegistryKey</a>, <a href="../core/object.html#ShortestAngle2D">ShortestAngle2D</a>, <a href="../core/object.html#Sin">Sin</a>, <a href="../core/object.html#Smerp">Smerp</a>, <a href="../core/object.html#Sqrt">Sqrt</a>, <a href="../core/object.html#Square">Square</a>, <a href="../core/object.html#StaticSaveConfig">StaticSaveConfig</a>, <a href="../core/object.html#Strnicmp">Strnicmp</a>, <a href="../core/object.html#Tan">Tan</a>, <a href="../core/object.html#Unclock">Unclock</a>, <a href="../core/object.html#VRand">VRand</a>, <a href="../core/object.html#VSize">VSize</a>, <a href="../core/object.html#Warn">Warn</a>, <a href="../core/object.html#^">^</a>, <a href="../core/object.html#^^">^^</a>, <a href="../core/object.html#|">|</a>, <a href="../core/object.html#||">||</a>, <a href="../core/object.html#~">~</a>, <a href="../core/object.html#~=">~=</a></td>
+</tr>
+</table>
+
+
+<br />
+
+
+
+<hr />
+
+
+
+<table class="title">
+<tr>
+	<th class="title">Variables Detail</th>
+</tr>
+</table>
+
+<h4><a name="_m_bCompleted" class="hidden"></a>m_bCompleted <a href="../Source_engine/r6missionobjectivebase.html#21" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">bool</span> m_bCompleted;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_bEndOfListOfObjectives" class="hidden"></a>m_bEndOfListOfObjectives <a href="../Source_engine/r6missionobjectivebase.html#27" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">bool</span> m_bEndOfListOfObjectives;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_bFailed" class="hidden"></a>m_bFailed <a href="../Source_engine/r6missionobjectivebase.html#20" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">bool</span> m_bFailed;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_bFeedbackOnCompletionSend" class="hidden"></a>m_bFeedbackOnCompletionSend <a href="../Source_engine/r6missionobjectivebase.html#35" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">bool</span> m_bFeedbackOnCompletionSend;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_bFeedbackOnFailureSend" class="hidden"></a>m_bFeedbackOnFailureSend <a href="../Source_engine/r6missionobjectivebase.html#37" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">bool</span> m_bFeedbackOnFailureSend;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_iCountdown" class="hidden"></a>m_iCountdown <a href="../Source_engine/r6missionobjectivebase.html#29" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">int</span> m_iCountdown;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_mgr" class="hidden"></a>m_mgr <a href="../Source_engine/r6missionobjectivebase.html#12" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../engine/actor.html" class="source">Actor</a></span> m_mgr;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h3 class="vartag">R6MissionObjectiveBase</h3>
+<h4><a name="_m_bIfCompletedMissionIsSuccessfull" class="hidden"></a>m_bIfCompletedMissionIsSuccessfull <a href="../Source_engine/r6missionobjectivebase.html#24" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../engine/r6missionobjectivebase.html" class="source">R6MissionObjectiveBase</a></span>) <span class="source_type">bool</span> m_bIfCompletedMissionIsSuccessfull;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_bIfFailedMissionIsAborted" class="hidden"></a>m_bIfFailedMissionIsAborted <a href="../Source_engine/r6missionobjectivebase.html#25" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../engine/r6missionobjectivebase.html" class="source">R6MissionObjectiveBase</a></span>) <span class="source_type">bool</span> m_bIfFailedMissionIsAborted;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_bMoralityObjective" class="hidden"></a>m_bMoralityObjective <a href="../Source_engine/r6missionobjectivebase.html#26" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../engine/r6missionobjectivebase.html" class="source">R6MissionObjectiveBase</a></span>) <span class="source_type">bool</span> m_bMoralityObjective;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_bShowLog" class="hidden"></a>m_bShowLog <a href="../Source_engine/r6missionobjectivebase.html#28" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../engine/r6missionobjectivebase.html" class="source">R6MissionObjectiveBase</a></span>) <span class="source_type">bool</span> m_bShowLog;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_bVisibleInMenu" class="hidden"></a>m_bVisibleInMenu <a href="../Source_engine/r6missionobjectivebase.html#23" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../engine/r6missionobjectivebase.html" class="source">R6MissionObjectiveBase</a></span>) <span class="source_type">bool</span> m_bVisibleInMenu;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_sndSoundFailure" class="hidden"></a>m_sndSoundFailure <a href="../Source_engine/r6missionobjectivebase.html#32" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../engine/r6missionobjectivebase.html" class="source">R6MissionObjectiveBase</a></span>) <span class="source_type">Sound</span> m_sndSoundFailure;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_sndSoundSuccess" class="hidden"></a>m_sndSoundSuccess <a href="../Source_engine/r6missionobjectivebase.html#31" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../engine/r6missionobjectivebase.html" class="source">R6MissionObjectiveBase</a></span>) <span class="source_type">Sound</span> m_sndSoundSuccess;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_szDescription" class="hidden"></a>m_szDescription <a href="../Source_engine/r6missionobjectivebase.html#14" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../engine/r6missionobjectivebase.html" class="source">R6MissionObjectiveBase</a></span>) <span class="source_type">string</span> m_szDescription;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_szDescriptionFailure" class="hidden"></a>m_szDescriptionFailure <a href="../Source_engine/r6missionobjectivebase.html#16" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../engine/r6missionobjectivebase.html" class="source">R6MissionObjectiveBase</a></span>) <span class="source_type">string</span> m_szDescriptionFailure;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_szDescriptionInMenu" class="hidden"></a>m_szDescriptionInMenu <a href="../Source_engine/r6missionobjectivebase.html#15" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../engine/r6missionobjectivebase.html" class="source">R6MissionObjectiveBase</a></span>) <span class="source_type">string</span> m_szDescriptionInMenu;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_szFeedbackOnCompletion" class="hidden"></a>m_szFeedbackOnCompletion <a href="../Source_engine/r6missionobjectivebase.html#34" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../engine/r6missionobjectivebase.html" class="source">R6MissionObjectiveBase</a></span>) <span class="source_type">string</span> m_szFeedbackOnCompletion;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_szFeedbackOnFailure" class="hidden"></a>m_szFeedbackOnFailure <a href="../Source_engine/r6missionobjectivebase.html#36" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../engine/r6missionobjectivebase.html" class="source">R6MissionObjectiveBase</a></span>) <span class="source_type">string</span> m_szFeedbackOnFailure;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_szMissionObjLocalization" class="hidden"></a>m_szMissionObjLocalization <a href="../Source_engine/r6missionobjectivebase.html#18" class="small">Source code</a></h4>
+<div class="declaration">var(<span class="source_type"><a href="../engine/r6missionobjectivebase.html" class="source">R6MissionObjectiveBase</a></span>) <span class="source_type">string</span> m_szMissionObjLocalization;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+
+
+<br />
+
+
+
+
+
+
+
+<table class="title">
+<tr>
+	<th class="title">Functions Detail</th>
+</tr>
+</table>
+
+<h4><a name="_EnteredExtractionZone-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> EnteredExtractionZone <span class="function_state"></span> <a href="../Source_engine/r6missionobjectivebase.html#46" class="small">Source code</a></h4>
+<div class="declaration"> function  EnteredExtractionZone ( <span class="source_type"><a href="../engine/pawn.html" class="source">Pawn</a></span> <span class="source_type"><a href="../engine/pawn.html" class="source">pawn</a></span> )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ExitExtractionZone-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> ExitExtractionZone <span class="function_state"></span> <a href="../Source_engine/r6missionobjectivebase.html#47" class="small">Source code</a></h4>
+<div class="declaration"> function  ExitExtractionZone ( <span class="source_type"><a href="../engine/pawn.html" class="source">Pawn</a></span> <span class="source_type"><a href="../engine/pawn.html" class="source">pawn</a></span> )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_getDescription-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> getDescription <span class="function_state"></span> <a href="../Source_engine/r6missionobjectivebase.html#88" class="small">Source code</a></h4>
+<div class="declaration"> function <span class="source_type">string</span> getDescription ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GetDescriptionFailure-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> GetDescriptionFailure <span class="function_state"></span> <a href="../Source_engine/r6missionobjectivebase.html#108" class="small">Source code</a></h4>
+<div class="declaration"> function <span class="source_type">string</span> GetDescriptionFailure ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GetNumSubMission-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> GetNumSubMission <span class="function_state"></span> <a href="../Source_engine/r6missionobjectivebase.html#98" class="small">Source code</a></h4>
+<div class="declaration"> function <span class="source_type">int</span> GetNumSubMission ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GetSoundFailure-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> GetSoundFailure <span class="function_state"></span> <a href="../Source_engine/r6missionobjectivebase.html#123" class="small">Source code</a></h4>
+<div class="declaration"> function <span class="source_type">Sound</span> GetSoundFailure ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GetSoundSuccess-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> GetSoundSuccess <span class="function_state"></span> <a href="../Source_engine/r6missionobjectivebase.html#118" class="small">Source code</a></h4>
+<div class="declaration"> function <span class="source_type">Sound</span> GetSoundSuccess ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_GetSubMissionObjective-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> GetSubMissionObjective <span class="function_state"></span> <a href="../Source_engine/r6missionobjectivebase.html#103" class="small">Source code</a></h4>
+<div class="declaration"> function <span class="source_type"><a href="../engine/r6missionobjectivebase.html" class="source">R6MissionObjectiveBase</a></span> GetSubMissionObjective ( <span class="source_type">int</span> <span class="source_type">index</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_Init-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> Init <span class="function_state"></span> <a href="../Source_engine/r6missionobjectivebase.html#61" class="small">Source code</a></h4>
+<div class="declaration"> function  Init (  )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_IObjectDestroyed-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> IObjectDestroyed <span class="function_state"></span> <a href="../Source_engine/r6missionobjectivebase.html#42" class="small">Source code</a></h4>
+<div class="declaration"> function  IObjectDestroyed ( <span class="source_type"><a href="../engine/pawn.html" class="source">Pawn</a></span> <span class="source_type">aPawn</span>,      <span class="source_type"><a href="../engine/actor.html" class="source">Actor</a></span> <span class="source_type">anInteractiveObject</span> )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_IObjectInteract-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> IObjectInteract <span class="function_state"></span> <a href="../Source_engine/r6missionobjectivebase.html#41" class="small">Source code</a></h4>
+<div class="declaration"> function  IObjectInteract ( <span class="source_type"><a href="../engine/pawn.html" class="source">Pawn</a></span> <span class="source_type">aPawn</span>,      <span class="source_type"><a href="../engine/actor.html" class="source">Actor</a></span> <span class="source_type">anInteractiveObject</span> )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_isCompleted-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> isCompleted <span class="function_state"></span> <a href="../Source_engine/r6missionobjectivebase.html#78" class="small">Source code</a></h4>
+<div class="declaration"> function <span class="source_type">bool</span> isCompleted ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_isFailed-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> isFailed <span class="function_state"></span> <a href="../Source_engine/r6missionobjectivebase.html#83" class="small">Source code</a></h4>
+<div class="declaration"> function <span class="source_type">bool</span> isFailed ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_isMissionAbortedOnFailure-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> isMissionAbortedOnFailure <span class="function_state"></span> <a href="../Source_engine/r6missionobjectivebase.html#73" class="small">Source code</a></h4>
+<div class="declaration"> function <span class="source_type">bool</span> isMissionAbortedOnFailure ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_isMissionCompletedOnSuccess-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> isMissionCompletedOnSuccess <span class="function_state"></span> <a href="../Source_engine/r6missionobjectivebase.html#68" class="small">Source code</a></h4>
+<div class="declaration"> function <span class="source_type">bool</span> isMissionCompletedOnSuccess ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_isVisibleInMenu-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> isVisibleInMenu <span class="function_state"></span> <a href="../Source_engine/r6missionobjectivebase.html#63" class="small">Source code</a></h4>
+<div class="declaration"> function <span class="source_type">bool</span> isVisibleInMenu ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_logMObj-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> logMObj <span class="function_state"></span> <a href="../Source_engine/r6missionobjectivebase.html#51" class="small">Source code</a></h4>
+<div class="declaration"> function  logMObj ( <span class="source_type">string</span> <span class="source_type">szText</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_logX-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> logX <span class="function_state"></span> <a href="../Source_engine/r6missionobjectivebase.html#56" class="small">Source code</a></h4>
+<div class="declaration"> function  logX ( <span class="source_type">string</span> <span class="source_type">szText</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_PawnHeard-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> PawnHeard <span class="function_state"></span> <a href="../Source_engine/r6missionobjectivebase.html#44" class="small">Source code</a></h4>
+<div class="declaration"> function  PawnHeard ( <span class="source_type"><a href="../engine/pawn.html" class="source">Pawn</a></span> seen,       <span class="source_type"><a href="../engine/pawn.html" class="source">Pawn</a></span>  <span class="source_type">witness</span> )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_PawnKilled-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> PawnKilled <span class="function_state"></span> <a href="../Source_engine/r6missionobjectivebase.html#40" class="small">Source code</a></h4>
+<div class="declaration"> function  PawnKilled ( <span class="source_type"><a href="../engine/pawn.html" class="source">Pawn</a></span> <span class="source_type">killedPawn</span> )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_PawnSecure-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> PawnSecure <span class="function_state"></span> <a href="../Source_engine/r6missionobjectivebase.html#45" class="small">Source code</a></h4>
+<div class="declaration"> function  PawnSecure ( <span class="source_type"><a href="../engine/pawn.html" class="source">Pawn</a></span> securedPawn )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_PawnSeen-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> PawnSeen <span class="function_state"></span> <a href="../Source_engine/r6missionobjectivebase.html#43" class="small">Source code</a></h4>
+<div class="declaration"> function  PawnSeen ( <span class="source_type"><a href="../engine/pawn.html" class="source">Pawn</a></span> seen,       <span class="source_type"><a href="../engine/pawn.html" class="source">Pawn</a></span>  <span class="source_type">witness</span> )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_Reset-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> Reset <span class="function_state"></span> <a href="../Source_engine/r6missionobjectivebase.html#128" class="small">Source code</a></h4>
+<div class="declaration"> function  Reset ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_SetMObjMgr-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> SetMObjMgr <span class="function_state"></span> <a href="../Source_engine/r6missionobjectivebase.html#113" class="small">Source code</a></h4>
+<div class="declaration"> function  SetMObjMgr ( <span class="source_type"><a href="../engine/actor.html" class="source">Actor</a></span> <span class="source_type">aMObjMgr</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_TimerCallback-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> TimerCallback <span class="function_state"></span> <a href="../Source_engine/r6missionobjectivebase.html#48" class="small">Source code</a></h4>
+<div class="declaration"> function  TimerCallback ( <span class="source_type">float</span> <span class="source_type">fTime</span> )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ToggleLog-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> ToggleLog <span class="function_state"></span> <a href="../Source_engine/r6missionobjectivebase.html#49" class="small">Source code</a></h4>
+<div class="declaration"> function  ToggleLog ( <span class="source_type">bool</span> <span class="source_type">bToggle</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+
+
+<br />
+
+
+<table class="title">
+<tr>
+	<th class="title">Defaultproperties</th>
+</tr>
+</table>
+<br />
+<div class="source"><table class="source"><tr><td class="source"><pre class="source">defaultproperties
+{
+     m_bVisibleInMenu=True
+}
+</pre></td></tr></table></div>
+
+
+
+<hr />
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../engine/engine-overview.html">Package</a></td>
+	<td class="header_hilight">Class</td>
+	<td class="header"><a href="../Source_engine/r6missionobjectivebase.html">Source</a></td>
+	<td class="header"><a class="header" href="../classtree.html#R6MissionObjectiveBase">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../engine/r6missiondescription.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../engine/r6mod.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+
+<div class="stats">Creation time: mar. 26/5/2026 18:33:12.887 - Created with <a href="http://wiki.beyondunreal.com/wiki/UnCodeX" target="_blank">UnCodeX</a></div>
+
+</body>
+</html>

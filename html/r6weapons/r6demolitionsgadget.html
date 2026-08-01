@@ -1,0 +1,996 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+	<title>UnCodeX - R6Weapons.R6DemolitionsGadget</title>
+	<meta name="Generator" content="UnCodeX 241" />
+	<link rel="stylesheet" href="../DocStyle2.css" type="text/css" title="Original Purple" />
+	<link rel="alternative stylesheet" href="../DocStyle2-blue.css" type="text/css" title="Blue" />
+	<link rel="alternative stylesheet" href="../DocStyle2-red.css" type="text/css" title="Red" />
+	<!--[if IE]>
+	<link rel="stylesheet" href="../DocStyle2-msie.css" type="text/css" />
+	<![endif]-->
+	<script src="../styleswitcher.js" type="text/javascript"></script>
+</head>
+<body>
+
+<div class="header">
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../r6weapons/r6weapons-overview.html">Package</a></td>
+	<td class="header_hilight">Class</td>
+	<td class="header"><a href="../Source_r6weapons/r6demolitionsgadget.html">Source</a></td>
+	<td class="header"><a class="header" href="../classtree.html#R6DemolitionsGadget">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../r6weapons/r6crossreticule.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../r6weapons/r6demolitionsunit.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html#r6weapons/r6demolitionsgadget.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+</div>
+<div class="spacer"></div>
+
+<h1><a href="../r6weapons/r6weapons-overview.html">R6Weapons</a>.R6DemolitionsGadget</h1>
+
+<dl>
+<dt>Extends</dt><dd><a href="../r6weapons/r6gadget.html">R6Gadget</a></dd>
+<dt>Modifiers</dt><dd>native abstract </dd>
+</dl>
+
+<p></p>
+
+<pre class="tree"><a href="../core/core-overview.html">core</a>.<a href="../core/object.html">Object</a>
+|   
++-- <a href="../engine/engine-overview.html">engine</a>.<a href="../engine/actor.html">Actor</a>
+   |   
+   +-- <a href="../engine/engine-overview.html">engine</a>.<a href="../engine/r6engineweapon.html">R6EngineWeapon</a>
+      |   
+      +-- <a href="../r6abstract/r6abstract-overview.html">R6Abstract</a>.<a href="../r6abstract/r6abstractweapon.html">R6AbstractWeapon</a>
+         |   
+         +-- <a href="../r6weapons/r6weapons-overview.html">R6Weapons</a>.<a href="../r6weapons/r6weapons.html">R6Weapons</a>
+            |   
+            +-- <a href="../r6weapons/r6weapons-overview.html">R6Weapons</a>.<a href="../r6weapons/r6gadget.html">R6Gadget</a>
+               |   
+               +-- <a href="../r6weapons/r6weapons-overview.html">R6Weapons</a>.<a href="../r6weapons/r6demolitionsgadget.html">R6DemolitionsGadget</a>
+</pre>
+
+<h4>Direct Known Subclasses:</h4>
+<blockquote>
+	<a href="../r6weapons/r6breachingchargegadget.html">R6BreachingChargeGadget</a>, <a href="../r6weapons/r6claymoregadget.html">R6ClaymoreGadget</a>, <a href="../r6weapons/r6hbssajammergadget.html">R6HBSSAJammerGadget</a>, <a href="../r6weapons/r6remotechargegadget.html">R6RemoteChargeGadget</a>
+</blockquote>
+
+<hr />
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Constants Summary</th>
+</tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Contants from <a href="../r6weapons/r6weapons-overview.html">R6Weapons</a>.<a href="../r6weapons/r6weapons.html">R6Weapons</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../r6weapons/r6weapons.html#AccuracyLostWhenWounded">AccuracyLostWhenWounded</a></td>
+</tr>
+</table>
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th colspan="2" class="title">Variables Summary</th>
+</tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../r6weapons/r6grenade.html">R6Grenade</a></td><td width="66%"><a href="#_BulletActor" name="BulletActor" title="go to the details">BulletActor</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">BOOL</td><td width="66%"><a href="#_m_bCancelChargeInstallation" name="m_bCancelChargeInstallation" title="go to the details">m_bCancelChargeInstallation</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">BOOL</td><td width="66%"><a href="#_m_bCanPlaceCharge" name="m_bCanPlaceCharge" title="go to the details">m_bCanPlaceCharge</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">BOOL</td><td width="66%"><a href="#_m_bChargeInPosition" name="m_bChargeInPosition" title="go to the details">m_bChargeInPosition</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">BOOL</td><td width="66%"><a href="#_m_bDetonated" name="m_bDetonated" title="go to the details">m_bDetonated</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">BOOL</td><td width="66%"><a href="#_m_bDetonator" name="m_bDetonator" title="go to the details">m_bDetonator</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">BOOL</td><td width="66%"><a href="#_m_bHide" name="m_bHide" title="go to the details">m_bHide</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">BOOL</td><td width="66%"><a href="#_m_bInstallingCharge" name="m_bInstallingCharge" title="go to the details">m_bInstallingCharge</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">BOOL</td><td width="66%"><a href="#_m_bRaiseWeapon" name="m_bRaiseWeapon" title="go to the details">m_bRaiseWeapon</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">name</td><td width="66%"><a href="#_m_ChargeAttachPoint" name="m_ChargeAttachPoint" title="go to the details">m_ChargeAttachPoint</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">StaticMesh</td><td width="66%"><a href="#_m_ChargeStaticMesh" name="m_ChargeStaticMesh" title="go to the details">m_ChargeStaticMesh</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">name</td><td width="66%"><a href="#_m_DetonatorAttachPoint" name="m_DetonatorAttachPoint" title="go to the details">m_DetonatorAttachPoint</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">StaticMesh</td><td width="66%"><a href="#_m_DetonatorStaticMesh" name="m_DetonatorStaticMesh" title="go to the details">m_DetonatorStaticMesh</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../engine/texture.html">Texture</a></td><td width="66%"><a href="#_m_DetonatorTexture" name="m_DetonatorTexture" title="go to the details">m_DetonatorTexture</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">class&lt;<a href="../r6weapons/r6reticule.html">R6Reticule</a>&gt;</td><td width="66%"><a href="#_m_pDetonatorReticuleClass" name="m_pDetonatorReticuleClass" title="go to the details">m_pDetonatorReticuleClass</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">class&lt;<a href="../engine/emitter.html">emitter</a>&gt;</td><td width="66%"><a href="#_m_pExplosionParticles" name="m_pExplosionParticles" title="go to the details">m_pExplosionParticles</a></td></tr>
+<tr><td nowrap="nowrap" width="33%">class&lt;<a href="../r6weapons/r6reticule.html">R6Reticule</a>&gt;</td><td width="66%"><a href="#_m_pReticuleBlockClass" name="m_pReticuleBlockClass" title="go to the details">m_pReticuleBlockClass</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../r6weapons/r6reticule.html">R6Reticule</a></td><td width="66%"><a href="#_m_ReticuleBlock" name="m_ReticuleBlock" title="go to the details">m_ReticuleBlock</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../r6weapons/r6reticule.html">R6Reticule</a></td><td width="66%"><a href="#_m_ReticuleConfirm" name="m_ReticuleConfirm" title="go to the details">m_ReticuleConfirm</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../r6weapons/r6reticule.html">R6Reticule</a></td><td width="66%"><a href="#_m_ReticuleDetonator" name="m_ReticuleDetonator" title="go to the details">m_ReticuleDetonator</a></td></tr>
+<tr><td nowrap="nowrap" width="33%"><a href="../core/object.html#Vector">vector</a></td><td width="66%"><a href="#_m_vLocation" name="m_vLocation" title="go to the details">m_vLocation</a></td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Variables from <a href="../r6weapons/r6weapons-overview.html">R6Weapons</a>.<a href="../r6weapons/r6weapons.html">R6Weapons</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../r6weapons/r6weapons.html#bShowLog">bShowLog</a>, <a href="../r6weapons/r6weapons.html#C_iMaxNbOfClips">C_iMaxNbOfClips</a>, <a href="../r6weapons/r6weapons.html#m_aiNbOfBullets[20]">m_aiNbOfBullets[20]</a>, <a href="../r6weapons/r6weapons.html#m_bEmptyAllClips">m_bEmptyAllClips</a>, <a href="../r6weapons/r6weapons.html#m_bFireOn">m_bFireOn</a>, <a href="../r6weapons/r6weapons.html#m_bPlayLoopingSound">m_bPlayLoopingSound</a>, <a href="../r6weapons/r6weapons.html#m_bSoundLog">m_bSoundLog</a>, <a href="../r6weapons/r6weapons.html#m_eRateOfFire">m_eRateOfFire</a>, <a href="../r6weapons/r6weapons.html#m_fAverageDegChanges">m_fAverageDegChanges</a>, <a href="../r6weapons/r6weapons.html#m_fAverageDegTable[5]">m_fAverageDegTable[5]</a>, <a href="../r6weapons/r6weapons.html#m_fCurrentFireJump">m_fCurrentFireJump</a>, <a href="../r6weapons/r6weapons.html#m_fDesiredAccuracy">m_fDesiredAccuracy</a>, <a href="../r6weapons/r6weapons.html#m_fDisplayFOV">m_fDisplayFOV</a>, <a href="../r6weapons/r6weapons.html#m_fEffectiveAccuracy">m_fEffectiveAccuracy</a>, <a href="../r6weapons/r6weapons.html#m_fFireSoundRadius">m_fFireSoundRadius</a>, <a href="../r6weapons/r6weapons.html#m_fMaxAngleError">m_fMaxAngleError</a>, <a href="../r6weapons/r6weapons.html#m_fMuzzleVelocity">m_fMuzzleVelocity</a>, <a href="../r6weapons/r6weapons.html#m_fOldWorstAccuracy">m_fOldWorstAccuracy</a>, <a href="../r6weapons/r6weapons.html#m_fRateOfFire">m_fRateOfFire</a>, <a href="../r6weapons/r6weapons.html#m_fStablePercentage">m_fStablePercentage</a>, <a href="../r6weapons/r6weapons.html#m_fWorstAccuracy">m_fWorstAccuracy</a>, <a href="../r6weapons/r6weapons.html#m_iClipCapacity">m_iClipCapacity</a>, <a href="../r6weapons/r6weapons.html#m_iCurrentAverage">m_iCurrentAverage</a>, <a href="../r6weapons/r6weapons.html#m_iCurrentClip">m_iCurrentClip</a>, <a href="../r6weapons/r6weapons.html#m_iCurrentNbOfClips">m_iCurrentNbOfClips</a>, <a href="../r6weapons/r6weapons.html#m_iDbgNextReticule">m_iDbgNextReticule</a>, <a href="../r6weapons/r6weapons.html#m_iNbOfClips">m_iNbOfClips</a>, <a href="../r6weapons/r6weapons.html#m_iNbOfExtraClips">m_iNbOfExtraClips</a>, <a href="../r6weapons/r6weapons.html#m_iNbOfRoundsInBurst">m_iNbOfRoundsInBurst</a>, <a href="../r6weapons/r6weapons.html#m_iNbOfRoundsToShoot">m_iNbOfRoundsToShoot</a>, <a href="../r6weapons/r6weapons.html#m_MuzzleScale">m_MuzzleScale</a>, <a href="../r6weapons/r6weapons.html#m_pBulletClass">m_pBulletClass</a>, <a href="../r6weapons/r6weapons.html#m_pEmptyShells">m_pEmptyShells</a>, <a href="../r6weapons/r6weapons.html#m_pEmptyShellsEmitter">m_pEmptyShellsEmitter</a>, <a href="../r6weapons/r6weapons.html#m_pMuzzleFlash">m_pMuzzleFlash</a>, <a href="../r6weapons/r6weapons.html#m_pMuzzleFlashEmitter">m_pMuzzleFlashEmitter</a>, <a href="../r6weapons/r6weapons.html#m_pReticuleClass">m_pReticuleClass</a>, <a href="../r6weapons/r6weapons.html#m_pWithWeaponReticuleClass">m_pWithWeaponReticuleClass</a>, <a href="../r6weapons/r6weapons.html#m_rBuckFirstBullet">m_rBuckFirstBullet</a>, <a href="../r6weapons/r6weapons.html#m_ReticuleInstance">m_ReticuleInstance</a>, <a href="../r6weapons/r6weapons.html#m_rLastRotation">m_rLastRotation</a>, <a href="../r6weapons/r6weapons.html#m_stAccuracyValues">m_stAccuracyValues</a>, <a href="../r6weapons/r6weapons.html#m_stWeaponCaps">m_stWeaponCaps</a>, <a href="../r6weapons/r6weapons.html#m_vPawnLocWhenKilled">m_vPawnLocWhenKilled</a>, <a href="../r6weapons/r6weapons.html#m_WeaponIcon">m_WeaponIcon</a>, <a href="../r6weapons/r6weapons.html#m_wNbOfBounce">m_wNbOfBounce</a></td>
+</tr>
+</table>
+
+
+<br />
+
+
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Structures Summary</th>
+</tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Structures from <a href="../r6weapons/r6weapons-overview.html">R6Weapons</a>.<a href="../r6weapons/r6weapons.html">R6Weapons</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../r6weapons/r6weapons.html#stAccuracyType">stAccuracyType</a>, <a href="../r6weapons/r6weapons.html#stWeaponCaps">stWeaponCaps</a></td>
+</tr>
+</table>
+
+
+<br />
+
+
+
+<table class="title">
+<tr>
+	<th colspan="3" class="title">Functions Summary</th>
+</tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_Activate-" name="Activate" title="go to the details">Activate</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_AltFire-" name="AltFire" title="go to the details">AltFire</a> (FLOAT fValue ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_AltFire-DiscardWeapon" name="AltFire" title="go to the details">AltFire</a> (float Value ))<br /><span class="function_state">DiscardWeapon</span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_AltFire-GetNextCharge" name="AltFire" title="go to the details">AltFire</a> (FLOAT fValue ))<br /><span class="function_state">GetNextCharge</span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_AltFire-NoChargesLeft" name="AltFire" title="go to the details">AltFire</a> (FLOAT fValue ))<br /><span class="function_state">NoChargesLeft</span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_AltFire-RaiseWeapon" name="AltFire" title="go to the details">AltFire</a> (float Value ))<br /><span class="function_state">RaiseWeapon</span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_BeginState-BringWeaponUp" name="BeginState" title="go to the details">BeginState</a> ()))<br /><span class="function_state">BringWeaponUp</span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_BeginState-ChargeArmed" name="BeginState" title="go to the details">BeginState</a> ()))<br /><span class="function_state">ChargeArmed</span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_BeginState-ChargeReady" name="BeginState" title="go to the details">BeginState</a> ()))<br /><span class="function_state">ChargeReady</span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_BeginState-DiscardWeapon" name="BeginState" title="go to the details">BeginState</a> ()))<br /><span class="function_state">DiscardWeapon</span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_BeginState-GetNextCharge" name="BeginState" title="go to the details">BeginState</a> ()))<br /><span class="function_state">GetNextCharge</span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_BeginState-NoChargesLeft" name="BeginState" title="go to the details">BeginState</a> ()))<br /><span class="function_state">NoChargesLeft</span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_BeginState-RaiseWeapon" name="BeginState" title="go to the details">BeginState</a> ()))<br /><span class="function_state">RaiseWeapon</span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_CancelChargeInstallation-" name="CancelChargeInstallation" title="go to the details">CancelChargeInstallation</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>bool&nbsp;</td><td><a href="#_CanPlaceCharge-" name="CanPlaceCharge" title="go to the details">CanPlaceCharge</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>BOOL&nbsp;</td><td><a href="#_CanSwitchToWeapon-" name="CanSwitchToWeapon" title="go to the details">CanSwitchToWeapon</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_ClientMyUnitIsDestroyed-" name="ClientMyUnitIsDestroyed" title="go to the details">ClientMyUnitIsDestroyed</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_DestroyReticules-" name="DestroyReticules" title="go to the details">DestroyReticules</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_EndState-BringWeaponUp" name="EndState" title="go to the details">EndState</a> ()))<br /><span class="function_state">BringWeaponUp</span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_EndState-ChargeArmed" name="EndState" title="go to the details">EndState</a> ()))<br /><span class="function_state">ChargeArmed</span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_EndState-ChargeReady" name="EndState" title="go to the details">EndState</a> ()))<br /><span class="function_state">ChargeReady</span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_EndState-RaiseWeapon" name="EndState" title="go to the details">EndState</a> ()))<br /><span class="function_state">RaiseWeapon</span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_Fire-" name="Fire" title="go to the details">Fire</a> (FLOAT fValue ))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_Fire-ChargeArmed" name="Fire" title="go to the details">Fire</a> (FLOAT fValue))<br /><span class="function_state">ChargeArmed</span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_Fire-ChargeReady" name="Fire" title="go to the details">Fire</a> (FLOAT fValue ))<br /><span class="function_state">ChargeReady</span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_Fire-DiscardWeapon" name="Fire" title="go to the details">Fire</a> (float Value ))<br /><span class="function_state">DiscardWeapon</span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_Fire-GetNextCharge" name="Fire" title="go to the details">Fire</a> (FLOAT fValue)<br /><span class="function_state">GetNextCharge</span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_Fire-NoChargesLeft" name="Fire" title="go to the details">Fire</a> (FLOAT fValue)<br /><span class="function_state">NoChargesLeft</span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_Fire-RaiseWeapon" name="Fire" title="go to the details">Fire</a> (float Value ))<br /><span class="function_state">RaiseWeapon</span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_FirstPersonAnimOver-BringWeaponUp" name="FirstPersonAnimOver" title="go to the details">FirstPersonAnimOver</a> ()))<br /><span class="function_state">BringWeaponUp</span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_FirstPersonAnimOver-ChargeArmed" name="FirstPersonAnimOver" title="go to the details">FirstPersonAnimOver</a> ()))<br /><span class="function_state">ChargeArmed</span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_FirstPersonAnimOver-ChargeReady" name="FirstPersonAnimOver" title="go to the details">FirstPersonAnimOver</a> ()))<br /><span class="function_state">ChargeReady</span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_FirstPersonAnimOver-GetNextCharge" name="FirstPersonAnimOver" title="go to the details">FirstPersonAnimOver</a> ()))<br /><span class="function_state">GetNextCharge</span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_FirstPersonAnimOver-NoChargesLeft" name="FirstPersonAnimOver" title="go to the details">FirstPersonAnimOver</a> ()))<br /><span class="function_state">NoChargesLeft</span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_FirstPersonAnimOver-RaiseWeapon" name="FirstPersonAnimOver" title="go to the details">FirstPersonAnimOver</a> ()))<br /><span class="function_state">RaiseWeapon</span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_event.gif" alt="event" title="event" /></td><td>&nbsp;</td><td><a href="#_HideAttachment-" name="HideAttachment" title="go to the details">HideAttachment</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_HideReticule-" name="HideReticule" title="go to the details">HideReticule</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>BOOL&nbsp;</td><td><a href="#_LoadFirstPersonWeapon-" name="LoadFirstPersonWeapon" title="go to the details">LoadFirstPersonWeapon</a> (optional <a href="../engine/pawn.html">Pawn</a> NetOwner, optional <a href="../engine/controller.html">Controller</a> LocalPlayerController))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_MyUnitIsDestroyed-" name="MyUnitIsDestroyed" title="go to the details">MyUnitIsDestroyed</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_event.gif" alt="event" title="event" /></td><td>&nbsp;</td><td><a href="#_NbBulletChange-" name="NbBulletChange" title="go to the details">NbBulletChange</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_PlaceChargeAnimation-" name="PlaceChargeAnimation" title="go to the details">PlaceChargeAnimation</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_PlayReloading-DiscardWeapon" name="PlayReloading" title="go to the details">PlayReloading</a> ()))<br /><span class="function_state">DiscardWeapon</span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_PlayReloading-RaiseWeapon" name="PlayReloading" title="go to the details">PlayReloading</a> ()))<br /><span class="function_state">RaiseWeapon</span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_event.gif" alt="event" title="event" /></td><td>&nbsp;</td><td><a href="#_PostBeginPlay-" name="PostBeginPlay" title="go to the details">PostBeginPlay</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_PostNetBeginPlay-" name="PostNetBeginPlay" title="go to the details">PostNetBeginPlay</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_R6SetReticule-" name="R6SetReticule" title="go to the details">R6SetReticule</a> (optional <a href="../engine/controller.html">Controller</a> LocalPlayerController))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_RemoveFirstPersonWeapon-" name="RemoveFirstPersonWeapon" title="go to the details">RemoveFirstPersonWeapon</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_ServerCancelChargeInstallation-" name="ServerCancelChargeInstallation" title="go to the details">ServerCancelChargeInstallation</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_ServerDetonate-" name="ServerDetonate" title="go to the details">ServerDetonate</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_ServerGotoSetExplosive-" name="ServerGotoSetExplosive" title="go to the details">ServerGotoSetExplosive</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_ServerPlaceCharge-" name="ServerPlaceCharge" title="go to the details">ServerPlaceCharge</a> (<a href="../core/object.html#Vector">vector</a> vLocation))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_ServerPlaceChargeAnimation-" name="ServerPlaceChargeAnimation" title="go to the details">ServerPlaceChargeAnimation</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_SetAmmoStaticMesh-" name="SetAmmoStaticMesh" title="go to the details">SetAmmoStaticMesh</a> ()<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_event.gif" alt="event" title="event" /></td><td>&nbsp;</td><td><a href="#_SetGadgetStaticMesh-" name="SetGadgetStaticMesh" title="go to the details">SetGadgetStaticMesh</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_ShowInfo-" name="ShowInfo" title="go to the details">ShowInfo</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_StartLoopingAnims-" name="StartLoopingAnims" title="go to the details">StartLoopingAnims</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_StopAltFire-" name="StopAltFire" title="go to the details">StopAltFire</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_StopAltFire-DiscardWeapon" name="StopAltFire" title="go to the details">StopAltFire</a> ()))<br /><span class="function_state">DiscardWeapon</span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_StopAltFire-GetNextCharge" name="StopAltFire" title="go to the details">StopAltFire</a> ()))<br /><span class="function_state">GetNextCharge</span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_StopAltFire-NoChargesLeft" name="StopAltFire" title="go to the details">StopAltFire</a> ()))<br /><span class="function_state">NoChargesLeft</span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_StopAltFire-RaiseWeapon" name="StopAltFire" title="go to the details">StopAltFire</a> ()))<br /><span class="function_state">RaiseWeapon</span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_StopFire-" name="StopFire" title="go to the details">StopFire</a> (optional BOOL bSoundOnly))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_StopFire-DiscardWeapon" name="StopFire" title="go to the details">StopFire</a> (optional BOOL bSoundOnly))<br /><span class="function_state">DiscardWeapon</span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_StopFire-GetNextCharge" name="StopFire" title="go to the details">StopFire</a> (optional BOOL bSoundOnly))<br /><span class="function_state">GetNextCharge</span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_StopFire-NoChargesLeft" name="StopFire" title="go to the details">StopFire</a> (optional BOOL bSoundOnly))<br /><span class="function_state">NoChargesLeft</span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_StopFire-RaiseWeapon" name="StopFire" title="go to the details">StopFire</a> (optional BOOL bSoundOnly))<br /><span class="function_state">RaiseWeapon</span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_SwitchToChargeHandAnimations-" name="SwitchToChargeHandAnimations" title="go to the details">SwitchToChargeHandAnimations</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_SwitchToDetonatorHandAnimations-" name="SwitchToDetonatorHandAnimations" title="go to the details">SwitchToDetonatorHandAnimations</a> ()))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_Tick-" name="Tick" title="go to the details">Tick</a> (FLOAT fDeltaTime))<br /><span class="function_state"></span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_Timer-ChargeReady" name="Timer" title="go to the details">Timer</a> ()))<br /><span class="function_state">ChargeReady</span></td></tr>
+<tr><td nowrap="nowrap"><img src="../img_function.gif" alt="function" title="function" /></td><td>&nbsp;</td><td><a href="#_UpdateHands-" name="UpdateHands" title="go to the details">UpdateHands</a> ()))<br /><span class="function_state"></span></td></tr>
+
+</table>
+
+<table>
+<tr>
+	<th class="inherittitle">Inherited Functions from <a href="../r6weapons/r6weapons-overview.html">R6Weapons</a>.<a href="../r6weapons/r6gadget.html">R6Gadget</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../r6weapons/r6gadget.html#DisableWeaponOrGadget">DisableWeaponOrGadget</a>, <a href="../r6weapons/r6gadget.html#GiveMoreAmmo">GiveMoreAmmo</a>, <a href="../r6weapons/r6gadget.html#SetHoldAttachPoint">SetHoldAttachPoint</a>, <a href="../r6weapons/r6gadget.html#TurnOffEmitters">TurnOffEmitters</a></td>
+</tr>
+</table>
+<table>
+<tr>
+	<th class="inherittitle">Inherited Functions from <a href="../r6weapons/r6weapons-overview.html">R6Weapons</a>.<a href="../r6weapons/r6weapons.html">R6Weapons</a></th>
+</tr>
+<tr>
+	<td class="small"><a href="../r6weapons/r6weapons.html#AddClips">AddClips</a>, <a href="../r6weapons/r6weapons.html#AddExtraClip">AddExtraClip</a>, <a href="../r6weapons/r6weapons.html#AffectActor">AffectActor</a>, <a href="../r6weapons/r6weapons.html#AltFire">AltFire</a>, <a href="../r6weapons/r6weapons.html#AttachEmittersTo3rdWeapon">AttachEmittersTo3rdWeapon</a>, <a href="../r6weapons/r6weapons.html#AttachEmittersToFPWeapon">AttachEmittersToFPWeapon</a>, <a href="../r6weapons/r6weapons.html#BeginState">BeginState</a>, <a href="../r6weapons/r6weapons.html#CanSwitchToWeapon">CanSwitchToWeapon</a>, <a href="../r6weapons/r6weapons.html#ChangeClip">ChangeClip</a>, <a href="../r6weapons/r6weapons.html#CheckForPlaceToFall">CheckForPlaceToFall</a>, <a href="../r6weapons/r6weapons.html#ClientAltFire">ClientAltFire</a>, <a href="../r6weapons/r6weapons.html#ClientsFireBullet">ClientsFireBullet</a>, <a href="../r6weapons/r6weapons.html#ClientShowBulletFire">ClientShowBulletFire</a>, <a href="../r6weapons/r6weapons.html#ClientStartChangeClip">ClientStartChangeClip</a>, <a href="../r6weapons/r6weapons.html#ClientStartFiring">ClientStartFiring</a>, <a href="../r6weapons/r6weapons.html#ClientStopFire">ClientStopFire</a>, <a href="../r6weapons/r6weapons.html#ClientYourOwnerIs">ClientYourOwnerIs</a>, <a href="../r6weapons/r6weapons.html#CreateWeaponEmitters">CreateWeaponEmitters</a>, <a href="../r6weapons/r6weapons.html#DbgNextReticule">DbgNextReticule</a>, <a href="../r6weapons/r6weapons.html#DeployWeaponBipod">DeployWeaponBipod</a>, <a href="../r6weapons/r6weapons.html#Destroyed">Destroyed</a>, <a href="../r6weapons/r6weapons.html#DisplayWeaponDGBInfo">DisplayWeaponDGBInfo</a>, <a href="../r6weapons/r6weapons.html#DoSingleFire">DoSingleFire</a>, <a href="../r6weapons/r6weapons.html#EndState">EndState</a>, <a href="../r6weapons/r6weapons.html#FillClips">FillClips</a>, <a href="../r6weapons/r6weapons.html#Fire">Fire</a>, <a href="../r6weapons/r6weapons.html#FirstPersonAnimOver">FirstPersonAnimOver</a>, <a href="../r6weapons/r6weapons.html#FullAmmo">FullAmmo</a>, <a href="../r6weapons/r6weapons.html#FullCurrentClip">FullCurrentClip</a>, <a href="../r6weapons/r6weapons.html#Get2DIcon">Get2DIcon</a>, <a href="../r6weapons/r6weapons.html#GetBulletManager">GetBulletManager</a>, <a href="../r6weapons/r6weapons.html#GetClipCapacity">GetClipCapacity</a>, <a href="../r6weapons/r6weapons.html#GetCurrentMaxAngle">GetCurrentMaxAngle</a>, <a href="../r6weapons/r6weapons.html#GetExplosionDelay">GetExplosionDelay</a>, <a href="../r6weapons/r6weapons.html#GetFiringDirection">GetFiringDirection</a>, <a href="../r6weapons/r6weapons.html#GetMuzzleVelocity">GetMuzzleVelocity</a>, <a href="../r6weapons/r6weapons.html#GetNbOfClips">GetNbOfClips</a>, <a href="../r6weapons/r6weapons.html#GetNbOfRoundsForROF">GetNbOfRoundsForROF</a>, <a href="../r6weapons/r6weapons.html#GetRateOfFire">GetRateOfFire</a>, <a href="../r6weapons/r6weapons.html#GetReloadProgress">GetReloadProgress</a>, <a href="../r6weapons/r6weapons.html#GetWeaponJump">GetWeaponJump</a>, <a href="../r6weapons/r6weapons.html#GetWeaponRange">GetWeaponRange</a>, <a href="../r6weapons/r6weapons.html#GiveBulletToWeapon">GiveBulletToWeapon</a>, <a href="../r6weapons/r6weapons.html#GunIsFull">GunIsFull</a>, <a href="../r6weapons/r6weapons.html#HasAmmo">HasAmmo</a>, <a href="../r6weapons/r6weapons.html#HasAtLeastOneFullClip">HasAtLeastOneFullClip</a>, <a href="../r6weapons/r6weapons.html#HasBulletType">HasBulletType</a>, <a href="../r6weapons/r6weapons.html#HasScope">HasScope</a>, <a href="../r6weapons/r6weapons.html#HideAttachment">HideAttachment</a>, <a href="../r6weapons/r6weapons.html#HitWall">HitWall</a>, <a href="../r6weapons/r6weapons.html#IsAtBestAccuracy">IsAtBestAccuracy</a>, <a href="../r6weapons/r6weapons.html#LoadFirstPersonWeapon">LoadFirstPersonWeapon</a>, <a href="../r6weapons/r6weapons.html#LocalStopFire">LocalStopFire</a>, <a href="../r6weapons/r6weapons.html#NbBulletToShot">NbBulletToShot</a>, <a href="../r6weapons/r6weapons.html#NumberOfBulletsLeftInClip">NumberOfBulletsLeftInClip</a>, <a href="../r6weapons/r6weapons.html#PawnIsMoving">PawnIsMoving</a>, <a href="../r6weapons/r6weapons.html#PawnStoppedMoving">PawnStoppedMoving</a>, <a href="../r6weapons/r6weapons.html#PerfectAim">PerfectAim</a>, <a href="../r6weapons/r6weapons.html#PlayReloading">PlayReloading</a>, <a href="../r6weapons/r6weapons.html#PostBeginPlay">PostBeginPlay</a>, <a href="../r6weapons/r6weapons.html#PostRender">PostRender</a>, <a href="../r6weapons/r6weapons.html#PutAtOwnerFeet">PutAtOwnerFeet</a>, <a href="../r6weapons/r6weapons.html#R6SetGadget">R6SetGadget</a>, <a href="../r6weapons/r6weapons.html#R6SetReticule">R6SetReticule</a>, <a href="../r6weapons/r6weapons.html#ReloadShotGun">ReloadShotGun</a>, <a href="../r6weapons/r6weapons.html#RemoveFirstPersonWeapon">RemoveFirstPersonWeapon</a>, <a href="../r6weapons/r6weapons.html#RenderOverlays">RenderOverlays</a>, <a href="../r6weapons/r6weapons.html#ServerAddClips">ServerAddClips</a>, <a href="../r6weapons/r6weapons.html#ServerChangeClip">ServerChangeClip</a>, <a href="../r6weapons/r6weapons.html#ServerFireBullet">ServerFireBullet</a>, <a href="../r6weapons/r6weapons.html#ServerSetNextRateOfFire">ServerSetNextRateOfFire</a>, <a href="../r6weapons/r6weapons.html#ServerStartChangeClip">ServerStartChangeClip</a>, <a href="../r6weapons/r6weapons.html#ServerStartFiring">ServerStartFiring</a>, <a href="../r6weapons/r6weapons.html#ServerStopFire">ServerStopFire</a>, <a href="../r6weapons/r6weapons.html#ServerWhoIsMyOwner">ServerWhoIsMyOwner</a>, <a href="../r6weapons/r6weapons.html#SetAccuracyOnHit">SetAccuracyOnHit</a>, <a href="../r6weapons/r6weapons.html#SetGadgets">SetGadgets</a>, <a href="../r6weapons/r6weapons.html#SetIdentifyTarget">SetIdentifyTarget</a>, <a href="../r6weapons/r6weapons.html#SetNextRateOfFire">SetNextRateOfFire</a>, <a href="../r6weapons/r6weapons.html#SetRateOfFire">SetRateOfFire</a>, <a href="../r6weapons/r6weapons.html#SetRelevant">SetRelevant</a>, <a href="../r6weapons/r6weapons.html#SetTearOff">SetTearOff</a>, <a href="../r6weapons/r6weapons.html#SetTerroristNbOfClips">SetTerroristNbOfClips</a>, <a href="../r6weapons/r6weapons.html#ShowInfo">ShowInfo</a>, <a href="../r6weapons/r6weapons.html#ShowWeaponParticules">ShowWeaponParticules</a>, <a href="../r6weapons/r6weapons.html#SpawnSelectedGadget">SpawnSelectedGadget</a>, <a href="../r6weapons/r6weapons.html#StartFalling">StartFalling</a>, <a href="../r6weapons/r6weapons.html#StartFiring">StartFiring</a>, <a href="../r6weapons/r6weapons.html#StartLoopingAnims">StartLoopingAnims</a>, <a href="../r6weapons/r6weapons.html#StopAltFire">StopAltFire</a>, <a href="../r6weapons/r6weapons.html#StopFallingAndSetCorrectRotation">StopFallingAndSetCorrectRotation</a>, <a href="../r6weapons/r6weapons.html#StopFire">StopFire</a>, <a href="../r6weapons/r6weapons.html#Tick">Tick</a>, <a href="../r6weapons/r6weapons.html#Timer">Timer</a>, <a href="../r6weapons/r6weapons.html#TurnOffEmitters">TurnOffEmitters</a>, <a href="../r6weapons/r6weapons.html#UpdateAllAttachments">UpdateAllAttachments</a>, <a href="../r6weapons/r6weapons.html#UpdateWeaponAttachment">UpdateWeaponAttachment</a>, <a href="../r6weapons/r6weapons.html#UseScopeStaticMesh">UseScopeStaticMesh</a>, <a href="../r6weapons/r6weapons.html#WeaponInitialization">WeaponInitialization</a>, <a href="../r6weapons/r6weapons.html#WeaponZoomSound">WeaponZoomSound</a></td>
+</tr>
+</table>
+
+
+<br />
+
+<table class="title">
+<tr>
+	<th class="title">States Summary</th>
+</tr>
+</table>
+
+<table>
+<tr>
+	<th>BringWeaponUp <a href="../Source_r6weapons/r6demolitionsgadget.html#547" class="small">Source code</a></th>
+</tr>
+<tr>
+	<td>
+	<span class="declaration"><span class="us_keyw"> state</span> BringWeaponUp <span class="us_keyw"></span> </span><br />
+	<blockquote class="comment">
+	
+	</blockquote>
+	</td>
+</tr>
+<tr>
+	<td><a href="#_BeginState+BringWeaponUp">BeginState</a>, <a href="#_EndState+BringWeaponUp">EndState</a>, <a href="#_FirstPersonAnimOver+BringWeaponUp">FirstPersonAnimOver</a></td>
+</tr>
+</table>
+<table>
+<tr>
+	<th>ChargeArmed <a href="../Source_r6weapons/r6demolitionsgadget.html#382" class="small">Source code</a></th>
+</tr>
+<tr>
+	<td>
+	<span class="declaration"><span class="us_keyw"> state</span> ChargeArmed <span class="us_keyw"></span> </span><br />
+	<blockquote class="comment">
+	
+	</blockquote>
+	</td>
+</tr>
+<tr>
+	<td><a href="#_BeginState+ChargeArmed">BeginState</a>, <a href="#_EndState+ChargeArmed">EndState</a>, <a href="#_Fire+ChargeArmed">Fire</a>, <a href="#_FirstPersonAnimOver+ChargeArmed">FirstPersonAnimOver</a></td>
+</tr>
+</table>
+<table>
+<tr>
+	<th>ChargeReady <a href="../Source_r6weapons/r6demolitionsgadget.html#289" class="small">Source code</a></th>
+</tr>
+<tr>
+	<td>
+	<span class="declaration"><span class="us_keyw"> state</span> ChargeReady <span class="us_keyw"></span> </span><br />
+	<blockquote class="comment">
+	
+	</blockquote>
+	</td>
+</tr>
+<tr>
+	<td><a href="#_BeginState+ChargeReady">BeginState</a>, <a href="#_EndState+ChargeReady">EndState</a>, <a href="#_Fire+ChargeReady">Fire</a>, <a href="#_FirstPersonAnimOver+ChargeReady">FirstPersonAnimOver</a>, <a href="#_Timer+ChargeReady">Timer</a></td>
+</tr>
+</table>
+<table>
+<tr>
+	<th>DiscardWeapon <a href="../Source_r6weapons/r6demolitionsgadget.html#520" class="small">Source code</a></th>
+</tr>
+<tr>
+	<td>
+	<span class="declaration"><span class="us_keyw"> state</span> DiscardWeapon <span class="us_keyw"></span> </span><br />
+	<blockquote class="comment">
+	
+	</blockquote>
+	</td>
+</tr>
+<tr>
+	<td><a href="#_AltFire+DiscardWeapon">AltFire</a>, <a href="#_BeginState+DiscardWeapon">BeginState</a>, <a href="#_Fire+DiscardWeapon">Fire</a>, <a href="#_PlayReloading+DiscardWeapon">PlayReloading</a>, <a href="#_StopAltFire+DiscardWeapon">StopAltFire</a>, <a href="#_StopFire+DiscardWeapon">StopFire</a></td>
+</tr>
+</table>
+<table>
+<tr>
+	<th>GetNextCharge <a href="../Source_r6weapons/r6demolitionsgadget.html#465" class="small">Source code</a></th>
+</tr>
+<tr>
+	<td>
+	<span class="declaration"><span class="us_keyw"> state</span> GetNextCharge <span class="us_keyw"></span> </span><br />
+	<blockquote class="comment">
+	
+	</blockquote>
+	</td>
+</tr>
+<tr>
+	<td><a href="#_AltFire+GetNextCharge">AltFire</a>, <a href="#_BeginState+GetNextCharge">BeginState</a>, <a href="#_Fire+GetNextCharge">Fire</a>, <a href="#_FirstPersonAnimOver+GetNextCharge">FirstPersonAnimOver</a>, <a href="#_StopAltFire+GetNextCharge">StopAltFire</a>, <a href="#_StopFire+GetNextCharge">StopFire</a></td>
+</tr>
+</table>
+<table>
+<tr>
+	<th>NoChargesLeft <a href="../Source_r6weapons/r6demolitionsgadget.html#490" class="small">Source code</a></th>
+</tr>
+<tr>
+	<td>
+	<span class="declaration"><span class="us_keyw"> state</span> NoChargesLeft <span class="us_keyw"></span> </span><br />
+	<blockquote class="comment">
+	
+	</blockquote>
+	</td>
+</tr>
+<tr>
+	<td><a href="#_AltFire+NoChargesLeft">AltFire</a>, <a href="#_BeginState+NoChargesLeft">BeginState</a>, <a href="#_Fire+NoChargesLeft">Fire</a>, <a href="#_FirstPersonAnimOver+NoChargesLeft">FirstPersonAnimOver</a>, <a href="#_StopAltFire+NoChargesLeft">StopAltFire</a>, <a href="#_StopFire+NoChargesLeft">StopFire</a></td>
+</tr>
+</table>
+<table>
+<tr>
+	<th>RaiseWeapon <a href="../Source_r6weapons/r6demolitionsgadget.html#247" class="small">Source code</a></th>
+</tr>
+<tr>
+	<td>
+	<span class="declaration"><span class="us_keyw"> state</span> RaiseWeapon <span class="us_keyw"></span> </span><br />
+	<blockquote class="comment">
+	
+	</blockquote>
+	</td>
+</tr>
+<tr>
+	<td><a href="#_AltFire+RaiseWeapon">AltFire</a>, <a href="#_BeginState+RaiseWeapon">BeginState</a>, <a href="#_EndState+RaiseWeapon">EndState</a>, <a href="#_Fire+RaiseWeapon">Fire</a>, <a href="#_FirstPersonAnimOver+RaiseWeapon">FirstPersonAnimOver</a>, <a href="#_PlayReloading+RaiseWeapon">PlayReloading</a>, <a href="#_StopAltFire+RaiseWeapon">StopAltFire</a>, <a href="#_StopFire+RaiseWeapon">StopFire</a></td>
+</tr>
+</table>
+
+
+<br />
+
+<hr />
+
+
+
+<table class="title">
+<tr>
+	<th class="title">Variables Detail</th>
+</tr>
+</table>
+
+<h4><a name="_BulletActor" class="hidden"></a>BulletActor <a href="../Source_r6weapons/r6demolitionsgadget.html#34" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../r6weapons/r6grenade.html" class="source">R6Grenade</a></span> BulletActor;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_bCancelChargeInstallation" class="hidden"></a>m_bCancelChargeInstallation <a href="../Source_r6weapons/r6demolitionsgadget.html#17" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">BOOL</span> m_bCancelChargeInstallation;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_bCanPlaceCharge" class="hidden"></a>m_bCanPlaceCharge <a href="../Source_r6weapons/r6demolitionsgadget.html#15" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">BOOL</span> m_bCanPlaceCharge;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_bChargeInPosition" class="hidden"></a>m_bChargeInPosition <a href="../Source_r6weapons/r6demolitionsgadget.html#14" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">BOOL</span> m_bChargeInPosition;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_bDetonated" class="hidden"></a>m_bDetonated <a href="../Source_r6weapons/r6demolitionsgadget.html#13" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">BOOL</span> m_bDetonated;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_bDetonator" class="hidden"></a>m_bDetonator <a href="../Source_r6weapons/r6demolitionsgadget.html#38" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">BOOL</span> m_bDetonator;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_bHide" class="hidden"></a>m_bHide <a href="../Source_r6weapons/r6demolitionsgadget.html#37" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">BOOL</span> m_bHide;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_bInstallingCharge" class="hidden"></a>m_bInstallingCharge <a href="../Source_r6weapons/r6demolitionsgadget.html#16" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">BOOL</span> m_bInstallingCharge;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_bRaiseWeapon" class="hidden"></a>m_bRaiseWeapon <a href="../Source_r6weapons/r6demolitionsgadget.html#36" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">BOOL</span> m_bRaiseWeapon;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_ChargeAttachPoint" class="hidden"></a>m_ChargeAttachPoint <a href="../Source_r6weapons/r6demolitionsgadget.html#27" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">name</span> m_ChargeAttachPoint;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_ChargeStaticMesh" class="hidden"></a>m_ChargeStaticMesh <a href="../Source_r6weapons/r6demolitionsgadget.html#26" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">StaticMesh</span> m_ChargeStaticMesh;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_DetonatorAttachPoint" class="hidden"></a>m_DetonatorAttachPoint <a href="../Source_r6weapons/r6demolitionsgadget.html#28" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">name</span> m_DetonatorAttachPoint;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_DetonatorStaticMesh" class="hidden"></a>m_DetonatorStaticMesh <a href="../Source_r6weapons/r6demolitionsgadget.html#24" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">StaticMesh</span> m_DetonatorStaticMesh;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_DetonatorTexture" class="hidden"></a>m_DetonatorTexture <a href="../Source_r6weapons/r6demolitionsgadget.html#25" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../engine/texture.html" class="source">Texture</a></span> m_DetonatorTexture;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_pDetonatorReticuleClass" class="hidden"></a>m_pDetonatorReticuleClass <a href="../Source_r6weapons/r6demolitionsgadget.html#32" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">class</span>&lt;<span class="source_type"><a href="../r6weapons/r6reticule.html" class="source">R6Reticule</a></span>&gt; m_pDetonatorReticuleClass;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_pExplosionParticles" class="hidden"></a>m_pExplosionParticles <a href="../Source_r6weapons/r6demolitionsgadget.html#30" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">class</span>&lt;<span class="source_type"><a href="../engine/emitter.html" class="source">emitter</a></span>&gt; m_pExplosionParticles;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_pReticuleBlockClass" class="hidden"></a>m_pReticuleBlockClass <a href="../Source_r6weapons/r6demolitionsgadget.html#31" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type">class</span>&lt;<span class="source_type"><a href="../r6weapons/r6reticule.html" class="source">R6Reticule</a></span>&gt; m_pReticuleBlockClass;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_ReticuleBlock" class="hidden"></a>m_ReticuleBlock <a href="../Source_r6weapons/r6demolitionsgadget.html#21" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../r6weapons/r6reticule.html" class="source">R6Reticule</a></span> m_ReticuleBlock;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_ReticuleConfirm" class="hidden"></a>m_ReticuleConfirm <a href="../Source_r6weapons/r6demolitionsgadget.html#20" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../r6weapons/r6reticule.html" class="source">R6Reticule</a></span> m_ReticuleConfirm;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_ReticuleDetonator" class="hidden"></a>m_ReticuleDetonator <a href="../Source_r6weapons/r6demolitionsgadget.html#22" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../r6weapons/r6reticule.html" class="source">R6Reticule</a></span> m_ReticuleDetonator;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_m_vLocation" class="hidden"></a>m_vLocation <a href="../Source_r6weapons/r6demolitionsgadget.html#18" class="small">Source code</a></h4>
+<div class="declaration">var <span class="source_type"><a href="../core/object.html#Vector" class="source">vector</a></span> m_vLocation;</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+
+
+<br />
+
+
+
+
+
+
+
+<table class="title">
+<tr>
+	<th class="title">Functions Detail</th>
+</tr>
+</table>
+
+<h4><a name="_Activate-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> Activate <span class="function_state"></span> <a href="../Source_r6weapons/r6demolitionsgadget.html#171" class="small">Source code</a></h4>
+<div class="declaration"> function  Activate (  )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_AltFire-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> AltFire <span class="function_state"></span> <a href="../Source_r6weapons/r6demolitionsgadget.html#206" class="small">Source code</a></h4>
+<div class="declaration"> function  AltFire ( <span class="source_type">FLOAT</span> <span class="source_type">fValue</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_AltFire-DiscardWeapon" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> AltFire <span class="function_state">DiscardWeapon</span> <a href="../Source_r6weapons/r6demolitionsgadget.html#523" class="small">Source code</a></h4>
+<div class="declaration"> function  AltFire ( <span class="source_type">float</span> <span class="source_type">Value</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_AltFire-GetNextCharge" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> AltFire <span class="function_state">GetNextCharge</span> <a href="../Source_r6weapons/r6demolitionsgadget.html#469" class="small">Source code</a></h4>
+<div class="declaration"> function  AltFire ( <span class="source_type">FLOAT</span> <span class="source_type">fValue</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_AltFire-NoChargesLeft" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> AltFire <span class="function_state">NoChargesLeft</span> <a href="../Source_r6weapons/r6demolitionsgadget.html#500" class="small">Source code</a></h4>
+<div class="declaration"> function  AltFire ( <span class="source_type">FLOAT</span> <span class="source_type">fValue</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_AltFire-RaiseWeapon" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> AltFire <span class="function_state">RaiseWeapon</span> <a href="../Source_r6weapons/r6demolitionsgadget.html#250" class="small">Source code</a></h4>
+<div class="declaration"> function  AltFire ( <span class="source_type">float</span> <span class="source_type">Value</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_BeginState-BringWeaponUp" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> BeginState <span class="function_state">BringWeaponUp</span> <a href="../Source_r6weapons/r6demolitionsgadget.html#549" class="small">Source code</a></h4>
+<div class="declaration">simulated function  BeginState ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_BeginState-ChargeArmed" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> BeginState <span class="function_state">ChargeArmed</span> <a href="../Source_r6weapons/r6demolitionsgadget.html#384" class="small">Source code</a></h4>
+<div class="declaration"> function  BeginState ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_BeginState-ChargeReady" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> BeginState <span class="function_state">ChargeReady</span> <a href="../Source_r6weapons/r6demolitionsgadget.html#291" class="small">Source code</a></h4>
+<div class="declaration"> function  BeginState ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_BeginState-DiscardWeapon" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> BeginState <span class="function_state">DiscardWeapon</span> <a href="../Source_r6weapons/r6demolitionsgadget.html#528" class="small">Source code</a></h4>
+<div class="declaration">simulated function  BeginState ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_BeginState-GetNextCharge" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> BeginState <span class="function_state">GetNextCharge</span> <a href="../Source_r6weapons/r6demolitionsgadget.html#472" class="small">Source code</a></h4>
+<div class="declaration"> function  BeginState ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_BeginState-NoChargesLeft" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> BeginState <span class="function_state">NoChargesLeft</span> <a href="../Source_r6weapons/r6demolitionsgadget.html#492" class="small">Source code</a></h4>
+<div class="declaration"> function  BeginState ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_BeginState-RaiseWeapon" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> BeginState <span class="function_state">RaiseWeapon</span> <a href="../Source_r6weapons/r6demolitionsgadget.html#275" class="small">Source code</a></h4>
+<div class="declaration">simulated function  BeginState ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_CancelChargeInstallation-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> CancelChargeInstallation <span class="function_state"></span> <a href="../Source_r6weapons/r6demolitionsgadget.html#735" class="small">Source code</a></h4>
+<div class="declaration">simulated function  CancelChargeInstallation ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_CanPlaceCharge-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> CanPlaceCharge <span class="function_state"></span> <a href="../Source_r6weapons/r6demolitionsgadget.html#678" class="small">Source code</a></h4>
+<div class="declaration">simulated function <span class="source_type">bool</span> CanPlaceCharge ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_CanSwitchToWeapon-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> CanSwitchToWeapon <span class="function_state"></span> <a href="../Source_r6weapons/r6demolitionsgadget.html#810" class="small">Source code</a></h4>
+<div class="declaration"> function <span class="source_type">BOOL</span> CanSwitchToWeapon ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ClientMyUnitIsDestroyed-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> ClientMyUnitIsDestroyed <span class="function_state"></span> <a href="../Source_r6weapons/r6demolitionsgadget.html#65" class="small">Source code</a></h4>
+<div class="declaration">simulated function  ClientMyUnitIsDestroyed ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_DestroyReticules-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> DestroyReticules <span class="function_state"></span> <a href="../Source_r6weapons/r6demolitionsgadget.html#617" class="small">Source code</a></h4>
+<div class="declaration"> function  DestroyReticules ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_EndState-BringWeaponUp" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> EndState <span class="function_state">BringWeaponUp</span> <a href="../Source_r6weapons/r6demolitionsgadget.html#582" class="small">Source code</a></h4>
+<div class="declaration">simulated function  EndState ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_EndState-ChargeArmed" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> EndState <span class="function_state">ChargeArmed</span> <a href="../Source_r6weapons/r6demolitionsgadget.html#410" class="small">Source code</a></h4>
+<div class="declaration"> function  EndState ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_EndState-ChargeReady" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> EndState <span class="function_state">ChargeReady</span> <a href="../Source_r6weapons/r6demolitionsgadget.html#310" class="small">Source code</a></h4>
+<div class="declaration"> function  EndState ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_EndState-RaiseWeapon" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> EndState <span class="function_state">RaiseWeapon</span> <a href="../Source_r6weapons/r6demolitionsgadget.html#255" class="small">Source code</a></h4>
+<div class="declaration">simulated function  EndState ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_Fire-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> Fire <span class="function_state"></span> <a href="../Source_r6weapons/r6demolitionsgadget.html#185" class="small">Source code</a></h4>
+<div class="declaration"> function  Fire ( <span class="source_type">FLOAT</span> <span class="source_type">fValue</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_Fire-ChargeArmed" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> Fire <span class="function_state">ChargeArmed</span> <a href="../Source_r6weapons/r6demolitionsgadget.html#442" class="small">Source code</a></h4>
+<div class="declaration"> function  Fire ( <span class="source_type">FLOAT</span> <span class="source_type">fValue</span>) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_Fire-ChargeReady" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> Fire <span class="function_state">ChargeReady</span> <a href="../Source_r6weapons/r6demolitionsgadget.html#343" class="small">Source code</a></h4>
+<div class="declaration"> function  Fire ( <span class="source_type">FLOAT</span> <span class="source_type">fValue</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_Fire-DiscardWeapon" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> Fire <span class="function_state">DiscardWeapon</span> <a href="../Source_r6weapons/r6demolitionsgadget.html#522" class="small">Source code</a></h4>
+<div class="declaration"> function  Fire ( <span class="source_type">float</span> <span class="source_type">Value</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_Fire-GetNextCharge" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> Fire <span class="function_state">GetNextCharge</span> <a href="../Source_r6weapons/r6demolitionsgadget.html#467" class="small">Source code</a></h4>
+<div class="declaration"> function  Fire ( <span class="source_type">FLOAT</span> <span class="source_type">fValue</span> )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_Fire-NoChargesLeft" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> Fire <span class="function_state">NoChargesLeft</span> <a href="../Source_r6weapons/r6demolitionsgadget.html#498" class="small">Source code</a></h4>
+<div class="declaration"> function  Fire ( <span class="source_type">FLOAT</span> <span class="source_type">fValue</span> )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_Fire-RaiseWeapon" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> Fire <span class="function_state">RaiseWeapon</span> <a href="../Source_r6weapons/r6demolitionsgadget.html#249" class="small">Source code</a></h4>
+<div class="declaration"> function  Fire ( <span class="source_type">float</span> <span class="source_type">Value</span> ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_FirstPersonAnimOver-BringWeaponUp" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> FirstPersonAnimOver <span class="function_state">BringWeaponUp</span> <a href="../Source_r6weapons/r6demolitionsgadget.html#569" class="small">Source code</a></h4>
+<div class="declaration">simulated function  FirstPersonAnimOver ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_FirstPersonAnimOver-ChargeArmed" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> FirstPersonAnimOver <span class="function_state">ChargeArmed</span> <a href="../Source_r6weapons/r6demolitionsgadget.html#415" class="small">Source code</a></h4>
+<div class="declaration"> function  FirstPersonAnimOver ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_FirstPersonAnimOver-ChargeReady" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> FirstPersonAnimOver <span class="function_state">ChargeReady</span> <a href="../Source_r6weapons/r6demolitionsgadget.html#371" class="small">Source code</a></h4>
+<div class="declaration"> function  FirstPersonAnimOver ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_FirstPersonAnimOver-GetNextCharge" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> FirstPersonAnimOver <span class="function_state">GetNextCharge</span> <a href="../Source_r6weapons/r6demolitionsgadget.html#477" class="small">Source code</a></h4>
+<div class="declaration"> function  FirstPersonAnimOver ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_FirstPersonAnimOver-NoChargesLeft" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> FirstPersonAnimOver <span class="function_state">NoChargesLeft</span> <a href="../Source_r6weapons/r6demolitionsgadget.html#503" class="small">Source code</a></h4>
+<div class="declaration"> function  FirstPersonAnimOver ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_FirstPersonAnimOver-RaiseWeapon" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> FirstPersonAnimOver <span class="function_state">RaiseWeapon</span> <a href="../Source_r6weapons/r6demolitionsgadget.html#261" class="small">Source code</a></h4>
+<div class="declaration">simulated function  FirstPersonAnimOver ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_HideAttachment-" class="hidden"></a><img src="../img_event.gif" alt="" title="event" /> HideAttachment <span class="function_state"></span> <a href="../Source_r6weapons/r6demolitionsgadget.html#779" class="small">Source code</a></h4>
+<div class="declaration">simulated event  HideAttachment ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_HideReticule-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> HideReticule <span class="function_state"></span> <a href="../Source_r6weapons/r6demolitionsgadget.html#612" class="small">Source code</a></h4>
+<div class="declaration"> function  HideReticule ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_LoadFirstPersonWeapon-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> LoadFirstPersonWeapon <span class="function_state"></span> <a href="../Source_r6weapons/r6demolitionsgadget.html#209" class="small">Source code</a></h4>
+<div class="declaration">simulated function <span class="source_type">BOOL</span> LoadFirstPersonWeapon ( optional <span class="source_type"><a href="../engine/pawn.html" class="source">Pawn</a></span> NetOwner, optional <span class="source_type"><a href="../engine/controller.html" class="source">Controller</a></span> LocalPlayerController) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_MyUnitIsDestroyed-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> MyUnitIsDestroyed <span class="function_state"></span> <a href="../Source_r6weapons/r6demolitionsgadget.html#54" class="small">Source code</a></h4>
+<div class="declaration"> function  MyUnitIsDestroyed ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_NbBulletChange-" class="hidden"></a><img src="../img_event.gif" alt="" title="event" /> NbBulletChange <span class="function_state"></span> <a href="../Source_r6weapons/r6demolitionsgadget.html#52" class="small">Source code</a></h4>
+<div class="declaration"> event  NbBulletChange (  )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_PlaceChargeAnimation-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> PlaceChargeAnimation <span class="function_state"></span> <a href="../Source_r6weapons/r6demolitionsgadget.html#170" class="small">Source code</a></h4>
+<div class="declaration"> function  PlaceChargeAnimation (  )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_PlayReloading-DiscardWeapon" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> PlayReloading <span class="function_state">DiscardWeapon</span> <a href="../Source_r6weapons/r6demolitionsgadget.html#526" class="small">Source code</a></h4>
+<div class="declaration"> function  PlayReloading ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_PlayReloading-RaiseWeapon" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> PlayReloading <span class="function_state">RaiseWeapon</span> <a href="../Source_r6weapons/r6demolitionsgadget.html#253" class="small">Source code</a></h4>
+<div class="declaration"> function  PlayReloading ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_PostBeginPlay-" class="hidden"></a><img src="../img_event.gif" alt="" title="event" /> PostBeginPlay <span class="function_state"></span> <a href="../Source_r6weapons/r6demolitionsgadget.html#128" class="small">Source code</a></h4>
+<div class="declaration"> event  PostBeginPlay ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_PostNetBeginPlay-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> PostNetBeginPlay <span class="function_state"></span> <a href="../Source_r6weapons/r6demolitionsgadget.html#135" class="small">Source code</a></h4>
+<div class="declaration">simulated function  PostNetBeginPlay ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_R6SetReticule-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> R6SetReticule <span class="function_state"></span> <a href="../Source_r6weapons/r6demolitionsgadget.html#639" class="small">Source code</a></h4>
+<div class="declaration">simulated function  R6SetReticule ( optional <span class="source_type"><a href="../engine/controller.html" class="source">Controller</a></span> LocalPlayerController) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_RemoveFirstPersonWeapon-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> RemoveFirstPersonWeapon <span class="function_state"></span> <a href="../Source_r6weapons/r6demolitionsgadget.html#590" class="small">Source code</a></h4>
+<div class="declaration">simulated function  RemoveFirstPersonWeapon ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ServerCancelChargeInstallation-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> ServerCancelChargeInstallation <span class="function_state"></span> <a href="../Source_r6weapons/r6demolitionsgadget.html#720" class="small">Source code</a></h4>
+<div class="declaration"> function  ServerCancelChargeInstallation ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ServerDetonate-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> ServerDetonate <span class="function_state"></span> <a href="../Source_r6weapons/r6demolitionsgadget.html#174" class="small">Source code</a></h4>
+<div class="declaration"> function  ServerDetonate ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ServerGotoSetExplosive-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> ServerGotoSetExplosive <span class="function_state"></span> <a href="../Source_r6weapons/r6demolitionsgadget.html#714" class="small">Source code</a></h4>
+<div class="declaration"> function  ServerGotoSetExplosive ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ServerPlaceCharge-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> ServerPlaceCharge <span class="function_state"></span> <a href="../Source_r6weapons/r6demolitionsgadget.html#142" class="small">Source code</a></h4>
+<div class="declaration">simulated function  ServerPlaceCharge ( <span class="source_type"><a href="../core/object.html#Vector" class="source">vector</a></span> vLocation) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ServerPlaceChargeAnimation-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> ServerPlaceChargeAnimation <span class="function_state"></span> <a href="../Source_r6weapons/r6demolitionsgadget.html#169" class="small">Source code</a></h4>
+<div class="declaration"> function  ServerPlaceChargeAnimation (  )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_SetAmmoStaticMesh-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> SetAmmoStaticMesh <span class="function_state"></span> <a href="../Source_r6weapons/r6demolitionsgadget.html#172" class="small">Source code</a></h4>
+<div class="declaration"> function  SetAmmoStaticMesh (  )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_SetGadgetStaticMesh-" class="hidden"></a><img src="../img_event.gif" alt="" title="event" /> SetGadgetStaticMesh <span class="function_state"></span> <a href="../Source_r6weapons/r6demolitionsgadget.html#792" class="small">Source code</a></h4>
+<div class="declaration">simulated event  SetGadgetStaticMesh ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_ShowInfo-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> ShowInfo <span class="function_state"></span> <a href="../Source_r6weapons/r6demolitionsgadget.html#820" class="small">Source code</a></h4>
+<div class="declaration">simulated function  ShowInfo ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_StartLoopingAnims-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> StartLoopingAnims <span class="function_state"></span> <a href="../Source_r6weapons/r6demolitionsgadget.html#224" class="small">Source code</a></h4>
+<div class="declaration"> function  StartLoopingAnims ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_StopAltFire-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> StopAltFire <span class="function_state"></span> <a href="../Source_r6weapons/r6demolitionsgadget.html#207" class="small">Source code</a></h4>
+<div class="declaration"> function  StopAltFire ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_StopAltFire-DiscardWeapon" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> StopAltFire <span class="function_state">DiscardWeapon</span> <a href="../Source_r6weapons/r6demolitionsgadget.html#525" class="small">Source code</a></h4>
+<div class="declaration"> function  StopAltFire ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_StopAltFire-GetNextCharge" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> StopAltFire <span class="function_state">GetNextCharge</span> <a href="../Source_r6weapons/r6demolitionsgadget.html#470" class="small">Source code</a></h4>
+<div class="declaration"> function  StopAltFire ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_StopAltFire-NoChargesLeft" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> StopAltFire <span class="function_state">NoChargesLeft</span> <a href="../Source_r6weapons/r6demolitionsgadget.html#501" class="small">Source code</a></h4>
+<div class="declaration"> function  StopAltFire ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_StopAltFire-RaiseWeapon" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> StopAltFire <span class="function_state">RaiseWeapon</span> <a href="../Source_r6weapons/r6demolitionsgadget.html#252" class="small">Source code</a></h4>
+<div class="declaration"> function  StopAltFire ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_StopFire-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> StopFire <span class="function_state"></span> <a href="../Source_r6weapons/r6demolitionsgadget.html#205" class="small">Source code</a></h4>
+<div class="declaration"> function  StopFire ( optional <span class="source_type">BOOL</span> bSoundOnly) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_StopFire-DiscardWeapon" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> StopFire <span class="function_state">DiscardWeapon</span> <a href="../Source_r6weapons/r6demolitionsgadget.html#524" class="small">Source code</a></h4>
+<div class="declaration"> function  StopFire ( optional <span class="source_type">BOOL</span> bSoundOnly) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_StopFire-GetNextCharge" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> StopFire <span class="function_state">GetNextCharge</span> <a href="../Source_r6weapons/r6demolitionsgadget.html#468" class="small">Source code</a></h4>
+<div class="declaration"> function  StopFire ( optional <span class="source_type">BOOL</span> bSoundOnly) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_StopFire-NoChargesLeft" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> StopFire <span class="function_state">NoChargesLeft</span> <a href="../Source_r6weapons/r6demolitionsgadget.html#499" class="small">Source code</a></h4>
+<div class="declaration"> function  StopFire ( optional <span class="source_type">BOOL</span> bSoundOnly) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_StopFire-RaiseWeapon" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> StopFire <span class="function_state">RaiseWeapon</span> <a href="../Source_r6weapons/r6demolitionsgadget.html#251" class="small">Source code</a></h4>
+<div class="declaration"> function  StopFire ( optional <span class="source_type">BOOL</span> bSoundOnly) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_SwitchToChargeHandAnimations-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> SwitchToChargeHandAnimations <span class="function_state"></span> <a href="../Source_r6weapons/r6demolitionsgadget.html#241" class="small">Source code</a></h4>
+<div class="declaration"> function  SwitchToChargeHandAnimations ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_SwitchToDetonatorHandAnimations-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> SwitchToDetonatorHandAnimations <span class="function_state"></span> <a href="../Source_r6weapons/r6demolitionsgadget.html#235" class="small">Source code</a></h4>
+<div class="declaration"> function  SwitchToDetonatorHandAnimations ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_Tick-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> Tick <span class="function_state"></span> <a href="../Source_r6weapons/r6demolitionsgadget.html#750" class="small">Source code</a></h4>
+<div class="declaration">simulated function  Tick ( <span class="source_type">FLOAT</span> fDeltaTime) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_Timer-ChargeReady" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> Timer <span class="function_state">ChargeReady</span> <a href="../Source_r6weapons/r6demolitionsgadget.html#317" class="small">Source code</a></h4>
+<div class="declaration"> function  Timer ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+<h4><a name="_UpdateHands-" class="hidden"></a><img src="../img_function.gif" alt="" title="function" /> UpdateHands <span class="function_state"></span> <a href="../Source_r6weapons/r6demolitionsgadget.html#114" class="small">Source code</a></h4>
+<div class="declaration">simulated function  UpdateHands ( ) )</div>
+<blockquote class="comment">
+
+</blockquote>
+<hr class="small" />
+
+
+<br />
+
+
+<table class="title">
+<tr>
+	<th class="title">Defaultproperties</th>
+</tr>
+</table>
+<br />
+<div class="source"><table class="source"><tr><td class="source"><pre class="source">defaultproperties
+{
+     m_DetonatorAttachPoint=<span class="source_string">"TagDetonatorHand"</span>
+     m_pReticuleBlockClass=<span class="source_type">Class</span><span class="source_name">'R6Weapons.R6CrossReticule'</span>
+     m_pDetonatorReticuleClass=<span class="source_type">Class</span><span class="source_name">'R6Weapons.R6DotReticule'</span>
+     m_iClipCapacity=<span class="source_int">2</span>
+     m_pReticuleClass=<span class="source_type">Class</span><span class="source_name">'R6Weapons.R6GrenadeReticule'</span>
+     m_bHiddenWhenNotInUse=True
+     m_pFPHandsClass=<span class="source_type">Class</span><span class="source_name">'R61stWeapons.R61stHandsGripC4'</span>
+     m_bDisplayHudInfo=True
+     m_EquipSnd=<span class="source_type">Sound</span><span class="source_name">'Foley_HBSJammer.Play_HBSJ_Equip'</span>
+     m_UnEquipSnd=<span class="source_type">Sound</span><span class="source_name">'Foley_HBSJammer.Play_HBSJ_Unequip'</span>
+     m_NameID=<span class="source_string">"DiffuseKit"</span>
+     bCollideWorld=True
+}
+</pre></td></tr></table></div>
+
+
+
+<hr />
+<table class="header">
+<tr class="header">
+	<td class="header"><a href="../overview.html">Overview</a></td>
+	<td class="header"><a href="../r6weapons/r6weapons-overview.html">Package</a></td>
+	<td class="header_hilight">Class</td>
+	<td class="header"><a href="../Source_r6weapons/r6demolitionsgadget.html">Source</a></td>
+	<td class="header"><a class="header" href="../classtree.html#R6DemolitionsGadget">Class tree</a></td>
+	<td class="header"><a class="header" href="../glossary_A.html">Glossary</a></td>
+	<td class="logo" rowspan="2">UnrealScript<br />Documentation</td>
+</tr>
+<tr>
+	<td class="subheader" colspan="3"><a href="../r6weapons/r6crossreticule.html">previous class</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../r6weapons/r6demolitionsunit.html">next class</a></td>
+	<td class="subheader" colspan="2"><a href="../index.html" target="_top">frames</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="" target="_top">no frames</a></td>
+</tr>
+</table>
+
+<div class="stats">Creation time: mar. 26/5/2026 18:33:10.101 - Created with <a href="http://wiki.beyondunreal.com/wiki/UnCodeX" target="_blank">UnCodeX</a></div>
+
+</body>
+</html>
